@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32811.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TobuSeisouSystemNet2022", "TobuSeisouSystemNet2022\TobuSeisouSystemNet2022.csproj", "{37EA8C4D-DE09-4E22-9DCB-11F21757A413}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{B8E40A4C-FAB1-4CEE-A7D5-36F0A02A02B0}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{37EA8C4D-DE09-4E22-9DCB-11F21757A413}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37EA8C4D-DE09-4E22-9DCB-11F21757A413}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37EA8C4D-DE09-4E22-9DCB-11F21757A413}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37EA8C4D-DE09-4E22-9DCB-11F21757A413}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8E40A4C-FAB1-4CEE-A7D5-36F0A02A02B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8E40A4C-FAB1-4CEE-A7D5-36F0A02A02B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8E40A4C-FAB1-4CEE-A7D5-36F0A02A02B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8E40A4C-FAB1-4CEE-A7D5-36F0A02A02B0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2D1FBDF7-2461-4773-B777-E80F41EA193E}
+	EndGlobalSection
+EndGlobal
