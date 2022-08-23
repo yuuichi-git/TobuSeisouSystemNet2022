@@ -12,7 +12,7 @@ namespace Vo {
         /// <summary>
         /// 
         /// </summary>
-        private SqlConnection _connection;
+        private SqlConnection _connection = new();
         /// <summary>
         /// 
         /// </summary>

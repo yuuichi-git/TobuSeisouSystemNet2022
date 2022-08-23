@@ -5,6 +5,8 @@ using System.Data;
 
 using Common;
 
+using VehicleDispatch;
+
 using Vo;
 
 namespace TobuSeisouSystemNet2022 {
@@ -45,8 +47,8 @@ namespace TobuSeisouSystemNet2022 {
                         switch ((string)((Label)sender).Tag) {
                             // 配車システム
                             case "VehicleDispatch":
-                                //var vehicleDispatchBoad = new VehicleDispatchBoad(_connectionVo);
-                                //vehicleDispatchBoad.Show(this);
+                                var vehicleDispatchBoad = new VehicleDispatchBoad(_connectionVo);
+                                vehicleDispatchBoad.Show(this);
                                 break;
                             default:
                                 break;
