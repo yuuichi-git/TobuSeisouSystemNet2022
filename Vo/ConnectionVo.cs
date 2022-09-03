@@ -10,19 +10,18 @@ using Vo.Properties;
 namespace Vo {
     public class ConnectionVo {
         /// <summary>
-        /// 
+        /// 接続を保持
         /// </summary>
         private SqlConnection _connection = new();
         /// <summary>
-        /// 
+        /// 接続先名を保持
         /// </summary>
-        private string? _serverName;
+        private string _serverName = string.Empty;
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
         public ConnectionVo() {
-            _serverName = null;
         }
 
         /// <summary>
