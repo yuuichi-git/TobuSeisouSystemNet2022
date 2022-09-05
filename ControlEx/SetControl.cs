@@ -1,37 +1,21 @@
-﻿namespace ControlEx {
+﻿/*
+ * 
+ */
+using Vo;
+
+namespace ControlEx {
     public partial class SetControl : UserControl {
-        /// <summary>
-        /// 表示フラグ
-        /// true:表示 false:非表示
-        /// </summary>
         private bool _setFlag;
-        /// <summary>
-        /// 休車フラグ
-        /// true:休車 false:配車
-        /// </summary>
         private bool _stopCarFlag;
-        /// <summary>
-        /// 車庫フラグ
-        /// true:足立 false:三郷
-        /// </summary>
         private bool _garageFlag;
-        /// <summary>
-        /// 本番人数
-        /// </summary>
         private int _productionNumberOfPeople;
 
         public SetControl() {
             /*
-             * プロパティを初期化
-             */
-            SetFlag = true;
-            StopCarFlag = false;
-            GarageFlag = true;
-            ProductionNumberOfPeople = 4;
-            /*
              * Controlを初期化
              */
             InitializeComponent();
+            Dock = DockStyle.Fill;
             Margin = new Padding(0);
         }
 
@@ -59,7 +43,7 @@
                  * StaffLabelの部分
                  */
                 if (!StopCarFlag) { // 配車日の場合
-                    if (e.Row - 2 < ProductionNumberOfPeople) {
+                    if (e.Row < ProductionNumberOfPeople + 2) {
                         switch (e.Row) {
                             case 2: // StaffLabel1
                                 ControlPaint.DrawBorder(e.Graphics, rectangle, Color.DarkGray, ButtonBorderStyle.Dotted);
@@ -81,34 +65,64 @@
             }
         }
 
-        public void SetSetLabel() {
-            var labelEx = new LabelEx();
-
+        /// <summary>
+        /// SetLabel作成
+        /// </summary>
+        /// <param name="setLedgerVo"></param>
+        public void CreateLabel(SetLedgerVo setLedgerVo) {
+            var labelEx = new LabelEx().CreateLabel(setLedgerVo);
+            TableLayoutPanelEx1.Controls.Add(labelEx, 0, 0);
         }
 
-        public void SetCarLabel() {
-        
+        /// <summary>
+        /// CarLabel作成
+        /// </summary>
+        /// <param name="carLedgerVo"></param>
+        public void CreateLabel(CarLedgerVo carLedgerVo) {
+            var labelEx = new LabelEx().CreateLabel(carLedgerVo);
+            TableLayoutPanelEx1.Controls.Add(labelEx, 0, 1);
         }
 
-        public void SetStaffLabel() {
-        
+        /// <summary>
+        /// StaffLabel作成
+        /// </summary>
+        /// <param name="number">1:運転手 2:作業員1 3:作業員2 4:作業員3</param>
+        /// <param name="staffLedgerVo"></param>
+        public void CreateLabel(int number, StaffLedgerVo staffLedgerVo) {
+            var labelEx = new LabelEx().CreateLabel(staffLedgerVo);
+            TableLayoutPanelEx1.Controls.Add(labelEx, 0, number + 2);
         }
 
         /*
          * Setter Getter
          */
+        /// <summary>
+        /// 表示フラグ
+        /// true:表示 false:非表示
+        /// </summary>
         public bool SetFlag {
             get => _setFlag;
             set => _setFlag = value;
         }
+        /// <summary>
+        /// 休車フラグ
+        /// true:休車 false:配車
+        /// </summary>
         public bool StopCarFlag {
             get => _stopCarFlag;
             set => _stopCarFlag = value;
         }
+        /// <summary>
+        /// 車庫地
+        /// true:足立 false:三郷
+        /// </summary>
         public bool GarageFlag {
             get => _garageFlag;
             set => _garageFlag = value;
         }
+        /// <summary>
+        /// 本番人数
+        /// </summary>
         public int ProductionNumberOfPeople {
             get => _productionNumberOfPeople;
             set => _productionNumberOfPeople = value;

@@ -32,10 +32,12 @@
             this.StatusStrip1 = new System.Windows.Forms.StatusStrip();
             this.ToolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.PanelUp = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.VehicleDispatchControl1 = new ControlEx.VehicleDispatchControl();
             this.TableLayoutPanelBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
+            this.PanelUp.SuspendLayout();
             this.SuspendLayout();
             // 
             // TableLayoutPanelBase
@@ -120,11 +122,22 @@
             // PanelUp
             // 
             this.TableLayoutPanelBase.SetColumnSpan(this.PanelUp, 3);
+            this.PanelUp.Controls.Add(this.button1);
             this.PanelUp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelUp.Location = new System.Drawing.Point(3, 27);
             this.PanelUp.Name = "PanelUp";
             this.PanelUp.Size = new System.Drawing.Size(1898, 60);
             this.PanelUp.TabIndex = 2;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1568, 12);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(144, 36);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // VehicleDispatchControl1
             // 
@@ -151,6 +164,7 @@
             this.MenuStrip1.PerformLayout();
             this.StatusStrip1.ResumeLayout(false);
             this.StatusStrip1.PerformLayout();
+            this.PanelUp.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -167,5 +181,6 @@
         private Panel PanelUp;
         private ControlEx.VehicleDispatchControl VehicleDispatchControl1;
         private ToolStripMenuItem ToolStripMenuItemDisplay;
+        private Button button1;
     }
 }
