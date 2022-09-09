@@ -4,27 +4,23 @@
      */
     [Serializable] // ←DeepCopyする場合には必要
     public class CarLedgerVo {
-        private decimal _car_code;
-        private bool _allow_drop;
-        private bool _move_flag;
-        private string? _classification_work;
+        private int _car_code;
+        private int _classification_work;
         private string? _registration_number;
         private string? _registration_number_1;
         private string? _registration_number_2;
         private string? _registration_number_3;
-        private int _registration_number_4;
-        private string? _location;
-        private int _door_number;
+        private string? _registration_number_4;
+        private bool _garage_flag;
+        private string? _door_number;
         private DateTime _registration_date;
         private DateTime _first_registration_date;
         private string? _classification;
         private string? _disguise_kind_1;
         private string? _disguise_kind_2;
-        private string? _disguise_kind_3;
         private string? _car_use;
         private int _other_code;
-        private string? _other_name;
-        private decimal _shape_code;
+        private int _shape_code;
         private string? _shape_name;
         private string? _car_name;
         private decimal _capacity;
@@ -61,28 +57,15 @@
         /// <summary>
         /// 車両コード
         /// </summary>
-        public decimal Car_code {
+        public int Car_code {
             get => _car_code;
             set => _car_code = value;
         }
         /// <summary>
-        /// Dropを受け入れるか？
+        /// 分類コード
+        /// 10:雇上 11:区契約 12:臨時 20:一般廃棄物
         /// </summary>
-        public bool Allow_drop {
-            get => _allow_drop;
-            set => _allow_drop = value;
-        }
-        /// <summary>
-        /// Dragで移動できるか？ True:出来る False:出来ない
-        /// </summary>
-        public bool Move_flag {
-            get => _move_flag;
-            set => _move_flag = value;
-        }
-        /// <summary>
-        /// 雇上・区契・一般
-        /// </summary>
-        public string? Classification_work {
+        public int Classification_work {
             get => _classification_work;
             set => _classification_work = value;
         }
@@ -117,21 +100,23 @@
         /// <summary>
         /// 自動車登録番号又は車両番号4
         /// </summary>
-        public int Registration_number_4 {
+        public string? Registration_number_4 {
             get => _registration_number_4;
             set => _registration_number_4 = value;
         }
         /// <summary>
-        /// 車庫の位置
+        /// 車庫地
+        /// true:足立 false:三郷
         /// </summary>
-        public string? Location {
-            get => _location;
-            set => _location = value;
+        public bool Garage_flag {
+            get => _garage_flag;
+            set => _garage_flag = value;
         }
         /// <summary>
         /// ドア番号
+        /// "78-1"等の文字で表すドア番が存在するためstring型で
         /// </summary>
-        public int Door_number {
+        public string? Door_number {
             get => _door_number;
             set => _door_number = value;
         }
@@ -157,25 +142,18 @@
             set => _classification = value;
         }
         /// <summary>
-        /// 仮装の種類1(配車パネル)
+        /// 仮装の種類1(配車での名称)
         /// </summary>
         public string? Disguise_kind_1 {
             get => _disguise_kind_1;
             set => _disguise_kind_1 = value;
         }
         /// <summary>
-        /// 仮装の種類2(事故報告書)
+        /// 仮装の種類2(事故報告書での名称)
         /// </summary>
         public string? Disguise_kind_2 {
             get => _disguise_kind_2;
             set => _disguise_kind_2 = value;
-        }
-        /// <summary>
-        /// 仮装の種類3(整備)
-        /// </summary>
-        public string? Disguise_kind_3 {
-            get => _disguise_kind_3;
-            set => _disguise_kind_3 = value;
         }
         /// <summary>
         /// 用途
@@ -186,23 +164,16 @@
         }
         /// <summary>
         /// 自家用・事業用の別コード
-        /// 1:事業用 2:自家用 3:事業用(三郷) 9:空のLabel
+        /// 10:事業用 11:自家用
         /// </summary>
         public int Other_code {
             get => _other_code;
             set => _other_code = value;
         }
         /// <summary>
-        /// 自家用・事業用の別名
-        /// </summary>
-        public string? Other_name {
-            get => _other_name;
-            set => _other_name = value;
-        }
-        /// <summary>
         /// 車体の形状コード
         /// </summary>
-        public decimal Shape_code {
+        public int Shape_code {
             get => _shape_code;
             set => _shape_code = value;
         }
@@ -414,6 +385,9 @@
             get => _delete_ymd_hms;
             set => _delete_ymd_hms = value;
         }
+        /// <summary>
+        /// 削除フラグ
+        /// </summary>
         public bool Delete_flag {
             get => _delete_flag;
             set => _delete_flag = value;

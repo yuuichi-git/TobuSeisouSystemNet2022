@@ -4,26 +4,17 @@
      */
     [Serializable] // ←DeepCopyする場合には必要
     public class StaffLedgerVo {
-        private decimal _staff_code;
-        private bool _allow_drop;
-        private bool _move_flag;
-        private string? _belongs;
+        private int _staff_code;
+        private int _belongs;
         private bool _vehicle_dispatch_target;
         private int _job_form;
-        private bool _driver;
-        private bool _operator;
-        private bool _type_of_job_1;
-        private bool _type_of_job_2;
-        private bool _type_of_job_3;
-        private bool _type_of_job_4;
-        private bool _type_of_job_5;
-        private bool _type_of_job_6;
+        private int _occupation;
         private string? _name_kana;
         private string? _name;
         private string? _display_name;
         private string? _gender;
-        private DateTime _birth_date;
-        private DateTime _employment_date;
+        private DateTime? _birth_date;
+        private DateTime? _employment_date;
         private int? _code;
         private string? _current_address;
         private string? _before_change_address;
@@ -162,36 +153,23 @@
         private bool _delete_flag;
 
         /// <summary>
-        /// 社員コード
+        /// 従業員コード
         /// </summary>
-        public decimal Staff_code {
+        public int Staff_code {
             get => _staff_code;
             set => _staff_code = value;
         }
         /// <summary>
-        /// Drug&Dropを受け入れるかどうか
+        /// 所属
+        /// 10:役員 11:社員 12:アルバイト 20:新運転 21:自運労
         /// </summary>
-        public bool Allow_drop {
-            get => _allow_drop;
-            set => _allow_drop = value;
-        }
-        /// <summary>
-        /// 移動可能かどうか
-        /// True:可能 False:不可能
-        /// </summary>
-        public bool Move_flag {
-            get => _move_flag;
-            set => _move_flag = value;
-        }
-        /// <summary>
-        /// 所属(新運転　自運労　アルバイト　社員)
-        /// </summary>
-        public string? Belongs {
+        public int Belongs {
             get => _belongs;
             set => _belongs = value;
         }
         /// <summary>
-        /// 配車の対象かどうか？
+        /// 配車の対象かどうか
+        /// true:対象 false:非対象
         /// </summary>
         public bool Vehicle_dispatch_target {
             get => _vehicle_dispatch_target;
@@ -199,67 +177,19 @@
         }
         /// <summary>
         /// 形態
-        /// 0:なし(99999) 1:長期雇用 2:アルバイト 3:電話連絡が必要な従業員　4:社員
+        /// 10:長期雇用 11:手帳 12:アルバイト
         /// </summary>
         public int Job_form {
             get => _job_form;
             set => _job_form = value;
         }
         /// <summary>
-        /// 職種(運転手)
+        /// 職種
+        /// 
         /// </summary>
-        public bool Driver {
-            get => _driver;
-            set => _driver = value;
-        }
-        /// <summary>
-        /// 職種(作業員)
-        /// </summary>
-        public bool Operator {
-            get => _operator;
-            set => _operator = value;
-        }
-        /// <summary>
-        /// 常時選任運転者
-        /// </summary>
-        public bool Type_of_job_1 {
-            get => _type_of_job_1;
-            set => _type_of_job_1 = value;
-        }
-        /// <summary>
-        /// 臨時運転者
-        /// </summary>
-        public bool Type_of_job_2 {
-            get => _type_of_job_2;
-            set => _type_of_job_2 = value;
-        }
-        /// <summary>
-        /// 運行管理業務
-        /// </summary>
-        public bool Type_of_job_3 {
-            get => _type_of_job_3;
-            set => _type_of_job_3 = value;
-        }
-        /// <summary>
-        /// 整備業務
-        /// </summary>
-        public bool Type_of_job_4 {
-            get => _type_of_job_4;
-            set => _type_of_job_4 = value;
-        }
-        /// <summary>
-        /// 職員
-        /// </summary>
-        public bool Type_of_job_5 {
-            get => _type_of_job_5;
-            set => _type_of_job_5 = value;
-        }
-        /// <summary>
-        /// その他
-        /// </summary>
-        public bool Type_of_job_6 {
-            get => _type_of_job_6;
-            set => _type_of_job_6 = value;
+        public int Occupation {
+            get => _occupation;
+            set => _occupation = value;
         }
         /// <summary>
         /// 氏名カナ
@@ -292,14 +222,14 @@
         /// <summary>
         /// 生年月日
         /// </summary>
-        public DateTime Birth_date {
+        public DateTime? Birth_date {
             get => _birth_date;
             set => _birth_date = value;
         }
         /// <summary>
         /// 雇用年月日
         /// </summary>
-        public DateTime Employment_date {
+        public DateTime? Employment_date {
             get => _employment_date;
             set => _employment_date = value;
         }
@@ -885,6 +815,9 @@
             get => _delete_ymd_hms;
             set => _delete_ymd_hms = value;
         }
+        /// <summary>
+        /// 削除フラグ
+        /// </summary>
         public bool Delete_flag {
             get => _delete_flag;
             set => _delete_flag = value;

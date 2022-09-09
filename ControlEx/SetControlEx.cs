@@ -1,30 +1,55 @@
-﻿/*
- * 
- */
-using Vo;
+﻿using Vo;
 
 namespace ControlEx {
-    public partial class SetControl : UserControl {
-        private bool _setFlag;
-        private bool _stopCarFlag;
-        private bool _garageFlag;
-        private int _productionNumberOfPeople;
-
-        public SetControl() {
-            /*
-             * Controlを初期化
-             */
-            InitializeComponent();
-            Dock = DockStyle.Fill;
-            Margin = new Padding(0);
-        }
+    public partial class SetControlEx : TableLayoutPanelEx {
+        private bool _setFlag = default;
+        private bool _stopCarFlag = default;
+        private bool _garageFlag = default;
+        private int _productionNumberOfPeople = default;
 
         /// <summary>
-        /// TableLayoutPanelEx1_CellPaint
+        /// コンストラクタ
+        /// </summary>
+        public SetControlEx() {
+            InitializeComponent();
+            this.ColumnCount = 1;
+            this.ColumnStyles[0] = new ColumnStyle(SizeType.Percent, 100F);
+            this.RowCount = 6;
+            this.RowStyles[0] = new RowStyle(SizeType.Absolute, 70F);
+            this.RowStyles[1] = new RowStyle(SizeType.Absolute, 70F);
+            this.RowStyles[2] = new RowStyle(SizeType.Absolute, 40F);
+            this.RowStyles[3] = new RowStyle(SizeType.Absolute, 40F);
+            this.RowStyles[4] = new RowStyle(SizeType.Absolute, 40F);
+            this.RowStyles[5] = new RowStyle(SizeType.Absolute, 40F);
+            this.Size = new Size(74, 300);
+
+            this.AllowDrop = true;
+            this.Dock = DockStyle.Fill;
+            this.Margin = new Padding(0);
+            /*
+             * イベントを登録
+             */
+            this.CellPaint += new TableLayoutCellPaintEventHandler(this.SetControlEx_CellPaint);
+            this.Click += new EventHandler(this.SetControlEx_Click);
+            this.DragDrop += new DragEventHandler(this.SetControlEx_DragDrop);
+            this.DragEnter += new DragEventHandler(this.SetControlEx_DragEnter);
+        }
+
+        /*
+         * イベントを親へ返す処理
+         */
+        public event EventHandler? Event_SetControlEx_Click;
+        public event DragEventHandler? Event_SetControlEx_DragDrop;
+        public event DragEventHandler? Event_SetControlEx_DragEnter;
+        public event EventHandler? Event_LabelExControl_Click;
+        public event MouseEventHandler? Event_LabelExControl_MouseMove;
+
+        /// <summary>
+        /// SetControlEx_CellPaint
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void TableLayoutPanelEx1_CellPaint(object sender, TableLayoutCellPaintEventArgs e) {
+        private void SetControlEx_CellPaint(object? sender, TableLayoutCellPaintEventArgs e) {
             if (_setFlag) { // 表示
                 var rectangle = e.CellBounds;
                 rectangle.Inflate(-1, -1); // 枠のサイズを小さくする
@@ -67,30 +92,60 @@ namespace ControlEx {
 
         /// <summary>
         /// SetLabel作成
+        /// Labelのイベントはここで登録する
         /// </summary>
         /// <param name="setLedgerVo"></param>
         public void CreateLabel(SetLedgerVo setLedgerVo) {
             var labelEx = new LabelEx().CreateLabel(setLedgerVo);
-            TableLayoutPanelEx1.Controls.Add(labelEx, 0, 0);
+            labelEx.Click += new EventHandler(LabelControl_Click);
+            labelEx.MouseMove += new MouseEventHandler(LabelControl_MouseMove);
+            this.Controls.Add(labelEx, 0, 0);
         }
 
         /// <summary>
         /// CarLabel作成
+        /// Labelのイベントはここで登録する
         /// </summary>
         /// <param name="carLedgerVo"></param>
         public void CreateLabel(CarLedgerVo carLedgerVo) {
             var labelEx = new LabelEx().CreateLabel(carLedgerVo);
-            TableLayoutPanelEx1.Controls.Add(labelEx, 0, 1);
+            labelEx.Click += new EventHandler(LabelControl_Click);
+            labelEx.MouseMove += new MouseEventHandler(LabelControl_MouseMove);
+            this.Controls.Add(labelEx, 0, 1);
         }
 
         /// <summary>
         /// StaffLabel作成
+        /// Labelのイベントはここで登録する
         /// </summary>
         /// <param name="number">1:運転手 2:作業員1 3:作業員2 4:作業員3</param>
         /// <param name="staffLedgerVo"></param>
         public void CreateLabel(int number, StaffLedgerVo staffLedgerVo) {
             var labelEx = new LabelEx().CreateLabel(staffLedgerVo);
-            TableLayoutPanelEx1.Controls.Add(labelEx, 0, number + 2);
+            labelEx.Click += new EventHandler(LabelControl_Click);
+            labelEx.MouseMove += new MouseEventHandler(LabelControl_MouseMove);
+            this.Controls.Add(labelEx, 0, number + 2);
+        }
+
+        private void SetControlEx_Click(object? sender, EventArgs e) {
+            if (Event_SetControlEx_Click != null)
+                Event_SetControlEx_Click(sender, e);
+        }
+        private void SetControlEx_DragDrop(object? sender, DragEventArgs e) {
+            if (Event_SetControlEx_DragDrop != null)
+                Event_SetControlEx_DragDrop(sender, e);
+        }
+        private void SetControlEx_DragEnter(object? sender, DragEventArgs e) {
+            if (Event_SetControlEx_DragEnter != null)
+                Event_SetControlEx_DragEnter(sender, e);
+        }
+        private void LabelControl_Click(object? sender, EventArgs e) {
+            if (Event_LabelExControl_Click != null)
+                Event_LabelExControl_Click(sender, e);
+        }
+        private void LabelControl_MouseMove(object? sender, MouseEventArgs e) {
+            if (Event_LabelExControl_MouseMove != null)
+                Event_LabelExControl_MouseMove(sender, e);
         }
 
         /*
