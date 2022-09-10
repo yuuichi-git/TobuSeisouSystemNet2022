@@ -132,9 +132,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1568, 12);
+            this.button1.Location = new System.Drawing.Point(1668, 12);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(144, 36);
+            this.button1.Size = new System.Drawing.Size(180, 36);
             this.button1.TabIndex = 0;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
@@ -144,7 +144,6 @@
             // 
             this.TableLayoutPanelEx1.AllowDrop = true;
             this.TableLayoutPanelEx1.AutoScroll = true;
-            this.TableLayoutPanelEx1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.TableLayoutPanelEx1.ColumnCount = 25;
             this.TableLayoutPanelEx1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
             this.TableLayoutPanelEx1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));

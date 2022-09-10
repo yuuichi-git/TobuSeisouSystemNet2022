@@ -13,14 +13,14 @@ namespace ControlEx {
         public SetControlEx() {
             InitializeComponent();
             this.ColumnCount = 1;
-            this.ColumnStyles[0] = new ColumnStyle(SizeType.Percent, 100F);
+            this.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
             this.RowCount = 6;
-            this.RowStyles[0] = new RowStyle(SizeType.Absolute, 70F);
-            this.RowStyles[1] = new RowStyle(SizeType.Absolute, 70F);
-            this.RowStyles[2] = new RowStyle(SizeType.Absolute, 40F);
-            this.RowStyles[3] = new RowStyle(SizeType.Absolute, 40F);
-            this.RowStyles[4] = new RowStyle(SizeType.Absolute, 40F);
-            this.RowStyles[5] = new RowStyle(SizeType.Absolute, 40F);
+            this.RowStyles.Add(new RowStyle(SizeType.Absolute, 70F));
+            this.RowStyles.Add(new RowStyle(SizeType.Absolute, 70F));
+            this.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            this.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            this.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            this.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             this.Size = new Size(74, 300);
 
             this.AllowDrop = true;
@@ -50,7 +50,7 @@ namespace ControlEx {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void SetControlEx_CellPaint(object? sender, TableLayoutCellPaintEventArgs e) {
-            if (_setFlag) { // 表示
+            if (SetFlag) { // 表示
                 var rectangle = e.CellBounds;
                 rectangle.Inflate(-1, -1); // 枠のサイズを小さくする
                 /*
@@ -67,7 +67,7 @@ namespace ControlEx {
                 /*
                  * StaffLabelの部分
                  */
-                if (!StopCarFlag) { // 配車日の場合
+                if (StopCarFlag) { // 配車日の場合
                     if (e.Row < ProductionNumberOfPeople + 2) {
                         switch (e.Row) {
                             case 2: // StaffLabel1
@@ -160,8 +160,8 @@ namespace ControlEx {
             set => _setFlag = value;
         }
         /// <summary>
-        /// 休車フラグ
-        /// true:休車 false:配車
+        /// 稼働フラグ
+        /// true:稼働 false:休車
         /// </summary>
         public bool StopCarFlag {
             get => _stopCarFlag;
@@ -177,6 +177,7 @@ namespace ControlEx {
         }
         /// <summary>
         /// 本番人数
+        /// 枠の数量
         /// </summary>
         public int ProductionNumberOfPeople {
             get => _productionNumberOfPeople;

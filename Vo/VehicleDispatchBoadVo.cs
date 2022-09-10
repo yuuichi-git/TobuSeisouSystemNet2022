@@ -1,9 +1,9 @@
 ﻿namespace Vo {
-    public class VehicleDispatchControlVo {
+    public class VehicleDispatchBoadVo {
         private int _column;
         private int _row;
         private bool _setFlag;
-        private bool _stopCarFlag;
+        private bool _operationFlag;
         private bool _garageFlag;
         private int _productionNumberOfPeople;
         private SetLedgerVo? _setLedgerVo;
@@ -13,11 +13,11 @@
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public VehicleDispatchControlVo() {
+        public VehicleDispatchBoadVo() {
             _column = default;
             _row = default;
             _setFlag = default;
-            _stopCarFlag = default;
+            _operationFlag = default;
             _garageFlag = default;
             _productionNumberOfPeople = default;
             _setLedgerVo = default;
@@ -51,12 +51,12 @@
             set => _setFlag = value;
         }
         /// <summary>
-        /// 休車フラグ
-        /// true:休車 false:配車
+        /// 稼働フラグ
+        /// true:稼働 false:休車
         /// </summary>
-        public bool StopCarFlag {
-            get => _stopCarFlag;
-            set => _stopCarFlag = value;
+        public bool OperationFlag {
+            get => _operationFlag;
+            set => _operationFlag = value;
         }
         /// <summary>
         /// 車庫地

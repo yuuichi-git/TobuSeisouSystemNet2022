@@ -13,9 +13,9 @@
         private string? _name;
         private string? _display_name;
         private string? _gender;
-        private DateTime? _birth_date;
-        private DateTime? _employment_date;
-        private int? _code;
+        private DateTime _birth_date;
+        private DateTime _employment_date;
+        private int _code;
         private string? _current_address;
         private string? _before_change_address;
         private string? _telephone_number;
@@ -148,8 +148,8 @@
         private DateTime _punishment_date_4;
         private string? _punishment_note_4;
         private DateTime _insert_ymd_hms;
-        private DateTime? _update_ymd_hms;
-        private DateTime? _delete_ymd_hms;
+        private DateTime _update_ymd_hms;
+        private DateTime _delete_ymd_hms;
         private bool _delete_flag;
 
         /// <summary>
@@ -222,21 +222,21 @@
         /// <summary>
         /// 生年月日
         /// </summary>
-        public DateTime? Birth_date {
+        public DateTime Birth_date {
             get => _birth_date;
             set => _birth_date = value;
         }
         /// <summary>
         /// 雇用年月日
         /// </summary>
-        public DateTime? Employment_date {
+        public DateTime Employment_date {
             get => _employment_date;
             set => _employment_date = value;
         }
         /// <summary>
         /// コード(組合)
         /// </summary>
-        public int? Code {
+        public int Code {
             get => _code;
             set => _code = value;
         }
@@ -807,11 +807,11 @@
             get => _insert_ymd_hms;
             set => _insert_ymd_hms = value;
         }
-        public DateTime? Update_ymd_hms {
+        public DateTime Update_ymd_hms {
             get => _update_ymd_hms;
             set => _update_ymd_hms = value;
         }
-        public DateTime? Delete_ymd_hms {
+        public DateTime Delete_ymd_hms {
             get => _delete_ymd_hms;
             set => _delete_ymd_hms = value;
         }

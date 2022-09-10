@@ -53,30 +53,29 @@ namespace VehicleDispatch {
              * 
              */
 
-            VehicleDispatchControlVo vehicleDispatchControlVo = new();
-            vehicleDispatchControlVo.Column = 1;
+            var vehicleDispatchControlVo = new VehicleDispatchBoadVo();
+            vehicleDispatchControlVo.Column = 0;
             vehicleDispatchControlVo.Row = 0;
             vehicleDispatchControlVo.SetFlag = true;
-            vehicleDispatchControlVo.StopCarFlag = false;
-            vehicleDispatchControlVo.GarageFlag = true;
+            vehicleDispatchControlVo.OperationFlag = true;
+            vehicleDispatchControlVo.GarageFlag = false;
             vehicleDispatchControlVo.ProductionNumberOfPeople = 3;
             vehicleDispatchControlVo.SetLedgerVo = setLedgerVo;
             vehicleDispatchControlVo.CarLedgerVo = carLedgerVo;
             vehicleDispatchControlVo.ArrayStaffLedgerVo[0] = staffLedgerVo;
             vehicleDispatchControlVo.ArrayStaffLedgerVo[1] = default;
-            vehicleDispatchControlVo.ArrayStaffLedgerVo[2] = staffLedgerVo;
+            vehicleDispatchControlVo.ArrayStaffLedgerVo[2] = default;
             vehicleDispatchControlVo.ArrayStaffLedgerVo[3] = default;
 
             CreateSetControl(vehicleDispatchControlVo);
-
         }
 
         /// <summary>
         /// CreateSetControl
         /// １組分のLabelセットを作成
         /// </summary>
-        /// <param name="vehicleDispatchControlVo"></param>
-        public void CreateSetControl(VehicleDispatchControlVo vehicleDispatchControlVo) {
+        /// <param name="vehicleDispatchBoadVo"></param>
+        public void CreateSetControl(VehicleDispatchBoadVo vehicleDispatchBoadVo) {
             /*
              * SetControlを作成する仕様は？
              * 
@@ -84,40 +83,40 @@ namespace VehicleDispatch {
              * GarageFlag値によってBorderColorが変わる(三郷車庫からの配車を視覚的に表示する)
              * ProductionNumberOfPeople値によってTablLayoutPanelの枠数が決まる(本番人数を明示する)
              */
-            var setControl = new SetControl();
-            setControl.SetFlag = vehicleDispatchControlVo.SetFlag;
-            setControl.StopCarFlag = vehicleDispatchControlVo.StopCarFlag;
-            setControl.GarageFlag = vehicleDispatchControlVo.GarageFlag;
-            setControl.ProductionNumberOfPeople = vehicleDispatchControlVo.ProductionNumberOfPeople;
+            var setControlEx = new SetControlEx();
+            setControlEx.SetFlag = vehicleDispatchBoadVo.SetFlag;
+            setControlEx.StopCarFlag = vehicleDispatchBoadVo.OperationFlag;
+            setControlEx.GarageFlag = vehicleDispatchBoadVo.GarageFlag;
+            setControlEx.ProductionNumberOfPeople = vehicleDispatchBoadVo.ProductionNumberOfPeople;
             /*
              * SetLedgerVoがNullの場合CreateLabelを呼ばない
              */
-            if (vehicleDispatchControlVo.SetLedgerVo != null)
-                setControl.CreateLabel(vehicleDispatchControlVo.SetLedgerVo);
+            if (vehicleDispatchBoadVo.SetLedgerVo != null)
+                setControlEx.CreateLabel(vehicleDispatchBoadVo.SetLedgerVo);
             /*
              * CarLedgerVoがNullの場合CreateLabelを呼ばない
              */
-            if (vehicleDispatchControlVo.CarLedgerVo != null)
-                setControl.CreateLabel(vehicleDispatchControlVo.CarLedgerVo);
+            if (vehicleDispatchBoadVo.CarLedgerVo != null)
+                setControlEx.CreateLabel(vehicleDispatchBoadVo.CarLedgerVo);
             /*
              * ArrayStaffLedgerVo.Lengthは最大4だよ(最大で運転手1名と作業員3名)
              */
-            for (int i = 0; i < vehicleDispatchControlVo.ArrayStaffLedgerVo.Length; i++) {
+            for (int i = 0; i < vehicleDispatchBoadVo.ArrayStaffLedgerVo.Length; i++) {
                 /*
                  * ArrayStaffLedgerVo[i]がNullの場合CreateLabelを呼ばない
                  */
-                if (vehicleDispatchControlVo.ArrayStaffLedgerVo[i] != null)
-                    setControl.CreateLabel(i, vehicleDispatchControlVo.ArrayStaffLedgerVo[i]);
+                if (vehicleDispatchBoadVo.ArrayStaffLedgerVo[i] != null)
+                    setControlEx.CreateLabel(i, vehicleDispatchBoadVo.ArrayStaffLedgerVo[i]);
             }
-            TableLayoutPanelEx1.Controls.Add(setControl, vehicleDispatchControlVo.Column, vehicleDispatchControlVo.Row);
+            TableLayoutPanelEx1.Controls.Add(setControlEx, vehicleDispatchBoadVo.Column, vehicleDispatchBoadVo.Row);
             /*
              * UserControlからイベントを受け取る
              */
-            setControl.UserControl_SetControl_Click += new EventHandler(UserControlSetControl_Click);
-            setControl.UserControl_SetControl_DragDrop += new DragEventHandler(UserControlSetControl_DragDrop);
-            setControl.UserControl_SetControl_DragEnter += new DragEventHandler(UserControlSetControl_DragEnter);
-            setControl.UserControl_LabelControl_Click += new EventHandler(UserControlLabel_Click);
-            setControl.UserControl_LabelControl_MouseMove += new MouseEventHandler(UserControl_LabelControl_MouseMove);
+            setControlEx.Event_SetControlEx_Click += new EventHandler(SetControlEx_Click);
+            setControlEx.Event_SetControlEx_DragDrop += new DragEventHandler(SetControlEx_DragDrop);
+            setControlEx.Event_SetControlEx_DragEnter += new DragEventHandler(SetControlEx_DragEnter);
+            setControlEx.Event_LabelExControl_Click += new EventHandler(LabelEx_Click);
+            setControlEx.Event_LabelExControl_MouseMove += new MouseEventHandler(LabelEx_MouseMove);
         }
 
         /// <summary>
@@ -125,7 +124,7 @@ namespace VehicleDispatch {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void UserControlSetControl_Click(object sender, EventArgs e) {
+        private void SetControlEx_Click(object? sender, EventArgs e) {
             MessageBox.Show("SetControl_Click");
         }
 
@@ -134,10 +133,13 @@ namespace VehicleDispatch {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void UserControlSetControl_DragDrop(object sender, DragEventArgs e) {
+        private void SetControlEx_DragDrop(object? sender, DragEventArgs e) {
+            // e.DataはNullの可能性があるのでチェックする
+            if (e.Data == null)
+                return;
+
             // Dropを受け入れない
             e.Effect = DragDropEffects.None;
-
             // Drag側のObjectを退避
             var dragItem = e.Data.GetData(typeof(LabelEx));
             // DragされたLabelExのTagを取得
@@ -155,7 +157,7 @@ namespace VehicleDispatch {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void UserControlSetControl_DragEnter(object sender, DragEventArgs e) {
+        private void SetControlEx_DragEnter(object? sender, DragEventArgs e) {
             // Iconの状態を変更
             e.Effect = DragDropEffects.Move;
         }
@@ -165,7 +167,7 @@ namespace VehicleDispatch {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void UserControlLabel_Click(object sender, EventArgs e) {
+        private void LabelEx_Click(object? sender, EventArgs e) {
             MessageBox.Show("Label_Click");
         }
 
@@ -174,10 +176,11 @@ namespace VehicleDispatch {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void UserControl_LabelControl_MouseMove(object sender, MouseEventArgs e) {
+        private void LabelEx_MouseMove(object? sender, MouseEventArgs e) {
             if (e.Button == MouseButtons.Left) {
                 // ドラッグドロップイベントの開始
-                ((LabelEx)sender).DoDragDrop(sender, DragDropEffects.Move);
+                if (sender != null)
+                    ((LabelEx)sender).DoDragDrop(sender, DragDropEffects.Move);
             }
         }
 
