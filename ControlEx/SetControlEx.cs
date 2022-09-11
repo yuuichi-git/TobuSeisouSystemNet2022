@@ -94,9 +94,9 @@ namespace ControlEx {
         /// SetLabel作成
         /// Labelのイベントはここで登録する
         /// </summary>
-        /// <param name="setLedgerVo"></param>
-        public void CreateLabel(SetLedgerVo setLedgerVo) {
-            var labelEx = new LabelEx().CreateLabel(setLedgerVo);
+        /// <param name="setMasterVo"></param>
+        public void CreateLabel(SetMasterVo setMasterVo) {
+            var labelEx = new LabelEx().CreateLabel(setMasterVo);
             labelEx.Click += new EventHandler(LabelControl_Click);
             labelEx.MouseMove += new MouseEventHandler(LabelControl_MouseMove);
             this.Controls.Add(labelEx, 0, 0);
@@ -106,9 +106,9 @@ namespace ControlEx {
         /// CarLabel作成
         /// Labelのイベントはここで登録する
         /// </summary>
-        /// <param name="carLedgerVo"></param>
-        public void CreateLabel(CarLedgerVo carLedgerVo) {
-            var labelEx = new LabelEx().CreateLabel(carLedgerVo);
+        /// <param name="carMasterVo"></param>
+        public void CreateLabel(CarMasterVo carMasterVo) {
+            var labelEx = new LabelEx().CreateLabel(carMasterVo);
             labelEx.Click += new EventHandler(LabelControl_Click);
             labelEx.MouseMove += new MouseEventHandler(LabelControl_MouseMove);
             this.Controls.Add(labelEx, 0, 1);
@@ -119,9 +119,9 @@ namespace ControlEx {
         /// Labelのイベントはここで登録する
         /// </summary>
         /// <param name="number">1:運転手 2:作業員1 3:作業員2 4:作業員3</param>
-        /// <param name="staffLedgerVo"></param>
-        public void CreateLabel(int number, StaffLedgerVo staffLedgerVo) {
-            var labelEx = new LabelEx().CreateLabel(staffLedgerVo);
+        /// <param name="staffMasterVo"></param>
+        public void CreateLabel(int number, StaffMasterVo staffMasterVo) {
+            var labelEx = new LabelEx().CreateLabel(staffMasterVo);
             labelEx.Click += new EventHandler(LabelControl_Click);
             labelEx.MouseMove += new MouseEventHandler(LabelControl_MouseMove);
             this.Controls.Add(labelEx, 0, number + 2);

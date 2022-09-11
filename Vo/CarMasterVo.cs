@@ -1,35 +1,33 @@
-﻿using Common;
-
-namespace Vo {
+﻿namespace Vo {
     /*
      * DeepCopyで使用
      */
     [Serializable] // ←DeepCopyする場合には必要
-    public class CarLedgerVo {
+    public class CarMasterVo {
         private int _car_code;
         private int _classification_work;
-        private string? _registration_number;
-        private string? _registration_number_1;
-        private string? _registration_number_2;
-        private string? _registration_number_3;
-        private string? _registration_number_4;
+        private string _registration_number = "";
+        private string _registration_number_1 = "";
+        private string _registration_number_2 = "";
+        private string _registration_number_3 = "";
+        private string _registration_number_4 = "";
         private bool _garage_flag;
-        private string? _door_number;
+        private string _door_number = "";
         private DateTime _registration_date;
         private DateTime _first_registration_date;
-        private string? _classification;
-        private string? _disguise_kind_1;
-        private string? _disguise_kind_2;
-        private string? _car_use;
+        private string _classification = "";
+        private string _disguise_kind_1 = "";
+        private string _disguise_kind_2 = "";
+        private string _car_use = "";
         private int _other_code;
         private int _shape_code;
-        private string? _shape_name;
-        private string? _car_name;
+        private string _shape_name = "";
+        private string _car_name = "";
         private decimal _capacity;
         private decimal _maximum_load_capacity;
         private decimal _vehicle_weight;
         private decimal _total_vehicle_weight;
-        private string? _vehicle_number;
+        private string _vehicle_number = "";
         private decimal _length;
         private decimal _width;
         private decimal _height;
@@ -37,20 +35,20 @@ namespace Vo {
         private decimal _fr_axis_weight;
         private decimal _rf_axis_weight;
         private decimal _rr_axis_weight;
-        private string? _version;
-        private string? _motor_version;
+        private string _version = "";
+        private string _motor_version = "";
         private decimal _total_displacement;
-        private string? _types_of_fuel;
-        private string? _version_designate_number;
-        private string? _category_distinguish_number;
-        private string? _owner_name;
-        private string? _owner_address;
-        private string? _user_name;
-        private string? _user_address;
-        private string? _base_address;
+        private string _types_of_fuel = "";
+        private string _version_designate_number = "";
+        private string _category_distinguish_number = "";
+        private string _owner_name = "";
+        private string _owner_address = "";
+        private string _user_name = "";
+        private string _user_address = "";
+        private string _base_address = "";
         private DateTime _expiration_date;
-        private string? _remarks;
-        private byte[]? _picture;
+        private string _remarks = "";
+        private byte[] _picture = new byte[0];
         private DateTime _insert_ymd_hms;
         private DateTime _update_ymd_hms;
         private DateTime _delete_ymd_hms;
@@ -74,35 +72,35 @@ namespace Vo {
         /// <summary>
         /// 自動車登録番号又は車両番号
         /// </summary>
-        public string? Registration_number {
+        public string Registration_number {
             get => _registration_number;
             set => _registration_number = value;
         }
         /// <summary>
         /// 自動車登録番号又は車両番号1
         /// </summary>
-        public string? Registration_number_1 {
+        public string Registration_number_1 {
             get => _registration_number_1;
             set => _registration_number_1 = value;
         }
         /// <summary>
         /// 自動車登録番号又は車両番号2
         /// </summary>
-        public string? Registration_number_2 {
+        public string Registration_number_2 {
             get => _registration_number_2;
             set => _registration_number_2 = value;
         }
         /// <summary>
         /// 自動車登録番号又は車両番号3
         /// </summary>
-        public string? Registration_number_3 {
+        public string Registration_number_3 {
             get => _registration_number_3;
             set => _registration_number_3 = value;
         }
         /// <summary>
         /// 自動車登録番号又は車両番号4
         /// </summary>
-        public string? Registration_number_4 {
+        public string Registration_number_4 {
             get => _registration_number_4;
             set => _registration_number_4 = value;
         }
@@ -118,7 +116,7 @@ namespace Vo {
         /// ドア番号
         /// "78-1"等の文字で表すドア番が存在するためstring型で
         /// </summary>
-        public string? Door_number {
+        public string Door_number {
             get => _door_number;
             set => _door_number = value;
         }
@@ -139,28 +137,28 @@ namespace Vo {
         /// <summary>
         /// 自動車の種別
         /// </summary>
-        public string? Classification {
+        public string Classification {
             get => _classification;
             set => _classification = value;
         }
         /// <summary>
         /// 仮装の種類1(配車での名称)
         /// </summary>
-        public string? Disguise_kind_1 {
+        public string Disguise_kind_1 {
             get => _disguise_kind_1;
             set => _disguise_kind_1 = value;
         }
         /// <summary>
         /// 仮装の種類2(事故報告書での名称)
         /// </summary>
-        public string? Disguise_kind_2 {
+        public string Disguise_kind_2 {
             get => _disguise_kind_2;
             set => _disguise_kind_2 = value;
         }
         /// <summary>
         /// 用途
         /// </summary>
-        public string? Car_use {
+        public string Car_use {
             get => _car_use;
             set => _car_use = value;
         }
@@ -182,14 +180,14 @@ namespace Vo {
         /// <summary>
         /// 車体の形状名
         /// </summary>
-        public string? Shape_name {
+        public string Shape_name {
             get => _shape_name;
             set => _shape_name = value;
         }
         /// <summary>
         /// 車名
         /// </summary>
-        public string? Car_name {
+        public string Car_name {
             get => _car_name;
             set => _car_name = value;
         }
@@ -224,7 +222,7 @@ namespace Vo {
         /// <summary>
         /// 車台番号
         /// </summary>
-        public string? Vehicle_number {
+        public string Vehicle_number {
             get => _vehicle_number;
             set => _vehicle_number = value;
         }
@@ -280,14 +278,14 @@ namespace Vo {
         /// <summary>
         /// 型式
         /// </summary>
-        public string? Version {
+        public string Version {
             get => _version;
             set => _version = value;
         }
         /// <summary>
         /// 原動機の型式
         /// </summary>
-        public string? Motor_version {
+        public string Motor_version {
             get => _motor_version;
             set => _motor_version = value;
         }
@@ -301,56 +299,56 @@ namespace Vo {
         /// <summary>
         /// 燃料の種類
         /// </summary>
-        public string? Types_of_fuel {
+        public string Types_of_fuel {
             get => _types_of_fuel;
             set => _types_of_fuel = value;
         }
         /// <summary>
         /// 型式指定番号
         /// </summary>
-        public string? Version_designate_number {
+        public string Version_designate_number {
             get => _version_designate_number;
             set => _version_designate_number = value;
         }
         /// <summary>
         /// 類別区分番号
         /// </summary>
-        public string? Category_distinguish_number {
+        public string Category_distinguish_number {
             get => _category_distinguish_number;
             set => _category_distinguish_number = value;
         }
         /// <summary>
         /// 所有者の氏名又は名称
         /// </summary>
-        public string? Owner_name {
+        public string Owner_name {
             get => _owner_name;
             set => _owner_name = value;
         }
         /// <summary>
         /// 所有者の住所
         /// </summary>
-        public string? Owner_address {
+        public string Owner_address {
             get => _owner_address;
             set => _owner_address = value;
         }
         /// <summary>
         /// 使用者の氏名又は名称
         /// </summary>
-        public string? User_name {
+        public string User_name {
             get => _user_name;
             set => _user_name = value;
         }
         /// <summary>
         /// 使用者の住所
         /// </summary>
-        public string? User_address {
+        public string User_address {
             get => _user_address;
             set => _user_address = value;
         }
         /// <summary>
         /// 使用の本拠の位置
         /// </summary>
-        public string? Base_address {
+        public string Base_address {
             get => _base_address;
             set => _base_address = value;
         }
@@ -364,14 +362,14 @@ namespace Vo {
         /// <summary>
         /// 備考
         /// </summary>
-        public string? Remarks {
+        public string Remarks {
             get => _remarks;
             set => _remarks = value;
         }
         /// <summary>
         /// 車検証画像  
         /// </summary>
-        public byte[]? Picture {
+        public byte[] Picture {
             get => _picture;
             set => _picture = value;
         }

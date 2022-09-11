@@ -19,15 +19,15 @@ namespace ControlEx {
         /// <summary>
         /// SetLabel作成
         /// </summary>
-        /// <param name="setLedgerVo"></param>
+        /// <param name="setMasterVo"></param>
         /// <returns></returns>
-        public LabelEx CreateLabel(SetLedgerVo setLedgerVo) {
+        public LabelEx CreateLabel(SetMasterVo setMasterVo) {
             BorderStyle = BorderStyle.FixedSingle;
             Font = new Font("Meiryo UI", 12, FontStyle.Regular, GraphicsUnit.Pixel);
             Height = _setLabelHeight;
             Margin = new Padding(2);
-            Tag = setLedgerVo;
-            Text = string.Concat(setLedgerVo.Set_name_1, "\r\n", setLedgerVo.Set_name_2);
+            Tag = setMasterVo;
+            Text = string.Concat(setMasterVo.Set_name_1, "\r\n", setMasterVo.Set_name_2);
             TextAlign = ContentAlignment.MiddleCenter;
             Width = _setLabelWidth;
             return this;
@@ -36,17 +36,17 @@ namespace ControlEx {
         /// <summary>
         /// CarLabel作成
         /// </summary>
-        /// <param name="carLedgerVo"></param>
+        /// <param name="carMasterVo"></param>
         /// <returns></returns>
-        public LabelEx CreateLabel(CarLedgerVo carLedgerVo) {
+        public LabelEx CreateLabel(CarMasterVo carMasterVo) {
             BorderStyle = BorderStyle.FixedSingle;
             Font = new Font("Meiryo UI", 12, FontStyle.Regular, GraphicsUnit.Pixel);
             Height = _carLabelHeight;
             Margin = new Padding(2);
-            Tag = carLedgerVo;
-            Text = string.Concat(carLedgerVo.Registration_number_1, carLedgerVo.Registration_number_2, "\r\n"
-                                    , carLedgerVo.Registration_number_3, carLedgerVo.Registration_number_4, "\r\n"
-                                    , carLedgerVo.Disguise_kind_1, carLedgerVo.Door_number);
+            Tag = carMasterVo;
+            Text = string.Concat(carMasterVo.Registration_number_1, carMasterVo.Registration_number_2, "\r\n"
+                                    , carMasterVo.Registration_number_3, carMasterVo.Registration_number_4, "\r\n"
+                                    , carMasterVo.Disguise_kind_1, carMasterVo.Door_number);
             TextAlign = ContentAlignment.MiddleCenter;
             Width = _carLabelWidth;
             return this;
@@ -55,15 +55,15 @@ namespace ControlEx {
         /// <summary>
         /// StaffLabel作成
         /// </summary>
-        /// <param name="staffLedgerVo"></param>
+        /// <param name="staffMasterVo"></param>
         /// <returns></returns>
-        public LabelEx CreateLabel(StaffLedgerVo staffLedgerVo) {
+        public LabelEx CreateLabel(StaffMasterVo staffMasterVo) {
             BorderStyle = BorderStyle.FixedSingle;
             Font = new Font("Meiryo UI", 11, FontStyle.Regular, GraphicsUnit.Pixel);
             Height = _staffLabelHeight;
             Margin = new Padding(2);
-            Tag = staffLedgerVo;
-            Text = staffLedgerVo.Display_name;
+            Tag = staffMasterVo;
+            Text = staffMasterVo.Display_name;
             TextAlign = ContentAlignment.MiddleCenter;
             Width = _staffLabelWidth;
             return this;

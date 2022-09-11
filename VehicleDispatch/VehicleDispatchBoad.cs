@@ -35,20 +35,20 @@ namespace VehicleDispatch {
             /*
              * Test Data
              */
-            var setLedgerVo = new SetLedgerVo();
-            setLedgerVo.Set_name_1 = "歌舞伎";
-            setLedgerVo.Set_name_2 = "1-61";
+            var setMasterVo = new SetMasterVo();
+            setMasterVo.Set_name_1 = "歌舞伎";
+            setMasterVo.Set_name_2 = "1-61";
 
-            var carLedgerVo = new CarLedgerVo();
-            carLedgerVo.Disguise_kind_1 = "小プ";
-            carLedgerVo.Door_number = "123";
-            carLedgerVo.Registration_number_1 = "足立";
-            carLedgerVo.Registration_number_2 = "444";
-            carLedgerVo.Registration_number_3 = "れ";
-            carLedgerVo.Registration_number_4 = "4444";
+            var carMasterVo = new CarMasterVo();
+            carMasterVo.Disguise_kind_1 = "小プ";
+            carMasterVo.Door_number = "123";
+            carMasterVo.Registration_number_1 = "足立";
+            carMasterVo.Registration_number_2 = "444";
+            carMasterVo.Registration_number_3 = "れ";
+            carMasterVo.Registration_number_4 = "4444";
 
-            var staffLedgerVo = new StaffLedgerVo();
-            staffLedgerVo.Display_name = "フローレス・M";
+            var staffMasterVo = new StaffMasterVo();
+            staffMasterVo.Display_name = "フローレス・M";
             /*
              * 
              */
@@ -60,12 +60,12 @@ namespace VehicleDispatch {
             vehicleDispatchControlVo.OperationFlag = true;
             vehicleDispatchControlVo.GarageFlag = false;
             vehicleDispatchControlVo.ProductionNumberOfPeople = 3;
-            vehicleDispatchControlVo.SetLedgerVo = setLedgerVo;
-            vehicleDispatchControlVo.CarLedgerVo = carLedgerVo;
-            vehicleDispatchControlVo.ArrayStaffLedgerVo[0] = staffLedgerVo;
-            vehicleDispatchControlVo.ArrayStaffLedgerVo[1] = default;
-            vehicleDispatchControlVo.ArrayStaffLedgerVo[2] = default;
-            vehicleDispatchControlVo.ArrayStaffLedgerVo[3] = default;
+            vehicleDispatchControlVo.SetMasterVo = setMasterVo;
+            vehicleDispatchControlVo.CarMasterVo = carMasterVo;
+            vehicleDispatchControlVo.ArrayStaffMasterVo[0] = staffMasterVo;
+            //vehicleDispatchControlVo.ArrayStaffMasterVo[1] = default;
+            //vehicleDispatchControlVo.ArrayStaffMasterVo[2] = default;
+            //vehicleDispatchControlVo.ArrayStaffMasterVo[3] = default;
 
             CreateSetControl(vehicleDispatchControlVo);
         }
@@ -91,22 +91,22 @@ namespace VehicleDispatch {
             /*
              * SetLedgerVoがNullの場合CreateLabelを呼ばない
              */
-            if (vehicleDispatchBoadVo.SetLedgerVo != null)
-                setControlEx.CreateLabel(vehicleDispatchBoadVo.SetLedgerVo);
+            if (vehicleDispatchBoadVo.SetMasterVo != null)
+                setControlEx.CreateLabel(vehicleDispatchBoadVo.SetMasterVo);
             /*
              * CarLedgerVoがNullの場合CreateLabelを呼ばない
              */
-            if (vehicleDispatchBoadVo.CarLedgerVo != null)
-                setControlEx.CreateLabel(vehicleDispatchBoadVo.CarLedgerVo);
+            if (vehicleDispatchBoadVo.CarMasterVo != null)
+                setControlEx.CreateLabel(vehicleDispatchBoadVo.CarMasterVo);
             /*
              * ArrayStaffLedgerVo.Lengthは最大4だよ(最大で運転手1名と作業員3名)
              */
-            for (int i = 0; i < vehicleDispatchBoadVo.ArrayStaffLedgerVo.Length; i++) {
+            for (int i = 0; i < vehicleDispatchBoadVo.ArrayStaffMasterVo.Length; i++) {
                 /*
                  * ArrayStaffLedgerVo[i]がNullの場合CreateLabelを呼ばない
                  */
-                if (vehicleDispatchBoadVo.ArrayStaffLedgerVo[i] != null)
-                    setControlEx.CreateLabel(i, vehicleDispatchBoadVo.ArrayStaffLedgerVo[i]);
+                if (vehicleDispatchBoadVo.ArrayStaffMasterVo[i] != null)
+                    setControlEx.CreateLabel(i, vehicleDispatchBoadVo.ArrayStaffMasterVo[i]);
             }
             TableLayoutPanelEx1.Controls.Add(setControlEx, vehicleDispatchBoadVo.Column, vehicleDispatchBoadVo.Row);
             /*

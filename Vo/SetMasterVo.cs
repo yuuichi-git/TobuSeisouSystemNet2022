@@ -1,27 +1,33 @@
-﻿using Common;
-
+﻿/*
+ * 配車先の基本情報
+ * 13101～13123までが23区コード
+ */
 namespace Vo {
-    /*
-     * DeepCopyで使用
-     */
-    [Serializable] // ←DeepCopyする場合には必要
-    public class SetLedgerVo {
+    public class SetMasterVo {
+        private int _word_code;
         private int _set_code;
-        private string? _set_name;
-        private string? _set_name_1;
-        private string? _set_name_2;
+        private string _set_name = "";
+        private string _set_name_1 = "";
+        private string _set_name_2 = "";
         private bool _garage_flag;
         private int _classification_code;
         private int _contact_method;
         private int _number_of_people;
-        private string? _working_days;
+        private string _working_days = "";
         private bool _five_lap;
-        private string? _remarks;
+        private string _remarks = "";
         private DateTime _insert_ymd_hms;
         private DateTime _update_ymd_hms;
         private DateTime _delete_ymd_hms;
         private bool _delete_flag;
 
+        /// <summary>
+        /// 市区町村コード
+        /// </summary>
+        public int Word_code {
+            get => _word_code;
+            set => _word_code = value;
+        }
         /// <summary>
         /// 組番号
         /// </summary>
@@ -32,7 +38,7 @@ namespace Vo {
         /// <summary>
         /// 組名
         /// </summary>
-        public string? Set_name {
+        public string Set_name {
             get => _set_name;
             set => _set_name = value;
         }
@@ -40,7 +46,7 @@ namespace Vo {
         /// 組名 略称1
         /// Label表示の1行目
         /// </summary>
-        public string? Set_name_1 {
+        public string Set_name_1 {
             get => _set_name_1;
             set => _set_name_1 = value;
         }
@@ -48,7 +54,7 @@ namespace Vo {
         /// 組名 略称2
         /// Label表示の2行目
         /// </summary>
-        public string? Set_name_2 {
+        public string Set_name_2 {
             get => _set_name_2;
             set => _set_name_2 = value;
         }
@@ -87,7 +93,7 @@ namespace Vo {
         /// 稼働日
         /// 入力例:"月火水木金土日"
         /// </summary>
-        public string? Working_days {
+        public string Working_days {
             get => _working_days;
             set => _working_days = value;
         }
@@ -102,7 +108,7 @@ namespace Vo {
         /// <summary>
         /// 備考
         /// </summary>
-        public string? Remarks {
+        public string Remarks {
             get => _remarks;
             set => _remarks = value;
         }

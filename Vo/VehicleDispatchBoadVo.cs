@@ -6,9 +6,9 @@
         private bool _operationFlag;
         private bool _garageFlag;
         private int _productionNumberOfPeople;
-        private SetLedgerVo? _setLedgerVo;
-        private CarLedgerVo? _carLedgerVo;
-        private StaffLedgerVo?[] _arrayStaffLedgerVo = new StaffLedgerVo[4];
+        private SetMasterVo _setMasterVo = new();
+        private CarMasterVo _carMasterVo = new();
+        private StaffMasterVo[] _arrayStaffMasterVo = new StaffMasterVo[4];
 
         /// <summary>
         /// コンストラクタ
@@ -20,12 +20,6 @@
             _operationFlag = default;
             _garageFlag = default;
             _productionNumberOfPeople = default;
-            _setLedgerVo = default;
-            _carLedgerVo = default;
-            _arrayStaffLedgerVo[0] = default;
-            _arrayStaffLedgerVo[1] = default;
-            _arrayStaffLedgerVo[2] = default;
-            _arrayStaffLedgerVo[3] = default;
         }
 
         /// <summary>
@@ -76,23 +70,23 @@
         /// <summary>
         /// SetLedgerVo
         /// </summary>
-        public SetLedgerVo? SetLedgerVo {
-            get => _setLedgerVo;
-            set => _setLedgerVo = value;
+        public SetMasterVo SetMasterVo {
+            get => _setMasterVo;
+            set => _setMasterVo = value;
         }
         /// <summary>
         /// CarLedgerVo
         /// </summary>
-        public CarLedgerVo? CarLedgerVo {
-            get => _carLedgerVo;
-            set => _carLedgerVo = value;
+        public CarMasterVo CarMasterVo {
+            get => _carMasterVo;
+            set => _carMasterVo = value;
         }
         /// <summary>
         /// StaffLedgerVo
         /// </summary>
-        public StaffLedgerVo?[] ArrayStaffLedgerVo {
-            get => _arrayStaffLedgerVo;
-            set => _arrayStaffLedgerVo = value;
+        public StaffMasterVo[] ArrayStaffMasterVo {
+            get => _arrayStaffMasterVo;
+            set => _arrayStaffMasterVo = value;
         }
     }
 }
