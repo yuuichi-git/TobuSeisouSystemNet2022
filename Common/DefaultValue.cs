@@ -1,24 +1,30 @@
 ﻿namespace Common {
     public class DefaultValue {
-        public DefaultValue() {
-        }
-        public T? GetDefaultValue<T>(object? obj) {
-            if (obj != null) {
-                switch (obj.GetType().Name) {
+
+        /// <summary>
+        /// DBからのobjectを変換
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public T GetDefaultValue<T>(object obj) {
+            object objectValue = new();
+            if (obj != DBNull.Value && obj != null) {
+                return (T)obj;
+            } else { // objがNullだった場合
+                switch (typeof(T).Name) {
                     case "DateTime":
-                        obj = new DateTime(1900, 01, 01, 00, 00, 00, 000);
+                        objectValue = new DateTime(1900, 01, 01, 00, 00, 00, 000);
+                        break;
+                    case "Int32":
+                        objectValue = 0;
                         break;
                     case "String":
-                        obj = "";
-                        break;
-                    default:
-                        obj = default;
+                        objectValue = "";
                         break;
                 }
-            } else {
-                obj = default;
             }
-            return (T?)obj;
+            return (T)objectValue;
         }
     }
 }

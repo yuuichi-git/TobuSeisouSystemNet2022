@@ -6,9 +6,11 @@
     public class StaffMasterVo {
         private int _staff_code;
         private int _belongs;
+        private string _belongs_name = ""; // 外部結合で取得
         private bool _vehicle_dispatch_target;
         private int _job_form;
         private int _occupation;
+        private string _occupation_name = ""; // 外部結合で取得
         private string _name_kana = "";
         private string _name = "";
         private string _display_name = "";
@@ -168,6 +170,13 @@
             set => _belongs = value;
         }
         /// <summary>
+        /// 外部結合で取得
+        /// </summary>
+        public string Belongs_name {
+            get => _belongs_name;
+            set => _belongs_name = value;
+        }
+        /// <summary>
         /// 配車の対象かどうか
         /// true:対象 false:非対象
         /// </summary>
@@ -190,6 +199,13 @@
         public int Occupation {
             get => _occupation;
             set => _occupation = value;
+        }
+        /// <summary>
+        /// 外部結合で取得
+        /// </summary>
+        public string Occupation_name {
+            get => _occupation_name;
+            set => _occupation_name = value;
         }
         /// <summary>
         /// 氏名カナ
@@ -310,50 +326,86 @@
             get => _license_number;
             set => _license_number = value;
         }
+        /// <summary>
+        /// 履歴年月日1
+        /// </summary>
         public DateTime History_date_1 {
             get => _history_date_1;
             set => _history_date_1 = value;
         }
+        /// <summary>
+        /// 履歴内容1
+        /// </summary>
         public string History_note_1 {
             get => _history_note_1;
             set => _history_note_1 = value;
         }
+        /// <summary>
+        /// 履歴年月日2
+        /// </summary>
         public DateTime History_date_2 {
             get => _history_date_2;
             set => _history_date_2 = value;
         }
+        /// <summary>
+        /// 履歴内容2
+        /// </summary>
         public string History_note_2 {
             get => _history_note_2;
             set => _history_note_2 = value;
         }
+        /// <summary>
+        /// 履歴年月日3
+        /// </summary>
         public DateTime History_date_3 {
             get => _history_date_3;
             set => _history_date_3 = value;
         }
+        /// <summary>
+        /// 履歴内容3
+        /// </summary>
         public string History_note_3 {
             get => _history_note_3;
             set => _history_note_3 = value;
         }
+        /// <summary>
+        /// 履歴年月日4
+        /// </summary>
         public DateTime History_date_4 {
             get => _history_date_4;
             set => _history_date_4 = value;
         }
+        /// <summary>
+        /// 履歴内容4
+        /// </summary>
         public string History_note_4 {
             get => _history_note_4;
             set => _history_note_4 = value;
         }
+        /// <summary>
+        /// 履歴年月日5
+        /// </summary>
         public DateTime History_date_5 {
             get => _history_date_5;
             set => _history_date_5 = value;
         }
+        /// <summary>
+        /// 履歴内容5
+        /// </summary>
         public string History_note_5 {
             get => _history_note_5;
             set => _history_note_5 = value;
         }
+        /// <summary>
+        /// 履歴年月日6
+        /// </summary>
         public DateTime History_date_6 {
             get => _history_date_6;
             set => _history_date_6 = value;
         }
+        /// <summary>
+        /// 履歴内容6
+        /// </summary>
         public string History_note_6 {
             get => _history_note_6;
             set => _history_note_6 = value;
@@ -499,74 +551,128 @@
             get => _death_note;
             set => _death_note = value;
         }
+        /// <summary>
+        /// 家族氏名1
+        /// </summary>
         public string Family_name_1 {
             get => _family_name_1;
             set => _family_name_1 = value;
         }
+        /// <summary>
+        /// 家族生年月日1
+        /// </summary>
         public DateTime Family_birth_date_1 {
             get => _family_birth_date_1;
             set => _family_birth_date_1 = value;
         }
+        /// <summary>
+        /// 家族続柄1
+        /// </summary>
         public string Family_relationship_1 {
             get => _family_relationship_1;
             set => _family_relationship_1 = value;
         }
+        /// <summary>
+        /// 家族氏名2
+        /// </summary>
         public string Family_name_2 {
             get => _family_name_2;
             set => _family_name_2 = value;
         }
+        /// <summary>
+        /// 家族生年月日2
+        /// </summary>
         public DateTime Family_birth_date_2 {
             get => _family_birth_date_2;
             set => _family_birth_date_2 = value;
         }
+        /// <summary>
+        /// 家族続柄2
+        /// </summary>
         public string Family_relationship_2 {
             get => _family_relationship_2;
             set => _family_relationship_2 = value;
         }
+        /// <summary>
+        /// 家族氏名3
+        /// </summary>
         public string Family_name_3 {
             get => _family_name_3;
             set => _family_name_3 = value;
         }
+        /// <summary>
+        /// 家族生年月日3
+        /// </summary>
         public DateTime Family_birth_date_3 {
             get => _family_birth_date_3;
             set => _family_birth_date_3 = value;
         }
+        /// <summary>
+        /// 家族続柄3
+        /// </summary>
         public string Family_relationship_3 {
             get => _family_relationship_3;
             set => _family_relationship_3 = value;
         }
+        /// <summary>
+        /// 家族氏名4
+        /// </summary>
         public string Family_name_4 {
             get => _family_name_4;
             set => _family_name_4 = value;
         }
+        /// <summary>
+        /// 家族生年月日4
+        /// </summary>
         public DateTime Family_birth_date_4 {
             get => _family_birth_date_4;
             set => _family_birth_date_4 = value;
         }
+        /// <summary>
+        /// 家族続柄4
+        /// </summary>
         public string Family_relationship_4 {
             get => _family_relationship_4;
             set => _family_relationship_4 = value;
         }
+        /// <summary>
+        /// 家族氏名5
+        /// </summary>
         public string Family_name_5 {
             get => _family_name_5;
             set => _family_name_5 = value;
         }
+        /// <summary>
+        /// 家族生年月日5
+        /// </summary>
         public DateTime Family_birth_date_5 {
             get => _family_birth_date_5;
             set => _family_birth_date_5 = value;
         }
+        /// <summary>
+        /// 家族続柄5
+        /// </summary>
         public string Family_relationship_5 {
             get => _family_relationship_5;
             set => _family_relationship_5 = value;
         }
+        /// <summary>
+        /// 家族氏名6
+        /// </summary>
         public string Family_name_6 {
             get => _family_name_6;
             set => _family_name_6 = value;
         }
+        /// <summary>
+        /// 家族生年月日6
+        /// </summary>
         public DateTime Family_birth_date_6 {
             get => _family_birth_date_6;
             set => _family_birth_date_6 = value;
         }
+        /// <summary>
+        /// 家族続柄6
+        /// </summary>
         public string Family_relationship_6 {
             get => _family_relationship_6;
             set => _family_relationship_6 = value;
@@ -627,226 +733,394 @@
             get => _worker_accident_insurance_note;
             set => _worker_accident_insurance_note = value;
         }
+        /// <summary>
+        /// 健康診断　受診年月日1
+        /// </summary>
         public DateTime Medical_examination_date_1 {
             get => _medical_examination_date_1;
             set => _medical_examination_date_1 = value;
         }
+        /// <summary>
+        /// 健康診断　受診機関他1
+        /// </summary>
         public string Medical_examination_note_1 {
             get => _medical_examination_note_1;
             set => _medical_examination_note_1 = value;
         }
+        /// <summary>
+        /// 健康診断　受診年月日2
+        /// </summary>
         public DateTime Medical_examination_date_2 {
             get => _medical_examination_date_2;
             set => _medical_examination_date_2 = value;
         }
+        /// <summary>
+        /// 健康診断　受診機関他2
+        /// </summary>
         public string Medical_examination_note_2 {
             get => _medical_examination_note_2;
             set => _medical_examination_note_2 = value;
         }
+        /// <summary>
+        /// 健康診断　受診年月日3
+        /// </summary>
         public DateTime Medical_examination_date_3 {
             get => _medical_examination_date_3;
             set => _medical_examination_date_3 = value;
         }
+        /// <summary>
+        /// 健康診断　受診機関他3
+        /// </summary>
         public string Medical_examination_note_3 {
             get => _medical_examination_note_3;
             set => _medical_examination_note_3 = value;
         }
+        /// <summary>
+        /// 健康診断　受診年月日4
+        /// </summary>
         public DateTime Medical_examination_date_4 {
             get => _medical_examination_date_4;
             set => _medical_examination_date_4 = value;
         }
+        /// <summary>
+        /// 健康診断　受診機関他4
+        /// </summary>
         public string Medical_examination_note_4 {
             get => _medical_examination_note_4;
             set => _medical_examination_note_4 = value;
         }
+        /// <summary>
+        /// 診療以外で気づいた点
+        /// </summary>
         public string Medical_examination_note {
             get => _medical_examination_note;
             set => _medical_examination_note = value;
         }
+        /// <summary>
+        /// 業務上の交通違反履歴・発生年月日1
+        /// </summary>
         public DateTime Car_violate_date_1 {
             get => _car_violate_date_1;
             set => _car_violate_date_1 = value;
         }
+        /// <summary>
+        /// 業務上の交通違反履歴・違反内容1
+        /// </summary>
         public string Car_violate_content_1 {
             get => _car_violate_content_1;
             set => _car_violate_content_1 = value;
         }
+        /// <summary>
+        /// 業務上の交通違反履歴・場所1
+        /// </summary>
         public string Car_violate_place_1 {
             get => _car_violate_place_1;
             set => _car_violate_place_1 = value;
         }
+        /// <summary>
+        /// 業務上の交通違反履歴・発生年月日2
+        /// </summary>
         public DateTime Car_violate_date_2 {
             get => _car_violate_date_2;
             set => _car_violate_date_2 = value;
         }
+        /// <summary>
+        /// 業務上の交通違反履歴・違反内容2
+        /// </summary>
         public string Car_violate_content_2 {
             get => _car_violate_content_2;
             set => _car_violate_content_2 = value;
         }
+        /// <summary>
+        /// 業務上の交通違反履歴・場所2
+        /// </summary>
         public string Car_violate_place_2 {
             get => _car_violate_place_2;
             set => _car_violate_place_2 = value;
         }
+        /// <summary>
+        /// 業務上の交通違反履歴・発生年月日3
+        /// </summary>
         public DateTime Car_violate_date_3 {
             get => _car_violate_date_3;
             set => _car_violate_date_3 = value;
         }
+        /// <summary>
+        /// 業務上の交通違反履歴・違反内容3
+        /// </summary>
         public string Car_violate_content_3 {
             get => _car_violate_content_3;
             set => _car_violate_content_3 = value;
         }
+        /// <summary>
+        /// 業務上の交通違反履歴・場所3
+        /// </summary>
         public string Car_violate_place_3 {
             get => _car_violate_place_3;
             set => _car_violate_place_3 = value;
         }
+        /// <summary>
+        /// 業務上の交通違反履歴・発生年月日4
+        /// </summary>
         public DateTime Car_violate_date_4 {
             get => _car_violate_date_4;
             set => _car_violate_date_4 = value;
         }
+        /// <summary>
+        /// 業務上の交通違反履歴・違反内容4
+        /// </summary>
         public string Car_violate_content_4 {
             get => _car_violate_content_4;
             set => _car_violate_content_4 = value;
         }
+        /// <summary>
+        /// 業務上の交通違反履歴・場所4
+        /// </summary>
         public string Car_violate_place_4 {
             get => _car_violate_place_4;
             set => _car_violate_place_4 = value;
         }
+        /// <summary>
+        /// 業務上の交通違反履歴・発生年月日5
+        /// </summary>
         public DateTime Car_violate_date_5 {
             get => _car_violate_date_5;
             set => _car_violate_date_5 = value;
         }
+        /// <summary>
+        /// 業務上の交通違反履歴・違反内容5
+        /// </summary>
         public string Car_violate_content_5 {
             get => _car_violate_content_5;
             set => _car_violate_content_5 = value;
         }
+        /// <summary>
+        /// 業務上の交通違反履歴・場所5
+        /// </summary>
         public string Car_violate_place_5 {
             get => _car_violate_place_5;
             set => _car_violate_place_5 = value;
         }
+        /// <summary>
+        /// 業務上の交通違反履歴・発生年月日6
+        /// </summary>
         public DateTime Car_violate_date_6 {
             get => _car_violate_date_6;
             set => _car_violate_date_6 = value;
         }
+        /// <summary>
+        /// 業務上の交通違反履歴・違反内容6
+        /// </summary>
         public string Car_violate_content_6 {
             get => _car_violate_content_6;
             set => _car_violate_content_6 = value;
         }
+        /// <summary>
+        /// 業務上の交通違反履歴・場所6
+        /// </summary>
         public string Car_violate_place_6 {
             get => _car_violate_place_6;
             set => _car_violate_place_6 = value;
         }
+        /// <summary>
+        /// 社内教育の実施状況・実施年月日1
+        /// </summary>
         public DateTime Educate_date_1 {
             get => _educate_date_1;
             set => _educate_date_1 = value;
         }
+        /// <summary>
+        /// 社内教育の実施状況・実施対象事由1
+        /// </summary>
         public string Educate_name_1 {
             get => _educate_name_1;
             set => _educate_name_1 = value;
         }
+        /// <summary>
+        /// 社内教育の実施状況・実施年月日2
+        /// </summary>
         public DateTime Educate_date_2 {
             get => _educate_date_2;
             set => _educate_date_2 = value;
         }
+        /// <summary>
+        /// 社内教育の実施状況・実施対象事由2
+        /// </summary>
         public string Educate_name_2 {
             get => _educate_name_2;
             set => _educate_name_2 = value;
         }
+        /// <summary>
+        /// 社内教育の実施状況・実施年月日3
+        /// </summary>
         public DateTime Educate_date_3 {
             get => _educate_date_3;
             set => _educate_date_3 = value;
         }
+        /// <summary>
+        /// 社内教育の実施状況・実施対象事由3
+        /// </summary>
         public string Educate_name_3 {
             get => _educate_name_3;
             set => _educate_name_3 = value;
         }
+        /// <summary>
+        /// 社内教育の実施状況・実施年月日4
+        /// </summary>
         public DateTime Educate_date_4 {
             get => _educate_date_4;
             set => _educate_date_4 = value;
         }
+        /// <summary>
+        /// 社内教育の実施状況・実施対象事由4
+        /// </summary>
         public string Educate_name_4 {
             get => _educate_name_4;
             set => _educate_name_4 = value;
         }
+        /// <summary>
+        /// 社内教育の実施状況・実施年月日5
+        /// </summary>
         public DateTime Educate_date_5 {
             get => _educate_date_5;
             set => _educate_date_5 = value;
         }
+        /// <summary>
+        /// 社内教育の実施状況・実施対象事由5
+        /// </summary>
         public string Educate_name_5 {
             get => _educate_name_5;
             set => _educate_name_5 = value;
         }
+        /// <summary>
+        /// 社内教育の実施状況・実施年月日6
+        /// </summary>
         public DateTime Educate_date_6 {
             get => _educate_date_6;
             set => _educate_date_6 = value;
         }
+        /// <summary>
+        /// 社内教育の実施状況・実施対象事由6
+        /// </summary>
         public string Educate_name_6 {
             get => _educate_name_6;
             set => _educate_name_6 = value;
         }
+        /// <summary>
+        /// 適性診断・種類1
+        /// </summary>
         public string Proper_kind_1 {
             get => _proper_kind_1;
             set => _proper_kind_1 = value;
         }
+        /// <summary>
+        /// 適性診断・実施年月日1
+        /// </summary>
         public DateTime Proper_date_1 {
             get => _proper_date_1;
             set => _proper_date_1 = value;
         }
+        /// <summary>
+        /// 適性診断・備考1
+        /// </summary>
         public string Proper_note_1 {
             get => _proper_note_1;
             set => _proper_note_1 = value;
         }
+        /// <summary>
+        /// 適性診断・種類2
+        /// </summary>
         public string Proper_kind_2 {
             get => _proper_kind_2;
             set => _proper_kind_2 = value;
         }
+        /// <summary>
+        /// 適性診断・実施年月日2
+        /// </summary>
         public DateTime Proper_date_2 {
             get => _proper_date_2;
             set => _proper_date_2 = value;
         }
+        /// <summary>
+        /// 適性診断・備考2
+        /// </summary>
         public string Proper_note_2 {
             get => _proper_note_2;
             set => _proper_note_2 = value;
         }
+        /// <summary>
+        /// 適性診断・種類3
+        /// </summary>
         public string Proper_kind_3 {
             get => _proper_kind_3;
             set => _proper_kind_3 = value;
         }
+        /// <summary>
+        /// 適性診断・実施年月日3
+        /// </summary>
         public DateTime Proper_date_3 {
             get => _proper_date_3;
             set => _proper_date_3 = value;
         }
+        /// <summary>
+        /// 適性診断・備考3
+        /// </summary>
         public string Proper_note_3 {
             get => _proper_note_3;
             set => _proper_note_3 = value;
         }
+        /// <summary>
+        /// 賞罰・譴責1
+        /// </summary>
         public DateTime Punishment_date_1 {
             get => _punishment_date_1;
             set => _punishment_date_1 = value;
         }
+        /// <summary>
+        /// 賞罰・譴責の内容1
+        /// </summary>
         public string Punishment_note_1 {
             get => _punishment_note_1;
             set => _punishment_note_1 = value;
         }
+        /// <summary>
+        /// 賞罰・譴責2
+        /// </summary>
         public DateTime Punishment_date_2 {
             get => _punishment_date_2;
             set => _punishment_date_2 = value;
         }
+        /// <summary>
+        /// 賞罰・譴責の内容2
+        /// </summary>
         public string Punishment_note_2 {
             get => _punishment_note_2;
             set => _punishment_note_2 = value;
         }
+        /// <summary>
+        /// 賞罰・譴責3
+        /// </summary>
         public DateTime Punishment_date_3 {
             get => _punishment_date_3;
             set => _punishment_date_3 = value;
         }
+        /// <summary>
+        /// 賞罰・譴責の内容3
+        /// </summary>
         public string Punishment_note_3 {
             get => _punishment_note_3;
             set => _punishment_note_3 = value;
         }
+        /// <summary>
+        /// 賞罰・譴責4
+        /// </summary>
         public DateTime Punishment_date_4 {
             get => _punishment_date_4;
             set => _punishment_date_4 = value;
         }
+        /// <summary>
+        /// 賞罰・譴責の内容4
+        /// </summary>
         public string Punishment_note_4 {
             get => _punishment_note_4;
             set => _punishment_note_4 = value;

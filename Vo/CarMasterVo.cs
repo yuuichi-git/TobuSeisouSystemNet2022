@@ -5,7 +5,8 @@
     [Serializable] // ←DeepCopyする場合には必要
     public class CarMasterVo {
         private int _car_code;
-        private int _classification_work;
+        private int _classification_code;
+        private string _classification_name = ""; // 外部結合で取得
         private string _registration_number = "";
         private string _registration_number_1 = "";
         private string _registration_number_2 = "";
@@ -15,14 +16,18 @@
         private string _door_number = "";
         private DateTime _registration_date;
         private DateTime _first_registration_date;
-        private string _classification = "";
+        private int _car_kind_code;
+        private string _car_kind_name = ""; // 外部結合で取得
         private string _disguise_kind_1 = "";
         private string _disguise_kind_2 = "";
+        private string _disguise_kind_3 = "";
         private string _car_use = "";
         private int _other_code;
+        private string _other_name = "";
         private int _shape_code;
-        private string _shape_name = "";
-        private string _car_name = "";
+        private string _shape_name = ""; // 外部結合で取得
+        private int _manufacturer_code;
+        private string _manufacturer_name = ""; // 外部結合で取得
         private decimal _capacity;
         private decimal _maximum_load_capacity;
         private decimal _vehicle_weight;
@@ -63,11 +68,15 @@
         }
         /// <summary>
         /// 分類コード
-        /// 10:雇上 11:区契約 12:臨時 20:一般廃棄物
+        /// 10:雇上 11:区契 12:臨時 20:清掃工場 30:社内 50:一般 51:社用車 99:指定なし
         /// </summary>
-        public int Classification_work {
-            get => _classification_work;
-            set => _classification_work = value;
+        public int Classification_code {
+            get => _classification_code;
+            set => _classification_code = value;
+        }
+        public string Classification_name {
+            get => _classification_name;
+            set => _classification_name = value;
         }
         /// <summary>
         /// 自動車登録番号又は車両番号
@@ -137,9 +146,13 @@
         /// <summary>
         /// 自動車の種別
         /// </summary>
-        public string Classification {
-            get => _classification;
-            set => _classification = value;
+        public int Car_kind_code {
+            get => _car_kind_code;
+            set => _car_kind_code = value;
+        }
+        public string Car_kind_name {
+            get => _car_kind_name;
+            set => _car_kind_name = value;
         }
         /// <summary>
         /// 仮装の種類1(配車での名称)
@@ -156,6 +169,13 @@
             set => _disguise_kind_2 = value;
         }
         /// <summary>
+        /// 仮装の種類3(整備での名称)
+        /// </summary>
+        public string Disguise_kind_3 {
+            get => _disguise_kind_3;
+            set => _disguise_kind_3 = value;
+        }
+        /// <summary>
         /// 用途
         /// </summary>
         public string Car_use {
@@ -170,26 +190,32 @@
             get => _other_code;
             set => _other_code = value;
         }
+        public string Other_name {
+            get => _other_name;
+            set => _other_name = value;
+        }
         /// <summary>
         /// 車体の形状コード
+        /// 10:キャブオーバー 11:塵芥車 12:ダンプ 13:コンテナ専用 14:脱着装置付コンテナ専用車 15:粉粒体運搬車 16:糞尿車 17:清掃車
         /// </summary>
         public int Shape_code {
             get => _shape_code;
             set => _shape_code = value;
         }
-        /// <summary>
-        /// 車体の形状名
-        /// </summary>
         public string Shape_name {
             get => _shape_name;
             set => _shape_name = value;
         }
         /// <summary>
-        /// 車名
+        /// 車両メーカーコード
         /// </summary>
-        public string Car_name {
-            get => _car_name;
-            set => _car_name = value;
+        public int Manufacturer_code {
+            get => _manufacturer_code;
+            set => _manufacturer_code = value;
+        }
+        public string Manufacturer_name {
+            get => _manufacturer_name;
+            set => _manufacturer_name = value;
         }
         /// <summary>
         /// 乗車定員

@@ -5,6 +5,8 @@ using Common;
 
 using ControlEx;
 
+using Dao;
+
 using Vo;
 
 namespace VehicleDispatch {
@@ -14,15 +16,22 @@ namespace VehicleDispatch {
         /// </summary>
         private readonly ConnectionVo _connectionVo;
         /// <summary>
-        /// InitializeFormのインスタンス
+        /// インスタンス作成
         /// </summary>
         private InitializeForm _initializeForm = new();
+        private List<SetMasterVo> _listSetMasterVo = new();
+        private List<CarMasterVo> _listCarMasterVo = new();
+        private List<StaffMasterVo> _listStaffMasterVo = new();
 
         public VehicleDispatchBoad(ConnectionVo connectionVo) {
             _connectionVo = connectionVo;
             InitializeComponent();
             // Formを初期化する
             _initializeForm.VehicleDispatchBoad(this);
+            // Masterを読込
+            _listSetMasterVo = new SetMasterDao(connectionVo).SelectAllSetMasterVo();
+            _listCarMasterVo = new CarMasterDao(connectionVo).SelectAllCarMaster();
+            _listStaffMasterVo = new StaffMasterDao(connectionVo).SelectAllStaffMasterVo();
         }
 
         /// <summary>
@@ -32,26 +41,6 @@ namespace VehicleDispatch {
         }
 
         private void button1_Click(object sender, EventArgs e) {
-            /*
-             * Test Data
-             */
-            var setMasterVo = new SetMasterVo();
-            setMasterVo.Set_name_1 = "歌舞伎";
-            setMasterVo.Set_name_2 = "1-61";
-
-            var carMasterVo = new CarMasterVo();
-            carMasterVo.Disguise_kind_1 = "小プ";
-            carMasterVo.Door_number = "123";
-            carMasterVo.Registration_number_1 = "足立";
-            carMasterVo.Registration_number_2 = "444";
-            carMasterVo.Registration_number_3 = "れ";
-            carMasterVo.Registration_number_4 = "4444";
-
-            var staffMasterVo = new StaffMasterVo();
-            staffMasterVo.Display_name = "フローレス・M";
-            /*
-             * 
-             */
 
             var vehicleDispatchControlVo = new VehicleDispatchBoadVo();
             vehicleDispatchControlVo.Column = 0;
@@ -60,13 +49,15 @@ namespace VehicleDispatch {
             vehicleDispatchControlVo.OperationFlag = true;
             vehicleDispatchControlVo.GarageFlag = false;
             vehicleDispatchControlVo.ProductionNumberOfPeople = 3;
-            vehicleDispatchControlVo.SetMasterVo = setMasterVo;
-            vehicleDispatchControlVo.CarMasterVo = carMasterVo;
-            vehicleDispatchControlVo.ArrayStaffMasterVo[0] = staffMasterVo;
-            //vehicleDispatchControlVo.ArrayStaffMasterVo[1] = default;
+            vehicleDispatchControlVo.SetMasterVo = _listSetMasterVo.Find(x => x.Set_name == "歌舞伎容リ2-1") ?? new SetMasterVo();
+            vehicleDispatchControlVo.CarMasterVo = _listCarMasterVo.Find(x => x.Registration_number_4 == "7044") ?? new CarMasterVo();
+            /*
+             * StaffLabelが無い場合は、何も入れない。(Nullが入っている）
+             */
+            vehicleDispatchControlVo.ArrayStaffMasterVo[0] = _listStaffMasterVo.Find(x => x.Name == "辻祐一") ?? new StaffMasterVo();
+            vehicleDispatchControlVo.ArrayStaffMasterVo[1] = _listStaffMasterVo.Find(x => x.Name == "石原由規") ?? new StaffMasterVo();
             //vehicleDispatchControlVo.ArrayStaffMasterVo[2] = default;
             //vehicleDispatchControlVo.ArrayStaffMasterVo[3] = default;
-
             CreateSetControl(vehicleDispatchControlVo);
         }
 
@@ -108,7 +99,11 @@ namespace VehicleDispatch {
                 if (vehicleDispatchBoadVo.ArrayStaffMasterVo[i] != null)
                     setControlEx.CreateLabel(i, vehicleDispatchBoadVo.ArrayStaffMasterVo[i]);
             }
+            //レイアウトロジックを停止する
+            TableLayoutPanelEx1.SuspendLayout();
             TableLayoutPanelEx1.Controls.Add(setControlEx, vehicleDispatchBoadVo.Column, vehicleDispatchBoadVo.Row);
+            //レイアウトロジックを再開する
+            TableLayoutPanelEx1.ResumeLayout();
             /*
              * UserControlからイベントを受け取る
              */

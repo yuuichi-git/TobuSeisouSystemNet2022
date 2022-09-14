@@ -45,9 +45,13 @@ namespace Common {
         }
 
         public void SetTableLayoutPanelAll(TableLayoutPanel tableLayoutPanel, bool flag) {
+            //レイアウトロジックを停止する
+            tableLayoutPanel.SuspendLayout();
             SetTableLayoutPanelTop(tableLayoutPanel, flag);
             SetTableLayoutPanelLeft(tableLayoutPanel, flag);
             SetTableLayoutPanelRight(tableLayoutPanel, flag);
+            //レイアウトロジックを再開する
+            tableLayoutPanel.ResumeLayout();
         }
 
         public void SetTableLayoutPanelTop(TableLayoutPanel tableLayoutPanel, bool flag) {

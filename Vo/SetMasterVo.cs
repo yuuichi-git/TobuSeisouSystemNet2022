@@ -11,7 +11,9 @@ namespace Vo {
         private string _set_name_2 = "";
         private bool _garage_flag;
         private int _classification_code;
+        private string _classification_name = ""; // 外部結合で取得
         private int _contact_method;
+        private string _contact_name = ""; // 外部結合で取得
         private int _number_of_people;
         private string _working_days = "";
         private bool _five_lap;
@@ -68,11 +70,15 @@ namespace Vo {
         }
         /// <summary>
         /// 分類コード
-        /// 10:雇上 11:区契約 12:臨時 20:清掃工場 30:社内
+        /// 10:雇上 11:区契 12:臨時 20:清掃工場 30:社内 50:一般 51:社用車 99:指定なし
         /// </summary>
         public int Classification_code {
             get => _classification_code;
             set => _classification_code = value;
+        }
+        public string Classification_name {
+            get => _classification_name;
+            set => _classification_name = value;
         }
         /// <summary>
         /// 代番連絡方法
@@ -81,6 +87,10 @@ namespace Vo {
         public int Contact_method {
             get => _contact_method;
             set => _contact_method = value;
+        }
+        public string Contact_name {
+            get => _contact_name;
+            set => _contact_name = value;
         }
         /// <summary>
         /// 配車基本人数
