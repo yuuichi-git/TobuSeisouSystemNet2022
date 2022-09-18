@@ -5,6 +5,8 @@ using System.Data;
 
 using Common;
 
+using Production;
+
 using VehicleDispatch;
 
 using Vo;
@@ -49,6 +51,10 @@ namespace TobuSeisouSystemNet2022 {
                             case "VehicleDispatch":
                                 var vehicleDispatchBoad = new VehicleDispatchBoad(_connectionVo);
                                 vehicleDispatchBoad.Show(this);
+                                break;
+                            case "ProductionList":
+                                var productionList = new ProductionList(_connectionVo);
+                                productionList.Show(this);
                                 break;
                             default:
                                 break;

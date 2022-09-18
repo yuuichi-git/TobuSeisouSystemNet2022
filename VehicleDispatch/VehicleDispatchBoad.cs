@@ -115,7 +115,7 @@ namespace VehicleDispatch {
         }
 
         /// <summary>
-        /// 
+        /// SetControlEx_Click
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -124,7 +124,7 @@ namespace VehicleDispatch {
         }
 
         /// <summary>
-        /// 
+        /// SetControlEx_DragDrop
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -148,7 +148,7 @@ namespace VehicleDispatch {
         }
 
         /// <summary>
-        /// 
+        /// SetControlEx_DragEnter
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -158,7 +158,7 @@ namespace VehicleDispatch {
         }
 
         /// <summary>
-        /// 
+        /// LabelEx_Click
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -167,7 +167,7 @@ namespace VehicleDispatch {
         }
 
         /// <summary>
-        /// 
+        /// LabelEx_MouseMove
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -179,6 +179,21 @@ namespace VehicleDispatch {
             }
         }
 
+        /// <summary>
+        /// ToolStripMenuItem
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItem_Click(object sender, EventArgs e) {
+            switch (((ToolStripMenuItem)sender).Name) {
+                case "ToolStripMenuItemAllScreen":
+
+                    break;
+                case "ToolStripMenuItemDefaultScreen":
+
+                    break;
+            }
+        }
 
         /// <summary>
         /// VehicleDispatchBoad_KeyDown
@@ -188,11 +203,11 @@ namespace VehicleDispatch {
         /// <param name="e"></param>
         private void VehicleDispatchBoad_KeyDown(object sender, KeyEventArgs e) {
             // Open
-            if (e.KeyData == (Keys.Shift | Keys.O)) {
+            if (e.KeyData == (Keys.Shift | Keys.A)) {
                 _initializeForm.SetTableLayoutPanelAll(TableLayoutPanelBase, true);
             }
             // Close
-            if (e.KeyData == (Keys.Shift | Keys.C)) {
+            if (e.KeyData == (Keys.Shift | Keys.D)) {
                 _initializeForm.SetTableLayoutPanelAll(TableLayoutPanelBase, false);
             }
 

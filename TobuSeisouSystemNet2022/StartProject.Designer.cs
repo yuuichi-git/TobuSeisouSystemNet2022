@@ -40,6 +40,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.TableLayoutPanelBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -130,6 +132,8 @@
             this.TableLayoutPanelCenter.Controls.Add(this.label3, 0, 6);
             this.TableLayoutPanelCenter.Controls.Add(this.label4, 0, 7);
             this.TableLayoutPanelCenter.Controls.Add(this.label5, 0, 8);
+            this.TableLayoutPanelCenter.Controls.Add(this.label6, 0, 10);
+            this.TableLayoutPanelCenter.Controls.Add(this.label7, 0, 11);
             this.TableLayoutPanelCenter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanelCenter.Location = new System.Drawing.Point(303, 27);
             this.TableLayoutPanelCenter.Name = "TableLayoutPanelCenter";
@@ -267,6 +271,32 @@
             this.label5.Text = "　従業員・車両等のパネルをドラッグ＆ドロップ操作で配車します。";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(3, 220);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(504, 20);
+            this.label6.TabIndex = 10;
+            this.label6.Tag = "ProductionList";
+            this.label6.Text = "　本番変更";
+            this.label6.Click += new System.EventHandler(this.Label_Click);
+            this.label6.MouseEnter += new System.EventHandler(this.Label_MouseEnter);
+            this.label6.MouseLeave += new System.EventHandler(this.Label_MouseLeave);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.label7.Location = new System.Drawing.Point(3, 240);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(261, 17);
+            this.label7.TabIndex = 11;
+            this.label7.Text = "　本番登録の新規及び修正や削除を行います。";
+            // 
             // StartProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -308,5 +338,7 @@
         private Label label3;
         private Label label4;
         private Label label5;
+        private Label label6;
+        private Label label7;
     }
 }

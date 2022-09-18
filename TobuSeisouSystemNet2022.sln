@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleDispatch", "VehicleD
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControlEx", "ControlEx\ControlEx.csproj", "{9CBBBD77-313C-47C1-85FA-02DA6C1CD81F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dao", "Dao\Dao.csproj", "{65452013-3A2B-4301-9580-5551E489DC4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dao", "Dao\Dao.csproj", "{65452013-3A2B-4301-9580-5551E489DC4D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Production", "Production\Production.csproj", "{F1CDAD5B-87CD-48CF-8F5D-BDE34FA3DE26}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{65452013-3A2B-4301-9580-5551E489DC4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{65452013-3A2B-4301-9580-5551E489DC4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{65452013-3A2B-4301-9580-5551E489DC4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1CDAD5B-87CD-48CF-8F5D-BDE34FA3DE26}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1CDAD5B-87CD-48CF-8F5D-BDE34FA3DE26}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1CDAD5B-87CD-48CF-8F5D-BDE34FA3DE26}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1CDAD5B-87CD-48CF-8F5D-BDE34FA3DE26}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -28,16 +28,25 @@
             this.ToolStripMenuItemMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemDisplay = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemAllScreen = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemDefaultScreen = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.StatusStrip1 = new System.Windows.Forms.StatusStrip();
             this.ToolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.PanelUp = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
+            this.TabControlEx1 = new ControlEx.TabControlEx();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.TableLayoutPanelEx1 = new ControlEx.TableLayoutPanelEx();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.TableLayoutPanelEx2 = new ControlEx.TableLayoutPanelEx();
             this.TableLayoutPanelBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
             this.PanelUp.SuspendLayout();
+            this.TabControlEx1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // TableLayoutPanelBase
@@ -49,7 +58,7 @@
             this.TableLayoutPanelBase.Controls.Add(this.MenuStrip1, 0, 0);
             this.TableLayoutPanelBase.Controls.Add(this.StatusStrip1, 0, 3);
             this.TableLayoutPanelBase.Controls.Add(this.PanelUp, 0, 1);
-            this.TableLayoutPanelBase.Controls.Add(this.TableLayoutPanelEx1, 1, 2);
+            this.TableLayoutPanelBase.Controls.Add(this.TabControlEx1, 1, 2);
             this.TableLayoutPanelBase.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanelBase.Location = new System.Drawing.Point(0, 0);
             this.TableLayoutPanelBase.Name = "TableLayoutPanelBase";
@@ -92,9 +101,28 @@
             // 
             // ToolStripMenuItemDisplay
             // 
+            this.ToolStripMenuItemDisplay.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemAllScreen,
+            this.ToolStripMenuItemDefaultScreen});
             this.ToolStripMenuItemDisplay.Name = "ToolStripMenuItemDisplay";
             this.ToolStripMenuItemDisplay.Size = new System.Drawing.Size(43, 20);
             this.ToolStripMenuItemDisplay.Text = "表示";
+            // 
+            // ToolStripMenuItemAllScreen
+            // 
+            this.ToolStripMenuItemAllScreen.Name = "ToolStripMenuItemAllScreen";
+            this.ToolStripMenuItemAllScreen.ShortcutKeyDisplayString = "Shift+A";
+            this.ToolStripMenuItemAllScreen.Size = new System.Drawing.Size(221, 22);
+            this.ToolStripMenuItemAllScreen.Text = "全画面表示にする";
+            this.ToolStripMenuItemAllScreen.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            // 
+            // ToolStripMenuItemDefaultScreen
+            // 
+            this.ToolStripMenuItemDefaultScreen.Name = "ToolStripMenuItemDefaultScreen";
+            this.ToolStripMenuItemDefaultScreen.ShortcutKeyDisplayString = "Shift+D";
+            this.ToolStripMenuItemDefaultScreen.Size = new System.Drawing.Size(221, 22);
+            this.ToolStripMenuItemDefaultScreen.Text = "通常画面表示にする";
+            this.ToolStripMenuItemDefaultScreen.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // ToolStripMenuItemHelp
             // 
@@ -140,6 +168,28 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // TabControlEx1
+            // 
+            this.TabControlEx1.Controls.Add(this.tabPage1);
+            this.TabControlEx1.Controls.Add(this.tabPage2);
+            this.TabControlEx1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TabControlEx1.Location = new System.Drawing.Point(363, 93);
+            this.TabControlEx1.Name = "TabControlEx1";
+            this.TabControlEx1.SelectedIndex = 0;
+            this.TabControlEx1.Size = new System.Drawing.Size(1178, 921);
+            this.TabControlEx1.TabIndex = 4;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.TableLayoutPanelEx1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 24);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1170, 893);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
             // TableLayoutPanelEx1
             // 
             this.TableLayoutPanelEx1.AllowDrop = true;
@@ -171,7 +221,7 @@
             this.TableLayoutPanelEx1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
             this.TableLayoutPanelEx1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
             this.TableLayoutPanelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TableLayoutPanelEx1.Location = new System.Drawing.Point(363, 93);
+            this.TableLayoutPanelEx1.Location = new System.Drawing.Point(3, 3);
             this.TableLayoutPanelEx1.Name = "TableLayoutPanelEx1";
             this.TableLayoutPanelEx1.RowCount = 3;
             this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
@@ -199,8 +249,81 @@
             this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx1.Size = new System.Drawing.Size(1178, 921);
+            this.TableLayoutPanelEx1.Size = new System.Drawing.Size(1164, 887);
             this.TableLayoutPanelEx1.TabIndex = 3;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.TableLayoutPanelEx2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 24);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1170, 893);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // TableLayoutPanelEx2
+            // 
+            this.TableLayoutPanelEx2.AllowDrop = true;
+            this.TableLayoutPanelEx2.AutoScroll = true;
+            this.TableLayoutPanelEx2.ColumnCount = 25;
+            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelEx2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TableLayoutPanelEx2.Location = new System.Drawing.Point(3, 3);
+            this.TableLayoutPanelEx2.Name = "TableLayoutPanelEx2";
+            this.TableLayoutPanelEx2.RowCount = 3;
+            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
+            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
+            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
+            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelEx2.Size = new System.Drawing.Size(1164, 887);
+            this.TableLayoutPanelEx2.TabIndex = 4;
             // 
             // VehicleDispatchBoad
             // 
@@ -220,6 +343,9 @@
             this.StatusStrip1.ResumeLayout(false);
             this.StatusStrip1.PerformLayout();
             this.PanelUp.ResumeLayout(false);
+            this.TabControlEx1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -237,5 +363,11 @@
         private ToolStripMenuItem ToolStripMenuItemDisplay;
         private Button button1;
         private ControlEx.TableLayoutPanelEx TableLayoutPanelEx1;
+        private ControlEx.TabControlEx TabControlEx1;
+        private TabPage tabPage1;
+        private TabPage tabPage2;
+        private ControlEx.TableLayoutPanelEx TableLayoutPanelEx2;
+        private ToolStripMenuItem ToolStripMenuItemAllScreen;
+        private ToolStripMenuItem ToolStripMenuItemDefaultScreen;
     }
 }

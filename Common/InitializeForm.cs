@@ -32,6 +32,17 @@ namespace Common {
         }
 
         /// <summary>
+        /// ProductionList
+        /// </summary>
+        /// <param name="form"></param>
+        /// <returns></returns>
+        public Form ProductionList(Form form) {
+            form.KeyPreview = true;
+            GetWorkingArea(form);
+            return form;
+        }
+
+        /// <summary>
         /// アプリケーションが開かれる画面のワークエリアを返す
         /// FHDでの最小サイズ(1920*1048)
         /// </summary>
@@ -39,7 +50,7 @@ namespace Common {
         public void GetWorkingArea(Form form) {
             form.Height = Screen.GetWorkingArea(form).Height;
             form.MinimumSize = new Size(1920, 1048);
-            form.StartPosition = FormStartPosition.Manual;
+            form.StartPosition = FormStartPosition.CenterScreen;
             form.Text = string.Concat(form.Text, "　(", form.Width, "×", form.Height, ")");
             form.Width = Screen.GetWorkingArea(form).Width;
         }

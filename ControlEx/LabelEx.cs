@@ -23,7 +23,7 @@ namespace ControlEx {
         /// <returns></returns>
         public LabelEx CreateLabel(SetMasterVo setMasterVo) {
             BorderStyle = BorderStyle.FixedSingle;
-            Font = new Font("Meiryo UI", 12, FontStyle.Regular, GraphicsUnit.Pixel);
+            Font = new Font("Yu Gothic UI", 12, FontStyle.Regular, GraphicsUnit.Pixel);
             Height = _setLabelHeight;
             Margin = new Padding(2);
             Tag = setMasterVo;
@@ -40,7 +40,7 @@ namespace ControlEx {
         /// <returns></returns>
         public LabelEx CreateLabel(CarMasterVo carMasterVo) {
             BorderStyle = BorderStyle.FixedSingle;
-            Font = new Font("Meiryo UI", 12, FontStyle.Regular, GraphicsUnit.Pixel);
+            Font = new Font("Yu Gothic UI", 12, FontStyle.Regular, GraphicsUnit.Pixel);
             Height = _carLabelHeight;
             Margin = new Padding(2);
             Tag = carMasterVo;
@@ -59,7 +59,7 @@ namespace ControlEx {
         /// <returns></returns>
         public LabelEx CreateLabel(StaffMasterVo staffMasterVo) {
             BorderStyle = BorderStyle.FixedSingle;
-            Font = new Font("Meiryo UI", 11, FontStyle.Regular, GraphicsUnit.Pixel);
+            Font = new Font("Yu Gothic UI", 11, FontStyle.Regular, GraphicsUnit.Pixel);
             Height = _staffLabelHeight;
             Margin = new Padding(2);
             Tag = staffMasterVo;
