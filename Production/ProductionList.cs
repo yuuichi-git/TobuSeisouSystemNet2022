@@ -32,5 +32,33 @@ namespace Production {
         public static void Main() {
         }
 
+
+
+        /// <summary>
+        /// èIóπèàóù
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItemExit_Click(object sender, EventArgs e) {
+            Close();
+        }
+
+        /// <summary>
+        /// èIóπèàóù
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ProductionList_FormClosing(object sender, FormClosingEventArgs e) {
+            var dialogResult = MessageBox.Show(MessageText.Message102, MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            switch (dialogResult) {
+                case DialogResult.OK:
+                    e.Cancel = false;
+                    Dispose();
+                    break;
+                case DialogResult.Cancel:
+                    e.Cancel = true;
+                    break;
+            }
+        }
     }
 }
