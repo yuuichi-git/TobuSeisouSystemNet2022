@@ -25,13 +25,13 @@ namespace VehicleDispatch {
 
         public VehicleDispatchBoad(ConnectionVo connectionVo) {
             _connectionVo = connectionVo;
-            InitializeComponent();
-            // Form‚ğ‰Šú‰»‚·‚é
-            _initializeForm.VehicleDispatchBoad(this);
-            // Master‚ğ“Ç
+            // DB‚ğ“Ç
             _listSetMasterVo = new SetMasterDao(connectionVo).SelectAllSetMasterVo();
             _listCarMasterVo = new CarMasterDao(connectionVo).SelectAllCarMaster();
             _listStaffMasterVo = new StaffMasterDao(connectionVo).SelectAllStaffMasterVo();
+            // Form‚ğ‰Šú‰»‚·‚é
+            InitializeComponent();
+            _initializeForm.VehicleDispatchBoad(this);
         }
 
         /// <summary>

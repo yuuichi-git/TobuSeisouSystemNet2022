@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ControlEx\ControlEx.csproj" />
+    <ProjectReference Include="..\Dao\Dao.csproj" />
     <ProjectReference Include="..\Vo\Vo.csproj" />
   </ItemGroup>
 

@@ -7,6 +7,7 @@
         private int _operator_code_3; // 作業員2
         private int _operator_code_4; // 作業員3
         private string _note = ""; // 組曜日に対するメモ
+        private DateTime _financial_year; // 事業年度
         private DateTime _insert_ymd_hms;
         private DateTime _update_ymd_hms;
         private DateTime _delete_ymd_hms;
@@ -60,6 +61,13 @@
         public string Note {
             get => _note;
             set => _note = value;
+        }
+        /// <summary>
+        /// 事業年度
+        /// </summary>
+        public DateTime Financial_year {
+            get => _financial_year;
+            set => _financial_year = value;
         }
         public DateTime Insert_ymd_hms {
             get => _insert_ymd_hms;

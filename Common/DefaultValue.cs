@@ -13,6 +13,9 @@
                 return (T)obj;
             } else { // objがNullだった場合
                 switch (typeof(T).Name) {
+                    case "Boolean":
+                        objectValue = false;
+                        break;
                     case "DateTime":
                         objectValue = new DateTime(1900, 01, 01, 00, 00, 00, 000);
                         break;

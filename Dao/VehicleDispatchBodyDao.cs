@@ -25,11 +25,12 @@ namespace Dao {
                                             "operator_code_3," +
                                             "operator_code_4," +
                                             "note," +
+                                            "financial_year," +
                                             "insert_ymd_hms," +
                                             "update_ymd_hms," +
                                             "delete_ymd_hms," +
                                             "delete_flag " +
-                                     "FROM view_set_master ";
+                                     "FROM vehicle_dispatch_body ";
             using (var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while (sqlDataReader.Read() == true) {
                     var setVehicleDispatchBodyVo = new VehicleDispatchBodyVo();
@@ -40,6 +41,7 @@ namespace Dao {
                     setVehicleDispatchBodyVo.Operator_code_3 = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_code_3"]);
                     setVehicleDispatchBodyVo.Operator_code_4 = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_code_4"]);
                     setVehicleDispatchBodyVo.Note = _defaultValue.GetDefaultValue<string>(sqlDataReader["note"]);
+                    setVehicleDispatchBodyVo.Financial_year = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["financial_year"]);
                     setVehicleDispatchBodyVo.Insert_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["insert_ymd_hms"]);
                     setVehicleDispatchBodyVo.Update_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["update_ymd_hms"]);
                     setVehicleDispatchBodyVo.Delete_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["delete_ymd_hms"]);

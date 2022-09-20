@@ -10,6 +10,7 @@ namespace Vo {
         private int _set_code; // 組№
         private int _car_code; // 車両
         private int _number_of_people; // 配車基本人数
+        private DateTime _financial_year; // 事業年度
         private DateTime _insert_ymd_hms;
         private DateTime _update_ymd_hms;
         private DateTime _delete_ymd_hms;
@@ -66,6 +67,13 @@ namespace Vo {
         public int Number_of_people {
             get => _number_of_people;
             set => _number_of_people = value;
+        }
+        /// <summary>
+        /// 事業年度
+        /// </summary>
+        public DateTime Financial_year {
+            get => _financial_year;
+            set => _financial_year = value;
         }
         public DateTime Insert_ymd_hms {
             get => _insert_ymd_hms;
