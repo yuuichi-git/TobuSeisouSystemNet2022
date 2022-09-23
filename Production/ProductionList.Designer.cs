@@ -23,14 +23,14 @@
         ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.TableLayoutPanelEx1 = new ControlEx.TableLayoutPanelEx();
+            this.TableLayoutPanelExBase = new ControlEx.TableLayoutPanelEx();
             this.MenuStrip1 = new System.Windows.Forms.MenuStrip();
             this.メニューToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.ヘルプToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StatusStrip1 = new System.Windows.Forms.StatusStrip();
             this.ToolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.Panel1 = new System.Windows.Forms.Panel();
+            this.PanelButtom = new System.Windows.Forms.Panel();
             this.ButtonCopy5 = new System.Windows.Forms.Button();
             this.ButtonCopy4 = new System.Windows.Forms.Button();
             this.ButtonCopy3 = new System.Windows.Forms.Button();
@@ -83,32 +83,34 @@
             this.ComboBoxMondayStaff1 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.ComboBoxMondayCar = new System.Windows.Forms.ComboBox();
-            this.TableLayoutPanelEx2 = new ControlEx.TableLayoutPanelEx();
-            this.TableLayoutPanelEx1.SuspendLayout();
+            this.TableLayoutPanelExCenter = new ControlEx.TableLayoutPanelEx();
+            this.PanelTop = new System.Windows.Forms.Panel();
+            this.TableLayoutPanelExBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
-            this.Panel1.SuspendLayout();
+            this.PanelButtom.SuspendLayout();
             this.SuspendLayout();
             // 
-            // TableLayoutPanelEx1
+            // TableLayoutPanelExBase
             // 
-            this.TableLayoutPanelEx1.ColumnCount = 1;
-            this.TableLayoutPanelEx1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanelEx1.Controls.Add(this.MenuStrip1, 0, 0);
-            this.TableLayoutPanelEx1.Controls.Add(this.StatusStrip1, 0, 4);
-            this.TableLayoutPanelEx1.Controls.Add(this.Panel1, 0, 3);
-            this.TableLayoutPanelEx1.Controls.Add(this.TableLayoutPanelEx2, 0, 2);
-            this.TableLayoutPanelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TableLayoutPanelEx1.Location = new System.Drawing.Point(0, 0);
-            this.TableLayoutPanelEx1.Name = "TableLayoutPanelEx1";
-            this.TableLayoutPanelEx1.RowCount = 5;
-            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 66F));
-            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.TableLayoutPanelEx1.Size = new System.Drawing.Size(1904, 1041);
-            this.TableLayoutPanelEx1.TabIndex = 0;
+            this.TableLayoutPanelExBase.ColumnCount = 1;
+            this.TableLayoutPanelExBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.TableLayoutPanelExBase.Controls.Add(this.MenuStrip1, 0, 0);
+            this.TableLayoutPanelExBase.Controls.Add(this.StatusStrip1, 0, 4);
+            this.TableLayoutPanelExBase.Controls.Add(this.PanelButtom, 0, 3);
+            this.TableLayoutPanelExBase.Controls.Add(this.TableLayoutPanelExCenter, 0, 2);
+            this.TableLayoutPanelExBase.Controls.Add(this.PanelTop, 0, 1);
+            this.TableLayoutPanelExBase.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TableLayoutPanelExBase.Location = new System.Drawing.Point(0, 0);
+            this.TableLayoutPanelExBase.Name = "TableLayoutPanelExBase";
+            this.TableLayoutPanelExBase.RowCount = 5;
+            this.TableLayoutPanelExBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.TableLayoutPanelExBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 66F));
+            this.TableLayoutPanelExBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TableLayoutPanelExBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TableLayoutPanelExBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.TableLayoutPanelExBase.Size = new System.Drawing.Size(1904, 1041);
+            this.TableLayoutPanelExBase.TabIndex = 0;
             // 
             // MenuStrip1
             // 
@@ -158,65 +160,65 @@
             this.ToolStripStatusLabel1.Size = new System.Drawing.Size(39, 17);
             this.ToolStripStatusLabel1.Text = "Status";
             // 
-            // Panel1
+            // PanelButtom
             // 
-            this.Panel1.Controls.Add(this.ButtonCopy5);
-            this.Panel1.Controls.Add(this.ButtonCopy4);
-            this.Panel1.Controls.Add(this.ButtonCopy3);
-            this.Panel1.Controls.Add(this.ButtonCopy2);
-            this.Panel1.Controls.Add(this.ButtonCopy1);
-            this.Panel1.Controls.Add(this.CheckBoxSunday);
-            this.Panel1.Controls.Add(this.ComboBoxSundayStaff4);
-            this.Panel1.Controls.Add(this.ComboBoxSundayStaff3);
-            this.Panel1.Controls.Add(this.ComboBoxSundayStaff2);
-            this.Panel1.Controls.Add(this.ComboBoxSundayStaff1);
-            this.Panel1.Controls.Add(this.ComboBoxSundayCar);
-            this.Panel1.Controls.Add(this.CheckBoxSaturday);
-            this.Panel1.Controls.Add(this.ComboBoxSaturdayStaff4);
-            this.Panel1.Controls.Add(this.ComboBoxSaturdayStaff3);
-            this.Panel1.Controls.Add(this.ComboBoxSaturdayStaff2);
-            this.Panel1.Controls.Add(this.ComboBoxSaturdayStaff1);
-            this.Panel1.Controls.Add(this.ComboBoxSaturdayCar);
-            this.Panel1.Controls.Add(this.CheckBoxFriday);
-            this.Panel1.Controls.Add(this.ComboBoxFridayStaff4);
-            this.Panel1.Controls.Add(this.ComboBoxFridayStaff3);
-            this.Panel1.Controls.Add(this.ComboBoxFridayStaff2);
-            this.Panel1.Controls.Add(this.ComboBoxFridayStaff1);
-            this.Panel1.Controls.Add(this.ComboBoxFridayCar);
-            this.Panel1.Controls.Add(this.CheckBoxThursday);
-            this.Panel1.Controls.Add(this.ComboBoxThursdayStaff4);
-            this.Panel1.Controls.Add(this.ComboBoxThursdayStaff3);
-            this.Panel1.Controls.Add(this.ComboBoxThursdayStaff2);
-            this.Panel1.Controls.Add(this.ComboBoxThursdayStaff1);
-            this.Panel1.Controls.Add(this.ComboBoxThursdayCar);
-            this.Panel1.Controls.Add(this.CheckBoxWednesday);
-            this.Panel1.Controls.Add(this.ComboBoxWednesdayStaff4);
-            this.Panel1.Controls.Add(this.ComboBoxWednesdayStaff3);
-            this.Panel1.Controls.Add(this.ComboBoxWednesdayStaff2);
-            this.Panel1.Controls.Add(this.ComboBoxWednesdayStaff1);
-            this.Panel1.Controls.Add(this.ComboBoxWednesdayCar);
-            this.Panel1.Controls.Add(this.CheckBoxTuesday);
-            this.Panel1.Controls.Add(this.ComboBoxTuesdayStaff4);
-            this.Panel1.Controls.Add(this.ComboBoxTuesdayStaff3);
-            this.Panel1.Controls.Add(this.ComboBoxTuesdayStaff2);
-            this.Panel1.Controls.Add(this.ComboBoxTuesdayStaff1);
-            this.Panel1.Controls.Add(this.ComboBoxTuesdayCar);
-            this.Panel1.Controls.Add(this.CheckBoxMonday);
-            this.Panel1.Controls.Add(this.label6);
-            this.Panel1.Controls.Add(this.ComboBoxMondayStaff4);
-            this.Panel1.Controls.Add(this.label5);
-            this.Panel1.Controls.Add(this.ComboBoxMondayStaff3);
-            this.Panel1.Controls.Add(this.label4);
-            this.Panel1.Controls.Add(this.ComboBoxMondayStaff2);
-            this.Panel1.Controls.Add(this.label3);
-            this.Panel1.Controls.Add(this.ComboBoxMondayStaff1);
-            this.Panel1.Controls.Add(this.label2);
-            this.Panel1.Controls.Add(this.ComboBoxMondayCar);
-            this.Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Panel1.Location = new System.Drawing.Point(3, 556);
-            this.Panel1.Name = "Panel1";
-            this.Panel1.Size = new System.Drawing.Size(1898, 457);
-            this.Panel1.TabIndex = 3;
+            this.PanelButtom.Controls.Add(this.ButtonCopy5);
+            this.PanelButtom.Controls.Add(this.ButtonCopy4);
+            this.PanelButtom.Controls.Add(this.ButtonCopy3);
+            this.PanelButtom.Controls.Add(this.ButtonCopy2);
+            this.PanelButtom.Controls.Add(this.ButtonCopy1);
+            this.PanelButtom.Controls.Add(this.CheckBoxSunday);
+            this.PanelButtom.Controls.Add(this.ComboBoxSundayStaff4);
+            this.PanelButtom.Controls.Add(this.ComboBoxSundayStaff3);
+            this.PanelButtom.Controls.Add(this.ComboBoxSundayStaff2);
+            this.PanelButtom.Controls.Add(this.ComboBoxSundayStaff1);
+            this.PanelButtom.Controls.Add(this.ComboBoxSundayCar);
+            this.PanelButtom.Controls.Add(this.CheckBoxSaturday);
+            this.PanelButtom.Controls.Add(this.ComboBoxSaturdayStaff4);
+            this.PanelButtom.Controls.Add(this.ComboBoxSaturdayStaff3);
+            this.PanelButtom.Controls.Add(this.ComboBoxSaturdayStaff2);
+            this.PanelButtom.Controls.Add(this.ComboBoxSaturdayStaff1);
+            this.PanelButtom.Controls.Add(this.ComboBoxSaturdayCar);
+            this.PanelButtom.Controls.Add(this.CheckBoxFriday);
+            this.PanelButtom.Controls.Add(this.ComboBoxFridayStaff4);
+            this.PanelButtom.Controls.Add(this.ComboBoxFridayStaff3);
+            this.PanelButtom.Controls.Add(this.ComboBoxFridayStaff2);
+            this.PanelButtom.Controls.Add(this.ComboBoxFridayStaff1);
+            this.PanelButtom.Controls.Add(this.ComboBoxFridayCar);
+            this.PanelButtom.Controls.Add(this.CheckBoxThursday);
+            this.PanelButtom.Controls.Add(this.ComboBoxThursdayStaff4);
+            this.PanelButtom.Controls.Add(this.ComboBoxThursdayStaff3);
+            this.PanelButtom.Controls.Add(this.ComboBoxThursdayStaff2);
+            this.PanelButtom.Controls.Add(this.ComboBoxThursdayStaff1);
+            this.PanelButtom.Controls.Add(this.ComboBoxThursdayCar);
+            this.PanelButtom.Controls.Add(this.CheckBoxWednesday);
+            this.PanelButtom.Controls.Add(this.ComboBoxWednesdayStaff4);
+            this.PanelButtom.Controls.Add(this.ComboBoxWednesdayStaff3);
+            this.PanelButtom.Controls.Add(this.ComboBoxWednesdayStaff2);
+            this.PanelButtom.Controls.Add(this.ComboBoxWednesdayStaff1);
+            this.PanelButtom.Controls.Add(this.ComboBoxWednesdayCar);
+            this.PanelButtom.Controls.Add(this.CheckBoxTuesday);
+            this.PanelButtom.Controls.Add(this.ComboBoxTuesdayStaff4);
+            this.PanelButtom.Controls.Add(this.ComboBoxTuesdayStaff3);
+            this.PanelButtom.Controls.Add(this.ComboBoxTuesdayStaff2);
+            this.PanelButtom.Controls.Add(this.ComboBoxTuesdayStaff1);
+            this.PanelButtom.Controls.Add(this.ComboBoxTuesdayCar);
+            this.PanelButtom.Controls.Add(this.CheckBoxMonday);
+            this.PanelButtom.Controls.Add(this.label6);
+            this.PanelButtom.Controls.Add(this.ComboBoxMondayStaff4);
+            this.PanelButtom.Controls.Add(this.label5);
+            this.PanelButtom.Controls.Add(this.ComboBoxMondayStaff3);
+            this.PanelButtom.Controls.Add(this.label4);
+            this.PanelButtom.Controls.Add(this.ComboBoxMondayStaff2);
+            this.PanelButtom.Controls.Add(this.label3);
+            this.PanelButtom.Controls.Add(this.ComboBoxMondayStaff1);
+            this.PanelButtom.Controls.Add(this.label2);
+            this.PanelButtom.Controls.Add(this.ComboBoxMondayCar);
+            this.PanelButtom.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelButtom.Location = new System.Drawing.Point(3, 556);
+            this.PanelButtom.Name = "PanelButtom";
+            this.PanelButtom.Size = new System.Drawing.Size(1898, 457);
+            this.PanelButtom.TabIndex = 3;
             // 
             // ButtonCopy5
             // 
@@ -799,84 +801,88 @@
             this.ComboBoxMondayCar.TabIndex = 58;
             this.ComboBoxMondayCar.Text = "足立800あ8888(888)";
             // 
-            // TableLayoutPanelEx2
+            // TableLayoutPanelExCenter
             // 
-            this.TableLayoutPanelEx2.ColumnCount = 25;
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TableLayoutPanelEx2.Location = new System.Drawing.Point(26, 105);
-            this.TableLayoutPanelEx2.Margin = new System.Windows.Forms.Padding(26, 15, 26, 15);
-            this.TableLayoutPanelEx2.Name = "TableLayoutPanelEx2";
-            this.TableLayoutPanelEx2.RowCount = 10;
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 72F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 72F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 72F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 72F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 72F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 72F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx2.Size = new System.Drawing.Size(1852, 433);
-            this.TableLayoutPanelEx2.TabIndex = 4;
+            this.TableLayoutPanelExCenter.ColumnCount = 25;
+            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelExCenter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TableLayoutPanelExCenter.Location = new System.Drawing.Point(25, 105);
+            this.TableLayoutPanelExCenter.Margin = new System.Windows.Forms.Padding(25, 15, 25, 15);
+            this.TableLayoutPanelExCenter.Name = "TableLayoutPanelExCenter";
+            this.TableLayoutPanelExCenter.RowCount = 6;
+            this.TableLayoutPanelExCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 72F));
+            this.TableLayoutPanelExCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 72F));
+            this.TableLayoutPanelExCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 72F));
+            this.TableLayoutPanelExCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 72F));
+            this.TableLayoutPanelExCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 72F));
+            this.TableLayoutPanelExCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 72F));
+            this.TableLayoutPanelExCenter.Size = new System.Drawing.Size(1854, 433);
+            this.TableLayoutPanelExCenter.TabIndex = 4;
+            // 
+            // PanelTop
+            // 
+            this.PanelTop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelTop.Location = new System.Drawing.Point(3, 27);
+            this.PanelTop.Name = "PanelTop";
+            this.PanelTop.Size = new System.Drawing.Size(1898, 60);
+            this.PanelTop.TabIndex = 5;
             // 
             // ProductionList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
-            this.Controls.Add(this.TableLayoutPanelEx1);
+            this.Controls.Add(this.TableLayoutPanelExBase);
             this.MainMenuStrip = this.MenuStrip1;
             this.Name = "ProductionList";
             this.Text = "ProductionList";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProductionList_FormClosing);
-            this.TableLayoutPanelEx1.ResumeLayout(false);
-            this.TableLayoutPanelEx1.PerformLayout();
+            this.TableLayoutPanelExBase.ResumeLayout(false);
+            this.TableLayoutPanelExBase.PerformLayout();
             this.MenuStrip1.ResumeLayout(false);
             this.MenuStrip1.PerformLayout();
             this.StatusStrip1.ResumeLayout(false);
             this.StatusStrip1.PerformLayout();
-            this.Panel1.ResumeLayout(false);
-            this.Panel1.PerformLayout();
+            this.PanelButtom.ResumeLayout(false);
+            this.PanelButtom.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private ControlEx.TableLayoutPanelEx TableLayoutPanelEx1;
+        private ControlEx.TableLayoutPanelEx TableLayoutPanelExBase;
         private MenuStrip MenuStrip1;
         private ToolStripMenuItem メニューToolStripMenuItem;
         private ToolStripMenuItem ヘルプToolStripMenuItem;
         private ToolStripMenuItem ToolStripMenuItemExit;
         private StatusStrip StatusStrip1;
         private ToolStripStatusLabel ToolStripStatusLabel1;
-        private Panel Panel1;
+        private Panel PanelButtom;
         private Button ButtonCopy5;
         private Button ButtonCopy4;
         private Button ButtonCopy3;
@@ -929,6 +935,7 @@
         private ComboBox ComboBoxMondayStaff1;
         private Label label2;
         private ComboBox ComboBoxMondayCar;
-        private ControlEx.TableLayoutPanelEx TableLayoutPanelEx2;
+        private ControlEx.TableLayoutPanelEx TableLayoutPanelExCenter;
+        private Panel PanelTop;
     }
 }

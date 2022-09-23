@@ -34,23 +34,6 @@ namespace ControlEx {
         }
 
         /// <summary>
-        /// SetLabel作成(Null)
-        /// </summary>
-        /// <param name="setMasterVo"></param>
-        /// <returns></returns>
-        public LabelEx CreateLabelNull(SetMasterVo? setMasterVo) {
-            BorderStyle = BorderStyle.FixedSingle;
-            //Font = new Font("Yu Gothic UI", 12, FontStyle.Regular, GraphicsUnit.Pixel);
-            Height = _setLabelHeight;
-            Margin = new Padding(2);
-            Tag = null;
-            //Text = string.Concat(setMasterVo.Set_name_1, "\r\n", setMasterVo.Set_name_2);
-            //TextAlign = ContentAlignment.MiddleCenter;
-            Width = _setLabelWidth;
-            return this;
-        }
-
-        /// <summary>
         /// CarLabel作成
         /// </summary>
         /// <param name="carMasterVo"></param>
