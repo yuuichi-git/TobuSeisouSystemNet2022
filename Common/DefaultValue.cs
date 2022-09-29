@@ -7,7 +7,7 @@
         /// <typeparam name="T"></typeparam>
         /// <param name="obj"></param>
         /// <returns></returns>
-        public T GetDefaultValue<T>(object obj) {
+        public T GetDefaultValue<T>(object? obj) {
             object objectValue = new();
             if (obj != DBNull.Value && obj != null) {
                 return (T)obj;
@@ -17,7 +17,7 @@
                         objectValue = false;
                         break;
                     case "DateTime":
-                        objectValue = new DateTime(1900, 01, 01, 00, 00, 00, 000);
+                        objectValue = new DateTime(1900,01,01);
                         break;
                     case "Int32":
                         objectValue = 0;

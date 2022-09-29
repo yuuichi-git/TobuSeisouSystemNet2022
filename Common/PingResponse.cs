@@ -9,7 +9,7 @@ namespace Common {
             var ping = new Ping();
             bool status;
 
-            var reply = ping.Send(ipAddress);
+            PingReply reply = ping.Send(ipAddress);
             if (reply.Status == IPStatus.Success) {
                 Console.WriteLine("Reply from {0}: bytes={1} time={2}ms TTL={3}",
                                         reply.Address,
