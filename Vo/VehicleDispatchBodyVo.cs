@@ -2,6 +2,7 @@
     public class VehicleDispatchBodyVo {
         private int _cell_number; // 配車表№
         private string _day_of_week = ""; //対象の曜日
+        private int _car_code;
         private int _operator_code_1; // 運転手
         private int _operator_code_2; // 作業員1
         private int _operator_code_3; // 作業員2
@@ -26,6 +27,13 @@
         public string Day_of_week {
             get => _day_of_week;
             set => _day_of_week = value;
+        }
+        /// <summary>
+        /// 車両コード
+        /// </summary>
+        public int Car_code {
+            get => _car_code;
+            set => _car_code = value;
         }
         /// <summary>
         /// 社員コード1

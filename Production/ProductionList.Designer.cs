@@ -23,6 +23,7 @@
         ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.TableLayoutPanelExBase = new ControlEx.TableLayoutPanelEx();
             this.MenuStrip1 = new System.Windows.Forms.MenuStrip();
             this.メニューToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -31,6 +32,10 @@
             this.StatusStrip1 = new System.Windows.Forms.StatusStrip();
             this.ToolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.PanelButtom = new System.Windows.Forms.Panel();
+            this.LabelDayOfWeek = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.LabelCellNumber = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.ButtonReadCarCode = new System.Windows.Forms.Button();
             this.LabelNumberOfPeople = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -108,6 +113,8 @@
             this.ComboBoxFinancialYear = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.ButtonUpdate = new System.Windows.Forms.Button();
+            this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.ToolStripStatusLabelDetail = new System.Windows.Forms.ToolStripStatusLabel();
             this.TableLayoutPanelExBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -171,7 +178,8 @@
             // StatusStrip1
             // 
             this.StatusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripStatusLabel1});
+            this.ToolStripStatusLabel1,
+            this.ToolStripStatusLabelDetail});
             this.StatusStrip1.Location = new System.Drawing.Point(0, 1019);
             this.StatusStrip1.Name = "StatusStrip1";
             this.StatusStrip1.Size = new System.Drawing.Size(1904, 22);
@@ -186,6 +194,10 @@
             // 
             // PanelButtom
             // 
+            this.PanelButtom.Controls.Add(this.LabelDayOfWeek);
+            this.PanelButtom.Controls.Add(this.label18);
+            this.PanelButtom.Controls.Add(this.LabelCellNumber);
+            this.PanelButtom.Controls.Add(this.label17);
             this.PanelButtom.Controls.Add(this.ButtonReadCarCode);
             this.PanelButtom.Controls.Add(this.LabelNumberOfPeople);
             this.PanelButtom.Controls.Add(this.label16);
@@ -264,6 +276,47 @@
             this.PanelButtom.Size = new System.Drawing.Size(1898, 457);
             this.PanelButtom.TabIndex = 3;
             // 
+            // LabelDayOfWeek
+            // 
+            this.LabelDayOfWeek.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.LabelDayOfWeek.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LabelDayOfWeek.Location = new System.Drawing.Point(204, 144);
+            this.LabelDayOfWeek.Name = "LabelDayOfWeek";
+            this.LabelDayOfWeek.Size = new System.Drawing.Size(112, 24);
+            this.LabelDayOfWeek.TabIndex = 134;
+            this.LabelDayOfWeek.Text = "月火水木金土日 ";
+            this.LabelDayOfWeek.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.ToolTip1.SetToolTip(this.LabelDayOfWeek, "setMasterVo.Working_days");
+            // 
+            // label18
+            // 
+            this.label18.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label18.Location = new System.Drawing.Point(112, 147);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(92, 20);
+            this.label18.TabIndex = 133;
+            this.label18.Text = "配車人数：";
+            // 
+            // LabelCellNumber
+            // 
+            this.LabelCellNumber.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.LabelCellNumber.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LabelCellNumber.Location = new System.Drawing.Point(204, 48);
+            this.LabelCellNumber.Name = "LabelCellNumber";
+            this.LabelCellNumber.Size = new System.Drawing.Size(112, 24);
+            this.LabelCellNumber.TabIndex = 132;
+            this.LabelCellNumber.Text = "88";
+            this.LabelCellNumber.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label17
+            // 
+            this.label17.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label17.Location = new System.Drawing.Point(112, 51);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(92, 20);
+            this.label17.TabIndex = 131;
+            this.label17.Text = "配車番号：";
+            // 
             // ButtonReadCarCode
             // 
             this.ButtonReadCarCode.Font = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -274,6 +327,7 @@
             this.ButtonReadCarCode.TabIndex = 130;
             this.ButtonReadCarCode.Tag = "";
             this.ButtonReadCarCode.Text = "Read Car Code";
+            this.ToolTip1.SetToolTip(this.ButtonReadCarCode, "vehicle_dispatch_headに記録されているcar_codeを使用");
             this.ButtonReadCarCode.UseVisualStyleBackColor = true;
             this.ButtonReadCarCode.Click += new System.EventHandler(this.ButtonMasterCarCode_Click);
             // 
@@ -281,9 +335,9 @@
             // 
             this.LabelNumberOfPeople.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.LabelNumberOfPeople.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LabelNumberOfPeople.Location = new System.Drawing.Point(208, 68);
+            this.LabelNumberOfPeople.Location = new System.Drawing.Point(204, 112);
             this.LabelNumberOfPeople.Name = "LabelNumberOfPeople";
-            this.LabelNumberOfPeople.Size = new System.Drawing.Size(92, 24);
+            this.LabelNumberOfPeople.Size = new System.Drawing.Size(112, 24);
             this.LabelNumberOfPeople.TabIndex = 129;
             this.LabelNumberOfPeople.Text = "4人";
             this.LabelNumberOfPeople.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -291,7 +345,7 @@
             // label16
             // 
             this.label16.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(116, 71);
+            this.label16.Location = new System.Drawing.Point(112, 115);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(92, 20);
             this.label16.TabIndex = 128;
@@ -301,9 +355,9 @@
             // 
             this.LabelSetName.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.LabelSetName.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LabelSetName.Location = new System.Drawing.Point(208, 36);
+            this.LabelSetName.Location = new System.Drawing.Point(204, 80);
             this.LabelSetName.Name = "LabelSetName";
-            this.LabelSetName.Size = new System.Drawing.Size(92, 24);
+            this.LabelSetName.Size = new System.Drawing.Size(112, 24);
             this.LabelSetName.TabIndex = 127;
             this.LabelSetName.Text = "歌舞伎1-81";
             this.LabelSetName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -311,7 +365,7 @@
             // label13
             // 
             this.label13.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(116, 39);
+            this.label13.Location = new System.Drawing.Point(112, 83);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(92, 20);
             this.label13.TabIndex = 126;
@@ -1108,8 +1162,8 @@
             this.ComboBoxFinancialYear.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.ComboBoxFinancialYear.FormattingEnabled = true;
             this.ComboBoxFinancialYear.Items.AddRange(new object[] {
-            "2022年度",
-            "2023年度"});
+            "2022年4月1日",
+            "2023年4月1日"});
             this.ComboBoxFinancialYear.Location = new System.Drawing.Point(140, 19);
             this.ComboBoxFinancialYear.Name = "ComboBoxFinancialYear";
             this.ComboBoxFinancialYear.Size = new System.Drawing.Size(140, 25);
@@ -1136,12 +1190,19 @@
             this.ButtonUpdate.UseVisualStyleBackColor = true;
             this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
             // 
+            // ToolStripStatusLabelDetail
+            // 
+            this.ToolStripStatusLabelDetail.Name = "ToolStripStatusLabelDetail";
+            this.ToolStripStatusLabelDetail.Size = new System.Drawing.Size(143, 17);
+            this.ToolStripStatusLabelDetail.Text = "ToolStripStatusLabelDetail";
+            // 
             // ProductionList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
             this.Controls.Add(this.TableLayoutPanelExBase);
+            this.DoubleBuffered = true;
             this.MainMenuStrip = this.MenuStrip1;
             this.Name = "ProductionList";
             this.Text = "ProductionList";
@@ -1247,5 +1308,11 @@
         private Label LabelNumberOfPeople;
         private Label label16;
         private Button ButtonReadCarCode;
+        private ToolTip ToolTip1;
+        private Label LabelCellNumber;
+        private Label label17;
+        private Label LabelDayOfWeek;
+        private Label label18;
+        private ToolStripStatusLabel ToolStripStatusLabelDetail;
     }
 }

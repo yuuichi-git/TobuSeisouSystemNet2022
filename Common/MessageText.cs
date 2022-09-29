@@ -9,7 +9,7 @@
          * ProductionList
          */
         public const string Message201 = "編集対象の配車先を選択して下さい";
-
+        public const string Message202 = "データの更新に成功しました";
         /*
          * SQL Connection
          */

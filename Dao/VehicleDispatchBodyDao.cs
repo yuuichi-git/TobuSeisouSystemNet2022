@@ -20,6 +20,7 @@ namespace Dao {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT cell_number," +
                                             "day_of_week," +
+                                            "car_code," +
                                             "operator_code_1," +
                                             "operator_code_2," +
                                             "operator_code_3," +
@@ -36,6 +37,7 @@ namespace Dao {
                     var setVehicleDispatchBodyVo = new VehicleDispatchBodyVo();
                     setVehicleDispatchBodyVo.Cell_number = _defaultValue.GetDefaultValue<int>(sqlDataReader["cell_number"]);
                     setVehicleDispatchBodyVo.Day_of_week = _defaultValue.GetDefaultValue<string>(sqlDataReader["day_of_week"]);
+                    setVehicleDispatchBodyVo.Car_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["car_code"]);
                     setVehicleDispatchBodyVo.Operator_code_1 = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_code_1"]);
                     setVehicleDispatchBodyVo.Operator_code_2 = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_code_2"]);
                     setVehicleDispatchBodyVo.Operator_code_3 = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_code_3"]);

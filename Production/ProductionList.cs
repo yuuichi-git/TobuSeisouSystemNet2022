@@ -75,12 +75,14 @@ namespace Production {
             /*
              * Controlを初期化
              */
+            ComboBoxFinancialYear.SelectedIndex = 0;
             ClearControls();
             InitializeComboBoxCarLedger();
             InitializeComboBoxStaffMaster1();
             InitializeComboBoxStaffMaster2();
             InitializeComboBoxStaffMaster3();
             InitializeComboBoxStaffMaster4();
+            ToolStripStatusLabelDetail.Text = "";
         }
 
         /// <summary>
@@ -95,15 +97,21 @@ namespace Production {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ButtonUpdate_Click(object sender, EventArgs e) {
-            // 更新前のチェック
+            /*
+             * 更新前のチェック
+             * ①配車先が選択されているかどうか？
+             */
             var labelSetNameTag = LabelSetName.Tag;
             if (labelSetNameTag == null) {
                 MessageBox.Show(MessageText.Message201, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-
+            this.DataUpdate();
         }
 
+        /// <summary>
+        /// DataUpdate
+        /// </summary>
         private void DataUpdate() {
             var listProductionListVo = new List<ProductionListVo>();
             var nestedClassSetMasterVo = (NestedClassSetMasterVo)LabelSetName.Tag;
@@ -157,17 +165,24 @@ namespace Production {
                     listProductionListVo.Add(productionListVo);
                 }
             }
-            /*
-             * Daoを呼び出す(SQL発行)
-             * ①対象のレコードをDELETE
-             * ②対象レコードをINSERT
-             */
-            _vehicleDispatchBodyDao.DeleteVehicleDispatchBodyVo(cellNumber, financialYear);
-            _vehicleDispatchBodyDao.InsertVehicleDispatchBodyVo(listProductionListVo);
-            /* 
-             * 最新のデータに更新(SQL発行)
-             */
-            _listVehicleDispatchBodyVo = _vehicleDispatchBodyDao.SelectAllVehicleDispatchBodyVo();
+            try {
+                /*
+                 * Daoを呼び出す(SQL発行)
+                 * ①対象のレコードをDELETE
+                 * ②対象レコードをINSERT
+                 */
+                _vehicleDispatchBodyDao.DeleteVehicleDispatchBodyVo(cellNumber, financialYear);
+                _vehicleDispatchBodyDao.InsertVehicleDispatchBodyVo(listProductionListVo);
+                /* 
+                 * 最新のデータに更新(SQL発行)
+                 */
+                _listVehicleDispatchBodyVo = _vehicleDispatchBodyDao.SelectAllVehicleDispatchBodyVo();
+                MessageBox.Show(MessageText.Message202, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ToolStripStatusLabelDetail.Text = string.Concat(nestedClassSetMasterVo.SetMasterVo.Set_name,"を更新に成功しました");
+            } catch {
+                ToolStripStatusLabelDetail.Text = string.Concat(nestedClassSetMasterVo.SetMasterVo.Set_name, "を更新に失敗しました");
+            }
+
         }
 
         /// <summary>
@@ -186,7 +201,7 @@ namespace Production {
                     setMasterVo = _listSetMasterVo.Find(x => x.Set_code == setCode);
                     if (setMasterVo != null) {
                         var labelEx = new LabelEx().CreateLabel(setMasterVo);
-                        labelEx.Tag = new NestedClassSetMasterVo(i + 1, new DateTime(2022, 04, 01), setMasterVo);
+                        labelEx.Tag = new NestedClassSetMasterVo(i + 1, setMasterVo.Working_days, new DateTime(2022, 04, 01), setMasterVo);
                         labelEx.MouseClick += new MouseEventHandler(Label_MouseClick);
                         labelEx.MouseEnter += new EventHandler(Label_MouseEnter);
                         labelEx.MouseLeave += new EventHandler(Label_MouseLeave);
@@ -204,16 +219,22 @@ namespace Production {
         /// </summary>
         private class NestedClassSetMasterVo {
             private int _cell_number;
+            private string _dayOfWeek;
             private DateTime _financial_year;
             private SetMasterVo _setMasterVo = new();
-            public NestedClassSetMasterVo(int cellNumber, DateTime financial_year, SetMasterVo setMasterVo) {
+            public NestedClassSetMasterVo(int cellNumber, string dayOfWeek, DateTime financial_year, SetMasterVo setMasterVo) {
                 _cell_number = cellNumber;
+                _dayOfWeek = dayOfWeek;
                 _financial_year = financial_year;
                 _setMasterVo = setMasterVo;
             }
             public int Cell_number {
                 get => _cell_number;
                 set => _cell_number = value;
+            }
+            public string DayOfWeek {
+                get => _dayOfWeek;
+                set => _dayOfWeek = value;
             }
             public DateTime Financial_year {
                 get => _financial_year;
@@ -232,7 +253,7 @@ namespace Production {
             foreach (var comboBox in _arrayComboBoxCar) {
                 comboBox.Items.Clear();
                 foreach (var carMasteVo in _listCarMasterVo.FindAll(x => x.Delete_flag == false).OrderBy(x => x.Registration_number_4))
-                    comboBox.Items.Add(new NestedClassCarMasterVo(carMasteVo.Registration_number, carMasteVo));
+                    comboBox.Items.Add(new NestedClassCarMasterVo(string.Concat(carMasteVo.Registration_number, " (", carMasteVo.Door_number, ")"), carMasteVo));
                 comboBox.DisplayMember = "RegistrationNumber";
                 // オートコンプリートモードの設定
                 comboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
@@ -400,7 +421,7 @@ namespace Production {
             var carMasterVo = _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchHeadVo.Car_code);
             foreach (var checkBox in _arrayCheckBoxWeek) {
                 if (checkBox.Checked) {
-                    _arrayComboBoxCar[Array.IndexOf(_arrayCheckBoxWeek, checkBox)].Text = carMasterVo.Registration_number;
+                    _arrayComboBoxCar[Array.IndexOf(_arrayCheckBoxWeek, checkBox)].Text = string.Concat(carMasterVo.Registration_number, " (", carMasterVo.Door_number, ")");
                 }
             }
         }
@@ -446,20 +467,21 @@ namespace Production {
             var nestedClassSetMasterVo = (NestedClassSetMasterVo)((LabelEx)sender).Tag;
             var vehicleDispatchHeadVo = _listVehicleDispatchHeadVo.Find(x => x.Cell_number == nestedClassSetMasterVo.Cell_number);
 
+            LabelCellNumber.Text = nestedClassSetMasterVo.Cell_number.ToString();
             LabelSetName.Tag = nestedClassSetMasterVo;
             LabelSetName.Text = string.Concat(nestedClassSetMasterVo.SetMasterVo.Set_name, "組");
             LabelNumberOfPeople.Text = nestedClassSetMasterVo.SetMasterVo.Number_of_people.ToString("#人");
+            LabelDayOfWeek.Text = nestedClassSetMasterVo.SetMasterVo.Working_days;
 
             // Bodyを表示
             foreach (var vehicleDispatchBodyVo in _listVehicleDispatchBodyVo.FindAll(x => x.Cell_number == nestedClassSetMasterVo.Cell_number)) {
                 // CheckBoxWeek
                 _arrayCheckBoxWeek[Array.IndexOf(_DayOfWeek, vehicleDispatchBodyVo.Day_of_week)].Checked = true;
                 // CarMaster
-                if (vehicleDispatchHeadVo != null)
-                    carMasterVo = _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchHeadVo.Car_code);
+                carMasterVo = _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchBodyVo.Car_code);
                 if (carMasterVo != null) {
                     _arrayComboBoxCar[Array.IndexOf(_DayOfWeek, vehicleDispatchBodyVo.Day_of_week)].Tag = carMasterVo;
-                    _arrayComboBoxCar[Array.IndexOf(_DayOfWeek, vehicleDispatchBodyVo.Day_of_week)].Text = carMasterVo.Registration_number;
+                    _arrayComboBoxCar[Array.IndexOf(_DayOfWeek, vehicleDispatchBodyVo.Day_of_week)].Text = string.Concat(carMasterVo.Registration_number, " (", carMasterVo.Door_number, ")");
                 }
                 // Staff1
                 var staffMasterVo1 = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchBodyVo.Operator_code_1);
@@ -518,9 +540,10 @@ namespace Production {
         /// ClearControls
         /// </summary>
         private void ClearControls() {
-            ComboBoxFinancialYear.SelectedIndex = 0;
+            LabelCellNumber.Text = "";
             LabelSetName.Text = "";
             LabelNumberOfPeople.Text = "";
+            LabelDayOfWeek.Text = "";
             foreach (var checkBox in _arrayCheckBoxWeek) {
                 checkBox.CheckedChanged += new EventHandler(CheckBox_CheckedChanged);
                 checkBox.Checked = false;
