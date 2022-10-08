@@ -11,6 +11,11 @@
         public const string Message201 = "編集対象の配車先を選択して下さい";
         public const string Message202 = "データの更新に成功しました";
         /*
+         * VehicleDispatchBoad
+         */
+        public const string Message301 = "対象日の配車データが存在します。初期化すると配車データが削除されます。よろしいですか？";
+        public const string Message302 = "対象日の配車データが存在しません。本番登録の初期化をしてください。";
+        /*
          * SQL Connection
          */
         public const string Message501 = "Throw Message";

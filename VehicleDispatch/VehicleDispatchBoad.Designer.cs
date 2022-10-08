@@ -30,11 +30,16 @@
             this.ToolStripMenuItemDisplay = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemAllScreen = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemDefaultScreen = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemInitialize = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemInitializeCleanOffice = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemInitializeOffice = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.StatusStrip1 = new System.Windows.Forms.StatusStrip();
             this.ToolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.PanelUp = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.DateTimePickerOperationDate = new System.Windows.Forms.DateTimePicker();
+            this.ButtonUpdate = new System.Windows.Forms.Button();
             this.TabControlEx1 = new ControlEx.TabControlEx();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.TableLayoutPanelEx1 = new ControlEx.TableLayoutPanelEx();
@@ -77,6 +82,7 @@
             this.MenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItemMenu,
             this.ToolStripMenuItemDisplay,
+            this.ToolStripMenuItemInitialize,
             this.ToolStripMenuItemHelp});
             this.MenuStrip1.Location = new System.Drawing.Point(0, 0);
             this.MenuStrip1.Name = "MenuStrip1";
@@ -124,6 +130,29 @@
             this.ToolStripMenuItemDefaultScreen.Text = "通常画面表示にする";
             this.ToolStripMenuItemDefaultScreen.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
+            // ToolStripMenuItemInitialize
+            // 
+            this.ToolStripMenuItemInitialize.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemInitializeCleanOffice,
+            this.ToolStripMenuItemInitializeOffice});
+            this.ToolStripMenuItemInitialize.Name = "ToolStripMenuItemInitialize";
+            this.ToolStripMenuItemInitialize.Size = new System.Drawing.Size(55, 20);
+            this.ToolStripMenuItemInitialize.Text = "初期化";
+            // 
+            // ToolStripMenuItemInitializeCleanOffice
+            // 
+            this.ToolStripMenuItemInitializeCleanOffice.Enabled = false;
+            this.ToolStripMenuItemInitializeCleanOffice.Name = "ToolStripMenuItemInitializeCleanOffice";
+            this.ToolStripMenuItemInitializeCleanOffice.Size = new System.Drawing.Size(267, 22);
+            this.ToolStripMenuItemInitializeCleanOffice.Text = "清掃事務所への本番登録で初期化する";
+            // 
+            // ToolStripMenuItemInitializeOffice
+            // 
+            this.ToolStripMenuItemInitializeOffice.Name = "ToolStripMenuItemInitializeOffice";
+            this.ToolStripMenuItemInitializeOffice.Size = new System.Drawing.Size(267, 22);
+            this.ToolStripMenuItemInitializeOffice.Text = "社内での本番登録で初期化する";
+            this.ToolStripMenuItemInitializeOffice.Click += new System.EventHandler(this.ToolStripMenuItemInitializeOffice_Click);
+            // 
             // ToolStripMenuItemHelp
             // 
             this.ToolStripMenuItemHelp.Name = "ToolStripMenuItemHelp";
@@ -151,22 +180,44 @@
             // PanelUp
             // 
             this.TableLayoutPanelBase.SetColumnSpan(this.PanelUp, 3);
-            this.PanelUp.Controls.Add(this.button1);
+            this.PanelUp.Controls.Add(this.label1);
+            this.PanelUp.Controls.Add(this.DateTimePickerOperationDate);
+            this.PanelUp.Controls.Add(this.ButtonUpdate);
             this.PanelUp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelUp.Location = new System.Drawing.Point(3, 27);
             this.PanelUp.Name = "PanelUp";
             this.PanelUp.Size = new System.Drawing.Size(1898, 60);
             this.PanelUp.TabIndex = 2;
             // 
-            // button1
+            // label1
             // 
-            this.button1.Location = new System.Drawing.Point(1668, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(180, 36);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(36, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 15);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "配車日付";
+            // 
+            // DateTimePickerOperationDate
+            // 
+            this.DateTimePickerOperationDate.CustomFormat = "yyyy年MM月dd日(ddd)";
+            this.DateTimePickerOperationDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.DateTimePickerOperationDate.Location = new System.Drawing.Point(96, 16);
+            this.DateTimePickerOperationDate.Name = "DateTimePickerOperationDate";
+            this.DateTimePickerOperationDate.Size = new System.Drawing.Size(144, 23);
+            this.DateTimePickerOperationDate.TabIndex = 1;
+            this.DateTimePickerOperationDate.Value = new System.DateTime(2022, 10, 7, 0, 0, 0, 0);
+            // 
+            // ButtonUpdate
+            // 
+            this.ButtonUpdate.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ButtonUpdate.Location = new System.Drawing.Point(1668, 12);
+            this.ButtonUpdate.Name = "ButtonUpdate";
+            this.ButtonUpdate.Size = new System.Drawing.Size(180, 36);
+            this.ButtonUpdate.TabIndex = 0;
+            this.ButtonUpdate.Text = "最 新 化";
+            this.ButtonUpdate.UseVisualStyleBackColor = true;
+            this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
             // 
             // TabControlEx1
             // 
@@ -343,6 +394,7 @@
             this.StatusStrip1.ResumeLayout(false);
             this.StatusStrip1.PerformLayout();
             this.PanelUp.ResumeLayout(false);
+            this.PanelUp.PerformLayout();
             this.TabControlEx1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
@@ -361,7 +413,7 @@
         private ToolStripMenuItem ToolStripMenuItemExit;
         private Panel PanelUp;
         private ToolStripMenuItem ToolStripMenuItemDisplay;
-        private Button button1;
+        private Button ButtonUpdate;
         private ControlEx.TableLayoutPanelEx TableLayoutPanelEx1;
         private ControlEx.TabControlEx TabControlEx1;
         private TabPage tabPage1;
@@ -369,5 +421,10 @@
         private ControlEx.TableLayoutPanelEx TableLayoutPanelEx2;
         private ToolStripMenuItem ToolStripMenuItemAllScreen;
         private ToolStripMenuItem ToolStripMenuItemDefaultScreen;
+        private ToolStripMenuItem ToolStripMenuItemInitialize;
+        private ToolStripMenuItem ToolStripMenuItemInitializeCleanOffice;
+        private ToolStripMenuItem ToolStripMenuItemInitializeOffice;
+        private Label label1;
+        private DateTimePicker DateTimePickerOperationDate;
     }
 }

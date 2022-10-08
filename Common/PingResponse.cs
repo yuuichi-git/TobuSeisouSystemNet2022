@@ -11,11 +11,10 @@ namespace Common {
 
             PingReply reply = ping.Send(ipAddress);
             if (reply.Status == IPStatus.Success) {
-                Console.WriteLine("Reply from {0}: bytes={1} time={2}ms TTL={3}",
+                Console.WriteLine("Reply from {0}: bytes={1} time={2}ms",
                                         reply.Address,
                                         reply.Buffer.Length,
-                                        reply.RoundtripTime,
-                                        reply.Options.Ttl);
+                                        reply.RoundtripTime);
                 status = true;
             } else {
                 Console.WriteLine(reply.Status);

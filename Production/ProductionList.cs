@@ -12,10 +12,6 @@ using Vo;
 namespace Production {
     public partial class ProductionList : Form {
         /// <summary>
-        /// Connectionを保持
-        /// </summary>
-        private readonly ConnectionVo _connectionVo;
-        /// <summary>
         /// インスタンス作成
         /// </summary>
         private InitializeForm _initializeForm = new();
@@ -39,7 +35,6 @@ namespace Production {
         private readonly TextBox[] _arrayTextBoxMemo;
         private readonly Button[] _arrayButtonCopy;
         public ProductionList(ConnectionVo connectionVo) {
-            _connectionVo = connectionVo;
             /*
              * DBを読込
              */
@@ -178,7 +173,7 @@ namespace Production {
                  */
                 _listVehicleDispatchBodyVo = _vehicleDispatchBodyDao.SelectAllVehicleDispatchBodyVo();
                 MessageBox.Show(MessageText.Message202, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ToolStripStatusLabelDetail.Text = string.Concat(nestedClassSetMasterVo.SetMasterVo.Set_name,"を更新に成功しました");
+                ToolStripStatusLabelDetail.Text = string.Concat(nestedClassSetMasterVo.SetMasterVo.Set_name, "を更新に成功しました");
             } catch {
                 ToolStripStatusLabelDetail.Text = string.Concat(nestedClassSetMasterVo.SetMasterVo.Set_name, "を更新に失敗しました");
             }
@@ -463,9 +458,9 @@ namespace Production {
             if (sender == null)
                 return;
             // メモリ確保
-            var carMasterVo = new CarMasterVo();
             var nestedClassSetMasterVo = (NestedClassSetMasterVo)((LabelEx)sender).Tag;
-            var vehicleDispatchHeadVo = _listVehicleDispatchHeadVo.Find(x => x.Cell_number == nestedClassSetMasterVo.Cell_number);
+            var carMasterVo = new CarMasterVo();
+            var staffMasterVo = new StaffMasterVo();
 
             LabelCellNumber.Text = nestedClassSetMasterVo.Cell_number.ToString();
             LabelSetName.Tag = nestedClassSetMasterVo;
@@ -484,28 +479,28 @@ namespace Production {
                     _arrayComboBoxCar[Array.IndexOf(_DayOfWeek, vehicleDispatchBodyVo.Day_of_week)].Text = string.Concat(carMasterVo.Registration_number, " (", carMasterVo.Door_number, ")");
                 }
                 // Staff1
-                var staffMasterVo1 = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchBodyVo.Operator_code_1);
-                if (staffMasterVo1 != null) {
-                    _arrayComboBoxStaff1[Array.IndexOf(_DayOfWeek, vehicleDispatchBodyVo.Day_of_week)].Tag = staffMasterVo1;
-                    _arrayComboBoxStaff1[Array.IndexOf(_DayOfWeek, vehicleDispatchBodyVo.Day_of_week)].Text = staffMasterVo1.Name;
+                staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchBodyVo.Operator_code_1);
+                if (staffMasterVo != null) {
+                    _arrayComboBoxStaff1[Array.IndexOf(_DayOfWeek, vehicleDispatchBodyVo.Day_of_week)].Tag = staffMasterVo;
+                    _arrayComboBoxStaff1[Array.IndexOf(_DayOfWeek, vehicleDispatchBodyVo.Day_of_week)].Text = staffMasterVo.Display_name;
                 }
                 // Staff2
-                var staffMasterVo2 = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchBodyVo.Operator_code_2);
-                if (staffMasterVo2 != null) {
-                    _arrayComboBoxStaff2[Array.IndexOf(_DayOfWeek, vehicleDispatchBodyVo.Day_of_week)].Tag = staffMasterVo2;
-                    _arrayComboBoxStaff2[Array.IndexOf(_DayOfWeek, vehicleDispatchBodyVo.Day_of_week)].Text = staffMasterVo2.Name;
+                staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchBodyVo.Operator_code_2);
+                if (staffMasterVo != null) {
+                    _arrayComboBoxStaff2[Array.IndexOf(_DayOfWeek, vehicleDispatchBodyVo.Day_of_week)].Tag = staffMasterVo;
+                    _arrayComboBoxStaff2[Array.IndexOf(_DayOfWeek, vehicleDispatchBodyVo.Day_of_week)].Text = staffMasterVo.Display_name;
                 }
                 // Staff3
-                var staffMasterVo3 = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchBodyVo.Operator_code_3);
-                if (staffMasterVo3 != null) {
-                    _arrayComboBoxStaff3[Array.IndexOf(_DayOfWeek, vehicleDispatchBodyVo.Day_of_week)].Tag = staffMasterVo3;
-                    _arrayComboBoxStaff3[Array.IndexOf(_DayOfWeek, vehicleDispatchBodyVo.Day_of_week)].Text = staffMasterVo3.Name;
+                staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchBodyVo.Operator_code_3);
+                if (staffMasterVo != null) {
+                    _arrayComboBoxStaff3[Array.IndexOf(_DayOfWeek, vehicleDispatchBodyVo.Day_of_week)].Tag = staffMasterVo;
+                    _arrayComboBoxStaff3[Array.IndexOf(_DayOfWeek, vehicleDispatchBodyVo.Day_of_week)].Text = staffMasterVo.Display_name;
                 }
                 // Staff4
-                var staffMasterVo4 = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchBodyVo.Operator_code_4);
-                if (staffMasterVo4 != null) {
-                    _arrayComboBoxStaff4[Array.IndexOf(_DayOfWeek, vehicleDispatchBodyVo.Day_of_week)].Tag = staffMasterVo4;
-                    _arrayComboBoxStaff4[Array.IndexOf(_DayOfWeek, vehicleDispatchBodyVo.Day_of_week)].Text = staffMasterVo4.Name;
+                staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchBodyVo.Operator_code_4);
+                if (staffMasterVo != null) {
+                    _arrayComboBoxStaff4[Array.IndexOf(_DayOfWeek, vehicleDispatchBodyVo.Day_of_week)].Tag = staffMasterVo;
+                    _arrayComboBoxStaff4[Array.IndexOf(_DayOfWeek, vehicleDispatchBodyVo.Day_of_week)].Text = staffMasterVo.Display_name;
                 }
                 // Note
                 _arrayTextBoxMemo[Array.IndexOf(_DayOfWeek, vehicleDispatchBodyVo.Day_of_week)].Text = vehicleDispatchBodyVo.Note;

@@ -1,6 +1,3 @@
-/*
- * 
- */
 using Common;
 
 using ControlEx;
@@ -15,6 +12,7 @@ namespace VehicleDispatch {
         /// Connectionを保持
         /// </summary>
         private readonly ConnectionVo _connectionVo;
+        private readonly DefaultValue _defaultValue = new();
         /// <summary>
         /// インスタンス作成
         /// </summary>
@@ -22,6 +20,7 @@ namespace VehicleDispatch {
         private List<SetMasterVo> _listSetMasterVo = new();
         private List<CarMasterVo> _listCarMasterVo = new();
         private List<StaffMasterVo> _listStaffMasterVo = new();
+        private VehicleDispatchDetailDao _vehicleDispatchDetailDao;
 
         public VehicleDispatchBoad(ConnectionVo connectionVo) {
             _connectionVo = connectionVo;
@@ -29,6 +28,7 @@ namespace VehicleDispatch {
             _listSetMasterVo = new SetMasterDao(connectionVo).SelectAllSetMasterVo();
             _listCarMasterVo = new CarMasterDao(connectionVo).SelectAllCarMaster();
             _listStaffMasterVo = new StaffMasterDao(connectionVo).SelectAllStaffMasterVo();
+            _vehicleDispatchDetailDao = new VehicleDispatchDetailDao(connectionVo);
             // Formを初期化する
             InitializeComponent();
             _initializeForm.VehicleDispatchBoad(this);
@@ -40,7 +40,95 @@ namespace VehicleDispatch {
         public static void Main() {
         }
 
-        private void button1_Click(object sender, EventArgs e) {
+        /// <summary>
+        /// ToolStripMenuItemInitializeOffice_Click
+        /// 社内での本番登録で初期化する
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItemInitializeOffice_Click(object sender, EventArgs e) {
+            var operationDate = DateTimePickerOperationDate.Value.Date;
+            if (_vehicleDispatchDetailDao.CheckVehicleDispatchDetail(operationDate)) {
+                var dialogResult = MessageBox.Show(MessageText.Message301, MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                switch (dialogResult) {
+                    case DialogResult.OK:
+                        // DELETE
+                        _vehicleDispatchDetailDao.DeleteVehicleDispatchDetail(operationDate);
+                        // INSERT
+                        SetVehicleDispatchDetail();
+                        break;
+                    case DialogResult.Cancel:
+                        return;
+                }
+            } else {
+                // INSERT
+                SetVehicleDispatchDetail();
+            };
+        }
+
+        /// <summary>
+        /// SetVehicleDispatchDetail
+        /// 本番登録で初期化する
+        /// HeadとBodyからデータをSelectして加工
+        /// </summary>
+        private void SetVehicleDispatchDetail() {
+            var defaultDateTime = new DateTime(1900, 01, 01);
+            var operationDate = DateTimePickerOperationDate.Value.Date;
+            var newListVehicleDispatchDetailVo = new List<VehicleDispatchDetailVo>();
+            var oldListVehicleDispatchDetailVo = _vehicleDispatchDetailDao.SelectVehicleDispatch(new DateTime(2022, 04, 01), "月");
+            foreach (var oldVehicleDispatchDetailVo in oldListVehicleDispatchDetailVo) {
+                var newVehicleDispatchDetailVo = new VehicleDispatchDetailVo();
+                newVehicleDispatchDetailVo.Cell_number = oldVehicleDispatchDetailVo.Cell_number;
+                newVehicleDispatchDetailVo.Operation_date = operationDate;
+                newVehicleDispatchDetailVo.Garage_flag = oldVehicleDispatchDetailVo.Garage_flag;
+                newVehicleDispatchDetailVo.Five_lap = oldVehicleDispatchDetailVo.Five_lap;
+                newVehicleDispatchDetailVo.Day_of_week = oldVehicleDispatchDetailVo.Day_of_week;
+                newVehicleDispatchDetailVo.Set_code = oldVehicleDispatchDetailVo.Set_code;
+                newVehicleDispatchDetailVo.Set_note = "";
+                newVehicleDispatchDetailVo.Car_code = oldVehicleDispatchDetailVo.Car_code;
+                newVehicleDispatchDetailVo.Car_proxy_flag = false;
+                newVehicleDispatchDetailVo.Car_note = "";
+                newVehicleDispatchDetailVo.Number_of_people = oldVehicleDispatchDetailVo.Number_of_people;
+                newVehicleDispatchDetailVo.Operator_code_1 = oldVehicleDispatchDetailVo.Operator_code_1;
+                newVehicleDispatchDetailVo.Operator_1_proxy_flag = false;
+                newVehicleDispatchDetailVo.Operator_1_roll_call_ymd_hms = defaultDateTime;
+                newVehicleDispatchDetailVo.Operator_1_note = "";
+                newVehicleDispatchDetailVo.Operator_code_2 = oldVehicleDispatchDetailVo.Operator_code_2;
+                newVehicleDispatchDetailVo.Operator_2_proxy_flag = false;
+                newVehicleDispatchDetailVo.Operator_2_roll_call_ymd_hms = defaultDateTime;
+                newVehicleDispatchDetailVo.Operator_2_note = "";
+                newVehicleDispatchDetailVo.Operator_code_3 = oldVehicleDispatchDetailVo.Operator_code_3;
+                newVehicleDispatchDetailVo.Operator_3_proxy_flag = false;
+                newVehicleDispatchDetailVo.Operator_3_roll_call_ymd_hms = defaultDateTime;
+                newVehicleDispatchDetailVo.Operator_3_note = "";
+                newVehicleDispatchDetailVo.Operator_code_4 = oldVehicleDispatchDetailVo.Operator_code_4;
+                newVehicleDispatchDetailVo.Operator_4_proxy_flag = false;
+                newVehicleDispatchDetailVo.Operator_4_roll_call_ymd_hms = defaultDateTime;
+                newVehicleDispatchDetailVo.Operator_4_note = "";
+                newVehicleDispatchDetailVo.Insert_pc_name = "";
+                newVehicleDispatchDetailVo.Insert_ymd_hms = DateTime.Now;
+                newVehicleDispatchDetailVo.Update_pc_name = "";
+                newVehicleDispatchDetailVo.Update_ymd_hms = defaultDateTime;
+                newVehicleDispatchDetailVo.Delete_pc_name = "";
+                newVehicleDispatchDetailVo.Delete_ymd_hms = defaultDateTime;
+                newVehicleDispatchDetailVo.Delete_flag = false;
+                newListVehicleDispatchDetailVo.Add(newVehicleDispatchDetailVo);
+            }
+            // INSERT
+            _vehicleDispatchDetailDao.InsertVehicleDispatchDetail(newListVehicleDispatchDetailVo);
+        }
+
+        /// <summary>
+        /// 最新化
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonUpdate_Click(object sender, EventArgs e) {
+            var operationDate = DateTimePickerOperationDate.Value.Date;
+            if (!_vehicleDispatchDetailDao.CheckVehicleDispatchDetail(operationDate))
+                MessageBox.Show(MessageText.Message302, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+
 
             var vehicleDispatchControlVo = new VehicleDispatchBoadVo();
             vehicleDispatchControlVo.Column = 0;
