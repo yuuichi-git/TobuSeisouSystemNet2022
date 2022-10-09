@@ -120,7 +120,6 @@
             this.ToolStripMenuItemAllScreen.ShortcutKeyDisplayString = "Shift+A";
             this.ToolStripMenuItemAllScreen.Size = new System.Drawing.Size(221, 22);
             this.ToolStripMenuItemAllScreen.Text = "全画面表示にする";
-            this.ToolStripMenuItemAllScreen.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // ToolStripMenuItemDefaultScreen
             // 
@@ -128,7 +127,6 @@
             this.ToolStripMenuItemDefaultScreen.ShortcutKeyDisplayString = "Shift+D";
             this.ToolStripMenuItemDefaultScreen.Size = new System.Drawing.Size(221, 22);
             this.ToolStripMenuItemDefaultScreen.Text = "通常画面表示にする";
-            this.ToolStripMenuItemDefaultScreen.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // ToolStripMenuItemInitialize
             // 
@@ -151,7 +149,6 @@
             this.ToolStripMenuItemInitializeOffice.Name = "ToolStripMenuItemInitializeOffice";
             this.ToolStripMenuItemInitializeOffice.Size = new System.Drawing.Size(267, 22);
             this.ToolStripMenuItemInitializeOffice.Text = "社内での本番登録で初期化する";
-            this.ToolStripMenuItemInitializeOffice.Click += new System.EventHandler(this.ToolStripMenuItemInitializeOffice_Click);
             // 
             // ToolStripMenuItemHelp
             // 
@@ -217,7 +214,6 @@
             this.ButtonUpdate.TabIndex = 0;
             this.ButtonUpdate.Text = "最 新 化";
             this.ButtonUpdate.UseVisualStyleBackColor = true;
-            this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
             // 
             // TabControlEx1
             // 
@@ -382,6 +378,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
             this.Controls.Add(this.TableLayoutPanelBase);
+            this.KeyPreview = true;
             this.MainMenuStrip = this.MenuStrip1;
             this.Name = "VehicleDispatchBoad";
             this.Text = "VehicleDispatchBoad";

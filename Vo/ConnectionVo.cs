@@ -31,10 +31,10 @@ namespace Vo {
         public void Connect() {
             switch (Environment.MachineName) {
                 case "LAPTOP-LI7NSQIT":
-                    _serverName = new PingResponse().GetPingResponse("192.168.1.88") ? "192.168.1.88" : "(Local)";
+                    _serverName = new PingResponse().GetPingResponse("192.168.1.21") ? @"TOBUSERVER\SQLEXPRESS" : "(Local)";
                     break;
                 default:
-                    _serverName = "192.168.1.88"; // 本番サーバーアドレス
+                    _serverName = @"TOBUSERVER\SQLEXPRESS"; // 本番サーバーアドレス
                     break;
             }
             string connectionString = "Data Source = " + _serverName + ";"

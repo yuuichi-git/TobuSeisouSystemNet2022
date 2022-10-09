@@ -70,7 +70,7 @@ namespace Vo.Properties {
         }
         
         /// <summary>
-        ///   sa に類似しているローカライズされた文字列を検索します。
+        ///   yuuichi に類似しているローカライズされた文字列を検索します。
         /// </summary>
         internal static string UserName {
             get {

@@ -2,7 +2,7 @@
  * 2022/08/21
  */
 namespace Common {
-    public class InitializeForm {
+    public  class InitializeForm {
         private const float TopWidthMaxSize = 66F;
         private const float TopWidthMinSize = 0F;
         private const float LeftWidthMaxSize = 360F;

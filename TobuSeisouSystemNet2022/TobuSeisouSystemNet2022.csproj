@@ -19,4 +19,8 @@
     <ProjectReference Include="..\Vo\Vo.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
 </Project>
