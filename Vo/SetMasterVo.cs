@@ -17,6 +17,7 @@ namespace Vo {
         private int _number_of_people;
         private string _working_days = "";
         private bool _five_lap;
+        private bool _move_flag;
         private string _remarks = "";
         private DateTime _insert_ymd_hms;
         private DateTime _update_ymd_hms;
@@ -114,6 +115,14 @@ namespace Vo {
         public bool Five_lap {
             get => _five_lap;
             set => _five_lap = value;
+        }
+        /// <summary>
+        /// 移動フラグ
+        /// true:移動できる false:移動できない
+        /// </summary>
+        public bool Move_flag {
+            get => _move_flag;
+            set => _move_flag = value;
         }
         /// <summary>
         /// 備考

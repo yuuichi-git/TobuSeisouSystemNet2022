@@ -15,7 +15,7 @@ namespace Dao {
         /// SelectAllSetMasterVo
         /// </summary>
         /// <returns></returns>
-        public List<SetMasterVo> SelectAllSetMasterVo() {
+        public List<SetMasterVo> SelectAllSetMaster() {
             var listSetMasterVo = new List<SetMasterVo>();
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT word_code," +
@@ -31,6 +31,7 @@ namespace Dao {
                                             "number_of_people," +
                                             "working_days," +
                                             "five_lap," +
+                                            "move_flag," +
                                             "remarks," +
                                             "insert_ymd_hms," +
                                             "update_ymd_hms," +
@@ -53,6 +54,7 @@ namespace Dao {
                     setMasterVo.Number_of_people = _defaultValue.GetDefaultValue<int>(sqlDataReader["number_of_people"]);
                     setMasterVo.Working_days = _defaultValue.GetDefaultValue<string>(sqlDataReader["working_days"]);
                     setMasterVo.Five_lap = _defaultValue.GetDefaultValue<bool>(sqlDataReader["five_lap"]);
+                    setMasterVo.Move_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["move_flag"]);
                     setMasterVo.Remarks = _defaultValue.GetDefaultValue<string>(sqlDataReader["remarks"]);
                     setMasterVo.Insert_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["insert_ymd_hms"]);
                     setMasterVo.Update_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["update_ymd_hms"]);

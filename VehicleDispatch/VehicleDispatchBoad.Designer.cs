@@ -23,6 +23,7 @@
         ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.TableLayoutPanelBase = new System.Windows.Forms.TableLayoutPanel();
             this.MenuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ToolStripMenuItemMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -32,10 +33,11 @@
             this.ToolStripMenuItemDefaultScreen = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemInitialize = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemInitializeCleanOffice = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemInitializeOffice = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemInitializeCompanyOffice = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.StatusStrip1 = new System.Windows.Forms.StatusStrip();
             this.ToolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ToolStripStatusLabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.PanelUp = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.DateTimePickerOperationDate = new System.Windows.Forms.DateTimePicker();
@@ -45,6 +47,18 @@
             this.TableLayoutPanelEx1 = new ControlEx.TableLayoutPanelEx();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.TableLayoutPanelEx2 = new ControlEx.TableLayoutPanelEx();
+            this.ContextMenuStripSetLabel = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.配車先の情報ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.出庫地を変更するToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.本社より出庫ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.三郷より出庫ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.代車代番のFaxを作成するToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ContextMenuStripCarLabel = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.車両の情報ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ContextMenuStripStaffLabel = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.個人の情報ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ToolStripStatusLabelMemory = new System.Windows.Forms.ToolStripStatusLabel();
             this.TableLayoutPanelBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -52,6 +66,9 @@
             this.TabControlEx1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.ContextMenuStripSetLabel.SuspendLayout();
+            this.ContextMenuStripCarLabel.SuspendLayout();
+            this.ContextMenuStripStaffLabel.SuspendLayout();
             this.SuspendLayout();
             // 
             // TableLayoutPanelBase
@@ -132,7 +149,7 @@
             // 
             this.ToolStripMenuItemInitialize.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItemInitializeCleanOffice,
-            this.ToolStripMenuItemInitializeOffice});
+            this.ToolStripMenuItemInitializeCompanyOffice});
             this.ToolStripMenuItemInitialize.Name = "ToolStripMenuItemInitialize";
             this.ToolStripMenuItemInitialize.Size = new System.Drawing.Size(55, 20);
             this.ToolStripMenuItemInitialize.Text = "初期化";
@@ -143,12 +160,14 @@
             this.ToolStripMenuItemInitializeCleanOffice.Name = "ToolStripMenuItemInitializeCleanOffice";
             this.ToolStripMenuItemInitializeCleanOffice.Size = new System.Drawing.Size(267, 22);
             this.ToolStripMenuItemInitializeCleanOffice.Text = "清掃事務所への本番登録で初期化する";
+            this.ToolStripMenuItemInitializeCleanOffice.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
-            // ToolStripMenuItemInitializeOffice
+            // ToolStripMenuItemInitializeCompanyOffice
             // 
-            this.ToolStripMenuItemInitializeOffice.Name = "ToolStripMenuItemInitializeOffice";
-            this.ToolStripMenuItemInitializeOffice.Size = new System.Drawing.Size(267, 22);
-            this.ToolStripMenuItemInitializeOffice.Text = "社内での本番登録で初期化する";
+            this.ToolStripMenuItemInitializeCompanyOffice.Name = "ToolStripMenuItemInitializeCompanyOffice";
+            this.ToolStripMenuItemInitializeCompanyOffice.Size = new System.Drawing.Size(267, 22);
+            this.ToolStripMenuItemInitializeCompanyOffice.Text = "社内での本番登録で初期化する";
+            this.ToolStripMenuItemInitializeCompanyOffice.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // ToolStripMenuItemHelp
             // 
@@ -160,7 +179,10 @@
             // 
             this.TableLayoutPanelBase.SetColumnSpan(this.StatusStrip1, 3);
             this.StatusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripStatusLabel1});
+            this.ToolStripStatusLabel2,
+            this.ToolStripStatusLabelMemory,
+            this.ToolStripStatusLabel1,
+            this.ToolStripStatusLabelStatus});
             this.StatusStrip1.Location = new System.Drawing.Point(0, 1019);
             this.StatusStrip1.Name = "StatusStrip1";
             this.StatusStrip1.Size = new System.Drawing.Size(1904, 22);
@@ -171,8 +193,14 @@
             // ToolStripStatusLabel1
             // 
             this.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1";
-            this.ToolStripStatusLabel1.Size = new System.Drawing.Size(39, 17);
-            this.ToolStripStatusLabel1.Text = "Status";
+            this.ToolStripStatusLabel1.Size = new System.Drawing.Size(42, 17);
+            this.ToolStripStatusLabel1.Text = " Status";
+            // 
+            // ToolStripStatusLabelStatus
+            // 
+            this.ToolStripStatusLabelStatus.Name = "ToolStripStatusLabelStatus";
+            this.ToolStripStatusLabelStatus.Size = new System.Drawing.Size(145, 17);
+            this.ToolStripStatusLabelStatus.Text = "ToolStripStatusLabelStatus";
             // 
             // PanelUp
             // 
@@ -214,6 +242,7 @@
             this.ButtonUpdate.TabIndex = 0;
             this.ButtonUpdate.Text = "最 新 化";
             this.ButtonUpdate.UseVisualStyleBackColor = true;
+            this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
             // 
             // TabControlEx1
             // 
@@ -239,7 +268,6 @@
             // 
             // TableLayoutPanelEx1
             // 
-            this.TableLayoutPanelEx1.AllowDrop = true;
             this.TableLayoutPanelEx1.AutoScroll = true;
             this.TableLayoutPanelEx1.ColumnCount = 25;
             this.TableLayoutPanelEx1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
@@ -269,6 +297,7 @@
             this.TableLayoutPanelEx1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
             this.TableLayoutPanelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanelEx1.Location = new System.Drawing.Point(3, 3);
+            this.TableLayoutPanelEx1.MaximumSize = new System.Drawing.Size(1850, 0);
             this.TableLayoutPanelEx1.Name = "TableLayoutPanelEx1";
             this.TableLayoutPanelEx1.RowCount = 3;
             this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
@@ -342,6 +371,7 @@
             this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
             this.TableLayoutPanelEx2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanelEx2.Location = new System.Drawing.Point(3, 3);
+            this.TableLayoutPanelEx2.MaximumSize = new System.Drawing.Size(0, 1850);
             this.TableLayoutPanelEx2.Name = "TableLayoutPanelEx2";
             this.TableLayoutPanelEx2.RowCount = 3;
             this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
@@ -372,12 +402,93 @@
             this.TableLayoutPanelEx2.Size = new System.Drawing.Size(1164, 887);
             this.TableLayoutPanelEx2.TabIndex = 4;
             // 
+            // ContextMenuStripSetLabel
+            // 
+            this.ContextMenuStripSetLabel.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.配車先の情報ToolStripMenuItem,
+            this.出庫地を変更するToolStripMenuItem,
+            this.代車代番のFaxを作成するToolStripMenuItem});
+            this.ContextMenuStripSetLabel.Name = "ContextMenuStripSetLabel";
+            this.ContextMenuStripSetLabel.Size = new System.Drawing.Size(208, 70);
+            // 
+            // 配車先の情報ToolStripMenuItem
+            // 
+            this.配車先の情報ToolStripMenuItem.Name = "配車先の情報ToolStripMenuItem";
+            this.配車先の情報ToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.配車先の情報ToolStripMenuItem.Text = "配車先の情報";
+            // 
+            // 出庫地を変更するToolStripMenuItem
+            // 
+            this.出庫地を変更するToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.本社より出庫ToolStripMenuItem,
+            this.三郷より出庫ToolStripMenuItem});
+            this.出庫地を変更するToolStripMenuItem.Name = "出庫地を変更するToolStripMenuItem";
+            this.出庫地を変更するToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.出庫地を変更するToolStripMenuItem.Text = "出庫地を変更する";
+            // 
+            // 本社より出庫ToolStripMenuItem
+            // 
+            this.本社より出庫ToolStripMenuItem.Name = "本社より出庫ToolStripMenuItem";
+            this.本社より出庫ToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.本社より出庫ToolStripMenuItem.Text = "本社より出庫";
+            // 
+            // 三郷より出庫ToolStripMenuItem
+            // 
+            this.三郷より出庫ToolStripMenuItem.Name = "三郷より出庫ToolStripMenuItem";
+            this.三郷より出庫ToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.三郷より出庫ToolStripMenuItem.Text = "三郷より出庫";
+            // 
+            // 代車代番のFaxを作成するToolStripMenuItem
+            // 
+            this.代車代番のFaxを作成するToolStripMenuItem.Name = "代車代番のFaxを作成するToolStripMenuItem";
+            this.代車代番のFaxを作成するToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.代車代番のFaxを作成するToolStripMenuItem.Text = "代車・代番のFaxを作成する";
+            // 
+            // ContextMenuStripCarLabel
+            // 
+            this.ContextMenuStripCarLabel.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.車両の情報ToolStripMenuItem});
+            this.ContextMenuStripCarLabel.Name = "ContextMenuStripCarLabel";
+            this.ContextMenuStripCarLabel.Size = new System.Drawing.Size(133, 26);
+            // 
+            // 車両の情報ToolStripMenuItem
+            // 
+            this.車両の情報ToolStripMenuItem.Name = "車両の情報ToolStripMenuItem";
+            this.車両の情報ToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.車両の情報ToolStripMenuItem.Text = "車両の情報";
+            // 
+            // ContextMenuStripStaffLabel
+            // 
+            this.ContextMenuStripStaffLabel.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.個人の情報ToolStripMenuItem});
+            this.ContextMenuStripStaffLabel.Name = "ContextMenuStripStaffLabel";
+            this.ContextMenuStripStaffLabel.Size = new System.Drawing.Size(133, 26);
+            // 
+            // 個人の情報ToolStripMenuItem
+            // 
+            this.個人の情報ToolStripMenuItem.Name = "個人の情報ToolStripMenuItem";
+            this.個人の情報ToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.個人の情報ToolStripMenuItem.Text = "個人の情報";
+            // 
+            // ToolStripStatusLabel2
+            // 
+            this.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2";
+            this.ToolStripStatusLabel2.Size = new System.Drawing.Size(54, 17);
+            this.ToolStripStatusLabel2.Text = " Memory";
+            // 
+            // ToolStripStatusLabelMemory
+            // 
+            this.ToolStripStatusLabelMemory.Name = "ToolStripStatusLabelMemory";
+            this.ToolStripStatusLabelMemory.Size = new System.Drawing.Size(157, 17);
+            this.ToolStripStatusLabelMemory.Text = "ToolStripStatusLabelMemory";
+            // 
             // VehicleDispatchBoad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
             this.Controls.Add(this.TableLayoutPanelBase);
+            this.DoubleBuffered = true;
             this.KeyPreview = true;
             this.MainMenuStrip = this.MenuStrip1;
             this.Name = "VehicleDispatchBoad";
@@ -395,6 +506,9 @@
             this.TabControlEx1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.ContextMenuStripSetLabel.ResumeLayout(false);
+            this.ContextMenuStripCarLabel.ResumeLayout(false);
+            this.ContextMenuStripStaffLabel.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -420,8 +534,21 @@
         private ToolStripMenuItem ToolStripMenuItemDefaultScreen;
         private ToolStripMenuItem ToolStripMenuItemInitialize;
         private ToolStripMenuItem ToolStripMenuItemInitializeCleanOffice;
-        private ToolStripMenuItem ToolStripMenuItemInitializeOffice;
+        private ToolStripMenuItem ToolStripMenuItemInitializeCompanyOffice;
         private Label label1;
         private DateTimePicker DateTimePickerOperationDate;
+        private ContextMenuStrip ContextMenuStripSetLabel;
+        private ContextMenuStrip ContextMenuStripCarLabel;
+        private ContextMenuStrip ContextMenuStripStaffLabel;
+        private ToolStripMenuItem 出庫地を変更するToolStripMenuItem;
+        private ToolStripMenuItem 配車先の情報ToolStripMenuItem;
+        private ToolStripMenuItem 本社より出庫ToolStripMenuItem;
+        private ToolStripMenuItem 三郷より出庫ToolStripMenuItem;
+        private ToolStripMenuItem 代車代番のFaxを作成するToolStripMenuItem;
+        private ToolStripMenuItem 車両の情報ToolStripMenuItem;
+        private ToolStripMenuItem 個人の情報ToolStripMenuItem;
+        private ToolStripStatusLabel ToolStripStatusLabelStatus;
+        private ToolStripStatusLabel ToolStripStatusLabel2;
+        private ToolStripStatusLabel ToolStripStatusLabelMemory;
     }
 }

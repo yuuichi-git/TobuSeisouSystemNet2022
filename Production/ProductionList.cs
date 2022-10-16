@@ -38,9 +38,9 @@ namespace Production {
             /*
              * DB‚ğ“Ç
              */
-            _listSetMasterVo = new SetMasterDao(connectionVo).SelectAllSetMasterVo();
+            _listSetMasterVo = new SetMasterDao(connectionVo).SelectAllSetMaster();
             _listCarMasterVo = new CarMasterDao(connectionVo).SelectAllCarMaster();
-            _listStaffMasterVo = new StaffMasterDao(connectionVo).SelectAllStaffMasterVo();
+            _listStaffMasterVo = new StaffMasterDao(connectionVo).SelectAllStaffMaster();
             _vehicleDispatchHeadDao = new VehicleDispatchHeadDao(connectionVo);
             _listVehicleDispatchHeadVo = _vehicleDispatchHeadDao.SelectAllVehicleDispatchHeadVo();
             _vehicleDispatchBodyDao = new VehicleDispatchBodyDao(connectionVo);
@@ -195,7 +195,7 @@ namespace Production {
                 if (setCode.HasValue) {
                     setMasterVo = _listSetMasterVo.Find(x => x.Set_code == setCode);
                     if (setMasterVo != null) {
-                        var labelEx = new LabelEx().CreateLabel(setMasterVo);
+                        var labelEx = new SetLabelEx().CreateLabel(setMasterVo);
                         labelEx.Tag = new NestedClassSetMasterVo(i + 1, setMasterVo.Working_days, new DateTime(2022, 04, 01), setMasterVo);
                         labelEx.MouseClick += new MouseEventHandler(Label_MouseClick);
                         labelEx.MouseEnter += new EventHandler(Label_MouseEnter);
@@ -458,7 +458,7 @@ namespace Production {
             if (sender == null)
                 return;
             // ƒƒ‚ƒŠŠm•Û
-            var nestedClassSetMasterVo = (NestedClassSetMasterVo)((LabelEx)sender).Tag;
+            var nestedClassSetMasterVo = (NestedClassSetMasterVo)((SetLabelEx)sender).Tag;
             var carMasterVo = new CarMasterVo();
             var staffMasterVo = new StaffMasterVo();
 

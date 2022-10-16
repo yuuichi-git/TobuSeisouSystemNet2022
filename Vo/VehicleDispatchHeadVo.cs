@@ -7,6 +7,7 @@ namespace Vo {
         private bool _garage_flag; // 車庫地
         private string _day_of_week = ""; // 稼働曜日
         private bool _five_lap; // 第５週
+        private bool _move_flag; // 移動フラグ
         private int _set_code; // 組№
         private int _car_code; // 車両
         private int _number_of_people; // 配車基本人数
@@ -46,6 +47,14 @@ namespace Vo {
         public bool Five_lap {
             get => _five_lap;
             set => _five_lap = value;
+        }
+        /// <summary>
+        /// 移動フラグ
+        /// true:移動できる false:移動できない
+        /// </summary>
+        public bool Move_flag {
+            get => _move_flag;
+            set => _move_flag = value;
         }
         /// <summary>
         /// 組コード

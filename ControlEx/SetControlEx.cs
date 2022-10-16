@@ -2,10 +2,23 @@
 
 namespace ControlEx {
     public partial class SetControlEx : TableLayoutPanelEx {
-        private bool _setFlag = default;
-        private bool _stopCarFlag = default;
         private bool _garageFlag = default;
+        private bool _operationFlag = default;
         private int _productionNumberOfPeople = default;
+        private bool _setFlag = default;
+
+        /*
+         * イベントを親へ渡す処理
+         */
+        public event EventHandler? Event_SetControlEx_Click;
+        public event DragEventHandler? Event_SetControlEx_DragDrop;
+        public event DragEventHandler? Event_SetControlEx_DragEnter;
+        public event EventHandler? Event_SetLabelEx_Click;
+        public event MouseEventHandler? Event_SetLabelEx_MouseMove;
+        public event EventHandler? Event_CarLabelEx_Click;
+        public event MouseEventHandler? Event_CarLabelEx_MouseMove;
+        public event EventHandler? Event_StaffLabelEx_Click;
+        public event MouseEventHandler? Event_StaffLabelEx_MouseMove;
 
         /// <summary>
         /// コンストラクタ
@@ -27,22 +40,13 @@ namespace ControlEx {
             this.Dock = DockStyle.Fill;
             this.Margin = new Padding(0);
             /*
-             * イベントを登録
+             * SetControlExのイベントを登録
              */
             this.CellPaint += new TableLayoutCellPaintEventHandler(this.SetControlEx_CellPaint);
             this.Click += new EventHandler(this.SetControlEx_Click);
             this.DragDrop += new DragEventHandler(this.SetControlEx_DragDrop);
             this.DragEnter += new DragEventHandler(this.SetControlEx_DragEnter);
         }
-
-        /*
-         * イベントを親へ返す処理
-         */
-        public event EventHandler? Event_SetControlEx_Click;
-        public event DragEventHandler? Event_SetControlEx_DragDrop;
-        public event DragEventHandler? Event_SetControlEx_DragEnter;
-        public event EventHandler? Event_LabelExControl_Click;
-        public event MouseEventHandler? Event_LabelExControl_MouseMove;
 
         /// <summary>
         /// SetControlEx_CellPaint
@@ -58,7 +62,14 @@ namespace ControlEx {
                  */
                 switch (e.Row) {
                     case 0: // SetLabel
-                        ControlPaint.DrawBorder(e.Graphics, rectangle, GarageFlag ? Color.DarkGray : Color.Blue, ButtonBorderStyle.Solid);
+                            // GarageFlag
+                        if (!GarageFlag)
+                            e.Graphics.FillRectangle(Brushes.PowderBlue, rectangle);
+                        // OperationFlag
+                        if (!OperationFlag)
+                            e.Graphics.FillRectangle(Brushes.Pink, rectangle);
+                        // Border
+                        ControlPaint.DrawBorder(e.Graphics, rectangle, OperationFlag ? GarageFlag ? Color.DarkGray : Color.Blue : Color.Red, ButtonBorderStyle.Solid);
                         break;
                     case 1: // CarLabel
                         ControlPaint.DrawBorder(e.Graphics, rectangle, Color.DarkGray, ButtonBorderStyle.Dotted);
@@ -67,7 +78,7 @@ namespace ControlEx {
                 /*
                  * StaffLabelの部分
                  */
-                if (StopCarFlag) { // 配車日の場合
+                if (OperationFlag) { // 配車日の場合
                     if (e.Row < ProductionNumberOfPeople + 2) {
                         switch (e.Row) {
                             case 2: // StaffLabel1
@@ -95,10 +106,17 @@ namespace ControlEx {
         /// Labelのイベントはここで登録する
         /// </summary>
         /// <param name="setMasterVo"></param>
-        public void CreateLabel(SetMasterVo setMasterVo) {
-            var labelEx = new LabelEx().CreateLabel(setMasterVo);
-            labelEx.Click += new EventHandler(LabelControl_Click);
-            labelEx.MouseMove += new MouseEventHandler(LabelControl_MouseMove);
+        public void CreateLabel(SetMasterVo setMasterVo, ContextMenuStrip contextMenuStrip) {
+            var labelEx = new SetLabelEx().CreateLabel(setMasterVo);
+            /*
+             * プロパティを設定
+             */
+            labelEx.ContextMenuStrip = contextMenuStrip;
+            /*
+             * イベントを設定
+             */
+            labelEx.Click += new EventHandler(SetLabelEx_Click);
+            labelEx.MouseMove += new MouseEventHandler(SetLabelEx_MouseMove);
             this.Controls.Add(labelEx, 0, 0);
         }
 
@@ -107,10 +125,17 @@ namespace ControlEx {
         /// Labelのイベントはここで登録する
         /// </summary>
         /// <param name="carMasterVo"></param>
-        public void CreateLabel(CarMasterVo carMasterVo) {
-            var labelEx = new LabelEx().CreateLabel(carMasterVo);
-            labelEx.Click += new EventHandler(LabelControl_Click);
-            labelEx.MouseMove += new MouseEventHandler(LabelControl_MouseMove);
+        public void CreateLabel(CarMasterVo carMasterVo, ContextMenuStrip contextMenuStrip) {
+            var labelEx = new CarLabelEx().CreateLabel(carMasterVo);
+            /*
+             * プロパティを設定
+             */
+            labelEx.ContextMenuStrip = contextMenuStrip;
+            /*
+             * イベントを設定
+             */
+            labelEx.Click += new EventHandler(CarLabelEx_Click);
+            labelEx.MouseMove += new MouseEventHandler(CarLabelEx_MouseMove);
             this.Controls.Add(labelEx, 0, 1);
         }
 
@@ -120,10 +145,17 @@ namespace ControlEx {
         /// </summary>
         /// <param name="number">1:運転手 2:作業員1 3:作業員2 4:作業員3</param>
         /// <param name="staffMasterVo"></param>
-        public void CreateLabel(int number, StaffMasterVo staffMasterVo) {
-            var labelEx = new LabelEx().CreateLabel(staffMasterVo);
-            labelEx.Click += new EventHandler(LabelControl_Click);
-            labelEx.MouseMove += new MouseEventHandler(LabelControl_MouseMove);
+        public void CreateLabel(int number, StaffMasterVo staffMasterVo, ContextMenuStrip contextMenuStrip) {
+            var labelEx = new StaffLabelEx().CreateLabel(staffMasterVo);
+            /*
+             * プロパティを設定
+             */
+            labelEx.ContextMenuStrip = contextMenuStrip;
+            /*
+             * イベントを設定
+             */
+            labelEx.Click += new EventHandler(StaffLabelEx_Click);
+            labelEx.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
             this.Controls.Add(labelEx, 0, number + 2);
         }
 
@@ -139,15 +171,30 @@ namespace ControlEx {
             if (Event_SetControlEx_DragEnter != null)
                 Event_SetControlEx_DragEnter(sender, e);
         }
-        private void LabelControl_Click(object? sender, EventArgs e) {
-            if (Event_LabelExControl_Click != null)
-                Event_LabelExControl_Click(sender, e);
+        private void SetLabelEx_Click(object? sender, EventArgs e) {
+            if (Event_SetLabelEx_Click != null)
+                Event_SetLabelEx_Click(sender, e);
         }
-        private void LabelControl_MouseMove(object? sender, MouseEventArgs e) {
-            if (Event_LabelExControl_MouseMove != null)
-                Event_LabelExControl_MouseMove(sender, e);
+        private void SetLabelEx_MouseMove(object? sender, MouseEventArgs e) {
+            if (Event_SetLabelEx_MouseMove != null)
+                Event_SetLabelEx_MouseMove(sender, e);
         }
-
+        private void CarLabelEx_Click(object? sender, EventArgs e) {
+            if (Event_CarLabelEx_Click != null)
+                Event_CarLabelEx_Click(sender, e);
+        }
+        private void CarLabelEx_MouseMove(object? sender, MouseEventArgs e) {
+            if (Event_CarLabelEx_MouseMove != null)
+                Event_CarLabelEx_MouseMove(sender, e);
+        }
+        private void StaffLabelEx_Click(object? sender, EventArgs e) {
+            if (Event_StaffLabelEx_Click != null)
+                Event_StaffLabelEx_Click(sender, e);
+        }
+        private void StaffLabelEx_MouseMove(object? sender, MouseEventArgs e) {
+            if (Event_StaffLabelEx_MouseMove != null)
+                Event_StaffLabelEx_MouseMove(sender, e);
+        }
         /*
          * Setter Getter
          */
@@ -163,9 +210,9 @@ namespace ControlEx {
         /// 稼働フラグ
         /// true:稼働 false:休車
         /// </summary>
-        public bool StopCarFlag {
-            get => _stopCarFlag;
-            set => _stopCarFlag = value;
+        public bool OperationFlag {
+            get => _operationFlag;
+            set => _operationFlag = value;
         }
         /// <summary>
         /// 車庫地

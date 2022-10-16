@@ -11,7 +11,7 @@ namespace Dao {
             _connectionVo = connectionVo;
         }
 
-        public List<StaffMasterVo> SelectAllStaffMasterVo() {
+        public List<StaffMasterVo> SelectAllStaffMaster() {
             var listStaffMasterVo = new List<StaffMasterVo>();
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT staff_code," +

@@ -28,15 +28,15 @@ namespace Dao {
         /// <summary>
         /// SelectVehicleDispatch
         /// </summary>
-        /// <param name="financialYear"></param>
         /// <param name="dayOfWeek"></param>
         /// <returns></returns>
-        public List<VehicleDispatchDetailVo> SelectVehicleDispatch(DateTime financialYear, string dayOfWeek) {
+        public List<VehicleDispatchDetailVo> SelectVehicleDispatch(string dayOfWeek) {
             var listVehicleDispatchDetailVo = new List<VehicleDispatchDetailVo>();
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT vehicle_dispatch_head.cell_number," +
                                             "vehicle_dispatch_head.garage_flag," +
                                             "vehicle_dispatch_head.five_lap," +
+                                            "vehicle_dispatch_head.move_flag," +
                                             "vehicle_dispatch_body.day_of_week," +
                                             "vehicle_dispatch_head.set_code," +
                                             "vehicle_dispatch_head.car_code," +
@@ -55,6 +55,7 @@ namespace Dao {
                     vehicleDispatchDetailVo.Cell_number = _defaultValue.GetDefaultValue<int>(sqlDataReader["cell_number"]);
                     vehicleDispatchDetailVo.Garage_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["garage_flag"]);
                     vehicleDispatchDetailVo.Five_lap = _defaultValue.GetDefaultValue<bool>(sqlDataReader["five_lap"]);
+                    vehicleDispatchDetailVo.Move_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["move_flag"]);
                     vehicleDispatchDetailVo.Day_of_week = _defaultValue.GetDefaultValue<string>(sqlDataReader["day_of_week"]);
                     vehicleDispatchDetailVo.Set_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["set_code"]);
                     vehicleDispatchDetailVo.Car_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["car_code"]);
@@ -80,6 +81,7 @@ namespace Dao {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT cell_number," +
                                             "operation_date," +
+                                            "operation_flag," +
                                             "garage_flag," +
                                             "five_lap," +
                                             "day_of_week," +
@@ -119,6 +121,7 @@ namespace Dao {
                     var vehicleDispatchDetailVo = new VehicleDispatchDetailVo();
                     vehicleDispatchDetailVo.Cell_number = _defaultValue.GetDefaultValue<int>(sqlDataReader["cell_number"]);
                     vehicleDispatchDetailVo.Operation_date = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["operation_date"]);
+                    vehicleDispatchDetailVo.Operation_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["operation_flag"]);
                     vehicleDispatchDetailVo.Garage_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["garage_flag"]);
                     vehicleDispatchDetailVo.Five_lap = _defaultValue.GetDefaultValue<bool>(sqlDataReader["five_lap"]);
                     vehicleDispatchDetailVo.Day_of_week = _defaultValue.GetDefaultValue<string>(sqlDataReader["day_of_week"]);
@@ -167,6 +170,7 @@ namespace Dao {
             foreach (var vehicleDispatchDetailVo in listVehicleDispatchDetailVo) {
                 sqlString += "(" + _defaultValue.GetDefaultValue<int>(vehicleDispatchDetailVo.Cell_number) + "," +
                              "'" + _defaultValue.GetDefaultValue<DateTime>(vehicleDispatchDetailVo.Operation_date) + "'," +
+                             "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Operation_flag) + "'," +
                              "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Garage_flag) + "'," +
                              "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Five_lap) + "'," +
                              "'" + _defaultValue.GetDefaultValue<string>(vehicleDispatchDetailVo.Day_of_week) + "'," +
@@ -206,6 +210,7 @@ namespace Dao {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "INSERT INTO vehicle_dispatch_detail(cell_number," +
                                                                          "operation_date," +
+                                                                         "operation_flag," +
                                                                          "garage_flag," +
                                                                          "five_lap," +
                                                                          "day_of_week," +

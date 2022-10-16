@@ -2,8 +2,10 @@
     public class VehicleDispatchDetailVo {
         private int _cell_number;
         private DateTime _operation_date;
+        private bool _operation_flag;
         private bool _garage_flag;
         private bool _five_lap;
+        private bool _move_flag;
         private string _day_of_week = "";
         private int _set_code;
         private string _set_note = "";
@@ -50,6 +52,14 @@
             set => _operation_date = value;
         }
         /// <summary>
+        /// 稼働フラグ
+        /// true:稼働 false:休車
+        /// </summary>
+        public bool Operation_flag {
+            get => _operation_flag;
+            set => _operation_flag = value;
+        }
+        /// <summary>
         /// 車庫地
         /// true:足立 false:三郷
         /// </summary>
@@ -64,6 +74,14 @@
         public bool Five_lap {
             get => _five_lap;
             set => _five_lap = value;
+        }
+        /// <summary>
+        /// 移動フラグ
+        /// true:移動できる false:移動できない
+        /// </summary>
+        public bool Move_flag {
+            get => _move_flag;
+            set => _move_flag = value;
         }
         /// <summary>
         /// 稼働日
