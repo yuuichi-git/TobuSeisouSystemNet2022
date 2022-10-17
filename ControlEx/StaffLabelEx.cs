@@ -2,10 +2,34 @@
 
 namespace ControlEx {
     public partial class StaffLabelEx : Label {
+        private StaffMasterVo _staffMasterVo;
         private const int _staffLabelHeight = 38;
         private const int _staffLabelWidth = 70;
+        private Pen _borderColor = Pens.White;
 
-        public StaffLabelEx() {
+        public StaffLabelEx(StaffMasterVo staffMasterVo) {
+            _staffMasterVo = staffMasterVo;
+            switch (staffMasterVo.Belongs) {
+                case 10: // 役員
+                case 11: // 社員
+                    _borderColor = Pens.Gray;
+                    break;
+                case 12: // アルバイト
+                    _borderColor = Pens.DarkOrange;
+                    break;
+                case 20: // 新運転
+                case 21: // 自運労
+                    switch (staffMasterVo.Job_form) {
+                        case 10: // 長期雇用
+                            _borderColor = Pens.WhiteSmoke;
+                            break;
+                        case 11: // 手帳
+                        case 12: // アルバイト
+                            _borderColor = Pens.Green;
+                            break;
+                    }
+                    break;
+            }
             InitializeComponent();
             /*
              * StaffControlExのイベントを登録
@@ -14,9 +38,8 @@ namespace ControlEx {
         }
 
         private void LabelEx_CellPaint(object? sender, PaintEventArgs e) {
-            Rectangle rectangle = e.ClipRectangle;
-            rectangle.Inflate(-2, -2); // 枠のサイズを小さくする
-            e.Graphics.DrawRectangle(Pens.Green, rectangle);
+            Rectangle rectangle = new Rectangle(0, 0, 67, 33);
+            e.Graphics.DrawRectangle(_borderColor, rectangle);
         }
 
         /// <summary>
@@ -24,13 +47,13 @@ namespace ControlEx {
         /// </summary>
         /// <param name="staffMasterVo"></param>
         /// <returns></returns>
-        public StaffLabelEx CreateLabel(StaffMasterVo staffMasterVo) {
+        public StaffLabelEx CreateLabel() {
             this.BorderStyle = BorderStyle.FixedSingle;
             this.Font = new Font("Yu Gothic UI", 11, FontStyle.Regular, GraphicsUnit.Pixel);
             this.Height = _staffLabelHeight;
             this.Margin = new Padding(2);
-            this.Tag = staffMasterVo;
-            this.Text = staffMasterVo.Display_name;
+            this.Tag = _staffMasterVo;
+            this.Text = _staffMasterVo.Display_name;
             this.TextAlign = ContentAlignment.MiddleCenter;
             this.Width = _staffLabelWidth;
             return this;

@@ -15,7 +15,15 @@ namespace VehicleDispatch {
         private List<SetMasterVo> _listSetMasterVo;
         private List<CarMasterVo> _listCarMasterVo;
         private List<StaffMasterVo> _listStaffMasterVo;
-        private TableLayoutPanel[] arrayTableLayoutPanel = new TableLayoutPanel[2];
+        private TableLayoutPanelEx[] _arrayTableLayoutPanelEx = new TableLayoutPanelEx[2];
+
+        /*
+         * Tabの開閉
+         */
+        private bool _TabControlLeftOpenFlag = false;
+        private int _TabControlLeftOpenBeforeIndex;
+        private bool _TabControlRightOpenFlag = false;
+        private int _TabControlRightOpenBeforeIndex;
 
         /// <summary>
         /// コンストラクタ
@@ -26,16 +34,28 @@ namespace VehicleDispatch {
              */
             InitializeComponent();
             _initializeForm.VehicleDispatchBoad(this);
+            /*
+             * Left
+             */
+            SetTableLayoutPanelLeftSide(false);
+            /*
+             * Center
+             */
             DateTimePickerOperationDate.Value = DateTime.Now;
             ToolStripStatusLabelMemory.Text = "";
             ToolStripStatusLabelStatus.Text = "";
+            /*
+             * Right
+             */
+            SetTableLayoutPanelRightSide(false);
 
             _vehicleDispatchDetailDao = new VehicleDispatchDetailDao(connectionVo);
             _listSetMasterVo = new SetMasterDao(connectionVo).SelectAllSetMaster();
             _listCarMasterVo = new CarMasterDao(connectionVo).SelectAllCarMaster();
             _listStaffMasterVo = new StaffMasterDao(connectionVo).SelectAllStaffMaster();
-            arrayTableLayoutPanel = new TableLayoutPanel[] { TableLayoutPanelEx1, TableLayoutPanelEx2 };
+            _arrayTableLayoutPanelEx = new TableLayoutPanelEx[] { TableLayoutPanelEx1, TableLayoutPanelEx2 };
         }
+
 
         /// <summary>
         /// エントリーポイント
@@ -61,8 +81,8 @@ namespace VehicleDispatch {
              * パネルを表示
              */
             // レイアウトロジックを非活性化
-            arrayTableLayoutPanel[0].SuspendLayout();
-            arrayTableLayoutPanel[1].SuspendLayout();
+            _arrayTableLayoutPanelEx[0].SuspendLayout();
+            _arrayTableLayoutPanelEx[1].SuspendLayout();
             // TableLayoutPanelをクリア
             TableLayoutPanelControlRemove(TableLayoutPanelEx1);
             TableLayoutPanelControlRemove(TableLayoutPanelEx2);
@@ -129,11 +149,11 @@ namespace VehicleDispatch {
                 setControlEx.Event_CarLabelEx_MouseMove += new MouseEventHandler(this.CarLabelEx_MouseMove);
                 setControlEx.Event_StaffLabelEx_Click += new EventHandler(this.StaffLabelEx_Click);
                 setControlEx.Event_StaffLabelEx_MouseMove += new MouseEventHandler(this.StaffLabelEx_MouseMove);
-                arrayTableLayoutPanel[tabNumber].Controls.Add(setControlEx, column, row);
+                _arrayTableLayoutPanelEx[tabNumber].Controls.Add(setControlEx, column, row);
             }
             // レイアウトロジックを活性化
-            arrayTableLayoutPanel[1].ResumeLayout();
-            arrayTableLayoutPanel[0].ResumeLayout();
+            _arrayTableLayoutPanelEx[1].ResumeLayout();
+            _arrayTableLayoutPanelEx[0].ResumeLayout();
         }
 
         /// <summary>
@@ -141,14 +161,10 @@ namespace VehicleDispatch {
         /// </summary>
         /// <param name="tableLayoutPanelEx"></param>
         private void TableLayoutPanelControlRemove(TableLayoutPanelEx tableLayoutPanelEx) {
-            foreach (Control item in tableLayoutPanelEx.Controls) {
-                item.Dispose();
-            }
+            tableLayoutPanelEx.Controls.Clear();
+
             ComputerInfo info = new ComputerInfo();
             ToolStripStatusLabelMemory.Text = string.Concat("合計物理メモリ:", info.TotalPhysicalMemory / 1024, " 利用可能物理メモリ:", info.AvailablePhysicalMemory / 1024);
-            //// メモリ使用量の取得
-            //label.Text = string.Format("合計物理メモリ:{0}KB\r\n利用可能物理メモリ:{1}KB\r\n合計仮想メモリ:{2}KB\r\n利用可能仮想メモリ:{3}KB",
-            //    (info.TotalPhysicalMemory / 1024), (info.AvailablePhysicalMemory / 1024), (info.TotalVirtualMemory / 1024), (info.AvailableVirtualMemory / 1024));
         }
 
         /// <summary>
@@ -278,7 +294,7 @@ namespace VehicleDispatch {
             /*
              * SetLabelEx
              */
-            if (e.Data.GetDataPresent(typeof(SetLabelEx))) {
+            if (e.Data != null && e.Data.GetDataPresent(typeof(SetLabelEx))) {
                 SetLabelEx dragItem = (SetLabelEx)e.Data.GetData(typeof(SetLabelEx));
                 if (((SetMasterVo)dragItem.Tag).Move_flag) {
                     if (setControlEx.GetControlFromPosition(0, 0) == null) {
@@ -314,28 +330,28 @@ namespace VehicleDispatch {
                         break;
                     case int i when i <= 180:
                         if (setControlEx.GetControlFromPosition(0, 2) == null) {
-                            setControlEx.Controls.Add((StaffLabelEx)dragItem, 0, 2);
+                            setControlEx.Controls.Add(dragItem, 0, 2);
                         } else {
                             ToolStripStatusLabelStatus.Text = string.Concat("運転手が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
                         }
                         break;
                     case int i when i <= 220:
                         if (setControlEx.GetControlFromPosition(0, 3) == null) {
-                            setControlEx.Controls.Add((StaffLabelEx)dragItem, 0, 3);
+                            setControlEx.Controls.Add(dragItem, 0, 3);
                         } else {
                             ToolStripStatusLabelStatus.Text = string.Concat("作業員1が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
                         }
                         break;
                     case int i when i <= 260:
                         if (setControlEx.GetControlFromPosition(0, 4) == null) {
-                            setControlEx.Controls.Add((StaffLabelEx)dragItem, 0, 4);
+                            setControlEx.Controls.Add(dragItem, 0, 4);
                         } else {
                             ToolStripStatusLabelStatus.Text = string.Concat("作業員2が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
                         }
                         break;
                     case int i when i <= 300:
                         if (setControlEx.GetControlFromPosition(0, 5) == null) {
-                            setControlEx.Controls.Add((StaffLabelEx)dragItem, 0, 5);
+                            setControlEx.Controls.Add(dragItem, 0, 5);
                         } else {
                             ToolStripStatusLabelStatus.Text = string.Concat("作業員3が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
                         }
@@ -373,6 +389,85 @@ namespace VehicleDispatch {
         private void StaffLabelEx_MouseMove(object sender, MouseEventArgs e) {
             if (sender != null && e.Button == MouseButtons.Left)
                 ((StaffLabelEx)sender).DoDragDrop(sender, DragDropEffects.Move);
+        }
+
+        private void FlowLayoutPanelEx_DragDrop(object sender, DragEventArgs e) {
+            // Dropを受け入れない
+            e.Effect = DragDropEffects.None;
+            /*
+             * CarLabelEx
+             */
+            if (e.Data != null && e.Data.GetDataPresent(typeof(CarLabelEx))) {
+                CarLabelEx dragItem = (CarLabelEx)e.Data.GetData(typeof(CarLabelEx));
+                MessageBox.Show("CarLabelEx");
+            }
+            /*
+             * StaffLabelEx
+             */
+            if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+                StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
+                MessageBox.Show("StaffLabelEx");
+            }
+        }
+
+        private void FlowLayoutPanelEx_DragEnter(object sender, DragEventArgs e) {
+            e.Effect = DragDropEffects.Move;
+        }
+
+        /// <summary>
+        /// SetTableLayoutPanelLeftSide
+        /// </summary>
+        /// <param name="flag"></param>
+        private void SetTableLayoutPanelLeftSide(bool flag) {
+            TableLayoutPanelBase.ColumnStyles[0] = new ColumnStyle(SizeType.Absolute, flag ? 360F : 34F);
+        }
+
+        /// <summary>
+        /// SetTableLayoutPanelRightSide
+        /// </summary>
+        /// <param name="flag"></param>
+        private void SetTableLayoutPanelRightSide(bool flag) {
+            TableLayoutPanelBase.ColumnStyles[2] = new ColumnStyle(SizeType.Absolute, flag ? 360F : 34F);
+        }
+
+        /// <summary>
+        /// 左側Tabをクリック
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TabControlExLeft_Click(object sender, EventArgs e) {
+            if (_TabControlLeftOpenFlag) {
+                if (((TabControlEx)sender).SelectedIndex == _TabControlLeftOpenBeforeIndex) {
+                    _TabControlLeftOpenFlag = false;
+                    SetTableLayoutPanelLeftSide(false);
+                } else {
+                    _TabControlLeftOpenBeforeIndex = ((TabControlEx)sender).SelectedIndex;
+                }
+            } else {
+                _TabControlLeftOpenFlag = true;
+                SetTableLayoutPanelLeftSide(true);
+                _TabControlLeftOpenBeforeIndex = ((TabControlEx)sender).SelectedIndex;
+            }
+        }
+
+        /// <summary>
+        /// 右側Tabをクリック
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TabControlExRight_Click(object sender, EventArgs e) {
+            if (_TabControlRightOpenFlag) {
+                if (((TabControlEx)sender).SelectedIndex == _TabControlRightOpenBeforeIndex) {
+                    _TabControlRightOpenFlag = false;
+                    SetTableLayoutPanelRightSide(false);
+                } else {
+                    _TabControlRightOpenBeforeIndex = ((TabControlEx)sender).SelectedIndex;
+                }
+            } else {
+                _TabControlRightOpenFlag = true;
+                SetTableLayoutPanelRightSide(true);
+                _TabControlRightOpenBeforeIndex = ((TabControlEx)sender).SelectedIndex;
+            }
         }
 
         /// <summary>

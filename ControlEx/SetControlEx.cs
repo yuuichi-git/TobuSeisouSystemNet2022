@@ -126,7 +126,7 @@ namespace ControlEx {
         /// </summary>
         /// <param name="carMasterVo"></param>
         public void CreateLabel(CarMasterVo carMasterVo, ContextMenuStrip contextMenuStrip) {
-            var labelEx = new CarLabelEx().CreateLabel(carMasterVo);
+            var labelEx = new CarLabelEx(carMasterVo).CreateLabel();
             /*
              * プロパティを設定
              */
@@ -146,7 +146,7 @@ namespace ControlEx {
         /// <param name="number">1:運転手 2:作業員1 3:作業員2 4:作業員3</param>
         /// <param name="staffMasterVo"></param>
         public void CreateLabel(int number, StaffMasterVo staffMasterVo, ContextMenuStrip contextMenuStrip) {
-            var labelEx = new StaffLabelEx().CreateLabel(staffMasterVo);
+            var labelEx = new StaffLabelEx(staffMasterVo).CreateLabel();
             /*
              * プロパティを設定
              */
