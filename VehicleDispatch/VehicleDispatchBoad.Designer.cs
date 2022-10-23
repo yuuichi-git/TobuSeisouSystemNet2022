@@ -73,14 +73,14 @@
             this.TableLayoutPanelExFullTimeBase = new ControlEx.TableLayoutPanelEx();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.flowLayoutPanelEx1 = new ControlEx.FlowLayoutPanelEx();
-            this.flowLayoutPanelEx2 = new ControlEx.FlowLayoutPanelEx();
+            this.FlowLayoutPanelExFullClose = new ControlEx.FlowLayoutPanelEx();
+            this.FlowLayoutPanelExFullDesignation = new ControlEx.FlowLayoutPanelEx();
             this.tabPage11 = new System.Windows.Forms.TabPage();
             this.TableLayoutPanelExPartTimeBase = new ControlEx.TableLayoutPanelEx();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.flowLayoutPanelEx3 = new ControlEx.FlowLayoutPanelEx();
-            this.flowLayoutPanelEx4 = new ControlEx.FlowLayoutPanelEx();
+            this.FlowLayoutPanelExPartClose = new ControlEx.FlowLayoutPanelEx();
+            this.FlowLayoutPanelExPartDesignation = new ControlEx.FlowLayoutPanelEx();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.TableLayoutPanelExCloseBase = new ControlEx.TableLayoutPanelEx();
             this.FlowLayoutPanelExSalaried = new ControlEx.FlowLayoutPanelEx();
@@ -742,8 +742,8 @@
             this.TableLayoutPanelExFullTimeBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TableLayoutPanelExFullTimeBase.Controls.Add(this.label7, 0, 0);
             this.TableLayoutPanelExFullTimeBase.Controls.Add(this.label8, 0, 2);
-            this.TableLayoutPanelExFullTimeBase.Controls.Add(this.flowLayoutPanelEx1, 0, 1);
-            this.TableLayoutPanelExFullTimeBase.Controls.Add(this.flowLayoutPanelEx2, 0, 3);
+            this.TableLayoutPanelExFullTimeBase.Controls.Add(this.FlowLayoutPanelExFullClose, 0, 1);
+            this.TableLayoutPanelExFullTimeBase.Controls.Add(this.FlowLayoutPanelExFullDesignation, 0, 3);
             this.TableLayoutPanelExFullTimeBase.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanelExFullTimeBase.Location = new System.Drawing.Point(3, 3);
             this.TableLayoutPanelExFullTimeBase.Name = "TableLayoutPanelExFullTimeBase";
@@ -779,31 +779,31 @@
             this.label8.Text = "会社都合での休み";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // flowLayoutPanelEx1
+            // FlowLayoutPanelExFullClose
             // 
-            this.flowLayoutPanelEx1.AllowDrop = true;
-            this.flowLayoutPanelEx1.AutoScroll = true;
-            this.flowLayoutPanelEx1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanelEx1.Location = new System.Drawing.Point(3, 43);
-            this.flowLayoutPanelEx1.Name = "flowLayoutPanelEx1";
-            this.flowLayoutPanelEx1.Size = new System.Drawing.Size(315, 572);
-            this.flowLayoutPanelEx1.TabIndex = 2;
-            this.flowLayoutPanelEx1.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
-            this.flowLayoutPanelEx1.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
+            this.FlowLayoutPanelExFullClose.AllowDrop = true;
+            this.FlowLayoutPanelExFullClose.AutoScroll = true;
+            this.FlowLayoutPanelExFullClose.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.FlowLayoutPanelExFullClose.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FlowLayoutPanelExFullClose.Location = new System.Drawing.Point(3, 43);
+            this.FlowLayoutPanelExFullClose.Name = "FlowLayoutPanelExFullClose";
+            this.FlowLayoutPanelExFullClose.Size = new System.Drawing.Size(315, 572);
+            this.FlowLayoutPanelExFullClose.TabIndex = 2;
+            this.FlowLayoutPanelExFullClose.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
+            this.FlowLayoutPanelExFullClose.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
             // 
-            // flowLayoutPanelEx2
+            // FlowLayoutPanelExFullDesignation
             // 
-            this.flowLayoutPanelEx2.AllowDrop = true;
-            this.flowLayoutPanelEx2.AutoScroll = true;
-            this.flowLayoutPanelEx2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanelEx2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanelEx2.Location = new System.Drawing.Point(3, 661);
-            this.flowLayoutPanelEx2.Name = "flowLayoutPanelEx2";
-            this.flowLayoutPanelEx2.Size = new System.Drawing.Size(315, 243);
-            this.flowLayoutPanelEx2.TabIndex = 3;
-            this.flowLayoutPanelEx2.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
-            this.flowLayoutPanelEx2.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
+            this.FlowLayoutPanelExFullDesignation.AllowDrop = true;
+            this.FlowLayoutPanelExFullDesignation.AutoScroll = true;
+            this.FlowLayoutPanelExFullDesignation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.FlowLayoutPanelExFullDesignation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FlowLayoutPanelExFullDesignation.Location = new System.Drawing.Point(3, 661);
+            this.FlowLayoutPanelExFullDesignation.Name = "FlowLayoutPanelExFullDesignation";
+            this.FlowLayoutPanelExFullDesignation.Size = new System.Drawing.Size(315, 243);
+            this.FlowLayoutPanelExFullDesignation.TabIndex = 3;
+            this.FlowLayoutPanelExFullDesignation.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
+            this.FlowLayoutPanelExFullDesignation.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
             // 
             // tabPage11
             // 
@@ -822,8 +822,8 @@
             this.TableLayoutPanelExPartTimeBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TableLayoutPanelExPartTimeBase.Controls.Add(this.label9, 0, 0);
             this.TableLayoutPanelExPartTimeBase.Controls.Add(this.label10, 0, 2);
-            this.TableLayoutPanelExPartTimeBase.Controls.Add(this.flowLayoutPanelEx3, 0, 1);
-            this.TableLayoutPanelExPartTimeBase.Controls.Add(this.flowLayoutPanelEx4, 0, 3);
+            this.TableLayoutPanelExPartTimeBase.Controls.Add(this.FlowLayoutPanelExPartClose, 0, 1);
+            this.TableLayoutPanelExPartTimeBase.Controls.Add(this.FlowLayoutPanelExPartDesignation, 0, 3);
             this.TableLayoutPanelExPartTimeBase.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanelExPartTimeBase.Location = new System.Drawing.Point(3, 3);
             this.TableLayoutPanelExPartTimeBase.Name = "TableLayoutPanelExPartTimeBase";
@@ -859,31 +859,31 @@
             this.label10.Text = "会社都合での休み";
             this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // flowLayoutPanelEx3
+            // FlowLayoutPanelExPartClose
             // 
-            this.flowLayoutPanelEx3.AllowDrop = true;
-            this.flowLayoutPanelEx3.AutoScroll = true;
-            this.flowLayoutPanelEx3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanelEx3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanelEx3.Location = new System.Drawing.Point(3, 43);
-            this.flowLayoutPanelEx3.Name = "flowLayoutPanelEx3";
-            this.flowLayoutPanelEx3.Size = new System.Drawing.Size(315, 572);
-            this.flowLayoutPanelEx3.TabIndex = 2;
-            this.flowLayoutPanelEx3.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
-            this.flowLayoutPanelEx3.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
+            this.FlowLayoutPanelExPartClose.AllowDrop = true;
+            this.FlowLayoutPanelExPartClose.AutoScroll = true;
+            this.FlowLayoutPanelExPartClose.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.FlowLayoutPanelExPartClose.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FlowLayoutPanelExPartClose.Location = new System.Drawing.Point(3, 43);
+            this.FlowLayoutPanelExPartClose.Name = "FlowLayoutPanelExPartClose";
+            this.FlowLayoutPanelExPartClose.Size = new System.Drawing.Size(315, 572);
+            this.FlowLayoutPanelExPartClose.TabIndex = 2;
+            this.FlowLayoutPanelExPartClose.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
+            this.FlowLayoutPanelExPartClose.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
             // 
-            // flowLayoutPanelEx4
+            // FlowLayoutPanelExPartDesignation
             // 
-            this.flowLayoutPanelEx4.AllowDrop = true;
-            this.flowLayoutPanelEx4.AutoScroll = true;
-            this.flowLayoutPanelEx4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanelEx4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanelEx4.Location = new System.Drawing.Point(3, 661);
-            this.flowLayoutPanelEx4.Name = "flowLayoutPanelEx4";
-            this.flowLayoutPanelEx4.Size = new System.Drawing.Size(315, 243);
-            this.flowLayoutPanelEx4.TabIndex = 3;
-            this.flowLayoutPanelEx4.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
-            this.flowLayoutPanelEx4.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
+            this.FlowLayoutPanelExPartDesignation.AllowDrop = true;
+            this.FlowLayoutPanelExPartDesignation.AutoScroll = true;
+            this.FlowLayoutPanelExPartDesignation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.FlowLayoutPanelExPartDesignation.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FlowLayoutPanelExPartDesignation.Location = new System.Drawing.Point(3, 661);
+            this.FlowLayoutPanelExPartDesignation.Name = "FlowLayoutPanelExPartDesignation";
+            this.FlowLayoutPanelExPartDesignation.Size = new System.Drawing.Size(315, 243);
+            this.FlowLayoutPanelExPartDesignation.TabIndex = 3;
+            this.FlowLayoutPanelExPartDesignation.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
+            this.FlowLayoutPanelExPartDesignation.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
             // 
             // tabPage3
             // 
@@ -1187,9 +1187,9 @@
         private ControlEx.TableLayoutPanelEx TableLayoutPanelExPartTimeBase;
         private Label label9;
         private Label label10;
-        private ControlEx.FlowLayoutPanelEx flowLayoutPanelEx1;
-        private ControlEx.FlowLayoutPanelEx flowLayoutPanelEx2;
-        private ControlEx.FlowLayoutPanelEx flowLayoutPanelEx3;
-        private ControlEx.FlowLayoutPanelEx flowLayoutPanelEx4;
+        private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExFullClose;
+        private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExFullDesignation;
+        private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExPartClose;
+        private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExPartDesignation;
     }
 }

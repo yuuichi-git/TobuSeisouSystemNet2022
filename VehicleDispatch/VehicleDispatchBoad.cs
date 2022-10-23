@@ -586,6 +586,66 @@ namespace VehicleDispatch {
                         ToolStripStatusLabelStatus.Text = string.Concat(((CarMasterVo)dragItem.Tag).Registration_number, " を処理しました");
                     }
                     break;
+                // 組合長期　自己都合
+                case "FlowLayoutPanelExFullClose":
+                    /*
+                     * StaffLabelEx
+                     */
+                    if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+                        StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
+                        if ((((StaffMasterVo)dragItem.Tag).Belongs == 20 || ((StaffMasterVo)dragItem.Tag).Belongs == 21) && ((StaffMasterVo)dragItem.Tag).Job_form == 1) {
+                            ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
+                            ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                        } else {
+                            ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " は組合長期ではありません。処理を中止します。");
+                        }
+                    }
+                    break;
+                // 組合長期　会社指定
+                case "FlowLayoutPanelExFullDesignation":
+                    /*
+                     * StaffLabelEx
+                     */
+                    if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+                        StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
+                        if ((((StaffMasterVo)dragItem.Tag).Belongs == 20 || ((StaffMasterVo)dragItem.Tag).Belongs == 21) && ((StaffMasterVo)dragItem.Tag).Job_form == 1) {
+                            ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
+                            ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                        } else {
+                            ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " は組合長期ではありません。処理を中止します。");
+                        }
+                    }
+                    break;
+                // アルバイト　自己都合
+                case "FlowLayoutPanelExPartClose":
+                    /*
+                     * StaffLabelEx
+                     */
+                    if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+                        StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
+                        if (((StaffMasterVo)dragItem.Tag).Belongs == 12) {
+                            ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
+                            ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                        } else {
+                            ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " はアルバイトではありません。処理を中止します。");
+                        }
+                    }
+                    break;
+                // アルバイト　会社指定
+                case "FlowLayoutPanelExPartDesignation":
+                    /*
+                     * StaffLabelEx
+                     */
+                    if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+                        StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
+                        if (((StaffMasterVo)dragItem.Tag).Belongs == 12) {
+                            ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
+                            ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                        } else {
+                            ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " はアルバイトではありません。処理を中止します。");
+                        }
+                    }
+                    break;
                 // 有給
                 case "FlowLayoutPanelExSalaried":
                     /*
