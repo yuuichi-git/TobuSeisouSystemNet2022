@@ -103,12 +103,21 @@ namespace VehicleDispatch {
              */
             _listDeepCopySetMasterVo = new CopyUtility().DeepCopy(_listSetMasterVo.FindAll(x => x.Delete_flag == false));
             _listDeepCopyCarMasterVo = new CopyUtility().DeepCopy(_listCarMasterVo.FindAll(x => x.Delete_flag == false));
-            _listDeepCopyStaffMasterVo = new CopyUtility().DeepCopy(_listStaffMasterVo.FindAll(x => x.Delete_flag == false));
+            _listDeepCopyStaffMasterVo = new CopyUtility().DeepCopy(_listStaffMasterVo.FindAll(x => x.Vehicle_dispatch_target == true && x.Delete_flag == false));
+            /*
+             * TabControlExLeftをクリア
+             */
+            FlowLayoutPanelControlRemove(this.FlowLayoutPanelExSet);
+            FlowLayoutPanelControlRemove(this.FlowLayoutPanelExCar);
+            FlowLayoutPanelControlRemove(this.FlowLayoutPanelExFullEmployees);
+            FlowLayoutPanelControlRemove(this.FlowLayoutPanelExLongTerm);
+            FlowLayoutPanelControlRemove(this.FlowLayoutPanelExPartTime);
+            FlowLayoutPanelControlRemove(this.FlowLayoutPanelExWindow);
             /*
              * TableLayoutPanelをクリア
              */
-            TableLayoutPanelControlRemove(TableLayoutPanelEx1);
-            TableLayoutPanelControlRemove(TableLayoutPanelEx2);
+            TableLayoutPanelControlRemove(this.TableLayoutPanelEx1);
+            TableLayoutPanelControlRemove(this.TableLayoutPanelEx2);
 
             var listVehicleDispatchDetailVo = _vehicleDispatchDetailDao.SelectVehicleDispatchDetail(operationDate);
             int tabNumber = 0;
@@ -201,8 +210,8 @@ namespace VehicleDispatch {
                 /*
                  * イベントを設定
                  */
-                labelEx.Click += new EventHandler(SetLabelEx_Click);
-                labelEx.MouseMove += new MouseEventHandler(SetLabelEx_MouseMove);
+                labelEx.Click += new EventHandler(this.SetLabelEx_Click);
+                labelEx.MouseMove += new MouseEventHandler(this.SetLabelEx_MouseMove);
                 FlowLayoutPanelExSet.Controls.Add(labelEx);
             }
             // FlowLayoutPanelExCar
@@ -213,9 +222,57 @@ namespace VehicleDispatch {
                 /*
                  * イベントを設定
                  */
-                labelEx.Click += new EventHandler(CarLabelEx_Click);
-                labelEx.MouseMove += new MouseEventHandler(CarLabelEx_MouseMove);
+                labelEx.Click += new EventHandler(this.CarLabelEx_Click);
+                labelEx.MouseMove += new MouseEventHandler(this.CarLabelEx_MouseMove);
                 FlowLayoutPanelExCar.Controls.Add(labelEx);
+            }
+            // FlowLayoutPanelExFullEmployees
+            foreach (var deepCopyStaffMasterVo in _listDeepCopyStaffMasterVo.FindAll(x => (x.Belongs == 10 || x.Belongs == 11) && x.Retirement_flag == false)) {
+                StaffLabelEx labelEx = new StaffLabelEx(deepCopyStaffMasterVo).CreateLabel();
+                // プロパティを設定
+                labelEx.ContextMenuStrip = ContextMenuStripStaffLabel;
+                /*
+                 * イベントを設定
+                 */
+                labelEx.Click += new EventHandler(this.StaffLabelEx_Click);
+                labelEx.MouseMove += new MouseEventHandler(this.StaffLabelEx_MouseMove);
+                FlowLayoutPanelExFullEmployees.Controls.Add(labelEx);
+            }
+            // FlowLayoutPanelExLongTerm
+            foreach (var deepCopyStaffMasterVo in _listDeepCopyStaffMasterVo.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.Job_form == 1 && x.Retirement_flag == false)) {
+                StaffLabelEx labelEx = new StaffLabelEx(deepCopyStaffMasterVo).CreateLabel();
+                // プロパティを設定
+                labelEx.ContextMenuStrip = ContextMenuStripStaffLabel;
+                /*
+                 * イベントを設定
+                 */
+                labelEx.Click += new EventHandler(this.StaffLabelEx_Click);
+                labelEx.MouseMove += new MouseEventHandler(this.StaffLabelEx_MouseMove);
+                FlowLayoutPanelExLongTerm.Controls.Add(labelEx);
+            }
+            // FlowLayoutPanelExPartTime
+            foreach (var deepCopyStaffMasterVo in _listDeepCopyStaffMasterVo.FindAll(x => x.Belongs == 12 && x.Retirement_flag == false)) {
+                StaffLabelEx labelEx = new StaffLabelEx(deepCopyStaffMasterVo).CreateLabel();
+                // プロパティを設定
+                labelEx.ContextMenuStrip = ContextMenuStripStaffLabel;
+                /*
+                 * イベントを設定
+                 */
+                labelEx.Click += new EventHandler(this.StaffLabelEx_Click);
+                labelEx.MouseMove += new MouseEventHandler(this.StaffLabelEx_MouseMove);
+                FlowLayoutPanelExPartTime.Controls.Add(labelEx);
+            }
+            // FlowLayoutPanelExWindow
+            foreach (var deepCopyStaffMasterVo in _listDeepCopyStaffMasterVo.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.Job_form == 3 && x.Retirement_flag == false)) {
+                StaffLabelEx labelEx = new StaffLabelEx(deepCopyStaffMasterVo).CreateLabel();
+                // プロパティを設定
+                labelEx.ContextMenuStrip = ContextMenuStripStaffLabel;
+                /*
+                 * イベントを設定
+                 */
+                labelEx.Click += new EventHandler(this.StaffLabelEx_Click);
+                labelEx.MouseMove += new MouseEventHandler(this.StaffLabelEx_MouseMove);
+                FlowLayoutPanelExWindow.Controls.Add(labelEx);
             }
         }
 
@@ -232,6 +289,17 @@ namespace VehicleDispatch {
         /// <param name="tableLayoutPanelEx"></param>
         private void TableLayoutPanelControlRemove(TableLayoutPanelEx tableLayoutPanelEx) {
             tableLayoutPanelEx.Controls.Clear();
+
+            ComputerInfo info = new ComputerInfo();
+            ToolStripStatusLabelMemory.Text = string.Concat("合計物理メモリ:", info.TotalPhysicalMemory / 1024, " 利用可能物理メモリ:", info.AvailablePhysicalMemory / 1024);
+        }
+
+        /// <summary>
+        /// FlowLayoutPanelControlRemove
+        /// </summary>
+        /// <param name="flowLayoutPanelEx"></param>
+        private void FlowLayoutPanelControlRemove(FlowLayoutPanelEx flowLayoutPanelEx) {
+            flowLayoutPanelEx.Controls.Clear();
 
             ComputerInfo info = new ComputerInfo();
             ToolStripStatusLabelMemory.Text = string.Concat("合計物理メモリ:", info.TotalPhysicalMemory / 1024, " 利用可能物理メモリ:", info.AvailablePhysicalMemory / 1024);

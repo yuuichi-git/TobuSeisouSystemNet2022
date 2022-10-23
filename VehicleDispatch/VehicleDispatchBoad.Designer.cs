@@ -99,6 +99,7 @@
             this.車両の情報ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ContextMenuStripStaffLabel = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.個人の情報ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.配車先を削除するToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TableLayoutPanelBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -998,10 +999,11 @@
             // 
             this.ContextMenuStripSetLabel.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.配車先の情報ToolStripMenuItem,
+            this.配車先を削除するToolStripMenuItem,
             this.出庫地を変更するToolStripMenuItem,
             this.代車代番のFaxを作成するToolStripMenuItem});
             this.ContextMenuStripSetLabel.Name = "ContextMenuStripSetLabel";
-            this.ContextMenuStripSetLabel.Size = new System.Drawing.Size(208, 70);
+            this.ContextMenuStripSetLabel.Size = new System.Drawing.Size(208, 92);
             // 
             // 配車先の情報ToolStripMenuItem
             // 
@@ -1061,6 +1063,12 @@
             this.個人の情報ToolStripMenuItem.Name = "個人の情報ToolStripMenuItem";
             this.個人の情報ToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.個人の情報ToolStripMenuItem.Text = "個人の情報";
+            // 
+            // 配車先を削除するToolStripMenuItem
+            // 
+            this.配車先を削除するToolStripMenuItem.Name = "配車先を削除するToolStripMenuItem";
+            this.配車先を削除するToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
+            this.配車先を削除するToolStripMenuItem.Text = "配車先を削除する";
             // 
             // VehicleDispatchBoad
             // 
@@ -1191,5 +1199,6 @@
         private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExFullDesignation;
         private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExPartClose;
         private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExPartDesignation;
+        private ToolStripMenuItem 配車先を削除するToolStripMenuItem;
     }
 }
