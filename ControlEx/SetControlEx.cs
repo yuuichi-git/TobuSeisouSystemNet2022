@@ -107,7 +107,7 @@ namespace ControlEx {
         /// </summary>
         /// <param name="setMasterVo"></param>
         public void CreateLabel(SetMasterVo setMasterVo, ContextMenuStrip contextMenuStrip) {
-            var labelEx = new SetLabelEx().CreateLabel(setMasterVo);
+            var labelEx = new SetLabelEx(setMasterVo).CreateLabel();
             /*
              * プロパティを設定
              */

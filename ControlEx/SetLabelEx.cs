@@ -2,10 +2,12 @@
 
 namespace ControlEx {
     public partial class SetLabelEx : Label {
+        private SetMasterVo _setMasterVo;
         private const int _setLabelHeight = 68;
         private const int _setLabelWidth = 70;
 
-        public SetLabelEx() {
+        public SetLabelEx(SetMasterVo setMasterVo) {
+            _setMasterVo = setMasterVo;
             InitializeComponent();
             /*
              * SetControlExのイベントを登録
@@ -21,13 +23,13 @@ namespace ControlEx {
         /// </summary>
         /// <param name="setMasterVo"></param>
         /// <returns></returns>
-        public SetLabelEx CreateLabel(SetMasterVo setMasterVo) {
+        public SetLabelEx CreateLabel() {
             this.BorderStyle = BorderStyle.FixedSingle;
             this.Font = new Font("Yu Gothic UI", 12, FontStyle.Regular, GraphicsUnit.Pixel);
             this.Height = _setLabelHeight;
             this.Margin = new Padding(2);
-            this.Tag = setMasterVo;
-            this.Text = string.Concat(setMasterVo.Set_name_1, "\r\n", setMasterVo.Set_name_2);
+            this.Tag = _setMasterVo;
+            this.Text = string.Concat(_setMasterVo.Set_name_1, "\r\n", _setMasterVo.Set_name_2);
             this.TextAlign = ContentAlignment.MiddleCenter;
             this.Width = _setLabelWidth;
             return this;

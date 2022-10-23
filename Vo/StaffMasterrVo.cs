@@ -186,7 +186,7 @@
         }
         /// <summary>
         /// 形態
-        /// 10:長期雇用 11:手帳 12:アルバイト
+        /// 1:長期 2:バイト 3:窓 4:事務方
         /// </summary>
         public int Job_form {
             get => _job_form;

@@ -3,7 +3,7 @@
 namespace ControlEx {
     public partial class StaffLabelEx : Label {
         private StaffMasterVo _staffMasterVo;
-        private const int _staffLabelHeight = 38;
+        private const int _staffLabelHeight = 36;
         private const int _staffLabelWidth = 70;
         private Pen _borderColor = Pens.White;
 
@@ -20,11 +20,11 @@ namespace ControlEx {
                 case 20: // 新運転
                 case 21: // 自運労
                     switch (staffMasterVo.Job_form) {
-                        case 10: // 長期雇用
+                        case 1: // 長期雇用
                             _borderColor = Pens.WhiteSmoke;
                             break;
-                        case 11: // 手帳
-                        case 12: // アルバイト
+                        case 2: // アルバイト
+                        case 3: // 窓
                             _borderColor = Pens.Green;
                             break;
                     }

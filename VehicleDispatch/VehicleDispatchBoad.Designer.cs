@@ -50,15 +50,45 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.TableLayoutPanelEx2 = new ControlEx.TableLayoutPanelEx();
             this.TabControlExLeft = new ControlEx.TabControlEx();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.tabPage10 = new System.Windows.Forms.TabPage();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.TabPageSet = new System.Windows.Forms.TabPage();
+            this.FlowLayoutPanelExSet = new ControlEx.FlowLayoutPanelEx();
+            this.TabPageCar = new System.Windows.Forms.TabPage();
+            this.FlowLayoutPanelExCar = new ControlEx.FlowLayoutPanelEx();
+            this.TabPageFullEmployees = new System.Windows.Forms.TabPage();
+            this.FlowLayoutPanelExFullEmployees = new ControlEx.FlowLayoutPanelEx();
+            this.TabPageLongTerm = new System.Windows.Forms.TabPage();
+            this.FlowLayoutPanelExLongTerm = new ControlEx.FlowLayoutPanelEx();
+            this.TabPagePartTime = new System.Windows.Forms.TabPage();
+            this.FlowLayoutPanelExPartTime = new ControlEx.FlowLayoutPanelEx();
+            this.TabPageWindow = new System.Windows.Forms.TabPage();
+            this.FlowLayoutPanelExWindow = new ControlEx.FlowLayoutPanelEx();
             this.TabControlExRight = new ControlEx.TabControlEx();
             this.tabPage8 = new System.Windows.Forms.TabPage();
+            this.TableLayoutPanelExCarBase = new ControlEx.TableLayoutPanelEx();
+            this.FlowLayoutPanelExMaintenance = new ControlEx.FlowLayoutPanelEx();
+            this.FlowLayoutPanelExRepair = new ControlEx.FlowLayoutPanelEx();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.tabPage9 = new System.Windows.Forms.TabPage();
+            this.TableLayoutPanelExFullTimeBase = new ControlEx.TableLayoutPanelEx();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.flowLayoutPanelEx1 = new ControlEx.FlowLayoutPanelEx();
+            this.flowLayoutPanelEx2 = new ControlEx.FlowLayoutPanelEx();
+            this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.TableLayoutPanelExPartTimeBase = new ControlEx.TableLayoutPanelEx();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.flowLayoutPanelEx3 = new ControlEx.FlowLayoutPanelEx();
+            this.flowLayoutPanelEx4 = new ControlEx.FlowLayoutPanelEx();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.TableLayoutPanelExCloseBase = new ControlEx.TableLayoutPanelEx();
+            this.FlowLayoutPanelExSalaried = new ControlEx.FlowLayoutPanelEx();
+            this.FlowLayoutPanelExTelephone = new ControlEx.FlowLayoutPanelEx();
+            this.FlowLayoutPanelExWithoutNotice = new ControlEx.FlowLayoutPanelEx();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.ContextMenuStripSetLabel = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.配車先の情報ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.出庫地を変更するToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,12 +99,6 @@
             this.車両の情報ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ContextMenuStripStaffLabel = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.個人の情報ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.FlowLayoutPanelExSet = new ControlEx.FlowLayoutPanelEx();
-            this.FlowLayoutPanelExCar = new ControlEx.FlowLayoutPanelEx();
-            this.FlowLayoutPanelExFullEmployees = new ControlEx.FlowLayoutPanelEx();
-            this.FlowLayoutPanelExLongTerm = new ControlEx.FlowLayoutPanelEx();
-            this.FlowLayoutPanelExPartTime = new ControlEx.FlowLayoutPanelEx();
-            this.FlowLayoutPanelExWindow = new ControlEx.FlowLayoutPanelEx();
             this.TableLayoutPanelBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -83,13 +107,21 @@
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.TabControlExLeft.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            this.tabPage4.SuspendLayout();
-            this.tabPage5.SuspendLayout();
-            this.tabPage6.SuspendLayout();
-            this.tabPage10.SuspendLayout();
-            this.tabPage7.SuspendLayout();
+            this.TabPageSet.SuspendLayout();
+            this.TabPageCar.SuspendLayout();
+            this.TabPageFullEmployees.SuspendLayout();
+            this.TabPageLongTerm.SuspendLayout();
+            this.TabPagePartTime.SuspendLayout();
+            this.TabPageWindow.SuspendLayout();
             this.TabControlExRight.SuspendLayout();
+            this.tabPage8.SuspendLayout();
+            this.TableLayoutPanelExCarBase.SuspendLayout();
+            this.tabPage9.SuspendLayout();
+            this.TableLayoutPanelExFullTimeBase.SuspendLayout();
+            this.tabPage11.SuspendLayout();
+            this.TableLayoutPanelExPartTimeBase.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            this.TableLayoutPanelExCloseBase.SuspendLayout();
             this.ContextMenuStripSetLabel.SuspendLayout();
             this.ContextMenuStripCarLabel.SuspendLayout();
             this.ContextMenuStripStaffLabel.SuspendLayout();
@@ -98,9 +130,9 @@
             // TableLayoutPanelBase
             // 
             this.TableLayoutPanelBase.ColumnCount = 3;
-            this.TableLayoutPanelBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 360F));
+            this.TableLayoutPanelBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 364F));
             this.TableLayoutPanelBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanelBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 360F));
+            this.TableLayoutPanelBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 364F));
             this.TableLayoutPanelBase.Controls.Add(this.MenuStrip1, 0, 0);
             this.TableLayoutPanelBase.Controls.Add(this.StatusStrip1, 0, 3);
             this.TableLayoutPanelBase.Controls.Add(this.PanelUp, 0, 1);
@@ -115,7 +147,6 @@
             this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 66F));
             this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelBase.Size = new System.Drawing.Size(1904, 1041);
             this.TableLayoutPanelBase.TabIndex = 0;
             // 
@@ -287,10 +318,11 @@
             this.TabControlExCenter.Controls.Add(this.tabPage1);
             this.TabControlExCenter.Controls.Add(this.tabPage2);
             this.TabControlExCenter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TabControlExCenter.Location = new System.Drawing.Point(363, 93);
+            this.TabControlExCenter.Location = new System.Drawing.Point(367, 93);
             this.TabControlExCenter.Name = "TabControlExCenter";
             this.TabControlExCenter.SelectedIndex = 0;
-            this.TabControlExCenter.Size = new System.Drawing.Size(1178, 921);
+            this.TabControlExCenter.Size = new System.Drawing.Size(1170, 921);
+            this.TabControlExCenter.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.TabControlExCenter.TabIndex = 4;
             // 
             // tabPage1
@@ -299,9 +331,9 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1170, 893);
+            this.tabPage1.Size = new System.Drawing.Size(1162, 893);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
+            this.tabPage1.Text = "配車パネル１";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // TableLayoutPanelEx1
@@ -363,7 +395,7 @@
             this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx1.Size = new System.Drawing.Size(1164, 887);
+            this.TableLayoutPanelEx1.Size = new System.Drawing.Size(1156, 887);
             this.TableLayoutPanelEx1.TabIndex = 3;
             // 
             // tabPage2
@@ -372,9 +404,9 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1170, 893);
+            this.tabPage2.Size = new System.Drawing.Size(1162, 893);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "配車パネル２";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // TableLayoutPanelEx2
@@ -437,94 +469,163 @@
             this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx2.Size = new System.Drawing.Size(1164, 887);
+            this.TableLayoutPanelEx2.Size = new System.Drawing.Size(1156, 887);
             this.TableLayoutPanelEx2.TabIndex = 4;
             // 
             // TabControlExLeft
             // 
             this.TabControlExLeft.Alignment = System.Windows.Forms.TabAlignment.Left;
             this.TabControlExLeft.AllowDrop = true;
-            this.TabControlExLeft.Controls.Add(this.tabPage3);
-            this.TabControlExLeft.Controls.Add(this.tabPage4);
-            this.TabControlExLeft.Controls.Add(this.tabPage5);
-            this.TabControlExLeft.Controls.Add(this.tabPage6);
-            this.TabControlExLeft.Controls.Add(this.tabPage10);
-            this.TabControlExLeft.Controls.Add(this.tabPage7);
+            this.TabControlExLeft.Controls.Add(this.TabPageSet);
+            this.TabControlExLeft.Controls.Add(this.TabPageCar);
+            this.TabControlExLeft.Controls.Add(this.TabPageFullEmployees);
+            this.TabControlExLeft.Controls.Add(this.TabPageLongTerm);
+            this.TabControlExLeft.Controls.Add(this.TabPagePartTime);
+            this.TabControlExLeft.Controls.Add(this.TabPageWindow);
             this.TabControlExLeft.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TabControlExLeft.Location = new System.Drawing.Point(3, 93);
             this.TabControlExLeft.Multiline = true;
             this.TabControlExLeft.Name = "TabControlExLeft";
             this.TabControlExLeft.SelectedIndex = 0;
-            this.TabControlExLeft.Size = new System.Drawing.Size(354, 921);
+            this.TabControlExLeft.Size = new System.Drawing.Size(358, 921);
             this.TabControlExLeft.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.TabControlExLeft.TabIndex = 5;
             this.TabControlExLeft.Click += new System.EventHandler(this.TabControlExLeft_Click);
             // 
-            // tabPage3
+            // TabPageSet
             // 
-            this.tabPage3.Controls.Add(this.FlowLayoutPanelExSet);
-            this.tabPage3.Location = new System.Drawing.Point(27, 4);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(323, 913);
-            this.tabPage3.TabIndex = 0;
-            this.tabPage3.Text = "配車先";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.TabPageSet.Controls.Add(this.FlowLayoutPanelExSet);
+            this.TabPageSet.Location = new System.Drawing.Point(27, 4);
+            this.TabPageSet.Name = "TabPageSet";
+            this.TabPageSet.Padding = new System.Windows.Forms.Padding(3);
+            this.TabPageSet.Size = new System.Drawing.Size(327, 913);
+            this.TabPageSet.TabIndex = 0;
+            this.TabPageSet.Text = "配車先";
+            this.TabPageSet.UseVisualStyleBackColor = true;
             // 
-            // tabPage4
+            // FlowLayoutPanelExSet
             // 
-            this.tabPage4.Controls.Add(this.FlowLayoutPanelExCar);
-            this.tabPage4.Location = new System.Drawing.Point(27, 4);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(323, 913);
-            this.tabPage4.TabIndex = 1;
-            this.tabPage4.Text = "車両";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.FlowLayoutPanelExSet.AutoScroll = true;
+            this.FlowLayoutPanelExSet.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FlowLayoutPanelExSet.Location = new System.Drawing.Point(3, 3);
+            this.FlowLayoutPanelExSet.Name = "FlowLayoutPanelExSet";
+            this.FlowLayoutPanelExSet.Size = new System.Drawing.Size(321, 907);
+            this.FlowLayoutPanelExSet.TabIndex = 0;
             // 
-            // tabPage5
+            // TabPageCar
             // 
-            this.tabPage5.Controls.Add(this.FlowLayoutPanelExFullEmployees);
-            this.tabPage5.Location = new System.Drawing.Point(27, 4);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(323, 913);
-            this.tabPage5.TabIndex = 2;
-            this.tabPage5.Text = "社員";
-            this.tabPage5.UseVisualStyleBackColor = true;
+            this.TabPageCar.Controls.Add(this.FlowLayoutPanelExCar);
+            this.TabPageCar.Location = new System.Drawing.Point(27, 4);
+            this.TabPageCar.Name = "TabPageCar";
+            this.TabPageCar.Padding = new System.Windows.Forms.Padding(3);
+            this.TabPageCar.Size = new System.Drawing.Size(327, 913);
+            this.TabPageCar.TabIndex = 1;
+            this.TabPageCar.Text = "車両";
+            this.TabPageCar.UseVisualStyleBackColor = true;
             // 
-            // tabPage6
+            // FlowLayoutPanelExCar
             // 
-            this.tabPage6.Controls.Add(this.FlowLayoutPanelExLongTerm);
-            this.tabPage6.Location = new System.Drawing.Point(27, 4);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(323, 913);
-            this.tabPage6.TabIndex = 3;
-            this.tabPage6.Text = "組合長期";
-            this.tabPage6.UseVisualStyleBackColor = true;
+            this.FlowLayoutPanelExCar.AllowDrop = true;
+            this.FlowLayoutPanelExCar.AutoScroll = true;
+            this.FlowLayoutPanelExCar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FlowLayoutPanelExCar.Location = new System.Drawing.Point(3, 3);
+            this.FlowLayoutPanelExCar.Name = "FlowLayoutPanelExCar";
+            this.FlowLayoutPanelExCar.Size = new System.Drawing.Size(321, 907);
+            this.FlowLayoutPanelExCar.TabIndex = 0;
+            this.FlowLayoutPanelExCar.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
+            this.FlowLayoutPanelExCar.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
             // 
-            // tabPage10
+            // TabPageFullEmployees
             // 
-            this.tabPage10.Controls.Add(this.FlowLayoutPanelExPartTime);
-            this.tabPage10.Location = new System.Drawing.Point(27, 4);
-            this.tabPage10.Name = "tabPage10";
-            this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage10.Size = new System.Drawing.Size(323, 913);
-            this.tabPage10.TabIndex = 5;
-            this.tabPage10.Text = "アルバイト";
-            this.tabPage10.UseVisualStyleBackColor = true;
+            this.TabPageFullEmployees.Controls.Add(this.FlowLayoutPanelExFullEmployees);
+            this.TabPageFullEmployees.Location = new System.Drawing.Point(27, 4);
+            this.TabPageFullEmployees.Name = "TabPageFullEmployees";
+            this.TabPageFullEmployees.Padding = new System.Windows.Forms.Padding(3);
+            this.TabPageFullEmployees.Size = new System.Drawing.Size(327, 913);
+            this.TabPageFullEmployees.TabIndex = 2;
+            this.TabPageFullEmployees.Text = "社員";
+            this.TabPageFullEmployees.UseVisualStyleBackColor = true;
             // 
-            // tabPage7
+            // FlowLayoutPanelExFullEmployees
             // 
-            this.tabPage7.Controls.Add(this.FlowLayoutPanelExWindow);
-            this.tabPage7.Location = new System.Drawing.Point(27, 4);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(323, 913);
-            this.tabPage7.TabIndex = 4;
-            this.tabPage7.Text = "組合窓(呼ぶ人)";
-            this.tabPage7.UseVisualStyleBackColor = true;
+            this.FlowLayoutPanelExFullEmployees.AllowDrop = true;
+            this.FlowLayoutPanelExFullEmployees.AutoScroll = true;
+            this.FlowLayoutPanelExFullEmployees.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FlowLayoutPanelExFullEmployees.Location = new System.Drawing.Point(3, 3);
+            this.FlowLayoutPanelExFullEmployees.Name = "FlowLayoutPanelExFullEmployees";
+            this.FlowLayoutPanelExFullEmployees.Size = new System.Drawing.Size(321, 907);
+            this.FlowLayoutPanelExFullEmployees.TabIndex = 0;
+            this.FlowLayoutPanelExFullEmployees.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
+            this.FlowLayoutPanelExFullEmployees.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
+            // 
+            // TabPageLongTerm
+            // 
+            this.TabPageLongTerm.Controls.Add(this.FlowLayoutPanelExLongTerm);
+            this.TabPageLongTerm.Location = new System.Drawing.Point(27, 4);
+            this.TabPageLongTerm.Name = "TabPageLongTerm";
+            this.TabPageLongTerm.Padding = new System.Windows.Forms.Padding(3);
+            this.TabPageLongTerm.Size = new System.Drawing.Size(327, 913);
+            this.TabPageLongTerm.TabIndex = 3;
+            this.TabPageLongTerm.Text = "組合長期";
+            this.TabPageLongTerm.UseVisualStyleBackColor = true;
+            // 
+            // FlowLayoutPanelExLongTerm
+            // 
+            this.FlowLayoutPanelExLongTerm.AllowDrop = true;
+            this.FlowLayoutPanelExLongTerm.AutoScroll = true;
+            this.FlowLayoutPanelExLongTerm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FlowLayoutPanelExLongTerm.Location = new System.Drawing.Point(3, 3);
+            this.FlowLayoutPanelExLongTerm.Name = "FlowLayoutPanelExLongTerm";
+            this.FlowLayoutPanelExLongTerm.Size = new System.Drawing.Size(321, 907);
+            this.FlowLayoutPanelExLongTerm.TabIndex = 0;
+            this.FlowLayoutPanelExLongTerm.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
+            this.FlowLayoutPanelExLongTerm.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
+            // 
+            // TabPagePartTime
+            // 
+            this.TabPagePartTime.Controls.Add(this.FlowLayoutPanelExPartTime);
+            this.TabPagePartTime.Location = new System.Drawing.Point(27, 4);
+            this.TabPagePartTime.Name = "TabPagePartTime";
+            this.TabPagePartTime.Padding = new System.Windows.Forms.Padding(3);
+            this.TabPagePartTime.Size = new System.Drawing.Size(327, 913);
+            this.TabPagePartTime.TabIndex = 5;
+            this.TabPagePartTime.Text = "アルバイト";
+            this.TabPagePartTime.UseVisualStyleBackColor = true;
+            // 
+            // FlowLayoutPanelExPartTime
+            // 
+            this.FlowLayoutPanelExPartTime.AllowDrop = true;
+            this.FlowLayoutPanelExPartTime.AutoScroll = true;
+            this.FlowLayoutPanelExPartTime.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FlowLayoutPanelExPartTime.Location = new System.Drawing.Point(3, 3);
+            this.FlowLayoutPanelExPartTime.Name = "FlowLayoutPanelExPartTime";
+            this.FlowLayoutPanelExPartTime.Size = new System.Drawing.Size(321, 907);
+            this.FlowLayoutPanelExPartTime.TabIndex = 0;
+            this.FlowLayoutPanelExPartTime.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
+            this.FlowLayoutPanelExPartTime.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
+            // 
+            // TabPageWindow
+            // 
+            this.TabPageWindow.Controls.Add(this.FlowLayoutPanelExWindow);
+            this.TabPageWindow.Location = new System.Drawing.Point(27, 4);
+            this.TabPageWindow.Name = "TabPageWindow";
+            this.TabPageWindow.Padding = new System.Windows.Forms.Padding(3);
+            this.TabPageWindow.Size = new System.Drawing.Size(327, 913);
+            this.TabPageWindow.TabIndex = 4;
+            this.TabPageWindow.Text = "組合窓(呼ぶ人)";
+            this.TabPageWindow.UseVisualStyleBackColor = true;
+            // 
+            // FlowLayoutPanelExWindow
+            // 
+            this.FlowLayoutPanelExWindow.AllowDrop = true;
+            this.FlowLayoutPanelExWindow.AutoScroll = true;
+            this.FlowLayoutPanelExWindow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FlowLayoutPanelExWindow.Location = new System.Drawing.Point(3, 3);
+            this.FlowLayoutPanelExWindow.Name = "FlowLayoutPanelExWindow";
+            this.FlowLayoutPanelExWindow.Size = new System.Drawing.Size(321, 907);
+            this.FlowLayoutPanelExWindow.TabIndex = 0;
+            this.FlowLayoutPanelExWindow.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
+            this.FlowLayoutPanelExWindow.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
             // 
             // TabControlExRight
             // 
@@ -532,35 +633,366 @@
             this.TabControlExRight.AllowDrop = true;
             this.TabControlExRight.Controls.Add(this.tabPage8);
             this.TabControlExRight.Controls.Add(this.tabPage9);
+            this.TabControlExRight.Controls.Add(this.tabPage11);
+            this.TabControlExRight.Controls.Add(this.tabPage3);
             this.TabControlExRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TabControlExRight.Location = new System.Drawing.Point(1547, 93);
+            this.TabControlExRight.Location = new System.Drawing.Point(1543, 93);
             this.TabControlExRight.Multiline = true;
             this.TabControlExRight.Name = "TabControlExRight";
             this.TabControlExRight.SelectedIndex = 0;
-            this.TabControlExRight.Size = new System.Drawing.Size(354, 921);
+            this.TabControlExRight.Size = new System.Drawing.Size(358, 921);
             this.TabControlExRight.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.TabControlExRight.TabIndex = 6;
             this.TabControlExRight.Click += new System.EventHandler(this.TabControlExRight_Click);
             // 
             // tabPage8
             // 
+            this.tabPage8.Controls.Add(this.TableLayoutPanelExCarBase);
             this.tabPage8.Location = new System.Drawing.Point(4, 4);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(323, 913);
+            this.tabPage8.Size = new System.Drawing.Size(327, 913);
             this.tabPage8.TabIndex = 0;
-            this.tabPage8.Text = "tabPage8";
+            this.tabPage8.Text = "車両";
             this.tabPage8.UseVisualStyleBackColor = true;
+            // 
+            // TableLayoutPanelExCarBase
+            // 
+            this.TableLayoutPanelExCarBase.ColumnCount = 1;
+            this.TableLayoutPanelExCarBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.TableLayoutPanelExCarBase.Controls.Add(this.FlowLayoutPanelExMaintenance, 0, 1);
+            this.TableLayoutPanelExCarBase.Controls.Add(this.FlowLayoutPanelExRepair, 0, 3);
+            this.TableLayoutPanelExCarBase.Controls.Add(this.label2, 0, 0);
+            this.TableLayoutPanelExCarBase.Controls.Add(this.label3, 0, 2);
+            this.TableLayoutPanelExCarBase.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TableLayoutPanelExCarBase.Location = new System.Drawing.Point(3, 3);
+            this.TableLayoutPanelExCarBase.Name = "TableLayoutPanelExCarBase";
+            this.TableLayoutPanelExCarBase.RowCount = 4;
+            this.TableLayoutPanelExCarBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.TableLayoutPanelExCarBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TableLayoutPanelExCarBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.TableLayoutPanelExCarBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.TableLayoutPanelExCarBase.Size = new System.Drawing.Size(321, 907);
+            this.TableLayoutPanelExCarBase.TabIndex = 0;
+            // 
+            // FlowLayoutPanelExMaintenance
+            // 
+            this.FlowLayoutPanelExMaintenance.AllowDrop = true;
+            this.FlowLayoutPanelExMaintenance.AutoScroll = true;
+            this.FlowLayoutPanelExMaintenance.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.FlowLayoutPanelExMaintenance.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FlowLayoutPanelExMaintenance.Location = new System.Drawing.Point(3, 43);
+            this.FlowLayoutPanelExMaintenance.Name = "FlowLayoutPanelExMaintenance";
+            this.FlowLayoutPanelExMaintenance.Size = new System.Drawing.Size(315, 407);
+            this.FlowLayoutPanelExMaintenance.TabIndex = 0;
+            this.FlowLayoutPanelExMaintenance.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
+            this.FlowLayoutPanelExMaintenance.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
+            // 
+            // FlowLayoutPanelExRepair
+            // 
+            this.FlowLayoutPanelExRepair.AllowDrop = true;
+            this.FlowLayoutPanelExRepair.AutoScroll = true;
+            this.FlowLayoutPanelExRepair.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.FlowLayoutPanelExRepair.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FlowLayoutPanelExRepair.Location = new System.Drawing.Point(3, 496);
+            this.FlowLayoutPanelExRepair.Name = "FlowLayoutPanelExRepair";
+            this.FlowLayoutPanelExRepair.Size = new System.Drawing.Size(315, 408);
+            this.FlowLayoutPanelExRepair.TabIndex = 1;
+            this.FlowLayoutPanelExRepair.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
+            this.FlowLayoutPanelExRepair.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(3, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(315, 40);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "整備";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label3.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(3, 453);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(315, 40);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "修理";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // tabPage9
             // 
+            this.tabPage9.Controls.Add(this.TableLayoutPanelExFullTimeBase);
             this.tabPage9.Location = new System.Drawing.Point(4, 4);
             this.tabPage9.Name = "tabPage9";
             this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage9.Size = new System.Drawing.Size(323, 913);
+            this.tabPage9.Size = new System.Drawing.Size(327, 913);
             this.tabPage9.TabIndex = 1;
-            this.tabPage9.Text = "tabPage9";
+            this.tabPage9.Text = "組合長期";
             this.tabPage9.UseVisualStyleBackColor = true;
+            // 
+            // TableLayoutPanelExFullTimeBase
+            // 
+            this.TableLayoutPanelExFullTimeBase.ColumnCount = 1;
+            this.TableLayoutPanelExFullTimeBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.TableLayoutPanelExFullTimeBase.Controls.Add(this.label7, 0, 0);
+            this.TableLayoutPanelExFullTimeBase.Controls.Add(this.label8, 0, 2);
+            this.TableLayoutPanelExFullTimeBase.Controls.Add(this.flowLayoutPanelEx1, 0, 1);
+            this.TableLayoutPanelExFullTimeBase.Controls.Add(this.flowLayoutPanelEx2, 0, 3);
+            this.TableLayoutPanelExFullTimeBase.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TableLayoutPanelExFullTimeBase.Location = new System.Drawing.Point(3, 3);
+            this.TableLayoutPanelExFullTimeBase.Name = "TableLayoutPanelExFullTimeBase";
+            this.TableLayoutPanelExFullTimeBase.RowCount = 4;
+            this.TableLayoutPanelExFullTimeBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.TableLayoutPanelExFullTimeBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.TableLayoutPanelExFullTimeBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.TableLayoutPanelExFullTimeBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.TableLayoutPanelExFullTimeBase.Size = new System.Drawing.Size(321, 907);
+            this.TableLayoutPanelExFullTimeBase.TabIndex = 0;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label7.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.Location = new System.Drawing.Point(3, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(315, 40);
+            this.label7.TabIndex = 0;
+            this.label7.Text = "自己都合での休み";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label8.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(3, 618);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(315, 40);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "会社都合での休み";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // flowLayoutPanelEx1
+            // 
+            this.flowLayoutPanelEx1.AllowDrop = true;
+            this.flowLayoutPanelEx1.AutoScroll = true;
+            this.flowLayoutPanelEx1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowLayoutPanelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanelEx1.Location = new System.Drawing.Point(3, 43);
+            this.flowLayoutPanelEx1.Name = "flowLayoutPanelEx1";
+            this.flowLayoutPanelEx1.Size = new System.Drawing.Size(315, 572);
+            this.flowLayoutPanelEx1.TabIndex = 2;
+            this.flowLayoutPanelEx1.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
+            this.flowLayoutPanelEx1.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
+            // 
+            // flowLayoutPanelEx2
+            // 
+            this.flowLayoutPanelEx2.AllowDrop = true;
+            this.flowLayoutPanelEx2.AutoScroll = true;
+            this.flowLayoutPanelEx2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowLayoutPanelEx2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanelEx2.Location = new System.Drawing.Point(3, 661);
+            this.flowLayoutPanelEx2.Name = "flowLayoutPanelEx2";
+            this.flowLayoutPanelEx2.Size = new System.Drawing.Size(315, 243);
+            this.flowLayoutPanelEx2.TabIndex = 3;
+            this.flowLayoutPanelEx2.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
+            this.flowLayoutPanelEx2.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
+            // 
+            // tabPage11
+            // 
+            this.tabPage11.Controls.Add(this.TableLayoutPanelExPartTimeBase);
+            this.tabPage11.Location = new System.Drawing.Point(4, 4);
+            this.tabPage11.Name = "tabPage11";
+            this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage11.Size = new System.Drawing.Size(327, 913);
+            this.tabPage11.TabIndex = 2;
+            this.tabPage11.Text = "アルバイト";
+            this.tabPage11.UseVisualStyleBackColor = true;
+            // 
+            // TableLayoutPanelExPartTimeBase
+            // 
+            this.TableLayoutPanelExPartTimeBase.ColumnCount = 1;
+            this.TableLayoutPanelExPartTimeBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.TableLayoutPanelExPartTimeBase.Controls.Add(this.label9, 0, 0);
+            this.TableLayoutPanelExPartTimeBase.Controls.Add(this.label10, 0, 2);
+            this.TableLayoutPanelExPartTimeBase.Controls.Add(this.flowLayoutPanelEx3, 0, 1);
+            this.TableLayoutPanelExPartTimeBase.Controls.Add(this.flowLayoutPanelEx4, 0, 3);
+            this.TableLayoutPanelExPartTimeBase.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TableLayoutPanelExPartTimeBase.Location = new System.Drawing.Point(3, 3);
+            this.TableLayoutPanelExPartTimeBase.Name = "TableLayoutPanelExPartTimeBase";
+            this.TableLayoutPanelExPartTimeBase.RowCount = 4;
+            this.TableLayoutPanelExPartTimeBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.TableLayoutPanelExPartTimeBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.TableLayoutPanelExPartTimeBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.TableLayoutPanelExPartTimeBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.TableLayoutPanelExPartTimeBase.Size = new System.Drawing.Size(321, 907);
+            this.TableLayoutPanelExPartTimeBase.TabIndex = 0;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label9.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label9.Location = new System.Drawing.Point(3, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(315, 40);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "自己都合での休み";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label10.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label10.Location = new System.Drawing.Point(3, 618);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(315, 40);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "会社都合での休み";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // flowLayoutPanelEx3
+            // 
+            this.flowLayoutPanelEx3.AllowDrop = true;
+            this.flowLayoutPanelEx3.AutoScroll = true;
+            this.flowLayoutPanelEx3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowLayoutPanelEx3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanelEx3.Location = new System.Drawing.Point(3, 43);
+            this.flowLayoutPanelEx3.Name = "flowLayoutPanelEx3";
+            this.flowLayoutPanelEx3.Size = new System.Drawing.Size(315, 572);
+            this.flowLayoutPanelEx3.TabIndex = 2;
+            this.flowLayoutPanelEx3.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
+            this.flowLayoutPanelEx3.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
+            // 
+            // flowLayoutPanelEx4
+            // 
+            this.flowLayoutPanelEx4.AllowDrop = true;
+            this.flowLayoutPanelEx4.AutoScroll = true;
+            this.flowLayoutPanelEx4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowLayoutPanelEx4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanelEx4.Location = new System.Drawing.Point(3, 661);
+            this.flowLayoutPanelEx4.Name = "flowLayoutPanelEx4";
+            this.flowLayoutPanelEx4.Size = new System.Drawing.Size(315, 243);
+            this.flowLayoutPanelEx4.TabIndex = 3;
+            this.flowLayoutPanelEx4.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
+            this.flowLayoutPanelEx4.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.TableLayoutPanelExCloseBase);
+            this.tabPage3.Location = new System.Drawing.Point(4, 4);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(327, 913);
+            this.tabPage3.TabIndex = 3;
+            this.tabPage3.Text = "有給・朝電・無断";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // TableLayoutPanelExCloseBase
+            // 
+            this.TableLayoutPanelExCloseBase.ColumnCount = 1;
+            this.TableLayoutPanelExCloseBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.TableLayoutPanelExCloseBase.Controls.Add(this.FlowLayoutPanelExSalaried, 0, 1);
+            this.TableLayoutPanelExCloseBase.Controls.Add(this.FlowLayoutPanelExTelephone, 0, 3);
+            this.TableLayoutPanelExCloseBase.Controls.Add(this.FlowLayoutPanelExWithoutNotice, 0, 5);
+            this.TableLayoutPanelExCloseBase.Controls.Add(this.label4, 0, 0);
+            this.TableLayoutPanelExCloseBase.Controls.Add(this.label5, 0, 2);
+            this.TableLayoutPanelExCloseBase.Controls.Add(this.label6, 0, 4);
+            this.TableLayoutPanelExCloseBase.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TableLayoutPanelExCloseBase.Location = new System.Drawing.Point(3, 3);
+            this.TableLayoutPanelExCloseBase.Name = "TableLayoutPanelExCloseBase";
+            this.TableLayoutPanelExCloseBase.RowCount = 6;
+            this.TableLayoutPanelExCloseBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.TableLayoutPanelExCloseBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.TableLayoutPanelExCloseBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.TableLayoutPanelExCloseBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.TableLayoutPanelExCloseBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
+            this.TableLayoutPanelExCloseBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.TableLayoutPanelExCloseBase.Size = new System.Drawing.Size(321, 907);
+            this.TableLayoutPanelExCloseBase.TabIndex = 0;
+            // 
+            // FlowLayoutPanelExSalaried
+            // 
+            this.FlowLayoutPanelExSalaried.AllowDrop = true;
+            this.FlowLayoutPanelExSalaried.AutoScroll = true;
+            this.FlowLayoutPanelExSalaried.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.FlowLayoutPanelExSalaried.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FlowLayoutPanelExSalaried.Location = new System.Drawing.Point(3, 43);
+            this.FlowLayoutPanelExSalaried.Name = "FlowLayoutPanelExSalaried";
+            this.FlowLayoutPanelExSalaried.Size = new System.Drawing.Size(315, 256);
+            this.FlowLayoutPanelExSalaried.TabIndex = 0;
+            this.FlowLayoutPanelExSalaried.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
+            this.FlowLayoutPanelExSalaried.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
+            // 
+            // FlowLayoutPanelExTelephone
+            // 
+            this.FlowLayoutPanelExTelephone.AllowDrop = true;
+            this.FlowLayoutPanelExTelephone.AutoScroll = true;
+            this.FlowLayoutPanelExTelephone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.FlowLayoutPanelExTelephone.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FlowLayoutPanelExTelephone.Location = new System.Drawing.Point(3, 345);
+            this.FlowLayoutPanelExTelephone.Name = "FlowLayoutPanelExTelephone";
+            this.FlowLayoutPanelExTelephone.Size = new System.Drawing.Size(315, 256);
+            this.FlowLayoutPanelExTelephone.TabIndex = 1;
+            this.FlowLayoutPanelExTelephone.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
+            this.FlowLayoutPanelExTelephone.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
+            // 
+            // FlowLayoutPanelExWithoutNotice
+            // 
+            this.FlowLayoutPanelExWithoutNotice.AllowDrop = true;
+            this.FlowLayoutPanelExWithoutNotice.AutoScroll = true;
+            this.FlowLayoutPanelExWithoutNotice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.FlowLayoutPanelExWithoutNotice.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.FlowLayoutPanelExWithoutNotice.Location = new System.Drawing.Point(3, 647);
+            this.FlowLayoutPanelExWithoutNotice.Name = "FlowLayoutPanelExWithoutNotice";
+            this.FlowLayoutPanelExWithoutNotice.Size = new System.Drawing.Size(315, 257);
+            this.FlowLayoutPanelExWithoutNotice.TabIndex = 2;
+            this.FlowLayoutPanelExWithoutNotice.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
+            this.FlowLayoutPanelExWithoutNotice.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label4.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(3, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(315, 40);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "有給";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label5.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(3, 302);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(315, 40);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "朝電";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(3, 604);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(315, 40);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "無断";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // ContextMenuStripSetLabel
             // 
@@ -630,69 +1062,6 @@
             this.個人の情報ToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
             this.個人の情報ToolStripMenuItem.Text = "個人の情報";
             // 
-            // FlowLayoutPanelExSet
-            // 
-            this.FlowLayoutPanelExSet.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FlowLayoutPanelExSet.Location = new System.Drawing.Point(3, 3);
-            this.FlowLayoutPanelExSet.Name = "FlowLayoutPanelExSet";
-            this.FlowLayoutPanelExSet.Size = new System.Drawing.Size(317, 907);
-            this.FlowLayoutPanelExSet.TabIndex = 0;
-            // 
-            // FlowLayoutPanelExCar
-            // 
-            this.FlowLayoutPanelExCar.AllowDrop = true;
-            this.FlowLayoutPanelExCar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FlowLayoutPanelExCar.Location = new System.Drawing.Point(3, 3);
-            this.FlowLayoutPanelExCar.Name = "FlowLayoutPanelExCar";
-            this.FlowLayoutPanelExCar.Size = new System.Drawing.Size(317, 907);
-            this.FlowLayoutPanelExCar.TabIndex = 0;
-            this.FlowLayoutPanelExCar.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
-            this.FlowLayoutPanelExCar.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
-            // 
-            // FlowLayoutPanelExFullEmployees
-            // 
-            this.FlowLayoutPanelExFullEmployees.AllowDrop = true;
-            this.FlowLayoutPanelExFullEmployees.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FlowLayoutPanelExFullEmployees.Location = new System.Drawing.Point(3, 3);
-            this.FlowLayoutPanelExFullEmployees.Name = "FlowLayoutPanelExFullEmployees";
-            this.FlowLayoutPanelExFullEmployees.Size = new System.Drawing.Size(317, 907);
-            this.FlowLayoutPanelExFullEmployees.TabIndex = 0;
-            this.FlowLayoutPanelExFullEmployees.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
-            this.FlowLayoutPanelExFullEmployees.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
-            // 
-            // FlowLayoutPanelExLongTerm
-            // 
-            this.FlowLayoutPanelExLongTerm.AllowDrop = true;
-            this.FlowLayoutPanelExLongTerm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FlowLayoutPanelExLongTerm.Location = new System.Drawing.Point(3, 3);
-            this.FlowLayoutPanelExLongTerm.Name = "FlowLayoutPanelExLongTerm";
-            this.FlowLayoutPanelExLongTerm.Size = new System.Drawing.Size(317, 907);
-            this.FlowLayoutPanelExLongTerm.TabIndex = 0;
-            this.FlowLayoutPanelExLongTerm.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
-            this.FlowLayoutPanelExLongTerm.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
-            // 
-            // FlowLayoutPanelExPartTime
-            // 
-            this.FlowLayoutPanelExPartTime.AllowDrop = true;
-            this.FlowLayoutPanelExPartTime.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FlowLayoutPanelExPartTime.Location = new System.Drawing.Point(3, 3);
-            this.FlowLayoutPanelExPartTime.Name = "FlowLayoutPanelExPartTime";
-            this.FlowLayoutPanelExPartTime.Size = new System.Drawing.Size(317, 907);
-            this.FlowLayoutPanelExPartTime.TabIndex = 0;
-            this.FlowLayoutPanelExPartTime.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
-            this.FlowLayoutPanelExPartTime.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
-            // 
-            // FlowLayoutPanelExWindow
-            // 
-            this.FlowLayoutPanelExWindow.AllowDrop = true;
-            this.FlowLayoutPanelExWindow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FlowLayoutPanelExWindow.Location = new System.Drawing.Point(3, 3);
-            this.FlowLayoutPanelExWindow.Name = "FlowLayoutPanelExWindow";
-            this.FlowLayoutPanelExWindow.Size = new System.Drawing.Size(317, 907);
-            this.FlowLayoutPanelExWindow.TabIndex = 0;
-            this.FlowLayoutPanelExWindow.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
-            this.FlowLayoutPanelExWindow.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
-            // 
             // VehicleDispatchBoad
             // 
             this.AllowDrop = true;
@@ -719,13 +1088,25 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.TabControlExLeft.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage5.ResumeLayout(false);
-            this.tabPage6.ResumeLayout(false);
-            this.tabPage10.ResumeLayout(false);
-            this.tabPage7.ResumeLayout(false);
+            this.TabPageSet.ResumeLayout(false);
+            this.TabPageCar.ResumeLayout(false);
+            this.TabPageFullEmployees.ResumeLayout(false);
+            this.TabPageLongTerm.ResumeLayout(false);
+            this.TabPagePartTime.ResumeLayout(false);
+            this.TabPageWindow.ResumeLayout(false);
             this.TabControlExRight.ResumeLayout(false);
+            this.tabPage8.ResumeLayout(false);
+            this.TableLayoutPanelExCarBase.ResumeLayout(false);
+            this.TableLayoutPanelExCarBase.PerformLayout();
+            this.tabPage9.ResumeLayout(false);
+            this.TableLayoutPanelExFullTimeBase.ResumeLayout(false);
+            this.TableLayoutPanelExFullTimeBase.PerformLayout();
+            this.tabPage11.ResumeLayout(false);
+            this.TableLayoutPanelExPartTimeBase.ResumeLayout(false);
+            this.TableLayoutPanelExPartTimeBase.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.TableLayoutPanelExCloseBase.ResumeLayout(false);
+            this.TableLayoutPanelExCloseBase.PerformLayout();
             this.ContextMenuStripSetLabel.ResumeLayout(false);
             this.ContextMenuStripCarLabel.ResumeLayout(false);
             this.ContextMenuStripStaffLabel.ResumeLayout(false);
@@ -771,20 +1152,44 @@
         private ToolStripStatusLabel ToolStripStatusLabel2;
         private ToolStripStatusLabel ToolStripStatusLabelMemory;
         private ControlEx.TabControlEx TabControlExLeft;
-        private TabPage tabPage3;
-        private TabPage tabPage4;
-        private TabPage tabPage5;
-        private TabPage tabPage6;
-        private TabPage tabPage7;
+        private TabPage TabPageSet;
+        private TabPage TabPageCar;
+        private TabPage TabPageFullEmployees;
+        private TabPage TabPageLongTerm;
+        private TabPage TabPageWindow;
         private ControlEx.TabControlEx TabControlExRight;
         private TabPage tabPage8;
         private TabPage tabPage9;
-        private TabPage tabPage10;
+        private TabPage TabPagePartTime;
         private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExSet;
         private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExCar;
         private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExFullEmployees;
         private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExLongTerm;
         private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExPartTime;
         private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExWindow;
+        private TabPage tabPage11;
+        private ControlEx.TableLayoutPanelEx TableLayoutPanelExCarBase;
+        private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExMaintenance;
+        private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExRepair;
+        private Label label2;
+        private Label label3;
+        private TabPage tabPage3;
+        private ControlEx.TableLayoutPanelEx TableLayoutPanelExCloseBase;
+        private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExSalaried;
+        private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExTelephone;
+        private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExWithoutNotice;
+        private Label label4;
+        private Label label5;
+        private Label label6;
+        private ControlEx.TableLayoutPanelEx TableLayoutPanelExFullTimeBase;
+        private Label label7;
+        private Label label8;
+        private ControlEx.TableLayoutPanelEx TableLayoutPanelExPartTimeBase;
+        private Label label9;
+        private Label label10;
+        private ControlEx.FlowLayoutPanelEx flowLayoutPanelEx1;
+        private ControlEx.FlowLayoutPanelEx flowLayoutPanelEx2;
+        private ControlEx.FlowLayoutPanelEx flowLayoutPanelEx3;
+        private ControlEx.FlowLayoutPanelEx flowLayoutPanelEx4;
     }
 }
