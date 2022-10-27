@@ -210,8 +210,8 @@ namespace VehicleDispatch {
                 /*
                  * イベントを設定
                  */
-                labelEx.Click += new EventHandler(this.SetLabelEx_Click);
-                labelEx.MouseMove += new MouseEventHandler(this.SetLabelEx_MouseMove);
+                labelEx.Click += new EventHandler(SetLabelEx_Click);
+                labelEx.MouseMove += new MouseEventHandler(SetLabelEx_MouseMove);
                 FlowLayoutPanelExSet.Controls.Add(labelEx);
             }
             // FlowLayoutPanelExCar
@@ -222,8 +222,8 @@ namespace VehicleDispatch {
                 /*
                  * イベントを設定
                  */
-                labelEx.Click += new EventHandler(this.CarLabelEx_Click);
-                labelEx.MouseMove += new MouseEventHandler(this.CarLabelEx_MouseMove);
+                labelEx.Click += new EventHandler(CarLabelEx_Click);
+                labelEx.MouseMove += new MouseEventHandler(CarLabelEx_MouseMove);
                 FlowLayoutPanelExCar.Controls.Add(labelEx);
             }
             // FlowLayoutPanelExFullEmployees
@@ -234,8 +234,8 @@ namespace VehicleDispatch {
                 /*
                  * イベントを設定
                  */
-                labelEx.Click += new EventHandler(this.StaffLabelEx_Click);
-                labelEx.MouseMove += new MouseEventHandler(this.StaffLabelEx_MouseMove);
+                labelEx.Click += new EventHandler(StaffLabelEx_Click);
+                labelEx.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
                 FlowLayoutPanelExFullEmployees.Controls.Add(labelEx);
             }
             // FlowLayoutPanelExLongTerm
@@ -246,8 +246,8 @@ namespace VehicleDispatch {
                 /*
                  * イベントを設定
                  */
-                labelEx.Click += new EventHandler(this.StaffLabelEx_Click);
-                labelEx.MouseMove += new MouseEventHandler(this.StaffLabelEx_MouseMove);
+                labelEx.Click += new EventHandler(StaffLabelEx_Click);
+                labelEx.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
                 FlowLayoutPanelExLongTerm.Controls.Add(labelEx);
             }
             // FlowLayoutPanelExPartTime
@@ -258,8 +258,8 @@ namespace VehicleDispatch {
                 /*
                  * イベントを設定
                  */
-                labelEx.Click += new EventHandler(this.StaffLabelEx_Click);
-                labelEx.MouseMove += new MouseEventHandler(this.StaffLabelEx_MouseMove);
+                labelEx.Click += new EventHandler(StaffLabelEx_Click);
+                labelEx.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
                 FlowLayoutPanelExPartTime.Controls.Add(labelEx);
             }
             // FlowLayoutPanelExWindow
@@ -270,8 +270,8 @@ namespace VehicleDispatch {
                 /*
                  * イベントを設定
                  */
-                labelEx.Click += new EventHandler(this.StaffLabelEx_Click);
-                labelEx.MouseMove += new MouseEventHandler(this.StaffLabelEx_MouseMove);
+                labelEx.Click += new EventHandler(StaffLabelEx_Click);
+                labelEx.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
                 FlowLayoutPanelExWindow.Controls.Add(labelEx);
             }
         }
@@ -632,8 +632,8 @@ namespace VehicleDispatch {
                         }
                     }
                     break;
-                // 整備
-                case "FlowLayoutPanelExMaintenance":
+                // 点検
+                case "FlowLayoutPanelExChecking":
                     /*
                      * CarLabelEx
                      */
@@ -652,6 +652,32 @@ namespace VehicleDispatch {
                         CarLabelEx dragItem = (CarLabelEx)e.Data.GetData(typeof(CarLabelEx));
                         ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
                         ToolStripStatusLabelStatus.Text = string.Concat(((CarMasterVo)dragItem.Tag).Registration_number, " を処理しました");
+                    }
+                    break;
+                // 車検
+                case "FlowLayoutPanelExVehicleInspection":
+                    /*
+                     * CarLabelEx
+                     */
+                    if (e.Data != null && e.Data.GetDataPresent(typeof(CarLabelEx))) {
+                        CarLabelEx dragItem = (CarLabelEx)e.Data.GetData(typeof(CarLabelEx));
+                        ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
+                        ToolStripStatusLabelStatus.Text = string.Concat(((CarMasterVo)dragItem.Tag).Registration_number, " を処理しました");
+                    }
+                    break;
+                // 組合長期　有給
+                case "FlowLayoutPanelExFullSalaried":
+                    /*
+                     * StaffLabelEx
+                     */
+                    if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+                        StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
+                        if ((((StaffMasterVo)dragItem.Tag).Belongs == 20 || ((StaffMasterVo)dragItem.Tag).Belongs == 21) && ((StaffMasterVo)dragItem.Tag).Job_form == 1) {
+                            ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
+                            ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                        } else {
+                            ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " は組合長期ではありません。処理を中止します。");
+                        }
                     }
                     break;
                 // 組合長期　自己都合
@@ -677,6 +703,21 @@ namespace VehicleDispatch {
                     if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
                         StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
                         if ((((StaffMasterVo)dragItem.Tag).Belongs == 20 || ((StaffMasterVo)dragItem.Tag).Belongs == 21) && ((StaffMasterVo)dragItem.Tag).Job_form == 1) {
+                            ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
+                            ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                        } else {
+                            ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " は組合長期ではありません。処理を中止します。");
+                        }
+                    }
+                    break;
+                // アルバイト　有給
+                case "FlowLayoutPanelExPartSalaried":
+                    /*
+                     * StaffLabelEx
+                     */
+                    if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+                        StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
+                        if (((StaffMasterVo)dragItem.Tag).Belongs == 12) {
                             ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
                             ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
                         } else {
@@ -712,17 +753,6 @@ namespace VehicleDispatch {
                         } else {
                             ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " はアルバイトではありません。処理を中止します。");
                         }
-                    }
-                    break;
-                // 有給
-                case "FlowLayoutPanelExSalaried":
-                    /*
-                     * StaffLabelEx
-                     */
-                    if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
-                        StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
-                        ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
-                        ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
                     }
                     break;
                 // 朝電
