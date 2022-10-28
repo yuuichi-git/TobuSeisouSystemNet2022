@@ -3,7 +3,7 @@
  */
 namespace Common {
     public  class InitializeForm {
-        private const float TopWidthMaxSize = 66F;
+        private const float TopWidthMaxSize = 82F;
         private const float TopWidthMinSize = 0F;
         private const float LeftWidthMaxSize = 34F;
         private const float LeftWidthMinSize = 0F;

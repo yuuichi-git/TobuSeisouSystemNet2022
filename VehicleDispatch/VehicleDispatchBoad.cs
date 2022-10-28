@@ -19,7 +19,6 @@ namespace VehicleDispatch {
         private List<StaffMasterVo> _listStaffMasterVo;
         private List<StaffMasterVo> _listDeepCopyStaffMasterVo;
         private TableLayoutPanelEx[] _arrayTableLayoutPanelEx = new TableLayoutPanelEx[2];
-
         /*
          * Tabの開閉
          */
@@ -27,9 +26,8 @@ namespace VehicleDispatch {
         private int _TabControlLeftOpenBeforeIndex;
         private bool _TabControlRightOpenFlag = false;
         private int _TabControlRightOpenBeforeIndex;
-
         /// <summary>
-        /// コンストラクタ
+        /// コンストラクタ        
         /// </summary>
         public VehicleDispatchBoad(ConnectionVo connectionVo) {
             /*
@@ -338,10 +336,10 @@ namespace VehicleDispatch {
                     if (_vehicleDispatchDetailDao.CheckVehicleDispatchDetail(operationDate)) {
                         DialogResult dialogResult = MessageBox.Show(MessageText.Message301, MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                         if (dialogResult == DialogResult.OK)
-                            this.InsertVehicleDispatchDetail();
+                            InsertVehicleDispatchDetail();
                         return;
                     } else {
-                        this.InsertVehicleDispatchDetail();
+                        InsertVehicleDispatchDetail();
                     }
                     break;
             }
@@ -554,6 +552,11 @@ namespace VehicleDispatch {
                 ((StaffLabelEx)sender).DoDragDrop(sender, DragDropEffects.Move);
         }
 
+        /// <summary>
+        /// FlowLayoutPanelEx_DragDrop
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FlowLayoutPanelEx_DragDrop(object sender, DragEventArgs e) {
             // Dropを受け入れない
             e.Effect = DragDropEffects.None;
@@ -721,7 +724,7 @@ namespace VehicleDispatch {
                             ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
                             ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
                         } else {
-                            ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " は組合長期ではありません。処理を中止します。");
+                            ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " はアルバイトではありません。処理を中止します。");
                         }
                     }
                     break;
@@ -764,6 +767,8 @@ namespace VehicleDispatch {
                         StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
                         ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
                         ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                    } else {
+                        ToolStripStatusLabelStatus.Text = string.Concat("従事者ではないラベルがドロップされました。処理を中止します。");
                     }
                     break;
                 // 無断
@@ -775,6 +780,43 @@ namespace VehicleDispatch {
                         StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
                         ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
                         ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                    } else {
+                        ToolStripStatusLabelStatus.Text = string.Concat("従事者ではないラベルがドロップされました。処理を中止します。");
+                    }
+                    break;
+                // Free
+                case "FlowLayoutPanelExFree":
+                    if (FlowLayoutPanelExFree.Controls.Count < 16) {
+                        /*
+                         * SetLabelEx
+                         */
+                        if (e.Data != null && e.Data.GetDataPresent(typeof(SetLabelEx))) {
+                            SetLabelEx dragItem = (SetLabelEx)e.Data.GetData(typeof(SetLabelEx));
+                            if (((SetMasterVo)dragItem.Tag).Move_flag) {
+                                ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
+                                ToolStripStatusLabelStatus.Text = string.Concat(((SetMasterVo)dragItem.Tag).Set_name, " を処理しました");
+                            } else {
+                                ToolStripStatusLabelStatus.Text = string.Concat("(", ((SetMasterVo)dragItem.Tag).Set_name, ") は移動が禁止されています");
+                            }
+                        }
+                        /*
+                         * CarLabelEx
+                         */
+                        if (e.Data != null && e.Data.GetDataPresent(typeof(CarLabelEx))) {
+                            CarLabelEx dragItem = (CarLabelEx)e.Data.GetData(typeof(CarLabelEx));
+                            ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
+                            ToolStripStatusLabelStatus.Text = string.Concat(((CarMasterVo)dragItem.Tag).Registration_number, " を処理しました");
+                        }
+                        /*
+                         * StaffLabelEx
+                         */
+                        if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+                            StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
+                            ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
+                            ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                        }
+                    } else {
+                        ToolStripStatusLabelStatus.Text = string.Concat("これ以上の仮置きはできません。");
                     }
                     break;
             }

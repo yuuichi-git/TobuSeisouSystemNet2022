@@ -173,6 +173,7 @@ namespace Dao {
                              "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Operation_flag) + "'," +
                              "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Garage_flag) + "'," +
                              "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Five_lap) + "'," +
+                             "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Move_flag) + "'," +
                              "'" + _defaultValue.GetDefaultValue<string>(vehicleDispatchDetailVo.Day_of_week) + "'," +
                                    _defaultValue.GetDefaultValue<int>(vehicleDispatchDetailVo.Set_code) + "," +
                              "'" + _defaultValue.GetDefaultValue<string>(vehicleDispatchDetailVo.Set_note) + "'," +
@@ -213,6 +214,7 @@ namespace Dao {
                                                                          "operation_flag," +
                                                                          "garage_flag," +
                                                                          "five_lap," +
+                                                                         "move_flag," +
                                                                          "day_of_week," +
                                                                          "set_code," +
                                                                          "set_note," +

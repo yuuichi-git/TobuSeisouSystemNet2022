@@ -41,6 +41,7 @@
             this.ToolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.PanelUp = new System.Windows.Forms.Panel();
+            this.FlowLayoutPanelExFree = new ControlEx.FlowLayoutPanelEx();
             this.label1 = new System.Windows.Forms.Label();
             this.DateTimePickerOperationDate = new System.Windows.Forms.DateTimePicker();
             this.ButtonUpdate = new System.Windows.Forms.Button();
@@ -149,7 +150,7 @@
             this.TableLayoutPanelBase.Name = "TableLayoutPanelBase";
             this.TableLayoutPanelBase.RowCount = 4;
             this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 66F));
+            this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 82F));
             this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.TableLayoutPanelBase.Size = new System.Drawing.Size(1904, 1041);
@@ -266,12 +267,14 @@
             // 
             // ToolStripStatusLabel1
             // 
+            this.ToolStripStatusLabel1.ForeColor = System.Drawing.Color.Blue;
             this.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1";
-            this.ToolStripStatusLabel1.Size = new System.Drawing.Size(42, 17);
-            this.ToolStripStatusLabel1.Text = " Status";
+            this.ToolStripStatusLabel1.Size = new System.Drawing.Size(78, 17);
+            this.ToolStripStatusLabel1.Text = "             Status";
             // 
             // ToolStripStatusLabelStatus
             // 
+            this.ToolStripStatusLabelStatus.ForeColor = System.Drawing.Color.Blue;
             this.ToolStripStatusLabelStatus.Name = "ToolStripStatusLabelStatus";
             this.ToolStripStatusLabelStatus.Size = new System.Drawing.Size(145, 17);
             this.ToolStripStatusLabelStatus.Text = "ToolStripStatusLabelStatus";
@@ -279,19 +282,33 @@
             // PanelUp
             // 
             this.TableLayoutPanelBase.SetColumnSpan(this.PanelUp, 3);
+            this.PanelUp.Controls.Add(this.FlowLayoutPanelExFree);
             this.PanelUp.Controls.Add(this.label1);
             this.PanelUp.Controls.Add(this.DateTimePickerOperationDate);
             this.PanelUp.Controls.Add(this.ButtonUpdate);
             this.PanelUp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelUp.Location = new System.Drawing.Point(3, 27);
             this.PanelUp.Name = "PanelUp";
-            this.PanelUp.Size = new System.Drawing.Size(1898, 60);
+            this.PanelUp.Size = new System.Drawing.Size(1898, 76);
             this.PanelUp.TabIndex = 2;
+            // 
+            // FlowLayoutPanelExFree
+            // 
+            this.FlowLayoutPanelExFree.AllowDrop = true;
+            this.FlowLayoutPanelExFree.BackColor = System.Drawing.Color.White;
+            this.FlowLayoutPanelExFree.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.FlowLayoutPanelExFree.Location = new System.Drawing.Point(356, 2);
+            this.FlowLayoutPanelExFree.Name = "FlowLayoutPanelExFree";
+            this.FlowLayoutPanelExFree.Size = new System.Drawing.Size(1186, 74);
+            this.FlowLayoutPanelExFree.TabIndex = 3;
+            this.FlowLayoutPanelExFree.Tag = "168";
+            this.FlowLayoutPanelExFree.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
+            this.FlowLayoutPanelExFree.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(36, 20);
+            this.label1.Location = new System.Drawing.Point(44, 28);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 15);
             this.label1.TabIndex = 2;
@@ -301,7 +318,7 @@
             // 
             this.DateTimePickerOperationDate.CustomFormat = "yyyy年MM月dd日(ddd)";
             this.DateTimePickerOperationDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateTimePickerOperationDate.Location = new System.Drawing.Point(96, 16);
+            this.DateTimePickerOperationDate.Location = new System.Drawing.Point(104, 24);
             this.DateTimePickerOperationDate.Name = "DateTimePickerOperationDate";
             this.DateTimePickerOperationDate.Size = new System.Drawing.Size(144, 23);
             this.DateTimePickerOperationDate.TabIndex = 1;
@@ -310,7 +327,7 @@
             // ButtonUpdate
             // 
             this.ButtonUpdate.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ButtonUpdate.Location = new System.Drawing.Point(1668, 12);
+            this.ButtonUpdate.Location = new System.Drawing.Point(1672, 16);
             this.ButtonUpdate.Name = "ButtonUpdate";
             this.ButtonUpdate.Size = new System.Drawing.Size(180, 36);
             this.ButtonUpdate.TabIndex = 0;
@@ -323,10 +340,10 @@
             this.TabControlExCenter.Controls.Add(this.tabPage1);
             this.TabControlExCenter.Controls.Add(this.tabPage2);
             this.TabControlExCenter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TabControlExCenter.Location = new System.Drawing.Point(367, 93);
+            this.TabControlExCenter.Location = new System.Drawing.Point(367, 109);
             this.TabControlExCenter.Name = "TabControlExCenter";
             this.TabControlExCenter.SelectedIndex = 0;
-            this.TabControlExCenter.Size = new System.Drawing.Size(1170, 921);
+            this.TabControlExCenter.Size = new System.Drawing.Size(1170, 905);
             this.TabControlExCenter.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.TabControlExCenter.TabIndex = 4;
             // 
@@ -336,7 +353,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1162, 893);
+            this.tabPage1.Size = new System.Drawing.Size(1162, 877);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "配車パネル１";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -400,7 +417,7 @@
             this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx1.Size = new System.Drawing.Size(1156, 887);
+            this.TableLayoutPanelEx1.Size = new System.Drawing.Size(1156, 871);
             this.TableLayoutPanelEx1.TabIndex = 3;
             // 
             // tabPage2
@@ -409,7 +426,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1162, 893);
+            this.tabPage2.Size = new System.Drawing.Size(1162, 877);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "配車パネル２";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -474,7 +491,7 @@
             this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx2.Size = new System.Drawing.Size(1156, 887);
+            this.TableLayoutPanelEx2.Size = new System.Drawing.Size(1156, 871);
             this.TableLayoutPanelEx2.TabIndex = 4;
             // 
             // TabControlExLeft
@@ -488,11 +505,11 @@
             this.TabControlExLeft.Controls.Add(this.TabPagePartTime);
             this.TabControlExLeft.Controls.Add(this.TabPageWindow);
             this.TabControlExLeft.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TabControlExLeft.Location = new System.Drawing.Point(3, 93);
+            this.TabControlExLeft.Location = new System.Drawing.Point(3, 109);
             this.TabControlExLeft.Multiline = true;
             this.TabControlExLeft.Name = "TabControlExLeft";
             this.TabControlExLeft.SelectedIndex = 0;
-            this.TabControlExLeft.Size = new System.Drawing.Size(358, 921);
+            this.TabControlExLeft.Size = new System.Drawing.Size(358, 905);
             this.TabControlExLeft.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.TabControlExLeft.TabIndex = 5;
             this.TabControlExLeft.Click += new System.EventHandler(this.TabControlExLeft_Click);
@@ -503,7 +520,7 @@
             this.TabPageSet.Location = new System.Drawing.Point(27, 4);
             this.TabPageSet.Name = "TabPageSet";
             this.TabPageSet.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPageSet.Size = new System.Drawing.Size(327, 913);
+            this.TabPageSet.Size = new System.Drawing.Size(327, 897);
             this.TabPageSet.TabIndex = 0;
             this.TabPageSet.Text = "配車先";
             this.TabPageSet.UseVisualStyleBackColor = true;
@@ -514,8 +531,9 @@
             this.FlowLayoutPanelExSet.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FlowLayoutPanelExSet.Location = new System.Drawing.Point(3, 3);
             this.FlowLayoutPanelExSet.Name = "FlowLayoutPanelExSet";
-            this.FlowLayoutPanelExSet.Size = new System.Drawing.Size(321, 907);
+            this.FlowLayoutPanelExSet.Size = new System.Drawing.Size(321, 891);
             this.FlowLayoutPanelExSet.TabIndex = 0;
+            this.FlowLayoutPanelExSet.Tag = "151";
             // 
             // TabPageCar
             // 
@@ -523,7 +541,7 @@
             this.TabPageCar.Location = new System.Drawing.Point(27, 4);
             this.TabPageCar.Name = "TabPageCar";
             this.TabPageCar.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPageCar.Size = new System.Drawing.Size(327, 913);
+            this.TabPageCar.Size = new System.Drawing.Size(327, 897);
             this.TabPageCar.TabIndex = 1;
             this.TabPageCar.Text = "車両";
             this.TabPageCar.UseVisualStyleBackColor = true;
@@ -535,8 +553,9 @@
             this.FlowLayoutPanelExCar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FlowLayoutPanelExCar.Location = new System.Drawing.Point(3, 3);
             this.FlowLayoutPanelExCar.Name = "FlowLayoutPanelExCar";
-            this.FlowLayoutPanelExCar.Size = new System.Drawing.Size(321, 907);
+            this.FlowLayoutPanelExCar.Size = new System.Drawing.Size(321, 891);
             this.FlowLayoutPanelExCar.TabIndex = 0;
+            this.FlowLayoutPanelExCar.Tag = "152";
             this.FlowLayoutPanelExCar.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
             this.FlowLayoutPanelExCar.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
             // 
@@ -546,7 +565,7 @@
             this.TabPageFullEmployees.Location = new System.Drawing.Point(27, 4);
             this.TabPageFullEmployees.Name = "TabPageFullEmployees";
             this.TabPageFullEmployees.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPageFullEmployees.Size = new System.Drawing.Size(327, 913);
+            this.TabPageFullEmployees.Size = new System.Drawing.Size(327, 897);
             this.TabPageFullEmployees.TabIndex = 2;
             this.TabPageFullEmployees.Text = "社員";
             this.TabPageFullEmployees.UseVisualStyleBackColor = true;
@@ -558,8 +577,9 @@
             this.FlowLayoutPanelExFullEmployees.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FlowLayoutPanelExFullEmployees.Location = new System.Drawing.Point(3, 3);
             this.FlowLayoutPanelExFullEmployees.Name = "FlowLayoutPanelExFullEmployees";
-            this.FlowLayoutPanelExFullEmployees.Size = new System.Drawing.Size(321, 907);
+            this.FlowLayoutPanelExFullEmployees.Size = new System.Drawing.Size(321, 891);
             this.FlowLayoutPanelExFullEmployees.TabIndex = 0;
+            this.FlowLayoutPanelExFullEmployees.Tag = "153";
             this.FlowLayoutPanelExFullEmployees.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
             this.FlowLayoutPanelExFullEmployees.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
             // 
@@ -569,7 +589,7 @@
             this.TabPageLongTerm.Location = new System.Drawing.Point(27, 4);
             this.TabPageLongTerm.Name = "TabPageLongTerm";
             this.TabPageLongTerm.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPageLongTerm.Size = new System.Drawing.Size(327, 913);
+            this.TabPageLongTerm.Size = new System.Drawing.Size(327, 897);
             this.TabPageLongTerm.TabIndex = 3;
             this.TabPageLongTerm.Text = "組合長期";
             this.TabPageLongTerm.UseVisualStyleBackColor = true;
@@ -581,8 +601,9 @@
             this.FlowLayoutPanelExLongTerm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FlowLayoutPanelExLongTerm.Location = new System.Drawing.Point(3, 3);
             this.FlowLayoutPanelExLongTerm.Name = "FlowLayoutPanelExLongTerm";
-            this.FlowLayoutPanelExLongTerm.Size = new System.Drawing.Size(321, 907);
+            this.FlowLayoutPanelExLongTerm.Size = new System.Drawing.Size(321, 891);
             this.FlowLayoutPanelExLongTerm.TabIndex = 0;
+            this.FlowLayoutPanelExLongTerm.Tag = "154";
             this.FlowLayoutPanelExLongTerm.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
             this.FlowLayoutPanelExLongTerm.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
             // 
@@ -592,7 +613,7 @@
             this.TabPagePartTime.Location = new System.Drawing.Point(27, 4);
             this.TabPagePartTime.Name = "TabPagePartTime";
             this.TabPagePartTime.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPagePartTime.Size = new System.Drawing.Size(327, 913);
+            this.TabPagePartTime.Size = new System.Drawing.Size(327, 897);
             this.TabPagePartTime.TabIndex = 5;
             this.TabPagePartTime.Text = "アルバイト";
             this.TabPagePartTime.UseVisualStyleBackColor = true;
@@ -604,8 +625,9 @@
             this.FlowLayoutPanelExPartTime.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FlowLayoutPanelExPartTime.Location = new System.Drawing.Point(3, 3);
             this.FlowLayoutPanelExPartTime.Name = "FlowLayoutPanelExPartTime";
-            this.FlowLayoutPanelExPartTime.Size = new System.Drawing.Size(321, 907);
+            this.FlowLayoutPanelExPartTime.Size = new System.Drawing.Size(321, 891);
             this.FlowLayoutPanelExPartTime.TabIndex = 0;
+            this.FlowLayoutPanelExPartTime.Tag = "155";
             this.FlowLayoutPanelExPartTime.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
             this.FlowLayoutPanelExPartTime.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
             // 
@@ -615,7 +637,7 @@
             this.TabPageWindow.Location = new System.Drawing.Point(27, 4);
             this.TabPageWindow.Name = "TabPageWindow";
             this.TabPageWindow.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPageWindow.Size = new System.Drawing.Size(327, 913);
+            this.TabPageWindow.Size = new System.Drawing.Size(327, 897);
             this.TabPageWindow.TabIndex = 4;
             this.TabPageWindow.Text = "組合窓(呼ぶ人)";
             this.TabPageWindow.UseVisualStyleBackColor = true;
@@ -627,8 +649,9 @@
             this.FlowLayoutPanelExWindow.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FlowLayoutPanelExWindow.Location = new System.Drawing.Point(3, 3);
             this.FlowLayoutPanelExWindow.Name = "FlowLayoutPanelExWindow";
-            this.FlowLayoutPanelExWindow.Size = new System.Drawing.Size(321, 907);
+            this.FlowLayoutPanelExWindow.Size = new System.Drawing.Size(321, 891);
             this.FlowLayoutPanelExWindow.TabIndex = 0;
+            this.FlowLayoutPanelExWindow.Tag = "156";
             this.FlowLayoutPanelExWindow.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
             this.FlowLayoutPanelExWindow.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
             // 
@@ -641,11 +664,11 @@
             this.TabControlExRight.Controls.Add(this.tabPage11);
             this.TabControlExRight.Controls.Add(this.tabPage3);
             this.TabControlExRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TabControlExRight.Location = new System.Drawing.Point(1543, 93);
+            this.TabControlExRight.Location = new System.Drawing.Point(1543, 109);
             this.TabControlExRight.Multiline = true;
             this.TabControlExRight.Name = "TabControlExRight";
             this.TabControlExRight.SelectedIndex = 0;
-            this.TabControlExRight.Size = new System.Drawing.Size(358, 921);
+            this.TabControlExRight.Size = new System.Drawing.Size(358, 905);
             this.TabControlExRight.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.TabControlExRight.TabIndex = 6;
             this.TabControlExRight.Click += new System.EventHandler(this.TabControlExRight_Click);
@@ -656,7 +679,7 @@
             this.tabPage8.Location = new System.Drawing.Point(4, 4);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(327, 913);
+            this.tabPage8.Size = new System.Drawing.Size(327, 897);
             this.tabPage8.TabIndex = 0;
             this.tabPage8.Text = "車両";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -681,7 +704,7 @@
             this.TableLayoutPanelExCarBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.TableLayoutPanelExCarBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.TableLayoutPanelExCarBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.TableLayoutPanelExCarBase.Size = new System.Drawing.Size(321, 907);
+            this.TableLayoutPanelExCarBase.Size = new System.Drawing.Size(321, 891);
             this.TableLayoutPanelExCarBase.TabIndex = 0;
             // 
             // FlowLayoutPanelExChecking
@@ -692,8 +715,9 @@
             this.FlowLayoutPanelExChecking.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FlowLayoutPanelExChecking.Location = new System.Drawing.Point(3, 43);
             this.FlowLayoutPanelExChecking.Name = "FlowLayoutPanelExChecking";
-            this.FlowLayoutPanelExChecking.Size = new System.Drawing.Size(315, 256);
+            this.FlowLayoutPanelExChecking.Size = new System.Drawing.Size(315, 251);
             this.FlowLayoutPanelExChecking.TabIndex = 0;
+            this.FlowLayoutPanelExChecking.Tag = "157";
             this.FlowLayoutPanelExChecking.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
             this.FlowLayoutPanelExChecking.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
             // 
@@ -703,10 +727,11 @@
             this.FlowLayoutPanelExRepair.AutoScroll = true;
             this.FlowLayoutPanelExRepair.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.FlowLayoutPanelExRepair.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FlowLayoutPanelExRepair.Location = new System.Drawing.Point(3, 345);
+            this.FlowLayoutPanelExRepair.Location = new System.Drawing.Point(3, 340);
             this.FlowLayoutPanelExRepair.Name = "FlowLayoutPanelExRepair";
-            this.FlowLayoutPanelExRepair.Size = new System.Drawing.Size(315, 256);
+            this.FlowLayoutPanelExRepair.Size = new System.Drawing.Size(315, 251);
             this.FlowLayoutPanelExRepair.TabIndex = 1;
+            this.FlowLayoutPanelExRepair.Tag = "158";
             this.FlowLayoutPanelExRepair.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
             this.FlowLayoutPanelExRepair.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
             // 
@@ -727,7 +752,7 @@
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(3, 302);
+            this.label3.Location = new System.Drawing.Point(3, 297);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(315, 40);
             this.label3.TabIndex = 3;
@@ -740,10 +765,11 @@
             this.FlowLayoutPanelExVehicleInspection.AutoScroll = true;
             this.FlowLayoutPanelExVehicleInspection.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.FlowLayoutPanelExVehicleInspection.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FlowLayoutPanelExVehicleInspection.Location = new System.Drawing.Point(3, 647);
+            this.FlowLayoutPanelExVehicleInspection.Location = new System.Drawing.Point(3, 637);
             this.FlowLayoutPanelExVehicleInspection.Name = "FlowLayoutPanelExVehicleInspection";
-            this.FlowLayoutPanelExVehicleInspection.Size = new System.Drawing.Size(315, 257);
+            this.FlowLayoutPanelExVehicleInspection.Size = new System.Drawing.Size(315, 251);
             this.FlowLayoutPanelExVehicleInspection.TabIndex = 4;
+            this.FlowLayoutPanelExVehicleInspection.Tag = "159";
             this.FlowLayoutPanelExVehicleInspection.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
             this.FlowLayoutPanelExVehicleInspection.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
             // 
@@ -752,7 +778,7 @@
             this.label11.AutoSize = true;
             this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label11.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(3, 604);
+            this.label11.Location = new System.Drawing.Point(3, 594);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(315, 40);
             this.label11.TabIndex = 5;
@@ -765,7 +791,7 @@
             this.tabPage9.Location = new System.Drawing.Point(4, 4);
             this.tabPage9.Name = "tabPage9";
             this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage9.Size = new System.Drawing.Size(327, 913);
+            this.tabPage9.Size = new System.Drawing.Size(327, 897);
             this.tabPage9.TabIndex = 1;
             this.tabPage9.Text = "組合長期";
             this.tabPage9.UseVisualStyleBackColor = true;
@@ -790,7 +816,7 @@
             this.TableLayoutPanelExFullTimeBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.TableLayoutPanelExFullTimeBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.TableLayoutPanelExFullTimeBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.TableLayoutPanelExFullTimeBase.Size = new System.Drawing.Size(321, 907);
+            this.TableLayoutPanelExFullTimeBase.Size = new System.Drawing.Size(321, 891);
             this.TableLayoutPanelExFullTimeBase.TabIndex = 0;
             // 
             // label7
@@ -810,7 +836,7 @@
             this.label8.AutoSize = true;
             this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label8.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(3, 302);
+            this.label8.Location = new System.Drawing.Point(3, 297);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(315, 40);
             this.label8.TabIndex = 1;
@@ -825,8 +851,9 @@
             this.FlowLayoutPanelExFullSalaried.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FlowLayoutPanelExFullSalaried.Location = new System.Drawing.Point(3, 43);
             this.FlowLayoutPanelExFullSalaried.Name = "FlowLayoutPanelExFullSalaried";
-            this.FlowLayoutPanelExFullSalaried.Size = new System.Drawing.Size(315, 256);
+            this.FlowLayoutPanelExFullSalaried.Size = new System.Drawing.Size(315, 251);
             this.FlowLayoutPanelExFullSalaried.TabIndex = 2;
+            this.FlowLayoutPanelExFullSalaried.Tag = "160";
             this.FlowLayoutPanelExFullSalaried.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
             this.FlowLayoutPanelExFullSalaried.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
             // 
@@ -836,10 +863,11 @@
             this.FlowLayoutPanelExFullClose.AutoScroll = true;
             this.FlowLayoutPanelExFullClose.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.FlowLayoutPanelExFullClose.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FlowLayoutPanelExFullClose.Location = new System.Drawing.Point(3, 345);
+            this.FlowLayoutPanelExFullClose.Location = new System.Drawing.Point(3, 340);
             this.FlowLayoutPanelExFullClose.Name = "FlowLayoutPanelExFullClose";
-            this.FlowLayoutPanelExFullClose.Size = new System.Drawing.Size(315, 256);
+            this.FlowLayoutPanelExFullClose.Size = new System.Drawing.Size(315, 251);
             this.FlowLayoutPanelExFullClose.TabIndex = 3;
+            this.FlowLayoutPanelExFullClose.Tag = "161";
             this.FlowLayoutPanelExFullClose.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
             this.FlowLayoutPanelExFullClose.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
             // 
@@ -849,10 +877,11 @@
             this.FlowLayoutPanelExFullDesignation.AutoScroll = true;
             this.FlowLayoutPanelExFullDesignation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.FlowLayoutPanelExFullDesignation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FlowLayoutPanelExFullDesignation.Location = new System.Drawing.Point(3, 647);
+            this.FlowLayoutPanelExFullDesignation.Location = new System.Drawing.Point(3, 637);
             this.FlowLayoutPanelExFullDesignation.Name = "FlowLayoutPanelExFullDesignation";
-            this.FlowLayoutPanelExFullDesignation.Size = new System.Drawing.Size(315, 257);
+            this.FlowLayoutPanelExFullDesignation.Size = new System.Drawing.Size(315, 251);
             this.FlowLayoutPanelExFullDesignation.TabIndex = 4;
+            this.FlowLayoutPanelExFullDesignation.Tag = "162";
             this.FlowLayoutPanelExFullDesignation.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
             this.FlowLayoutPanelExFullDesignation.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
             // 
@@ -861,7 +890,7 @@
             this.label12.AutoSize = true;
             this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label12.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(3, 604);
+            this.label12.Location = new System.Drawing.Point(3, 594);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(315, 40);
             this.label12.TabIndex = 5;
@@ -874,7 +903,7 @@
             this.tabPage11.Location = new System.Drawing.Point(4, 4);
             this.tabPage11.Name = "tabPage11";
             this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage11.Size = new System.Drawing.Size(327, 913);
+            this.tabPage11.Size = new System.Drawing.Size(327, 897);
             this.tabPage11.TabIndex = 2;
             this.tabPage11.Text = "アルバイト";
             this.tabPage11.UseVisualStyleBackColor = true;
@@ -899,7 +928,7 @@
             this.TableLayoutPanelExPartTimeBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.TableLayoutPanelExPartTimeBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.TableLayoutPanelExPartTimeBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.TableLayoutPanelExPartTimeBase.Size = new System.Drawing.Size(321, 907);
+            this.TableLayoutPanelExPartTimeBase.Size = new System.Drawing.Size(321, 891);
             this.TableLayoutPanelExPartTimeBase.TabIndex = 0;
             // 
             // label9
@@ -919,7 +948,7 @@
             this.label10.AutoSize = true;
             this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label10.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(3, 302);
+            this.label10.Location = new System.Drawing.Point(3, 297);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(315, 40);
             this.label10.TabIndex = 1;
@@ -934,8 +963,9 @@
             this.FlowLayoutPanelExPartSalaried.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FlowLayoutPanelExPartSalaried.Location = new System.Drawing.Point(3, 43);
             this.FlowLayoutPanelExPartSalaried.Name = "FlowLayoutPanelExPartSalaried";
-            this.FlowLayoutPanelExPartSalaried.Size = new System.Drawing.Size(315, 256);
+            this.FlowLayoutPanelExPartSalaried.Size = new System.Drawing.Size(315, 251);
             this.FlowLayoutPanelExPartSalaried.TabIndex = 2;
+            this.FlowLayoutPanelExPartSalaried.Tag = "163";
             this.FlowLayoutPanelExPartSalaried.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
             this.FlowLayoutPanelExPartSalaried.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
             // 
@@ -945,10 +975,11 @@
             this.FlowLayoutPanelExPartClose.AutoScroll = true;
             this.FlowLayoutPanelExPartClose.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.FlowLayoutPanelExPartClose.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FlowLayoutPanelExPartClose.Location = new System.Drawing.Point(3, 345);
+            this.FlowLayoutPanelExPartClose.Location = new System.Drawing.Point(3, 340);
             this.FlowLayoutPanelExPartClose.Name = "FlowLayoutPanelExPartClose";
-            this.FlowLayoutPanelExPartClose.Size = new System.Drawing.Size(315, 256);
+            this.FlowLayoutPanelExPartClose.Size = new System.Drawing.Size(315, 251);
             this.FlowLayoutPanelExPartClose.TabIndex = 3;
+            this.FlowLayoutPanelExPartClose.Tag = "164";
             this.FlowLayoutPanelExPartClose.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
             this.FlowLayoutPanelExPartClose.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
             // 
@@ -957,7 +988,7 @@
             this.label13.AutoSize = true;
             this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label13.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(3, 604);
+            this.label13.Location = new System.Drawing.Point(3, 594);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(315, 40);
             this.label13.TabIndex = 4;
@@ -970,10 +1001,11 @@
             this.FlowLayoutPanelExPartDesignation.AutoScroll = true;
             this.FlowLayoutPanelExPartDesignation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.FlowLayoutPanelExPartDesignation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FlowLayoutPanelExPartDesignation.Location = new System.Drawing.Point(3, 647);
+            this.FlowLayoutPanelExPartDesignation.Location = new System.Drawing.Point(3, 637);
             this.FlowLayoutPanelExPartDesignation.Name = "FlowLayoutPanelExPartDesignation";
-            this.FlowLayoutPanelExPartDesignation.Size = new System.Drawing.Size(315, 257);
+            this.FlowLayoutPanelExPartDesignation.Size = new System.Drawing.Size(315, 251);
             this.FlowLayoutPanelExPartDesignation.TabIndex = 5;
+            this.FlowLayoutPanelExPartDesignation.Tag = "165";
             this.FlowLayoutPanelExPartDesignation.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
             this.FlowLayoutPanelExPartDesignation.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
             // 
@@ -983,7 +1015,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 4);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(327, 913);
+            this.tabPage3.Size = new System.Drawing.Size(327, 897);
             this.tabPage3.TabIndex = 3;
             this.tabPage3.Text = "朝電・無断";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1004,7 +1036,7 @@
             this.TableLayoutPanelExCloseBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.TableLayoutPanelExCloseBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.TableLayoutPanelExCloseBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TableLayoutPanelExCloseBase.Size = new System.Drawing.Size(321, 907);
+            this.TableLayoutPanelExCloseBase.Size = new System.Drawing.Size(321, 891);
             this.TableLayoutPanelExCloseBase.TabIndex = 0;
             // 
             // FlowLayoutPanelExTelephone
@@ -1015,8 +1047,9 @@
             this.FlowLayoutPanelExTelephone.Dock = System.Windows.Forms.DockStyle.Fill;
             this.FlowLayoutPanelExTelephone.Location = new System.Drawing.Point(3, 43);
             this.FlowLayoutPanelExTelephone.Name = "FlowLayoutPanelExTelephone";
-            this.FlowLayoutPanelExTelephone.Size = new System.Drawing.Size(315, 407);
+            this.FlowLayoutPanelExTelephone.Size = new System.Drawing.Size(315, 399);
             this.FlowLayoutPanelExTelephone.TabIndex = 1;
+            this.FlowLayoutPanelExTelephone.Tag = "166";
             this.FlowLayoutPanelExTelephone.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
             this.FlowLayoutPanelExTelephone.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
             // 
@@ -1026,10 +1059,11 @@
             this.FlowLayoutPanelExWithoutNotice.AutoScroll = true;
             this.FlowLayoutPanelExWithoutNotice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.FlowLayoutPanelExWithoutNotice.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FlowLayoutPanelExWithoutNotice.Location = new System.Drawing.Point(3, 496);
+            this.FlowLayoutPanelExWithoutNotice.Location = new System.Drawing.Point(3, 488);
             this.FlowLayoutPanelExWithoutNotice.Name = "FlowLayoutPanelExWithoutNotice";
-            this.FlowLayoutPanelExWithoutNotice.Size = new System.Drawing.Size(315, 408);
+            this.FlowLayoutPanelExWithoutNotice.Size = new System.Drawing.Size(315, 400);
             this.FlowLayoutPanelExWithoutNotice.TabIndex = 2;
+            this.FlowLayoutPanelExWithoutNotice.Tag = "167";
             this.FlowLayoutPanelExWithoutNotice.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
             this.FlowLayoutPanelExWithoutNotice.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
             // 
@@ -1050,7 +1084,7 @@
             this.label6.AutoSize = true;
             this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label6.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(3, 453);
+            this.label6.Location = new System.Drawing.Point(3, 445);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(315, 40);
             this.label6.TabIndex = 5;
@@ -1266,5 +1300,6 @@
         private Label label12;
         private Label label13;
         private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExPartDesignation;
+        private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExFree;
     }
 }
