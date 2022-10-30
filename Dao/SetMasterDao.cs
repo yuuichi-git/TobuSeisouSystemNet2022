@@ -47,6 +47,7 @@ namespace Dao {
                     setMasterVo.Set_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["set_name"]);
                     setMasterVo.Set_name_1 = _defaultValue.GetDefaultValue<string>(sqlDataReader["set_name_1"]);
                     setMasterVo.Set_name_2 = _defaultValue.GetDefaultValue<string>(sqlDataReader["set_name_2"]);
+                    setMasterVo.Garage_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["garage_flag"]);
                     setMasterVo.Classification_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["classification_code"]);
                     setMasterVo.Classification_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["classification_name"]); // 外部結合で取得
                     setMasterVo.Contact_method = _defaultValue.GetDefaultValue<int>(sqlDataReader["contact_method"]);

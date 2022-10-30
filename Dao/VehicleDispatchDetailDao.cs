@@ -255,6 +255,7 @@ namespace Dao {
 
         /// <summary>
         /// DeleteVehicleDispatchDetail
+        /// 本番を初期化する際、過去のデータを削除する
         /// </summary>
         /// <param name="operationDate">配車日</param>
         public void DeleteVehicleDispatchDetail(DateTime operationDate) {
@@ -263,6 +264,192 @@ namespace Dao {
                                      "WHERE operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
             try {
                 sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// SetControlExからの処理
+        /// SetControlExからSetControlEx間のデータをコピーする
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="dragCellNumber"></param>
+        /// <param name="dropCellNumber"></param>
+        /// <returns></returns>
+        public int SetDataSetLabelExForSetControlEx(DateTime operationDate, int dragCellNumber, int dropCellNumber) {
+            /*
+             * Tagがゼロから始まっているので１をプラスする
+             */
+            dragCellNumber++;
+            dropCellNumber++;
+
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE vehicle_dispatch_detail " +
+                                     "SET operation_flag = (SELECT operation_flag FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
+                                         "garage_flag = (SELECT garage_flag FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
+                                         "five_lap = (SELECT five_lap FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
+                                         "move_flag = (SELECT move_flag FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
+                                         "day_of_week = (SELECT day_of_week FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
+                                         "set_code = (SELECT set_code FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
+                                         "set_note = (SELECT set_note FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
+                                         "update_pc_name = '" + Environment.MachineName + "'," +
+                                         "update_ymd_hms = '" + DateTime.Now + "' " +
+                                     "WHERE cell_number = " + dropCellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                return sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// FlowLayoutPanelExからの処理
+        /// FlowLayoutPanelExからDragされたデータを新規で登録する
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="dropCellNumber"></param>
+        /// <param name="setMasterVo"></param>
+        /// <returns></returns>
+        public int SetDataSetLabelExForFlowLayoutPanelEx(DateTime operationDate, int dropCellNumber, SetMasterVo setMasterVo) {
+            /*
+             * Tagがゼロから始まっているので１をプラスする
+             */
+            dropCellNumber++;
+
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE vehicle_dispatch_detail " +
+                                     "SET operation_flag = 'True'," +
+                                         "garage_flag = '" + setMasterVo.Garage_flag + "'," +
+                                         "five_lap = '" + setMasterVo.Five_lap + "'," +
+                                         "move_flag = '" + setMasterVo.Move_flag + "'," +
+                                         "day_of_week = '" + operationDate.ToString("ddd") + "'," +
+                                         "set_code = '" + setMasterVo.Set_code + "'," +
+                                         "set_note = '" + setMasterVo.Remarks + "'," +
+                                         "update_pc_name = '" + Environment.MachineName + "'," +
+                                         "update_ymd_hms = '" + DateTime.Now + "' " +
+                                     "WHERE cell_number = " + dropCellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                return sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        ///  SetControlExからの処理
+        ///  Drag元のデータをリセットする
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="dragCellNumber"></param>
+        /// <returns></returns>
+        public int ResetDataSetLabelExForSetControlEx(DateTime operationDate, int dragCellNumber) {
+            /*
+             * Tagがゼロから始まっているので１をプラスする
+             */
+            dragCellNumber++;
+
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE vehicle_dispatch_detail " +
+                                     "SET operation_flag = 'False'," +
+                                         "garage_flag = 'False'," +
+                                         "five_lap = 'False'," +
+                                         "move_flag = 'False'," +
+                                         "day_of_week = ''," +
+                                         "set_code = 0," +
+                                         "set_note = ''," +
+                                         "update_pc_name = '" + Environment.MachineName + "'," +
+                                         "update_ymd_hms = '" + DateTime.Now + "' " +
+                                     "WHERE cell_number = " + dragCellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                return sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// SetControlExからの処理
+        /// SetControlExからSetControlEx間のデータをコピーする
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="dragCellNumber"></param>
+        /// <param name="dropCellNumber"></param>
+        /// <returns></returns>
+        public int SetDataCarLabelExForSetControlEx(DateTime operationDate, int dragCellNumber, int dropCellNumber) {
+            /*
+             * Tagがゼロから始まっているので１をプラスする
+             */
+            dragCellNumber++;
+            dropCellNumber++;
+
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE vehicle_dispatch_detail " +
+                                     "SET car_code = (SELECT car_code FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
+                                         "car_proxy_flag= (SELECT car_proxy_flag FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
+                                         "car_note = (SELECT car_note FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
+                                         "update_pc_name = '" + Environment.MachineName + "'," +
+                                         "update_ymd_hms = '" + DateTime.Now + "' " +
+                                     "WHERE cell_number = " + dropCellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                return sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// FlowLayoutPanelExからの処理
+        /// FlowLayoutPanelExからDragされたデータを新規で登録する
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="dropCellNumber"></param>
+        /// <param name="carMasterVo"></param>
+        /// <returns></returns>
+        public int SetDataCarLabelExForFlowLayoutPanelEx(DateTime operationDate, int dropCellNumber, CarMasterVo carMasterVo) {
+            /*
+             * Tagがゼロから始まっているので１をプラスする
+             */
+            dropCellNumber++;
+
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE vehicle_dispatch_detail " +
+                                     "SET car_code = '" + carMasterVo.Car_code + "'," +
+                                         "car_proxy_flag = 'False'," +
+                                         "car_note = '" + carMasterVo.Remarks + "'," +
+                                         "update_pc_name = '" + Environment.MachineName + "'," +
+                                         "update_ymd_hms = '" + DateTime.Now + "' " +
+                                     "WHERE cell_number = " + dropCellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                return sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// SetControlExからの処理
+        /// Drag元のデータをリセットする
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="dragCellNumber"></param>
+        /// <returns></returns>
+        public int ResetDataCarLabelExForSetControlEx(DateTime operationDate, int dragCellNumber) {
+            /*
+             * Tagがゼロから始まっているので１をプラスする
+             */
+            dragCellNumber++;
+
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE vehicle_dispatch_detail " +
+                                     "SET car_code = 0," +
+                                         "car_proxy_flag = 'False'," +
+                                         "car_note = ''," +
+                                         "update_pc_name = '" + Environment.MachineName + "'," +
+                                         "update_ymd_hms = '" + DateTime.Now + "' " +
+                                     "WHERE cell_number = " + dragCellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                return sqlCommand.ExecuteNonQuery();
             } catch {
                 throw;
             }

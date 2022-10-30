@@ -111,6 +111,18 @@ namespace VehicleDispatch {
             FlowLayoutPanelControlRemove(this.FlowLayoutPanelExLongTerm);
             FlowLayoutPanelControlRemove(this.FlowLayoutPanelExPartTime);
             FlowLayoutPanelControlRemove(this.FlowLayoutPanelExWindow);
+            FlowLayoutPanelControlRemove(this.FlowLayoutPanelExChecking);
+            FlowLayoutPanelControlRemove(this.FlowLayoutPanelExRepair);
+            FlowLayoutPanelControlRemove(this.FlowLayoutPanelExVehicleInspection);
+            FlowLayoutPanelControlRemove(this.FlowLayoutPanelExFullSalaried);
+            FlowLayoutPanelControlRemove(this.FlowLayoutPanelExFullClose);
+            FlowLayoutPanelControlRemove(this.FlowLayoutPanelExFullDesignation);
+            FlowLayoutPanelControlRemove(this.FlowLayoutPanelExPartSalaried);
+            FlowLayoutPanelControlRemove(this.FlowLayoutPanelExPartClose);
+            FlowLayoutPanelControlRemove(this.FlowLayoutPanelExPartDesignation);
+            FlowLayoutPanelControlRemove(this.FlowLayoutPanelExTelephone);
+            FlowLayoutPanelControlRemove(this.FlowLayoutPanelExWithoutNotice);
+            FlowLayoutPanelControlRemove(this.FlowLayoutPanelExFree);
             /*
              * TableLayoutPanelをクリア
              */
@@ -449,6 +461,7 @@ namespace VehicleDispatch {
                              */
                             newDropItem.Click += new EventHandler(SetLabelEx_Click);
                             newDropItem.MouseMove += new MouseEventHandler(SetLabelEx_MouseMove);
+                            _vehicleDispatchDetailDao.SetDataSetLabelExForFlowLayoutPanelEx(DateTimePickerOperationDate.Value, (int)setControlEx.Tag, (SetMasterVo)dragItem.Tag);
                             setControlEx.Controls.Add(newDropItem, 0, 0);
                         } else {
                             ToolStripStatusLabelStatus.Text = string.Concat("配車先が設定されています。(", ((SetMasterVo)dragItem.Tag).Set_name, ") はここへは移動できません");
@@ -458,7 +471,16 @@ namespace VehicleDispatch {
                          * TableLayoutPanelExからのDrop
                          */
                         if (setControlEx.GetControlFromPosition(0, 0) == null) {
-                            setControlEx.Controls.Add(dragItem, 0, 0);
+                            /*
+                             * 移動許可を調査する
+                             */
+                            if (CheckSetControlEx(dragItem)) {
+                                _vehicleDispatchDetailDao.SetDataSetLabelExForSetControlEx(DateTimePickerOperationDate.Value, (int)((SetControlEx)dragItem.Parent).Tag, (int)setControlEx.Tag);
+                                _vehicleDispatchDetailDao.ResetDataSetLabelExForSetControlEx(DateTimePickerOperationDate.Value, (int)((SetControlEx)dragItem.Parent).Tag);
+                                setControlEx.Controls.Add(dragItem, 0, 0);
+                            } else {
+                                ToolStripStatusLabelStatus.Text = string.Concat("車両ラベル又は従業員ラベルが設定されています。そのため配車先ラベルを移動できません");
+                            }
                         } else {
                             ToolStripStatusLabelStatus.Text = string.Concat("配車先が設定されています。(", ((SetMasterVo)dragItem.Tag).Set_name, ") はここへは移動できません");
                         }
@@ -472,10 +494,27 @@ namespace VehicleDispatch {
              */
             if (e.Data != null && e.Data.GetDataPresent(typeof(CarLabelEx))) {
                 CarLabelEx dragItem = (CarLabelEx)e.Data.GetData(typeof(CarLabelEx));
-                if (setControlEx.GetControlFromPosition(0, 1) == null) {
-                    setControlEx.Controls.Add(dragItem, 0, 1);
+                if (dragItem.Parent.Parent.Name == "TabPageCar") {
+                    /*
+                     * Tab(車両)からのDrop
+                     */
+                    if (setControlEx.GetControlFromPosition(0, 1) == null) {
+                        _vehicleDispatchDetailDao.SetDataCarLabelExForFlowLayoutPanelEx(DateTimePickerOperationDate.Value, (int)setControlEx.Tag, (CarMasterVo)dragItem.Tag);
+                        setControlEx.Controls.Add(dragItem, 0, 1);
+                    } else {
+                        ToolStripStatusLabelStatus.Text = string.Concat("車両が設定されています。(", ((CarMasterVo)dragItem.Tag).Registration_number, ") はここへは移動できません");
+                    }
                 } else {
-                    ToolStripStatusLabelStatus.Text = string.Concat("車両が設定されています。(", ((CarMasterVo)dragItem.Tag).Registration_number, ") はここへは移動できません");
+                    /*
+                     * TableLayoutPanelExからのDrop
+                     */
+                    if (setControlEx.GetControlFromPosition(0, 1) == null) {
+                        _vehicleDispatchDetailDao.SetDataCarLabelExForSetControlEx(DateTimePickerOperationDate.Value, (int)((SetControlEx)dragItem.Parent).Tag, (int)setControlEx.Tag);
+                        _vehicleDispatchDetailDao.ResetDataCarLabelExForSetControlEx(DateTimePickerOperationDate.Value, (int)((SetControlEx)dragItem.Parent).Tag);
+                        setControlEx.Controls.Add(dragItem, 0, 1);
+                    } else {
+                        ToolStripStatusLabelStatus.Text = string.Concat("車両が設定されています。(", ((CarMasterVo)dragItem.Tag).Registration_number, ") はここへは移動できません");
+                    }
                 }
             }
             /*
@@ -571,6 +610,9 @@ namespace VehicleDispatch {
                      */
                     if (e.Data != null && e.Data.GetDataPresent(typeof(CarLabelEx))) {
                         CarLabelEx dragItem = (CarLabelEx)e.Data.GetData(typeof(CarLabelEx));
+                        // vehicle_dispatch_detailから記録をリセットする
+                        _vehicleDispatchDetailDao.ResetDataCarLabelExForSetControlEx(DateTimePickerOperationDate.Value, (int)((SetControlEx)dragItem.Parent).Tag);
+                        // FlowLayoutPanelExにControlを追加する
                         ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
                         ToolStripStatusLabelStatus.Text = string.Concat(((CarMasterVo)dragItem.Tag).Registration_number, " を処理しました");
                     }
@@ -792,12 +834,7 @@ namespace VehicleDispatch {
                          */
                         if (e.Data != null && e.Data.GetDataPresent(typeof(SetLabelEx))) {
                             SetLabelEx dragItem = (SetLabelEx)e.Data.GetData(typeof(SetLabelEx));
-                            if (((SetMasterVo)dragItem.Tag).Move_flag) {
-                                ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
-                                ToolStripStatusLabelStatus.Text = string.Concat(((SetMasterVo)dragItem.Tag).Set_name, " を処理しました");
-                            } else {
-                                ToolStripStatusLabelStatus.Text = string.Concat("(", ((SetMasterVo)dragItem.Tag).Set_name, ") は移動が禁止されています");
-                            }
+                            ToolStripStatusLabelStatus.Text = string.Concat("(", ((SetMasterVo)dragItem.Tag).Set_name, ") は移動が禁止されています");
                         }
                         /*
                          * CarLabelEx
@@ -824,6 +861,18 @@ namespace VehicleDispatch {
 
         private void FlowLayoutPanelEx_DragEnter(object sender, DragEventArgs e) {
             e.Effect = DragDropEffects.Move;
+        }
+
+        /// <summary>
+        /// SetLabelExを移動できるかをチェックする
+        /// true:移動可能 false:移動不可
+        /// ※CarLabelやStaffLabelが存在する場合は移動を禁止する
+        /// </summary>
+        /// <returns></returns>
+        private bool CheckSetControlEx(SetLabelEx dragItem) {
+            SetControlEx dragItemForSetControlEx = (SetControlEx)dragItem.Parent;
+            // 対象のSetControlExにはDragしたSetLabelExが入っているので”Count == 1”となる
+            return dragItemForSetControlEx.Controls.Count == 1 ? true : false;
         }
 
         /// <summary>
