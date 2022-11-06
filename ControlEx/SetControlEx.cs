@@ -39,6 +39,7 @@ namespace ControlEx {
             this.AllowDrop = true;
             this.Dock = DockStyle.Fill;
             this.Margin = new Padding(0);
+            this.Name = "SetControlEx";
             /*
              * SetControlExのイベントを登録
              */

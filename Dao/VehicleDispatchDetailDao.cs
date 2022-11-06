@@ -454,5 +454,202 @@ namespace Dao {
                 throw;
             }
         }
+
+        /// <summary>
+        /// operator_1
+        /// SetControlExからSetControlEx間のデータをコピーする
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="dragCellNumber"></param>
+        /// <param name="dragRowNumber">StaffLabelExのSetControlEx上でのRowの位置</param>
+        /// <param name="dropCellNumber"></param>
+        /// <returns></returns>
+        public int SetDataStaffLabelExForSetControlEx(DateTime operationDate, int dragCellNumber, int dragRowNumber, int dropCellNumber, int dropRowNumber) {
+            /*
+             * Tagがゼロから始まっているので１をプラスする
+             */
+            dragCellNumber++;
+            dropCellNumber++;
+            /*
+             * TableLayoutPanel上のPointを変換する
+             */
+            dragRowNumber--;
+            dropRowNumber--;
+            /*
+             * Drag項目のSQL文を作成
+             */
+            string sqlDragOperatorCode = string.Concat("operator_code_" + dragRowNumber);
+            string sqlDragOperatorProxyFlag = string.Concat("operator_" + dragRowNumber + "_proxy_flag");
+            string sqlDragOperatorRollCallYmdHms = string.Concat("operator_" + dragRowNumber + "_roll_call_ymd_hms");
+            string sqlDragOperatorNote = string.Concat("operator_" + dragRowNumber, "_note");
+            /*
+             * Drop項目のSQL文を作成
+             */
+            string sqlDropOperatorCode = string.Concat("operator_code_" + dropRowNumber);
+            string sqlDropOperatorProxyFlag = string.Concat("operator_" + dropRowNumber + "_proxy_flag");
+            string sqlDropOperatorRollCallYmdHms = string.Concat("operator_" + dropRowNumber + "_roll_call_ymd_hms");
+            string sqlDropOperatorNote = string.Concat("operator_" + dropRowNumber, "_note");
+
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE vehicle_dispatch_detail " +
+                                     "SET " + sqlDropOperatorCode + " = (SELECT " + sqlDragOperatorCode + " " +
+                                                                        "FROM vehicle_dispatch_detail " +
+                                                                        "WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
+                                         sqlDropOperatorProxyFlag + " = (SELECT " + sqlDragOperatorProxyFlag + " " +
+                                                                        "FROM vehicle_dispatch_detail " +
+                                                                        "WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
+                                    sqlDropOperatorRollCallYmdHms + " = (SELECT " + sqlDragOperatorRollCallYmdHms + " " +
+                                                                        "FROM vehicle_dispatch_detail " +
+                                                                        "WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
+                                              sqlDropOperatorNote + " = (SELECT " + sqlDragOperatorNote + " " +
+                                                                        "FROM vehicle_dispatch_detail " +
+                                                                        "WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
+                                         "update_pc_name = '" + Environment.MachineName + "'," +
+                                         "update_ymd_hms = '" + DateTime.Now + "' " +
+                                     "WHERE cell_number = " + dropCellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                return sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// ResetDataStaffLabelExForSetControlEx
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="dragCellNumber"></param>
+        /// <param name="dragRowNumber"></param>
+        /// <returns></returns>
+        public int ResetDataStaffLabelExForSetControlEx(DateTime operationDate, int dragCellNumber, int dragRowNumber) {
+            /*
+             * Tagがゼロから始まっているので１をプラスする
+             */
+            dragCellNumber++;
+            /*
+             * TableLayoutPanel上のPointを変換する
+             */
+            dragRowNumber--;
+            /*
+             * Drag項目のSQL文を作成
+             */
+            string sqlDragOperatorCode = string.Concat("operator_code_" + dragRowNumber);
+            string sqlDragOperatorProxyFlag = string.Concat("operator_" + dragRowNumber + "_proxy_flag");
+            string sqlDragOperatorRollCallYmdHms = string.Concat("operator_" + dragRowNumber + "_roll_call_ymd_hms");
+            string sqlDragOperatorNote = string.Concat("operator_" + dragRowNumber, "_note");
+
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE vehicle_dispatch_detail " +
+                                     "SET " + sqlDragOperatorCode + " = 0," +
+                                              sqlDragOperatorProxyFlag + " = 'False'," +
+                                              sqlDragOperatorRollCallYmdHms + " = '1900-01-01 00:00:00'," +
+                                              sqlDragOperatorNote + " = ''," +
+                                             "update_pc_name = '" + Environment.MachineName + "'," +
+                                             "update_ymd_hms = '" + DateTime.Now + "' " +
+                                     "WHERE cell_number = " + dragCellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                return sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// InsertVehicleDispatchDetailTableLayoutPanel
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="dragCellNumber"></param>
+        /// <param name="dragRowNumber"></param>
+        /// <param name="dropCellNumber">Tagに埋めてあるのでそのまま利用できる</param>
+        /// <returns></returns>
+        public int InsertVehicleDispatchDetailTableLayoutPanel_StaffLabelEx(DateTime operationDate, int dragCellNumber, int dragRowNumber, string dropCellNumber) {
+            /*
+             * Tagがゼロから始まっているので１をプラスする
+             */
+            dragCellNumber++;
+            /*
+             * TableLayoutPanel上のPointを変換する
+             */
+            dragRowNumber--;
+            /*
+             * Drag項目のSQL文を作成
+             */
+            string sqlDragOperatorCode = string.Concat("operator_code_" + dragRowNumber);
+            string sqlDragOperatorProxyFlag = string.Concat("operator_" + dragRowNumber + "_proxy_flag");
+            string sqlDragOperatorRollCallYmdHms = string.Concat("operator_" + dragRowNumber + "_roll_call_ymd_hms");
+            string sqlDragOperatorNote = string.Concat("operator_" + dragRowNumber, "_note");
+
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "INSERT INTO vehicle_dispatch_detail_flowLayoutPanel(cell_number," +
+                                                                                         "operation_date," +
+                                                                                         "operator_code," +
+                                                                                         "operator_proxy_flag," +
+                                                                                         "operator_roll_call_ymd_hms," +
+                                                                                         "operator_note," +
+                                                                                         "insert_pc_name," +
+                                                                                         "insert_ymd_hms," +
+                                                                                         "update_pc_name," +
+                                                                                         "update_ymd_hms," +
+                                                                                         "delete_pc_name," +
+                                                                                         "delete_ymd_hms," +
+                                                                                         "delete_flag) " +
+                                     "VALUES (" + dropCellNumber + "," +
+                                            "'" + operationDate.ToString("yyyy-MM-dd") + "'," +
+                                            "(SELECT " + sqlDragOperatorCode + " FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "')," +
+                                            "(SELECT " + sqlDragOperatorProxyFlag + " FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "')," +
+                                            "(SELECT " + sqlDragOperatorRollCallYmdHms + " FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "')," +
+                                            "(SELECT " + sqlDragOperatorNote + " FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
+                                            "'" + Environment.MachineName + "'," +
+                                            "'" + DateTime.Now + "'," +
+                                            "''," +
+                                            "'1900-01-01 00:00:00'," +
+                                            "''," +
+                                            "'1900-01-01 00:00:00'," +
+                                            "'False');";
+            try {
+                return sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        public int UpdateVehicleDispatchDetailTableLayoutPanel_StaffLabelEx(DateTime operationDate, int dragCellNumber, int dragOperatorCode, string dropCellNumber) {
+            /*
+             * Tagがゼロから始まっているので１をプラスする
+             */
+            dragCellNumber++;
+
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+
+
+            try {
+                return sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// DeleteVehicleDispatchDetailTableLayoutPanel
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="dragCellNumber"></param>
+        /// <param name="dragOperatorCode"></param>
+        /// <returns></returns>
+        public int DeleteVehicleDispatchDetailTableLayoutPanel_StaffLabelEx(DateTime operationDate, int dragCellNumber, int dragOperatorCode) {
+            /*
+             * Tagがゼロから始まっているので１をプラスする
+             */
+            dragCellNumber++;
+
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "DELETE FROM vehicle_dispatch_detail_flowLayoutPanel " +
+                                     "WHERE cell_number = " + dragCellNumber + " AND operator_code = " + dragOperatorCode + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                return sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
     }
 }

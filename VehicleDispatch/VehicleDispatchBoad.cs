@@ -446,44 +446,55 @@ namespace VehicleDispatch {
                 SetLabelEx dragItem = (SetLabelEx)e.Data.GetData(typeof(SetLabelEx));
                 if (((SetMasterVo)dragItem.Tag).Move_flag) {
                     /*
+                     * SetLabelEx
                      * Tab(配車先)からのDropの場合SetLabelをCopyする。TableLayoutPanelExからのDropならMoveする。
                      */
-                    if (dragItem.Parent.Parent.Name == "TabPageSet") {
-                        if (setControlEx.GetControlFromPosition(0, 0) == null) {
+                    switch (dragItem.Parent.Name) {
+                        case "SetControlEx":
                             /*
-                             * Tab(配車先)からのDrop
+                             * SetControlExからのDrop
                              */
-                            SetLabelEx newDropItem = new SetLabelEx((SetMasterVo)dragItem.Tag).CreateLabel();
-                            // プロパティを設定
-                            newDropItem.ContextMenuStrip = ContextMenuStripSetLabel;
-                            /*
-                             * イベントを設定
-                             */
-                            newDropItem.Click += new EventHandler(SetLabelEx_Click);
-                            newDropItem.MouseMove += new MouseEventHandler(SetLabelEx_MouseMove);
-                            _vehicleDispatchDetailDao.SetDataSetLabelExForFlowLayoutPanelEx(DateTimePickerOperationDate.Value, (int)setControlEx.Tag, (SetMasterVo)dragItem.Tag);
-                            setControlEx.Controls.Add(newDropItem, 0, 0);
-                        } else {
-                            ToolStripStatusLabelStatus.Text = string.Concat("配車先が設定されています。(", ((SetMasterVo)dragItem.Tag).Set_name, ") はここへは移動できません");
-                        }
-                    } else {
-                        /*
-                         * TableLayoutPanelExからのDrop
-                         */
-                        if (setControlEx.GetControlFromPosition(0, 0) == null) {
-                            /*
-                             * 移動許可を調査する
-                             */
-                            if (CheckSetControlEx(dragItem)) {
-                                _vehicleDispatchDetailDao.SetDataSetLabelExForSetControlEx(DateTimePickerOperationDate.Value, (int)((SetControlEx)dragItem.Parent).Tag, (int)setControlEx.Tag);
-                                _vehicleDispatchDetailDao.ResetDataSetLabelExForSetControlEx(DateTimePickerOperationDate.Value, (int)((SetControlEx)dragItem.Parent).Tag);
-                                setControlEx.Controls.Add(dragItem, 0, 0);
+                            if (setControlEx.GetControlFromPosition(0, 0) == null) {
+                                /*
+                                 * 移動許可を調査する
+                                 */
+                                if (CheckSetControlEx(dragItem)) {
+                                    _vehicleDispatchDetailDao.SetDataSetLabelExForSetControlEx(DateTimePickerOperationDate.Value, (int)((SetControlEx)dragItem.Parent).Tag, (int)setControlEx.Tag);
+                                    _vehicleDispatchDetailDao.ResetDataSetLabelExForSetControlEx(DateTimePickerOperationDate.Value, (int)((SetControlEx)dragItem.Parent).Tag);
+                                    setControlEx.Controls.Add(dragItem, 0, 0);
+                                } else {
+                                    ToolStripStatusLabelStatus.Text = string.Concat("車両ラベル又は従業員ラベルが設定されています。そのため配車先ラベルを移動できません");
+                                }
                             } else {
-                                ToolStripStatusLabelStatus.Text = string.Concat("車両ラベル又は従業員ラベルが設定されています。そのため配車先ラベルを移動できません");
+                                ToolStripStatusLabelStatus.Text = string.Concat("配車先が設定されています。(", ((SetMasterVo)dragItem.Tag).Set_name, ") はここへは移動できません");
                             }
-                        } else {
-                            ToolStripStatusLabelStatus.Text = string.Concat("配車先が設定されています。(", ((SetMasterVo)dragItem.Tag).Set_name, ") はここへは移動できません");
-                        }
+                            break;
+                        case "FlowLayoutPanelExSet":
+                            if (setControlEx.GetControlFromPosition(0, 0) == null) {
+                                /*
+                                 * Tab(配車先)からのDrop
+                                 */
+                                SetLabelEx newDropItem = new SetLabelEx((SetMasterVo)dragItem.Tag).CreateLabel();
+                                // プロパティを設定
+                                newDropItem.ContextMenuStrip = ContextMenuStripSetLabel;
+                                /*
+                                 * イベントを設定
+                                 */
+                                newDropItem.Click += new EventHandler(SetLabelEx_Click);
+                                newDropItem.MouseMove += new MouseEventHandler(SetLabelEx_MouseMove);
+                                _vehicleDispatchDetailDao.SetDataSetLabelExForFlowLayoutPanelEx(DateTimePickerOperationDate.Value, (int)setControlEx.Tag, (SetMasterVo)dragItem.Tag);
+                                setControlEx.Controls.Add(newDropItem, 0, 0);
+                            } else {
+                                ToolStripStatusLabelStatus.Text = string.Concat("配車先が設定されています。(", ((SetMasterVo)dragItem.Tag).Set_name, ") はここへは移動できません");
+                            }
+                            break;
+                        /*
+                         * FlowLayoutPanelExFree
+                         * FlowLayoutPanelExFreeからの移動
+                         */
+                        case "FlowLayoutPanelExFree":
+
+                            break;
                     }
                 } else {
                     ToolStripStatusLabelStatus.Text = string.Concat("(", ((SetMasterVo)dragItem.Tag).Set_name, ") は移動が禁止されています");
@@ -494,27 +505,38 @@ namespace VehicleDispatch {
              */
             if (e.Data != null && e.Data.GetDataPresent(typeof(CarLabelEx))) {
                 CarLabelEx dragItem = (CarLabelEx)e.Data.GetData(typeof(CarLabelEx));
-                if (dragItem.Parent.Parent.Name == "TabPageCar") {
+                switch (dragItem.Parent.Name) {
+                    case "SetControlEx":
+                        /*
+                         * SetControlExからのDrop
+                         */
+                        if (setControlEx.GetControlFromPosition(0, 1) == null) {
+                            _vehicleDispatchDetailDao.SetDataCarLabelExForSetControlEx(DateTimePickerOperationDate.Value, (int)((SetControlEx)dragItem.Parent).Tag, (int)setControlEx.Tag);
+                            _vehicleDispatchDetailDao.ResetDataCarLabelExForSetControlEx(DateTimePickerOperationDate.Value, (int)((SetControlEx)dragItem.Parent).Tag);
+                            setControlEx.Controls.Add(dragItem, 0, 1);
+                        } else {
+                            ToolStripStatusLabelStatus.Text = string.Concat("車両が設定されています。(", ((CarMasterVo)dragItem.Tag).Registration_number, ") はここへは移動できません");
+                        }
+                        break;
+                    case "FlowLayoutPanelExCar":
+                        /*
+                         * CarLabelEx
+                         * Tab左側からの移動でDrag側の後処理(DBの処理)が必要無いもの
+                         */
+                        if (setControlEx.GetControlFromPosition(0, 1) == null) {
+                            _vehicleDispatchDetailDao.SetDataCarLabelExForFlowLayoutPanelEx(DateTimePickerOperationDate.Value, (int)setControlEx.Tag, (CarMasterVo)dragItem.Tag);
+                            setControlEx.Controls.Add(dragItem, 0, 1);
+                        } else {
+                            ToolStripStatusLabelStatus.Text = string.Concat("車両が設定されています。(", ((CarMasterVo)dragItem.Tag).Registration_number, ") はここへは移動できません");
+                        }
+                        break;
                     /*
-                     * Tab(車両)からのDrop
+                     * FlowLayoutPanelExFree
+                     * FlowLayoutPanelExFreeからの移動
                      */
-                    if (setControlEx.GetControlFromPosition(0, 1) == null) {
-                        _vehicleDispatchDetailDao.SetDataCarLabelExForFlowLayoutPanelEx(DateTimePickerOperationDate.Value, (int)setControlEx.Tag, (CarMasterVo)dragItem.Tag);
-                        setControlEx.Controls.Add(dragItem, 0, 1);
-                    } else {
-                        ToolStripStatusLabelStatus.Text = string.Concat("車両が設定されています。(", ((CarMasterVo)dragItem.Tag).Registration_number, ") はここへは移動できません");
-                    }
-                } else {
-                    /*
-                     * TableLayoutPanelExからのDrop
-                     */
-                    if (setControlEx.GetControlFromPosition(0, 1) == null) {
-                        _vehicleDispatchDetailDao.SetDataCarLabelExForSetControlEx(DateTimePickerOperationDate.Value, (int)((SetControlEx)dragItem.Parent).Tag, (int)setControlEx.Tag);
-                        _vehicleDispatchDetailDao.ResetDataCarLabelExForSetControlEx(DateTimePickerOperationDate.Value, (int)((SetControlEx)dragItem.Parent).Tag);
-                        setControlEx.Controls.Add(dragItem, 0, 1);
-                    } else {
-                        ToolStripStatusLabelStatus.Text = string.Concat("車両が設定されています。(", ((CarMasterVo)dragItem.Tag).Registration_number, ") はここへは移動できません");
-                    }
+                    case "FlowLayoutPanelExFree":
+
+                        break;
                 }
             }
             /*
@@ -524,36 +546,179 @@ namespace VehicleDispatch {
                 StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
                 //画面座標(X, Y)を、setControlEx上のクライアント座標に変換する
                 Point point = setControlEx.PointToClient(new Point(e.X, e.Y));
-                switch (point.Y) {
-                    case int i when i <= 140:
-                        ToolStripStatusLabelStatus.Text = string.Concat("SetLabelかCarLabel");
-                        break;
-                    case int i when i <= 180:
-                        if (setControlEx.GetControlFromPosition(0, 2) == null) {
-                            setControlEx.Controls.Add(dragItem, 0, 2);
-                        } else {
-                            ToolStripStatusLabelStatus.Text = string.Concat("運転手が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
+                switch (dragItem.Parent.Name) {
+                    /*
+                     *  StaffLabelEx
+                     * SetControlEx同士での移動
+                     */
+                    case "SetControlEx":
+                        switch (point.Y) {
+                            case int i when i <= 140:
+                                ToolStripStatusLabelStatus.Text = string.Concat("SetLabelかCarLabel");
+                                break;
+                            case int i when i <= 180:
+                                if (setControlEx.GetControlFromPosition(0, 2) == null) {
+                                    _vehicleDispatchDetailDao.SetDataStaffLabelExForSetControlEx(DateTimePickerOperationDate.Value, (int)((SetControlEx)dragItem.Parent).Tag, ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row, (int)setControlEx.Tag, 2);
+                                    _vehicleDispatchDetailDao.ResetDataStaffLabelExForSetControlEx(DateTimePickerOperationDate.Value, (int)((SetControlEx)dragItem.Parent).Tag, ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
+                                    setControlEx.Controls.Add(dragItem, 0, 2);
+                                } else {
+                                    ToolStripStatusLabelStatus.Text = string.Concat("運転手が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
+                                }
+                                break;
+                            case int i when i <= 220:
+                                if (setControlEx.GetControlFromPosition(0, 3) == null) {
+                                    _vehicleDispatchDetailDao.SetDataStaffLabelExForSetControlEx(DateTimePickerOperationDate.Value, (int)((SetControlEx)dragItem.Parent).Tag, ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row, (int)setControlEx.Tag, 3);
+                                    _vehicleDispatchDetailDao.ResetDataStaffLabelExForSetControlEx(DateTimePickerOperationDate.Value, (int)((SetControlEx)dragItem.Parent).Tag, ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
+                                    setControlEx.Controls.Add(dragItem, 0, 3);
+                                } else {
+                                    ToolStripStatusLabelStatus.Text = string.Concat("作業員1が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
+                                }
+                                break;
+                            case int i when i <= 260:
+                                if (setControlEx.GetControlFromPosition(0, 4) == null) {
+                                    _vehicleDispatchDetailDao.SetDataStaffLabelExForSetControlEx(DateTimePickerOperationDate.Value, (int)((SetControlEx)dragItem.Parent).Tag, ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row, (int)setControlEx.Tag, 4);
+                                    _vehicleDispatchDetailDao.ResetDataStaffLabelExForSetControlEx(DateTimePickerOperationDate.Value, (int)((SetControlEx)dragItem.Parent).Tag, ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
+                                    setControlEx.Controls.Add(dragItem, 0, 4);
+                                } else {
+                                    ToolStripStatusLabelStatus.Text = string.Concat("作業員2が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
+                                }
+                                break;
+                            case int i when i <= 300:
+                                if (setControlEx.GetControlFromPosition(0, 5) == null) {
+                                    _vehicleDispatchDetailDao.SetDataStaffLabelExForSetControlEx(DateTimePickerOperationDate.Value, (int)((SetControlEx)dragItem.Parent).Tag, ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row, (int)setControlEx.Tag, 5);
+                                    _vehicleDispatchDetailDao.ResetDataStaffLabelExForSetControlEx(DateTimePickerOperationDate.Value, (int)((SetControlEx)dragItem.Parent).Tag, ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
+                                    setControlEx.Controls.Add(dragItem, 0, 5);
+                                } else {
+                                    ToolStripStatusLabelStatus.Text = string.Concat("作業員3が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
+                                }
+                                break;
                         }
                         break;
-                    case int i when i <= 220:
-                        if (setControlEx.GetControlFromPosition(0, 3) == null) {
-                            setControlEx.Controls.Add(dragItem, 0, 3);
-                        } else {
-                            ToolStripStatusLabelStatus.Text = string.Concat("作業員1が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
+                    /*
+                     * StaffLabelEx
+                     * Tab左側からの移動でDrag側の後処理(DBの処理)が必要無いもの
+                     */
+                    case "FlowLayoutPanelExFullEmployees":
+                    case "FlowLayoutPanelExLongTerm":
+                    case "FlowLayoutPanelExPartTime":
+                    case "FlowLayoutPanelExWindow":
+                        switch (point.Y) {
+                            case int i when i <= 140:
+                                ToolStripStatusLabelStatus.Text = string.Concat("SetLabelかCarLabel");
+                                break;
+                            case int i when i <= 180:
+                                if (setControlEx.GetControlFromPosition(0, 2) == null) {
+                                    setControlEx.Controls.Add(dragItem, 0, 2);
+                                } else {
+                                    ToolStripStatusLabelStatus.Text = string.Concat("運転手が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
+                                }
+                                break;
+                            case int i when i <= 220:
+                                if (setControlEx.GetControlFromPosition(0, 3) == null) {
+                                    setControlEx.Controls.Add(dragItem, 0, 3);
+                                } else {
+                                    ToolStripStatusLabelStatus.Text = string.Concat("作業員1が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
+                                }
+                                break;
+                            case int i when i <= 260:
+                                if (setControlEx.GetControlFromPosition(0, 4) == null) {
+                                    setControlEx.Controls.Add(dragItem, 0, 4);
+                                } else {
+                                    ToolStripStatusLabelStatus.Text = string.Concat("作業員2が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
+                                }
+                                break;
+                            case int i when i <= 300:
+                                if (setControlEx.GetControlFromPosition(0, 5) == null) {
+                                    setControlEx.Controls.Add(dragItem, 0, 5);
+                                } else {
+                                    ToolStripStatusLabelStatus.Text = string.Concat("作業員3が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
+                                }
+                                break;
                         }
                         break;
-                    case int i when i <= 260:
-                        if (setControlEx.GetControlFromPosition(0, 4) == null) {
-                            setControlEx.Controls.Add(dragItem, 0, 4);
-                        } else {
-                            ToolStripStatusLabelStatus.Text = string.Concat("作業員2が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
+                    /*
+                     * StaffLabelEx
+                     * Tab右側からの移動でDrag側の後処理(DBの処理)が必要なもの
+                     */
+                    case "FlowLayoutPanelExFullSalaried":
+                    case "FlowLayoutPanelExFullClose":
+                    case "FlowLayoutPanelExFullDesignation":
+                    case "FlowLayoutPanelExPartSalaried":
+                    case "FlowLayoutPanelExPartClose":
+                    case "FlowLayoutPanelExPartDesignation":
+                    case "FlowLayoutPanelExTelephone":
+                    case "FlowLayoutPanelExWithoutNotice":
+                        switch (point.Y) {
+                            case int i when i <= 140:
+                                ToolStripStatusLabelStatus.Text = string.Concat("SetLabelかCarLabel");
+                                break;
+                            case int i when i <= 180:
+                                if (setControlEx.GetControlFromPosition(0, 2) == null) {
+                                    setControlEx.Controls.Add(dragItem, 0, 2);
+                                } else {
+                                    ToolStripStatusLabelStatus.Text = string.Concat("運転手が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
+                                }
+                                break;
+                            case int i when i <= 220:
+                                if (setControlEx.GetControlFromPosition(0, 3) == null) {
+                                    setControlEx.Controls.Add(dragItem, 0, 3);
+                                } else {
+                                    ToolStripStatusLabelStatus.Text = string.Concat("作業員1が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
+                                }
+                                break;
+                            case int i when i <= 260:
+                                if (setControlEx.GetControlFromPosition(0, 4) == null) {
+                                    setControlEx.Controls.Add(dragItem, 0, 4);
+                                } else {
+                                    ToolStripStatusLabelStatus.Text = string.Concat("作業員2が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
+                                }
+                                break;
+                            case int i when i <= 300:
+                                if (setControlEx.GetControlFromPosition(0, 5) == null) {
+                                    setControlEx.Controls.Add(dragItem, 0, 5);
+                                } else {
+                                    ToolStripStatusLabelStatus.Text = string.Concat("作業員3が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
+                                }
+                                break;
                         }
                         break;
-                    case int i when i <= 300:
-                        if (setControlEx.GetControlFromPosition(0, 5) == null) {
-                            setControlEx.Controls.Add(dragItem, 0, 5);
-                        } else {
-                            ToolStripStatusLabelStatus.Text = string.Concat("作業員3が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
+                    /*
+                     * FlowLayoutPanelExFree
+                     * FlowLayoutPanelExFreeからの移動
+                     */
+                    case "FlowLayoutPanelExFree":
+                        switch (point.Y) {
+                            case int i when i <= 140:
+                                ToolStripStatusLabelStatus.Text = string.Concat("SetLabelかCarLabel");
+                                break;
+                            case int i when i <= 180:
+                                if (setControlEx.GetControlFromPosition(0, 2) == null) {
+                                    setControlEx.Controls.Add(dragItem, 0, 2);
+                                } else {
+                                    ToolStripStatusLabelStatus.Text = string.Concat("運転手が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
+                                }
+                                break;
+                            case int i when i <= 220:
+                                if (setControlEx.GetControlFromPosition(0, 3) == null) {
+                                    setControlEx.Controls.Add(dragItem, 0, 3);
+                                } else {
+                                    ToolStripStatusLabelStatus.Text = string.Concat("作業員1が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
+                                }
+                                break;
+                            case int i when i <= 260:
+                                if (setControlEx.GetControlFromPosition(0, 4) == null) {
+                                    setControlEx.Controls.Add(dragItem, 0, 4);
+                                } else {
+                                    ToolStripStatusLabelStatus.Text = string.Concat("作業員2が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
+                                }
+                                break;
+                            case int i when i <= 300:
+                                if (setControlEx.GetControlFromPosition(0, 5) == null) {
+                                    setControlEx.Controls.Add(dragItem, 0, 5);
+                                } else {
+                                    ToolStripStatusLabelStatus.Text = string.Concat("作業員3が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
+                                }
+                                break;
                         }
                         break;
                 }
@@ -841,14 +1006,23 @@ namespace VehicleDispatch {
                          */
                         if (e.Data != null && e.Data.GetDataPresent(typeof(CarLabelEx))) {
                             CarLabelEx dragItem = (CarLabelEx)e.Data.GetData(typeof(CarLabelEx));
+                            _vehicleDispatchDetailDao.InsertVehicleDispatchDetailTableLayoutPanel_StaffLabelEx(DateTimePickerOperationDate.Value, 
+                                                                                                               (int)((SetControlEx)dragItem.Parent).Tag,
+                                                                                                               ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row,
+                                                                                                               (string)((FlowLayoutPanelEx)sender).Tag);
                             ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
                             ToolStripStatusLabelStatus.Text = string.Concat(((CarMasterVo)dragItem.Tag).Registration_number, " を処理しました");
                         }
                         /*
-                         * StaffLabelEx
+                         * StaffLabelExからFlowLayoutPanelExFreeへDrop
                          */
                         if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
                             StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
+                            _vehicleDispatchDetailDao.InsertVehicleDispatchDetailTableLayoutPanel_StaffLabelEx(DateTimePickerOperationDate.Value,
+                                                                                                               (int)((SetControlEx)dragItem.Parent).Tag,
+                                                                                                               ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row,
+                                                                                                               (string)((FlowLayoutPanelEx)sender).Tag);
+
                             ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
                             ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
                         }
@@ -859,6 +1033,11 @@ namespace VehicleDispatch {
             }
         }
 
+        /// <summary>
+        /// FlowLayoutPanelEx_DragEnter
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FlowLayoutPanelEx_DragEnter(object sender, DragEventArgs e) {
             e.Effect = DragDropEffects.Move;
         }
