@@ -160,8 +160,8 @@ namespace Dao {
             return listVehicleDispatchDetailVo;
         }
 
-        public List<VehicleDispatchDetailFlowLayoutPanel_StaffLabelEx> SelectVehicleDispatchDetailFlowLayoutPanel_StaffLabelEx(DateTime operationDate) {
-            var listVehicleDispatchDetailFlowLayoutPanel_StaffLabelEx = new List<VehicleDispatchDetailFlowLayoutPanel_StaffLabelEx>();
+        public List<VehicleDispatchDetailStaff> SelectVehicleDispatchDetailFlowLayoutPanel_StaffLabelEx(DateTime operationDate) {
+            var listVehicleDispatchDetailFlowLayoutPanel_StaffLabelEx = new List<VehicleDispatchDetailStaff>();
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT cell_number," +
                                             "operation_date," +
@@ -180,7 +180,7 @@ namespace Dao {
                                      "WHERE operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
             using (var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while (sqlDataReader.Read() == true) {
-                    var vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx = new VehicleDispatchDetailFlowLayoutPanel_StaffLabelEx();
+                    var vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx = new VehicleDispatchDetailStaff();
                     vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Cell_number = _defaultValue.GetDefaultValue<int>(sqlDataReader["cell_number"]);
                     vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Operation_date = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["operation_date"]);
                     vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Operator_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_code"]);
@@ -351,7 +351,7 @@ namespace Dao {
         /// <param name="dropCellNumber"></param>
         /// <param name="setMasterVo"></param>
         /// <returns></returns>
-        public int SetDataSetLabelExForFlowLayoutPanelEx(DateTime operationDate, int dropCellNumber, SetMasterVo setMasterVo) {
+        public int SetSet(DateTime operationDate, int dropCellNumber, SetMasterVo setMasterVo) {
             /*
              * Tagがゼロから始まっているので１をプラスする
              */
@@ -497,7 +497,7 @@ namespace Dao {
 
         /// <summary>
         /// operator_1
-        /// SetControlExからSetControlEx間のデータをコピーする
+        /// SetControlExからSetControlExへの移動処理
         /// </summary>
         /// <param name="operationDate"></param>
         /// <param name="dragCellNumber"></param>
@@ -554,6 +554,16 @@ namespace Dao {
             }
         }
 
+        /// <summary>
+        /// SetStaff
+        /// FlowLayoutPanelExからSetControlExへの移動処理
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="dragCellNumber"></param>
+        /// <param name="dropCellNumber"></param>
+        /// <param name="dropRowNumber"></param>
+        /// <param name="staffMasterVo"></param>
+        /// <returns></returns>
         public int SetStaff(DateTime operationDate, int dragCellNumber, int dropCellNumber, int dropRowNumber, StaffMasterVo staffMasterVo) {
             /*
              * Tagがゼロから始まっているので１をプラスする

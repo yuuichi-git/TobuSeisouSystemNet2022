@@ -12,7 +12,8 @@ namespace Dao {
         }
 
         /// <summary>
-        /// InsertVehicleDispatchDetailTableLayoutPanel
+        /// InsertStaff
+        /// vehicle_dispatch_detail_staffへのINSERT
         /// </summary>
         /// <param name="operationDate"></param>
         /// <param name="dragCellNumber"></param>
@@ -70,12 +71,16 @@ namespace Dao {
             }
         }
 
-        public int UpdateStaff(DateTime operationDate, int dragCellNumber, int dragOperatorCode, string dropCellNumber) {
-            /*
-             * Tagがゼロから始まっているので１をプラスする
-             */
-            dragCellNumber++;
-
+        /// <summary>
+        /// UpdateStaff
+        /// vehicle_dispatch_detail_staffへのUPDATE
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="dragCellNumber"></param>
+        /// <param name="dragOperatorCode"></param>
+        /// <param name="dropCellNumber"></param>
+        /// <returns></returns>
+        public int UpdateStaff(DateTime operationDate, int dragCellNumber, int dragOperatorCode, int dropCellNumber) {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "UPDATE vehicle_dispatch_detail_staff " +
                                      "SET cell_number = '" + dropCellNumber + "'," +
@@ -90,7 +95,8 @@ namespace Dao {
         }
 
         /// <summary>
-        /// DeleteVehicleDispatchDetailTableLayoutPanel
+        /// DeleteStaff
+        /// vehicle_dispatch_detail_staffへのDELETE
         /// </summary>
         /// <param name="operationDate"></param>
         /// <param name="dragCellNumber"></param>

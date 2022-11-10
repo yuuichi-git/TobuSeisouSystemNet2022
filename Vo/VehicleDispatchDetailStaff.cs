@@ -1,5 +1,5 @@
 ﻿namespace Vo {
-    public class VehicleDispatchDetailFlowLayoutPanel_StaffLabelEx {
+    public class VehicleDispatchDetailStaff {
         private int _cell_number;
         private DateTime _operation_date;
         private int _operator_code;

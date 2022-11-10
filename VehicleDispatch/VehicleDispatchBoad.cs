@@ -18,7 +18,7 @@ namespace VehicleDispatch {
         private List<CarMasterVo> _listCarMasterVo;
         private List<CarMasterVo> _listDeepCopyCarMasterVo;
         private List<StaffMasterVo> _listStaffMasterVo;
-        private List<VehicleDispatchDetailFlowLayoutPanel_StaffLabelEx> _listVehicleDispatchDetailFlowLayoutPanel_StaffLabelEx;
+        private List<VehicleDispatchDetailStaff> _listVehicleDispatchDetailFlowLayoutPanel_StaffLabelEx;
         private List<StaffMasterVo> _listDeepCopyStaffMasterVo;
         private TableLayoutPanelEx[] _arrayTableLayoutPanelEx = new TableLayoutPanelEx[2];
         /*
@@ -221,22 +221,16 @@ namespace VehicleDispatch {
             for (int i = 151; i < 169; i++) {
                 switch (i) {
                     case 151: // FlowLayoutPanelExSet
-                        break;
                     case 152: // FlowLayoutPanelExCar
-                        break;
                     case 153: // FlowLayoutPanelExFullEmployees
-                        break;
                     case 154: // FlowLayoutPanelExLongTerm
-                        break;
                     case 155: // FlowLayoutPanelExPartTime
-                        break;
                     case 156: // FlowLayoutPanelExWindow
                         break;
                     case 157: // FlowLayoutPanelExChecking
-                        break;
                     case 158: // FlowLayoutPanelExRepair
-                        break;
                     case 159: // FlowLayoutPanelExVehicleInspection
+
                         break;
                     case 160: // FlowLayoutPanelExFullSalaried
                         foreach (var vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx in _listVehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.FindAll(x => x.Cell_number == 160)) {
@@ -671,9 +665,9 @@ namespace VehicleDispatch {
                                  */
                                 newDropItem.Click += new EventHandler(SetLabelEx_Click);
                                 newDropItem.MouseMove += new MouseEventHandler(SetLabelEx_MouseMove);
-                                _vehicleDispatchDetailDao.SetDataSetLabelExForFlowLayoutPanelEx(DateTimePickerOperationDate.Value,
-                                                                                                (int)setControlEx.Tag,
-                                                                                                (SetMasterVo)dragItem.Tag);
+                                _vehicleDispatchDetailDao.SetSet(DateTimePickerOperationDate.Value,
+                                                                 (int)setControlEx.Tag,
+                                                                 (SetMasterVo)dragItem.Tag);
                                 setControlEx.Controls.Add(newDropItem, 0, 0);
                             } else {
                                 ToolStripStatusLabelStatus.Text = string.Concat("îzé‘êÊÇ™ê›íËÇ≥ÇÍÇƒÇ¢Ç‹Ç∑ÅB(", ((SetMasterVo)dragItem.Tag).Set_name, ") ÇÕÇ±Ç±Ç÷ÇÕà⁄ìÆÇ≈Ç´Ç‹ÇπÇÒ");
@@ -1163,7 +1157,7 @@ namespace VehicleDispatch {
                             case "FlowLayoutPanelExFree":
                                 // vehicle_dispatch_detail_staffÇ…INSERT
                                 _vehicleDispatchDetailStaffDao.InsertStaff(DateTimePickerOperationDate.Value,
-                                                                           Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
+                                                                           Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
                                                                            ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row,
                                                                            Convert.ToInt32(((FlowLayoutPanelEx)sender).Tag));
                                 break;
@@ -1196,7 +1190,10 @@ namespace VehicleDispatch {
                             case "FlowLayoutPanelExWithoutNotice":
                             case "FlowLayoutPanelExFree":
                                 // vehicle_dispatch_detail_staffÇUPDATE
-
+                                _vehicleDispatchDetailStaffDao.UpdateStaff(DateTimePickerOperationDate.Value,
+                                                                           Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                           ((StaffMasterVo)dragItem.Tag).Staff_code,
+                                                                           Convert.ToInt32(((FlowLayoutPanelEx)sender).Tag));
                                 break;
                         }
                         break;
