@@ -12,13 +12,15 @@ namespace VehicleDispatch {
     public partial class VehicleDispatchBoad : Form {
         private InitializeForm _initializeForm = new();
         private VehicleDispatchDetailDao _vehicleDispatchDetailDao;
+        private VehicleDispatchDetailCarDao _vehicleDispatchDetailCarDao;
         private VehicleDispatchDetailStaffDao _vehicleDispatchDetailStaffDao;
         private List<SetMasterVo> _listSetMasterVo;
         private List<SetMasterVo> _listDeepCopySetMasterVo;
         private List<CarMasterVo> _listCarMasterVo;
         private List<CarMasterVo> _listDeepCopyCarMasterVo;
         private List<StaffMasterVo> _listStaffMasterVo;
-        private List<VehicleDispatchDetailStaff> _listVehicleDispatchDetailFlowLayoutPanel_StaffLabelEx;
+        private List<VehicleDispatchDetailCarVo> _listVehicleDispatchDetailCarVo;
+        private List<VehicleDispatchDetailStaffVo> _listVehicleDispatchDetailStaffVo;
         private List<StaffMasterVo> _listDeepCopyStaffMasterVo;
         private TableLayoutPanelEx[] _arrayTableLayoutPanelEx = new TableLayoutPanelEx[2];
         /*
@@ -53,13 +55,15 @@ namespace VehicleDispatch {
             SetTableLayoutPanelRightSide(false);
 
             _vehicleDispatchDetailDao = new VehicleDispatchDetailDao(connectionVo);
+            _vehicleDispatchDetailCarDao = new VehicleDispatchDetailCarDao(connectionVo);
             _vehicleDispatchDetailStaffDao = new VehicleDispatchDetailStaffDao(connectionVo);
             _listSetMasterVo = new SetMasterDao(connectionVo).SelectAllSetMaster();
             _listDeepCopySetMasterVo = new();
             _listCarMasterVo = new CarMasterDao(connectionVo).SelectAllCarMaster();
+            _listVehicleDispatchDetailCarVo = new();
             _listDeepCopyCarMasterVo = new();
             _listStaffMasterVo = new StaffMasterDao(connectionVo).SelectAllStaffMaster();
-            _listVehicleDispatchDetailFlowLayoutPanel_StaffLabelEx = new();
+            _listVehicleDispatchDetailStaffVo = new();
             _listDeepCopyStaffMasterVo = new();
             _arrayTableLayoutPanelEx = new TableLayoutPanelEx[] { TableLayoutPanelEx1, TableLayoutPanelEx2 };
         }
@@ -217,7 +221,7 @@ namespace VehicleDispatch {
         /// FlowLayoutPanelへの書き出し
         /// </summary>
         private void CreateLabelForFlowLayoutPanelEx() {
-            _listVehicleDispatchDetailFlowLayoutPanel_StaffLabelEx = _vehicleDispatchDetailDao.SelectVehicleDispatchDetailFlowLayoutPanel_StaffLabelEx(DateTimePickerOperationDate.Value);
+            _listVehicleDispatchDetailCarVo = _vehicleDispatchDetailCarDao.SelectVehicleDispatchDetailCar(DateTimePickerOperationDate.Value);
             for (int i = 151; i < 169; i++) {
                 switch (i) {
                     case 151: // FlowLayoutPanelExSet
@@ -228,12 +232,58 @@ namespace VehicleDispatch {
                     case 156: // FlowLayoutPanelExWindow
                         break;
                     case 157: // FlowLayoutPanelExChecking
+                        foreach (var vehicleDispatchDetailCarVo in _listVehicleDispatchDetailCarVo.FindAll(x => x.Cell_number == 157)) {
+                            // Controlを作成
+                            CarLabelEx newDropItem = new CarLabelEx(_listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailCarVo.Car_code)).CreateLabel();
+                            // プロパティを設定
+                            newDropItem.ContextMenuStrip = ContextMenuStripCarLabel;
+                            /*
+                             * イベントを設定
+                             */
+                            newDropItem.Click += new EventHandler(CarLabelEx_Click);
+                            newDropItem.MouseMove += new MouseEventHandler(CarLabelEx_MouseMove);
+                            // DeepCopyから削除
+                            _listDeepCopyCarMasterVo.RemoveAll(x => x.Car_code == vehicleDispatchDetailCarVo.Car_code);
+                            // Controlを追加
+                            FlowLayoutPanelExChecking.Controls.Add(newDropItem);
+                        }
+                        break;
                     case 158: // FlowLayoutPanelExRepair
+                        foreach (var vehicleDispatchDetailCarVo in _listVehicleDispatchDetailCarVo.FindAll(x => x.Cell_number == 158)) {
+                            // Controlを作成
+                            CarLabelEx newDropItem = new CarLabelEx(_listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailCarVo.Car_code)).CreateLabel();
+                            // プロパティを設定
+                            newDropItem.ContextMenuStrip = ContextMenuStripCarLabel;
+                            /*
+                             * イベントを設定
+                             */
+                            newDropItem.Click += new EventHandler(CarLabelEx_Click);
+                            newDropItem.MouseMove += new MouseEventHandler(CarLabelEx_MouseMove);
+                            // DeepCopyから削除
+                            _listDeepCopyCarMasterVo.RemoveAll(x => x.Car_code == vehicleDispatchDetailCarVo.Car_code);
+                            // Controlを追加
+                            FlowLayoutPanelExRepair.Controls.Add(newDropItem);
+                        }
+                        break;
                     case 159: // FlowLayoutPanelExVehicleInspection
-
+                        foreach (var vehicleDispatchDetailCarVo in _listVehicleDispatchDetailCarVo.FindAll(x => x.Cell_number == 159)) {
+                            // Controlを作成
+                            CarLabelEx newDropItem = new CarLabelEx(_listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailCarVo.Car_code)).CreateLabel();
+                            // プロパティを設定
+                            newDropItem.ContextMenuStrip = ContextMenuStripCarLabel;
+                            /*
+                             * イベントを設定
+                             */
+                            newDropItem.Click += new EventHandler(CarLabelEx_Click);
+                            newDropItem.MouseMove += new MouseEventHandler(CarLabelEx_MouseMove);
+                            // DeepCopyから削除
+                            _listDeepCopyCarMasterVo.RemoveAll(x => x.Car_code == vehicleDispatchDetailCarVo.Car_code);
+                            // Controlを追加
+                            FlowLayoutPanelExVehicleInspection.Controls.Add(newDropItem);
+                        }
                         break;
                     case 160: // FlowLayoutPanelExFullSalaried
-                        foreach (var vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx in _listVehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.FindAll(x => x.Cell_number == 160)) {
+                        foreach (var vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 160)) {
                             // Controlを作成
                             StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Operator_code)).CreateLabel();
                             // プロパティを設定
@@ -250,7 +300,7 @@ namespace VehicleDispatch {
                         }
                         break;
                     case 161: // FlowLayoutPanelExFullClose
-                        foreach (var vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx in _listVehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.FindAll(x => x.Cell_number == 161)) {
+                        foreach (var vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 161)) {
                             // Controlを作成
                             StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Operator_code)).CreateLabel();
                             // プロパティを設定
@@ -267,7 +317,7 @@ namespace VehicleDispatch {
                         }
                         break;
                     case 162: // FlowLayoutPanelExFullDesignation
-                        foreach (var vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx in _listVehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.FindAll(x => x.Cell_number == 162)) {
+                        foreach (var vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 162)) {
                             // Controlを作成
                             StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Operator_code)).CreateLabel();
                             // プロパティを設定
@@ -284,7 +334,7 @@ namespace VehicleDispatch {
                         }
                         break;
                     case 163: // FlowLayoutPanelExPartSalaried
-                        foreach (var vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx in _listVehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.FindAll(x => x.Cell_number == 163)) {
+                        foreach (var vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 163)) {
                             // Controlを作成
                             StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Operator_code)).CreateLabel();
                             // プロパティを設定
@@ -301,7 +351,7 @@ namespace VehicleDispatch {
                         }
                         break;
                     case 164: // FlowLayoutPanelExPartClose
-                        foreach (var vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx in _listVehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.FindAll(x => x.Cell_number == 164)) {
+                        foreach (var vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 164)) {
                             // Controlを作成
                             StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Operator_code)).CreateLabel();
                             // プロパティを設定
@@ -318,7 +368,7 @@ namespace VehicleDispatch {
                         }
                         break;
                     case 165: // FlowLayoutPanelExPartDesignation
-                        foreach (var vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx in _listVehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.FindAll(x => x.Cell_number == 165)) {
+                        foreach (var vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 165)) {
                             // Controlを作成
                             StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Operator_code)).CreateLabel();
                             // プロパティを設定
@@ -335,7 +385,7 @@ namespace VehicleDispatch {
                         }
                         break;
                     case 166: // FlowLayoutPanelExTelephone
-                        foreach (var vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx in _listVehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.FindAll(x => x.Cell_number == 166)) {
+                        foreach (var vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 166)) {
                             // Controlを作成
                             StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Operator_code)).CreateLabel();
                             // プロパティを設定
@@ -352,7 +402,7 @@ namespace VehicleDispatch {
                         }
                         break;
                     case 167: // FlowLayoutPanelExWithoutNotice
-                        foreach (var vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx in _listVehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.FindAll(x => x.Cell_number == 167)) {
+                        foreach (var vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 167)) {
                             // Controlを作成
                             StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Operator_code)).CreateLabel();
                             // プロパティを設定
@@ -369,7 +419,7 @@ namespace VehicleDispatch {
                         }
                         break;
                     case 168: // FlowLayoutPanelExFree
-                        foreach (var vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx in _listVehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.FindAll(x => x.Cell_number == 168)) {
+                        foreach (var vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 168)) {
                             // Controlを作成
                             StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Operator_code)).CreateLabel();
                             // プロパティを設定
@@ -639,7 +689,7 @@ namespace VehicleDispatch {
                                  * 移動許可を調査する
                                  */
                                 if (CheckSetControlEx(dragItem)) {
-                                    _vehicleDispatchDetailDao.CopySet(DateTimePickerOperationDate.Value, 
+                                    _vehicleDispatchDetailDao.CopySet(DateTimePickerOperationDate.Value,
                                                                       (int)((SetControlEx)dragItem.Parent).Tag,
                                                                       (int)setControlEx.Tag);
                                     _vehicleDispatchDetailDao.ResetSet(DateTimePickerOperationDate.Value,
@@ -705,6 +755,7 @@ namespace VehicleDispatch {
                         break;
                     case "FlowLayoutPanelExCar":
                         if (setControlEx.GetControlFromPosition(0, 1) == null) {
+                            // vehicle_dispatch_detailをUPDATE
                             _vehicleDispatchDetailDao.SetCar(DateTimePickerOperationDate.Value,
                                                              Convert.ToInt32(setControlEx.Tag),
                                                              (CarMasterVo)dragItem.Tag);
@@ -717,9 +768,14 @@ namespace VehicleDispatch {
                     case "FlowLayoutPanelExRepair":
                     case "FlowLayoutPanelExVehicleInspection":
                         if (setControlEx.GetControlFromPosition(0, 1) == null) {
+                            // vehicle_dispatch_detailをUPDATE
                             _vehicleDispatchDetailDao.SetCar(DateTimePickerOperationDate.Value,
                                                              Convert.ToInt32(setControlEx.Tag),
                                                              (CarMasterVo)dragItem.Tag);
+                            // vehicle_dispatch_detail_carからDELETE
+                            _vehicleDispatchDetailCarDao.DeleteCar(DateTimePickerOperationDate.Value,
+                                                                   Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
+                                                                   ((CarMasterVo)dragItem.Tag).Car_code);
                             setControlEx.Controls.Add(dragItem, 0, 1);
                         } else {
                             ToolStripStatusLabelStatus.Text = string.Concat("車両が設定されています。(", ((CarMasterVo)dragItem.Tag).Registration_number, ") はここへは移動できません");
@@ -727,9 +783,14 @@ namespace VehicleDispatch {
                         break;
                     case "FlowLayoutPanelExFree":
                         if (setControlEx.GetControlFromPosition(0, 1) == null) {
+                            // vehicle_dispatch_detailをUPDATE
                             _vehicleDispatchDetailDao.SetCar(DateTimePickerOperationDate.Value,
                                                              Convert.ToInt32(setControlEx.Tag),
                                                              (CarMasterVo)dragItem.Tag);
+                            // vehicle_dispatch_detail_carからDELETE
+                            _vehicleDispatchDetailCarDao.DeleteCar(DateTimePickerOperationDate.Value,
+                                                                   Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
+                                                                   ((CarMasterVo)dragItem.Tag).Car_code);
                             setControlEx.Controls.Add(dragItem, 0, 1);
                         } else {
                             ToolStripStatusLabelStatus.Text = string.Concat("車両が設定されています。(", ((CarMasterVo)dragItem.Tag).Registration_number, ") はここへは移動できません");
@@ -1086,26 +1147,60 @@ namespace VehicleDispatch {
                 CarLabelEx dragItem = (CarLabelEx)e.Data.GetData(typeof(CarLabelEx));
                 switch (dragItem.Parent.Name) {
                     case "SetControlEx":
-                        _vehicleDispatchDetailDao.ResetCar(DateTimePickerOperationDate.Value,
-                                                           Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag));
                         switch (((FlowLayoutPanelEx)sender).Name) {
                             case "FlowLayoutPanelExCar":
+                                _vehicleDispatchDetailDao.ResetCar(DateTimePickerOperationDate.Value,
+                                                                   Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag));
                                 break;
                             case "FlowLayoutPanelExChecking":
                             case "FlowLayoutPanelExRepair":
                             case "FlowLayoutPanelExVehicleInspection":
                             case "FlowLayoutPanelExFree":
-
+                                /*
+                                 * Insertの後にResetしないとダメだよ(vehicleDispatchDetailのレコードを副問合せしているから)
+                                 */
+                                _vehicleDispatchDetailCarDao.InsertCar(DateTimePickerOperationDate.Value,
+                                                                       Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
+                                                                       Convert.ToInt32(((FlowLayoutPanelEx)sender).Tag));
+                                _vehicleDispatchDetailDao.ResetCar(DateTimePickerOperationDate.Value,
+                                                                   Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag));
                                 break;
                         }
-
                         break;
                     case "FlowLayoutPanelExCar":
+                        switch (((FlowLayoutPanelEx)sender).Name) {
+                            case "FlowLayoutPanelExChecking":
+                            case "FlowLayoutPanelExRepair":
+                            case "FlowLayoutPanelExVehicleInspection":
+                            case "FlowLayoutPanelExFree":
+                                // vehicle_dispatch_detail_carにINSERT
+                                _vehicleDispatchDetailCarDao.InsertNewCar(DateTimePickerOperationDate.Value,
+                                                                          Convert.ToInt32(((FlowLayoutPanelEx)sender).Tag),
+                                                                          ((CarMasterVo)dragItem.Tag).Car_code);
+                                break;
+                        }
                         break;
                     case "FlowLayoutPanelExChecking":
                     case "FlowLayoutPanelExRepair":
                     case "FlowLayoutPanelExVehicleInspection":
                     case "FlowLayoutPanelExFree":
+                        switch (((FlowLayoutPanelEx)sender).Name) {
+                            case "FlowLayoutPanelExCar":
+                                // vehicle_dispatch_detail_carからDELETE
+                                _vehicleDispatchDetailCarDao.DeleteCar(DateTimePickerOperationDate.Value,
+                                                                       Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
+                                                                       ((CarMasterVo)dragItem.Tag).Car_code);
+                                break;
+                            case "FlowLayoutPanelExChecking":
+                            case "FlowLayoutPanelExRepair":
+                            case "FlowLayoutPanelExVehicleInspection":
+                            case "FlowLayoutPanelExFree":
+                                _vehicleDispatchDetailCarDao.UpdateCar(DateTimePickerOperationDate.Value,
+                                                                       Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
+                                                                       ((CarMasterVo)dragItem.Tag).Car_code,
+                                                                       Convert.ToInt32(((FlowLayoutPanelEx)sender).Tag));
+                                break;
+                        }
                         break;
                 }
                 ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);

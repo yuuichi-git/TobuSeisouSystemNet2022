@@ -1,11 +1,10 @@
 ﻿namespace Vo {
-    public class VehicleDispatchDetailStaff {
+    public class VehicleDispatchDetailCarVo {
         private int _cell_number;
         private DateTime _operation_date;
-        private int _operator_code;
-        private bool _operator_proxy_flag;
-        private DateTime _operator_roll_call_ymd_hms;
-        private string _operator_note = "";
+        private int _car_code;
+        private bool _car_proxy_flag;
+        private string _car_note = "";
         private string _insert_pc_name = "";
         private DateTime _insert_ymd_hms;
         private string _update_pc_name = "";
@@ -22,21 +21,17 @@
             get => _operation_date;
             set => _operation_date = value;
         }
-        public int Operator_code {
-            get => _operator_code;
-            set => _operator_code = value;
+        public int Car_code {
+            get => _car_code;
+            set => _car_code = value;
         }
-        public bool Operator_proxy_flag {
-            get => _operator_proxy_flag;
-            set => _operator_proxy_flag = value;
+        public bool Car_proxy_flag {
+            get => _car_proxy_flag;
+            set => _car_proxy_flag = value;
         }
-        public DateTime Operator_roll_call_ymd_hms {
-            get => _operator_roll_call_ymd_hms;
-            set => _operator_roll_call_ymd_hms = value;
-        }
-        public string Operator_note {
-            get => _operator_note;
-            set => _operator_note = value;
+        public string Car_note {
+            get => _car_note;
+            set => _car_note = value;
         }
         public string Insert_pc_name {
             get => _insert_pc_name;

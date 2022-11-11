@@ -7,6 +7,10 @@ namespace Dao {
         private ConnectionVo _connectionVo;
         private readonly DefaultValue _defaultValue = new();
 
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="connection"></param>
         public VehicleDispatchDetailDao(ConnectionVo connection) {
             _connectionVo = connection;
         }
@@ -158,46 +162,6 @@ namespace Dao {
                 }
             }
             return listVehicleDispatchDetailVo;
-        }
-
-        public List<VehicleDispatchDetailStaff> SelectVehicleDispatchDetailFlowLayoutPanel_StaffLabelEx(DateTime operationDate) {
-            var listVehicleDispatchDetailFlowLayoutPanel_StaffLabelEx = new List<VehicleDispatchDetailStaff>();
-            var sqlCommand = _connectionVo.Connection.CreateCommand();
-            sqlCommand.CommandText = "SELECT cell_number," +
-                                            "operation_date," +
-                                            "operator_code," +
-                                            "operator_proxy_flag," +
-                                            "operator_roll_call_ymd_hms," +
-                                            "operator_note," +
-                                            "insert_pc_name," +
-                                            "insert_ymd_hms," +
-                                            "update_pc_name," +
-                                            "update_ymd_hms," +
-                                            "delete_pc_name," +
-                                            "delete_ymd_hms," +
-                                            "delete_flag " +
-                                     "FROM vehicle_dispatch_detail_staff " +
-                                     "WHERE operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
-            using (var sqlDataReader = sqlCommand.ExecuteReader()) {
-                while (sqlDataReader.Read() == true) {
-                    var vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx = new VehicleDispatchDetailStaff();
-                    vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Cell_number = _defaultValue.GetDefaultValue<int>(sqlDataReader["cell_number"]);
-                    vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Operation_date = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["operation_date"]);
-                    vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Operator_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_code"]);
-                    vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Operator_proxy_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["operator_proxy_flag"]);
-                    vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Operator_roll_call_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["operator_roll_call_ymd_hms"]);
-                    vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Operator_note = _defaultValue.GetDefaultValue<string>(sqlDataReader["operator_note"]);
-                    vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Insert_pc_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["insert_pc_name"]);
-                    vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Insert_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["insert_ymd_hms"]);
-                    vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Update_pc_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["update_pc_name"]);
-                    vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Update_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["update_ymd_hms"]);
-                    vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Delete_pc_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["delete_pc_name"]);
-                    vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Delete_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["delete_ymd_hms"]);
-                    vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Delete_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["delete_flag"]);
-                    listVehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Add(vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx);
-                }
-            }
-            return listVehicleDispatchDetailFlowLayoutPanel_StaffLabelEx;
         }
 
         /// <summary>
@@ -468,8 +432,8 @@ namespace Dao {
         }
 
         /// <summary>
-        /// SetControlExからの処理
-        /// Drag元のデータをリセットする
+        /// ResetCar
+        /// vehicle_dispatch_detailをリセットする
         /// </summary>
         /// <param name="operationDate"></param>
         /// <param name="dragCellNumber"></param>
