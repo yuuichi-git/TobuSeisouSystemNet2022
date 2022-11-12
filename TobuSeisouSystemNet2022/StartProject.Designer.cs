@@ -42,6 +42,8 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.TableLayoutPanelBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -134,10 +136,12 @@
             this.TableLayoutPanelCenter.Controls.Add(this.label5, 0, 8);
             this.TableLayoutPanelCenter.Controls.Add(this.label6, 0, 10);
             this.TableLayoutPanelCenter.Controls.Add(this.label7, 0, 11);
+            this.TableLayoutPanelCenter.Controls.Add(this.label8, 0, 13);
+            this.TableLayoutPanelCenter.Controls.Add(this.label9, 0, 14);
             this.TableLayoutPanelCenter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanelCenter.Location = new System.Drawing.Point(303, 27);
             this.TableLayoutPanelCenter.Name = "TableLayoutPanelCenter";
-            this.TableLayoutPanelCenter.RowCount = 15;
+            this.TableLayoutPanelCenter.RowCount = 20;
             this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -145,6 +149,11 @@
             this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -289,13 +298,37 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.SystemColors.GrayText;
             this.label7.Location = new System.Drawing.Point(3, 240);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(261, 17);
+            this.label7.Size = new System.Drawing.Size(239, 15);
             this.label7.TabIndex = 11;
             this.label7.Text = "　本番登録の新規及び修正や削除を行います。";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(3, 280);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(86, 17);
+            this.label8.TabIndex = 12;
+            this.label8.Tag = "StaffList";
+            this.label8.Text = "　従事者台帳";
+            this.label8.Click += new System.EventHandler(this.Label_Click);
+            this.label8.MouseEnter += new System.EventHandler(this.Label_MouseEnter);
+            this.label8.MouseLeave += new System.EventHandler(this.Label_MouseLeave);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label9.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.label9.Location = new System.Drawing.Point(3, 300);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(177, 15);
+            this.label9.TabIndex = 13;
+            this.label9.Text = "　従事者の登録・修正を行います。";
             // 
             // StartProject
             // 
@@ -340,5 +373,7 @@
         private Label label5;
         private Label label6;
         private Label label7;
+        private Label label8;
+        private Label label9;
     }
 }

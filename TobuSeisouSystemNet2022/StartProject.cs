@@ -7,6 +7,8 @@ using Common;
 
 using Production;
 
+using Staff;
+
 using VehicleDispatch;
 
 using Vo;
@@ -52,9 +54,15 @@ namespace TobuSeisouSystemNet2022 {
                                 var vehicleDispatchBoad = new VehicleDispatchBoad(_connectionVo);
                                 vehicleDispatchBoad.Show(this);
                                 break;
+                            // 本番変更
                             case "ProductionList":
                                 var productionList = new ProductionList(_connectionVo);
                                 productionList.Show(this);
+                                break;
+                            // 従事者リスト
+                            case "StaffList":
+                                var staffList = new StaffList(_connectionVo);
+                                staffList.Show(this);
                                 break;
                             default:
                                 break;
@@ -83,7 +91,7 @@ namespace TobuSeisouSystemNet2022 {
         }
 
         /// <summary>
-        /// アプリケーションを修了する
+        /// ToolStripMenuItemExit_Click
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -92,7 +100,7 @@ namespace TobuSeisouSystemNet2022 {
         }
 
         /// <summary>
-        /// 修了処理
+        /// StartProject_FormClosing
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

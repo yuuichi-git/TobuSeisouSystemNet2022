@@ -121,6 +121,49 @@ namespace Dao {
         }
 
         /// <summary>
+        /// InsertNewStaff
+        /// FlowLayoutPanelExFullEmployees FlowLayoutPanelExLongTerm FlowLayoutPanelExPartTime FlowLayoutPanelExWindowからの移動だから新規レコードを作成
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="dropCellNumber"></param>
+        /// <param name="staffCode"></param>
+        /// <returns></returns>
+        public int InsertNewStaff(DateTime operationDate, int dropCellNumber, int staffCode) {
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "INSERT INTO vehicle_dispatch_detail_staff(cell_number," +
+                                                                               "operation_date," +
+                                                                               "operator_code," +
+                                                                               "operator_proxy_flag," +
+                                                                               "operator_roll_call_ymd_hms," +
+                                                                               "operator_note," +
+                                                                               "insert_pc_name," +
+                                                                               "insert_ymd_hms," +
+                                                                               "update_pc_name," +
+                                                                               "update_ymd_hms," +
+                                                                               "delete_pc_name," +
+                                                                               "delete_ymd_hms," +
+                                                                               "delete_flag) " +
+                                     "VALUES (" + dropCellNumber + "," +
+                                            "'" + operationDate.ToString("yyyy-MM-dd") + "'," +
+                                            staffCode + "," +
+                                            "'False'," +
+                                            "'1900-01-01'," +
+                                            "''," +
+                                            "'" + Environment.MachineName + "'," +
+                                            "'" + DateTime.Now + "'," +
+                                            "''," +
+                                            "'1900-01-01 00:00:00'," +
+                                            "''," +
+                                            "'1900-01-01 00:00:00'," +
+                                            "'False');";
+            try {
+                return sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
         /// UpdateStaff
         /// vehicle_dispatch_detail_staffからvehicle_dispatch_detail_staffへのUPDATE
         /// </summary>

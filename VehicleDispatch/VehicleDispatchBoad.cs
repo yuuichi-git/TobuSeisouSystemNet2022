@@ -916,6 +916,7 @@ namespace VehicleDispatch {
                                                                        1,
                                                                        (StaffMasterVo)dragItem.Tag);
                                     setControlEx.Controls.Add(dragItem, 0, 2);
+                                    ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
                                 } else {
                                     ToolStripStatusLabelStatus.Text = string.Concat("運転手が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
                                 }
@@ -928,6 +929,7 @@ namespace VehicleDispatch {
                                                                        2,
                                                                        (StaffMasterVo)dragItem.Tag);
                                     setControlEx.Controls.Add(dragItem, 0, 3);
+                                    ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
                                 } else {
                                     ToolStripStatusLabelStatus.Text = string.Concat("作業員1が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
                                 }
@@ -940,6 +942,7 @@ namespace VehicleDispatch {
                                                                        3,
                                                                        (StaffMasterVo)dragItem.Tag);
                                     setControlEx.Controls.Add(dragItem, 0, 4);
+                                    ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
                                 } else {
                                     ToolStripStatusLabelStatus.Text = string.Concat("作業員2が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
                                 }
@@ -952,6 +955,7 @@ namespace VehicleDispatch {
                                                                        4,
                                                                        (StaffMasterVo)dragItem.Tag);
                                     setControlEx.Controls.Add(dragItem, 0, 5);
+                                    ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
                                 } else {
                                     ToolStripStatusLabelStatus.Text = string.Concat("作業員3が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
                                 }
@@ -988,6 +992,7 @@ namespace VehicleDispatch {
                                                                                                     ((StaffMasterVo)dragItem.Tag).Staff_code);
                                     // dragItemを移動
                                     setControlEx.Controls.Add(dragItem, 0, 2);
+                                    ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
                                 } else {
                                     ToolStripStatusLabelStatus.Text = string.Concat("運転手が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
                                 }
@@ -1006,6 +1011,7 @@ namespace VehicleDispatch {
                                                                                                     ((StaffMasterVo)dragItem.Tag).Staff_code);
                                     // dragItemを移動
                                     setControlEx.Controls.Add(dragItem, 0, 3);
+                                    ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
                                 } else {
                                     ToolStripStatusLabelStatus.Text = string.Concat("作業員1が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
                                 }
@@ -1024,6 +1030,7 @@ namespace VehicleDispatch {
                                                                                                     ((StaffMasterVo)dragItem.Tag).Staff_code);
                                     // dragItemを移動
                                     setControlEx.Controls.Add(dragItem, 0, 4);
+                                    ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
                                 } else {
                                     ToolStripStatusLabelStatus.Text = string.Concat("作業員2が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
                                 }
@@ -1042,6 +1049,7 @@ namespace VehicleDispatch {
                                                                                                     ((StaffMasterVo)dragItem.Tag).Staff_code);
                                     // dragItemを移動
                                     setControlEx.Controls.Add(dragItem, 0, 5);
+                                    ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
                                 } else {
                                     ToolStripStatusLabelStatus.Text = string.Concat("作業員3が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
                                 }
@@ -1071,6 +1079,7 @@ namespace VehicleDispatch {
                                                                                                     ((StaffMasterVo)dragItem.Tag).Staff_code);
                                     // dragItemを移動
                                     setControlEx.Controls.Add(dragItem, 0, 2);
+                                    ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
                                 } else {
                                     ToolStripStatusLabelStatus.Text = string.Concat("運転手が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
                                 }
@@ -1088,6 +1097,7 @@ namespace VehicleDispatch {
                                                                                                     Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
                                                                                                     ((StaffMasterVo)dragItem.Tag).Staff_code);
                                     setControlEx.Controls.Add(dragItem, 0, 3);
+                                    ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
                                 } else {
                                     ToolStripStatusLabelStatus.Text = string.Concat("作業員1が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
                                 }
@@ -1105,6 +1115,7 @@ namespace VehicleDispatch {
                                                                                                     Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
                                                                                                     ((StaffMasterVo)dragItem.Tag).Staff_code);
                                     setControlEx.Controls.Add(dragItem, 0, 4);
+                                    ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
                                 } else {
                                     ToolStripStatusLabelStatus.Text = string.Concat("作業員2が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
                                 }
@@ -1122,6 +1133,7 @@ namespace VehicleDispatch {
                                                                                                     Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
                                                                                                     ((StaffMasterVo)dragItem.Tag).Staff_code);
                                     setControlEx.Controls.Add(dragItem, 0, 5);
+                                    ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
                                 } else {
                                     ToolStripStatusLabelStatus.Text = string.Concat("作業員3が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
                                 }
@@ -1306,10 +1318,9 @@ namespace VehicleDispatch {
                             case "FlowLayoutPanelExWithoutNotice":
                             case "FlowLayoutPanelExFree":
                                 // vehicle_dispatch_detail_staffにINSERT
-                                _vehicleDispatchDetailStaffDao.InsertStaff(DateTimePickerOperationDate.Value,
-                                                                           Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                           ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row,
-                                                                           Convert.ToInt32(((FlowLayoutPanelEx)sender).Tag));
+                                _vehicleDispatchDetailStaffDao.InsertNewStaff(DateTimePickerOperationDate.Value,
+                                                                             Convert.ToInt32(((FlowLayoutPanelEx)sender).Tag),
+                                                                             ((StaffMasterVo)dragItem.Tag).Staff_code);
                                 break;
                         }
                         break;
@@ -1327,8 +1338,10 @@ namespace VehicleDispatch {
                             case "FlowLayoutPanelExLongTerm":
                             case "FlowLayoutPanelExPartTime":
                             case "FlowLayoutPanelExWindow":
-                                // vehicle_dispatch_detail_staffにからDELETE
-
+                                // vehicle_dispatch_detail_staffからDELETE
+                                _vehicleDispatchDetailStaffDao.DeleteStaff(DateTimePickerOperationDate.Value,
+                                                                           Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                           ((StaffMasterVo)dragItem.Tag).Staff_code);
                                 break;
                             case "FlowLayoutPanelExFullSalaried":
                             case "FlowLayoutPanelExFullClose":
@@ -1416,7 +1429,7 @@ namespace VehicleDispatch {
                 case "FlowLayoutPanelExWindow":
                     if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
                         StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
-                        if ((((StaffMasterVo)dragItem.Tag).Belongs == 20 || ((StaffMasterVo)dragItem.Tag).Belongs == 21) && ((StaffMasterVo)dragItem.Tag).Job_form == 11)
+                        if ((((StaffMasterVo)dragItem.Tag).Belongs == 20 || ((StaffMasterVo)dragItem.Tag).Belongs == 21) && ((StaffMasterVo)dragItem.Tag).Job_form == 3)
                             e.Effect = DragDropEffects.Move;
                     } else {
                         e.Effect = DragDropEffects.None;
