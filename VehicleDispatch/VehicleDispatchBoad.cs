@@ -222,6 +222,8 @@ namespace VehicleDispatch {
         /// </summary>
         private void CreateLabelForFlowLayoutPanelEx() {
             _listVehicleDispatchDetailCarVo = _vehicleDispatchDetailCarDao.SelectVehicleDispatchDetailCar(DateTimePickerOperationDate.Value);
+            _listVehicleDispatchDetailStaffVo = _vehicleDispatchDetailStaffDao.SelectVehicleDispatchDetailStaff(DateTimePickerOperationDate.Value);
+
             for (int i = 151; i < 169; i++) {
                 switch (i) {
                     case 151: // FlowLayoutPanelExSet
@@ -419,18 +421,39 @@ namespace VehicleDispatch {
                         }
                         break;
                     case 168: // FlowLayoutPanelExFree
-                        foreach (var vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 168)) {
+                        /*
+                         * CarLabelExを作成
+                         */
+                        foreach (var vehicleDispatchDetailCarVo in _listVehicleDispatchDetailCarVo.FindAll(x => x.Cell_number == 168)) {
                             // Controlを作成
-                            StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Operator_code)).CreateLabel();
+                            CarLabelEx newDropItem = new CarLabelEx(_listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailCarVo.Car_code)).CreateLabel();
                             // プロパティを設定
-                            newDropItem.ContextMenuStrip = ContextMenuStripSetLabel;
+                            newDropItem.ContextMenuStrip = ContextMenuStripCarLabel;
+                            /*
+                             * イベントを設定
+                             */
+                            newDropItem.Click += new EventHandler(CarLabelEx_Click);
+                            newDropItem.MouseMove += new MouseEventHandler(CarLabelEx_MouseMove);
+                            // DeepCopyから削除
+                            _listDeepCopyCarMasterVo.RemoveAll(x => x.Car_code == vehicleDispatchDetailCarVo.Car_code);
+                            // Controlを追加
+                            FlowLayoutPanelExFree.Controls.Add(newDropItem);
+                        }
+                        /*
+                         * StaffLabelExを作成
+                         */
+                        foreach (var vehicleDispatchDetailStaff in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 168)) {
+                            // Controlを作成
+                            StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailStaff.Operator_code)).CreateLabel();
+                            // プロパティを設定
+                            newDropItem.ContextMenuStrip = ContextMenuStripStaffLabel;
                             /*
                              * イベントを設定
                              */
                             newDropItem.Click += new EventHandler(StaffLabelEx_Click);
                             newDropItem.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
                             // DeepCopyから削除
-                            _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Operator_code);
+                            _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == vehicleDispatchDetailStaff.Operator_code);
                             // Controlを追加
                             FlowLayoutPanelExFree.Controls.Add(newDropItem);
                         }
@@ -774,7 +797,7 @@ namespace VehicleDispatch {
                                                              (CarMasterVo)dragItem.Tag);
                             // vehicle_dispatch_detail_carからDELETE
                             _vehicleDispatchDetailCarDao.DeleteCar(DateTimePickerOperationDate.Value,
-                                                                   Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
+                                                                   Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
                                                                    ((CarMasterVo)dragItem.Tag).Car_code);
                             setControlEx.Controls.Add(dragItem, 0, 1);
                         } else {
@@ -789,7 +812,7 @@ namespace VehicleDispatch {
                                                              (CarMasterVo)dragItem.Tag);
                             // vehicle_dispatch_detail_carからDELETE
                             _vehicleDispatchDetailCarDao.DeleteCar(DateTimePickerOperationDate.Value,
-                                                                   Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
+                                                                   Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
                                                                    ((CarMasterVo)dragItem.Tag).Car_code);
                             setControlEx.Controls.Add(dragItem, 0, 1);
                         } else {
@@ -887,6 +910,11 @@ namespace VehicleDispatch {
                                 break;
                             case int i when i <= 180:
                                 if (setControlEx.GetControlFromPosition(0, 2) == null) {
+                                    // VehicleDispatchDetailをUPDATE
+                                    _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
+                                                                       Convert.ToInt32(setControlEx.Tag),
+                                                                       1,
+                                                                       (StaffMasterVo)dragItem.Tag);
                                     setControlEx.Controls.Add(dragItem, 0, 2);
                                 } else {
                                     ToolStripStatusLabelStatus.Text = string.Concat("運転手が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
@@ -894,6 +922,11 @@ namespace VehicleDispatch {
                                 break;
                             case int i when i <= 220:
                                 if (setControlEx.GetControlFromPosition(0, 3) == null) {
+                                    // VehicleDispatchDetailをUPDATE
+                                    _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
+                                                                       Convert.ToInt32(setControlEx.Tag),
+                                                                       2,
+                                                                       (StaffMasterVo)dragItem.Tag);
                                     setControlEx.Controls.Add(dragItem, 0, 3);
                                 } else {
                                     ToolStripStatusLabelStatus.Text = string.Concat("作業員1が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
@@ -901,6 +934,11 @@ namespace VehicleDispatch {
                                 break;
                             case int i when i <= 260:
                                 if (setControlEx.GetControlFromPosition(0, 4) == null) {
+                                    // VehicleDispatchDetailをUPDATE
+                                    _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
+                                                                       Convert.ToInt32(setControlEx.Tag),
+                                                                       3,
+                                                                       (StaffMasterVo)dragItem.Tag);
                                     setControlEx.Controls.Add(dragItem, 0, 4);
                                 } else {
                                     ToolStripStatusLabelStatus.Text = string.Concat("作業員2が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
@@ -908,6 +946,11 @@ namespace VehicleDispatch {
                                 break;
                             case int i when i <= 300:
                                 if (setControlEx.GetControlFromPosition(0, 5) == null) {
+                                    // VehicleDispatchDetailをUPDATE
+                                    _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
+                                                                       Convert.ToInt32(setControlEx.Tag),
+                                                                       4,
+                                                                       (StaffMasterVo)dragItem.Tag);
                                     setControlEx.Controls.Add(dragItem, 0, 5);
                                 } else {
                                     ToolStripStatusLabelStatus.Text = string.Concat("作業員3が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
@@ -935,10 +978,10 @@ namespace VehicleDispatch {
                                 if (setControlEx.GetControlFromPosition(0, 2) == null) {
                                     // VehicleDispatchDetailにUPDATE
                                     _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
-                                                                          Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                          Convert.ToInt32(setControlEx.Tag),
-                                                                          1,
-                                                                          (StaffMasterVo)dragItem.Tag);
+                                                                       Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                       Convert.ToInt32(setControlEx.Tag),
+                                                                       1,
+                                                                       (StaffMasterVo)dragItem.Tag);
                                     // VehicleDispatchDetailStaffからDELETE
                                     _vehicleDispatchDetailStaffDao.DeleteStaff(DateTimePickerOperationDate.Value,
                                                                                                     Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
@@ -953,10 +996,10 @@ namespace VehicleDispatch {
                                 if (setControlEx.GetControlFromPosition(0, 3) == null) {
                                     // VehicleDispatchDetailにUPDATE
                                     _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
-                                                                          Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                          Convert.ToInt32(setControlEx.Tag),
-                                                                          2,
-                                                                          (StaffMasterVo)dragItem.Tag);
+                                                                       Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                       Convert.ToInt32(setControlEx.Tag),
+                                                                       2,
+                                                                       (StaffMasterVo)dragItem.Tag);
                                     // VehicleDispatchDetailStaffからDELETE
                                     _vehicleDispatchDetailStaffDao.DeleteStaff(DateTimePickerOperationDate.Value,
                                                                                                     Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
@@ -971,10 +1014,10 @@ namespace VehicleDispatch {
                                 if (setControlEx.GetControlFromPosition(0, 4) == null) {
                                     // VehicleDispatchDetailにUPDATE
                                     _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
-                                                                          Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                          Convert.ToInt32(setControlEx.Tag),
-                                                                          3,
-                                                                          (StaffMasterVo)dragItem.Tag);
+                                                                       Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                       Convert.ToInt32(setControlEx.Tag),
+                                                                       3,
+                                                                       (StaffMasterVo)dragItem.Tag);
                                     // VehicleDispatchDetailStaffからDELETE
                                     _vehicleDispatchDetailStaffDao.DeleteStaff(DateTimePickerOperationDate.Value,
                                                                                                     Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
@@ -989,10 +1032,10 @@ namespace VehicleDispatch {
                                 if (setControlEx.GetControlFromPosition(0, 5) == null) {
                                     // VehicleDispatchDetailにUPDATE
                                     _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
-                                                                          Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                          Convert.ToInt32(setControlEx.Tag),
-                                                                          4,
-                                                                          (StaffMasterVo)dragItem.Tag);
+                                                                       Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                       Convert.ToInt32(setControlEx.Tag),
+                                                                       4,
+                                                                       (StaffMasterVo)dragItem.Tag);
                                     // VehicleDispatchDetailStaffからDELETE
                                     _vehicleDispatchDetailStaffDao.DeleteStaff(DateTimePickerOperationDate.Value,
                                                                                                     Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
@@ -1166,6 +1209,8 @@ namespace VehicleDispatch {
                                                                    Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag));
                                 break;
                         }
+                        ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
+                        ToolStripStatusLabelStatus.Text = string.Concat(((CarMasterVo)dragItem.Tag).Registration_number, " を処理しました");
                         break;
                     case "FlowLayoutPanelExCar":
                         switch (((FlowLayoutPanelEx)sender).Name) {
@@ -1179,6 +1224,8 @@ namespace VehicleDispatch {
                                                                           ((CarMasterVo)dragItem.Tag).Car_code);
                                 break;
                         }
+                        ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
+                        ToolStripStatusLabelStatus.Text = string.Concat(((CarMasterVo)dragItem.Tag).Registration_number, " を処理しました");
                         break;
                     case "FlowLayoutPanelExChecking":
                     case "FlowLayoutPanelExRepair":
@@ -1188,7 +1235,7 @@ namespace VehicleDispatch {
                             case "FlowLayoutPanelExCar":
                                 // vehicle_dispatch_detail_carからDELETE
                                 _vehicleDispatchDetailCarDao.DeleteCar(DateTimePickerOperationDate.Value,
-                                                                       Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
+                                                                       Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
                                                                        ((CarMasterVo)dragItem.Tag).Car_code);
                                 break;
                             case "FlowLayoutPanelExChecking":
@@ -1196,15 +1243,15 @@ namespace VehicleDispatch {
                             case "FlowLayoutPanelExVehicleInspection":
                             case "FlowLayoutPanelExFree":
                                 _vehicleDispatchDetailCarDao.UpdateCar(DateTimePickerOperationDate.Value,
-                                                                       Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
+                                                                       Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
                                                                        ((CarMasterVo)dragItem.Tag).Car_code,
                                                                        Convert.ToInt32(((FlowLayoutPanelEx)sender).Tag));
                                 break;
                         }
+                        ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
+                        ToolStripStatusLabelStatus.Text = string.Concat(((CarMasterVo)dragItem.Tag).Registration_number, " を処理しました");
                         break;
                 }
-                ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
-                ToolStripStatusLabelStatus.Text = string.Concat(((CarMasterVo)dragItem.Tag).Registration_number, " を処理しました");
             }
             /*
              * DragアイテムがStaffLabelExの場合
@@ -1214,6 +1261,14 @@ namespace VehicleDispatch {
                 switch (dragItem.Parent.Name) {
                     case "SetControlEx":
                         switch (((FlowLayoutPanelEx)sender).Name) {
+                            case "FlowLayoutPanelExFullEmployees":
+                            case "FlowLayoutPanelExLongTerm":
+                            case "FlowLayoutPanelExPartTime":
+                            case "FlowLayoutPanelExWindow":
+                                _vehicleDispatchDetailDao.ResetStaff(DateTimePickerOperationDate.Value,
+                                                                     Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
+                                                                     ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
+                                break;
                             case "FlowLayoutPanelExFullSalaried":
                             case "FlowLayoutPanelExFullClose":
                             case "FlowLayoutPanelExFullDesignation":
@@ -1296,288 +1351,6 @@ namespace VehicleDispatch {
                 ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
                 ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
             }
-
-
-
-
-
-            //switch (((FlowLayoutPanelEx)sender).Name) {
-            //    // 配車先(配車先にDropはできない)
-            //    case "FlowLayoutPanelExSet":
-            //        break;
-            //    // 車両(予備)
-            //    case "FlowLayoutPanelExCar":
-            //        if (e.Data != null && e.Data.GetDataPresent(typeof(CarLabelEx))) {
-            //            CarLabelEx dragItem = (CarLabelEx)e.Data.GetData(typeof(CarLabelEx));
-            //            // vehicle_dispatch_detailから記録をリセットする
-            //            if (((SetControlEx)dragItem.Parent).Name == "SetControlEx")
-            //                _vehicleDispatchDetailDao.ResetCar(DateTimePickerOperationDate.Value,
-            //                                                   Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag));
-            //            // FlowLayoutPanelExにControlを追加する
-            //            ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
-            //            ToolStripStatusLabelStatus.Text = string.Concat(((CarMasterVo)dragItem.Tag).Registration_number, " を処理しました");
-            //        }
-            //        break;
-            //    // 社員(予備)
-            //    case "FlowLayoutPanelExFullEmployees":
-            //        /*
-            //         * StaffLabelEx
-            //         */
-            //        if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
-            //            StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
-            //            if (((StaffMasterVo)dragItem.Tag).Belongs == 10 || ((StaffMasterVo)dragItem.Tag).Belongs == 11) {
-            //                ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
-            //                ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
-            //            } else {
-            //                ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " は社員ではありません。処理を中止します。");
-            //            }
-            //        }
-            //        break;
-            //    // 組合長期(予備)
-            //    case "FlowLayoutPanelExLongTerm":
-            //        /*
-            //         * StaffLabelEx
-            //         */
-            //        if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
-            //            StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
-            //            if ((((StaffMasterVo)dragItem.Tag).Belongs == 20 || ((StaffMasterVo)dragItem.Tag).Belongs == 21) && ((StaffMasterVo)dragItem.Tag).Job_form == 1) {
-            //                ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
-            //                ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
-            //            } else {
-            //                ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " は組合長期ではありません。処理を中止します。");
-            //            }
-            //        }
-            //        break;
-            //    // アルバイト(予備)
-            //    case "FlowLayoutPanelExPartTime":
-            //        /*
-            //         * StaffLabelEx
-            //         */
-            //        if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
-            //            StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
-            //            if (((StaffMasterVo)dragItem.Tag).Belongs == 12) {
-            //                ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
-            //                ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
-            //            } else {
-            //                ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " はアルバイトではありません。処理を中止します。");
-            //            }
-            //        }
-            //        break;
-            //    // 組合窓(予備)
-            //    case "FlowLayoutPanelExWindow":
-            //        /*
-            //         * StaffLabelEx
-            //         */
-            //        if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
-            //            StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
-            //            if ((((StaffMasterVo)dragItem.Tag).Belongs == 20 || ((StaffMasterVo)dragItem.Tag).Belongs == 21) && ((StaffMasterVo)dragItem.Tag).Job_form == 3) {
-            //                ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
-            //                ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
-            //            } else {
-            //                ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " は組合窓ではありません。処理を中止します。");
-            //            }
-            //        }
-            //        break;
-            //    // 点検
-            //    case "FlowLayoutPanelExChecking":
-            //        /*
-            //         * CarLabelEx
-            //         */
-            //        if (e.Data != null && e.Data.GetDataPresent(typeof(CarLabelEx))) {
-            //            CarLabelEx dragItem = (CarLabelEx)e.Data.GetData(typeof(CarLabelEx));
-            //            // vehicle_dispatch_detailから記録をリセットする
-            //            if (((SetControlEx)dragItem.Parent).Name == "SetControlEx")
-            //                _vehicleDispatchDetailDao.ResetCar(DateTimePickerOperationDate.Value,
-            //                                                   Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag));
-            //            ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
-            //            ToolStripStatusLabelStatus.Text = string.Concat(((CarMasterVo)dragItem.Tag).Registration_number, " を処理しました");
-            //        }
-            //        break;
-            //    // 修理
-            //    case "FlowLayoutPanelExRepair":
-            //        /*
-            //         * CarLabelEx
-            //         */
-            //        if (e.Data != null && e.Data.GetDataPresent(typeof(CarLabelEx))) {
-            //            CarLabelEx dragItem = (CarLabelEx)e.Data.GetData(typeof(CarLabelEx));
-            //            // vehicle_dispatch_detailから記録をリセットする
-            //            if (((SetControlEx)dragItem.Parent).Name == "SetControlEx")
-            //                _vehicleDispatchDetailDao.ResetCar(DateTimePickerOperationDate.Value,
-            //                                                   Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag));
-            //            ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
-            //            ToolStripStatusLabelStatus.Text = string.Concat(((CarMasterVo)dragItem.Tag).Registration_number, " を処理しました");
-            //        }
-            //        break;
-            //    // 車検
-            //    case "FlowLayoutPanelExVehicleInspection":
-            //        /*
-            //         * CarLabelEx
-            //         */
-            //        if (e.Data != null && e.Data.GetDataPresent(typeof(CarLabelEx))) {
-            //            CarLabelEx dragItem = (CarLabelEx)e.Data.GetData(typeof(CarLabelEx));
-            //            // vehicle_dispatch_detailから記録をリセットする
-            //            if (((SetControlEx)dragItem.Parent).Name == "SetControlEx")
-            //                _vehicleDispatchDetailDao.ResetCar(DateTimePickerOperationDate.Value,
-            //                                                   Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag));
-            //            ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
-            //            ToolStripStatusLabelStatus.Text = string.Concat(((CarMasterVo)dragItem.Tag).Registration_number, " を処理しました");
-            //        }
-            //        break;
-            //    // 組合長期　有給
-            //    case "FlowLayoutPanelExFullSalaried":
-            //        /*
-            //         * StaffLabelEx
-            //         */
-            //        if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
-            //            StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
-            //            if ((((StaffMasterVo)dragItem.Tag).Belongs == 20 || ((StaffMasterVo)dragItem.Tag).Belongs == 21) && ((StaffMasterVo)dragItem.Tag).Job_form == 1) {
-            //                ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
-            //                ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
-            //            } else {
-            //                ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " は組合長期ではありません。処理を中止します。");
-            //            }
-            //        }
-            //        break;
-            //    // 組合長期　自己都合
-            //    case "FlowLayoutPanelExFullClose":
-            //        /*
-            //         * StaffLabelEx
-            //         */
-            //        if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
-            //            StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
-            //            if ((((StaffMasterVo)dragItem.Tag).Belongs == 20 || ((StaffMasterVo)dragItem.Tag).Belongs == 21) && ((StaffMasterVo)dragItem.Tag).Job_form == 1) {
-            //                ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
-            //                ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
-            //            } else {
-            //                ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " は組合長期ではありません。処理を中止します。");
-            //            }
-            //        }
-            //        break;
-            //    // 組合長期　会社指定
-            //    case "FlowLayoutPanelExFullDesignation":
-            //        /*
-            //         * StaffLabelEx
-            //         */
-            //        if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
-            //            StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
-            //            if ((((StaffMasterVo)dragItem.Tag).Belongs == 20 || ((StaffMasterVo)dragItem.Tag).Belongs == 21) && ((StaffMasterVo)dragItem.Tag).Job_form == 1) {
-            //                ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
-            //                ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
-            //            } else {
-            //                ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " は組合長期ではありません。処理を中止します。");
-            //            }
-            //        }
-            //        break;
-            //    // アルバイト　有給
-            //    case "FlowLayoutPanelExPartSalaried":
-            //        /*
-            //         * StaffLabelEx
-            //         */
-            //        if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
-            //            StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
-            //            if (((StaffMasterVo)dragItem.Tag).Belongs == 12) {
-            //                ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
-            //                ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
-            //            } else {
-            //                ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " はアルバイトではありません。処理を中止します。");
-            //            }
-            //        }
-            //        break;
-            //    // アルバイト　自己都合
-            //    case "FlowLayoutPanelExPartClose":
-            //        /*
-            //         * StaffLabelEx
-            //         */
-            //        if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
-            //            StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
-            //            if (((StaffMasterVo)dragItem.Tag).Belongs == 12) {
-            //                ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
-            //                ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
-            //            } else {
-            //                ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " はアルバイトではありません。処理を中止します。");
-            //            }
-            //        }
-            //        break;
-            //    // アルバイト　会社指定
-            //    case "FlowLayoutPanelExPartDesignation":
-            //        /*
-            //         * StaffLabelEx
-            //         */
-            //        if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
-            //            StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
-            //            if (((StaffMasterVo)dragItem.Tag).Belongs == 12) {
-            //                ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
-            //                ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
-            //            } else {
-            //                ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " はアルバイトではありません。処理を中止します。");
-            //            }
-            //        }
-            //        break;
-            //    // 朝電
-            //    case "FlowLayoutPanelExTelephone":
-            //        /*
-            //         * StaffLabelEx
-            //         */
-            //        if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
-            //            StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
-            //            ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
-            //            ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
-            //        } else {
-            //            ToolStripStatusLabelStatus.Text = string.Concat("従事者ではないラベルがドロップされました。処理を中止します。");
-            //        }
-            //        break;
-            //    // 無断
-            //    case "FlowLayoutPanelExWithoutNotice":
-            //        /*
-            //         * StaffLabelEx
-            //         */
-            //        if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
-            //            StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
-            //            ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
-            //            ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
-            //        } else {
-            //            ToolStripStatusLabelStatus.Text = string.Concat("従事者ではないラベルがドロップされました。処理を中止します。");
-            //        }
-            //        break;
-            //    // Free
-            //    case "FlowLayoutPanelExFree":
-            //        if (FlowLayoutPanelExFree.Controls.Count < 16) {
-            //            /*
-            //             * SetLabelEx
-            //             */
-            //            if (e.Data != null && e.Data.GetDataPresent(typeof(SetLabelEx))) {
-            //                SetLabelEx dragItem = (SetLabelEx)e.Data.GetData(typeof(SetLabelEx));
-            //                ToolStripStatusLabelStatus.Text = string.Concat("(", ((SetMasterVo)dragItem.Tag).Set_name, ") は移動が禁止されています");
-            //            }
-            //            /*
-            //             * CarLabelEx
-            //             */
-            //            if (e.Data != null && e.Data.GetDataPresent(typeof(CarLabelEx))) {
-            //                CarLabelEx dragItem = (CarLabelEx)e.Data.GetData(typeof(CarLabelEx));
-            //                ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
-            //                ToolStripStatusLabelStatus.Text = string.Concat(((CarMasterVo)dragItem.Tag).Registration_number, " を処理しました");
-            //            }
-            //            /*
-            //             * StaffLabelExからFlowLayoutPanelExFreeへDrop
-            //             */
-            //            if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
-            //                StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
-            //                // vehicle_dispatch_detail_flowLayoutPanelへInsertする
-            //                _vehicleDispatchDetailStaffDao.InsertVehicleDispatchDetailStaff(DateTimePickerOperationDate.Value,
-            //                                                                                Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
-            //                                                                                ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row,
-            //                                                                                Convert.ToInt32(((FlowLayoutPanelEx)sender).Tag));
-            //                _vehicleDispatchDetailDao.ResetStaff(DateTimePickerOperationDate.Value,
-            //                                                     (int)((SetControlEx)dragItem.Parent).Tag,
-            //                                                     ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
-            //                ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
-            //                ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
-            //            }
-            //        } else {
-            //            ToolStripStatusLabelStatus.Text = string.Concat("これ以上の仮置きはできません。");
-            //        }
-            //        break;
-            //}
         }
 
         /// <summary>
@@ -1586,7 +1359,107 @@ namespace VehicleDispatch {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void FlowLayoutPanelEx_DragEnter(object sender, DragEventArgs e) {
-            e.Effect = DragDropEffects.Move;
+            // マウスポインター形状変更
+            //
+            // DragDropEffects
+            //  Copy  :データがドロップ先にコピーされようとしている状態
+            //  Move  :データがドロップ先に移動されようとしている状態
+            //  Scroll:データによってドロップ先でスクロールが開始されようとしている状態、あるいは現在スクロール中である状態
+            //  All   :上の3つを組み合わせたもの
+            //  Link  :データのリンクがドロップ先に作成されようとしている状態
+            //  None  :いかなるデータもドロップ先が受け付けようとしない状態
+            switch (((FlowLayoutPanelEx)sender).Name) {
+                case "SetControlEx":
+                    if (e.Data != null && e.Data.GetDataPresent(typeof(SetLabelEx))) {
+                        e.Effect = DragDropEffects.Move;
+                    } else {
+                        e.Effect = DragDropEffects.None;
+                    }
+                    break;
+                case "FlowLayoutPanelExCar":
+                case "FlowLayoutPanelExChecking":
+                case "FlowLayoutPanelExRepair":
+                case "FlowLayoutPanelExVehicleInspection":
+                    if (e.Data != null && e.Data.GetDataPresent(typeof(CarLabelEx))) {
+                        e.Effect = DragDropEffects.Move;
+                    } else {
+                        e.Effect = DragDropEffects.None;
+                    }
+                    break;
+                case "FlowLayoutPanelExFullEmployees":
+                    if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+                        StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
+                        if (((StaffMasterVo)dragItem.Tag).Belongs == 10 || ((StaffMasterVo)dragItem.Tag).Belongs == 11)
+                            e.Effect = DragDropEffects.Move;
+                    } else {
+                        e.Effect = DragDropEffects.None;
+                    }
+                    break;
+                case "FlowLayoutPanelExLongTerm":
+                    if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+                        StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
+                        if (((StaffMasterVo)dragItem.Tag).Belongs == 20 || ((StaffMasterVo)dragItem.Tag).Belongs == 21)
+                            e.Effect = DragDropEffects.Move;
+                    } else {
+                        e.Effect = DragDropEffects.None;
+                    }
+                    break;
+                case "FlowLayoutPanelExPartTime":
+                    if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+                        StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
+                        if (((StaffMasterVo)dragItem.Tag).Belongs == 12)
+                            e.Effect = DragDropEffects.Move;
+                    } else {
+                        e.Effect = DragDropEffects.None;
+                    }
+                    break;
+                case "FlowLayoutPanelExWindow":
+                    if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+                        StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
+                        if ((((StaffMasterVo)dragItem.Tag).Belongs == 20 || ((StaffMasterVo)dragItem.Tag).Belongs == 21) && ((StaffMasterVo)dragItem.Tag).Job_form == 11)
+                            e.Effect = DragDropEffects.Move;
+                    } else {
+                        e.Effect = DragDropEffects.None;
+                    }
+                    break;
+                case "FlowLayoutPanelExFullSalaried":
+                case "FlowLayoutPanelExFullClose":
+                case "FlowLayoutPanelExFullDesignation":
+                    if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+                        StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
+                        if (((StaffMasterVo)dragItem.Tag).Belongs == 20 || ((StaffMasterVo)dragItem.Tag).Belongs == 21)
+                            e.Effect = DragDropEffects.Move;
+                    } else {
+                        e.Effect = DragDropEffects.None;
+                    }
+                    break;
+                case "FlowLayoutPanelExPartSalaried":
+                case "FlowLayoutPanelExPartClose":
+                case "FlowLayoutPanelExPartDesignation":
+                    if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+                        StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
+                        if (((StaffMasterVo)dragItem.Tag).Belongs == 12)
+                            e.Effect = DragDropEffects.Move;
+                    } else {
+                        e.Effect = DragDropEffects.None;
+                    }
+                    break;
+                case "FlowLayoutPanelExTelephone":
+                case "FlowLayoutPanelExWithoutNotice":
+                    if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+                        e.Effect = DragDropEffects.Move;
+                    } else {
+                        e.Effect = DragDropEffects.None;
+                    }
+                    break;
+                case "FlowLayoutPanelExFree":
+                    if (e.Data != null && (e.Data.GetDataPresent(typeof(CarLabelEx)) || e.Data.GetDataPresent(typeof(StaffLabelEx)))) {
+                        e.Effect = DragDropEffects.Move;
+                    } else {
+                        e.Effect = DragDropEffects.None;
+                    }
+                    break;
+            }
         }
 
         /// <summary>

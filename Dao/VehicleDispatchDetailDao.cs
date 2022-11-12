@@ -520,7 +520,7 @@ namespace Dao {
 
         /// <summary>
         /// SetStaff
-        /// FlowLayoutPanelExからSetControlExへの移動処理
+        /// FlowLayoutPanelEx(右側)からSetControlExへの移動処理
         /// </summary>
         /// <param name="operationDate"></param>
         /// <param name="dragCellNumber"></param>
@@ -555,6 +555,44 @@ namespace Dao {
                                               sqlDropOperatorNote + " = (SELECT operator_note " +
                                                                         "FROM vehicle_dispatch_detail_staff " +
                                                                         "WHERE cell_number = " + dragCellNumber + " AND operator_code = '" + staffMasterVo.Staff_code + "' AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "')," +
+                                           "update_pc_name = '" + Environment.MachineName + "'," +
+                                           "update_ymd_hms = '" + DateTime.Now + "' " +
+                                     "WHERE cell_number = " + dropCellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                return sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// SetStaff
+        /// FlowLayoutPanelEx(左側)からSetControlExへの移動処理
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="dropCellNumber"></param>
+        /// <param name="dropRowNumber"></param>
+        /// <param name="staffMasterVo"></param>
+        /// <returns></returns>
+        public int SetStaff(DateTime operationDate, int dropCellNumber, int dropRowNumber, StaffMasterVo staffMasterVo) {
+            /*
+             * Tagがゼロから始まっているので１をプラスする
+             */
+            dropCellNumber++;
+            /*
+             * Drop項目のSQL文を作成
+             */
+            string sqlDropOperatorCode = string.Concat("operator_code_" + dropRowNumber);
+            string sqlDropOperatorProxyFlag = string.Concat("operator_" + dropRowNumber + "_proxy_flag");
+            string sqlDropOperatorRollCallYmdHms = string.Concat("operator_" + dropRowNumber + "_roll_call_ymd_hms");
+            string sqlDropOperatorNote = string.Concat("operator_" + dropRowNumber, "_note");
+
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE vehicle_dispatch_detail " +
+                                     "SET " + sqlDropOperatorCode + " = " + staffMasterVo.Staff_code + "," +
+                                         sqlDropOperatorProxyFlag + " = 'False'," +
+                                    sqlDropOperatorRollCallYmdHms + " = '1900-01-01'," +
+                                              sqlDropOperatorNote + " = ''," +
                                            "update_pc_name = '" + Environment.MachineName + "'," +
                                            "update_ymd_hms = '" + DateTime.Now + "' " +
                                      "WHERE cell_number = " + dropCellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";

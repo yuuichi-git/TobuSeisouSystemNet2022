@@ -62,7 +62,7 @@ namespace Dao {
 
         /// <summary>
         /// InsertStaff
-        /// vehicle_dispatch_detailの項目ごとvehicle_dispatch_detail_staffへのINSERT
+        /// vehicle_dispatch_detailからvehicle_dispatch_detail_staffへのINSERT
         /// </summary>
         /// <param name="operationDate"></param>
         /// <param name="dragCellNumber"></param>
