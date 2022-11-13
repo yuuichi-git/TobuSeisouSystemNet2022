@@ -321,5 +321,70 @@ namespace Dao {
             }
             return listStaffMasterVo;
         }
+
+        /// <summary>
+        /// SelectAllStaffMasterVo
+        /// StaffList用
+        /// </summary>
+        /// <returns></returns>
+        public List<StaffMasterVo> SelectAllStaffMasterVo() {
+            var listStaffMasterVo = new List<StaffMasterVo>();
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT staff_code," +
+                                            "belongs," +
+                                            "vehicle_dispatch_target," +
+                                            "job_form," +
+                                            "occupation," +
+                                            "name_kana," +
+                                            "name," +
+                                            "display_name," +
+                                            "birth_date," +
+                                            "employment_date," +
+                                            "proper_kind_1," +
+                                            "proper_date_1," +
+                                            "proper_kind_2," +
+                                            "proper_date_2," +
+                                            "proper_kind_3," +
+                                            "proper_date_3," +
+                                            "medical_examination_date_1," +
+                                            "current_address," +
+                                            "health_insurance_number," +
+                                            "welfare_pension_number," +
+                                            "employment_insurance_number," +
+                                            "worker_accident_insurance_number," +
+                                            "delete_flag," +
+                                            "retirement_flag " +
+                                     "FROM staff_master";
+            using (var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while (sqlDataReader.Read() == true) {
+                    var staffMasterVo = new StaffMasterVo();
+                    staffMasterVo.Staff_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["staff_code"]);
+                    staffMasterVo.Belongs = _defaultValue.GetDefaultValue<int>(sqlDataReader["belongs"]);
+                    staffMasterVo.Vehicle_dispatch_target = _defaultValue.GetDefaultValue<bool>(sqlDataReader["vehicle_dispatch_target"]);
+                    staffMasterVo.Job_form = _defaultValue.GetDefaultValue<int>(sqlDataReader["job_form"]);
+                    staffMasterVo.Occupation = _defaultValue.GetDefaultValue<int>(sqlDataReader["occupation"]);
+                    staffMasterVo.Name_kana = _defaultValue.GetDefaultValue<string>(sqlDataReader["name_kana"]);
+                    staffMasterVo.Name = _defaultValue.GetDefaultValue<string>(sqlDataReader["name"]);
+                    staffMasterVo.Display_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["display_name"]);
+                    staffMasterVo.Birth_date = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["birth_date"]);
+                    staffMasterVo.Employment_date = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["employment_date"]);
+                    staffMasterVo.Proper_kind_1 = _defaultValue.GetDefaultValue<string>(sqlDataReader["proper_kind_1"]);
+                    staffMasterVo.Proper_date_1 = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["proper_date_1"]);
+                    staffMasterVo.Proper_kind_2 = _defaultValue.GetDefaultValue<string>(sqlDataReader["proper_kind_2"]);
+                    staffMasterVo.Proper_date_2 = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["proper_date_2"]);
+                    staffMasterVo.Proper_kind_3 = _defaultValue.GetDefaultValue<string>(sqlDataReader["proper_kind_3"]);
+                    staffMasterVo.Proper_date_3 = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["proper_date_3"]);
+                    staffMasterVo.Medical_examination_date_1 = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["medical_examination_date_1"]);
+                    staffMasterVo.Current_address = _defaultValue.GetDefaultValue<string>(sqlDataReader["current_address"]);
+                    staffMasterVo.Health_insurance_number = _defaultValue.GetDefaultValue<string>(sqlDataReader["health_insurance_number"]);
+                    staffMasterVo.Welfare_pension_number = _defaultValue.GetDefaultValue<string>(sqlDataReader["welfare_pension_number"]);
+                    staffMasterVo.Employment_insurance_number = _defaultValue.GetDefaultValue<string>(sqlDataReader["employment_insurance_number"]);
+                    staffMasterVo.Worker_accident_insurance_number = _defaultValue.GetDefaultValue<string>(sqlDataReader["worker_accident_insurance_number"]);
+                    staffMasterVo.Retirement_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["retirement_flag"]);
+                    listStaffMasterVo.Add(staffMasterVo);
+                }
+            }
+            return listStaffMasterVo;
+        }
     }
 }
