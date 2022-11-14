@@ -34,25 +34,25 @@
             this.ComboBoxAccidentYear = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.CheckBoxNone = new System.Windows.Forms.CheckBox();
+            this.CheckBoxNone2 = new System.Windows.Forms.CheckBox();
             this.CheckBoxWorkStaff = new System.Windows.Forms.CheckBox();
             this.CheckBoxDriver = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.CheckBoxPartTime = new System.Windows.Forms.CheckBox();
+            this.CheckBoxNone1 = new System.Windows.Forms.CheckBox();
+            this.CheckBoxPartTimeJob2 = new System.Windows.Forms.CheckBox();
             this.CheckBoxNoteBook = new System.Windows.Forms.CheckBox();
             this.CheckBoxFullTimeJob = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.CheckBoxJiunrou = new System.Windows.Forms.CheckBox();
             this.CheckBoxSinunten = new System.Windows.Forms.CheckBox();
-            this.CheckBoxPartTimeJob = new System.Windows.Forms.CheckBox();
+            this.CheckBoxPartTimeJob1 = new System.Windows.Forms.CheckBox();
             this.CheckBoxCompanyEmployee = new System.Windows.Forms.CheckBox();
             this.CheckBoxOfficer = new System.Windows.Forms.CheckBox();
             this.ButtonUpdate = new System.Windows.Forms.Button();
             this.StatusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabelDetail = new System.Windows.Forms.ToolStripStatusLabel();
-            this.SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("resource1"));
-            this.SheetViewList = this.SpreadList.GetSheet(0);
+            this.SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, ((object)(resources.GetObject("TableLayoutPanelExBase.Controls"))));
             this.TabControlExStaff = new ControlEx.TabControlEx();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -65,6 +65,7 @@
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.SheetViewList = this.SpreadList.GetSheet(0);
             this.TableLayoutPanelExBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.PanelUp.SuspendLayout();
@@ -147,9 +148,7 @@
             // CheckBoxRetired
             // 
             this.CheckBoxRetired.AutoSize = true;
-            this.CheckBoxRetired.Checked = true;
-            this.CheckBoxRetired.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxRetired.Location = new System.Drawing.Point(992, 20);
+            this.CheckBoxRetired.Location = new System.Drawing.Point(1056, 20);
             this.CheckBoxRetired.Name = "CheckBoxRetired";
             this.CheckBoxRetired.Size = new System.Drawing.Size(114, 19);
             this.CheckBoxRetired.TabIndex = 3;
@@ -165,7 +164,7 @@
             "2021年度",
             "2022年度",
             "2023年度"});
-            this.ComboBoxAccidentYear.Location = new System.Drawing.Point(896, 16);
+            this.ComboBoxAccidentYear.Location = new System.Drawing.Point(960, 16);
             this.ComboBoxAccidentYear.Name = "ComboBoxAccidentYear";
             this.ComboBoxAccidentYear.Size = new System.Drawing.Size(84, 23);
             this.ComboBoxAccidentYear.TabIndex = 8;
@@ -173,7 +172,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(792, 20);
+            this.label1.Location = new System.Drawing.Point(856, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(103, 15);
             this.label1.TabIndex = 7;
@@ -181,27 +180,27 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.CheckBoxNone);
+            this.groupBox3.Controls.Add(this.CheckBoxNone2);
             this.groupBox3.Controls.Add(this.CheckBoxWorkStaff);
             this.groupBox3.Controls.Add(this.CheckBoxDriver);
-            this.groupBox3.Location = new System.Drawing.Point(552, 4);
+            this.groupBox3.Location = new System.Drawing.Point(620, 4);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(208, 44);
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "職種";
             // 
-            // CheckBoxNone
+            // CheckBoxNone2
             // 
-            this.CheckBoxNone.AutoSize = true;
-            this.CheckBoxNone.Checked = true;
-            this.CheckBoxNone.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxNone.Location = new System.Drawing.Point(136, 16);
-            this.CheckBoxNone.Name = "CheckBoxNone";
-            this.CheckBoxNone.Size = new System.Drawing.Size(68, 19);
-            this.CheckBoxNone.TabIndex = 2;
-            this.CheckBoxNone.Text = "指定なし";
-            this.CheckBoxNone.UseVisualStyleBackColor = true;
+            this.CheckBoxNone2.AutoSize = true;
+            this.CheckBoxNone2.Checked = true;
+            this.CheckBoxNone2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckBoxNone2.Location = new System.Drawing.Point(136, 16);
+            this.CheckBoxNone2.Name = "CheckBoxNone2";
+            this.CheckBoxNone2.Size = new System.Drawing.Size(68, 19);
+            this.CheckBoxNone2.TabIndex = 2;
+            this.CheckBoxNone2.Text = "指定なし";
+            this.CheckBoxNone2.UseVisualStyleBackColor = true;
             // 
             // CheckBoxWorkStaff
             // 
@@ -229,27 +228,40 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.CheckBoxPartTime);
+            this.groupBox2.Controls.Add(this.CheckBoxNone1);
+            this.groupBox2.Controls.Add(this.CheckBoxPartTimeJob2);
             this.groupBox2.Controls.Add(this.CheckBoxNoteBook);
             this.groupBox2.Controls.Add(this.CheckBoxFullTimeJob);
             this.groupBox2.Location = new System.Drawing.Point(348, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(188, 44);
+            this.groupBox2.Size = new System.Drawing.Size(256, 44);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "雇用形態(労共)";
             // 
-            // CheckBoxPartTime
+            // CheckBoxNone1
             // 
-            this.CheckBoxPartTime.AutoSize = true;
-            this.CheckBoxPartTime.Checked = true;
-            this.CheckBoxPartTime.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxPartTime.Location = new System.Drawing.Point(112, 16);
-            this.CheckBoxPartTime.Name = "CheckBoxPartTime";
-            this.CheckBoxPartTime.Size = new System.Drawing.Size(72, 19);
-            this.CheckBoxPartTime.TabIndex = 2;
-            this.CheckBoxPartTime.Text = "アルバイト";
-            this.CheckBoxPartTime.UseVisualStyleBackColor = true;
+            this.CheckBoxNone1.AutoSize = true;
+            this.CheckBoxNone1.Checked = true;
+            this.CheckBoxNone1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckBoxNone1.Location = new System.Drawing.Point(184, 16);
+            this.CheckBoxNone1.Name = "CheckBoxNone1";
+            this.CheckBoxNone1.Size = new System.Drawing.Size(68, 19);
+            this.CheckBoxNone1.TabIndex = 3;
+            this.CheckBoxNone1.Text = "指定なし";
+            this.CheckBoxNone1.UseVisualStyleBackColor = true;
+            // 
+            // CheckBoxPartTimeJob2
+            // 
+            this.CheckBoxPartTimeJob2.AutoSize = true;
+            this.CheckBoxPartTimeJob2.Checked = true;
+            this.CheckBoxPartTimeJob2.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckBoxPartTimeJob2.Location = new System.Drawing.Point(112, 16);
+            this.CheckBoxPartTimeJob2.Name = "CheckBoxPartTimeJob2";
+            this.CheckBoxPartTimeJob2.Size = new System.Drawing.Size(72, 19);
+            this.CheckBoxPartTimeJob2.TabIndex = 2;
+            this.CheckBoxPartTimeJob2.Text = "アルバイト";
+            this.CheckBoxPartTimeJob2.UseVisualStyleBackColor = true;
             // 
             // CheckBoxNoteBook
             // 
@@ -279,7 +291,7 @@
             // 
             this.groupBox1.Controls.Add(this.CheckBoxJiunrou);
             this.groupBox1.Controls.Add(this.CheckBoxSinunten);
-            this.groupBox1.Controls.Add(this.CheckBoxPartTimeJob);
+            this.groupBox1.Controls.Add(this.CheckBoxPartTimeJob1);
             this.groupBox1.Controls.Add(this.CheckBoxCompanyEmployee);
             this.groupBox1.Controls.Add(this.CheckBoxOfficer);
             this.groupBox1.Location = new System.Drawing.Point(16, 4);
@@ -313,17 +325,17 @@
             this.CheckBoxSinunten.Text = "新運転";
             this.CheckBoxSinunten.UseVisualStyleBackColor = true;
             // 
-            // CheckBoxPartTimeJob
+            // CheckBoxPartTimeJob1
             // 
-            this.CheckBoxPartTimeJob.AutoSize = true;
-            this.CheckBoxPartTimeJob.Checked = true;
-            this.CheckBoxPartTimeJob.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxPartTimeJob.Location = new System.Drawing.Point(112, 16);
-            this.CheckBoxPartTimeJob.Name = "CheckBoxPartTimeJob";
-            this.CheckBoxPartTimeJob.Size = new System.Drawing.Size(72, 19);
-            this.CheckBoxPartTimeJob.TabIndex = 2;
-            this.CheckBoxPartTimeJob.Text = "アルバイト";
-            this.CheckBoxPartTimeJob.UseVisualStyleBackColor = true;
+            this.CheckBoxPartTimeJob1.AutoSize = true;
+            this.CheckBoxPartTimeJob1.Checked = true;
+            this.CheckBoxPartTimeJob1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CheckBoxPartTimeJob1.Location = new System.Drawing.Point(112, 16);
+            this.CheckBoxPartTimeJob1.Name = "CheckBoxPartTimeJob1";
+            this.CheckBoxPartTimeJob1.Size = new System.Drawing.Size(72, 19);
+            this.CheckBoxPartTimeJob1.TabIndex = 2;
+            this.CheckBoxPartTimeJob1.Text = "アルバイト";
+            this.CheckBoxPartTimeJob1.UseVisualStyleBackColor = true;
             // 
             // CheckBoxCompanyEmployee
             // 
@@ -392,6 +404,7 @@
             this.SpreadList.Name = "SpreadList";
             this.SpreadList.Size = new System.Drawing.Size(1898, 899);
             this.SpreadList.TabIndex = 5;
+            this.SpreadList.CellDoubleClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SpreadList_CellDoubleClick);
             // 
             // TabControlExStaff
             // 
@@ -593,22 +606,23 @@
         private TabPage tabPage10;
         private TabPage tabPage11;
         private GroupBox groupBox3;
-        private CheckBox CheckBoxNone;
+        private CheckBox CheckBoxNone2;
         private CheckBox CheckBoxWorkStaff;
         private CheckBox CheckBoxDriver;
         private GroupBox groupBox2;
-        private CheckBox CheckBoxPartTime;
+        private CheckBox CheckBoxPartTimeJob2;
         private CheckBox CheckBoxNoteBook;
         private CheckBox CheckBoxFullTimeJob;
         private GroupBox groupBox1;
         private CheckBox CheckBoxJiunrou;
         private CheckBox CheckBoxSinunten;
-        private CheckBox CheckBoxPartTimeJob;
+        private CheckBox CheckBoxPartTimeJob1;
         private CheckBox CheckBoxCompanyEmployee;
         private CheckBox CheckBoxOfficer;
         private ComboBox ComboBoxAccidentYear;
         private Label label1;
         private CheckBox CheckBoxRetired;
+        private CheckBox CheckBoxNone1;
         private FarPoint.Win.Spread.SheetView SheetViewList;
     }
 }

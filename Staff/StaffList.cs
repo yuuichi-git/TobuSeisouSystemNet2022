@@ -10,9 +10,9 @@ namespace Staff {
     public partial class StaffList : Form {
         private readonly ConnectionVo _connectionVo;
         private InitializeForm _initializeForm = new();
-        private List<StaffMasterVo> _listStaffMasterVo;
-        private List<StaffMasterVo> _listFindAllStaffMasterVo;
-        private IOrderedEnumerable<StaffMasterVo> _linqStaffMasterVo;
+        private List<ExtendsStaffMasterVo> _listExtendsStaffMasterVo;
+        private List<ExtendsStaffMasterVo> _listFindAllStaffMasterVo;
+        private IOrderedEnumerable<ExtendsStaffMasterVo> _linqExtendsStaffMasterVo;
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01, 00, 00, 00, 000);
 
         Dictionary<int, string> dictionaryBelongs = new Dictionary<int, string> { { 10, "役員" }, { 11, "社員" }, { 12, "アルバイト" }, { 20, "新運転" }, { 21, "自運労" } };
@@ -130,9 +130,9 @@ namespace Staff {
             InitializeComponent();
             _initializeForm.StaffList(this);
 
-            _listStaffMasterVo = new StaffMasterDao(connectionVo).SelectAllStaffMaster();
+            _listExtendsStaffMasterVo = null;
             _listFindAllStaffMasterVo = null;
-            _linqStaffMasterVo = null;
+            _linqExtendsStaffMasterVo = null;
 
             // 事故件数集計の基準となる年度を初期化
             ComboBoxAccidentYear.Text = "2022年度";
@@ -150,7 +150,7 @@ namespace Staff {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ButtonUpdate_Click(object sender, EventArgs e) {
-            _listStaffMasterVo = new StaffMasterDao(_connectionVo).SelectAllStaffMaster();
+            _listExtendsStaffMasterVo = new StaffMasterDao(_connectionVo).SelectAllExtendsStaffMasterVo();
             SheetViewListOutPut();
         }
 
@@ -178,17 +178,17 @@ namespace Staff {
                 SheetViewList.RemoveRows(0, SheetViewList.Rows.Count);
 
             _listFindAllStaffMasterVo = TabControlExStaff.SelectedTab.Tag switch {
-                "ア" => _listStaffMasterVo.FindAll(x => x.Name_kana.StartsWith("ア") || x.Name_kana.StartsWith("イ") || x.Name_kana.StartsWith("ウ") || x.Name_kana.StartsWith("エ") || x.Name_kana.StartsWith("オ")),
-                "カ" => _listStaffMasterVo.FindAll(x => x.Name_kana.StartsWith("カ") || x.Name_kana.StartsWith("ガ") || x.Name_kana.StartsWith("キ") || x.Name_kana.StartsWith("ギ") || x.Name_kana.StartsWith("ク") || x.Name_kana.StartsWith("ケ") || x.Name_kana.StartsWith("コ") || x.Name_kana.StartsWith("ゴ")),
-                "サ" => _listStaffMasterVo.FindAll(x => x.Name_kana.StartsWith("サ") || x.Name_kana.StartsWith("シ") || x.Name_kana.StartsWith("ス") || x.Name_kana.StartsWith("セ") || x.Name_kana.StartsWith("ソ")),
-                "タ" => _listStaffMasterVo.FindAll(x => x.Name_kana.StartsWith("タ") || x.Name_kana.StartsWith("チ") || x.Name_kana.StartsWith("ツ") || x.Name_kana.StartsWith("テ") || x.Name_kana.StartsWith("デ") || x.Name_kana.StartsWith("ト") || x.Name_kana.StartsWith("ド")),
-                "ナ" => _listStaffMasterVo.FindAll(x => x.Name_kana.StartsWith("ナ") || x.Name_kana.StartsWith("ニ") || x.Name_kana.StartsWith("ヌ") || x.Name_kana.StartsWith("ネ") || x.Name_kana.StartsWith("ノ")),
-                "ハ" => _listStaffMasterVo.FindAll(x => x.Name_kana.StartsWith("ハ") || x.Name_kana.StartsWith("パ") || x.Name_kana.StartsWith("ヒ") || x.Name_kana.StartsWith("ビ") || x.Name_kana.StartsWith("フ") || x.Name_kana.StartsWith("ブ") || x.Name_kana.StartsWith("ヘ") || x.Name_kana.StartsWith("ベ") || x.Name_kana.StartsWith("ホ")),
-                "マ" => _listStaffMasterVo.FindAll(x => x.Name_kana.StartsWith("マ") || x.Name_kana.StartsWith("ミ") || x.Name_kana.StartsWith("ム") || x.Name_kana.StartsWith("メ") || x.Name_kana.StartsWith("モ")),
-                "ヤ" => _listStaffMasterVo.FindAll(x => x.Name_kana.StartsWith("ヤ") || x.Name_kana.StartsWith("ユ") || x.Name_kana.StartsWith("ヨ")),
-                "ラ" => _listStaffMasterVo.FindAll(x => x.Name_kana.StartsWith("ラ") || x.Name_kana.StartsWith("リ") || x.Name_kana.StartsWith("ル") || x.Name_kana.StartsWith("レ") || x.Name_kana.StartsWith("ロ")),
-                "ワ" => _listStaffMasterVo.FindAll(x => x.Name_kana.StartsWith("ワ") || x.Name_kana.StartsWith("ヲ") || x.Name_kana.StartsWith("ン")),
-                _ => _listStaffMasterVo,
+                "ア" => _listExtendsStaffMasterVo.FindAll(x => x.Name_kana.StartsWith("ア") || x.Name_kana.StartsWith("イ") || x.Name_kana.StartsWith("ウ") || x.Name_kana.StartsWith("エ") || x.Name_kana.StartsWith("オ")),
+                "カ" => _listExtendsStaffMasterVo.FindAll(x => x.Name_kana.StartsWith("カ") || x.Name_kana.StartsWith("ガ") || x.Name_kana.StartsWith("キ") || x.Name_kana.StartsWith("ギ") || x.Name_kana.StartsWith("ク") || x.Name_kana.StartsWith("ケ") || x.Name_kana.StartsWith("コ") || x.Name_kana.StartsWith("ゴ")),
+                "サ" => _listExtendsStaffMasterVo.FindAll(x => x.Name_kana.StartsWith("サ") || x.Name_kana.StartsWith("シ") || x.Name_kana.StartsWith("ス") || x.Name_kana.StartsWith("セ") || x.Name_kana.StartsWith("ソ")),
+                "タ" => _listExtendsStaffMasterVo.FindAll(x => x.Name_kana.StartsWith("タ") || x.Name_kana.StartsWith("チ") || x.Name_kana.StartsWith("ツ") || x.Name_kana.StartsWith("テ") || x.Name_kana.StartsWith("デ") || x.Name_kana.StartsWith("ト") || x.Name_kana.StartsWith("ド")),
+                "ナ" => _listExtendsStaffMasterVo.FindAll(x => x.Name_kana.StartsWith("ナ") || x.Name_kana.StartsWith("ニ") || x.Name_kana.StartsWith("ヌ") || x.Name_kana.StartsWith("ネ") || x.Name_kana.StartsWith("ノ")),
+                "ハ" => _listExtendsStaffMasterVo.FindAll(x => x.Name_kana.StartsWith("ハ") || x.Name_kana.StartsWith("パ") || x.Name_kana.StartsWith("ヒ") || x.Name_kana.StartsWith("ビ") || x.Name_kana.StartsWith("フ") || x.Name_kana.StartsWith("ブ") || x.Name_kana.StartsWith("ヘ") || x.Name_kana.StartsWith("ベ") || x.Name_kana.StartsWith("ホ")),
+                "マ" => _listExtendsStaffMasterVo.FindAll(x => x.Name_kana.StartsWith("マ") || x.Name_kana.StartsWith("ミ") || x.Name_kana.StartsWith("ム") || x.Name_kana.StartsWith("メ") || x.Name_kana.StartsWith("モ")),
+                "ヤ" => _listExtendsStaffMasterVo.FindAll(x => x.Name_kana.StartsWith("ヤ") || x.Name_kana.StartsWith("ユ") || x.Name_kana.StartsWith("ヨ")),
+                "ラ" => _listExtendsStaffMasterVo.FindAll(x => x.Name_kana.StartsWith("ラ") || x.Name_kana.StartsWith("リ") || x.Name_kana.StartsWith("ル") || x.Name_kana.StartsWith("レ") || x.Name_kana.StartsWith("ロ")),
+                "ワ" => _listExtendsStaffMasterVo.FindAll(x => x.Name_kana.StartsWith("ワ") || x.Name_kana.StartsWith("ヲ") || x.Name_kana.StartsWith("ン")),
+                _ => _listExtendsStaffMasterVo,
             };
 
             // 役員
@@ -198,7 +198,7 @@ namespace Staff {
             if (!CheckBoxCompanyEmployee.Checked)
                 _listFindAllStaffMasterVo = _listFindAllStaffMasterVo.FindAll(x => x.Belongs != 11);
             // アルバイト
-            if (!CheckBoxPartTimeJob.Checked)
+            if (!CheckBoxPartTimeJob1.Checked)
                 _listFindAllStaffMasterVo = _listFindAllStaffMasterVo.FindAll(x => x.Belongs != 12);
             // 新運転
             if (!CheckBoxSinunten.Checked)
@@ -213,8 +213,11 @@ namespace Staff {
             if (!CheckBoxNoteBook.Checked)
                 _listFindAllStaffMasterVo = _listFindAllStaffMasterVo.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.Job_form != 11);
             // アルバイト
-            if (!CheckBoxPartTime.Checked)
+            if (!CheckBoxPartTimeJob2.Checked)
                 _listFindAllStaffMasterVo = _listFindAllStaffMasterVo.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.Job_form != 12);
+            // 指定なし
+            if (!CheckBoxNone1.Checked)
+                _listFindAllStaffMasterVo = _listFindAllStaffMasterVo.FindAll(x => x.Job_form != 99);
             // 運転手
             if (!CheckBoxDriver.Checked)
                 _listFindAllStaffMasterVo = _listFindAllStaffMasterVo.FindAll(x => x.Occupation != 10);
@@ -222,80 +225,108 @@ namespace Staff {
             if (!CheckBoxWorkStaff.Checked)
                 _listFindAllStaffMasterVo = _listFindAllStaffMasterVo.FindAll(x => x.Occupation != 11);
             // 指定なし
-            if (!CheckBoxNone.Checked)
+            if (!CheckBoxNone2.Checked)
                 _listFindAllStaffMasterVo = _listFindAllStaffMasterVo.FindAll(x => x.Occupation != 99);
             // 退職者
             if (!CheckBoxRetired.Checked)
                 _listFindAllStaffMasterVo = _listFindAllStaffMasterVo.FindAll(x => x.Retirement_flag != true);
             // ソート
-            _linqStaffMasterVo = _listFindAllStaffMasterVo.OrderBy(x => x.Name_kana);
+            _linqExtendsStaffMasterVo = _listFindAllStaffMasterVo.OrderBy(x => x.Name_kana);
 
             int i = 0;
-            foreach (var staffMasterVo in _linqStaffMasterVo) {
+            foreach (var extendsStaffMasterVo in _linqExtendsStaffMasterVo) {
                 // 所属
-                var _belongs = staffMasterVo.Belongs;
+                var _belongs = extendsStaffMasterVo.Belongs;
                 // 形態
-                var _jobForm = staffMasterVo.Job_form;
+                var _jobForm = extendsStaffMasterVo.Job_form;
                 // 職種
-                var _occupation = staffMasterVo.Occupation;
+                var _occupation = extendsStaffMasterVo.Occupation;
                 // 配車対象
-                var _vehicleDispatchTarget = staffMasterVo.Vehicle_dispatch_target;
+                var _vehicleDispatchTarget = extendsStaffMasterVo.Vehicle_dispatch_target;
                 // 組合CD
-                var _code = staffMasterVo.Code;
+                var _code = extendsStaffMasterVo.Code;
                 // 氏名
-                var _name = staffMasterVo.Name;
+                var _name = extendsStaffMasterVo.Name;
                 // カナ
-                var _name_kana = staffMasterVo.Name_kana;
+                var _name_kana = extendsStaffMasterVo.Name_kana;
+                // 東環保
+                var _toukanpoTrainingCardFlag = extendsStaffMasterVo.ToukanpoTrainingCardFlag;
+                // 免許証
+                bool _licenseLedgerFlag = false;
+                DateTime? _licenseLedgerExpirationDate = null;
+                if (extendsStaffMasterVo.LicenseLedgerNumber != "") {
+                    // 免許証
+                    _licenseLedgerFlag = true;
+                    // 免許証期限
+                    _licenseLedgerExpirationDate = extendsStaffMasterVo.LicenseLedgerExpirationDate.Date;
+                }
+                // 通勤届
+                var _commutingNotificationFlag = extendsStaffMasterVo.CommutingNotification;
+                // 任意保険終了年月日
+                DateTime? _meansOfCommutingEndDate = null;
+                if (extendsStaffMasterVo.CommutingNotification) {
+                    if (extendsStaffMasterVo.MeansOfCommutingEndDate.Date != _defaultDateTime.Date)
+                        _meansOfCommutingEndDate = extendsStaffMasterVo.MeansOfCommutingEndDate.Date;
+                }
                 // 生年月日・年齢
                 DateTime? _birth_date = null;
                 string _age = "";
-                if (staffMasterVo.Birth_date != _defaultDateTime) {
-                    _birth_date = staffMasterVo.Birth_date.Date;
+                if (extendsStaffMasterVo.Birth_date != _defaultDateTime) {
+                    _birth_date = extendsStaffMasterVo.Birth_date.Date;
                     // 年齢
-                    _age = string.Concat(new Date().GetStaffAge(staffMasterVo.Birth_date.Date), "歳");
+                    _age = string.Concat(new Date().GetStaffAge(extendsStaffMasterVo.Birth_date.Date), "歳");
                 }
                 // 雇用年月日
                 DateTime? _employment_date = null;
-                if (staffMasterVo.Employment_date != _defaultDateTime) {
-                    _employment_date = staffMasterVo.Employment_date.Date;
+                if (extendsStaffMasterVo.Employment_date != _defaultDateTime) {
+                    _employment_date = extendsStaffMasterVo.Employment_date.Date;
                 }
                 // 勤続
                 string _service_date = "";
-                if (staffMasterVo.Employment_date != _defaultDateTime) {
-                    _service_date = string.Concat(new Date().GetEmploymenteYear(staffMasterVo.Employment_date.Date).ToString("#0年"), new Date().GetEmploymenteMonth(staffMasterVo.Employment_date.Date).ToString("00月"));
+                if (extendsStaffMasterVo.Employment_date != _defaultDateTime) {
+                    _service_date = string.Concat(new Date().GetEmploymenteYear(extendsStaffMasterVo.Employment_date.Date).ToString("#0年"), new Date().GetEmploymenteMonth(extendsStaffMasterVo.Employment_date.Date).ToString("00月"));
                 }
                 // 初任
-                string _proper_kind_syonin = "";
-                if (staffMasterVo.Proper_kind_1 == "初任診断" || staffMasterVo.Proper_kind_2 == "初任診断" || staffMasterVo.Proper_kind_3 == "初任診断")
-                    _proper_kind_syonin = "〇";
+                DateTime? _proper_kind_syonin = null;
+                if (extendsStaffMasterVo.Proper_kind_1 == "初任診断")
+                    _proper_kind_syonin = extendsStaffMasterVo.Proper_date_1;
+                if (extendsStaffMasterVo.Proper_kind_2 == "初任診断")
+                    _proper_kind_syonin = extendsStaffMasterVo.Proper_date_2;
+                if (extendsStaffMasterVo.Proper_kind_3 == "初任診断")
+                    _proper_kind_syonin = extendsStaffMasterVo.Proper_date_3;
                 // 適齢
                 string _proper_kind_tekirei = "";
                 var timeSpan = new TimeSpan(0, 0, 0, 0);
 
-                if (staffMasterVo.Proper_kind_1 == "適齢診断" || staffMasterVo.Proper_kind_2 == "適齢診断" || staffMasterVo.Proper_kind_3 == "適齢診断") {
-                    if (staffMasterVo.Proper_kind_1 == "適齢診断") {
-                        timeSpan = staffMasterVo.Proper_date_1.AddYears(3) - DateTime.Now.Date;
-                    } else if (staffMasterVo.Proper_kind_2 == "適齢診断") {
-                        timeSpan = staffMasterVo.Proper_date_2.AddYears(3) - DateTime.Now.Date;
-                    } else if (staffMasterVo.Proper_kind_3 == "適齢診断") {
-                        timeSpan = staffMasterVo.Proper_date_3.AddYears(3) - DateTime.Now.Date;
+                if (extendsStaffMasterVo.Proper_kind_1 == "適齢診断" || extendsStaffMasterVo.Proper_kind_2 == "適齢診断" || extendsStaffMasterVo.Proper_kind_3 == "適齢診断") {
+                    if (extendsStaffMasterVo.Proper_kind_1 == "適齢診断") {
+                        timeSpan = extendsStaffMasterVo.Proper_date_1.AddYears(3) - DateTime.Now.Date;
+                    } else if (extendsStaffMasterVo.Proper_kind_2 == "適齢診断") {
+                        timeSpan = extendsStaffMasterVo.Proper_date_2.AddYears(3) - DateTime.Now.Date;
+                    } else if (extendsStaffMasterVo.Proper_kind_3 == "適齢診断") {
+                        timeSpan = extendsStaffMasterVo.Proper_date_3.AddYears(3) - DateTime.Now.Date;
                     }
                     _proper_kind_tekirei = string.Concat(timeSpan.Days, "日後");
                 }
+                // 事故数
+                string _car_accident_count = "";
+                if (extendsStaffMasterVo.CarAccidentLedgerCount != 0) {
+                    _car_accident_count = string.Concat(extendsStaffMasterVo.CarAccidentLedgerCount, "件");
+                }
                 // 現住所
-                var _current_address = staffMasterVo.Current_address;
+                var _current_address = extendsStaffMasterVo.Current_address;
                 // 健康保険
-                var _health_insurance_number = staffMasterVo.Health_insurance_number == "" ? null : "〇";
+                var _health_insurance_number = extendsStaffMasterVo.Health_insurance_number != "" ? true : false;
                 // 厚生年金  
-                var _welfare_pension_number = staffMasterVo.Welfare_pension_number == "" ? null : "〇";
+                var _welfare_pension_number = extendsStaffMasterVo.Welfare_pension_number != "" ? true : false;
                 // 雇用保険   
-                var _employment_insurance_number = staffMasterVo.Employment_insurance_number == "" ? null : "〇";
+                var _employment_insurance_number = extendsStaffMasterVo.Employment_insurance_number != "" ? true : false;
                 // 労災保険   
-                var _worker_accident_insurance_number = staffMasterVo.Worker_accident_insurance_number == "" ? null : "〇";
+                var _worker_accident_insurance_number = extendsStaffMasterVo.Worker_accident_insurance_number != "" ? true : false;
 
                 SheetViewList.Rows.Add(i, 1);
                 SheetViewList.RowHeader.Columns[0].Label = (i + 1).ToString(); // Rowヘッダ
-                SheetViewList.Rows[i].ForeColor = staffMasterVo.Retirement_flag ? Color.Red : Color.Black; // 退職済のレコードのForeColorをセット
+                SheetViewList.Rows[i].ForeColor = extendsStaffMasterVo.Retirement_flag ? Color.Red : Color.Black; // 退職済のレコードのForeColorをセット
                 SheetViewList.Rows[i].Height = 22; // Rowの高さ
                 SheetViewList.Rows[i].Resizable = false; // RowのResizableを禁止
                 SheetViewList.Cells[i, colBelongs].Value = dictionaryBelongs[_belongs];
@@ -305,12 +336,18 @@ namespace Staff {
                 SheetViewList.Cells[i, colStaffCode].Value = _code;
                 SheetViewList.Cells[i, colName].Text = _name;
                 SheetViewList.Cells[i, colNameKana].Text = _name_kana;
+                SheetViewList.Cells[i, colToukanpoCard].Value = _toukanpoTrainingCardFlag;
+                SheetViewList.Cells[i, colLicense].Value = _licenseLedgerFlag;
+                SheetViewList.Cells[i, colLicensExpirationDate].Value = _licenseLedgerExpirationDate; // 免許証期限
+                SheetViewList.Cells[i, colCommutingNotification].Value = _commutingNotificationFlag; // 2022/05/24 通勤届
+                SheetViewList.Cells[i, colMeansOfCommutingEndDate].Value = _meansOfCommutingEndDate; // 2022/05/24 任意保険終了年月日
                 SheetViewList.Cells[i, colBirthDate].Value = _birth_date;
                 SheetViewList.Cells[i, colFullAge].Value = _age;
                 SheetViewList.Cells[i, colEmploymentDate].Value = _employment_date;
                 SheetViewList.Cells[i, colServiceDate].Value = _service_date;
                 SheetViewList.Cells[i, colFirstTerm].Value = _proper_kind_syonin;
                 SheetViewList.Cells[i, colSuitableAge].Value = _proper_kind_tekirei;
+                SheetViewList.Cells[i, colCarAccidentCount].Value = _car_accident_count;
                 SheetViewList.Cells[i, colCurrentAddress].Value = _current_address;
                 SheetViewList.Cells[i, colHealthInsuranceNumber].Value = _health_insurance_number;
                 SheetViewList.Cells[i, colWelfarePensionNumber].Value = _welfare_pension_number;
@@ -323,6 +360,15 @@ namespace Staff {
             // Spread 活性化
             SpreadList.ResumeLayout();
             ToolStripStatusLabelDetail.Text = string.Concat(" ", i, " 件");
+        }
+
+        /// <summary>
+        /// SpreadList_CellDoubleClick
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SpreadList_CellDoubleClick(object sender, CellClickEventArgs e) {
+
         }
 
         /// <summary>

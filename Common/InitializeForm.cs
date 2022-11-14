@@ -54,6 +54,17 @@ namespace Common {
         }
 
         /// <summary>
+        /// StaffList
+        /// </summary>
+        /// <param name="form"></param>
+        /// <returns></returns>
+        public Form StaffDetail(Form form) {
+            form.KeyPreview = true;
+            GetWorkingArea(form);
+            return form;
+        }
+
+        /// <summary>
         /// アプリケーションが開かれる画面のワークエリアを返す
         /// FHDでの最小サイズ(1920*1048)
         /// </summary>
