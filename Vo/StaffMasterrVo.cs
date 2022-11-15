@@ -186,7 +186,7 @@
         }
         /// <summary>
         /// 形態
-        /// 1:長期 2:バイト 3:窓 4:事務方
+        /// 10:長期雇用 11:手帳 12:アルバイト
         /// </summary>
         public int Job_form {
             get => _job_form;
@@ -194,7 +194,7 @@
         }
         /// <summary>
         /// 職種
-        /// 
+        /// 10:運転手 11:作業員 99:指定なし
         /// </summary>
         public int Occupation {
             get => _occupation;

@@ -12,6 +12,11 @@ namespace StaffRegister {
         private readonly ConnectionVo _connectionVo;
         private InitializeForm _initializeForm = new();
         private readonly StaffMasterDao _staffMasterDao;
+
+        Dictionary<int, string> dictionaryBelongs = new Dictionary<int, string> { { 10, "役員" }, { 11, "社員" }, { 12, "アルバイト" }, { 20, "新運転" }, { 21, "自運労" } };
+        Dictionary<int, string> dictionaryJobForm = new Dictionary<int, string> { { 10, "長期雇用" }, { 11, "手帳" }, { 12, "アルバイト" }, { 99, "" } };
+        Dictionary<int, string> dictionaryOccupation = new Dictionary<int, string> { { 10, "運転手" }, { 11, "作業員" }, { 99, "" } };
+
         /// <summary>
         /// True: 新規登録モード False:修正登録モード
         /// </summary>
@@ -21,9 +26,11 @@ namespace StaffRegister {
         /// ErrorProviderのインスタンスを生成
         /// </summary>
         private ErrorProvider errorProvider = new ErrorProvider();
-        /*
-         * 新規従事者登録　コンストラクタ
-         */
+
+        /// <summary>
+        /// 新規従事者登録用コンストラクタ
+        /// </summary>
+        /// <param name="connectionVo"></param>
         public StaffDetail(ConnectionVo connectionVo) {
             InitializeComponent();
             _connectionVo = connectionVo;
@@ -35,9 +42,11 @@ namespace StaffRegister {
             InitializeControl();
         }
 
-        /*
-         * 修正従事者登録　コンストラクタ
-         */
+        /// <summary>
+        /// 修正従事者登録用コンストラクタ
+        /// </summary>
+        /// <param name="connectionVo"></param>
+        /// <param name="staffCode"></param>
         public StaffDetail(ConnectionVo connectionVo, int staffCode) {
             InitializeComponent();
             _connectionVo = connectionVo;
@@ -56,41 +65,57 @@ namespace StaffRegister {
          * ControlにStaffLedgerVoを設定
          */
         private void ControlOutPut(ExtendsStaffMasterVo extendsStaffMasterVo) {
-            // 所属・勤務形態
+            /*
+             * 役職又は所属
+             */
             ComboBoxBelongs.Text = extendsStaffMasterVo.Belongs_name; // 所属名
             CheckBoxTargetFlag.Checked = extendsStaffMasterVo.Vehicle_dispatch_target; // 配車の対象になる従事者
-            switch (extendsStaffMasterVo.Job_form) {
-                case 1: // 長期雇用
-                    RadioButtonLongTime.Checked = true;
+            switch (extendsStaffMasterVo.Belongs) {
+                case 10: // 役員
+                    RadioButtonOfficer.Checked = true;
                     break;
-                case 2: // アルバイト
-                    RadioButtonPartTime.Checked = true;
+                case 11: // 社員
+                    RadioButtonStaff.Checked = true;
                     break;
-                case 3: // 電話連絡が必要な従業員
-                    RadioButtonContact.Checked = true;
+                case 12: // アルバイト
+                    RadioButtonPart1.Checked = true;
                     break;
-                case 4: // 社員
-                    RadioButtonEmployee.Checked = true;
+                case 20: // 新運転
+                    RadioButtonSinunten.Checked = true;
+                    break;
+                case 21: // 自運労
+                    RadioButtonJiunrou.Checked = true;
                     break;
             }
-            // 業務区分(組合員・アルバイト)
-            if (extendsStaffMasterVo.Driver)
-                RadioButtonDriver.Checked = true;
-            if (extendsStaffMasterVo.Operator)
-                RadioButtonOperator.Checked = true;
-            // 業務区分(社員)
-            if (extendsStaffMasterVo.Type_of_job_1)
-                RadioButtonTypeOfJob1.Checked = true;
-            if (extendsStaffMasterVo.Type_of_job_2)
-                RadioButtonTypeOfJob2.Checked = true;
-            if (extendsStaffMasterVo.Type_of_job_3)
-                RadioButtonTypeOfJob3.Checked = true;
-            if (extendsStaffMasterVo.Type_of_job_4)
-                RadioButtonTypeOfJob4.Checked = true;
-            if (extendsStaffMasterVo.Type_of_job_5)
-                RadioButtonTypeOfJob5.Checked = true;
-            if (extendsStaffMasterVo.Type_of_job_6)
-                RadioButtonTypeOfJob6.Checked = true;
+            /*
+             * 雇用形態
+             */
+            switch (extendsStaffMasterVo.Job_form) {
+                case 10: // 長期雇用
+                    RadioButtonLongTarm.Checked = true;
+                    break;
+                case 11: // 手帳
+                    RadioButtonNote.Checked = true;
+                    break;
+                case 12: // アルバイト
+                    RadioButtonPart2.Checked = true;
+                    break;
+            }
+            /*
+             * 職種
+             */
+            switch (extendsStaffMasterVo.Occupation) {
+                case 10: // 運転手
+                    RadioButtonDriver.Checked = true;
+                    break;
+                case 11: // 作業員
+                    RadioButtonOperator.Checked = true;
+                    break;
+                case 99: // 指定なし
+                    RadioButtonNone.Checked = true;
+                    break;
+            }
+
             // 個人情報１
             TextBoxStaffDbCd.Text = string.Format("{0:#}", extendsStaffMasterVo.Staff_code); // 社員CD
             TextBoxStaffCd.Text = string.Format("{0:#}", extendsStaffMasterVo.Code); // 組合CD
@@ -282,31 +307,37 @@ namespace StaffRegister {
                 errorProvider.Clear();
             }
 
-            var dialogResult = new DialogMessageOkCancel(MessageText.Message109).ShowDialog();
+            var dialogResult = MessageBox.Show(MessageText.Message102, MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             switch (dialogResult) {
                 case DialogResult.OK:
                     // StaffLedgerVoに値をセット
                     var staffLedgerVo = SetStaffMasterVo();
                     // DBを変更(DBにstaff_codeが存在すればUPDATE、無ければINSERT)
-                    if (_staffMasterDao.CheckStaffLedger(staffLedgerVo.Staff_code)) {
+                    if (_staffMasterDao.CheckStaffMaster(staffLedgerVo.Staff_code)) {
                         _staffMasterDao.UpdateOneStaffLedger(staffLedgerVo);
                     } else {
-                        _staffMasterDao.InsertOneStaffLedger(staffLedgerVo);
+                        _staffMasterDao.InsertOneStaffMaster(staffLedgerVo);
                     }
-                    Close();
+                    Dispose();
                     break;
                 case DialogResult.Cancel:
                     break;
             }
         }
 
-        /*
-         * StaffLedgerVoに値を代入
-         */
+        /// <summary>
+        /// StaffLedgerVoに値を代入
+        /// </summary>
+        /// <returns></returns>
         private StaffMasterVo SetStaffMasterVo() {
             // 代入用のインスタンス作成
             var staffMasterVo = new StaffMasterVo();
-            // 所属・勤務形態
+            /*
+             * 役職又は所属
+             */
+
+
+
             staffMasterVo.Belongs = ComboBoxBelongs.Text; // 所属名
             staffMasterVo.Vehicle_dispatch_target = CheckBoxTargetFlag.Checked; // 配車の対象になる従事者
             int jobForm = 0; // 「0」には割当ては無い
@@ -319,10 +350,10 @@ namespace StaffRegister {
             if (RadioButtonEmployee.Checked)
                 jobForm = 4; // 社員
             staffMasterVo.Job_form = jobForm;
-            // 業務区分(組合員・アルバイト)
+            // 雇用形態
             staffMasterVo.Driver = RadioButtonDriver.Checked;
             staffMasterVo.Operator = RadioButtonOperator.Checked;
-            // 業務区分(社員)
+            // 職種
             if (RadioButtonTypeOfJob1.Checked)
                 staffMasterVo.Type_of_job_1 = true;
             if (RadioButtonTypeOfJob2.Checked)
@@ -336,8 +367,8 @@ namespace StaffRegister {
             if (RadioButtonTypeOfJob6.Checked)
                 staffMasterVo.Type_of_job_6 = true;
             // 個人情報１
-            staffMasterVo.Staff_code = decimal.Parse(TextBoxStaffDbCd.Text); // 社員CD
-            staffMasterVo.Code = TextBoxStaffCd.Text != "" ? int.Parse(TextBoxStaffCd.Text) : null; // 組合CD
+            staffMasterVo.Staff_code = int.Parse(TextBoxStaffDbCd.Text); // 社員CD
+            staffMasterVo.Code = TextBoxStaffCd.Text != "" ? int.Parse(TextBoxStaffCd.Text) : 0; // 組合CD
             staffMasterVo.Name_kana = TextBoxNameKana.Text; // フリガナ
             staffMasterVo.Name = TextBoxName.Text; // 氏名
             staffMasterVo.Display_name = TextBoxDisplayName.Text; // 略称名
@@ -580,7 +611,6 @@ namespace StaffRegister {
             TextBoxRetirementNote.Text = ""; // 解雇又は退職の理由
             SetDateTimePicker(DateDeathDate, null); // 上記理由が死亡の場合その年月日
             TextBoxDeathNote.Text = ""; // 上記理由が死亡の場合その原因
-
             // 家族状況
             TextBoxFamilyName1.Text = ""; // 家族氏名１
             SetDateTimePicker(DateFamilyBirthDate1, null); // 生年月日１
@@ -602,7 +632,7 @@ namespace StaffRegister {
             ComboBoxFamilyRelationship6.SelectedIndex = -1; // 続柄６
             TextBoxUrgentTelephoneNumber.Text = ""; // 緊急時連絡方法１
             TextBoxUrgentTelephoneMethod.Text = ""; // 緊急時連絡方法２
-                                                    // 保険関係
+            // 保険関係
             SetDateTimePicker(DateHealthInsuranceDate, null); // (健康保険)加入年月日
             ComboBoxHealthInsuranceNumber.SelectedIndex = -1; // (健康保険)保険の記号・番号
             TextBoxHealthInsuranceNote.Text = ""; // (健康保険)備考
@@ -615,7 +645,7 @@ namespace StaffRegister {
             SetDateTimePicker(DateWorkerAccidentInsuranceDate, null); // (労災保険)加入年月日
             TextBoxWorkerAccidentInsuranceNumber.Text = ""; // (労災保険)保険の記号・番号
             TextBoxWorkerAccidentInsuranceNote.Text = ""; // (労災保険)備考
-                                                          // 健康状態(健康診断等の実施結果による特記すべき事項)　※運転の可否に十分に留意すること
+            // 健康状態(健康診断等の実施結果による特記すべき事項)　※運転の可否に十分に留意すること
             SetDateTimePicker(DateMedicalExaminationDate1, null); // 加入年月日１
             ComboBoxMedicalExaminationNote1.SelectedIndex = -1; // 保険の記号・番号１
             SetDateTimePicker(DateMedicalExaminationDate2, null); // 加入年月日２
@@ -625,7 +655,7 @@ namespace StaffRegister {
             SetDateTimePicker(DateMedicalExaminationDate4, null); // 加入年月日４
             TextBoxMedicalExaminationNote4.Text = ""; // 保険の記号・番号４
             TextBoxMedicalExaminationNote.Text = ""; // 診断以外で気づいた点
-                                                     // 業務上の交通違反履歴
+            // 業務上の交通違反履歴
             SetDateTimePicker(DateCarViolateDate1, null); // 発生年月日１
             TextBoxCarViolateContent1.Text = ""; // 交通違反内容１
             TextBoxCarViolatePlace1.Text = ""; // 場所１
@@ -644,7 +674,7 @@ namespace StaffRegister {
             SetDateTimePicker(DateCarViolateDate6, null); // 発生年月日６
             TextBoxCarViolateContent6.Text = ""; // 交通違反内容６
             TextBoxCarViolatePlace6.Text = ""; // 場所６
-                                               // 社内教育の実施状況
+            // 社内教育の実施状況
             SetDateTimePicker(DateEducateDate1, null); // 実施年月日１
             TextBoxEducateName1.Text = ""; // 実施対象理由１
             SetDateTimePicker(DateEducateDate2, null); // 実施年月日２
@@ -657,7 +687,7 @@ namespace StaffRegister {
             TextBoxEducateName5.Text = ""; // 実施対象理由５
             SetDateTimePicker(DateEducateDate6, null); // 実施年月日６
             TextBoxEducateName6.Text = ""; // 実施対象理由６
-                                           // 適性診断(NASVA)
+            // 適性診断(NASVA)
             ComboBoxProperKind1.SelectedIndex = -1; // 種類１
             SetDateTimePicker(DateProperDate1, null); // 実施年月日１
             TextBoxProperNote1.Text = ""; // 経験期間１
@@ -667,7 +697,7 @@ namespace StaffRegister {
             ComboBoxProperKind3.SelectedIndex = -1; // 種類３
             SetDateTimePicker(DateProperDate3, null); // 実施年月日３
             TextBoxProperNote3.Text = ""; // 経験期間３
-                                          // 賞罰・譴責
+            // 賞罰・譴責
             SetDateTimePicker(DatePunishmentDate1, null); // 実施年月日１
             TextBoxPunishmentNote1.Text = ""; // 内容１
             SetDateTimePicker(DatePunishmentDate2, null); // 実施年月日２
@@ -872,12 +902,21 @@ namespace StaffRegister {
         }
 
         /// <summary>
-        /// 終了処理
+        /// StaffRegisterDetail_FormClosing
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void StaffRegisterDetail_FormClosing(object sender, FormClosingEventArgs e) {
-
+            var dialogResult = MessageBox.Show(MessageText.Message102, MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            switch (dialogResult) {
+                case DialogResult.OK:
+                    e.Cancel = false;
+                    Dispose();
+                    break;
+                case DialogResult.Cancel:
+                    e.Cancel = true;
+                    break;
+            }
         }
     }
 }

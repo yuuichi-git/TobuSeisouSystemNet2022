@@ -1,4 +1,6 @@
-﻿using Common;
+﻿using System.Data;
+
+using Common;
 
 using Vo;
 
@@ -725,10 +727,486 @@ namespace Dao {
             return listExtendsStaffMasterVo;
         }
 
-        /*
-         * 新規staff_codeを採番
-         * 引数(staffCode)より小さい番号の中で最大の番号を取得する
-         */
+        /// <summary>
+        /// InsertOneStaffMaster
+        /// </summary>
+        /// <param name="staffMasterVo"></param>
+        /// <returns></returns>
+        public int InsertOneStaffMaster(StaffMasterVo staffMasterVo) {
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "INSERT INTO staff_ledger(staff_code," +
+                                                              "belongs," +
+                                                              "vehicle_dispatch_target," +
+                                                              "job_form," +
+                                                              "occupation," +
+                                                              "name_kana," +
+                                                              "name," +
+                                                              "display_name," +
+                                                              "gender," +
+                                                              "birth_date," +
+                                                              "employment_date," +
+                                                              "code," +
+                                                              "current_address," +
+                                                              "before_change_address," +
+                                                              "telephone_number," +
+                                                              "cellphone_number," +
+                                                              "picture," +
+                                                              "blood_type," +
+                                                              "selection_date," +
+                                                              "not_selection_date," +
+                                                              "not_selection_reason," +
+                                                              "license_number," +
+                                                              "history_date_1," +
+                                                              "history_note_1," +
+                                                              "history_date_2," +
+                                                              "history_note_2," +
+                                                              "history_date_3," +
+                                                              "history_note_3," +
+                                                              "history_date_4," +
+                                                              "history_note_4," +
+                                                              "history_date_5," +
+                                                              "history_note_5," +
+                                                              "history_date_6," +
+                                                              "history_note_6," +
+                                                              "experience_kind_1," +
+                                                              "experience_load_1," +
+                                                              "experience_duration_1," +
+                                                              "experience_note_1," +
+                                                              "experience_kind_2," +
+                                                              "experience_load_2," +
+                                                              "experience_duration_2," +
+                                                              "experience_note_2," +
+                                                              "experience_kind_3," +
+                                                              "experience_load_3," +
+                                                              "experience_duration_3," +
+                                                              "experience_note_3," +
+                                                              "experience_kind_4," +
+                                                              "experience_load_4," +
+                                                              "experience_duration_4," +
+                                                              "experience_note_4," +
+                                                              "retirement_flag," +
+                                                              "retirement_date," +
+                                                              "retirement_note," +
+                                                              "death_date," +
+                                                              "death_note," +
+                                                              "family_name_1," +
+                                                              "family_birth_date_1," +
+                                                              "family_relationship_1," +
+                                                              "family_name_2," +
+                                                              "family_birth_date_2," +
+                                                              "family_relationship_2," +
+                                                              "family_name_3," +
+                                                              "family_birth_date_3," +
+                                                              "family_relationship_3," +
+                                                              "family_name_4," +
+                                                              "family_birth_date_4," +
+                                                              "family_relationship_4," +
+                                                              "family_name_5," +
+                                                              "family_birth_date_5," +
+                                                              "family_relationship_5," +
+                                                              "family_name_6," +
+                                                              "family_birth_date_6," +
+                                                              "family_relationship_6," +
+                                                              "urgent_telephone_number," +
+                                                              "urgent_telephone_method," +
+                                                              "health_insurance_date," +
+                                                              "health_insurance_number," +
+                                                              "health_insurance_note," +
+                                                              "welfare_pension_date," +
+                                                              "welfare_pension_number," +
+                                                              "welfare_pension_note," +
+                                                              "employment_insurance_date," +
+                                                              "employment_insurance_number," +
+                                                              "employment_insurance_note," +
+                                                              "worker_accident_insurance_date," +
+                                                              "worker_accident_insurance_number," +
+                                                              "worker_accident_insurance_note," +
+                                                              "medical_examination_date_1," +
+                                                              "medical_examination_note_1," +
+                                                              "medical_examination_date_2," +
+                                                              "medical_examination_note_2," +
+                                                              "medical_examination_date_3," +
+                                                              "medical_examination_note_3," +
+                                                              "medical_examination_date_4," +
+                                                              "medical_examination_note_4," +
+                                                              "medical_examination_note," +
+                                                              "car_violate_date_1," +
+                                                              "car_violate_content_1," +
+                                                              "car_violate_place_1," +
+                                                              "car_violate_date_2," +
+                                                              "car_violate_content_2," +
+                                                              "car_violate_place_2," +
+                                                              "car_violate_date_3," +
+                                                              "car_violate_content_3," +
+                                                              "car_violate_place_3," +
+                                                              "car_violate_date_4," +
+                                                              "car_violate_content_4," +
+                                                              "car_violate_place_4," +
+                                                              "car_violate_date_5," +
+                                                              "car_violate_content_5," +
+                                                              "car_violate_place_5," +
+                                                              "car_violate_date_6," +
+                                                              "car_violate_content_6," +
+                                                              "car_violate_place_6," +
+                                                              "educate_date_1," +
+                                                              "educate_name_1," +
+                                                              "educate_date_2," +
+                                                              "educate_name_2," +
+                                                              "educate_date_3," +
+                                                              "educate_name_3," +
+                                                              "educate_date_4," +
+                                                              "educate_name_4," +
+                                                              "educate_date_5," +
+                                                              "educate_name_5," +
+                                                              "educate_date_6," +
+                                                              "educate_name_6," +
+                                                              "proper_kind_1," +
+                                                              "proper_date_1," +
+                                                              "proper_note_1," +
+                                                              "proper_kind_2," +
+                                                              "proper_date_2," +
+                                                              "proper_note_2," +
+                                                              "proper_kind_3," +
+                                                              "proper_date_3," +
+                                                              "proper_note_3," +
+                                                              "punishment_date_1," +
+                                                              "punishment_note_1," +
+                                                              "punishment_date_2," +
+                                                              "punishment_note_2," +
+                                                              "punishment_date_3," +
+                                                              "punishment_note_3," +
+                                                              "punishment_date_4," +
+                                                              "punishment_note_4," +
+                                                              "insert_ymd_hms," +
+                                                              "update_ymd_hms," +
+                                                              "delete_ymd_hms," +
+                                                              "delete_flag) " +
+                                     "VALUES ('" + staffMasterVo.Staff_code + "'," +
+                                             "'" + staffMasterVo.Belongs + "'," +
+                                             "'" + staffMasterVo.Vehicle_dispatch_target + "'," +
+                                             "'" + staffMasterVo.Job_form + "'," +
+                                             "'" + staffMasterVo.Occupation + "'," +
+                                             "'" + staffMasterVo.Name_kana + "'," +
+                                             "'" + staffMasterVo.Name + "'," +
+                                             "'" + staffMasterVo.Display_name + "'," +
+                                             "'" + staffMasterVo.Gender + "'," +
+                                             "'" + staffMasterVo.Birth_date + "'," +
+                                             "'" + staffMasterVo.Employment_date + "'," +
+                                             "'" + staffMasterVo.Code + "'," +
+                                             "'" + staffMasterVo.Current_address + "'," +
+                                             "'" + staffMasterVo.Before_change_address + "'," +
+                                             "'" + staffMasterVo.Telephone_number + "'," +
+                                             "'" + staffMasterVo.Cellphone_number + "'," +
+                                             "@member_picture," +
+                                             "'" + staffMasterVo.Blood_type + "'," +
+                                             "'" + staffMasterVo.Selection_date + "'," +
+                                             "'" + staffMasterVo.Not_selection_date + "'," +
+                                             "'" + staffMasterVo.Not_selection_reason + "'," +
+                                             "'" + staffMasterVo.License_number + "'," +
+                                             "'" + staffMasterVo.History_date_1 + "'," +
+                                             "'" + staffMasterVo.History_note_1 + "'," +
+                                             "'" + staffMasterVo.History_date_2 + "'," +
+                                             "'" + staffMasterVo.History_note_2 + "'," +
+                                             "'" + staffMasterVo.History_date_3 + "'," +
+                                             "'" + staffMasterVo.History_note_3 + "'," +
+                                             "'" + staffMasterVo.History_date_4 + "'," +
+                                             "'" + staffMasterVo.History_note_4 + "'," +
+                                             "'" + staffMasterVo.History_date_5 + "'," +
+                                             "'" + staffMasterVo.History_note_5 + "'," +
+                                             "'" + staffMasterVo.History_date_6 + "'," +
+                                             "'" + staffMasterVo.History_note_6 + "'," +
+                                             "'" + staffMasterVo.Experience_kind_1 + "'," +
+                                             "'" + staffMasterVo.Experience_load_1 + "'," +
+                                             "'" + staffMasterVo.Experience_duration_1 + "'," +
+                                             "'" + staffMasterVo.Experience_note_1 + "'," +
+                                             "'" + staffMasterVo.Experience_kind_2 + "'," +
+                                             "'" + staffMasterVo.Experience_load_2 + "'," +
+                                             "'" + staffMasterVo.Experience_duration_2 + "'," +
+                                             "'" + staffMasterVo.Experience_note_2 + "'," +
+                                             "'" + staffMasterVo.Experience_kind_3 + "'," +
+                                             "'" + staffMasterVo.Experience_load_3 + "'," +
+                                             "'" + staffMasterVo.Experience_duration_3 + "'," +
+                                             "'" + staffMasterVo.Experience_note_3 + "'," +
+                                             "'" + staffMasterVo.Experience_kind_4 + "'," +
+                                             "'" + staffMasterVo.Experience_load_4 + "'," +
+                                             "'" + staffMasterVo.Experience_duration_4 + "'," +
+                                             "'" + staffMasterVo.Experience_note_4 + "'," +
+                                             "'" + staffMasterVo.Retirement_flag + "'," +
+                                             "'" + staffMasterVo.Retirement_date + "'," +
+                                             "'" + staffMasterVo.Retirement_note + "'," +
+                                             "'" + staffMasterVo.Death_date + "'," +
+                                             "'" + staffMasterVo.Death_note + "'," +
+                                             "'" + staffMasterVo.Family_name_1 + "'," +
+                                             "'" + staffMasterVo.Family_birth_date_1 + "'," +
+                                             "'" + staffMasterVo.Family_relationship_1 + "'," +
+                                             "'" + staffMasterVo.Family_name_2 + "'," +
+                                             "'" + staffMasterVo.Family_birth_date_2 + "'," +
+                                             "'" + staffMasterVo.Family_relationship_2 + "'," +
+                                             "'" + staffMasterVo.Family_name_3 + "'," +
+                                             "'" + staffMasterVo.Family_birth_date_3 + "'," +
+                                             "'" + staffMasterVo.Family_relationship_3 + "'," +
+                                             "'" + staffMasterVo.Family_name_4 + "'," +
+                                             "'" + staffMasterVo.Family_birth_date_4 + "'," +
+                                             "'" + staffMasterVo.Family_relationship_4 + "'," +
+                                             "'" + staffMasterVo.Family_name_5 + "'," +
+                                             "'" + staffMasterVo.Family_birth_date_5 + "'," +
+                                             "'" + staffMasterVo.Family_relationship_5 + "'," +
+                                             "'" + staffMasterVo.Family_name_6 + "'," +
+                                             "'" + staffMasterVo.Family_birth_date_6 + "'," +
+                                             "'" + staffMasterVo.Family_relationship_6 + "'," +
+                                             "'" + staffMasterVo.Urgent_telephone_number + "'," +
+                                             "'" + staffMasterVo.Urgent_telephone_method + "'," +
+                                             "'" + staffMasterVo.Health_insurance_date + "'," +
+                                             "'" + staffMasterVo.Health_insurance_number + "'," +
+                                             "'" + staffMasterVo.Health_insurance_note + "'," +
+                                             "'" + staffMasterVo.Welfare_pension_date + "'," +
+                                             "'" + staffMasterVo.Welfare_pension_number + "'," +
+                                             "'" + staffMasterVo.Welfare_pension_note + "'," +
+                                             "'" + staffMasterVo.Employment_insurance_date + "'," +
+                                             "'" + staffMasterVo.Employment_insurance_number + "'," +
+                                             "'" + staffMasterVo.Employment_insurance_note + "'," +
+                                             "'" + staffMasterVo.Worker_accident_insurance_date + "'," +
+                                             "'" + staffMasterVo.Worker_accident_insurance_number + "'," +
+                                             "'" + staffMasterVo.Worker_accident_insurance_note + "'," +
+                                             "'" + staffMasterVo.Medical_examination_date_1 + "'," +
+                                             "'" + staffMasterVo.Medical_examination_note_1 + "'," +
+                                             "'" + staffMasterVo.Medical_examination_date_2 + "'," +
+                                             "'" + staffMasterVo.Medical_examination_note_2 + "'," +
+                                             "'" + staffMasterVo.Medical_examination_date_3 + "'," +
+                                             "'" + staffMasterVo.Medical_examination_note_3 + "'," +
+                                             "'" + staffMasterVo.Medical_examination_date_4 + "'," +
+                                             "'" + staffMasterVo.Medical_examination_note_4 + "'," +
+                                             "'" + staffMasterVo.Medical_examination_note + "'," +
+                                             "'" + staffMasterVo.Car_violate_date_1 + "'," +
+                                             "'" + staffMasterVo.Car_violate_content_1 + "'," +
+                                             "'" + staffMasterVo.Car_violate_place_1 + "'," +
+                                             "'" + staffMasterVo.Car_violate_date_2 + "'," +
+                                             "'" + staffMasterVo.Car_violate_content_2 + "'," +
+                                             "'" + staffMasterVo.Car_violate_place_2 + "'," +
+                                             "'" + staffMasterVo.Car_violate_date_3 + "'," +
+                                             "'" + staffMasterVo.Car_violate_content_3 + "'," +
+                                             "'" + staffMasterVo.Car_violate_place_3 + "'," +
+                                             "'" + staffMasterVo.Car_violate_date_4 + "'," +
+                                             "'" + staffMasterVo.Car_violate_content_4 + "'," +
+                                             "'" + staffMasterVo.Car_violate_place_4 + "'," +
+                                             "'" + staffMasterVo.Car_violate_date_5 + "'," +
+                                             "'" + staffMasterVo.Car_violate_content_5 + "'," +
+                                             "'" + staffMasterVo.Car_violate_place_5 + "'," +
+                                             "'" + staffMasterVo.Car_violate_date_6 + "'," +
+                                             "'" + staffMasterVo.Car_violate_content_6 + "'," +
+                                             "'" + staffMasterVo.Car_violate_place_6 + "'," +
+                                             "'" + staffMasterVo.Educate_date_1 + "'," +
+                                             "'" + staffMasterVo.Educate_name_1 + "'," +
+                                             "'" + staffMasterVo.Educate_date_2 + "'," +
+                                             "'" + staffMasterVo.Educate_name_2 + "'," +
+                                             "'" + staffMasterVo.Educate_date_3 + "'," +
+                                             "'" + staffMasterVo.Educate_name_3 + "'," +
+                                             "'" + staffMasterVo.Educate_date_4 + "'," +
+                                             "'" + staffMasterVo.Educate_name_4 + "'," +
+                                             "'" + staffMasterVo.Educate_date_5 + "'," +
+                                             "'" + staffMasterVo.Educate_name_5 + "'," +
+                                             "'" + staffMasterVo.Educate_date_6 + "'," +
+                                             "'" + staffMasterVo.Educate_name_6 + "'," +
+                                             "'" + staffMasterVo.Proper_kind_1 + "'," +
+                                             "'" + staffMasterVo.Proper_date_1 + "'," +
+                                             "'" + staffMasterVo.Proper_note_1 + "'," +
+                                             "'" + staffMasterVo.Proper_kind_2 + "'," +
+                                             "'" + staffMasterVo.Proper_date_2 + "'," +
+                                             "'" + staffMasterVo.Proper_note_2 + "'," +
+                                             "'" + staffMasterVo.Proper_kind_3 + "'," +
+                                             "'" + staffMasterVo.Proper_date_3 + "'," +
+                                             "'" + staffMasterVo.Proper_note_3 + "'," +
+                                             "'" + staffMasterVo.Punishment_date_1 + "'," +
+                                             "'" + staffMasterVo.Punishment_note_1 + "'," +
+                                             "'" + staffMasterVo.Punishment_date_2 + "'," +
+                                             "'" + staffMasterVo.Punishment_note_2 + "'," +
+                                             "'" + staffMasterVo.Punishment_date_3 + "'," +
+                                             "'" + staffMasterVo.Punishment_note_3 + "'," +
+                                             "'" + staffMasterVo.Punishment_date_4 + "'," +
+                                             "'" + staffMasterVo.Punishment_note_4 + "'," +
+                                             "'" + DateTime.Now + "'," +
+                                             "'1900-01-01'," +
+                                             "'1900-01-01'," +
+                                             "'false'" +
+                                             ");";
+            try {
+                sqlCommand.Parameters.Add("@member_picture", SqlDbType.Image, staffMasterVo.Picture.Length).Value = staffMasterVo.Picture;
+                return sqlCommand.ExecuteNonQuery();
+            } catch (Exception e) {
+                Console.WriteLine("InsertOneStaffLedger : " + e.Message);
+                return 0;
+            }
+        }
+
+        /// <summary>
+        /// UpdateOneStaffLedger
+        /// </summary>
+        /// <param name="staffMasterVo"></param>
+        /// <returns></returns>
+        public int UpdateOneStaffLedger(StaffMasterVo staffMasterVo) {
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE staff_ledger " +
+                                     "SET staff_code = '" + staffMasterVo.Staff_code + "'," +
+                                         "belongs = '" + staffMasterVo.Belongs + "'," +
+                                         "vehicle_dispatch_target = '" + staffMasterVo.Vehicle_dispatch_target + "'," +
+                                         "job_form = '" + staffMasterVo.Job_form + "'," +
+                                         "occupation = '" + staffMasterVo.Occupation + "'," +
+                                         "name_kana = '" + staffMasterVo.Name_kana + "'," +
+                                         "name = '" + staffMasterVo.Name + "'," +
+                                         "display_name = '" + staffMasterVo.Display_name + "'," +
+                                         "gender = '" + staffMasterVo.Gender + "'," +
+                                         "birth_date = '" + staffMasterVo.Birth_date + "'," +
+                                         "employment_date = '" + staffMasterVo.Employment_date + "'," +
+                                         "code = '" + staffMasterVo.Code + "'," +
+                                         "current_address = '" + staffMasterVo.Current_address + "'," +
+                                         "before_change_address = '" + staffMasterVo.Before_change_address + "'," +
+                                         "telephone_number = '" + staffMasterVo.Telephone_number + "'," +
+                                         "cellphone_number = '" + staffMasterVo.Cellphone_number + "'," +
+                                         "picture = @member_picture," +
+                                         "blood_type = '" + staffMasterVo.Blood_type + "'," +
+                                         "selection_date = '" + staffMasterVo.Selection_date + "'," +
+                                         "not_selection_date = '" + staffMasterVo.Not_selection_date + "'," +
+                                         "not_selection_reason = '" + staffMasterVo.Not_selection_reason + "'," +
+                                         "license_number = '" + staffMasterVo.License_number + "'," +
+                                         "history_date_1 = '" + staffMasterVo.History_date_1 + "'," +
+                                         "history_note_1 = '" + staffMasterVo.History_note_1 + "'," +
+                                         "history_date_2 = '" + staffMasterVo.History_date_2 + "'," +
+                                         "history_note_2 = '" + staffMasterVo.History_note_2 + "'," +
+                                         "history_date_3 = '" + staffMasterVo.History_date_3 + "'," +
+                                         "history_note_3 = '" + staffMasterVo.History_note_3 + "'," +
+                                         "history_date_4 = '" + staffMasterVo.History_date_4 + "'," +
+                                         "history_note_4 = '" + staffMasterVo.History_note_4 + "'," +
+                                         "history_date_5 = '" + staffMasterVo.History_date_5 + "'," +
+                                         "history_note_5 = '" + staffMasterVo.History_note_5 + "'," +
+                                         "history_date_6 = '" + staffMasterVo.History_date_6 + "'," +
+                                         "history_note_6 = '" + staffMasterVo.History_note_6 + "'," +
+                                         "experience_kind_1 = '" + staffMasterVo.Experience_kind_1 + "'," +
+                                         "experience_load_1 = '" + staffMasterVo.Experience_load_1 + "'," +
+                                         "experience_duration_1 = '" + staffMasterVo.Experience_duration_1 + "'," +
+                                         "experience_note_1 = '" + staffMasterVo.Experience_note_1 + "'," +
+                                         "experience_kind_2 = '" + staffMasterVo.Experience_kind_2 + "'," +
+                                         "experience_load_2 = '" + staffMasterVo.Experience_load_2 + "'," +
+                                         "experience_duration_2 = '" + staffMasterVo.Experience_duration_2 + "'," +
+                                         "experience_note_2 = '" + staffMasterVo.Experience_note_2 + "'," +
+                                         "experience_kind_3 = '" + staffMasterVo.Experience_kind_3 + "'," +
+                                         "experience_load_3 = '" + staffMasterVo.Experience_load_3 + "'," +
+                                         "experience_duration_3 = '" + staffMasterVo.Experience_duration_3 + "'," +
+                                         "experience_note_3 = '" + staffMasterVo.Experience_note_3 + "'," +
+                                         "experience_kind_4 = '" + staffMasterVo.Experience_kind_4 + "'," +
+                                         "experience_load_4 = '" + staffMasterVo.Experience_load_4 + "'," +
+                                         "experience_duration_4 = '" + staffMasterVo.Experience_duration_4 + "'," +
+                                         "experience_note_4 = '" + staffMasterVo.Experience_note_4 + "'," +
+                                         "retirement_flag = '" + staffMasterVo.Retirement_flag + "'," +
+                                         "retirement_date = '" + staffMasterVo.Retirement_date + "'," +
+                                         "retirement_note = '" + staffMasterVo.Retirement_note + "'," +
+                                         "death_date = '" + staffMasterVo.Death_date + "'," +
+                                         "death_note = '" + staffMasterVo.Death_note + "'," +
+                                         "family_name_1 = '" + staffMasterVo.Family_name_1 + "'," +
+                                         "family_birth_date_1 = '" + staffMasterVo.Family_birth_date_1 + "'," +
+                                         "family_relationship_1 = '" + staffMasterVo.Family_relationship_1 + "'," +
+                                         "family_name_2 = '" + staffMasterVo.Family_name_2 + "'," +
+                                         "family_birth_date_2 = '" + staffMasterVo.Family_birth_date_2 + "'," +
+                                         "family_relationship_2 = '" + staffMasterVo.Family_relationship_2 + "'," +
+                                         "family_name_3 = '" + staffMasterVo.Family_name_3 + "'," +
+                                         "family_birth_date_3 = '" + staffMasterVo.Family_birth_date_3 + "'," +
+                                         "family_relationship_3 = '" + staffMasterVo.Family_relationship_3 + "'," +
+                                         "family_name_4 = '" + staffMasterVo.Family_name_4 + "'," +
+                                         "family_birth_date_4 = '" + staffMasterVo.Family_birth_date_4 + "'," +
+                                         "family_relationship_4 = '" + staffMasterVo.Family_relationship_4 + "'," +
+                                         "family_name_5 = '" + staffMasterVo.Family_name_5 + "'," +
+                                         "family_birth_date_5 = '" + staffMasterVo.Family_birth_date_5 + "'," +
+                                         "family_relationship_5 = '" + staffMasterVo.Family_relationship_5 + "'," +
+                                         "family_name_6 = '" + staffMasterVo.Family_name_6 + "'," +
+                                         "family_birth_date_6 = '" + staffMasterVo.Family_birth_date_6 + "'," +
+                                         "family_relationship_6 = '" + staffMasterVo.Family_relationship_6 + "'," +
+                                         "urgent_telephone_number = '" + staffMasterVo.Urgent_telephone_number + "'," +
+                                         "urgent_telephone_method = '" + staffMasterVo.Urgent_telephone_method + "'," +
+                                         "health_insurance_date = '" + staffMasterVo.Health_insurance_date + "'," +
+                                         "health_insurance_number = '" + staffMasterVo.Health_insurance_number + "'," +
+                                         "health_insurance_note = '" + staffMasterVo.Health_insurance_note + "'," +
+                                         "welfare_pension_date = '" + staffMasterVo.Welfare_pension_date + "'," +
+                                         "welfare_pension_number = '" + staffMasterVo.Welfare_pension_number + "'," +
+                                         "welfare_pension_note = '" + staffMasterVo.Welfare_pension_note + "'," +
+                                         "employment_insurance_date = '" + staffMasterVo.Employment_insurance_date + "'," +
+                                         "employment_insurance_number = '" + staffMasterVo.Employment_insurance_number + "'," +
+                                         "employment_insurance_note = '" + staffMasterVo.Employment_insurance_note + "'," +
+                                         "worker_accident_insurance_date = '" + staffMasterVo.Worker_accident_insurance_date + "'," +
+                                         "worker_accident_insurance_number = '" + staffMasterVo.Worker_accident_insurance_number + "'," +
+                                         "worker_accident_insurance_note = '" + staffMasterVo.Worker_accident_insurance_note + "'," +
+                                         "medical_examination_date_1 = '" + staffMasterVo.Medical_examination_date_1 + "'," +
+                                         "medical_examination_note_1 = '" + staffMasterVo.Medical_examination_note_1 + "'," +
+                                         "medical_examination_date_2 = '" + staffMasterVo.Medical_examination_date_2 + "'," +
+                                         "medical_examination_note_2 = '" + staffMasterVo.Medical_examination_note_2 + "'," +
+                                         "medical_examination_date_3 = '" + staffMasterVo.Medical_examination_date_3 + "'," +
+                                         "medical_examination_note_3 = '" + staffMasterVo.Medical_examination_note_3 + "'," +
+                                         "medical_examination_date_4 = '" + staffMasterVo.Medical_examination_date_4 + "'," +
+                                         "medical_examination_note_4 = '" + staffMasterVo.Medical_examination_note_4 + "'," +
+                                         "medical_examination_note = '" + staffMasterVo.Medical_examination_note + "'," +
+                                         "car_violate_date_1 = '" + staffMasterVo.Car_violate_date_1 + "'," +
+                                         "car_violate_content_1 = '" + staffMasterVo.Car_violate_content_1 + "'," +
+                                         "car_violate_place_1 = '" + staffMasterVo.Car_violate_place_1 + "'," +
+                                         "car_violate_date_2 = '" + staffMasterVo.Car_violate_date_2 + "'," +
+                                         "car_violate_content_2 = '" + staffMasterVo.Car_violate_content_2 + "'," +
+                                         "car_violate_place_2 = '" + staffMasterVo.Car_violate_place_2 + "'," +
+                                         "car_violate_date_3 = '" + staffMasterVo.Car_violate_date_3 + "'," +
+                                         "car_violate_content_3 = '" + staffMasterVo.Car_violate_content_3 + "'," +
+                                         "car_violate_place_3 = '" + staffMasterVo.Car_violate_place_3 + "'," +
+                                         "car_violate_date_4 = '" + staffMasterVo.Car_violate_date_4 + "'," +
+                                         "car_violate_content_4 = '" + staffMasterVo.Car_violate_content_4 + "'," +
+                                         "car_violate_place_4 = '" + staffMasterVo.Car_violate_place_4 + "'," +
+                                         "car_violate_date_5 = '" + staffMasterVo.Car_violate_date_5 + "'," +
+                                         "car_violate_content_5 = '" + staffMasterVo.Car_violate_content_5 + "'," +
+                                         "car_violate_place_5 = '" + staffMasterVo.Car_violate_place_5 + "'," +
+                                         "car_violate_date_6 = '" + staffMasterVo.Car_violate_date_6 + "'," +
+                                         "car_violate_content_6 = '" + staffMasterVo.Car_violate_content_6 + "'," +
+                                         "car_violate_place_6 = '" + staffMasterVo.Car_violate_place_6 + "'," +
+                                         "educate_date_1 = '" + staffMasterVo.Educate_date_1 + "'," +
+                                         "educate_name_1 = '" + staffMasterVo.Educate_name_1 + "'," +
+                                         "educate_date_2 = '" + staffMasterVo.Educate_date_2 + "'," +
+                                         "educate_name_2 = '" + staffMasterVo.Educate_name_2 + "'," +
+                                         "educate_date_3 = '" + staffMasterVo.Educate_date_3 + "'," +
+                                         "educate_name_3 = '" + staffMasterVo.Educate_name_3 + "'," +
+                                         "educate_date_4 = '" + staffMasterVo.Educate_date_4 + "'," +
+                                         "educate_name_4 = '" + staffMasterVo.Educate_name_4 + "'," +
+                                         "educate_date_5 = '" + staffMasterVo.Educate_date_5 + "'," +
+                                         "educate_name_5 = '" + staffMasterVo.Educate_name_5 + "'," +
+                                         "educate_date_6 = '" + staffMasterVo.Educate_date_6 + "'," +
+                                         "educate_name_6 = '" + staffMasterVo.Educate_name_6 + "'," +
+                                         "proper_kind_1 = '" + staffMasterVo.Proper_kind_1 + "'," +
+                                         "proper_date_1 = '" + staffMasterVo.Proper_date_1 + "'," +
+                                         "proper_note_1 = '" + staffMasterVo.Proper_note_1 + "'," +
+                                         "proper_kind_2 = '" + staffMasterVo.Proper_kind_2 + "'," +
+                                         "proper_date_2 = '" + staffMasterVo.Proper_date_2 + "'," +
+                                         "proper_note_2 = '" + staffMasterVo.Proper_note_2 + "'," +
+                                         "proper_kind_3 = '" + staffMasterVo.Proper_kind_3 + "'," +
+                                         "proper_date_3 = '" + staffMasterVo.Proper_date_3 + "'," +
+                                         "proper_note_3 = '" + staffMasterVo.Proper_note_3 + "'," +
+                                         "punishment_date_1 = '" + staffMasterVo.Punishment_date_1 + "'," +
+                                         "punishment_note_1 = '" + staffMasterVo.Punishment_note_1 + "'," +
+                                         "punishment_date_2 = '" + staffMasterVo.Punishment_date_2 + "'," +
+                                         "punishment_note_2 = '" + staffMasterVo.Punishment_note_2 + "'," +
+                                         "punishment_date_3 = '" + staffMasterVo.Punishment_date_3 + "'," +
+                                         "punishment_note_3 = '" + staffMasterVo.Punishment_note_3 + "'," +
+                                         "punishment_date_4 = '" + staffMasterVo.Punishment_date_4 + "'," +
+                                         "punishment_note_4 = '" + staffMasterVo.Punishment_note_4 + "'," +
+                                         "update_ymd_hms = '" + DateTime.Now + "' " +
+                                     "WHERE staff_code='" + staffMasterVo.Staff_code + "' " +
+                                     "AND delete_Flag = 'False'";
+            try {
+                sqlCommand.Parameters.Add("@member_picture", SqlDbType.Image, staffMasterVo.Picture.Length).Value = staffMasterVo.Picture;
+                return sqlCommand.ExecuteNonQuery();
+            } catch (Exception e) {
+                Console.WriteLine("UpdateOneStaffLedger : " + e.Message);
+                return 0;
+            }
+        }
+
+        /// <summary>
+        /// 新規staff_codeを採番
+        /// 引数(staffCode)より小さい番号の中で最大の番号を取得する
+        /// </summary>
+        /// <param name="staffCode"></param>
+        /// <returns></returns>
         public int GetStaffCode(int staffCode) {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT MAX(staff_code) " +
@@ -736,10 +1214,28 @@ namespace Dao {
                                      "WHERE staff_code < '" + staffCode + "'";
             try {
                 return (int)sqlCommand.ExecuteScalar();
-            } catch (Exception e) {
-                Console.WriteLine("GetStaffCode : " + e.Message);
-                return 0;
+            } catch {
+                throw;
             }
+        }
+
+        /// <summary>
+        /// CheckStaffLedger
+        /// </summary>
+        /// <param name="staffCode"></param>
+        /// <returns></returns>
+        public bool CheckStaffMaster(decimal staffCode) {
+            int count;
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT COUNT(staff_code) " +
+                                     "FROM staff_master " +
+                                     "WHERE staff_code = " + staffCode;
+            try {
+                count = (int)sqlCommand.ExecuteScalar();
+            } catch {
+                throw;
+            }
+            return count != 0 ? true : false;
         }
     }
 }
