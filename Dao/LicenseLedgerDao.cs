@@ -159,7 +159,7 @@ namespace Dao {
                                             "update_ymd_hms," +
                                             "delete_ymd_hms," +
                                             "delete_flag " +
-                                     "FROM license_ledger " +
+                                     "FROM license_master " +
                                      "Where staff_code = '" + staffCode + "'";
             using (var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while (sqlDataReader.Read() == true) {

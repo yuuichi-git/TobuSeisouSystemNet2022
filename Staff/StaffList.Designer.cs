@@ -27,7 +27,10 @@
             this.TableLayoutPanelExBase = new ControlEx.TableLayoutPanelEx();
             this.MenuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ToolStripMenuItemMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemExcelExport = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.編集ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemNewStaff = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.PanelUp = new System.Windows.Forms.Panel();
             this.CheckBoxRetired = new System.Windows.Forms.CheckBox();
@@ -102,6 +105,7 @@
             // 
             this.MenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItemMenu,
+            this.編集ToolStripMenuItem,
             this.ToolStripMenuItemHelp});
             this.MenuStrip1.Location = new System.Drawing.Point(0, 0);
             this.MenuStrip1.Name = "MenuStrip1";
@@ -112,17 +116,40 @@
             // ToolStripMenuItemMenu
             // 
             this.ToolStripMenuItemMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemExcelExport,
             this.ToolStripMenuItemExit});
             this.ToolStripMenuItemMenu.Name = "ToolStripMenuItemMenu";
             this.ToolStripMenuItemMenu.Size = new System.Drawing.Size(52, 20);
             this.ToolStripMenuItemMenu.Text = "メニュー";
             // 
+            // ToolStripMenuItemExcelExport
+            // 
+            this.ToolStripMenuItemExcelExport.Name = "ToolStripMenuItemExcelExport";
+            this.ToolStripMenuItemExcelExport.Size = new System.Drawing.Size(207, 22);
+            this.ToolStripMenuItemExcelExport.Text = "Excel形式でエクスポートする";
+            this.ToolStripMenuItemExcelExport.Click += new System.EventHandler(this.ToolStripMenuItemExcelExport_Click);
+            // 
             // ToolStripMenuItemExit
             // 
             this.ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
-            this.ToolStripMenuItemExit.Size = new System.Drawing.Size(195, 22);
+            this.ToolStripMenuItemExit.Size = new System.Drawing.Size(207, 22);
             this.ToolStripMenuItemExit.Text = "アプリケーションを終了する";
             this.ToolStripMenuItemExit.Click += new System.EventHandler(this.ToolStripMenuItemExit_Click);
+            // 
+            // 編集ToolStripMenuItem
+            // 
+            this.編集ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemNewStaff});
+            this.編集ToolStripMenuItem.Name = "編集ToolStripMenuItem";
+            this.編集ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
+            this.編集ToolStripMenuItem.Text = "編集";
+            // 
+            // ToolStripMenuItemNewStaff
+            // 
+            this.ToolStripMenuItemNewStaff.Name = "ToolStripMenuItemNewStaff";
+            this.ToolStripMenuItemNewStaff.Size = new System.Drawing.Size(186, 22);
+            this.ToolStripMenuItemNewStaff.Text = "新規従事者を登録する";
+            this.ToolStripMenuItemNewStaff.Click += new System.EventHandler(this.ToolStripMenuItemNewStaff_Click);
             // 
             // ToolStripMenuItemHelp
             // 
@@ -624,5 +651,8 @@
         private CheckBox CheckBoxRetired;
         private CheckBox CheckBoxNone1;
         private FarPoint.Win.Spread.SheetView SheetViewList;
+        private ToolStripMenuItem ToolStripMenuItemExcelExport;
+        private ToolStripMenuItem 編集ToolStripMenuItem;
+        private ToolStripMenuItem ToolStripMenuItemNewStaff;
     }
 }

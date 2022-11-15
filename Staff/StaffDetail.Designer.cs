@@ -1,4 +1,4 @@
-﻿namespace StaffRegister {
+﻿namespace Staff {
     partial class StaffDetail {
         /// <summary>
         /// Required designer variable.
@@ -164,11 +164,12 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.ContextMenuStripRadioButtonClear = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ToolStripMenuItemRadioButtonClear = new System.Windows.Forms.ToolStripMenuItem();
+            this.RadioButtonNone1 = new System.Windows.Forms.RadioButton();
             this.RadioButtonPart2 = new System.Windows.Forms.RadioButton();
             this.RadioButtonNote = new System.Windows.Forms.RadioButton();
             this.RadioButtonLongTarm = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.RadioButtonNone = new System.Windows.Forms.RadioButton();
+            this.RadioButtonNone2 = new System.Windows.Forms.RadioButton();
             this.RadioButtonOperator = new System.Windows.Forms.RadioButton();
             this.RadioButtonDriver = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -1837,6 +1838,7 @@
             // groupBox3
             // 
             this.groupBox3.ContextMenuStrip = this.ContextMenuStripRadioButtonClear;
+            this.groupBox3.Controls.Add(this.RadioButtonNone1);
             this.groupBox3.Controls.Add(this.RadioButtonPart2);
             this.groupBox3.Controls.Add(this.RadioButtonNote);
             this.groupBox3.Controls.Add(this.RadioButtonLongTarm);
@@ -1860,6 +1862,17 @@
             this.ToolStripMenuItemRadioButtonClear.Size = new System.Drawing.Size(194, 22);
             this.ToolStripMenuItemRadioButtonClear.Text = "RadioButtonをクリアする";
             this.ToolStripMenuItemRadioButtonClear.Click += new System.EventHandler(this.ToolStripMenuItemRadioButtonClear_Click);
+            // 
+            // RadioButtonNone1
+            // 
+            this.RadioButtonNone1.AutoSize = true;
+            this.RadioButtonNone1.Location = new System.Drawing.Point(256, 24);
+            this.RadioButtonNone1.Name = "RadioButtonNone1";
+            this.RadioButtonNone1.Size = new System.Drawing.Size(67, 19);
+            this.RadioButtonNone1.TabIndex = 9;
+            this.RadioButtonNone1.TabStop = true;
+            this.RadioButtonNone1.Text = "指定なし";
+            this.RadioButtonNone1.UseVisualStyleBackColor = true;
             // 
             // RadioButtonPart2
             // 
@@ -1897,7 +1910,7 @@
             // groupBox2
             // 
             this.groupBox2.ContextMenuStrip = this.ContextMenuStripRadioButtonClear;
-            this.groupBox2.Controls.Add(this.RadioButtonNone);
+            this.groupBox2.Controls.Add(this.RadioButtonNone2);
             this.groupBox2.Controls.Add(this.RadioButtonOperator);
             this.groupBox2.Controls.Add(this.RadioButtonDriver);
             this.groupBox2.Location = new System.Drawing.Point(12, 156);
@@ -1907,16 +1920,16 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "職種";
             // 
-            // RadioButtonNone
+            // RadioButtonNone2
             // 
-            this.RadioButtonNone.AutoSize = true;
-            this.RadioButtonNone.Location = new System.Drawing.Point(168, 24);
-            this.RadioButtonNone.Name = "RadioButtonNone";
-            this.RadioButtonNone.Size = new System.Drawing.Size(67, 19);
-            this.RadioButtonNone.TabIndex = 8;
-            this.RadioButtonNone.TabStop = true;
-            this.RadioButtonNone.Text = "指定なし";
-            this.RadioButtonNone.UseVisualStyleBackColor = true;
+            this.RadioButtonNone2.AutoSize = true;
+            this.RadioButtonNone2.Location = new System.Drawing.Point(168, 24);
+            this.RadioButtonNone2.Name = "RadioButtonNone2";
+            this.RadioButtonNone2.Size = new System.Drawing.Size(67, 19);
+            this.RadioButtonNone2.TabIndex = 8;
+            this.RadioButtonNone2.TabStop = true;
+            this.RadioButtonNone2.Text = "指定なし";
+            this.RadioButtonNone2.UseVisualStyleBackColor = true;
             // 
             // RadioButtonOperator
             // 
@@ -2026,7 +2039,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(140, 25);
+            this.label1.Location = new System.Drawing.Point(132, 25);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(31, 15);
             this.label1.TabIndex = 1;
@@ -2041,7 +2054,7 @@
             "アルバイト",
             "新運転",
             "自運労"});
-            this.ComboBoxBelongs.Location = new System.Drawing.Point(176, 21);
+            this.ComboBoxBelongs.Location = new System.Drawing.Point(168, 21);
             this.ComboBoxBelongs.Name = "ComboBoxBelongs";
             this.ComboBoxBelongs.Size = new System.Drawing.Size(124, 23);
             this.ComboBoxBelongs.TabIndex = 0;
@@ -4135,12 +4148,13 @@
         private RadioButton RadioButtonPart2;
         private RadioButton RadioButtonNote;
         private RadioButton RadioButtonLongTarm;
-        private RadioButton RadioButtonNone;
+        private RadioButton RadioButtonNone2;
         private RadioButton RadioButtonOperator;
         private RadioButton RadioButtonDriver;
         private RadioButton RadioButtonJiunrou;
         private RadioButton RadioButtonSinunten;
         private RadioButton RadioButtonPart1;
         private RadioButton RadioButtonStaff;
+        private RadioButton RadioButtonNone1;
     }
 }

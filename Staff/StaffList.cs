@@ -1,7 +1,9 @@
-using Common;
+using System.IO;
 
+using Common;
 using Dao;
 
+using FarPoint.Excel;
 using FarPoint.Win.Spread;
 
 using Vo;
@@ -335,6 +337,7 @@ namespace Staff {
                 SheetViewList.Cells[i, colVehicleDispatchTarget].Value = _vehicleDispatchTarget;
                 SheetViewList.Cells[i, colStaffCode].Value = _code;
                 SheetViewList.Cells[i, colName].Text = _name;
+                SheetViewList.Cells[i, colName].Tag = extendsStaffMasterVo;
                 SheetViewList.Cells[i, colNameKana].Text = _name_kana;
                 SheetViewList.Cells[i, colToukanpoCard].Value = _toukanpoTrainingCardFlag;
                 SheetViewList.Cells[i, colLicense].Value = _licenseLedgerFlag;
@@ -368,7 +371,23 @@ namespace Staff {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void SpreadList_CellDoubleClick(object sender, CellClickEventArgs e) {
+            // ヘッダーのDoubleClickを回避
+            if (e.ColumnHeader)
+                return;
+            // Shiftが押された場合
+            if ((ModifierKeys & Keys.Shift) == Keys.Shift) {
+                //var staffRegisterPaper = new StaffPaper(_connectionVo, ((ExtendsStaffMasterVo)SheetViewList.Cells[e.Row, colName].Tag).Staff_code);
+                //staffRegisterPaper.ShowDialog();
+                return;
+            }
+            // 修飾キーが無い場合
+            var staffRegisterDetail = new StaffDetail(_connectionVo, ((ExtendsStaffMasterVo)SheetViewList.Cells[e.Row, colName].Tag).Staff_code);
+            staffRegisterDetail.ShowDialog();
+        }
 
+        private void ToolStripMenuItemNewStaff_Click(object sender, EventArgs e) {
+            var staffDetail = new StaffDetail(_connectionVo);
+            staffDetail.ShowDialog();
         }
 
         /// <summary>
@@ -391,6 +410,18 @@ namespace Staff {
             sheetView.VerticalGridLine = new GridLine(GridLineType.Flat, Color.LightGray);
             sheetView.RemoveRows(0, sheetView.Rows.Count);
             return sheetView;
+        }
+
+        /// <summary>
+        /// ToolStripMenuItemExcelExport_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItemExcelExport_Click(object sender, EventArgs e) {
+            //xlsx形式ファイルをエクスポートします
+            string fileName = string.Concat("従事者リスト", DateTime.Now.ToString("MM月dd日"), "作成");
+            SpreadList.SaveExcel(new Directry().GetExcelDesktopPass(fileName), ExcelSaveFlags.UseOOXMLFormat | ExcelSaveFlags.Exchangeable);
+            MessageBox.Show("デスクトップへエクスポートしました","",MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
 
         /// <summary>

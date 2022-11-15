@@ -1,21 +1,14 @@
-﻿/*
- * 2022-02-03
- */
-using Common;
+﻿using Common;
 
 using Dao;
 
 using Vo;
 
-namespace StaffRegister {
+namespace Staff {
     public partial class StaffDetail : Form {
         private readonly ConnectionVo _connectionVo;
         private InitializeForm _initializeForm = new();
         private readonly StaffMasterDao _staffMasterDao;
-
-        Dictionary<int, string> dictionaryBelongs = new Dictionary<int, string> { { 10, "役員" }, { 11, "社員" }, { 12, "アルバイト" }, { 20, "新運転" }, { 21, "自運労" } };
-        Dictionary<int, string> dictionaryJobForm = new Dictionary<int, string> { { 10, "長期雇用" }, { 11, "手帳" }, { 12, "アルバイト" }, { 99, "" } };
-        Dictionary<int, string> dictionaryOccupation = new Dictionary<int, string> { { 10, "運転手" }, { 11, "作業員" }, { 99, "" } };
 
         /// <summary>
         /// True: 新規登録モード False:修正登録モード
@@ -100,6 +93,9 @@ namespace StaffRegister {
                 case 12: // アルバイト
                     RadioButtonPart2.Checked = true;
                     break;
+                case 99: // 指定なし
+                    RadioButtonNone1.Checked = true;
+                    break;
             }
             /*
              * 職種
@@ -112,7 +108,7 @@ namespace StaffRegister {
                     RadioButtonOperator.Checked = true;
                     break;
                 case 99: // 指定なし
-                    RadioButtonNone.Checked = true;
+                    RadioButtonNone2.Checked = true;
                     break;
             }
 
@@ -318,7 +314,10 @@ namespace StaffRegister {
                     } else {
                         _staffMasterDao.InsertOneStaffMaster(staffLedgerVo);
                     }
-                    Dispose();
+
+                    Application.DoEvents();
+
+                    this.Close();
                     break;
                 case DialogResult.Cancel:
                     break;
@@ -330,43 +329,57 @@ namespace StaffRegister {
         /// </summary>
         /// <returns></returns>
         private StaffMasterVo SetStaffMasterVo() {
-            // 代入用のインスタンス作成
+            /*
+             * 代入用のインスタンス作成
+             */
             var staffMasterVo = new StaffMasterVo();
+            /*
+             * 配車の対象
+             */
+            staffMasterVo.Vehicle_dispatch_target = CheckBoxTargetFlag.Checked;
             /*
              * 役職又は所属
              */
-
-
-
-            staffMasterVo.Belongs = ComboBoxBelongs.Text; // 所属名
-            staffMasterVo.Vehicle_dispatch_target = CheckBoxTargetFlag.Checked; // 配車の対象になる従事者
-            int jobForm = 0; // 「0」には割当ては無い
-            if (RadioButtonLongTime.Checked)
-                jobForm = 1; // 長期雇用
-            if (RadioButtonPartTime.Checked)
-                jobForm = 2; // アルバイト
-            if (RadioButtonContact.Checked)
-                jobForm = 3; // 連絡が必要な従事者
-            if (RadioButtonEmployee.Checked)
-                jobForm = 4; // 社員
-            staffMasterVo.Job_form = jobForm;
-            // 雇用形態
-            staffMasterVo.Driver = RadioButtonDriver.Checked;
-            staffMasterVo.Operator = RadioButtonOperator.Checked;
-            // 職種
-            if (RadioButtonTypeOfJob1.Checked)
-                staffMasterVo.Type_of_job_1 = true;
-            if (RadioButtonTypeOfJob2.Checked)
-                staffMasterVo.Type_of_job_2 = true;
-            if (RadioButtonTypeOfJob3.Checked)
-                staffMasterVo.Type_of_job_3 = true;
-            if (RadioButtonTypeOfJob4.Checked)
-                staffMasterVo.Type_of_job_4 = true;
-            if (RadioButtonTypeOfJob5.Checked)
-                staffMasterVo.Type_of_job_5 = true;
-            if (RadioButtonTypeOfJob6.Checked)
-                staffMasterVo.Type_of_job_6 = true;
-            // 個人情報１
+            switch (ComboBoxBelongs.Text) {
+                case "役員":
+                    staffMasterVo.Belongs = 10;
+                    break;
+                case "社員":
+                    staffMasterVo.Belongs = 11;
+                    break;
+                case "アルバイト":
+                    staffMasterVo.Belongs = 12;
+                    break;
+                case "新運転":
+                    staffMasterVo.Belongs = 20;
+                    break;
+                case "自運労":
+                    staffMasterVo.Belongs = 21;
+                    break;
+            }
+            /*
+             * 雇用形態
+             */
+            if (RadioButtonLongTarm.Checked)
+                staffMasterVo.Job_form = 10;
+            if (RadioButtonNote.Checked)
+                staffMasterVo.Job_form = 11;
+            if (RadioButtonPart2.Checked)
+                staffMasterVo.Job_form = 12;
+            if (RadioButtonNone1.Checked)
+                staffMasterVo.Job_form = 99;
+            /*
+             * 職種
+             */
+            if (RadioButtonDriver.Checked)
+                staffMasterVo.Occupation = 10;
+            if (RadioButtonOperator.Checked)
+                staffMasterVo.Occupation = 11;
+            if (RadioButtonNone2.Checked)
+                staffMasterVo.Occupation = 99;
+            /*
+             * 個人情報１
+             */
             staffMasterVo.Staff_code = int.Parse(TextBoxStaffDbCd.Text); // 社員CD
             staffMasterVo.Code = TextBoxStaffCd.Text != "" ? int.Parse(TextBoxStaffCd.Text) : 0; // 組合CD
             staffMasterVo.Name_kana = TextBoxNameKana.Text; // フリガナ
@@ -381,12 +394,16 @@ namespace StaffRegister {
             staffMasterVo.Telephone_number = TextBoxTelephoneNumber.Text; // 電話番号(自宅)
             staffMasterVo.Cellphone_number = TextBoxCellphoneNumber.Text; // 電話番号(携帯電話)
             staffMasterVo.Picture = (byte[]?)new ImageConverter().ConvertTo(PictureBoxPicture.Image, typeof(byte[])); // 写真
-            // 運転に関する情報
+            /*
+             * 運転に関する情報
+             */
             staffMasterVo.Selection_date = GetDateTimePickerValue(DateSelectionDate); // 運転者に選任された日
             staffMasterVo.Not_selection_date = GetDateTimePickerValue(DateNotSelectionDate); // 運転者でなくなった日
             staffMasterVo.Not_selection_reason = TextBoxNotSelectionReason.Text; // 理由
             staffMasterVo.License_number = TextBoxLicenseNumber.Text; // 免許証番号
-                                                                      // 履歴
+            /*
+             * 履歴
+             */
             staffMasterVo.History_date_1 = GetDateTimePickerValue(DateHistoryDate1); // 履歴年月日１
             staffMasterVo.History_note_1 = TextBoxHistoryNote1.Text; // 履歴内容１
             staffMasterVo.History_date_2 = GetDateTimePickerValue(DateHistoryDate2); // 履歴年月日２
@@ -399,7 +416,9 @@ namespace StaffRegister {
             staffMasterVo.History_note_5 = TextBoxHistoryNote5.Text; // 履歴内容５
             staffMasterVo.History_date_6 = GetDateTimePickerValue(DateHistoryDate6); // 履歴年月日６
             staffMasterVo.History_note_6 = TextBoxHistoryNote6.Text; // 履歴内容６
-                                                                     // 過去に運転経験のある自動車の種類・経験期間等
+            /*
+             * 過去に運転経験のある自動車の種類・経験期間等
+             */
             staffMasterVo.Experience_kind_1 = ComboBoxExperienceKind1.Text; // 種類１
             staffMasterVo.Experience_load_1 = TextBoxExperienceLoad1.Text; // 積載量又は定員１
             staffMasterVo.Experience_duration_1 = TextBoxExperienceDuration1.Text; // 経験期間１
@@ -416,14 +435,17 @@ namespace StaffRegister {
             staffMasterVo.Experience_load_4 = TextBoxExperienceLoad4.Text; // 積載量又は定員４
             staffMasterVo.Experience_duration_4 = TextBoxExperienceDuration4.Text; // 経験期間４
             staffMasterVo.Experience_note_4 = TextBoxExperienceNote4.Text; // 備考４
-                                                                           // 解雇・退職の日付と理由
+            /*
+             * 解雇・退職の日付と理由
+             */
             staffMasterVo.Retirement_flag = CheckBoxRetirementFlag.Checked; // 解雇又は退職のフラグ
             staffMasterVo.Retirement_date = GetDateTimePickerValue(DateRetirementDate); // 解雇又は退職の年月日
             staffMasterVo.Retirement_note = TextBoxRetirementNote.Text; // 解雇又は退職の理由
             staffMasterVo.Death_date = GetDateTimePickerValue(DateDeathDate); // 上記理由が死亡の場合その年月日
             staffMasterVo.Death_note = TextBoxDeathNote.Text; // 上記理由が死亡の場合その原因
-
-            // 家族状況
+            /*
+             * 家族状況
+             */
             staffMasterVo.Family_name_1 = TextBoxFamilyName1.Text; // 家族氏名１
             staffMasterVo.Family_birth_date_1 = GetDateTimePickerValue(DateFamilyBirthDate1); // 生年月日１
             staffMasterVo.Family_relationship_1 = ComboBoxFamilyRelationship1.Text; // 続柄１
@@ -444,7 +466,9 @@ namespace StaffRegister {
             staffMasterVo.Family_relationship_6 = ComboBoxFamilyRelationship6.Text; // 続柄６
             staffMasterVo.Urgent_telephone_number = TextBoxUrgentTelephoneNumber.Text; // 緊急時連絡方法１
             staffMasterVo.Urgent_telephone_method = TextBoxUrgentTelephoneMethod.Text; // 緊急時連絡方法２
-                                                                                       // 保険関係
+            /*
+             * 保険関係
+             */
             staffMasterVo.Health_insurance_date = GetDateTimePickerValue(DateHealthInsuranceDate); // (健康保険)加入年月日
             staffMasterVo.Health_insurance_number = ComboBoxHealthInsuranceNumber.Text; // (健康保険)保険の記号・番号
             staffMasterVo.Health_insurance_note = TextBoxHealthInsuranceNote.Text; // (健康保険)備考
@@ -457,7 +481,9 @@ namespace StaffRegister {
             staffMasterVo.Worker_accident_insurance_date = GetDateTimePickerValue(DateWorkerAccidentInsuranceDate); // (労災保険)加入年月日
             staffMasterVo.Worker_accident_insurance_number = TextBoxWorkerAccidentInsuranceNumber.Text; // (労災保険)保険の記号・番号
             staffMasterVo.Worker_accident_insurance_note = TextBoxWorkerAccidentInsuranceNote.Text; // (労災保険)備考
-                                                                                                    // 健康状態(健康診断等の実施結果による特記すべき事項)　※運転の可否に十分に留意すること
+            /*
+             * 健康状態(健康診断等の実施結果による特記すべき事項)　※運転の可否に十分に留意すること
+             */
             staffMasterVo.Medical_examination_date_1 = GetDateTimePickerValue(DateMedicalExaminationDate1); // 加入年月日１
             staffMasterVo.Medical_examination_note_1 = ComboBoxMedicalExaminationNote1.Text; // 保険の記号・番号１
             staffMasterVo.Medical_examination_date_2 = GetDateTimePickerValue(DateMedicalExaminationDate2); // 加入年月日２
@@ -467,7 +493,9 @@ namespace StaffRegister {
             staffMasterVo.Medical_examination_date_4 = GetDateTimePickerValue(DateMedicalExaminationDate4); // 加入年月日４
             staffMasterVo.Medical_examination_note_4 = TextBoxMedicalExaminationNote4.Text; // 保険の記号・番号４
             staffMasterVo.Medical_examination_note = TextBoxMedicalExaminationNote.Text; // 診断以外で気づいた点
-                                                                                         // 業務上の交通違反履歴
+            /*
+             * 業務上の交通違反履歴
+             */
             staffMasterVo.Car_violate_date_1 = GetDateTimePickerValue(DateCarViolateDate1); // 発生年月日１
             staffMasterVo.Car_violate_content_1 = TextBoxCarViolateContent1.Text; // 交通違反内容１
             staffMasterVo.Car_violate_place_1 = TextBoxCarViolatePlace1.Text; // 場所１
@@ -486,7 +514,9 @@ namespace StaffRegister {
             staffMasterVo.Car_violate_date_6 = GetDateTimePickerValue(DateCarViolateDate6); // 発生年月日６
             staffMasterVo.Car_violate_content_6 = TextBoxCarViolateContent6.Text; // 交通違反内容６
             staffMasterVo.Car_violate_place_6 = TextBoxCarViolatePlace6.Text; // 場所６
-                                                                              // 社内教育の実施状況
+            /*
+             * 社内教育の実施状況
+             */
             staffMasterVo.Educate_date_1 = GetDateTimePickerValue(DateEducateDate1); // 実施年月日１
             staffMasterVo.Educate_name_1 = TextBoxEducateName1.Text; // 実施対象理由１
             staffMasterVo.Educate_date_2 = GetDateTimePickerValue(DateEducateDate2); // 実施年月日２
@@ -499,7 +529,9 @@ namespace StaffRegister {
             staffMasterVo.Educate_name_5 = TextBoxEducateName5.Text; // 実施対象理由５
             staffMasterVo.Educate_date_6 = GetDateTimePickerValue(DateEducateDate6); // 実施年月日６
             staffMasterVo.Educate_name_6 = TextBoxEducateName6.Text; // 実施対象理由６
-                                                                     // 適性診断(NASVA)
+            /*
+             * 適性診断(NASVA)
+             */
             staffMasterVo.Proper_kind_1 = ComboBoxProperKind1.Text; // 種類１
             staffMasterVo.Proper_date_1 = GetDateTimePickerValue(DateProperDate1); // 実施年月日１
             staffMasterVo.Proper_note_1 = TextBoxProperNote1.Text; // 経験期間１
@@ -509,7 +541,9 @@ namespace StaffRegister {
             staffMasterVo.Proper_kind_3 = ComboBoxProperKind3.Text; // 種類３
             staffMasterVo.Proper_date_3 = GetDateTimePickerValue(DateProperDate3); // 実施年月日３
             staffMasterVo.Proper_note_3 = TextBoxProperNote3.Text; // 経験期間３
-                                                                   // 賞罰・譴責
+            /*
+             * 賞罰・譴責
+             */
             staffMasterVo.Punishment_date_1 = GetDateTimePickerValue(DatePunishmentDate1); // 実施年月日１
             staffMasterVo.Punishment_note_1 = TextBoxPunishmentNote1.Text; // 内容１
             staffMasterVo.Punishment_date_2 = GetDateTimePickerValue(DatePunishmentDate2); // 実施年月日２
@@ -611,7 +645,7 @@ namespace StaffRegister {
             TextBoxRetirementNote.Text = ""; // 解雇又は退職の理由
             SetDateTimePicker(DateDeathDate, null); // 上記理由が死亡の場合その年月日
             TextBoxDeathNote.Text = ""; // 上記理由が死亡の場合その原因
-            // 家族状況
+                                        // 家族状況
             TextBoxFamilyName1.Text = ""; // 家族氏名１
             SetDateTimePicker(DateFamilyBirthDate1, null); // 生年月日１
             ComboBoxFamilyRelationship1.SelectedIndex = -1; // 続柄１
@@ -632,7 +666,7 @@ namespace StaffRegister {
             ComboBoxFamilyRelationship6.SelectedIndex = -1; // 続柄６
             TextBoxUrgentTelephoneNumber.Text = ""; // 緊急時連絡方法１
             TextBoxUrgentTelephoneMethod.Text = ""; // 緊急時連絡方法２
-            // 保険関係
+                                                    // 保険関係
             SetDateTimePicker(DateHealthInsuranceDate, null); // (健康保険)加入年月日
             ComboBoxHealthInsuranceNumber.SelectedIndex = -1; // (健康保険)保険の記号・番号
             TextBoxHealthInsuranceNote.Text = ""; // (健康保険)備考
@@ -645,7 +679,7 @@ namespace StaffRegister {
             SetDateTimePicker(DateWorkerAccidentInsuranceDate, null); // (労災保険)加入年月日
             TextBoxWorkerAccidentInsuranceNumber.Text = ""; // (労災保険)保険の記号・番号
             TextBoxWorkerAccidentInsuranceNote.Text = ""; // (労災保険)備考
-            // 健康状態(健康診断等の実施結果による特記すべき事項)　※運転の可否に十分に留意すること
+                                                          // 健康状態(健康診断等の実施結果による特記すべき事項)　※運転の可否に十分に留意すること
             SetDateTimePicker(DateMedicalExaminationDate1, null); // 加入年月日１
             ComboBoxMedicalExaminationNote1.SelectedIndex = -1; // 保険の記号・番号１
             SetDateTimePicker(DateMedicalExaminationDate2, null); // 加入年月日２
@@ -655,7 +689,7 @@ namespace StaffRegister {
             SetDateTimePicker(DateMedicalExaminationDate4, null); // 加入年月日４
             TextBoxMedicalExaminationNote4.Text = ""; // 保険の記号・番号４
             TextBoxMedicalExaminationNote.Text = ""; // 診断以外で気づいた点
-            // 業務上の交通違反履歴
+                                                     // 業務上の交通違反履歴
             SetDateTimePicker(DateCarViolateDate1, null); // 発生年月日１
             TextBoxCarViolateContent1.Text = ""; // 交通違反内容１
             TextBoxCarViolatePlace1.Text = ""; // 場所１
@@ -674,7 +708,7 @@ namespace StaffRegister {
             SetDateTimePicker(DateCarViolateDate6, null); // 発生年月日６
             TextBoxCarViolateContent6.Text = ""; // 交通違反内容６
             TextBoxCarViolatePlace6.Text = ""; // 場所６
-            // 社内教育の実施状況
+                                               // 社内教育の実施状況
             SetDateTimePicker(DateEducateDate1, null); // 実施年月日１
             TextBoxEducateName1.Text = ""; // 実施対象理由１
             SetDateTimePicker(DateEducateDate2, null); // 実施年月日２
@@ -687,7 +721,7 @@ namespace StaffRegister {
             TextBoxEducateName5.Text = ""; // 実施対象理由５
             SetDateTimePicker(DateEducateDate6, null); // 実施年月日６
             TextBoxEducateName6.Text = ""; // 実施対象理由６
-            // 適性診断(NASVA)
+                                           // 適性診断(NASVA)
             ComboBoxProperKind1.SelectedIndex = -1; // 種類１
             SetDateTimePicker(DateProperDate1, null); // 実施年月日１
             TextBoxProperNote1.Text = ""; // 経験期間１
@@ -697,7 +731,7 @@ namespace StaffRegister {
             ComboBoxProperKind3.SelectedIndex = -1; // 種類３
             SetDateTimePicker(DateProperDate3, null); // 実施年月日３
             TextBoxProperNote3.Text = ""; // 経験期間３
-            // 賞罰・譴責
+                                          // 賞罰・譴責
             SetDateTimePicker(DatePunishmentDate1, null); // 実施年月日１
             TextBoxPunishmentNote1.Text = ""; // 内容１
             SetDateTimePicker(DatePunishmentDate2, null); // 実施年月日２

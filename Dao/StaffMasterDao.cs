@@ -20,156 +20,157 @@ namespace Dao {
         /// <returns></returns>
         public ExtendsStaffMasterVo SelectOneStaffMaster(int staffCode) {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
-            sqlCommand.CommandText = "SELECT staff.master.staff_code," +
-                                            "staff.master.belongs," +
-                                            "belongs_name," + // 外部結合で取得
-                                            "staff.master.vehicle_dispatch_target," +
-                                            "staff.master.job_form," +
-                                            "staff.master.occupation," +
-                                            "occupation_name," + // 外部結合で取得
-                                            "staff.master.name_kana," +
-                                            "staff.master.name," +
-                                            "staff.master.display_name," +
-                                            "staff.master.gender," +
-                                            "staff.master.birth_date," +
-                                            "staff.master.employment_date," +
-                                            "staff.master.code," +
-                                            "staff.master.current_address," +
-                                            "staff.master.before_change_address," +
-                                            "staff.master.telephone_number," +
-                                            "staff.master.cellphone_number," +
-                                            "staff.master.picture," +
-                                            "staff.master.blood_type," +
-                                            "staff.master.staff.master.selection_date," +
+            sqlCommand.CommandText = "SELECT staff_master.staff_code," +
+                                            "staff_master.belongs," +
+                                            "belongs_master.name AS belongs_name," + // 外部結合で取得
+                                            "staff_master.vehicle_dispatch_target," +
+                                            "staff_master.job_form," +
+                                            "staff_master.occupation," +
+                                            "occupation_master.name AS occupation_name," + // 外部結合で取得
+                                            "staff_master.name_kana," +
+                                            "staff_master.name," +
+                                            "staff_master.display_name," +
+                                            "staff_master.gender," +
+                                            "staff_master.birth_date," +
+                                            "staff_master.employment_date," +
+                                            "staff_master.code," +
+                                            "staff_master.current_address," +
+                                            "staff_master.before_change_address," +
+                                            "staff_master.telephone_number," +
+                                            "staff_master.cellphone_number," +
+                                            "staff_master.picture," +
+                                            "staff_master.blood_type," +
+                                            "staff_master.selection_date," +
                                             "not_selection_date," +
-                                            "staff.master.not_selection_reason," +
-                                            "staff.master.license_number," +
-                                            "staff.master.history_date_1," +
-                                            "staff.master.history_note_1," +
-                                            "staff.master.history_date_2," +
-                                            "staff.master.history_note_2," +
-                                            "staff.master.history_date_3," +
-                                            "staff.master.history_note_3," +
-                                            "staff.master.history_date_4," +
-                                            "staff.master.history_note_4," +
-                                            "staff.master.history_date_5," +
-                                            "staff.master.history_note_5," +
-                                            "staff.master.history_date_6," +
-                                            "staff.master.history_note_6," +
-                                            "staff.master.experience_kind_1," +
-                                            "staff.master.experience_load_1," +
-                                            "staff.master.experience_duration_1," +
-                                            "staff.master.experience_note_1," +
-                                            "staff.master.experience_kind_2," +
-                                            "staff.master.experience_load_2," +
-                                            "staff.master.experience_duration_2," +
-                                            "staff.master.experience_note_2," +
-                                            "staff.master.experience_kind_3," +
-                                            "staff.master.experience_load_3," +
-                                            "staff.master.experience_duration_3," +
-                                            "staff.master.experience_note_3," +
-                                            "staff.master.experience_kind_4," +
-                                            "staff.master.experience_load_4," +
-                                            "staff.master.experience_duration_4," +
-                                            "staff.master.experience_note_4," +
-                                            "staff.master.retirement_flag," +
-                                            "staff.master.retirement_date," +
-                                            "staff.master.retirement_note," +
-                                            "staff.master.death_date," +
-                                            "staff.master.death_note," +
-                                            "staff.master.family_name_1," +
-                                            "staff.master.family_birth_date_1," +
-                                            "staff.master.family_relationship_1," +
-                                            "staff.master.family_name_2," +
-                                            "staff.master.family_birth_date_2," +
-                                            "staff.master.family_relationship_2," +
-                                            "staff.master.family_name_3," +
-                                            "staff.master.family_birth_date_3," +
-                                            "staff.master.family_relationship_3," +
-                                            "staff.master.family_name_4," +
-                                            "staff.master.family_birth_date_4," +
-                                            "staff.master.family_relationship_4," +
-                                            "staff.master.family_name_5," +
-                                            "staff.master.family_birth_date_5," +
-                                            "staff.master.family_relationship_5," +
-                                            "staff.master.family_name_6," +
-                                            "staff.master.family_birth_date_6," +
-                                            "staff.master.family_relationship_6," +
-                                            "staff.master.urgent_telephone_number," +
-                                            "staff.master.urgent_telephone_method," +
-                                            "staff.master.health_insurance_date," +
-                                            "staff.master.health_insurance_number," +
-                                            "staff.master.health_insurance_note," +
-                                            "staff.master.welfare_pension_date," +
-                                            "staff.master.welfare_pension_number," +
-                                            "staff.master.welfare_pension_note," +
-                                            "staff.master.employment_insurance_date," +
-                                            "staff.master.employment_insurance_number," +
-                                            "staff.master.employment_insurance_note," +
-                                            "staff.master.worker_accident_insurance_date," +
-                                            "staff.master.worker_accident_insurance_number," +
-                                            "staff.master.worker_accident_insurance_note," +
-                                            "staff.master.medical_examination_date_1," +
-                                            "staff.master.medical_examination_note_1," +
-                                            "staff.master.medical_examination_date_2," +
-                                            "staff.master.medical_examination_note_2," +
-                                            "staff.master.medical_examination_date_3," +
-                                            "staff.master.medical_examination_note_3," +
-                                            "staff.master.medical_examination_date_4," +
-                                            "staff.master.medical_examination_note_4," +
-                                            "staff.master.medical_examination_note," +
-                                            "staff.master.car_violate_date_1," +
-                                            "staff.master.car_violate_content_1," +
-                                            "staff.master.car_violate_place_1," +
-                                            "staff.master.car_violate_date_2," +
-                                            "staff.master.car_violate_content_2," +
-                                            "staff.master.car_violate_place_2," +
-                                            "staff.master.car_violate_date_3," +
-                                            "staff.master.car_violate_content_3," +
-                                            "staff.master.car_violate_place_3," +
-                                            "staff.master.car_violate_date_4," +
-                                            "staff.master.car_violate_content_4," +
-                                            "staff.master.car_violate_place_4," +
-                                            "staff.master.car_violate_date_5," +
-                                            "staff.master.car_violate_content_5," +
-                                            "staff.master.car_violate_place_5," +
-                                            "staff.master.car_violate_date_6," +
-                                            "staff.master.car_violate_content_6," +
-                                            "staff.master.car_violate_place_6," +
-                                            "staff.master.educate_date_1," +
-                                            "staff.master.educate_name_1," +
-                                            "staff.master.educate_date_2," +
-                                            "staff.master.educate_name_2," +
-                                            "staff.master.educate_date_3," +
-                                            "staff.master.educate_name_3," +
-                                            "staff.master.educate_date_4," +
-                                            "staff.master.educate_name_4," +
-                                            "staff.master.educate_date_5," +
-                                            "staff.master.educate_name_5," +
-                                            "staff.master.educate_date_6," +
-                                            "staff.master.educate_name_6," +
-                                            "staff.master.proper_kind_1," +
-                                            "staff.master.proper_date_1," +
-                                            "staff.master.proper_note_1," +
-                                            "staff.master.proper_kind_2," +
-                                            "staff.master.proper_date_2," +
-                                            "staff.master.proper_note_2," +
-                                            "staff.master.proper_kind_3," +
-                                            "staff.master.proper_date_3," +
-                                            "staff.master.proper_note_3," +
-                                            "staff.master.punishment_date_1," +
-                                            "staff.master.punishment_note_1," +
-                                            "staff.master.punishment_date_2," +
-                                            "staff.master.punishment_note_2," +
-                                            "staff.master.punishment_date_3," +
-                                            "staff.master.punishment_note_3," +
-                                            "staff.master.punishment_date_4," +
-                                            "staff.master.punishment_note_4," +
-                                            "staff.master.insert_ymd_hms," +
-                                            "staff.master.update_ymd_hms," +
-                                            "staff.master.delete_ymd_hms," +
-                                            "staff.master.delete_flag " +
-                                     "FROM staff_master " +
+                                            "staff_master.not_selection_reason," +
+                                            "staff_master.license_number," +
+                                            "staff_master.history_date_1," +
+                                            "staff_master.history_note_1," +
+                                            "staff_master.history_date_2," +
+                                            "staff_master.history_note_2," +
+                                            "staff_master.history_date_3," +
+                                            "staff_master.history_note_3," +
+                                            "staff_master.history_date_4," +
+                                            "staff_master.history_note_4," +
+                                            "staff_master.history_date_5," +
+                                            "staff_master.history_note_5," +
+                                            "staff_master.history_date_6," +
+                                            "staff_master.history_note_6," +
+                                            "staff_master.experience_kind_1," +
+                                            "staff_master.experience_load_1," +
+                                            "staff_master.experience_duration_1," +
+                                            "staff_master.experience_note_1," +
+                                            "staff_master.experience_kind_2," +
+                                            "staff_master.experience_load_2," +
+                                            "staff_master.experience_duration_2," +
+                                            "staff_master.experience_note_2," +
+                                            "staff_master.experience_kind_3," +
+                                            "staff_master.experience_load_3," +
+                                            "staff_master.experience_duration_3," +
+                                            "staff_master.experience_note_3," +
+                                            "staff_master.experience_kind_4," +
+                                            "staff_master.experience_load_4," +
+                                            "staff_master.experience_duration_4," +
+                                            "staff_master.experience_note_4," +
+                                            "staff_master.retirement_flag," +
+                                            "staff_master.retirement_date," +
+                                            "staff_master.retirement_note," +
+                                            "staff_master.death_date," +
+                                            "staff_master.death_note," +
+                                            "staff_master.family_name_1," +
+                                            "staff_master.family_birth_date_1," +
+                                            "staff_master.family_relationship_1," +
+                                            "staff_master.family_name_2," +
+                                            "staff_master.family_birth_date_2," +
+                                            "staff_master.family_relationship_2," +
+                                            "staff_master.family_name_3," +
+                                            "staff_master.family_birth_date_3," +
+                                            "staff_master.family_relationship_3," +
+                                            "staff_master.family_name_4," +
+                                            "staff_master.family_birth_date_4," +
+                                            "staff_master.family_relationship_4," +
+                                            "staff_master.family_name_5," +
+                                            "staff_master.family_birth_date_5," +
+                                            "staff_master.family_relationship_5," +
+                                            "staff_master.family_name_6," +
+                                            "staff_master.family_birth_date_6," +
+                                            "staff_master.family_relationship_6," +
+                                            "staff_master.urgent_telephone_number," +
+                                            "staff_master.urgent_telephone_method," +
+                                            "staff_master.health_insurance_date," +
+                                            "staff_master.health_insurance_number," +
+                                            "staff_master.health_insurance_note," +
+                                            "staff_master.welfare_pension_date," +
+                                            "staff_master.welfare_pension_number," +
+                                            "staff_master.welfare_pension_note," +
+                                            "staff_master.employment_insurance_date," +
+                                            "staff_master.employment_insurance_number," +
+                                            "staff_master.employment_insurance_note," +
+                                            "staff_master.worker_accident_insurance_date," +
+                                            "staff_master.worker_accident_insurance_number," +
+                                            "staff_master.worker_accident_insurance_note," +
+                                            "staff_master.medical_examination_date_1," +
+                                            "staff_master.medical_examination_note_1," +
+                                            "staff_master.medical_examination_date_2," +
+                                            "staff_master.medical_examination_note_2," +
+                                            "staff_master.medical_examination_date_3," +
+                                            "staff_master.medical_examination_note_3," +
+                                            "staff_master.medical_examination_date_4," +
+                                            "staff_master.medical_examination_note_4," +
+                                            "staff_master.medical_examination_note," +
+                                            "staff_master.car_violate_date_1," +
+                                            "staff_master.car_violate_content_1," +
+                                            "staff_master.car_violate_place_1," +
+                                            "staff_master.car_violate_date_2," +
+                                            "staff_master.car_violate_content_2," +
+                                            "staff_master.car_violate_place_2," +
+                                            "staff_master.car_violate_date_3," +
+                                            "staff_master.car_violate_content_3," +
+                                            "staff_master.car_violate_place_3," +
+                                            "staff_master.car_violate_date_4," +
+                                            "staff_master.car_violate_content_4," +
+                                            "staff_master.car_violate_place_4," +
+                                            "staff_master.car_violate_date_5," +
+                                            "staff_master.car_violate_content_5," +
+                                            "staff_master.car_violate_place_5," +
+                                            "staff_master.car_violate_date_6," +
+                                            "staff_master.car_violate_content_6," +
+                                            "staff_master.car_violate_place_6," +
+                                            "staff_master.educate_date_1," +
+                                            "staff_master.educate_name_1," +
+                                            "staff_master.educate_date_2," +
+                                            "staff_master.educate_name_2," +
+                                            "staff_master.educate_date_3," +
+                                            "staff_master.educate_name_3," +
+                                            "staff_master.educate_date_4," +
+                                            "staff_master.educate_name_4," +
+                                            "staff_master.educate_date_5," +
+                                            "staff_master.educate_name_5," +
+                                            "staff_master.educate_date_6," +
+                                            "staff_master.educate_name_6," +
+                                            "staff_master.proper_kind_1," +
+                                            "staff_master.proper_date_1," +
+                                            "staff_master.proper_note_1," +
+                                            "staff_master.proper_kind_2," +
+                                            "staff_master.proper_date_2," +
+                                            "staff_master.proper_note_2," +
+                                            "staff_master.proper_kind_3," +
+                                            "staff_master.proper_date_3," +
+                                            "staff_master.proper_note_3," +
+                                            "staff_master.punishment_date_1," +
+                                            "staff_master.punishment_note_1," +
+                                            "staff_master.punishment_date_2," +
+                                            "staff_master.punishment_note_2," +
+                                            "staff_master.punishment_date_3," +
+                                            "staff_master.punishment_note_3," +
+                                            "staff_master.punishment_date_4," +
+                                            "staff_master.punishment_note_4," +
+                                            "staff_master.insert_ymd_hms," +
+                                            "staff_master.update_ymd_hms," +
+                                            "staff_master.delete_ymd_hms," +
+                                            "staff_master.delete_flag " +
+                                     "FROM staff_master LEFT OUTER JOIN belongs_master ON staff_master.belongs = belongs_master.code " +
+                                                       "LEFT OUTER JOIN occupation_master ON staff_master.occupation = occupation_master.code " +
                                      "WHERE staff_code = " + staffCode;
             ExtendsStaffMasterVo extendsStaffMasterVo = new ExtendsStaffMasterVo();
             using (var sqlDataReader = sqlCommand.ExecuteReader()) {
@@ -734,7 +735,7 @@ namespace Dao {
         /// <returns></returns>
         public int InsertOneStaffMaster(StaffMasterVo staffMasterVo) {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
-            sqlCommand.CommandText = "INSERT INTO staff_ledger(staff_code," +
+            sqlCommand.CommandText = "INSERT INTO staff_master(staff_code," +
                                                               "belongs," +
                                                               "vehicle_dispatch_target," +
                                                               "job_form," +
@@ -1045,7 +1046,7 @@ namespace Dao {
         /// <returns></returns>
         public int UpdateOneStaffLedger(StaffMasterVo staffMasterVo) {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
-            sqlCommand.CommandText = "UPDATE staff_ledger " +
+            sqlCommand.CommandText = "UPDATE staff_master " +
                                      "SET staff_code = '" + staffMasterVo.Staff_code + "'," +
                                          "belongs = '" + staffMasterVo.Belongs + "'," +
                                          "vehicle_dispatch_target = '" + staffMasterVo.Vehicle_dispatch_target + "'," +
@@ -1210,7 +1211,7 @@ namespace Dao {
         public int GetStaffCode(int staffCode) {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT MAX(staff_code) " +
-                                     "FROM staff_ledger " +
+                                     "FROM staff_master " +
                                      "WHERE staff_code < '" + staffCode + "'";
             try {
                 return (int)sqlCommand.ExecuteScalar();
