@@ -112,9 +112,11 @@ namespace Staff {
                     break;
             }
 
-            // 個人情報１
-            TextBoxStaffDbCd.Text = string.Format("{0:#}", extendsStaffMasterVo.Staff_code); // 社員CD
-            TextBoxStaffCd.Text = string.Format("{0:#}", extendsStaffMasterVo.Code); // 組合CD
+            /*
+             * 個人情報１
+             */
+            TextBoxStaffCode.Text = string.Format("{0:#}", extendsStaffMasterVo.Staff_code); // 社員CD
+            TextBoxCode.Text = string.Format("{0:#}", extendsStaffMasterVo.Code); // 組合CD
             TextBoxNameKana.Text = extendsStaffMasterVo.Name_kana; // フリガナ
             TextBoxName.Text = extendsStaffMasterVo.Name; // 氏名
             TextBoxDisplayName.Text = extendsStaffMasterVo.Display_name; // 略称名
@@ -123,7 +125,7 @@ namespace Staff {
             ComboBoxGender.Text = extendsStaffMasterVo.Gender; // 性別
             ComboBoxBloodType.Text = extendsStaffMasterVo.Blood_type; // 血液型
             TextBoxCurrentAddress.Text = extendsStaffMasterVo.Current_address; // 現住所
-            TextBoxBeforeChangeAddress.Text = extendsStaffMasterVo.Before_change_address; // 変更後住所
+            TextBoxRemarks.Text = extendsStaffMasterVo.Remarks; // その他備考
             TextBoxTelephoneNumber.Text = extendsStaffMasterVo.Telephone_number; // 電話番号(自宅)
             TextBoxCellphoneNumber.Text = extendsStaffMasterVo.Cellphone_number; // 電話番号(携帯電話)
             if (extendsStaffMasterVo.Picture.Length == 0) {  // 写真
@@ -131,7 +133,9 @@ namespace Staff {
             } else {
                 PictureBoxPicture.Image = (Image?)new ImageConverter().ConvertFrom(extendsStaffMasterVo.Picture);
             }
-            // 運転に関する情報
+            /*
+             * 運転に関する情報
+             */
             DateSelectionDate.Value = extendsStaffMasterVo.Selection_date; // 運転者に選任された日
             DateNotSelectionDate.Value = extendsStaffMasterVo.Not_selection_date; // 運転者でなくなった日
             TextBoxNotSelectionReason.Text = extendsStaffMasterVo.Not_selection_reason; // 理由
@@ -140,21 +144,23 @@ namespace Staff {
              */
             if (extendsStaffMasterVo.License_number != "") {
                 TextBoxLicenseNumber.Text = extendsStaffMasterVo.License_number; // 免許証番号
-                ComboBoxLicenseCondition.Text = extendsStaffMasterVo.LicenseLedgerVo.License_condition; // 条件
+                ComboBoxLicenseCondition.Text = extendsStaffMasterVo.LicenseMasterVo.License_condition; // 条件
                 string kind = "";
-                if (extendsStaffMasterVo.LicenseLedgerVo.Large)
+                if (extendsStaffMasterVo.LicenseMasterVo.Large)
                     kind += "(大型)";
-                if (extendsStaffMasterVo.LicenseLedgerVo.Medium)
+                if (extendsStaffMasterVo.LicenseMasterVo.Medium)
                     kind += "(中型)";
-                if (extendsStaffMasterVo.LicenseLedgerVo.Quasi_medium)
+                if (extendsStaffMasterVo.LicenseMasterVo.Quasi_medium)
                     kind += "(準中型)";
-                if (extendsStaffMasterVo.LicenseLedgerVo.Ordinary)
+                if (extendsStaffMasterVo.LicenseMasterVo.Ordinary)
                     kind += "(普通)";
                 TextBoxLicenseType1.Text = kind; // 免許証の種類１
-                DateLicenseTypeDate1.Value = extendsStaffMasterVo.LicenseLedgerVo.Delivery_date; // 免許証の取得日１
-                DateLicenseTypeExpirationDate1.Value = extendsStaffMasterVo.LicenseLedgerVo.Expiration_date; // 免許証の有効期限１
+                DateLicenseTypeDate1.Value = extendsStaffMasterVo.LicenseMasterVo.Delivery_date; // 免許証の取得日１
+                DateLicenseTypeExpirationDate1.Value = extendsStaffMasterVo.LicenseMasterVo.Expiration_date; // 免許証の有効期限１
             }
-            // 履歴
+            /*
+             * 履歴
+             */
             DateHistoryDate1.Value = extendsStaffMasterVo.History_date_1; // 履歴年月日１
             TextBoxHistoryNote1.Text = extendsStaffMasterVo.History_note_1; // 履歴内容１
             DateHistoryDate2.Value = extendsStaffMasterVo.History_date_2; // 履歴年月日２
@@ -167,7 +173,9 @@ namespace Staff {
             TextBoxHistoryNote5.Text = extendsStaffMasterVo.History_note_5; // 履歴内容５
             DateHistoryDate6.Value = extendsStaffMasterVo.History_date_6; // 履歴年月日６
             TextBoxHistoryNote6.Text = extendsStaffMasterVo.History_note_6; // 履歴内容６
-            // 過去に運転経験のある自動車の種類・経験期間等
+            /*
+             * 過去に運転経験のある自動車の種類・経験期間等
+             */
             ComboBoxExperienceKind1.Text = extendsStaffMasterVo.Experience_kind_1; // 種類１
             TextBoxExperienceLoad1.Text = extendsStaffMasterVo.Experience_load_1; // 積載量又は定員１
             TextBoxExperienceDuration1.Text = extendsStaffMasterVo.Experience_duration_1; // 経験期間１
@@ -184,14 +192,18 @@ namespace Staff {
             TextBoxExperienceLoad4.Text = extendsStaffMasterVo.Experience_load_4; // 積載量又は定員４
             TextBoxExperienceDuration4.Text = extendsStaffMasterVo.Experience_duration_4; // 経験期間４
             TextBoxExperienceNote4.Text = extendsStaffMasterVo.Experience_note_4; // 備考４
-            // 解雇・退職の日付と理由
+            /*
+             * 解雇・退職の日付と理由
+             */
             CheckBoxRetirementFlag.Checked = extendsStaffMasterVo.Retirement_flag; // 解雇又は退職のフラグ
             DateRetirementDate.Value = extendsStaffMasterVo.Retirement_date; // 解雇又は退職の年月日
             TextBoxRetirementNote.Text = extendsStaffMasterVo.Retirement_note; // 解雇又は退職の理由
             DateDeathDate.Value = extendsStaffMasterVo.Death_date; // 上記理由が死亡の場合その年月日
             TextBoxDeathNote.Text = extendsStaffMasterVo.Death_note; // 上記理由が死亡の場合その原因
 
-            // 家族状況
+            /*
+             * 家族状況
+             */
             TextBoxFamilyName1.Text = extendsStaffMasterVo.Family_name_1; // 家族氏名１
             DateFamilyBirthDate1.Value = extendsStaffMasterVo.Family_birth_date_1; // 生年月日１
             ComboBoxFamilyRelationship1.Text = extendsStaffMasterVo.Family_relationship_1; // 続柄１
@@ -212,7 +224,9 @@ namespace Staff {
             ComboBoxFamilyRelationship6.Text = extendsStaffMasterVo.Family_relationship_6; // 続柄６
             TextBoxUrgentTelephoneNumber.Text = extendsStaffMasterVo.Urgent_telephone_number; // 緊急時連絡方法１
             TextBoxUrgentTelephoneMethod.Text = extendsStaffMasterVo.Urgent_telephone_method; // 緊急時連絡方法２
-            // 保険関係
+            /*
+             * 保険関係
+             */
             DateHealthInsuranceDate.Value = extendsStaffMasterVo.Health_insurance_date; // (健康保険)加入年月日
             ComboBoxHealthInsuranceNumber.Text = extendsStaffMasterVo.Health_insurance_number; // (健康保険)保険の記号・番号
             TextBoxHealthInsuranceNote.Text = extendsStaffMasterVo.Health_insurance_note; // (健康保険)備考
@@ -225,7 +239,9 @@ namespace Staff {
             DateWorkerAccidentInsuranceDate.Value = extendsStaffMasterVo.Worker_accident_insurance_date; // (労災保険)加入年月日
             TextBoxWorkerAccidentInsuranceNumber.Text = extendsStaffMasterVo.Worker_accident_insurance_number; // (労災保険)保険の記号・番号
             TextBoxWorkerAccidentInsuranceNote.Text = extendsStaffMasterVo.Worker_accident_insurance_note; // (労災保険)備考
-            // 健康状態(健康診断等の実施結果による特記すべき事項)　※運転の可否に十分に留意すること
+            /*
+             * 健康状態(健康診断等の実施結果による特記すべき事項)　※運転の可否に十分に留意すること
+             */
             DateMedicalExaminationDate1.Value = extendsStaffMasterVo.Medical_examination_date_1; // 加入年月日１
             ComboBoxMedicalExaminationNote1.Text = extendsStaffMasterVo.Medical_examination_note_1; // 保険の記号・番号１
             DateMedicalExaminationDate2.Value = extendsStaffMasterVo.Medical_examination_date_2; // 加入年月日２
@@ -235,7 +251,9 @@ namespace Staff {
             DateMedicalExaminationDate4.Value = extendsStaffMasterVo.Medical_examination_date_4; // 加入年月日４
             TextBoxMedicalExaminationNote4.Text = extendsStaffMasterVo.Medical_examination_note_4; // 保険の記号・番号４
             TextBoxMedicalExaminationNote.Text = extendsStaffMasterVo.Medical_examination_note; // 診断以外で気づいた点
-            // 業務上の交通違反履歴
+            /*
+             * 業務上の交通違反履歴
+             */
             DateCarViolateDate1.Value = extendsStaffMasterVo.Car_violate_date_1; // 発生年月日１
             TextBoxCarViolateContent1.Text = extendsStaffMasterVo.Car_violate_content_1; // 交通違反内容１
             TextBoxCarViolatePlace1.Text = extendsStaffMasterVo.Car_violate_place_1; // 場所１
@@ -254,7 +272,9 @@ namespace Staff {
             DateCarViolateDate6.Value = extendsStaffMasterVo.Car_violate_date_6; // 発生年月日６
             TextBoxCarViolateContent6.Text = extendsStaffMasterVo.Car_violate_content_6; // 交通違反内容６
             TextBoxCarViolatePlace6.Text = extendsStaffMasterVo.Car_violate_place_6; // 場所６
-            // 社内教育の実施状況
+            /*
+             * 社内教育の実施状況
+             */
             DateEducateDate1.Value = extendsStaffMasterVo.Educate_date_1; // 実施年月日１
             TextBoxEducateName1.Text = extendsStaffMasterVo.Educate_name_1; // 実施対象理由１
             DateEducateDate2.Value = extendsStaffMasterVo.Educate_date_2; // 実施年月日２
@@ -267,7 +287,9 @@ namespace Staff {
             TextBoxEducateName5.Text = extendsStaffMasterVo.Educate_name_5; // 実施対象理由５
             DateEducateDate6.Value = extendsStaffMasterVo.Educate_date_6; // 実施年月日６
             TextBoxEducateName6.Text = extendsStaffMasterVo.Educate_name_6; // 実施対象理由６
-            // 適性診断(NASVA)
+            /*
+             * 適性診断(NASVA)
+             */
             ComboBoxProperKind1.Text = extendsStaffMasterVo.Proper_kind_1; // 種類１
             DateProperDate1.Value = extendsStaffMasterVo.Proper_date_1; // 実施年月日１
             TextBoxProperNote1.Text = extendsStaffMasterVo.Proper_note_1; // 経験期間１
@@ -277,7 +299,9 @@ namespace Staff {
             ComboBoxProperKind3.Text = extendsStaffMasterVo.Proper_kind_3; // 種類３
             DateProperDate3.Value = extendsStaffMasterVo.Proper_date_3; // 実施年月日３
             TextBoxProperNote3.Text = extendsStaffMasterVo.Proper_note_3; // 経験期間３
-            // 賞罰・譴責
+            /*
+             * 賞罰・譴責
+             */
             DatePunishmentDate1.Value = extendsStaffMasterVo.Punishment_date_1; // 実施年月日１
             TextBoxPunishmentNote1.Text = extendsStaffMasterVo.Punishment_note_1; // 内容１
             DatePunishmentDate2.Value = extendsStaffMasterVo.Punishment_date_2; // 実施年月日２
@@ -295,15 +319,19 @@ namespace Staff {
         /// <param name="e"></param>
         private void ButtonUpdate_Click(object sender, EventArgs e) {
             // 入力項目をチェックする
-            if (TextBoxStaffDbCd.Text.Length < 1) {
-                errorProvider.SetError(TextBoxStaffDbCd, "社員CDを入力して下さい");
+            if (ComboBoxBelongs.Text.Length < 1) {
+                errorProvider.SetError(ComboBoxBelongs, "所属を選択して下さい");
+                return; // メソッドを出る
+            }
+            if (TextBoxStaffCode.Text.Length < 1) {
+                errorProvider.SetError(TextBoxStaffCode, "社員CDを入力して下さい");
                 return; // メソッドを出る
             } else {
                 // ErrorProviderをクリアします。
                 errorProvider.Clear();
             }
 
-            var dialogResult = MessageBox.Show(MessageText.Message102, MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            var dialogResult = MessageBox.Show(MessageText.Message401, MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             switch (dialogResult) {
                 case DialogResult.OK:
                     // StaffLedgerVoに値をセット
@@ -380,8 +408,8 @@ namespace Staff {
             /*
              * 個人情報１
              */
-            staffMasterVo.Staff_code = int.Parse(TextBoxStaffDbCd.Text); // 社員CD
-            staffMasterVo.Code = TextBoxStaffCd.Text != "" ? int.Parse(TextBoxStaffCd.Text) : 0; // 組合CD
+            staffMasterVo.Staff_code = int.Parse(TextBoxStaffCode.Text); // 社員CD
+            staffMasterVo.Code = TextBoxCode.Text != "" ? int.Parse(TextBoxCode.Text) : 0; // 組合CD
             staffMasterVo.Name_kana = TextBoxNameKana.Text; // フリガナ
             staffMasterVo.Name = TextBoxName.Text; // 氏名
             staffMasterVo.Display_name = TextBoxDisplayName.Text; // 略称名
@@ -390,7 +418,7 @@ namespace Staff {
             staffMasterVo.Gender = ComboBoxGender.Text; // 性別
             staffMasterVo.Blood_type = ComboBoxBloodType.Text; // 血液型
             staffMasterVo.Current_address = TextBoxCurrentAddress.Text; // 現住所
-            staffMasterVo.Before_change_address = TextBoxBeforeChangeAddress.Text; // 変更後住所
+            staffMasterVo.Remarks = TextBoxRemarks.Text; // 変更後住所
             staffMasterVo.Telephone_number = TextBoxTelephoneNumber.Text; // 電話番号(自宅)
             staffMasterVo.Cellphone_number = TextBoxCellphoneNumber.Text; // 電話番号(携帯電話)
             staffMasterVo.Picture = (byte[]?)new ImageConverter().ConvertTo(PictureBoxPicture.Image, typeof(byte[])); // 写真
@@ -574,8 +602,8 @@ namespace Staff {
                                                // 業務区分(組合員・アルバイト)
                                                // 業務区分(社員)
                                                // 個人情報１
-            TextBoxStaffDbCd.Text = ""; // 社員CD
-            TextBoxStaffCd.Text = ""; // 組合CD
+            TextBoxStaffCode.Text = ""; // 社員CD
+            TextBoxCode.Text = ""; // 組合CD
             TextBoxNameKana.Text = ""; // フリガナ
             TextBoxName.Text = ""; // 氏名
             TextBoxDisplayName.Text = ""; // 略称名
@@ -584,7 +612,7 @@ namespace Staff {
             ComboBoxGender.SelectedIndex = 0; // 性別
                                               // 血液型
             TextBoxCurrentAddress.Text = ""; // 現住所
-            TextBoxBeforeChangeAddress.Text = ""; // 変更後住所
+            TextBoxRemarks.Text = ""; // 変更後住所
             TextBoxTelephoneNumber.Text = ""; // 電話番号(自宅)
             TextBoxCellphoneNumber.Text = ""; // 電話番号(携帯電話)
             PictureBoxPicture.Image = null; // 写真
@@ -864,7 +892,7 @@ namespace Staff {
                     newStaffCode++;
                     break;
             }
-            TextBoxStaffDbCd.Text = newStaffCode.ToString();
+            TextBoxStaffCode.Text = newStaffCode.ToString();
         }
 
         /*
@@ -933,6 +961,7 @@ namespace Staff {
         /// <param name="e"></param>
         private void ToolStripMenuItemExit_Click(object sender, EventArgs e) {
             Close();
+            Dispose();
         }
 
         /// <summary>
@@ -941,16 +970,16 @@ namespace Staff {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void StaffRegisterDetail_FormClosing(object sender, FormClosingEventArgs e) {
-            var dialogResult = MessageBox.Show(MessageText.Message102, MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            switch (dialogResult) {
-                case DialogResult.OK:
-                    e.Cancel = false;
-                    Dispose();
-                    break;
-                case DialogResult.Cancel:
-                    e.Cancel = true;
-                    break;
-            }
+            //var dialogResult = MessageBox.Show(MessageText.Message102, MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            //switch (dialogResult) {
+            //    case DialogResult.OK:
+            //        e.Cancel = false;
+            //        Dispose();
+            //        break;
+            //    case DialogResult.Cancel:
+            //        e.Cancel = true;
+            //        break;
+            //}
         }
     }
 }

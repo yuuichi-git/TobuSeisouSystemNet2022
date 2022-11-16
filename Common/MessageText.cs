@@ -16,6 +16,10 @@
         public const string Message301 = "対象日の配車データが存在します。初期化すると配車データが削除されます。よろしいですか？";
         public const string Message302 = "対象日の配車データが存在しません。本番登録の初期化をしてください。";
         /*
+         * 
+         */
+        public const string Message401 = "変更を登録します。よろしいですか？";
+        /*
          * SQL Connection
          */
         public const string Message501 = "Throw Message";

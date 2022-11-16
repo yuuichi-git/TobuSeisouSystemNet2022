@@ -207,7 +207,7 @@ namespace Dao {
         /// <returns></returns>
         public int InsertOneLicenseMaster(LicenseMasterVo licenseMasterVo) {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
-            sqlCommand.CommandText = "INSERT INTO license_ledger(staff_code," +
+            sqlCommand.CommandText = "INSERT INTO license_master(staff_code," +
                                                                 "name_kana," +
                                                                 "name," +
                                                                 "birth_date," +
@@ -289,7 +289,7 @@ namespace Dao {
         /// <returns></returns>
         public int UpdateOneLicenseLedger(LicenseMasterVo licenseMasterVo) {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
-            sqlCommand.CommandText = "UPDATE license_ledger " +
+            sqlCommand.CommandText = "UPDATE license_master " +
                                      "SET staff_code = '" + licenseMasterVo.Staff_code + "'," +
                                          "name_kana = '" + licenseMasterVo.Name_kana + "'," +
                                          "name = '" + licenseMasterVo.Name + "'," +

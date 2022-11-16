@@ -54,13 +54,28 @@ namespace Common {
         }
 
         /// <summary>
-        /// StaffList
+        /// StaffDetail
         /// </summary>
         /// <param name="form"></param>
         /// <returns></returns>
         public Form StaffDetail(Form form) {
             form.KeyPreview = true;
             GetWorkingArea(form);
+            return form;
+        }
+
+        /// <summary>
+        /// StaffPaper
+        /// </summary>
+        /// <param name="form"></param>
+        /// <returns></returns>
+        public Form StaffPaper(Form form) {
+            form.Height = Screen.GetWorkingArea(form).Height;
+            form.KeyPreview = true;
+            form.StartPosition = FormStartPosition.CenterScreen;
+            form.Width = 1650;
+
+            form.Text = string.Concat(form.Text, "　(", form.Width, "×", form.Height, ")");
             return form;
         }
 

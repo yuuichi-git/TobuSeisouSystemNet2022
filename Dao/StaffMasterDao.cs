@@ -190,7 +190,7 @@ namespace Dao {
                     extendsStaffMasterVo.Employment_date = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["employment_date"]);
                     extendsStaffMasterVo.Code = _defaultValue.GetDefaultValue<int>(sqlDataReader["code"]);
                     extendsStaffMasterVo.Current_address = _defaultValue.GetDefaultValue<string>(sqlDataReader["current_address"]);
-                    extendsStaffMasterVo.Before_change_address = _defaultValue.GetDefaultValue<string>(sqlDataReader["before_change_address"]);
+                    extendsStaffMasterVo.Remarks = _defaultValue.GetDefaultValue<string>(sqlDataReader["before_change_address"]);
                     extendsStaffMasterVo.Telephone_number = _defaultValue.GetDefaultValue<string>(sqlDataReader["telephone_number"]);
                     extendsStaffMasterVo.Cellphone_number = _defaultValue.GetDefaultValue<string>(sqlDataReader["cellphone_number"]);
                     extendsStaffMasterVo.Picture = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["picture"]);
@@ -325,7 +325,7 @@ namespace Dao {
                     extendsStaffMasterVo.Delete_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["delete_ymd_hms"]);
                     extendsStaffMasterVo.Delete_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["delete_flag"]);
 
-                    extendsStaffMasterVo.LicenseLedgerVo = new LicenseMasterDao(_connectionVo).SelectOneLicenseMaster(staffCode);
+                    extendsStaffMasterVo.LicenseMasterVo = new LicenseMasterDao(_connectionVo).SelectOneLicenseMaster(staffCode);
                 }
             }
             return extendsStaffMasterVo;
@@ -506,7 +506,7 @@ namespace Dao {
                     staffMasterVo.Employment_date = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["employment_date"]);
                     staffMasterVo.Code = _defaultValue.GetDefaultValue<int>(sqlDataReader["code"]);
                     staffMasterVo.Current_address = _defaultValue.GetDefaultValue<string>(sqlDataReader["current_address"]);
-                    staffMasterVo.Before_change_address = _defaultValue.GetDefaultValue<string>(sqlDataReader["before_change_address"]);
+                    staffMasterVo.Remarks = _defaultValue.GetDefaultValue<string>(sqlDataReader["before_change_address"]);
                     staffMasterVo.Telephone_number = _defaultValue.GetDefaultValue<string>(sqlDataReader["telephone_number"]);
                     staffMasterVo.Cellphone_number = _defaultValue.GetDefaultValue<string>(sqlDataReader["cellphone_number"]);
                     //staffLedgerVo.Picture = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["picture"]);
@@ -659,6 +659,7 @@ namespace Dao {
                                             "staff_master.vehicle_dispatch_target," +
                                             "staff_master.job_form," +
                                             "staff_master.occupation," +
+                                            "staff_master.code," +
                                             "staff_master.name," +
                                             "staff_master.display_name," +
                                             "staff_master.name_kana," +
@@ -698,12 +699,13 @@ namespace Dao {
                     extendsStaffMasterVo.Vehicle_dispatch_target = _defaultValue.GetDefaultValue<bool>(sqlDataReader["vehicle_dispatch_target"]);
                     extendsStaffMasterVo.Job_form = _defaultValue.GetDefaultValue<int>(sqlDataReader["job_form"]);
                     extendsStaffMasterVo.Occupation = _defaultValue.GetDefaultValue<int>(sqlDataReader["occupation"]);
+                    extendsStaffMasterVo.Code = _defaultValue.GetDefaultValue<int>(sqlDataReader["code"]);
                     extendsStaffMasterVo.Name = _defaultValue.GetDefaultValue<string>(sqlDataReader["name"]);
                     extendsStaffMasterVo.Display_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["display_name"]);
                     extendsStaffMasterVo.Name_kana = _defaultValue.GetDefaultValue<string>(sqlDataReader["name_kana"]);
                     extendsStaffMasterVo.ToukanpoTrainingCardFlag = sqlDataReader["toukanpo_staff_code"] == DBNull.Value ? false : true;
-                    extendsStaffMasterVo.LicenseLedgerNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["license_number"]);
-                    extendsStaffMasterVo.LicenseLedgerExpirationDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["license_expiration_date"]);
+                    extendsStaffMasterVo.LicenseMasterNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["license_number"]);
+                    extendsStaffMasterVo.LicenseMasterExpirationDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["license_expiration_date"]);
                     extendsStaffMasterVo.CommutingNotification = _defaultValue.GetDefaultValue<bool>(sqlDataReader["commuting_notification"]);
                     extendsStaffMasterVo.MeansOfCommutingEndDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["means_of_commuting_end_date"]);
                     extendsStaffMasterVo.Birth_date = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["birth_date"]);
@@ -714,7 +716,7 @@ namespace Dao {
                     extendsStaffMasterVo.Proper_date_2 = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["proper_date_2"]);
                     extendsStaffMasterVo.Proper_kind_3 = _defaultValue.GetDefaultValue<string>(sqlDataReader["proper_kind_3"]);
                     extendsStaffMasterVo.Proper_date_3 = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["proper_date_3"]);
-                    extendsStaffMasterVo.CarAccidentLedgerCount = (int)sqlDataReader["car_accident_count"];
+                    extendsStaffMasterVo.CarAccidentMasterCount = (int)sqlDataReader["car_accident_count"];
                     extendsStaffMasterVo.Medical_examination_date_1 = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["medical_examination_date_1"]);
                     extendsStaffMasterVo.Current_address = _defaultValue.GetDefaultValue<string>(sqlDataReader["current_address"]);
                     extendsStaffMasterVo.Health_insurance_number = _defaultValue.GetDefaultValue<string>(sqlDataReader["health_insurance_number"]);
@@ -882,20 +884,20 @@ namespace Dao {
                                                               "update_ymd_hms," +
                                                               "delete_ymd_hms," +
                                                               "delete_flag) " +
-                                     "VALUES ('" + staffMasterVo.Staff_code + "'," +
-                                             "'" + staffMasterVo.Belongs + "'," +
+                                     "VALUES (" + staffMasterVo.Staff_code + "," +
+                                             "" + staffMasterVo.Belongs + "," +
                                              "'" + staffMasterVo.Vehicle_dispatch_target + "'," +
-                                             "'" + staffMasterVo.Job_form + "'," +
-                                             "'" + staffMasterVo.Occupation + "'," +
+                                             "" + staffMasterVo.Job_form + "," +
+                                             "" + staffMasterVo.Occupation + "," +
                                              "'" + staffMasterVo.Name_kana + "'," +
                                              "'" + staffMasterVo.Name + "'," +
                                              "'" + staffMasterVo.Display_name + "'," +
                                              "'" + staffMasterVo.Gender + "'," +
                                              "'" + staffMasterVo.Birth_date + "'," +
                                              "'" + staffMasterVo.Employment_date + "'," +
-                                             "'" + staffMasterVo.Code + "'," +
+                                             "" + staffMasterVo.Code + "," +
                                              "'" + staffMasterVo.Current_address + "'," +
-                                             "'" + staffMasterVo.Before_change_address + "'," +
+                                             "'" + staffMasterVo.Remarks + "'," +
                                              "'" + staffMasterVo.Telephone_number + "'," +
                                              "'" + staffMasterVo.Cellphone_number + "'," +
                                              "@member_picture," +
@@ -1047,20 +1049,20 @@ namespace Dao {
         public int UpdateOneStaffLedger(StaffMasterVo staffMasterVo) {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "UPDATE staff_master " +
-                                     "SET staff_code = '" + staffMasterVo.Staff_code + "'," +
-                                         "belongs = '" + staffMasterVo.Belongs + "'," +
+                                     "SET staff_code = " + staffMasterVo.Staff_code + "," +
+                                         "belongs = " + staffMasterVo.Belongs + "," +
                                          "vehicle_dispatch_target = '" + staffMasterVo.Vehicle_dispatch_target + "'," +
-                                         "job_form = '" + staffMasterVo.Job_form + "'," +
-                                         "occupation = '" + staffMasterVo.Occupation + "'," +
+                                         "job_form = " + staffMasterVo.Job_form + "," +
+                                         "occupation = " + staffMasterVo.Occupation + "," +
                                          "name_kana = '" + staffMasterVo.Name_kana + "'," +
                                          "name = '" + staffMasterVo.Name + "'," +
                                          "display_name = '" + staffMasterVo.Display_name + "'," +
                                          "gender = '" + staffMasterVo.Gender + "'," +
                                          "birth_date = '" + staffMasterVo.Birth_date + "'," +
                                          "employment_date = '" + staffMasterVo.Employment_date + "'," +
-                                         "code = '" + staffMasterVo.Code + "'," +
+                                         "code = " + staffMasterVo.Code + "," +
                                          "current_address = '" + staffMasterVo.Current_address + "'," +
-                                         "before_change_address = '" + staffMasterVo.Before_change_address + "'," +
+                                         "before_change_address = '" + staffMasterVo.Remarks + "'," +
                                          "telephone_number = '" + staffMasterVo.Telephone_number + "'," +
                                          "cellphone_number = '" + staffMasterVo.Cellphone_number + "'," +
                                          "picture = @member_picture," +
@@ -1191,8 +1193,7 @@ namespace Dao {
                                          "punishment_date_4 = '" + staffMasterVo.Punishment_date_4 + "'," +
                                          "punishment_note_4 = '" + staffMasterVo.Punishment_note_4 + "'," +
                                          "update_ymd_hms = '" + DateTime.Now + "' " +
-                                     "WHERE staff_code='" + staffMasterVo.Staff_code + "' " +
-                                     "AND delete_Flag = 'False'";
+                                     "WHERE staff_code = " + staffMasterVo.Staff_code;
             try {
                 sqlCommand.Parameters.Add("@member_picture", SqlDbType.Image, staffMasterVo.Picture.Length).Value = staffMasterVo.Picture;
                 return sqlCommand.ExecuteNonQuery();
@@ -1212,7 +1213,7 @@ namespace Dao {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT MAX(staff_code) " +
                                      "FROM staff_master " +
-                                     "WHERE staff_code < '" + staffCode + "'";
+                                     "WHERE staff_code < " + staffCode;
             try {
                 return (int)sqlCommand.ExecuteScalar();
             } catch {

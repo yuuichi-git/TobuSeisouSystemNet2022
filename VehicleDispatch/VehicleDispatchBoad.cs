@@ -467,7 +467,7 @@ namespace VehicleDispatch {
         /// </summary>
         private void CreateLabelTabControlExLeft() {
             // FlowLayoutPanelExSet
-            foreach (var deepCopySetMasterVo in _listDeepCopySetMasterVo.FindAll(x => x.Classification_code != 10 && x.Classification_code != 11)) {
+            foreach (var deepCopySetMasterVo in _listDeepCopySetMasterVo.FindAll(x => x.Classification_code != 10 && x.Classification_code != 11).OrderBy(x => x.Classification_code)) {
                 SetLabelEx labelEx = new SetLabelEx(deepCopySetMasterVo).CreateLabel();
                 // プロパティを設定
                 labelEx.ContextMenuStrip = ContextMenuStripSetLabel;
@@ -503,7 +503,7 @@ namespace VehicleDispatch {
                 FlowLayoutPanelExFullEmployees.Controls.Add(labelEx);
             }
             // FlowLayoutPanelExLongTerm
-            foreach (var deepCopyStaffMasterVo in _listDeepCopyStaffMasterVo.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.Job_form == 1 && x.Retirement_flag == false)) {
+            foreach (var deepCopyStaffMasterVo in _listDeepCopyStaffMasterVo.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.Job_form == 10 && x.Retirement_flag == false)) {
                 StaffLabelEx labelEx = new StaffLabelEx(deepCopyStaffMasterVo).CreateLabel();
                 // プロパティを設定
                 labelEx.ContextMenuStrip = ContextMenuStripStaffLabel;
@@ -527,7 +527,7 @@ namespace VehicleDispatch {
                 FlowLayoutPanelExPartTime.Controls.Add(labelEx);
             }
             // FlowLayoutPanelExWindow
-            foreach (var deepCopyStaffMasterVo in _listDeepCopyStaffMasterVo.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.Job_form == 3 && x.Retirement_flag == false)) {
+            foreach (var deepCopyStaffMasterVo in _listDeepCopyStaffMasterVo.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.Job_form == 11 && x.Retirement_flag == false)) {
                 StaffLabelEx labelEx = new StaffLabelEx(deepCopyStaffMasterVo).CreateLabel();
                 // プロパティを設定
                 labelEx.ContextMenuStrip = ContextMenuStripStaffLabel;
@@ -1389,16 +1389,6 @@ namespace VehicleDispatch {
                         e.Effect = DragDropEffects.None;
                     }
                     break;
-                case "FlowLayoutPanelExCar":
-                case "FlowLayoutPanelExChecking":
-                case "FlowLayoutPanelExRepair":
-                case "FlowLayoutPanelExVehicleInspection":
-                    if (e.Data != null && e.Data.GetDataPresent(typeof(CarLabelEx))) {
-                        e.Effect = DragDropEffects.Move;
-                    } else {
-                        e.Effect = DragDropEffects.None;
-                    }
-                    break;
                 case "FlowLayoutPanelExFullEmployees":
                     if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
                         StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
@@ -1411,7 +1401,7 @@ namespace VehicleDispatch {
                 case "FlowLayoutPanelExLongTerm":
                     if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
                         StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
-                        if (((StaffMasterVo)dragItem.Tag).Belongs == 20 || ((StaffMasterVo)dragItem.Tag).Belongs == 21)
+                        if ((((StaffMasterVo)dragItem.Tag).Belongs == 20 || ((StaffMasterVo)dragItem.Tag).Belongs == 21) && ((StaffMasterVo)dragItem.Tag).Job_form == 10)
                             e.Effect = DragDropEffects.Move;
                     } else {
                         e.Effect = DragDropEffects.None;
@@ -1420,7 +1410,7 @@ namespace VehicleDispatch {
                 case "FlowLayoutPanelExPartTime":
                     if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
                         StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
-                        if (((StaffMasterVo)dragItem.Tag).Belongs == 12)
+                        if (((StaffMasterVo)dragItem.Tag).Belongs == 12 || ((StaffMasterVo)dragItem.Tag).Job_form == 12)
                             e.Effect = DragDropEffects.Move;
                     } else {
                         e.Effect = DragDropEffects.None;
@@ -1429,8 +1419,18 @@ namespace VehicleDispatch {
                 case "FlowLayoutPanelExWindow":
                     if (e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
                         StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
-                        if ((((StaffMasterVo)dragItem.Tag).Belongs == 20 || ((StaffMasterVo)dragItem.Tag).Belongs == 21) && ((StaffMasterVo)dragItem.Tag).Job_form == 3)
+                        if ((((StaffMasterVo)dragItem.Tag).Belongs == 20 || ((StaffMasterVo)dragItem.Tag).Belongs == 21) && ((StaffMasterVo)dragItem.Tag).Job_form == 11)
                             e.Effect = DragDropEffects.Move;
+                    } else {
+                        e.Effect = DragDropEffects.None;
+                    }
+                    break;
+                case "FlowLayoutPanelExCar":
+                case "FlowLayoutPanelExChecking":
+                case "FlowLayoutPanelExRepair":
+                case "FlowLayoutPanelExVehicleInspection":
+                    if (e.Data != null && e.Data.GetDataPresent(typeof(CarLabelEx))) {
+                        e.Effect = DragDropEffects.Move;
                     } else {
                         e.Effect = DragDropEffects.None;
                     }

@@ -1,12 +1,12 @@
 ﻿namespace Vo {
     public class ExtendsStaffMasterVo : StaffMasterVo {
         private bool _toukanpoTrainingCardFlag;
-        private string? _licenseLedgerNumber;
-        private LicenseMasterVo? _licenseLedgerVo;
-        private DateTime _licenseLedgerExpirationDate;
+        private string? _licenseMasterNumber;
+        private LicenseMasterVo? _licenseMasterVo;
+        private DateTime _licenseMasterExpirationDate;
         private bool _commutingNotification;
         private DateTime _meansOfCommutingEndDate;
-        private int _carAccidentLedgerCount;
+        private int _carAccidentMasterCount;
 
         /// <summary>
         /// 東環保修了証の存在の有無 True:あり False:なし
@@ -18,23 +18,23 @@
         /// <summary>
         /// 免許証情報の番号
         /// </summary>
-        public string? LicenseLedgerNumber {
-            get => _licenseLedgerNumber;
-            set => _licenseLedgerNumber = value;
+        public string? LicenseMasterNumber {
+            get => _licenseMasterNumber;
+            set => _licenseMasterNumber = value;
         }
         /// <summary>
         /// LicenseLedgerVo
         /// </summary>
-        public LicenseMasterVo? LicenseLedgerVo {
-            get => _licenseLedgerVo;
-            set => _licenseLedgerVo = value;
+        public LicenseMasterVo? LicenseMasterVo {
+            get => _licenseMasterVo;
+            set => _licenseMasterVo = value;
         }
         /// <summary>
         /// 免許証の有効期限
         /// </summary>
-        public DateTime LicenseLedgerExpirationDate {
-            get => _licenseLedgerExpirationDate;
-            set => _licenseLedgerExpirationDate = value;
+        public DateTime LicenseMasterExpirationDate {
+            get => _licenseMasterExpirationDate;
+            set => _licenseMasterExpirationDate = value;
         }
         /// <summary>
         /// 通勤届 True:提出済 False:未提出
@@ -53,9 +53,9 @@
         /// <summary>
         /// 事故歴情報の存在の有無と件数 0:無し 他:件数
         /// </summary>
-        public int CarAccidentLedgerCount {
-            get => _carAccidentLedgerCount;
-            set => _carAccidentLedgerCount = value;
+        public int CarAccidentMasterCount {
+            get => _carAccidentMasterCount;
+            set => _carAccidentMasterCount = value;
         }
     }
 }

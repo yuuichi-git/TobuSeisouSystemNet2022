@@ -12,20 +12,22 @@ namespace ControlEx {
             switch (staffMasterVo.Belongs) {
                 case 10: // 役員
                 case 11: // 社員
-                    _borderColor = Pens.Gray;
+                    this._borderColor = Pens.Gray;
                     break;
                 case 12: // アルバイト
-                    _borderColor = Pens.DarkOrange;
+                    this._borderColor = Pens.DarkOrange;
                     break;
                 case 20: // 新運転
                 case 21: // 自運労
                     switch (staffMasterVo.Job_form) {
-                        case 1: // 長期雇用
-                            _borderColor = Pens.WhiteSmoke;
+                        case 10: // 長期雇用
+                            this._borderColor = Pens.WhiteSmoke;
                             break;
-                        case 2: // アルバイト
-                        case 3: // 窓
-                            _borderColor = Pens.Green;
+                        case 11: // 手帳
+                            this._borderColor = Pens.Green;
+                            break;
+                        case 12: // アルバイト
+                            this._borderColor = Pens.DarkOrange;
                             break;
                     }
                     break;
@@ -37,6 +39,11 @@ namespace ControlEx {
             this.Paint += new PaintEventHandler(this.LabelEx_CellPaint);
         }
 
+        /// <summary>
+        /// LabelEx_CellPaint
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LabelEx_CellPaint(object? sender, PaintEventArgs e) {
             Rectangle rectangle = new Rectangle(0, 0, 67, 33);
             e.Graphics.DrawRectangle(_borderColor, rectangle);

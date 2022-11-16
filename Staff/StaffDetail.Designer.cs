@@ -128,7 +128,7 @@
             this.DateSelectionDate = new System.Windows.Forms.DateTimePicker();
             this.label15 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.TextBoxBeforeChangeAddress = new System.Windows.Forms.TextBox();
+            this.TextBoxRemarks = new System.Windows.Forms.TextBox();
             this.ButtonDeletePicture = new System.Windows.Forms.Button();
             this.ButtonClipPicture = new System.Windows.Forms.Button();
             this.ButtonSelectPicture = new System.Windows.Forms.Button();
@@ -154,9 +154,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.TextBoxNameKana = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.TextBoxStaffCd = new System.Windows.Forms.TextBox();
+            this.TextBoxCode = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.TextBoxStaffDbCd = new System.Windows.Forms.TextBox();
+            this.TextBoxStaffCode = new System.Windows.Forms.TextBox();
             this.ContextMenuStripTextBoxStaffDbCd = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ToolStripMenuItemNewStaffCode1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemNewStaffCode2 = new System.Windows.Forms.ToolStripMenuItem();
@@ -384,7 +384,7 @@
             this.TableLayoutPanelBase.Name = "TableLayoutPanelBase";
             this.TableLayoutPanelBase.RowCount = 4;
             this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 56F));
             this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.TableLayoutPanelBase.Size = new System.Drawing.Size(1904, 1041);
@@ -455,7 +455,7 @@
             this.PanelTop.Location = new System.Drawing.Point(0, 24);
             this.PanelTop.Margin = new System.Windows.Forms.Padding(0);
             this.PanelTop.Name = "PanelTop";
-            this.PanelTop.Size = new System.Drawing.Size(1904, 60);
+            this.PanelTop.Size = new System.Drawing.Size(1904, 56);
             this.PanelTop.TabIndex = 2;
             // 
             // ButtonUpdate
@@ -483,9 +483,9 @@
             this.PanelLeft.Controls.Add(this.groupBox2);
             this.PanelLeft.Controls.Add(this.groupBox1);
             this.PanelLeft.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelLeft.Location = new System.Drawing.Point(3, 87);
+            this.PanelLeft.Location = new System.Drawing.Point(3, 83);
             this.PanelLeft.Name = "PanelLeft";
-            this.PanelLeft.Size = new System.Drawing.Size(946, 927);
+            this.PanelLeft.Size = new System.Drawing.Size(946, 931);
             this.PanelLeft.TabIndex = 3;
             // 
             // groupBox9
@@ -1482,7 +1482,7 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.TextBoxBeforeChangeAddress);
+            this.groupBox4.Controls.Add(this.TextBoxRemarks);
             this.groupBox4.Controls.Add(this.ButtonDeletePicture);
             this.groupBox4.Controls.Add(this.ButtonClipPicture);
             this.groupBox4.Controls.Add(this.ButtonSelectPicture);
@@ -1508,9 +1508,9 @@
             this.groupBox4.Controls.Add(this.label5);
             this.groupBox4.Controls.Add(this.TextBoxNameKana);
             this.groupBox4.Controls.Add(this.label4);
-            this.groupBox4.Controls.Add(this.TextBoxStaffCd);
+            this.groupBox4.Controls.Add(this.TextBoxCode);
             this.groupBox4.Controls.Add(this.label3);
-            this.groupBox4.Controls.Add(this.TextBoxStaffDbCd);
+            this.groupBox4.Controls.Add(this.TextBoxStaffCode);
             this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.Location = new System.Drawing.Point(12, 236);
             this.groupBox4.Name = "groupBox4";
@@ -1519,14 +1519,14 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "個人情報１";
             // 
-            // TextBoxBeforeChangeAddress
+            // TextBoxRemarks
             // 
-            this.TextBoxBeforeChangeAddress.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxBeforeChangeAddress.Location = new System.Drawing.Point(88, 136);
-            this.TextBoxBeforeChangeAddress.Name = "TextBoxBeforeChangeAddress";
-            this.TextBoxBeforeChangeAddress.PlaceholderText = "変更前の住所";
-            this.TextBoxBeforeChangeAddress.Size = new System.Drawing.Size(604, 23);
-            this.TextBoxBeforeChangeAddress.TabIndex = 30;
+            this.TextBoxRemarks.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
+            this.TextBoxRemarks.Location = new System.Drawing.Point(84, 136);
+            this.TextBoxRemarks.Name = "TextBoxRemarks";
+            this.TextBoxRemarks.PlaceholderText = "その他備考";
+            this.TextBoxRemarks.Size = new System.Drawing.Size(608, 23);
+            this.TextBoxRemarks.TabIndex = 30;
             // 
             // ButtonDeletePicture
             // 
@@ -1630,9 +1630,9 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(16, 140);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(67, 15);
+            this.label11.Size = new System.Drawing.Size(62, 15);
             this.label11.TabIndex = 18;
-            this.label11.Text = "変更後住所";
+            this.label11.Text = "その他備考";
             // 
             // TextBoxCurrentAddress
             // 
@@ -1767,16 +1767,16 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "フリガナ";
             // 
-            // TextBoxStaffCd
+            // TextBoxCode
             // 
-            this.TextBoxStaffCd.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.TextBoxStaffCd.Location = new System.Drawing.Point(208, 24);
-            this.TextBoxStaffCd.MaxLength = 5;
-            this.TextBoxStaffCd.Name = "TextBoxStaffCd";
-            this.TextBoxStaffCd.PlaceholderText = "組合CD";
-            this.TextBoxStaffCd.Size = new System.Drawing.Size(48, 23);
-            this.TextBoxStaffCd.TabIndex = 5;
-            this.TextBoxStaffCd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TextBoxCode.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.TextBoxCode.Location = new System.Drawing.Point(208, 24);
+            this.TextBoxCode.MaxLength = 5;
+            this.TextBoxCode.Name = "TextBoxCode";
+            this.TextBoxCode.PlaceholderText = "組合CD";
+            this.TextBoxCode.Size = new System.Drawing.Size(48, 23);
+            this.TextBoxCode.TabIndex = 5;
+            this.TextBoxCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label3
             // 
@@ -1787,19 +1787,19 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "組合CD";
             // 
-            // TextBoxStaffDbCd
+            // TextBoxStaffCode
             // 
-            this.TextBoxStaffDbCd.ContextMenuStrip = this.ContextMenuStripTextBoxStaffDbCd;
-            this.TextBoxStaffDbCd.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.TextBoxStaffDbCd.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.TextBoxStaffDbCd.Location = new System.Drawing.Point(68, 24);
-            this.TextBoxStaffDbCd.MaxLength = 5;
-            this.TextBoxStaffDbCd.Name = "TextBoxStaffDbCd";
-            this.TextBoxStaffDbCd.ReadOnly = true;
-            this.TextBoxStaffDbCd.Size = new System.Drawing.Size(48, 23);
-            this.TextBoxStaffDbCd.TabIndex = 3;
-            this.TextBoxStaffDbCd.Text = "88888";
-            this.TextBoxStaffDbCd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TextBoxStaffCode.ContextMenuStrip = this.ContextMenuStripTextBoxStaffDbCd;
+            this.TextBoxStaffCode.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.TextBoxStaffCode.ImeMode = System.Windows.Forms.ImeMode.Off;
+            this.TextBoxStaffCode.Location = new System.Drawing.Point(68, 24);
+            this.TextBoxStaffCode.MaxLength = 5;
+            this.TextBoxStaffCode.Name = "TextBoxStaffCode";
+            this.TextBoxStaffCode.ReadOnly = true;
+            this.TextBoxStaffCode.Size = new System.Drawing.Size(48, 23);
+            this.TextBoxStaffCode.TabIndex = 3;
+            this.TextBoxStaffCode.Text = "88888";
+            this.TextBoxStaffCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ContextMenuStripTextBoxStaffDbCd
             // 
@@ -2072,9 +2072,9 @@
             this.PanelRight.Controls.Add(this.groupBox12);
             this.PanelRight.Controls.Add(this.groupBox11);
             this.PanelRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelRight.Location = new System.Drawing.Point(955, 87);
+            this.PanelRight.Location = new System.Drawing.Point(955, 83);
             this.PanelRight.Name = "PanelRight";
-            this.PanelRight.Size = new System.Drawing.Size(946, 927);
+            this.PanelRight.Size = new System.Drawing.Size(946, 931);
             this.PanelRight.TabIndex = 4;
             // 
             // groupBox18
@@ -3867,9 +3867,9 @@
         private Label label5;
         private TextBox TextBoxNameKana;
         private Label label4;
-        private TextBox TextBoxStaffCd;
+        private TextBox TextBoxCode;
         private Label label3;
-        private TextBox TextBoxStaffDbCd;
+        private TextBox TextBoxStaffCode;
         private Label label2;
         private GroupBox groupBox3;
         private GroupBox groupBox2;
@@ -4132,7 +4132,7 @@
         private DateTimePicker DatePunishmentDate3;
         private DateTimePicker DatePunishmentDate2;
         private DateTimePicker DatePunishmentDate1;
-        private TextBox TextBoxBeforeChangeAddress;
+        private TextBox TextBoxRemarks;
         private ComboBox ComboBoxLicenseCondition;
         private PictureBox PictureBoxPicture;
         private DateTimePicker DateHealthInsuranceDate;

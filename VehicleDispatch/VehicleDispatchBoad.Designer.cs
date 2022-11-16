@@ -96,7 +96,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.ContextMenuStripSetLabel = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.配車先の情報ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.配車先を削除するToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemSetDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.出庫地を変更するToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.本社より出庫ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.三郷より出庫ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -1095,7 +1095,7 @@
             // 
             this.ContextMenuStripSetLabel.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.配車先の情報ToolStripMenuItem,
-            this.配車先を削除するToolStripMenuItem,
+            this.ToolStripMenuItemSetDelete,
             this.出庫地を変更するToolStripMenuItem,
             this.代車代番のFaxを作成するToolStripMenuItem});
             this.ContextMenuStripSetLabel.Name = "ContextMenuStripSetLabel";
@@ -1107,11 +1107,11 @@
             this.配車先の情報ToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.配車先の情報ToolStripMenuItem.Text = "配車先の情報";
             // 
-            // 配車先を削除するToolStripMenuItem
+            // ToolStripMenuItemSetDelete
             // 
-            this.配車先を削除するToolStripMenuItem.Name = "配車先を削除するToolStripMenuItem";
-            this.配車先を削除するToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.配車先を削除するToolStripMenuItem.Text = "配車先を削除する";
+            this.ToolStripMenuItemSetDelete.Name = "ToolStripMenuItemSetDelete";
+            this.ToolStripMenuItemSetDelete.Size = new System.Drawing.Size(207, 22);
+            this.ToolStripMenuItemSetDelete.Text = "配車先を削除する";
             // 
             // 出庫地を変更するToolStripMenuItem
             // 
@@ -1293,7 +1293,7 @@
         private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExFullClose;
         private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExPartSalaried;
         private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExPartClose;
-        private ToolStripMenuItem 配車先を削除するToolStripMenuItem;
+        private ToolStripMenuItem ToolStripMenuItemSetDelete;
         private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExVehicleInspection;
         private Label label11;
         private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExFullDesignation;

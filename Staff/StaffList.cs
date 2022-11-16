@@ -1,6 +1,5 @@
-using System.IO;
-
 using Common;
+
 using Dao;
 
 using FarPoint.Excel;
@@ -12,9 +11,9 @@ namespace Staff {
     public partial class StaffList : Form {
         private readonly ConnectionVo _connectionVo;
         private InitializeForm _initializeForm = new();
-        private List<ExtendsStaffMasterVo> _listExtendsStaffMasterVo;
-        private List<ExtendsStaffMasterVo> _listFindAllStaffMasterVo;
-        private IOrderedEnumerable<ExtendsStaffMasterVo> _linqExtendsStaffMasterVo;
+        private List<ExtendsStaffMasterVo>? _listExtendsStaffMasterVo;
+        private List<ExtendsStaffMasterVo>? _listFindAllStaffMasterVo;
+        private IOrderedEnumerable<ExtendsStaffMasterVo>? _linqExtendsStaffMasterVo;
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01, 00, 00, 00, 000);
 
         Dictionary<int, string> dictionaryBelongs = new Dictionary<int, string> { { 10, "役員" }, { 11, "社員" }, { 12, "アルバイト" }, { 20, "新運転" }, { 21, "自運労" } };
@@ -42,7 +41,7 @@ namespace Staff {
         /// <summary>
         /// 社員CD
         /// </summary>
-        private const int colStaffCode = 4;
+        private const int colCode = 4;
         /// <summary>
         /// 氏名
         /// </summary>
@@ -256,11 +255,11 @@ namespace Staff {
                 // 免許証
                 bool _licenseLedgerFlag = false;
                 DateTime? _licenseLedgerExpirationDate = null;
-                if (extendsStaffMasterVo.LicenseLedgerNumber != "") {
+                if (extendsStaffMasterVo.LicenseMasterNumber != "") {
                     // 免許証
                     _licenseLedgerFlag = true;
                     // 免許証期限
-                    _licenseLedgerExpirationDate = extendsStaffMasterVo.LicenseLedgerExpirationDate.Date;
+                    _licenseLedgerExpirationDate = extendsStaffMasterVo.LicenseMasterExpirationDate.Date;
                 }
                 // 通勤届
                 var _commutingNotificationFlag = extendsStaffMasterVo.CommutingNotification;
@@ -312,8 +311,8 @@ namespace Staff {
                 }
                 // 事故数
                 string _car_accident_count = "";
-                if (extendsStaffMasterVo.CarAccidentLedgerCount != 0) {
-                    _car_accident_count = string.Concat(extendsStaffMasterVo.CarAccidentLedgerCount, "件");
+                if (extendsStaffMasterVo.CarAccidentMasterCount != 0) {
+                    _car_accident_count = string.Concat(extendsStaffMasterVo.CarAccidentMasterCount, "件");
                 }
                 // 現住所
                 var _current_address = extendsStaffMasterVo.Current_address;
@@ -335,7 +334,7 @@ namespace Staff {
                 SheetViewList.Cells[i, colJobForm].Value = dictionaryJobForm[_jobForm];
                 SheetViewList.Cells[i, colOccupation].Value = dictionaryOccupation[_occupation];
                 SheetViewList.Cells[i, colVehicleDispatchTarget].Value = _vehicleDispatchTarget;
-                SheetViewList.Cells[i, colStaffCode].Value = _code;
+                SheetViewList.Cells[i, colCode].Value = _code;
                 SheetViewList.Cells[i, colName].Text = _name;
                 SheetViewList.Cells[i, colName].Tag = extendsStaffMasterVo;
                 SheetViewList.Cells[i, colNameKana].Text = _name_kana;
@@ -376,8 +375,8 @@ namespace Staff {
                 return;
             // Shiftが押された場合
             if ((ModifierKeys & Keys.Shift) == Keys.Shift) {
-                //var staffRegisterPaper = new StaffPaper(_connectionVo, ((ExtendsStaffMasterVo)SheetViewList.Cells[e.Row, colName].Tag).Staff_code);
-                //staffRegisterPaper.ShowDialog();
+                var staffRegisterPaper = new StaffPaper(_connectionVo, ((ExtendsStaffMasterVo)SheetViewList.Cells[e.Row, colName].Tag).Staff_code);
+                staffRegisterPaper.ShowDialog();
                 return;
             }
             // 修飾キーが無い場合
@@ -421,7 +420,7 @@ namespace Staff {
             //xlsx形式ファイルをエクスポートします
             string fileName = string.Concat("従事者リスト", DateTime.Now.ToString("MM月dd日"), "作成");
             SpreadList.SaveExcel(new Directry().GetExcelDesktopPass(fileName), ExcelSaveFlags.UseOOXMLFormat | ExcelSaveFlags.Exchangeable);
-            MessageBox.Show("デスクトップへエクスポートしました","",MessageBoxButtons.OK,MessageBoxIcon.Information);
+            MessageBox.Show("デスクトップへエクスポートしました", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         /// <summary>
