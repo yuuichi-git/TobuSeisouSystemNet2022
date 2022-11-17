@@ -479,7 +479,7 @@ namespace VehicleDispatch {
                 FlowLayoutPanelExSet.Controls.Add(labelEx);
             }
             // FlowLayoutPanelExCar
-            foreach (var deepCopyCarMasterVo in _listDeepCopyCarMasterVo) {
+            foreach (var deepCopyCarMasterVo in _listDeepCopyCarMasterVo.OrderBy(x => x.Disguise_kind_1)) {
                 CarLabelEx labelEx = new CarLabelEx(deepCopyCarMasterVo).CreateLabel();
                 // プロパティを設定
                 labelEx.ContextMenuStrip = ContextMenuStripCarLabel;
@@ -491,7 +491,7 @@ namespace VehicleDispatch {
                 FlowLayoutPanelExCar.Controls.Add(labelEx);
             }
             // FlowLayoutPanelExFullEmployees
-            foreach (var deepCopyStaffMasterVo in _listDeepCopyStaffMasterVo.FindAll(x => (x.Belongs == 10 || x.Belongs == 11) && x.Retirement_flag == false)) {
+            foreach (var deepCopyStaffMasterVo in _listDeepCopyStaffMasterVo.FindAll(x => (x.Belongs == 10 || x.Belongs == 11) && x.Retirement_flag == false).OrderBy(x=>x.Name_kana)) {
                 StaffLabelEx labelEx = new StaffLabelEx(deepCopyStaffMasterVo).CreateLabel();
                 // プロパティを設定
                 labelEx.ContextMenuStrip = ContextMenuStripStaffLabel;
@@ -503,7 +503,7 @@ namespace VehicleDispatch {
                 FlowLayoutPanelExFullEmployees.Controls.Add(labelEx);
             }
             // FlowLayoutPanelExLongTerm
-            foreach (var deepCopyStaffMasterVo in _listDeepCopyStaffMasterVo.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.Job_form == 10 && x.Retirement_flag == false)) {
+            foreach (var deepCopyStaffMasterVo in _listDeepCopyStaffMasterVo.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.Job_form == 10 && x.Retirement_flag == false).OrderBy(x => x.Name_kana)) {
                 StaffLabelEx labelEx = new StaffLabelEx(deepCopyStaffMasterVo).CreateLabel();
                 // プロパティを設定
                 labelEx.ContextMenuStrip = ContextMenuStripStaffLabel;
@@ -515,7 +515,7 @@ namespace VehicleDispatch {
                 FlowLayoutPanelExLongTerm.Controls.Add(labelEx);
             }
             // FlowLayoutPanelExPartTime
-            foreach (var deepCopyStaffMasterVo in _listDeepCopyStaffMasterVo.FindAll(x => x.Belongs == 12 && x.Retirement_flag == false)) {
+            foreach (var deepCopyStaffMasterVo in _listDeepCopyStaffMasterVo.FindAll(x => x.Belongs == 12 && x.Retirement_flag == false).OrderBy(x => x.Name_kana)) {
                 StaffLabelEx labelEx = new StaffLabelEx(deepCopyStaffMasterVo).CreateLabel();
                 // プロパティを設定
                 labelEx.ContextMenuStrip = ContextMenuStripStaffLabel;
@@ -527,7 +527,7 @@ namespace VehicleDispatch {
                 FlowLayoutPanelExPartTime.Controls.Add(labelEx);
             }
             // FlowLayoutPanelExWindow
-            foreach (var deepCopyStaffMasterVo in _listDeepCopyStaffMasterVo.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.Job_form == 11 && x.Retirement_flag == false)) {
+            foreach (var deepCopyStaffMasterVo in _listDeepCopyStaffMasterVo.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.Job_form == 11 && x.Retirement_flag == false).OrderBy(x => x.Name_kana)) {
                 StaffLabelEx labelEx = new StaffLabelEx(deepCopyStaffMasterVo).CreateLabel();
                 // プロパティを設定
                 labelEx.ContextMenuStrip = ContextMenuStripStaffLabel;

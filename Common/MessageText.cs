@@ -24,5 +24,9 @@
          */
         public const string Message501 = "Throw Message";
         public const string Message502 = "データベースに接続してください";
+        /*
+         * License
+         */
+        public const string Message601 = "免許証データを更新します。よろしいですか？";
     }
 }

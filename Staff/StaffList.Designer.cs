@@ -23,6 +23,7 @@
         ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StaffList));
             this.TableLayoutPanelExBase = new ControlEx.TableLayoutPanelEx();
             this.MenuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -56,6 +57,10 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabelDetail = new System.Windows.Forms.ToolStripStatusLabel();
             this.SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, ((object)(resources.GetObject("TableLayoutPanelExBase.Controls"))));
+            this.ContextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ToolStripMenuItemLicense = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemToukanpo = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemMap = new System.Windows.Forms.ToolStripMenuItem();
             this.SheetViewList = this.SpreadList.GetSheet(0);
             this.TabControlExStaff = new ControlEx.TabControlEx();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -77,6 +82,7 @@
             this.groupBox1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpreadList)).BeginInit();
+            this.ContextMenuStrip1.SuspendLayout();
             this.TabControlExStaff.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -425,6 +431,7 @@
             // SpreadList
             // 
             this.SpreadList.AccessibleDescription = "SpreadList, Sheet1, Row 0, Column 0";
+            this.SpreadList.ContextMenuStrip = this.ContextMenuStrip1;
             this.SpreadList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SpreadList.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SpreadList.Location = new System.Drawing.Point(3, 115);
@@ -432,6 +439,37 @@
             this.SpreadList.Size = new System.Drawing.Size(1898, 899);
             this.SpreadList.TabIndex = 5;
             this.SpreadList.CellDoubleClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SpreadList_CellDoubleClick);
+            // 
+            // ContextMenuStrip1
+            // 
+            this.ContextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemLicense,
+            this.ToolStripMenuItemToukanpo,
+            this.ToolStripMenuItemMap});
+            this.ContextMenuStrip1.Name = "contextMenuStrip1";
+            this.ContextMenuStrip1.Size = new System.Drawing.Size(199, 70);
+            this.ContextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuStrip1_Opening);
+            // 
+            // ToolStripMenuItemLicense
+            // 
+            this.ToolStripMenuItemLicense.Name = "ToolStripMenuItemLicense";
+            this.ToolStripMenuItemLicense.Size = new System.Drawing.Size(198, 22);
+            this.ToolStripMenuItemLicense.Text = "免許証を表示する";
+            this.ToolStripMenuItemLicense.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            // 
+            // ToolStripMenuItemToukanpo
+            // 
+            this.ToolStripMenuItemToukanpo.Name = "ToolStripMenuItemToukanpo";
+            this.ToolStripMenuItemToukanpo.Size = new System.Drawing.Size(198, 22);
+            this.ToolStripMenuItemToukanpo.Text = "東環保修了証を表示する";
+            this.ToolStripMenuItemToukanpo.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            // 
+            // ToolStripMenuItemMap
+            // 
+            this.ToolStripMenuItemMap.Name = "ToolStripMenuItemMap";
+            this.ToolStripMenuItemMap.Size = new System.Drawing.Size(198, 22);
+            this.ToolStripMenuItemMap.Text = "地図を表示する";
+            this.ToolStripMenuItemMap.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // TabControlExStaff
             // 
@@ -602,6 +640,7 @@
             this.StatusStrip1.ResumeLayout(false);
             this.StatusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpreadList)).EndInit();
+            this.ContextMenuStrip1.ResumeLayout(false);
             this.TabControlExStaff.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -654,5 +693,9 @@
         private ToolStripMenuItem ToolStripMenuItemExcelExport;
         private ToolStripMenuItem 編集ToolStripMenuItem;
         private ToolStripMenuItem ToolStripMenuItemNewStaff;
+        private ContextMenuStrip ContextMenuStrip1;
+        private ToolStripMenuItem ToolStripMenuItemLicense;
+        private ToolStripMenuItem ToolStripMenuItemToukanpo;
+        private ToolStripMenuItem ToolStripMenuItemMap;
     }
 }

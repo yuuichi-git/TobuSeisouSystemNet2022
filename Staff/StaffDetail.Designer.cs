@@ -157,7 +157,7 @@
             this.TextBoxCode = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.TextBoxStaffCode = new System.Windows.Forms.TextBox();
-            this.ContextMenuStripTextBoxStaffDbCd = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ContextMenuStripTextBoxCode = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ToolStripMenuItemNewStaffCode1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemNewStaffCode2 = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
@@ -353,7 +353,7 @@
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxPicture)).BeginInit();
-            this.ContextMenuStripTextBoxStaffDbCd.SuspendLayout();
+            this.ContextMenuStripTextBoxCode.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.ContextMenuStripRadioButtonClear.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -1560,7 +1560,7 @@
             // 
             // PictureBoxPicture
             // 
-            this.PictureBoxPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PictureBoxPicture.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.PictureBoxPicture.Location = new System.Drawing.Point(700, 28);
             this.PictureBoxPicture.Name = "PictureBoxPicture";
             this.PictureBoxPicture.Size = new System.Drawing.Size(128, 160);
@@ -1789,7 +1789,7 @@
             // 
             // TextBoxStaffCode
             // 
-            this.TextBoxStaffCode.ContextMenuStrip = this.ContextMenuStripTextBoxStaffDbCd;
+            this.TextBoxStaffCode.ContextMenuStrip = this.ContextMenuStripTextBoxCode;
             this.TextBoxStaffCode.Font = new System.Drawing.Font("Yu Gothic UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.TextBoxStaffCode.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.TextBoxStaffCode.Location = new System.Drawing.Point(68, 24);
@@ -1801,14 +1801,14 @@
             this.TextBoxStaffCode.Text = "88888";
             this.TextBoxStaffCode.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // ContextMenuStripTextBoxStaffDbCd
+            // ContextMenuStripTextBoxCode
             // 
-            this.ContextMenuStripTextBoxStaffDbCd.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ContextMenuStripTextBoxCode.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItemNewStaffCode1,
             this.ToolStripMenuItemNewStaffCode2});
-            this.ContextMenuStripTextBoxStaffDbCd.Name = "ContextMenuStripTextBoxStaffDbCd";
-            this.ContextMenuStripTextBoxStaffDbCd.Size = new System.Drawing.Size(219, 48);
-            this.ContextMenuStripTextBoxStaffDbCd.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuStripTextBoxStaffDbCd_Opening);
+            this.ContextMenuStripTextBoxCode.Name = "ContextMenuStripTextBoxStaffDbCd";
+            this.ContextMenuStripTextBoxCode.Size = new System.Drawing.Size(219, 48);
+            this.ContextMenuStripTextBoxCode.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuStripTextBoxStaffDbCd_Opening);
             // 
             // ToolStripMenuItemNewStaffCode1
             // 
@@ -3786,7 +3786,7 @@
             this.Controls.Add(this.TableLayoutPanelBase);
             this.MainMenuStrip = this.MenuStrip1;
             this.Name = "StaffDetail";
-            this.Text = "StaffRegisterDetail";
+            this.Text = "StaffDetail";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StaffRegisterDetail_FormClosing);
             this.TableLayoutPanelBase.ResumeLayout(false);
             this.TableLayoutPanelBase.PerformLayout();
@@ -3807,7 +3807,7 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxPicture)).EndInit();
-            this.ContextMenuStripTextBoxStaffDbCd.ResumeLayout(false);
+            this.ContextMenuStripTextBoxCode.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.ContextMenuStripRadioButtonClear.ResumeLayout(false);
@@ -4136,7 +4136,7 @@
         private ComboBox ComboBoxLicenseCondition;
         private PictureBox PictureBoxPicture;
         private DateTimePicker DateHealthInsuranceDate;
-        private ContextMenuStrip ContextMenuStripTextBoxStaffDbCd;
+        private ContextMenuStrip ContextMenuStripTextBoxCode;
         private ToolStripMenuItem ToolStripMenuItemNewStaffCode1;
         private ToolStripMenuItem ToolStripMenuItemNewStaffCode2;
         private ContextMenuStrip ContextMenuStripRadioButtonClear;

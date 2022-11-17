@@ -44,6 +44,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.TableLayoutPanelBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -138,6 +140,8 @@
             this.TableLayoutPanelCenter.Controls.Add(this.label7, 0, 11);
             this.TableLayoutPanelCenter.Controls.Add(this.label8, 0, 13);
             this.TableLayoutPanelCenter.Controls.Add(this.label9, 0, 14);
+            this.TableLayoutPanelCenter.Controls.Add(this.label10, 0, 16);
+            this.TableLayoutPanelCenter.Controls.Add(this.label11, 0, 17);
             this.TableLayoutPanelCenter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanelCenter.Location = new System.Drawing.Point(303, 27);
             this.TableLayoutPanelCenter.Name = "TableLayoutPanelCenter";
@@ -330,6 +334,30 @@
             this.label9.TabIndex = 13;
             this.label9.Text = "　従事者の登録・修正を行います。";
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label10.Location = new System.Drawing.Point(3, 340);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(86, 17);
+            this.label10.TabIndex = 14;
+            this.label10.Tag = "LicenseList";
+            this.label10.Text = "　免許証台帳";
+            this.label10.Click += new System.EventHandler(this.Label_Click);
+            this.label10.MouseEnter += new System.EventHandler(this.Label_MouseEnter);
+            this.label10.MouseLeave += new System.EventHandler(this.Label_MouseLeave);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.label11.Location = new System.Drawing.Point(3, 360);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(171, 15);
+            this.label11.TabIndex = 15;
+            this.label11.Text = "　運転免許証の管理を行います。";
+            // 
             // StartProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -337,6 +365,7 @@
             this.ClientSize = new System.Drawing.Size(1316, 808);
             this.Controls.Add(this.TableLayoutPanelBase);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "StartProject";
             this.Text = "StartProject";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StartProject_FormClosing);
@@ -375,5 +404,7 @@
         private Label label7;
         private Label label8;
         private Label label9;
+        private Label label10;
+        private Label label11;
     }
 }

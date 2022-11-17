@@ -1,6 +1,6 @@
 ﻿namespace Vo {
     public class LicenseMasterVo {
-        private decimal _staff_code;
+        private int _staff_code;
         private string? _name_kana;
         private string? _name;
         private DateTime _birth_date;
@@ -36,7 +36,7 @@
         /// <summary>
         /// 社員コード
         /// </summary>
-        public decimal Staff_code {
+        public int Staff_code {
             get => _staff_code;
             set => _staff_code = value;
         }

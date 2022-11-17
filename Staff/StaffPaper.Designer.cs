@@ -184,7 +184,7 @@
             this.MainMenuStrip = this.MenuStrip1;
             this.Name = "StaffPaper";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "StaffRegisterPaper";
+            this.Text = "StaffPaper";
             this.TableLayoutPanelBase.ResumeLayout(false);
             this.TableLayoutPanelBase.PerformLayout();
             this.MenuStrip1.ResumeLayout(false);

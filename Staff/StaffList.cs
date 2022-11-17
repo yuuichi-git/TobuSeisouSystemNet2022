@@ -1,9 +1,13 @@
+using System.ComponentModel;
+
 using Common;
 
 using Dao;
 
 using FarPoint.Excel;
 using FarPoint.Win.Spread;
+
+using LicenseLedger;
 
 using Vo;
 
@@ -142,6 +146,9 @@ namespace Staff {
             ToolStripStatusLabelDetail.Text = "";
         }
 
+        /// <summary>
+        /// エントリーポイント
+        /// </summary>
         public static void Main() {
         }
 
@@ -255,7 +262,7 @@ namespace Staff {
                 // 免許証
                 bool _licenseLedgerFlag = false;
                 DateTime? _licenseLedgerExpirationDate = null;
-                if (extendsStaffMasterVo.LicenseMasterNumber != "") {
+                if (extendsStaffMasterVo.LicenseNumber != "") {
                     // 免許証
                     _licenseLedgerFlag = true;
                     // 免許証期限
@@ -421,6 +428,93 @@ namespace Staff {
             string fileName = string.Concat("従事者リスト", DateTime.Now.ToString("MM月dd日"), "作成");
             SpreadList.SaveExcel(new Directry().GetExcelDesktopPass(fileName), ExcelSaveFlags.UseOOXMLFormat | ExcelSaveFlags.Exchangeable);
             MessageBox.Show("デスクトップへエクスポートしました", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        /// <summary>
+        /// ContextMenuStrip1_Opening
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ContextMenuStrip1_Opening(object sender, CancelEventArgs e) {
+            /*
+             * SheetViewにRowが無い場合や、Rowが選択されていない場合はReturnする
+             */
+            if (SheetViewList.RowCount < 1 || !SheetViewList.IsBlockSelected) {
+                e.Cancel = true;
+                return;
+            }
+
+            var spreadList = (FpSpread)((ContextMenuStrip)sender).SourceControl;
+            var cellRange = spreadList.ActiveSheet.GetSelections();
+            /*
+             * 免許証
+             */
+            if (cellRange[0].RowCount == 1) {
+                var license = SheetViewList.Cells[SheetViewList.ActiveRowIndex, colLicense].Value;
+                if ((bool)license) {
+                    ToolStripMenuItemLicense.Enabled = true;
+                } else {
+                    ToolStripMenuItemLicense.Enabled = false;
+                }
+            } else {
+                ToolStripMenuItemLicense.Enabled = false;
+            }
+            /*
+             * 東環保
+             */
+            if (cellRange[0].RowCount == 1) {
+                var toukanpoCard = SheetViewList.Cells[SheetViewList.ActiveRowIndex, colToukanpoCard].Value;
+                if ((bool)toukanpoCard) {
+                    ToolStripMenuItemToukanpo.Enabled = true;
+                } else {
+                    ToolStripMenuItemToukanpo.Enabled = false;
+                }
+            } else {
+                ToolStripMenuItemLicense.Enabled = false;
+            }
+            /*
+             * 地図を表示する
+             */
+            if (cellRange[0].RowCount == 1) {
+                var currentAddress = SheetViewList.Cells[SheetViewList.ActiveRowIndex, colCurrentAddress].Text;
+                if (!string.IsNullOrEmpty(currentAddress)) {
+                    ToolStripMenuItemMap.Enabled = true;
+                } else {
+                    ToolStripMenuItemMap.Enabled = false;
+                }
+            } else {
+                ToolStripMenuItemMap.Enabled = false;
+            }
+        }
+
+        /// <summary>
+        /// ToolStripMenuItem_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItem_Click(object sender, EventArgs e) {
+            switch (((ToolStripMenuItem)sender).Name) {
+                /*
+                 * 免許証を表示
+                 */
+                case "ToolStripMenuItemLicense":
+                    var staffCode = ((ExtendsStaffMasterVo)SheetViewList.Cells[SheetViewList.ActiveRowIndex, colName].Tag).Staff_code;
+                    var licenseMasterPicture = new LicenseCard(_connectionVo, staffCode);
+                    licenseMasterPicture.ShowDialog();
+                    break;
+                /*
+                 * 東環保修了証を表示
+                 */
+                case "ToolStripMenuItemToukanpo":
+
+                    break;
+                /*
+                 * 地図を表示
+                 */
+                case "ToolStripMenuItemMap":
+
+                    break;
+            }
         }
 
         /// <summary>

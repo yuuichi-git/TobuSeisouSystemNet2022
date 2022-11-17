@@ -213,7 +213,9 @@ namespace Staff {
             sheetView.Cells[31, 1].Value = extendsStaffMasterVo.Medical_examination_date_4 != _defaultDateTime ? extendsStaffMasterVo.Medical_examination_date_4.Date : null;//健康状態日付4
             sheetView.Cells[31, 10].Value = extendsStaffMasterVo.Medical_examination_note_4;//健康状態備考4
             sheetView.Cells[33, 10].Value = extendsStaffMasterVo.Medical_examination_note;//診断以外で気づいた点
-            //交通事故発生年月日・概要
+            /*
+             * 交通事故発生年月日・概要
+             */
             int count = 0;
             foreach (var carAccidentLedgerVo in _listCarAccidentLedgerVo) {
                 switch (count) {

@@ -80,6 +80,17 @@ namespace Common {
         }
 
         /// <summary>
+        /// LicenseList
+        /// </summary>
+        /// <param name="form"></param>
+        /// <returns></returns>
+        public Form LicenseList(Form form) {
+            form.KeyPreview = true;
+            GetWorkingArea(form);
+            return form;
+        }
+
+        /// <summary>
         /// アプリケーションが開かれる画面のワークエリアを返す
         /// FHDでの最小サイズ(1920*1048)
         /// </summary>

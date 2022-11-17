@@ -704,7 +704,7 @@ namespace Dao {
                     extendsStaffMasterVo.Display_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["display_name"]);
                     extendsStaffMasterVo.Name_kana = _defaultValue.GetDefaultValue<string>(sqlDataReader["name_kana"]);
                     extendsStaffMasterVo.ToukanpoTrainingCardFlag = sqlDataReader["toukanpo_staff_code"] == DBNull.Value ? false : true;
-                    extendsStaffMasterVo.LicenseMasterNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["license_number"]);
+                    extendsStaffMasterVo.LicenseNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["license_number"]);
                     extendsStaffMasterVo.LicenseMasterExpirationDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["license_expiration_date"]);
                     extendsStaffMasterVo.CommutingNotification = _defaultValue.GetDefaultValue<bool>(sqlDataReader["commuting_notification"]);
                     extendsStaffMasterVo.MeansOfCommutingEndDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["means_of_commuting_end_date"]);

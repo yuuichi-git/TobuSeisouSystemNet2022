@@ -5,6 +5,8 @@ using System.Data;
 
 using Common;
 
+using LicenseLedger;
+
 using Production;
 
 using Staff;
@@ -49,20 +51,25 @@ namespace TobuSeisouSystemNet2022 {
                         break;
                     case ConnectionState.Open: //接続が開いています。
                         switch ((string)((Label)sender).Tag) {
-                            // 配車システム
+                            // VehicleDispatch
                             case "VehicleDispatch":
                                 var vehicleDispatchBoad = new VehicleDispatchBoad(_connectionVo);
                                 vehicleDispatchBoad.Show(this);
                                 break;
-                            // 本番変更
+                            // ProductionList
                             case "ProductionList":
                                 var productionList = new ProductionList(_connectionVo);
                                 productionList.Show(this);
                                 break;
-                            // 従事者リスト
+                            // StaffList
                             case "StaffList":
                                 var staffList = new StaffList(_connectionVo);
                                 staffList.Show(this);
+                                break;
+                            // LicenseList
+                            case "LicenseList":
+                                var licenseList = new LicenseList(_connectionVo);
+                                licenseList.Show(this);
                                 break;
                             default:
                                 break;

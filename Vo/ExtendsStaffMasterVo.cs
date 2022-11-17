@@ -1,7 +1,7 @@
 ﻿namespace Vo {
     public class ExtendsStaffMasterVo : StaffMasterVo {
         private bool _toukanpoTrainingCardFlag;
-        private string? _licenseMasterNumber;
+        private string? _licenseNumber;
         private LicenseMasterVo? _licenseMasterVo;
         private DateTime _licenseMasterExpirationDate;
         private bool _commutingNotification;
@@ -16,11 +16,11 @@
             set => _toukanpoTrainingCardFlag = value;
         }
         /// <summary>
-        /// 免許証情報の番号
+        /// 免許証番号
         /// </summary>
-        public string? LicenseMasterNumber {
-            get => _licenseMasterNumber;
-            set => _licenseMasterNumber = value;
+        public string? LicenseNumber {
+            get => _licenseNumber;
+            set => _licenseNumber = value;
         }
         /// <summary>
         /// LicenseLedgerVo

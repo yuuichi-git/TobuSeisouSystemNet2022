@@ -23,11 +23,11 @@ namespace Dao {
         /// </summary>
         /// <param name="staffCode"></param>
         /// <returns></returns>
-        public bool CheckLicenseLedger(decimal staffCode) {
+        public bool CheckLicenseMaster(int staffCode) {
             int count = 0;
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT COUNT(staff_code) " +
-                                     "FROM license_ledger " +
+                                     "FROM license_master " +
                                      "WHERE staff_code = '" + staffCode + "'";
             try {
                 count = (int)sqlCommand.ExecuteScalar();
@@ -76,12 +76,12 @@ namespace Dao {
                                             "update_ymd_hms," +
                                             "delete_ymd_hms," +
                                             "delete_flag " +
-                                     "FROM license_ledger WITH(NOLOCK) " +
+                                     "FROM license_master WITH(NOLOCK) " +
                                      "WHERE delete_flag = 'False'";
             using (var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while (sqlDataReader.Read() == true) {
                     var licenseMasterVo = new LicenseMasterVo();
-                    licenseMasterVo.Staff_code = _defaultValue.GetDefaultValue<decimal>(sqlDataReader["staff_code"]);
+                    licenseMasterVo.Staff_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["staff_code"]);
                     licenseMasterVo.Name_kana = _defaultValue.GetDefaultValue<string>(sqlDataReader["name_kana"]);
                     licenseMasterVo.Name = _defaultValue.GetDefaultValue<string>(sqlDataReader["name"]);
                     licenseMasterVo.Birth_date = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["birth_date"]);
@@ -160,10 +160,10 @@ namespace Dao {
                                             "delete_ymd_hms," +
                                             "delete_flag " +
                                      "FROM license_master " +
-                                     "Where staff_code = '" + staffCode + "'";
+                                     "Where staff_code = " + staffCode;
             using (var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while (sqlDataReader.Read() == true) {
-                    licenseMasterVo.Staff_code = _defaultValue.GetDefaultValue<decimal>(sqlDataReader["staff_code"]);
+                    licenseMasterVo.Staff_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["staff_code"]);
                     licenseMasterVo.Name_kana = _defaultValue.GetDefaultValue<string>(sqlDataReader["name_kana"]);
                     licenseMasterVo.Name = _defaultValue.GetDefaultValue<string>(sqlDataReader["name"]);
                     licenseMasterVo.Birth_date = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["birth_date"]);
@@ -319,7 +319,7 @@ namespace Dao {
                                          "big_special_two = '" + licenseMasterVo.Big_special_two + "'," +
                                          "traction = '" + licenseMasterVo.Traction + "'," +
                                          "update_ymd_hms = '" + DateTime.Now + "' " +
-                                     "WHERE staff_code='" + licenseMasterVo.Staff_code + "' " +
+                                     "WHERE staff_code = " + licenseMasterVo.Staff_code + " " +
                                      "AND delete_Flag = 'False'";
             try {
                 sqlCommand.Parameters.Add("@member_picture_head", SqlDbType.Image, licenseMasterVo.Picture_head.Length).Value = licenseMasterVo.Picture_head;
