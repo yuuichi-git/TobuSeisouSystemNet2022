@@ -100,11 +100,11 @@
             this.ToolStripMenuItemSetGarageChange = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemSetGarageAdachi = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemSetGarageMisato = new System.Windows.Forms.ToolStripMenuItem();
-            this.代車代番のFaxを作成するToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemFax = new System.Windows.Forms.ToolStripMenuItem();
             this.ContextMenuStripCarLabel = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.車両の情報ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemCarDetail = new System.Windows.Forms.ToolStripMenuItem();
             this.ContextMenuStripStaffLabel = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.個人の情報ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemStaffDetail = new System.Windows.Forms.ToolStripMenuItem();
             this.TableLayoutPanelBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -392,31 +392,9 @@
             this.TableLayoutPanelEx1.MaximumSize = new System.Drawing.Size(1850, 0);
             this.TableLayoutPanelEx1.Name = "TableLayoutPanelEx1";
             this.TableLayoutPanelEx1.RowCount = 3;
-            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
-            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
-            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
-            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 304F));
+            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 304F));
+            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 304F));
             this.TableLayoutPanelEx1.Size = new System.Drawing.Size(1156, 871);
             this.TableLayoutPanelEx1.TabIndex = 3;
             // 
@@ -1097,7 +1075,7 @@
             this.ToolStripMenuItemSetDetail,
             this.ToolStripMenuItemSetDelete,
             this.ToolStripMenuItemSetGarageChange,
-            this.代車代番のFaxを作成するToolStripMenuItem});
+            this.ToolStripMenuItemFax});
             this.ContextMenuStripSetLabel.Name = "ContextMenuStripSetLabel";
             this.ContextMenuStripSetLabel.Size = new System.Drawing.Size(208, 92);
             this.ContextMenuStripSetLabel.Opened += new System.EventHandler(this.ContextMenuStrip_Opened);
@@ -1139,40 +1117,42 @@
             this.ToolStripMenuItemSetGarageMisato.Text = "三郷より出庫";
             this.ToolStripMenuItemSetGarageMisato.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
-            // 代車代番のFaxを作成するToolStripMenuItem
+            // ToolStripMenuItemFax
             // 
-            this.代車代番のFaxを作成するToolStripMenuItem.Name = "代車代番のFaxを作成するToolStripMenuItem";
-            this.代車代番のFaxを作成するToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.代車代番のFaxを作成するToolStripMenuItem.Text = "代車・代番のFaxを作成する";
-            this.代車代番のFaxを作成するToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            this.ToolStripMenuItemFax.Name = "ToolStripMenuItemFax";
+            this.ToolStripMenuItemFax.Size = new System.Drawing.Size(207, 22);
+            this.ToolStripMenuItemFax.Text = "代車・代番のFaxを作成する";
+            this.ToolStripMenuItemFax.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // ContextMenuStripCarLabel
             // 
             this.ContextMenuStripCarLabel.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.車両の情報ToolStripMenuItem});
+            this.ToolStripMenuItemCarDetail});
             this.ContextMenuStripCarLabel.Name = "ContextMenuStripCarLabel";
             this.ContextMenuStripCarLabel.Size = new System.Drawing.Size(133, 26);
             this.ContextMenuStripCarLabel.Opened += new System.EventHandler(this.ContextMenuStrip_Opened);
             // 
-            // 車両の情報ToolStripMenuItem
+            // ToolStripMenuItemCarDetail
             // 
-            this.車両の情報ToolStripMenuItem.Name = "車両の情報ToolStripMenuItem";
-            this.車両の情報ToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-            this.車両の情報ToolStripMenuItem.Text = "車両の情報";
+            this.ToolStripMenuItemCarDetail.Name = "ToolStripMenuItemCarDetail";
+            this.ToolStripMenuItemCarDetail.Size = new System.Drawing.Size(132, 22);
+            this.ToolStripMenuItemCarDetail.Text = "車両の情報";
+            this.ToolStripMenuItemCarDetail.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // ContextMenuStripStaffLabel
             // 
             this.ContextMenuStripStaffLabel.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.個人の情報ToolStripMenuItem});
+            this.ToolStripMenuItemStaffDetail});
             this.ContextMenuStripStaffLabel.Name = "ContextMenuStripStaffLabel";
             this.ContextMenuStripStaffLabel.Size = new System.Drawing.Size(133, 26);
             this.ContextMenuStripStaffLabel.Opened += new System.EventHandler(this.ContextMenuStrip_Opened);
             // 
-            // 個人の情報ToolStripMenuItem
+            // ToolStripMenuItemStaffDetail
             // 
-            this.個人の情報ToolStripMenuItem.Name = "個人の情報ToolStripMenuItem";
-            this.個人の情報ToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
-            this.個人の情報ToolStripMenuItem.Text = "個人の情報";
+            this.ToolStripMenuItemStaffDetail.Name = "ToolStripMenuItemStaffDetail";
+            this.ToolStripMenuItemStaffDetail.Size = new System.Drawing.Size(132, 22);
+            this.ToolStripMenuItemStaffDetail.Text = "個人の情報";
+            this.ToolStripMenuItemStaffDetail.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // VehicleDispatchBoad
             // 
@@ -1257,9 +1237,9 @@
         private ToolStripMenuItem ToolStripMenuItemSetDetail;
         private ToolStripMenuItem ToolStripMenuItemSetGarageAdachi;
         private ToolStripMenuItem ToolStripMenuItemSetGarageMisato;
-        private ToolStripMenuItem 代車代番のFaxを作成するToolStripMenuItem;
-        private ToolStripMenuItem 車両の情報ToolStripMenuItem;
-        private ToolStripMenuItem 個人の情報ToolStripMenuItem;
+        private ToolStripMenuItem ToolStripMenuItemFax;
+        private ToolStripMenuItem ToolStripMenuItemCarDetail;
+        private ToolStripMenuItem ToolStripMenuItemStaffDetail;
         private ToolStripStatusLabel ToolStripStatusLabelStatus;
         private ToolStripStatusLabel ToolStripStatusLabel2;
         private ToolStripStatusLabel ToolStripStatusLabelMemory;

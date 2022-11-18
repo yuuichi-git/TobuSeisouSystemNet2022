@@ -28,8 +28,8 @@ namespace ControlEx {
             this.ColumnCount = 1;
             this.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
             this.RowCount = 6;
-            this.RowStyles.Add(new RowStyle(SizeType.Absolute, 70F));
-            this.RowStyles.Add(new RowStyle(SizeType.Absolute, 70F));
+            this.RowStyles.Add(new RowStyle(SizeType.Absolute, 72F));
+            this.RowStyles.Add(new RowStyle(SizeType.Absolute, 72F));
             this.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             this.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             this.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
@@ -63,14 +63,14 @@ namespace ControlEx {
                  */
                 switch (e.Row) {
                     case 0: // SetLabel
-                            // GarageFlag
-                        if (!GarageFlag)
-                            e.Graphics.FillRectangle(Brushes.PowderBlue, rectangle);
                         // OperationFlag
                         if (!OperationFlag)
                             e.Graphics.FillRectangle(Brushes.Pink, rectangle);
+                        // GarageFlag
+                        if (!GarageFlag)
+                            e.Graphics.FillRectangle(Brushes.PowderBlue, rectangle);
                         // Border
-                        ControlPaint.DrawBorder(e.Graphics, rectangle, OperationFlag ? GarageFlag ? Color.DarkGray : Color.Blue : Color.Red, ButtonBorderStyle.Solid);
+                        //ControlPaint.DrawBorder(e.Graphics, rectangle, OperationFlag ? GarageFlag ? Color.DarkGray : Color.Blue : Color.Red, ButtonBorderStyle.Solid);
                         break;
                     case 1: // CarLabel
                         ControlPaint.DrawBorder(e.Graphics, rectangle, Color.DarkGray, ButtonBorderStyle.Dotted);

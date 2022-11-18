@@ -6,8 +6,21 @@ namespace ControlEx {
         private const int _setLabelHeight = 68;
         private const int _setLabelWidth = 70;
 
+        Color _borderColor = Color.White;
+
         public SetLabelEx(SetMasterVo setMasterVo) {
             _setMasterVo = setMasterVo;
+            switch (setMasterVo.Classification_code) {
+                case 10:
+                    _borderColor = Color.DarkGray;
+                    break;
+                case 11:
+                    _borderColor = Color.DarkOrange;
+                    break;
+                default:
+                    _borderColor = Color.White;
+                    break;
+            }
             InitializeComponent();
             /*
              * SetControlExのイベントを登録
@@ -16,6 +29,11 @@ namespace ControlEx {
         }
 
         private void LabelEx_CellPaint(object? sender, PaintEventArgs e) {
+            /*
+             * Boderを描画
+             */
+            Rectangle rectangleBoder = new Rectangle(0, 0, 68, 66);
+            ControlPaint.DrawBorder(e.Graphics, rectangleBoder, _borderColor, ButtonBorderStyle.Solid);
         }
 
         /// <summary>
@@ -25,7 +43,7 @@ namespace ControlEx {
         /// <returns></returns>
         public SetLabelEx CreateLabel() {
             this.BorderStyle = BorderStyle.FixedSingle;
-            this.Font = new Font("Yu Gothic UI", 12, FontStyle.Regular, GraphicsUnit.Pixel);
+            this.Font = new Font("Yu Gothic UI", 13, FontStyle.Regular, GraphicsUnit.Pixel);
             this.Height = _setLabelHeight;
             this.Margin = new Padding(2);
             this.Tag = _setMasterVo;

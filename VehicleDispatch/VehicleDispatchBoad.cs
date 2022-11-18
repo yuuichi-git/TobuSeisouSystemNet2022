@@ -424,7 +424,7 @@ namespace VehicleDispatch {
                         /*
                          * CarLabelExを作成
                          */
-                        foreach (var vehicleDispatchDetailCarVo in _listVehicleDispatchDetailCarVo.FindAll(x => x.Cell_number == 168)) {
+                        foreach (var vehicleDispatchDetailCarVo in _listVehicleDispatchDetailCarVo.FindAll(x => x.Cell_number == 168).OrderBy(x => x.Insert_ymd_hms)) {
                             // Controlを作成
                             CarLabelEx newDropItem = new CarLabelEx(_listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailCarVo.Car_code)).CreateLabel();
                             // プロパティを設定
@@ -587,7 +587,6 @@ namespace VehicleDispatch {
 
         /// <summary>
         /// ContextMenuStrip_Opened
-        /// クリックされたCellNumberを取得して変数に格納する
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -596,7 +595,11 @@ namespace VehicleDispatch {
             switch (((ContextMenuStrip)sender).Name) {
                 // ContextMenuStripSetLabel
                 case "ContextMenuStripSetLabel":
+                    // クリックされたCellNumberを取得して変数に格納する
                     ToolStripMenuItemClickCellNumber = (int)((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.Tag;
+                    SetMasterVo setMasterVo = (SetMasterVo)((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Tag;
+                    // ToolStripMenuItemSetDelete
+                    ToolStripMenuItemSetDelete.Enabled = setMasterVo.Move_flag;
                     break;
             }
         }
@@ -609,6 +612,9 @@ namespace VehicleDispatch {
         private void ToolStripMenuItem_Click(object sender, EventArgs e) {
             DateTime operationDate = DateTimePickerOperationDate.Value;
             switch (((ToolStripMenuItem)sender).Name) {
+                /*
+                 * MenuStrip1
+                 */
                 // 清掃事務所へ提出している本番
                 case "ToolStripMenuItemInitializeCleanOffice":
                     MessageBox.Show("ToolStripMenuItemInitializeCleanOffice");
@@ -623,6 +629,13 @@ namespace VehicleDispatch {
                     } else {
                         InsertVehicleDispatchDetail();
                     }
+                    break;
+                /*
+                 * ContextMenuStripSetLabel
+                 */
+                // 配車先詳細
+                case "ToolStripMenuItemSetDetail":
+                    MessageBox.Show("配車先詳細画面は作成中です。提案を受付ています。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
                 // 配車先を削除
                 case "ToolStripMenuItemSetDelete":
@@ -640,6 +653,23 @@ namespace VehicleDispatch {
                     _vehicleDispatchDetailDao.UpdateGarageFlag(DateTimePickerOperationDate.Value,
                                                                ToolStripMenuItemClickCellNumber,
                                                                false);
+                    break;
+                case "ToolStripMenuItemFax":
+                    MessageBox.Show("代車代番のFAXを作成画面は作成中です。提案を受付ています。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+                /*
+                 * ContextMenuStripCarLabel
+                 */
+                // 車両詳細
+                case "ToolStripMenuItemCarDetail":
+                    MessageBox.Show("車両詳細画面は作成中です。提案を受付ています。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+                /*
+                 * ContextMenuStripStaffLabel
+                 */
+                // 従事者詳細
+                case "ToolStripMenuItemStaffDetail":
+                    MessageBox.Show("従事者詳細画面は作成中です。提案を受付ています。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
             }
         }
