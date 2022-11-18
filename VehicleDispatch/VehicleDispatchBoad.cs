@@ -491,7 +491,7 @@ namespace VehicleDispatch {
                 FlowLayoutPanelExCar.Controls.Add(labelEx);
             }
             // FlowLayoutPanelExFullEmployees
-            foreach (var deepCopyStaffMasterVo in _listDeepCopyStaffMasterVo.FindAll(x => (x.Belongs == 10 || x.Belongs == 11) && x.Retirement_flag == false).OrderBy(x=>x.Name_kana)) {
+            foreach (var deepCopyStaffMasterVo in _listDeepCopyStaffMasterVo.FindAll(x => (x.Belongs == 10 || x.Belongs == 11) && x.Retirement_flag == false).OrderBy(x => x.Name_kana)) {
                 StaffLabelEx labelEx = new StaffLabelEx(deepCopyStaffMasterVo).CreateLabel();
                 // プロパティを設定
                 labelEx.ContextMenuStrip = ContextMenuStripStaffLabel;
@@ -586,6 +586,22 @@ namespace VehicleDispatch {
         }
 
         /// <summary>
+        /// ContextMenuStrip_Opened
+        /// クリックされたCellNumberを取得して変数に格納する
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        int ToolStripMenuItemClickCellNumber;
+        private void ContextMenuStrip_Opened(object sender, EventArgs e) {
+            switch (((ContextMenuStrip)sender).Name) {
+                // ContextMenuStripSetLabel
+                case "ContextMenuStripSetLabel":
+                    ToolStripMenuItemClickCellNumber = (int)((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.Tag;
+                    break;
+            }
+        }
+
+        /// <summary>
         /// ToolStripMenuItem_Click
         /// </summary>
         /// <param name="sender"></param>
@@ -608,6 +624,23 @@ namespace VehicleDispatch {
                         InsertVehicleDispatchDetail();
                     }
                     break;
+                // 配車先を削除
+                case "ToolStripMenuItemSetDelete":
+                    _vehicleDispatchDetailDao.ResetSet(DateTimePickerOperationDate.Value,
+                                                       ToolStripMenuItemClickCellNumber);
+                    break;
+                // 足立より出庫
+                case "ToolStripMenuItemSetGarageAdachi":
+                    _vehicleDispatchDetailDao.UpdateGarageFlag(DateTimePickerOperationDate.Value,
+                                                               ToolStripMenuItemClickCellNumber,
+                                                               true);
+                    break;
+                // 三郷より出庫
+                case "ToolStripMenuItemSetGarageMisato":
+                    _vehicleDispatchDetailDao.UpdateGarageFlag(DateTimePickerOperationDate.Value,
+                                                               ToolStripMenuItemClickCellNumber,
+                                                               false);
+                    break;
             }
         }
 
@@ -620,9 +653,15 @@ namespace VehicleDispatch {
             DateTime operationDate = DateTimePickerOperationDate.Value;
             /*
              * INSERTを実行する前に対象レコードが存在していたらDELETEする
+             * ①VehicleDispatchDetailの対象レコードをDELETE
+             * ②vehicle_dispatch_detail_carの対象レコードをDELETE
+             * ③vehicle_dispatch_detail_staffの対象レコードをDELETE
              */
-            if (_vehicleDispatchDetailDao.CheckVehicleDispatchDetail(operationDate))
+            if (_vehicleDispatchDetailDao.CheckVehicleDispatchDetail(operationDate)) {
                 _vehicleDispatchDetailDao.DeleteVehicleDispatchDetail(operationDate);
+                _vehicleDispatchDetailCarDao.DeleteCar(operationDate);
+                _vehicleDispatchDetailStaffDao.DeleteStaff(operationDate);
+            }
             /*
              * vehicle_dispatch_head/vehicle_dispatch_bodyからvehicle_dispatch_detailを作成する
              */

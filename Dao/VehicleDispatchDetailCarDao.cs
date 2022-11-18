@@ -170,7 +170,23 @@ namespace Dao {
 
         /// <summary>
         /// DeleteCar
-        /// vehicle_dispatch_detail_carからDELETE
+        /// 本番を初期化で使用
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <returns></returns>
+        public int DeleteCar(DateTime operationDate) {
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "DELETE FROM vehicle_dispatch_detail_car " +
+                                     "WHERE operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                return sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// DeleteCar
         /// </summary>
         /// <param name="operationDate"></param>
         /// <param name="dragCellNumber"></param>

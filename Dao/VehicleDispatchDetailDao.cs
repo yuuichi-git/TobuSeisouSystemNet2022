@@ -642,5 +642,30 @@ namespace Dao {
                 throw;
             }
         }
+
+        /// <summary>
+        /// UpdateGarage
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="dropCellNumber"></param>
+        /// <param name="garageFlag"></param>
+        /// <returns></returns>
+        public int UpdateGarageFlag(DateTime operationDate, int dropCellNumber,bool garageFlag) {
+            /*
+             * Tagがゼロから始まっているので１をプラスする
+             */
+            dropCellNumber++;
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE vehicle_dispatch_detail " +
+                                     "SET garage_flag = '" + garageFlag + "'," +
+                                         "update_pc_name = '" + Environment.MachineName + "'," +
+                                         "update_ymd_hms = '" + DateTime.Now + "' " +
+                                     "WHERE cell_number = " + dropCellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                return sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
     }
 }

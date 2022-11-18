@@ -188,7 +188,22 @@ namespace Dao {
 
         /// <summary>
         /// DeleteStaff
-        /// vehicle_dispatch_detail_staffからDELETE
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <returns></returns>
+        public int DeleteStaff(DateTime operationDate) {
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "DELETE FROM vehicle_dispatch_detail_staff " +
+                                     "WHERE operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                return sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// DeleteStaff
         /// </summary>
         /// <param name="operationDate"></param>
         /// <param name="dragCellNumber"></param>

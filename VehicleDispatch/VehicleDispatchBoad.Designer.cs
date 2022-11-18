@@ -95,11 +95,11 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.ContextMenuStripSetLabel = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.配車先の情報ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemSetDetail = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemSetDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.出庫地を変更するToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.本社より出庫ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.三郷より出庫ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemSetGarageChange = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemSetGarageAdachi = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemSetGarageMisato = new System.Windows.Forms.ToolStripMenuItem();
             this.代車代番のFaxを作成するToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ContextMenuStripCarLabel = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.車両の情報ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -1094,51 +1094,57 @@
             // ContextMenuStripSetLabel
             // 
             this.ContextMenuStripSetLabel.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.配車先の情報ToolStripMenuItem,
+            this.ToolStripMenuItemSetDetail,
             this.ToolStripMenuItemSetDelete,
-            this.出庫地を変更するToolStripMenuItem,
+            this.ToolStripMenuItemSetGarageChange,
             this.代車代番のFaxを作成するToolStripMenuItem});
             this.ContextMenuStripSetLabel.Name = "ContextMenuStripSetLabel";
             this.ContextMenuStripSetLabel.Size = new System.Drawing.Size(208, 92);
+            this.ContextMenuStripSetLabel.Opened += new System.EventHandler(this.ContextMenuStrip_Opened);
             // 
-            // 配車先の情報ToolStripMenuItem
+            // ToolStripMenuItemSetDetail
             // 
-            this.配車先の情報ToolStripMenuItem.Name = "配車先の情報ToolStripMenuItem";
-            this.配車先の情報ToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.配車先の情報ToolStripMenuItem.Text = "配車先の情報";
+            this.ToolStripMenuItemSetDetail.Name = "ToolStripMenuItemSetDetail";
+            this.ToolStripMenuItemSetDetail.Size = new System.Drawing.Size(207, 22);
+            this.ToolStripMenuItemSetDetail.Text = "配車先の情報";
+            this.ToolStripMenuItemSetDetail.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // ToolStripMenuItemSetDelete
             // 
             this.ToolStripMenuItemSetDelete.Name = "ToolStripMenuItemSetDelete";
             this.ToolStripMenuItemSetDelete.Size = new System.Drawing.Size(207, 22);
             this.ToolStripMenuItemSetDelete.Text = "配車先を削除する";
+            this.ToolStripMenuItemSetDelete.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
-            // 出庫地を変更するToolStripMenuItem
+            // ToolStripMenuItemSetGarageChange
             // 
-            this.出庫地を変更するToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.本社より出庫ToolStripMenuItem,
-            this.三郷より出庫ToolStripMenuItem});
-            this.出庫地を変更するToolStripMenuItem.Name = "出庫地を変更するToolStripMenuItem";
-            this.出庫地を変更するToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
-            this.出庫地を変更するToolStripMenuItem.Text = "出庫地を変更する";
+            this.ToolStripMenuItemSetGarageChange.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemSetGarageAdachi,
+            this.ToolStripMenuItemSetGarageMisato});
+            this.ToolStripMenuItemSetGarageChange.Name = "ToolStripMenuItemSetGarageChange";
+            this.ToolStripMenuItemSetGarageChange.Size = new System.Drawing.Size(207, 22);
+            this.ToolStripMenuItemSetGarageChange.Text = "出庫地を変更する";
             // 
-            // 本社より出庫ToolStripMenuItem
+            // ToolStripMenuItemSetGarageAdachi
             // 
-            this.本社より出庫ToolStripMenuItem.Name = "本社より出庫ToolStripMenuItem";
-            this.本社より出庫ToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.本社より出庫ToolStripMenuItem.Text = "本社より出庫";
+            this.ToolStripMenuItemSetGarageAdachi.Name = "ToolStripMenuItemSetGarageAdachi";
+            this.ToolStripMenuItemSetGarageAdachi.Size = new System.Drawing.Size(139, 22);
+            this.ToolStripMenuItemSetGarageAdachi.Text = "本社より出庫";
+            this.ToolStripMenuItemSetGarageAdachi.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
-            // 三郷より出庫ToolStripMenuItem
+            // ToolStripMenuItemSetGarageMisato
             // 
-            this.三郷より出庫ToolStripMenuItem.Name = "三郷より出庫ToolStripMenuItem";
-            this.三郷より出庫ToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
-            this.三郷より出庫ToolStripMenuItem.Text = "三郷より出庫";
+            this.ToolStripMenuItemSetGarageMisato.Name = "ToolStripMenuItemSetGarageMisato";
+            this.ToolStripMenuItemSetGarageMisato.Size = new System.Drawing.Size(139, 22);
+            this.ToolStripMenuItemSetGarageMisato.Text = "三郷より出庫";
+            this.ToolStripMenuItemSetGarageMisato.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // 代車代番のFaxを作成するToolStripMenuItem
             // 
             this.代車代番のFaxを作成するToolStripMenuItem.Name = "代車代番のFaxを作成するToolStripMenuItem";
             this.代車代番のFaxを作成するToolStripMenuItem.Size = new System.Drawing.Size(207, 22);
             this.代車代番のFaxを作成するToolStripMenuItem.Text = "代車・代番のFaxを作成する";
+            this.代車代番のFaxを作成するToolStripMenuItem.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // ContextMenuStripCarLabel
             // 
@@ -1146,6 +1152,7 @@
             this.車両の情報ToolStripMenuItem});
             this.ContextMenuStripCarLabel.Name = "ContextMenuStripCarLabel";
             this.ContextMenuStripCarLabel.Size = new System.Drawing.Size(133, 26);
+            this.ContextMenuStripCarLabel.Opened += new System.EventHandler(this.ContextMenuStrip_Opened);
             // 
             // 車両の情報ToolStripMenuItem
             // 
@@ -1159,6 +1166,7 @@
             this.個人の情報ToolStripMenuItem});
             this.ContextMenuStripStaffLabel.Name = "ContextMenuStripStaffLabel";
             this.ContextMenuStripStaffLabel.Size = new System.Drawing.Size(133, 26);
+            this.ContextMenuStripStaffLabel.Opened += new System.EventHandler(this.ContextMenuStrip_Opened);
             // 
             // 個人の情報ToolStripMenuItem
             // 
@@ -1245,10 +1253,10 @@
         private ContextMenuStrip ContextMenuStripSetLabel;
         private ContextMenuStrip ContextMenuStripCarLabel;
         private ContextMenuStrip ContextMenuStripStaffLabel;
-        private ToolStripMenuItem 出庫地を変更するToolStripMenuItem;
-        private ToolStripMenuItem 配車先の情報ToolStripMenuItem;
-        private ToolStripMenuItem 本社より出庫ToolStripMenuItem;
-        private ToolStripMenuItem 三郷より出庫ToolStripMenuItem;
+        private ToolStripMenuItem ToolStripMenuItemSetGarageChange;
+        private ToolStripMenuItem ToolStripMenuItemSetDetail;
+        private ToolStripMenuItem ToolStripMenuItemSetGarageAdachi;
+        private ToolStripMenuItem ToolStripMenuItemSetGarageMisato;
         private ToolStripMenuItem 代車代番のFaxを作成するToolStripMenuItem;
         private ToolStripMenuItem 車両の情報ToolStripMenuItem;
         private ToolStripMenuItem 個人の情報ToolStripMenuItem;
