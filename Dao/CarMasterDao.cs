@@ -82,7 +82,7 @@ namespace Dao {
                     carMasterVo.Registration_number_3 = _defaultValue.GetDefaultValue<string>(sqlDataReader["registration_number_3"]);
                     carMasterVo.Registration_number_4 = _defaultValue.GetDefaultValue<string>(sqlDataReader["registration_number_4"]);
                     carMasterVo.Garage_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["garage_flag"]);
-                    carMasterVo.Door_number = _defaultValue.GetDefaultValue<string>(sqlDataReader["door_number"]);
+                    carMasterVo.Door_number = _defaultValue.GetDefaultValue<int>(sqlDataReader["door_number"]);
                     carMasterVo.Registration_date = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["registration_date"]);
                     carMasterVo.First_registration_date = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["first_registration_date"]);
                     carMasterVo.Car_kind_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["car_kind_code"]);

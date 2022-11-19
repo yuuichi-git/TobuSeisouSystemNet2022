@@ -13,7 +13,7 @@
         private string _registration_number_3 = "";
         private string _registration_number_4 = "";
         private bool _garage_flag;
-        private string _door_number = "";
+        private int _door_number;
         private DateTime _registration_date;
         private DateTime _first_registration_date;
         private int _car_kind_code;
@@ -125,7 +125,7 @@
         /// ドア番号
         /// "78-1"等の文字で表すドア番が存在するためstring型で
         /// </summary>
-        public string Door_number {
+        public int Door_number {
             get => _door_number;
             set => _door_number = value;
         }
