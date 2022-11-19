@@ -23,25 +23,31 @@
         ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CarList));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.StatusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.PanelUp = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.CheckBoxDeleteFlag = new System.Windows.Forms.CheckBox();
+            this.ButtonUpdate = new System.Windows.Forms.Button();
             this.MenuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ToolStripMenuItemMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
-            this.SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("resource1"));
+            this.SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, ((object)(resources.GetObject("tableLayoutPanel1.Controls"))));
+            this.ContextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ToolStripMenuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.SheetViewList = this.SpreadList.GetSheet(0);
+            this.ToolStripMenuItemInsertNewCar = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
             this.PanelUp.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpreadList)).BeginInit();
+            this.ContextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -89,22 +95,34 @@
             // 
             // PanelUp
             // 
-            this.PanelUp.Controls.Add(this.button1);
+            this.PanelUp.Controls.Add(this.CheckBoxDeleteFlag);
+            this.PanelUp.Controls.Add(this.ButtonUpdate);
             this.PanelUp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelUp.Location = new System.Drawing.Point(3, 27);
             this.PanelUp.Name = "PanelUp";
             this.PanelUp.Size = new System.Drawing.Size(1898, 54);
             this.PanelUp.TabIndex = 0;
             // 
-            // button1
+            // CheckBoxDeleteFlag
             // 
-            this.button1.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(1672, 9);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(180, 36);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "最 新 化";
-            this.button1.UseVisualStyleBackColor = true;
+            this.CheckBoxDeleteFlag.AutoSize = true;
+            this.CheckBoxDeleteFlag.Location = new System.Drawing.Point(1500, 20);
+            this.CheckBoxDeleteFlag.Name = "CheckBoxDeleteFlag";
+            this.CheckBoxDeleteFlag.Size = new System.Drawing.Size(138, 19);
+            this.CheckBoxDeleteFlag.TabIndex = 1;
+            this.CheckBoxDeleteFlag.Text = "削除済のレコードも表示";
+            this.CheckBoxDeleteFlag.UseVisualStyleBackColor = true;
+            // 
+            // ButtonUpdate
+            // 
+            this.ButtonUpdate.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ButtonUpdate.Location = new System.Drawing.Point(1672, 9);
+            this.ButtonUpdate.Name = "ButtonUpdate";
+            this.ButtonUpdate.Size = new System.Drawing.Size(180, 36);
+            this.ButtonUpdate.TabIndex = 0;
+            this.ButtonUpdate.Text = "最 新 化";
+            this.ButtonUpdate.UseVisualStyleBackColor = true;
+            this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
             // 
             // MenuStrip1
             // 
@@ -135,6 +153,8 @@
             // 
             // ToolStripMenuItemEdit
             // 
+            this.ToolStripMenuItemEdit.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemInsertNewCar});
             this.ToolStripMenuItemEdit.Name = "ToolStripMenuItemEdit";
             this.ToolStripMenuItemEdit.Size = new System.Drawing.Size(43, 20);
             this.ToolStripMenuItemEdit.Text = "編集";
@@ -147,12 +167,36 @@
             // 
             // SpreadList
             // 
+            this.SpreadList.AccessibleDescription = "Book1, Sheet1, Row 0, Column 0";
+            this.SpreadList.ContextMenuStrip = this.ContextMenuStrip1;
             this.SpreadList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SpreadList.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SpreadList.Location = new System.Drawing.Point(3, 87);
             this.SpreadList.Name = "SpreadList";
             this.SpreadList.Size = new System.Drawing.Size(1898, 927);
             this.SpreadList.TabIndex = 3;
+            this.SpreadList.CellDoubleClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SpreadList_CellDoubleClick);
+            // 
+            // ContextMenuStrip1
+            // 
+            this.ContextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemDelete});
+            this.ContextMenuStrip1.Name = "ContextMenuStrip1";
+            this.ContextMenuStrip1.Size = new System.Drawing.Size(231, 26);
+            this.ContextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuStrip1_Opening);
+            // 
+            // ToolStripMenuItemDelete
+            // 
+            this.ToolStripMenuItemDelete.Name = "ToolStripMenuItemDelete";
+            this.ToolStripMenuItemDelete.Size = new System.Drawing.Size(230, 22);
+            this.ToolStripMenuItemDelete.Text = "選択されているレコードを削除する";
+            this.ToolStripMenuItemDelete.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            // 
+            // ToolStripMenuItemInsertNewCar
+            // 
+            this.ToolStripMenuItemInsertNewCar.Name = "ToolStripMenuItemInsertNewCar";
+            this.ToolStripMenuItemInsertNewCar.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItemInsertNewCar.Text = "車両を新規登録する";
             // 
             // CarList
             // 
@@ -169,9 +213,11 @@
             this.StatusStrip1.ResumeLayout(false);
             this.StatusStrip1.PerformLayout();
             this.PanelUp.ResumeLayout(false);
+            this.PanelUp.PerformLayout();
             this.MenuStrip1.ResumeLayout(false);
             this.MenuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpreadList)).EndInit();
+            this.ContextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -185,11 +231,15 @@
         private ToolStripMenuItem ToolStripMenuItemExit;
         private ToolStripMenuItem ToolStripMenuItemEdit;
         private ToolStripMenuItem ToolStripMenuItemHelp;
-        private Button button1;
+        private Button ButtonUpdate;
         private StatusStrip StatusStrip1;
         private ToolStripStatusLabel toolStripStatusLabel1;
         private ToolStripStatusLabel ToolStripStatusLabelStatus;
         private FarPoint.Win.Spread.FpSpread SpreadList;
         private FarPoint.Win.Spread.SheetView SheetViewList;
+        private CheckBox CheckBoxDeleteFlag;
+        private ContextMenuStrip ContextMenuStrip1;
+        private ToolStripMenuItem ToolStripMenuItemDelete;
+        private ToolStripMenuItem ToolStripMenuItemInsertNewCar;
     }
 }

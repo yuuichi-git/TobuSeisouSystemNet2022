@@ -48,6 +48,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.TableLayoutPanelBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -146,6 +148,8 @@
             this.TableLayoutPanelCenter.Controls.Add(this.label11, 0, 17);
             this.TableLayoutPanelCenter.Controls.Add(this.label12, 0, 19);
             this.TableLayoutPanelCenter.Controls.Add(this.label13, 0, 20);
+            this.TableLayoutPanelCenter.Controls.Add(this.label14, 0, 22);
+            this.TableLayoutPanelCenter.Controls.Add(this.label15, 0, 23);
             this.TableLayoutPanelCenter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanelCenter.Location = new System.Drawing.Point(303, 27);
             this.TableLayoutPanelCenter.Name = "TableLayoutPanelCenter";
@@ -393,6 +397,31 @@
             this.label13.TabIndex = 17;
             this.label13.Text = "　車両事故・作業事故等のトラブルを記録管理します。";
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label14.Location = new System.Drawing.Point(3, 460);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(73, 17);
+            this.label14.TabIndex = 18;
+            this.label14.Tag = "CarList";
+            this.label14.Text = "　車両台帳";
+            this.label14.Click += new System.EventHandler(this.Label_Click);
+            this.label14.MouseEnter += new System.EventHandler(this.Label_MouseEnter);
+            this.label14.MouseLeave += new System.EventHandler(this.Label_MouseLeave);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label15.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.label15.Location = new System.Drawing.Point(3, 480);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(181, 17);
+            this.label15.TabIndex = 19;
+            this.label15.Text = "　車両の登録・修正を行います。";
+            // 
             // StartProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -443,5 +472,7 @@
         private Label label11;
         private Label label12;
         private Label label13;
+        private Label label14;
+        private Label label15;
     }
 }

@@ -3,6 +3,8 @@
  */
 using System.Data;
 
+using Car;
+
 using CarAccident;
 
 using Common;
@@ -79,6 +81,11 @@ namespace TobuSeisouSystemNet2022 {
                             case "CarAccidentList":
                                 var carAccidentList = new CarAccidentList(_connectionVo);
                                 carAccidentList.Show(this);
+                                break;
+                            // CarList
+                            case "CarList":
+                                var carList = new CarList(_connectionVo);
+                                carList.Show(this);
                                 break;
                         }
                         break;

@@ -29,8 +29,13 @@
          */
         public const string Message601 = "免許証データを更新します。よろしいですか？";
        /*
-        * CarAccidentDetail
+        * CarAccident
         */
         public const string Message701 = "データを更新します。よろしいですか？";
+        /*
+        * Car
+        */
+        public const string Message801 = "選択されている車両を削除します。よろしいですか？";
+        public const string Message802 = "データを更新します。よろしいですか？";
     }
 }

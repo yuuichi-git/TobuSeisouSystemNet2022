@@ -123,7 +123,7 @@
         }
         /// <summary>
         /// ドア番号
-        /// "78-1"等の文字で表すドア番が存在するためstring型で
+        /// "78-1"等の文字で表すドア番は"781"等と記載する
         /// </summary>
         public int Door_number {
             get => _door_number;
@@ -150,6 +150,9 @@
             get => _car_kind_code;
             set => _car_kind_code = value;
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public string Car_kind_name {
             get => _car_kind_name;
             set => _car_kind_name = value;
@@ -213,6 +216,9 @@
             get => _manufacturer_code;
             set => _manufacturer_code = value;
         }
+        /// <summary>
+        /// 10:いすゞ 11:日産 12:ダイハツ 13:日野 14:スバル
+        /// </summary>
         public string Manufacturer_name {
             get => _manufacturer_name;
             set => _manufacturer_name = value;
