@@ -28,5 +28,9 @@
          * License
          */
         public const string Message601 = "免許証データを更新します。よろしいですか？";
+       /*
+        * CarAccidentDetail
+        */
+        public const string Message701 = "データを更新します。よろしいですか？";
     }
 }

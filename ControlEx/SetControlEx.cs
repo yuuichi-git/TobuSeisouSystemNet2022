@@ -10,15 +10,15 @@ namespace ControlEx {
         /*
          * イベントを親へ渡す処理
          */
-        public event EventHandler? Event_SetControlEx_Click;
-        public event DragEventHandler? Event_SetControlEx_DragDrop;
-        public event DragEventHandler? Event_SetControlEx_DragEnter;
-        public event EventHandler? Event_SetLabelEx_Click;
-        public event MouseEventHandler? Event_SetLabelEx_MouseMove;
-        public event EventHandler? Event_CarLabelEx_Click;
-        public event MouseEventHandler? Event_CarLabelEx_MouseMove;
-        public event EventHandler? Event_StaffLabelEx_Click;
-        public event MouseEventHandler? Event_StaffLabelEx_MouseMove;
+        public event EventHandler Event_SetControlEx_Click;
+        public event DragEventHandler Event_SetControlEx_DragDrop;
+        public event DragEventHandler Event_SetControlEx_DragEnter;
+        public event EventHandler Event_SetLabelEx_Click;
+        public event MouseEventHandler Event_SetLabelEx_MouseMove;
+        public event EventHandler Event_CarLabelEx_Click;
+        public event MouseEventHandler Event_CarLabelEx_MouseMove;
+        public event EventHandler Event_StaffLabelEx_Click;
+        public event MouseEventHandler Event_StaffLabelEx_MouseMove;
 
         /// <summary>
         /// コンストラクタ
@@ -160,39 +160,39 @@ namespace ControlEx {
             this.Controls.Add(labelEx, 0, number + 2);
         }
 
-        private void SetControlEx_Click(object? sender, EventArgs e) {
+        private void SetControlEx_Click(object sender, EventArgs e) {
             if (Event_SetControlEx_Click != null)
                 Event_SetControlEx_Click(sender, e);
         }
-        private void SetControlEx_DragDrop(object? sender, DragEventArgs e) {
+        private void SetControlEx_DragDrop(object sender, DragEventArgs e) {
             if (Event_SetControlEx_DragDrop != null)
                 Event_SetControlEx_DragDrop(sender, e);
         }
-        private void SetControlEx_DragEnter(object? sender, DragEventArgs e) {
+        private void SetControlEx_DragEnter(object sender, DragEventArgs e) {
             if (Event_SetControlEx_DragEnter != null)
                 Event_SetControlEx_DragEnter(sender, e);
         }
-        private void SetLabelEx_Click(object? sender, EventArgs e) {
+        private void SetLabelEx_Click(object sender, EventArgs e) {
             if (Event_SetLabelEx_Click != null)
                 Event_SetLabelEx_Click(sender, e);
         }
-        private void SetLabelEx_MouseMove(object? sender, MouseEventArgs e) {
+        private void SetLabelEx_MouseMove(object sender, MouseEventArgs e) {
             if (Event_SetLabelEx_MouseMove != null)
                 Event_SetLabelEx_MouseMove(sender, e);
         }
-        private void CarLabelEx_Click(object? sender, EventArgs e) {
+        private void CarLabelEx_Click(object sender, EventArgs e) {
             if (Event_CarLabelEx_Click != null)
                 Event_CarLabelEx_Click(sender, e);
         }
-        private void CarLabelEx_MouseMove(object? sender, MouseEventArgs e) {
+        private void CarLabelEx_MouseMove(object sender, MouseEventArgs e) {
             if (Event_CarLabelEx_MouseMove != null)
                 Event_CarLabelEx_MouseMove(sender, e);
         }
-        private void StaffLabelEx_Click(object? sender, EventArgs e) {
+        private void StaffLabelEx_Click(object sender, EventArgs e) {
             if (Event_StaffLabelEx_Click != null)
                 Event_StaffLabelEx_Click(sender, e);
         }
-        private void StaffLabelEx_MouseMove(object? sender, MouseEventArgs e) {
+        private void StaffLabelEx_MouseMove(object sender, MouseEventArgs e) {
             if (Event_StaffLabelEx_MouseMove != null)
                 Event_StaffLabelEx_MouseMove(sender, e);
         }

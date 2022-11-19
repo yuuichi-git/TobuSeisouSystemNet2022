@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Production", "Production\Pr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Staff", "Staff\Staff.csproj", "{2B83827A-CF0E-4FAE-B652-43F69D0E0145}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "License", "License\License.csproj", "{47706970-0D07-4893-BBB9-AA12F4141672}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "License", "License\License.csproj", "{47706970-0D07-4893-BBB9-AA12F4141672}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarAccident", "CarAccident\CarAccident.csproj", "{D9DFEF19-7DAB-4D0B-A407-7C8BDF94FD44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -101,6 +103,14 @@ Global
 		{47706970-0D07-4893-BBB9-AA12F4141672}.Release|Any CPU.Build.0 = Release|Any CPU
 		{47706970-0D07-4893-BBB9-AA12F4141672}.Release|x64.ActiveCfg = Release|Any CPU
 		{47706970-0D07-4893-BBB9-AA12F4141672}.Release|x64.Build.0 = Release|Any CPU
+		{D9DFEF19-7DAB-4D0B-A407-7C8BDF94FD44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9DFEF19-7DAB-4D0B-A407-7C8BDF94FD44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9DFEF19-7DAB-4D0B-A407-7C8BDF94FD44}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{D9DFEF19-7DAB-4D0B-A407-7C8BDF94FD44}.Debug|x64.Build.0 = Debug|Any CPU
+		{D9DFEF19-7DAB-4D0B-A407-7C8BDF94FD44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9DFEF19-7DAB-4D0B-A407-7C8BDF94FD44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9DFEF19-7DAB-4D0B-A407-7C8BDF94FD44}.Release|x64.ActiveCfg = Release|Any CPU
+		{D9DFEF19-7DAB-4D0B-A407-7C8BDF94FD44}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="grapecity.spread.winforms.ja" Version="15.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Dao\Dao.csproj" />
     <ProjectReference Include="..\Vo\Vo.csproj" />
   </ItemGroup>

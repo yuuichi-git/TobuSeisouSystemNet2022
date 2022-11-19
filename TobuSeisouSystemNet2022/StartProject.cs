@@ -3,6 +3,8 @@
  */
 using System.Data;
 
+using CarAccident;
+
 using Common;
 
 using LicenseLedger;
@@ -72,6 +74,11 @@ namespace TobuSeisouSystemNet2022 {
                                 licenseList.Show(this);
                                 break;
                             default:
+                                break;
+                            // CarAccidentList
+                            case "CarAccidentList":
+                                var carAccidentList = new CarAccidentList(_connectionVo);
+                                carAccidentList.Show(this);
                                 break;
                         }
                         break;

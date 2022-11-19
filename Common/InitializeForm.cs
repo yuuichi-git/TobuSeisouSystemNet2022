@@ -27,6 +27,8 @@ namespace Common {
         /// <returns></returns>
         public Form VehicleDispatchBoad(Form form) {
             form.KeyPreview = true;
+            form.MaximumSize = new Size(1920, 1080);
+            form.MinimumSize = new Size(1920, 1048);
             GetWorkingArea(form);
             return form;
         }
@@ -38,6 +40,8 @@ namespace Common {
         /// <returns></returns>
         public Form ProductionList(Form form) {
             form.KeyPreview = true;
+            form.MaximumSize = new Size(1920, 1080);
+            form.MinimumSize = new Size(1920, 1048);
             GetWorkingArea(form);
             return form;
         }
@@ -49,6 +53,8 @@ namespace Common {
         /// <returns></returns>
         public Form StaffList(Form form) {
             form.KeyPreview = true;
+            form.MaximumSize = new Size(1920, 1080);
+            form.MinimumSize = new Size(1920, 1048);
             GetWorkingArea(form);
             return form;
         }
@@ -60,6 +66,8 @@ namespace Common {
         /// <returns></returns>
         public Form StaffDetail(Form form) {
             form.KeyPreview = true;
+            form.MaximumSize = new Size(1920, 1080);
+            form.MinimumSize = new Size(1920, 1048);
             GetWorkingArea(form);
             return form;
         }
@@ -86,6 +94,34 @@ namespace Common {
         /// <returns></returns>
         public Form LicenseList(Form form) {
             form.KeyPreview = true;
+            form.MaximumSize = new Size(1920, 1080);
+            form.MinimumSize = new Size(1920, 1048);
+            GetWorkingArea(form);
+            return form;
+        }
+
+        /// <summary>
+        /// CarAccidentList
+        /// </summary>
+        /// <param name="form"></param>
+        /// <returns></returns>
+        public Form CarAccidentList(Form form) {
+            form.KeyPreview = true;
+            form.MaximumSize = new Size(1920, 1080);
+            form.MinimumSize = new Size(1920, 1048);
+            GetWorkingArea(form);
+            return form;
+        }
+
+        /// <summary>
+        /// CarAccidentDetail
+        /// </summary>
+        /// <param name="form"></param>
+        /// <returns></returns>
+        public Form CarAccidentDetail(Form form) {
+            form.KeyPreview = true;
+            form.MaximumSize = new Size(1920, 1080);
+            form.MinimumSize = new Size(1920, 1048);
             GetWorkingArea(form);
             return form;
         }
@@ -97,12 +133,16 @@ namespace Common {
         /// <param name="form"></param>
         public void GetWorkingArea(Form form) {
             form.Height = Screen.GetWorkingArea(form).Height;
-            form.MinimumSize = new Size(1920, 1048);
             form.StartPosition = FormStartPosition.CenterScreen;
             form.Text = string.Concat(form.Text, "　(", form.Width, "×", form.Height, ")");
             form.Width = Screen.GetWorkingArea(form).Width;
         }
 
+        /// <summary>
+        /// SetTableLayoutPanelAll
+        /// </summary>
+        /// <param name="tableLayoutPanel"></param>
+        /// <param name="flag"></param>
         public void SetTableLayoutPanelAll(TableLayoutPanel tableLayoutPanel, bool flag) {
             //レイアウトロジックを停止する
             tableLayoutPanel.SuspendLayout();
@@ -113,14 +153,29 @@ namespace Common {
             tableLayoutPanel.ResumeLayout();
         }
 
+        /// <summary>
+        /// SetTableLayoutPanelTop
+        /// </summary>
+        /// <param name="tableLayoutPanel"></param>
+        /// <param name="flag"></param>
         public void SetTableLayoutPanelTop(TableLayoutPanel tableLayoutPanel, bool flag) {
             tableLayoutPanel.RowStyles[1] = new RowStyle(SizeType.Absolute, flag ? TopWidthMaxSize : TopWidthMinSize);
         }
 
+        /// <summary>
+        /// SetTableLayoutPanelLeft
+        /// </summary>
+        /// <param name="tableLayoutPanel"></param>
+        /// <param name="flag"></param>
         public void SetTableLayoutPanelLeft(TableLayoutPanel tableLayoutPanel, bool flag) {
             tableLayoutPanel.ColumnStyles[0] = new ColumnStyle(SizeType.Absolute, flag ? LeftWidthMaxSize : LeftWidthMinSize);
         }
 
+        /// <summary>
+        /// SetTableLayoutPanelRight
+        /// </summary>
+        /// <param name="tableLayoutPanel"></param>
+        /// <param name="flag"></param>
         public void SetTableLayoutPanelRight(TableLayoutPanel tableLayoutPanel, bool flag) {
             tableLayoutPanel.ColumnStyles[2] = new ColumnStyle(SizeType.Absolute, flag ? RightWidthMaxSize : RightWidthMinSize);
         }

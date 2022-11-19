@@ -46,6 +46,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.TableLayoutPanelBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -142,10 +144,12 @@
             this.TableLayoutPanelCenter.Controls.Add(this.label9, 0, 14);
             this.TableLayoutPanelCenter.Controls.Add(this.label10, 0, 16);
             this.TableLayoutPanelCenter.Controls.Add(this.label11, 0, 17);
+            this.TableLayoutPanelCenter.Controls.Add(this.label12, 0, 19);
+            this.TableLayoutPanelCenter.Controls.Add(this.label13, 0, 20);
             this.TableLayoutPanelCenter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanelCenter.Location = new System.Drawing.Point(303, 27);
             this.TableLayoutPanelCenter.Name = "TableLayoutPanelCenter";
-            this.TableLayoutPanelCenter.RowCount = 20;
+            this.TableLayoutPanelCenter.RowCount = 26;
             this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -153,6 +157,12 @@
             this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -358,6 +368,31 @@
             this.label11.TabIndex = 15;
             this.label11.Text = "　運転免許証の管理を行います。";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label12.Location = new System.Drawing.Point(3, 400);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(99, 17);
+            this.label12.TabIndex = 16;
+            this.label12.Tag = "CarAccidentList";
+            this.label12.Text = "　事故記録台帳";
+            this.label12.Click += new System.EventHandler(this.Label_Click);
+            this.label12.MouseEnter += new System.EventHandler(this.Label_MouseEnter);
+            this.label12.MouseLeave += new System.EventHandler(this.Label_MouseLeave);
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label13.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.label13.Location = new System.Drawing.Point(3, 420);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(296, 17);
+            this.label13.TabIndex = 17;
+            this.label13.Text = "　車両事故・作業事故等のトラブルを記録管理します。";
+            // 
             // StartProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -406,5 +441,7 @@
         private Label label9;
         private Label label10;
         private Label label11;
+        private Label label12;
+        private Label label13;
     }
 }
