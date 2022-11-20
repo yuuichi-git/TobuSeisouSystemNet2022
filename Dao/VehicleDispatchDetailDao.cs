@@ -1,4 +1,6 @@
-﻿using Common;
+﻿using System.Windows.Forms;
+
+using Common;
 
 using Vo;
 
@@ -585,8 +587,9 @@ namespace Dao {
                                      "WHERE cell_number = " + dropCellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
             try {
                 return sqlCommand.ExecuteNonQuery();
-            } catch {
-                throw;
+            } catch(Exception e) {
+                MessageBox.Show(e.Message);
+                return 0;
             }
         }
 

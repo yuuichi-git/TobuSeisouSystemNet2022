@@ -1144,7 +1144,7 @@
             this.ContextMenuStripStaffLabel.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItemStaffDetail});
             this.ContextMenuStripStaffLabel.Name = "ContextMenuStripStaffLabel";
-            this.ContextMenuStripStaffLabel.Size = new System.Drawing.Size(187, 48);
+            this.ContextMenuStripStaffLabel.Size = new System.Drawing.Size(187, 26);
             this.ContextMenuStripStaffLabel.Opened += new System.EventHandler(this.ContextMenuStrip_Opened);
             // 
             // ToolStripMenuItemStaffDetail
