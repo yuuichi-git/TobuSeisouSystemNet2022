@@ -16,6 +16,8 @@ namespace Staff {
         private readonly List<CarAccidentMasterVo> _listCarAccidentLedgerVo;
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01, 00, 00, 00, 000);
 
+        Dictionary<int, string> dictionaryBelongsName = new Dictionary<int, string> { { 10, "役員" }, { 11, "社員" }, { 12, "アルバイト" }, { 20, "新運転" }, { 21, "自運労" } };
+
         /// <summary>
         /// コンストラクタ
         /// </summary>
@@ -94,8 +96,9 @@ namespace Staff {
                 sheetView.Cells[8, 1].ForeColor = Color.Red;
                 sheetView.Cells[8, 2].ForeColor = Color.Red;
             }
+
             sheetView.Cells[10, 5].Text = extendsStaffMasterVo.Name_kana; // フリガナ
-            sheetView.Cells[11, 5].Text = string.Concat(extendsStaffMasterVo.Name, " (", extendsStaffMasterVo.Belongs, ")"); // 氏名
+            sheetView.Cells[11, 5].Text = string.Concat(extendsStaffMasterVo.Name, " (", dictionaryBelongsName[extendsStaffMasterVo.Belongs], ")"); // 氏名
             sheetView.Cells[11, 18].Text = extendsStaffMasterVo.Gender; // 性別
             sheetView.Cells[11, 20].Value = extendsStaffMasterVo.Birth_date != _defaultDateTime ? extendsStaffMasterVo.Birth_date.Date : null; // 生年月日
             sheetView.Cells[11, 26].Value = extendsStaffMasterVo.Employment_date != _defaultDateTime ? extendsStaffMasterVo.Employment_date.Date : null; // 雇用年月日

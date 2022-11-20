@@ -196,12 +196,12 @@ namespace LicenseLedger {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ComboBoxSelectName_SelectedIndexChanged(object sender, EventArgs e) {
-            var staffLedgerVo = ((ComboBoxSelectNameVo)((ComboBox)sender).SelectedItem).StaffMasterVo;
+        private void ComboBoxSelectName_SelectedIndexChanged(object? sender, EventArgs e) {
+            var staffMasterVo = ((ComboBoxSelectNameVo)((ComboBox)sender).SelectedItem).StaffMasterVo;
             // StaffLedgerVoの値をControlにセットする
-            TextBoxStaffCode.Text = staffLedgerVo.Staff_code.ToString();
-            TextBoxNameKana.Text = staffLedgerVo.Name_kana;
-            TextBoxName.Text = staffLedgerVo.Name;
+            TextBoxStaffCode.Text = staffMasterVo.Staff_code.ToString();
+            TextBoxNameKana.Text = staffMasterVo.Name_kana;
+            TextBoxName.Text = staffMasterVo.Name;
 
         }
 

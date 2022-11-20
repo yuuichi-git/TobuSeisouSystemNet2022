@@ -10,15 +10,15 @@ namespace ControlEx {
         /*
          * イベントを親へ渡す処理
          */
-        public event EventHandler Event_SetControlEx_Click;
-        public event DragEventHandler Event_SetControlEx_DragDrop;
-        public event DragEventHandler Event_SetControlEx_DragEnter;
-        public event EventHandler Event_SetLabelEx_Click;
-        public event MouseEventHandler Event_SetLabelEx_MouseMove;
-        public event EventHandler Event_CarLabelEx_Click;
-        public event MouseEventHandler Event_CarLabelEx_MouseMove;
-        public event EventHandler Event_StaffLabelEx_Click;
-        public event MouseEventHandler Event_StaffLabelEx_MouseMove;
+        public event EventHandler Event_SetControlEx_Click = delegate { };
+        public event DragEventHandler Event_SetControlEx_DragDrop = delegate { };
+        public event DragEventHandler Event_SetControlEx_DragEnter = delegate { };
+        public event EventHandler Event_SetLabelEx_Click = delegate { };
+        public event MouseEventHandler Event_SetLabelEx_MouseMove = delegate { };
+        public event EventHandler Event_CarLabelEx_Click = delegate { };
+        public event MouseEventHandler Event_CarLabelEx_MouseMove = delegate { };
+        public event EventHandler Event_StaffLabelEx_Click = delegate { };
+        public event MouseEventHandler Event_StaffLabelEx_MouseMove = delegate { };
 
         /// <summary>
         /// コンストラクタ
@@ -63,14 +63,12 @@ namespace ControlEx {
                  */
                 switch (e.Row) {
                     case 0: // SetLabel
-                        // OperationFlag
-                        if (!OperationFlag)
-                            e.Graphics.FillRectangle(Brushes.Pink, rectangle);
                         // GarageFlag
                         if (!GarageFlag)
                             e.Graphics.FillRectangle(Brushes.PowderBlue, rectangle);
-                        // Border
-                        //ControlPaint.DrawBorder(e.Graphics, rectangle, OperationFlag ? GarageFlag ? Color.DarkGray : Color.Blue : Color.Red, ButtonBorderStyle.Solid);
+                        // OperationFlag
+                        if (!OperationFlag)
+                            e.Graphics.FillRectangle(Brushes.Pink, rectangle);
                         break;
                     case 1: // CarLabel
                         ControlPaint.DrawBorder(e.Graphics, rectangle, Color.DarkGray, ButtonBorderStyle.Dotted);
@@ -146,8 +144,9 @@ namespace ControlEx {
         /// </summary>
         /// <param name="number">1:運転手 2:作業員1 3:作業員2 4:作業員3</param>
         /// <param name="staffMasterVo"></param>
-        public void CreateLabel(int number, StaffMasterVo staffMasterVo, ContextMenuStrip contextMenuStrip) {
-            var labelEx = new StaffLabelEx(staffMasterVo).CreateLabel();
+        /// <param name="contextMenuStrip"></param>
+        public void CreateLabel(int number, StaffMasterVo staffMasterVo, bool tenkoModeFlag, bool rollCallFlag, ContextMenuStrip contextMenuStrip) {
+            var labelEx = new StaffLabelEx(staffMasterVo, tenkoModeFlag, rollCallFlag).CreateLabel();
             /*
              * プロパティを設定
              */
@@ -160,39 +159,39 @@ namespace ControlEx {
             this.Controls.Add(labelEx, 0, number + 2);
         }
 
-        private void SetControlEx_Click(object sender, EventArgs e) {
+        private void SetControlEx_Click(object? sender, EventArgs e) {
             if (Event_SetControlEx_Click != null)
                 Event_SetControlEx_Click(sender, e);
         }
-        private void SetControlEx_DragDrop(object sender, DragEventArgs e) {
+        private void SetControlEx_DragDrop(object? sender, DragEventArgs e) {
             if (Event_SetControlEx_DragDrop != null)
                 Event_SetControlEx_DragDrop(sender, e);
         }
-        private void SetControlEx_DragEnter(object sender, DragEventArgs e) {
+        private void SetControlEx_DragEnter(object? sender, DragEventArgs e) {
             if (Event_SetControlEx_DragEnter != null)
                 Event_SetControlEx_DragEnter(sender, e);
         }
-        private void SetLabelEx_Click(object sender, EventArgs e) {
+        private void SetLabelEx_Click(object? sender, EventArgs e) {
             if (Event_SetLabelEx_Click != null)
                 Event_SetLabelEx_Click(sender, e);
         }
-        private void SetLabelEx_MouseMove(object sender, MouseEventArgs e) {
+        private void SetLabelEx_MouseMove(object? sender, MouseEventArgs e) {
             if (Event_SetLabelEx_MouseMove != null)
                 Event_SetLabelEx_MouseMove(sender, e);
         }
-        private void CarLabelEx_Click(object sender, EventArgs e) {
+        private void CarLabelEx_Click(object? sender, EventArgs e) {
             if (Event_CarLabelEx_Click != null)
                 Event_CarLabelEx_Click(sender, e);
         }
-        private void CarLabelEx_MouseMove(object sender, MouseEventArgs e) {
+        private void CarLabelEx_MouseMove(object? sender, MouseEventArgs e) {
             if (Event_CarLabelEx_MouseMove != null)
                 Event_CarLabelEx_MouseMove(sender, e);
         }
-        private void StaffLabelEx_Click(object sender, EventArgs e) {
+        private void StaffLabelEx_Click(object? sender, EventArgs e) {
             if (Event_StaffLabelEx_Click != null)
                 Event_StaffLabelEx_Click(sender, e);
         }
-        private void StaffLabelEx_MouseMove(object sender, MouseEventArgs e) {
+        private void StaffLabelEx_MouseMove(object? sender, MouseEventArgs e) {
             if (Event_StaffLabelEx_MouseMove != null)
                 Event_StaffLabelEx_MouseMove(sender, e);
         }

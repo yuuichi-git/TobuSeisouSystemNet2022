@@ -97,18 +97,22 @@ namespace Dao {
                                             "number_of_people," +
                                             "operator_code_1," +
                                             "operator_1_proxy_flag," +
+                                            "operator_1_roll_call_flag," +
                                             "operator_1_roll_call_ymd_hms," +
                                             "operator_1_note," +
                                             "operator_code_2," +
                                             "operator_2_proxy_flag," +
+                                            "operator_2_roll_call_flag," +
                                             "operator_2_roll_call_ymd_hms," +
                                             "operator_2_note," +
                                             "operator_code_3," +
                                             "operator_3_proxy_flag," +
+                                            "operator_3_roll_call_flag," +
                                             "operator_3_roll_call_ymd_hms," +
                                             "operator_3_note," +
                                             "operator_code_4," +
                                             "operator_4_proxy_flag," +
+                                            "operator_4_roll_call_flag," +
                                             "operator_4_roll_call_ymd_hms," +
                                             "operator_4_note," +
                                             "insert_pc_name," +
@@ -137,18 +141,22 @@ namespace Dao {
                     vehicleDispatchDetailVo.Number_of_people = _defaultValue.GetDefaultValue<int>(sqlDataReader["number_of_people"]);
                     vehicleDispatchDetailVo.Operator_code_1 = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_code_1"]);
                     vehicleDispatchDetailVo.Operator_1_proxy_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["operator_1_proxy_flag"]);
+                    vehicleDispatchDetailVo.Operator_1_roll_call_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["operator_1_roll_call_flag"]);
                     vehicleDispatchDetailVo.Operator_1_roll_call_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["operator_1_roll_call_ymd_hms"]);
                     vehicleDispatchDetailVo.Operator_1_note = _defaultValue.GetDefaultValue<string>(sqlDataReader["operator_1_note"]);
                     vehicleDispatchDetailVo.Operator_code_2 = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_code_2"]);
                     vehicleDispatchDetailVo.Operator_2_proxy_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["operator_2_proxy_flag"]);
+                    vehicleDispatchDetailVo.Operator_2_roll_call_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["operator_2_roll_call_flag"]);
                     vehicleDispatchDetailVo.Operator_2_roll_call_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["operator_2_roll_call_ymd_hms"]);
                     vehicleDispatchDetailVo.Operator_2_note = _defaultValue.GetDefaultValue<string>(sqlDataReader["operator_2_note"]);
                     vehicleDispatchDetailVo.Operator_code_3 = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_code_3"]);
                     vehicleDispatchDetailVo.Operator_3_proxy_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["operator_3_proxy_flag"]);
+                    vehicleDispatchDetailVo.Operator_3_roll_call_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["operator_3_roll_call_flag"]);
                     vehicleDispatchDetailVo.Operator_3_roll_call_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["operator_3_roll_call_ymd_hms"]);
                     vehicleDispatchDetailVo.Operator_3_note = _defaultValue.GetDefaultValue<string>(sqlDataReader["operator_3_note"]);
                     vehicleDispatchDetailVo.Operator_code_4 = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_code_4"]);
                     vehicleDispatchDetailVo.Operator_4_proxy_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["operator_4_proxy_flag"]);
+                    vehicleDispatchDetailVo.Operator_4_roll_call_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["operator_4_roll_call_flag"]);
                     vehicleDispatchDetailVo.Operator_4_roll_call_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["operator_4_roll_call_ymd_hms"]);
                     vehicleDispatchDetailVo.Operator_4_note = _defaultValue.GetDefaultValue<string>(sqlDataReader["operator_4_note"]);
                     vehicleDispatchDetailVo.Insert_pc_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["insert_pc_name"]);
@@ -187,18 +195,22 @@ namespace Dao {
                                    _defaultValue.GetDefaultValue<int>(vehicleDispatchDetailVo.Number_of_people) + "," +
                                    _defaultValue.GetDefaultValue<int>(vehicleDispatchDetailVo.Operator_code_1) + "," +
                              "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Operator_1_proxy_flag) + "'," +
+                             "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Operator_1_roll_call_flag) + "'," +
                              "'" + _defaultValue.GetDefaultValue<DateTime>(vehicleDispatchDetailVo.Operator_1_roll_call_ymd_hms) + "'," +
                              "'" + _defaultValue.GetDefaultValue<string>(vehicleDispatchDetailVo.Operator_1_note) + "'," +
                                    _defaultValue.GetDefaultValue<int>(vehicleDispatchDetailVo.Operator_code_2) + "," +
                              "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Operator_2_proxy_flag) + "'," +
+                             "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Operator_2_roll_call_flag) + "'," +
                              "'" + _defaultValue.GetDefaultValue<DateTime>(vehicleDispatchDetailVo.Operator_2_roll_call_ymd_hms) + "'," +
                              "'" + _defaultValue.GetDefaultValue<string>(vehicleDispatchDetailVo.Operator_2_note) + "'," +
                                    _defaultValue.GetDefaultValue<int>(vehicleDispatchDetailVo.Operator_code_3) + "," +
                              "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Operator_3_proxy_flag) + "'," +
+                             "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Operator_3_roll_call_flag) + "'," +
                              "'" + _defaultValue.GetDefaultValue<DateTime>(vehicleDispatchDetailVo.Operator_3_roll_call_ymd_hms) + "'," +
                              "'" + _defaultValue.GetDefaultValue<string>(vehicleDispatchDetailVo.Operator_3_note) + "'," +
                                    _defaultValue.GetDefaultValue<int>(vehicleDispatchDetailVo.Operator_code_4) + "," +
                              "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Operator_4_proxy_flag) + "'," +
+                             "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Operator_4_roll_call_flag) + "'," +
                              "'" + _defaultValue.GetDefaultValue<DateTime>(vehicleDispatchDetailVo.Operator_4_roll_call_ymd_hms) + "'," +
                              "'" + _defaultValue.GetDefaultValue<string>(vehicleDispatchDetailVo.Operator_4_note) + "'," +
                              "'" + _defaultValue.GetDefaultValue<string>(vehicleDispatchDetailVo.Insert_pc_name) + "'," +
@@ -228,18 +240,22 @@ namespace Dao {
                                                                          "number_of_people," +
                                                                          "operator_code_1," +
                                                                          "operator_1_proxy_flag," +
+                                                                         "operator_1_roll_call_flag," +
                                                                          "operator_1_roll_call_ymd_hms," +
                                                                          "operator_1_note," +
                                                                          "operator_code_2," +
                                                                          "operator_2_proxy_flag," +
+                                                                         "operator_2_roll_call_flag," +
                                                                          "operator_2_roll_call_ymd_hms," +
                                                                          "operator_2_note," +
                                                                          "operator_code_3," +
                                                                          "operator_3_proxy_flag," +
+                                                                         "operator_3_roll_call_flag," +
                                                                          "operator_3_roll_call_ymd_hms," +
                                                                          "operator_3_note," +
                                                                          "operator_code_4," +
                                                                          "operator_4_proxy_flag," +
+                                                                         "operator_4_roll_call_flag," +
                                                                          "operator_4_roll_call_ymd_hms," +
                                                                          "operator_4_note," +
                                                                          "insert_pc_name," +
@@ -484,6 +500,7 @@ namespace Dao {
              */
             string sqlDragOperatorCode = string.Concat("operator_code_" + dragRowNumber);
             string sqlDragOperatorProxyFlag = string.Concat("operator_" + dragRowNumber + "_proxy_flag");
+            string sqlDragOperatorRollCallFlag = string.Concat("operator_" + dragRowNumber + "_roll_call_Flag");
             string sqlDragOperatorRollCallYmdHms = string.Concat("operator_" + dragRowNumber + "_roll_call_ymd_hms");
             string sqlDragOperatorNote = string.Concat("operator_" + dragRowNumber, "_note");
             /*
@@ -491,6 +508,7 @@ namespace Dao {
              */
             string sqlDropOperatorCode = string.Concat("operator_code_" + dropRowNumber);
             string sqlDropOperatorProxyFlag = string.Concat("operator_" + dropRowNumber + "_proxy_flag");
+            string sqlDropOperatorRollCallFlag = string.Concat("operator_" + dropRowNumber + "_roll_call_flag");
             string sqlDropOperatorRollCallYmdHms = string.Concat("operator_" + dropRowNumber + "_roll_call_ymd_hms");
             string sqlDropOperatorNote = string.Concat("operator_" + dropRowNumber, "_note");
 
@@ -500,6 +518,9 @@ namespace Dao {
                                                                         "FROM vehicle_dispatch_detail " +
                                                                         "WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
                                          sqlDropOperatorProxyFlag + " = (SELECT " + sqlDragOperatorProxyFlag + " " +
+                                                                        "FROM vehicle_dispatch_detail " +
+                                                                        "WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
+                                      sqlDropOperatorRollCallFlag + " = (SELECT " + sqlDragOperatorRollCallFlag + " " +
                                                                         "FROM vehicle_dispatch_detail " +
                                                                         "WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
                                     sqlDropOperatorRollCallYmdHms + " = (SELECT " + sqlDragOperatorRollCallYmdHms + " " +
@@ -538,6 +559,7 @@ namespace Dao {
              */
             string sqlDropOperatorCode = string.Concat("operator_code_" + dropRowNumber);
             string sqlDropOperatorProxyFlag = string.Concat("operator_" + dropRowNumber + "_proxy_flag");
+            string sqlDropOperatorRollCallFlag = string.Concat("operator_" + dropRowNumber + "_roll_call_flag");
             string sqlDropOperatorRollCallYmdHms = string.Concat("operator_" + dropRowNumber + "_roll_call_ymd_hms");
             string sqlDropOperatorNote = string.Concat("operator_" + dropRowNumber, "_note");
 
@@ -547,6 +569,9 @@ namespace Dao {
                                                                         "FROM vehicle_dispatch_detail_staff " +
                                                                         "WHERE cell_number = " + dragCellNumber + " AND operator_code = '" + staffMasterVo.Staff_code + "' AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "')," +
                                          sqlDropOperatorProxyFlag + " = (SELECT operator_proxy_flag " +
+                                                                        "FROM vehicle_dispatch_detail_staff " +
+                                                                        "WHERE cell_number = " + dragCellNumber + " AND operator_code = '" + staffMasterVo.Staff_code + "' AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "')," +
+                                      sqlDropOperatorRollCallFlag + " = (SELECT operator_roll_call_flag " +
                                                                         "FROM vehicle_dispatch_detail_staff " +
                                                                         "WHERE cell_number = " + dragCellNumber + " AND operator_code = '" + staffMasterVo.Staff_code + "' AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "')," +
                                     sqlDropOperatorRollCallYmdHms + " = (SELECT operator_roll_call_ymd_hms " +
@@ -584,6 +609,7 @@ namespace Dao {
              */
             string sqlDropOperatorCode = string.Concat("operator_code_" + dropRowNumber);
             string sqlDropOperatorProxyFlag = string.Concat("operator_" + dropRowNumber + "_proxy_flag");
+            string sqlDropOperatorRollCallFlag = string.Concat("operator_" + dropRowNumber + "_roll_call_flag");
             string sqlDropOperatorRollCallYmdHms = string.Concat("operator_" + dropRowNumber + "_roll_call_ymd_hms");
             string sqlDropOperatorNote = string.Concat("operator_" + dropRowNumber, "_note");
 
@@ -591,6 +617,7 @@ namespace Dao {
             sqlCommand.CommandText = "UPDATE vehicle_dispatch_detail " +
                                      "SET " + sqlDropOperatorCode + " = " + staffMasterVo.Staff_code + "," +
                                          sqlDropOperatorProxyFlag + " = 'False'," +
+                                      sqlDropOperatorRollCallFlag + " = 'False'," +
                                     sqlDropOperatorRollCallYmdHms + " = '1900-01-01'," +
                                               sqlDropOperatorNote + " = ''," +
                                            "update_pc_name = '" + Environment.MachineName + "'," +
@@ -624,6 +651,7 @@ namespace Dao {
              */
             string sqlDragOperatorCode = string.Concat("operator_code_" + dragRowNumber);
             string sqlDragOperatorProxyFlag = string.Concat("operator_" + dragRowNumber + "_proxy_flag");
+            string sqlDragOperatorRollCallFlag = string.Concat("operator_" + dragRowNumber + "_roll_call_flag");
             string sqlDragOperatorRollCallYmdHms = string.Concat("operator_" + dragRowNumber + "_roll_call_ymd_hms");
             string sqlDragOperatorNote = string.Concat("operator_" + dragRowNumber, "_note");
 
@@ -631,6 +659,7 @@ namespace Dao {
             sqlCommand.CommandText = "UPDATE vehicle_dispatch_detail " +
                                      "SET " + sqlDragOperatorCode + " = 0," +
                                               sqlDragOperatorProxyFlag + " = 'False'," +
+                                              sqlDragOperatorRollCallFlag + " = 'False'," +
                                               sqlDragOperatorRollCallYmdHms + " = '1900-01-01 00:00:00'," +
                                               sqlDragOperatorNote + " = ''," +
                                              "update_pc_name = '" + Environment.MachineName + "'," +
@@ -645,12 +674,13 @@ namespace Dao {
 
         /// <summary>
         /// UpdateGarage
+        /// 車庫地を変更
         /// </summary>
         /// <param name="operationDate"></param>
         /// <param name="dropCellNumber"></param>
         /// <param name="garageFlag"></param>
         /// <returns></returns>
-        public int UpdateGarageFlag(DateTime operationDate, int dropCellNumber,bool garageFlag) {
+        public int UpdateGarageFlag(DateTime operationDate, int dropCellNumber, bool garageFlag) {
             /*
              * Tagがゼロから始まっているので１をプラスする
              */
@@ -661,6 +691,43 @@ namespace Dao {
                                          "update_pc_name = '" + Environment.MachineName + "'," +
                                          "update_ymd_hms = '" + DateTime.Now + "' " +
                                      "WHERE cell_number = " + dropCellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                return sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// UpdateRollCallFlag
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="cellNumber"></param>
+        /// <param name="row"></param>
+        /// <param name="rollCallFlag"></param>
+        /// <returns></returns>
+        public int UpdateRollCallFlag(DateTime operationDate, int cellNumber, int row, bool rollCallFlag) {
+            /*
+             * Tagがゼロから始まっているので１をプラスする
+             */
+            cellNumber++;
+            /*
+             * SetControlExのRowがゼロから始まっているので１をプラスする
+             */
+            row--;
+            /*
+             * Drop項目のSQL文を作成
+             */
+            string sqlOperatorRollCallFlag = string.Concat("operator_" + row + "_roll_call_flag");
+            string sqlOperatorRollCallYmdHms = string.Concat("operator_" + row + "_roll_call_ymd_hms");
+
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE vehicle_dispatch_detail " +
+                                     "SET " + sqlOperatorRollCallFlag + " = '" + rollCallFlag + "'," +
+                                              sqlOperatorRollCallYmdHms + " = '" + DateTime.Now + "'," +
+                                          "update_pc_name = '" + Environment.MachineName + "'," +
+                                          "update_ymd_hms = '" + DateTime.Now + "' " +
+                                     "WHERE cell_number = " + cellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
             try {
                 return sqlCommand.ExecuteNonQuery();
             } catch {

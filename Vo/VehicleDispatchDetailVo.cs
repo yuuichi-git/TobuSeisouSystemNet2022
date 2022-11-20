@@ -15,18 +15,22 @@
         private int _number_of_people;
         private int _operator_code_1;
         private bool _operator_1_proxy_flag;
+        private bool _operator_1_roll_call_flag;
         private DateTime _operator_1_roll_call_ymd_hms;
         private string _operator_1_note = "";
         private int _operator_code_2;
         private bool _operator_2_proxy_flag;
+        private bool _operator_2_roll_call_flag;
         private DateTime _operator_2_roll_call_ymd_hms;
         private string _operator_2_note = "";
         private int _operator_code_3;
         private bool _operator_3_proxy_flag;
+        private bool _operator_3_roll_call_flag;
         private DateTime _operator_3_roll_call_ymd_hms;
         private string _operator_3_note = "";
         private int _operator_code_4;
         private bool _operator_4_proxy_flag;
+        private bool _operator_4_roll_call_flag;
         private DateTime _operator_4_roll_call_ymd_hms;
         private string _operator_4_note = "";
         private string _insert_pc_name = "";
@@ -150,6 +154,13 @@
             set => _operator_1_proxy_flag = value;
         }
         /// <summary>
+        /// 点呼フラグ1
+        /// </summary>
+        public bool Operator_1_roll_call_flag {
+            get => _operator_1_roll_call_flag;
+            set => _operator_1_roll_call_flag = value;
+        }
+        /// <summary>
         /// 点呼日時1
         /// </summary>
         public DateTime Operator_1_roll_call_ymd_hms {
@@ -174,6 +185,13 @@
         /// 代番フラグ2
         /// true:代番 false:本番
         /// </summary>
+        /// /// <summary>
+        /// 点呼フラグ2
+        /// </summary>
+        public bool Operator_2_roll_call_flag {
+            get => _operator_2_roll_call_flag;
+            set => _operator_2_roll_call_flag = value;
+        }
         public bool Operator_2_proxy_flag {
             get => _operator_2_proxy_flag;
             set => _operator_2_proxy_flag = value;
@@ -208,6 +226,13 @@
             set => _operator_3_proxy_flag = value;
         }
         /// <summary>
+        /// 点呼フラグ3
+        /// </summary>
+        public bool Operator_3_roll_call_flag {
+            get => _operator_3_roll_call_flag;
+            set => _operator_3_roll_call_flag = value;
+        }
+        /// <summary>
         /// 点呼日時3
         /// </summary>
         public DateTime Operator_3_roll_call_ymd_hms {
@@ -235,6 +260,13 @@
         public bool Operator_4_proxy_flag {
             get => _operator_4_proxy_flag;
             set => _operator_4_proxy_flag = value;
+        }
+        /// <summary>
+        /// 点呼フラグ4
+        /// </summary>
+        public bool Operator_4_roll_call_flag {
+            get => _operator_4_roll_call_flag;
+            set => _operator_4_roll_call_flag = value;
         }
         /// <summary>
         /// 点呼日時4

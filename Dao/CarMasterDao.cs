@@ -139,6 +139,10 @@ namespace Dao {
             return carMasterVo;
         }
 
+        /// <summary>
+        /// SelectAllCarMaster
+        /// </summary>
+        /// <returns></returns>
         public List<CarMasterVo> SelectAllCarMaster() {
             var listCarMasterVo = new List<CarMasterVo>();
             var sqlCommand = _connectionVo.Connection.CreateCommand();

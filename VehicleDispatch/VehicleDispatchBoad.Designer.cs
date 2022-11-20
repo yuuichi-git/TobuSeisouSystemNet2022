@@ -1144,14 +1144,14 @@
             this.ContextMenuStripStaffLabel.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItemStaffDetail});
             this.ContextMenuStripStaffLabel.Name = "ContextMenuStripStaffLabel";
-            this.ContextMenuStripStaffLabel.Size = new System.Drawing.Size(133, 26);
+            this.ContextMenuStripStaffLabel.Size = new System.Drawing.Size(187, 48);
             this.ContextMenuStripStaffLabel.Opened += new System.EventHandler(this.ContextMenuStrip_Opened);
             // 
             // ToolStripMenuItemStaffDetail
             // 
             this.ToolStripMenuItemStaffDetail.Name = "ToolStripMenuItemStaffDetail";
-            this.ToolStripMenuItemStaffDetail.Size = new System.Drawing.Size(132, 22);
-            this.ToolStripMenuItemStaffDetail.Text = "個人の情報";
+            this.ToolStripMenuItemStaffDetail.Size = new System.Drawing.Size(186, 22);
+            this.ToolStripMenuItemStaffDetail.Text = "従事者台帳を表示する";
             this.ToolStripMenuItemStaffDetail.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // VehicleDispatchBoad

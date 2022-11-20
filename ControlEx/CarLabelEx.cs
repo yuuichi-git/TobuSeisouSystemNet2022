@@ -30,7 +30,7 @@ namespace ControlEx {
             this.Paint += new PaintEventHandler(LabelEx_CellPaint);
         }
 
-        private void LabelEx_CellPaint(object sender, PaintEventArgs e) {
+        private void LabelEx_CellPaint(object? sender, PaintEventArgs e) {
             /*
              * Boderを描画
              */
@@ -47,7 +47,7 @@ namespace ControlEx {
             stringFormat.Alignment = StringAlignment.Center;
             var number = string.Concat(_carMasterVo.Registration_number_1, _carMasterVo.Registration_number_2, "\r\n"
                                           , _carMasterVo.Registration_number_3, _carMasterVo.Registration_number_4, "\r\n"
-                                          , _carMasterVo.Disguise_kind_1, _carMasterVo.Door_number);
+                                          , _carMasterVo.Disguise_kind_1, _carMasterVo.Door_number != 0 ? _carMasterVo.Door_number : " ");
             e.Graphics.DrawString(number, drawFont, drawBrushFont, rectangleFill, stringFormat);
         }
 

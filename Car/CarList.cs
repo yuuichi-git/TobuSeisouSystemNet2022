@@ -12,8 +12,8 @@ namespace Car {
     public partial class CarList : Form {
         private InitializeForm _initializeForm = new();
         private readonly ConnectionVo _connectionVo;
-        private List<CarMasterVo> _listCarMasterVo;
-        private List<CarMasterVo> _listFindAllCarMasterVo;
+        private List<CarMasterVo> _listCarMasterVo = new();
+        private List<CarMasterVo> _listFindAllCarMasterVo = new();
         private IOrderedEnumerable<CarMasterVo> _linqCarMasterVo;
 
         /*
