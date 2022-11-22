@@ -531,8 +531,8 @@ namespace Dao {
                                               sqlDropOperatorNote + " = (SELECT " + sqlDragOperatorNote + " " +
                                                                         "FROM vehicle_dispatch_detail " +
                                                                         "WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
-                                         "update_pc_name = '" + Environment.MachineName + "'," +
-                                         "update_ymd_hms = '" + DateTime.Now + "' " +
+                                          "update_pc_name = '" + Environment.MachineName + "'," +
+                                          "update_ymd_hms = '" + DateTime.Now + "' " +
                                      "WHERE cell_number = " + dropCellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
             try {
                 return sqlCommand.ExecuteNonQuery();
@@ -582,8 +582,8 @@ namespace Dao {
                                               sqlDropOperatorNote + " = (SELECT operator_note " +
                                                                         "FROM vehicle_dispatch_detail_staff " +
                                                                         "WHERE cell_number = " + dragCellNumber + " AND operator_code = '" + staffMasterVo.Staff_code + "' AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "')," +
-                                           "update_pc_name = '" + Environment.MachineName + "'," +
-                                           "update_ymd_hms = '" + DateTime.Now + "' " +
+                                          "update_pc_name = '" + Environment.MachineName + "'," +
+                                          "update_ymd_hms = '" + DateTime.Now + "' " +
                                      "WHERE cell_number = " + dropCellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
             try {
                 return sqlCommand.ExecuteNonQuery();
@@ -623,8 +623,8 @@ namespace Dao {
                                       sqlDropOperatorRollCallFlag + " = 'False'," +
                                     sqlDropOperatorRollCallYmdHms + " = '1900-01-01'," +
                                               sqlDropOperatorNote + " = ''," +
-                                           "update_pc_name = '" + Environment.MachineName + "'," +
-                                           "update_ymd_hms = '" + DateTime.Now + "' " +
+                                          "update_pc_name = '" + Environment.MachineName + "'," +
+                                          "update_ymd_hms = '" + DateTime.Now + "' " +
                                      "WHERE cell_number = " + dropCellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
             try {
                 return sqlCommand.ExecuteNonQuery();

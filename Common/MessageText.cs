@@ -37,5 +37,9 @@
         */
         public const string Message801 = "選択されている車両を削除します。よろしいですか？";
         public const string Message802 = "データを更新します。よろしいですか？";
+        /*
+         * CommuterInsurance
+         */
+        public const string Message901 = "データを更新します。よろしいですか？";
     }
 }

@@ -55,40 +55,45 @@ namespace ControlEx {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void SetControlEx_CellPaint(object? sender, TableLayoutCellPaintEventArgs e) {
-            if (SetFlag) { // 表示
+            if(SetFlag) { // 表示
                 var rectangle = e.CellBounds;
                 rectangle.Inflate(-1, -1); // 枠のサイズを小さくする
                 /*
                  * SetLabelとCarLabelの部分
                  */
-                switch (e.Row) {
+                switch(e.Row) {
                     case 0: // SetLabel
-                        // GarageFlag
-                        if (!GarageFlag)
-                            e.Graphics.FillRectangle(Brushes.PowderBlue, rectangle);
-                        // OperationFlag
-                        if (!OperationFlag)
-                            e.Graphics.FillRectangle(Brushes.Pink, rectangle);
+                        //// GarageFlag
+                        //if(!_garageFlag)
+                        //    e.Graphics.FillRectangle(Brushes.PowderBlue, rectangle);
+                        //// OperationFlag
+                        //if(!_operationFlag)
+                        //    e.Graphics.FillRectangle(Brushes.Pink, rectangle);
                         break;
                     case 1: // CarLabel
+                        // SetControlExの枠線
                         ControlPaint.DrawBorder(e.Graphics, rectangle, Color.DarkGray, ButtonBorderStyle.Dotted);
                         break;
                 }
                 /*
                  * StaffLabelの部分
                  */
-                if (OperationFlag) { // 配車日の場合
-                    if (e.Row < ProductionNumberOfPeople + 2) {
-                        switch (e.Row) {
+                if(OperationFlag) { // 配車日の場合
+                    if(e.Row < ProductionNumberOfPeople + 2) {
+                        switch(e.Row) {
+                            // StaffLabelExの枠線
                             case 2: // StaffLabel1
                                 ControlPaint.DrawBorder(e.Graphics, rectangle, Color.DarkGray, ButtonBorderStyle.Dotted);
                                 break;
+                            // StaffLabelExの枠線
                             case 3: // StaffLabel2
                                 ControlPaint.DrawBorder(e.Graphics, rectangle, Color.DarkGray, ButtonBorderStyle.Dotted);
                                 break;
+                            // StaffLabelExの枠線
                             case 4: // StaffLabel3
                                 ControlPaint.DrawBorder(e.Graphics, rectangle, Color.DarkGray, ButtonBorderStyle.Dotted);
                                 break;
+                            // StaffLabelExの枠線
                             case 5: // StaffLabel4
                                 ControlPaint.DrawBorder(e.Graphics, rectangle, Color.DarkGray, ButtonBorderStyle.Dotted);
                                 break;
@@ -105,8 +110,8 @@ namespace ControlEx {
         /// Labelのイベントはここで登録する
         /// </summary>
         /// <param name="setMasterVo"></param>
-        public void CreateLabel(SetMasterVo setMasterVo, ContextMenuStrip contextMenuStrip) {
-            var labelEx = new SetLabelEx(setMasterVo).CreateLabel();
+        public void CreateLabel(SetMasterVo setMasterVo, VehicleDispatchDetailVo vehicleDispatchDetailVo, ContextMenuStrip contextMenuStrip) {
+            var labelEx = new SetLabelEx(setMasterVo, vehicleDispatchDetailVo).CreateLabel();
             /*
              * プロパティを設定
              */
@@ -159,42 +164,46 @@ namespace ControlEx {
             this.Controls.Add(labelEx, 0, number + 2);
         }
 
+        /*
+         * Event
+         */
         private void SetControlEx_Click(object? sender, EventArgs e) {
-            if (Event_SetControlEx_Click != null)
+            if(Event_SetControlEx_Click != null)
                 Event_SetControlEx_Click(sender, e);
         }
         private void SetControlEx_DragDrop(object? sender, DragEventArgs e) {
-            if (Event_SetControlEx_DragDrop != null)
+            if(Event_SetControlEx_DragDrop != null)
                 Event_SetControlEx_DragDrop(sender, e);
         }
         private void SetControlEx_DragEnter(object? sender, DragEventArgs e) {
-            if (Event_SetControlEx_DragEnter != null)
+            if(Event_SetControlEx_DragEnter != null)
                 Event_SetControlEx_DragEnter(sender, e);
         }
         private void SetLabelEx_Click(object? sender, EventArgs e) {
-            if (Event_SetLabelEx_Click != null)
+            if(Event_SetLabelEx_Click != null)
                 Event_SetLabelEx_Click(sender, e);
         }
         private void SetLabelEx_MouseMove(object? sender, MouseEventArgs e) {
-            if (Event_SetLabelEx_MouseMove != null)
+            if(Event_SetLabelEx_MouseMove != null)
                 Event_SetLabelEx_MouseMove(sender, e);
         }
         private void CarLabelEx_Click(object? sender, EventArgs e) {
-            if (Event_CarLabelEx_Click != null)
+            if(Event_CarLabelEx_Click != null)
                 Event_CarLabelEx_Click(sender, e);
         }
         private void CarLabelEx_MouseMove(object? sender, MouseEventArgs e) {
-            if (Event_CarLabelEx_MouseMove != null)
+            if(Event_CarLabelEx_MouseMove != null)
                 Event_CarLabelEx_MouseMove(sender, e);
         }
         private void StaffLabelEx_Click(object? sender, EventArgs e) {
-            if (Event_StaffLabelEx_Click != null)
+            if(Event_StaffLabelEx_Click != null)
                 Event_StaffLabelEx_Click(sender, e);
         }
         private void StaffLabelEx_MouseMove(object? sender, MouseEventArgs e) {
-            if (Event_StaffLabelEx_MouseMove != null)
+            if(Event_StaffLabelEx_MouseMove != null)
                 Event_StaffLabelEx_MouseMove(sender, e);
         }
+
         /*
          * Setter Getter
          */

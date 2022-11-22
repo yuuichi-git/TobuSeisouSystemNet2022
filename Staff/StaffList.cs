@@ -273,8 +273,8 @@ namespace Staff {
                 // 任意保険終了年月日
                 DateTime? _meansOfCommutingEndDate = null;
                 if (extendsStaffMasterVo.CommutingNotification) {
-                    if (extendsStaffMasterVo.MeansOfCommutingEndDate.Date != _defaultDateTime.Date)
-                        _meansOfCommutingEndDate = extendsStaffMasterVo.MeansOfCommutingEndDate.Date;
+                    if (extendsStaffMasterVo.CommuterInsuranceEndDate.Date != _defaultDateTime.Date)
+                        _meansOfCommutingEndDate = extendsStaffMasterVo.CommuterInsuranceEndDate.Date;
                 }
                 // 生年月日・年齢
                 DateTime? _birth_date = null;

@@ -683,14 +683,14 @@ namespace Dao {
                                             "license_master.staff_code AS license_staff_code," +
                                             "license_master.license_number AS license_number," +
                                             "license_master.expiration_date AS license_expiration_date," +
-                                            "means_of_commuting.notification AS commuting_notification," +
-                                            "means_of_commuting.end_date AS means_of_commuting_end_date," +
+                                            "commuterInsurance.notification AS commuting_notification," +
+                                            "commuterInsurance.end_date AS commuterInsurance_end_date," +
                                             "(SELECT COUNT(staff_code) FROM car_accident_master WHERE staff_master.staff_code = car_accident_master.staff_code " +
                                                                                                  "AND car_accident_master.totalling_flag = 'True') AS car_accident_count " +
                                      //"AND car_accident_ledger.occurrence_ymd_hms BETWEEN '" + startDate + "' AND '" + endDate + "') AS car_accident_count " +
                                      "FROM staff_master LEFT OUTER JOIN toukanpo_training_card ON staff_master.staff_code = toukanpo_training_card.staff_code " +
                                                        "LEFT OUTER JOIN license_master ON staff_master.staff_code = license_master.staff_code " +
-                                                       "LEFT OUTER JOIN means_of_commuting ON staff_master.staff_code = means_of_commuting.staff_code";
+                                                       "LEFT OUTER JOIN commuterInsurance ON staff_master.staff_code = commuterInsurance.staff_code";
             using (var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while (sqlDataReader.Read() == true) {
                     var extendsStaffMasterVo = new ExtendsStaffMasterVo();
@@ -707,7 +707,7 @@ namespace Dao {
                     extendsStaffMasterVo.LicenseNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["license_number"]);
                     extendsStaffMasterVo.LicenseMasterExpirationDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["license_expiration_date"]);
                     extendsStaffMasterVo.CommutingNotification = _defaultValue.GetDefaultValue<bool>(sqlDataReader["commuting_notification"]);
-                    extendsStaffMasterVo.MeansOfCommutingEndDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["means_of_commuting_end_date"]);
+                    extendsStaffMasterVo.CommuterInsuranceEndDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["commuterInsurance_end_date"]);
                     extendsStaffMasterVo.Birth_date = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["birth_date"]);
                     extendsStaffMasterVo.Employment_date = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["employment_date"]);
                     extendsStaffMasterVo.Proper_kind_1 = _defaultValue.GetDefaultValue<string>(sqlDataReader["proper_kind_1"]);

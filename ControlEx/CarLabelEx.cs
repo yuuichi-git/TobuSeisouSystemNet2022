@@ -6,17 +6,21 @@ namespace ControlEx {
         private const int _carLabelHeight = 68;
         private const int _carLabelWidth = 70;
 
-        Font drawFont = new Font("Yu Gothic UI", 12, FontStyle.Regular, GraphicsUnit.Pixel);
-        SolidBrush drawBrushFont = new SolidBrush(Color.Black);
-        Color _borderColor = Color.White;
-        SolidBrush drowBrushFill;
+        private Color _borderColor = Color.White;
+        private Font drawFont = new Font("Yu Gothic UI", 12, FontStyle.Regular, GraphicsUnit.Pixel);
+        private SolidBrush drowBrushFill;
+        private SolidBrush drawBrushFont = new SolidBrush(Color.Black);
 
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="carMasterVo"></param>
         public CarLabelEx(CarMasterVo carMasterVo) {
             _carMasterVo = carMasterVo;
             /*
              * 本社・三郷で色を変える
              */
-            if (carMasterVo.Garage_flag) {
+            if(carMasterVo.Garage_flag) {
                 _borderColor = Color.White;
                 drowBrushFill = new SolidBrush(Color.White);
             } else {
@@ -41,13 +45,15 @@ namespace ControlEx {
              */
             Rectangle rectangleFill = new Rectangle(2, 2, 64, 62);
             e.Graphics.FillRectangle(drowBrushFill, rectangleFill);
-
+            /*
+             * 文字を描画
+             */
             var stringFormat = new StringFormat();
             stringFormat.LineAlignment = StringAlignment.Center;
             stringFormat.Alignment = StringAlignment.Center;
             var number = string.Concat(_carMasterVo.Registration_number_1, _carMasterVo.Registration_number_2, "\r\n"
-                                          , _carMasterVo.Registration_number_3, _carMasterVo.Registration_number_4, "\r\n"
-                                          , _carMasterVo.Disguise_kind_1, _carMasterVo.Door_number != 0 ? _carMasterVo.Door_number : " ");
+                                         , _carMasterVo.Registration_number_3, _carMasterVo.Registration_number_4, "\r\n"
+                                         , _carMasterVo.Disguise_kind_1, _carMasterVo.Door_number != 0 ? _carMasterVo.Door_number : " ");
             e.Graphics.DrawString(number, drawFont, drawBrushFont, rectangleFill, stringFormat);
         }
 

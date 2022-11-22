@@ -184,7 +184,7 @@ namespace VehicleDispatch {
                     setControlEx.ProductionNumberOfPeople = vehicleDispatchDetailVo.Number_of_people;
                     setControlEx.SetFlag = true;
                     setControlEx.OperationFlag = vehicleDispatchDetailVo.Operation_flag;
-                    setControlEx.CreateLabel(_listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code), ContextMenuStripSetLabel);
+                    setControlEx.CreateLabel(_listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code), vehicleDispatchDetailVo, ContextMenuStripSetLabel);
                 }
                 /*
                  * CarLabel
@@ -642,12 +642,15 @@ namespace VehicleDispatch {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+        SetLabelEx ToolStripMenuItemClickSetLabelEx;
         int ToolStripMenuItemClickCellNumber;
         int ToolStripMenuItemClickStaffCode;
         private void ContextMenuStrip_Opened(object sender, EventArgs e) {
             switch(((ContextMenuStrip)sender).Name) {
                 // ContextMenuStripSetLabel
                 case "ContextMenuStripSetLabel":
+                    //
+                    ToolStripMenuItemClickSetLabelEx = (SetLabelEx)((ContextMenuStrip)sender).SourceControl;
                     // クリックされたCellNumberを取得して変数に格納する
                     ToolStripMenuItemClickCellNumber = (int)((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.Tag;
                     SetMasterVo setMasterVo = (SetMasterVo)((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Tag;
@@ -704,6 +707,9 @@ namespace VehicleDispatch {
                     } catch(Exception exception) {
                         MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     }
+                    var setControlEx = (SetControlEx)ToolStripMenuItemClickSetLabelEx.Parent;
+                    setControlEx.Controls.Remove(ToolStripMenuItemClickSetLabelEx);
+                    setControlEx.Refresh();
                     break;
                 // 足立より出庫
                 case "ToolStripMenuItemSetGarageAdachi":

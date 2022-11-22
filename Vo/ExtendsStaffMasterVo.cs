@@ -5,7 +5,7 @@
         private LicenseMasterVo? _licenseMasterVo;
         private DateTime _licenseMasterExpirationDate;
         private bool _commutingNotification;
-        private DateTime _meansOfCommutingEndDate;
+        private DateTime _commuterInsuranceEndDate;
         private int _carAccidentMasterCount;
 
         /// <summary>
@@ -46,9 +46,9 @@
         /// <summary>
         /// 任意保険の期限年月日
         /// </summary>
-        public DateTime MeansOfCommutingEndDate {
-            get => _meansOfCommutingEndDate;
-            set => _meansOfCommutingEndDate = value;
+        public DateTime CommuterInsuranceEndDate {
+            get => _commuterInsuranceEndDate;
+            set => _commuterInsuranceEndDate = value;
         }
         /// <summary>
         /// 事故歴情報の存在の有無と件数 0:無し 他:件数

@@ -195,7 +195,7 @@ namespace Production {
                 if (setCode.HasValue) {
                     setMasterVo = _listSetMasterVo.Find(x => x.Set_code == setCode);
                     if (setMasterVo != null) {
-                        var labelEx = new SetLabelEx(setMasterVo).CreateLabel();
+                        var labelEx = new SetLabelEx(setMasterVo, vehicleDispatchHeadVo.Garage_flag).CreateLabel();
                         labelEx.Tag = new NestedClassSetMasterVo(i + 1, setMasterVo.Working_days, new DateTime(2022, 04, 01), setMasterVo);
                         labelEx.MouseClick += new MouseEventHandler(Label_MouseClick);
                         labelEx.MouseEnter += new EventHandler(Label_MouseEnter);
