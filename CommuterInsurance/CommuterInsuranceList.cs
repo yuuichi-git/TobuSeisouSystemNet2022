@@ -1,5 +1,6 @@
 ﻿using Common;
 
+using FarPoint.Excel;
 using FarPoint.Win.Spread;
 
 using Vo;
@@ -85,12 +86,141 @@ namespace CommuterInsurance {
         }
 
         /// <summary>
+        /// TabControlExStaff_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void TabControlExStaff_Click(object sender, EventArgs e) {
+            if(_listCommuterInsuranceVo == null)
+                return;
+            SheetViewListOutPut();
+        }
+
+        /// <summary>
         /// ButtonUpdate_Click
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ButtonUpdate_Click(object sender, EventArgs e) {
 
+        }
+
+        /// <summary>
+        /// 画面表示
+        /// </summary>
+        int spreadListTopRow = 0;
+        private void SheetViewListOutPut() {
+            // Spread 非活性化
+            SpreadList.SuspendLayout();
+            // 先頭行（列）インデックスを取得
+            spreadListTopRow = SpreadList.GetViewportTopRow(0);
+            // Rowを削除する
+            if(SheetViewList.Rows.Count > 0)
+                SheetViewList.RemoveRows(0, SheetViewList.Rows.Count);
+
+            _listFindAllCommuterInsuranceVo = TabControlExStaff.SelectedTab.Tag switch {
+                "ア" => _listCommuterInsuranceVo.FindAll(x => x.Name_kana.StartsWith("ア") || x.Name_kana.StartsWith("イ") || x.Name_kana.StartsWith("ウ") || x.Name_kana.StartsWith("エ") || x.Name_kana.StartsWith("オ")),
+                "カ" => _listCommuterInsuranceVo.FindAll(x => x.Name_kana.StartsWith("カ") || x.Name_kana.StartsWith("ガ") || x.Name_kana.StartsWith("キ") || x.Name_kana.StartsWith("ギ") || x.Name_kana.StartsWith("ク") || x.Name_kana.StartsWith("ケ") || x.Name_kana.StartsWith("コ") || x.Name_kana.StartsWith("ゴ")),
+                "サ" => _listCommuterInsuranceVo.FindAll(x => x.Name_kana.StartsWith("サ") || x.Name_kana.StartsWith("シ") || x.Name_kana.StartsWith("ス") || x.Name_kana.StartsWith("セ") || x.Name_kana.StartsWith("ソ")),
+                "タ" => _listCommuterInsuranceVo.FindAll(x => x.Name_kana.StartsWith("タ") || x.Name_kana.StartsWith("チ") || x.Name_kana.StartsWith("ツ") || x.Name_kana.StartsWith("テ") || x.Name_kana.StartsWith("デ") || x.Name_kana.StartsWith("ト") || x.Name_kana.StartsWith("ド")),
+                "ナ" => _listCommuterInsuranceVo.FindAll(x => x.Name_kana.StartsWith("ナ") || x.Name_kana.StartsWith("ニ") || x.Name_kana.StartsWith("ヌ") || x.Name_kana.StartsWith("ネ") || x.Name_kana.StartsWith("ノ")),
+                "ハ" => _listCommuterInsuranceVo.FindAll(x => x.Name_kana.StartsWith("ハ") || x.Name_kana.StartsWith("パ") || x.Name_kana.StartsWith("ヒ") || x.Name_kana.StartsWith("ビ") || x.Name_kana.StartsWith("フ") || x.Name_kana.StartsWith("ブ") || x.Name_kana.StartsWith("ヘ") || x.Name_kana.StartsWith("ベ") || x.Name_kana.StartsWith("ホ")),
+                "マ" => _listCommuterInsuranceVo.FindAll(x => x.Name_kana.StartsWith("マ") || x.Name_kana.StartsWith("ミ") || x.Name_kana.StartsWith("ム") || x.Name_kana.StartsWith("メ") || x.Name_kana.StartsWith("モ")),
+                "ヤ" => _listCommuterInsuranceVo.FindAll(x => x.Name_kana.StartsWith("ヤ") || x.Name_kana.StartsWith("ユ") || x.Name_kana.StartsWith("ヨ")),
+                "ラ" => _listCommuterInsuranceVo.FindAll(x => x.Name_kana.StartsWith("ラ") || x.Name_kana.StartsWith("リ") || x.Name_kana.StartsWith("ル") || x.Name_kana.StartsWith("レ") || x.Name_kana.StartsWith("ロ")),
+                "ワ" => _listCommuterInsuranceVo.FindAll(x => x.Name_kana.StartsWith("ワ") || x.Name_kana.StartsWith("ヲ") || x.Name_kana.StartsWith("ン")),
+                _ => _listCommuterInsuranceVo,
+            };
+
+            int i = 0;
+            foreach(var commuterInsuranceVo in _listFindAllCommuterInsuranceVo.OrderBy(x => x.Name_kana)) {
+                // 所属
+                var _belongs = commuterInsuranceVo.Belongs;
+                // 社員CD
+                var _staff_code = commuterInsuranceVo.Staff_code;
+                // 氏名
+                var _name = commuterInsuranceVo.Name;
+                // カナ
+                var _name_kana = commuterInsuranceVo.Name_kana;
+                // 退職フラグ
+                var _retirement_flag = commuterInsuranceVo.Retirement_flag;
+                // 通勤手段
+                var _means_of_commuting = commuterInsuranceVo.CommuterInsurance;
+                // 届出
+                var _notification = commuterInsuranceVo.Notification;
+                // 任意保険会社
+                var _insurance_company_name = commuterInsuranceVo.InsuranceCompanyName;
+                // 携帯決済
+                var _payment = commuterInsuranceVo.Payment;
+                // 車両ナンバー又は防犯登録番号
+                var _car_number = commuterInsuranceVo.CarNumber;
+                // 期間開始日
+                var _start_date = commuterInsuranceVo.StartDate;
+                // 期間終了日
+                var _end_date = commuterInsuranceVo.EndDate;
+                // 備考
+                var _note = commuterInsuranceVo.Note;
+
+                SheetViewList.Rows.Add(i, 1);
+                SheetViewList.RowHeader.Columns[0].Label = (i + 1).ToString(); // Rowヘッダ
+                SheetViewList.Rows[i].Height = 22; // Rowの高さ
+                SheetViewList.Rows[i].Resizable = false; // RowのResizableを禁止
+
+                SheetViewList.Cells[i, colBelongs].Text = _belongs;
+                SheetViewList.Cells[i, colStaffCode].Value = _staff_code;
+                SheetViewList.Cells[i, colName].Text = _name;
+                SheetViewList.Cells[i, colNameKana].Text = _name_kana;
+                SheetViewList.Cells[i, colRetirementFlag].Text = _retirement_flag ? "×" : "〇";
+                SheetViewList.Cells[i, colMeansOfCommuting].Text = _means_of_commuting;
+                SheetViewList.Cells[i, colNotification].Text = _notification ? "〇" : "";
+                SheetViewList.Cells[i, colInsuranceCompanyName].Text = _insurance_company_name;
+                SheetViewList.Cells[i, colPayment].Text = _payment ? "〇" : "";
+                SheetViewList.Cells[i, colCarNumber].Text = _car_number;
+                SheetViewList.Cells[i, colStartDate].Value = _start_date;
+                SheetViewList.Cells[i, colEndDate].Value = _end_date;
+                SheetViewList.Cells[i, colNote].Text = _note;
+                i++;
+            }
+            // 先頭行（列）インデックスをセット
+            SpreadList.SetViewportTopRow(0, spreadListTopRow);
+            // Spread 活性化
+            SpreadList.ResumeLayout();
+            ToolStripStatusLabelStatus.Text = string.Concat(" ", i, " 件");
+        }
+
+        /// <summary>
+        /// SpreadList_CellDoubleClick
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SpreadList_CellDoubleClick(object sender, CellClickEventArgs e) {
+            // ヘッダーのDoubleClickを回避
+            if(e.ColumnHeader)
+                return;
+            var commuterInsuranceDetail = new CommuterInsuranceDetail(_connectionVo, (int)SheetViewList.Cells[e.Row, colStaffCode].Value);
+            commuterInsuranceDetail.ShowDialog(this);
+        }
+
+        /// <summary>
+        /// ToolStripMenuItemExcelExport_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItemExcelExport_Click(object sender, EventArgs e) {
+            //xlsx形式ファイルをエクスポートします
+            string fileName = string.Concat("従事者通勤手段一覧表", DateTime.Now.ToString("MM月dd日"), "作成");
+            SpreadList.SaveExcel(new Directry().GetExcelDesktopPass(fileName), ExcelSaveFlags.UseOOXMLFormat | ExcelSaveFlags.Exchangeable);
+            MessageBox.Show("デスクトップへエクスポートしました", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        /// <summary>
+        /// ToolStripMenuItemNewRecord_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItemNewRecord_Click(object sender, EventArgs e) {
+            var commuterInsuranceDetail = new CommuterInsuranceDetail(_connectionVo);
+            commuterInsuranceDetail.ShowDialog(this);
         }
 
         /// <summary>

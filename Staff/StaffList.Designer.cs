@@ -484,7 +484,6 @@
             this.TabControlExStaff.Controls.Add(this.tabPage9);
             this.TabControlExStaff.Controls.Add(this.tabPage10);
             this.TabControlExStaff.Controls.Add(this.tabPage11);
-            this.TabControlExStaff.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TabControlExStaff.Location = new System.Drawing.Point(10, 84);
             this.TabControlExStaff.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
             this.TabControlExStaff.Name = "TabControlExStaff";
