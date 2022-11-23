@@ -9,6 +9,8 @@ using CarAccident;
 
 using Common;
 
+using CommuterInsurance;
+
 using LicenseLedger;
 
 using Production;
@@ -43,18 +45,18 @@ namespace TobuSeisouSystemNet2022 {
                 LabelServerName.Text = string.Concat("　接続先サーバー：", _connectionVo.Connection.DataSource);
                 LabelDbName.Text = string.Concat("　接続先データベース：", _connectionVo.Connection.Database);
                 LabelConnectStatus.Text = string.Concat("　状態：", _connectionVo.Connection.State);
-            } catch (Exception exception) {
+            } catch(Exception exception) {
                 MessageBox.Show(exception.Message, MessageText.Message501, MessageBoxButtons.OK, MessageBoxIcon.Question);
             }
         }
 
         private void Label_Click(object sender, EventArgs e) {
-            if (_connectionVo.Connection != null) {
-                switch (_connectionVo.Connection.State) {
+            if(_connectionVo.Connection != null) {
+                switch(_connectionVo.Connection.State) {
                     case ConnectionState.Closed: //接続が閉じています。
                         break;
                     case ConnectionState.Open: //接続が開いています。
-                        switch ((string)((Label)sender).Tag) {
+                        switch((string)((Label)sender).Tag) {
                             // VehicleDispatch
                             case "VehicleDispatch":
                                 var vehicleDispatchBoad = new VehicleDispatchBoad(_connectionVo);
@@ -86,6 +88,11 @@ namespace TobuSeisouSystemNet2022 {
                             case "CarList":
                                 var carList = new CarList(_connectionVo);
                                 carList.Show(this);
+                                break;
+                            // CommuterInsuranceList
+                            case "CommuterInsuranceList":
+                                var commuterInsuranceList = new CommuterInsuranceList(_connectionVo);
+                                commuterInsuranceList.Show(this);
                                 break;
                         }
                         break;
@@ -127,7 +134,7 @@ namespace TobuSeisouSystemNet2022 {
         /// <param name="e"></param>
         private void StartProject_FormClosing(object sender, FormClosingEventArgs e) {
             var dialogResult = MessageBox.Show(MessageText.Message102, MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            switch (dialogResult) {
+            switch(dialogResult) {
                 case DialogResult.OK:
                     e.Cancel = false;
                     Dispose();

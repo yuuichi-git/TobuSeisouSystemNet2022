@@ -32,6 +32,7 @@
             this.SheetViewList = this.SpreadList.GetSheet(0);
             this.MenuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ToolStripMenuItemMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemExcelExport = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemNewRecord = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,7 +52,6 @@
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.tabPage11 = new System.Windows.Forms.TabPage();
-            this.ToolStripMenuItemExcelExport = new System.Windows.Forms.ToolStripMenuItem();
             this.TableLayoutPanelBase.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpreadList)).BeginInit();
@@ -138,6 +138,13 @@
             this.ToolStripMenuItemMenu.Size = new System.Drawing.Size(52, 20);
             this.ToolStripMenuItemMenu.Text = "メニュー";
             // 
+            // ToolStripMenuItemExcelExport
+            // 
+            this.ToolStripMenuItemExcelExport.Name = "ToolStripMenuItemExcelExport";
+            this.ToolStripMenuItemExcelExport.Size = new System.Drawing.Size(207, 22);
+            this.ToolStripMenuItemExcelExport.Text = "Excel形式でエクスポートする";
+            this.ToolStripMenuItemExcelExport.Click += new System.EventHandler(this.ToolStripMenuItemExcelExport_Click);
+            // 
             // ToolStripMenuItemExit
             // 
             this.ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
@@ -184,6 +191,7 @@
             this.ButtonUpdate.TabIndex = 0;
             this.ButtonUpdate.Text = "最 新 化";
             this.ButtonUpdate.UseVisualStyleBackColor = true;
+            this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
             // 
             // PanelTabControl
             // 
@@ -234,6 +242,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(1878, 0);
             this.tabPage2.TabIndex = 1;
+            this.tabPage2.Tag = "ア";
             this.tabPage2.Text = "あ行";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
@@ -243,6 +252,7 @@
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(1878, 0);
             this.tabPage3.TabIndex = 2;
+            this.tabPage3.Tag = "カ";
             this.tabPage3.Text = "か行";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
@@ -252,6 +262,7 @@
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Size = new System.Drawing.Size(1878, 0);
             this.tabPage4.TabIndex = 3;
+            this.tabPage4.Tag = "サ";
             this.tabPage4.Text = "さ行";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
@@ -261,6 +272,7 @@
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Size = new System.Drawing.Size(1878, 0);
             this.tabPage5.TabIndex = 4;
+            this.tabPage5.Tag = "タ";
             this.tabPage5.Text = "た行";
             this.tabPage5.UseVisualStyleBackColor = true;
             // 
@@ -270,6 +282,7 @@
             this.tabPage6.Name = "tabPage6";
             this.tabPage6.Size = new System.Drawing.Size(1878, 0);
             this.tabPage6.TabIndex = 5;
+            this.tabPage6.Tag = "ナ";
             this.tabPage6.Text = "な行";
             this.tabPage6.UseVisualStyleBackColor = true;
             // 
@@ -279,6 +292,7 @@
             this.tabPage7.Name = "tabPage7";
             this.tabPage7.Size = new System.Drawing.Size(1878, 0);
             this.tabPage7.TabIndex = 6;
+            this.tabPage7.Tag = "ハ";
             this.tabPage7.Text = "は行";
             this.tabPage7.UseVisualStyleBackColor = true;
             // 
@@ -288,6 +302,7 @@
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Size = new System.Drawing.Size(1878, 0);
             this.tabPage8.TabIndex = 7;
+            this.tabPage8.Tag = "マ";
             this.tabPage8.Text = "ま行";
             this.tabPage8.UseVisualStyleBackColor = true;
             // 
@@ -297,6 +312,7 @@
             this.tabPage9.Name = "tabPage9";
             this.tabPage9.Size = new System.Drawing.Size(1878, 0);
             this.tabPage9.TabIndex = 8;
+            this.tabPage9.Tag = "ヤ";
             this.tabPage9.Text = "や行";
             this.tabPage9.UseVisualStyleBackColor = true;
             // 
@@ -306,6 +322,7 @@
             this.tabPage10.Name = "tabPage10";
             this.tabPage10.Size = new System.Drawing.Size(1878, 0);
             this.tabPage10.TabIndex = 9;
+            this.tabPage10.Tag = "ラ";
             this.tabPage10.Text = "ら行";
             this.tabPage10.UseVisualStyleBackColor = true;
             // 
@@ -315,15 +332,9 @@
             this.tabPage11.Name = "tabPage11";
             this.tabPage11.Size = new System.Drawing.Size(1878, 0);
             this.tabPage11.TabIndex = 10;
+            this.tabPage11.Tag = "ワ";
             this.tabPage11.Text = "わ行";
             this.tabPage11.UseVisualStyleBackColor = true;
-            // 
-            // ToolStripMenuItemExcelExport
-            // 
-            this.ToolStripMenuItemExcelExport.Name = "ToolStripMenuItemExcelExport";
-            this.ToolStripMenuItemExcelExport.Size = new System.Drawing.Size(207, 22);
-            this.ToolStripMenuItemExcelExport.Text = "Excel形式でエクスポートする";
-            this.ToolStripMenuItemExcelExport.Click += new System.EventHandler(this.ToolStripMenuItemExcelExport_Click);
             // 
             // CommuterInsuranceList
             // 

@@ -319,19 +319,6 @@ namespace CarRegister {
             }
         }
 
-        /*
-         * GetDateTimePickerValue
-         */
-        private DateTime GetDateTimePickerValue(DateTimePicker dateTimePicker) {
-            DateTime dateTime;
-            if (dateTimePicker.Text != " ") {
-                dateTime = dateTimePicker.Value.Date;
-            } else {
-                dateTime = _defaultDateTime;
-            }
-            return dateTime;
-        }
-
         /// <summary>
         /// ToolStripMenuItemExit_Click
         /// </summary>
@@ -347,16 +334,6 @@ namespace CarRegister {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void CarDetail_FormClosing(object sender, FormClosingEventArgs e) {
-            var dialogResult = MessageBox.Show(MessageText.Message102, MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            switch (dialogResult) {
-                case DialogResult.OK:
-                    e.Cancel = false;
-                    Dispose();
-                    break;
-                case DialogResult.Cancel:
-                    e.Cancel = true;
-                    break;
-            }
         }
     }
 }

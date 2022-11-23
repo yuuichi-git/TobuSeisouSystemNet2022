@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarAccident", "CarAccident\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Car", "Car\Car.csproj", "{D45D5CEF-1B2D-4359-896A-5B83A5AC05B7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommuterInsurance", "CommuterInsurance\CommuterInsurance.csproj", "{F7C278CC-2FDD-47A6-B980-08AB9EAC17DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommuterInsurance", "CommuterInsurance\CommuterInsurance.csproj", "{F7C278CC-2FDD-47A6-B980-08AB9EAC17DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

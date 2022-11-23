@@ -1,5 +1,7 @@
 ﻿using Common;
 
+using Dao;
+
 using FarPoint.Excel;
 using FarPoint.Win.Spread;
 
@@ -13,6 +15,8 @@ namespace CommuterInsurance {
         private List<CommuterInsuranceVo> _listCommuterInsuranceVo;
         private List<CommuterInsuranceVo> _listFindAllCommuterInsuranceVo;
         private IOrderedEnumerable<CommuterInsuranceVo>? _linqCommuterInsuranceVo;
+
+        Dictionary<int, string> dictionaryBelongs = new Dictionary<int, string> { { 10, "役員" }, { 11, "社員" }, { 12, "アルバイト" }, { 20, "新運転" }, { 21, "自運労" } };
 
         /*
          * SPREADのColumnの番号
@@ -86,6 +90,12 @@ namespace CommuterInsurance {
         }
 
         /// <summary>
+        /// エントリーポイント
+        /// </summary>
+        public static void Main() {
+        }
+
+        /// <summary>
         /// TabControlExStaff_Click
         /// </summary>
         /// <param name="sender"></param>
@@ -102,7 +112,8 @@ namespace CommuterInsurance {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ButtonUpdate_Click(object sender, EventArgs e) {
-
+            _listCommuterInsuranceVo = new CommuterInsuranceDao(_connectionVo).SelectAllCommuterInsurance();
+            SheetViewListOutPut();
         }
 
         /// <summary>
@@ -135,7 +146,7 @@ namespace CommuterInsurance {
             int i = 0;
             foreach(var commuterInsuranceVo in _listFindAllCommuterInsuranceVo.OrderBy(x => x.Name_kana)) {
                 // 所属
-                var _belongs = commuterInsuranceVo.Belongs;
+                var _belongs = dictionaryBelongs[commuterInsuranceVo.Belongs];
                 // 社員CD
                 var _staff_code = commuterInsuranceVo.Staff_code;
                 // 氏名

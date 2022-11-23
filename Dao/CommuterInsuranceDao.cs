@@ -28,7 +28,7 @@ namespace Dao {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT COUNT(staff_code) " +
                                      "FROM commuterInsurance " +
-                                     "WHERE staff_code = '" + staffCode + "'";
+                                     "WHERE staff_code = " + staffCode;
             try {
                 count = (int)sqlCommand.ExecuteScalar();
             } catch {
@@ -109,12 +109,12 @@ namespace Dao {
                                             "commuterInsurance.delete_ymd_hms," +
                                             "commuterInsurance.delete_flag " +
                                      "FROM commuterInsurance LEFT OUTER JOIN staff_master ON commuterInsurance.staff_code = staff_master.staff_code " +
-                                     "WHERE commuterInsurance.delete_flag = 'False' " +
+                                     "WHERE staff_master.retirement_flag = 'False' " +
                                      "ORDER BY staff_master.name_kana ASC";
             using(var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while(sqlDataReader.Read() == true) {
                     var commuterInsuranceVo = new CommuterInsuranceVo();
-                    commuterInsuranceVo.Belongs = _defaultValue.GetDefaultValue<string>(sqlDataReader["belongs"]);
+                    commuterInsuranceVo.Belongs = _defaultValue.GetDefaultValue<int>(sqlDataReader["belongs"]);
                     commuterInsuranceVo.Staff_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["staff_code"]);
                     commuterInsuranceVo.Name = _defaultValue.GetDefaultValue<string>(sqlDataReader["name"]);
                     commuterInsuranceVo.Name_kana = _defaultValue.GetDefaultValue<string>(sqlDataReader["name_kana"]);
@@ -168,7 +168,7 @@ namespace Dao {
                                      "WHERE commuterInsurance.staff_code = '" + staffCode + "'";
             using(var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while(sqlDataReader.Read() == true) {
-                    commuterInsuranceVo.Belongs = _defaultValue.GetDefaultValue<string>(sqlDataReader["belongs"]);
+                    commuterInsuranceVo.Belongs = _defaultValue.GetDefaultValue<int>(sqlDataReader["belongs"]);
                     commuterInsuranceVo.Staff_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["staff_code"]);
                     commuterInsuranceVo.Name = _defaultValue.GetDefaultValue<string>(sqlDataReader["name"]);
                     commuterInsuranceVo.Name_kana = _defaultValue.GetDefaultValue<string>(sqlDataReader["name_kana"]);

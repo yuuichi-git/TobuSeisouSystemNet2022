@@ -15,6 +15,7 @@ namespace CommuterInsurance {
         private readonly CommuterInsuranceDao _commuterInsuranceDao;
 
         Dictionary<int, string> dictionaryBelongsCode = new Dictionary<int, string> { { 10, "役員" }, { 11, "社員" }, { 12, "アルバイト" }, { 20, "新運転" }, { 21, "自運労" } };
+        Dictionary<string, int> dictionaryBelongsName = new Dictionary<string, int> { { "役員", 10 }, { "社員", 11 }, { "アルバイト", 12 }, { "新運転", 20 }, { "自運労", 21 } };
 
         /// <summary>
         /// ErrorProviderのインスタンスを生成
@@ -97,9 +98,17 @@ namespace CommuterInsurance {
                     var commuterInsuranceVo = SetCommuterInsuranceVo();
                     // DBを変更(DBにstaff_codeが存在すればUPDATE、無ければINSERT)
                     if(_commuterInsuranceDao.CheckCommuterInsurance(commuterInsuranceVo.Staff_code)) {
-                        _commuterInsuranceDao.UpdateOneCommuterInsurance(commuterInsuranceVo);
+                        try {
+                            _commuterInsuranceDao.UpdateOneCommuterInsurance(commuterInsuranceVo);
+                        } catch(Exception exception) {
+                            MessageBox.Show(exception.ToString());
+                        }
                     } else {
-                        _commuterInsuranceDao.InsertOneCommuterInsurance(commuterInsuranceVo);
+                        try {
+                            _commuterInsuranceDao.InsertOneCommuterInsurance(commuterInsuranceVo);
+                        } catch(Exception exception) {
+                            MessageBox.Show(exception.ToString());
+                        }
                     }
                     Close();
                     break;
@@ -115,7 +124,7 @@ namespace CommuterInsurance {
         /// <param name="commuterInsuranceVo"></param>
         private void ControlOutput(CommuterInsuranceVo commuterInsuranceVo) {
             GroupBoxSelectName.Enabled = false; // 修正登録モードで開かれているからFalseにしてね
-            TextBoxBelongs.Text = commuterInsuranceVo.Belongs;
+            TextBoxBelongs.Text = dictionaryBelongsCode[commuterInsuranceVo.Belongs];
             TextBoxStaffCode.Text = commuterInsuranceVo.Staff_code.ToString(); // 社員コード
             TextBoxNameKana.Text = commuterInsuranceVo.Name_kana; // フリガナ
             TextBoxName.Text = commuterInsuranceVo.Name; // 氏名
@@ -148,7 +157,7 @@ namespace CommuterInsurance {
         /// <returns></returns>
         private CommuterInsuranceVo SetCommuterInsuranceVo() {
             var commuterInsuranceVo = new CommuterInsuranceVo();
-            commuterInsuranceVo.Belongs = TextBoxBelongs.Text; // 
+            commuterInsuranceVo.Belongs = dictionaryBelongsName[TextBoxBelongs.Text]; // 
             commuterInsuranceVo.Staff_code = int.Parse(TextBoxStaffCode.Text); // 社員コード
             commuterInsuranceVo.Name_kana = TextBoxNameKana.Text; // フリガナ
             commuterInsuranceVo.Name = TextBoxName.Text; // 氏名

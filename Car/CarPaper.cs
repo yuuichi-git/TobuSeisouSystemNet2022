@@ -109,7 +109,7 @@ namespace CarRegister {
             sheetView.Cells[13, 1].Text = "";//
             SpreadCar.ResumeLayout(true);
             // 車検証画像
-            if (carMasterVo.Picture.Length != 0) {
+            if(carMasterVo.Picture.Length != 0) {
                 var imageConv = new ImageConverter();
                 PictureBox1.Image = (Image?)imageConv.ConvertFrom(carMasterVo.Picture);
             } else {
@@ -256,15 +256,6 @@ namespace CarRegister {
         }
 
         /// <summary>
-        /// ToolStripMenuItemExit_Click
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ToolStripMenuItemExit_Click(object sender, EventArgs e) {
-            Close();
-        }
-
-        /// <summary>
         /// ButtonPrint_Click
         /// 印刷する
         /// </summary>
@@ -293,7 +284,7 @@ namespace CarRegister {
         /// </summary>
         private int curPageNumber = 0; // 現在のページ番号
         private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e) {
-            if (curPageNumber == 0) {
+            if(curPageNumber == 0) {
                 // 印刷ページ（1ページ目）の描画を行う
                 var rectangle = new Rectangle(e.PageBounds.X, e.PageBounds.Y, e.PageBounds.Width, e.PageBounds.Height);
                 // 使用するページ数を計算
@@ -305,12 +296,21 @@ namespace CarRegister {
             } else {
                 // 印刷ページ（2ページ目）の描画を行う
                 // e.Graphicsへ出力
-                e.Graphics.DrawImage(PictureBox1.Image, 18, 18, 1136, 796);
+                e.Graphics?.DrawImage(PictureBox1.Image, 18, 18, 1136, 796);
                 // 印刷終了を指定
                 e.HasMorePages = false;
             }
             //ページ番号を繰り上げる
             curPageNumber++;
+        }
+
+        /// <summary>
+        /// ToolStripMenuItemExit_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItemExit_Click(object sender, EventArgs e) {
+            Close();
         }
     }
 }

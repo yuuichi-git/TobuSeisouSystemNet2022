@@ -4,19 +4,19 @@
 
 namespace Vo {
     public class CommuterInsuranceVo {
-        private string _belongs;
+        private int _belongs;
         private int _staff_code;
-        private string _name;
-        private string _name_kana;
+        private string _name = "";
+        private string _name_kana = "";
         private bool _retirement_flag;
-        private string _commuterInsurance;
+        private string _commuterInsurance = "";
         private bool _notification;
-        private string _insuranceCompanyName;
+        private string _insuranceCompanyName = "";
         private bool _payment;
-        private string _carNumber;
+        private string _carNumber = "";
         private DateTime _startDate;
         private DateTime _endDate;
-        private string _note;
+        private string _note = "";
         private byte[]? _pictureHead;
         private byte[]? _pictureTail;
         private DateTime _insert_ymd_hms;
@@ -27,7 +27,7 @@ namespace Vo {
         /// <summary>
         /// 所属
         /// </summary>
-        public string Belongs {
+        public int Belongs {
             get => _belongs;
             set => _belongs = value;
         }
