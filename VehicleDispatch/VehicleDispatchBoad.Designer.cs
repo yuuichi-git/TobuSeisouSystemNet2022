@@ -27,7 +27,6 @@
             this.TableLayoutPanelBase = new System.Windows.Forms.TableLayoutPanel();
             this.MenuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ToolStripMenuItemMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemVehicleDispatchExcel = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemDisplay = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemAllScreen = new System.Windows.Forms.ToolStripMenuItem();
@@ -106,6 +105,8 @@
             this.ToolStripMenuItemCarDetail = new System.Windows.Forms.ToolStripMenuItem();
             this.ContextMenuStripStaffLabel = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ToolStripMenuItemStaffDetail = new System.Windows.Forms.ToolStripMenuItem();
+            this.配車表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemVehicleDispatchExcel = new System.Windows.Forms.ToolStripMenuItem();
             this.TableLayoutPanelBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -174,18 +175,11 @@
             // ToolStripMenuItemMenu
             // 
             this.ToolStripMenuItemMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemVehicleDispatchExcel,
+            this.配車表ToolStripMenuItem,
             this.ToolStripMenuItemExit});
             this.ToolStripMenuItemMenu.Name = "ToolStripMenuItemMenu";
             this.ToolStripMenuItemMenu.Size = new System.Drawing.Size(52, 20);
             this.ToolStripMenuItemMenu.Text = "メニュー";
-            // 
-            // ToolStripMenuItemVehicleDispatchExcel
-            // 
-            this.ToolStripMenuItemVehicleDispatchExcel.Name = "ToolStripMenuItemVehicleDispatchExcel";
-            this.ToolStripMenuItemVehicleDispatchExcel.Size = new System.Drawing.Size(195, 22);
-            this.ToolStripMenuItemVehicleDispatchExcel.Text = "配車表を作成する";
-            this.ToolStripMenuItemVehicleDispatchExcel.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // ToolStripMenuItemExit
             // 
@@ -1163,6 +1157,21 @@
             this.ToolStripMenuItemStaffDetail.Text = "従事者台帳を表示する";
             this.ToolStripMenuItemStaffDetail.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
+            // 配車表ToolStripMenuItem
+            // 
+            this.配車表ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemVehicleDispatchExcel});
+            this.配車表ToolStripMenuItem.Name = "配車表ToolStripMenuItem";
+            this.配車表ToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.配車表ToolStripMenuItem.Text = "配車表";
+            // 
+            // ToolStripMenuItemVehicleDispatchExcel
+            // 
+            this.ToolStripMenuItemVehicleDispatchExcel.Name = "ToolStripMenuItemVehicleDispatchExcel";
+            this.ToolStripMenuItemVehicleDispatchExcel.Size = new System.Drawing.Size(210, 22);
+            this.ToolStripMenuItemVehicleDispatchExcel.Text = "当日配車へデータを書き出す";
+            this.ToolStripMenuItemVehicleDispatchExcel.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            // 
             // VehicleDispatchBoad
             // 
             this.AllowDrop = true;
@@ -1298,6 +1307,7 @@
         private Label label13;
         private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExPartDesignation;
         private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExFree;
+        private ToolStripMenuItem 配車表ToolStripMenuItem;
         private ToolStripMenuItem ToolStripMenuItemVehicleDispatchExcel;
     }
 }

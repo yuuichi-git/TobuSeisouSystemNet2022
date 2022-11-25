@@ -57,7 +57,7 @@ namespace VehicleDispatch {
             /*
              * シート名からシート取得
              */
-            _iSheet = _iWorkbook.GetSheet("配車表");
+            _iSheet = _iWorkbook?.GetSheet("配車表");
         }
 
         /// <summary>
@@ -80,6 +80,7 @@ namespace VehicleDispatch {
 
         /// <summary>
         /// WriteCellIsStrikeout
+        /// 取り消し線
         /// </summary>
         /// <param name="columnIndex"></param>
         /// <param name="rowIndex"></param>
@@ -116,12 +117,22 @@ namespace VehicleDispatch {
             iCell.SetCellValue(hSSFRichTextString);
         }
 
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonOutputExcel_Click(object sender, EventArgs e) {
+            ExcelDataOutput();
+        }
+
         /// <summary>
         /// ToolStripMenuItemSelectExcel_Click
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ToolStripMenuItemSelectExcel_Click(object sender, EventArgs e) {
+        private void ExcelDataOutput() {
             try {
                 /*
                  * セルに値をセット
@@ -291,16 +302,16 @@ namespace VehicleDispatch {
                          * 区契平ボディー　コード１５
                          */
                         case 1312106: // 足立区瓶・缶１
-                            SetOperator2(vehicleDispatchDetailVo, 0, 72);
+                            SetOperator3(vehicleDispatchDetailVo, 0, 72);
                             break;
                         case 1310602: // 台東区資源１
-                            SetOperator2(vehicleDispatchDetailVo, 0, 73);
+                            SetOperator3(vehicleDispatchDetailVo, 0, 74);
                             break;
                         case 1310603: // 台東区資源２
-                            SetOperator2(vehicleDispatchDetailVo, 0, 74);
+                            SetOperator3(vehicleDispatchDetailVo, 0, 76);
                             break;
-                        case 1310604: // 台東区資源４
-                            SetOperator2(vehicleDispatchDetailVo, 0, 75);
+                        case 1310604: // 台東区資源４(臨時区契平ボディーに入れる)
+                            SetOperator3(vehicleDispatchDetailVo, 26, 52);
                             break;
                         /*
                          * 区契小G　コード１
@@ -335,11 +346,67 @@ namespace VehicleDispatch {
                         case 1311712: // 北区粗大臨時
                             SetOperator3(vehicleDispatchDetailVo, 26, 21);
                             break;
+
                         /*
-                         * 雇上大G　コード５
+                         * 整備　コード１
                          */
-                        case 1310811: // 特定(白コンテナ)
-                            SetOperator2(vehicleDispatchDetailVo, 26, 24);
+                        case 1312111: // 整備本社
+                            SetOperator2(vehicleDispatchDetailVo, 26, 76);
+                            break;
+                        case 1312112: // 整備三郷
+                            SetOperator2(vehicleDispatchDetailVo, 26, 66);
+                            break;
+
+                        default:
+                            /*
+                             * 雇上大G　コード５
+                             */
+                            switch(vehicleDispatchDetailVo.Cell_number) {
+                                case 76:
+                                    if(vehicleDispatchDetailVo.Operation_flag)
+                                        SetOperator1(vehicleDispatchDetailVo, 26, 24); // 破砕コンテナ
+                                    break;
+                                case 77:
+                                    if(vehicleDispatchDetailVo.Operation_flag)
+                                        SetOperator1(vehicleDispatchDetailVo, 26, 25); // 破砕等
+                                    break;
+                                case 78:
+                                    if(vehicleDispatchDetailVo.Operation_flag)
+                                        SetOperator1(vehicleDispatchDetailVo, 26, 26); // 破砕等
+                                    break;
+                                case 79:
+                                    if(vehicleDispatchDetailVo.Operation_flag)
+                                        SetOperator1(vehicleDispatchDetailVo, 26, 27); // 破砕等
+                                    break;
+                                case 80:
+                                    if(vehicleDispatchDetailVo.Operation_flag)
+                                        SetOperator1(vehicleDispatchDetailVo, 26, 28); // 破砕等
+                                    break;
+                                case 81:
+                                    if(vehicleDispatchDetailVo.Operation_flag)
+                                        SetOperator1(vehicleDispatchDetailVo, 26, 29); // 破砕等
+                                    break;
+                                case 82:
+                                    if(vehicleDispatchDetailVo.Operation_flag)
+                                        SetOperator1(vehicleDispatchDetailVo, 26, 30); // 破砕等
+                                    break;
+                                case 83:
+                                    if(vehicleDispatchDetailVo.Operation_flag)
+                                        SetOperator1(vehicleDispatchDetailVo, 26, 31); // 破砕等
+                                    break;
+                                case 84:
+                                    if(vehicleDispatchDetailVo.Operation_flag)
+                                        SetOperator1(vehicleDispatchDetailVo, 26, 32); // 破砕等
+                                    break;
+                                case 85:
+                                    if(vehicleDispatchDetailVo.Operation_flag)
+                                        SetOperator1(vehicleDispatchDetailVo, 26, 33); // 破砕等
+                                    break;
+                                case 86:
+                                    if(vehicleDispatchDetailVo.Operation_flag)
+                                        SetOperator1(vehicleDispatchDetailVo, 26, 34); // 破砕等
+                                    break;
+                            }
                             break;
                     }
                 }
@@ -355,7 +422,7 @@ namespace VehicleDispatch {
             }
         }
 
-        private Dictionary<int, string> dictionaryBelongs = new Dictionary<int, string> { { 12, "バ" }, { 20, "新" }, { 21, "自" } };
+        private Dictionary<int, string> dictionaryBelongs = new Dictionary<int, string> { { 10, "" }, { 11, "" }, { 12, "バ" }, { 20, "新" }, { 21, "自" } };
         private Dictionary<int, string> dictionaryOccupation = new Dictionary<int, string> { { 10, "" }, { 11, "作" }, { 99, "" } };
         /// <summary>
         /// SetOperator1
@@ -366,34 +433,61 @@ namespace VehicleDispatch {
         /// <param name="col"></param>
         /// <param name="row"></param>
         private void SetOperator1(VehicleDispatchDetailVo vehicleDispatchDetailVo, int col, int row) {
+            StaffMasterVo staffMasterVo;
+            string stringBelongs;
+
             if(vehicleDispatchDetailVo.Operation_flag) {
                 // 配車先
                 WriteCell(col, row, _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_1);
                 // 組数
                 WriteCell(col + 1, row, _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_2);
-                // ドア番号
-                WriteCell(col + 2, row, _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Door_number.ToString());
-                // ナンバー(数字部分)
-                WriteCell(col + 3, row, _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Registration_number_4.ToString());
-                // 代車のドア番
+                if(vehicleDispatchDetailVo.Car_code != 0) {
+                    // ドア番号
+                    WriteCell(col + 2, row, _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Door_number.ToString());
+                    // ナンバー(数字部分)
+                    WriteCell(col + 3, row, string.Concat(_listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Registration_number_3.ToString()
+                                                                            ,_listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Registration_number_4.ToString()));
+                    // 代車のドア番
 
+                }
                 // 運転手
-                WriteCell(col + 8, row, _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Display_name);
-                // 新・自・新作・自作・バ・バ作
-                string stringBelongs = dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Belongs];
-                stringBelongs = stringBelongs + dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Occupation];
-                WriteCell(col + 9, row, stringBelongs);
-                // 運転手(本社・三郷)
-                WriteCell(col + 10, row, vehicleDispatchDetailVo.Garage_flag ? "" : "三");
+                staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1);
+                if(staffMasterVo != null) {
+                    WriteCell(col + 8, row, _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Display_name);
+                    // 新・自・新作・自作・バ・バ作
+                    stringBelongs = dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Belongs];
+                    stringBelongs = stringBelongs + dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Occupation];
+                    WriteCell(col + 9, row, stringBelongs);
+                    // 運転手(本社・三郷)
+                    WriteCell(col + 10, row, vehicleDispatchDetailVo.Garage_flag ? "" : "三");
+                    // 点呼項目（点呼方法・点呼時刻・免許・健康・点検・飲酒・検知器）
+                    WriteCell(col + 14, row, "対面");
+                    WriteCell(col + 16, row, vehicleDispatchDetailVo.Operation_date.ToString("mm:ss"));
+                    WriteCell(col + 17, row, "✓");
+                    WriteCell(col + 18, row, "✓");
+                    WriteCell(col + 19, row, "✓");
+                    WriteCell(col + 20, row, "✓");
+                    WriteCell(col + 21, row, "有");
+                } else {
+                    WriteCell(col + 8, row, "");
+                    WriteCell(col + 9, row, "");
+                    WriteCell(col + 10, row, "");
+                    WriteCell(col + 14, row, ""); // 点呼方法
+                    WriteCell(col + 16, row, ""); // 点呼時間
+                    WriteCell(col + 17, row, ""); // 免許
+                    WriteCell(col + 18, row, ""); // 健康
+                    WriteCell(col + 19, row, ""); // 点検
+                    WriteCell(col + 20, row, ""); // 飲酒
+                    WriteCell(col + 21, row, ""); // 検知器
+                }
             } else {
-                // 配車先
-                WriteCellIsStrikeout(col, row, _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_1);
-                // 組数
-                WriteCellIsStrikeout(col + 1, row, _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_2);
-                // ドア番号
-                WriteCellIsStrikeout(col + 2, row, _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Door_number.ToString());
-                // ナンバー(数字部分)
-                WriteCellIsStrikeout(col + 3, row, _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Registration_number_4.ToString());
+                WriteCellIsStrikeout(col, row, _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_1); // 配車先
+                WriteCellIsStrikeout(col + 1, row, _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_2); // 組数
+                WriteCellIsStrikeout(col + 2, row, _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Door_number.ToString()); // ドア番号
+                WriteCellIsStrikeout(col + 3, row, _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Registration_number_4.ToString()); // ナンバー(数字部分)
+                WriteCell(col + 8, row, "休　車"); // 運転手
+                WriteCell(col + 9, row, ""); // 新・自・新作・自作・バ・バ作
+                WriteCell(col + 10, row, ""); // 運転手(本社・三郷)
             }
         }
 
@@ -416,14 +510,45 @@ namespace VehicleDispatch {
                 WriteCell(col, row, _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_1);
                 // 組数
                 WriteCell(col + 1, row, _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_2);
-                // ドア番号
-                WriteCell(col + 2, row, _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Door_number.ToString());
-                // ナンバー(数字部分)
-                WriteCell(col + 3, row, _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Registration_number_4.ToString());
-                // 代車のドア番
+                if(vehicleDispatchDetailVo.Car_code != 0) {
+                    // ドア番号
+                    WriteCell(col + 2, row, _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Door_number.ToString());
+                    // ナンバー(数字部分)
+                    WriteCell(col + 3, row, string.Concat(_listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Registration_number_3.ToString()
+                                                                            , _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Registration_number_4.ToString()));
+                    // 代車のドア番
 
+                }
                 // 運転手
-                WriteCell(col + 8, row, _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Display_name);
+                staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1);
+                if(staffMasterVo != null) {
+                    WriteCell(col + 8, row, _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Display_name);
+                    // 新・自・新作・自作・バ・バ作
+                    stringBelongs = dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Belongs];
+                    stringBelongs = stringBelongs + dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Occupation];
+                    WriteCell(col + 9, row, stringBelongs);
+                    // 運転手(本社・三郷)
+                    WriteCell(col + 10, row, vehicleDispatchDetailVo.Garage_flag ? "" : "三");
+                    // 点呼項目（点呼方法・点呼時刻・免許・健康・点検・飲酒・検知器）
+                    WriteCell(col + 14, row, "対面");
+                    WriteCell(col + 16, row, vehicleDispatchDetailVo.Operation_date.ToString("mm:ss"));
+                    WriteCell(col + 17, row, "✓");
+                    WriteCell(col + 18, row, "✓");
+                    WriteCell(col + 19, row, "✓");
+                    WriteCell(col + 20, row, "✓");
+                    WriteCell(col + 21, row, "有");
+                } else {
+                    WriteCell(col + 8, row, "");
+                    WriteCell(col + 9, row, "");
+                    WriteCell(col + 10, row, "");
+                    WriteCell(col + 14, row, ""); // 点呼方法
+                    WriteCell(col + 16, row, ""); // 点呼時間
+                    WriteCell(col + 17, row, ""); // 免許
+                    WriteCell(col + 18, row, ""); // 健康
+                    WriteCell(col + 19, row, ""); // 点検
+                    WriteCell(col + 20, row, ""); // 飲酒
+                    WriteCell(col + 21, row, ""); // 検知器
+                }
                 // 新・自・新作・自作・バ・バ作
                 stringBelongs = "";
                 stringBelongs = dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Belongs];
@@ -434,22 +559,27 @@ namespace VehicleDispatch {
 
                 // 作業員１
                 staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2);
-                stringStaffDisplayName = string.Concat("作業員", staffMasterVo.Display_name);
-                WriteCellStaff(col + 11, row, stringStaffDisplayName);
-                // 新・自・新作・自作・バ・バ作
-                stringBelongs = "";
-                stringBelongs = dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Belongs];
-                stringBelongs = stringBelongs + dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Occupation];
-                WriteCell(col + 12, row, stringBelongs);
+                if(staffMasterVo != null) {
+                    stringStaffDisplayName = string.Concat("作業員", staffMasterVo.Display_name);
+                    WriteCellStaff(col + 11, row, stringStaffDisplayName);
+                    // 新・自・新作・自作・バ・バ作
+                    stringBelongs = "";
+                    stringBelongs = dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Belongs];
+                    stringBelongs = stringBelongs + dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Occupation];
+                    WriteCell(col + 12, row, stringBelongs);
+                } else {
+                    WriteCell(col + 11, row, "");
+                    WriteCell(col + 12, row, "");
+                }
+
             } else {
-                // 配車先
-                WriteCellIsStrikeout(col, row, _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_1);
-                // 組数
-                WriteCellIsStrikeout(col + 1, row, _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_2);
-                // ドア番号
-                WriteCellIsStrikeout(col + 2, row, _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Door_number.ToString());
-                // ナンバー(数字部分)
-                WriteCellIsStrikeout(col + 3, row, _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Registration_number_4.ToString());
+                WriteCellIsStrikeout(col, row, _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_1); // 配車先
+                WriteCellIsStrikeout(col + 1, row, _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_2); // 組数
+                WriteCellIsStrikeout(col + 2, row, _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Door_number.ToString()); // ドア番号
+                WriteCellIsStrikeout(col + 3, row, _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Registration_number_4.ToString()); // ナンバー(数字部分)
+                WriteCell(col + 8, row, "休　車"); // 運転手
+                WriteCell(col + 9, row, ""); // 新・自・新作・自作・バ・バ作
+                WriteCell(col + 10, row, ""); // 運転手(本社・三郷)
             }
         }
 
@@ -472,50 +602,84 @@ namespace VehicleDispatch {
                 WriteCell(col, row, _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_1);
                 // 組数
                 WriteCell(col + 1, row, _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_2);
-                // ドア番号
-                WriteCell(col + 2, row, _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Door_number.ToString());
-                // ナンバー(数字部分)
-                WriteCell(col + 3, row, _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Registration_number_4.ToString());
-                // 代車のドア番
+                if(vehicleDispatchDetailVo.Car_code != 0) {
+                    // ドア番号
+                    WriteCell(col + 2, row, _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Door_number.ToString());
+                    // ナンバー(数字部分)
+                    WriteCell(col + 3, row, string.Concat(_listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Registration_number_3.ToString()
+                                                                            , _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Registration_number_4.ToString()));
+                    // 代車のドア番
 
+                }
                 // 運転手
-                WriteCell(col + 8, row, _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Display_name);
-                // 新・自・新作・自作・バ・バ作
-                stringBelongs = "";
-                stringBelongs = dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Belongs];
-                stringBelongs = stringBelongs + dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Occupation];
-                WriteCell(col + 9, row, stringBelongs);
-                // 運転手(本社・三郷)
-                WriteCell(col + 10, row, vehicleDispatchDetailVo.Garage_flag ? "" : "三");
-
+                staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1);
+                if(staffMasterVo != null) {
+                    WriteCell(col + 8, row, _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Display_name);
+                    // 新・自・新作・自作・バ・バ作
+                    stringBelongs = dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Belongs];
+                    stringBelongs = stringBelongs + dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Occupation];
+                    WriteCell(col + 9, row, stringBelongs);
+                    // 運転手(本社・三郷)
+                    WriteCell(col + 10, row, vehicleDispatchDetailVo.Garage_flag ? "" : "三");
+                    // 点呼項目（点呼方法・点呼時刻・免許・健康・点検・飲酒・検知器）
+                    WriteCell(col + 14, row, "対面");
+                    WriteCell(col + 16, row, vehicleDispatchDetailVo.Operation_date.ToString("mm:ss"));
+                    WriteCell(col + 17, row, "✓");
+                    WriteCell(col + 18, row, "✓");
+                    WriteCell(col + 19, row, "✓");
+                    WriteCell(col + 20, row, "✓");
+                    WriteCell(col + 21, row, "有");
+                } else {
+                    WriteCell(col + 8, row, "");
+                    WriteCell(col + 9, row, "");
+                    WriteCell(col + 10, row, "");
+                    WriteCell(col + 14, row, ""); // 点呼方法
+                    WriteCell(col + 16, row, ""); // 点呼時間
+                    WriteCell(col + 17, row, ""); // 免許
+                    WriteCell(col + 18, row, ""); // 健康
+                    WriteCell(col + 19, row, ""); // 点検
+                    WriteCell(col + 20, row, ""); // 飲酒
+                    WriteCell(col + 21, row, ""); // 検知器
+                }
                 // 作業員１
                 staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2);
-                stringStaffDisplayName = string.Concat("作業員", staffMasterVo.Display_name);
-                WriteCellStaff(col + 11, row, stringStaffDisplayName);
-                // 新・自・新作・自作・バ・バ作
-                stringBelongs = "";
-                stringBelongs = dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Belongs];
-                stringBelongs = stringBelongs + dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Occupation];
-                WriteCell(col + 12, row, stringBelongs);
+                if(staffMasterVo != null) {
+                    stringStaffDisplayName = string.Concat("作業員", staffMasterVo.Display_name);
+                    WriteCellStaff(col + 11, row, stringStaffDisplayName);
+                    // 新・自・新作・自作・バ・バ作
+                    stringBelongs = "";
+                    stringBelongs = dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Belongs];
+                    stringBelongs = stringBelongs + dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Occupation];
+                    WriteCell(col + 12, row, stringBelongs);
+                } else {
+                    WriteCell(col + 11, row, "");
+                    WriteCell(col + 12, row, "");
+                }
+
 
                 // 作業員２
                 staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3);
-                stringStaffDisplayName = string.Concat("作業員", staffMasterVo.Display_name);
-                WriteCellStaff(col + 11, row + 1, stringStaffDisplayName);
-                // 新・自・新作・自作・バ・バ作
-                stringBelongs = "";
-                stringBelongs = dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Belongs];
-                stringBelongs = stringBelongs + dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Occupation];
-                WriteCell(col + 12, row + 1, stringBelongs);
+                if(staffMasterVo != null) {
+                    stringStaffDisplayName = string.Concat("作業員", staffMasterVo.Display_name);
+                    WriteCellStaff(col + 11, row + 1, stringStaffDisplayName);
+                    // 新・自・新作・自作・バ・バ作
+                    stringBelongs = "";
+                    stringBelongs = dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Belongs];
+                    stringBelongs = stringBelongs + dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Occupation];
+                    WriteCell(col + 12, row + 1, stringBelongs);
+                } else {
+                    WriteCell(col + 11, row + 1, "");
+                    WriteCell(col + 12, row + 1, "");
+                }
+
             } else {
-                // 配車先
-                WriteCellIsStrikeout(col, row, _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_1);
-                // 組数
-                WriteCellIsStrikeout(col + 1, row, _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_2);
-                // ドア番号
-                WriteCellIsStrikeout(col + 2, row, _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Door_number.ToString());
-                // ナンバー(数字部分)
-                WriteCellIsStrikeout(col + 3, row, _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Registration_number_4.ToString());
+                WriteCellIsStrikeout(col, row, _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_1); // 配車先
+                WriteCellIsStrikeout(col + 1, row, _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_2); // 組数
+                WriteCellIsStrikeout(col + 2, row, _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Door_number.ToString()); // ドア番号
+                WriteCellIsStrikeout(col + 3, row, _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Registration_number_4.ToString()); // ナンバー(数字部分)
+                WriteCell(col + 8, row, "休　車"); // 運転手
+                WriteCell(col + 9, row, ""); // 新・自・新作・自作・バ・バ作
+                WriteCell(col + 10, row, ""); // 運転手(本社・三郷)
             }
 
         }
@@ -539,62 +703,100 @@ namespace VehicleDispatch {
                 WriteCell(col, row, _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_1);
                 // 組数
                 WriteCell(col + 1, row, _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_2);
-                // ドア番号
-                WriteCell(col + 2, row, _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Door_number.ToString());
-                // ナンバー(数字部分)
-                WriteCell(col + 3, row, _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Registration_number_4.ToString());
-                // 代車のドア番
+                if(vehicleDispatchDetailVo.Car_code != 0) {
+                    // ドア番号
+                    WriteCell(col + 2, row, _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Door_number.ToString());
+                    // ナンバー(数字部分)
+                    WriteCell(col + 3, row, string.Concat(_listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Registration_number_3.ToString()
+                                                                            , _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Registration_number_4.ToString()));
+                    // 代車のドア番
 
+                }
                 // 運転手
-                WriteCell(col + 8, row, _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Display_name);
-                // 新・自・新作・自作・バ・バ作
-                stringBelongs = "";
-                stringBelongs = dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Belongs];
-                stringBelongs = stringBelongs + dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Occupation];
-                WriteCell(col + 9, row, stringBelongs);
-                // 運転手(本社・三郷)
-                WriteCell(col + 10, row, vehicleDispatchDetailVo.Garage_flag ? "" : "三");
-
+                staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1);
+                if(staffMasterVo != null) {
+                    WriteCell(col + 8, row, _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Display_name);
+                    // 新・自・新作・自作・バ・バ作
+                    stringBelongs = dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Belongs];
+                    stringBelongs = stringBelongs + dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Occupation];
+                    WriteCell(col + 9, row, stringBelongs);
+                    // 運転手(本社・三郷)
+                    WriteCell(col + 10, row, vehicleDispatchDetailVo.Garage_flag ? "" : "三");
+                    // 点呼項目（点呼方法・点呼時刻・免許・健康・点検・飲酒・検知器）
+                    WriteCell(col + 14, row, "対面");
+                    WriteCell(col + 16, row, vehicleDispatchDetailVo.Operation_date.ToString("mm:ss"));
+                    WriteCell(col + 17, row, "✓");
+                    WriteCell(col + 18, row, "✓");
+                    WriteCell(col + 19, row, "✓");
+                    WriteCell(col + 20, row, "✓");
+                    WriteCell(col + 21, row, "有");
+                } else {
+                    WriteCell(col + 8, row, "");
+                    WriteCell(col + 9, row, "");
+                    WriteCell(col + 10, row, "");
+                    WriteCell(col + 14, row, ""); // 点呼方法
+                    WriteCell(col + 16, row, ""); // 点呼時間
+                    WriteCell(col + 17, row, ""); // 免許
+                    WriteCell(col + 18, row, ""); // 健康
+                    WriteCell(col + 19, row, ""); // 点検
+                    WriteCell(col + 20, row, ""); // 飲酒
+                    WriteCell(col + 21, row, ""); // 検知器
+                }
                 // 作業員１
                 staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2);
-                stringStaffDisplayName = string.Concat("作業員", staffMasterVo.Display_name);
-                WriteCellStaff(col + 11, row, stringStaffDisplayName);
-                // 新・自・新作・自作・バ・バ作
-                stringBelongs = "";
-                stringBelongs = dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Belongs];
-                stringBelongs = stringBelongs + dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Occupation];
-                WriteCell(col + 12, row, stringBelongs);
+                if(staffMasterVo != null) {
+                    stringStaffDisplayName = string.Concat("作業員", staffMasterVo.Display_name);
+                    WriteCellStaff(col + 11, row, stringStaffDisplayName);
+                    // 新・自・新作・自作・バ・バ作
+                    stringBelongs = "";
+                    stringBelongs = dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Belongs];
+                    stringBelongs = stringBelongs + dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Occupation];
+                    WriteCell(col + 12, row, stringBelongs);
+                } else {
+                    WriteCell(col + 11, row, "");
+                    WriteCell(col + 12, row, "");
+                }
+
 
                 // 作業員２
                 staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3);
-                stringStaffDisplayName = string.Concat("作業員", staffMasterVo.Display_name);
-                WriteCellStaff(col + 8, row + 1, stringStaffDisplayName);
-                // 新・自・新作・自作・バ・バ作
-                stringBelongs = "";
-                stringBelongs = dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Belongs];
-                stringBelongs = stringBelongs + dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Occupation];
-                WriteCell(col + 9, row + 1, stringBelongs);
+                if(staffMasterVo != null) {
+                    stringStaffDisplayName = string.Concat("作業員", staffMasterVo.Display_name);
+                    WriteCellStaff(col + 8, row + 1, stringStaffDisplayName);
+                    // 新・自・新作・自作・バ・バ作
+                    stringBelongs = "";
+                    stringBelongs = dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Belongs];
+                    stringBelongs = stringBelongs + dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Occupation];
+                    WriteCell(col + 9, row + 1, stringBelongs);
+                } else {
+                    WriteCell(col + 8, row + 1, "");
+                    WriteCell(col + 9, row + 1, "");
+                }
+
 
                 // 作業員３
                 staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4);
-                stringStaffDisplayName = string.Concat("作業員", staffMasterVo.Display_name);
-                WriteCellStaff(col + 11, row + 1, stringStaffDisplayName);
-                // 新・自・新作・自作・バ・バ作
-                stringBelongs = "";
-                stringBelongs = dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4).Belongs];
-                stringBelongs = stringBelongs + dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4).Occupation];
-                WriteCell(col + 12, row + 1, stringBelongs);
+                if(staffMasterVo != null) {
+                    stringStaffDisplayName = string.Concat("作業員", staffMasterVo.Display_name);
+                    WriteCellStaff(col + 11, row + 1, stringStaffDisplayName);
+                    // 新・自・新作・自作・バ・バ作
+                    stringBelongs = "";
+                    stringBelongs = dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4).Belongs];
+                    stringBelongs = stringBelongs + dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4).Occupation];
+                    WriteCell(col + 12, row + 1, stringBelongs);
+                } else {
+                    WriteCell(col + 11, row + 1, "");
+                    WriteCell(col + 12, row + 1, "");
+                }
             } else {
-                // 配車先
-                WriteCellIsStrikeout(col, row, _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_1);
-                // 組数
-                WriteCellIsStrikeout(col + 1, row, _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_2);
-                // ドア番号
-                WriteCellIsStrikeout(col + 2, row, _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Door_number.ToString());
-                // ナンバー(数字部分)
-                WriteCellIsStrikeout(col + 3, row, _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Registration_number_4.ToString());
+                WriteCellIsStrikeout(col, row, _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_1); // 配車先
+                WriteCellIsStrikeout(col + 1, row, _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_2); // 組数
+                WriteCellIsStrikeout(col + 2, row, _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Door_number.ToString()); // ドア番号
+                WriteCellIsStrikeout(col + 3, row, _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Registration_number_4.ToString()); // ナンバー(数字部分)
+                WriteCell(col + 8, row, "休　車"); // 運転手
+                WriteCell(col + 9, row, ""); // 新・自・新作・自作・バ・バ作
+                WriteCell(col + 10, row, ""); // 運転手(本社・三郷)
             }
-
         }
 
         /// <summary>

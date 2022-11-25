@@ -23,58 +23,50 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.MenuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.ToolStripMenuItemMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemSelectExcel = new System.Windows.Forms.ToolStripMenuItem();
-            this.MenuStrip1.SuspendLayout();
+            this.ButtonOutputExcel = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // MenuStrip1
+            // ButtonOutputExcel
             // 
-            this.MenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemMenu});
-            this.MenuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.MenuStrip1.Name = "MenuStrip1";
-            this.MenuStrip1.Size = new System.Drawing.Size(800, 24);
-            this.MenuStrip1.TabIndex = 0;
-            this.MenuStrip1.Text = "menuStrip1";
+            this.ButtonOutputExcel.Font = new System.Drawing.Font("メイリオ", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ButtonOutputExcel.Location = new System.Drawing.Point(92, 12);
+            this.ButtonOutputExcel.Name = "ButtonOutputExcel";
+            this.ButtonOutputExcel.Size = new System.Drawing.Size(388, 40);
+            this.ButtonOutputExcel.TabIndex = 2;
+            this.ButtonOutputExcel.Text = "配車表へデータを書き込みます";
+            this.ButtonOutputExcel.UseVisualStyleBackColor = true;
+            this.ButtonOutputExcel.Click += new System.EventHandler(this.ButtonOutputExcel_Click);
             // 
-            // ToolStripMenuItemMenu
+            // label1
             // 
-            this.ToolStripMenuItemMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemSelectExcel});
-            this.ToolStripMenuItemMenu.Name = "ToolStripMenuItemMenu";
-            this.ToolStripMenuItemMenu.Size = new System.Drawing.Size(52, 20);
-            this.ToolStripMenuItemMenu.Text = "メニュー";
-            // 
-            // ToolStripMenuItemSelectExcel
-            // 
-            this.ToolStripMenuItemSelectExcel.Name = "ToolStripMenuItemSelectExcel";
-            this.ToolStripMenuItemSelectExcel.Size = new System.Drawing.Size(187, 22);
-            this.ToolStripMenuItemSelectExcel.Text = "Excelファイルを選択する";
-            this.ToolStripMenuItemSelectExcel.Click += new System.EventHandler(this.ToolStripMenuItemSelectExcel_Click);
+            this.label1.Font = new System.Drawing.Font("メイリオ", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(4, 72);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(572, 172);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "開発中につき、意見を上げて下さい。\r\n\r\nデータ書き込みの対象ファイルは、デスクトップにある”配車当日.xls”です。";
             // 
             // VehicleDispatchExcel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.MenuStrip1);
-            this.MainMenuStrip = this.MenuStrip1;
+            this.ClientSize = new System.Drawing.Size(579, 334);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.ButtonOutputExcel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "VehicleDispatchExcel";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "VehicleDispatchExcel";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.VehicleDispatchExcel_FormClosing);
-            this.MenuStrip1.ResumeLayout(false);
-            this.MenuStrip1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private MenuStrip MenuStrip1;
-        private ToolStripMenuItem ToolStripMenuItemMenu;
-        private ToolStripMenuItem ToolStripMenuItemSelectExcel;
+        private Button ButtonOutputExcel;
+        private Label label1;
     }
 }
