@@ -10,6 +10,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="DotNetCore.NPOI" Version="1.2.3" />
+    <PackageReference Include="NPOI" Version="2.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ControlEx\ControlEx.csproj" />
     <ProjectReference Include="..\Dao\Dao.csproj" />
     <ProjectReference Include="..\Staff\Staff.csproj" />

@@ -677,6 +677,11 @@ namespace VehicleDispatch {
                 /*
                  * MenuStrip1
                  */
+                // 配車表を作成する
+                case "ToolStripMenuItemVehicleDispatchExcel":
+                    var vehicleDispatchExcel = new VehicleDispatchExcel(_connectionVo, DateTimePickerOperationDate.Value);
+                    vehicleDispatchExcel.ShowDialog(this);
+                    break;
                 // 清掃事務所へ提出している本番
                 case "ToolStripMenuItemInitializeCleanOffice":
                     MessageBox.Show("ToolStripMenuItemInitializeCleanOffice");
