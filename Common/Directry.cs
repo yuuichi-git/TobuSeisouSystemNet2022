@@ -15,12 +15,23 @@
         }
 
         /// <summary>
+        /// System.Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory));
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <returns></returns>
+        public string GetExcelDesktopPassXls(string fileName) {
+            string desktopDirectoryPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+            desktopDirectoryPath += string.Concat(@"\", fileName);
+            return desktopDirectoryPath;
+        }
+
+        /// <summary>
         /// GetExcelDesktopPass
         /// デスクトップパスを取得する(Excel)
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns></returns>
-        public string GetExcelDesktopPass(string fileName) {
+        public string GetExcelDesktopPassXlsx(string fileName) {
             var desktopDirectoryPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
             desktopDirectoryPath += string.Concat(@"\", fileName, ".xlsx");
             return desktopDirectoryPath;

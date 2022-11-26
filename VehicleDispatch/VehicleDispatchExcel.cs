@@ -1,6 +1,8 @@
 ﻿/*
  * 2022-11-23
  */
+using Common;
+
 using Dao;
 
 using NPOI.HSSF.UserModel;
@@ -51,9 +53,9 @@ namespace VehicleDispatch {
             _listStaffMasterVo = new StaffMasterDao(connectionVo).SelectAllStaffMaster();
 
             /*
-             * ブック読み込み
+             * ブック読み込み new Directry().GetExcelDesktopPass(fileName)
              */
-            _iWorkbook = (HSSFWorkbook?)WorkbookFactory.Create("C:\\Users\\yuuic\\Desktop\\配車当日.xls");
+            _iWorkbook = (HSSFWorkbook?)WorkbookFactory.Create(new Directry().GetExcelDesktopPassXls("配車当日.xls"));
             /*
              * シート名からシート取得
              */
@@ -446,7 +448,7 @@ namespace VehicleDispatch {
                     WriteCell(col + 2, row, _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Door_number.ToString());
                     // ナンバー(数字部分)
                     WriteCell(col + 3, row, string.Concat(_listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Registration_number_3.ToString()
-                                                                            ,_listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Registration_number_4.ToString()));
+                                                                            , _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Registration_number_4.ToString()));
                     // 代車のドア番
 
                 }

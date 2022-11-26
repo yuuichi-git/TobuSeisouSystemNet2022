@@ -163,7 +163,7 @@ namespace CarAccident {
                 case "ToolStripMenuItemExportExcel":
                     //xlsx形式ファイルをエクスポートします
                     string fileName = string.Concat("事故リスト", DateTime.Now.ToString("MM月dd日"), "作成");
-                    SpreadList.SaveExcel(new Directry().GetExcelDesktopPass(fileName), ExcelSaveFlags.UseOOXMLFormat | ExcelSaveFlags.Exchangeable);
+                    SpreadList.SaveExcel(new Directry().GetExcelDesktopPassXlsx(fileName), ExcelSaveFlags.UseOOXMLFormat | ExcelSaveFlags.Exchangeable);
                     MessageBox.Show("デスクトップへエクスポートしました", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
                 // 新規レコードを作成する

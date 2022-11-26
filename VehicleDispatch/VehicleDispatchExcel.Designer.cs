@@ -34,7 +34,7 @@
             this.ButtonOutputExcel.Name = "ButtonOutputExcel";
             this.ButtonOutputExcel.Size = new System.Drawing.Size(388, 40);
             this.ButtonOutputExcel.TabIndex = 2;
-            this.ButtonOutputExcel.Text = "配車表へデータを書き込みます";
+            this.ButtonOutputExcel.Text = "配車表へデータを書き込みます\r\n";
             this.ButtonOutputExcel.UseVisualStyleBackColor = true;
             this.ButtonOutputExcel.Click += new System.EventHandler(this.ButtonOutputExcel_Click);
             // 

@@ -426,7 +426,7 @@ namespace Staff {
         private void ToolStripMenuItemExcelExport_Click(object sender, EventArgs e) {
             //xlsx形式ファイルをエクスポートします
             string fileName = string.Concat("従事者リスト", DateTime.Now.ToString("MM月dd日"), "作成");
-            SpreadList.SaveExcel(new Directry().GetExcelDesktopPass(fileName), ExcelSaveFlags.UseOOXMLFormat | ExcelSaveFlags.Exchangeable);
+            SpreadList.SaveExcel(new Directry().GetExcelDesktopPassXlsx(fileName), ExcelSaveFlags.UseOOXMLFormat | ExcelSaveFlags.Exchangeable);
             MessageBox.Show("デスクトップへエクスポートしました", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
