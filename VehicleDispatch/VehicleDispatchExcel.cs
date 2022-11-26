@@ -55,7 +55,7 @@ namespace VehicleDispatch {
             /*
              * ブック読み込み new Directry().GetExcelDesktopPass(fileName)
              */
-            _iWorkbook = (HSSFWorkbook?)WorkbookFactory.Create(new Directry().GetExcelDesktopPassXls("配車当日.xls"));
+            _iWorkbook = (HSSFWorkbook?)WorkbookFactory.Create(new Directry().GetExcelDesktopPassXls("配車当日"));
             /*
              * シート名からシート取得
              */
@@ -251,102 +251,133 @@ namespace VehicleDispatch {
                          */
                         case 1310406: // 新宿区契
                             SetOperator1(vehicleDispatchDetailVo, 0, 53);
+                            WriteCell(0,53,"新宿区");
                             break;
-                        case 1311706: // 北区粗大
+                        case 1311706: // 北区粗大・資源（金曜のみ）
                             SetOperator2(vehicleDispatchDetailVo, 0, 54);
+                            WriteCell(0, 54, "北区");
+                            // 金曜日以外は”粗大”、金曜日は”資源”にする
+                            WriteCell(1, 54, vehicleDispatchDetailVo.Operation_date.ToString("ddd") != "金" ? "粗大" : "資源");
                             break;
                         /*
                          * 区契小プレ　コード１
                          */
                         case 1310407: // 新宿区容リ３－１
                             SetOperator2(vehicleDispatchDetailVo, 0, 56);
+                            WriteCell(0, 56, "新宿区");
                             break;
                         case 1310408: // 新宿区容リ２－１
                             SetOperator2(vehicleDispatchDetailVo, 0, 57);
+                            WriteCell(0, 57, "新宿区");
                             break;
                         case 1312002: // 練馬区容リ２－１
                             SetOperator1(vehicleDispatchDetailVo, 0, 58);
+                            WriteCell(0, 58, "練馬区");
                             break;
                         case 1312003: // 練馬区容リ２－２
                             SetOperator1(vehicleDispatchDetailVo, 0, 59);
+                            WriteCell(0, 59, "練馬区");
                             break;
                         /*
                          * 区契小プレ　コード２３
                          */
                         case 1310409: // 新宿ペット
                             SetOperator2(vehicleDispatchDetailVo, 0, 61);
+                            WriteCell(0, 61, "新宿区");
                             break;
                         case 1310410: // 新宿ペット(曜日)
                             SetOperator2(vehicleDispatchDetailVo, 0, 62);
+                            WriteCell(0, 62, "新宿区");
                             break;
                         /*
                          *  区契小プレ　コード８
                          */
                         case 1310201: // 中央ペット７
                             SetOperator2(vehicleDispatchDetailVo, 0, 64);
+                            WriteCell(0, 64, "中央区");
                             break;
                         case 1310202: // 中央ペット８
                             SetOperator2(vehicleDispatchDetailVo, 0, 65);
+                            WriteCell(0, 65, "中央区");
                             break;
                         case 1310101: // 千代田区容リ２
                             SetOperator2(vehicleDispatchDetailVo, 0, 66);
+                            WriteCell(0, 66, "千代田区");
                             break;
                         case 1310102: // 千代田区容リ６
                             SetOperator2(vehicleDispatchDetailVo, 0, 67);
+                            WriteCell(0, 67, "千代田区");
                             break;
                         case 1310103: // 千代田区紙１
                             SetOperator2(vehicleDispatchDetailVo, 0, 68);
+                            WriteCell(0, 68, "千代田区");
                             break;
                         case 1311905: // 板橋区ペット１
                             SetOperator3(vehicleDispatchDetailVo, 0, 69);
+                            WriteCell(0, 69, "板橋区");
                             break;
                         /*
                          * 区契平ボディー　コード１５
                          */
                         case 1312106: // 足立区瓶・缶１
                             SetOperator3(vehicleDispatchDetailVo, 0, 72);
+                            WriteCell(0, 72, "足立区");
+                            WriteCell(1, 72, "瓶缶１");
                             break;
                         case 1310602: // 台東区資源１
                             SetOperator3(vehicleDispatchDetailVo, 0, 74);
+                            WriteCell(0, 74, "台東区");
                             break;
                         case 1310603: // 台東区資源２
                             SetOperator3(vehicleDispatchDetailVo, 0, 76);
+                            WriteCell(0, 76, "台東区");
                             break;
                         case 1310604: // 台東区資源４(臨時区契平ボディーに入れる)
                             SetOperator3(vehicleDispatchDetailVo, 26, 52);
+                            WriteCell(26, 52, "台東区");
                             break;
                         /*
                          * 区契小G　コード１
                          */
                         case 1310411: // 新宿区粗大４
                             SetOperator3(vehicleDispatchDetailVo, 26, 5);
+                            WriteCell(26, 5, "新宿区");
                             break;
                         case 1310412: // 新宿区粗大５
                             SetOperator3(vehicleDispatchDetailVo, 26, 7);
+                            WriteCell(26, 7, "新宿区");
                             break;
                         case 1312004: // 練馬区粗大６
                             SetOperator1(vehicleDispatchDetailVo, 26, 9);
+                            WriteCell(26, 9, "練馬区");
                             break;
                         case 1312005: // 練馬区粗大９
                             SetOperator1(vehicleDispatchDetailVo, 26, 10);
+                            WriteCell(26, 10, "練馬区");
                             break;
                         case 1311707: // 北区粗大１
                             SetOperator3(vehicleDispatchDetailVo, 26, 11);
+                            WriteCell(26, 11, "北区");
                             break;
                         case 1311708: // 北区粗大２
                             SetOperator3(vehicleDispatchDetailVo, 26, 13);
+                            WriteCell(26, 13, "北区");
                             break;
                         case 1311709: // 北区粗大３
                             SetOperator3(vehicleDispatchDetailVo, 26, 15);
+                            WriteCell(26, 15, "北区");
                             break;
                         case 1311710: // 北区粗大４
                             SetOperator3(vehicleDispatchDetailVo, 26, 17);
+                            WriteCell(26, 17, "北区");
                             break;
                         case 1311711: // 北区粗大５
                             SetOperator3(vehicleDispatchDetailVo, 26, 19);
+                            WriteCell(26, 19, "北区");
                             break;
                         case 1311712: // 北区粗大臨時
                             SetOperator3(vehicleDispatchDetailVo, 26, 21);
+                            WriteCell(26, 21, "北区");
                             break;
 
                         /*
@@ -413,7 +444,7 @@ namespace VehicleDispatch {
                     }
                 }
 
-                using(var fileStream = new FileStream("C:\\Users\\yuuic\\Desktop\\配車当日.xls", FileMode.Create))
+                using(var fileStream = new FileStream(new Directry().GetExcelDesktopPassXls("配車当日"), FileMode.Create))
                     _iWorkbook.Write(fileStream, true);
 
                 MessageBox.Show("書き出しを完了しました");
@@ -464,7 +495,7 @@ namespace VehicleDispatch {
                     WriteCell(col + 10, row, vehicleDispatchDetailVo.Garage_flag ? "" : "三");
                     // 点呼項目（点呼方法・点呼時刻・免許・健康・点検・飲酒・検知器）
                     WriteCell(col + 14, row, "対面");
-                    WriteCell(col + 16, row, vehicleDispatchDetailVo.Operation_date.ToString("mm:ss"));
+                    WriteCell(col + 16, row, vehicleDispatchDetailVo.Operator_1_roll_call_ymd_hms.ToString("H:mm"));
                     WriteCell(col + 17, row, "✓");
                     WriteCell(col + 18, row, "✓");
                     WriteCell(col + 19, row, "✓");
@@ -533,7 +564,7 @@ namespace VehicleDispatch {
                     WriteCell(col + 10, row, vehicleDispatchDetailVo.Garage_flag ? "" : "三");
                     // 点呼項目（点呼方法・点呼時刻・免許・健康・点検・飲酒・検知器）
                     WriteCell(col + 14, row, "対面");
-                    WriteCell(col + 16, row, vehicleDispatchDetailVo.Operation_date.ToString("mm:ss"));
+                    WriteCell(col + 16, row, vehicleDispatchDetailVo.Operator_1_roll_call_ymd_hms.ToString("H:mm"));
                     WriteCell(col + 17, row, "✓");
                     WriteCell(col + 18, row, "✓");
                     WriteCell(col + 19, row, "✓");
@@ -625,7 +656,7 @@ namespace VehicleDispatch {
                     WriteCell(col + 10, row, vehicleDispatchDetailVo.Garage_flag ? "" : "三");
                     // 点呼項目（点呼方法・点呼時刻・免許・健康・点検・飲酒・検知器）
                     WriteCell(col + 14, row, "対面");
-                    WriteCell(col + 16, row, vehicleDispatchDetailVo.Operation_date.ToString("mm:ss"));
+                    WriteCell(col + 16, row, vehicleDispatchDetailVo.Operator_1_roll_call_ymd_hms.ToString("H:mm"));
                     WriteCell(col + 17, row, "✓");
                     WriteCell(col + 18, row, "✓");
                     WriteCell(col + 19, row, "✓");
@@ -726,7 +757,7 @@ namespace VehicleDispatch {
                     WriteCell(col + 10, row, vehicleDispatchDetailVo.Garage_flag ? "" : "三");
                     // 点呼項目（点呼方法・点呼時刻・免許・健康・点検・飲酒・検知器）
                     WriteCell(col + 14, row, "対面");
-                    WriteCell(col + 16, row, vehicleDispatchDetailVo.Operation_date.ToString("mm:ss"));
+                    WriteCell(col + 16, row, vehicleDispatchDetailVo.Operator_1_roll_call_ymd_hms.ToString("H:mm"));
                     WriteCell(col + 17, row, "✓");
                     WriteCell(col + 18, row, "✓");
                     WriteCell(col + 19, row, "✓");

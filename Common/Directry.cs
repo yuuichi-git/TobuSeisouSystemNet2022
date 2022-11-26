@@ -21,7 +21,7 @@
         /// <returns></returns>
         public string GetExcelDesktopPassXls(string fileName) {
             string desktopDirectoryPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-            desktopDirectoryPath += string.Concat(@"\", fileName);
+            desktopDirectoryPath += string.Concat(@"\", fileName, ".xls");
             return desktopDirectoryPath;
         }
 
