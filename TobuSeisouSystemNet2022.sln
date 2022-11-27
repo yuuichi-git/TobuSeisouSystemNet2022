@@ -27,6 +27,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Car", "Car\Car.csproj", "{D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommuterInsurance", "CommuterInsurance\CommuterInsurance.csproj", "{F7C278CC-2FDD-47A6-B980-08AB9EAC17DB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleDispatchConvert", "VehicleDispatchConvert\VehicleDispatchConvert.csproj", "{0D5ABDFC-8484-4370-A318-69A78C968808}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -131,6 +133,14 @@ Global
 		{F7C278CC-2FDD-47A6-B980-08AB9EAC17DB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F7C278CC-2FDD-47A6-B980-08AB9EAC17DB}.Release|x64.ActiveCfg = Release|Any CPU
 		{F7C278CC-2FDD-47A6-B980-08AB9EAC17DB}.Release|x64.Build.0 = Release|Any CPU
+		{0D5ABDFC-8484-4370-A318-69A78C968808}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D5ABDFC-8484-4370-A318-69A78C968808}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D5ABDFC-8484-4370-A318-69A78C968808}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0D5ABDFC-8484-4370-A318-69A78C968808}.Debug|x64.Build.0 = Debug|Any CPU
+		{0D5ABDFC-8484-4370-A318-69A78C968808}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D5ABDFC-8484-4370-A318-69A78C968808}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D5ABDFC-8484-4370-A318-69A78C968808}.Release|x64.ActiveCfg = Release|Any CPU
+		{0D5ABDFC-8484-4370-A318-69A78C968808}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

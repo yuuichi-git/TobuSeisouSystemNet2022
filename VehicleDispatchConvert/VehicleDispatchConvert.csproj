@@ -6,23 +6,14 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="C:\Users\yuuic\.nuget\packages\dotnetcore.npoi\1.2.3\contentFiles\any\netstandard2.0\NOTICE.TXT" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="DotNetCore.NPOI" Version="1.2.3" />
     <PackageReference Include="NPOI" Version="2.6.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ControlEx\ControlEx.csproj" />
     <ProjectReference Include="..\Dao\Dao.csproj" />
-    <ProjectReference Include="..\Staff\Staff.csproj" />
-    <ProjectReference Include="..\VehicleDispatchConvert\VehicleDispatchConvert.csproj" />
     <ProjectReference Include="..\Vo\Vo.csproj" />
   </ItemGroup>
 

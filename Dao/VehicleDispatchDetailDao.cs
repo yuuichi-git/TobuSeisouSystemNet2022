@@ -55,8 +55,8 @@ namespace Dao {
                                      "FROM vehicle_dispatch_head " +
                                      "LEFT OUTER JOIN vehicle_dispatch_body ON vehicle_dispatch_head.cell_number = vehicle_dispatch_body.cell_number " +
                                                                           "AND vehicle_dispatch_body.day_of_week = '" + dayOfWeek + "'";
-            using (var sqlDataReader = sqlCommand.ExecuteReader()) {
-                while (sqlDataReader.Read() == true) {
+            using(var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while(sqlDataReader.Read() == true) {
                     var vehicleDispatchDetailVo = new VehicleDispatchDetailVo();
                     vehicleDispatchDetailVo.Cell_number = _defaultValue.GetDefaultValue<int>(sqlDataReader["cell_number"]);
                     vehicleDispatchDetailVo.Garage_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["garage_flag"]);
@@ -126,8 +126,8 @@ namespace Dao {
                                             "delete_flag " +
                                      "FROM vehicle_dispatch_detail " +
                                      "WHERE operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
-            using (var sqlDataReader = sqlCommand.ExecuteReader()) {
-                while (sqlDataReader.Read() == true) {
+            using(var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while(sqlDataReader.Read() == true) {
                     var vehicleDispatchDetailVo = new VehicleDispatchDetailVo();
                     vehicleDispatchDetailVo.Cell_number = _defaultValue.GetDefaultValue<int>(sqlDataReader["cell_number"]);
                     vehicleDispatchDetailVo.Operation_date = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["operation_date"]);
@@ -181,7 +181,7 @@ namespace Dao {
         public void InsertVehicleDispatchDetail(List<VehicleDispatchDetailVo> listVehicleDispatchDetailVo) {
             int count = 1;
             string sqlString = "";
-            foreach (var vehicleDispatchDetailVo in listVehicleDispatchDetailVo) {
+            foreach(var vehicleDispatchDetailVo in listVehicleDispatchDetailVo) {
                 sqlString += "(" + _defaultValue.GetDefaultValue<int>(vehicleDispatchDetailVo.Cell_number) + "," +
                              "'" + _defaultValue.GetDefaultValue<DateTime>(vehicleDispatchDetailVo.Operation_date) + "'," +
                              "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Operation_flag) + "'," +
@@ -222,7 +222,7 @@ namespace Dao {
                              "'" + _defaultValue.GetDefaultValue<string>(vehicleDispatchDetailVo.Delete_pc_name) + "'," +
                              "'" + _defaultValue.GetDefaultValue<DateTime>(vehicleDispatchDetailVo.Delete_ymd_hms) + "'," +
                              "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Delete_flag) + "')";
-                if (count < listVehicleDispatchDetailVo.Count)
+                if(count < listVehicleDispatchDetailVo.Count)
                     sqlString += ",";
                 count++;
             }
@@ -719,15 +719,21 @@ namespace Dao {
              */
             row--;
             /*
+             * rollCallFlagを反転する
+             */
+            rollCallFlag = !rollCallFlag;
+            /*
              * Drop項目のSQL文を作成
              */
             string sqlOperatorRollCallFlag = string.Concat("operator_" + row + "_roll_call_flag");
             string sqlOperatorRollCallYmdHms = string.Concat("operator_" + row + "_roll_call_ymd_hms");
 
+            DateTime sqlDateTime = rollCallFlag ? DateTime.Now : new DateTime(1900, 1, 1, 0, 0, 0);
+
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "UPDATE vehicle_dispatch_detail " +
                                      "SET " + sqlOperatorRollCallFlag + " = '" + rollCallFlag + "'," +
-                                              sqlOperatorRollCallYmdHms + " = '" + DateTime.Now + "'," +
+                                              sqlOperatorRollCallYmdHms + " = '" + sqlDateTime + "'," +
                                           "update_pc_name = '" + Environment.MachineName + "'," +
                                           "update_ymd_hms = '" + DateTime.Now + "' " +
                                      "WHERE cell_number = " + cellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";

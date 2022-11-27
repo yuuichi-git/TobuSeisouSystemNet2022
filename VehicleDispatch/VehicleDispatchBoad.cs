@@ -8,6 +8,8 @@ using Microsoft.VisualBasic.Devices;
 
 using Staff;
 
+using VehicleDispatchConvert;
+
 using Vo;
 
 namespace VehicleDispatch {
@@ -682,6 +684,11 @@ namespace VehicleDispatch {
                     var vehicleDispatchExcel = new VehicleDispatchExcel(_connectionVo, DateTimePickerOperationDate.Value);
                     vehicleDispatchExcel.ShowDialog(this);
                     break;
+                // 配車表を作成する(新型)
+                case "ToolStripMenuItemConvertExcel":
+                    var vehicleDispatchSimple = new VehicleDispatchSimple(_connectionVo, DateTimePickerOperationDate.Value);
+                    vehicleDispatchSimple.ShowDialog(this);
+                    break;
                 // 清掃事務所へ提出している本番
                 case "ToolStripMenuItemInitializeCleanOffice":
                     MessageBox.Show("ToolStripMenuItemInitializeCleanOffice");
@@ -865,10 +872,10 @@ namespace VehicleDispatch {
                                  */
                                 if(CheckSetControlEx(dragItem)) {
                                     _vehicleDispatchDetailDao.CopySet(DateTimePickerOperationDate.Value,
-                                                                      (int)((SetControlEx)dragItem.Parent).Tag,
-                                                                      (int)setControlEx.Tag);
+                                                                     (int)((SetControlEx)dragItem.Parent).Tag,
+                                                                     (int)setControlEx.Tag);
                                     _vehicleDispatchDetailDao.ResetSet(DateTimePickerOperationDate.Value,
-                                                                       (int)((SetControlEx)dragItem.Parent).Tag);
+                                                                      (int)((SetControlEx)dragItem.Parent).Tag);
                                     setControlEx.Controls.Add(dragItem, 0, 0);
                                 } else {
                                     ToolStripStatusLabelStatus.Text = string.Concat("車両ラベル又は従業員ラベルが設定されています。そのため配車先ラベルを移動できません");
@@ -891,8 +898,8 @@ namespace VehicleDispatch {
                                 newDropItem.Click += new EventHandler(SetLabelEx_Click);
                                 newDropItem.MouseMove += new MouseEventHandler(SetLabelEx_MouseMove);
                                 _vehicleDispatchDetailDao.SetSet(DateTimePickerOperationDate.Value,
-                                                                 (int)setControlEx.Tag,
-                                                                 (SetMasterVo)dragItem.Tag);
+                                                                (int)setControlEx.Tag,
+                                                                (SetMasterVo)dragItem.Tag);
                                 setControlEx.Controls.Add(newDropItem, 0, 0);
                             } else {
                                 ToolStripStatusLabelStatus.Text = string.Concat("配車先が設定されています。(", ((SetMasterVo)dragItem.Tag).Set_name, ") はここへは移動できません");
@@ -933,7 +940,7 @@ namespace VehicleDispatch {
                             // vehicle_dispatch_detailをUPDATE
                             _vehicleDispatchDetailDao.SetCar(DateTimePickerOperationDate.Value,
                                                              Convert.ToInt32(setControlEx.Tag),
-                                                             (CarMasterVo)dragItem.Tag);
+                                                      　      (CarMasterVo)dragItem.Tag);
                             setControlEx.Controls.Add(dragItem, 0, 1);
                         } else {
                             ToolStripStatusLabelStatus.Text = string.Concat("車両が設定されています。(", ((CarMasterVo)dragItem.Tag).Registration_number, ") はここへは移動できません");
