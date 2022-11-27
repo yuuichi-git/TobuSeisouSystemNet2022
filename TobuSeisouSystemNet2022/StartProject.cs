@@ -17,6 +17,8 @@ using Production;
 
 using Staff;
 
+using StaffDetail;
+
 using VehicleDispatch;
 
 using Vo;
@@ -93,6 +95,11 @@ namespace TobuSeisouSystemNet2022 {
                             case "CommuterInsuranceList":
                                 var commuterInsuranceList = new CommuterInsuranceList(_connectionVo);
                                 commuterInsuranceList.Show(this);
+                                break;
+                            // StaffWorkDaysCount
+                            case "StaffWorkDaysCount":
+                                var staffWorkDaysCount = new StaffWorkDaysCount(_connectionVo);
+                                staffWorkDaysCount.Show(this);
                                 break;
                         }
                         break;

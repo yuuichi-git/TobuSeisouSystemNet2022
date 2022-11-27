@@ -21,6 +21,7 @@
     <ProjectReference Include="..\Common\Common.csproj" />
     <ProjectReference Include="..\CommuterInsurance\CommuterInsurance.csproj" />
     <ProjectReference Include="..\Production\Production.csproj" />
+    <ProjectReference Include="..\StaffDetail\StaffDetail.csproj" />
     <ProjectReference Include="..\Staff\Staff.csproj" />
     <ProjectReference Include="..\VehicleDispatch\VehicleDispatch.csproj" />
     <ProjectReference Include="..\Vo\Vo.csproj" />

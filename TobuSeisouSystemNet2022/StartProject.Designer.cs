@@ -52,6 +52,8 @@
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.TableLayoutPanelBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -130,6 +132,7 @@
             // 
             // TableLayoutPanelCenter
             // 
+            this.TableLayoutPanelCenter.AutoScroll = true;
             this.TableLayoutPanelCenter.ColumnCount = 2;
             this.TableLayoutPanelCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TableLayoutPanelCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
@@ -154,10 +157,12 @@
             this.TableLayoutPanelCenter.Controls.Add(this.label15, 0, 23);
             this.TableLayoutPanelCenter.Controls.Add(this.label16, 0, 25);
             this.TableLayoutPanelCenter.Controls.Add(this.label17, 0, 26);
+            this.TableLayoutPanelCenter.Controls.Add(this.label18, 0, 28);
+            this.TableLayoutPanelCenter.Controls.Add(this.label19, 0, 29);
             this.TableLayoutPanelCenter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanelCenter.Location = new System.Drawing.Point(303, 27);
             this.TableLayoutPanelCenter.Name = "TableLayoutPanelCenter";
-            this.TableLayoutPanelCenter.RowCount = 31;
+            this.TableLayoutPanelCenter.RowCount = 41;
             this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -165,6 +170,16 @@
             this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -455,6 +470,30 @@
             this.label17.TabIndex = 21;
             this.label17.Text = "　通勤手段及び保険加入情報を管理します。";
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label18.Location = new System.Drawing.Point(3, 580);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(99, 17);
+            this.label18.TabIndex = 22;
+            this.label18.Tag = "StaffWorkDaysCount";
+            this.label18.Text = "　出勤日数管理";
+            this.label18.Click += new System.EventHandler(this.Label_Click);
+            this.label18.MouseEnter += new System.EventHandler(this.Label_MouseEnter);
+            this.label18.MouseLeave += new System.EventHandler(this.Label_MouseLeave);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.label19.Location = new System.Drawing.Point(3, 600);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(203, 15);
+            this.label19.TabIndex = 23;
+            this.label19.Text = "　アルバイト等の出勤日数を管理します。";
+            // 
             // StartProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -509,5 +548,7 @@
         private Label label15;
         private Label label16;
         private Label label17;
+        private Label label18;
+        private Label label19;
     }
 }

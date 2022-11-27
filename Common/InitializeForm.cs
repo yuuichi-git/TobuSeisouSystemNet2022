@@ -165,6 +165,14 @@ namespace Common {
             return form;
         }
 
+        // StaffWorkDaysCount
+        public Form StaffWorkDaysCount(Form form) {
+            form.KeyPreview = true;
+            form.MaximumSize = new Size(1920, 1080);
+            form.MinimumSize = new Size(1920, 1048);
+            GetWorkingArea(form);
+            return form;
+        }
 
         /// <summary>
         /// アプリケーションが開かれる画面のワークエリアを返す
