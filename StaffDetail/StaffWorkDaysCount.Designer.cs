@@ -34,11 +34,14 @@
             this.ToolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.PanelUp = new System.Windows.Forms.Panel();
-            this.SheetViewList = this.SpreadList.GetSheet(0);
+            this.ButtonUpdate = new System.Windows.Forms.Button();
+            this.SheetViewMEIBO = this.SpreadList.GetSheet(0);
+            this.SheetViewList = this.SpreadList.GetSheet(1);
             this.TableLayoutPanelBase.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpreadList)).BeginInit();
             this.MenuStrip1.SuspendLayout();
+            this.PanelUp.SuspendLayout();
             this.SuspendLayout();
             // 
             // TableLayoutPanelBase
@@ -86,7 +89,7 @@
             // 
             // SpreadList
             // 
-            this.SpreadList.AccessibleDescription = "SpreadList, Sheet1, Row 0, Column 0";
+            this.SpreadList.AccessibleDescription = "SpreadList, 名簿, Row 0, Column 0";
             this.SpreadList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SpreadList.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SpreadList.Location = new System.Drawing.Point(3, 87);
@@ -128,11 +131,23 @@
             // 
             // PanelUp
             // 
+            this.PanelUp.Controls.Add(this.ButtonUpdate);
             this.PanelUp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelUp.Location = new System.Drawing.Point(3, 27);
             this.PanelUp.Name = "PanelUp";
             this.PanelUp.Size = new System.Drawing.Size(1898, 54);
             this.PanelUp.TabIndex = 3;
+            // 
+            // ButtonUpdate
+            // 
+            this.ButtonUpdate.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ButtonUpdate.Location = new System.Drawing.Point(1668, 8);
+            this.ButtonUpdate.Name = "ButtonUpdate";
+            this.ButtonUpdate.Size = new System.Drawing.Size(180, 36);
+            this.ButtonUpdate.TabIndex = 0;
+            this.ButtonUpdate.Text = "最　新　化";
+            this.ButtonUpdate.UseVisualStyleBackColor = true;
+            this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
             // 
             // StaffWorkDaysCount
             // 
@@ -151,6 +166,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.SpreadList)).EndInit();
             this.MenuStrip1.ResumeLayout(false);
             this.MenuStrip1.PerformLayout();
+            this.PanelUp.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -167,6 +183,8 @@
         private ToolStripStatusLabel toolStripStatusLabel1;
         private ToolStripStatusLabel ToolStripStatusLabelStatus;
         private Panel PanelUp;
+        private Button ButtonUpdate;
+        private FarPoint.Win.Spread.SheetView SheetViewMEIBO;
         private FarPoint.Win.Spread.SheetView SheetViewList;
     }
 }

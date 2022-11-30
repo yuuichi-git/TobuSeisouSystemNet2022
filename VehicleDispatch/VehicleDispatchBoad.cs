@@ -940,7 +940,7 @@ namespace VehicleDispatch {
                             // vehicle_dispatch_detailをUPDATE
                             _vehicleDispatchDetailDao.SetCar(DateTimePickerOperationDate.Value,
                                                              Convert.ToInt32(setControlEx.Tag),
-                                                      　      (CarMasterVo)dragItem.Tag);
+                                                            (CarMasterVo)dragItem.Tag);
                             setControlEx.Controls.Add(dragItem, 0, 1);
                         } else {
                             ToolStripStatusLabelStatus.Text = string.Concat("車両が設定されています。(", ((CarMasterVo)dragItem.Tag).Registration_number, ") はここへは移動できません");
@@ -1339,11 +1339,6 @@ namespace VehicleDispatch {
                     SetControlEx setControlEx = (SetControlEx)((StaffLabelEx)sender).Parent;
                     StaffLabelEx staffLabelEx = (StaffLabelEx)sender;
                     /*
-                     * StaffLabelExを変更してRefresh
-                     */
-                    staffLabelEx.Roll_call_flag = !staffLabelEx.Roll_call_flag;
-                    staffLabelEx.Refresh();
-                    /*
                      * vehicle_dispatch_detailを書き換え
                      */
                     var tableLayoutPanelCellPosition = setControlEx.GetCellPosition(staffLabelEx);
@@ -1351,6 +1346,12 @@ namespace VehicleDispatch {
                                                                  (int)setControlEx.Tag,
                                                                  tableLayoutPanelCellPosition.Row,
                                                                  staffLabelEx.Roll_call_flag);
+                    /*
+                     * StaffLabelExを変更してRefresh
+                     */
+                    staffLabelEx.Roll_call_flag = !staffLabelEx.Roll_call_flag;
+                    staffLabelEx.Refresh();
+
                     ToolStripStatusLabelStatus.Text = string.Concat(" ", ((StaffMasterVo)staffLabelEx.Tag).Display_name, " の点呼記録を変更しました");
                     return;
                 }

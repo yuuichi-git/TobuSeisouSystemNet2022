@@ -44,52 +44,61 @@ namespace VehicleDispatchConvert {
 
         private Dictionary<int, string> dictionaryCellPoint = new Dictionary<int, string> { { 1310401, "A6" }, // 新宿１－８２
                                                                                             { 1311701, "A7" }, // 北１２
-                                                                                            { 1310402, "A11" }, // 新宿１－８１
-                                                                                            { 1310403, "A13" }, // 新宿１－６１
-                                                                                            { 1310404, "A14" }, // 新宿１－６２
-                                                                                            { 1311901, "A16" }, // 板橋西５５
-                                                                                            { 1312101, "A18" }, // 足立１８
-                                                                                            { 1312102, "A19" }, // 足立２３
-                                                                                            { 1312103, "A21" }, // 足立２４
-                                                                                            { 1312104, "A23" }, // 足立３８
-                                                                                            { 1312201, "A25" }, // 葛飾３３
-                                                                                            { 1312202, "A27" }, // 葛飾５５
-                                                                                            { 1311702, "A29" }, // 北２０１
-                                                                                            { 1310405, "A42" }, // 新宿１－３１
-                                                                                            { 1310801, "A43" }, // 江東１
-                                                                                            { 1310802, "A44" }, // 江東４
-                                                                                            { 1310803, "A45" }, // 江東７
-                                                                                            { 1310804, "A47" }, // 江東１４
-                                                                                            { 1311501, "A49" }, // 方南１０６
-                                                                                            { 1311801, "A50" }, // 荒川５
-                                                                                            { 1312203, "A51" }, // 小岩４
-                                                                                            { 1311502, "A57" }, // 方南４０８
-                                                                                            { 1311705, "A58" }, // 北軽２１
-                                                                                            { 1311902, "A59" }, // 板橋西軽１号車
-                                                                                            { 1311903, "A60" }, // 板橋西軽３号車
-                                                                                            { 1311904, "A61" }, // 板橋西軽７号車
-                                                                                            { 1312001, "A62" }, // 石神井軽４
-                                                                                            { 1312105, "A63" }, // 足立不燃４
-                                                                                            { 1312204, "A64" }, // 葛飾軽１１
-                                                                                            { 1310601, "A69" }, // 台東軽小ー６
-                                                                                            { 1310406, "A72" }, // 新宿区軽
-                                                                                            { 1311706, "A73" }, // 北区粗大・資源
-                                                                                            { 1310407, "A76" }, // 新宿区容リ３－１
-                                                                                            { 1310408, "A78" }, // 新宿区容リ２－１
-                                                                                            { 1312002, "A79" }, // 練馬区容リ２－１
-                                                                                            { 1312003, "A80" }, // 練馬区容リ２－２
-                                                                                            { 1310409, "A83" }, // 新宿ペット
-                                                                                            { 1310410, "A85" }, // 新宿ペット対策
-                                                                                            { 1310201, "A88" }, // 中央区ペット７
-                                                                                            { 1310202, "A89" }, // 中央区ペット８
-                                                                                            { 1310101, "A90" }, // 千代田区容リ２
-                                                                                            { 1310102, "A91" }, // 千代田区容リ６
-                                                                                            { 1310103, "A92" }, // 千代田区紙１
-                                                                                            { 1311905, "A93" }, // 板橋区ペット１
-                                                                                            { 1312106, "A103" }, // 足立区瓶缶１
-                                                                                            { 1310602, "A105" }, // 台東区資源１
-                                                                                            { 1310603, "A107" }, // 台東区資源２
-                                                                                            { 1310604, "A109" }, // 台東区資源４
+                                                                                            { 1310402, "A10" }, // 新宿１－８１
+                                                                                            { 1310403, "A12" }, // 新宿１－６１
+                                                                                            { 1310404, "A13" }, // 新宿１－６２
+                                                                                            { 1311901, "A15" }, // 板橋西５５
+                                                                                            { 1312101, "A17" }, // 足立１８
+                                                                                            { 1312102, "A18" }, // 足立２３
+                                                                                            { 1312103, "A20" }, // 足立２４
+                                                                                            { 1312104, "A22" }, // 足立３８
+                                                                                            { 1312201, "A24" }, // 葛飾３３
+                                                                                            { 1312202, "A26" }, // 葛飾５５
+                                                                                            { 1311702, "A28" }, // 北２０１
+
+                                                                                            { 1310405, "A35" }, // 新宿１－３１
+                                                                                            { 1310801, "A36" }, // 江東１
+                                                                                            { 1310802, "A37" }, // 江東４
+                                                                                            { 1310803, "A38" }, // 江東７
+                                                                                            { 1310804, "A40" }, // 江東１４
+                                                                                            { 1311501, "A42" }, // 方南１０６
+                                                                                            { 1311801, "A43" }, // 荒川５
+                                                                                            { 1312203, "A44" }, // 小岩４
+
+                                                                                            { 1311502, "A48" }, // 方南４０８
+                                                                                            { 1311705, "A49" }, // 北軽２１
+                                                                                            { 1311902, "A50" }, // 板橋西軽１号車
+                                                                                            { 1311903, "A51" }, // 板橋西軽３号車
+                                                                                            { 1311904, "A52" }, // 板橋西軽７号車
+                                                                                            { 1312001, "A53" }, // 石神井軽４
+                                                                                            { 1312105, "A54" }, // 足立不燃４
+                                                                                            { 1312204, "A55" }, // 葛飾軽１１
+
+                                                                                            { 1310601, "A59" }, // 台東軽小ー６
+
+                                                                                            { 1310406, "A62" }, // 新宿区軽
+                                                                                            { 1311706, "A63" }, // 北区粗大・資源
+
+                                                                                            { 1310407, "A66" }, // 新宿区容リ３－１
+                                                                                            { 1310408, "A68" }, // 新宿区容リ２－１
+                                                                                            { 1312002, "A69" }, // 練馬区容リ２－１
+                                                                                            { 1312003, "A70" }, // 練馬区容リ２－２
+
+                                                                                            { 1310409, "A73" }, // 新宿ペット
+                                                                                            { 1310410, "A75" }, // 新宿ペット対策
+
+                                                                                            { 1310201, "A78" }, // 中央区ペット７
+                                                                                            { 1310202, "A79" }, // 中央区ペット８
+                                                                                            { 1310101, "A80" }, // 千代田区容リ２
+                                                                                            { 1310102, "A81" }, // 千代田区容リ６
+                                                                                            { 1310103, "A82" }, // 千代田区紙１
+                                                                                            { 1311905, "A83" }, // 板橋区ペット１
+
+                                                                                            { 1312106, "A90" }, // 足立区瓶缶１
+                                                                                            { 1310602, "A92" }, // 台東区資源１
+                                                                                            { 1310603, "A94" }, // 台東区資源２
+                                                                                            { 1310604, "A96" }, // 台東区資源４
+
                                                                                             { 1310411, "AA6" }, // 新宿区粗大４
                                                                                             { 1310412, "AA8" }, // 新宿区粗大５
                                                                                             { 1312004, "AA10" }, // 練馬区粗大６
@@ -100,12 +109,16 @@ namespace VehicleDispatchConvert {
                                                                                             { 1311710, "AA18" }, // 北区粗大４
                                                                                             { 1311711, "AA20" }, // 北区粗大５
                                                                                             { 1311712, "AA22" }, // 北区粗大曜日配車
-                                                                                            { 1312111, "AA115" }, // 整備本社
-                                                                                            { 1312112, "AA102" }, // 整備三郷
-                                                                                            { 1312109, "AA110" }, // 本社事務所
-                                                                                            { 1312110, "AA112" }, // 三郷事務所
-                                                                                            { 1312118, "AA105" }, // 浄化槽１
-                                                                                            { 1312123, "AA107" }, // 浄化槽２
+
+                                                                                            { 1312111, "AA97" }, // 整備本社
+                                                                                            { 1312112, "AA99" }, // 整備三郷
+                                                                                            { 1312109, "AA93" }, // 本社事務所
+                                                                                            { 1312110, "AA95" }, // 三郷事務所
+                                                                                            { 1312118, "AA88" }, // 浄化槽１
+                                                                                            { 1312123, "AA90" }, // 浄化槽２
+
+                                                                                            { 1312115, "AA70" }, // ルート１
+                                                                                            { 1312124, "AA71" } // ルート２
                                                                                                                 };
 
         private Dictionary<int, string> dictionaryBelongs = new Dictionary<int, string> { { 10, "" }, { 11, "" }, { 12, "バ" }, { 20, "新" }, { 21, "自" } };
@@ -166,84 +179,84 @@ namespace VehicleDispatchConvert {
                 switch(vehicleDispatchDetailVo.Cell_number) {
                     case 76:
                         if(vehicleDispatchDetailVo.Operation_flag) {
-                            dictionaryCellPointValue = "AA33"; // 破砕コンテナ
+                            dictionaryCellPointValue = "AA25"; // 破砕コンテナ１
                         } else {
                             return;
                         }
                         break;
                     case 77:
                         if(vehicleDispatchDetailVo.Operation_flag) {
-                            dictionaryCellPointValue = "AA34"; // 破砕等
+                            dictionaryCellPointValue = "AA26"; // 破砕等２
                         } else {
                             return;
                         }
                         break;
                     case 78:
                         if(vehicleDispatchDetailVo.Operation_flag) {
-                            dictionaryCellPointValue = "AA35"; // 破砕等
+                            dictionaryCellPointValue = "AA27"; // 破砕等３
                         } else {
                             return;
                         }
                         break;
                     case 79:
                         if(vehicleDispatchDetailVo.Operation_flag) {
-                            dictionaryCellPointValue = "AA36"; // 破砕等
+                            dictionaryCellPointValue = "AA28"; // 破砕等４
                         } else {
                             return;
                         }
                         break;
                     case 80:
                         if(vehicleDispatchDetailVo.Operation_flag) {
-                            dictionaryCellPointValue = "AA37"; // 破砕等
+                            dictionaryCellPointValue = "AA29"; // 破砕等５
                         } else {
                             return;
                         }
                         break;
                     case 81:
                         if(vehicleDispatchDetailVo.Operation_flag) {
-                            dictionaryCellPointValue = "AA38"; // 破砕等
+                            dictionaryCellPointValue = "AA30"; // 破砕等６
                         } else {
                             return;
                         }
                         break;
                     case 82:
                         if(vehicleDispatchDetailVo.Operation_flag) {
-                            dictionaryCellPointValue = "AA39"; // 破砕等
+                            dictionaryCellPointValue = "AA31"; // 破砕等７
                         } else {
                             return;
                         }
                         break;
                     case 83:
                         if(vehicleDispatchDetailVo.Operation_flag) {
-                            dictionaryCellPointValue = "AA40"; // 破砕等
+                            dictionaryCellPointValue = "AA32"; // 破砕等８
                         } else {
                             return;
                         }
                         break;
                     case 84:
                         if(vehicleDispatchDetailVo.Operation_flag) {
-                            dictionaryCellPointValue = "AA41"; // 破砕等
+                            dictionaryCellPointValue = "AA33"; // 破砕等９
                         } else {
                             return;
                         }
                         break;
                     case 85:
                         if(vehicleDispatchDetailVo.Operation_flag) {
-                            dictionaryCellPointValue = "AA42"; // 破砕等
+                            dictionaryCellPointValue = "AA34"; // 破砕等１０
                         } else {
                             return;
                         }
                         break;
                     case 86:
                         if(vehicleDispatchDetailVo.Operation_flag) {
-                            dictionaryCellPointValue = "AA43"; // 破砕等
+                            dictionaryCellPointValue = "AA35"; // 破砕等１１
                         } else {
                             return;
                         }
                         break;
                     case 87:
                         if(vehicleDispatchDetailVo.Operation_flag) {
-                            dictionaryCellPointValue = "AA44"; // 破砕等
+                            dictionaryCellPointValue = "AA36"; // 破砕等１２
                         } else {
                             return;
                         }
@@ -464,6 +477,7 @@ namespace VehicleDispatchConvert {
 
         /// <summary>
         /// ”作業員”を挿入するかどうか
+        /// リストにいれたら”作業員”を挿入する
         /// </summary>
         /// <param name="vehicleDispatchDetailVo"></param>
         /// <returns></returns>
@@ -473,14 +487,41 @@ namespace VehicleDispatchConvert {
                 case 1312110: // 三郷事務所
                 case 1312111: // 整備本社
                 case 1312112: // 整備三郷
+                case 1312118: // 浄化槽１
+                case 1312123: // 浄化槽２
+                case 1312115: // ルート１
+                case 1312124: // ルート２
                     return "";
                 default:
-                    return "作業員";
+                    switch(vehicleDispatchDetailVo.Cell_number) {
+                        /*
+                         * 大Gの場合”作業員”を付けない
+                         */
+                        case 76:
+                        case 77:
+                        case 78:
+                        case 79:
+                        case 80:
+                        case 81:
+                        case 82:
+                        case 83:
+                        case 84:
+                        case 85:
+                        case 86:
+                        case 87:
+                            return "";
+                        /*
+                         * リストに無ければ終了
+                         */
+                        default:
+                            return "作業員";
+                    }
             }
         }
 
         /// <summary>
         /// 点呼を実施するかどうか
+        /// リストにいれたら点呼はしない
         /// </summary>
         /// <param name="vehicleDispatchDetailVo"></param>
         /// <returns></returns>
