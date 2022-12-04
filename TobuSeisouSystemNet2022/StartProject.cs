@@ -98,7 +98,7 @@ namespace TobuSeisouSystemNet2022 {
                                 break;
                             // StaffWorkDaysCount
                             case "StaffWorkDaysCount":
-                                var staffWorkDaysCount = new StaffWorkDaysCount(_connectionVo);
+                                var staffWorkDaysCount = new StaffExcel(_connectionVo);
                                 staffWorkDaysCount.Show(this);
                                 break;
                         }

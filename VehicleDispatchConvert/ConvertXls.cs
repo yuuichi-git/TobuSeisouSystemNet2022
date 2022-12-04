@@ -108,7 +108,7 @@ namespace VehicleDispatchConvert {
                                                                                             { 1311709, "AA16" }, // 北区粗大３
                                                                                             { 1311710, "AA18" }, // 北区粗大４
                                                                                             { 1311711, "AA20" }, // 北区粗大５
-                                                                                            { 1311712, "AA22" }, // 北区粗大曜日配車
+                                                                                            { 1311715, "AA22" }, // 北区粗大曜日配車
 
                                                                                             { 1312111, "AA97" }, // 整備本社
                                                                                             { 1312112, "AA99" }, // 整備三郷
@@ -322,6 +322,21 @@ namespace VehicleDispatchConvert {
                 iCell.CellStyle.Alignment = HorizontalAlignment.Right;
                 iCell.SetCellValue(hSSFRichTextString);
             }
+
+            /*
+             * 休車
+             */
+            if(!vehicleDispatchDetailVo.Operation_flag) {
+                hSSFRichTextString = new HSSFRichTextString("休　車");
+                //hSSFRichTextString.ApplyFont(iFont);
+                iCell = _iSheet.GetRow(cellReference.Row).GetCell(cellReference.Col + 8); // Column Row
+                iCell.CellStyle.Alignment = HorizontalAlignment.Center;
+                iCell.SetCellValue(hSSFRichTextString);
+            }
+
+            /*
+             * 運転手と点呼
+             */
             if(vehicleDispatchDetailVo.Operator_code_1 != 0) {
                 /*
                  * 運転手

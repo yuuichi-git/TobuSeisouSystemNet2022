@@ -3,7 +3,6 @@
 namespace ControlEx {
     public partial class SetLabelEx : Label {
         private SetMasterVo _setMasterVo;
-        private VehicleDispatchDetailVo _vehicleDispatchDetailVo;
         private bool _garageFlag;
 
         private const int _setLabelHeight = 68;
@@ -13,7 +12,7 @@ namespace ControlEx {
         private Font drawFont = new Font("Yu Gothic UI", 13, FontStyle.Regular, GraphicsUnit.Pixel);
         private SolidBrush drowBrushFill = new SolidBrush(Color.White);
         private SolidBrush drawBrushFont = new SolidBrush(Color.Black);
-        
+
         /// <summary>
         /// コンストラクタ(オーバーロード)
         /// FlowLayoutPanel配置用
@@ -91,7 +90,6 @@ namespace ControlEx {
         /// <param name="vehicleDispatchDetailVo"></param>
         public SetLabelEx(SetMasterVo setMasterVo, VehicleDispatchDetailVo vehicleDispatchDetailVo) {
             _setMasterVo = setMasterVo;
-            _vehicleDispatchDetailVo = vehicleDispatchDetailVo;
 
             /*
              * Classification_code

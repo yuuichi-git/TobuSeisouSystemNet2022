@@ -28,7 +28,6 @@
             this.MenuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ToolStripMenuItemMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.配車表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemVehicleDispatchExcel = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemConvertExcel = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemDisplay = new System.Windows.Forms.ToolStripMenuItem();
@@ -185,23 +184,15 @@
             // 配車表ToolStripMenuItem
             // 
             this.配車表ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemVehicleDispatchExcel,
             this.ToolStripMenuItemConvertExcel});
             this.配車表ToolStripMenuItem.Name = "配車表ToolStripMenuItem";
             this.配車表ToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
             this.配車表ToolStripMenuItem.Text = "配車表";
             // 
-            // ToolStripMenuItemVehicleDispatchExcel
-            // 
-            this.ToolStripMenuItemVehicleDispatchExcel.Name = "ToolStripMenuItemVehicleDispatchExcel";
-            this.ToolStripMenuItemVehicleDispatchExcel.Size = new System.Drawing.Size(302, 22);
-            this.ToolStripMenuItemVehicleDispatchExcel.Text = "当日配車へデータを書き出す(いままでの配車表)";
-            this.ToolStripMenuItemVehicleDispatchExcel.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
-            // 
             // ToolStripMenuItemConvertExcel
             // 
             this.ToolStripMenuItemConvertExcel.Name = "ToolStripMenuItemConvertExcel";
-            this.ToolStripMenuItemConvertExcel.Size = new System.Drawing.Size(302, 22);
+            this.ToolStripMenuItemConvertExcel.Size = new System.Drawing.Size(288, 22);
             this.ToolStripMenuItemConvertExcel.Text = "当日配車へデータを書き出す(新型の配車表)";
             this.ToolStripMenuItemConvertExcel.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
@@ -1317,7 +1308,6 @@
         private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExPartDesignation;
         private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExFree;
         private ToolStripMenuItem 配車表ToolStripMenuItem;
-        private ToolStripMenuItem ToolStripMenuItemVehicleDispatchExcel;
         private ToolStripMenuItem ToolStripMenuItemConvertExcel;
     }
 }

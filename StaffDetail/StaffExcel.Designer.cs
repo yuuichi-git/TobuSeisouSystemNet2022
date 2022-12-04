@@ -1,5 +1,5 @@
 ﻿namespace StaffDetail {
-    partial class StaffWorkDaysCount {
+    partial class StaffExcel {
         /// <summary>
         ///  Required designer variable.
         /// </summary>
@@ -23,20 +23,22 @@
         ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StaffWorkDaysCount));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StaffExcel));
             this.TableLayoutPanelBase = new System.Windows.Forms.TableLayoutPanel();
             this.StatusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, ((object)(resources.GetObject("TableLayoutPanelBase.Controls"))));
+            this.SheetViewList1 = this.SpreadList.GetSheet(0);
+            this.SheetViewList2 = this.SpreadList.GetSheet(1);
             this.MenuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ToolStripMenuItemMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.PanelUp = new System.Windows.Forms.Panel();
+            this.MonthPicker1 = new ControlEx.MonthPicker();
+            this.label1 = new System.Windows.Forms.Label();
             this.ButtonUpdate = new System.Windows.Forms.Button();
-            this.SheetViewMEIBO = this.SpreadList.GetSheet(0);
-            this.SheetViewList = this.SpreadList.GetSheet(1);
             this.TableLayoutPanelBase.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpreadList)).BeginInit();
@@ -89,13 +91,14 @@
             // 
             // SpreadList
             // 
-            this.SpreadList.AccessibleDescription = "SpreadList, 名簿, Row 0, Column 0";
+            this.SpreadList.AccessibleDescription = "SpreadList, アルバイトの出勤日数, Row 0, Column 0";
             this.SpreadList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SpreadList.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SpreadList.Location = new System.Drawing.Point(3, 87);
             this.SpreadList.Name = "SpreadList";
             this.SpreadList.Size = new System.Drawing.Size(1898, 927);
             this.SpreadList.TabIndex = 0;
+            this.SpreadList.ComboCloseUp += new FarPoint.Win.Spread.EditorNotifyEventHandler(this.SpreadList_ComboCloseUp);
             // 
             // MenuStrip1
             // 
@@ -131,12 +134,33 @@
             // 
             // PanelUp
             // 
+            this.PanelUp.Controls.Add(this.MonthPicker1);
+            this.PanelUp.Controls.Add(this.label1);
             this.PanelUp.Controls.Add(this.ButtonUpdate);
             this.PanelUp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelUp.Location = new System.Drawing.Point(3, 27);
             this.PanelUp.Name = "PanelUp";
             this.PanelUp.Size = new System.Drawing.Size(1898, 54);
             this.PanelUp.TabIndex = 3;
+            // 
+            // MonthPicker1
+            // 
+            this.MonthPicker1.CustomFormat = "yyyy年MM月";
+            this.MonthPicker1.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.MonthPicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.MonthPicker1.Location = new System.Drawing.Point(92, 15);
+            this.MonthPicker1.Name = "MonthPicker1";
+            this.MonthPicker1.Size = new System.Drawing.Size(128, 25);
+            this.MonthPicker1.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(48, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(43, 15);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "配車月";
             // 
             // ButtonUpdate
             // 
@@ -149,16 +173,16 @@
             this.ButtonUpdate.UseVisualStyleBackColor = true;
             this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
             // 
-            // StaffWorkDaysCount
+            // StaffExcel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
             this.Controls.Add(this.TableLayoutPanelBase);
             this.MainMenuStrip = this.MenuStrip1;
-            this.Name = "StaffWorkDaysCount";
-            this.Text = "StaffWorkDaysCount";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StaffWorkDaysCount_FormClosing);
+            this.Name = "StaffExcel";
+            this.Text = "StaffExcel";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StaffExcel_FormClosing);
             this.TableLayoutPanelBase.ResumeLayout(false);
             this.TableLayoutPanelBase.PerformLayout();
             this.StatusStrip1.ResumeLayout(false);
@@ -167,6 +191,7 @@
             this.MenuStrip1.ResumeLayout(false);
             this.MenuStrip1.PerformLayout();
             this.PanelUp.ResumeLayout(false);
+            this.PanelUp.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -184,7 +209,9 @@
         private ToolStripStatusLabel ToolStripStatusLabelStatus;
         private Panel PanelUp;
         private Button ButtonUpdate;
-        private FarPoint.Win.Spread.SheetView SheetViewMEIBO;
-        private FarPoint.Win.Spread.SheetView SheetViewList;
+        private Label label1;
+        private ControlEx.MonthPicker MonthPicker1;
+        private FarPoint.Win.Spread.SheetView SheetViewList1;
+        private FarPoint.Win.Spread.SheetView SheetViewList2;
     }
 }

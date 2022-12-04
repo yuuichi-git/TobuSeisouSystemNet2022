@@ -165,8 +165,8 @@ namespace Common {
             return form;
         }
 
-        // StaffWorkDaysCount
-        public Form StaffWorkDaysCount(Form form) {
+        // StaffExcel
+        public Form StaffExcel(Form form) {
             form.KeyPreview = true;
             form.MaximumSize = new Size(1920, 1080);
             form.MinimumSize = new Size(1920, 1048);

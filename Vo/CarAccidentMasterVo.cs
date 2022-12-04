@@ -19,14 +19,14 @@
         private string _accident_summary = "";
         private string _accident_detail = "";
         private string _guide = "";
-        private byte[] _picture1;
-        private byte[] _picture2;
-        private byte[] _picture3;
-        private byte[] _picture4;
-        private byte[] _picture5;
-        private byte[] _picture6;
-        private byte[] _picture7;
-        private byte[] _picture8;
+        private byte[]? _picture1 = null;
+        private byte[]? _picture2 = null;
+        private byte[]? _picture3 = null;
+        private byte[]? _picture4 = null;
+        private byte[]? _picture5 = null;
+        private byte[]? _picture6 = null;
+        private byte[]? _picture7 = null;
+        private byte[]? _picture8 = null;
         private DateTime _insert_ymd_hms;
         private DateTime _update_ymd_hms;
         private DateTime _delete_ymd_hms;
@@ -166,35 +166,35 @@
             get => _guide;
             set => _guide = value;
         }
-        public byte[] Picture1 {
+        public byte[]? Picture1 {
             get => _picture1;
             set => _picture1 = value;
         }
-        public byte[] Picture2 {
+        public byte[]? Picture2 {
             get => _picture2;
             set => _picture2 = value;
         }
-        public byte[] Picture3 {
+        public byte[]? Picture3 {
             get => _picture3;
             set => _picture3 = value;
         }
-        public byte[] Picture4 {
+        public byte[]? Picture4 {
             get => _picture4;
             set => _picture4 = value;
         }
-        public byte[] Picture5 {
+        public byte[]? Picture5 {
             get => _picture5;
             set => _picture5 = value;
         }
-        public byte[] Picture6 {
+        public byte[]? Picture6 {
             get => _picture6;
             set => _picture6 = value;
         }
-        public byte[] Picture7 {
+        public byte[]? Picture7 {
             get => _picture7;
             set => _picture7 = value;
         }
-        public byte[] Picture8 {
+        public byte[]? Picture8 {
             get => _picture8;
             set => _picture8 = value;
         }
