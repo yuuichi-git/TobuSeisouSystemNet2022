@@ -31,7 +31,7 @@ namespace Dao {
                                      "WHERE insert_ymd_hms = '" + insertYmdHms + "'";
             try {
                 count = (int)sqlCommand.ExecuteScalar();
-            } catch (Exception e) {
+            } catch(Exception e) {
                 Console.WriteLine("CheckCarAccidentLedger : " + e.Message);
             }
             return count != 0 ? true : false;
@@ -82,8 +82,8 @@ namespace Dao {
                                      "FROM car_accident_master " +
                                      "WHERE (occurrence_ymd_hms BETWEEN '" + datetimeStart + "' AND '" + datetimeEnd + "') " +
                                      "ORDER BY occurrence_ymd_hms ASC";
-            using (var sqlDataReader = sqlCommand.ExecuteReader()) {
-                while (sqlDataReader.Read() == true) {
+            using(var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while(sqlDataReader.Read() == true) {
                     var carAccidentMasterVo = new CarAccidentMasterVo();
                     carAccidentMasterVo.Totalling_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["totalling_flag"]);
                     carAccidentMasterVo.Occurrence_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["occurrence_ymd_hms"]);
@@ -163,8 +163,8 @@ namespace Dao {
                                             "delete_flag " +
                                      "FROM car_accident_master " +
                                      "WHERE insert_ymd_hms = '" + insertYmdHms + "'";
-            using (var sqlDataReader = sqlCommand.ExecuteReader()) {
-                while (sqlDataReader.Read() == true) {
+            using(var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while(sqlDataReader.Read() == true) {
                     carAccidentMasterVo.Totalling_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["totalling_flag"]);
                     carAccidentMasterVo.Occurrence_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["occurrence_ymd_hms"]);
                     carAccidentMasterVo.Weather = _defaultValue.GetDefaultValue<string>(sqlDataReader["weather"]);
@@ -202,9 +202,9 @@ namespace Dao {
         }
 
         /// <summary>
-        /// 
+        /// SelectOneCarAccidentMaster
         /// </summary>
-        /// <param name="insertYmdHms"></param>
+        /// <param name="staffCode"></param>
         /// <returns></returns>
         public List<CarAccidentMasterVo> SelectOneCarAccidentMaster(decimal staffCode) {
             var listCarAccidentMasterVo = new List<CarAccidentMasterVo>();
@@ -243,8 +243,8 @@ namespace Dao {
                                      "FROM car_accident_master " +
                                      "WHERE staff_code = '" + staffCode + "' " +
                                      "ORDER BY occurrence_ymd_hms DESC";
-            using (var sqlDataReader = sqlCommand.ExecuteReader()) {
-                while (sqlDataReader.Read() == true) {
+            using(var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while(sqlDataReader.Read() == true) {
                     var carAccidentMasterVo = new CarAccidentMasterVo();
                     carAccidentMasterVo.Totalling_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["totalling_flag"]);
                     carAccidentMasterVo.Occurrence_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["occurrence_ymd_hms"]);
@@ -362,9 +362,8 @@ namespace Dao {
                 sqlCommand.Parameters.Add("@member_picture7", SqlDbType.Image, carAccidentMasterVo.Picture7.Length).Value = carAccidentMasterVo.Picture7;
                 sqlCommand.Parameters.Add("@member_picture8", SqlDbType.Image, carAccidentMasterVo.Picture8.Length).Value = carAccidentMasterVo.Picture8;
                 return sqlCommand.ExecuteNonQuery();
-            } catch (Exception e) {
-                Console.WriteLine("InsertOneCarAccidentLedger : " + e.Message);
-                return 0;
+            } catch {
+                throw;
             }
         }
 
@@ -416,9 +415,8 @@ namespace Dao {
                 sqlCommand.Parameters.Add("@member_picture7", SqlDbType.Image, carAccidentMasterVo.Picture7.Length).Value = carAccidentMasterVo.Picture7;
                 sqlCommand.Parameters.Add("@member_picture8", SqlDbType.Image, carAccidentMasterVo.Picture8.Length).Value = carAccidentMasterVo.Picture8;
                 return sqlCommand.ExecuteNonQuery();
-            } catch (Exception e) {
-                Console.WriteLine("UpdateOneCarAccidentLedger : " + e.Message);
-                return 0;
+            } catch {
+                throw;
             }
         }
     }

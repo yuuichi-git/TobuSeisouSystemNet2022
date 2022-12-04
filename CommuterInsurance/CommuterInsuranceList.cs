@@ -12,9 +12,8 @@ namespace CommuterInsurance {
         private readonly ConnectionVo _connectionVo;
         private InitializeForm _initializeForm = new();
 
-        private List<CommuterInsuranceVo> _listCommuterInsuranceVo;
-        private List<CommuterInsuranceVo> _listFindAllCommuterInsuranceVo;
-        private IOrderedEnumerable<CommuterInsuranceVo>? _linqCommuterInsuranceVo;
+        private List<CommuterInsuranceVo> _listCommuterInsuranceVo = new();
+        private List<CommuterInsuranceVo> _listFindAllCommuterInsuranceVo = new();
 
         Dictionary<int, string> dictionaryBelongs = new Dictionary<int, string> { { 10, "役員" }, { 11, "社員" }, { 12, "アルバイト" }, { 20, "新運転" }, { 21, "自運労" } };
 
@@ -77,8 +76,6 @@ namespace CommuterInsurance {
 
         public CommuterInsuranceList(ConnectionVo connectionVo) {
             _connectionVo = connectionVo;
-            _listCommuterInsuranceVo = null;
-            _listFindAllCommuterInsuranceVo = null;
 
             /*
              * コントロール初期化

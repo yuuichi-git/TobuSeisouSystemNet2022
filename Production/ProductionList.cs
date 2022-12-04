@@ -135,7 +135,7 @@ namespace Production {
         /// </summary>
         private void DataUpdate() {
             var listProductionListVo = new List<ProductionListVo>();
-            var nestedClassSetMasterVo = (NestedClassSetMasterVo)LabelSetName.Tag;
+            var nestedClassSetMasterVo = (ExtendsClassSetMasterVo)LabelSetName.Tag;
             var cellNumber = nestedClassSetMasterVo.Cell_number;
             var financialYear = nestedClassSetMasterVo.Financial_year;
 
@@ -148,32 +148,32 @@ namespace Production {
                     productionListVo.Day_of_week = _DayOfWeek[Array.IndexOf(_arrayCheckBoxWeek, checkBox)];
                     // CarCode
                     if(_arrayComboBoxCar[Array.IndexOf(_arrayCheckBoxWeek, checkBox)].Text != string.Empty) {
-                        NestedClassCarMasterVo? nestedClassCarMasterVo = (NestedClassCarMasterVo)_arrayComboBoxCar[Array.IndexOf(_arrayCheckBoxWeek, checkBox)].SelectedItem;
+                        ExtendsClassCarMasterVo? nestedClassCarMasterVo = (ExtendsClassCarMasterVo)_arrayComboBoxCar[Array.IndexOf(_arrayCheckBoxWeek, checkBox)].SelectedItem;
                         if(nestedClassCarMasterVo != null)
                             productionListVo.Car_code = nestedClassCarMasterVo.CarMasterVo.Car_code;
                     }
                     // Staff1
                     if(_arrayComboBoxStaff1[Array.IndexOf(_arrayCheckBoxWeek, checkBox)].Text != string.Empty) {
-                        NestedClassStaffMasterVo? nestedClassStaffMasterVo1 = (NestedClassStaffMasterVo)_arrayComboBoxStaff1[Array.IndexOf(_arrayCheckBoxWeek, checkBox)].SelectedItem;
+                        ExtendsClassStaffMasterVo? nestedClassStaffMasterVo1 = (ExtendsClassStaffMasterVo)_arrayComboBoxStaff1[Array.IndexOf(_arrayCheckBoxWeek, checkBox)].SelectedItem;
                         if(nestedClassStaffMasterVo1 != null)
                             productionListVo.Operator_code_1 = nestedClassStaffMasterVo1.StaffMasterVo.Staff_code;
                     }
                     // Staff2
                     if(_arrayComboBoxStaff2[Array.IndexOf(_arrayCheckBoxWeek, checkBox)].Text != string.Empty) {
-                        NestedClassStaffMasterVo? nestedClassStaffMasterVo2 = (NestedClassStaffMasterVo)_arrayComboBoxStaff2[Array.IndexOf(_arrayCheckBoxWeek, checkBox)].SelectedItem;
+                        ExtendsClassStaffMasterVo? nestedClassStaffMasterVo2 = (ExtendsClassStaffMasterVo)_arrayComboBoxStaff2[Array.IndexOf(_arrayCheckBoxWeek, checkBox)].SelectedItem;
                         if(nestedClassStaffMasterVo2 != null)
                             productionListVo.Operator_code_2 = nestedClassStaffMasterVo2.StaffMasterVo.Staff_code;
                     }
                     // Staff3
                     if(_arrayComboBoxStaff3[Array.IndexOf(_arrayCheckBoxWeek, checkBox)].Text != string.Empty) {
-                        NestedClassStaffMasterVo? nestedClassStaffMasterVo3 = (NestedClassStaffMasterVo)_arrayComboBoxStaff3[Array.IndexOf(_arrayCheckBoxWeek, checkBox)].SelectedItem;
+                        ExtendsClassStaffMasterVo? nestedClassStaffMasterVo3 = (ExtendsClassStaffMasterVo)_arrayComboBoxStaff3[Array.IndexOf(_arrayCheckBoxWeek, checkBox)].SelectedItem;
                         if(nestedClassStaffMasterVo3 != null)
                             productionListVo.Operator_code_3 = nestedClassStaffMasterVo3.StaffMasterVo.Staff_code;
                     }
 
                     // Staff4
                     if(_arrayComboBoxStaff4[Array.IndexOf(_arrayCheckBoxWeek, checkBox)].Text != string.Empty) {
-                        NestedClassStaffMasterVo? nestedClassStaffMasterVo4 = (NestedClassStaffMasterVo)_arrayComboBoxStaff4[Array.IndexOf(_arrayCheckBoxWeek, checkBox)].SelectedItem;
+                        ExtendsClassStaffMasterVo? nestedClassStaffMasterVo4 = (ExtendsClassStaffMasterVo)_arrayComboBoxStaff4[Array.IndexOf(_arrayCheckBoxWeek, checkBox)].SelectedItem;
                         if(nestedClassStaffMasterVo4 != null)
                             productionListVo.Operator_code_4 = nestedClassStaffMasterVo4.StaffMasterVo.Staff_code;
                     }
@@ -230,7 +230,7 @@ namespace Production {
                     setMasterVo = _listSetMasterVo.Find(x => x.Set_code == setCode);
                     if(setMasterVo != null) {
                         var labelEx = new SetLabelEx(setMasterVo, vehicleDispatchHeadVo.Garage_flag).CreateLabel();
-                        labelEx.Tag = new NestedClassSetMasterVo(i + 1, setMasterVo.Working_days, new DateTime(2022, 04, 01), setMasterVo);
+                        labelEx.Tag = new ExtendsClassSetMasterVo(i + 1, setMasterVo.Working_days, new DateTime(2022, 04, 01), setMasterVo);
                         labelEx.MouseClick += new MouseEventHandler(Label_MouseClick);
                         labelEx.MouseEnter += new EventHandler(Label_MouseEnter);
                         labelEx.MouseLeave += new EventHandler(Label_MouseLeave);
@@ -244,71 +244,18 @@ namespace Production {
         }
 
         /// <summary>
-        /// NestedClassSetMasterVo
-        /// </summary>
-        private class NestedClassSetMasterVo {
-            private int _cell_number;
-            private string _dayOfWeek;
-            private DateTime _financial_year;
-            private SetMasterVo _setMasterVo = new();
-            public NestedClassSetMasterVo(int cellNumber, string dayOfWeek, DateTime financial_year, SetMasterVo setMasterVo) {
-                _cell_number = cellNumber;
-                _dayOfWeek = dayOfWeek;
-                _financial_year = financial_year;
-                _setMasterVo = setMasterVo;
-            }
-            public int Cell_number {
-                get => _cell_number;
-                set => _cell_number = value;
-            }
-            public string DayOfWeek {
-                get => _dayOfWeek;
-                set => _dayOfWeek = value;
-            }
-            public DateTime Financial_year {
-                get => _financial_year;
-                set => _financial_year = value;
-            }
-            public SetMasterVo SetMasterVo {
-                get => _setMasterVo;
-                set => _setMasterVo = value;
-            }
-        }
-
-        /// <summary>
         /// InitializeComboBoxCarLedger
         /// </summary>
         private void InitializeComboBoxCarLedger() {
             foreach(var comboBox in _arrayComboBoxCar) {
                 comboBox.Items.Clear();
                 foreach(var carMasteVo in _listCarMasterVo.FindAll(x => x.Delete_flag == false).OrderBy(x => x.Registration_number_4))
-                    comboBox.Items.Add(new NestedClassCarMasterVo(string.Concat(carMasteVo.Registration_number, " (", carMasteVo.Door_number, ")"), carMasteVo));
+                    comboBox.Items.Add(new ExtendsClassCarMasterVo(string.Concat(carMasteVo.Registration_number, " (", carMasteVo.Door_number, ")"), carMasteVo));
                 comboBox.DisplayMember = "RegistrationNumber";
                 // オートコンプリートモードの設定
                 comboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
                 // コンボボックスのアイテムをオートコンプリートの選択候補とする
                 comboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
-            }
-        }
-
-        /// <summary>
-        /// NestedClassCarMasterVo
-        /// </summary>
-        private class NestedClassCarMasterVo {
-            private string _registrationNumber = "";
-            private CarMasterVo _carMasterVo = new();
-            // プロパティをコンストラクタでセット
-            public NestedClassCarMasterVo(string registrationNumber, CarMasterVo carMasterVo) {
-                _registrationNumber = registrationNumber;
-                _carMasterVo = carMasterVo;
-            }
-            public string RegistrationNumber {
-                get => _registrationNumber;
-                set => _registrationNumber = value;
-            }
-            public CarMasterVo CarMasterVo {
-                get => _carMasterVo;
-                set => _carMasterVo = value;
             }
         }
 
@@ -319,7 +266,7 @@ namespace Production {
             foreach(var comboBox in _arrayComboBoxStaff1) {
                 comboBox.Items.Clear();
                 foreach(var staffMasterVo in _listStaffMasterVo.FindAll(x => x.Retirement_flag == false).OrderBy(x => x.Name_kana))
-                    comboBox.Items.Add(new NestedClassStaffMasterVo(staffMasterVo.Display_name, staffMasterVo));
+                    comboBox.Items.Add(new ExtendsClassStaffMasterVo(staffMasterVo.Display_name, staffMasterVo));
                 comboBox.DisplayMember = "StaffName";
                 // オートコンプリートモードの設定
                 comboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
@@ -331,7 +278,7 @@ namespace Production {
             foreach(var comboBox in _arrayComboBoxStaff2) {
                 comboBox.Items.Clear();
                 foreach(var staffMasterVo in _listStaffMasterVo.FindAll(x => x.Retirement_flag == false).OrderBy(x => x.Name_kana))
-                    comboBox.Items.Add(new NestedClassStaffMasterVo(staffMasterVo.Display_name, staffMasterVo));
+                    comboBox.Items.Add(new ExtendsClassStaffMasterVo(staffMasterVo.Display_name, staffMasterVo));
                 comboBox.DisplayMember = "StaffName";
                 // オートコンプリートモードの設定
                 comboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
@@ -343,7 +290,7 @@ namespace Production {
             foreach(var comboBox in _arrayComboBoxStaff3) {
                 comboBox.Items.Clear();
                 foreach(var staffMasterVo in _listStaffMasterVo.FindAll(x => x.Retirement_flag == false).OrderBy(x => x.Name_kana))
-                    comboBox.Items.Add(new NestedClassStaffMasterVo(staffMasterVo.Display_name, staffMasterVo));
+                    comboBox.Items.Add(new ExtendsClassStaffMasterVo(staffMasterVo.Display_name, staffMasterVo));
                 comboBox.DisplayMember = "StaffName";
                 // オートコンプリートモードの設定
                 comboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
@@ -355,33 +302,12 @@ namespace Production {
             foreach(var comboBox in _arrayComboBoxStaff4) {
                 comboBox.Items.Clear();
                 foreach(var staffMasterVo in _listStaffMasterVo.FindAll(x => x.Retirement_flag == false).OrderBy(x => x.Name_kana))
-                    comboBox.Items.Add(new NestedClassStaffMasterVo(staffMasterVo.Display_name, staffMasterVo));
+                    comboBox.Items.Add(new ExtendsClassStaffMasterVo(staffMasterVo.Display_name, staffMasterVo));
                 comboBox.DisplayMember = "StaffName";
                 // オートコンプリートモードの設定
                 comboBox.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
                 // コンボボックスのアイテムをオートコンプリートの選択候補とする
                 comboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
-            }
-        }
-
-        /// <summary>
-        /// NestedClassStaffMasterVo
-        /// </summary>
-        private class NestedClassStaffMasterVo {
-            private string _staffName = "";
-            private StaffMasterVo _staffMasterVo = new();
-            // プロパティをコンストラクタでセット
-            public NestedClassStaffMasterVo(string staffName, StaffMasterVo staffMasterVo) {
-                _staffName = staffName;
-                _staffMasterVo = staffMasterVo;
-            }
-            public string StaffName {
-                get => _staffName;
-                set => _staffName = value;
-            }
-            public StaffMasterVo StaffMasterVo {
-                get => _staffMasterVo;
-                set => _staffMasterVo = value;
             }
         }
 
@@ -445,7 +371,7 @@ namespace Production {
                 MessageBox.Show(MessageText.Message201, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            var nestedClassSetMasterVo = (NestedClassSetMasterVo)LabelSetName.Tag;
+            var nestedClassSetMasterVo = (ExtendsClassSetMasterVo)LabelSetName.Tag;
             var vehicleDispatchHeadVo = _listVehicleDispatchHeadVo.Find(x => x.Cell_number == nestedClassSetMasterVo.Cell_number);
             var carMasterVo = _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchHeadVo.Car_code);
             foreach(var checkBox in _arrayCheckBoxWeek) {
@@ -492,7 +418,7 @@ namespace Production {
             if(sender == null)
                 return;
             // メモリ確保
-            var nestedClassSetMasterVo = (NestedClassSetMasterVo)((SetLabelEx)sender).Tag;
+            var nestedClassSetMasterVo = (ExtendsClassSetMasterVo)((SetLabelEx)sender).Tag;
             var carMasterVo = new CarMasterVo();
             var staffMasterVo = new StaffMasterVo();
 
@@ -615,6 +541,83 @@ namespace Production {
                 case DialogResult.Cancel:
                     e.Cancel = true;
                     break;
+            }
+        }
+
+        /*
+         * 内部クラス
+         */
+        /// <summary>
+        /// ExtendsClassSetMasterVo
+        /// </summary>
+        private class ExtendsClassSetMasterVo {
+            private int _cell_number;
+            private string _dayOfWeek;
+            private DateTime _financial_year;
+            private SetMasterVo _setMasterVo = new();
+            public ExtendsClassSetMasterVo(int cellNumber, string dayOfWeek, DateTime financial_year, SetMasterVo setMasterVo) {
+                _cell_number = cellNumber;
+                _dayOfWeek = dayOfWeek;
+                _financial_year = financial_year;
+                _setMasterVo = setMasterVo;
+            }
+            public int Cell_number {
+                get => _cell_number;
+                set => _cell_number = value;
+            }
+            public string DayOfWeek {
+                get => _dayOfWeek;
+                set => _dayOfWeek = value;
+            }
+            public DateTime Financial_year {
+                get => _financial_year;
+                set => _financial_year = value;
+            }
+            public SetMasterVo SetMasterVo {
+                get => _setMasterVo;
+                set => _setMasterVo = value;
+            }
+        }
+
+        /// <summary>
+        /// ExtendsClassCarMasterVo
+        /// </summary>
+        private class ExtendsClassCarMasterVo {
+            private string _registrationNumber = "";
+            private CarMasterVo _carMasterVo = new();
+            // プロパティをコンストラクタでセット
+            public ExtendsClassCarMasterVo(string registrationNumber, CarMasterVo carMasterVo) {
+                _registrationNumber = registrationNumber;
+                _carMasterVo = carMasterVo;
+            }
+            public string RegistrationNumber {
+                get => _registrationNumber;
+                set => _registrationNumber = value;
+            }
+            public CarMasterVo CarMasterVo {
+                get => _carMasterVo;
+                set => _carMasterVo = value;
+            }
+        }
+
+        /// <summary>
+        /// ExtendsClassStaffMasterVo
+        /// </summary>
+        private class ExtendsClassStaffMasterVo {
+            private string _staffName = "";
+            private StaffMasterVo _staffMasterVo = new();
+            // プロパティをコンストラクタでセット
+            public ExtendsClassStaffMasterVo(string staffName, StaffMasterVo staffMasterVo) {
+                _staffName = staffName;
+                _staffMasterVo = staffMasterVo;
+            }
+            public string StaffName {
+                get => _staffName;
+                set => _staffName = value;
+            }
+            public StaffMasterVo StaffMasterVo {
+                get => _staffMasterVo;
+                set => _staffMasterVo = value;
             }
         }
     }

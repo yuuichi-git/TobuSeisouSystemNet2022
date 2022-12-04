@@ -30,7 +30,7 @@ namespace CarAccident {
              */
             InitializeComponent();
             _initializeForm.CarAccidentDetail(this);
-            
+
             _arrayPictureBox = new PictureBox[] { PictureBox1, PictureBox2, PictureBox3, PictureBox4, PictureBox5, PictureBox6, PictureBox7, PictureBox8 };
             InitializeControl();
         }
@@ -50,7 +50,7 @@ namespace CarAccident {
              */
             InitializeComponent();
             _initializeForm.CarAccidentDetail(this);
-            
+
             _arrayPictureBox = new PictureBox[] { PictureBox1, PictureBox2, PictureBox3, PictureBox4, PictureBox5, PictureBox6, PictureBox7, PictureBox8 };
             InitializeControl();
 
@@ -65,13 +65,21 @@ namespace CarAccident {
 
         private void ButtonUpdate_Click(object sender, EventArgs e) {
             DialogResult dialogResult = MessageBox.Show(MessageText.Message701, MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-            switch (dialogResult) {
+            switch(dialogResult) {
                 case DialogResult.OK:
                     // DBを変更(DBにinsert_ymd_hmsが存在すればUPDATE、無ければINSERT)
-                    if (new CarAccidentMasterDao(_connectionVo).CheckCarAccidentMaster(_insertYmdHms)) {
-                        new CarAccidentMasterDao(_connectionVo).UpdateOneCarAccidentMaster(SetCarAccidentMasterVo(), _insertYmdHms);
+                    if(new CarAccidentMasterDao(_connectionVo).CheckCarAccidentMaster(_insertYmdHms)) {
+                        try {
+                            new CarAccidentMasterDao(_connectionVo).UpdateOneCarAccidentMaster(SetCarAccidentMasterVo(), _insertYmdHms);
+                        } catch(Exception exception) {
+                            MessageBox.Show(exception.Message);
+                        }
                     } else {
-                        new CarAccidentMasterDao(_connectionVo).InsertOneCarAccidentMaster(SetCarAccidentMasterVo());
+                        try {
+                            new CarAccidentMasterDao(_connectionVo).InsertOneCarAccidentMaster(SetCarAccidentMasterVo());
+                        } catch(Exception exception) {
+                            MessageBox.Show(exception.Message);
+                        }
                     }
                     Close();
                     break;
@@ -96,50 +104,50 @@ namespace CarAccident {
             // 事故発生年月日
             carAccidentMasterVo.Occurrence_ymd_hms = DateTimePickerOccurrenceDate.Value;
             // 天候
-            foreach (RadioButton radioButton in GroupBoxWeather.Controls) {
-                if (radioButton.Checked)
+            foreach(RadioButton radioButton in GroupBoxWeather.Controls) {
+                if(radioButton.Checked)
                     carAccidentMasterVo.Weather = radioButton.Text;
             }
             // 事故の種別 
-            foreach (RadioButton radioButton in GroupBoxAccidentKind.Controls) {
-                if (radioButton.Checked)
+            foreach(RadioButton radioButton in GroupBoxAccidentKind.Controls) {
+                if(radioButton.Checked)
                     carAccidentMasterVo.Accident_kind = radioButton.Text;
             }
             // 車両の静動
-            foreach (RadioButton radioButton in GroupBoxCarStatic.Controls) {
-                if (radioButton.Checked)
+            foreach(RadioButton radioButton in GroupBoxCarStatic.Controls) {
+                if(radioButton.Checked)
                     carAccidentMasterVo.Car_static = radioButton.Text;
             }
             // 事故の発生原因　
-            foreach (RadioButton radioButton in GroupBoxOccurrenceCause.Controls) {
-                if (radioButton.Checked)
+            foreach(RadioButton radioButton in GroupBoxOccurrenceCause.Controls) {
+                if(radioButton.Checked)
                     carAccidentMasterVo.Occurrence_cause = radioButton.Text;
             }
             // 過失の有無 
-            foreach (RadioButton radioButton in GroupBoxNegligence.Controls) {
-                if (radioButton.Checked)
+            foreach(RadioButton radioButton in GroupBoxNegligence.Controls) {
+                if(radioButton.Checked)
                     carAccidentMasterVo.Negligence = radioButton.Text;
             }
             // 人身事故の詳細　
-            foreach (RadioButton radioButton in GroupBoxPersonalInjury.Controls) {
-                if (radioButton.Checked)
+            foreach(RadioButton radioButton in GroupBoxPersonalInjury.Controls) {
+                if(radioButton.Checked)
                     carAccidentMasterVo.Personal_injury = radioButton.Text;
             }
             // 物件事故の詳細1 
-            foreach (RadioButton radioButton in PanelPropertyAccident1.Controls) {
-                if (radioButton.Checked)
+            foreach(RadioButton radioButton in PanelPropertyAccident1.Controls) {
+                if(radioButton.Checked)
                     carAccidentMasterVo.Property_accident_1 = radioButton.Text;
             }
             // 物件事故の詳細2
-            foreach (RadioButton radioButton in PanelPropertyAccident2.Controls) {
-                if (radioButton.Checked)
+            foreach(RadioButton radioButton in PanelPropertyAccident2.Controls) {
+                if(radioButton.Checked)
                     carAccidentMasterVo.Property_accident_2 = radioButton.Text;
             }
             // 事故の発生場所
             carAccidentMasterVo.Occurrence_address = TextBoxOccurrenceAddress.Text;
             // 運転手・作業員の別 
-            foreach (RadioButton radioButton in PanelWorkKind.Controls) {
-                if (radioButton.Checked)
+            foreach(RadioButton radioButton in PanelWorkKind.Controls) {
+                if(radioButton.Checked)
                     carAccidentMasterVo.Work_kind = radioButton.Text;
             }
             // 運転手・作業員の氏名
@@ -183,7 +191,7 @@ namespace CarAccident {
             // 事故発生日時
             DateTimePickerOccurrenceDate.Value = carAccidentMasterVo.Occurrence_ymd_hms;
             // 集計表に反映
-            switch (carAccidentMasterVo.Totalling_flag) {
+            switch(carAccidentMasterVo.Totalling_flag) {
                 case true:
                     RadioButtonTotallingTrue.Checked = true;
                     break;
@@ -192,7 +200,7 @@ namespace CarAccident {
                     break;
             }
             // 天候
-            switch (carAccidentMasterVo.Weather) {
+            switch(carAccidentMasterVo.Weather) {
                 case "晴れ":
                     radioButton3.Checked = true;
                     break;
@@ -213,7 +221,7 @@ namespace CarAccident {
                     break;
             }
             // 事故の種別
-            switch (carAccidentMasterVo.Accident_kind) {
+            switch(carAccidentMasterVo.Accident_kind) {
                 case "人身事故":
                     radioButton14.Checked = true;
                     break;
@@ -237,7 +245,7 @@ namespace CarAccident {
                     break;
             }
             // 車両の静動
-            switch (carAccidentMasterVo.Car_static) {
+            switch(carAccidentMasterVo.Car_static) {
                 case "前進時":
                     radioButton21.Checked = true;
                     break;
@@ -258,7 +266,7 @@ namespace CarAccident {
                     break;
             }
             // 事故の発生原因
-            switch (carAccidentMasterVo.Occurrence_cause) {
+            switch(carAccidentMasterVo.Occurrence_cause) {
                 case "前方不確認":
                     radioButton27.Checked = true;
                     break;
@@ -279,7 +287,7 @@ namespace CarAccident {
                     break;
             }
             // 過失の有無
-            switch (carAccidentMasterVo.Negligence) {
+            switch(carAccidentMasterVo.Negligence) {
                 case "過失なし":
                     radioButton33.Checked = true;
                     break;
@@ -288,7 +296,7 @@ namespace CarAccident {
                     break;
             }
             // 人身の詳細
-            switch (carAccidentMasterVo.Personal_injury) {
+            switch(carAccidentMasterVo.Personal_injury) {
                 case "怪我なし":
                     radioButton30.Checked = true;
                     break;
@@ -306,7 +314,7 @@ namespace CarAccident {
                     break;
             }
             // 物件の詳細
-            switch (carAccidentMasterVo.Property_accident_1) {
+            switch(carAccidentMasterVo.Property_accident_1) {
                 case "衝突":
                     radioButton39.Checked = true;
                     break;
@@ -320,7 +328,7 @@ namespace CarAccident {
                     radioButton37.Checked = true;
                     break;
             }
-            switch (carAccidentMasterVo.Property_accident_2) {
+            switch(carAccidentMasterVo.Property_accident_2) {
                 case "電柱":
                     radioButton40.Checked = true;
                     break;
@@ -370,7 +378,7 @@ namespace CarAccident {
             // 発生場所
             TextBoxOccurrenceAddress.Text = carAccidentMasterVo.Occurrence_address;
             // 運転手・作業員の別
-            switch (carAccidentMasterVo.Work_kind) {
+            switch(carAccidentMasterVo.Work_kind) {
                 case "運転手":
                     RadioButtonDriver.Checked = true;
                     break;
@@ -391,49 +399,49 @@ namespace CarAccident {
             // 事故後の指導
             TextBoxGuide.Text = carAccidentMasterVo.Guide;
             // 写真
-            if (carAccidentMasterVo.Picture1.Length != 0) {
+            if(carAccidentMasterVo.Picture1.Length != 0) {
                 var imageConv = new ImageConverter();
                 PictureBox1.Image = (Image?)imageConv.ConvertFrom(carAccidentMasterVo.Picture1);
             } else {
                 PictureBox1.Image = null;
             }
-            if (carAccidentMasterVo.Picture2.Length != 0) {
+            if(carAccidentMasterVo.Picture2.Length != 0) {
                 var imageConv = new ImageConverter();
                 PictureBox2.Image = (Image?)imageConv.ConvertFrom(carAccidentMasterVo.Picture2);
             } else {
                 PictureBox2.Image = null;
             }
-            if (carAccidentMasterVo.Picture3.Length != 0) {
+            if(carAccidentMasterVo.Picture3.Length != 0) {
                 var imageConv = new ImageConverter();
                 PictureBox3.Image = (Image?)imageConv.ConvertFrom(carAccidentMasterVo.Picture3);
             } else {
                 PictureBox3.Image = null;
             }
-            if (carAccidentMasterVo.Picture4.Length != 0) {
+            if(carAccidentMasterVo.Picture4.Length != 0) {
                 var imageConv = new ImageConverter();
                 PictureBox4.Image = (Image?)imageConv.ConvertFrom(carAccidentMasterVo.Picture4);
             } else {
                 PictureBox4.Image = null;
             }
-            if (carAccidentMasterVo.Picture5.Length != 0) {
+            if(carAccidentMasterVo.Picture5.Length != 0) {
                 var imageConv = new ImageConverter();
                 PictureBox5.Image = (Image?)imageConv.ConvertFrom(carAccidentMasterVo.Picture5);
             } else {
                 PictureBox5.Image = null;
             }
-            if (carAccidentMasterVo.Picture6.Length != 0) {
+            if(carAccidentMasterVo.Picture6.Length != 0) {
                 var imageConv = new ImageConverter();
                 PictureBox6.Image = (Image?)imageConv.ConvertFrom(carAccidentMasterVo.Picture6);
             } else {
                 PictureBox6.Image = null;
             }
-            if (carAccidentMasterVo.Picture7.Length != 0) {
+            if(carAccidentMasterVo.Picture7.Length != 0) {
                 var imageConv = new ImageConverter();
                 PictureBox7.Image = (Image?)imageConv.ConvertFrom(carAccidentMasterVo.Picture7);
             } else {
                 PictureBox7.Image = null;
             }
-            if (carAccidentMasterVo.Picture8.Length != 0) {
+            if(carAccidentMasterVo.Picture8.Length != 0) {
                 var imageConv = new ImageConverter();
                 PictureBox8.Image = (Image?)imageConv.ConvertFrom(carAccidentMasterVo.Picture8);
             } else {
@@ -451,32 +459,32 @@ namespace CarAccident {
             RadioButtonTotallingTrue.Checked = false;
             RadioButtonTotallingFalse.Checked = false;
             // 天候
-            foreach (RadioButton radioButton in GroupBoxWeather.Controls)
+            foreach(RadioButton radioButton in GroupBoxWeather.Controls)
                 radioButton.Checked = false;
             // 事故の種別
-            foreach (RadioButton radioButton in GroupBoxAccidentKind.Controls)
+            foreach(RadioButton radioButton in GroupBoxAccidentKind.Controls)
                 radioButton.Checked = false;
             // 車両の静動
-            foreach (RadioButton radioButton in GroupBoxCarStatic.Controls)
+            foreach(RadioButton radioButton in GroupBoxCarStatic.Controls)
                 radioButton.Checked = false;
             // 事故の発生原因
-            foreach (RadioButton radioButton in GroupBoxOccurrenceCause.Controls)
+            foreach(RadioButton radioButton in GroupBoxOccurrenceCause.Controls)
                 radioButton.Checked = false;
             // 過失の有無
-            foreach (RadioButton radioButton in GroupBoxNegligence.Controls)
+            foreach(RadioButton radioButton in GroupBoxNegligence.Controls)
                 radioButton.Checked = false;
             // 人身の詳細
-            foreach (RadioButton radioButton in GroupBoxPersonalInjury.Controls)
+            foreach(RadioButton radioButton in GroupBoxPersonalInjury.Controls)
                 radioButton.Checked = false;
             // 物件の詳細
-            foreach (RadioButton radioButton in PanelPropertyAccident1.Controls)
+            foreach(RadioButton radioButton in PanelPropertyAccident1.Controls)
                 radioButton.Checked = false;
-            foreach (RadioButton radioButton in PanelPropertyAccident2.Controls)
+            foreach(RadioButton radioButton in PanelPropertyAccident2.Controls)
                 radioButton.Checked = false;
             // 発生場所
             TextBoxOccurrenceAddress.Text = "";
             // 運転手・作業員の別
-            foreach (RadioButton radioButton in PanelWorkKind.Controls)
+            foreach(RadioButton radioButton in PanelWorkKind.Controls)
                 radioButton.Checked = false;
             // 運転手・作業員の氏名
             InitializeComboBoxSelectDisplayName();
@@ -491,7 +499,7 @@ namespace CarAccident {
             // 事故後の指導
             TextBoxGuide.Text = "";
             // 写真
-            foreach (PictureBox pictureBox in _arrayPictureBox)
+            foreach(PictureBox pictureBox in _arrayPictureBox)
                 pictureBox.Image = null;
         }
 
@@ -500,7 +508,7 @@ namespace CarAccident {
         /// </summary>
         private void InitializeComboBoxSelectDisplayName() {
             ComboBoxSelectDisplayName.Items.Clear();
-            foreach (var staffLedgerVo in _listStaffMasterVo)
+            foreach(var staffLedgerVo in _listStaffMasterVo)
                 ComboBoxSelectDisplayName.Items.Add(new ComboBoxSelectStaffLedgerVo(staffLedgerVo.Name, staffLedgerVo));
             ComboBoxSelectDisplayName.DisplayMember = "Name";
         }
@@ -533,7 +541,7 @@ namespace CarAccident {
         /// </summary>
         private void InitializeComboBoxSelectCarRegistrationNumber() {
             ComboBoxSelectCarRegistrationNumber.Items.Clear();
-            foreach (var carMasterVo in _listCarMasterVo)
+            foreach(var carMasterVo in _listCarMasterVo)
                 ComboBoxSelectCarRegistrationNumber.Items.Add(new ComboBoxSelectCarLedgerVo(carMasterVo.Registration_number, carMasterVo));
             ComboBoxSelectCarRegistrationNumber.DisplayMember = "RegistrationNumber";
         }
@@ -570,7 +578,7 @@ namespace CarAccident {
             openFileDialog.Filter = "画像ファイル(*.gif,*.GIF,*.jpg,*.JPG,*.tif,*.TIF,*.png,*.PNG)|*.gif;*.GIF;*.jpg;*.JPG;*.tif;*.TIF;*.png;*.PNG;";
             openFileDialog.FilterIndex = 1;
             openFileDialog.RestoreDirectory = true; // ダイアログボックスを閉じる前に現在のディレクトリを復元するようにする
-            if (openFileDialog.ShowDialog() == DialogResult.OK) {
+            if(openFileDialog.ShowDialog() == DialogResult.OK) {
                 _arrayPictureBox[arrayNumber - 1].ImageLocation = openFileDialog.FileName; // Passをセットする
             }
             openFileDialog.Dispose(); // オブジェクトを破棄する
