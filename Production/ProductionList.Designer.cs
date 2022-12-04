@@ -115,6 +115,7 @@
             this.label14 = new System.Windows.Forms.Label();
             this.ButtonUpdate = new System.Windows.Forms.Button();
             this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.LabelName = new System.Windows.Forms.Label();
             this.TableLayoutPanelExBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -1153,6 +1154,7 @@
             // 
             // PanelTop
             // 
+            this.PanelTop.Controls.Add(this.LabelName);
             this.PanelTop.Controls.Add(this.ComboBoxFinancialYear);
             this.PanelTop.Controls.Add(this.label14);
             this.PanelTop.Controls.Add(this.ButtonUpdate);
@@ -1178,10 +1180,10 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label14.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label14.Location = new System.Drawing.Point(52, 20);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(90, 21);
+            this.label14.Size = new System.Drawing.Size(84, 20);
             this.label14.TabIndex = 127;
             this.label14.Text = "配車年度：";
             // 
@@ -1195,6 +1197,16 @@
             this.ButtonUpdate.Text = "UPDATE";
             this.ButtonUpdate.UseVisualStyleBackColor = true;
             this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
+            // 
+            // LabelName
+            // 
+            this.LabelName.Font = new System.Drawing.Font("Yu Gothic UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LabelName.Location = new System.Drawing.Point(720, 12);
+            this.LabelName.Name = "LabelName";
+            this.LabelName.Size = new System.Drawing.Size(468, 32);
+            this.LabelName.TabIndex = 129;
+            this.LabelName.Text = "社内で使用している本番登録";
+            this.LabelName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ProductionList
             // 
@@ -1314,5 +1326,6 @@
         private Label LabelDayOfWeek;
         private Label label18;
         private ToolStripStatusLabel ToolStripStatusLabelDetail;
+        private Label LabelName;
     }
 }

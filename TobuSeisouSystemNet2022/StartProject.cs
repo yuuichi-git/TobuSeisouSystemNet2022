@@ -64,10 +64,15 @@ namespace TobuSeisouSystemNet2022 {
                                 var vehicleDispatchBoad = new VehicleDispatchBoad(_connectionVo);
                                 vehicleDispatchBoad.Show(this);
                                 break;
+                            // ProductionCleanOfficeList
+                            case "ProductionCleanOfficeList":
+                                var productionCleanOfficeList = new ProductionList(_connectionVo, "ProductionCleanOfficeList");
+                                productionCleanOfficeList.Show(this);
+                                break;
                             // ProductionList
-                            case "ProductionList":
-                                var productionList = new ProductionList(_connectionVo);
-                                productionList.Show(this);
+                            case "ProductionOfficeList":
+                                var productionOfficeList = new ProductionList(_connectionVo, "ProductionOfficeList");
+                                productionOfficeList.Show(this);
                                 break;
                             // StaffList
                             case "StaffList":

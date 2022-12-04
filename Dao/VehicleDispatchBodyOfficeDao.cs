@@ -3,11 +3,11 @@
 using Vo;
 
 namespace Dao {
-    public class VehicleDispatchBodyDao {
+    public class VehicleDispatchBodyOfficeDao {
         private readonly ConnectionVo _connectionVo;
         private readonly DefaultValue _defaultValue = new();
 
-        public VehicleDispatchBodyDao(ConnectionVo connectionVo) {
+        public VehicleDispatchBodyOfficeDao(ConnectionVo connectionVo) {
             _connectionVo = connectionVo;
         }
 
@@ -31,7 +31,7 @@ namespace Dao {
                                             "update_ymd_hms," +
                                             "delete_ymd_hms," +
                                             "delete_flag " +
-                                     "FROM vehicle_dispatch_body ";
+                                     "FROM vehicle_dispatch_body_office ";
             using (var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while (sqlDataReader.Read() == true) {
                     var setVehicleDispatchBodyVo = new VehicleDispatchBodyVo();
@@ -60,19 +60,19 @@ namespace Dao {
         /// <param name="productionListVo"></param>
         public void InsertVehicleDispatchBodyVo(ProductionListVo productionListVo) {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
-            sqlCommand.CommandText = "INSERT INTO vehicle_dispatch_body (cell_number," +
-                                                                        "day_of_week," +
-                                                                        "car_code," +
-                                                                        "operator_code_1," +
-                                                                        "operator_code_2," +
-                                                                        "operator_code_3," +
-                                                                        "operator_code_4," +
-                                                                        "note," +
-                                                                        "financial_year," +
-                                                                        "insert_ymd_hms," +
-                                                                        "update_ymd_hms," +
-                                                                        "delete_ymd_hms," +
-                                                                        "delete_flag) " +
+            sqlCommand.CommandText = "INSERT INTO vehicle_dispatch_body_office (cell_number," +
+                                                                               "day_of_week," +
+                                                                               "car_code," +
+                                                                               "operator_code_1," +
+                                                                               "operator_code_2," +
+                                                                               "operator_code_3," +
+                                                                               "operator_code_4," +
+                                                                               "note," +
+                                                                               "financial_year," +
+                                                                               "insert_ymd_hms," +
+                                                                               "update_ymd_hms," +
+                                                                               "delete_ymd_hms," +
+                                                                               "delete_flag) " +
                                      "VALUES ('" + _defaultValue.GetDefaultValue<int>(productionListVo.Cell_number) + "'," +
                                              "'" + _defaultValue.GetDefaultValue<string>(productionListVo.Day_of_week) + "'," +
                                              "'" + _defaultValue.GetDefaultValue<int>(productionListVo.Car_code) + "'," +
@@ -120,7 +120,7 @@ namespace Dao {
                 count++;
             }
             var sqlCommand = _connectionVo.Connection.CreateCommand();
-            sqlCommand.CommandText = "INSERT INTO vehicle_dispatch_body(" +
+            sqlCommand.CommandText = "INSERT INTO vehicle_dispatch_body_office(" +
                                                  "cell_number," +
                                                  "day_of_week," +
                                                  "car_code," +
@@ -149,7 +149,7 @@ namespace Dao {
         /// <param name="financialYear"></param>
         public void DeleteVehicleDispatchBodyVo(int cellNumber, DateTime financialYear) {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
-            sqlCommand.CommandText = "DELETE FROM vehicle_dispatch_body " +
+            sqlCommand.CommandText = "DELETE FROM vehicle_dispatch_body_office " +
                                      "WHERE cell_number = '" + cellNumber + "' AND financial_year = '" + financialYear + "'";
             try {
                 sqlCommand.ExecuteNonQuery();
