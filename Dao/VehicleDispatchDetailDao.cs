@@ -43,18 +43,18 @@ namespace Dao {
                                             "vehicle_dispatch_head.garage_flag," +
                                             "vehicle_dispatch_head.five_lap," +
                                             "vehicle_dispatch_head.move_flag," +
-                                            "vehicle_dispatch_body.day_of_week," +
+                                            "vehicle_dispatch_body_office.day_of_week," +
                                             "vehicle_dispatch_head.set_code," +
                                             "vehicle_dispatch_head.car_code," +
                                             "vehicle_dispatch_head.number_of_people," +
-                                            "vehicle_dispatch_body.operator_code_1," +
-                                            "vehicle_dispatch_body.operator_code_2," +
-                                            "vehicle_dispatch_body.operator_code_3," +
-                                            "vehicle_dispatch_body.operator_code_4," +
-                                            "vehicle_dispatch_body.note " +
+                                            "vehicle_dispatch_body_office.operator_code_1," +
+                                            "vehicle_dispatch_body_office.operator_code_2," +
+                                            "vehicle_dispatch_body_office.operator_code_3," +
+                                            "vehicle_dispatch_body_office.operator_code_4," +
+                                            "vehicle_dispatch_body_office.note " +
                                      "FROM vehicle_dispatch_head " +
-                                     "LEFT OUTER JOIN vehicle_dispatch_body ON vehicle_dispatch_head.cell_number = vehicle_dispatch_body.cell_number " +
-                                                                          "AND vehicle_dispatch_body.day_of_week = '" + dayOfWeek + "'";
+                                     "LEFT OUTER JOIN vehicle_dispatch_body_office ON vehicle_dispatch_head.cell_number = vehicle_dispatch_body_office.cell_number " +
+                                                                          "AND vehicle_dispatch_body_office.day_of_week = '" + dayOfWeek + "'";
             using(var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while(sqlDataReader.Read() == true) {
                     var vehicleDispatchDetailVo = new VehicleDispatchDetailVo();

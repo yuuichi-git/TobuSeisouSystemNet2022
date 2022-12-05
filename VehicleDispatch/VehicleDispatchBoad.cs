@@ -8,6 +8,8 @@ using Microsoft.VisualBasic.Devices;
 
 using Staff;
 
+using Substitute;
+
 using VehicleDispatchConvert;
 
 using Vo;
@@ -647,6 +649,7 @@ namespace VehicleDispatch {
         SetLabelEx ToolStripMenuItemClickSetLabelEx;
         int ToolStripMenuItemClickCellNumber;
         int ToolStripMenuItemClickStaffCode;
+        SetLabelEx ToolStripMenuItemFaxSetLabelEx;
         private void ContextMenuStrip_Opened(object sender, EventArgs e) {
             switch(((ContextMenuStrip)sender).Name) {
                 // ContextMenuStripSetLabel
@@ -656,8 +659,12 @@ namespace VehicleDispatch {
                     // ƒNƒŠƒbƒN‚³‚ê‚½CellNumber‚ğæ“¾‚µ‚Ä•Ï”‚ÉŠi”[‚·‚é
                     ToolStripMenuItemClickCellNumber = (int)((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.Tag;
                     SetMasterVo setMasterVo = (SetMasterVo)((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Tag;
-                    // ToolStripMenuItemSetDelete
+                    // ToolStripMenuItemFax—p‚ÉObject‚ğ‘Ş”ğ‚·‚é
+                    ToolStripMenuItemFaxSetLabelEx = (SetLabelEx)((ContextMenuStrip)sender).SourceControl;
+                    // ”zÔæ‚ğíœ‚·‚é
                     ToolStripMenuItemSetDelete.Enabled = setMasterVo.Move_flag;
+                    // ‘ãÔE‘ã”Ô‚ÌFAX‚ğì¬‚·‚é
+                    ToolStripMenuItemFax.Enabled = setMasterVo.Contact_method == 11 ? true : false;
                     break;
                 case "ContextMenuStripCarLabel":
                     break;
@@ -679,7 +686,7 @@ namespace VehicleDispatch {
                 /*
                  * MenuStrip1
                  */
-                // ”zÔ•\‚ğì¬‚·‚é(VŒ^)
+                // ”zÔ•\‚ğì¬‚·‚é
                 case "ToolStripMenuItemConvertExcel":
                     var vehicleDispatchSimple = new VehicleDispatchSimple(_connectionVo, DateTimePickerOperationDate.Value);
                     vehicleDispatchSimple.ShowDialog(this);
@@ -738,8 +745,37 @@ namespace VehicleDispatch {
                         MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     }
                     break;
+                // ‘ãÔE‘ã”ÔFAX
                 case "ToolStripMenuItemFax":
-                    MessageBox.Show("‘ãÔ‘ã”Ô‚ÌFAX‚ğì¬‰æ–Ê‚Íì¬’†‚Å‚·B’ñˆÄ‚ğó•t‚Ä‚¢‚Ü‚·B", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    SetMasterVo setMasterVo = (SetMasterVo)ToolStripMenuItemFaxSetLabelEx.Tag;
+                    switch(setMasterVo.Set_code) {
+                        case 1310101: // ç‘ã“c‚Q
+                        case 1310102: // ç‘ã“c‚U
+                        case 1310103: // ç‘ã“c†‚P
+                            new SubstitutePaper(_connectionVo).ShowDialog(this);
+                            break;
+                        case 1310201: // ’†‰›ƒyƒbƒg‚V
+                        case 1310202: // ’†‰›ƒyƒbƒg‚W
+                            new SubstitutePaper(_connectionVo).ShowDialog(this);
+                            break;
+                        case 1312101: // ‘«—§‚P‚W
+                        case 1312102: // ‘«—§‚Q‚R
+                        case 1312103: // ‘«—§‚Q‚S
+                        case 1312104: // ‘«—§‚R‚W
+                        case 1312105: // ‘«—§•s”R‚S
+                            new SubstitutePaper(_connectionVo).ShowDialog(this);
+                            break;
+                        case 1312204: // Š‹ü‚P‚P
+                        case 1312201: // Š‹ü‚R‚R
+                        case 1312202: // Š‹ü‚T‚T
+                        case 1312203: // ¬Šâ‚S
+                            new SubstitutePaper(_connectionVo).ShowDialog(this);
+                            break;
+                        default:
+                            MessageBox.Show("‘ãÔ‘ã”Ô‚ÌFAX‚ğì¬‰æ–Ê‚Íì¬’†‚Å‚·B’ñˆÄ‚ğó•t‚Ä‚¢‚Ü‚·B", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            break;
+
+                    }
                     break;
                 /*
                  * ContextMenuStripCarLabel
