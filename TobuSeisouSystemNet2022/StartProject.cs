@@ -3,6 +3,8 @@
  */
 using System.Data;
 
+using Accounting;
+
 using Car;
 
 using CarAccident;
@@ -101,10 +103,15 @@ namespace TobuSeisouSystemNet2022 {
                                 var commuterInsuranceList = new CommuterInsuranceList(_connectionVo);
                                 commuterInsuranceList.Show(this);
                                 break;
-                            // StaffWorkDaysCount
-                            case "StaffWorkDaysCount":
-                                var staffWorkDaysCount = new StaffExcel(_connectionVo);
-                                staffWorkDaysCount.Show(this);
+                            // StaffExcel
+                            case "StaffExcel":
+                                var staffExcel = new StaffExcel(_connectionVo);
+                                staffExcel.Show(this);
+                                break;
+                            // StaffPartTimeDetail
+                            case "AccountingParttimeList":
+                                var accountingParttimeList = new AccountingParttimeList(_connectionVo);
+                                accountingParttimeList.Show(this);
                                 break;
                         }
                         break;

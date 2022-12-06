@@ -181,8 +181,21 @@ namespace Common {
         /// <returns></returns>
         public Form SubstitutePaper(Form form) {
             form.KeyPreview = true;
-            form.MaximumSize = new Size(957, 1080);
-            form.MinimumSize = new Size(957, 1048);
+            form.MaximumSize = new Size(833, 1080);
+            form.MinimumSize = new Size(833, 1048);
+            GetWorkingArea(form);
+            return form;
+        }
+
+        /// <summary>
+        /// AccountingParttimeList
+        /// </summary>
+        /// <param name="form"></param>
+        /// <returns></returns>
+        public Form AccountingParttimeList(Form form) {
+            form.KeyPreview = true;
+            form.MaximumSize = new Size(865, 1080);
+            form.MinimumSize = new Size(865, 1048);
             GetWorkingArea(form);
             return form;
         }

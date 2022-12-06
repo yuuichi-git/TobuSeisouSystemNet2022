@@ -56,6 +56,8 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
             this.TableLayoutPanelBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -163,6 +165,8 @@
             this.TableLayoutPanelCenter.Controls.Add(this.label17, 0, 23);
             this.TableLayoutPanelCenter.Controls.Add(this.label20, 0, 25);
             this.TableLayoutPanelCenter.Controls.Add(this.label21, 0, 26);
+            this.TableLayoutPanelCenter.Controls.Add(this.label22, 0, 34);
+            this.TableLayoutPanelCenter.Controls.Add(this.label23, 0, 35);
             this.TableLayoutPanelCenter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanelCenter.Location = new System.Drawing.Point(303, 27);
             this.TableLayoutPanelCenter.Name = "TableLayoutPanelCenter";
@@ -365,10 +369,10 @@
             this.label18.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label18.Location = new System.Drawing.Point(3, 640);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(99, 17);
+            this.label18.Size = new System.Drawing.Size(151, 17);
             this.label18.TabIndex = 22;
-            this.label18.Tag = "StaffWorkDaysCount";
-            this.label18.Text = "　出勤日数管理";
+            this.label18.Tag = "StaffExcel";
+            this.label18.Text = "　出勤日数管理（配車）";
             this.label18.Click += new System.EventHandler(this.Label_Click);
             this.label18.MouseEnter += new System.EventHandler(this.Label_MouseEnter);
             this.label18.MouseLeave += new System.EventHandler(this.Label_MouseLeave);
@@ -519,6 +523,30 @@
             this.label21.TabIndex = 25;
             this.label21.Text = "　本番登録の新規及び修正や削除を行います。";
             // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label22.Location = new System.Drawing.Point(3, 700);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(188, 17);
+            this.label22.TabIndex = 26;
+            this.label22.Tag = "AccountingParttimeList";
+            this.label22.Text = "　アルバイト出勤確認表（経理）";
+            this.label22.Click += new System.EventHandler(this.Label_Click);
+            this.label22.MouseEnter += new System.EventHandler(this.Label_MouseEnter);
+            this.label22.MouseLeave += new System.EventHandler(this.Label_MouseLeave);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.ForeColor = System.Drawing.SystemColors.GrayText;
+            this.label23.Location = new System.Drawing.Point(3, 720);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(191, 15);
+            this.label23.TabIndex = 27;
+            this.label23.Text = "　アルバイトの出勤状況を管理します。";
+            // 
             // StartProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -577,5 +605,7 @@
         private Label label19;
         private Label label20;
         private Label label21;
+        private Label label22;
+        private Label label23;
     }
 }

@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Accounting\Accounting.csproj" />
     <ProjectReference Include="..\CarAccident\CarAccident.csproj" />
     <ProjectReference Include="..\Car\Car.csproj" />
     <ProjectReference Include="..\Common\Common.csproj" />

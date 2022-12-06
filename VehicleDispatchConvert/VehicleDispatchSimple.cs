@@ -71,7 +71,7 @@ namespace VehicleDispatchConvert {
         /// <param name="e"></param>
         private void ButtonUpdate_Click(object sender, EventArgs e) {
             ConvertXls convertXls = new ConvertXls(_iWorkbook, _iSheet, _listSetMasterVo, _listCarMasterVo, _listStaffMasterVo);
-            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectVehicleDispatchDetail(_operationDate)) {
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(_operationDate)) {
                 convertXls.SetCellString(vehicleDispatchDetailVo);
             }
             try {
