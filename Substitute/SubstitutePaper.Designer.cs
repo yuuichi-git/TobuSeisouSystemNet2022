@@ -6663,7 +6663,6 @@
             paperSize1.RawKind = 9;
             paperSize1.Width = 827;
             this.SheetViewPaper.PrintInfo.PaperSize = paperSize1;
-            this.SheetViewPaper.PrintInfo.Preview = true;
             this.SheetViewPaper.PrintInfo.Printer = "";
             this.SheetViewPaper.PrintInfo.PrintType = FarPoint.Win.Spread.PrintType.CellRange;
             this.SheetViewPaper.PrintInfo.RowEnd = 54;

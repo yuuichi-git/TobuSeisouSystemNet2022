@@ -13,14 +13,20 @@ namespace Substitute {
         private readonly ConnectionVo _connectionVo;
         private readonly InitializeForm _initializeForm = new();
         /*
+         * Dao
+         */
+        private VehicleDispatchDetailDao _vehicleDispatchDetailDao;
+        private VehicleDispatchBodyCleanOfficeDao _vehicleDispatchBodyCleanOfficeDao;
+        private VehicleDispatchBodyOfficeDao _vehicleDispatchBodyOfficeDao;
+        /*
          * Vo
          */
         private readonly SetMasterVo _setMasterVo;
-        private readonly CarMasterVo _carMasterVo;
-        private readonly StaffMasterVo _staffMasterVo;
+        private readonly List<CarMasterVo> _listCarMasterVo;
+        private readonly List<StaffMasterVo> _listStaffMasterVo;
         private readonly VehicleDispatchDetailVo _vehicleDispatchDetailVo;
         private readonly VehicleDispatchBodyVo _vehicleDispatchBodyCleanOfficeVo;
-        private readonly VehicleDispatchBodyVo _vehicleDispatchBodyOfficeVo;
+
         /*
          * ê¥ë|éññ±èäñºÅEFAXî‘çÜ
          */
@@ -34,7 +40,13 @@ namespace Substitute {
         /// <param name="setCode"></param>
         public SubstitutePaper(ConnectionVo connectionVo, int setCode) {
             _connectionVo = connectionVo;
+
+            _vehicleDispatchDetailDao = new VehicleDispatchDetailDao(connectionVo);
+            _vehicleDispatchBodyCleanOfficeDao = new VehicleDispatchBodyCleanOfficeDao(connectionVo);
+            _vehicleDispatchBodyOfficeDao = new VehicleDispatchBodyOfficeDao(connectionVo);
+
             _vehicleDispatchDetailVo = new VehicleDispatchDetailDao(_connectionVo).SelectOneVehicleDispatchDetail(DateTime.Now.Date, setCode);
+
             /*
              * ÉRÉìÉgÉçÅ[Éãèâä˙âª
              */
@@ -44,7 +56,8 @@ namespace Substitute {
             SpreadPaper.TabStripPolicy = TabStripPolicy.Never;
             // îzé‘êÊÇì«çûÇﬁ
             _setMasterVo = new SetMasterDao(_connectionVo).SelectOneSetMaster(setCode);
-
+            _listCarMasterVo = new CarMasterDao(_connectionVo).SelectAllCarMaster();
+            _listStaffMasterVo = new StaffMasterDao(_connectionVo).SelectAllStaffMaster();
             /*
              * FAXÇÃà∂êÊÅEFAXî‘çÜÇÉZÉbÉg
              */
@@ -90,6 +103,9 @@ namespace Substitute {
         public static void Main() {
         }
 
+        /// <summary>
+        /// PutSheetViewPaper
+        /// </summary>
         private void PutSheetViewPaper() {
             // ì˙ït
             var Japanese = new CultureInfo("ja-JP", true);
@@ -97,9 +113,85 @@ namespace Substitute {
             SheetViewPaper.Cells["G3"].Text = DateTime.Now.ToString("gg yîNMåédì˙", Japanese);
             // à∂êÊ
             SheetViewPaper.Cells["B6"].Text = _cleanOfficeName;
+            /*
+             * ë„é‘
+             */
+            // á@Ç‹Ç∏ÇÕîzé‘êÊÇ™äiî[Ç≥ÇÍÇƒÇ¢ÇÈCellNumberÇéÊìæÇ∑ÇÈ
+            int cellNumber = _vehicleDispatchDetailDao.GetCellNumber(_vehicleDispatchDetailVo.Set_code);
+            // áAê¥ë|éññ±èäÇ…ìoò^Ç≥ÇÍÇƒÇ¢ÇÈñ{î‘é‘óºÇéÊìæÇ∑ÇÈ
+            int carCodeCleanOffice = _vehicleDispatchBodyCleanOfficeDao.GetCarCode(cellNumber);
+            // áBë„é‘ÇÃèàóù
+            if(_vehicleDispatchDetailVo.Car_code != 0 && carCodeCleanOffice != _vehicleDispatchDetailVo.Car_code) {
+                // ïœçXëO ëgêî é‘óºÉiÉìÉoÅ[ ÉhÉAî‘çÜ
+                SheetViewPaper.Cells["B29"].Text = _setMasterVo.Set_name_2;
+                SheetViewPaper.Cells["C29"].Text = _listCarMasterVo.Find(x => x.Car_code == carCodeCleanOffice).Registration_number;
+                SheetViewPaper.Cells["F29"].Text = _listCarMasterVo.Find(x => x.Car_code == carCodeCleanOffice).Door_number.ToString();
+                // ïœçXå„ é‘óºÉiÉìÉoÅ[ ÉhÉAî‘çÜ
+                SheetViewPaper.Cells["H29"].Text = _listCarMasterVo.Find(x => x.Car_code == _vehicleDispatchDetailVo.Car_code).Registration_number;
+                SheetViewPaper.Cells["L29"].Text = _listCarMasterVo.Find(x => x.Car_code == _vehicleDispatchDetailVo.Car_code).Door_number.ToString();
+            }
+            /*
+             * ë„î‘
+             */
+            // á@ê¥ë|éññ±èäÇ…ìoò^Ç≥ÇÍÇƒÇ¢ÇÈñ{î‘Oprator1ÇéÊìæÇ∑ÇÈ 
+            int operatorCodeCleanOffice = _vehicleDispatchBodyCleanOfficeDao.GetOperatorCode1(cellNumber);
+            // áAâ^ì]éËë„î‘ÇÃèàóù
+            if(_vehicleDispatchDetailVo.Operator_code_1 != 0 && operatorCodeCleanOffice != _vehicleDispatchDetailVo.Operator_code_1) {
+                // ïœçXëOÅ@ëgêîÅ@éÅñº
+                SheetViewPaper.Cells["B38"].Text = string.Concat(_setMasterVo.Set_name_2, "ëg");
+                SheetViewPaper.Cells["D38"].Text = _listStaffMasterVo.Find(x => x.Staff_code == operatorCodeCleanOffice).Display_name;
+                // ïœçXå„Å@éÅñºÅ@ågë—î‘çÜ
+                SheetViewPaper.Cells["I38"].Text = _listStaffMasterVo.Find(x => x.Staff_code == _vehicleDispatchDetailVo.Operator_code_1).Display_name;
+                
+                string telephoneNumber = "";
+                switch(_vehicleDispatchDetailVo.Set_code) {
+                    case 1310101: // êÁë„ìcÇQ
+                        telephoneNumber = "090-6506-7967";
+                        break;
+                    case 1310102: // êÁë„ìcÇU
+                        telephoneNumber = "080-8868-7459";
+                        break;
+                    case 1310103: // êÁë„ìcéÜÇP
+                        telephoneNumber = "080-8868-8023";
+                        break;
+                    case 1310201: // íÜâõÉyÉbÉgÇV
+                        telephoneNumber = "080-2202-7713";
+                        break;
+                    case 1310202: // íÜâõÉyÉbÉgÇW
+                        telephoneNumber = "080-3493-3729";
+                        break;
+                    case 1312101: // ë´óßÇPÇW
+                        telephoneNumber = "ïsñæ";
+                        break;
+                    case 1312102: // ë´óßÇQÇR
+                        telephoneNumber = "090-5560-0491";
+                        break;
+                    case 1312103: // ë´óßÇQÇS
+                        telephoneNumber = "090-5560-0677";
+                        break;
+                    case 1312104: // ë´óßÇRÇW
+                        telephoneNumber = "090-5560-0700";
+                        break;
+                    case 1312105: // ë´óßïsîRÇS
+                        telephoneNumber = _listStaffMasterVo.Find(x => x.Staff_code == _vehicleDispatchDetailVo.Operator_code_1).Telephone_number;
+                        break;
+                    case 1312204: // äãè¸ÇPÇP
+                        telephoneNumber = "090-9817-8129";
+                        break;
+                    case 1312201: // äãè¸ÇRÇR
+                        telephoneNumber = "080-3493-3728";
+                        break;
+                    case 1312202: // äãè¸ÇTÇT
+                        telephoneNumber = "080-2202-7269";
+                        break;
+                    case 1312203: // è¨ä‚ÇS
+                        telephoneNumber = "ïsñæ";
+                        break;
+                }
+                SheetViewPaper.Cells["I40"].Text = telephoneNumber;
 
 
-
+            }
 
 
             // FAXî‘çÜëº

@@ -157,5 +157,24 @@ namespace Dao {
                 throw;
             }
         }
+
+        /// <summary>
+        /// GetCarCode
+        /// cell_numberからcar_codeを取得する
+        /// </summary>
+        /// <param name="cellNumber"></param>
+        /// <returns></returns>
+        public int GetCarCode(int cellNumber) {
+            int carCode = 0;
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT car_code " +
+                                     "FROM vehicle_dispatch_body_office " +
+                                     "WHERE cell_number = " + cellNumber;
+            using(var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while(sqlDataReader.Read() == true)
+                    carCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["car_code"]);
+            }
+            return carCode;
+        }
     }
 }

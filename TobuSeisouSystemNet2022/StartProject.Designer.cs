@@ -80,7 +80,7 @@
             this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.TableLayoutPanelBase.Size = new System.Drawing.Size(1316, 808);
+            this.TableLayoutPanelBase.Size = new System.Drawing.Size(1316, 832);
             this.TableLayoutPanelBase.TabIndex = 0;
             // 
             // MenuStrip1
@@ -121,7 +121,7 @@
             this.TableLayoutPanelBase.SetColumnSpan(this.StatusStrip1, 3);
             this.StatusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripStatusLabel1});
-            this.StatusStrip1.Location = new System.Drawing.Point(0, 786);
+            this.StatusStrip1.Location = new System.Drawing.Point(0, 810);
             this.StatusStrip1.Name = "StatusStrip1";
             this.StatusStrip1.Size = new System.Drawing.Size(1316, 22);
             this.StatusStrip1.SizingGrip = false;
@@ -212,7 +212,7 @@
             this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.Size = new System.Drawing.Size(710, 754);
+            this.TableLayoutPanelCenter.Size = new System.Drawing.Size(710, 778);
             this.TableLayoutPanelCenter.TabIndex = 2;
             // 
             // label1
@@ -551,7 +551,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1316, 808);
+            this.ClientSize = new System.Drawing.Size(1316, 832);
             this.Controls.Add(this.TableLayoutPanelBase);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;

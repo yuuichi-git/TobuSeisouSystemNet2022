@@ -157,5 +157,96 @@ namespace Dao {
                 throw;
             }
         }
+
+        /// <summary>
+        /// GetCarCode
+        /// cell_numberからcar_codeを取得する
+        /// </summary>
+        /// <param name="cellNumber"></param>
+        /// <returns></returns>
+        public int GetCarCode(int cellNumber) {
+            int carCode = 0;
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT car_code " +
+                                     "FROM vehicle_dispatch_body_clean_office " +
+                                     "WHERE cell_number = " + cellNumber;
+            using(var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while(sqlDataReader.Read() == true)
+                    carCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["car_code"]);
+            }
+            return carCode;
+        }
+
+        /// <summary>
+        /// GetOperatorCode1
+        /// </summary>
+        /// <param name="cellNumber"></param>
+        /// <returns></returns>
+        public int GetOperatorCode1(int cellNumber) {
+            int operatorCode = 0;
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT operator_code_1 " +
+                                     "FROM vehicle_dispatch_body_clean_office " +
+                                     "WHERE cell_number = " + cellNumber;
+            using(var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while(sqlDataReader.Read() == true)
+                    operatorCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_code_1"]);
+            }
+            return operatorCode;
+        }
+
+        /// <summary>
+        /// GetOperatorCode2
+        /// </summary>
+        /// <param name="cellNumber"></param>
+        /// <returns></returns>
+        public int GetOperatorCode2(int cellNumber) {
+            int operatorCode = 0;
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT operator_code_2 " +
+                                     "FROM vehicle_dispatch_body_clean_office " +
+                                     "WHERE cell_number = " + cellNumber;
+            using(var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while(sqlDataReader.Read() == true)
+                    operatorCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_code_2"]);
+            }
+            return operatorCode;
+        }
+
+        /// <summary>
+        /// GetOperatorCode3
+        /// </summary>
+        /// <param name="cellNumber"></param>
+        /// <returns></returns>
+        public int GetOperatorCode3(int cellNumber) {
+            int operatorCode = 0;
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT operator_code_3 " +
+                                     "FROM vehicle_dispatch_body_clean_office " +
+                                     "WHERE cell_number = " + cellNumber;
+            using(var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while(sqlDataReader.Read() == true)
+                    operatorCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_code_3"]);
+            }
+            return operatorCode;
+        }
+
+        /// <summary>
+        /// GetOperatorCode4
+        /// </summary>
+        /// <param name="cellNumber"></param>
+        /// <returns></returns>
+        public int GetOperatorCode4(int cellNumber) {
+            int operatorCode = 0;
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT operator_code_4 " +
+                                     "FROM vehicle_dispatch_body_clean_office " +
+                                     "WHERE cell_number = " + cellNumber;
+            using(var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while(sqlDataReader.Read() == true)
+                    operatorCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_code_4"]);
+            }
+            return operatorCode;
+        }
     }
 }

@@ -834,5 +834,24 @@ namespace Dao {
                 throw;
             }
         }
+
+        /// <summary>
+        /// GetCellNumber
+        /// set_codeからcell_numberを取得する
+        /// </summary>
+        /// <param name="setCode"></param>
+        /// <returns></returns>
+        public int GetCellNumber(int setCode) {
+            int cellNumber = 0;
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT cell_number " +
+                                     "FROM vehicle_dispatch_detail " +
+                                     "WHERE set_code = " + setCode;
+            using(var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while(sqlDataReader.Read() == true)
+                    cellNumber = _defaultValue.GetDefaultValue<int>(sqlDataReader["cell_number"]);
+            }
+            return cellNumber;
+        }
     }
 }
