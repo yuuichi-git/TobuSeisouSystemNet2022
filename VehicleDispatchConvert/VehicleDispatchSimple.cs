@@ -9,7 +9,6 @@ using Vo;
 
 namespace VehicleDispatchConvert {
     public partial class VehicleDispatchSimple : Form {
-        private ConnectionVo _connectionVo;
         private DateTime _operationDate;
         /*
          * NPOI
@@ -33,7 +32,6 @@ namespace VehicleDispatchConvert {
         /// <param name="connectionVo"></param>
         /// <param name="operationDate"></param>
         public VehicleDispatchSimple(ConnectionVo connectionVo, DateTime operationDate) {
-            _connectionVo = connectionVo;
             _operationDate = operationDate;
             /*
              * Dao
@@ -47,14 +45,21 @@ namespace VehicleDispatchConvert {
             _listSetMasterVo = new SetMasterDao(connectionVo).SelectAllSetMaster();
             _listCarMasterVo = new CarMasterDao(connectionVo).SelectAllCarMaster();
             _listStaffMasterVo = new StaffMasterDao(connectionVo).SelectAllStaffMaster();
-            /*
-             * ブック読み込み new Directry().GetExcelDesktopPass(fileName)
-             */
-            _iWorkbook = (HSSFWorkbook)WorkbookFactory.Create(new Directry().GetExcelDesktopPassXls("配車当日"));
-            /*
-             * シート名からシート取得
-             */
-            _iSheet = _iWorkbook.GetSheet("配車表");
+
+            if(File.Exists(new Directry().GetExcelDesktopPassXls("配車当日"))) {
+                /*
+                 * ブック読み込み new Directry().GetExcelDesktopPass(fileName)
+                 */
+                _iWorkbook = (HSSFWorkbook)WorkbookFactory.Create(new Directry().GetExcelDesktopPassXls("配車当日"));
+                /*
+                 * シート名からシート取得
+                 */
+                _iSheet = _iWorkbook.GetSheet("配車表");
+            } else {
+                MessageBox.Show("デスクトップに”配車当日.xls”が存在しません。やり直して下さい", MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                throw new Exception();
+            }
+
             InitializeComponent();
         }
 

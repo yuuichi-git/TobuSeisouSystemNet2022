@@ -512,7 +512,8 @@ namespace Staff {
                  * ínê}Çï\é¶
                  */
                 case "ToolStripMenuItemMap":
-
+                    var currentAddress = SheetViewList.Cells[SheetViewList.ActiveRowIndex, colCurrentAddress].Text;
+                    new Maps().MapOpen(currentAddress);
                     break;
             }
         }

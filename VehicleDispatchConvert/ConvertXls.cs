@@ -17,30 +17,29 @@ namespace VehicleDispatchConvert {
         private List<CarMasterVo> _listCarMasterVo;
         private List<StaffMasterVo> _listStaffMasterVo;
 
-        private Dictionary<int, string> dictionaryWordCode = new Dictionary<int, string> { { 13101, "千代田区" }, // 
-                                                                                           { 13102, "中央区" }, // 
-                                                                                           { 13103, "港区" }, // 
-                                                                                           { 13104, "新宿区" }, // 
-                                                                                           { 13105, "文京区" }, // 
-                                                                                           { 13106, "台東区" }, // 
-                                                                                           { 13107, "墨田区" }, // 
-                                                                                           { 13108, "江東区" }, // 
-                                                                                           { 13109, "品川区" }, // 
-                                                                                           { 13110, "目黒区" }, // 
-                                                                                           { 13111, "大田区" }, // 
-                                                                                           { 13112, "世田谷区" }, // 
-                                                                                           { 13113, "渋谷区" }, // 
-                                                                                           { 13114, "中野区" }, // 
-                                                                                           { 13115, "杉並区" }, // 
-                                                                                           { 13116, "豊島区" }, // 
-                                                                                           { 13117, "北区" }, // 
-                                                                                           { 13118, "荒川区" }, // 
-                                                                                           { 13119, "板橋区" }, // 
-                                                                                           { 13120, "練馬区" }, // 
-                                                                                           { 13121, "足立区" }, // 
-                                                                                           { 13122, "葛飾区" }, // 
-                                                                                           { 13123, "江戸川区" }, // 
-                                                                                                                };
+        private Dictionary<int, string> dictionaryWordCode = new Dictionary<int, string> { { 13101, "千代田区" },
+                                                                                           { 13102, "中央区" },
+                                                                                           { 13103, "港区" },
+                                                                                           { 13104, "新宿区" },
+                                                                                           { 13105, "文京区" },
+                                                                                           { 13106, "台東区" },
+                                                                                           { 13107, "墨田区" },
+                                                                                           { 13108, "江東区" },
+                                                                                           { 13109, "品川区" },
+                                                                                           { 13110, "目黒区" },
+                                                                                           { 13111, "大田区" },
+                                                                                           { 13112, "世田谷区" },
+                                                                                           { 13113, "渋谷区" },
+                                                                                           { 13114, "中野区" },
+                                                                                           { 13115, "杉並区" },
+                                                                                           { 13116, "豊島区" },
+                                                                                           { 13117, "北区" },
+                                                                                           { 13118, "荒川区" },
+                                                                                           { 13119, "板橋区" },
+                                                                                           { 13120, "練馬区" },
+                                                                                           { 13121, "足立区" },
+                                                                                           { 13122, "葛飾区" },
+                                                                                           { 13123, "江戸川区" } };
 
         private Dictionary<int, string> dictionaryCellPoint = new Dictionary<int, string> { { 1310401, "A6" }, // 新宿１－８２
                                                                                             { 1311701, "A7" }, // 北１２
@@ -148,6 +147,10 @@ namespace VehicleDispatchConvert {
             cultureInfo.DateTimeFormat.Calendar = japaneseCalendar;
         }
 
+        /// <summary>
+        /// SetCellString
+        /// </summary>
+        /// <param name="vehicleDispatchDetailVo"></param>
         public void SetCellString(VehicleDispatchDetailVo vehicleDispatchDetailVo) {
             IFont iFont = _iWorkbook.CreateFont();
             iFont.FontName = "ＭＳ Ｐ明朝";

@@ -63,16 +63,12 @@ namespace ControlEx {
                  */
                 switch(e.Row) {
                     case 0: // SetLabel
-                        //// GarageFlag
-                        //if(!_garageFlag)
-                        //    e.Graphics.FillRectangle(Brushes.PowderBlue, rectangle);
-                        //// OperationFlag
-                        //if(!_operationFlag)
-                        //    e.Graphics.FillRectangle(Brushes.Pink, rectangle);
+                        // SetLabelExの枠線
+                        ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted);
                         break;
                     case 1: // CarLabel
-                        // SetControlExの枠線
-                        ControlPaint.DrawBorder(e.Graphics, rectangle, Color.DarkGray, ButtonBorderStyle.Dotted);
+                        // CarLabelExの枠線
+                        ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted);
                         break;
                 }
                 /*
@@ -83,19 +79,19 @@ namespace ControlEx {
                         switch(e.Row) {
                             // StaffLabelExの枠線
                             case 2: // StaffLabel1
-                                ControlPaint.DrawBorder(e.Graphics, rectangle, Color.DarkGray, ButtonBorderStyle.Dotted);
+                                ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Black, ButtonBorderStyle.Dotted);
                                 break;
                             // StaffLabelExの枠線
                             case 3: // StaffLabel2
-                                ControlPaint.DrawBorder(e.Graphics, rectangle, Color.DarkGray, ButtonBorderStyle.Dotted);
+                                ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Black, ButtonBorderStyle.Dotted);
                                 break;
                             // StaffLabelExの枠線
                             case 4: // StaffLabel3
-                                ControlPaint.DrawBorder(e.Graphics, rectangle, Color.DarkGray, ButtonBorderStyle.Dotted);
+                                ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Black, ButtonBorderStyle.Dotted);
                                 break;
                             // StaffLabelExの枠線
                             case 5: // StaffLabel4
-                                ControlPaint.DrawBorder(e.Graphics, rectangle, Color.DarkGray, ButtonBorderStyle.Dotted);
+                                ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Black, ButtonBorderStyle.Dotted);
                                 break;
                         }
                     }
@@ -150,8 +146,8 @@ namespace ControlEx {
         /// <param name="number">1:運転手 2:作業員1 3:作業員2 4:作業員3</param>
         /// <param name="staffMasterVo"></param>
         /// <param name="contextMenuStrip"></param>
-        public void CreateLabel(int number, StaffMasterVo staffMasterVo, bool tenkoModeFlag, bool rollCallFlag, ContextMenuStrip contextMenuStrip) {
-            var labelEx = new StaffLabelEx(staffMasterVo, tenkoModeFlag, rollCallFlag).CreateLabel();
+        public void CreateLabel(int number, StaffMasterVo staffMasterVo, bool tenkoModeFlag, bool rollCallFlag, bool noteFlag, ContextMenuStrip contextMenuStrip) {
+            var labelEx = new StaffLabelEx(staffMasterVo, tenkoModeFlag, rollCallFlag, noteFlag).CreateLabel();
             /*
              * プロパティを設定
              */

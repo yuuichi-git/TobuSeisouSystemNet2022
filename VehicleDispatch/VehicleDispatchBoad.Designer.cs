@@ -108,6 +108,7 @@
             this.ContextMenuStripStaffLabel = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ToolStripMenuItemStaffDetail = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemMemo = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.TableLayoutPanelBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -1164,7 +1165,7 @@
             this.ToolStripMenuItemStaffDetail,
             this.ToolStripMenuItemMemo});
             this.ContextMenuStripStaffLabel.Name = "ContextMenuStripStaffLabel";
-            this.ContextMenuStripStaffLabel.Size = new System.Drawing.Size(187, 70);
+            this.ContextMenuStripStaffLabel.Size = new System.Drawing.Size(187, 48);
             this.ContextMenuStripStaffLabel.Opened += new System.EventHandler(this.ContextMenuStrip_Opened);
             // 
             // ToolStripMenuItemStaffDetail
@@ -1319,5 +1320,6 @@
         private ToolStripMenuItem 配車表ToolStripMenuItem;
         private ToolStripMenuItem ToolStripMenuItemConvertExcel;
         private ToolStripMenuItem ToolStripMenuItemMemo;
+        private ToolTip ToolTip1;
     }
 }

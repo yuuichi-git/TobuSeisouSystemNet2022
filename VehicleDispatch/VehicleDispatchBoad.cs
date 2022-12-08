@@ -205,6 +205,7 @@ namespace VehicleDispatch {
                                              _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1),
                                              tenkoModeFlag,
                                              vehicleDispatchDetailVo.Operator_1_roll_call_flag,
+                                             vehicleDispatchDetailVo.Operator_1_note.Length > 0 ? true : false,
                                              ContextMenuStripStaffLabel);
                     _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1);
                 }
@@ -216,6 +217,7 @@ namespace VehicleDispatch {
                                              _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2),
                                              tenkoModeFlag,
                                              vehicleDispatchDetailVo.Operator_2_roll_call_flag,
+                                             vehicleDispatchDetailVo.Operator_2_note.Length > 0 ? true : false,
                                              ContextMenuStripStaffLabel);
                     _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2);
                 }
@@ -227,6 +229,7 @@ namespace VehicleDispatch {
                                              _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3),
                                              tenkoModeFlag,
                                              vehicleDispatchDetailVo.Operator_3_roll_call_flag,
+                                             vehicleDispatchDetailVo.Operator_3_note.Length > 0 ? true : false,
                                              ContextMenuStripStaffLabel);
                     _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3);
                 }
@@ -238,6 +241,7 @@ namespace VehicleDispatch {
                                              _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4),
                                              tenkoModeFlag,
                                              vehicleDispatchDetailVo.Operator_4_roll_call_flag,
+                                             vehicleDispatchDetailVo.Operator_4_note.Length > 0 ? true : false,
                                              ContextMenuStripStaffLabel);
                     _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4);
                 }
@@ -330,7 +334,8 @@ namespace VehicleDispatch {
                     case 160: // FlowLayoutPanelExFullSalaried
                         foreach(var staffLabelEx in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 160)) {
                             // Controlを作成
-                            StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == staffLabelEx.Operator_code)).CreateLabel();
+                            StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == staffLabelEx.Operator_code),
+                                                                        staffLabelEx.Operator_note.Length > 0 ? true : false).CreateLabel();
 
                             // プロパティを設定
                             newDropItem.ContextMenuStrip = ContextMenuStripStaffLabel;
@@ -348,7 +353,8 @@ namespace VehicleDispatch {
                     case 161: // FlowLayoutPanelExFullClose
                         foreach(var staffLabelEx in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 161)) {
                             // Controlを作成
-                            StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == staffLabelEx.Operator_code)).CreateLabel();
+                            StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == staffLabelEx.Operator_code),
+                                                                        staffLabelEx.Operator_note.Length > 0 ? true : false).CreateLabel();
                             // プロパティを設定
                             newDropItem.ContextMenuStrip = ContextMenuStripStaffLabel;
                             /*
@@ -365,7 +371,8 @@ namespace VehicleDispatch {
                     case 162: // FlowLayoutPanelExFullDesignation
                         foreach(var staffLabelEx in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 162)) {
                             // Controlを作成
-                            StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == staffLabelEx.Operator_code)).CreateLabel();
+                            StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == staffLabelEx.Operator_code),
+                                                                        staffLabelEx.Operator_note.Length > 0 ? true : false).CreateLabel();
                             // プロパティを設定
                             newDropItem.ContextMenuStrip = ContextMenuStripStaffLabel;
                             /*
@@ -382,7 +389,8 @@ namespace VehicleDispatch {
                     case 163: // FlowLayoutPanelExPartSalaried
                         foreach(var staffLabelEx in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 163)) {
                             // Controlを作成
-                            StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == staffLabelEx.Operator_code)).CreateLabel();
+                            StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == staffLabelEx.Operator_code),
+                                                                        staffLabelEx.Operator_note.Length > 0 ? true : false).CreateLabel();
                             // プロパティを設定
                             newDropItem.ContextMenuStrip = ContextMenuStripStaffLabel;
                             /*
@@ -397,9 +405,10 @@ namespace VehicleDispatch {
                         }
                         break;
                     case 164: // FlowLayoutPanelExPartClose
-                        foreach(var vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 164)) {
+                        foreach(var staffLabelEx in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 164)) {
                             // Controlを作成
-                            StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Operator_code)).CreateLabel();
+                            StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == staffLabelEx.Operator_code),
+                                                                        staffLabelEx.Operator_note.Length > 0 ? true : false).CreateLabel();
                             // プロパティを設定
                             newDropItem.ContextMenuStrip = ContextMenuStripStaffLabel;
                             /*
@@ -408,15 +417,16 @@ namespace VehicleDispatch {
                             newDropItem.Click += new EventHandler(StaffLabelEx_Click);
                             newDropItem.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
                             // DeepCopyから削除
-                            _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Operator_code);
+                            _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == staffLabelEx.Operator_code);
                             // Controlを追加
                             FlowLayoutPanelExPartClose.Controls.Add(newDropItem);
                         }
                         break;
                     case 165: // FlowLayoutPanelExPartDesignation
-                        foreach(var vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 165)) {
+                        foreach(var staffLabelEx in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 165)) {
                             // Controlを作成
-                            StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Operator_code)).CreateLabel();
+                            StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == staffLabelEx.Operator_code),
+                                                                        staffLabelEx.Operator_note.Length > 0 ? true : false).CreateLabel();
                             // プロパティを設定
                             newDropItem.ContextMenuStrip = ContextMenuStripStaffLabel;
                             /*
@@ -425,15 +435,16 @@ namespace VehicleDispatch {
                             newDropItem.Click += new EventHandler(StaffLabelEx_Click);
                             newDropItem.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
                             // DeepCopyから削除
-                            _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Operator_code);
+                            _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == staffLabelEx.Operator_code);
                             // Controlを追加
                             FlowLayoutPanelExPartDesignation.Controls.Add(newDropItem);
                         }
                         break;
                     case 166: // FlowLayoutPanelExTelephone
-                        foreach(var vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 166)) {
+                        foreach(var staffLabelEx in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 166)) {
                             // Controlを作成
-                            StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Operator_code)).CreateLabel();
+                            StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == staffLabelEx.Operator_code),
+                                                                        staffLabelEx.Operator_note.Length > 0 ? true : false).CreateLabel();
                             // プロパティを設定
                             newDropItem.ContextMenuStrip = ContextMenuStripStaffLabel;
                             /*
@@ -442,15 +453,16 @@ namespace VehicleDispatch {
                             newDropItem.Click += new EventHandler(StaffLabelEx_Click);
                             newDropItem.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
                             // DeepCopyから削除
-                            _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Operator_code);
+                            _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == staffLabelEx.Operator_code);
                             // Controlを追加
                             FlowLayoutPanelExTelephone.Controls.Add(newDropItem);
                         }
                         break;
                     case 167: // FlowLayoutPanelExWithoutNotice
-                        foreach(var vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 167)) {
+                        foreach(var staffLabelEx in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 167)) {
                             // Controlを作成
-                            StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Operator_code)).CreateLabel();
+                            StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == staffLabelEx.Operator_code),
+                                                                        staffLabelEx.Operator_note.Length > 0 ? true : false).CreateLabel();
                             // プロパティを設定
                             newDropItem.ContextMenuStrip = ContextMenuStripStaffLabel;
                             /*
@@ -459,7 +471,7 @@ namespace VehicleDispatch {
                             newDropItem.Click += new EventHandler(StaffLabelEx_Click);
                             newDropItem.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
                             // DeepCopyから削除
-                            _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Operator_code);
+                            _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == staffLabelEx.Operator_code);
                             // Controlを追加
                             FlowLayoutPanelExWithoutNotice.Controls.Add(newDropItem);
                         }
@@ -486,9 +498,10 @@ namespace VehicleDispatch {
                         /*
                          * StaffLabelExを作成
                          */
-                        foreach(var vehicleDispatchDetailStaff in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 168)) {
+                        foreach(var staffLabelEx in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 168)) {
                             // Controlを作成
-                            StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailStaff.Operator_code)).CreateLabel();
+                            StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == staffLabelEx.Operator_code),
+                                                                        staffLabelEx.Operator_note.Length > 0 ? true : false).CreateLabel();
                             // プロパティを設定
                             newDropItem.ContextMenuStrip = ContextMenuStripStaffLabel;
                             /*
@@ -497,7 +510,7 @@ namespace VehicleDispatch {
                             newDropItem.Click += new EventHandler(StaffLabelEx_Click);
                             newDropItem.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
                             // DeepCopyから削除
-                            _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == vehicleDispatchDetailStaff.Operator_code);
+                            _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == staffLabelEx.Operator_code);
                             // Controlを追加
                             FlowLayoutPanelExFree.Controls.Add(newDropItem);
                         }
@@ -534,7 +547,7 @@ namespace VehicleDispatch {
                 labelEx.MouseMove += new MouseEventHandler(CarLabelEx_MouseMove);
                 FlowLayoutPanelExCar.Controls.Add(labelEx);
             }
-            // FlowLayoutPanelExFullEmployees
+            // FlowLayoutPanelExFullEmployees(左側)
             foreach(var deepCopyStaffMasterVo in _listDeepCopyStaffMasterVo.FindAll(x => (x.Belongs == 10 || x.Belongs == 11) && x.Retirement_flag == false).OrderBy(x => x.Name_kana)) {
                 StaffLabelEx labelEx = new StaffLabelEx(deepCopyStaffMasterVo).CreateLabel();
                 // プロパティを設定
@@ -546,7 +559,7 @@ namespace VehicleDispatch {
                 labelEx.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
                 FlowLayoutPanelExFullEmployees.Controls.Add(labelEx);
             }
-            // FlowLayoutPanelExLongTerm
+            // FlowLayoutPanelExLongTerm(左側)
             foreach(var deepCopyStaffMasterVo in _listDeepCopyStaffMasterVo.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.Job_form == 10 && x.Retirement_flag == false).OrderBy(x => x.Name_kana)) {
                 StaffLabelEx labelEx = new StaffLabelEx(deepCopyStaffMasterVo).CreateLabel();
                 // プロパティを設定
@@ -558,7 +571,7 @@ namespace VehicleDispatch {
                 labelEx.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
                 FlowLayoutPanelExLongTerm.Controls.Add(labelEx);
             }
-            // FlowLayoutPanelExPartTime
+            // FlowLayoutPanelExPartTime(左側)
             foreach(var deepCopyStaffMasterVo in _listDeepCopyStaffMasterVo.FindAll(x => x.Belongs == 12 && x.Retirement_flag == false).OrderBy(x => x.Name_kana)) {
                 StaffLabelEx labelEx = new StaffLabelEx(deepCopyStaffMasterVo).CreateLabel();
                 // プロパティを設定
@@ -570,7 +583,7 @@ namespace VehicleDispatch {
                 labelEx.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
                 FlowLayoutPanelExPartTime.Controls.Add(labelEx);
             }
-            // FlowLayoutPanelExWindow
+            // FlowLayoutPanelExWindow(左側)
             foreach(var deepCopyStaffMasterVo in _listDeepCopyStaffMasterVo.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.Job_form == 11 && x.Retirement_flag == false).OrderBy(x => x.Name_kana)) {
                 StaffLabelEx labelEx = new StaffLabelEx(deepCopyStaffMasterVo).CreateLabel();
                 // プロパティを設定
@@ -642,9 +655,9 @@ namespace VehicleDispatch {
         }
 
         /// <summary>
-        /// CellNumber 退避用
+        /// SetControlEx 退避用
         /// </summary>
-        int EvacuationCellNumber;
+        SetControlEx EvacuationSetControlEx;
         /// <summary>
         /// SetLabelEx 退避用
         /// </summary>
@@ -661,33 +674,24 @@ namespace VehicleDispatch {
         /// <param name="e"></param>
         private void ContextMenuStrip_Opened(object sender, EventArgs e) {
             DateTime operationDate = DateTimePickerOperationDate.Value;
-            EvacuationStaffLabelEx = (StaffLabelEx)((ContextMenuStrip)sender).SourceControl;
 
             switch(((ContextMenuStrip)sender).Name) {
                 /*
                  * ContextMenuStripSetLabel
                  */
                 case "ContextMenuStripSetLabel":
+                    EvacuationSetControlEx = (SetControlEx)((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Parent;
                     /*
                      * ToolStripMenuItem_Clickで使用するので退避している
                      * ClickされたSetLabelExを取得して変数に格納する
                      */
                     EvacuationSetLabelEx = (SetLabelEx)((ContextMenuStrip)sender).SourceControl;
                     /*
-                     * ToolStripMenuItem_Clickで使用するので退避している
-                     * ClickされたCellNumberを取得して変数に格納する
+                     * メニューの表示調整
                      */
-                    EvacuationCellNumber = (int)EvacuationStaffLabelEx.Parent.Tag;
-                    /*
-                     * ToolStripMenuItem_Clickで使用するので退避している
-                     * ClickされたSetMasterVoを取得して変数に格納する
-                     */
-                    SetMasterVo setMasterVo = (SetMasterVo)EvacuationStaffLabelEx.Tag;
-                    // 配車先を削除する
-                    ToolStripMenuItemSetDelete.Enabled = setMasterVo.Move_flag;
-                    // 代車・代番のFAXを作成する
-                    SetControlEx setControlEx = (SetControlEx)EvacuationStaffLabelEx.Parent;
-                    ToolStripMenuItemFax.Enabled = (setMasterVo.Contact_method == 11 && operationDate.Date == DateTime.Now.Date && setControlEx.OperationFlag) ? true : false;
+                    SetMasterVo setMasterVo = (SetMasterVo)EvacuationSetLabelEx.Tag;
+                    ToolStripMenuItemSetDelete.Enabled = setMasterVo.Move_flag; // 配車先を削除する
+                    ToolStripMenuItemFax.Enabled = (setMasterVo.Contact_method == 11 && operationDate.Date == DateTime.Now.Date && EvacuationSetControlEx.OperationFlag) ? true : false; // 代車・代番のFAXを作成する
                     break;
                 /*
                  * ContextMenuStripCarLabel
@@ -698,6 +702,7 @@ namespace VehicleDispatch {
                  * ContextMenuStripStaffLabel
                  */
                 case "ContextMenuStripStaffLabel":
+                    EvacuationStaffLabelEx = (StaffLabelEx)((ContextMenuStrip)sender).SourceControl;
                     break;
             }
         }
@@ -715,8 +720,17 @@ namespace VehicleDispatch {
                  */
                 // 配車表を作成する
                 case "ToolStripMenuItemConvertExcel":
-                    var vehicleDispatchSimple = new VehicleDispatchSimple(_connectionVo, DateTimePickerOperationDate.Value);
-                    vehicleDispatchSimple.ShowDialog(this);
+                    /*
+                     * VehicleDispatchSimpleのコンストラクタ内でファイルの存在チェックをしている。
+                     * コンストラクタ内で終了させるには、例外を発生させてCatchで受け取りReturnする
+                     */
+                    try {
+                        var vehicleDispatchSimple = new VehicleDispatchSimple(_connectionVo, DateTimePickerOperationDate.Value);
+                        vehicleDispatchSimple.ShowDialog(this);
+                    } catch {
+                        return;
+                    }
+
                     break;
                 // 清掃事務所へ提出している本番
                 case "ToolStripMenuItemInitializeCleanOffice":
@@ -744,7 +758,7 @@ namespace VehicleDispatch {
                 case "ToolStripMenuItemSetDelete":
                     try {
                         _vehicleDispatchDetailDao.ResetSet(DateTimePickerOperationDate.Value,
-                                                           EvacuationCellNumber);
+                                                           (int)EvacuationSetControlEx.Tag);
                     } catch(Exception exception) {
                         MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     }
@@ -756,8 +770,10 @@ namespace VehicleDispatch {
                 case "ToolStripMenuItemSetGarageAdachi":
                     try {
                         _vehicleDispatchDetailDao.UpdateGarageFlag(DateTimePickerOperationDate.Value,
-                                                                   EvacuationCellNumber,
+                                                                   (int)EvacuationSetControlEx.Tag,
                                                                    true);
+                        // SetLabelExを本社の色に変える
+                        EvacuationSetLabelEx.SetGarageFlag(true);
                     } catch(Exception exception) {
                         MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     }
@@ -766,8 +782,10 @@ namespace VehicleDispatch {
                 case "ToolStripMenuItemSetGarageMisato":
                     try {
                         _vehicleDispatchDetailDao.UpdateGarageFlag(DateTimePickerOperationDate.Value,
-                                                                   EvacuationCellNumber,
+                                                                   (int)EvacuationSetControlEx.Tag,
                                                                    false);
+                        // SetLabelExを三郷の色に変える
+                        EvacuationSetLabelEx.SetGarageFlag(false);
                     } catch(Exception exception) {
                         MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     }
@@ -819,8 +837,10 @@ namespace VehicleDispatch {
                     var staffPaper = new StaffPaper(_connectionVo, ((StaffMasterVo)EvacuationStaffLabelEx.Tag).Staff_code);
                     staffPaper.ShowDialog(this);
                     break;
+                // メモを書き込む
                 case "ToolStripMenuItemMemo":
-                    MessageBox.Show("メモ機能は作成中です・・・・");
+                    string str = Microsoft.VisualBasic.Interaction.InputBox("日付毎の従事者メモを書き込んで下さい", "従業員メモ");
+
                     break;
             }
         }
@@ -1408,19 +1428,20 @@ namespace VehicleDispatch {
                     _vehicleDispatchDetailDao.UpdateRollCallFlag(DateTimePickerOperationDate.Value,
                                                                  (int)setControlEx.Tag,
                                                                  tableLayoutPanelCellPosition.Row,
-                                                                 staffLabelEx.Roll_call_flag);
-                    /*
-                     * StaffLabelExを変更してRefresh
-                     */
-                    staffLabelEx.Roll_call_flag = !staffLabelEx.Roll_call_flag;
-                    staffLabelEx.Refresh();
-
+                                                                 staffLabelEx.GetRollCallFlag);
+                    staffLabelEx.SetRollCallFlag(!staffLabelEx.GetRollCallFlag);
                     ToolStripStatusLabelStatus.Text = string.Concat(" ", ((StaffMasterVo)staffLabelEx.Tag).Display_name, " の点呼記録を変更しました");
                     return;
                 }
             }
         }
 
+        /// <summary>
+        /// StaffLabelEx_MouseMove
+        /// ドラッグの処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void StaffLabelEx_MouseMove(object sender, MouseEventArgs e) {
             if(sender != null && e.Button == MouseButtons.Left)
                 ((StaffLabelEx)sender).DoDragDrop(sender, DragDropEffects.Move);

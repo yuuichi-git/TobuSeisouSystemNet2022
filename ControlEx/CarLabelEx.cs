@@ -34,6 +34,11 @@ namespace ControlEx {
             this.Paint += new PaintEventHandler(LabelEx_CellPaint);
         }
 
+        /// <summary>
+        /// LabelEx_CellPaint
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LabelEx_CellPaint(object? sender, PaintEventArgs e) {
             /*
              * Boderを描画
@@ -46,14 +51,14 @@ namespace ControlEx {
             Rectangle rectangleFill = new Rectangle(2, 2, 64, 62);
             e.Graphics.FillRectangle(drowBrushFill, rectangleFill);
             /*
-             * 文字を描画
+             * 文字(ナンバー)を描画
              */
             var stringFormat = new StringFormat();
             stringFormat.LineAlignment = StringAlignment.Center;
             stringFormat.Alignment = StringAlignment.Center;
             var number = string.Concat(_carMasterVo.Registration_number_1, _carMasterVo.Registration_number_2, "\r\n"
-                                         , _carMasterVo.Registration_number_3, _carMasterVo.Registration_number_4, "\r\n"
-                                         , _carMasterVo.Disguise_kind_1, _carMasterVo.Door_number != 0 ? _carMasterVo.Door_number : " ");
+                                     , _carMasterVo.Registration_number_3, _carMasterVo.Registration_number_4, "\r\n"
+                                     , _carMasterVo.Disguise_kind_1, _carMasterVo.Door_number != 0 ? _carMasterVo.Door_number : " ");
             e.Graphics.DrawString(number, drawFont, drawBrushFont, rectangleFill, stringFormat);
         }
 

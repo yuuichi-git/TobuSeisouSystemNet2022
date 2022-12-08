@@ -2,9 +2,14 @@
 
 namespace ControlEx {
     public partial class StaffLabelEx : Label {
+        // StaffMasterVo
         private readonly StaffMasterVo _staffMasterVo;
-        private readonly bool _tenkoModeFlag;
-        private bool _roll_call_flag;
+        // 点呼モードフラグ(True:点呼モード False:通常モード)
+        private bool _tenkoModeFlag;
+        // 点呼フラグ(True:点呼済 False:未点呼)
+        private bool _rollCallFlag;
+        // ノートフラグ
+        private bool _noteFlag;
 
         private const int _staffLabelHeight = 36;
         private const int _staffLabelWidth = 70;
@@ -16,15 +21,16 @@ namespace ControlEx {
 
         /// <summary>
         /// コンストラクター(オーバーロード)
-        /// FlowLayoutPanelに対してのStaffLabelExを作成
+        /// FlowLayoutPanel(左側)に対してのStaffLabelExを作成
         /// </summary>
         /// <param name="staffMasterVo"></param>
         public StaffLabelEx(StaffMasterVo staffMasterVo) {
             _staffMasterVo = staffMasterVo;
             _tenkoModeFlag = false;
-            _roll_call_flag = false;
+            _rollCallFlag = false;
+            _noteFlag = false;
 
-            switch (staffMasterVo.Belongs) {
+            switch(staffMasterVo.Belongs) {
                 case 10: // 役員
                 case 11: // 社員
                     this._borderColor = Pens.Gray;
@@ -36,7 +42,53 @@ namespace ControlEx {
                     break;
                 case 20: // 新運転
                 case 21: // 自運労
-                    switch (staffMasterVo.Job_form) {
+                    switch(staffMasterVo.Job_form) {
+                        case 10: // 長期雇用
+                            this._borderColor = Pens.WhiteSmoke;
+                            drowBrushFill = new SolidBrush(Color.White);
+                            break;
+                        case 11: // 手帳
+                            this._borderColor = Pens.Green;
+                            drowBrushFill = new SolidBrush(Color.LightGreen);
+                            break;
+                        case 12: // アルバイト
+                            this._borderColor = Pens.DarkOrange;
+                            drowBrushFill = new SolidBrush(Color.Orange);
+                            break;
+                    }
+                    break;
+            }
+            InitializeComponent();
+            /*
+             * StaffControlExのイベントを登録
+             */
+            this.Paint += new PaintEventHandler(this.LabelEx_CellPaint);
+        }
+
+        /// <summary>
+        /// コンストラクター(オーバーロード)
+        /// FlowLayoutPanel(右側)に対してのStaffLabelExを作成
+        /// </summary>
+        /// <param name="staffMasterVo"></param>
+        public StaffLabelEx(StaffMasterVo staffMasterVo, bool noteFlag) {
+            _staffMasterVo = staffMasterVo;
+            _tenkoModeFlag = false;
+            _rollCallFlag = false;
+            _noteFlag = noteFlag;
+
+            switch(staffMasterVo.Belongs) {
+                case 10: // 役員
+                case 11: // 社員
+                    this._borderColor = Pens.Gray;
+                    drowBrushFill = new SolidBrush(Color.White);
+                    break;
+                case 12: // アルバイト
+                    this._borderColor = Pens.DarkOrange;
+                    drowBrushFill = new SolidBrush(Color.Orange);
+                    break;
+                case 20: // 新運転
+                case 21: // 自運労
+                    switch(staffMasterVo.Job_form) {
                         case 10: // 長期雇用
                             this._borderColor = Pens.WhiteSmoke;
                             drowBrushFill = new SolidBrush(Color.White);
@@ -65,13 +117,15 @@ namespace ControlEx {
         /// </summary>
         /// <param name="staffMasterVo"></param>
         /// <param name="tenkoModeFlag"></param>
-        /// <param name="roll_call_flag"></param>
-        public StaffLabelEx(StaffMasterVo staffMasterVo, bool tenkoModeFlag, bool roll_call_flag) {
+        /// <param name="rollCallFlag"></param>
+        /// <param name="noteFlag"></param>
+        public StaffLabelEx(StaffMasterVo staffMasterVo, bool tenkoModeFlag, bool rollCallFlag, bool noteFlag) {
             _staffMasterVo = staffMasterVo;
             _tenkoModeFlag = tenkoModeFlag;
-            _roll_call_flag = roll_call_flag;
+            _rollCallFlag = rollCallFlag;
+            _noteFlag = noteFlag;
 
-            switch (staffMasterVo.Belongs) {
+            switch(staffMasterVo.Belongs) {
                 case 10: // 役員
                 case 11: // 社員
                     this._borderColor = Pens.Gray;
@@ -83,7 +137,7 @@ namespace ControlEx {
                     break;
                 case 20: // 新運転
                 case 21: // 自運労
-                    switch (staffMasterVo.Job_form) {
+                    switch(staffMasterVo.Job_form) {
                         case 10: // 長期雇用
                             this._borderColor = Pens.WhiteSmoke;
                             drowBrushFill = new SolidBrush(Color.White);
@@ -123,18 +177,25 @@ namespace ControlEx {
             Rectangle rectangleFill = new Rectangle(2, 2, 64, 30);
             e.Graphics.FillRectangle(drowBrushFill, rectangleFill);
             /*
-             * 文字を描画
+             * 文字(氏名)を描画
              */
-            var stringFormat = new StringFormat();
+            StringFormat stringFormat = new StringFormat();
             stringFormat.LineAlignment = StringAlignment.Center;
             stringFormat.Alignment = StringAlignment.Center;
             e.Graphics.DrawString(_staffMasterVo.Display_name, drawFont, drawBrushFont, rectangleFill, stringFormat);
             /*
              * 点呼の印を描画
              */
-            if (_tenkoModeFlag) {
-                if (!_roll_call_flag)
+            if(_tenkoModeFlag) {
+                if(!_rollCallFlag)
                     e.Graphics.FillEllipse(Brushes.Crimson, 55, 21, 10, 10);
+            }
+            /*
+             * メモの印を描画
+             */
+            if(_noteFlag) {
+                Point[] points = { new Point(1, 1), new Point(11, 1), new Point(1, 11) };
+                e.Graphics.FillPolygon(new SolidBrush(Color.Blue), points);
             }
         }
 
@@ -156,9 +217,27 @@ namespace ControlEx {
         /// Roll_call_flag
         /// True:点呼済 False:未点呼
         /// </summary>
-        public bool Roll_call_flag {
-            get => _roll_call_flag;
-            set => _roll_call_flag = value;
+        public bool GetRollCallFlag {
+            get => _rollCallFlag;
+            set => _rollCallFlag = value;
+        }
+
+        /// <summary>
+        /// SetRollCallFlag
+        /// </summary>
+        /// <param name="rollCallFlag"></param>
+        public void SetRollCallFlag(bool rollCallFlag) {
+            _rollCallFlag = rollCallFlag;
+            this.Refresh();
+        }
+
+        /// <summary>
+        /// SetNoteFlag
+        /// </summary>
+        /// <param name="noteFlag"></param>
+        public void SetNoteFlag(bool noteFlag) {
+             _noteFlag= noteFlag;
+            this.Refresh();
         }
     }
 }

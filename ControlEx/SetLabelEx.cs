@@ -126,6 +126,11 @@ namespace ControlEx {
             this.Paint += new PaintEventHandler(this.LabelEx_CellPaint);
         }
 
+        /// <summary>
+        /// LabelEx_CellPaint
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LabelEx_CellPaint(object? sender, PaintEventArgs e) {
             /*
              * Boderを描画
@@ -138,7 +143,7 @@ namespace ControlEx {
             Rectangle rectangleFill = new Rectangle(2, 2, 64, 62);
             e.Graphics.FillRectangle(drowBrushFill, rectangleFill);
             /*
-             * 文字を描画
+             * 文字(配車先)を描画
              */
             var stringFormat = new StringFormat();
             stringFormat.LineAlignment = StringAlignment.Center;
@@ -158,6 +163,23 @@ namespace ControlEx {
             this.Tag = _setMasterVo;
             this.Width = _setLabelWidth;
             return this;
+        }
+
+        /// <summary>
+        /// SetGarageFlag
+        /// 本社・三郷で色を変える
+        /// </summary>
+        /// <param name="garageFlag"></param>
+        public void SetGarageFlag(bool garageFlag) {
+            /*
+             * Garage_flag
+             */
+            if(garageFlag) {
+                drowBrushFill = new SolidBrush(Color.White);
+            } else {
+                drowBrushFill = new SolidBrush(Color.PowderBlue);
+            }
+            this.Refresh();
         }
     }
 }
