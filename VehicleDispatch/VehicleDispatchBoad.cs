@@ -333,7 +333,7 @@ namespace VehicleDispatch {
                             StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == staffLabelEx.Operator_code)).CreateLabel();
 
                             // プロパティを設定
-                            newDropItem.ContextMenuStrip = ContextMenuStripSetLabel;
+                            newDropItem.ContextMenuStrip = ContextMenuStripStaffLabel;
                             /*
                              * イベントを設定
                              */
@@ -350,7 +350,7 @@ namespace VehicleDispatch {
                             // Controlを作成
                             StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == staffLabelEx.Operator_code)).CreateLabel();
                             // プロパティを設定
-                            newDropItem.ContextMenuStrip = ContextMenuStripSetLabel;
+                            newDropItem.ContextMenuStrip = ContextMenuStripStaffLabel;
                             /*
                              * イベントを設定
                              */
@@ -367,7 +367,7 @@ namespace VehicleDispatch {
                             // Controlを作成
                             StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == staffLabelEx.Operator_code)).CreateLabel();
                             // プロパティを設定
-                            newDropItem.ContextMenuStrip = ContextMenuStripSetLabel;
+                            newDropItem.ContextMenuStrip = ContextMenuStripStaffLabel;
                             /*
                              * イベントを設定
                              */
@@ -384,7 +384,7 @@ namespace VehicleDispatch {
                             // Controlを作成
                             StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == staffLabelEx.Operator_code)).CreateLabel();
                             // プロパティを設定
-                            newDropItem.ContextMenuStrip = ContextMenuStripSetLabel;
+                            newDropItem.ContextMenuStrip = ContextMenuStripStaffLabel;
                             /*
                              * イベントを設定
                              */
@@ -401,7 +401,7 @@ namespace VehicleDispatch {
                             // Controlを作成
                             StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Operator_code)).CreateLabel();
                             // プロパティを設定
-                            newDropItem.ContextMenuStrip = ContextMenuStripSetLabel;
+                            newDropItem.ContextMenuStrip = ContextMenuStripStaffLabel;
                             /*
                              * イベントを設定
                              */
@@ -418,7 +418,7 @@ namespace VehicleDispatch {
                             // Controlを作成
                             StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Operator_code)).CreateLabel();
                             // プロパティを設定
-                            newDropItem.ContextMenuStrip = ContextMenuStripSetLabel;
+                            newDropItem.ContextMenuStrip = ContextMenuStripStaffLabel;
                             /*
                              * イベントを設定
                              */
@@ -435,7 +435,7 @@ namespace VehicleDispatch {
                             // Controlを作成
                             StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Operator_code)).CreateLabel();
                             // プロパティを設定
-                            newDropItem.ContextMenuStrip = ContextMenuStripSetLabel;
+                            newDropItem.ContextMenuStrip = ContextMenuStripStaffLabel;
                             /*
                              * イベントを設定
                              */
@@ -452,7 +452,7 @@ namespace VehicleDispatch {
                             // Controlを作成
                             StaffLabelEx newDropItem = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Operator_code)).CreateLabel();
                             // プロパティを設定
-                            newDropItem.ContextMenuStrip = ContextMenuStripSetLabel;
+                            newDropItem.ContextMenuStrip = ContextMenuStripStaffLabel;
                             /*
                              * イベントを設定
                              */
@@ -472,7 +472,7 @@ namespace VehicleDispatch {
                             // Controlを作成
                             CarLabelEx newDropItem = new CarLabelEx(_listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailCarVo.Car_code)).CreateLabel();
                             // プロパティを設定
-                            newDropItem.ContextMenuStrip = ContextMenuStripCarLabel;
+                            newDropItem.ContextMenuStrip = ContextMenuStripStaffLabel;
                             /*
                              * イベントを設定
                              */
@@ -641,9 +641,19 @@ namespace VehicleDispatch {
             }
         }
 
+        /// <summary>
+        /// CellNumber 退避用
+        /// </summary>
         int EvacuationCellNumber;
-        int EvacuationStaffCode;
+        /// <summary>
+        /// SetLabelEx 退避用
+        /// </summary>
         SetLabelEx EvacuationSetLabelEx;
+        /// <summary>
+        /// StaffLabelEx 退避用
+        /// </summary>
+        StaffLabelEx EvacuationStaffLabelEx;
+
         /// <summary>
         /// ContextMenuStrip_Opened
         /// </summary>
@@ -651,8 +661,12 @@ namespace VehicleDispatch {
         /// <param name="e"></param>
         private void ContextMenuStrip_Opened(object sender, EventArgs e) {
             DateTime operationDate = DateTimePickerOperationDate.Value;
+            EvacuationStaffLabelEx = (StaffLabelEx)((ContextMenuStrip)sender).SourceControl;
+
             switch(((ContextMenuStrip)sender).Name) {
-                // ContextMenuStripSetLabel
+                /*
+                 * ContextMenuStripSetLabel
+                 */
                 case "ContextMenuStripSetLabel":
                     /*
                      * ToolStripMenuItem_Clickで使用するので退避している
@@ -663,23 +677,27 @@ namespace VehicleDispatch {
                      * ToolStripMenuItem_Clickで使用するので退避している
                      * ClickされたCellNumberを取得して変数に格納する
                      */
-                    EvacuationCellNumber = (int)((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.Tag;
+                    EvacuationCellNumber = (int)EvacuationStaffLabelEx.Parent.Tag;
                     /*
                      * ToolStripMenuItem_Clickで使用するので退避している
                      * ClickされたSetMasterVoを取得して変数に格納する
                      */
-                    SetMasterVo setMasterVo = (SetMasterVo)((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Tag;
+                    SetMasterVo setMasterVo = (SetMasterVo)EvacuationStaffLabelEx.Tag;
                     // 配車先を削除する
                     ToolStripMenuItemSetDelete.Enabled = setMasterVo.Move_flag;
                     // 代車・代番のFAXを作成する
-                    SetControlEx setControlEx = (SetControlEx)((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Parent;
+                    SetControlEx setControlEx = (SetControlEx)EvacuationStaffLabelEx.Parent;
                     ToolStripMenuItemFax.Enabled = (setMasterVo.Contact_method == 11 && operationDate.Date == DateTime.Now.Date && setControlEx.OperationFlag) ? true : false;
                     break;
+                /*
+                 * ContextMenuStripCarLabel
+                 */
                 case "ContextMenuStripCarLabel":
                     break;
+                /*
+                 * ContextMenuStripStaffLabel
+                 */
                 case "ContextMenuStripStaffLabel":
-                    StaffMasterVo staffMasterVo = (StaffMasterVo)((StaffLabelEx)((ContextMenuStrip)sender).SourceControl).Tag;
-                    EvacuationStaffCode = staffMasterVo.Staff_code;
                     break;
             }
         }
@@ -798,8 +816,11 @@ namespace VehicleDispatch {
                  */
                 // 従事者詳細
                 case "ToolStripMenuItemStaffDetail":
-                    var staffPaper = new StaffPaper(_connectionVo, EvacuationStaffCode);
+                    var staffPaper = new StaffPaper(_connectionVo, ((StaffMasterVo)EvacuationStaffLabelEx.Tag).Staff_code);
                     staffPaper.ShowDialog(this);
+                    break;
+                case "ToolStripMenuItemMemo":
+                    MessageBox.Show("メモ機能は作成中です・・・・");
                     break;
             }
         }
@@ -875,9 +896,11 @@ namespace VehicleDispatch {
             }
         }
 
-        /*
-         * UserControlのEventを処理
-         */
+        /// <summary>
+        /// UserControlのEventを処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SetControlEx_Click(object sender, EventArgs e) {
             //MessageBox.Show("SetControlEx_Click");
         }

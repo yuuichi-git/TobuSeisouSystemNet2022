@@ -107,6 +107,7 @@
             this.ToolStripMenuItemCarDetail = new System.Windows.Forms.ToolStripMenuItem();
             this.ContextMenuStripStaffLabel = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ToolStripMenuItemStaffDetail = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemMemo = new System.Windows.Forms.ToolStripMenuItem();
             this.TableLayoutPanelBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -1160,9 +1161,10 @@
             // ContextMenuStripStaffLabel
             // 
             this.ContextMenuStripStaffLabel.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemStaffDetail});
+            this.ToolStripMenuItemStaffDetail,
+            this.ToolStripMenuItemMemo});
             this.ContextMenuStripStaffLabel.Name = "ContextMenuStripStaffLabel";
-            this.ContextMenuStripStaffLabel.Size = new System.Drawing.Size(187, 26);
+            this.ContextMenuStripStaffLabel.Size = new System.Drawing.Size(187, 70);
             this.ContextMenuStripStaffLabel.Opened += new System.EventHandler(this.ContextMenuStrip_Opened);
             // 
             // ToolStripMenuItemStaffDetail
@@ -1171,6 +1173,13 @@
             this.ToolStripMenuItemStaffDetail.Size = new System.Drawing.Size(186, 22);
             this.ToolStripMenuItemStaffDetail.Text = "従事者台帳を表示する";
             this.ToolStripMenuItemStaffDetail.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            // 
+            // ToolStripMenuItemMemo
+            // 
+            this.ToolStripMenuItemMemo.Name = "ToolStripMenuItemMemo";
+            this.ToolStripMenuItemMemo.Size = new System.Drawing.Size(186, 22);
+            this.ToolStripMenuItemMemo.Text = "メモを書き込む";
+            this.ToolStripMenuItemMemo.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // VehicleDispatchBoad
             // 
@@ -1309,5 +1318,6 @@
         private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExFree;
         private ToolStripMenuItem 配車表ToolStripMenuItem;
         private ToolStripMenuItem ToolStripMenuItemConvertExcel;
+        private ToolStripMenuItem ToolStripMenuItemMemo;
     }
 }

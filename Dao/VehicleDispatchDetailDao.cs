@@ -799,8 +799,7 @@ namespace Dao {
         /// <param name="cellNumber"></param>
         /// <param name="row"></param>
         /// <param name="rollCallFlag"></param>
-        /// <returns></returns>
-        public int UpdateRollCallFlag(DateTime operationDate, int cellNumber, int row, bool rollCallFlag) {
+        public void UpdateRollCallFlag(DateTime operationDate, int cellNumber, int row, bool rollCallFlag) {
             /*
              * Tagがゼロから始まっているので１をプラスする
              */
@@ -829,7 +828,41 @@ namespace Dao {
                                           "update_ymd_hms = '" + DateTime.Now + "' " +
                                      "WHERE cell_number = " + cellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
             try {
-                return sqlCommand.ExecuteNonQuery();
+                sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// UpdateOperatorNote
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="cellNumber"></param>
+        /// <param name="row"></param>
+        /// <param name="note"></param>
+        public void UpdateOperatorNote(DateTime operationDate, int cellNumber, int row, string note) {
+            /*
+             * Tagがゼロから始まっているので１をプラスする
+             */
+            cellNumber++;
+            /*
+             * SetControlExのRowがゼロから始まっているので１をプラスする
+             */
+            row--;
+            /*
+             * Drop項目のSQL文を作成
+             */
+            string sqlOperatorNote = string.Concat("operator_" + row + "_roll_call_flag");
+
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE vehicle_dispatch_detail " +
+                                     "SET " + sqlOperatorNote + " = '" + note + "'," +
+                                          "update_pc_name = '" + Environment.MachineName + "'," +
+                                          "update_ymd_hms = '" + DateTime.Now + "' " +
+                                     "WHERE cell_number = " + cellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                sqlCommand.ExecuteNonQuery();
             } catch {
                 throw;
             }
