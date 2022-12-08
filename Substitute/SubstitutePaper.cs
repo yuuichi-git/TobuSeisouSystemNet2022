@@ -26,12 +26,42 @@ namespace Substitute {
         private readonly List<StaffMasterVo> _listStaffMasterVo;
         private readonly VehicleDispatchDetailVo _vehicleDispatchDetailVo;
         private readonly VehicleDispatchBodyVo _vehicleDispatchBodyCleanOfficeVo;
-
+        /*
+         * ‘ã”Ô‚Ì“d˜b”Ô†
+         */
+        string telephoneNumber = "";
+        /*
+         * ”zÔæƒR[ƒh‚Æ“d˜b”Ô†‚Ì•R‚Ã‚¯
+         */
+        Dictionary<int, string> dictionaryTelephoneNumber = new Dictionary<int, string> { { 1310101, "090-6506-7967" }, // ç‘ã“c‚Q
+                                                                                          { 1310102, "080-8868-7459" }, // ç‘ã“c‚U
+                                                                                          { 1310103, "080-8868-8023" }, // ç‘ã“c†‚P
+                                                                                          { 1310201, "080-2202-7713" }, // ’†‰›ƒyƒbƒg‚V
+                                                                                          { 1310202, "080-3493-3729" }, // ’†‰›ƒyƒbƒg‚W
+                                                                                          { 1312101, "" }, // ‘«—§‚P‚W
+                                                                                          { 1312102, "090-5560-0491" }, // ‘«—§‚Q‚R
+                                                                                          { 1312103, "090-5560-0677" }, // ‘«—§‚Q‚S
+                                                                                          { 1312104, "090-5560-0700" }, // ‘«—§‚R‚W
+                                                                                          { 1312204, "090-9817-8129" }, // Š‹ü‚P‚P
+                                                                                          { 1312201, "080-3493-3728" }, // Š‹ü‚R‚R
+                                                                                          { 1312202, "080-2202-7269" } }; // Š‹ü‚T‚T
+        /*
+         * ‘ã”Ô‚ÌƒZƒ‹ˆÊ’u‚Ì•R‚Ã‚¯
+         */
+        Dictionary<int, string> cellSetName = new Dictionary<int, string> { { 0, "B38" }, { 1, "B42" }, { 2, "B46" } };
+        Dictionary<int, string> cellOccupation = new Dictionary<int, string> { { 0, "B40" }, { 1, "B44" }, { 2, "B48" } };
+        Dictionary<int, string> cellBeforeStaffDisplayName = new Dictionary<int, string> { { 0, "D38" }, { 1, "D42" }, { 2, "D46" } };
+        Dictionary<int, string> cellAfterDisplayName = new Dictionary<int, string> { { 0, "I38" }, { 1, "I42" }, { 2, "I46" } };
+        Dictionary<int, string> cellTelephoneNumber = new Dictionary<int, string> { { 0, "I40" }, { 1, "I44" }, { 2, "I48" } };
         /*
          * ´‘|––±Š–¼EFAX”Ô†
          */
         private string _cleanOfficeName;
         private string _cleanOfficeFax;
+        /*
+         * ‘ã”Ô‚ğ‹LÚ‚·‚éˆÊ’u‚ÌƒJƒEƒ“ƒ^[
+         */
+        int _staffPutNumber = 0;
 
         /// <summary>
         /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
@@ -40,11 +70,15 @@ namespace Substitute {
         /// <param name="setCode"></param>
         public SubstitutePaper(ConnectionVo connectionVo, int setCode) {
             _connectionVo = connectionVo;
-
-            _vehicleDispatchDetailDao = new VehicleDispatchDetailDao(connectionVo);
+            /*
+             * Dao
+             */
             _vehicleDispatchBodyCleanOfficeDao = new VehicleDispatchBodyCleanOfficeDao(connectionVo);
             _vehicleDispatchBodyOfficeDao = new VehicleDispatchBodyOfficeDao(connectionVo);
-
+            _vehicleDispatchDetailDao = new VehicleDispatchDetailDao(connectionVo);
+            /*
+             * Vo
+             */
             _vehicleDispatchDetailVo = new VehicleDispatchDetailDao(_connectionVo).SelectOneVehicleDispatchDetail(DateTime.Now.Date, setCode);
 
             /*
@@ -54,7 +88,9 @@ namespace Substitute {
             _initializeForm.SubstitutePaper(this);
             // ƒV[ƒgƒ^ƒu‚ğ”ñ•\¦
             SpreadPaper.TabStripPolicy = TabStripPolicy.Never;
-            // ”zÔæ‚ğ“Ç‚Ş
+            /*
+             * ”zÔæ‚ğ“Ç‚Ş
+             */
             _setMasterVo = new SetMasterDao(_connectionVo).SelectOneSetMaster(setCode);
             _listCarMasterVo = new CarMasterDao(_connectionVo).SelectAllCarMaster();
             _listStaffMasterVo = new StaffMasterDao(_connectionVo).SelectAllStaffMaster();
@@ -133,23 +169,10 @@ namespace Substitute {
             /*
              * ‘ã”Ô
              */
-            string telephoneNumber = "";
-            Dictionary<int, string> dictionaryTelephoneNumber = new Dictionary<int, string> { { 1310101, "090-6506-7967" }, // ç‘ã“c‚Q
-                                                                                              { 1310102, "080-8868-7459" }, // ç‘ã“c‚U
-                                                                                              { 1310103, "080-8868-8023" }, // ç‘ã“c†‚P
-                                                                                              { 1310201, "080-2202-7713" }, // ’†‰›ƒyƒbƒg‚V
-                                                                                              { 1310202, "080-3493-3729" }, // ’†‰›ƒyƒbƒg‚W
-                                                                                              { 1312101, "" }, // ‘«—§‚P‚W
-                                                                                              { 1312102, "090-5560-0491" }, // ‘«—§‚Q‚R
-                                                                                              { 1312103, "090-5560-0677" }, // ‘«—§‚Q‚S
-                                                                                              { 1312104, "090-5560-0700" }, // ‘«—§‚R‚W
-                                                                                              { 1312204, "090-9817-8129" }, // Š‹ü‚P‚P
-                                                                                              { 1312201, "080-3493-3728" }, // Š‹ü‚R‚R
-                                                                                              { 1312202, "080-2202-7269" }, // Š‹ü‚T‚T
-                                                                                              { 1312203, "" } }; // ¬Šâ‚S
             // ˜A—æ”Ô†‚ğƒZƒbƒg
             switch(_vehicleDispatchDetailVo.Set_code) {
                 case 1312105: // ‘«—§•s”R‚S
+                case 1312203: // ¬Šâ‚S
                     telephoneNumber = _listStaffMasterVo.Find(x => x.Staff_code == _vehicleDispatchDetailVo.Operator_code_1).Telephone_number;
                     break;
                 default:
@@ -160,12 +183,13 @@ namespace Substitute {
             int operatorCodeCleanOffice = _vehicleDispatchBodyCleanOfficeDao.GetOperatorCode1(cellNumber);
             // ‡A‰^“]è‘ã”Ô‚Ìˆ—
             if(_vehicleDispatchDetailVo.Operator_code_1 != 0 && operatorCodeCleanOffice != _vehicleDispatchDetailVo.Operator_code_1) {
-                // •ÏX‘O@‘g”@–¼
-                SheetViewPaper.Cells["B38"].Text = string.Concat(_setMasterVo.Set_name, "‘g");
-                SheetViewPaper.Cells["D38"].Text = _listStaffMasterVo.Find(x => x.Staff_code == operatorCodeCleanOffice).Display_name;
-                // •ÏXŒã@–¼@Œg‘Ñ”Ô†
-                SheetViewPaper.Cells["I38"].Text = _listStaffMasterVo.Find(x => x.Staff_code == _vehicleDispatchDetailVo.Operator_code_1).Display_name;
-                SheetViewPaper.Cells["I40"].Text = telephoneNumber;
+                PutStaff(_staffPutNumber,
+                         _setMasterVo.Set_name,
+                         "‰^“]è",
+                         _listStaffMasterVo.Find(x => x.Staff_code == operatorCodeCleanOffice).Display_name,
+                         _listStaffMasterVo.Find(x => x.Staff_code == _vehicleDispatchDetailVo.Operator_code_1).Display_name,
+                         telephoneNumber);
+                _staffPutNumber++; // Ÿ‚Ìs‚ÉƒCƒ“ƒNƒŠƒƒ“ƒg‚·‚é
             }
             // ‡Bì‹Æˆõ‘ã”Ô‚Ìˆ— List‚É‚»‚ê‚¼‚êŠi”[‚·‚é
             List<int> _arrayCleanOfficeStaffCodes = new List<int>();
@@ -197,35 +221,23 @@ namespace Substitute {
                         _arrayVehicleDispatchDetailStaffCodes.Remove(staffCode);
                     }
                 }
-                int i = 0;
+
+                int arrayLoopCount = 0;
                 foreach(int staffCode in _arrayCleanOfficeStaffCodes) {
-                    switch(i) {
-                        case 0:
-                            SheetViewPaper.Cells["B42"].Text = string.Concat(_setMasterVo.Set_name, "‘g");
-                            SheetViewPaper.Cells["D42"].Text = _listStaffMasterVo.Find(x => x.Staff_code == staffCode).Display_name;
-                            SheetViewPaper.Cells["I42"].Text = _listStaffMasterVo.Find(x => x.Staff_code == _arrayVehicleDispatchDetailStaffCodes[i]).Display_name;
-                            SheetViewPaper.Cells["I44"].Text = telephoneNumber;
-                            break;
-                        case 1:
-                            SheetViewPaper.Cells["B46"].Text = string.Concat(_setMasterVo.Set_name, "‘g");
-                            SheetViewPaper.Cells["D46"].Text = _listStaffMasterVo.Find(x => x.Staff_code == staffCode).Display_name;
-                            SheetViewPaper.Cells["I46"].Text = _listStaffMasterVo.Find(x => x.Staff_code == _arrayVehicleDispatchDetailStaffCodes[i]).Display_name;
-                            SheetViewPaper.Cells["I48"].Text = telephoneNumber;
-                            break;
-                        default:
-                            MessageBox.Show("‘ã”Ôì‹Æˆõ‚ğ‚R–¼‹L˜^‚Í‚Å‚«‚Ü‚¹‚ñ");
-                            break;
-                    }
-
-
-                    i++;
+                    PutStaff(_staffPutNumber,
+                             _setMasterVo.Set_name,
+                             "Eˆõ",
+                             _listStaffMasterVo.Find(x => x.Staff_code == _arrayCleanOfficeStaffCodes[arrayLoopCount]).Display_name,
+                             _listStaffMasterVo.Find(x => x.Staff_code == _arrayVehicleDispatchDetailStaffCodes[arrayLoopCount]).Display_name,
+                             telephoneNumber);
+                    _staffPutNumber++; // Ÿ‚Ìs‚ÉƒCƒ“ƒNƒŠƒƒ“ƒg‚·‚é
+                    arrayLoopCount++;
                 }
             }
             // FAX”Ô†‘¼
             SheetViewPaper.Cells["H51"].Text = _cleanOfficeFax;
         }
 
-        int _staffPutNumber = 0; // ‘ã”Ô‚ğ‹LÚ‚·‚éRow”Ô†
         /// <summary>
         /// PutStaff
         /// </summary>
@@ -236,8 +248,11 @@ namespace Substitute {
         /// <param name="afterDisplayName"></param>
         /// <param name="telephoneNumber"></param>
         private void PutStaff(int rowNumber, string setName, string occupation, string beforeDisplayName, string afterDisplayName, string telephoneNumber) {
-            Dictionary<int, string> cellSetName = new Dictionary<int, string> { { 0, "B38" }, { 1, "B42" }, { 2, "B46" } };
-
+            SheetViewPaper.Cells[cellSetName[rowNumber]].Text = string.Concat(setName, "‘g");
+            SheetViewPaper.Cells[cellOccupation[rowNumber]].Text = occupation;
+            SheetViewPaper.Cells[cellBeforeStaffDisplayName[rowNumber]].Text = beforeDisplayName;
+            SheetViewPaper.Cells[cellAfterDisplayName[rowNumber]].Text = afterDisplayName;
+            SheetViewPaper.Cells[cellTelephoneNumber[rowNumber]].Text = telephoneNumber;
         }
 
         private void InitializeSheetViewPaper() {
@@ -265,16 +280,19 @@ namespace Substitute {
              */
             // ‚Ps–Ú
             SheetViewPaper.Cells["B38"].ResetValue(); // ‘g
+            SheetViewPaper.Cells["B40"].ResetValue(); // ‰^“]èEEˆõ
             SheetViewPaper.Cells["D38"].ResetValue(); // –{”Ô–¼
             SheetViewPaper.Cells["I38"].ResetValue(); // ‘ã”Ô–¼
             SheetViewPaper.Cells["I40"].ResetValue(); // ‘ã”ÔŒg‘Ñ”Ô†
                                                       // ‚Qs–Ú
             SheetViewPaper.Cells["B42"].ResetValue(); // ‘g
+            SheetViewPaper.Cells["B44"].ResetValue(); // ‰^“]èEEˆõ
             SheetViewPaper.Cells["D42"].ResetValue(); // –{”Ô–¼
             SheetViewPaper.Cells["I42"].ResetValue(); // ‘ã”Ô–¼
             SheetViewPaper.Cells["I44"].ResetValue(); // ‘ã”ÔŒg‘Ñ”Ô†
                                                       // ‚Rs–Ú
             SheetViewPaper.Cells["B46"].ResetValue(); // ‘g
+            SheetViewPaper.Cells["B48"].ResetValue(); // ‰^“]èEEˆõ
             SheetViewPaper.Cells["D46"].ResetValue(); // –{”Ô–¼
             SheetViewPaper.Cells["I46"].ResetValue(); // ‘ã”Ô–¼
             SheetViewPaper.Cells["I48"].ResetValue(); // ‘ã”ÔŒg‘Ñ”Ô†
@@ -282,8 +300,23 @@ namespace Substitute {
             SheetViewPaper.Cells["H51"].ResetValue();
         }
 
+        /// <summary>
+        /// ButtonPrint_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonPrint_Click(object sender, EventArgs e) {
             SpreadPaper.PrintSheet(SheetViewPaper);
+        }
+
+        /// <summary>
+        /// ToolStripMenuItemExit_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItemExit_Click(object sender, EventArgs e) {
+            Close();
+            Dispose();
         }
     }
 }

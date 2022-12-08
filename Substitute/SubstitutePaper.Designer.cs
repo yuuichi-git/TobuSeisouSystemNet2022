@@ -529,12 +529,17 @@
             this.SheetViewPaper = new FarPoint.Win.Spread.SheetView();
             this.PanelUp = new System.Windows.Forms.Panel();
             this.ButtonPrint = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.ToolStripMenuItemMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
             SpreadPaper_InputMapWhenFocusedNormal = new FarPoint.Win.Spread.InputMap();
             SpreadPaper_InputMapWhenAncestorOfFocusedNormal = new FarPoint.Win.Spread.InputMap();
             this.TableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpreadPaper)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.SheetViewPaper)).BeginInit();
             this.PanelUp.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // TableLayoutPanel1
@@ -544,6 +549,7 @@
             this.TableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanel1.Controls.Add(this.SpreadPaper, 0, 2);
             this.TableLayoutPanel1.Controls.Add(this.PanelUp, 0, 1);
+            this.TableLayoutPanel1.Controls.Add(this.menuStrip1, 0, 0);
             this.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.TableLayoutPanel1.Name = "TableLayoutPanel1";
@@ -6724,6 +6730,38 @@
             this.ButtonPrint.UseVisualStyleBackColor = true;
             this.ButtonPrint.Click += new System.EventHandler(this.ButtonPrint_Click);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemMenu,
+            this.ToolStripMenuItemHelp});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(817, 24);
+            this.menuStrip1.TabIndex = 2;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // ToolStripMenuItemMenu
+            // 
+            this.ToolStripMenuItemMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemExit});
+            this.ToolStripMenuItemMenu.Name = "ToolStripMenuItemMenu";
+            this.ToolStripMenuItemMenu.Size = new System.Drawing.Size(52, 20);
+            this.ToolStripMenuItemMenu.Text = "メニュー";
+            // 
+            // ToolStripMenuItemHelp
+            // 
+            this.ToolStripMenuItemHelp.Name = "ToolStripMenuItemHelp";
+            this.ToolStripMenuItemHelp.Size = new System.Drawing.Size(48, 20);
+            this.ToolStripMenuItemHelp.Text = "ヘルプ";
+            // 
+            // ToolStripMenuItemExit
+            // 
+            this.ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
+            this.ToolStripMenuItemExit.Size = new System.Drawing.Size(195, 22);
+            this.ToolStripMenuItemExit.Text = "アプリケーションを終了する";
+            this.ToolStripMenuItemExit.Click += new System.EventHandler(this.ToolStripMenuItemExit_Click);
+            // 
             // SubstitutePaper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -6731,14 +6769,18 @@
             this.ClientSize = new System.Drawing.Size(817, 811);
             this.Controls.Add(this.TableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SubstitutePaper";
             this.Text = "SubstitutePaper";
             this.TableLayoutPanel1.ResumeLayout(false);
+            this.TableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpreadPaper)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.SheetViewPaper)).EndInit();
             this.PanelUp.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -6750,5 +6792,9 @@
         private FarPoint.Win.Spread.SheetView SheetViewPaper;
         private Panel PanelUp;
         private Button ButtonPrint;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem ToolStripMenuItemMenu;
+        private ToolStripMenuItem ToolStripMenuItemExit;
+        private ToolStripMenuItem ToolStripMenuItemHelp;
     }
 }
