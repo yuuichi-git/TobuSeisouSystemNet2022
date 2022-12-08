@@ -270,9 +270,9 @@ namespace Dao {
         /// </summary>
         /// <param name="carMasterVo"></param>
         /// <returns></returns>
-        public int InsertOneCarMaster(CarMasterVo carMasterVo) {
+        public void InsertOneCarMaster(CarMasterVo carMasterVo) {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
-            sqlCommand.CommandText = "INSERT INTO car_ledger(car_code," +
+            sqlCommand.CommandText = "INSERT INTO car_master(car_code," +
                                                             "classification_code," +
                                                             "registration_number," +
                                                             "registration_number_1," +
@@ -375,10 +375,9 @@ namespace Dao {
                                              ");";
             try {
                 sqlCommand.Parameters.Add("@picture", SqlDbType.Image, carMasterVo.Picture.Length).Value = carMasterVo.Picture;
-                return sqlCommand.ExecuteNonQuery();
-            } catch (Exception e) {
-                Console.WriteLine("InsertOneCarLedger : " + e.Message);
-                return 0;
+                sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
             }
         }
 
@@ -407,7 +406,7 @@ namespace Dao {
         /// </summary>
         /// <param name="carMasterVo"></param>
         /// <returns></returns>
-        public int UpdateOneCarMaster(CarMasterVo carMasterVo) {
+        public void UpdateOneCarMaster(CarMasterVo carMasterVo) {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "UPDATE car_master " +
                                      "SET car_code = " + carMasterVo.Car_code + "," +
@@ -461,10 +460,9 @@ namespace Dao {
                                        "AND delete_Flag = 'False'";
             try {
                 sqlCommand.Parameters.Add("@member_picture", SqlDbType.Image, carMasterVo.Picture.Length).Value = carMasterVo.Picture;
-                return sqlCommand.ExecuteNonQuery();
-            } catch (Exception e) {
-                Console.WriteLine("UpdateOneCarMaster : " + e.Message);
-                return 0;
+                sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
             }
         }
 

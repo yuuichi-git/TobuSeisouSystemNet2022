@@ -36,12 +36,12 @@
             this.ToolStripMenuItemMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemEdit = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemInsertNewCar = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, ((object)(resources.GetObject("tableLayoutPanel1.Controls"))));
             this.ContextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ToolStripMenuItemDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.SheetViewList = this.SpreadList.GetSheet(0);
-            this.ToolStripMenuItemInsertNewCar = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
             this.PanelUp.SuspendLayout();
@@ -159,6 +159,13 @@
             this.ToolStripMenuItemEdit.Size = new System.Drawing.Size(43, 20);
             this.ToolStripMenuItemEdit.Text = "編集";
             // 
+            // ToolStripMenuItemInsertNewCar
+            // 
+            this.ToolStripMenuItemInsertNewCar.Name = "ToolStripMenuItemInsertNewCar";
+            this.ToolStripMenuItemInsertNewCar.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItemInsertNewCar.Text = "車両を新規登録する";
+            this.ToolStripMenuItemInsertNewCar.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            // 
             // ToolStripMenuItemHelp
             // 
             this.ToolStripMenuItemHelp.Name = "ToolStripMenuItemHelp";
@@ -191,12 +198,6 @@
             this.ToolStripMenuItemDelete.Size = new System.Drawing.Size(230, 22);
             this.ToolStripMenuItemDelete.Text = "選択されているレコードを削除する";
             this.ToolStripMenuItemDelete.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
-            // 
-            // ToolStripMenuItemInsertNewCar
-            // 
-            this.ToolStripMenuItemInsertNewCar.Name = "ToolStripMenuItemInsertNewCar";
-            this.ToolStripMenuItemInsertNewCar.Size = new System.Drawing.Size(180, 22);
-            this.ToolStripMenuItemInsertNewCar.Text = "車両を新規登録する";
             // 
             // CarList
             // 

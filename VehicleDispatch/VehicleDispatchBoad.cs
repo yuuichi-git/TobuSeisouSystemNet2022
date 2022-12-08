@@ -641,36 +641,45 @@ namespace VehicleDispatch {
             }
         }
 
+        int EvacuationCellNumber;
+        int EvacuationStaffCode;
+        SetLabelEx EvacuationSetLabelEx;
         /// <summary>
         /// ContextMenuStrip_Opened
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        SetLabelEx ToolStripMenuItemClickSetLabelEx;
-        int ToolStripMenuItemClickCellNumber;
-        int ToolStripMenuItemClickStaffCode;
-        SetLabelEx ToolStripMenuItemFaxSetLabelEx;
         private void ContextMenuStrip_Opened(object sender, EventArgs e) {
+            DateTime operationDate = DateTimePickerOperationDate.Value;
             switch(((ContextMenuStrip)sender).Name) {
                 // ContextMenuStripSetLabel
                 case "ContextMenuStripSetLabel":
-                    //
-                    ToolStripMenuItemClickSetLabelEx = (SetLabelEx)((ContextMenuStrip)sender).SourceControl;
-                    // ƒNƒŠƒbƒN‚³‚ê‚½CellNumber‚ğæ“¾‚µ‚Ä•Ï”‚ÉŠi”[‚·‚é
-                    ToolStripMenuItemClickCellNumber = (int)((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.Tag;
+                    /*
+                     * ToolStripMenuItem_Click‚Åg—p‚·‚é‚Ì‚Å‘Ş”ğ‚µ‚Ä‚¢‚é
+                     * Click‚³‚ê‚½SetLabelEx‚ğæ“¾‚µ‚Ä•Ï”‚ÉŠi”[‚·‚é
+                     */
+                    EvacuationSetLabelEx = (SetLabelEx)((ContextMenuStrip)sender).SourceControl;
+                    /*
+                     * ToolStripMenuItem_Click‚Åg—p‚·‚é‚Ì‚Å‘Ş”ğ‚µ‚Ä‚¢‚é
+                     * Click‚³‚ê‚½CellNumber‚ğæ“¾‚µ‚Ä•Ï”‚ÉŠi”[‚·‚é
+                     */
+                    EvacuationCellNumber = (int)((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.Tag;
+                    /*
+                     * ToolStripMenuItem_Click‚Åg—p‚·‚é‚Ì‚Å‘Ş”ğ‚µ‚Ä‚¢‚é
+                     * Click‚³‚ê‚½SetMasterVo‚ğæ“¾‚µ‚Ä•Ï”‚ÉŠi”[‚·‚é
+                     */
                     SetMasterVo setMasterVo = (SetMasterVo)((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Tag;
-                    // ToolStripMenuItemFax—p‚ÉObject‚ğ‘Ş”ğ‚·‚é
-                    ToolStripMenuItemFaxSetLabelEx = (SetLabelEx)((ContextMenuStrip)sender).SourceControl;
                     // ”zÔæ‚ğíœ‚·‚é
                     ToolStripMenuItemSetDelete.Enabled = setMasterVo.Move_flag;
                     // ‘ãÔE‘ã”Ô‚ÌFAX‚ğì¬‚·‚é
-                    ToolStripMenuItemFax.Enabled = setMasterVo.Contact_method == 11 ? true : false;
+                    SetControlEx setControlEx = (SetControlEx)((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Parent;
+                    ToolStripMenuItemFax.Enabled = (setMasterVo.Contact_method == 11 && operationDate.Date == DateTime.Now.Date && setControlEx.OperationFlag) ? true : false;
                     break;
                 case "ContextMenuStripCarLabel":
                     break;
                 case "ContextMenuStripStaffLabel":
                     StaffMasterVo staffMasterVo = (StaffMasterVo)((StaffLabelEx)((ContextMenuStrip)sender).SourceControl).Tag;
-                    ToolStripMenuItemClickStaffCode = staffMasterVo.Staff_code;
+                    EvacuationStaffCode = staffMasterVo.Staff_code;
                     break;
             }
         }
@@ -717,19 +726,19 @@ namespace VehicleDispatch {
                 case "ToolStripMenuItemSetDelete":
                     try {
                         _vehicleDispatchDetailDao.ResetSet(DateTimePickerOperationDate.Value,
-                                                           ToolStripMenuItemClickCellNumber);
+                                                           EvacuationCellNumber);
                     } catch(Exception exception) {
                         MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     }
-                    var setControlEx = (SetControlEx)ToolStripMenuItemClickSetLabelEx.Parent;
-                    setControlEx.Controls.Remove(ToolStripMenuItemClickSetLabelEx);
+                    var setControlEx = (SetControlEx)EvacuationSetLabelEx.Parent;
+                    setControlEx.Controls.Remove(EvacuationSetLabelEx);
                     setControlEx.Refresh();
                     break;
                 // ‘«—§‚æ‚èoŒÉ
                 case "ToolStripMenuItemSetGarageAdachi":
                     try {
                         _vehicleDispatchDetailDao.UpdateGarageFlag(DateTimePickerOperationDate.Value,
-                                                                   ToolStripMenuItemClickCellNumber,
+                                                                   EvacuationCellNumber,
                                                                    true);
                     } catch(Exception exception) {
                         MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -739,7 +748,7 @@ namespace VehicleDispatch {
                 case "ToolStripMenuItemSetGarageMisato":
                     try {
                         _vehicleDispatchDetailDao.UpdateGarageFlag(DateTimePickerOperationDate.Value,
-                                                                   ToolStripMenuItemClickCellNumber,
+                                                                   EvacuationCellNumber,
                                                                    false);
                     } catch(Exception exception) {
                         MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -747,7 +756,7 @@ namespace VehicleDispatch {
                     break;
                 // ‘ãÔE‘ã”ÔFAX
                 case "ToolStripMenuItemFax":
-                    SetMasterVo setMasterVo = (SetMasterVo)ToolStripMenuItemFaxSetLabelEx.Tag;
+                    SetMasterVo setMasterVo = (SetMasterVo)EvacuationSetLabelEx.Tag;
                     switch(setMasterVo.Set_code) {
                         case 1310101: // ç‘ã“c‚Q
                         case 1310102: // ç‘ã“c‚U
@@ -789,7 +798,7 @@ namespace VehicleDispatch {
                  */
                 // ]–ÒÚ×
                 case "ToolStripMenuItemStaffDetail":
-                    var staffPaper = new StaffPaper(_connectionVo, ToolStripMenuItemClickStaffCode);
+                    var staffPaper = new StaffPaper(_connectionVo, EvacuationStaffCode);
                     staffPaper.ShowDialog(this);
                     break;
             }

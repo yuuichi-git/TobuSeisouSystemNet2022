@@ -53,14 +53,22 @@ namespace CarRegister {
         /// <param name="e"></param>
         private void ButtonUpdate_Click(object sender, EventArgs e) {
             var dialogResult = MessageBox.Show(MessageText.Message802, MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            switch (dialogResult) {
+            switch(dialogResult) {
                 case DialogResult.OK:
                     // StaffLedgerVoに値をセット
                     var carLedgerVo = SetCarMasterVo();
-                    if (_carMasterDao.CheckCarMaster(carLedgerVo.Car_code) != 0) {
-                        _carMasterDao.UpdateOneCarMaster(carLedgerVo);
+                    if(_carMasterDao.CheckCarMaster(carLedgerVo.Car_code) != 0) {
+                        try {
+                            _carMasterDao.UpdateOneCarMaster(carLedgerVo);
+                        } catch(Exception exception) {
+                            MessageBox.Show(exception.Message);
+                        }
                     } else {
-                        _carMasterDao.InsertOneCarMaster(carLedgerVo);
+                        try {
+                            _carMasterDao.InsertOneCarMaster(carLedgerVo);
+                        } catch(Exception exception) {
+                            MessageBox.Show(exception.Message);
+                        }
                     }
                     Close();
                     break;
@@ -178,7 +186,7 @@ namespace CarRegister {
             ComboBoxBaseAddress.Text = carMasterVo.Base_address; // 使用の本拠の位置
             DateTimePickerExpirationDate.Value = carMasterVo.Expiration_date.Date; // 有効期限の満了する日
             TextBoxRemarks.Text = carMasterVo.Remarks; // 備考
-            if (carMasterVo.Picture.Length != 0) {
+            if(carMasterVo.Picture.Length != 0) {
                 var imageConv = new ImageConverter();
                 PictureBox1.Image = (Image?)imageConv.ConvertFrom(carMasterVo.Picture); // 写真
             }
@@ -249,7 +257,7 @@ namespace CarRegister {
             openFileDialog.FilterIndex = 1;
             openFileDialog.RestoreDirectory = true; //ダイアログボックスを閉じる前に現在のディレクトリを復元するようにする
 
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            if(openFileDialog.ShowDialog() == DialogResult.OK)
                 PictureBox1.ImageLocation = openFileDialog.FileName;//Passをセットする
             openFileDialog.Dispose();// オブジェクトを破棄する
         }
@@ -289,7 +297,7 @@ namespace CarRegister {
          * DateTimePicker_KeyDown
          */
         private void DateTimePicker_KeyDown(object sender, KeyEventArgs e) {
-            if (e.KeyData == Keys.Delete) {
+            if(e.KeyData == Keys.Delete) {
                 //Deleteキーが押されたら、dateTimeにnullを設定してdateTimePicker1を非表示に
                 SetDateTimePicker((DateTimePicker)sender, null);
             }
@@ -299,14 +307,14 @@ namespace CarRegister {
          * SetDateTimePicker
          */
         private void SetDateTimePicker(DateTimePicker dateTimePicker, DateTime? datetime) {
-            if (datetime == null || datetime == _defaultDateTime) {
+            if(datetime == null || datetime == _defaultDateTime) {
                 //DateTimePickerFormat.Custom　にして、CostomFormatは半角の空白を入れておくと、日時が非表示になる。
                 dateTimePicker.Format = DateTimePickerFormat.Custom;
                 dateTimePicker.CustomFormat = " ";
             } else {
                 //フォーマットを元に戻して、値をセットする。
                 dateTimePicker.Format = DateTimePickerFormat.Custom;
-                switch (dateTimePicker.Name) {
+                switch(dateTimePicker.Name) {
                     case "DateTimePickerFirstRegistrationDate": // 初度登録年月
                         dateTimePicker.CustomFormat = "yyyy年MM月";
                         break;

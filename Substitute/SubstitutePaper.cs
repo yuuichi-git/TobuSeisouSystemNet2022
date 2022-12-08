@@ -133,69 +133,111 @@ namespace Substitute {
             /*
              * ‘ã”Ô
              */
+            string telephoneNumber = "";
+            Dictionary<int, string> dictionaryTelephoneNumber = new Dictionary<int, string> { { 1310101, "090-6506-7967" }, // ç‘ã“c‚Q
+                                                                                              { 1310102, "080-8868-7459" }, // ç‘ã“c‚U
+                                                                                              { 1310103, "080-8868-8023" }, // ç‘ã“c†‚P
+                                                                                              { 1310201, "080-2202-7713" }, // ’†‰›ƒyƒbƒg‚V
+                                                                                              { 1310202, "080-3493-3729" }, // ’†‰›ƒyƒbƒg‚W
+                                                                                              { 1312101, "" }, // ‘«—§‚P‚W
+                                                                                              { 1312102, "090-5560-0491" }, // ‘«—§‚Q‚R
+                                                                                              { 1312103, "090-5560-0677" }, // ‘«—§‚Q‚S
+                                                                                              { 1312104, "090-5560-0700" }, // ‘«—§‚R‚W
+                                                                                              { 1312204, "090-9817-8129" }, // Š‹ü‚P‚P
+                                                                                              { 1312201, "080-3493-3728" }, // Š‹ü‚R‚R
+                                                                                              { 1312202, "080-2202-7269" }, // Š‹ü‚T‚T
+                                                                                              { 1312203, "" } }; // ¬Šâ‚S
+            // ˜A—æ”Ô†‚ğƒZƒbƒg
+            switch(_vehicleDispatchDetailVo.Set_code) {
+                case 1312105: // ‘«—§•s”R‚S
+                    telephoneNumber = _listStaffMasterVo.Find(x => x.Staff_code == _vehicleDispatchDetailVo.Operator_code_1).Telephone_number;
+                    break;
+                default:
+                    telephoneNumber = dictionaryTelephoneNumber[_vehicleDispatchDetailVo.Set_code];
+                    break;
+            }
             // ‡@´‘|––±Š‚É“o˜^‚³‚ê‚Ä‚¢‚é–{”ÔOprator1‚ğæ“¾‚·‚é 
             int operatorCodeCleanOffice = _vehicleDispatchBodyCleanOfficeDao.GetOperatorCode1(cellNumber);
             // ‡A‰^“]è‘ã”Ô‚Ìˆ—
             if(_vehicleDispatchDetailVo.Operator_code_1 != 0 && operatorCodeCleanOffice != _vehicleDispatchDetailVo.Operator_code_1) {
                 // •ÏX‘O@‘g”@–¼
-                SheetViewPaper.Cells["B38"].Text = string.Concat(_setMasterVo.Set_name_2, "‘g");
+                SheetViewPaper.Cells["B38"].Text = string.Concat(_setMasterVo.Set_name, "‘g");
                 SheetViewPaper.Cells["D38"].Text = _listStaffMasterVo.Find(x => x.Staff_code == operatorCodeCleanOffice).Display_name;
                 // •ÏXŒã@–¼@Œg‘Ñ”Ô†
                 SheetViewPaper.Cells["I38"].Text = _listStaffMasterVo.Find(x => x.Staff_code == _vehicleDispatchDetailVo.Operator_code_1).Display_name;
-                
-                string telephoneNumber = "";
-                switch(_vehicleDispatchDetailVo.Set_code) {
-                    case 1310101: // ç‘ã“c‚Q
-                        telephoneNumber = "090-6506-7967";
-                        break;
-                    case 1310102: // ç‘ã“c‚U
-                        telephoneNumber = "080-8868-7459";
-                        break;
-                    case 1310103: // ç‘ã“c†‚P
-                        telephoneNumber = "080-8868-8023";
-                        break;
-                    case 1310201: // ’†‰›ƒyƒbƒg‚V
-                        telephoneNumber = "080-2202-7713";
-                        break;
-                    case 1310202: // ’†‰›ƒyƒbƒg‚W
-                        telephoneNumber = "080-3493-3729";
-                        break;
-                    case 1312101: // ‘«—§‚P‚W
-                        telephoneNumber = "•s–¾";
-                        break;
-                    case 1312102: // ‘«—§‚Q‚R
-                        telephoneNumber = "090-5560-0491";
-                        break;
-                    case 1312103: // ‘«—§‚Q‚S
-                        telephoneNumber = "090-5560-0677";
-                        break;
-                    case 1312104: // ‘«—§‚R‚W
-                        telephoneNumber = "090-5560-0700";
-                        break;
-                    case 1312105: // ‘«—§•s”R‚S
-                        telephoneNumber = _listStaffMasterVo.Find(x => x.Staff_code == _vehicleDispatchDetailVo.Operator_code_1).Telephone_number;
-                        break;
-                    case 1312204: // Š‹ü‚P‚P
-                        telephoneNumber = "090-9817-8129";
-                        break;
-                    case 1312201: // Š‹ü‚R‚R
-                        telephoneNumber = "080-3493-3728";
-                        break;
-                    case 1312202: // Š‹ü‚T‚T
-                        telephoneNumber = "080-2202-7269";
-                        break;
-                    case 1312203: // ¬Šâ‚S
-                        telephoneNumber = "•s–¾";
-                        break;
-                }
                 SheetViewPaper.Cells["I40"].Text = telephoneNumber;
-
-
             }
+            // ‡Bì‹Æˆõ‘ã”Ô‚Ìˆ— List‚É‚»‚ê‚¼‚êŠi”[‚·‚é
+            List<int> _arrayCleanOfficeStaffCodes = new List<int>();
+            List<int> _arrayVehicleDispatchDetailStaffCodes = new List<int>();
+            // VehicleDispatchBodyCleanOffice‚Ìì‹ÆˆõƒR[ƒh‚ğŠi”[
+            if(_vehicleDispatchBodyCleanOfficeDao.GetOperatorCode2(cellNumber) != 0)
+                _arrayCleanOfficeStaffCodes.Add(_vehicleDispatchBodyCleanOfficeDao.GetOperatorCode2(cellNumber));
+            if(_vehicleDispatchBodyCleanOfficeDao.GetOperatorCode3(cellNumber) != 0)
+                _arrayCleanOfficeStaffCodes.Add(_vehicleDispatchBodyCleanOfficeDao.GetOperatorCode3(cellNumber));
+            if(_vehicleDispatchBodyCleanOfficeDao.GetOperatorCode4(cellNumber) != 0)
+                _arrayCleanOfficeStaffCodes.Add(_vehicleDispatchBodyCleanOfficeDao.GetOperatorCode4(cellNumber));
+            // VehicleDispatchDetailVo‚Ìì‹ÆˆõƒR[ƒh‚ğŠi”[
+            if(_vehicleDispatchDetailVo.Operator_code_2 != 0)
+                _arrayVehicleDispatchDetailStaffCodes.Add(_vehicleDispatchDetailVo.Operator_code_2);
+            if(_vehicleDispatchDetailVo.Operator_code_3 != 0)
+                _arrayVehicleDispatchDetailStaffCodes.Add(_vehicleDispatchDetailVo.Operator_code_3);
+            if(_vehicleDispatchDetailVo.Operator_code_4 != 0)
+                _arrayVehicleDispatchDetailStaffCodes.Add(_vehicleDispatchDetailVo.Operator_code_4);
+            // ‡C‚±‚±‚Ìó‘Ô‚ÅA_arrayCleanOfficeStaffCodes‚Æ_arrayVehicleDispatchDetailStaffCodes‚Éƒf[ƒ^‚ªŠi”[‚³‚ê‚Ä‚¢‚é
+            bool isEqual = _arrayCleanOfficeStaffCodes.SequenceEqual(_arrayVehicleDispatchDetailStaffCodes);
+            // List‚ğ”äŠr‚µ‚Ä“¯ˆê‚Å–³‚¯‚ê‚Î‘ã”Ô‚ª‘¶İ‚·‚é
+            if(!isEqual) {
+                List<int> staffCodes = new List<int>();
+                staffCodes.AddRange(_arrayCleanOfficeStaffCodes);
+                staffCodes.AddRange(_arrayVehicleDispatchDetailStaffCodes);
+                foreach(int staffCode in staffCodes) {
+                    if(_arrayCleanOfficeStaffCodes.Contains(staffCode) && _arrayVehicleDispatchDetailStaffCodes.Contains(staffCode)) {
+                        _arrayCleanOfficeStaffCodes.Remove(staffCode);
+                        _arrayVehicleDispatchDetailStaffCodes.Remove(staffCode);
+                    }
+                }
+                int i = 0;
+                foreach(int staffCode in _arrayCleanOfficeStaffCodes) {
+                    switch(i) {
+                        case 0:
+                            SheetViewPaper.Cells["B42"].Text = string.Concat(_setMasterVo.Set_name, "‘g");
+                            SheetViewPaper.Cells["D42"].Text = _listStaffMasterVo.Find(x => x.Staff_code == staffCode).Display_name;
+                            SheetViewPaper.Cells["I42"].Text = _listStaffMasterVo.Find(x => x.Staff_code == _arrayVehicleDispatchDetailStaffCodes[i]).Display_name;
+                            SheetViewPaper.Cells["I44"].Text = telephoneNumber;
+                            break;
+                        case 1:
+                            SheetViewPaper.Cells["B46"].Text = string.Concat(_setMasterVo.Set_name, "‘g");
+                            SheetViewPaper.Cells["D46"].Text = _listStaffMasterVo.Find(x => x.Staff_code == staffCode).Display_name;
+                            SheetViewPaper.Cells["I46"].Text = _listStaffMasterVo.Find(x => x.Staff_code == _arrayVehicleDispatchDetailStaffCodes[i]).Display_name;
+                            SheetViewPaper.Cells["I48"].Text = telephoneNumber;
+                            break;
+                        default:
+                            MessageBox.Show("‘ã”Ôì‹Æˆõ‚ğ‚R–¼‹L˜^‚Í‚Å‚«‚Ü‚¹‚ñ");
+                            break;
+                    }
 
 
+                    i++;
+                }
+            }
             // FAX”Ô†‘¼
             SheetViewPaper.Cells["H51"].Text = _cleanOfficeFax;
+        }
+
+        int _staffPutNumber = 0; // ‘ã”Ô‚ğ‹LÚ‚·‚éRow”Ô†
+        /// <summary>
+        /// PutStaff
+        /// </summary>
+        /// <param name="rowNumber"></param>
+        /// <param name="setName"></param>
+        /// <param name="occupation"></param>
+        /// <param name="beforeDisplayName"></param>
+        /// <param name="afterDisplayName"></param>
+        /// <param name="telephoneNumber"></param>
+        private void PutStaff(int rowNumber, string setName, string occupation, string beforeDisplayName, string afterDisplayName, string telephoneNumber) {
+            Dictionary<int, string> cellSetName = new Dictionary<int, string> { { 0, "B38" }, { 1, "B42" }, { 2, "B46" } };
+
         }
 
         private void InitializeSheetViewPaper() {
@@ -226,17 +268,17 @@ namespace Substitute {
             SheetViewPaper.Cells["D38"].ResetValue(); // –{”Ô–¼
             SheetViewPaper.Cells["I38"].ResetValue(); // ‘ã”Ô–¼
             SheetViewPaper.Cells["I40"].ResetValue(); // ‘ã”ÔŒg‘Ñ”Ô†
-            // ‚Qs–Ú
+                                                      // ‚Qs–Ú
             SheetViewPaper.Cells["B42"].ResetValue(); // ‘g
             SheetViewPaper.Cells["D42"].ResetValue(); // –{”Ô–¼
             SheetViewPaper.Cells["I42"].ResetValue(); // ‘ã”Ô–¼
             SheetViewPaper.Cells["I44"].ResetValue(); // ‘ã”ÔŒg‘Ñ”Ô†
-            // ‚Rs–Ú
+                                                      // ‚Rs–Ú
             SheetViewPaper.Cells["B46"].ResetValue(); // ‘g
             SheetViewPaper.Cells["D46"].ResetValue(); // –{”Ô–¼
             SheetViewPaper.Cells["I46"].ResetValue(); // ‘ã”Ô–¼
             SheetViewPaper.Cells["I48"].ResetValue(); // ‘ã”ÔŒg‘Ñ”Ô†
-            // ‘—‚èæ
+                                                      // ‘—‚èæ
             SheetViewPaper.Cells["H51"].ResetValue();
         }
 
