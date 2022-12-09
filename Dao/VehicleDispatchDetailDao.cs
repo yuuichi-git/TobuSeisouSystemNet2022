@@ -835,13 +835,13 @@ namespace Dao {
         }
 
         /// <summary>
-        /// UpdateOperatorNote
+        /// SetOperatorNote
         /// </summary>
         /// <param name="operationDate"></param>
         /// <param name="cellNumber"></param>
         /// <param name="row"></param>
         /// <param name="note"></param>
-        public void UpdateOperatorNote(DateTime operationDate, int cellNumber, int row, string note) {
+        public void SetOperatorNote(DateTime operationDate, int cellNumber, int row, string note) {
             /*
              * Tagがゼロから始まっているので１をプラスする
              */
@@ -853,8 +853,7 @@ namespace Dao {
             /*
              * Drop項目のSQL文を作成
              */
-            string sqlOperatorNote = string.Concat("operator_" + row + "_roll_call_flag");
-
+            string sqlOperatorNote = string.Concat("operator_" + row + "_note");
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "UPDATE vehicle_dispatch_detail " +
                                      "SET " + sqlOperatorNote + " = '" + note + "'," +

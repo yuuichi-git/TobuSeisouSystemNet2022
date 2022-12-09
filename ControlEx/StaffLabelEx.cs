@@ -195,7 +195,7 @@ namespace ControlEx {
              */
             if(_noteFlag) {
                 Point[] points = { new Point(1, 1), new Point(11, 1), new Point(1, 11) };
-                e.Graphics.FillPolygon(new SolidBrush(Color.Blue), points);
+                e.Graphics.FillPolygon(new SolidBrush(Color.Crimson), points);
             }
         }
 
@@ -233,10 +233,11 @@ namespace ControlEx {
 
         /// <summary>
         /// SetNoteFlag
+        /// True:メモあり False:メモなし
         /// </summary>
         /// <param name="noteFlag"></param>
         public void SetNoteFlag(bool noteFlag) {
-             _noteFlag= noteFlag;
+            _noteFlag = noteFlag;
             this.Refresh();
         }
     }

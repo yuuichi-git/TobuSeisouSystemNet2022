@@ -219,5 +219,29 @@ namespace Dao {
                 throw;
             }
         }
+
+        /// <summary>
+        /// SetOperatorNote
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="operatorCode"></param>
+        /// <param name="row"></param>
+        /// <param name="note"></param>
+        public void SetOperatorNote(DateTime operationDate, int operatorCode, string note) {
+            /*
+             * Drop項目のSQL文を作成
+             */
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE vehicle_dispatch_detail_staff " +
+                                     "SET operator_note = '" + note + "'," +
+                                          "update_pc_name = '" + Environment.MachineName + "'," +
+                                          "update_ymd_hms = '" + DateTime.Now + "' " +
+                                     "WHERE operator_code = " + operatorCode + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
     }
 }

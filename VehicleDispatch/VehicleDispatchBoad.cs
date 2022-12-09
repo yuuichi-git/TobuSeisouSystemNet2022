@@ -676,9 +676,17 @@ namespace VehicleDispatch {
         /// </summary>
         SetControlEx EvacuationSetControlEx;
         /// <summary>
+        /// FlowLayoutPanelEx 退避用
+        /// </summary>
+        FlowLayoutPanelEx EvacuationFlowLayoutPanelEx;
+        /// <summary>
         /// SetLabelEx 退避用
         /// </summary>
         SetLabelEx EvacuationSetLabelEx;
+        /// <summary>
+        /// CarLabelEx 退避用
+        /// </summary>
+        CarLabelEx EvacuationCarLabelEx;
         /// <summary>
         /// StaffLabelEx 退避用
         /// </summary>
@@ -697,11 +705,17 @@ namespace VehicleDispatch {
                  * ContextMenuStripSetLabel
                  */
                 case "ContextMenuStripSetLabel":
-                    EvacuationSetControlEx = (SetControlEx)((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Parent;
                     /*
-                     * ToolStripMenuItem_Clickで使用するので退避している
-                     * ClickされたSetLabelExを取得して変数に格納する
+                     * SetControlEx上でクリックされた時
                      */
+                    if(((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(SetControlEx))
+                        EvacuationSetControlEx = (SetControlEx)((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Parent; // SetControlExを退避
+                    /*
+                     * FlowLayoutPanelEx上でクリックされた時
+                     */
+                    if(((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(FlowLayoutPanelEx))
+                        EvacuationFlowLayoutPanelEx = (FlowLayoutPanelEx)((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Parent; // SetControlExを退避
+                    // SetLabelExを退避
                     EvacuationSetLabelEx = (SetLabelEx)((ContextMenuStrip)sender).SourceControl;
                     /*
                      * メニューの表示調整
@@ -714,11 +728,34 @@ namespace VehicleDispatch {
                  * ContextMenuStripCarLabel
                  */
                 case "ContextMenuStripCarLabel":
+                    /*
+                     * SetControlEx上でクリックされた時
+                     */
+                    if(((CarLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(SetControlEx))
+                        EvacuationSetControlEx = (SetControlEx)((CarLabelEx)((ContextMenuStrip)sender).SourceControl).Parent; // SetControlExを退避
+                    /*
+                     * FlowLayoutPanelEx上でクリックされた時
+                     */
+                    if(((CarLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(FlowLayoutPanelEx))
+                        EvacuationFlowLayoutPanelEx = (FlowLayoutPanelEx)((CarLabelEx)((ContextMenuStrip)sender).SourceControl).Parent; // SetControlExを退避
+                    // CarLabelExを退避
+                    EvacuationCarLabelEx = (CarLabelEx)((ContextMenuStrip)sender).SourceControl;
                     break;
                 /*
                  * ContextMenuStripStaffLabel
                  */
                 case "ContextMenuStripStaffLabel":
+                    /*
+                     * SetControlEx上でクリックされた時
+                     */
+                    if(((StaffLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(SetControlEx))
+                        EvacuationSetControlEx = (SetControlEx)((StaffLabelEx)((ContextMenuStrip)sender).SourceControl).Parent; // SetControlExを退避
+                    /*
+                     * FlowLayoutPanelEx上でクリックされた時
+                     */
+                    if(((StaffLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(FlowLayoutPanelEx))
+                        EvacuationFlowLayoutPanelEx = (FlowLayoutPanelEx)((StaffLabelEx)((ContextMenuStrip)sender).SourceControl).Parent; // SetControlExを退避
+                    // StaffLabelExを退避
                     EvacuationStaffLabelEx = (StaffLabelEx)((ContextMenuStrip)sender).SourceControl;
                     break;
             }
@@ -856,8 +893,29 @@ namespace VehicleDispatch {
                     break;
                 // メモを書き込む
                 case "ToolStripMenuItemMemo":
-                    string str = Microsoft.VisualBasic.Interaction.InputBox("日付毎の従事者メモを書き込んで下さい", "従業員メモ");
-
+                    string stringMemo = Microsoft.VisualBasic.Interaction.InputBox("従事者メモを書き込んで下さい", "メモ");
+                    try {
+                        /*
+                         * SetControlEx上でクリックされた時
+                         */
+                        if(EvacuationStaffLabelEx.Parent.GetType() == typeof(SetControlEx)) {
+                            _vehicleDispatchDetailDao.SetOperatorNote(DateTimePickerOperationDate.Value,
+                                                                      (int)EvacuationSetControlEx.Tag,
+                                                                      EvacuationSetControlEx.GetPositionFromControl(EvacuationStaffLabelEx).Row,
+                                                                      stringMemo);
+                        }
+                        /*
+                         * FlowLayoutPanelEx上でクリックされた時
+                         */
+                        if(EvacuationStaffLabelEx.Parent.GetType() == typeof(FlowLayoutPanelEx)) {
+                            _vehicleDispatchDetailStaffDao.SetOperatorNote(DateTimePickerOperationDate.Value,
+                                                                           ((StaffMasterVo)EvacuationStaffLabelEx.Tag).Staff_code,
+                                                                           stringMemo);
+                        }
+                        EvacuationStaffLabelEx.SetNoteFlag(stringMemo.Length > 0 ? true : false);
+                    } catch(Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
                     break;
             }
         }

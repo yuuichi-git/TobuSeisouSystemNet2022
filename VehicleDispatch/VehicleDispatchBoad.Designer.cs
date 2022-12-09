@@ -1182,6 +1182,12 @@
             this.ToolStripMenuItemMemo.Text = "メモを書き込む";
             this.ToolStripMenuItemMemo.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
+            // ToolTip1
+            // 
+            this.ToolTip1.AutoPopDelay = 5000;
+            this.ToolTip1.InitialDelay = 500;
+            this.ToolTip1.ReshowDelay = 20;
+            // 
             // VehicleDispatchBoad
             // 
             this.AllowDrop = true;
