@@ -168,7 +168,7 @@ namespace Staff {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void TabControlEx1_Click(object sender, EventArgs e) {
-            if (_listFindAllStaffMasterVo != null)
+            if(_listFindAllStaffMasterVo != null)
                 SheetViewListOutPut();
         }
 
@@ -182,7 +182,7 @@ namespace Staff {
             // æ“ªsi—ñjƒCƒ“ƒfƒbƒNƒX‚ğæ“¾
             spreadListTopRow = SpreadList.GetViewportTopRow(0);
             // Row‚ğíœ‚·‚é
-            if (SheetViewList.Rows.Count > 0)
+            if(SheetViewList.Rows.Count > 0)
                 SheetViewList.RemoveRows(0, SheetViewList.Rows.Count);
 
             _listFindAllStaffMasterVo = TabControlExStaff.SelectedTab.Tag switch {
@@ -200,49 +200,49 @@ namespace Staff {
             };
 
             // –ğˆõ
-            if (!CheckBoxOfficer.Checked)
+            if(!CheckBoxOfficer.Checked)
                 _listFindAllStaffMasterVo = _listFindAllStaffMasterVo.FindAll(x => x.Belongs != 10);
             // Ğˆõ
-            if (!CheckBoxCompanyEmployee.Checked)
+            if(!CheckBoxCompanyEmployee.Checked)
                 _listFindAllStaffMasterVo = _listFindAllStaffMasterVo.FindAll(x => x.Belongs != 11);
             // ƒAƒ‹ƒoƒCƒg
-            if (!CheckBoxPartTimeJob1.Checked)
+            if(!CheckBoxPartTimeJob1.Checked)
                 _listFindAllStaffMasterVo = _listFindAllStaffMasterVo.FindAll(x => x.Belongs != 12);
             // V‰^“]
-            if (!CheckBoxSinunten.Checked)
+            if(!CheckBoxSinunten.Checked)
                 _listFindAllStaffMasterVo = _listFindAllStaffMasterVo.FindAll(x => x.Belongs != 20);
             // ©‰^˜J
-            if (!CheckBoxJiunrou.Checked)
+            if(!CheckBoxJiunrou.Checked)
                 _listFindAllStaffMasterVo = _listFindAllStaffMasterVo.FindAll(x => x.Belongs != 21);
             // ’·Šú
-            if (!CheckBoxFullTimeJob.Checked)
+            if(!CheckBoxFullTimeJob.Checked)
                 _listFindAllStaffMasterVo = _listFindAllStaffMasterVo.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.Job_form != 10);
             // è’ 
-            if (!CheckBoxNoteBook.Checked)
+            if(!CheckBoxNoteBook.Checked)
                 _listFindAllStaffMasterVo = _listFindAllStaffMasterVo.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.Job_form != 11);
             // ƒAƒ‹ƒoƒCƒg
-            if (!CheckBoxPartTimeJob2.Checked)
+            if(!CheckBoxPartTimeJob2.Checked)
                 _listFindAllStaffMasterVo = _listFindAllStaffMasterVo.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.Job_form != 12);
             // w’è‚È‚µ
-            if (!CheckBoxNone1.Checked)
+            if(!CheckBoxNone1.Checked)
                 _listFindAllStaffMasterVo = _listFindAllStaffMasterVo.FindAll(x => x.Job_form != 99);
             // ‰^“]è
-            if (!CheckBoxDriver.Checked)
+            if(!CheckBoxDriver.Checked)
                 _listFindAllStaffMasterVo = _listFindAllStaffMasterVo.FindAll(x => x.Occupation != 10);
             // ì‹Æˆõ
-            if (!CheckBoxWorkStaff.Checked)
+            if(!CheckBoxWorkStaff.Checked)
                 _listFindAllStaffMasterVo = _listFindAllStaffMasterVo.FindAll(x => x.Occupation != 11);
             // w’è‚È‚µ
-            if (!CheckBoxNone2.Checked)
+            if(!CheckBoxNone2.Checked)
                 _listFindAllStaffMasterVo = _listFindAllStaffMasterVo.FindAll(x => x.Occupation != 99);
             // ‘ŞEÒ
-            if (!CheckBoxRetired.Checked)
+            if(!CheckBoxRetired.Checked)
                 _listFindAllStaffMasterVo = _listFindAllStaffMasterVo.FindAll(x => x.Retirement_flag != true);
             // ƒ\[ƒg
             _linqExtendsStaffMasterVo = _listFindAllStaffMasterVo.OrderBy(x => x.Name_kana);
 
             int i = 0;
-            foreach (var extendsStaffMasterVo in _linqExtendsStaffMasterVo) {
+            foreach(var extendsStaffMasterVo in _linqExtendsStaffMasterVo) {
                 // Š‘®
                 var _belongs = extendsStaffMasterVo.Belongs;
                 // Œ`‘Ô
@@ -262,7 +262,7 @@ namespace Staff {
                 // –Æ‹–Ø
                 bool _licenseLedgerFlag = false;
                 DateTime? _licenseLedgerExpirationDate = null;
-                if (extendsStaffMasterVo.LicenseNumber != "") {
+                if(extendsStaffMasterVo.LicenseNumber != "") {
                     // –Æ‹–Ø
                     _licenseLedgerFlag = true;
                     // –Æ‹–ØŠúŒÀ
@@ -272,53 +272,53 @@ namespace Staff {
                 var _commutingNotificationFlag = extendsStaffMasterVo.CommutingNotification;
                 // ”CˆÓ•ÛŒ¯I—¹”NŒ“ú
                 DateTime? _meansOfCommutingEndDate = null;
-                if (extendsStaffMasterVo.CommutingNotification) {
-                    if (extendsStaffMasterVo.CommuterInsuranceEndDate.Date != _defaultDateTime.Date)
+                if(extendsStaffMasterVo.CommutingNotification) {
+                    if(extendsStaffMasterVo.CommuterInsuranceEndDate.Date != _defaultDateTime.Date)
                         _meansOfCommutingEndDate = extendsStaffMasterVo.CommuterInsuranceEndDate.Date;
                 }
                 // ¶”NŒ“úE”N—î
                 DateTime? _birth_date = null;
                 string _age = "";
-                if (extendsStaffMasterVo.Birth_date != _defaultDateTime) {
+                if(extendsStaffMasterVo.Birth_date != _defaultDateTime) {
                     _birth_date = extendsStaffMasterVo.Birth_date.Date;
                     // ”N—î
                     _age = string.Concat(new Date().GetStaffAge(extendsStaffMasterVo.Birth_date.Date), "Î");
                 }
                 // ŒÙ—p”NŒ“ú
                 DateTime? _employment_date = null;
-                if (extendsStaffMasterVo.Employment_date != _defaultDateTime) {
+                if(extendsStaffMasterVo.Employment_date != _defaultDateTime) {
                     _employment_date = extendsStaffMasterVo.Employment_date.Date;
                 }
                 // ‹Î‘±
                 string _service_date = "";
-                if (extendsStaffMasterVo.Employment_date != _defaultDateTime) {
+                if(extendsStaffMasterVo.Employment_date != _defaultDateTime) {
                     _service_date = string.Concat(new Date().GetEmploymenteYear(extendsStaffMasterVo.Employment_date.Date).ToString("#0”N"), new Date().GetEmploymenteMonth(extendsStaffMasterVo.Employment_date.Date).ToString("00Œ"));
                 }
                 // ‰”C
                 DateTime? _proper_kind_syonin = null;
-                if (extendsStaffMasterVo.Proper_kind_1 == "‰”Cf’f")
+                if(extendsStaffMasterVo.Proper_kind_1 == "‰”Cf’f")
                     _proper_kind_syonin = extendsStaffMasterVo.Proper_date_1;
-                if (extendsStaffMasterVo.Proper_kind_2 == "‰”Cf’f")
+                if(extendsStaffMasterVo.Proper_kind_2 == "‰”Cf’f")
                     _proper_kind_syonin = extendsStaffMasterVo.Proper_date_2;
-                if (extendsStaffMasterVo.Proper_kind_3 == "‰”Cf’f")
+                if(extendsStaffMasterVo.Proper_kind_3 == "‰”Cf’f")
                     _proper_kind_syonin = extendsStaffMasterVo.Proper_date_3;
                 // “K—î
                 string _proper_kind_tekirei = "";
                 var timeSpan = new TimeSpan(0, 0, 0, 0);
 
-                if (extendsStaffMasterVo.Proper_kind_1 == "“K—îf’f" || extendsStaffMasterVo.Proper_kind_2 == "“K—îf’f" || extendsStaffMasterVo.Proper_kind_3 == "“K—îf’f") {
-                    if (extendsStaffMasterVo.Proper_kind_1 == "“K—îf’f") {
+                if(extendsStaffMasterVo.Proper_kind_1 == "“K—îf’f" || extendsStaffMasterVo.Proper_kind_2 == "“K—îf’f" || extendsStaffMasterVo.Proper_kind_3 == "“K—îf’f") {
+                    if(extendsStaffMasterVo.Proper_kind_1 == "“K—îf’f") {
                         timeSpan = extendsStaffMasterVo.Proper_date_1.AddYears(3) - DateTime.Now.Date;
-                    } else if (extendsStaffMasterVo.Proper_kind_2 == "“K—îf’f") {
+                    } else if(extendsStaffMasterVo.Proper_kind_2 == "“K—îf’f") {
                         timeSpan = extendsStaffMasterVo.Proper_date_2.AddYears(3) - DateTime.Now.Date;
-                    } else if (extendsStaffMasterVo.Proper_kind_3 == "“K—îf’f") {
+                    } else if(extendsStaffMasterVo.Proper_kind_3 == "“K—îf’f") {
                         timeSpan = extendsStaffMasterVo.Proper_date_3.AddYears(3) - DateTime.Now.Date;
                     }
                     _proper_kind_tekirei = string.Concat(timeSpan.Days, "“úŒã");
                 }
                 // –ŒÌ”
                 string _car_accident_count = "";
-                if (extendsStaffMasterVo.CarAccidentMasterCount != 0) {
+                if(extendsStaffMasterVo.CarAccidentMasterCount != 0) {
                     _car_accident_count = string.Concat(extendsStaffMasterVo.CarAccidentMasterCount, "Œ");
                 }
                 // Œ»ZŠ
@@ -378,10 +378,10 @@ namespace Staff {
         /// <param name="e"></param>
         private void SpreadList_CellDoubleClick(object sender, CellClickEventArgs e) {
             // ƒwƒbƒ_[‚ÌDoubleClick‚ğ‰ñ”ğ
-            if (e.ColumnHeader)
+            if(e.ColumnHeader)
                 return;
             // Shift‚ª‰Ÿ‚³‚ê‚½ê‡
-            if ((ModifierKeys & Keys.Shift) == Keys.Shift) {
+            if((ModifierKeys & Keys.Shift) == Keys.Shift) {
                 var staffRegisterPaper = new StaffPaper(_connectionVo, ((ExtendsStaffMasterVo)SheetViewList.Cells[e.Row, colName].Tag).Staff_code);
                 staffRegisterPaper.ShowDialog();
                 return;
@@ -439,7 +439,7 @@ namespace Staff {
             /*
              * SheetView‚ÉRow‚ª–³‚¢ê‡‚âARow‚ª‘I‘ğ‚³‚ê‚Ä‚¢‚È‚¢ê‡‚ÍReturn‚·‚é
              */
-            if (SheetViewList.RowCount < 1 || !SheetViewList.IsBlockSelected) {
+            if(SheetViewList.RowCount < 1 || !SheetViewList.IsBlockSelected) {
                 e.Cancel = true;
                 return;
             }
@@ -449,9 +449,9 @@ namespace Staff {
             /*
              * –Æ‹–Ø
              */
-            if (cellRange[0].RowCount == 1) {
+            if(cellRange[0].RowCount == 1) {
                 var license = SheetViewList.Cells[SheetViewList.ActiveRowIndex, colLicense].Value;
-                if ((bool)license) {
+                if((bool)license) {
                     ToolStripMenuItemLicense.Enabled = true;
                 } else {
                     ToolStripMenuItemLicense.Enabled = false;
@@ -462,9 +462,9 @@ namespace Staff {
             /*
              * “ŒŠÂ•Û
              */
-            if (cellRange[0].RowCount == 1) {
+            if(cellRange[0].RowCount == 1) {
                 var toukanpoCard = SheetViewList.Cells[SheetViewList.ActiveRowIndex, colToukanpoCard].Value;
-                if ((bool)toukanpoCard) {
+                if((bool)toukanpoCard) {
                     ToolStripMenuItemToukanpo.Enabled = true;
                 } else {
                     ToolStripMenuItemToukanpo.Enabled = false;
@@ -475,9 +475,9 @@ namespace Staff {
             /*
              * ’n}‚ğ•\¦‚·‚é
              */
-            if (cellRange[0].RowCount == 1) {
+            if(cellRange[0].RowCount == 1) {
                 var currentAddress = SheetViewList.Cells[SheetViewList.ActiveRowIndex, colCurrentAddress].Text;
-                if (!string.IsNullOrEmpty(currentAddress)) {
+                if(!string.IsNullOrEmpty(currentAddress)) {
                     ToolStripMenuItemMap.Enabled = true;
                 } else {
                     ToolStripMenuItemMap.Enabled = false;
@@ -493,7 +493,7 @@ namespace Staff {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ToolStripMenuItem_Click(object sender, EventArgs e) {
-            switch (((ToolStripMenuItem)sender).Name) {
+            switch(((ToolStripMenuItem)sender).Name) {
                 /*
                  * –Æ‹–Ø‚ğ•\¦
                  */
@@ -534,7 +534,7 @@ namespace Staff {
         /// <param name="e"></param>
         private void StaffList_FormClosing(object sender, FormClosingEventArgs e) {
             var dialogResult = MessageBox.Show(MessageText.Message102, MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            switch (dialogResult) {
+            switch(dialogResult) {
                 case DialogResult.OK:
                     e.Cancel = false;
                     Dispose();

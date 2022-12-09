@@ -70,7 +70,7 @@ namespace ControlEx {
         /// FlowLayoutPanel(右側)に対してのStaffLabelExを作成
         /// </summary>
         /// <param name="staffMasterVo"></param>
-        public StaffLabelEx(StaffMasterVo staffMasterVo, bool noteFlag) {
+        public StaffLabelEx(StaffMasterVo? staffMasterVo, bool noteFlag) {
             _staffMasterVo = staffMasterVo;
             _tenkoModeFlag = false;
             _rollCallFlag = false;
@@ -119,7 +119,7 @@ namespace ControlEx {
         /// <param name="tenkoModeFlag"></param>
         /// <param name="rollCallFlag"></param>
         /// <param name="noteFlag"></param>
-        public StaffLabelEx(StaffMasterVo staffMasterVo, bool tenkoModeFlag, bool rollCallFlag, bool noteFlag) {
+        public StaffLabelEx(StaffMasterVo? staffMasterVo, bool tenkoModeFlag, bool rollCallFlag, bool noteFlag) {
             _staffMasterVo = staffMasterVo;
             _tenkoModeFlag = tenkoModeFlag;
             _rollCallFlag = rollCallFlag;

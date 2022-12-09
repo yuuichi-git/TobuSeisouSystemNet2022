@@ -195,7 +195,7 @@ namespace VehicleDispatch {
                  */
                 if(vehicleDispatchDetailVo != null && vehicleDispatchDetailVo.Car_code != 0) {
                     setControlEx.CreateLabel(_listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code), ContextMenuStripCarLabel);
-                    _listDeepCopyCarMasterVo.RemoveAll(x => x.Car_code == vehicleDispatchDetailVo.Car_code);
+                    _listDeepCopyCarMasterVo?.RemoveAll(x => x.Car_code == vehicleDispatchDetailVo.Car_code);
                 }
                 /*
                  * StaffLabel1
@@ -207,7 +207,7 @@ namespace VehicleDispatch {
                                              vehicleDispatchDetailVo.Operator_1_roll_call_flag,
                                              vehicleDispatchDetailVo.Operator_1_note.Length > 0 ? true : false,
                                              ContextMenuStripStaffLabel);
-                    _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1);
+                    _listDeepCopyStaffMasterVo?.RemoveAll(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1);
                     // ToolTip
                     ToolTip1.SetToolTip(setControlEx.GetControlFromPosition(0, 2), vehicleDispatchDetailVo.Operator_1_note);
                 }
@@ -221,7 +221,7 @@ namespace VehicleDispatch {
                                              vehicleDispatchDetailVo.Operator_2_roll_call_flag,
                                              vehicleDispatchDetailVo.Operator_2_note.Length > 0 ? true : false,
                                              ContextMenuStripStaffLabel);
-                    _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2);
+                    _listDeepCopyStaffMasterVo?.RemoveAll(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2);
                     // ToolTip
                     ToolTip1.SetToolTip(setControlEx.GetControlFromPosition(0, 3), vehicleDispatchDetailVo.Operator_2_note);
                 }
@@ -235,7 +235,7 @@ namespace VehicleDispatch {
                                              vehicleDispatchDetailVo.Operator_3_roll_call_flag,
                                              vehicleDispatchDetailVo.Operator_3_note.Length > 0 ? true : false,
                                              ContextMenuStripStaffLabel);
-                    _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3);
+                    _listDeepCopyStaffMasterVo?.RemoveAll(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3);
                     // ToolTip
                     ToolTip1.SetToolTip(setControlEx.GetControlFromPosition(0, 4), vehicleDispatchDetailVo.Operator_3_note);
                 }
@@ -249,7 +249,7 @@ namespace VehicleDispatch {
                                              vehicleDispatchDetailVo.Operator_4_roll_call_flag,
                                              vehicleDispatchDetailVo.Operator_4_note.Length > 0 ? true : false,
                                              ContextMenuStripStaffLabel);
-                    _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4);
+                    _listDeepCopyStaffMasterVo?.RemoveAll(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4);
                     // ToolTip
                     ToolTip1.SetToolTip(setControlEx.GetControlFromPosition(0, 5), vehicleDispatchDetailVo.Operator_4_note);
                 }
@@ -996,7 +996,7 @@ namespace VehicleDispatch {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void SetControlEx_Click(object sender, EventArgs e) {
+        private void SetControlEx_Click(object? sender, EventArgs e) {
             //MessageBox.Show("SetControlEx_Click");
         }
 
@@ -1005,7 +1005,7 @@ namespace VehicleDispatch {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void SetControlEx_DragDrop(object sender, DragEventArgs e) {
+        private void SetControlEx_DragDrop(object? sender, DragEventArgs e) {
             // DropÇéÛÇØì¸ÇÍÇ»Ç¢
             e.Effect = DragDropEffects.None;
             SetControlEx setControlEx = (SetControlEx)sender;
@@ -1024,7 +1024,7 @@ namespace VehicleDispatch {
                             /*
                              * SetControlExÇ©ÇÁÇÃDrop
                              */
-                            if(setControlEx.GetControlFromPosition(0, 0) == null) {
+                            if(setControlEx != null && setControlEx.GetControlFromPosition(0, 0) == null) {
                                 /*
                                  * à⁄ìÆãñâ¬Çí≤ç∏Ç∑ÇÈ
                                  */
@@ -1043,7 +1043,7 @@ namespace VehicleDispatch {
                             }
                             break;
                         case "FlowLayoutPanelExSet":
-                            if(setControlEx.GetControlFromPosition(0, 0) == null) {
+                            if(setControlEx != null && setControlEx.GetControlFromPosition(0, 0) == null) {
                                 /*
                                  * Tab(îzé‘êÊ)Ç©ÇÁÇÃDrop
                                  */
@@ -1082,7 +1082,7 @@ namespace VehicleDispatch {
                 CarLabelEx dragItem = (CarLabelEx)e.Data.GetData(typeof(CarLabelEx));
                 switch(dragItem.Parent.Name) {
                     case "SetControlEx":
-                        if(setControlEx.GetControlFromPosition(0, 1) == null) {
+                        if(setControlEx != null && setControlEx.GetControlFromPosition(0, 1) == null) {
                             _vehicleDispatchDetailDao.SetCar(DateTimePickerOperationDate.Value,
                                                              Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
                                                              Convert.ToInt32(setControlEx.Tag));
@@ -1094,7 +1094,7 @@ namespace VehicleDispatch {
                         }
                         break;
                     case "FlowLayoutPanelExCar":
-                        if(setControlEx.GetControlFromPosition(0, 1) == null) {
+                        if(setControlEx != null && setControlEx.GetControlFromPosition(0, 1) == null) {
                             // vehicle_dispatch_detailÇUPDATE
                             _vehicleDispatchDetailDao.SetCar(DateTimePickerOperationDate.Value,
                                                              Convert.ToInt32(setControlEx.Tag),
@@ -1107,7 +1107,7 @@ namespace VehicleDispatch {
                     case "FlowLayoutPanelExChecking":
                     case "FlowLayoutPanelExRepair":
                     case "FlowLayoutPanelExVehicleInspection":
-                        if(setControlEx.GetControlFromPosition(0, 1) == null) {
+                        if(setControlEx != null && setControlEx.GetControlFromPosition(0, 1) == null) {
                             // vehicle_dispatch_detailÇUPDATE
                             _vehicleDispatchDetailDao.SetCar(DateTimePickerOperationDate.Value,
                                                              Convert.ToInt32(setControlEx.Tag),
@@ -1122,7 +1122,7 @@ namespace VehicleDispatch {
                         }
                         break;
                     case "FlowLayoutPanelExFree":
-                        if(setControlEx.GetControlFromPosition(0, 1) == null) {
+                        if(setControlEx != null && setControlEx.GetControlFromPosition(0, 1) == null) {
                             // vehicle_dispatch_detailÇUPDATE
                             _vehicleDispatchDetailDao.SetCar(DateTimePickerOperationDate.Value,
                                                              Convert.ToInt32(setControlEx.Tag),
@@ -1392,8 +1392,8 @@ namespace VehicleDispatch {
                                                                           (StaffMasterVo)dragItem.Tag);
                                     // VehicleDispatchDetailStaffÇ©ÇÁDELETE
                                     _vehicleDispatchDetailStaffDao.DeleteStaff(DateTimePickerOperationDate.Value,
-                                                                                                    Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                                                    ((StaffMasterVo)dragItem.Tag).Staff_code);
+                                                                               Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                               ((StaffMasterVo)dragItem.Tag).Staff_code);
                                     // dragItemÇà⁄ìÆ
                                     setControlEx.Controls.Add(dragItem, 0, 2);
                                     ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " ÇèàóùÇµÇ‹ÇµÇΩ");
@@ -1405,14 +1405,14 @@ namespace VehicleDispatch {
                                 if(setControlEx.GetControlFromPosition(0, 3) == null) {
                                     // VehicleDispatchDetailÇ…UPDATE
                                     _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
-                                                                          Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                          Convert.ToInt32(setControlEx.Tag),
-                                                                          2,
-                                                                          (StaffMasterVo)dragItem.Tag);
+                                                                       Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                       Convert.ToInt32(setControlEx.Tag),
+                                                                       2,
+                                                                       (StaffMasterVo)dragItem.Tag);
                                     // VehicleDispatchDetailStaffÇ©ÇÁDELETE
                                     _vehicleDispatchDetailStaffDao.DeleteStaff(DateTimePickerOperationDate.Value,
-                                                                                                    Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                                                    ((StaffMasterVo)dragItem.Tag).Staff_code);
+                                                                               Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                               ((StaffMasterVo)dragItem.Tag).Staff_code);
                                     setControlEx.Controls.Add(dragItem, 0, 3);
                                     ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " ÇèàóùÇµÇ‹ÇµÇΩ");
                                 } else {
@@ -1423,14 +1423,14 @@ namespace VehicleDispatch {
                                 if(setControlEx.GetControlFromPosition(0, 4) == null) {
                                     // VehicleDispatchDetailÇ…UPDATE
                                     _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
-                                                                          Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                          Convert.ToInt32(setControlEx.Tag),
+                                                                       Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                       Convert.ToInt32(setControlEx.Tag),
                                                                           3,
                                                                           (StaffMasterVo)dragItem.Tag);
                                     // VehicleDispatchDetailStaffÇ©ÇÁDELETE
                                     _vehicleDispatchDetailStaffDao.DeleteStaff(DateTimePickerOperationDate.Value,
-                                                                                                    Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                                                    ((StaffMasterVo)dragItem.Tag).Staff_code);
+                                                                               Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                               ((StaffMasterVo)dragItem.Tag).Staff_code);
                                     setControlEx.Controls.Add(dragItem, 0, 4);
                                     ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " ÇèàóùÇµÇ‹ÇµÇΩ");
                                 } else {
@@ -1441,14 +1441,14 @@ namespace VehicleDispatch {
                                 if(setControlEx.GetControlFromPosition(0, 5) == null) {
                                     // VehicleDispatchDetailÇ…UPDATE
                                     _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
-                                                                          Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                          Convert.ToInt32(setControlEx.Tag),
-                                                                          4,
-                                                                          (StaffMasterVo)dragItem.Tag);
+                                                                       Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                       Convert.ToInt32(setControlEx.Tag),
+                                                                       4,
+                                                                       (StaffMasterVo)dragItem.Tag);
                                     // VehicleDispatchDetailStaffÇ©ÇÁDELETE
                                     _vehicleDispatchDetailStaffDao.DeleteStaff(DateTimePickerOperationDate.Value,
-                                                                                                    Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                                                    ((StaffMasterVo)dragItem.Tag).Staff_code);
+                                                                               Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                               ((StaffMasterVo)dragItem.Tag).Staff_code);
                                     setControlEx.Controls.Add(dragItem, 0, 5);
                                     ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " ÇèàóùÇµÇ‹ÇµÇΩ");
                                 } else {
@@ -1461,24 +1461,24 @@ namespace VehicleDispatch {
             }
         }
 
-        private void SetControlEx_DragEnter(object sender, DragEventArgs e) {
+        private void SetControlEx_DragEnter(object? sender, DragEventArgs e) {
             e.Effect = DragDropEffects.Move;
         }
 
-        private void SetLabelEx_Click(object sender, EventArgs e) {
+        private void SetLabelEx_Click(object? sender, EventArgs e) {
             //MessageBox.Show("SetLabelEx_Click");
         }
 
-        private void SetLabelEx_MouseMove(object sender, MouseEventArgs e) {
+        private void SetLabelEx_MouseMove(object? sender, MouseEventArgs e) {
             if(sender != null && e.Button == MouseButtons.Left)
                 ((SetLabelEx)sender).DoDragDrop(sender, DragDropEffects.Move);
         }
 
-        private void CarLabelEx_Click(object sender, EventArgs e) {
+        private void CarLabelEx_Click(object? sender, EventArgs e) {
             //MessageBox.Show("CarLabelEx_Click");
         }
 
-        private void CarLabelEx_MouseMove(object sender, MouseEventArgs e) {
+        private void CarLabelEx_MouseMove(object? sender, MouseEventArgs e) {
             if(sender != null && e.Button == MouseButtons.Left)
                 ((CarLabelEx)sender).DoDragDrop(sender, DragDropEffects.Move);
         }
@@ -1488,7 +1488,7 @@ namespace VehicleDispatch {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void StaffLabelEx_Click(object sender, EventArgs e) {
+        private void StaffLabelEx_Click(object? sender, EventArgs e) {
             /*
              * tenkoFlag Å® True:StaffLabelExÇClickÇµÇΩÇÁì_åƒéûä‘ÇãLò^
              */
@@ -1517,7 +1517,7 @@ namespace VehicleDispatch {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void StaffLabelEx_MouseMove(object sender, MouseEventArgs e) {
+        private void StaffLabelEx_MouseMove(object? sender, MouseEventArgs e) {
             if(sender != null && e.Button == MouseButtons.Left)
                 ((StaffLabelEx)sender).DoDragDrop(sender, DragDropEffects.Move);
         }

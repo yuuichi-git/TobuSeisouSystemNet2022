@@ -1186,7 +1186,7 @@
             // 
             this.ToolTip1.AutoPopDelay = 5000;
             this.ToolTip1.InitialDelay = 500;
-            this.ToolTip1.ReshowDelay = 20;
+            this.ToolTip1.ReshowDelay = 200;
             // 
             // VehicleDispatchBoad
             // 
