@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="grapecity.spread.winforms.ja" Version="15.0.0" />
+    <PackageReference Include="grapecity.spread.winforms.ja" Version="15.1.0" />
   </ItemGroup>
 
   <ItemGroup>

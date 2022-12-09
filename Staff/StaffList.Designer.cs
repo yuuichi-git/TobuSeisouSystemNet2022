@@ -61,7 +61,6 @@
             this.ToolStripMenuItemLicense = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemToukanpo = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemMap = new System.Windows.Forms.ToolStripMenuItem();
-            this.SheetViewList = this.SpreadList.GetSheet(0);
             this.TabControlExStaff = new ControlEx.TabControlEx();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -74,6 +73,7 @@
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.SheetViewList = this.SpreadList.GetSheet(0);
             this.TableLayoutPanelExBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.PanelUp.SuspendLayout();
@@ -447,7 +447,7 @@
             this.ToolStripMenuItemToukanpo,
             this.ToolStripMenuItemMap});
             this.ContextMenuStrip1.Name = "contextMenuStrip1";
-            this.ContextMenuStrip1.Size = new System.Drawing.Size(199, 92);
+            this.ContextMenuStrip1.Size = new System.Drawing.Size(199, 70);
             this.ContextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuStrip1_Opening);
             // 
             // ToolStripMenuItemLicense
@@ -688,7 +688,6 @@
         private Label label1;
         private CheckBox CheckBoxRetired;
         private CheckBox CheckBoxNone1;
-        private FarPoint.Win.Spread.SheetView SheetViewList;
         private ToolStripMenuItem ToolStripMenuItemExcelExport;
         private ToolStripMenuItem 編集ToolStripMenuItem;
         private ToolStripMenuItem ToolStripMenuItemNewStaff;
@@ -696,5 +695,6 @@
         private ToolStripMenuItem ToolStripMenuItemLicense;
         private ToolStripMenuItem ToolStripMenuItemToukanpo;
         private ToolStripMenuItem ToolStripMenuItemMap;
+        private FarPoint.Win.Spread.SheetView SheetViewList;
     }
 }
