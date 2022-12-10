@@ -1578,24 +1578,24 @@ namespace VehicleDispatch {
             }
         }
 
-        private void SetControlEx_DragEnter(object? sender, DragEventArgs e) {
+        private void SetControlEx_DragEnter(object sender, DragEventArgs e) {
             e.Effect = DragDropEffects.Move;
         }
 
-        private void SetLabelEx_Click(object? sender, EventArgs e) {
+        private void SetLabelEx_Click(object sender, EventArgs e) {
             //MessageBox.Show("SetLabelEx_Click");
         }
 
-        private void SetLabelEx_MouseMove(object? sender, MouseEventArgs e) {
+        private void SetLabelEx_MouseMove(object sender, MouseEventArgs e) {
             if(sender != null && e.Button == MouseButtons.Left)
                 ((SetLabelEx)sender).DoDragDrop(sender, DragDropEffects.Move);
         }
 
-        private void CarLabelEx_Click(object? sender, EventArgs e) {
+        private void CarLabelEx_Click(object sender, EventArgs e) {
             //MessageBox.Show("CarLabelEx_Click");
         }
 
-        private void CarLabelEx_MouseMove(object? sender, MouseEventArgs e) {
+        private void CarLabelEx_MouseMove(object sender, MouseEventArgs e) {
             if(sender != null && e.Button == MouseButtons.Left)
                 ((CarLabelEx)sender).DoDragDrop(sender, DragDropEffects.Move);
         }
@@ -1605,7 +1605,7 @@ namespace VehicleDispatch {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void StaffLabelEx_Click(object? sender, EventArgs e) {
+        private void StaffLabelEx_Click(object sender, EventArgs e) {
             /*
              * tenkoFlag Å® True:StaffLabelExÇClickÇµÇΩÇÁì_åƒéûä‘ÇãLò^
              */
