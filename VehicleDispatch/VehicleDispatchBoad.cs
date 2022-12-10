@@ -952,9 +952,13 @@ namespace VehicleDispatch {
              * ③vehicle_dispatch_detail_staffの対象レコードをDELETE
              */
             if(_vehicleDispatchDetailDao.CheckVehicleDispatchDetail(operationDate)) {
-                _vehicleDispatchDetailDao.DeleteVehicleDispatchDetail(operationDate);
-                _vehicleDispatchDetailCarDao.DeleteCar(operationDate);
-                _vehicleDispatchDetailStaffDao.DeleteStaff(operationDate);
+                try {
+                    _vehicleDispatchDetailDao.DeleteVehicleDispatchDetail(operationDate);
+                    _vehicleDispatchDetailCarDao.DeleteCar(operationDate);
+                    _vehicleDispatchDetailStaffDao.DeleteStaff(operationDate);
+                } catch(Exception exception) {
+                    MessageBox.Show(exception.Message);
+                }
             }
             /*
              * vehicle_dispatch_head/vehicle_dispatch_bodyからvehicle_dispatch_detailを作成する
@@ -1047,12 +1051,16 @@ namespace VehicleDispatch {
                                  * 移動許可を調査する
                                  */
                                 if(CheckSetControlEx(dragItem)) {
-                                    _vehicleDispatchDetailDao.CopySet(DateTimePickerOperationDate.Value,
-                                                                     (int)((SetControlEx)dragItem.Parent).Tag,
-                                                                     (int)setControlEx.Tag);
-                                    _vehicleDispatchDetailDao.ResetSet(DateTimePickerOperationDate.Value,
-                                                                      (int)((SetControlEx)dragItem.Parent).Tag);
-                                    setControlEx.Controls.Add(dragItem, 0, 0);
+                                    try {
+                                        _vehicleDispatchDetailDao.CopySet(DateTimePickerOperationDate.Value,
+                                                                          (int)((SetControlEx)dragItem.Parent).Tag,
+                                                                          (int)setControlEx.Tag);
+                                        _vehicleDispatchDetailDao.ResetSet(DateTimePickerOperationDate.Value,
+                                                                           (int)((SetControlEx)dragItem.Parent).Tag);
+                                        setControlEx.Controls.Add(dragItem, 0, 0);
+                                    } catch(Exception exception) {
+                                        MessageBox.Show(exception.Message);
+                                    }
                                 } else {
                                     ToolStripStatusLabelStatus.Text = string.Concat("車両ラベル又は従業員ラベルが設定されています。そのため配車先ラベルを移動できません");
                                 }
@@ -1101,23 +1109,31 @@ namespace VehicleDispatch {
                 switch(dragItem.Parent.Name) {
                     case "SetControlEx":
                         if(setControlEx != null && setControlEx.GetControlFromPosition(0, 1) == null) {
-                            _vehicleDispatchDetailDao.SetCar(DateTimePickerOperationDate.Value,
-                                                             Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
-                                                             Convert.ToInt32(setControlEx.Tag));
-                            _vehicleDispatchDetailDao.ResetCar(DateTimePickerOperationDate.Value,
-                                                               Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag));
-                            setControlEx.Controls.Add(dragItem, 0, 1);
+                            try {
+                                _vehicleDispatchDetailDao.SetCar(DateTimePickerOperationDate.Value,
+                                                              Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
+                                                              Convert.ToInt32(setControlEx.Tag));
+                                _vehicleDispatchDetailDao.ResetCar(DateTimePickerOperationDate.Value,
+                                                                   Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag));
+                                setControlEx.Controls.Add(dragItem, 0, 1);
+                            } catch(Exception exception) {
+                                MessageBox.Show(exception.Message);
+                            }
                         } else {
                             ToolStripStatusLabelStatus.Text = string.Concat("車両が設定されています。(", ((CarMasterVo)dragItem.Tag).Registration_number, ") はここへは移動できません");
                         }
                         break;
                     case "FlowLayoutPanelExCar":
                         if(setControlEx != null && setControlEx.GetControlFromPosition(0, 1) == null) {
-                            // vehicle_dispatch_detailをUPDATE
-                            _vehicleDispatchDetailDao.SetCar(DateTimePickerOperationDate.Value,
-                                                             Convert.ToInt32(setControlEx.Tag),
-                                                            (CarMasterVo)dragItem.Tag);
-                            setControlEx.Controls.Add(dragItem, 0, 1);
+                            try {
+                                // vehicle_dispatch_detailをUPDATE
+                                _vehicleDispatchDetailDao.SetCar(DateTimePickerOperationDate.Value,
+                                                                 Convert.ToInt32(setControlEx.Tag),
+                                                                (CarMasterVo)dragItem.Tag);
+                                setControlEx.Controls.Add(dragItem, 0, 1);
+                            } catch(Exception exception) {
+                                MessageBox.Show(exception.Message);
+                            }
                         } else {
                             ToolStripStatusLabelStatus.Text = string.Concat("車両が設定されています。(", ((CarMasterVo)dragItem.Tag).Registration_number, ") はここへは移動できません");
                         }
@@ -1126,30 +1142,38 @@ namespace VehicleDispatch {
                     case "FlowLayoutPanelExRepair":
                     case "FlowLayoutPanelExVehicleInspection":
                         if(setControlEx != null && setControlEx.GetControlFromPosition(0, 1) == null) {
-                            // vehicle_dispatch_detailをUPDATE
-                            _vehicleDispatchDetailDao.SetCar(DateTimePickerOperationDate.Value,
-                                                             Convert.ToInt32(setControlEx.Tag),
-                                                             (CarMasterVo)dragItem.Tag);
-                            // vehicle_dispatch_detail_carからDELETE
-                            _vehicleDispatchDetailCarDao.DeleteCar(DateTimePickerOperationDate.Value,
-                                                                   Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                   ((CarMasterVo)dragItem.Tag).Car_code);
-                            setControlEx.Controls.Add(dragItem, 0, 1);
+                            try {
+                                // vehicle_dispatch_detailをUPDATE
+                                _vehicleDispatchDetailDao.SetCar(DateTimePickerOperationDate.Value,
+                                                                 Convert.ToInt32(setControlEx.Tag),
+                                                                 (CarMasterVo)dragItem.Tag);
+                                // vehicle_dispatch_detail_carからDELETE
+                                _vehicleDispatchDetailCarDao.DeleteCar(DateTimePickerOperationDate.Value,
+                                                                       Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                       ((CarMasterVo)dragItem.Tag).Car_code);
+                                setControlEx.Controls.Add(dragItem, 0, 1);
+                            } catch(Exception exception) {
+                                MessageBox.Show(exception.Message);
+                            }
                         } else {
                             ToolStripStatusLabelStatus.Text = string.Concat("車両が設定されています。(", ((CarMasterVo)dragItem.Tag).Registration_number, ") はここへは移動できません");
                         }
                         break;
                     case "FlowLayoutPanelExFree":
                         if(setControlEx != null && setControlEx.GetControlFromPosition(0, 1) == null) {
-                            // vehicle_dispatch_detailをUPDATE
-                            _vehicleDispatchDetailDao.SetCar(DateTimePickerOperationDate.Value,
-                                                             Convert.ToInt32(setControlEx.Tag),
-                                                             (CarMasterVo)dragItem.Tag);
-                            // vehicle_dispatch_detail_carからDELETE
-                            _vehicleDispatchDetailCarDao.DeleteCar(DateTimePickerOperationDate.Value,
-                                                                   Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                   ((CarMasterVo)dragItem.Tag).Car_code);
-                            setControlEx.Controls.Add(dragItem, 0, 1);
+                            try {
+                                // vehicle_dispatch_detailをUPDATE
+                                _vehicleDispatchDetailDao.SetCar(DateTimePickerOperationDate.Value,
+                                                                 Convert.ToInt32(setControlEx.Tag),
+                                                                 (CarMasterVo)dragItem.Tag);
+                                // vehicle_dispatch_detail_carからDELETE
+                                _vehicleDispatchDetailCarDao.DeleteCar(DateTimePickerOperationDate.Value,
+                                                                       Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                       ((CarMasterVo)dragItem.Tag).Car_code);
+                                setControlEx.Controls.Add(dragItem, 0, 1);
+                            } catch(Exception exception) {
+                                MessageBox.Show(exception.Message);
+                            }
                         } else {
                             ToolStripStatusLabelStatus.Text = string.Concat("車両が設定されています。(", ((CarMasterVo)dragItem.Tag).Registration_number, ") はここへは移動できません");
                         }
@@ -1175,56 +1199,76 @@ namespace VehicleDispatch {
                                 break;
                             case int i when i <= 180:
                                 if(setControlEx.GetControlFromPosition(0, 2) == null) {
-                                    _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
+                                    try {
+                                        _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
                                                                            (int)((SetControlEx)dragItem.Parent).Tag,
                                                                            ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row,
                                                                            (int)setControlEx.Tag, 2);
-                                    _vehicleDispatchDetailDao.ResetStaff(DateTimePickerOperationDate.Value,
-                                                                         (int)((SetControlEx)dragItem.Parent).Tag,
-                                                                         ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
-                                    setControlEx.Controls.Add(dragItem, 0, 2);
+                                        _vehicleDispatchDetailDao.ResetStaff(DateTimePickerOperationDate.Value,
+                                                                             (int)((SetControlEx)dragItem.Parent).Tag,
+                                                                             ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
+                                        setControlEx.Controls.Add(dragItem, 0, 2);
+                                        ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                                    } catch(Exception exception) {
+                                        MessageBox.Show(exception.Message);
+                                    }
                                 } else {
                                     ToolStripStatusLabelStatus.Text = string.Concat("運転手が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
                                 }
                                 break;
                             case int i when i <= 220:
                                 if(setControlEx.GetControlFromPosition(0, 3) == null) {
-                                    _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
+                                    try {
+                                        _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
                                                                            (int)((SetControlEx)dragItem.Parent).Tag,
                                                                            ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row,
                                                                            (int)setControlEx.Tag, 3);
-                                    _vehicleDispatchDetailDao.ResetStaff(DateTimePickerOperationDate.Value,
-                                                                         (int)((SetControlEx)dragItem.Parent).Tag,
-                                                                         ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
-                                    setControlEx.Controls.Add(dragItem, 0, 3);
+                                        _vehicleDispatchDetailDao.ResetStaff(DateTimePickerOperationDate.Value,
+                                                                             (int)((SetControlEx)dragItem.Parent).Tag,
+                                                                             ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
+                                        setControlEx.Controls.Add(dragItem, 0, 3);
+                                        ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                                    } catch(Exception exception) {
+                                        MessageBox.Show(exception.Message);
+                                    }
                                 } else {
                                     ToolStripStatusLabelStatus.Text = string.Concat("作業員1が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
                                 }
                                 break;
                             case int i when i <= 260:
                                 if(setControlEx.GetControlFromPosition(0, 4) == null) {
-                                    _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
-                                                                           (int)((SetControlEx)dragItem.Parent).Tag,
-                                                                           ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row,
-                                                                           (int)setControlEx.Tag, 4);
-                                    _vehicleDispatchDetailDao.ResetStaff(DateTimePickerOperationDate.Value,
-                                                                         (int)((SetControlEx)dragItem.Parent).Tag,
-                                                                         ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
-                                    setControlEx.Controls.Add(dragItem, 0, 4);
+                                    try {
+                                        _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
+                                                                            (int)((SetControlEx)dragItem.Parent).Tag,
+                                                                            ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row,
+                                                                            (int)setControlEx.Tag, 4);
+                                        _vehicleDispatchDetailDao.ResetStaff(DateTimePickerOperationDate.Value,
+                                                                             (int)((SetControlEx)dragItem.Parent).Tag,
+                                                                             ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
+                                        setControlEx.Controls.Add(dragItem, 0, 4);
+                                        ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                                    } catch(Exception exception) {
+                                        MessageBox.Show(exception.Message);
+                                    }
                                 } else {
                                     ToolStripStatusLabelStatus.Text = string.Concat("作業員2が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
                                 }
                                 break;
                             case int i when i <= 300:
                                 if(setControlEx.GetControlFromPosition(0, 5) == null) {
-                                    _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
+                                    try {
+                                        _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
                                                                            (int)((SetControlEx)dragItem.Parent).Tag,
                                                                            ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row,
                                                                            (int)setControlEx.Tag, 5);
-                                    _vehicleDispatchDetailDao.ResetStaff(DateTimePickerOperationDate.Value,
-                                                                         (int)((SetControlEx)dragItem.Parent).Tag,
-                                                                         ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
-                                    setControlEx.Controls.Add(dragItem, 0, 5);
+                                        _vehicleDispatchDetailDao.ResetStaff(DateTimePickerOperationDate.Value,
+                                                                             (int)((SetControlEx)dragItem.Parent).Tag,
+                                                                             ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
+                                        setControlEx.Controls.Add(dragItem, 0, 5);
+                                        ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                                    } catch(Exception exception) {
+                                        MessageBox.Show(exception.Message);
+                                    }
                                 } else {
                                     ToolStripStatusLabelStatus.Text = string.Concat("作業員3が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
                                 }
@@ -1245,52 +1289,69 @@ namespace VehicleDispatch {
                                 break;
                             case int i when i <= 180:
                                 if(setControlEx.GetControlFromPosition(0, 2) == null) {
-                                    // VehicleDispatchDetailをUPDATE
-                                    _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
-                                                                       Convert.ToInt32(setControlEx.Tag),
-                                                                       1,
-                                                                       (StaffMasterVo)dragItem.Tag);
-                                    setControlEx.Controls.Add(dragItem, 0, 2);
-                                    ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                                    try {
+                                        // VehicleDispatchDetailをUPDATE
+                                        _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
+                                                                           Convert.ToInt32(setControlEx.Tag),
+                                                                           1,
+                                                                           (StaffMasterVo)dragItem.Tag);
+                                        setControlEx.Controls.Add(dragItem, 0, 2);
+                                        ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                                    } catch(Exception exception) {
+                                        MessageBox.Show(exception.Message);
+                                    }
+
                                 } else {
                                     ToolStripStatusLabelStatus.Text = string.Concat("運転手が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
                                 }
                                 break;
                             case int i when i <= 220:
                                 if(setControlEx.GetControlFromPosition(0, 3) == null) {
-                                    // VehicleDispatchDetailをUPDATE
-                                    _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
-                                                                       Convert.ToInt32(setControlEx.Tag),
-                                                                       2,
-                                                                       (StaffMasterVo)dragItem.Tag);
-                                    setControlEx.Controls.Add(dragItem, 0, 3);
-                                    ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                                    try {
+                                        // VehicleDispatchDetailをUPDATE
+                                        _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
+                                                                           Convert.ToInt32(setControlEx.Tag),
+                                                                           2,
+                                                                           (StaffMasterVo)dragItem.Tag);
+                                        setControlEx.Controls.Add(dragItem, 0, 3);
+                                        ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                                    } catch(Exception exception) {
+                                        MessageBox.Show(exception.Message);
+                                    }
                                 } else {
                                     ToolStripStatusLabelStatus.Text = string.Concat("作業員1が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
                                 }
                                 break;
                             case int i when i <= 260:
                                 if(setControlEx.GetControlFromPosition(0, 4) == null) {
-                                    // VehicleDispatchDetailをUPDATE
-                                    _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
-                                                                       Convert.ToInt32(setControlEx.Tag),
-                                                                       3,
-                                                                       (StaffMasterVo)dragItem.Tag);
-                                    setControlEx.Controls.Add(dragItem, 0, 4);
-                                    ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                                    try {
+                                        // VehicleDispatchDetailをUPDATE
+                                        _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
+                                                                           Convert.ToInt32(setControlEx.Tag),
+                                                                           3,
+                                                                           (StaffMasterVo)dragItem.Tag);
+                                        setControlEx.Controls.Add(dragItem, 0, 4);
+                                        ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                                    } catch(Exception exception) {
+                                        MessageBox.Show(exception.Message);
+                                    }
                                 } else {
                                     ToolStripStatusLabelStatus.Text = string.Concat("作業員2が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
                                 }
                                 break;
                             case int i when i <= 300:
                                 if(setControlEx.GetControlFromPosition(0, 5) == null) {
-                                    // VehicleDispatchDetailをUPDATE
-                                    _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
-                                                                       Convert.ToInt32(setControlEx.Tag),
-                                                                       4,
-                                                                       (StaffMasterVo)dragItem.Tag);
-                                    setControlEx.Controls.Add(dragItem, 0, 5);
-                                    ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                                    try {
+                                        // VehicleDispatchDetailをUPDATE
+                                        _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
+                                                                           Convert.ToInt32(setControlEx.Tag),
+                                                                           4,
+                                                                           (StaffMasterVo)dragItem.Tag);
+                                        setControlEx.Controls.Add(dragItem, 0, 5);
+                                        ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                                    } catch(Exception exception) {
+                                        MessageBox.Show(exception.Message);
+                                    }
                                 } else {
                                     ToolStripStatusLabelStatus.Text = string.Concat("作業員3が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
                                 }
@@ -1315,76 +1376,92 @@ namespace VehicleDispatch {
                                 break;
                             case int i when i <= 180:
                                 if(setControlEx.GetControlFromPosition(0, 2) == null) {
-                                    // VehicleDispatchDetailにUPDATE
-                                    _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
-                                                                       Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                       Convert.ToInt32(setControlEx.Tag),
-                                                                       1,
-                                                                       (StaffMasterVo)dragItem.Tag);
-                                    // VehicleDispatchDetailStaffからDELETE
-                                    _vehicleDispatchDetailStaffDao.DeleteStaff(DateTimePickerOperationDate.Value,
-                                                                                                    Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                                                    ((StaffMasterVo)dragItem.Tag).Staff_code);
-                                    // dragItemを移動
-                                    setControlEx.Controls.Add(dragItem, 0, 2);
-                                    ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                                    try {
+                                        // VehicleDispatchDetailにUPDATE
+                                        _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
+                                                                           Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                           Convert.ToInt32(setControlEx.Tag),
+                                                                           1,
+                                                                           (StaffMasterVo)dragItem.Tag);
+                                        // VehicleDispatchDetailStaffからDELETE
+                                        _vehicleDispatchDetailStaffDao.DeleteStaff(DateTimePickerOperationDate.Value,
+                                                                                   Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                                   ((StaffMasterVo)dragItem.Tag).Staff_code);
+                                        // dragItemを移動
+                                        setControlEx.Controls.Add(dragItem, 0, 2);
+                                        ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                                    } catch(Exception exception) {
+                                        MessageBox.Show(exception.Message);
+                                    }
                                 } else {
                                     ToolStripStatusLabelStatus.Text = string.Concat("運転手が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
                                 }
                                 break;
                             case int i when i <= 220:
                                 if(setControlEx.GetControlFromPosition(0, 3) == null) {
-                                    // VehicleDispatchDetailにUPDATE
-                                    _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
-                                                                       Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                       Convert.ToInt32(setControlEx.Tag),
-                                                                       2,
-                                                                       (StaffMasterVo)dragItem.Tag);
-                                    // VehicleDispatchDetailStaffからDELETE
-                                    _vehicleDispatchDetailStaffDao.DeleteStaff(DateTimePickerOperationDate.Value,
-                                                                                                    Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                                                    ((StaffMasterVo)dragItem.Tag).Staff_code);
-                                    // dragItemを移動
-                                    setControlEx.Controls.Add(dragItem, 0, 3);
-                                    ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                                    try {
+                                        // VehicleDispatchDetailにUPDATE
+                                        _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
+                                                                           Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                           Convert.ToInt32(setControlEx.Tag),
+                                                                           2,
+                                                                           (StaffMasterVo)dragItem.Tag);
+                                        // VehicleDispatchDetailStaffからDELETE
+                                        _vehicleDispatchDetailStaffDao.DeleteStaff(DateTimePickerOperationDate.Value,
+                                                                                   Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                                   ((StaffMasterVo)dragItem.Tag).Staff_code);
+                                        // dragItemを移動
+                                        setControlEx.Controls.Add(dragItem, 0, 3);
+                                        ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                                    } catch(Exception exception) {
+                                        MessageBox.Show(exception.Message);
+                                    }
                                 } else {
                                     ToolStripStatusLabelStatus.Text = string.Concat("作業員1が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
                                 }
                                 break;
                             case int i when i <= 260:
                                 if(setControlEx.GetControlFromPosition(0, 4) == null) {
-                                    // VehicleDispatchDetailにUPDATE
-                                    _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
-                                                                       Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                       Convert.ToInt32(setControlEx.Tag),
-                                                                       3,
-                                                                       (StaffMasterVo)dragItem.Tag);
-                                    // VehicleDispatchDetailStaffからDELETE
-                                    _vehicleDispatchDetailStaffDao.DeleteStaff(DateTimePickerOperationDate.Value,
-                                                                                                    Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                                                    ((StaffMasterVo)dragItem.Tag).Staff_code);
-                                    // dragItemを移動
-                                    setControlEx.Controls.Add(dragItem, 0, 4);
-                                    ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                                    try {
+                                        // VehicleDispatchDetailにUPDATE
+                                        _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
+                                                                           Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                           Convert.ToInt32(setControlEx.Tag),
+                                                                           3,
+                                                                           (StaffMasterVo)dragItem.Tag);
+                                        // VehicleDispatchDetailStaffからDELETE
+                                        _vehicleDispatchDetailStaffDao.DeleteStaff(DateTimePickerOperationDate.Value,
+                                                                                   Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                                   ((StaffMasterVo)dragItem.Tag).Staff_code);
+                                        // dragItemを移動
+                                        setControlEx.Controls.Add(dragItem, 0, 4);
+                                        ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                                    } catch(Exception exception) {
+                                        MessageBox.Show(exception.Message);
+                                    }
                                 } else {
                                     ToolStripStatusLabelStatus.Text = string.Concat("作業員2が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
                                 }
                                 break;
                             case int i when i <= 300:
                                 if(setControlEx.GetControlFromPosition(0, 5) == null) {
-                                    // VehicleDispatchDetailにUPDATE
-                                    _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
-                                                                       Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                       Convert.ToInt32(setControlEx.Tag),
-                                                                       4,
-                                                                       (StaffMasterVo)dragItem.Tag);
-                                    // VehicleDispatchDetailStaffからDELETE
-                                    _vehicleDispatchDetailStaffDao.DeleteStaff(DateTimePickerOperationDate.Value,
-                                                                                                    Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                                                    ((StaffMasterVo)dragItem.Tag).Staff_code);
-                                    // dragItemを移動
-                                    setControlEx.Controls.Add(dragItem, 0, 5);
-                                    ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                                    try {
+                                        // VehicleDispatchDetailにUPDATE
+                                        _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
+                                                                           Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                           Convert.ToInt32(setControlEx.Tag),
+                                                                           4,
+                                                                           (StaffMasterVo)dragItem.Tag);
+                                        // VehicleDispatchDetailStaffからDELETE
+                                        _vehicleDispatchDetailStaffDao.DeleteStaff(DateTimePickerOperationDate.Value,
+                                                                                   Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                                   ((StaffMasterVo)dragItem.Tag).Staff_code);
+                                        // dragItemを移動
+                                        setControlEx.Controls.Add(dragItem, 0, 5);
+                                        ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                                    } catch(Exception exception) {
+                                        MessageBox.Show(exception.Message);
+                                    }
                                 } else {
                                     ToolStripStatusLabelStatus.Text = string.Concat("作業員3が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
                                 }
@@ -1402,73 +1479,90 @@ namespace VehicleDispatch {
                                 break;
                             case int i when i <= 180:
                                 if(setControlEx.GetControlFromPosition(0, 2) == null) {
-                                    // VehicleDispatchDetailにUPDATE
-                                    _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
-                                                                          Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                          Convert.ToInt32(setControlEx.Tag),
-                                                                          1,
-                                                                          (StaffMasterVo)dragItem.Tag);
-                                    // VehicleDispatchDetailStaffからDELETE
-                                    _vehicleDispatchDetailStaffDao.DeleteStaff(DateTimePickerOperationDate.Value,
-                                                                               Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                               ((StaffMasterVo)dragItem.Tag).Staff_code);
-                                    // dragItemを移動
-                                    setControlEx.Controls.Add(dragItem, 0, 2);
-                                    ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                                    try {
+                                        // VehicleDispatchDetailにUPDATE
+                                        _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
+                                                                           Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                           Convert.ToInt32(setControlEx.Tag),
+                                                                           1,
+                                                                           (StaffMasterVo)dragItem.Tag);
+                                        // VehicleDispatchDetailStaffからDELETE
+                                        _vehicleDispatchDetailStaffDao.DeleteStaff(DateTimePickerOperationDate.Value,
+                                                                                   Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                                   ((StaffMasterVo)dragItem.Tag).Staff_code);
+                                        // dragItemを移動
+                                        setControlEx.Controls.Add(dragItem, 0, 2);
+                                        ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                                    } catch(Exception exception) {
+                                        MessageBox.Show(exception.Message);
+                                    }
+
                                 } else {
                                     ToolStripStatusLabelStatus.Text = string.Concat("運転手が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
                                 }
                                 break;
                             case int i when i <= 220:
                                 if(setControlEx.GetControlFromPosition(0, 3) == null) {
-                                    // VehicleDispatchDetailにUPDATE
-                                    _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
-                                                                       Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                       Convert.ToInt32(setControlEx.Tag),
-                                                                       2,
-                                                                       (StaffMasterVo)dragItem.Tag);
-                                    // VehicleDispatchDetailStaffからDELETE
-                                    _vehicleDispatchDetailStaffDao.DeleteStaff(DateTimePickerOperationDate.Value,
-                                                                               Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                               ((StaffMasterVo)dragItem.Tag).Staff_code);
-                                    setControlEx.Controls.Add(dragItem, 0, 3);
-                                    ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                                    try {
+                                        // VehicleDispatchDetailにUPDATE
+                                        _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
+                                                                           Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                           Convert.ToInt32(setControlEx.Tag),
+                                                                           2,
+                                                                           (StaffMasterVo)dragItem.Tag);
+                                        // VehicleDispatchDetailStaffからDELETE
+                                        _vehicleDispatchDetailStaffDao.DeleteStaff(DateTimePickerOperationDate.Value,
+                                                                                   Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                                   ((StaffMasterVo)dragItem.Tag).Staff_code);
+                                        setControlEx.Controls.Add(dragItem, 0, 3);
+                                        ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                                    } catch(Exception exception) {
+                                        MessageBox.Show(exception.Message);
+                                    }
                                 } else {
                                     ToolStripStatusLabelStatus.Text = string.Concat("作業員1が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
                                 }
                                 break;
                             case int i when i <= 260:
                                 if(setControlEx.GetControlFromPosition(0, 4) == null) {
-                                    // VehicleDispatchDetailにUPDATE
-                                    _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
-                                                                       Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                       Convert.ToInt32(setControlEx.Tag),
-                                                                          3,
-                                                                          (StaffMasterVo)dragItem.Tag);
-                                    // VehicleDispatchDetailStaffからDELETE
-                                    _vehicleDispatchDetailStaffDao.DeleteStaff(DateTimePickerOperationDate.Value,
-                                                                               Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                               ((StaffMasterVo)dragItem.Tag).Staff_code);
-                                    setControlEx.Controls.Add(dragItem, 0, 4);
-                                    ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                                    try {
+                                        // VehicleDispatchDetailにUPDATE
+                                        _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
+                                                                           Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                           Convert.ToInt32(setControlEx.Tag),
+                                                                              3,
+                                                                              (StaffMasterVo)dragItem.Tag);
+                                        // VehicleDispatchDetailStaffからDELETE
+                                        _vehicleDispatchDetailStaffDao.DeleteStaff(DateTimePickerOperationDate.Value,
+                                                                                   Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                                   ((StaffMasterVo)dragItem.Tag).Staff_code);
+                                        setControlEx.Controls.Add(dragItem, 0, 4);
+                                        ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                                    } catch(Exception exception) {
+                                        MessageBox.Show(exception.Message);
+                                    }
                                 } else {
                                     ToolStripStatusLabelStatus.Text = string.Concat("作業員2が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
                                 }
                                 break;
                             case int i when i <= 300:
                                 if(setControlEx.GetControlFromPosition(0, 5) == null) {
-                                    // VehicleDispatchDetailにUPDATE
-                                    _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
-                                                                       Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                       Convert.ToInt32(setControlEx.Tag),
-                                                                       4,
-                                                                       (StaffMasterVo)dragItem.Tag);
-                                    // VehicleDispatchDetailStaffからDELETE
-                                    _vehicleDispatchDetailStaffDao.DeleteStaff(DateTimePickerOperationDate.Value,
-                                                                               Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                               ((StaffMasterVo)dragItem.Tag).Staff_code);
-                                    setControlEx.Controls.Add(dragItem, 0, 5);
-                                    ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                                    try {
+                                        // VehicleDispatchDetailにUPDATE
+                                        _vehicleDispatchDetailDao.SetStaff(DateTimePickerOperationDate.Value,
+                                                                           Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                           Convert.ToInt32(setControlEx.Tag),
+                                                                           4,
+                                                                           (StaffMasterVo)dragItem.Tag);
+                                        // VehicleDispatchDetailStaffからDELETE
+                                        _vehicleDispatchDetailStaffDao.DeleteStaff(DateTimePickerOperationDate.Value,
+                                                                                   Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                                   ((StaffMasterVo)dragItem.Tag).Staff_code);
+                                        setControlEx.Controls.Add(dragItem, 0, 5);
+                                        ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
+                                    } catch(Exception exception) {
+                                        MessageBox.Show(exception.Message);
+                                    }
                                 } else {
                                     ToolStripStatusLabelStatus.Text = string.Concat("作業員3が決まっています。(", ((StaffMasterVo)dragItem.Tag).Name, ") はここへは移動できません");
                                 }
@@ -1518,11 +1612,16 @@ namespace VehicleDispatch {
                      * vehicle_dispatch_detailを書き換え
                      */
                     var tableLayoutPanelCellPosition = setControlEx.GetCellPosition(staffLabelEx);
-                    _vehicleDispatchDetailDao.UpdateRollCallFlag(DateTimePickerOperationDate.Value,
-                                                                 (int)setControlEx.Tag,
-                                                                 tableLayoutPanelCellPosition.Row,
-                                                                 staffLabelEx.GetRollCallFlag);
-                    staffLabelEx.SetRollCallFlag(!staffLabelEx.GetRollCallFlag);
+                    try {
+                        _vehicleDispatchDetailDao.UpdateRollCallFlag(DateTimePickerOperationDate.Value,
+                                                                     (int)setControlEx.Tag,
+                                                                     tableLayoutPanelCellPosition.Row,
+                                                                     staffLabelEx.GetRollCallFlag);
+                        staffLabelEx.SetRollCallFlag(!staffLabelEx.GetRollCallFlag);
+                    } catch(Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
+
                     ToolStripStatusLabelStatus.Text = string.Concat(" ", ((StaffMasterVo)staffLabelEx.Tag).Display_name, " の点呼記録を変更しました");
                     return;
                 }
@@ -1569,21 +1668,29 @@ namespace VehicleDispatch {
                     case "SetControlEx":
                         switch(((FlowLayoutPanelEx)sender).Name) {
                             case "FlowLayoutPanelExCar":
-                                _vehicleDispatchDetailDao.ResetCar(DateTimePickerOperationDate.Value,
-                                                                   Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag));
+                                try {
+                                    _vehicleDispatchDetailDao.ResetCar(DateTimePickerOperationDate.Value,
+                                                                       Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag));
+                                } catch(Exception exception) {
+                                    MessageBox.Show(exception.Message);
+                                }
                                 break;
                             case "FlowLayoutPanelExChecking":
                             case "FlowLayoutPanelExRepair":
                             case "FlowLayoutPanelExVehicleInspection":
                             case "FlowLayoutPanelExFree":
-                                /*
-                                 * Insertの後にResetしないとダメだよ(vehicleDispatchDetailのレコードを副問合せしているから)
-                                 */
-                                _vehicleDispatchDetailCarDao.InsertCar(DateTimePickerOperationDate.Value,
-                                                                       Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
-                                                                       Convert.ToInt32(((FlowLayoutPanelEx)sender).Tag));
-                                _vehicleDispatchDetailDao.ResetCar(DateTimePickerOperationDate.Value,
-                                                                   Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag));
+                                try {
+                                    /*
+                                     * Insertの後にResetしないとダメだよ(vehicleDispatchDetailのレコードを副問合せしているから)
+                                     */
+                                    _vehicleDispatchDetailCarDao.InsertCar(DateTimePickerOperationDate.Value,
+                                                                           Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
+                                                                           Convert.ToInt32(((FlowLayoutPanelEx)sender).Tag));
+                                    _vehicleDispatchDetailDao.ResetCar(DateTimePickerOperationDate.Value,
+                                                                       Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag));
+                                } catch(Exception exception) {
+                                    MessageBox.Show(exception.Message);
+                                }
                                 break;
                         }
                         ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
@@ -1595,10 +1702,14 @@ namespace VehicleDispatch {
                             case "FlowLayoutPanelExRepair":
                             case "FlowLayoutPanelExVehicleInspection":
                             case "FlowLayoutPanelExFree":
-                                // vehicle_dispatch_detail_carにINSERT
-                                _vehicleDispatchDetailCarDao.InsertNewCar(DateTimePickerOperationDate.Value,
-                                                                          Convert.ToInt32(((FlowLayoutPanelEx)sender).Tag),
-                                                                          ((CarMasterVo)dragItem.Tag).Car_code);
+                                try {
+                                    // vehicle_dispatch_detail_carにINSERT
+                                    _vehicleDispatchDetailCarDao.InsertNewCar(DateTimePickerOperationDate.Value,
+                                                                              Convert.ToInt32(((FlowLayoutPanelEx)sender).Tag),
+                                                                              ((CarMasterVo)dragItem.Tag).Car_code);
+                                } catch(Exception exception) {
+                                    MessageBox.Show(exception.Message);
+                                }
                                 break;
                         }
                         ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
@@ -1610,19 +1721,27 @@ namespace VehicleDispatch {
                     case "FlowLayoutPanelExFree":
                         switch(((FlowLayoutPanelEx)sender).Name) {
                             case "FlowLayoutPanelExCar":
-                                // vehicle_dispatch_detail_carからDELETE
-                                _vehicleDispatchDetailCarDao.DeleteCar(DateTimePickerOperationDate.Value,
-                                                                       Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                       ((CarMasterVo)dragItem.Tag).Car_code);
+                                try {
+                                    // vehicle_dispatch_detail_carからDELETE
+                                    _vehicleDispatchDetailCarDao.DeleteCar(DateTimePickerOperationDate.Value,
+                                                                           Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                           ((CarMasterVo)dragItem.Tag).Car_code);
+                                } catch(Exception exception) {
+                                    MessageBox.Show(exception.Message);
+                                }
                                 break;
                             case "FlowLayoutPanelExChecking":
                             case "FlowLayoutPanelExRepair":
                             case "FlowLayoutPanelExVehicleInspection":
                             case "FlowLayoutPanelExFree":
-                                _vehicleDispatchDetailCarDao.UpdateCar(DateTimePickerOperationDate.Value,
-                                                                       Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                       ((CarMasterVo)dragItem.Tag).Car_code,
-                                                                       Convert.ToInt32(((FlowLayoutPanelEx)sender).Tag));
+                                try {
+                                    _vehicleDispatchDetailCarDao.UpdateCar(DateTimePickerOperationDate.Value,
+                                                                           Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                           ((CarMasterVo)dragItem.Tag).Car_code,
+                                                                           Convert.ToInt32(((FlowLayoutPanelEx)sender).Tag));
+                                } catch(Exception exception) {
+                                    MessageBox.Show(exception.Message);
+                                }
                                 break;
                         }
                         ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
@@ -1642,10 +1761,15 @@ namespace VehicleDispatch {
                             case "FlowLayoutPanelExLongTerm":
                             case "FlowLayoutPanelExPartTime":
                             case "FlowLayoutPanelExWindow":
-                                _vehicleDispatchDetailDao.ResetStaff(DateTimePickerOperationDate.Value,
-                                                                     Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
-                                                                     ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
-                                dragItem.SetNoteFlag(false);
+                                try {
+                                    _vehicleDispatchDetailDao.ResetStaff(DateTimePickerOperationDate.Value,
+                                                                         Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
+                                                                         ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
+                                    dragItem.SetNoteFlag(false);
+                                } catch(Exception exception) {
+                                    MessageBox.Show(exception.Message);
+                                }
+
                                 break;
                             case "FlowLayoutPanelExFullSalaried":
                             case "FlowLayoutPanelExFullClose":
@@ -1656,16 +1780,21 @@ namespace VehicleDispatch {
                             case "FlowLayoutPanelExTelephone":
                             case "FlowLayoutPanelExWithoutNotice":
                             case "FlowLayoutPanelExFree":
-                                /*
-                                 * Insertの後にResetしないとダメだよ(vehicleDispatchDetailのレコードを副問合せしているから)
-                                 */
-                                _vehicleDispatchDetailStaffDao.InsertStaff(DateTimePickerOperationDate.Value,
-                                                                           Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
-                                                                           ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row,
-                                                                           Convert.ToInt32(((FlowLayoutPanelEx)sender).Tag));
-                                _vehicleDispatchDetailDao.ResetStaff(DateTimePickerOperationDate.Value,
-                                                                     Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
-                                                                     ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
+                                try {
+                                    /*
+                                     * Insertの後にResetしないとダメだよ(vehicleDispatchDetailのレコードを副問合せしているから)
+                                     */
+                                    _vehicleDispatchDetailStaffDao.InsertStaff(DateTimePickerOperationDate.Value,
+                                                                               Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
+                                                                               ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row,
+                                                                               Convert.ToInt32(((FlowLayoutPanelEx)sender).Tag));
+                                    _vehicleDispatchDetailDao.ResetStaff(DateTimePickerOperationDate.Value,
+                                                                         Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
+                                                                         ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
+                                } catch(Exception exception) {
+                                    MessageBox.Show(exception.Message);
+                                }
+
                                 break;
                         }
                         break;
@@ -1683,10 +1812,14 @@ namespace VehicleDispatch {
                             case "FlowLayoutPanelExTelephone":
                             case "FlowLayoutPanelExWithoutNotice":
                             case "FlowLayoutPanelExFree":
-                                // vehicle_dispatch_detail_staffにINSERT
-                                _vehicleDispatchDetailStaffDao.InsertNewStaff(DateTimePickerOperationDate.Value,
-                                                                             Convert.ToInt32(((FlowLayoutPanelEx)sender).Tag),
-                                                                             ((StaffMasterVo)dragItem.Tag).Staff_code);
+                                try {
+                                    // vehicle_dispatch_detail_staffにINSERT
+                                    _vehicleDispatchDetailStaffDao.InsertNewStaff(DateTimePickerOperationDate.Value,
+                                                                                  Convert.ToInt32(((FlowLayoutPanelEx)sender).Tag),
+                                                                                  ((StaffMasterVo)dragItem.Tag).Staff_code);
+                                } catch(Exception exception) {
+                                    MessageBox.Show(exception.Message);
+                                }
                                 break;
                         }
                         break;
@@ -1704,10 +1837,15 @@ namespace VehicleDispatch {
                             case "FlowLayoutPanelExLongTerm":
                             case "FlowLayoutPanelExPartTime":
                             case "FlowLayoutPanelExWindow":
-                                // vehicle_dispatch_detail_staffからDELETE
-                                _vehicleDispatchDetailStaffDao.DeleteStaff(DateTimePickerOperationDate.Value,
-                                                                           Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                           ((StaffMasterVo)dragItem.Tag).Staff_code);
+                                try {
+                                    // vehicle_dispatch_detail_staffからDELETE
+                                    _vehicleDispatchDetailStaffDao.DeleteStaff(DateTimePickerOperationDate.Value,
+                                                                               Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                               ((StaffMasterVo)dragItem.Tag).Staff_code);
+                                } catch(Exception exception) {
+                                    MessageBox.Show(exception.Message);
+                                }
+
                                 break;
                             case "FlowLayoutPanelExFullSalaried":
                             case "FlowLayoutPanelExFullClose":
@@ -1718,11 +1856,15 @@ namespace VehicleDispatch {
                             case "FlowLayoutPanelExTelephone":
                             case "FlowLayoutPanelExWithoutNotice":
                             case "FlowLayoutPanelExFree":
-                                // vehicle_dispatch_detail_staffをUPDATE
-                                _vehicleDispatchDetailStaffDao.UpdateStaff(DateTimePickerOperationDate.Value,
-                                                                           Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                           ((StaffMasterVo)dragItem.Tag).Staff_code,
-                                                                           Convert.ToInt32(((FlowLayoutPanelEx)sender).Tag));
+                                try {
+                                    // vehicle_dispatch_detail_staffをUPDATE
+                                    _vehicleDispatchDetailStaffDao.UpdateStaff(DateTimePickerOperationDate.Value,
+                                                                               Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                               ((StaffMasterVo)dragItem.Tag).Staff_code,
+                                                                               Convert.ToInt32(((FlowLayoutPanelEx)sender).Tag));
+                                } catch(Exception exception) {
+                                    MessageBox.Show(exception.Message);
+                                }
                                 break;
                         }
                         break;
@@ -1855,6 +1997,7 @@ namespace VehicleDispatch {
 
         /// <summary>
         /// SetTableLayoutPanelLeftSide
+        /// 左サイドパネルの開閉処理
         /// </summary>
         /// <param name="flag"></param>
         private void SetTableLayoutPanelLeftSide(bool flag) {
@@ -1863,6 +2006,7 @@ namespace VehicleDispatch {
 
         /// <summary>
         /// SetTableLayoutPanelRightSide
+        /// 右サイドパネルの開閉処理
         /// </summary>
         /// <param name="flag"></param>
         private void SetTableLayoutPanelRightSide(bool flag) {

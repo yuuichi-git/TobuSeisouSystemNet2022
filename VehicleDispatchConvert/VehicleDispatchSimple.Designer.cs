@@ -24,6 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.ButtonUpdate = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // ButtonUpdate
@@ -37,11 +38,20 @@
             this.ButtonUpdate.UseVisualStyleBackColor = true;
             this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
             // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(12, 68);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(332, 144);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "配車表転記作業での注意事項！\r\n\r\n①深井翔/大橋松生等の特殊な扱いの従事者の記入方法を確認すること。";
+            // 
             // VehicleDispatchSimple
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(355, 68);
+            this.ClientSize = new System.Drawing.Size(355, 221);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.ButtonUpdate);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -55,5 +65,6 @@
         #endregion
 
         private Button ButtonUpdate;
+        private Label label1;
     }
 }
