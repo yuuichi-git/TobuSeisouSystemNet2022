@@ -219,14 +219,18 @@
             this.ToolStripMenuItemAllScreen.Name = "ToolStripMenuItemAllScreen";
             this.ToolStripMenuItemAllScreen.ShortcutKeyDisplayString = "Shift+D";
             this.ToolStripMenuItemAllScreen.Size = new System.Drawing.Size(221, 22);
+            this.ToolStripMenuItemAllScreen.Tag = "ToolStripMenuItemAllScreen";
             this.ToolStripMenuItemAllScreen.Text = "全画面表示にする";
+            this.ToolStripMenuItemAllScreen.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // ToolStripMenuItemDefaultScreen
             // 
             this.ToolStripMenuItemDefaultScreen.Name = "ToolStripMenuItemDefaultScreen";
             this.ToolStripMenuItemDefaultScreen.ShortcutKeyDisplayString = "Shift+A";
             this.ToolStripMenuItemDefaultScreen.Size = new System.Drawing.Size(221, 22);
+            this.ToolStripMenuItemDefaultScreen.Tag = "ToolStripMenuItemDefaultScreen";
             this.ToolStripMenuItemDefaultScreen.Text = "通常画面表示にする";
+            this.ToolStripMenuItemDefaultScreen.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // ToolStripMenuItemInitialize
             // 

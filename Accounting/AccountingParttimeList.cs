@@ -15,6 +15,9 @@ namespace Accounting {
         private ConnectionVo _connectionVo;
         private readonly InitializeForm _initializeForm = new();
         private DateTime _operationDate;
+
+        private string _operationName;
+
         /*
          * Vo
          */
@@ -86,8 +89,19 @@ namespace Accounting {
                                                                                       x.Operation_date == _operationDate.Date);
                 if(vehicleDispatchDetailVo != null) {
                     SheetViewList.Cells[startRow, startCol + 1].Text = "o‹Î";
-                    SheetViewList.Cells[startRow, startCol + 2].Text = string.Concat(vehicleDispatchDetailVo.Operator_code_1 == staffMasterVo.Staff_code ? "y‰^“]èz" : "yì‹Æˆõz",
-                                                                                     _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name);
+                    /*
+                     * œŠO‚ğİ’è
+                     * ‡@®”õ–{Ğ‚Í‘S‚Äy‰^“]èz‚É‚·‚éi^—R”ü‚³‚ñˆË—Šj
+                     */
+                    switch(vehicleDispatchDetailVo.Set_code) {
+                        case 1312111: // ®”õ–{Ğ
+                            _operationName = "y‰^“]èz";
+                            break;
+                        default:
+                            _operationName = vehicleDispatchDetailVo.Operator_code_1 == staffMasterVo.Staff_code ? "y‰^“]èz" : "yì‹Æˆõz";
+                            break;
+                    }
+                    SheetViewList.Cells[startRow, startCol + 2].Text = string.Concat(_operationName, _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name);
                     /*
                      * Ôí
                      */
@@ -118,7 +132,7 @@ namespace Accounting {
                 }
                 startRow++;
             }
-            ToolStripStatusLabelStatus.Text = string.Concat(_operationDate.ToString("yyyy”NMMŒdd“ú(dddd)"),"‚Ìƒf[ƒ^‚ğXV‚µ‚Ü‚µ‚½B");
+            ToolStripStatusLabelStatus.Text = string.Concat(_operationDate.ToString("yyyy”NMMŒdd“ú(dddd)"), "‚Ìƒf[ƒ^‚ğXV‚µ‚Ü‚µ‚½B");
         }
 
         private void InitializeSheetViewList() {

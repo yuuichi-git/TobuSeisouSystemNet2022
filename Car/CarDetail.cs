@@ -322,7 +322,6 @@ namespace CarRegister {
                         dateTimePicker.CustomFormat = "yyyy年MM月dd日(ddd)";
                         break;
                 }
-
                 dateTimePicker.Value = (DateTime)datetime;
             }
         }

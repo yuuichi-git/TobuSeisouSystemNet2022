@@ -651,24 +651,36 @@ namespace VehicleDispatch {
         private void VehicleDispatchBoad_KeyDown(object sender, KeyEventArgs e) {
             // Open
             if(e.KeyData == (Keys.Shift | Keys.A)) {
-                // 更新する
-                TableLayoutPanelBase.SuspendLayout();
-                tenkoModeFlag = false;
-                ButtonUpdate.PerformClick();
-
-                _initializeForm.SetTableLayoutPanelAll(TableLayoutPanelBase, true);
-                TableLayoutPanelBase.ResumeLayout();
+                ModeEdit();
             }
             // Close
             if(e.KeyData == (Keys.Shift | Keys.D)) {
-                // 更新する
-                TableLayoutPanelBase.SuspendLayout();
-                tenkoModeFlag = true;
-                ButtonUpdate.PerformClick();
-
-                _initializeForm.SetTableLayoutPanelAll(TableLayoutPanelBase, false);
-                TableLayoutPanelBase.ResumeLayout();
+                ModeRollCall();
             }
+        }
+
+        /// <summary>
+        /// Formを編集モードにする
+        /// </summary>
+        private void ModeEdit() {
+            // 更新する
+            TableLayoutPanelBase.SuspendLayout();
+            tenkoModeFlag = false;
+            ButtonUpdate.PerformClick();
+            _initializeForm.SetTableLayoutPanelAll(TableLayoutPanelBase, true);
+            TableLayoutPanelBase.ResumeLayout();
+        }
+
+        /// <summary>
+        /// Formを点呼モードにする
+        /// </summary>
+        private void ModeRollCall() {
+            // 更新する
+            TableLayoutPanelBase.SuspendLayout();
+            tenkoModeFlag = true;
+            ButtonUpdate.PerformClick();
+            _initializeForm.SetTableLayoutPanelAll(TableLayoutPanelBase, false);
+            TableLayoutPanelBase.ResumeLayout();
         }
 
         /// <summary>
@@ -784,7 +796,6 @@ namespace VehicleDispatch {
                     } catch {
                         return;
                     }
-
                     break;
                 // 清掃事務所へ提出している本番
                 case "ToolStripMenuItemInitializeCleanOffice":
@@ -801,6 +812,13 @@ namespace VehicleDispatch {
                         InsertVehicleDispatchDetail();
                     }
                     break;
+                case "ToolStripMenuItemAllScreen":
+                    ModeRollCall();
+                    break;
+                case "ToolStripMenuItemDefaultScreen":
+                    ModeEdit();
+                    break;
+
                 /*
                  * ContextMenuStripSetLabel
                  */
@@ -873,8 +891,8 @@ namespace VehicleDispatch {
                         default:
                             MessageBox.Show("代車代番のFAXを作成画面は作成中です。提案を受付ています。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
                             break;
-
                     }
+                    MessageBox.Show("印刷を完了しました", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
                 /*
                  * ContextMenuStripCarLabel

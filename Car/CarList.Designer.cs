@@ -162,7 +162,7 @@
             // ToolStripMenuItemInsertNewCar
             // 
             this.ToolStripMenuItemInsertNewCar.Name = "ToolStripMenuItemInsertNewCar";
-            this.ToolStripMenuItemInsertNewCar.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItemInsertNewCar.Size = new System.Drawing.Size(174, 22);
             this.ToolStripMenuItemInsertNewCar.Text = "車両を新規登録する";
             this.ToolStripMenuItemInsertNewCar.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
@@ -174,7 +174,7 @@
             // 
             // SpreadList
             // 
-            this.SpreadList.AccessibleDescription = "Book1, Sheet1, Row 0, Column 0";
+            this.SpreadList.AccessibleDescription = "SpreadList, Sheet1, Row 0, Column 0";
             this.SpreadList.ContextMenuStrip = this.ContextMenuStrip1;
             this.SpreadList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SpreadList.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -237,10 +237,10 @@
         private ToolStripStatusLabel toolStripStatusLabel1;
         private ToolStripStatusLabel ToolStripStatusLabelStatus;
         private FarPoint.Win.Spread.FpSpread SpreadList;
-        private FarPoint.Win.Spread.SheetView SheetViewList;
         private CheckBox CheckBoxDeleteFlag;
         private ContextMenuStrip ContextMenuStrip1;
         private ToolStripMenuItem ToolStripMenuItemDelete;
         private ToolStripMenuItem ToolStripMenuItemInsertNewCar;
+        private FarPoint.Win.Spread.SheetView SheetViewList;
     }
 }
