@@ -56,8 +56,8 @@ namespace Substitute {
         /*
          * 清掃事務所名・FAX番号
          */
-        private string _cleanOfficeName;
-        private string _cleanOfficeFax;
+        private string _cleanOfficeName = "";
+        private string _cleanOfficeFax = "";
         /*
          * 代番を記載する位置のカウンター
          */

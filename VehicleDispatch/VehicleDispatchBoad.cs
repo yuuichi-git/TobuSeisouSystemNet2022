@@ -1030,7 +1030,12 @@ namespace VehicleDispatch {
         private void SetControlEx_DragDrop(object? sender, DragEventArgs e) {
             // Dropを受け入れない
             e.Effect = DragDropEffects.None;
-            SetControlEx setControlEx = (SetControlEx)sender;
+            SetControlEx setControlEx = new();
+            if(sender != null) {
+                setControlEx = (SetControlEx)sender;
+            } else {
+                MessageBox.Show("SetControlEx_DragDrop : senderがNullです");
+            }
             /*
              * SetLabelEx
              */
@@ -1183,7 +1188,7 @@ namespace VehicleDispatch {
             /*
              * StaffLabelEx
              */
-            if(e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+            if(setControlEx != null && e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
                 StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
                 //画面座標(X, Y)を、setControlEx上のクライアント座標に変換する
                 Point point = setControlEx.PointToClient(new Point(e.X, e.Y));

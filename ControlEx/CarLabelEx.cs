@@ -15,7 +15,7 @@ namespace ControlEx {
         /// コンストラクタ
         /// </summary>
         /// <param name="carMasterVo"></param>
-        public CarLabelEx(CarMasterVo? carMasterVo) {
+        public CarLabelEx(CarMasterVo carMasterVo) {
             _carMasterVo = carMasterVo;
             /*
              * 本社・三郷で色を変える
