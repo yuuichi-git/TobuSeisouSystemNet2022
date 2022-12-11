@@ -7,13 +7,13 @@ namespace ControlEx {
         private const int _carLabelHeight = 68;
         private const int _carLabelWidth = 70;
 
-        private Color _borderColor = Color.White;
-        private Font _drawFont = new Font("Yu Gothic UI", 12, FontStyle.Regular, GraphicsUnit.Pixel);
-        private SolidBrush _drowBrushFill;
-        private SolidBrush _drawBrushFont = new SolidBrush(Color.Black);
+        private readonly Color _borderColor = Color.White;
+        private readonly Font _drawFont = new Font("Yu Gothic UI", 12, FontStyle.Regular, GraphicsUnit.Pixel);
+        private readonly SolidBrush _drowBrushFill;
+        private readonly SolidBrush _drawBrushFont = new SolidBrush(Color.Black);
 
         /// <summary>
-        /// コンストラクター
+        /// コンストラクター(オーバーロード)
         /// </summary>
         /// <param name="carMasterVo"></param>
         public CarLabelEx(CarMasterVo carMasterVo) {
@@ -37,7 +37,7 @@ namespace ControlEx {
         }
 
         /// <summary>
-        /// コンストラクター
+        /// コンストラクター(オーバーロード)
         /// </summary>
         /// <param name="vehicleDispatchDetailVo"></param>
         /// <param name="carMasterVo"></param>

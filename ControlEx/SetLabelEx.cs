@@ -7,13 +7,12 @@ namespace ControlEx {
 
         private const int _setLabelHeight = 68;
         private const int _setLabelWidth = 70;
-
-        private Color _borderColor = Color.White;
-        private Font drawFont = new Font("Yu Gothic UI", 13, FontStyle.Regular, GraphicsUnit.Pixel);
-        private Font drawFontContactMethod = new Font("Yu Gothic UI", 8, FontStyle.Regular, GraphicsUnit.Pixel);
-        private string drawStringContactMethod = "";
-        private SolidBrush drowBrushFill = new SolidBrush(Color.White);
-        private SolidBrush drawBrushFont = new SolidBrush(Color.Black);
+        private string _drawStringContactMethod = "";
+        private readonly Color _borderColor = Color.White;
+        private readonly Font _drawFont = new Font("Yu Gothic UI", 13, FontStyle.Regular, GraphicsUnit.Pixel);
+        private readonly Font _drawFontContactMethod = new Font("Yu Gothic UI", 8, FontStyle.Regular, GraphicsUnit.Pixel);
+        private readonly SolidBrush _drawBrushFont = new SolidBrush(Color.Black);
+        private  SolidBrush _drowBrushFill = new SolidBrush(Color.White);
 
         /// <summary>
         /// コンストラクタ(オーバーロード)
@@ -72,9 +71,9 @@ namespace ControlEx {
              * Garage_flag
              */
             if(_garageFlag) {
-                drowBrushFill = new SolidBrush(Color.White);
+                _drowBrushFill = new SolidBrush(Color.White);
             } else {
-                drowBrushFill = new SolidBrush(Color.PowderBlue);
+                _drowBrushFill = new SolidBrush(Color.PowderBlue);
             }
 
             InitializeComponent();
@@ -111,15 +110,15 @@ namespace ControlEx {
              * Garage_flag
              */
             if(vehicleDispatchDetailVo.Garage_flag) {
-                drowBrushFill = new SolidBrush(Color.White);
+                _drowBrushFill = new SolidBrush(Color.White);
             } else {
-                drowBrushFill = new SolidBrush(Color.PowderBlue);
+                _drowBrushFill = new SolidBrush(Color.PowderBlue);
             }
             /*
              * Operation_flag
              */
             if(!vehicleDispatchDetailVo.Operation_flag)
-                drowBrushFill = new SolidBrush(Color.Pink);
+                _drowBrushFill = new SolidBrush(Color.Pink);
 
             InitializeComponent();
             /*
@@ -143,30 +142,30 @@ namespace ControlEx {
              * Fillを描画
              */
             Rectangle rectangleFill = new Rectangle(2, 2, 64, 62);
-            e.Graphics.FillRectangle(drowBrushFill, rectangleFill);
+            e.Graphics.FillRectangle(_drowBrushFill, rectangleFill);
             /*
              * 文字(配車先)を描画
              */
             var stringFormat = new StringFormat();
             stringFormat.LineAlignment = StringAlignment.Center;
             stringFormat.Alignment = StringAlignment.Center;
-            e.Graphics.DrawString(string.Concat(_setMasterVo.Set_name_1, "\r\n", _setMasterVo.Set_name_2), drawFont, drawBrushFont, rectangleFill, stringFormat);
+            e.Graphics.DrawString(string.Concat(_setMasterVo.Set_name_1, "\r\n", _setMasterVo.Set_name_2), _drawFont, _drawBrushFont, rectangleFill, stringFormat);
             /*
              * 文字(ContactMethod)を描画
              */
             switch(_setMasterVo.Contact_method) {
                 case 10:
-                    drawStringContactMethod = "TEL";
+                    _drawStringContactMethod = "TEL";
                     break;
                 case 11:
-                    drawStringContactMethod = "FAX";
+                    _drawStringContactMethod = "FAX";
                     break;
                 default:
-                    drawStringContactMethod = "";
+                    _drawStringContactMethod = "";
                     break;
             }
             var point = new Point(4, 2);
-            e.Graphics.DrawString(drawStringContactMethod, drawFontContactMethod, drawBrushFont, point);
+            e.Graphics.DrawString(_drawStringContactMethod, _drawFontContactMethod, _drawBrushFont, point);
         }
 
         /// <summary>
@@ -193,9 +192,9 @@ namespace ControlEx {
              * Garage_flag
              */
             if(garageFlag) {
-                drowBrushFill = new SolidBrush(Color.White);
+                _drowBrushFill = new SolidBrush(Color.White);
             } else {
-                drowBrushFill = new SolidBrush(Color.PowderBlue);
+                _drowBrushFill = new SolidBrush(Color.PowderBlue);
             }
             this.Refresh();
         }
