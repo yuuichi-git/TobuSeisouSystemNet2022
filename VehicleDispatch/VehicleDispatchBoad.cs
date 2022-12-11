@@ -62,6 +62,9 @@ namespace VehicleDispatch {
              */
             InitializeComponent();
             _initializeForm.VehicleDispatchBoad(this);
+            /*
+             * 日付
+             */
             DateTimePickerExOperationDate.Value = DateTime.Now;
             LabelJpYear.Text = string.Concat("(", DateTimePickerExOperationDate.GetJpValue(), ")");
             // InitializeComponentの後に初期化してね
@@ -722,6 +725,8 @@ namespace VehicleDispatch {
                  * ContextMenuStripSetLabel
                  */
                 case "ContextMenuStripSetLabel":
+                    // SetControlExを退避
+                    EvacuationSetControlEx = (SetControlEx)((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Parent;
                     // SetLabelExを退避
                     EvacuationSetLabelEx = (SetLabelEx)((ContextMenuStrip)sender).SourceControl;
                     SetMasterVo setMasterVo = (SetMasterVo)EvacuationSetLabelEx.Tag;
@@ -738,8 +743,6 @@ namespace VehicleDispatch {
                         ToolStripMenuItemSetDelete.Enabled = setMasterVo.Move_flag;
                         // 代車・代番のFAXを作成する
                         ToolStripMenuItemFax.Enabled = (setMasterVo.Contact_method == 11 && _operationDate.Date == DateTime.Now.Date && EvacuationSetControlEx.OperationFlag) ? true : false;
-                        // SetControlExを退避
-                        EvacuationSetControlEx = (SetControlEx)((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Parent;
                     }
                     /*
                      * FlowLayoutPanelEx上でクリックされた時
@@ -942,7 +945,6 @@ namespace VehicleDispatch {
                             MessageBox.Show("代車代番のFAXを作成画面は作成中です。提案を受付ています。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
                             break;
                     }
-                    MessageBox.Show("印刷を完了しました", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
                 /*
                  * ContextMenuStripCarLabel

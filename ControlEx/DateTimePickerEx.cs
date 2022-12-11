@@ -48,6 +48,7 @@ namespace ControlEx {
         /// </summary>
         private void SetDateTime() {
             this.CustomFormat = " yyyy年MM月dd日(dddd)";
+            this.Refresh();
         }
 
         /// <summary>
