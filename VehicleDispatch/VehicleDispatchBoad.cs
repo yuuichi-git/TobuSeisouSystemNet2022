@@ -194,7 +194,7 @@ namespace VehicleDispatch {
                  * CarLabel
                  */
                 if(vehicleDispatchDetailVo != null && vehicleDispatchDetailVo.Car_code != 0) {
-                    setControlEx.CreateLabel(_listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code), ContextMenuStripCarLabel);
+                    setControlEx.CreateLabel(vehicleDispatchDetailVo, _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code), ContextMenuStripCarLabel);
                     _listDeepCopyCarMasterVo?.RemoveAll(x => x.Car_code == vehicleDispatchDetailVo.Car_code);
                 }
                 /*
@@ -203,6 +203,7 @@ namespace VehicleDispatch {
                 if(vehicleDispatchDetailVo != null && vehicleDispatchDetailVo.Operator_code_1 != 0) {
                     setControlEx.CreateLabel(0,
                                              _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1),
+                                             vehicleDispatchDetailVo.Operator_1_proxy_flag,
                                              tenkoModeFlag,
                                              vehicleDispatchDetailVo.Operator_1_roll_call_flag,
                                              vehicleDispatchDetailVo.Operator_1_note.Length > 0 ? true : false,
@@ -217,6 +218,7 @@ namespace VehicleDispatch {
                 if(vehicleDispatchDetailVo != null && vehicleDispatchDetailVo.Operator_code_2 != 0) {
                     setControlEx.CreateLabel(1,
                                              _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2),
+                                             vehicleDispatchDetailVo.Operator_2_proxy_flag,
                                              tenkoModeFlag,
                                              vehicleDispatchDetailVo.Operator_2_roll_call_flag,
                                              vehicleDispatchDetailVo.Operator_2_note.Length > 0 ? true : false,
@@ -231,6 +233,7 @@ namespace VehicleDispatch {
                 if(vehicleDispatchDetailVo != null && vehicleDispatchDetailVo.Operator_code_3 != 0) {
                     setControlEx.CreateLabel(2,
                                              _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3),
+                                             vehicleDispatchDetailVo.Operator_3_proxy_flag,
                                              tenkoModeFlag,
                                              vehicleDispatchDetailVo.Operator_3_roll_call_flag,
                                              vehicleDispatchDetailVo.Operator_3_note.Length > 0 ? true : false,
@@ -245,6 +248,7 @@ namespace VehicleDispatch {
                 if(vehicleDispatchDetailVo != null && vehicleDispatchDetailVo.Operator_code_4 != 0) {
                     setControlEx.CreateLabel(3,
                                              _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4),
+                                             vehicleDispatchDetailVo.Operator_4_proxy_flag,
                                              tenkoModeFlag,
                                              vehicleDispatchDetailVo.Operator_4_roll_call_flag,
                                              vehicleDispatchDetailVo.Operator_4_note.Length > 0 ? true : false,
@@ -500,7 +504,7 @@ namespace VehicleDispatch {
                             // Controlを作成
                             CarLabelEx carLabelEx = new CarLabelEx(_listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailCarVo.Car_code)).CreateLabel();
                             // プロパティを設定
-                            carLabelEx.ContextMenuStrip = ContextMenuStripStaffLabel;
+                            carLabelEx.ContextMenuStrip = ContextMenuStripCarLabel;
                             /*
                              * イベントを設定
                              */
@@ -717,24 +721,35 @@ namespace VehicleDispatch {
                  * ContextMenuStripSetLabel
                  */
                 case "ContextMenuStripSetLabel":
+                    // SetLabelExを退避
+                    EvacuationSetLabelEx = (SetLabelEx)((ContextMenuStrip)sender).SourceControl;
+                    SetMasterVo setMasterVo = (SetMasterVo)EvacuationSetLabelEx.Tag;
                     /*
                      * SetControlEx上でクリックされた時
                      */
-                    if(((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(SetControlEx))
-                        EvacuationSetControlEx = (SetControlEx)((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Parent; // SetControlExを退避
+                    if(((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(SetControlEx)) {
+                        /*
+                         * メニューの表示調整
+                         */
+                        // 出庫地を変更
+                        ToolStripMenuItemSetGarageChange.Enabled = true;
+                        // 配車先を削除する
+                        ToolStripMenuItemSetDelete.Enabled = setMasterVo.Move_flag;
+                        // 代車・代番のFAXを作成する
+                        ToolStripMenuItemFax.Enabled = (setMasterVo.Contact_method == 11 && operationDate.Date == DateTime.Now.Date && EvacuationSetControlEx.OperationFlag) ? true : false;
+                        // SetControlExを退避
+                        EvacuationSetControlEx = (SetControlEx)((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Parent;
+                    }
                     /*
                      * FlowLayoutPanelEx上でクリックされた時
                      */
-                    if(((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(FlowLayoutPanelEx))
-                        EvacuationFlowLayoutPanelEx = (FlowLayoutPanelEx)((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Parent; // SetControlExを退避
-                    // SetLabelExを退避
-                    EvacuationSetLabelEx = (SetLabelEx)((ContextMenuStrip)sender).SourceControl;
-                    /*
-                     * メニューの表示調整
-                     */
-                    SetMasterVo setMasterVo = (SetMasterVo)EvacuationSetLabelEx.Tag;
-                    ToolStripMenuItemSetDelete.Enabled = setMasterVo.Move_flag; // 配車先を削除する
-                    ToolStripMenuItemFax.Enabled = (setMasterVo.Contact_method == 11 && operationDate.Date == DateTime.Now.Date && EvacuationSetControlEx.OperationFlag) ? true : false; // 代車・代番のFAXを作成する
+                    if(((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(FlowLayoutPanelEx)) {
+                        ToolStripMenuItemSetGarageChange.Enabled = false;
+                        ToolStripMenuItemSetDelete.Enabled = false;
+                        ToolStripMenuItemFax.Enabled = false;
+                        // SetControlExを退避
+                        EvacuationFlowLayoutPanelEx = (FlowLayoutPanelEx)((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Parent;
+                    }
                     break;
                 /*
                  * ContextMenuStripCarLabel
@@ -743,13 +758,22 @@ namespace VehicleDispatch {
                     /*
                      * SetControlEx上でクリックされた時
                      */
-                    if(((CarLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(SetControlEx))
-                        EvacuationSetControlEx = (SetControlEx)((CarLabelEx)((ContextMenuStrip)sender).SourceControl).Parent; // SetControlExを退避
+                    if(((CarLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(SetControlEx)) {
+                        ToolStripMenuItemCarProxyTrue.Enabled = true;
+                        ToolStripMenuItemCarProxyFalse.Enabled = true;
+                        // SetControlExを退避
+                        EvacuationSetControlEx = (SetControlEx)((CarLabelEx)((ContextMenuStrip)sender).SourceControl).Parent;
+                    }
+
                     /*
                      * FlowLayoutPanelEx上でクリックされた時
                      */
-                    if(((CarLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(FlowLayoutPanelEx))
-                        EvacuationFlowLayoutPanelEx = (FlowLayoutPanelEx)((CarLabelEx)((ContextMenuStrip)sender).SourceControl).Parent; // SetControlExを退避
+                    if(((CarLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(FlowLayoutPanelEx)) {
+                        ToolStripMenuItemCarProxyTrue.Enabled = false;
+                        ToolStripMenuItemCarProxyFalse.Enabled = false;
+                        // SetControlExを退避
+                        EvacuationFlowLayoutPanelEx = (FlowLayoutPanelEx)((CarLabelEx)((ContextMenuStrip)sender).SourceControl).Parent;
+                    }
                     // CarLabelExを退避
                     EvacuationCarLabelEx = (CarLabelEx)((ContextMenuStrip)sender).SourceControl;
                     break;
@@ -760,13 +784,39 @@ namespace VehicleDispatch {
                     /*
                      * SetControlEx上でクリックされた時
                      */
-                    if(((StaffLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(SetControlEx))
-                        EvacuationSetControlEx = (SetControlEx)((StaffLabelEx)((ContextMenuStrip)sender).SourceControl).Parent; // SetControlExを退避
+                    if(((StaffLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(SetControlEx)) {
+                        // SetControlExを退避
+                        EvacuationSetControlEx = (SetControlEx)((StaffLabelEx)((ContextMenuStrip)sender).SourceControl).Parent;
+                        ToolStripMenuItemStaffProxyTrue.Enabled = true;
+                        ToolStripMenuItemStaffProxyFalse.Enabled = true;
+                        ToolStripMenuItemMemoWrite.Enabled = true;
+                        ToolStripMenuItemMemoRead.Enabled = true;
+                    }
                     /*
                      * FlowLayoutPanelEx上でクリックされた時
                      */
-                    if(((StaffLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(FlowLayoutPanelEx))
-                        EvacuationFlowLayoutPanelEx = (FlowLayoutPanelEx)((StaffLabelEx)((ContextMenuStrip)sender).SourceControl).Parent; // SetControlExを退避
+                    if(((StaffLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(FlowLayoutPanelEx)) {
+                        // SetControlExを退避
+                        EvacuationFlowLayoutPanelEx = (FlowLayoutPanelEx)((StaffLabelEx)((ContextMenuStrip)sender).SourceControl).Parent;
+                        ToolStripMenuItemStaffProxyTrue.Enabled = false;
+                        ToolStripMenuItemStaffProxyFalse.Enabled = false;
+                        switch(Convert.ToInt32(EvacuationFlowLayoutPanelEx.Tag)) {
+                            /*
+                             * 左側のFlowLayoutPanelExではStaffメモは使えなくする
+                             */
+                            case 153:
+                            case 154:
+                            case 155:
+                            case 156:
+                                ToolStripMenuItemMemoWrite.Enabled = false;
+                                ToolStripMenuItemMemoRead.Enabled = false;
+                                break;
+                            default:
+                                ToolStripMenuItemMemoWrite.Enabled = true;
+                                ToolStripMenuItemMemoRead.Enabled = true;
+                                break;
+                        }
+                    }
                     // StaffLabelExを退避
                     EvacuationStaffLabelEx = (StaffLabelEx)((ContextMenuStrip)sender).SourceControl;
                     break;
@@ -901,6 +951,38 @@ namespace VehicleDispatch {
                 case "ToolStripMenuItemCarDetail":
                     MessageBox.Show("車両詳細画面は作成中です。提案を受付ています。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
+                // 代車処理
+                case "ToolStripMenuItemCarProxyTrue":
+                    try {
+                        /*
+                         * SetControlEx上でクリックされた時
+                         */
+                        if(EvacuationCarLabelEx.Parent.GetType() == typeof(SetControlEx)) {
+                            _vehicleDispatchDetailDao.SetCarProxyFlag(DateTimePickerOperationDate.Value,
+                                                                      (int)EvacuationSetControlEx.Tag,
+                                                                      true);
+                            EvacuationCarLabelEx.SetProxyFlag(true);
+                        }
+                    } catch(Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
+                    break;
+                // 代車処理
+                case "ToolStripMenuItemCarProxyFalse":
+                    try {
+                        /*
+                         * SetControlEx上でクリックされた時
+                         */
+                        if(EvacuationCarLabelEx.Parent.GetType() == typeof(SetControlEx)) {
+                            _vehicleDispatchDetailDao.SetCarProxyFlag(DateTimePickerOperationDate.Value,
+                                                                      (int)EvacuationSetControlEx.Tag,
+                                                                      false);
+                            EvacuationCarLabelEx.SetProxyFlag(false);
+                        }
+                    } catch(Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
+                    break;
                 /*
                  * ContextMenuStripStaffLabel
                  */
@@ -909,8 +991,42 @@ namespace VehicleDispatch {
                     var staffPaper = new StaffPaper(_connectionVo, ((StaffMasterVo)EvacuationStaffLabelEx.Tag).Staff_code);
                     staffPaper.ShowDialog(this);
                     break;
+                // 代番処理
+                case "ToolStripMenuItemStaffProxyTrue":
+                    try {
+                        /*
+                         * SetControlEx上でクリックされた時
+                         */
+                        if(EvacuationStaffLabelEx.Parent.GetType() == typeof(SetControlEx)) {
+                            _vehicleDispatchDetailDao.SetStaffProxyFlag(DateTimePickerOperationDate.Value,
+                                                                        (int)EvacuationSetControlEx.Tag,
+                                                                        EvacuationSetControlEx.GetPositionFromControl(EvacuationStaffLabelEx).Row,
+                                                                        true);
+                            EvacuationStaffLabelEx.SetProxyFlag(true);
+                        }
+                    } catch(Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
+                    break;
+                // 代番処理
+                case "ToolStripMenuItemStaffProxyFalse":
+                    try {
+                        /*
+                         * SetControlEx上でクリックされた時
+                         */
+                        if(EvacuationStaffLabelEx.Parent.GetType() == typeof(SetControlEx)) {
+                            _vehicleDispatchDetailDao.SetStaffProxyFlag(DateTimePickerOperationDate.Value,
+                                                                      (int)EvacuationSetControlEx.Tag,
+                                                                      EvacuationSetControlEx.GetPositionFromControl(EvacuationStaffLabelEx).Row,
+                                                                      false);
+                            EvacuationStaffLabelEx.SetProxyFlag(false);
+                        }
+                    } catch(Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
+                    break;
                 // メモを書き込む
-                case "ToolStripMenuItemMemo":
+                case "ToolStripMenuItemMemoWrite":
                     string stringMemo = Microsoft.VisualBasic.Interaction.InputBox("従事者メモを書き込んで下さい", "メモ");
                     try {
                         /*
@@ -934,6 +1050,9 @@ namespace VehicleDispatch {
                     } catch(Exception exception) {
                         MessageBox.Show(exception.Message);
                     }
+                    break;
+                case "ToolStripMenuItemMemoRead":
+                    MessageBox.Show("作成中・・・・");
                     break;
             }
         }

@@ -10,6 +10,8 @@ namespace ControlEx {
 
         private Color _borderColor = Color.White;
         private Font drawFont = new Font("Yu Gothic UI", 13, FontStyle.Regular, GraphicsUnit.Pixel);
+        private Font drawFontContactMethod = new Font("Yu Gothic UI", 8, FontStyle.Regular, GraphicsUnit.Pixel);
+        private string drawStringContactMethod = "";
         private SolidBrush drowBrushFill = new SolidBrush(Color.White);
         private SolidBrush drawBrushFont = new SolidBrush(Color.Black);
 
@@ -149,6 +151,22 @@ namespace ControlEx {
             stringFormat.LineAlignment = StringAlignment.Center;
             stringFormat.Alignment = StringAlignment.Center;
             e.Graphics.DrawString(string.Concat(_setMasterVo.Set_name_1, "\r\n", _setMasterVo.Set_name_2), drawFont, drawBrushFont, rectangleFill, stringFormat);
+            /*
+             * 文字(ContactMethod)を描画
+             */
+            switch(_setMasterVo.Contact_method) {
+                case 10:
+                    drawStringContactMethod = "TEL";
+                    break;
+                case 11:
+                    drawStringContactMethod = "FAX";
+                    break;
+                default:
+                    drawStringContactMethod = "";
+                    break;
+            }
+            var point = new Point(4, 2);
+            e.Graphics.DrawString(drawStringContactMethod, drawFontContactMethod, drawBrushFont, point);
         }
 
         /// <summary>

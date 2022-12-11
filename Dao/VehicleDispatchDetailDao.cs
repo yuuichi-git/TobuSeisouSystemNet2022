@@ -867,6 +867,64 @@ namespace Dao {
         }
 
         /// <summary>
+        /// SetCarProxyFlag
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="cellNumber"></param>
+        /// <param name="proxyFlag"></param>
+        public void SetCarProxyFlag(DateTime operationDate, int cellNumber, bool proxyFlag) {
+            /*
+             * Tagがゼロから始まっているので１をプラスする
+             */
+            cellNumber++;
+
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE vehicle_dispatch_detail " +
+                                     "SET car_proxy_flag = '" + proxyFlag + "'," +
+                                          "update_pc_name = '" + Environment.MachineName + "'," +
+                                          "update_ymd_hms = '" + DateTime.Now + "' " +
+                                     "WHERE cell_number = " + cellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// SetStaffProxyFlag
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="cellNumber"></param>
+        /// <param name="row"></param>
+        /// <param name="note"></param>
+        public void SetStaffProxyFlag(DateTime operationDate, int cellNumber, int row, bool proxyFlag) {
+            /*
+             * Tagがゼロから始まっているので１をプラスする
+             */
+            cellNumber++;
+            /*
+             * SetControlExのRowがゼロから始まっているので１をプラスする
+             */
+            row--;
+            /*
+             * Drop項目のSQL文を作成
+             */
+            string sqlProxyFlag = string.Concat("operator_" + row + "_proxy_flag");
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE vehicle_dispatch_detail " +
+                                     "SET " + sqlProxyFlag + " = '" + proxyFlag + "'," +
+                                          "update_pc_name = '" + Environment.MachineName + "'," +
+                                          "update_ymd_hms = '" + DateTime.Now + "' " +
+                                     "WHERE cell_number = " + cellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
         /// GetCellNumber
         /// set_codeからcell_numberを取得する
         /// </summary>

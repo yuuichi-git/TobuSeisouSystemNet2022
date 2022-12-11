@@ -125,8 +125,8 @@ namespace ControlEx {
         /// Labelのイベントはここで登録する
         /// </summary>
         /// <param name="carMasterVo"></param>
-        public void CreateLabel(CarMasterVo carMasterVo, ContextMenuStrip contextMenuStrip) {
-            var labelEx = new CarLabelEx(carMasterVo).CreateLabel();
+        public void CreateLabel(VehicleDispatchDetailVo vehicleDispatchDetailVo, CarMasterVo carMasterVo, ContextMenuStrip contextMenuStrip) {
+            var labelEx = new CarLabelEx(vehicleDispatchDetailVo,carMasterVo).CreateLabel();
             /*
              * プロパティを設定
              */
@@ -140,14 +140,19 @@ namespace ControlEx {
         }
 
         /// <summary>
+        /// CreateLabel
         /// StaffLabel作成
         /// Labelのイベントはここで登録する
         /// </summary>
         /// <param name="number">1:運転手 2:作業員1 3:作業員2 4:作業員3</param>
         /// <param name="staffMasterVo"></param>
+        /// <param name="proxyFlag"></param>
+        /// <param name="tenkoModeFlag"></param>
+        /// <param name="rollCallFlag"></param>
+        /// <param name="noteFlag"></param>
         /// <param name="contextMenuStrip"></param>
-        public void CreateLabel(int number, StaffMasterVo staffMasterVo, bool tenkoModeFlag, bool rollCallFlag, bool noteFlag, ContextMenuStrip contextMenuStrip) {
-            var labelEx = new StaffLabelEx(staffMasterVo, tenkoModeFlag, rollCallFlag, noteFlag).CreateLabel();
+        public void CreateLabel(int number, StaffMasterVo staffMasterVo, bool proxyFlag, bool tenkoModeFlag, bool rollCallFlag, bool noteFlag, ContextMenuStrip contextMenuStrip) {
+            var labelEx = new StaffLabelEx(staffMasterVo, proxyFlag, tenkoModeFlag, rollCallFlag, noteFlag).CreateLabel();
             /*
              * プロパティを設定
              */

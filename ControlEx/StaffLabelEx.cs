@@ -4,6 +4,8 @@ namespace ControlEx {
     public partial class StaffLabelEx : Label {
         // StaffMasterVo
         private readonly StaffMasterVo _staffMasterVo;
+        //
+        private bool _proxyFlag;
         // 点呼モードフラグ(True:点呼モード False:通常モード)
         private bool _tenkoModeFlag;
         // 点呼フラグ(True:点呼済 False:未点呼)
@@ -21,11 +23,62 @@ namespace ControlEx {
 
         /// <summary>
         /// コンストラクター(オーバーロード)
+        /// SetControlExに対してのStaffLabelExを作成
+        /// </summary>
+        /// <param name="staffMasterVo"></param>
+        /// <param name="tenkoModeFlag"></param>
+        /// <param name="rollCallFlag"></param>
+        /// <param name="noteFlag"></param>
+        public StaffLabelEx(StaffMasterVo staffMasterVo, bool proxyFlag, bool tenkoModeFlag, bool rollCallFlag, bool noteFlag) {
+            _staffMasterVo = staffMasterVo;
+            _proxyFlag = proxyFlag;
+            _tenkoModeFlag = tenkoModeFlag;
+            _rollCallFlag = rollCallFlag;
+            _noteFlag = noteFlag;
+
+            switch(staffMasterVo.Belongs) {
+                case 10: // 役員
+                case 11: // 社員
+                    this._borderColor = Pens.Gray;
+                    drowBrushFill = new SolidBrush(Color.White);
+                    break;
+                case 12: // アルバイト
+                    this._borderColor = Pens.DarkOrange;
+                    drowBrushFill = new SolidBrush(Color.Orange);
+                    break;
+                case 20: // 新運転
+                case 21: // 自運労
+                    switch(staffMasterVo.Job_form) {
+                        case 10: // 長期雇用
+                            this._borderColor = Pens.WhiteSmoke;
+                            drowBrushFill = new SolidBrush(Color.White);
+                            break;
+                        case 11: // 手帳
+                            this._borderColor = Pens.Green;
+                            drowBrushFill = new SolidBrush(Color.LightGreen);
+                            break;
+                        case 12: // アルバイト
+                            this._borderColor = Pens.DarkOrange;
+                            drowBrushFill = new SolidBrush(Color.Orange);
+                            break;
+                    }
+                    break;
+            }
+            InitializeComponent();
+            /*
+             * StaffControlExのイベントを登録
+             */
+            this.Paint += new PaintEventHandler(this.LabelEx_CellPaint);
+        }
+
+        /// <summary>
+        /// コンストラクター(オーバーロード)
         /// FlowLayoutPanel(左側)に対してのStaffLabelExを作成
         /// </summary>
         /// <param name="staffMasterVo"></param>
         public StaffLabelEx(StaffMasterVo staffMasterVo) {
             _staffMasterVo = staffMasterVo;
+            _proxyFlag = false;
             _tenkoModeFlag = false;
             _rollCallFlag = false;
             _noteFlag = false;
@@ -72,57 +125,9 @@ namespace ControlEx {
         /// <param name="staffMasterVo"></param>
         public StaffLabelEx(StaffMasterVo staffMasterVo, bool noteFlag) {
             _staffMasterVo = staffMasterVo;
+            _proxyFlag = false;
             _tenkoModeFlag = false;
             _rollCallFlag = false;
-            _noteFlag = noteFlag;
-
-            switch(staffMasterVo.Belongs) {
-                case 10: // 役員
-                case 11: // 社員
-                    this._borderColor = Pens.Gray;
-                    drowBrushFill = new SolidBrush(Color.White);
-                    break;
-                case 12: // アルバイト
-                    this._borderColor = Pens.DarkOrange;
-                    drowBrushFill = new SolidBrush(Color.Orange);
-                    break;
-                case 20: // 新運転
-                case 21: // 自運労
-                    switch(staffMasterVo.Job_form) {
-                        case 10: // 長期雇用
-                            this._borderColor = Pens.WhiteSmoke;
-                            drowBrushFill = new SolidBrush(Color.White);
-                            break;
-                        case 11: // 手帳
-                            this._borderColor = Pens.Green;
-                            drowBrushFill = new SolidBrush(Color.LightGreen);
-                            break;
-                        case 12: // アルバイト
-                            this._borderColor = Pens.DarkOrange;
-                            drowBrushFill = new SolidBrush(Color.Orange);
-                            break;
-                    }
-                    break;
-            }
-            InitializeComponent();
-            /*
-             * StaffControlExのイベントを登録
-             */
-            this.Paint += new PaintEventHandler(this.LabelEx_CellPaint);
-        }
-
-        /// <summary>
-        /// コンストラクター(オーバーロード)
-        /// SetControlExに対してのStaffLabelExを作成
-        /// </summary>
-        /// <param name="staffMasterVo"></param>
-        /// <param name="tenkoModeFlag"></param>
-        /// <param name="rollCallFlag"></param>
-        /// <param name="noteFlag"></param>
-        public StaffLabelEx(StaffMasterVo staffMasterVo, bool tenkoModeFlag, bool rollCallFlag, bool noteFlag) {
-            _staffMasterVo = staffMasterVo;
-            _tenkoModeFlag = tenkoModeFlag;
-            _rollCallFlag = rollCallFlag;
             _noteFlag = noteFlag;
 
             switch(staffMasterVo.Belongs) {
@@ -176,6 +181,13 @@ namespace ControlEx {
              */
             Rectangle rectangleFill = new Rectangle(2, 2, 64, 30);
             e.Graphics.FillRectangle(drowBrushFill, rectangleFill);
+            /*
+             * 代番処理を描画
+             */
+            if(_proxyFlag) {
+                e.Graphics.FillRectangle(Brushes.ForestGreen, 4, 3, 60, 5);
+                e.Graphics.DrawLine(new Pen(Color.LawnGreen), new Point(2, 5), new Point(65, 5));
+            }
             /*
              * 文字(氏名)を描画
              */
@@ -238,6 +250,15 @@ namespace ControlEx {
         /// <param name="noteFlag"></param>
         public void SetNoteFlag(bool noteFlag) {
             _noteFlag = noteFlag;
+            this.Refresh();
+        }
+
+        /// <summary>
+        /// SetProxyFlag
+        /// </summary>
+        /// <param name="proxyFlag"></param>
+        public void SetProxyFlag(bool proxyFlag) {
+            _proxyFlag = proxyFlag;
             this.Refresh();
         }
     }
