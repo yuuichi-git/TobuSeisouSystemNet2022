@@ -56,7 +56,7 @@ namespace VehicleDispatchConvert {
                  */
                 _iSheet = _iWorkbook.GetSheet("配車表");
             } else {
-                MessageBox.Show("デスクトップに”配車当日.xls”が存在しません。やり直して下さい", MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                MessageBox.Show("デスクトップに”配車当日.xls”が存在しません。やり直して下さい", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 throw new Exception();
             }
 

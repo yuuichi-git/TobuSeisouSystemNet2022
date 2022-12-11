@@ -43,6 +43,7 @@
             this.ToolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.PanelUp = new System.Windows.Forms.Panel();
+            this.LabelJpYear = new System.Windows.Forms.Label();
             this.DateTimePickerExOperationDate = new ControlEx.DateTimePickerEx();
             this.FlowLayoutPanelExFree = new ControlEx.FlowLayoutPanelEx(this.components);
             this.label1 = new System.Windows.Forms.Label();
@@ -315,6 +316,7 @@
             // PanelUp
             // 
             this.TableLayoutPanelBase.SetColumnSpan(this.PanelUp, 3);
+            this.PanelUp.Controls.Add(this.LabelJpYear);
             this.PanelUp.Controls.Add(this.DateTimePickerExOperationDate);
             this.PanelUp.Controls.Add(this.FlowLayoutPanelExFree);
             this.PanelUp.Controls.Add(this.label1);
@@ -325,12 +327,25 @@
             this.PanelUp.Size = new System.Drawing.Size(1898, 76);
             this.PanelUp.TabIndex = 2;
             // 
+            // LabelJpYear
+            // 
+            this.LabelJpYear.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LabelJpYear.Location = new System.Drawing.Point(108, 12);
+            this.LabelJpYear.Name = "LabelJpYear";
+            this.LabelJpYear.Size = new System.Drawing.Size(76, 16);
+            this.LabelJpYear.TabIndex = 5;
+            this.LabelJpYear.Text = "(令和4年)";
+            // 
             // DateTimePickerExOperationDate
             // 
-            this.DateTimePickerExOperationDate.Location = new System.Drawing.Point(104, 24);
+            this.DateTimePickerExOperationDate.CustomFormat = " yyyy年MM月dd日(dddd)";
+            this.DateTimePickerExOperationDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.DateTimePickerExOperationDate.Location = new System.Drawing.Point(108, 32);
             this.DateTimePickerExOperationDate.Name = "DateTimePickerExOperationDate";
-            this.DateTimePickerExOperationDate.Size = new System.Drawing.Size(148, 23);
+            this.DateTimePickerExOperationDate.Size = new System.Drawing.Size(168, 23);
             this.DateTimePickerExOperationDate.TabIndex = 4;
+            this.ToolTip1.SetToolTip(this.DateTimePickerExOperationDate, "ESCキーで表示を消します\r\nその他キーで表示します");
+            this.DateTimePickerExOperationDate.Value = new System.DateTime(1972, 6, 25, 0, 0, 0, 0);
             this.DateTimePickerExOperationDate.ValueChanged += new System.EventHandler(this.DateTimePickerExOperationDate_ValueChanged);
             // 
             // FlowLayoutPanelExFree
@@ -349,7 +364,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(44, 28);
+            this.label1.Location = new System.Drawing.Point(52, 36);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 15);
             this.label1.TabIndex = 2;
@@ -1411,5 +1426,6 @@
         private ToolTip ToolTip1;
         private ToolStripMenuItem ToolStripMenuItemMemoRead;
         private ControlEx.DateTimePickerEx DateTimePickerExOperationDate;
+        private Label LabelJpYear;
     }
 }

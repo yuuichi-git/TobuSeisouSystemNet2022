@@ -144,9 +144,9 @@ namespace Substitute {
         /// </summary>
         private void PutSheetViewPaper() {
             // “ú•t
-            var Japanese = new CultureInfo("ja-JP", true);
-            Japanese.DateTimeFormat.Calendar = new JapaneseCalendar();
-            SheetViewPaper.Cells["G3"].Text = DateTime.Now.ToString("gg y”NMŒd“ú", Japanese);
+            CultureInfo cultureInfo = new CultureInfo("ja-JP", true);
+            cultureInfo.DateTimeFormat.Calendar = new JapaneseCalendar();
+            SheetViewPaper.Cells["G3"].Text = DateTime.Now.ToString("gg y”NMŒd“ú", cultureInfo);
             // ˆ¶æ
             SheetViewPaper.Cells["B6"].Text = _cleanOfficeName;
             /*

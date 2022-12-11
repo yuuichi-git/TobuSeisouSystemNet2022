@@ -62,6 +62,8 @@ namespace VehicleDispatch {
              */
             InitializeComponent();
             _initializeForm.VehicleDispatchBoad(this);
+            DateTimePickerExOperationDate.Value = DateTime.Now;
+            LabelJpYear.Text = string.Concat("(", DateTimePickerExOperationDate.GetJpValue(), ")");
             // InitializeComponentÇÃå„Ç…èâä˙âªÇµÇƒÇÀ
             _arrayTableLayoutPanelEx = new TableLayoutPanelEx[] { TableLayoutPanelEx1, TableLayoutPanelEx2 };
             /*
@@ -2181,6 +2183,7 @@ namespace VehicleDispatch {
         /// <param name="e"></param>
         private void DateTimePickerExOperationDate_ValueChanged(object sender, EventArgs e) {
             _operationDate = ((DateTimePickerEx)sender).Value;
+            LabelJpYear.Text = string.Concat("(", DateTimePickerExOperationDate.GetJpValue(), ")");
         }
 
         /// <summary>
