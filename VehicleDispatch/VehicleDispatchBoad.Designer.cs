@@ -43,9 +43,9 @@
             this.ToolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.PanelUp = new System.Windows.Forms.Panel();
+            this.DateTimePickerExOperationDate = new ControlEx.DateTimePickerEx();
             this.FlowLayoutPanelExFree = new ControlEx.FlowLayoutPanelEx(this.components);
             this.label1 = new System.Windows.Forms.Label();
-            this.DateTimePickerOperationDate = new System.Windows.Forms.DateTimePicker();
             this.ButtonUpdate = new System.Windows.Forms.Button();
             this.TabControlExCenter = new ControlEx.TabControlEx();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -116,8 +116,8 @@
             this.ToolStripMenuItemStaffProxyFalse = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItemMemoWrite = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.ToolStripMenuItemMemoRead = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.TableLayoutPanelBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -315,15 +315,23 @@
             // PanelUp
             // 
             this.TableLayoutPanelBase.SetColumnSpan(this.PanelUp, 3);
+            this.PanelUp.Controls.Add(this.DateTimePickerExOperationDate);
             this.PanelUp.Controls.Add(this.FlowLayoutPanelExFree);
             this.PanelUp.Controls.Add(this.label1);
-            this.PanelUp.Controls.Add(this.DateTimePickerOperationDate);
             this.PanelUp.Controls.Add(this.ButtonUpdate);
             this.PanelUp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelUp.Location = new System.Drawing.Point(3, 27);
             this.PanelUp.Name = "PanelUp";
             this.PanelUp.Size = new System.Drawing.Size(1898, 76);
             this.PanelUp.TabIndex = 2;
+            // 
+            // DateTimePickerExOperationDate
+            // 
+            this.DateTimePickerExOperationDate.Location = new System.Drawing.Point(104, 24);
+            this.DateTimePickerExOperationDate.Name = "DateTimePickerExOperationDate";
+            this.DateTimePickerExOperationDate.Size = new System.Drawing.Size(148, 23);
+            this.DateTimePickerExOperationDate.TabIndex = 4;
+            this.DateTimePickerExOperationDate.ValueChanged += new System.EventHandler(this.DateTimePickerExOperationDate_ValueChanged);
             // 
             // FlowLayoutPanelExFree
             // 
@@ -346,16 +354,6 @@
             this.label1.Size = new System.Drawing.Size(55, 15);
             this.label1.TabIndex = 2;
             this.label1.Text = "配車日付";
-            // 
-            // DateTimePickerOperationDate
-            // 
-            this.DateTimePickerOperationDate.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateTimePickerOperationDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateTimePickerOperationDate.Location = new System.Drawing.Point(104, 24);
-            this.DateTimePickerOperationDate.Name = "DateTimePickerOperationDate";
-            this.DateTimePickerOperationDate.Size = new System.Drawing.Size(144, 23);
-            this.DateTimePickerOperationDate.TabIndex = 1;
-            this.DateTimePickerOperationDate.Value = new System.DateTime(2022, 10, 7, 0, 0, 0, 0);
             // 
             // ButtonUpdate
             // 
@@ -1211,7 +1209,7 @@
             this.ToolStripMenuItemMemoWrite,
             this.ToolStripMenuItemMemoRead});
             this.ContextMenuStripStaffLabel.Name = "ContextMenuStripStaffLabel";
-            this.ContextMenuStripStaffLabel.Size = new System.Drawing.Size(187, 148);
+            this.ContextMenuStripStaffLabel.Size = new System.Drawing.Size(187, 126);
             this.ContextMenuStripStaffLabel.Opened += new System.EventHandler(this.ContextMenuStrip_Opened);
             // 
             // ToolStripMenuItemStaffDetail
@@ -1252,18 +1250,18 @@
             this.ToolStripMenuItemMemoWrite.Text = "メモを書き込む";
             this.ToolStripMenuItemMemoWrite.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
-            // ToolTip1
-            // 
-            this.ToolTip1.AutoPopDelay = 5000;
-            this.ToolTip1.InitialDelay = 500;
-            this.ToolTip1.ReshowDelay = 0;
-            // 
             // ToolStripMenuItemMemoRead
             // 
             this.ToolStripMenuItemMemoRead.Name = "ToolStripMenuItemMemoRead";
             this.ToolStripMenuItemMemoRead.Size = new System.Drawing.Size(186, 22);
             this.ToolStripMenuItemMemoRead.Text = "メモを表示する";
             this.ToolStripMenuItemMemoRead.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            // 
+            // ToolTip1
+            // 
+            this.ToolTip1.AutoPopDelay = 5000;
+            this.ToolTip1.InitialDelay = 500;
+            this.ToolTip1.ReshowDelay = 0;
             // 
             // VehicleDispatchBoad
             // 
@@ -1340,7 +1338,6 @@
         private ToolStripMenuItem ToolStripMenuItemInitializeCleanOffice;
         private ToolStripMenuItem ToolStripMenuItemInitializeCompanyOffice;
         private Label label1;
-        private DateTimePicker DateTimePickerOperationDate;
         private ContextMenuStrip ContextMenuStripSetLabel;
         private ContextMenuStrip ContextMenuStripCarLabel;
         private ContextMenuStrip ContextMenuStripStaffLabel;
@@ -1413,5 +1410,6 @@
         private ToolStripSeparator toolStripSeparator4;
         private ToolTip ToolTip1;
         private ToolStripMenuItem ToolStripMenuItemMemoRead;
+        private ControlEx.DateTimePickerEx DateTimePickerExOperationDate;
     }
 }
