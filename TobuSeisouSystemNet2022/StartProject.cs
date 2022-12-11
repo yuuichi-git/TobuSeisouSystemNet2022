@@ -35,6 +35,7 @@ namespace TobuSeisouSystemNet2022 {
         public StartProject() {
             InitializeComponent();
             new InitializeForm().StartProject(this);
+            NotifyIcon1.Visible = true;
         }
 
         /// <summary>
@@ -135,6 +136,26 @@ namespace TobuSeisouSystemNet2022 {
 
         private void Label_MouseLeave(object sender, EventArgs e) {
             ((Label)sender).ForeColor = Color.Black;
+        }
+
+        /// <summary>
+        /// ToolStripMenuItemStartProject_Click
+        /// タスクバーに入れる
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItemStartProject_Click(object sender, EventArgs e) {
+            this.Visible = true;
+        }
+
+        /// <summary>
+        /// ToolStripMenuItemTaskBar_Click
+        /// Windowを表示する
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItemTaskBar_Click(object sender, EventArgs e) {
+            this.Visible = false;
         }
 
         /// <summary>

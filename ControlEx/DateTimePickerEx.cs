@@ -3,6 +3,9 @@
 namespace ControlEx {
     public partial class DateTimePickerEx : DateTimePicker {
 
+        /// <summary>
+        /// コンストラクター
+        /// </summary>
         public DateTimePickerEx() {
             InitializeComponent();
 
@@ -14,6 +17,11 @@ namespace ControlEx {
             this.KeyPress += new KeyPressEventHandler(this.DateTimePickerEx_KeyPress);
         }
 
+        /// <summary>
+        /// DateTimePickerEx_KeyPress
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DateTimePickerEx_KeyPress(object? sender, KeyPressEventArgs e) {
             if((e.KeyChar & (char)Keys.Escape) == (char)Keys.Escape) {
                 SetBrank();
@@ -34,10 +42,19 @@ namespace ControlEx {
             this.Refresh();
         }
 
+        /// <summary>
+        /// SetDateTime
+        /// 編集
+        /// </summary>
         private void SetDateTime() {
             this.CustomFormat = " yyyy年MM月dd日(dddd)";
         }
 
+        /// <summary>
+        /// GetJpValue
+        /// 和暦表記をstringで返す
+        /// </summary>
+        /// <returns></returns>
         public string GetJpValue() {
             CultureInfo Japanese = new CultureInfo("ja-JP");
             Japanese.DateTimeFormat.Calendar = new JapaneseCalendar();

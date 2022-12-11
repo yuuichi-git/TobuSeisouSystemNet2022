@@ -23,6 +23,8 @@
         ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StartProject));
             this.TableLayoutPanelBase = new System.Windows.Forms.TableLayoutPanel();
             this.MenuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ToolStripMenuItemMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,10 +60,15 @@
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
+            this.NotifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.ContextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ToolStripMenuItemStartProject = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemTaskBar = new System.Windows.Forms.ToolStripMenuItem();
             this.TableLayoutPanelBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
             this.TableLayoutPanelCenter.SuspendLayout();
+            this.ContextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // TableLayoutPanelBase
@@ -547,6 +554,37 @@
             this.label23.TabIndex = 27;
             this.label23.Text = "　アルバイトの出勤状況を管理します。";
             // 
+            // NotifyIcon1
+            // 
+            this.NotifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.NotifyIcon1.BalloonTipText = "東武清掃システム";
+            this.NotifyIcon1.ContextMenuStrip = this.ContextMenuStrip1;
+            this.NotifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("NotifyIcon1.Icon")));
+            this.NotifyIcon1.Text = "StartProject";
+            this.NotifyIcon1.Visible = true;
+            // 
+            // ContextMenuStrip1
+            // 
+            this.ContextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemStartProject,
+            this.ToolStripMenuItemTaskBar});
+            this.ContextMenuStrip1.Name = "ContextMenuStrip1";
+            this.ContextMenuStrip1.Size = new System.Drawing.Size(256, 48);
+            // 
+            // ToolStripMenuItemStartProject
+            // 
+            this.ToolStripMenuItemStartProject.Name = "ToolStripMenuItemStartProject";
+            this.ToolStripMenuItemStartProject.Size = new System.Drawing.Size(255, 22);
+            this.ToolStripMenuItemStartProject.Text = "スタートプロジェクトを表示する";
+            this.ToolStripMenuItemStartProject.Click += new System.EventHandler(this.ToolStripMenuItemStartProject_Click);
+            // 
+            // ToolStripMenuItemTaskBar
+            // 
+            this.ToolStripMenuItemTaskBar.Name = "ToolStripMenuItemTaskBar";
+            this.ToolStripMenuItemTaskBar.Size = new System.Drawing.Size(255, 22);
+            this.ToolStripMenuItemTaskBar.Text = "スタートプロジェクトをタスクバーに入れる";
+            this.ToolStripMenuItemTaskBar.Click += new System.EventHandler(this.ToolStripMenuItemTaskBar_Click);
+            // 
             // StartProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -555,7 +593,9 @@
             this.Controls.Add(this.TableLayoutPanelBase);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "StartProject";
+            this.ShowInTaskbar = false;
             this.Text = "StartProject";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StartProject_FormClosing);
             this.TableLayoutPanelBase.ResumeLayout(false);
@@ -566,6 +606,7 @@
             this.StatusStrip1.PerformLayout();
             this.TableLayoutPanelCenter.ResumeLayout(false);
             this.TableLayoutPanelCenter.PerformLayout();
+            this.ContextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -607,5 +648,9 @@
         private Label label21;
         private Label label22;
         private Label label23;
+        private NotifyIcon NotifyIcon1;
+        private ContextMenuStrip ContextMenuStrip1;
+        private ToolStripMenuItem ToolStripMenuItemStartProject;
+        private ToolStripMenuItem ToolStripMenuItemTaskBar;
     }
 }
