@@ -2,11 +2,11 @@
 
 namespace ControlEx {
     public partial class SetLabelEx : Label {
-        private SetMasterVo _setMasterVo;
-        private bool _garageFlag;
-
         private const int _setLabelHeight = 68;
         private const int _setLabelWidth = 70;
+
+        private SetMasterVo _setMasterVo;
+        private bool _garageFlag;
         private string _drawStringContactMethod = "";
         private readonly Color _borderColor = Color.White;
         private readonly Font _drawFont = new Font("Yu Gothic UI", 13, FontStyle.Regular, GraphicsUnit.Pixel);

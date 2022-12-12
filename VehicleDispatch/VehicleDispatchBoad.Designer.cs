@@ -27,8 +27,9 @@
             this.TableLayoutPanelBase = new System.Windows.Forms.TableLayoutPanel();
             this.MenuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ToolStripMenuItemMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.配車表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemVehicleDispatch = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemConvertExcel = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemPrint = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemDisplay = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemAllScreen = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,9 +50,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ButtonUpdate = new System.Windows.Forms.Button();
             this.TabControlExCenter = new ControlEx.TabControlEx();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.TabPage1 = new System.Windows.Forms.TabPage();
             this.TableLayoutPanelEx1 = new ControlEx.TableLayoutPanelEx();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.TabPage2 = new System.Windows.Forms.TabPage();
             this.TableLayoutPanelEx2 = new ControlEx.TableLayoutPanelEx();
             this.TabControlExLeft = new ControlEx.TabControlEx();
             this.TabPageSet = new System.Windows.Forms.TabPage();
@@ -124,8 +125,8 @@
             this.StatusStrip1.SuspendLayout();
             this.PanelUp.SuspendLayout();
             this.TabControlExCenter.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
+            this.TabPage1.SuspendLayout();
+            this.TabPage2.SuspendLayout();
             this.TabControlExLeft.SuspendLayout();
             this.TabPageSet.SuspendLayout();
             this.TabPageCar.SuspendLayout();
@@ -187,19 +188,22 @@
             // ToolStripMenuItemMenu
             // 
             this.ToolStripMenuItemMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.配車表ToolStripMenuItem,
+            this.ToolStripMenuItemVehicleDispatch,
             this.ToolStripMenuItemExit});
             this.ToolStripMenuItemMenu.Name = "ToolStripMenuItemMenu";
             this.ToolStripMenuItemMenu.Size = new System.Drawing.Size(52, 20);
             this.ToolStripMenuItemMenu.Text = "メニュー";
+            this.ToolStripMenuItemMenu.DropDownOpening += new System.EventHandler(this.ToolStripMenuItemMenu_DropDownOpening);
             // 
-            // 配車表ToolStripMenuItem
+            // ToolStripMenuItemVehicleDispatch
             // 
-            this.配車表ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemConvertExcel});
-            this.配車表ToolStripMenuItem.Name = "配車表ToolStripMenuItem";
-            this.配車表ToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
-            this.配車表ToolStripMenuItem.Text = "配車表";
+            this.ToolStripMenuItemVehicleDispatch.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemConvertExcel,
+            this.ToolStripMenuItemPrint});
+            this.ToolStripMenuItemVehicleDispatch.Name = "ToolStripMenuItemVehicleDispatch";
+            this.ToolStripMenuItemVehicleDispatch.Size = new System.Drawing.Size(195, 22);
+            this.ToolStripMenuItemVehicleDispatch.Text = "配車表";
+            this.ToolStripMenuItemVehicleDispatch.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // ToolStripMenuItemConvertExcel
             // 
@@ -207,6 +211,13 @@
             this.ToolStripMenuItemConvertExcel.Size = new System.Drawing.Size(288, 22);
             this.ToolStripMenuItemConvertExcel.Text = "当日配車へデータを書き出す(新型の配車表)";
             this.ToolStripMenuItemConvertExcel.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            // 
+            // ToolStripMenuItemPrint
+            // 
+            this.ToolStripMenuItemPrint.Name = "ToolStripMenuItemPrint";
+            this.ToolStripMenuItemPrint.Size = new System.Drawing.Size(288, 22);
+            this.ToolStripMenuItemPrint.Text = "表示されている配車表を印刷(B4)する";
+            this.ToolStripMenuItemPrint.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // ToolStripMenuItemExit
             // 
@@ -383,8 +394,8 @@
             // 
             // TabControlExCenter
             // 
-            this.TabControlExCenter.Controls.Add(this.tabPage1);
-            this.TabControlExCenter.Controls.Add(this.tabPage2);
+            this.TabControlExCenter.Controls.Add(this.TabPage1);
+            this.TabControlExCenter.Controls.Add(this.TabPage2);
             this.TabControlExCenter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TabControlExCenter.Location = new System.Drawing.Point(367, 109);
             this.TabControlExCenter.Name = "TabControlExCenter";
@@ -393,16 +404,16 @@
             this.TabControlExCenter.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.TabControlExCenter.TabIndex = 4;
             // 
-            // tabPage1
+            // TabPage1
             // 
-            this.tabPage1.Controls.Add(this.TableLayoutPanelEx1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 24);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1162, 877);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "配車パネル１";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.TabPage1.Controls.Add(this.TableLayoutPanelEx1);
+            this.TabPage1.Location = new System.Drawing.Point(4, 24);
+            this.TabPage1.Name = "TabPage1";
+            this.TabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.TabPage1.Size = new System.Drawing.Size(1162, 877);
+            this.TabPage1.TabIndex = 0;
+            this.TabPage1.Text = "配車パネル１";
+            this.TabPage1.UseVisualStyleBackColor = true;
             // 
             // TableLayoutPanelEx1
             // 
@@ -444,16 +455,16 @@
             this.TableLayoutPanelEx1.Size = new System.Drawing.Size(1156, 871);
             this.TableLayoutPanelEx1.TabIndex = 3;
             // 
-            // tabPage2
+            // TabPage2
             // 
-            this.tabPage2.Controls.Add(this.TableLayoutPanelEx2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1162, 877);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "配車パネル２";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.TabPage2.Controls.Add(this.TableLayoutPanelEx2);
+            this.TabPage2.Location = new System.Drawing.Point(4, 24);
+            this.TabPage2.Name = "TabPage2";
+            this.TabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.TabPage2.Size = new System.Drawing.Size(1162, 877);
+            this.TabPage2.TabIndex = 1;
+            this.TabPage2.Text = "配車パネル２";
+            this.TabPage2.UseVisualStyleBackColor = true;
             // 
             // TableLayoutPanelEx2
             // 
@@ -1301,8 +1312,8 @@
             this.PanelUp.ResumeLayout(false);
             this.PanelUp.PerformLayout();
             this.TabControlExCenter.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
+            this.TabPage1.ResumeLayout(false);
+            this.TabPage2.ResumeLayout(false);
             this.TabControlExLeft.ResumeLayout(false);
             this.TabPageSet.ResumeLayout(false);
             this.TabPageCar.ResumeLayout(false);
@@ -1344,8 +1355,8 @@
         private Button ButtonUpdate;
         private ControlEx.TableLayoutPanelEx TableLayoutPanelEx1;
         private ControlEx.TabControlEx TabControlExCenter;
-        private TabPage tabPage1;
-        private TabPage tabPage2;
+        private TabPage TabPage1;
+        private TabPage TabPage2;
         private ControlEx.TableLayoutPanelEx TableLayoutPanelEx2;
         private ToolStripMenuItem ToolStripMenuItemAllScreen;
         private ToolStripMenuItem ToolStripMenuItemDefaultScreen;
@@ -1412,7 +1423,7 @@
         private Label label13;
         private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExPartDesignation;
         private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExFree;
-        private ToolStripMenuItem 配車表ToolStripMenuItem;
+        private ToolStripMenuItem ToolStripMenuItemVehicleDispatch;
         private ToolStripMenuItem ToolStripMenuItemConvertExcel;
         private ToolStripMenuItem ToolStripMenuItemMemoWrite;
         private ToolStripMenuItem ToolStripMenuItemCarProxyFalse;
@@ -1427,5 +1438,6 @@
         private ToolStripMenuItem ToolStripMenuItemMemoRead;
         private ControlEx.DateTimePickerEx DateTimePickerExOperationDate;
         private Label LabelJpYear;
+        private ToolStripMenuItem ToolStripMenuItemPrint;
     }
 }

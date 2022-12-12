@@ -1,3 +1,5 @@
+using System.Drawing.Printing;
+
 using Common;
 
 using ControlEx;
@@ -183,7 +185,7 @@ namespace VehicleDispatch {
                 column = i % 25;
                 row = (i / 25) % 3;
                 var vehicleDispatchDetailVo = listVehicleDispatchDetailVo.Find(x => x.Cell_number == i + 1);
-                var setControlEx = new SetControlEx();
+                var setControlEx = new SetControlEx(i);
                 setControlEx.AllowDrop = true;
                 setControlEx.Tag = i;
                 /*
@@ -694,6 +696,17 @@ namespace VehicleDispatch {
         }
 
         /// <summary>
+        /// ToolStripMenuItemMenu_DropDownOpening
+        /// メニューバーを開いたときの挙動
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItemMenu_DropDownOpening(object sender, EventArgs e) {
+            // 表示されている配車表を印刷(B4)する
+            ToolStripMenuItemPrint.Enabled = tenkoModeFlag;
+        }
+
+        /// <summary>
         /// SetControlEx 退避用
         /// </summary>
         SetControlEx EvacuationSetControlEx;
@@ -827,6 +840,7 @@ namespace VehicleDispatch {
             }
         }
 
+        private Bitmap memoryImage;
         /// <summary>
         /// ToolStripMenuItem_Click
         /// </summary>
@@ -837,7 +851,7 @@ namespace VehicleDispatch {
                 /*
                  * MenuStrip1
                  */
-                // 配車表を作成する
+                // 配車表を作成する  tenkoModeFlag
                 case "ToolStripMenuItemConvertExcel":
                     /*
                      * VehicleDispatchSimpleのコンストラクタ内でファイルの存在チェックをしている。
@@ -849,6 +863,32 @@ namespace VehicleDispatch {
                     } catch {
                         return;
                     }
+                    break;
+                // 配車表を印刷する
+                case "ToolStripMenuItemPrint":
+                    Control targetControl = new();
+                    switch(TabControlExCenter.SelectedTab.Name) {
+                        case "TabPage1":
+                            targetControl = TableLayoutPanelEx1;
+                            break;
+                        case "TabPage2":
+                            targetControl = TableLayoutPanelEx2;
+                            break;
+                    }
+                    memoryImage = new CaptureControl().GetCapture(targetControl); //コントロールのイメージを取得する
+
+                    PrinterSettings printerSettings = new();
+                    PrintDocument printDocument = new();
+
+                    IEnumerable<PaperSize> paperSizes = printerSettings.PaperSizes.Cast<PaperSize>();
+                    PaperSize paperSize = paperSizes.First<PaperSize>(size => size.Kind == PaperKind.B4);
+                    printDocument.DefaultPageSettings.PaperSize = paperSize;
+
+                    printDocument.DefaultPageSettings.Landscape = true; // 用紙の向きを設定(横：true、縦：false)
+                    printDocument.PrintPage += new PrintPageEventHandler(PrintDocument_PrintPage);
+                    printDocument.Print();
+
+                    memoryImage.Dispose();
                     break;
                 // 清掃事務所へ提出している本番
                 case "ToolStripMenuItemInitializeCleanOffice":
@@ -1150,7 +1190,7 @@ namespace VehicleDispatch {
         private void SetControlEx_DragDrop(object? sender, DragEventArgs e) {
             // Dropを受け入れない
             e.Effect = DragDropEffects.None;
-            SetControlEx setControlEx = new();
+            SetControlEx? setControlEx = null;
             if(sender != null) {
                 setControlEx = (SetControlEx)sender;
             } else {
@@ -2186,6 +2226,16 @@ namespace VehicleDispatch {
         private void DateTimePickerExOperationDate_ValueChanged(object sender, EventArgs e) {
             _operationDate = ((DateTimePickerEx)sender).Value;
             LabelJpYear.Text = string.Concat("(", DateTimePickerExOperationDate.GetJpValue(), ")");
+        }
+
+        /// <summary>
+        /// PrintDocument1_PrintPage
+        /// 配車表の印刷
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e) {
+            e.Graphics?.DrawImage(memoryImage, 0, 100, 1400, 740);
         }
 
         /// <summary>

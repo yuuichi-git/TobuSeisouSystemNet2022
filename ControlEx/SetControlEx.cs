@@ -2,11 +2,17 @@
 
 namespace ControlEx {
     public partial class SetControlEx : TableLayoutPanelEx {
+        private int _cellNumber;
         private bool _garageFlag = default;
         private bool _operationFlag = default;
         private int _productionNumberOfPeople = default;
         private bool _setFlag = default;
-
+        /*
+         * 空のSetControlExの文字列表示用
+         */
+        private Rectangle rectangleFill = new Rectangle(2, 2, 64, 62);
+        private readonly Font _drawFont = new Font("Yu Gothic UI", 12, FontStyle.Italic, GraphicsUnit.Pixel);
+        private readonly SolidBrush _drawBrushFont = new SolidBrush(Color.Gray);
         /*
          * イベントを親へ渡す処理
          */
@@ -23,8 +29,10 @@ namespace ControlEx {
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public SetControlEx() {
+        public SetControlEx(int cellNumber) {
+            _cellNumber = cellNumber;
             InitializeComponent();
+
             this.ColumnCount = 1;
             this.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
             this.RowCount = 6;
@@ -96,8 +104,31 @@ namespace ControlEx {
                         }
                     }
                 } else { // 休車日の場合
+
                 }
             } else { //非表示
+                /*
+                 * 文字を描画
+                 */
+                switch(_cellNumber) {
+                    case 75:
+                    case 76:
+                    case 77:
+                    case 78:
+                    case 79:
+                    case 80:
+                    case 81:
+                    case 82:
+                    case 83:
+                    case 84:
+                    case 85:
+                    case 86:
+                        StringFormat stringFormat = new StringFormat();
+                        stringFormat.LineAlignment = StringAlignment.Center;
+                        stringFormat.Alignment = StringAlignment.Center;
+                        e.Graphics.DrawString("大型用", _drawFont, _drawBrushFont, rectangleFill, stringFormat);
+                        break;
+                }
             }
         }
 
