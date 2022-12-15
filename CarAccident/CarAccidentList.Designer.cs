@@ -29,6 +29,7 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, ((object)(resources.GetObject("TableLayoutPanelBase.Controls"))));
+            this.SheetViewList = this.SpreadList.GetSheet(0);
             this.MenuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ToolStripMenuItemMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemExportExcel = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,7 +43,6 @@
             this.DateTimePickerOccurrenceDate1 = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.ButtonUpdate = new System.Windows.Forms.Button();
-            this.SheetViewList = this.SpreadList.GetSheet(0);
             this.TableLayoutPanelBase.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpreadList)).BeginInit();
@@ -152,6 +152,7 @@
             this.ToolStripMenuItemNew.Name = "ToolStripMenuItemNew";
             this.ToolStripMenuItemNew.Size = new System.Drawing.Size(183, 22);
             this.ToolStripMenuItemNew.Text = "新規レコードを作成する";
+            this.ToolStripMenuItemNew.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // ToolStripMenuItemHelp
             // 

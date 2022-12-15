@@ -1,6 +1,4 @@
-﻿using System.Windows.Forms;
-
-using Common;
+﻿using Common;
 
 using Vo;
 
@@ -77,7 +75,12 @@ namespace Dao {
             return listVehicleDispatchDetailVo;
         }
 
-
+        /// <summary>
+        /// SelectOneVehicleDispatchDetail
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="setCode"></param>
+        /// <returns></returns>
         public VehicleDispatchDetailVo SelectOneVehicleDispatchDetail(DateTime operationDate, int setCode) {
             var vehicleDispatchDetailVo = new VehicleDispatchDetailVo();
             var sqlCommand = _connectionVo.Connection.CreateCommand();
@@ -941,6 +944,72 @@ namespace Dao {
                     cellNumber = _defaultValue.GetDefaultValue<int>(sqlDataReader["cell_number"]);
             }
             return cellNumber;
+        }
+
+        /// <summary>
+        /// GetOperatorNote
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="cellNumber"></param>
+        /// <param name="rowNumber"></param>
+        /// <returns></returns>
+        public string GetOperatorNote(DateTime operationDate, int cellNumber, int rowNumber) {
+            string note = string.Empty;
+            /*
+             * Tagがゼロから始まっているので１をプラスする
+             */
+            cellNumber++;
+            /*
+             * TableLayoutPanel上のPointを変換する
+             */
+            rowNumber--;
+            /*
+             * Drag項目のSQL文を作成
+             */
+            string sqlDragOperatorNote = string.Concat("operator_" + rowNumber, "_note");
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT " + sqlDragOperatorNote + " " +
+                                     "FROM vehicle_dispatch_detail " +
+                                     "WHERE cell_number = " + cellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            using(var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while(sqlDataReader.Read() == true) {
+                    note = _defaultValue.GetDefaultValue<string>(sqlDataReader[sqlDragOperatorNote]);
+                }
+            }
+            return note;
+        }
+
+        /// <summary>
+        /// GetOperatorFlag
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="cellNumber"></param>
+        /// <param name="operatorCode"></param>
+        /// <returns></returns>
+        public bool GetOperatorFlag(DateTime operationDate, int cellNumber, int rowNumber) {
+            string note = string.Empty;
+            /*
+             * Tagがゼロから始まっているので１をプラスする
+             */
+            cellNumber++;
+            /*
+             * TableLayoutPanel上のPointを変換する
+             */
+            rowNumber--;
+            /*
+             * Drag項目のSQL文を作成
+             */
+            string sqlDragOperatorFlag = string.Concat("operator_" + rowNumber, "_note");
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT " + sqlDragOperatorFlag + " " +
+                                     "FROM vehicle_dispatch_detail " +
+                                     "WHERE cell_number = " + cellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            using(var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while(sqlDataReader.Read() == true) {
+                    note = _defaultValue.GetDefaultValue<string>(sqlDataReader[sqlDragOperatorFlag]);
+                }
+            }
+            return note.Length > 0 ? true : false;
         }
     }
 }

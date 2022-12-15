@@ -289,7 +289,7 @@ namespace Dao {
         /// <returns></returns>
         public int InsertOneCarAccidentMaster(CarAccidentMasterVo carAccidentMasterVo) {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
-            sqlCommand.CommandText = "INSERT INTO car_accident_ledger(totalling_flag," +
+            sqlCommand.CommandText = "INSERT INTO car_accident_master(totalling_flag," +
                                                                      "occurrence_ymd_hms," +
                                                                      "weather," +
                                                                      "accident_kind," +

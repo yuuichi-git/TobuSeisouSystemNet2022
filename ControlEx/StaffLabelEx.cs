@@ -4,7 +4,7 @@ namespace ControlEx {
     public partial class StaffLabelEx : Label {
         // StaffMasterVo
         private readonly StaffMasterVo _staffMasterVo;
-        //
+        // 代番フラグ(True:代番 False:本番)
         private bool _proxyFlag;
         // 点呼モードフラグ(True:点呼モード False:通常モード)
         private bool _tenkoModeFlag;
@@ -12,14 +12,19 @@ namespace ControlEx {
         private bool _rollCallFlag;
         // ノートフラグ
         private bool _noteFlag;
-
+        
         private const int _staffLabelHeight = 36;
         private const int _staffLabelWidth = 70;
 
         private Font drawFont = new Font("Yu Gothic UI", 11, FontStyle.Regular, GraphicsUnit.Pixel);
         private Pen _borderColor = Pens.White;
-        private SolidBrush drawBrushFont = new SolidBrush(Color.Black);
-        private SolidBrush drowBrushFill = new SolidBrush(Color.White);
+        private SolidBrush _drawBrushFont = new SolidBrush(Color.Black);
+        private SolidBrush _drowBrushFill = new SolidBrush(Color.White);
+
+        // 電話連絡マーク
+        private bool _telephoneMark = false;
+        private Font _drawTelephoneMarkFont = new Font("Yu Gothic UI", 9, FontStyle.Regular, GraphicsUnit.Pixel);
+        private SolidBrush _drawTelephoneMarkBrushFont = new SolidBrush(Color.Blue);
 
         /// <summary>
         /// コンストラクター(オーバーロード)
@@ -40,26 +45,26 @@ namespace ControlEx {
                 case 10: // 役員
                 case 11: // 社員
                     this._borderColor = Pens.Gray;
-                    drowBrushFill = new SolidBrush(Color.White);
+                    _drowBrushFill = new SolidBrush(Color.White);
                     break;
                 case 12: // アルバイト
                     this._borderColor = Pens.DarkOrange;
-                    drowBrushFill = new SolidBrush(Color.Orange);
+                    _drowBrushFill = new SolidBrush(Color.Orange);
                     break;
                 case 20: // 新運転
                 case 21: // 自運労
                     switch(staffMasterVo.Job_form) {
                         case 10: // 長期雇用
                             this._borderColor = Pens.WhiteSmoke;
-                            drowBrushFill = new SolidBrush(Color.White);
+                            _drowBrushFill = new SolidBrush(Color.White);
                             break;
                         case 11: // 手帳
                             this._borderColor = Pens.Green;
-                            drowBrushFill = new SolidBrush(Color.LightGreen);
+                            _drowBrushFill = new SolidBrush(Color.LightGreen);
                             break;
                         case 12: // アルバイト
                             this._borderColor = Pens.DarkOrange;
-                            drowBrushFill = new SolidBrush(Color.Orange);
+                            _drowBrushFill = new SolidBrush(Color.Orange);
                             break;
                     }
                     break;
@@ -87,26 +92,26 @@ namespace ControlEx {
                 case 10: // 役員
                 case 11: // 社員
                     this._borderColor = Pens.Gray;
-                    drowBrushFill = new SolidBrush(Color.White);
+                    _drowBrushFill = new SolidBrush(Color.White);
                     break;
                 case 12: // アルバイト
                     this._borderColor = Pens.DarkOrange;
-                    drowBrushFill = new SolidBrush(Color.Orange);
+                    _drowBrushFill = new SolidBrush(Color.Orange);
                     break;
                 case 20: // 新運転
                 case 21: // 自運労
                     switch(staffMasterVo.Job_form) {
                         case 10: // 長期雇用
                             this._borderColor = Pens.WhiteSmoke;
-                            drowBrushFill = new SolidBrush(Color.White);
+                            _drowBrushFill = new SolidBrush(Color.White);
                             break;
                         case 11: // 手帳
                             this._borderColor = Pens.Green;
-                            drowBrushFill = new SolidBrush(Color.LightGreen);
+                            _drowBrushFill = new SolidBrush(Color.LightGreen);
                             break;
                         case 12: // アルバイト
                             this._borderColor = Pens.DarkOrange;
-                            drowBrushFill = new SolidBrush(Color.Orange);
+                            _drowBrushFill = new SolidBrush(Color.Orange);
                             break;
                     }
                     break;
@@ -134,26 +139,26 @@ namespace ControlEx {
                 case 10: // 役員
                 case 11: // 社員
                     this._borderColor = Pens.Gray;
-                    drowBrushFill = new SolidBrush(Color.White);
+                    _drowBrushFill = new SolidBrush(Color.White);
                     break;
                 case 12: // アルバイト
                     this._borderColor = Pens.DarkOrange;
-                    drowBrushFill = new SolidBrush(Color.Orange);
+                    _drowBrushFill = new SolidBrush(Color.Orange);
                     break;
                 case 20: // 新運転
                 case 21: // 自運労
                     switch(staffMasterVo.Job_form) {
                         case 10: // 長期雇用
                             this._borderColor = Pens.WhiteSmoke;
-                            drowBrushFill = new SolidBrush(Color.White);
+                            _drowBrushFill = new SolidBrush(Color.White);
                             break;
                         case 11: // 手帳
                             this._borderColor = Pens.Green;
-                            drowBrushFill = new SolidBrush(Color.LightGreen);
+                            _drowBrushFill = new SolidBrush(Color.LightGreen);
                             break;
                         case 12: // アルバイト
                             this._borderColor = Pens.DarkOrange;
-                            drowBrushFill = new SolidBrush(Color.Orange);
+                            _drowBrushFill = new SolidBrush(Color.Orange);
                             break;
                     }
                     break;
@@ -180,7 +185,7 @@ namespace ControlEx {
              * Fillを描画
              */
             Rectangle rectangleFill = new Rectangle(2, 2, 64, 30);
-            e.Graphics.FillRectangle(drowBrushFill, rectangleFill);
+            e.Graphics.FillRectangle(_drowBrushFill, rectangleFill);
             /*
              * 代番処理を描画
              */
@@ -194,7 +199,7 @@ namespace ControlEx {
             StringFormat stringFormat = new StringFormat();
             stringFormat.LineAlignment = StringAlignment.Center;
             stringFormat.Alignment = StringAlignment.Center;
-            e.Graphics.DrawString(_staffMasterVo.Display_name, drawFont, drawBrushFont, rectangleFill, stringFormat);
+            e.Graphics.DrawString(_staffMasterVo.Display_name, drawFont, _drawBrushFont, rectangleFill, stringFormat);
             /*
              * 点呼の印を描画
              */
@@ -208,6 +213,13 @@ namespace ControlEx {
             if(_noteFlag) {
                 Point[] points = { new Point(1, 1), new Point(11, 1), new Point(1, 11) };
                 e.Graphics.FillPolygon(new SolidBrush(Color.Crimson), points);
+            }
+            /*
+             * 電話連絡マーク
+             */
+            if(_telephoneMark) {
+                Point point = new Point(54, 0);
+                e.Graphics.DrawString("☎", _drawTelephoneMarkFont, _drawTelephoneMarkBrushFont, point);
             }
         }
 
@@ -259,6 +271,16 @@ namespace ControlEx {
         /// <param name="proxyFlag"></param>
         public void SetProxyFlag(bool proxyFlag) {
             _proxyFlag = proxyFlag;
+            this.Refresh();
+        }
+
+        /// <summary>
+        /// TelephoneMarkFlag
+        /// 電話連絡をするための印を付ける
+        /// </summary>
+        /// <param name="telephoneMarkFlag"></param>
+        public void SetTelephoneMark(bool telephoneMarkFlag) {
+            _telephoneMark = telephoneMarkFlag;
             this.Refresh();
         }
     }

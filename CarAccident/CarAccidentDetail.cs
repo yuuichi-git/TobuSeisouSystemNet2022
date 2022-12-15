@@ -13,7 +13,7 @@ namespace CarAccident {
         private readonly DateTime _insertYmdHms;
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01, 00, 00, 00, 000);
 
-        PictureBox[]? _arrayPictureBox = null;
+        PictureBox[] _arrayPictureBox = new PictureBox[8];
 
         /// <summary>
         /// 新規登録用コンストラクタ
@@ -30,7 +30,6 @@ namespace CarAccident {
              */
             InitializeComponent();
             _initializeForm.CarAccidentDetail(this);
-
             _arrayPictureBox = new PictureBox[] { PictureBox1, PictureBox2, PictureBox3, PictureBox4, PictureBox5, PictureBox6, PictureBox7, PictureBox8 };
             InitializeControl();
         }
@@ -50,7 +49,6 @@ namespace CarAccident {
              */
             InitializeComponent();
             _initializeForm.CarAccidentDetail(this);
-
             _arrayPictureBox = new PictureBox[] { PictureBox1, PictureBox2, PictureBox3, PictureBox4, PictureBox5, PictureBox6, PictureBox7, PictureBox8 };
             InitializeControl();
 
@@ -151,34 +149,36 @@ namespace CarAccident {
                     carAccidentMasterVo.Work_kind = radioButton.Text;
             }
             // 運転手・作業員の氏名
-            carAccidentMasterVo.Staff_code = staffMasterVo.Staff_code;
-            carAccidentMasterVo.Display_name = staffMasterVo.Display_name;
-            // 免許証番号
-            carAccidentMasterVo.License_number = staffMasterVo.License_number;
-            // 車両登録番号
-            carAccidentMasterVo.Car_registration_number = ComboBoxSelectCarRegistrationNumber.Text;
-            // 事故概要
-            carAccidentMasterVo.Accident_summary = TextBoxAccidentSummary.Text;
-            // 事故詳細
-            carAccidentMasterVo.Accident_detail = TextBoxAccidentDetail.Text;
-            // 事故後の指導
-            carAccidentMasterVo.Guide = TextBoxGuide.Text;
-            // PictureBoxPicture1
-            carAccidentMasterVo.Picture1 = (byte[]?)new ImageConverter().ConvertTo(PictureBox1.Image, typeof(byte[]));
-            // PictureBoxPicture2
-            carAccidentMasterVo.Picture2 = (byte[]?)new ImageConverter().ConvertTo(PictureBox2.Image, typeof(byte[]));
-            // PictureBoxPicture3
-            carAccidentMasterVo.Picture3 = (byte[]?)new ImageConverter().ConvertTo(PictureBox3.Image, typeof(byte[]));
-            // PictureBoxPicture4
-            carAccidentMasterVo.Picture4 = (byte[]?)new ImageConverter().ConvertTo(PictureBox4.Image, typeof(byte[]));
-            // PictureBoxPicture5
-            carAccidentMasterVo.Picture5 = (byte[]?)new ImageConverter().ConvertTo(PictureBox5.Image, typeof(byte[]));
-            // PictureBoxPicture6
-            carAccidentMasterVo.Picture6 = (byte[]?)new ImageConverter().ConvertTo(PictureBox6.Image, typeof(byte[]));
-            // PictureBoxPicture7
-            carAccidentMasterVo.Picture7 = (byte[]?)new ImageConverter().ConvertTo(PictureBox7.Image, typeof(byte[]));
-            // PictureBoxPicture8
-            carAccidentMasterVo.Picture8 = (byte[]?)new ImageConverter().ConvertTo(PictureBox8.Image, typeof(byte[]));
+            if(staffMasterVo is not null) {
+                carAccidentMasterVo.Staff_code = staffMasterVo.Staff_code;
+                carAccidentMasterVo.Display_name = staffMasterVo.Display_name;
+                // 免許証番号
+                carAccidentMasterVo.License_number = staffMasterVo.License_number;
+                // 車両登録番号
+                carAccidentMasterVo.Car_registration_number = ComboBoxSelectCarRegistrationNumber.Text;
+                // 事故概要
+                carAccidentMasterVo.Accident_summary = TextBoxAccidentSummary.Text;
+                // 事故詳細
+                carAccidentMasterVo.Accident_detail = TextBoxAccidentDetail.Text;
+                // 事故後の指導
+                carAccidentMasterVo.Guide = TextBoxGuide.Text;
+                // PictureBoxPicture1
+                carAccidentMasterVo.Picture1 = (byte[]?)new ImageConverter().ConvertTo(PictureBox1.Image, typeof(byte[]));
+                // PictureBoxPicture2
+                carAccidentMasterVo.Picture2 = (byte[]?)new ImageConverter().ConvertTo(PictureBox2.Image, typeof(byte[]));
+                // PictureBoxPicture3
+                carAccidentMasterVo.Picture3 = (byte[]?)new ImageConverter().ConvertTo(PictureBox3.Image, typeof(byte[]));
+                // PictureBoxPicture4
+                carAccidentMasterVo.Picture4 = (byte[]?)new ImageConverter().ConvertTo(PictureBox4.Image, typeof(byte[]));
+                // PictureBoxPicture5
+                carAccidentMasterVo.Picture5 = (byte[]?)new ImageConverter().ConvertTo(PictureBox5.Image, typeof(byte[]));
+                // PictureBoxPicture6
+                carAccidentMasterVo.Picture6 = (byte[]?)new ImageConverter().ConvertTo(PictureBox6.Image, typeof(byte[]));
+                // PictureBoxPicture7
+                carAccidentMasterVo.Picture7 = (byte[]?)new ImageConverter().ConvertTo(PictureBox7.Image, typeof(byte[]));
+                // PictureBoxPicture8
+                carAccidentMasterVo.Picture8 = (byte[]?)new ImageConverter().ConvertTo(PictureBox8.Image, typeof(byte[]));
+            }
             return carAccidentMasterVo;
         }
 
@@ -284,6 +284,9 @@ namespace CarAccident {
                     break;
                 case "一時停止をしていない":
                     radioButton26.Checked = true;
+                    break;
+                case "被害側なので原因無し":
+                    RadioButton52.Checked = true;
                     break;
             }
             // 過失の有無
@@ -399,49 +402,49 @@ namespace CarAccident {
             // 事故後の指導
             TextBoxGuide.Text = carAccidentMasterVo.Guide;
             // 写真
-            if(carAccidentMasterVo.Picture1.Length != 0) {
+            if(carAccidentMasterVo.Picture1 is not null && carAccidentMasterVo.Picture1.Length != 0) {
                 var imageConv = new ImageConverter();
                 PictureBox1.Image = (Image?)imageConv.ConvertFrom(carAccidentMasterVo.Picture1);
             } else {
                 PictureBox1.Image = null;
             }
-            if(carAccidentMasterVo.Picture2.Length != 0) {
+            if(carAccidentMasterVo.Picture2 is not null && carAccidentMasterVo.Picture2.Length != 0) {
                 var imageConv = new ImageConverter();
                 PictureBox2.Image = (Image?)imageConv.ConvertFrom(carAccidentMasterVo.Picture2);
             } else {
                 PictureBox2.Image = null;
             }
-            if(carAccidentMasterVo.Picture3.Length != 0) {
+            if(carAccidentMasterVo.Picture3 is not null && carAccidentMasterVo.Picture3.Length != 0) {
                 var imageConv = new ImageConverter();
                 PictureBox3.Image = (Image?)imageConv.ConvertFrom(carAccidentMasterVo.Picture3);
             } else {
                 PictureBox3.Image = null;
             }
-            if(carAccidentMasterVo.Picture4.Length != 0) {
+            if(carAccidentMasterVo.Picture4 is not null && carAccidentMasterVo.Picture4.Length != 0) {
                 var imageConv = new ImageConverter();
                 PictureBox4.Image = (Image?)imageConv.ConvertFrom(carAccidentMasterVo.Picture4);
             } else {
                 PictureBox4.Image = null;
             }
-            if(carAccidentMasterVo.Picture5.Length != 0) {
+            if(carAccidentMasterVo.Picture5 is not null && carAccidentMasterVo.Picture5.Length != 0) {
                 var imageConv = new ImageConverter();
                 PictureBox5.Image = (Image?)imageConv.ConvertFrom(carAccidentMasterVo.Picture5);
             } else {
                 PictureBox5.Image = null;
             }
-            if(carAccidentMasterVo.Picture6.Length != 0) {
+            if(carAccidentMasterVo.Picture6 is not null && carAccidentMasterVo.Picture6.Length != 0) {
                 var imageConv = new ImageConverter();
                 PictureBox6.Image = (Image?)imageConv.ConvertFrom(carAccidentMasterVo.Picture6);
             } else {
                 PictureBox6.Image = null;
             }
-            if(carAccidentMasterVo.Picture7.Length != 0) {
+            if(carAccidentMasterVo.Picture7 is not null && carAccidentMasterVo.Picture7.Length != 0) {
                 var imageConv = new ImageConverter();
                 PictureBox7.Image = (Image?)imageConv.ConvertFrom(carAccidentMasterVo.Picture7);
             } else {
                 PictureBox7.Image = null;
             }
-            if(carAccidentMasterVo.Picture8.Length != 0) {
+            if(carAccidentMasterVo.Picture8 is not null && carAccidentMasterVo.Picture8.Length != 0) {
                 var imageConv = new ImageConverter();
                 PictureBox8.Image = (Image?)imageConv.ConvertFrom(carAccidentMasterVo.Picture8);
             } else {
@@ -509,26 +512,26 @@ namespace CarAccident {
         private void InitializeComboBoxSelectDisplayName() {
             ComboBoxSelectDisplayName.Items.Clear();
             foreach(var staffLedgerVo in _listStaffMasterVo)
-                ComboBoxSelectDisplayName.Items.Add(new ComboBoxSelectStaffLedgerVo(staffLedgerVo.Name, staffLedgerVo));
-            ComboBoxSelectDisplayName.DisplayMember = "Name";
+                ComboBoxSelectDisplayName.Items.Add(new ComboBoxSelectStaffLedgerVo(staffLedgerVo.Display_name, staffLedgerVo));
+            ComboBoxSelectDisplayName.DisplayMember = "DisplayName";
         }
 
         /// <summary>
         /// ComboBoxSelectStaffLedgerVo
         /// </summary>
         private class ComboBoxSelectStaffLedgerVo {
-            private string? _name;
+            private string? _displayName;
             private StaffMasterVo? _staffMasterVo;
 
             // プロパティをコンストラクタでセット
-            public ComboBoxSelectStaffLedgerVo(string? name, StaffMasterVo? staffMasterVo) {
-                _name = name;
+            public ComboBoxSelectStaffLedgerVo(string? displayName, StaffMasterVo? staffMasterVo) {
+                _displayName = displayName;
                 _staffMasterVo = staffMasterVo;
             }
 
-            public string? Name {
-                get => _name;
-                set => _name = value;
+            public string? DisplayName {
+                get => _displayName;
+                set => _displayName = value;
             }
             public StaffMasterVo? StaffMasterVo {
                 get => _staffMasterVo;

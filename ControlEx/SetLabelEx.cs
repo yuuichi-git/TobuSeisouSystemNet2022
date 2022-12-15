@@ -164,7 +164,7 @@ namespace ControlEx {
                     _drawStringContactMethod = "";
                     break;
             }
-            var point = new Point(4, 2);
+            Point point = new Point(4, 2);
             e.Graphics.DrawString(_drawStringContactMethod, _drawFontContactMethod, _drawBrushFont, point);
         }
 

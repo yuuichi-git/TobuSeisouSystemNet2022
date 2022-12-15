@@ -2,15 +2,19 @@
 
 namespace ControlEx {
     public partial class DateTimePickerEx : DateTimePicker {
+        private string _customFormat;
 
         /// <summary>
         /// コンストラクター
         /// </summary>
         public DateTimePickerEx() {
+            _customFormat = "yyyy年MM月dd日(dddd)";
             InitializeComponent();
-
+            /*
+             * カスタムに設定
+             */
             this.Format = DateTimePickerFormat.Custom;
-            this.CustomFormat = " yyyy年MM月dd日(dddd)";
+            this.CustomFormat = _customFormat;
             /*
              * SetControlExのイベントを登録
              */
@@ -24,31 +28,13 @@ namespace ControlEx {
         /// <param name="e"></param>
         private void DateTimePickerEx_KeyPress(object? sender, KeyPressEventArgs e) {
             if((e.KeyChar & (char)Keys.Escape) == (char)Keys.Escape) {
-                SetBrank();
-                return;
+                this.CustomFormat = string.Concat(" ");
+                this.Refresh();
             } else {
-                SetDateTime();
+                this.CustomFormat = string.Concat(" ", _customFormat);
+                this.Refresh();
                 return;
             }
-        }
-
-        /// <summary>
-        /// SetBrank
-        /// 表示をブランクにする
-        /// </summary>
-        private void SetBrank() {
-            //DateTimePickerFormat.Custom　にして、CostomFormatは半角の空白を入れておくと、日時が非表示になる。
-            this.CustomFormat = " ";
-            this.Refresh();
-        }
-
-        /// <summary>
-        /// SetDateTime
-        /// 編集
-        /// </summary>
-        private void SetDateTime() {
-            this.CustomFormat = " yyyy年MM月dd日(dddd)";
-            this.Refresh();
         }
 
         /// <summary>

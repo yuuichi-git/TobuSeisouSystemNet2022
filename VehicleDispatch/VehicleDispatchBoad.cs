@@ -742,6 +742,7 @@ namespace VehicleDispatch {
                     EvacuationSetControlEx = (SetControlEx)((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Parent;
                     // SetLabelExを退避
                     EvacuationSetLabelEx = (SetLabelEx)((ContextMenuStrip)sender).SourceControl;
+
                     SetMasterVo setMasterVo = (SetMasterVo)EvacuationSetLabelEx.Tag;
                     /*
                      * SetControlEx上でクリックされた時
@@ -804,10 +805,16 @@ namespace VehicleDispatch {
                     if(((StaffLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(SetControlEx)) {
                         // SetControlExを退避
                         EvacuationSetControlEx = (SetControlEx)((StaffLabelEx)((ContextMenuStrip)sender).SourceControl).Parent;
+                        // StaffLabelExを退避
+                        EvacuationStaffLabelEx = (StaffLabelEx)((ContextMenuStrip)sender).SourceControl;
+                        
                         ToolStripMenuItemStaffProxyTrue.Enabled = true;
                         ToolStripMenuItemStaffProxyFalse.Enabled = true;
                         ToolStripMenuItemMemoWrite.Enabled = true;
-                        ToolStripMenuItemMemoRead.Enabled = true;
+                        // メモがあるかのチェック
+                        ToolStripMenuItemMemoRead.Enabled = _vehicleDispatchDetailDao.GetOperatorFlag(_operationDate,
+                                                                                                      Convert.ToInt32(EvacuationSetControlEx.Tag),
+                                                                                                      EvacuationSetControlEx.GetPositionFromControl(EvacuationStaffLabelEx).Row);
                     }
                     /*
                      * FlowLayoutPanelEx上でクリックされた時
@@ -815,6 +822,9 @@ namespace VehicleDispatch {
                     if(((StaffLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(FlowLayoutPanelEx)) {
                         // SetControlExを退避
                         EvacuationFlowLayoutPanelEx = (FlowLayoutPanelEx)((StaffLabelEx)((ContextMenuStrip)sender).SourceControl).Parent;
+                        // StaffLabelExを退避
+                        EvacuationStaffLabelEx = (StaffLabelEx)((ContextMenuStrip)sender).SourceControl;
+                        
                         ToolStripMenuItemStaffProxyTrue.Enabled = false;
                         ToolStripMenuItemStaffProxyFalse.Enabled = false;
                         switch(Convert.ToInt32(EvacuationFlowLayoutPanelEx.Tag)) {
@@ -830,17 +840,22 @@ namespace VehicleDispatch {
                                 break;
                             default:
                                 ToolStripMenuItemMemoWrite.Enabled = true;
-                                ToolStripMenuItemMemoRead.Enabled = true;
+                                // メモがあるかのチェック
+                                ToolStripMenuItemMemoRead.Enabled = _vehicleDispatchDetailStaffDao.GetOperatorFlag(_operationDate,
+                                                                                                                   Convert.ToInt32(EvacuationFlowLayoutPanelEx.Tag),
+                                                                                                                   ((StaffMasterVo)EvacuationStaffLabelEx.Tag).Staff_code);
                                 break;
                         }
                     }
-                    // StaffLabelExを退避
-                    EvacuationStaffLabelEx = (StaffLabelEx)((ContextMenuStrip)sender).SourceControl;
+                    
                     break;
             }
         }
 
-        private Bitmap memoryImage;
+        /// <summary>
+        /// 印刷イメージを保持
+        /// </summary>
+        private Bitmap captureImage;
         /// <summary>
         /// ToolStripMenuItem_Click
         /// </summary>
@@ -875,7 +890,7 @@ namespace VehicleDispatch {
                             targetControl = TableLayoutPanelEx2;
                             break;
                     }
-                    memoryImage = new CaptureControl().GetCapture(targetControl); //コントロールのイメージを取得する
+                    captureImage = new CaptureControl().GetCapture(targetControl); //コントロールのイメージを取得する
 
                     PrinterSettings printerSettings = new();
                     PrintDocument printDocument = new();
@@ -888,7 +903,7 @@ namespace VehicleDispatch {
                     printDocument.PrintPage += new PrintPageEventHandler(PrintDocument_PrintPage);
                     printDocument.Print();
 
-                    memoryImage.Dispose();
+                    captureImage.Dispose();
                     break;
                 // 清掃事務所へ提出している本番
                 case "ToolStripMenuItemInitializeCleanOffice":
@@ -1093,8 +1108,35 @@ namespace VehicleDispatch {
                         MessageBox.Show(exception.Message);
                     }
                     break;
+                    // メモを表示する
                 case "ToolStripMenuItemMemoRead":
-                    MessageBox.Show("作成中・・・・");
+                    /*
+                     * SetControlEx上でクリックされた時
+                     */
+                    if(EvacuationStaffLabelEx.Parent.GetType() == typeof(SetControlEx)) {
+                        var operatorMemo = _vehicleDispatchDetailDao.GetOperatorNote(_operationDate,
+                                                                                     Convert.ToInt32(EvacuationSetControlEx.Tag),
+                                                                                     EvacuationSetControlEx.GetPositionFromControl(EvacuationStaffLabelEx).Row);
+                        MessageBox.Show(operatorMemo, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    /*
+                     * FlowLayoutPanelEx上でクリックされた時
+                     */
+                    if(EvacuationStaffLabelEx.Parent.GetType() == typeof(FlowLayoutPanelEx)) {
+                        var operatorMemo = _vehicleDispatchDetailStaffDao.GetOperatorNote(_operationDate,
+                                                                                          Convert.ToInt32(EvacuationFlowLayoutPanelEx.Tag),
+                                                                                          ((StaffMasterVo)EvacuationStaffLabelEx.Tag).Staff_code);
+                        MessageBox.Show(operatorMemo, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    break;
+                /*
+                 * 電話連絡のマークを付ける
+                 */
+                case "ToolStripMenuItemTelephoneMarkTrue":
+                    EvacuationStaffLabelEx.SetTelephoneMark(true);
+                    break;
+                case "ToolStripMenuItemTelephoneMarkFalse":
+                    EvacuationStaffLabelEx.SetTelephoneMark(false);
                     break;
             }
         }
@@ -2235,7 +2277,7 @@ namespace VehicleDispatch {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e) {
-            e.Graphics?.DrawImage(memoryImage, 0, 100, 1400, 740);
+            e.Graphics?.DrawImage(captureImage, 0, 100, 1400, 740);
         }
 
         /// <summary>

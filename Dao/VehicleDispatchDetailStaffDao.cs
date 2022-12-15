@@ -38,8 +38,8 @@ namespace Dao {
                                             "delete_flag " +
                                      "FROM vehicle_dispatch_detail_staff " +
                                      "WHERE operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
-            using (var sqlDataReader = sqlCommand.ExecuteReader()) {
-                while (sqlDataReader.Read() == true) {
+            using(var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while(sqlDataReader.Read() == true) {
                     var vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx = new VehicleDispatchDetailStaffVo();
                     vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Cell_number = _defaultValue.GetDefaultValue<int>(sqlDataReader["cell_number"]);
                     vehicleDispatchDetailFlowLayoutPanel_StaffLabelEx.Operation_date = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["operation_date"]);
@@ -242,6 +242,53 @@ namespace Dao {
             } catch {
                 throw;
             }
+        }
+
+        /// <summary>
+        /// GetOperatorNote
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="cellNumber"></param>
+        /// <returns></returns>
+        public string GetOperatorNote(DateTime operationDate, int cellNumber, int operatorCode) {
+            string note = string.Empty;
+            /*
+             * Drag項目のSQL文を作成
+             */
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT operator_note " +
+                                     "FROM vehicle_dispatch_detail_staff " +
+                                     "WHERE cell_number = " + cellNumber + " AND operation_date = '" + operationDate.Date + "' AND operator_code = " + operatorCode;
+            using(var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while(sqlDataReader.Read() == true) {
+                    note = _defaultValue.GetDefaultValue<string>(sqlDataReader["operator_note"]);
+                }
+            }
+            return note;
+        }
+
+        /// <summary>
+        /// GetOperatorFlag
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="cellNumber"></param>
+        /// <param name="operatorCode"></param>
+        /// <returns></returns>
+        public bool GetOperatorFlag(DateTime operationDate, int cellNumber, int operatorCode) {
+            string note = string.Empty;
+            /*
+             * Drag項目のSQL文を作成
+             */
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT operator_note " +
+                                     "FROM vehicle_dispatch_detail_staff " +
+                                     "WHERE cell_number = " + cellNumber + " AND operation_date = '" + operationDate.Date + "' AND operator_code = " + operatorCode;
+            using(var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while(sqlDataReader.Read() == true) {
+                    note = _defaultValue.GetDefaultValue<string>(sqlDataReader["operator_note"]);
+                }
+            }
+            return note.Length > 0 ? true : false;
         }
     }
 }
