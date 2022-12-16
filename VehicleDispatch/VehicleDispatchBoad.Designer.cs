@@ -119,10 +119,11 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItemMemoWrite = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemMemoRead = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItemTelephoneMarkTrue = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemTelephoneMarkFalse = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.dateTimePickerJp1 = new ControlEx.DateTimePickerJp();
             this.TableLayoutPanelBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -330,6 +331,7 @@
             // PanelUp
             // 
             this.TableLayoutPanelBase.SetColumnSpan(this.PanelUp, 3);
+            this.PanelUp.Controls.Add(this.dateTimePickerJp1);
             this.PanelUp.Controls.Add(this.LabelJpYear);
             this.PanelUp.Controls.Add(this.DateTimePickerExOperationDate);
             this.PanelUp.Controls.Add(this.FlowLayoutPanelExFree);
@@ -1241,7 +1243,7 @@
             this.ToolStripMenuItemTelephoneMarkTrue,
             this.ToolStripMenuItemTelephoneMarkFalse});
             this.ContextMenuStripStaffLabel.Name = "ContextMenuStripStaffLabel";
-            this.ContextMenuStripStaffLabel.Size = new System.Drawing.Size(188, 198);
+            this.ContextMenuStripStaffLabel.Size = new System.Drawing.Size(188, 176);
             this.ContextMenuStripStaffLabel.Opened += new System.EventHandler(this.ContextMenuStrip_Opened);
             // 
             // ToolStripMenuItemStaffDetail
@@ -1289,11 +1291,10 @@
             this.ToolStripMenuItemMemoRead.Text = "メモを表示する";
             this.ToolStripMenuItemMemoRead.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
-            // ToolTip1
+            // toolStripSeparator5
             // 
-            this.ToolTip1.AutoPopDelay = 5000;
-            this.ToolTip1.InitialDelay = 500;
-            this.ToolTip1.ReshowDelay = 0;
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(184, 6);
             // 
             // ToolStripMenuItemTelephoneMarkTrue
             // 
@@ -1309,10 +1310,18 @@
             this.ToolStripMenuItemTelephoneMarkFalse.Text = "電話連絡マークを消す";
             this.ToolStripMenuItemTelephoneMarkFalse.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
-            // toolStripSeparator5
+            // ToolTip1
             // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(184, 6);
+            this.ToolTip1.AutoPopDelay = 5000;
+            this.ToolTip1.InitialDelay = 500;
+            this.ToolTip1.ReshowDelay = 0;
+            // 
+            // dateTimePickerJp1
+            // 
+            this.dateTimePickerJp1.Location = new System.Drawing.Point(180, 4);
+            this.dateTimePickerJp1.Name = "dateTimePickerJp1";
+            this.dateTimePickerJp1.Size = new System.Drawing.Size(188, 24);
+            this.dateTimePickerJp1.TabIndex = 6;
             // 
             // VehicleDispatchBoad
             // 
@@ -1467,5 +1476,6 @@
         private ToolStripSeparator toolStripSeparator5;
         private ToolStripMenuItem ToolStripMenuItemTelephoneMarkTrue;
         private ToolStripMenuItem ToolStripMenuItemTelephoneMarkFalse;
+        private ControlEx.DateTimePickerJp dateTimePickerJp1;
     }
 }
