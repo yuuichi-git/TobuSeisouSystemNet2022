@@ -97,7 +97,7 @@ namespace Dao {
                     carAccidentMasterVo.Property_accident_2 = _defaultValue.GetDefaultValue<string>(sqlDataReader["property_accident_2"]);
                     carAccidentMasterVo.Occurrence_address = _defaultValue.GetDefaultValue<string>(sqlDataReader["occurrence_address"]);
                     carAccidentMasterVo.Work_kind = _defaultValue.GetDefaultValue<string>(sqlDataReader["work_kind"]);
-                    carAccidentMasterVo.Staff_code = _defaultValue.GetDefaultValue<decimal>(sqlDataReader["staff_code"]);
+                    carAccidentMasterVo.Staff_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["staff_code"]);
                     carAccidentMasterVo.Display_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["display_name"]);
                     carAccidentMasterVo.License_number = _defaultValue.GetDefaultValue<string>(sqlDataReader["license_number"]);
                     carAccidentMasterVo.Car_registration_number = _defaultValue.GetDefaultValue<string>(sqlDataReader["car_registration_number"]);
@@ -177,7 +177,7 @@ namespace Dao {
                     carAccidentMasterVo.Property_accident_2 = _defaultValue.GetDefaultValue<string>(sqlDataReader["property_accident_2"]);
                     carAccidentMasterVo.Occurrence_address = _defaultValue.GetDefaultValue<string>(sqlDataReader["occurrence_address"]);
                     carAccidentMasterVo.Work_kind = _defaultValue.GetDefaultValue<string>(sqlDataReader["work_kind"]);
-                    carAccidentMasterVo.Staff_code = _defaultValue.GetDefaultValue<decimal>(sqlDataReader["staff_code"]);
+                    carAccidentMasterVo.Staff_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["staff_code"]);
                     carAccidentMasterVo.Display_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["display_name"]);
                     carAccidentMasterVo.License_number = _defaultValue.GetDefaultValue<string>(sqlDataReader["license_number"]);
                     carAccidentMasterVo.Car_registration_number = _defaultValue.GetDefaultValue<string>(sqlDataReader["car_registration_number"]);
@@ -258,7 +258,7 @@ namespace Dao {
                     carAccidentMasterVo.Property_accident_2 = _defaultValue.GetDefaultValue<string>(sqlDataReader["property_accident_2"]);
                     carAccidentMasterVo.Occurrence_address = _defaultValue.GetDefaultValue<string>(sqlDataReader["occurrence_address"]);
                     carAccidentMasterVo.Work_kind = _defaultValue.GetDefaultValue<string>(sqlDataReader["work_kind"]);
-                    carAccidentMasterVo.Staff_code = _defaultValue.GetDefaultValue<decimal>(sqlDataReader["staff_code"]);
+                    carAccidentMasterVo.Staff_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["staff_code"]);
                     carAccidentMasterVo.Display_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["display_name"]);
                     carAccidentMasterVo.License_number = _defaultValue.GetDefaultValue<string>(sqlDataReader["license_number"]);
                     carAccidentMasterVo.Car_registration_number = _defaultValue.GetDefaultValue<string>(sqlDataReader["car_registration_number"]);

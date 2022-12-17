@@ -12,7 +12,7 @@
         private string _property_accident_2 = "";
         private string _occurrence_address = "";
         private string _work_kind = "";
-        private decimal _staff_code;
+        private int _staff_code;
         private string _display_name = "";
         private string _license_number = "";
         private string _car_registration_number = "";
@@ -120,7 +120,7 @@
         /// <summary>
         /// 従業員コード
         /// </summary>
-        public decimal Staff_code {
+        public int Staff_code {
             get => _staff_code;
             set => _staff_code = value;
         }

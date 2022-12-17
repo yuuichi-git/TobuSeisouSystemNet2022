@@ -2,16 +2,28 @@
 
 namespace ControlEx {
     public partial class SetLabelEx : Label {
+        private SetMasterVo _setMasterVo;
+        /*
+         * SetLabel
+         */
         private const int _setLabelHeight = 68;
         private const int _setLabelWidth = 70;
+        private readonly Color _setLabelBorderColor = new();
+        private readonly Font _setLabelDrawFont = new Font("Yu Gothic UI", 13, FontStyle.Regular, GraphicsUnit.Pixel);
 
-        private SetMasterVo _setMasterVo;
         private bool _garageFlag;
+        
         private string _drawStringContactMethod = "";
-        private readonly Color _borderColor = Color.White;
-        private readonly Font _drawFont = new Font("Yu Gothic UI", 13, FontStyle.Regular, GraphicsUnit.Pixel);
         private readonly Font _drawFontContactMethod = new Font("Yu Gothic UI", 8, FontStyle.Regular, GraphicsUnit.Pixel);
-        private readonly SolidBrush _drawBrushFont = new SolidBrush(Color.Black);
+        /*
+         * StandByFlag
+         */
+        private bool _standByFlag = false;
+        private readonly Font _drawFontStandByFlag = new Font("Yu Gothic UI", 10, FontStyle.Regular, GraphicsUnit.Pixel);
+        private readonly SolidBrush _brushColorStandByFlag = new SolidBrush(Color.Blue);
+
+        private readonly SolidBrush _brushColorBlack = new SolidBrush(Color.Black);
+        
         private  SolidBrush _drowBrushFill = new SolidBrush(Color.White);
 
         /// <summary>
@@ -27,13 +39,13 @@ namespace ControlEx {
              */
             switch(setMasterVo.Classification_code) {
                 case 10:
-                    _borderColor = Color.DarkGray;
+                    _setLabelBorderColor = Color.DarkGray;
                     break;
                 case 11:
-                    _borderColor = Color.DarkOrange;
+                    _setLabelBorderColor = Color.DarkOrange;
                     break;
                 default:
-                    _borderColor = Color.White;
+                    _setLabelBorderColor = Color.White;
                     break;
             }
             InitializeComponent();
@@ -58,13 +70,13 @@ namespace ControlEx {
              */
             switch(setMasterVo.Classification_code) {
                 case 10:
-                    _borderColor = Color.DarkGray;
+                    _setLabelBorderColor = Color.DarkGray;
                     break;
                 case 11:
-                    _borderColor = Color.DarkOrange;
+                    _setLabelBorderColor = Color.DarkOrange;
                     break;
                 default:
-                    _borderColor = Color.White;
+                    _setLabelBorderColor = Color.White;
                     break;
             }
             /*
@@ -97,13 +109,13 @@ namespace ControlEx {
              */
             switch(setMasterVo.Classification_code) {
                 case 10:
-                    _borderColor = Color.DarkGray;
+                    _setLabelBorderColor = Color.DarkGray;
                     break;
                 case 11:
-                    _borderColor = Color.DarkOrange;
+                    _setLabelBorderColor = Color.DarkOrange;
                     break;
                 default:
-                    _borderColor = Color.White;
+                    _setLabelBorderColor = Color.White;
                     break;
             }
             /*
@@ -119,6 +131,10 @@ namespace ControlEx {
              */
             if(!vehicleDispatchDetailVo.Operation_flag)
                 _drowBrushFill = new SolidBrush(Color.Pink);
+            /*
+             * Stand_By_Flag
+             */
+            _standByFlag = vehicleDispatchDetailVo.Stand_by_flag;
 
             InitializeComponent();
             /*
@@ -132,26 +148,24 @@ namespace ControlEx {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void LabelEx_CellPaint(object? sender, PaintEventArgs e) {
+        private void LabelEx_CellPaint(object sender, PaintEventArgs e) {
             /*
              * Boderを描画
              */
-            Rectangle rectangleBoder = new Rectangle(0, 0, 68, 66);
-            ControlPaint.DrawBorder(e.Graphics, rectangleBoder, _borderColor, ButtonBorderStyle.Solid);
+            ControlPaint.DrawBorder(e.Graphics, new Rectangle(0, 0, 68, 66), _setLabelBorderColor, ButtonBorderStyle.Solid);
             /*
              * Fillを描画
              */
-            Rectangle rectangleFill = new Rectangle(2, 2, 64, 62);
-            e.Graphics.FillRectangle(_drowBrushFill, rectangleFill);
+            e.Graphics.FillRectangle(_drowBrushFill, new Rectangle(2, 2, 64, 62));
             /*
              * 文字(配車先)を描画
              */
             var stringFormat = new StringFormat();
             stringFormat.LineAlignment = StringAlignment.Center;
             stringFormat.Alignment = StringAlignment.Center;
-            e.Graphics.DrawString(string.Concat(_setMasterVo.Set_name_1, "\r\n", _setMasterVo.Set_name_2), _drawFont, _drawBrushFont, rectangleFill, stringFormat);
+            e.Graphics.DrawString(string.Concat(_setMasterVo.Set_name_1, "\r\n", _setMasterVo.Set_name_2), _setLabelDrawFont, _brushColorBlack, new Rectangle(0, 0, 68, 66), stringFormat);
             /*
-             * 文字(ContactMethod)を描画
+             * 文字(TEL/FAX)を描画
              */
             switch(_setMasterVo.Contact_method) {
                 case 10:
@@ -164,8 +178,13 @@ namespace ControlEx {
                     _drawStringContactMethod = "";
                     break;
             }
-            Point point = new Point(4, 2);
-            e.Graphics.DrawString(_drawStringContactMethod, _drawFontContactMethod, _drawBrushFont, point);
+            e.Graphics.DrawString(_drawStringContactMethod, _drawFontContactMethod, _brushColorBlack, new Point(4, 2));
+            /*
+             * 待機を描画
+             */
+            if(_standByFlag) {
+                e.Graphics.DrawString("待機", _drawFontStandByFlag, _brushColorStandByFlag, new Point(40, 50));
+            }
         }
 
         /// <summary>
@@ -196,6 +215,16 @@ namespace ControlEx {
             } else {
                 _drowBrushFill = new SolidBrush(Color.PowderBlue);
             }
+            this.Refresh();
+        }
+
+        /// <summary>
+        /// SetStandByFlag
+        /// 待機を表示する
+        /// </summary>
+        /// <param name="standByFlag"></param>
+        public void SetStandByFlag(bool standByFlag) {
+            _standByFlag = standByFlag;
             this.Refresh();
         }
     }

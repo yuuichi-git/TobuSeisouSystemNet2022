@@ -44,8 +44,7 @@
             this.ToolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.PanelUp = new System.Windows.Forms.Panel();
-            this.LabelJpYear = new System.Windows.Forms.Label();
-            this.DateTimePickerExOperationDate = new ControlEx.DateTimePickerEx();
+            this.UcDateTimeJpOperationDate = new ControlEx.UcDateTimeJp();
             this.FlowLayoutPanelExFree = new ControlEx.FlowLayoutPanelEx(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.ButtonUpdate = new System.Windows.Forms.Button();
@@ -123,7 +122,9 @@
             this.ToolStripMenuItemTelephoneMarkTrue = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemTelephoneMarkFalse = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.dateTimePickerJp1 = new ControlEx.DateTimePickerJp();
+            this.ToolStripMenuItemStandByFlag = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemStandByTrue = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemStandByFalse = new System.Windows.Forms.ToolStripMenuItem();
             this.TableLayoutPanelBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -331,9 +332,7 @@
             // PanelUp
             // 
             this.TableLayoutPanelBase.SetColumnSpan(this.PanelUp, 3);
-            this.PanelUp.Controls.Add(this.dateTimePickerJp1);
-            this.PanelUp.Controls.Add(this.LabelJpYear);
-            this.PanelUp.Controls.Add(this.DateTimePickerExOperationDate);
+            this.PanelUp.Controls.Add(this.UcDateTimeJpOperationDate);
             this.PanelUp.Controls.Add(this.FlowLayoutPanelExFree);
             this.PanelUp.Controls.Add(this.label1);
             this.PanelUp.Controls.Add(this.ButtonUpdate);
@@ -343,26 +342,12 @@
             this.PanelUp.Size = new System.Drawing.Size(1898, 76);
             this.PanelUp.TabIndex = 2;
             // 
-            // LabelJpYear
+            // UcDateTimeJpOperationDate
             // 
-            this.LabelJpYear.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LabelJpYear.Location = new System.Drawing.Point(108, 12);
-            this.LabelJpYear.Name = "LabelJpYear";
-            this.LabelJpYear.Size = new System.Drawing.Size(76, 16);
-            this.LabelJpYear.TabIndex = 5;
-            this.LabelJpYear.Text = "(令和4年)";
-            // 
-            // DateTimePickerExOperationDate
-            // 
-            this.DateTimePickerExOperationDate.CustomFormat = " yyyy年MM月dd日(dddd)";
-            this.DateTimePickerExOperationDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateTimePickerExOperationDate.Location = new System.Drawing.Point(108, 32);
-            this.DateTimePickerExOperationDate.Name = "DateTimePickerExOperationDate";
-            this.DateTimePickerExOperationDate.Size = new System.Drawing.Size(168, 23);
-            this.DateTimePickerExOperationDate.TabIndex = 4;
-            this.ToolTip1.SetToolTip(this.DateTimePickerExOperationDate, "ESCキーで表示を消します\r\nその他キーで表示します");
-            this.DateTimePickerExOperationDate.Value = new System.DateTime(1972, 6, 25, 0, 0, 0, 0);
-            this.DateTimePickerExOperationDate.ValueChanged += new System.EventHandler(this.DateTimePickerExOperationDate_ValueChanged);
+            this.UcDateTimeJpOperationDate.Location = new System.Drawing.Point(100, 24);
+            this.UcDateTimeJpOperationDate.Name = "UcDateTimeJpOperationDate";
+            this.UcDateTimeJpOperationDate.Size = new System.Drawing.Size(183, 23);
+            this.UcDateTimeJpOperationDate.TabIndex = 6;
             // 
             // FlowLayoutPanelExFree
             // 
@@ -380,7 +365,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(52, 36);
+            this.label1.Location = new System.Drawing.Point(44, 28);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 15);
             this.label1.TabIndex = 2;
@@ -1138,9 +1123,10 @@
             this.toolStripSeparator4,
             this.ToolStripMenuItemSetGarageChange,
             this.ToolStripMenuItemSetDelete,
+            this.ToolStripMenuItemStandByFlag,
             this.ToolStripMenuItemFax});
             this.ContextMenuStripSetLabel.Name = "ContextMenuStripSetLabel";
-            this.ContextMenuStripSetLabel.Size = new System.Drawing.Size(208, 98);
+            this.ContextMenuStripSetLabel.Size = new System.Drawing.Size(208, 142);
             this.ContextMenuStripSetLabel.Opened += new System.EventHandler(this.ContextMenuStrip_Opened);
             // 
             // ToolStripMenuItemSetDetail
@@ -1167,14 +1153,14 @@
             // ToolStripMenuItemSetGarageAdachi
             // 
             this.ToolStripMenuItemSetGarageAdachi.Name = "ToolStripMenuItemSetGarageAdachi";
-            this.ToolStripMenuItemSetGarageAdachi.Size = new System.Drawing.Size(139, 22);
+            this.ToolStripMenuItemSetGarageAdachi.Size = new System.Drawing.Size(180, 22);
             this.ToolStripMenuItemSetGarageAdachi.Text = "本社より出庫";
             this.ToolStripMenuItemSetGarageAdachi.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // ToolStripMenuItemSetGarageMisato
             // 
             this.ToolStripMenuItemSetGarageMisato.Name = "ToolStripMenuItemSetGarageMisato";
-            this.ToolStripMenuItemSetGarageMisato.Size = new System.Drawing.Size(139, 22);
+            this.ToolStripMenuItemSetGarageMisato.Size = new System.Drawing.Size(180, 22);
             this.ToolStripMenuItemSetGarageMisato.Text = "三郷より出庫";
             this.ToolStripMenuItemSetGarageMisato.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
@@ -1316,12 +1302,28 @@
             this.ToolTip1.InitialDelay = 500;
             this.ToolTip1.ReshowDelay = 0;
             // 
-            // dateTimePickerJp1
+            // ToolStripMenuItemStandByFlag
             // 
-            this.dateTimePickerJp1.Location = new System.Drawing.Point(180, 4);
-            this.dateTimePickerJp1.Name = "dateTimePickerJp1";
-            this.dateTimePickerJp1.Size = new System.Drawing.Size(188, 24);
-            this.dateTimePickerJp1.TabIndex = 6;
+            this.ToolStripMenuItemStandByFlag.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemStandByTrue,
+            this.ToolStripMenuItemStandByFalse});
+            this.ToolStripMenuItemStandByFlag.Name = "ToolStripMenuItemStandByFlag";
+            this.ToolStripMenuItemStandByFlag.Size = new System.Drawing.Size(207, 22);
+            this.ToolStripMenuItemStandByFlag.Text = "待機を変更する";
+            // 
+            // ToolStripMenuItemStandByTrue
+            // 
+            this.ToolStripMenuItemStandByTrue.Name = "ToolStripMenuItemStandByTrue";
+            this.ToolStripMenuItemStandByTrue.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItemStandByTrue.Text = "設定する";
+            this.ToolStripMenuItemStandByTrue.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            // 
+            // ToolStripMenuItemStandByFalse
+            // 
+            this.ToolStripMenuItemStandByFalse.Name = "ToolStripMenuItemStandByFalse";
+            this.ToolStripMenuItemStandByFalse.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItemStandByFalse.Text = "解除する";
+            this.ToolStripMenuItemStandByFalse.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // VehicleDispatchBoad
             // 
@@ -1470,12 +1472,13 @@
         private ToolStripSeparator toolStripSeparator4;
         private ToolTip ToolTip1;
         private ToolStripMenuItem ToolStripMenuItemMemoRead;
-        private ControlEx.DateTimePickerEx DateTimePickerExOperationDate;
-        private Label LabelJpYear;
         private ToolStripMenuItem ToolStripMenuItemPrint;
         private ToolStripSeparator toolStripSeparator5;
         private ToolStripMenuItem ToolStripMenuItemTelephoneMarkTrue;
         private ToolStripMenuItem ToolStripMenuItemTelephoneMarkFalse;
-        private ControlEx.DateTimePickerJp dateTimePickerJp1;
+        private ControlEx.UcDateTimeJp UcDateTimeJpOperationDate;
+        private ToolStripMenuItem ToolStripMenuItemStandByFlag;
+        private ToolStripMenuItem ToolStripMenuItemStandByTrue;
+        private ToolStripMenuItem ToolStripMenuItemStandByFalse;
     }
 }

@@ -173,8 +173,8 @@ namespace Dao {
                                                        "LEFT OUTER JOIN occupation_master ON staff_master.occupation = occupation_master.code " +
                                      "WHERE staff_code = " + staffCode;
             ExtendsStaffMasterVo extendsStaffMasterVo = new ExtendsStaffMasterVo();
-            using (var sqlDataReader = sqlCommand.ExecuteReader()) {
-                while (sqlDataReader.Read() == true) {
+            using(var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while(sqlDataReader.Read() == true) {
                     extendsStaffMasterVo.Staff_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["staff_code"]);
                     extendsStaffMasterVo.Belongs = _defaultValue.GetDefaultValue<int>(sqlDataReader["belongs"]);
                     extendsStaffMasterVo.Belongs_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["belongs_name"]); // 外部結合で取得
@@ -488,8 +488,8 @@ namespace Dao {
                                             "delete_ymd_hms," +
                                             "delete_flag " +
                                      "FROM view_staff_master ";
-            using (var sqlDataReader = sqlCommand.ExecuteReader()) {
-                while (sqlDataReader.Read() == true) {
+            using(var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while(sqlDataReader.Read() == true) {
                     var staffMasterVo = new StaffMasterVo();
                     staffMasterVo.Staff_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["staff_code"]);
                     staffMasterVo.Belongs = _defaultValue.GetDefaultValue<int>(sqlDataReader["belongs"]);
@@ -652,6 +652,12 @@ namespace Dao {
         /// </summary>
         /// <returns></returns>
         public List<ExtendsStaffMasterVo> SelectAllExtendsStaffMasterVo() {
+            /*
+             * 期首・期末の日時を作成する
+             */
+            DateTime _fiscalYearStart = new DateTime(Convert.ToInt32(DateTime.Now.AddMonths(-3).ToString("yyyy")),04,01);
+            DateTime _fiscalYearEnd = new DateTime(Convert.ToInt32(_fiscalYearStart.AddYears(1).ToString("yyyy")),03,31);
+
             var listExtendsStaffMasterVo = new List<ExtendsStaffMasterVo>();
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT staff_master.staff_code," +
@@ -686,13 +692,13 @@ namespace Dao {
                                             "commuterInsurance.notification AS commuting_notification," +
                                             "commuterInsurance.end_date AS commuterInsurance_end_date," +
                                             "(SELECT COUNT(staff_code) FROM car_accident_master WHERE staff_master.staff_code = car_accident_master.staff_code " +
-                                                                                                 "AND car_accident_master.totalling_flag = 'True') AS car_accident_count " +
-                                     //"AND car_accident_ledger.occurrence_ymd_hms BETWEEN '" + startDate + "' AND '" + endDate + "') AS car_accident_count " +
+                                                                                                 "AND car_accident_master.totalling_flag = 'True' " +
+                                                                                                 "AND car_accident_master.occurrence_ymd_hms BETWEEN '" + _fiscalYearStart.ToString("yyyy-MM-dd 0:00:00") + "' AND '" + _fiscalYearEnd.ToString("yyyy-MM-dd 23:59:59") + "') AS car_accident_count " +
                                      "FROM staff_master LEFT OUTER JOIN toukanpo_training_card ON staff_master.staff_code = toukanpo_training_card.staff_code " +
                                                        "LEFT OUTER JOIN license_master ON staff_master.staff_code = license_master.staff_code " +
                                                        "LEFT OUTER JOIN commuterInsurance ON staff_master.staff_code = commuterInsurance.staff_code";
-            using (var sqlDataReader = sqlCommand.ExecuteReader()) {
-                while (sqlDataReader.Read() == true) {
+            using(var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while(sqlDataReader.Read() == true) {
                     var extendsStaffMasterVo = new ExtendsStaffMasterVo();
                     extendsStaffMasterVo.Staff_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["staff_code"]);
                     extendsStaffMasterVo.Belongs = _defaultValue.GetDefaultValue<int>(sqlDataReader["belongs"]);
@@ -1035,7 +1041,7 @@ namespace Dao {
             try {
                 sqlCommand.Parameters.Add("@member_picture", SqlDbType.Image, staffMasterVo.Picture.Length).Value = staffMasterVo.Picture;
                 return sqlCommand.ExecuteNonQuery();
-            } catch (Exception e) {
+            } catch(Exception e) {
                 Console.WriteLine("InsertOneStaffLedger : " + e.Message);
                 return 0;
             }
@@ -1197,7 +1203,7 @@ namespace Dao {
             try {
                 sqlCommand.Parameters.Add("@member_picture", SqlDbType.Image, staffMasterVo.Picture.Length).Value = staffMasterVo.Picture;
                 return sqlCommand.ExecuteNonQuery();
-            } catch (Exception e) {
+            } catch(Exception e) {
                 Console.WriteLine("UpdateOneStaffLedger : " + e.Message);
                 return 0;
             }

@@ -61,6 +61,7 @@
             this.ToolStripMenuItemLicense = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemToukanpo = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemMap = new System.Windows.Forms.ToolStripMenuItem();
+            this.SheetViewList = this.SpreadList.GetSheet(0);
             this.TabControlExStaff = new ControlEx.TabControlEx();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -73,7 +74,6 @@
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.tabPage11 = new System.Windows.Forms.TabPage();
-            this.SheetViewList = this.SpreadList.GetSheet(0);
             this.TableLayoutPanelExBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.PanelUp.SuspendLayout();
@@ -191,6 +191,7 @@
             // ComboBoxAccidentYear
             // 
             this.ComboBoxAccidentYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBoxAccidentYear.Enabled = false;
             this.ComboBoxAccidentYear.FormattingEnabled = true;
             this.ComboBoxAccidentYear.Items.AddRange(new object[] {
             "2020年度",
@@ -221,7 +222,7 @@
             this.groupBox3.Size = new System.Drawing.Size(208, 44);
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "職種";
+            this.groupBox3.Text = "職種(第三条件)";
             // 
             // CheckBoxNone2
             // 
@@ -270,7 +271,7 @@
             this.groupBox2.Size = new System.Drawing.Size(256, 44);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "雇用形態(労共)";
+            this.groupBox2.Text = "雇用形態(第二条件)";
             // 
             // CheckBoxNone1
             // 
@@ -332,7 +333,7 @@
             this.groupBox1.Size = new System.Drawing.Size(316, 44);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "役職又は所属";
+            this.groupBox1.Text = "役職又は所属(第一条件)";
             // 
             // CheckBoxJiunrou
             // 

@@ -116,9 +116,13 @@ namespace VehicleDispatchConvert {
                                                                                             { 1312118, "AA88" }, // 浄化槽１
                                                                                             { 1312123, "AA90" }, // 浄化槽２
 
-                                                                                            { 1312115, "AA70" }, // ルート１
-                                                                                            { 1312124, "AA71" } // ルート２
-                                                                                                                };
+                                                                                            { 1312115, "AA70" }, // ルート１(自家用)
+                                                                                            { 1312124, "AA71" }, // ルート２(自家用)
+                                                                                            { 1312115, "AA75" }, // ルート１(事業用)
+                                                                                            { 1312124, "AA76" }, // ルート２(事業用)
+
+                                                                                            { 1312124, "AA84" }  // 廃家電(事業用)
+                                                                                                              };
 
         private Dictionary<int, string> dictionaryBelongs = new Dictionary<int, string> { { 10, "" }, { 11, "" }, { 12, "バ" }, { 20, "新" }, { 21, "自" } };
         private Dictionary<int, string> dictionaryOccupation = new Dictionary<int, string> { { 10, "" }, { 11, "作" }, { 99, "" } };
@@ -276,7 +280,7 @@ namespace VehicleDispatchConvert {
             ICell iCell;
             HSSFRichTextString hSSFRichTextString = new HSSFRichTextString();
             /*
-             * 点呼日
+             * 点呼日 
              */
             hSSFRichTextString = new HSSFRichTextString(DateTime.Now.ToString("ggy年M月d日 [ddd]", cultureInfo));
             iCell = _iSheet.GetRow(0).GetCell(0); // Column Row

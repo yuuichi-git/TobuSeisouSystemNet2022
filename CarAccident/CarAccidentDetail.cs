@@ -11,9 +11,7 @@ namespace CarAccident {
         private readonly List<StaffMasterVo> _listStaffMasterVo;
         private readonly List<CarMasterVo> _listCarMasterVo;
         private readonly DateTime _insertYmdHms;
-        private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01, 00, 00, 00, 000);
-
-        PictureBox[] _arrayPictureBox = new PictureBox[8];
+        private PictureBox[] _arrayPictureBox = new PictureBox[8];
 
         /// <summary>
         /// 新規登録用コンストラクタ
@@ -24,7 +22,7 @@ namespace CarAccident {
             _listStaffMasterVo = new StaffMasterDao(_connectionVo).SelectAllStaffMaster();
             _listCarMasterVo = new CarMasterDao(_connectionVo).SelectAllCarMaster();
             // 新規登録だとinsert_ymd_hmsは存在しないので_defaultDateTimeを入れておく
-            _insertYmdHms = _defaultDateTime;
+            _insertYmdHms = new DateTime(1900, 01, 01, 00, 00, 00, 000);
             /*
              * コントロールを初期化
              */
@@ -520,20 +518,20 @@ namespace CarAccident {
         /// ComboBoxSelectStaffLedgerVo
         /// </summary>
         private class ComboBoxSelectStaffLedgerVo {
-            private string? _displayName;
-            private StaffMasterVo? _staffMasterVo;
+            private string _displayName;
+            private StaffMasterVo _staffMasterVo;
 
             // プロパティをコンストラクタでセット
-            public ComboBoxSelectStaffLedgerVo(string? displayName, StaffMasterVo? staffMasterVo) {
+            public ComboBoxSelectStaffLedgerVo(string displayName, StaffMasterVo staffMasterVo) {
                 _displayName = displayName;
                 _staffMasterVo = staffMasterVo;
             }
 
-            public string? DisplayName {
+            public string DisplayName {
                 get => _displayName;
                 set => _displayName = value;
             }
-            public StaffMasterVo? StaffMasterVo {
+            public StaffMasterVo StaffMasterVo {
                 get => _staffMasterVo;
                 set => _staffMasterVo = value;
             }
@@ -550,19 +548,19 @@ namespace CarAccident {
         }
 
         private class ComboBoxSelectCarLedgerVo {
-            private string? _registrationNumber;
-            private CarMasterVo? _carMasterVo;
+            private string _registrationNumber;
+            private CarMasterVo _carMasterVo;
 
             // プロパティをコンストラクタでセット
-            public ComboBoxSelectCarLedgerVo(string? registrationNumber, CarMasterVo? carMasterVo) {
+            public ComboBoxSelectCarLedgerVo(string registrationNumber, CarMasterVo carMasterVo) {
                 _registrationNumber = registrationNumber;
                 _carMasterVo = carMasterVo;
             }
-            public string? RegistrationNumber {
+            public string RegistrationNumber {
                 get => _registrationNumber;
                 set => _registrationNumber = value;
             }
-            public CarMasterVo? CarMasterVo {
+            public CarMasterVo CarMasterVo {
                 get => _carMasterVo;
                 set => _carMasterVo = value;
             }
@@ -575,10 +573,10 @@ namespace CarAccident {
         /// <param name="e"></param>
         private void ButtonPictureSelect_Click(object sender, EventArgs e) {
             int arrayNumber = Convert.ToInt32(((Button)sender).Tag);
-            var openFileDialog = new OpenFileDialog();
+            OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
             openFileDialog.Title = "写真を選択して下さい"; // ダイアログのタイトルを指定する
-            openFileDialog.Filter = "画像ファイル(*.gif,*.GIF,*.jpg,*.JPG,*.tif,*.TIF,*.png,*.PNG)|*.gif;*.GIF;*.jpg;*.JPG;*.tif;*.TIF;*.png;*.PNG;";
+            openFileDialog.Filter = "画像ファイル(*.gif,*.GIF,*.jpg,*.JPG,*.jpeg,*.JPEG,*.tif,*.TIF,*.png,*.PNG)|*.gif;*.GIF;*.jpg;*.JPG;*.jpeg;*.JPEG;*.tif;*.TIF;*.png;*.PNG;";
             openFileDialog.FilterIndex = 1;
             openFileDialog.RestoreDirectory = true; // ダイアログボックスを閉じる前に現在のディレクトリを復元するようにする
             if(openFileDialog.ShowDialog() == DialogResult.OK) {

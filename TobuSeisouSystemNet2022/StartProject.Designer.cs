@@ -593,7 +593,6 @@
             this.Controls.Add(this.TableLayoutPanelBase);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.MinimizeBox = false;
             this.Name = "StartProject";
             this.ShowInTaskbar = false;
             this.Text = "StartProject";

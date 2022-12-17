@@ -8,6 +8,9 @@ namespace Staff {
     public partial class StaffDetail : Form {
         private readonly ConnectionVo _connectionVo;
         private InitializeForm _initializeForm = new();
+        /*
+         * Dao
+         */
         private readonly StaffMasterDao _staffMasterDao;
 
         /// <summary>

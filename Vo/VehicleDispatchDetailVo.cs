@@ -7,6 +7,7 @@
         private bool _five_lap;
         private bool _move_flag;
         private string _day_of_week = "";
+        private bool _stand_by_flag;
         private int _set_code;
         private string _set_note = "";
         private int _car_code;
@@ -94,6 +95,13 @@
         public string Day_of_week {
             get => _day_of_week;
             set => _day_of_week = value;
+        }
+        /// <summary>
+        /// 待機フラグ(北粗大・台東資源)
+        /// </summary>
+        public bool Stand_by_flag {
+            get => _stand_by_flag;
+            set => _stand_by_flag = value;
         }
         /// <summary>
         /// 組コード

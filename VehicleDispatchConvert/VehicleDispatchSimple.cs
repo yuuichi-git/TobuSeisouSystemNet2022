@@ -2,7 +2,6 @@ using Common;
 
 using Dao;
 
-using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 
 using Vo;
@@ -12,9 +11,14 @@ namespace VehicleDispatchConvert {
         private DateTime _operationDate;
         /*
          * NPOI
+         * https://teratail.com/questions/338753
          */
         private IWorkbook _iWorkbook;
-        private ISheet _iSheet;
+        private ISheet _iSheet_1;
+        private ISheet _iSheet_2; // 帰庫点呼のシート
+        private ISheet _iSheet_3; // 本社
+        private ISheet _iSheet_4; // 三郷
+        private ISheet _iSheet_5; // アルバイトの出勤状況
         /*
          * Dao
          */
@@ -50,11 +54,23 @@ namespace VehicleDispatchConvert {
                 /*
                  * ブック読み込み new Directry().GetExcelDesktopPass(fileName)
                  */
-                _iWorkbook = (HSSFWorkbook)WorkbookFactory.Create(new Directry().GetExcelDesktopPassXls("配車当日"));
+                _iWorkbook = WorkbookFactory.Create(new Directry().GetExcelDesktopPassXls("配車当日"));
                 /*
                  * シート名からシート取得
                  */
-                _iSheet = _iWorkbook.GetSheet("配車表");
+                _iSheet_1 = _iWorkbook.GetSheet("配車表");
+                _iSheet_2 = _iWorkbook.GetSheet("帰庫点呼");
+                _iSheet_3 = _iWorkbook.GetSheet("本社");
+                _iSheet_4 = _iWorkbook.GetSheet("三郷");
+                _iSheet_5 = _iWorkbook.GetSheet("アルバイト出勤状況");
+                /*
+                 * 再計算フラグ
+                 */
+                _iSheet_1.ForceFormulaRecalculation = true;
+                _iSheet_2.ForceFormulaRecalculation = true;
+                _iSheet_3.ForceFormulaRecalculation = true;
+                _iSheet_4.ForceFormulaRecalculation = true;
+                _iSheet_5.ForceFormulaRecalculation = true;
             } else {
                 MessageBox.Show("デスクトップに”配車当日.xls”が存在しません。やり直して下さい", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 throw new Exception();
@@ -75,16 +91,18 @@ namespace VehicleDispatchConvert {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ButtonUpdate_Click(object sender, EventArgs e) {
-            ConvertXls convertXls = new ConvertXls(_iWorkbook, _iSheet, _listSetMasterVo, _listCarMasterVo, _listStaffMasterVo);
+            // 数式を計算させる
+            //_iWorkbook.GetCreationHelper().CreateFormulaEvaluator().EvaluateAll();
+
+            ConvertXls convertXls = new ConvertXls(_iWorkbook, _iSheet_1, _listSetMasterVo, _listCarMasterVo, _listStaffMasterVo);
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(_operationDate)) {
                 convertXls.SetCellString(vehicleDispatchDetailVo);
             }
             try {
-                using(var fileStream = new FileStream(new Directry().GetExcelDesktopPassXls("配車当日"), FileMode.Create))
-                    _iWorkbook.Write(fileStream, true);
+                var fileStream = new FileStream(new Directry().GetExcelDesktopPassXls("配車当日"), FileMode.Open);
+                _iWorkbook.Write(fileStream, false);
                 MessageBox.Show("書き出しを完了しました");
-                //ファイル作成時に例外が発生した場合の処理
-            } catch(Exception exception) {
+            } catch(Exception exception) { //ファイル作成時に例外が発生した場合の処理
                 MessageBox.Show(exception.Message);
             }
         }

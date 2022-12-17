@@ -17,6 +17,9 @@ namespace Staff {
         private InitializeForm _initializeForm = new();
         private List<ExtendsStaffMasterVo>? _listExtendsStaffMasterVo;
         private List<ExtendsStaffMasterVo>? _listFindAllStaffMasterVo;
+        private List<ExtendsStaffMasterVo>? _listFindAllStaffMasterVo1;
+        private List<ExtendsStaffMasterVo>? _listFindAllStaffMasterVo2;
+        private List<ExtendsStaffMasterVo>? _listFindAllStaffMasterVo3;
         private IOrderedEnumerable<ExtendsStaffMasterVo>? _linqExtendsStaffMasterVo;
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01, 00, 00, 00, 000);
         private readonly Dictionary<int, string> dictionaryBelongs = new Dictionary<int, string> { { 10, "–ðˆõ" }, { 11, "ŽÐˆõ" }, { 12, "ƒAƒ‹ƒoƒCƒg" }, { 20, "V‰^“]" }, { 21, "Ž©‰^˜J" } };
@@ -198,6 +201,9 @@ namespace Staff {
                 _ => _listExtendsStaffMasterVo,
             };
 
+            /*
+             * ‘æˆêðŒ‚ðÝ’è‚·‚é
+             */
             // –ðˆõ
             if(!CheckBoxOfficer.Checked)
                 _listFindAllStaffMasterVo = _listFindAllStaffMasterVo?.FindAll(x => x.Belongs != 10); // –ðˆõ
@@ -213,6 +219,7 @@ namespace Staff {
             // Ž©‰^˜J
             if(!CheckBoxJiunrou.Checked)
                 _listFindAllStaffMasterVo = _listFindAllStaffMasterVo?.FindAll(x => x.Belongs != 21); // Ž©‰^˜J
+
             // ’·Šú
             if(!CheckBoxFullTimeJob.Checked)
                 _listFindAllStaffMasterVo = _listFindAllStaffMasterVo?.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.Job_form != 10); // ˜J‹Ÿ‚Å’·Šú
@@ -225,6 +232,7 @@ namespace Staff {
             // Žw’è‚È‚µ
             if(!CheckBoxNone1.Checked)
                 _listFindAllStaffMasterVo = _listFindAllStaffMasterVo?.FindAll(x => x.Job_form != 99);
+
             // ‰^“]Žè
             if(!CheckBoxDriver.Checked)
                 _listFindAllStaffMasterVo = _listFindAllStaffMasterVo?.FindAll(x => x.Occupation != 10); // ‰^“]Žè
@@ -234,6 +242,7 @@ namespace Staff {
             // Žw’è‚È‚µ
             if(!CheckBoxNone2.Checked)
                 _listFindAllStaffMasterVo = _listFindAllStaffMasterVo?.FindAll(x => x.Occupation != 99); // Žw’è‚È‚µ
+
             // ‘ÞEŽÒ
             if(!CheckBoxRetired.Checked)
                 _listFindAllStaffMasterVo = _listFindAllStaffMasterVo?.FindAll(x => x.Retirement_flag != true);
