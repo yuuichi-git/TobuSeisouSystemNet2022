@@ -62,6 +62,12 @@
             this.label39 = new System.Windows.Forms.Label();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.DateHistoryDate6 = new ControlEx.UcDateTimeJp();
+            this.DateHistoryDate5 = new ControlEx.UcDateTimeJp();
+            this.DateHistoryDate4 = new ControlEx.UcDateTimeJp();
+            this.DateHistoryDate3 = new ControlEx.UcDateTimeJp();
+            this.DateHistoryDate2 = new ControlEx.UcDateTimeJp();
+            this.DateHistoryDate1 = new ControlEx.UcDateTimeJp();
             this.label35 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
@@ -75,38 +81,34 @@
             this.TextBoxHistoryNote2 = new System.Windows.Forms.TextBox();
             this.label29 = new System.Windows.Forms.Label();
             this.TextBoxHistoryNote1 = new System.Windows.Forms.TextBox();
-            this.DateHistoryDate6 = new System.Windows.Forms.DateTimePicker();
             this.label28 = new System.Windows.Forms.Label();
-            this.DateHistoryDate5 = new System.Windows.Forms.DateTimePicker();
-            this.DateHistoryDate4 = new System.Windows.Forms.DateTimePicker();
-            this.DateHistoryDate3 = new System.Windows.Forms.DateTimePicker();
-            this.DateHistoryDate2 = new System.Windows.Forms.DateTimePicker();
-            this.DateHistoryDate1 = new System.Windows.Forms.DateTimePicker();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.DateDeathDate = new ControlEx.UcDateTimeJp();
+            this.DateRetirementDate = new ControlEx.UcDateTimeJp();
             this.TextBoxDeathNote = new System.Windows.Forms.TextBox();
             this.label47 = new System.Windows.Forms.Label();
-            this.DateDeathDate = new System.Windows.Forms.DateTimePicker();
             this.label46 = new System.Windows.Forms.Label();
             this.TextBoxRetirementNote = new System.Windows.Forms.TextBox();
             this.label45 = new System.Windows.Forms.Label();
-            this.DateRetirementDate = new System.Windows.Forms.DateTimePicker();
             this.CheckBoxRetirementFlag = new System.Windows.Forms.CheckBox();
             this.label44 = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.DateLicenseTypeExpirationDate5 = new ControlEx.UcDateTimeJp();
+            this.DateLicenseTypeExpirationDate4 = new ControlEx.UcDateTimeJp();
+            this.DateLicenseTypeExpirationDate3 = new ControlEx.UcDateTimeJp();
+            this.DateLicenseTypeExpirationDate2 = new ControlEx.UcDateTimeJp();
+            this.DateLicenseTypeExpirationDate1 = new ControlEx.UcDateTimeJp();
+            this.DateLicenseTypeDate5 = new ControlEx.UcDateTimeJp();
+            this.DateLicenseTypeDate4 = new ControlEx.UcDateTimeJp();
+            this.DateLicenseTypeDate3 = new ControlEx.UcDateTimeJp();
+            this.DateLicenseTypeDate2 = new ControlEx.UcDateTimeJp();
+            this.DateLicenseTypeDate1 = new ControlEx.UcDateTimeJp();
+            this.DateNotSelectionDate = new ControlEx.UcDateTimeJp();
+            this.DateSelectionDate = new ControlEx.UcDateTimeJp();
             this.ComboBoxLicenseCondition = new System.Windows.Forms.ComboBox();
             this.label27 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
-            this.DateLicenseTypeExpirationDate5 = new System.Windows.Forms.DateTimePicker();
-            this.DateLicenseTypeDate5 = new System.Windows.Forms.DateTimePicker();
-            this.DateLicenseTypeExpirationDate4 = new System.Windows.Forms.DateTimePicker();
-            this.DateLicenseTypeDate4 = new System.Windows.Forms.DateTimePicker();
-            this.DateLicenseTypeExpirationDate3 = new System.Windows.Forms.DateTimePicker();
-            this.DateLicenseTypeDate3 = new System.Windows.Forms.DateTimePicker();
-            this.DateLicenseTypeExpirationDate2 = new System.Windows.Forms.DateTimePicker();
-            this.DateLicenseTypeDate2 = new System.Windows.Forms.DateTimePicker();
-            this.DateLicenseTypeExpirationDate1 = new System.Windows.Forms.DateTimePicker();
-            this.DateLicenseTypeDate1 = new System.Windows.Forms.DateTimePicker();
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.TextBoxLicenseType5 = new System.Windows.Forms.TextBox();
@@ -123,11 +125,11 @@
             this.label18 = new System.Windows.Forms.Label();
             this.TextBoxNotSelectionReason = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
-            this.DateNotSelectionDate = new System.Windows.Forms.DateTimePicker();
             this.label16 = new System.Windows.Forms.Label();
-            this.DateSelectionDate = new System.Windows.Forms.DateTimePicker();
             this.label15 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.DateEmploymentDate = new ControlEx.UcDateTimeJp();
+            this.DateBirthDate = new ControlEx.UcDateTimeJp();
             this.TextBoxRemarks = new System.Windows.Forms.TextBox();
             this.ButtonDeletePicture = new System.Windows.Forms.Button();
             this.ButtonClipPicture = new System.Windows.Forms.Button();
@@ -143,10 +145,8 @@
             this.TextBoxCurrentAddress = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.DateEmploymentDate = new System.Windows.Forms.DateTimePicker();
             this.ComboBoxGender = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.DateBirthDate = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.TextBoxDisplayName = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -183,10 +183,10 @@
             this.ComboBoxBelongs = new System.Windows.Forms.ComboBox();
             this.PanelRight = new System.Windows.Forms.Panel();
             this.groupBox18 = new System.Windows.Forms.GroupBox();
+            this.DateProperDate3 = new ControlEx.UcDateTimeJp();
+            this.DateProperDate2 = new ControlEx.UcDateTimeJp();
+            this.DateProperDate1 = new ControlEx.UcDateTimeJp();
             this.label102 = new System.Windows.Forms.Label();
-            this.DateProperDate3 = new System.Windows.Forms.DateTimePicker();
-            this.DateProperDate2 = new System.Windows.Forms.DateTimePicker();
-            this.DateProperDate1 = new System.Windows.Forms.DateTimePicker();
             this.TextBoxProperNote3 = new System.Windows.Forms.TextBox();
             this.TextBoxProperNote2 = new System.Windows.Forms.TextBox();
             this.label97 = new System.Windows.Forms.Label();
@@ -199,6 +199,12 @@
             this.label100 = new System.Windows.Forms.Label();
             this.label101 = new System.Windows.Forms.Label();
             this.groupBox17 = new System.Windows.Forms.GroupBox();
+            this.DateEducateDate6 = new ControlEx.UcDateTimeJp();
+            this.DateEducateDate5 = new ControlEx.UcDateTimeJp();
+            this.DateEducateDate4 = new ControlEx.UcDateTimeJp();
+            this.DateEducateDate3 = new ControlEx.UcDateTimeJp();
+            this.DateEducateDate2 = new ControlEx.UcDateTimeJp();
+            this.DateEducateDate1 = new ControlEx.UcDateTimeJp();
             this.label96 = new System.Windows.Forms.Label();
             this.label95 = new System.Windows.Forms.Label();
             this.label94 = new System.Windows.Forms.Label();
@@ -219,14 +225,14 @@
             this.TextBoxEducateName2 = new System.Windows.Forms.TextBox();
             this.label88 = new System.Windows.Forms.Label();
             this.TextBoxEducateName1 = new System.Windows.Forms.TextBox();
-            this.DateEducateDate6 = new System.Windows.Forms.DateTimePicker();
             this.label89 = new System.Windows.Forms.Label();
-            this.DateEducateDate5 = new System.Windows.Forms.DateTimePicker();
-            this.DateEducateDate4 = new System.Windows.Forms.DateTimePicker();
-            this.DateEducateDate3 = new System.Windows.Forms.DateTimePicker();
-            this.DateEducateDate2 = new System.Windows.Forms.DateTimePicker();
-            this.DateEducateDate1 = new System.Windows.Forms.DateTimePicker();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.DateCarViolateDate6 = new ControlEx.UcDateTimeJp();
+            this.DateCarViolateDate5 = new ControlEx.UcDateTimeJp();
+            this.DateCarViolateDate4 = new ControlEx.UcDateTimeJp();
+            this.DateCarViolateDate3 = new ControlEx.UcDateTimeJp();
+            this.DateCarViolateDate2 = new ControlEx.UcDateTimeJp();
+            this.DateCarViolateDate1 = new ControlEx.UcDateTimeJp();
             this.TextBoxCarViolatePlace6 = new System.Windows.Forms.TextBox();
             this.TextBoxCarViolatePlace5 = new System.Windows.Forms.TextBox();
             this.TextBoxCarViolatePlace4 = new System.Windows.Forms.TextBox();
@@ -247,16 +253,14 @@
             this.TextBoxCarViolateContent2 = new System.Windows.Forms.TextBox();
             this.label79 = new System.Windows.Forms.Label();
             this.TextBoxCarViolateContent1 = new System.Windows.Forms.TextBox();
-            this.DateCarViolateDate6 = new System.Windows.Forms.DateTimePicker();
             this.label80 = new System.Windows.Forms.Label();
-            this.DateCarViolateDate5 = new System.Windows.Forms.DateTimePicker();
-            this.DateCarViolateDate4 = new System.Windows.Forms.DateTimePicker();
-            this.DateCarViolateDate3 = new System.Windows.Forms.DateTimePicker();
-            this.DateCarViolateDate2 = new System.Windows.Forms.DateTimePicker();
-            this.DateCarViolateDate1 = new System.Windows.Forms.DateTimePicker();
             this.groupBox15 = new System.Windows.Forms.GroupBox();
             this.label72 = new System.Windows.Forms.Label();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.DatePunishmentDate4 = new ControlEx.UcDateTimeJp();
+            this.DatePunishmentDate3 = new ControlEx.UcDateTimeJp();
+            this.DatePunishmentDate2 = new ControlEx.UcDateTimeJp();
+            this.DatePunishmentDate1 = new ControlEx.UcDateTimeJp();
             this.label103 = new System.Windows.Forms.Label();
             this.label104 = new System.Windows.Forms.Label();
             this.label105 = new System.Windows.Forms.Label();
@@ -267,11 +271,11 @@
             this.label107 = new System.Windows.Forms.Label();
             this.TextBoxPunishmentNote1 = new System.Windows.Forms.TextBox();
             this.label108 = new System.Windows.Forms.Label();
-            this.DatePunishmentDate4 = new System.Windows.Forms.DateTimePicker();
-            this.DatePunishmentDate3 = new System.Windows.Forms.DateTimePicker();
-            this.DatePunishmentDate2 = new System.Windows.Forms.DateTimePicker();
-            this.DatePunishmentDate1 = new System.Windows.Forms.DateTimePicker();
             this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.DateMedicalExaminationDate4 = new ControlEx.UcDateTimeJp();
+            this.DateMedicalExaminationDate3 = new ControlEx.UcDateTimeJp();
+            this.DateMedicalExaminationDate2 = new ControlEx.UcDateTimeJp();
+            this.DateMedicalExaminationDate1 = new ControlEx.UcDateTimeJp();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -281,30 +285,26 @@
             this.TextBoxMedicalExaminationNote4 = new System.Windows.Forms.TextBox();
             this.TextBoxMedicalExaminationNote3 = new System.Windows.Forms.TextBox();
             this.TextBoxMedicalExaminationNote2 = new System.Windows.Forms.TextBox();
-            this.DateMedicalExaminationDate4 = new System.Windows.Forms.DateTimePicker();
-            this.DateMedicalExaminationDate3 = new System.Windows.Forms.DateTimePicker();
-            this.DateMedicalExaminationDate2 = new System.Windows.Forms.DateTimePicker();
             this.label58 = new System.Windows.Forms.Label();
-            this.DateMedicalExaminationDate1 = new System.Windows.Forms.DateTimePicker();
             this.label62 = new System.Windows.Forms.Label();
             this.label63 = new System.Windows.Forms.Label();
             this.label68 = new System.Windows.Forms.Label();
             this.label69 = new System.Windows.Forms.Label();
             this.label70 = new System.Windows.Forms.Label();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
+            this.DateWorkerAccidentInsuranceDate = new ControlEx.UcDateTimeJp();
+            this.DateEmploymentInsuranceDate = new ControlEx.UcDateTimeJp();
+            this.DateWelfarePensionDate = new ControlEx.UcDateTimeJp();
+            this.DateHealthInsuranceDate = new ControlEx.UcDateTimeJp();
             this.ComboBoxHealthInsuranceNumber = new System.Windows.Forms.ComboBox();
             this.TextBoxWorkerAccidentInsuranceNumber = new System.Windows.Forms.TextBox();
             this.TextBoxEmploymentInsuranceNumber = new System.Windows.Forms.TextBox();
             this.TextBoxWelfarePensionNumber = new System.Windows.Forms.TextBox();
-            this.DateWorkerAccidentInsuranceDate = new System.Windows.Forms.DateTimePicker();
             this.TextBoxWorkerAccidentInsuranceNote = new System.Windows.Forms.TextBox();
-            this.DateEmploymentInsuranceDate = new System.Windows.Forms.DateTimePicker();
             this.TextBoxEmploymentInsuranceNote = new System.Windows.Forms.TextBox();
-            this.DateWelfarePensionDate = new System.Windows.Forms.DateTimePicker();
             this.TextBoxWelfarePensionNote = new System.Windows.Forms.TextBox();
             this.label59 = new System.Windows.Forms.Label();
             this.label60 = new System.Windows.Forms.Label();
-            this.DateHealthInsuranceDate = new System.Windows.Forms.DateTimePicker();
             this.label61 = new System.Windows.Forms.Label();
             this.label64 = new System.Windows.Forms.Label();
             this.label65 = new System.Windows.Forms.Label();
@@ -312,28 +312,28 @@
             this.label67 = new System.Windows.Forms.Label();
             this.TextBoxHealthInsuranceNote = new System.Windows.Forms.TextBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.DateFamilyBirthDate6 = new ControlEx.UcDateTimeJp();
+            this.DateFamilyBirthDate5 = new ControlEx.UcDateTimeJp();
+            this.DateFamilyBirthDate4 = new ControlEx.UcDateTimeJp();
+            this.DateFamilyBirthDate3 = new ControlEx.UcDateTimeJp();
+            this.DateFamilyBirthDate2 = new ControlEx.UcDateTimeJp();
+            this.DateFamilyBirthDate1 = new ControlEx.UcDateTimeJp();
             this.TextBoxUrgentTelephoneMethod = new System.Windows.Forms.TextBox();
             this.TextBoxUrgentTelephoneNumber = new System.Windows.Forms.TextBox();
             this.label57 = new System.Windows.Forms.Label();
             this.ComboBoxFamilyRelationship6 = new System.Windows.Forms.ComboBox();
-            this.DateFamilyBirthDate6 = new System.Windows.Forms.DateTimePicker();
             this.TextBoxFamilyName6 = new System.Windows.Forms.TextBox();
             this.ComboBoxFamilyRelationship5 = new System.Windows.Forms.ComboBox();
-            this.DateFamilyBirthDate5 = new System.Windows.Forms.DateTimePicker();
             this.TextBoxFamilyName5 = new System.Windows.Forms.TextBox();
             this.ComboBoxFamilyRelationship4 = new System.Windows.Forms.ComboBox();
-            this.DateFamilyBirthDate4 = new System.Windows.Forms.DateTimePicker();
             this.TextBoxFamilyName4 = new System.Windows.Forms.TextBox();
             this.ComboBoxFamilyRelationship3 = new System.Windows.Forms.ComboBox();
-            this.DateFamilyBirthDate3 = new System.Windows.Forms.DateTimePicker();
             this.TextBoxFamilyName3 = new System.Windows.Forms.TextBox();
             this.ComboBoxFamilyRelationship2 = new System.Windows.Forms.ComboBox();
-            this.DateFamilyBirthDate2 = new System.Windows.Forms.DateTimePicker();
             this.TextBoxFamilyName2 = new System.Windows.Forms.TextBox();
             this.label56 = new System.Windows.Forms.Label();
             this.label55 = new System.Windows.Forms.Label();
             this.ComboBoxFamilyRelationship1 = new System.Windows.Forms.ComboBox();
-            this.DateFamilyBirthDate1 = new System.Windows.Forms.DateTimePicker();
             this.label54 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
@@ -781,6 +781,12 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.DateHistoryDate6);
+            this.groupBox7.Controls.Add(this.DateHistoryDate5);
+            this.groupBox7.Controls.Add(this.DateHistoryDate4);
+            this.groupBox7.Controls.Add(this.DateHistoryDate3);
+            this.groupBox7.Controls.Add(this.DateHistoryDate2);
+            this.groupBox7.Controls.Add(this.DateHistoryDate1);
             this.groupBox7.Controls.Add(this.label35);
             this.groupBox7.Controls.Add(this.label30);
             this.groupBox7.Controls.Add(this.label31);
@@ -794,19 +800,55 @@
             this.groupBox7.Controls.Add(this.TextBoxHistoryNote2);
             this.groupBox7.Controls.Add(this.label29);
             this.groupBox7.Controls.Add(this.TextBoxHistoryNote1);
-            this.groupBox7.Controls.Add(this.DateHistoryDate6);
             this.groupBox7.Controls.Add(this.label28);
-            this.groupBox7.Controls.Add(this.DateHistoryDate5);
-            this.groupBox7.Controls.Add(this.DateHistoryDate4);
-            this.groupBox7.Controls.Add(this.DateHistoryDate3);
-            this.groupBox7.Controls.Add(this.DateHistoryDate2);
-            this.groupBox7.Controls.Add(this.DateHistoryDate1);
             this.groupBox7.Location = new System.Drawing.Point(12, 762);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(912, 227);
             this.groupBox7.TabIndex = 13;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "履歴";
+            // 
+            // DateHistoryDate6
+            // 
+            this.DateHistoryDate6.Location = new System.Drawing.Point(40, 188);
+            this.DateHistoryDate6.Name = "DateHistoryDate6";
+            this.DateHistoryDate6.Size = new System.Drawing.Size(183, 23);
+            this.DateHistoryDate6.TabIndex = 107;
+            // 
+            // DateHistoryDate5
+            // 
+            this.DateHistoryDate5.Location = new System.Drawing.Point(40, 160);
+            this.DateHistoryDate5.Name = "DateHistoryDate5";
+            this.DateHistoryDate5.Size = new System.Drawing.Size(183, 23);
+            this.DateHistoryDate5.TabIndex = 106;
+            // 
+            // DateHistoryDate4
+            // 
+            this.DateHistoryDate4.Location = new System.Drawing.Point(40, 132);
+            this.DateHistoryDate4.Name = "DateHistoryDate4";
+            this.DateHistoryDate4.Size = new System.Drawing.Size(183, 23);
+            this.DateHistoryDate4.TabIndex = 105;
+            // 
+            // DateHistoryDate3
+            // 
+            this.DateHistoryDate3.Location = new System.Drawing.Point(40, 104);
+            this.DateHistoryDate3.Name = "DateHistoryDate3";
+            this.DateHistoryDate3.Size = new System.Drawing.Size(183, 23);
+            this.DateHistoryDate3.TabIndex = 104;
+            // 
+            // DateHistoryDate2
+            // 
+            this.DateHistoryDate2.Location = new System.Drawing.Point(40, 76);
+            this.DateHistoryDate2.Name = "DateHistoryDate2";
+            this.DateHistoryDate2.Size = new System.Drawing.Size(183, 23);
+            this.DateHistoryDate2.TabIndex = 103;
+            // 
+            // DateHistoryDate1
+            // 
+            this.DateHistoryDate1.Location = new System.Drawing.Point(40, 48);
+            this.DateHistoryDate1.Name = "DateHistoryDate1";
+            this.DateHistoryDate1.Size = new System.Drawing.Size(183, 23);
+            this.DateHistoryDate1.TabIndex = 102;
             // 
             // label35
             // 
@@ -865,41 +907,41 @@
             // TextBoxHistoryNote6
             // 
             this.TextBoxHistoryNote6.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxHistoryNote6.Location = new System.Drawing.Point(188, 188);
+            this.TextBoxHistoryNote6.Location = new System.Drawing.Point(228, 188);
             this.TextBoxHistoryNote6.Name = "TextBoxHistoryNote6";
-            this.TextBoxHistoryNote6.Size = new System.Drawing.Size(640, 23);
+            this.TextBoxHistoryNote6.Size = new System.Drawing.Size(600, 23);
             this.TextBoxHistoryNote6.TabIndex = 61;
             // 
             // TextBoxHistoryNote5
             // 
             this.TextBoxHistoryNote5.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxHistoryNote5.Location = new System.Drawing.Point(188, 160);
+            this.TextBoxHistoryNote5.Location = new System.Drawing.Point(228, 160);
             this.TextBoxHistoryNote5.Name = "TextBoxHistoryNote5";
-            this.TextBoxHistoryNote5.Size = new System.Drawing.Size(640, 23);
+            this.TextBoxHistoryNote5.Size = new System.Drawing.Size(600, 23);
             this.TextBoxHistoryNote5.TabIndex = 60;
             // 
             // TextBoxHistoryNote4
             // 
             this.TextBoxHistoryNote4.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxHistoryNote4.Location = new System.Drawing.Point(188, 132);
+            this.TextBoxHistoryNote4.Location = new System.Drawing.Point(228, 132);
             this.TextBoxHistoryNote4.Name = "TextBoxHistoryNote4";
-            this.TextBoxHistoryNote4.Size = new System.Drawing.Size(640, 23);
+            this.TextBoxHistoryNote4.Size = new System.Drawing.Size(600, 23);
             this.TextBoxHistoryNote4.TabIndex = 59;
             // 
             // TextBoxHistoryNote3
             // 
             this.TextBoxHistoryNote3.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxHistoryNote3.Location = new System.Drawing.Point(188, 104);
+            this.TextBoxHistoryNote3.Location = new System.Drawing.Point(228, 104);
             this.TextBoxHistoryNote3.Name = "TextBoxHistoryNote3";
-            this.TextBoxHistoryNote3.Size = new System.Drawing.Size(640, 23);
+            this.TextBoxHistoryNote3.Size = new System.Drawing.Size(600, 23);
             this.TextBoxHistoryNote3.TabIndex = 58;
             // 
             // TextBoxHistoryNote2
             // 
             this.TextBoxHistoryNote2.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxHistoryNote2.Location = new System.Drawing.Point(188, 76);
+            this.TextBoxHistoryNote2.Location = new System.Drawing.Point(228, 76);
             this.TextBoxHistoryNote2.Name = "TextBoxHistoryNote2";
-            this.TextBoxHistoryNote2.Size = new System.Drawing.Size(640, 23);
+            this.TextBoxHistoryNote2.Size = new System.Drawing.Size(600, 23);
             this.TextBoxHistoryNote2.TabIndex = 57;
             // 
             // label29
@@ -914,21 +956,10 @@
             // TextBoxHistoryNote1
             // 
             this.TextBoxHistoryNote1.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxHistoryNote1.Location = new System.Drawing.Point(188, 48);
+            this.TextBoxHistoryNote1.Location = new System.Drawing.Point(228, 48);
             this.TextBoxHistoryNote1.Name = "TextBoxHistoryNote1";
-            this.TextBoxHistoryNote1.Size = new System.Drawing.Size(640, 23);
+            this.TextBoxHistoryNote1.Size = new System.Drawing.Size(600, 23);
             this.TextBoxHistoryNote1.TabIndex = 55;
-            // 
-            // DateHistoryDate6
-            // 
-            this.DateHistoryDate6.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateHistoryDate6.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateHistoryDate6.Location = new System.Drawing.Point(40, 188);
-            this.DateHistoryDate6.Name = "DateHistoryDate6";
-            this.DateHistoryDate6.Size = new System.Drawing.Size(144, 23);
-            this.DateHistoryDate6.TabIndex = 54;
-            this.DateHistoryDate6.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateHistoryDate6.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
             // 
             // label28
             // 
@@ -939,70 +970,15 @@
             this.label28.TabIndex = 53;
             this.label28.Text = "履歴年月日";
             // 
-            // DateHistoryDate5
-            // 
-            this.DateHistoryDate5.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateHistoryDate5.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateHistoryDate5.Location = new System.Drawing.Point(40, 160);
-            this.DateHistoryDate5.Name = "DateHistoryDate5";
-            this.DateHistoryDate5.Size = new System.Drawing.Size(144, 23);
-            this.DateHistoryDate5.TabIndex = 52;
-            this.DateHistoryDate5.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateHistoryDate5.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
-            // DateHistoryDate4
-            // 
-            this.DateHistoryDate4.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateHistoryDate4.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateHistoryDate4.Location = new System.Drawing.Point(40, 132);
-            this.DateHistoryDate4.Name = "DateHistoryDate4";
-            this.DateHistoryDate4.Size = new System.Drawing.Size(144, 23);
-            this.DateHistoryDate4.TabIndex = 51;
-            this.DateHistoryDate4.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateHistoryDate4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
-            // DateHistoryDate3
-            // 
-            this.DateHistoryDate3.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateHistoryDate3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateHistoryDate3.Location = new System.Drawing.Point(40, 104);
-            this.DateHistoryDate3.Name = "DateHistoryDate3";
-            this.DateHistoryDate3.Size = new System.Drawing.Size(144, 23);
-            this.DateHistoryDate3.TabIndex = 50;
-            this.DateHistoryDate3.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateHistoryDate3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
-            // DateHistoryDate2
-            // 
-            this.DateHistoryDate2.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateHistoryDate2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateHistoryDate2.Location = new System.Drawing.Point(40, 76);
-            this.DateHistoryDate2.Name = "DateHistoryDate2";
-            this.DateHistoryDate2.Size = new System.Drawing.Size(144, 23);
-            this.DateHistoryDate2.TabIndex = 49;
-            this.DateHistoryDate2.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateHistoryDate2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
-            // DateHistoryDate1
-            // 
-            this.DateHistoryDate1.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateHistoryDate1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateHistoryDate1.Location = new System.Drawing.Point(40, 48);
-            this.DateHistoryDate1.Name = "DateHistoryDate1";
-            this.DateHistoryDate1.Size = new System.Drawing.Size(144, 23);
-            this.DateHistoryDate1.TabIndex = 48;
-            this.DateHistoryDate1.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateHistoryDate1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.DateDeathDate);
+            this.groupBox6.Controls.Add(this.DateRetirementDate);
             this.groupBox6.Controls.Add(this.TextBoxDeathNote);
             this.groupBox6.Controls.Add(this.label47);
-            this.groupBox6.Controls.Add(this.DateDeathDate);
             this.groupBox6.Controls.Add(this.label46);
             this.groupBox6.Controls.Add(this.TextBoxRetirementNote);
             this.groupBox6.Controls.Add(this.label45);
-            this.groupBox6.Controls.Add(this.DateRetirementDate);
             this.groupBox6.Controls.Add(this.CheckBoxRetirementFlag);
             this.groupBox6.Controls.Add(this.label44);
             this.groupBox6.Controls.Add(this.groupBox8);
@@ -1012,6 +988,20 @@
             this.groupBox6.TabIndex = 12;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "解雇・退職の日付と理由";
+            // 
+            // DateDeathDate
+            // 
+            this.DateDeathDate.Location = new System.Drawing.Point(204, 84);
+            this.DateDeathDate.Name = "DateDeathDate";
+            this.DateDeathDate.Size = new System.Drawing.Size(183, 23);
+            this.DateDeathDate.TabIndex = 109;
+            // 
+            // DateRetirementDate
+            // 
+            this.DateRetirementDate.Location = new System.Drawing.Point(224, 28);
+            this.DateRetirementDate.Name = "DateRetirementDate";
+            this.DateRetirementDate.Size = new System.Drawing.Size(183, 23);
+            this.DateRetirementDate.TabIndex = 108;
             // 
             // TextBoxDeathNote
             // 
@@ -1030,18 +1020,6 @@
             this.label47.Size = new System.Drawing.Size(166, 15);
             this.label47.TabIndex = 76;
             this.label47.Text = "上記理由が死亡の場合その原因";
-            // 
-            // DateDeathDate
-            // 
-            this.DateDeathDate.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateDeathDate.Enabled = false;
-            this.DateDeathDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateDeathDate.Location = new System.Drawing.Point(204, 84);
-            this.DateDeathDate.Name = "DateDeathDate";
-            this.DateDeathDate.Size = new System.Drawing.Size(144, 23);
-            this.DateDeathDate.TabIndex = 75;
-            this.DateDeathDate.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateDeathDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
             // 
             // label46
             // 
@@ -1069,18 +1047,6 @@
             this.label45.Size = new System.Drawing.Size(111, 15);
             this.label45.TabIndex = 72;
             this.label45.Text = "解雇又は退職の理由";
-            // 
-            // DateRetirementDate
-            // 
-            this.DateRetirementDate.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateRetirementDate.Enabled = false;
-            this.DateRetirementDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateRetirementDate.Location = new System.Drawing.Point(220, 28);
-            this.DateRetirementDate.Name = "DateRetirementDate";
-            this.DateRetirementDate.Size = new System.Drawing.Size(144, 23);
-            this.DateRetirementDate.TabIndex = 71;
-            this.DateRetirementDate.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateRetirementDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
             // 
             // CheckBoxRetirementFlag
             // 
@@ -1112,19 +1078,21 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.DateLicenseTypeExpirationDate5);
+            this.groupBox5.Controls.Add(this.DateLicenseTypeExpirationDate4);
+            this.groupBox5.Controls.Add(this.DateLicenseTypeExpirationDate3);
+            this.groupBox5.Controls.Add(this.DateLicenseTypeExpirationDate2);
+            this.groupBox5.Controls.Add(this.DateLicenseTypeExpirationDate1);
+            this.groupBox5.Controls.Add(this.DateLicenseTypeDate5);
+            this.groupBox5.Controls.Add(this.DateLicenseTypeDate4);
+            this.groupBox5.Controls.Add(this.DateLicenseTypeDate3);
+            this.groupBox5.Controls.Add(this.DateLicenseTypeDate2);
+            this.groupBox5.Controls.Add(this.DateLicenseTypeDate1);
+            this.groupBox5.Controls.Add(this.DateNotSelectionDate);
+            this.groupBox5.Controls.Add(this.DateSelectionDate);
             this.groupBox5.Controls.Add(this.ComboBoxLicenseCondition);
             this.groupBox5.Controls.Add(this.label27);
             this.groupBox5.Controls.Add(this.label26);
-            this.groupBox5.Controls.Add(this.DateLicenseTypeExpirationDate5);
-            this.groupBox5.Controls.Add(this.DateLicenseTypeDate5);
-            this.groupBox5.Controls.Add(this.DateLicenseTypeExpirationDate4);
-            this.groupBox5.Controls.Add(this.DateLicenseTypeDate4);
-            this.groupBox5.Controls.Add(this.DateLicenseTypeExpirationDate3);
-            this.groupBox5.Controls.Add(this.DateLicenseTypeDate3);
-            this.groupBox5.Controls.Add(this.DateLicenseTypeExpirationDate2);
-            this.groupBox5.Controls.Add(this.DateLicenseTypeDate2);
-            this.groupBox5.Controls.Add(this.DateLicenseTypeExpirationDate1);
-            this.groupBox5.Controls.Add(this.DateLicenseTypeDate1);
             this.groupBox5.Controls.Add(this.label25);
             this.groupBox5.Controls.Add(this.label24);
             this.groupBox5.Controls.Add(this.TextBoxLicenseType5);
@@ -1141,9 +1109,7 @@
             this.groupBox5.Controls.Add(this.label18);
             this.groupBox5.Controls.Add(this.TextBoxNotSelectionReason);
             this.groupBox5.Controls.Add(this.label17);
-            this.groupBox5.Controls.Add(this.DateNotSelectionDate);
             this.groupBox5.Controls.Add(this.label16);
-            this.groupBox5.Controls.Add(this.DateSelectionDate);
             this.groupBox5.Controls.Add(this.label15);
             this.groupBox5.Location = new System.Drawing.Point(12, 456);
             this.groupBox5.Name = "groupBox5";
@@ -1152,20 +1118,112 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "運転に関する情報";
             // 
+            // DateLicenseTypeExpirationDate5
+            // 
+            this.DateLicenseTypeExpirationDate5.Enabled = false;
+            this.DateLicenseTypeExpirationDate5.Location = new System.Drawing.Point(432, 244);
+            this.DateLicenseTypeExpirationDate5.Name = "DateLicenseTypeExpirationDate5";
+            this.DateLicenseTypeExpirationDate5.Size = new System.Drawing.Size(183, 23);
+            this.DateLicenseTypeExpirationDate5.TabIndex = 101;
+            // 
+            // DateLicenseTypeExpirationDate4
+            // 
+            this.DateLicenseTypeExpirationDate4.Enabled = false;
+            this.DateLicenseTypeExpirationDate4.Location = new System.Drawing.Point(432, 216);
+            this.DateLicenseTypeExpirationDate4.Name = "DateLicenseTypeExpirationDate4";
+            this.DateLicenseTypeExpirationDate4.Size = new System.Drawing.Size(183, 23);
+            this.DateLicenseTypeExpirationDate4.TabIndex = 100;
+            // 
+            // DateLicenseTypeExpirationDate3
+            // 
+            this.DateLicenseTypeExpirationDate3.Enabled = false;
+            this.DateLicenseTypeExpirationDate3.Location = new System.Drawing.Point(432, 188);
+            this.DateLicenseTypeExpirationDate3.Name = "DateLicenseTypeExpirationDate3";
+            this.DateLicenseTypeExpirationDate3.Size = new System.Drawing.Size(183, 23);
+            this.DateLicenseTypeExpirationDate3.TabIndex = 99;
+            // 
+            // DateLicenseTypeExpirationDate2
+            // 
+            this.DateLicenseTypeExpirationDate2.Enabled = false;
+            this.DateLicenseTypeExpirationDate2.Location = new System.Drawing.Point(432, 160);
+            this.DateLicenseTypeExpirationDate2.Name = "DateLicenseTypeExpirationDate2";
+            this.DateLicenseTypeExpirationDate2.Size = new System.Drawing.Size(183, 23);
+            this.DateLicenseTypeExpirationDate2.TabIndex = 98;
+            // 
+            // DateLicenseTypeExpirationDate1
+            // 
+            this.DateLicenseTypeExpirationDate1.Location = new System.Drawing.Point(432, 132);
+            this.DateLicenseTypeExpirationDate1.Name = "DateLicenseTypeExpirationDate1";
+            this.DateLicenseTypeExpirationDate1.Size = new System.Drawing.Size(183, 23);
+            this.DateLicenseTypeExpirationDate1.TabIndex = 97;
+            // 
+            // DateLicenseTypeDate5
+            // 
+            this.DateLicenseTypeDate5.Enabled = false;
+            this.DateLicenseTypeDate5.Location = new System.Drawing.Point(240, 244);
+            this.DateLicenseTypeDate5.Name = "DateLicenseTypeDate5";
+            this.DateLicenseTypeDate5.Size = new System.Drawing.Size(183, 23);
+            this.DateLicenseTypeDate5.TabIndex = 96;
+            // 
+            // DateLicenseTypeDate4
+            // 
+            this.DateLicenseTypeDate4.Enabled = false;
+            this.DateLicenseTypeDate4.Location = new System.Drawing.Point(240, 216);
+            this.DateLicenseTypeDate4.Name = "DateLicenseTypeDate4";
+            this.DateLicenseTypeDate4.Size = new System.Drawing.Size(183, 23);
+            this.DateLicenseTypeDate4.TabIndex = 95;
+            // 
+            // DateLicenseTypeDate3
+            // 
+            this.DateLicenseTypeDate3.Enabled = false;
+            this.DateLicenseTypeDate3.Location = new System.Drawing.Point(240, 188);
+            this.DateLicenseTypeDate3.Name = "DateLicenseTypeDate3";
+            this.DateLicenseTypeDate3.Size = new System.Drawing.Size(183, 23);
+            this.DateLicenseTypeDate3.TabIndex = 94;
+            // 
+            // DateLicenseTypeDate2
+            // 
+            this.DateLicenseTypeDate2.Enabled = false;
+            this.DateLicenseTypeDate2.Location = new System.Drawing.Point(240, 160);
+            this.DateLicenseTypeDate2.Name = "DateLicenseTypeDate2";
+            this.DateLicenseTypeDate2.Size = new System.Drawing.Size(183, 23);
+            this.DateLicenseTypeDate2.TabIndex = 93;
+            // 
+            // DateLicenseTypeDate1
+            // 
+            this.DateLicenseTypeDate1.Location = new System.Drawing.Point(240, 132);
+            this.DateLicenseTypeDate1.Name = "DateLicenseTypeDate1";
+            this.DateLicenseTypeDate1.Size = new System.Drawing.Size(183, 23);
+            this.DateLicenseTypeDate1.TabIndex = 92;
+            // 
+            // DateNotSelectionDate
+            // 
+            this.DateNotSelectionDate.Location = new System.Drawing.Point(136, 52);
+            this.DateNotSelectionDate.Name = "DateNotSelectionDate";
+            this.DateNotSelectionDate.Size = new System.Drawing.Size(183, 23);
+            this.DateNotSelectionDate.TabIndex = 91;
+            // 
+            // DateSelectionDate
+            // 
+            this.DateSelectionDate.Location = new System.Drawing.Point(136, 24);
+            this.DateSelectionDate.Name = "DateSelectionDate";
+            this.DateSelectionDate.Size = new System.Drawing.Size(183, 23);
+            this.DateSelectionDate.TabIndex = 32;
+            // 
             // ComboBoxLicenseCondition
             // 
             this.ComboBoxLicenseCondition.Enabled = false;
             this.ComboBoxLicenseCondition.FormattingEnabled = true;
             this.ComboBoxLicenseCondition.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxLicenseCondition.Location = new System.Drawing.Point(324, 80);
+            this.ComboBoxLicenseCondition.Location = new System.Drawing.Point(292, 80);
             this.ComboBoxLicenseCondition.Name = "ComboBoxLicenseCondition";
-            this.ComboBoxLicenseCondition.Size = new System.Drawing.Size(504, 23);
+            this.ComboBoxLicenseCondition.Size = new System.Drawing.Size(584, 23);
             this.ComboBoxLicenseCondition.TabIndex = 90;
             // 
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(476, 112);
+            this.label27.Location = new System.Drawing.Point(436, 112);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(101, 15);
             this.label27.TabIndex = 48;
@@ -1174,131 +1232,11 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(316, 112);
+            this.label26.Location = new System.Drawing.Point(240, 112);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(89, 15);
             this.label26.TabIndex = 47;
             this.label26.Text = "免許証の取得日";
-            // 
-            // DateLicenseTypeExpirationDate5
-            // 
-            this.DateLicenseTypeExpirationDate5.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateLicenseTypeExpirationDate5.Enabled = false;
-            this.DateLicenseTypeExpirationDate5.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateLicenseTypeExpirationDate5.Location = new System.Drawing.Point(472, 244);
-            this.DateLicenseTypeExpirationDate5.Name = "DateLicenseTypeExpirationDate5";
-            this.DateLicenseTypeExpirationDate5.Size = new System.Drawing.Size(144, 23);
-            this.DateLicenseTypeExpirationDate5.TabIndex = 46;
-            this.DateLicenseTypeExpirationDate5.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateLicenseTypeExpirationDate5.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
-            // DateLicenseTypeDate5
-            // 
-            this.DateLicenseTypeDate5.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateLicenseTypeDate5.Enabled = false;
-            this.DateLicenseTypeDate5.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateLicenseTypeDate5.Location = new System.Drawing.Point(316, 244);
-            this.DateLicenseTypeDate5.Name = "DateLicenseTypeDate5";
-            this.DateLicenseTypeDate5.Size = new System.Drawing.Size(144, 23);
-            this.DateLicenseTypeDate5.TabIndex = 45;
-            this.DateLicenseTypeDate5.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateLicenseTypeDate5.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
-            // DateLicenseTypeExpirationDate4
-            // 
-            this.DateLicenseTypeExpirationDate4.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateLicenseTypeExpirationDate4.Enabled = false;
-            this.DateLicenseTypeExpirationDate4.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateLicenseTypeExpirationDate4.Location = new System.Drawing.Point(472, 216);
-            this.DateLicenseTypeExpirationDate4.Name = "DateLicenseTypeExpirationDate4";
-            this.DateLicenseTypeExpirationDate4.Size = new System.Drawing.Size(144, 23);
-            this.DateLicenseTypeExpirationDate4.TabIndex = 44;
-            this.DateLicenseTypeExpirationDate4.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateLicenseTypeExpirationDate4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
-            // DateLicenseTypeDate4
-            // 
-            this.DateLicenseTypeDate4.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateLicenseTypeDate4.Enabled = false;
-            this.DateLicenseTypeDate4.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateLicenseTypeDate4.Location = new System.Drawing.Point(316, 216);
-            this.DateLicenseTypeDate4.Name = "DateLicenseTypeDate4";
-            this.DateLicenseTypeDate4.Size = new System.Drawing.Size(144, 23);
-            this.DateLicenseTypeDate4.TabIndex = 43;
-            this.DateLicenseTypeDate4.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateLicenseTypeDate4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
-            // DateLicenseTypeExpirationDate3
-            // 
-            this.DateLicenseTypeExpirationDate3.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateLicenseTypeExpirationDate3.Enabled = false;
-            this.DateLicenseTypeExpirationDate3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateLicenseTypeExpirationDate3.Location = new System.Drawing.Point(472, 188);
-            this.DateLicenseTypeExpirationDate3.Name = "DateLicenseTypeExpirationDate3";
-            this.DateLicenseTypeExpirationDate3.Size = new System.Drawing.Size(144, 23);
-            this.DateLicenseTypeExpirationDate3.TabIndex = 42;
-            this.DateLicenseTypeExpirationDate3.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateLicenseTypeExpirationDate3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
-            // DateLicenseTypeDate3
-            // 
-            this.DateLicenseTypeDate3.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateLicenseTypeDate3.Enabled = false;
-            this.DateLicenseTypeDate3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateLicenseTypeDate3.Location = new System.Drawing.Point(316, 188);
-            this.DateLicenseTypeDate3.Name = "DateLicenseTypeDate3";
-            this.DateLicenseTypeDate3.Size = new System.Drawing.Size(144, 23);
-            this.DateLicenseTypeDate3.TabIndex = 41;
-            this.DateLicenseTypeDate3.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateLicenseTypeDate3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
-            // DateLicenseTypeExpirationDate2
-            // 
-            this.DateLicenseTypeExpirationDate2.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateLicenseTypeExpirationDate2.Enabled = false;
-            this.DateLicenseTypeExpirationDate2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateLicenseTypeExpirationDate2.Location = new System.Drawing.Point(472, 160);
-            this.DateLicenseTypeExpirationDate2.Name = "DateLicenseTypeExpirationDate2";
-            this.DateLicenseTypeExpirationDate2.Size = new System.Drawing.Size(144, 23);
-            this.DateLicenseTypeExpirationDate2.TabIndex = 40;
-            this.DateLicenseTypeExpirationDate2.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateLicenseTypeExpirationDate2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
-            // DateLicenseTypeDate2
-            // 
-            this.DateLicenseTypeDate2.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateLicenseTypeDate2.Enabled = false;
-            this.DateLicenseTypeDate2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateLicenseTypeDate2.Location = new System.Drawing.Point(316, 160);
-            this.DateLicenseTypeDate2.Name = "DateLicenseTypeDate2";
-            this.DateLicenseTypeDate2.Size = new System.Drawing.Size(144, 23);
-            this.DateLicenseTypeDate2.TabIndex = 39;
-            this.DateLicenseTypeDate2.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateLicenseTypeDate2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
-            // DateLicenseTypeExpirationDate1
-            // 
-            this.DateLicenseTypeExpirationDate1.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateLicenseTypeExpirationDate1.Enabled = false;
-            this.DateLicenseTypeExpirationDate1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateLicenseTypeExpirationDate1.Location = new System.Drawing.Point(472, 132);
-            this.DateLicenseTypeExpirationDate1.Name = "DateLicenseTypeExpirationDate1";
-            this.DateLicenseTypeExpirationDate1.Size = new System.Drawing.Size(144, 23);
-            this.DateLicenseTypeExpirationDate1.TabIndex = 38;
-            this.DateLicenseTypeExpirationDate1.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateLicenseTypeExpirationDate1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
-            // DateLicenseTypeDate1
-            // 
-            this.DateLicenseTypeDate1.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateLicenseTypeDate1.Enabled = false;
-            this.DateLicenseTypeDate1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateLicenseTypeDate1.Location = new System.Drawing.Point(316, 132);
-            this.DateLicenseTypeDate1.Name = "DateLicenseTypeDate1";
-            this.DateLicenseTypeDate1.Size = new System.Drawing.Size(144, 23);
-            this.DateLicenseTypeDate1.TabIndex = 37;
-            this.DateLicenseTypeDate1.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateLicenseTypeDate1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
             // 
             // label25
             // 
@@ -1312,6 +1250,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
+            this.label24.Enabled = false;
             this.label24.Location = new System.Drawing.Point(16, 248);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(19, 15);
@@ -1323,12 +1262,13 @@
             this.TextBoxLicenseType5.Enabled = false;
             this.TextBoxLicenseType5.Location = new System.Drawing.Point(40, 244);
             this.TextBoxLicenseType5.Name = "TextBoxLicenseType5";
-            this.TextBoxLicenseType5.Size = new System.Drawing.Size(264, 23);
+            this.TextBoxLicenseType5.Size = new System.Drawing.Size(192, 23);
             this.TextBoxLicenseType5.TabIndex = 34;
             // 
             // label23
             // 
             this.label23.AutoSize = true;
+            this.label23.Enabled = false;
             this.label23.Location = new System.Drawing.Point(16, 220);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(19, 15);
@@ -1340,12 +1280,13 @@
             this.TextBoxLicenseType4.Enabled = false;
             this.TextBoxLicenseType4.Location = new System.Drawing.Point(40, 216);
             this.TextBoxLicenseType4.Name = "TextBoxLicenseType4";
-            this.TextBoxLicenseType4.Size = new System.Drawing.Size(264, 23);
+            this.TextBoxLicenseType4.Size = new System.Drawing.Size(192, 23);
             this.TextBoxLicenseType4.TabIndex = 32;
             // 
             // label22
             // 
             this.label22.AutoSize = true;
+            this.label22.Enabled = false;
             this.label22.Location = new System.Drawing.Point(16, 192);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(19, 15);
@@ -1357,12 +1298,13 @@
             this.TextBoxLicenseType3.Enabled = false;
             this.TextBoxLicenseType3.Location = new System.Drawing.Point(40, 188);
             this.TextBoxLicenseType3.Name = "TextBoxLicenseType3";
-            this.TextBoxLicenseType3.Size = new System.Drawing.Size(264, 23);
+            this.TextBoxLicenseType3.Size = new System.Drawing.Size(192, 23);
             this.TextBoxLicenseType3.TabIndex = 30;
             // 
             // label21
             // 
             this.label21.AutoSize = true;
+            this.label21.Enabled = false;
             this.label21.Location = new System.Drawing.Point(16, 164);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(19, 15);
@@ -1374,7 +1316,7 @@
             this.TextBoxLicenseType2.Enabled = false;
             this.TextBoxLicenseType2.Location = new System.Drawing.Point(40, 160);
             this.TextBoxLicenseType2.Name = "TextBoxLicenseType2";
-            this.TextBoxLicenseType2.Size = new System.Drawing.Size(264, 23);
+            this.TextBoxLicenseType2.Size = new System.Drawing.Size(192, 23);
             this.TextBoxLicenseType2.TabIndex = 28;
             // 
             // label20
@@ -1388,16 +1330,15 @@
             // 
             // TextBoxLicenseType1
             // 
-            this.TextBoxLicenseType1.Enabled = false;
             this.TextBoxLicenseType1.Location = new System.Drawing.Point(40, 132);
             this.TextBoxLicenseType1.Name = "TextBoxLicenseType1";
-            this.TextBoxLicenseType1.Size = new System.Drawing.Size(264, 23);
+            this.TextBoxLicenseType1.Size = new System.Drawing.Size(192, 23);
             this.TextBoxLicenseType1.TabIndex = 26;
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(276, 84);
+            this.label19.Location = new System.Drawing.Point(244, 84);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(43, 15);
             this.label19.TabIndex = 24;
@@ -1405,10 +1346,11 @@
             // 
             // TextBoxLicenseNumber
             // 
+            this.TextBoxLicenseNumber.ForeColor = System.Drawing.Color.Red;
             this.TextBoxLicenseNumber.Location = new System.Drawing.Point(136, 80);
             this.TextBoxLicenseNumber.MaxLength = 12;
             this.TextBoxLicenseNumber.Name = "TextBoxLicenseNumber";
-            this.TextBoxLicenseNumber.Size = new System.Drawing.Size(96, 23);
+            this.TextBoxLicenseNumber.Size = new System.Drawing.Size(100, 23);
             this.TextBoxLicenseNumber.TabIndex = 23;
             this.TextBoxLicenseNumber.Text = "888888888888";
             this.TextBoxLicenseNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1425,7 +1367,7 @@
             // TextBoxNotSelectionReason
             // 
             this.TextBoxNotSelectionReason.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxNotSelectionReason.Location = new System.Drawing.Point(324, 52);
+            this.TextBoxNotSelectionReason.Location = new System.Drawing.Point(372, 52);
             this.TextBoxNotSelectionReason.Name = "TextBoxNotSelectionReason";
             this.TextBoxNotSelectionReason.Size = new System.Drawing.Size(504, 23);
             this.TextBoxNotSelectionReason.TabIndex = 19;
@@ -1434,22 +1376,11 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(288, 56);
+            this.label17.Location = new System.Drawing.Point(336, 56);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(31, 15);
             this.label17.TabIndex = 18;
             this.label17.Text = "理由";
-            // 
-            // DateNotSelectionDate
-            // 
-            this.DateNotSelectionDate.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateNotSelectionDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateNotSelectionDate.Location = new System.Drawing.Point(136, 52);
-            this.DateNotSelectionDate.Name = "DateNotSelectionDate";
-            this.DateNotSelectionDate.Size = new System.Drawing.Size(144, 23);
-            this.DateNotSelectionDate.TabIndex = 17;
-            this.DateNotSelectionDate.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateNotSelectionDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
             // 
             // label16
             // 
@@ -1459,17 +1390,6 @@
             this.label16.Size = new System.Drawing.Size(109, 15);
             this.label16.TabIndex = 16;
             this.label16.Text = "運転者でなくなった日";
-            // 
-            // DateSelectionDate
-            // 
-            this.DateSelectionDate.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateSelectionDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateSelectionDate.Location = new System.Drawing.Point(136, 24);
-            this.DateSelectionDate.Name = "DateSelectionDate";
-            this.DateSelectionDate.Size = new System.Drawing.Size(144, 23);
-            this.DateSelectionDate.TabIndex = 15;
-            this.DateSelectionDate.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateSelectionDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
             // 
             // label15
             // 
@@ -1482,6 +1402,8 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.DateEmploymentDate);
+            this.groupBox4.Controls.Add(this.DateBirthDate);
             this.groupBox4.Controls.Add(this.TextBoxRemarks);
             this.groupBox4.Controls.Add(this.ButtonDeletePicture);
             this.groupBox4.Controls.Add(this.ButtonClipPicture);
@@ -1497,10 +1419,8 @@
             this.groupBox4.Controls.Add(this.TextBoxCurrentAddress);
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Controls.Add(this.label9);
-            this.groupBox4.Controls.Add(this.DateEmploymentDate);
             this.groupBox4.Controls.Add(this.ComboBoxGender);
             this.groupBox4.Controls.Add(this.label8);
-            this.groupBox4.Controls.Add(this.DateBirthDate);
             this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Controls.Add(this.TextBoxDisplayName);
             this.groupBox4.Controls.Add(this.label6);
@@ -1519,6 +1439,20 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "個人情報１";
             // 
+            // DateEmploymentDate
+            // 
+            this.DateEmploymentDate.Location = new System.Drawing.Point(312, 80);
+            this.DateEmploymentDate.Name = "DateEmploymentDate";
+            this.DateEmploymentDate.Size = new System.Drawing.Size(183, 23);
+            this.DateEmploymentDate.TabIndex = 31;
+            // 
+            // DateBirthDate
+            // 
+            this.DateBirthDate.Location = new System.Drawing.Point(56, 80);
+            this.DateBirthDate.Name = "DateBirthDate";
+            this.DateBirthDate.Size = new System.Drawing.Size(183, 23);
+            this.DateBirthDate.TabIndex = 5;
+            // 
             // TextBoxRemarks
             // 
             this.TextBoxRemarks.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
@@ -1530,9 +1464,10 @@
             // 
             // ButtonDeletePicture
             // 
-            this.ButtonDeletePicture.Location = new System.Drawing.Point(836, 88);
+            this.ButtonDeletePicture.Font = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ButtonDeletePicture.Location = new System.Drawing.Point(852, 88);
             this.ButtonDeletePicture.Name = "ButtonDeletePicture";
-            this.ButtonDeletePicture.Size = new System.Drawing.Size(68, 24);
+            this.ButtonDeletePicture.Size = new System.Drawing.Size(52, 24);
             this.ButtonDeletePicture.TabIndex = 29;
             this.ButtonDeletePicture.Text = "削除";
             this.ButtonDeletePicture.UseVisualStyleBackColor = true;
@@ -1540,9 +1475,10 @@
             // 
             // ButtonClipPicture
             // 
-            this.ButtonClipPicture.Location = new System.Drawing.Point(836, 60);
+            this.ButtonClipPicture.Font = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ButtonClipPicture.Location = new System.Drawing.Point(852, 60);
             this.ButtonClipPicture.Name = "ButtonClipPicture";
-            this.ButtonClipPicture.Size = new System.Drawing.Size(68, 24);
+            this.ButtonClipPicture.Size = new System.Drawing.Size(52, 24);
             this.ButtonClipPicture.TabIndex = 28;
             this.ButtonClipPicture.Text = "クリップ";
             this.ButtonClipPicture.UseVisualStyleBackColor = true;
@@ -1550,9 +1486,10 @@
             // 
             // ButtonSelectPicture
             // 
-            this.ButtonSelectPicture.Location = new System.Drawing.Point(836, 32);
+            this.ButtonSelectPicture.Font = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ButtonSelectPicture.Location = new System.Drawing.Point(852, 32);
             this.ButtonSelectPicture.Name = "ButtonSelectPicture";
-            this.ButtonSelectPicture.Size = new System.Drawing.Size(68, 24);
+            this.ButtonSelectPicture.Size = new System.Drawing.Size(52, 24);
             this.ButtonSelectPicture.TabIndex = 27;
             this.ButtonSelectPicture.Text = "選択";
             this.ButtonSelectPicture.UseVisualStyleBackColor = true;
@@ -1560,10 +1497,10 @@
             // 
             // PictureBoxPicture
             // 
-            this.PictureBoxPicture.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.PictureBoxPicture.Location = new System.Drawing.Point(700, 28);
+            this.PictureBoxPicture.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PictureBoxPicture.Location = new System.Drawing.Point(716, 24);
             this.PictureBoxPicture.Name = "PictureBoxPicture";
-            this.PictureBoxPicture.Size = new System.Drawing.Size(128, 160);
+            this.PictureBoxPicture.Size = new System.Drawing.Size(132, 160);
             this.PictureBoxPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PictureBoxPicture.TabIndex = 26;
             this.PictureBoxPicture.TabStop = false;
@@ -1571,7 +1508,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(552, 84);
+            this.label14.Location = new System.Drawing.Point(604, 84);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(43, 15);
             this.label14.TabIndex = 25;
@@ -1586,7 +1523,7 @@
             "O型",
             "AB型",
             "その他"});
-            this.ComboBoxBloodType.Location = new System.Drawing.Point(600, 80);
+            this.ComboBoxBloodType.Location = new System.Drawing.Point(652, 80);
             this.ComboBoxBloodType.Name = "ComboBoxBloodType";
             this.ComboBoxBloodType.Size = new System.Drawing.Size(56, 23);
             this.ComboBoxBloodType.TabIndex = 24;
@@ -1655,22 +1592,11 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(452, 84);
+            this.label9.Location = new System.Drawing.Point(504, 84);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(31, 15);
             this.label9.TabIndex = 8;
             this.label9.Text = "性別";
-            // 
-            // DateEmploymentDate
-            // 
-            this.DateEmploymentDate.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateEmploymentDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateEmploymentDate.Location = new System.Drawing.Point(300, 80);
-            this.DateEmploymentDate.Name = "DateEmploymentDate";
-            this.DateEmploymentDate.Size = new System.Drawing.Size(144, 23);
-            this.DateEmploymentDate.TabIndex = 15;
-            this.DateEmploymentDate.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateEmploymentDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
             // 
             // ComboBoxGender
             // 
@@ -1679,7 +1605,7 @@
             "男性",
             "女性",
             "なし"});
-            this.ComboBoxGender.Location = new System.Drawing.Point(488, 80);
+            this.ComboBoxGender.Location = new System.Drawing.Point(540, 80);
             this.ComboBoxGender.Name = "ComboBoxGender";
             this.ComboBoxGender.Size = new System.Drawing.Size(56, 23);
             this.ComboBoxGender.TabIndex = 7;
@@ -1687,27 +1613,16 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(228, 84);
+            this.label8.Location = new System.Drawing.Point(244, 84);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(67, 15);
             this.label8.TabIndex = 14;
             this.label8.Text = "雇用年月日";
             // 
-            // DateBirthDate
-            // 
-            this.DateBirthDate.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateBirthDate.Location = new System.Drawing.Point(76, 80);
-            this.DateBirthDate.Name = "DateBirthDate";
-            this.DateBirthDate.Size = new System.Drawing.Size(144, 23);
-            this.DateBirthDate.TabIndex = 13;
-            this.DateBirthDate.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateBirthDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(16, 84);
+            this.label7.Location = new System.Drawing.Point(4, 84);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(55, 15);
             this.label7.TabIndex = 12;
@@ -1716,16 +1631,16 @@
             // TextBoxDisplayName
             // 
             this.TextBoxDisplayName.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxDisplayName.Location = new System.Drawing.Point(516, 52);
+            this.TextBoxDisplayName.Location = new System.Drawing.Point(600, 52);
             this.TextBoxDisplayName.Name = "TextBoxDisplayName";
-            this.TextBoxDisplayName.PlaceholderText = "氏名の略称";
-            this.TextBoxDisplayName.Size = new System.Drawing.Size(176, 23);
+            this.TextBoxDisplayName.PlaceholderText = "配車表の表記";
+            this.TextBoxDisplayName.Size = new System.Drawing.Size(108, 23);
             this.TextBoxDisplayName.TabIndex = 11;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(468, 56);
+            this.label6.Location = new System.Drawing.Point(552, 56);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(43, 15);
             this.label6.TabIndex = 10;
@@ -1734,16 +1649,16 @@
             // TextBoxName
             // 
             this.TextBoxName.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxName.Location = new System.Drawing.Point(284, 52);
+            this.TextBoxName.Location = new System.Drawing.Point(324, 52);
             this.TextBoxName.Name = "TextBoxName";
             this.TextBoxName.PlaceholderText = "氏名";
-            this.TextBoxName.Size = new System.Drawing.Size(176, 23);
+            this.TextBoxName.Size = new System.Drawing.Size(216, 23);
             this.TextBoxName.TabIndex = 9;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(248, 56);
+            this.label5.Location = new System.Drawing.Point(288, 56);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(31, 15);
             this.label5.TabIndex = 8;
@@ -1755,7 +1670,7 @@
             this.TextBoxNameKana.Location = new System.Drawing.Point(64, 52);
             this.TextBoxNameKana.Name = "TextBoxNameKana";
             this.TextBoxNameKana.PlaceholderText = "フリガナ";
-            this.TextBoxNameKana.Size = new System.Drawing.Size(176, 23);
+            this.TextBoxNameKana.Size = new System.Drawing.Size(216, 23);
             this.TextBoxNameKana.TabIndex = 7;
             // 
             // label4
@@ -2079,10 +1994,10 @@
             // 
             // groupBox18
             // 
-            this.groupBox18.Controls.Add(this.label102);
             this.groupBox18.Controls.Add(this.DateProperDate3);
             this.groupBox18.Controls.Add(this.DateProperDate2);
             this.groupBox18.Controls.Add(this.DateProperDate1);
+            this.groupBox18.Controls.Add(this.label102);
             this.groupBox18.Controls.Add(this.TextBoxProperNote3);
             this.groupBox18.Controls.Add(this.TextBoxProperNote2);
             this.groupBox18.Controls.Add(this.label97);
@@ -2101,6 +2016,27 @@
             this.groupBox18.TabStop = false;
             this.groupBox18.Text = "適性診断(NASVA)";
             // 
+            // DateProperDate3
+            // 
+            this.DateProperDate3.Location = new System.Drawing.Point(252, 104);
+            this.DateProperDate3.Name = "DateProperDate3";
+            this.DateProperDate3.Size = new System.Drawing.Size(183, 23);
+            this.DateProperDate3.TabIndex = 138;
+            // 
+            // DateProperDate2
+            // 
+            this.DateProperDate2.Location = new System.Drawing.Point(252, 76);
+            this.DateProperDate2.Name = "DateProperDate2";
+            this.DateProperDate2.Size = new System.Drawing.Size(183, 23);
+            this.DateProperDate2.TabIndex = 137;
+            // 
+            // DateProperDate1
+            // 
+            this.DateProperDate1.Location = new System.Drawing.Point(252, 48);
+            this.DateProperDate1.Name = "DateProperDate1";
+            this.DateProperDate1.Size = new System.Drawing.Size(183, 23);
+            this.DateProperDate1.TabIndex = 136;
+            // 
             // label102
             // 
             this.label102.AutoSize = true;
@@ -2110,43 +2046,10 @@
             this.label102.TabIndex = 99;
             this.label102.Text = "実施年月日";
             // 
-            // DateProperDate3
-            // 
-            this.DateProperDate3.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateProperDate3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateProperDate3.Location = new System.Drawing.Point(252, 104);
-            this.DateProperDate3.Name = "DateProperDate3";
-            this.DateProperDate3.Size = new System.Drawing.Size(144, 23);
-            this.DateProperDate3.TabIndex = 98;
-            this.DateProperDate3.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateProperDate3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
-            // DateProperDate2
-            // 
-            this.DateProperDate2.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateProperDate2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateProperDate2.Location = new System.Drawing.Point(252, 76);
-            this.DateProperDate2.Name = "DateProperDate2";
-            this.DateProperDate2.Size = new System.Drawing.Size(144, 23);
-            this.DateProperDate2.TabIndex = 97;
-            this.DateProperDate2.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateProperDate2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
-            // DateProperDate1
-            // 
-            this.DateProperDate1.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateProperDate1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateProperDate1.Location = new System.Drawing.Point(252, 48);
-            this.DateProperDate1.Name = "DateProperDate1";
-            this.DateProperDate1.Size = new System.Drawing.Size(144, 23);
-            this.DateProperDate1.TabIndex = 96;
-            this.DateProperDate1.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateProperDate1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
             // TextBoxProperNote3
             // 
             this.TextBoxProperNote3.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxProperNote3.Location = new System.Drawing.Point(404, 104);
+            this.TextBoxProperNote3.Location = new System.Drawing.Point(444, 104);
             this.TextBoxProperNote3.Name = "TextBoxProperNote3";
             this.TextBoxProperNote3.Size = new System.Drawing.Size(448, 23);
             this.TextBoxProperNote3.TabIndex = 95;
@@ -2154,7 +2057,7 @@
             // TextBoxProperNote2
             // 
             this.TextBoxProperNote2.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxProperNote2.Location = new System.Drawing.Point(404, 76);
+            this.TextBoxProperNote2.Location = new System.Drawing.Point(444, 76);
             this.TextBoxProperNote2.Name = "TextBoxProperNote2";
             this.TextBoxProperNote2.Size = new System.Drawing.Size(448, 23);
             this.TextBoxProperNote2.TabIndex = 94;
@@ -2162,7 +2065,7 @@
             // label97
             // 
             this.label97.AutoSize = true;
-            this.label97.Location = new System.Drawing.Point(408, 28);
+            this.label97.Location = new System.Drawing.Point(448, 28);
             this.label97.Name = "label97";
             this.label97.Size = new System.Drawing.Size(31, 15);
             this.label97.TabIndex = 93;
@@ -2171,7 +2074,7 @@
             // TextBoxProperNote1
             // 
             this.TextBoxProperNote1.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxProperNote1.Location = new System.Drawing.Point(404, 48);
+            this.TextBoxProperNote1.Location = new System.Drawing.Point(444, 48);
             this.TextBoxProperNote1.Name = "TextBoxProperNote1";
             this.TextBoxProperNote1.Size = new System.Drawing.Size(448, 23);
             this.TextBoxProperNote1.TabIndex = 92;
@@ -2265,6 +2168,12 @@
             // 
             // groupBox17
             // 
+            this.groupBox17.Controls.Add(this.DateEducateDate6);
+            this.groupBox17.Controls.Add(this.DateEducateDate5);
+            this.groupBox17.Controls.Add(this.DateEducateDate4);
+            this.groupBox17.Controls.Add(this.DateEducateDate3);
+            this.groupBox17.Controls.Add(this.DateEducateDate2);
+            this.groupBox17.Controls.Add(this.DateEducateDate1);
             this.groupBox17.Controls.Add(this.label96);
             this.groupBox17.Controls.Add(this.label95);
             this.groupBox17.Controls.Add(this.label94);
@@ -2285,13 +2194,7 @@
             this.groupBox17.Controls.Add(this.TextBoxEducateName2);
             this.groupBox17.Controls.Add(this.label88);
             this.groupBox17.Controls.Add(this.TextBoxEducateName1);
-            this.groupBox17.Controls.Add(this.DateEducateDate6);
             this.groupBox17.Controls.Add(this.label89);
-            this.groupBox17.Controls.Add(this.DateEducateDate5);
-            this.groupBox17.Controls.Add(this.DateEducateDate4);
-            this.groupBox17.Controls.Add(this.DateEducateDate3);
-            this.groupBox17.Controls.Add(this.DateEducateDate2);
-            this.groupBox17.Controls.Add(this.DateEducateDate1);
             this.groupBox17.Location = new System.Drawing.Point(12, 1137);
             this.groupBox17.Name = "groupBox17";
             this.groupBox17.Size = new System.Drawing.Size(912, 228);
@@ -2299,10 +2202,52 @@
             this.groupBox17.TabStop = false;
             this.groupBox17.Text = "社内教育の実施状況";
             // 
+            // DateEducateDate6
+            // 
+            this.DateEducateDate6.Location = new System.Drawing.Point(40, 188);
+            this.DateEducateDate6.Name = "DateEducateDate6";
+            this.DateEducateDate6.Size = new System.Drawing.Size(183, 23);
+            this.DateEducateDate6.TabIndex = 135;
+            // 
+            // DateEducateDate5
+            // 
+            this.DateEducateDate5.Location = new System.Drawing.Point(40, 160);
+            this.DateEducateDate5.Name = "DateEducateDate5";
+            this.DateEducateDate5.Size = new System.Drawing.Size(183, 23);
+            this.DateEducateDate5.TabIndex = 134;
+            // 
+            // DateEducateDate4
+            // 
+            this.DateEducateDate4.Location = new System.Drawing.Point(40, 132);
+            this.DateEducateDate4.Name = "DateEducateDate4";
+            this.DateEducateDate4.Size = new System.Drawing.Size(183, 23);
+            this.DateEducateDate4.TabIndex = 133;
+            // 
+            // DateEducateDate3
+            // 
+            this.DateEducateDate3.Location = new System.Drawing.Point(40, 104);
+            this.DateEducateDate3.Name = "DateEducateDate3";
+            this.DateEducateDate3.Size = new System.Drawing.Size(183, 23);
+            this.DateEducateDate3.TabIndex = 132;
+            // 
+            // DateEducateDate2
+            // 
+            this.DateEducateDate2.Location = new System.Drawing.Point(40, 76);
+            this.DateEducateDate2.Name = "DateEducateDate2";
+            this.DateEducateDate2.Size = new System.Drawing.Size(183, 23);
+            this.DateEducateDate2.TabIndex = 131;
+            // 
+            // DateEducateDate1
+            // 
+            this.DateEducateDate1.Location = new System.Drawing.Point(40, 48);
+            this.DateEducateDate1.Name = "DateEducateDate1";
+            this.DateEducateDate1.Size = new System.Drawing.Size(183, 23);
+            this.DateEducateDate1.TabIndex = 130;
+            // 
             // label96
             // 
             this.label96.AutoSize = true;
-            this.label96.Location = new System.Drawing.Point(528, 192);
+            this.label96.Location = new System.Drawing.Point(572, 192);
             this.label96.Name = "label96";
             this.label96.Size = new System.Drawing.Size(154, 15);
             this.label96.TabIndex = 114;
@@ -2311,7 +2256,7 @@
             // label95
             // 
             this.label95.AutoSize = true;
-            this.label95.Location = new System.Drawing.Point(528, 164);
+            this.label95.Location = new System.Drawing.Point(572, 164);
             this.label95.Name = "label95";
             this.label95.Size = new System.Drawing.Size(154, 15);
             this.label95.TabIndex = 113;
@@ -2320,7 +2265,7 @@
             // label94
             // 
             this.label94.AutoSize = true;
-            this.label94.Location = new System.Drawing.Point(528, 136);
+            this.label94.Location = new System.Drawing.Point(572, 136);
             this.label94.Name = "label94";
             this.label94.Size = new System.Drawing.Size(154, 15);
             this.label94.TabIndex = 112;
@@ -2329,7 +2274,7 @@
             // label93
             // 
             this.label93.AutoSize = true;
-            this.label93.Location = new System.Drawing.Point(528, 108);
+            this.label93.Location = new System.Drawing.Point(572, 108);
             this.label93.Name = "label93";
             this.label93.Size = new System.Drawing.Size(154, 15);
             this.label93.TabIndex = 111;
@@ -2338,7 +2283,7 @@
             // label92
             // 
             this.label92.AutoSize = true;
-            this.label92.Location = new System.Drawing.Point(528, 80);
+            this.label92.Location = new System.Drawing.Point(572, 80);
             this.label92.Name = "label92";
             this.label92.Size = new System.Drawing.Size(154, 15);
             this.label92.TabIndex = 110;
@@ -2347,7 +2292,7 @@
             // label91
             // 
             this.label91.AutoSize = true;
-            this.label91.Location = new System.Drawing.Point(528, 52);
+            this.label91.Location = new System.Drawing.Point(572, 52);
             this.label91.Name = "label91";
             this.label91.Size = new System.Drawing.Size(154, 15);
             this.label91.TabIndex = 109;
@@ -2356,7 +2301,7 @@
             // label90
             // 
             this.label90.AutoSize = true;
-            this.label90.Location = new System.Drawing.Point(528, 28);
+            this.label90.Location = new System.Drawing.Point(572, 28);
             this.label90.Name = "label90";
             this.label90.Size = new System.Drawing.Size(31, 15);
             this.label90.TabIndex = 108;
@@ -2419,7 +2364,7 @@
             // TextBoxEducateName6
             // 
             this.TextBoxEducateName6.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxEducateName6.Location = new System.Drawing.Point(188, 188);
+            this.TextBoxEducateName6.Location = new System.Drawing.Point(232, 188);
             this.TextBoxEducateName6.Name = "TextBoxEducateName6";
             this.TextBoxEducateName6.Size = new System.Drawing.Size(328, 23);
             this.TextBoxEducateName6.TabIndex = 101;
@@ -2427,7 +2372,7 @@
             // TextBoxEducateName5
             // 
             this.TextBoxEducateName5.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxEducateName5.Location = new System.Drawing.Point(188, 160);
+            this.TextBoxEducateName5.Location = new System.Drawing.Point(232, 160);
             this.TextBoxEducateName5.Name = "TextBoxEducateName5";
             this.TextBoxEducateName5.Size = new System.Drawing.Size(328, 23);
             this.TextBoxEducateName5.TabIndex = 100;
@@ -2435,7 +2380,7 @@
             // TextBoxEducateName4
             // 
             this.TextBoxEducateName4.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxEducateName4.Location = new System.Drawing.Point(188, 132);
+            this.TextBoxEducateName4.Location = new System.Drawing.Point(232, 132);
             this.TextBoxEducateName4.Name = "TextBoxEducateName4";
             this.TextBoxEducateName4.Size = new System.Drawing.Size(328, 23);
             this.TextBoxEducateName4.TabIndex = 99;
@@ -2443,7 +2388,7 @@
             // TextBoxEducateName3
             // 
             this.TextBoxEducateName3.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxEducateName3.Location = new System.Drawing.Point(188, 104);
+            this.TextBoxEducateName3.Location = new System.Drawing.Point(232, 104);
             this.TextBoxEducateName3.Name = "TextBoxEducateName3";
             this.TextBoxEducateName3.Size = new System.Drawing.Size(328, 23);
             this.TextBoxEducateName3.TabIndex = 98;
@@ -2451,7 +2396,7 @@
             // TextBoxEducateName2
             // 
             this.TextBoxEducateName2.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxEducateName2.Location = new System.Drawing.Point(188, 76);
+            this.TextBoxEducateName2.Location = new System.Drawing.Point(232, 76);
             this.TextBoxEducateName2.Name = "TextBoxEducateName2";
             this.TextBoxEducateName2.Size = new System.Drawing.Size(328, 23);
             this.TextBoxEducateName2.TabIndex = 97;
@@ -2459,7 +2404,7 @@
             // label88
             // 
             this.label88.AutoSize = true;
-            this.label88.Location = new System.Drawing.Point(192, 28);
+            this.label88.Location = new System.Drawing.Point(236, 28);
             this.label88.Name = "label88";
             this.label88.Size = new System.Drawing.Size(79, 15);
             this.label88.TabIndex = 96;
@@ -2468,21 +2413,10 @@
             // TextBoxEducateName1
             // 
             this.TextBoxEducateName1.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxEducateName1.Location = new System.Drawing.Point(188, 48);
+            this.TextBoxEducateName1.Location = new System.Drawing.Point(232, 48);
             this.TextBoxEducateName1.Name = "TextBoxEducateName1";
             this.TextBoxEducateName1.Size = new System.Drawing.Size(328, 23);
             this.TextBoxEducateName1.TabIndex = 95;
-            // 
-            // DateEducateDate6
-            // 
-            this.DateEducateDate6.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateEducateDate6.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateEducateDate6.Location = new System.Drawing.Point(40, 188);
-            this.DateEducateDate6.Name = "DateEducateDate6";
-            this.DateEducateDate6.Size = new System.Drawing.Size(144, 23);
-            this.DateEducateDate6.TabIndex = 94;
-            this.DateEducateDate6.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateEducateDate6.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
             // 
             // label89
             // 
@@ -2493,63 +2427,14 @@
             this.label89.TabIndex = 93;
             this.label89.Text = "実施年月日";
             // 
-            // DateEducateDate5
-            // 
-            this.DateEducateDate5.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateEducateDate5.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateEducateDate5.Location = new System.Drawing.Point(40, 160);
-            this.DateEducateDate5.Name = "DateEducateDate5";
-            this.DateEducateDate5.Size = new System.Drawing.Size(144, 23);
-            this.DateEducateDate5.TabIndex = 92;
-            this.DateEducateDate5.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateEducateDate5.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
-            // DateEducateDate4
-            // 
-            this.DateEducateDate4.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateEducateDate4.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateEducateDate4.Location = new System.Drawing.Point(40, 132);
-            this.DateEducateDate4.Name = "DateEducateDate4";
-            this.DateEducateDate4.Size = new System.Drawing.Size(144, 23);
-            this.DateEducateDate4.TabIndex = 91;
-            this.DateEducateDate4.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateEducateDate4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
-            // DateEducateDate3
-            // 
-            this.DateEducateDate3.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateEducateDate3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateEducateDate3.Location = new System.Drawing.Point(40, 104);
-            this.DateEducateDate3.Name = "DateEducateDate3";
-            this.DateEducateDate3.Size = new System.Drawing.Size(144, 23);
-            this.DateEducateDate3.TabIndex = 90;
-            this.DateEducateDate3.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateEducateDate3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
-            // DateEducateDate2
-            // 
-            this.DateEducateDate2.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateEducateDate2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateEducateDate2.Location = new System.Drawing.Point(40, 76);
-            this.DateEducateDate2.Name = "DateEducateDate2";
-            this.DateEducateDate2.Size = new System.Drawing.Size(144, 23);
-            this.DateEducateDate2.TabIndex = 89;
-            this.DateEducateDate2.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateEducateDate2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
-            // DateEducateDate1
-            // 
-            this.DateEducateDate1.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateEducateDate1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateEducateDate1.Location = new System.Drawing.Point(40, 48);
-            this.DateEducateDate1.Name = "DateEducateDate1";
-            this.DateEducateDate1.Size = new System.Drawing.Size(144, 23);
-            this.DateEducateDate1.TabIndex = 88;
-            this.DateEducateDate1.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateEducateDate1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
             // groupBox16
             // 
+            this.groupBox16.Controls.Add(this.DateCarViolateDate6);
+            this.groupBox16.Controls.Add(this.DateCarViolateDate5);
+            this.groupBox16.Controls.Add(this.DateCarViolateDate4);
+            this.groupBox16.Controls.Add(this.DateCarViolateDate3);
+            this.groupBox16.Controls.Add(this.DateCarViolateDate2);
+            this.groupBox16.Controls.Add(this.DateCarViolateDate1);
             this.groupBox16.Controls.Add(this.TextBoxCarViolatePlace6);
             this.groupBox16.Controls.Add(this.TextBoxCarViolatePlace5);
             this.groupBox16.Controls.Add(this.TextBoxCarViolatePlace4);
@@ -2570,13 +2455,7 @@
             this.groupBox16.Controls.Add(this.TextBoxCarViolateContent2);
             this.groupBox16.Controls.Add(this.label79);
             this.groupBox16.Controls.Add(this.TextBoxCarViolateContent1);
-            this.groupBox16.Controls.Add(this.DateCarViolateDate6);
             this.groupBox16.Controls.Add(this.label80);
-            this.groupBox16.Controls.Add(this.DateCarViolateDate5);
-            this.groupBox16.Controls.Add(this.DateCarViolateDate4);
-            this.groupBox16.Controls.Add(this.DateCarViolateDate3);
-            this.groupBox16.Controls.Add(this.DateCarViolateDate2);
-            this.groupBox16.Controls.Add(this.DateCarViolateDate1);
             this.groupBox16.Location = new System.Drawing.Point(12, 879);
             this.groupBox16.Name = "groupBox16";
             this.groupBox16.Size = new System.Drawing.Size(912, 236);
@@ -2584,10 +2463,52 @@
             this.groupBox16.TabStop = false;
             this.groupBox16.Text = "業務上の交通違反履歴";
             // 
+            // DateCarViolateDate6
+            // 
+            this.DateCarViolateDate6.Location = new System.Drawing.Point(40, 188);
+            this.DateCarViolateDate6.Name = "DateCarViolateDate6";
+            this.DateCarViolateDate6.Size = new System.Drawing.Size(183, 23);
+            this.DateCarViolateDate6.TabIndex = 129;
+            // 
+            // DateCarViolateDate5
+            // 
+            this.DateCarViolateDate5.Location = new System.Drawing.Point(40, 160);
+            this.DateCarViolateDate5.Name = "DateCarViolateDate5";
+            this.DateCarViolateDate5.Size = new System.Drawing.Size(183, 23);
+            this.DateCarViolateDate5.TabIndex = 128;
+            // 
+            // DateCarViolateDate4
+            // 
+            this.DateCarViolateDate4.Location = new System.Drawing.Point(40, 132);
+            this.DateCarViolateDate4.Name = "DateCarViolateDate4";
+            this.DateCarViolateDate4.Size = new System.Drawing.Size(183, 23);
+            this.DateCarViolateDate4.TabIndex = 127;
+            // 
+            // DateCarViolateDate3
+            // 
+            this.DateCarViolateDate3.Location = new System.Drawing.Point(40, 104);
+            this.DateCarViolateDate3.Name = "DateCarViolateDate3";
+            this.DateCarViolateDate3.Size = new System.Drawing.Size(183, 23);
+            this.DateCarViolateDate3.TabIndex = 126;
+            // 
+            // DateCarViolateDate2
+            // 
+            this.DateCarViolateDate2.Location = new System.Drawing.Point(40, 76);
+            this.DateCarViolateDate2.Name = "DateCarViolateDate2";
+            this.DateCarViolateDate2.Size = new System.Drawing.Size(183, 23);
+            this.DateCarViolateDate2.TabIndex = 125;
+            // 
+            // DateCarViolateDate1
+            // 
+            this.DateCarViolateDate1.Location = new System.Drawing.Point(40, 48);
+            this.DateCarViolateDate1.Name = "DateCarViolateDate1";
+            this.DateCarViolateDate1.Size = new System.Drawing.Size(183, 23);
+            this.DateCarViolateDate1.TabIndex = 124;
+            // 
             // TextBoxCarViolatePlace6
             // 
             this.TextBoxCarViolatePlace6.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxCarViolatePlace6.Location = new System.Drawing.Point(524, 188);
+            this.TextBoxCarViolatePlace6.Location = new System.Drawing.Point(568, 188);
             this.TextBoxCarViolatePlace6.Name = "TextBoxCarViolatePlace6";
             this.TextBoxCarViolatePlace6.Size = new System.Drawing.Size(328, 23);
             this.TextBoxCarViolatePlace6.TabIndex = 94;
@@ -2595,7 +2516,7 @@
             // TextBoxCarViolatePlace5
             // 
             this.TextBoxCarViolatePlace5.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxCarViolatePlace5.Location = new System.Drawing.Point(524, 160);
+            this.TextBoxCarViolatePlace5.Location = new System.Drawing.Point(568, 160);
             this.TextBoxCarViolatePlace5.Name = "TextBoxCarViolatePlace5";
             this.TextBoxCarViolatePlace5.Size = new System.Drawing.Size(328, 23);
             this.TextBoxCarViolatePlace5.TabIndex = 93;
@@ -2603,7 +2524,7 @@
             // TextBoxCarViolatePlace4
             // 
             this.TextBoxCarViolatePlace4.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxCarViolatePlace4.Location = new System.Drawing.Point(524, 132);
+            this.TextBoxCarViolatePlace4.Location = new System.Drawing.Point(568, 132);
             this.TextBoxCarViolatePlace4.Name = "TextBoxCarViolatePlace4";
             this.TextBoxCarViolatePlace4.Size = new System.Drawing.Size(328, 23);
             this.TextBoxCarViolatePlace4.TabIndex = 92;
@@ -2611,7 +2532,7 @@
             // TextBoxCarViolatePlace3
             // 
             this.TextBoxCarViolatePlace3.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxCarViolatePlace3.Location = new System.Drawing.Point(524, 104);
+            this.TextBoxCarViolatePlace3.Location = new System.Drawing.Point(568, 104);
             this.TextBoxCarViolatePlace3.Name = "TextBoxCarViolatePlace3";
             this.TextBoxCarViolatePlace3.Size = new System.Drawing.Size(328, 23);
             this.TextBoxCarViolatePlace3.TabIndex = 91;
@@ -2619,7 +2540,7 @@
             // TextBoxCarViolatePlace2
             // 
             this.TextBoxCarViolatePlace2.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxCarViolatePlace2.Location = new System.Drawing.Point(524, 76);
+            this.TextBoxCarViolatePlace2.Location = new System.Drawing.Point(568, 76);
             this.TextBoxCarViolatePlace2.Name = "TextBoxCarViolatePlace2";
             this.TextBoxCarViolatePlace2.Size = new System.Drawing.Size(328, 23);
             this.TextBoxCarViolatePlace2.TabIndex = 90;
@@ -2627,7 +2548,7 @@
             // label81
             // 
             this.label81.AutoSize = true;
-            this.label81.Location = new System.Drawing.Point(528, 28);
+            this.label81.Location = new System.Drawing.Point(572, 28);
             this.label81.Name = "label81";
             this.label81.Size = new System.Drawing.Size(31, 15);
             this.label81.TabIndex = 89;
@@ -2636,7 +2557,7 @@
             // TextBoxCarViolatePlace1
             // 
             this.TextBoxCarViolatePlace1.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxCarViolatePlace1.Location = new System.Drawing.Point(524, 48);
+            this.TextBoxCarViolatePlace1.Location = new System.Drawing.Point(568, 48);
             this.TextBoxCarViolatePlace1.Name = "TextBoxCarViolatePlace1";
             this.TextBoxCarViolatePlace1.Size = new System.Drawing.Size(328, 23);
             this.TextBoxCarViolatePlace1.TabIndex = 88;
@@ -2698,7 +2619,7 @@
             // TextBoxCarViolateContent6
             // 
             this.TextBoxCarViolateContent6.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxCarViolateContent6.Location = new System.Drawing.Point(188, 188);
+            this.TextBoxCarViolateContent6.Location = new System.Drawing.Point(232, 188);
             this.TextBoxCarViolateContent6.Name = "TextBoxCarViolateContent6";
             this.TextBoxCarViolateContent6.Size = new System.Drawing.Size(328, 23);
             this.TextBoxCarViolateContent6.TabIndex = 81;
@@ -2706,7 +2627,7 @@
             // TextBoxCarViolateContent5
             // 
             this.TextBoxCarViolateContent5.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxCarViolateContent5.Location = new System.Drawing.Point(188, 160);
+            this.TextBoxCarViolateContent5.Location = new System.Drawing.Point(232, 160);
             this.TextBoxCarViolateContent5.Name = "TextBoxCarViolateContent5";
             this.TextBoxCarViolateContent5.Size = new System.Drawing.Size(328, 23);
             this.TextBoxCarViolateContent5.TabIndex = 80;
@@ -2714,7 +2635,7 @@
             // TextBoxCarViolateContent4
             // 
             this.TextBoxCarViolateContent4.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxCarViolateContent4.Location = new System.Drawing.Point(188, 132);
+            this.TextBoxCarViolateContent4.Location = new System.Drawing.Point(232, 132);
             this.TextBoxCarViolateContent4.Name = "TextBoxCarViolateContent4";
             this.TextBoxCarViolateContent4.Size = new System.Drawing.Size(328, 23);
             this.TextBoxCarViolateContent4.TabIndex = 79;
@@ -2722,7 +2643,7 @@
             // TextBoxCarViolateContent3
             // 
             this.TextBoxCarViolateContent3.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxCarViolateContent3.Location = new System.Drawing.Point(188, 104);
+            this.TextBoxCarViolateContent3.Location = new System.Drawing.Point(232, 104);
             this.TextBoxCarViolateContent3.Name = "TextBoxCarViolateContent3";
             this.TextBoxCarViolateContent3.Size = new System.Drawing.Size(328, 23);
             this.TextBoxCarViolateContent3.TabIndex = 78;
@@ -2730,7 +2651,7 @@
             // TextBoxCarViolateContent2
             // 
             this.TextBoxCarViolateContent2.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxCarViolateContent2.Location = new System.Drawing.Point(188, 76);
+            this.TextBoxCarViolateContent2.Location = new System.Drawing.Point(232, 76);
             this.TextBoxCarViolateContent2.Name = "TextBoxCarViolateContent2";
             this.TextBoxCarViolateContent2.Size = new System.Drawing.Size(328, 23);
             this.TextBoxCarViolateContent2.TabIndex = 77;
@@ -2738,7 +2659,7 @@
             // label79
             // 
             this.label79.AutoSize = true;
-            this.label79.Location = new System.Drawing.Point(192, 28);
+            this.label79.Location = new System.Drawing.Point(236, 28);
             this.label79.Name = "label79";
             this.label79.Size = new System.Drawing.Size(79, 15);
             this.label79.TabIndex = 76;
@@ -2747,21 +2668,10 @@
             // TextBoxCarViolateContent1
             // 
             this.TextBoxCarViolateContent1.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxCarViolateContent1.Location = new System.Drawing.Point(188, 48);
+            this.TextBoxCarViolateContent1.Location = new System.Drawing.Point(232, 48);
             this.TextBoxCarViolateContent1.Name = "TextBoxCarViolateContent1";
             this.TextBoxCarViolateContent1.Size = new System.Drawing.Size(328, 23);
             this.TextBoxCarViolateContent1.TabIndex = 75;
-            // 
-            // DateCarViolateDate6
-            // 
-            this.DateCarViolateDate6.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateCarViolateDate6.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateCarViolateDate6.Location = new System.Drawing.Point(40, 188);
-            this.DateCarViolateDate6.Name = "DateCarViolateDate6";
-            this.DateCarViolateDate6.Size = new System.Drawing.Size(144, 23);
-            this.DateCarViolateDate6.TabIndex = 74;
-            this.DateCarViolateDate6.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateCarViolateDate6.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
             // 
             // label80
             // 
@@ -2771,61 +2681,6 @@
             this.label80.Size = new System.Drawing.Size(67, 15);
             this.label80.TabIndex = 73;
             this.label80.Text = "発生年月日";
-            // 
-            // DateCarViolateDate5
-            // 
-            this.DateCarViolateDate5.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateCarViolateDate5.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateCarViolateDate5.Location = new System.Drawing.Point(40, 160);
-            this.DateCarViolateDate5.Name = "DateCarViolateDate5";
-            this.DateCarViolateDate5.Size = new System.Drawing.Size(144, 23);
-            this.DateCarViolateDate5.TabIndex = 72;
-            this.DateCarViolateDate5.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateCarViolateDate5.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
-            // DateCarViolateDate4
-            // 
-            this.DateCarViolateDate4.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateCarViolateDate4.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateCarViolateDate4.Location = new System.Drawing.Point(40, 132);
-            this.DateCarViolateDate4.Name = "DateCarViolateDate4";
-            this.DateCarViolateDate4.Size = new System.Drawing.Size(144, 23);
-            this.DateCarViolateDate4.TabIndex = 71;
-            this.DateCarViolateDate4.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateCarViolateDate4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
-            // DateCarViolateDate3
-            // 
-            this.DateCarViolateDate3.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateCarViolateDate3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateCarViolateDate3.Location = new System.Drawing.Point(40, 104);
-            this.DateCarViolateDate3.Name = "DateCarViolateDate3";
-            this.DateCarViolateDate3.Size = new System.Drawing.Size(144, 23);
-            this.DateCarViolateDate3.TabIndex = 70;
-            this.DateCarViolateDate3.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateCarViolateDate3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
-            // DateCarViolateDate2
-            // 
-            this.DateCarViolateDate2.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateCarViolateDate2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateCarViolateDate2.Location = new System.Drawing.Point(40, 76);
-            this.DateCarViolateDate2.Name = "DateCarViolateDate2";
-            this.DateCarViolateDate2.Size = new System.Drawing.Size(144, 23);
-            this.DateCarViolateDate2.TabIndex = 69;
-            this.DateCarViolateDate2.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateCarViolateDate2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
-            // DateCarViolateDate1
-            // 
-            this.DateCarViolateDate1.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateCarViolateDate1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateCarViolateDate1.Location = new System.Drawing.Point(40, 48);
-            this.DateCarViolateDate1.Name = "DateCarViolateDate1";
-            this.DateCarViolateDate1.Size = new System.Drawing.Size(144, 23);
-            this.DateCarViolateDate1.TabIndex = 68;
-            this.DateCarViolateDate1.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateCarViolateDate1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
             // 
             // groupBox15
             // 
@@ -2850,6 +2705,10 @@
             // 
             // groupBox14
             // 
+            this.groupBox14.Controls.Add(this.DatePunishmentDate4);
+            this.groupBox14.Controls.Add(this.DatePunishmentDate3);
+            this.groupBox14.Controls.Add(this.DatePunishmentDate2);
+            this.groupBox14.Controls.Add(this.DatePunishmentDate1);
             this.groupBox14.Controls.Add(this.label103);
             this.groupBox14.Controls.Add(this.label104);
             this.groupBox14.Controls.Add(this.label105);
@@ -2860,16 +2719,40 @@
             this.groupBox14.Controls.Add(this.label107);
             this.groupBox14.Controls.Add(this.TextBoxPunishmentNote1);
             this.groupBox14.Controls.Add(this.label108);
-            this.groupBox14.Controls.Add(this.DatePunishmentDate4);
-            this.groupBox14.Controls.Add(this.DatePunishmentDate3);
-            this.groupBox14.Controls.Add(this.DatePunishmentDate2);
-            this.groupBox14.Controls.Add(this.DatePunishmentDate1);
             this.groupBox14.Location = new System.Drawing.Point(12, 1555);
             this.groupBox14.Name = "groupBox14";
             this.groupBox14.Size = new System.Drawing.Size(912, 176);
             this.groupBox14.TabIndex = 99;
             this.groupBox14.TabStop = false;
             this.groupBox14.Text = "賞罰・譴責";
+            // 
+            // DatePunishmentDate4
+            // 
+            this.DatePunishmentDate4.Location = new System.Drawing.Point(40, 132);
+            this.DatePunishmentDate4.Name = "DatePunishmentDate4";
+            this.DatePunishmentDate4.Size = new System.Drawing.Size(183, 23);
+            this.DatePunishmentDate4.TabIndex = 142;
+            // 
+            // DatePunishmentDate3
+            // 
+            this.DatePunishmentDate3.Location = new System.Drawing.Point(40, 104);
+            this.DatePunishmentDate3.Name = "DatePunishmentDate3";
+            this.DatePunishmentDate3.Size = new System.Drawing.Size(183, 23);
+            this.DatePunishmentDate3.TabIndex = 141;
+            // 
+            // DatePunishmentDate2
+            // 
+            this.DatePunishmentDate2.Location = new System.Drawing.Point(40, 76);
+            this.DatePunishmentDate2.Name = "DatePunishmentDate2";
+            this.DatePunishmentDate2.Size = new System.Drawing.Size(183, 23);
+            this.DatePunishmentDate2.TabIndex = 140;
+            // 
+            // DatePunishmentDate1
+            // 
+            this.DatePunishmentDate1.Location = new System.Drawing.Point(40, 48);
+            this.DatePunishmentDate1.Name = "DatePunishmentDate1";
+            this.DatePunishmentDate1.Size = new System.Drawing.Size(183, 23);
+            this.DatePunishmentDate1.TabIndex = 139;
             // 
             // label103
             // 
@@ -2910,7 +2793,7 @@
             // TextBoxPunishmentNote4
             // 
             this.TextBoxPunishmentNote4.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxPunishmentNote4.Location = new System.Drawing.Point(188, 132);
+            this.TextBoxPunishmentNote4.Location = new System.Drawing.Point(232, 132);
             this.TextBoxPunishmentNote4.Name = "TextBoxPunishmentNote4";
             this.TextBoxPunishmentNote4.Size = new System.Drawing.Size(328, 23);
             this.TextBoxPunishmentNote4.TabIndex = 115;
@@ -2918,7 +2801,7 @@
             // TextBoxPunishmentNote3
             // 
             this.TextBoxPunishmentNote3.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxPunishmentNote3.Location = new System.Drawing.Point(188, 104);
+            this.TextBoxPunishmentNote3.Location = new System.Drawing.Point(232, 104);
             this.TextBoxPunishmentNote3.Name = "TextBoxPunishmentNote3";
             this.TextBoxPunishmentNote3.Size = new System.Drawing.Size(328, 23);
             this.TextBoxPunishmentNote3.TabIndex = 114;
@@ -2926,7 +2809,7 @@
             // TextBoxPunishmentNote2
             // 
             this.TextBoxPunishmentNote2.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxPunishmentNote2.Location = new System.Drawing.Point(188, 76);
+            this.TextBoxPunishmentNote2.Location = new System.Drawing.Point(232, 76);
             this.TextBoxPunishmentNote2.Name = "TextBoxPunishmentNote2";
             this.TextBoxPunishmentNote2.Size = new System.Drawing.Size(328, 23);
             this.TextBoxPunishmentNote2.TabIndex = 113;
@@ -2934,7 +2817,7 @@
             // label107
             // 
             this.label107.AutoSize = true;
-            this.label107.Location = new System.Drawing.Point(192, 28);
+            this.label107.Location = new System.Drawing.Point(236, 28);
             this.label107.Name = "label107";
             this.label107.Size = new System.Drawing.Size(31, 15);
             this.label107.TabIndex = 112;
@@ -2943,7 +2826,7 @@
             // TextBoxPunishmentNote1
             // 
             this.TextBoxPunishmentNote1.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxPunishmentNote1.Location = new System.Drawing.Point(188, 48);
+            this.TextBoxPunishmentNote1.Location = new System.Drawing.Point(232, 48);
             this.TextBoxPunishmentNote1.Name = "TextBoxPunishmentNote1";
             this.TextBoxPunishmentNote1.Size = new System.Drawing.Size(328, 23);
             this.TextBoxPunishmentNote1.TabIndex = 111;
@@ -2957,52 +2840,12 @@
             this.label108.TabIndex = 110;
             this.label108.Text = "実施年月日";
             // 
-            // DatePunishmentDate4
-            // 
-            this.DatePunishmentDate4.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DatePunishmentDate4.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DatePunishmentDate4.Location = new System.Drawing.Point(40, 132);
-            this.DatePunishmentDate4.Name = "DatePunishmentDate4";
-            this.DatePunishmentDate4.Size = new System.Drawing.Size(144, 23);
-            this.DatePunishmentDate4.TabIndex = 109;
-            this.DatePunishmentDate4.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DatePunishmentDate4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
-            // DatePunishmentDate3
-            // 
-            this.DatePunishmentDate3.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DatePunishmentDate3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DatePunishmentDate3.Location = new System.Drawing.Point(40, 104);
-            this.DatePunishmentDate3.Name = "DatePunishmentDate3";
-            this.DatePunishmentDate3.Size = new System.Drawing.Size(144, 23);
-            this.DatePunishmentDate3.TabIndex = 108;
-            this.DatePunishmentDate3.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DatePunishmentDate3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
-            // DatePunishmentDate2
-            // 
-            this.DatePunishmentDate2.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DatePunishmentDate2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DatePunishmentDate2.Location = new System.Drawing.Point(40, 76);
-            this.DatePunishmentDate2.Name = "DatePunishmentDate2";
-            this.DatePunishmentDate2.Size = new System.Drawing.Size(144, 23);
-            this.DatePunishmentDate2.TabIndex = 107;
-            this.DatePunishmentDate2.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DatePunishmentDate2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
-            // DatePunishmentDate1
-            // 
-            this.DatePunishmentDate1.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DatePunishmentDate1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DatePunishmentDate1.Location = new System.Drawing.Point(40, 48);
-            this.DatePunishmentDate1.Name = "DatePunishmentDate1";
-            this.DatePunishmentDate1.Size = new System.Drawing.Size(144, 23);
-            this.DatePunishmentDate1.TabIndex = 106;
-            this.DatePunishmentDate1.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DatePunishmentDate1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
             // groupBox13
             // 
+            this.groupBox13.Controls.Add(this.DateMedicalExaminationDate4);
+            this.groupBox13.Controls.Add(this.DateMedicalExaminationDate3);
+            this.groupBox13.Controls.Add(this.DateMedicalExaminationDate2);
+            this.groupBox13.Controls.Add(this.DateMedicalExaminationDate1);
             this.groupBox13.Controls.Add(this.button3);
             this.groupBox13.Controls.Add(this.button2);
             this.groupBox13.Controls.Add(this.button1);
@@ -3012,11 +2855,7 @@
             this.groupBox13.Controls.Add(this.TextBoxMedicalExaminationNote4);
             this.groupBox13.Controls.Add(this.TextBoxMedicalExaminationNote3);
             this.groupBox13.Controls.Add(this.TextBoxMedicalExaminationNote2);
-            this.groupBox13.Controls.Add(this.DateMedicalExaminationDate4);
-            this.groupBox13.Controls.Add(this.DateMedicalExaminationDate3);
-            this.groupBox13.Controls.Add(this.DateMedicalExaminationDate2);
             this.groupBox13.Controls.Add(this.label58);
-            this.groupBox13.Controls.Add(this.DateMedicalExaminationDate1);
             this.groupBox13.Controls.Add(this.label62);
             this.groupBox13.Controls.Add(this.label63);
             this.groupBox13.Controls.Add(this.label68);
@@ -3029,6 +2868,34 @@
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "健康状態(健康診断等の実施結果による特記すべき事項)　※運転の可否に十分に留意すること";
             // 
+            // DateMedicalExaminationDate4
+            // 
+            this.DateMedicalExaminationDate4.Location = new System.Drawing.Point(44, 132);
+            this.DateMedicalExaminationDate4.Name = "DateMedicalExaminationDate4";
+            this.DateMedicalExaminationDate4.Size = new System.Drawing.Size(183, 23);
+            this.DateMedicalExaminationDate4.TabIndex = 123;
+            // 
+            // DateMedicalExaminationDate3
+            // 
+            this.DateMedicalExaminationDate3.Location = new System.Drawing.Point(44, 104);
+            this.DateMedicalExaminationDate3.Name = "DateMedicalExaminationDate3";
+            this.DateMedicalExaminationDate3.Size = new System.Drawing.Size(183, 23);
+            this.DateMedicalExaminationDate3.TabIndex = 122;
+            // 
+            // DateMedicalExaminationDate2
+            // 
+            this.DateMedicalExaminationDate2.Location = new System.Drawing.Point(44, 76);
+            this.DateMedicalExaminationDate2.Name = "DateMedicalExaminationDate2";
+            this.DateMedicalExaminationDate2.Size = new System.Drawing.Size(183, 23);
+            this.DateMedicalExaminationDate2.TabIndex = 121;
+            // 
+            // DateMedicalExaminationDate1
+            // 
+            this.DateMedicalExaminationDate1.Location = new System.Drawing.Point(44, 48);
+            this.DateMedicalExaminationDate1.Name = "DateMedicalExaminationDate1";
+            this.DateMedicalExaminationDate1.Size = new System.Drawing.Size(183, 23);
+            this.DateMedicalExaminationDate1.TabIndex = 120;
+            // 
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(524, 116);
@@ -3036,7 +2903,7 @@
             this.button3.Size = new System.Drawing.Size(72, 23);
             this.button3.TabIndex = 116;
             this.button3.Tag = "4";
-            this.button3.Text = "🔀 Change";
+            this.button3.Text = "🔀 入替え";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.MedicalExaminationButton_Click);
             // 
@@ -3047,7 +2914,7 @@
             this.button2.Size = new System.Drawing.Size(72, 23);
             this.button2.TabIndex = 115;
             this.button2.Tag = "3";
-            this.button2.Text = "🔀 Change";
+            this.button2.Text = "🔀 入替え";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.MedicalExaminationButton_Click);
             // 
@@ -3058,7 +2925,7 @@
             this.button1.Size = new System.Drawing.Size(72, 23);
             this.button1.TabIndex = 114;
             this.button1.Tag = "2";
-            this.button1.Text = "🔀 Change";
+            this.button1.Text = "🔀 入替え";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.MedicalExaminationButton_Click);
             // 
@@ -3085,88 +2952,44 @@
             this.ComboBoxMedicalExaminationNote1.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
             this.ComboBoxMedicalExaminationNote1.Items.AddRange(new object[] {
             "恵比寿ハートビル診療所　別紙参照"});
-            this.ComboBoxMedicalExaminationNote1.Location = new System.Drawing.Point(196, 48);
+            this.ComboBoxMedicalExaminationNote1.Location = new System.Drawing.Point(232, 48);
             this.ComboBoxMedicalExaminationNote1.Name = "ComboBoxMedicalExaminationNote1";
-            this.ComboBoxMedicalExaminationNote1.Size = new System.Drawing.Size(320, 23);
+            this.ComboBoxMedicalExaminationNote1.Size = new System.Drawing.Size(284, 23);
             this.ComboBoxMedicalExaminationNote1.TabIndex = 111;
             this.ComboBoxMedicalExaminationNote1.Text = "恵比寿ハートビル診療所　別紙参照";
             // 
             // TextBoxMedicalExaminationNote4
             // 
             this.TextBoxMedicalExaminationNote4.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxMedicalExaminationNote4.Location = new System.Drawing.Point(196, 132);
+            this.TextBoxMedicalExaminationNote4.Location = new System.Drawing.Point(232, 132);
             this.TextBoxMedicalExaminationNote4.Name = "TextBoxMedicalExaminationNote4";
-            this.TextBoxMedicalExaminationNote4.Size = new System.Drawing.Size(320, 23);
+            this.TextBoxMedicalExaminationNote4.Size = new System.Drawing.Size(284, 23);
             this.TextBoxMedicalExaminationNote4.TabIndex = 110;
             // 
             // TextBoxMedicalExaminationNote3
             // 
             this.TextBoxMedicalExaminationNote3.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxMedicalExaminationNote3.Location = new System.Drawing.Point(196, 104);
+            this.TextBoxMedicalExaminationNote3.Location = new System.Drawing.Point(232, 104);
             this.TextBoxMedicalExaminationNote3.Name = "TextBoxMedicalExaminationNote3";
-            this.TextBoxMedicalExaminationNote3.Size = new System.Drawing.Size(320, 23);
+            this.TextBoxMedicalExaminationNote3.Size = new System.Drawing.Size(284, 23);
             this.TextBoxMedicalExaminationNote3.TabIndex = 109;
             // 
             // TextBoxMedicalExaminationNote2
             // 
             this.TextBoxMedicalExaminationNote2.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxMedicalExaminationNote2.Location = new System.Drawing.Point(196, 76);
+            this.TextBoxMedicalExaminationNote2.Location = new System.Drawing.Point(232, 76);
             this.TextBoxMedicalExaminationNote2.Name = "TextBoxMedicalExaminationNote2";
-            this.TextBoxMedicalExaminationNote2.Size = new System.Drawing.Size(320, 23);
+            this.TextBoxMedicalExaminationNote2.Size = new System.Drawing.Size(284, 23);
             this.TextBoxMedicalExaminationNote2.TabIndex = 108;
-            // 
-            // DateMedicalExaminationDate4
-            // 
-            this.DateMedicalExaminationDate4.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateMedicalExaminationDate4.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateMedicalExaminationDate4.Location = new System.Drawing.Point(44, 132);
-            this.DateMedicalExaminationDate4.Name = "DateMedicalExaminationDate4";
-            this.DateMedicalExaminationDate4.Size = new System.Drawing.Size(144, 23);
-            this.DateMedicalExaminationDate4.TabIndex = 107;
-            this.DateMedicalExaminationDate4.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateMedicalExaminationDate4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
-            // DateMedicalExaminationDate3
-            // 
-            this.DateMedicalExaminationDate3.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateMedicalExaminationDate3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateMedicalExaminationDate3.Location = new System.Drawing.Point(44, 104);
-            this.DateMedicalExaminationDate3.Name = "DateMedicalExaminationDate3";
-            this.DateMedicalExaminationDate3.Size = new System.Drawing.Size(144, 23);
-            this.DateMedicalExaminationDate3.TabIndex = 106;
-            this.DateMedicalExaminationDate3.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateMedicalExaminationDate3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
-            // DateMedicalExaminationDate2
-            // 
-            this.DateMedicalExaminationDate2.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateMedicalExaminationDate2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateMedicalExaminationDate2.Location = new System.Drawing.Point(44, 76);
-            this.DateMedicalExaminationDate2.Name = "DateMedicalExaminationDate2";
-            this.DateMedicalExaminationDate2.Size = new System.Drawing.Size(144, 23);
-            this.DateMedicalExaminationDate2.TabIndex = 105;
-            this.DateMedicalExaminationDate2.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateMedicalExaminationDate2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
             // 
             // label58
             // 
             this.label58.AutoSize = true;
-            this.label58.Location = new System.Drawing.Point(200, 28);
+            this.label58.Location = new System.Drawing.Point(236, 28);
             this.label58.Name = "label58";
             this.label58.Size = new System.Drawing.Size(85, 15);
             this.label58.TabIndex = 104;
             this.label58.Text = "受診機関・詳細";
-            // 
-            // DateMedicalExaminationDate1
-            // 
-            this.DateMedicalExaminationDate1.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateMedicalExaminationDate1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateMedicalExaminationDate1.Location = new System.Drawing.Point(44, 48);
-            this.DateMedicalExaminationDate1.Name = "DateMedicalExaminationDate1";
-            this.DateMedicalExaminationDate1.Size = new System.Drawing.Size(144, 23);
-            this.DateMedicalExaminationDate1.TabIndex = 103;
-            this.DateMedicalExaminationDate1.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateMedicalExaminationDate1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
             // 
             // label62
             // 
@@ -3215,19 +3038,19 @@
             // 
             // groupBox12
             // 
+            this.groupBox12.Controls.Add(this.DateWorkerAccidentInsuranceDate);
+            this.groupBox12.Controls.Add(this.DateEmploymentInsuranceDate);
+            this.groupBox12.Controls.Add(this.DateWelfarePensionDate);
+            this.groupBox12.Controls.Add(this.DateHealthInsuranceDate);
             this.groupBox12.Controls.Add(this.ComboBoxHealthInsuranceNumber);
             this.groupBox12.Controls.Add(this.TextBoxWorkerAccidentInsuranceNumber);
             this.groupBox12.Controls.Add(this.TextBoxEmploymentInsuranceNumber);
             this.groupBox12.Controls.Add(this.TextBoxWelfarePensionNumber);
-            this.groupBox12.Controls.Add(this.DateWorkerAccidentInsuranceDate);
             this.groupBox12.Controls.Add(this.TextBoxWorkerAccidentInsuranceNote);
-            this.groupBox12.Controls.Add(this.DateEmploymentInsuranceDate);
             this.groupBox12.Controls.Add(this.TextBoxEmploymentInsuranceNote);
-            this.groupBox12.Controls.Add(this.DateWelfarePensionDate);
             this.groupBox12.Controls.Add(this.TextBoxWelfarePensionNote);
             this.groupBox12.Controls.Add(this.label59);
             this.groupBox12.Controls.Add(this.label60);
-            this.groupBox12.Controls.Add(this.DateHealthInsuranceDate);
             this.groupBox12.Controls.Add(this.label61);
             this.groupBox12.Controls.Add(this.label64);
             this.groupBox12.Controls.Add(this.label65);
@@ -3241,52 +3064,69 @@
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "保険関係";
             // 
+            // DateWorkerAccidentInsuranceDate
+            // 
+            this.DateWorkerAccidentInsuranceDate.Location = new System.Drawing.Point(100, 132);
+            this.DateWorkerAccidentInsuranceDate.Name = "DateWorkerAccidentInsuranceDate";
+            this.DateWorkerAccidentInsuranceDate.Size = new System.Drawing.Size(183, 23);
+            this.DateWorkerAccidentInsuranceDate.TabIndex = 119;
+            // 
+            // DateEmploymentInsuranceDate
+            // 
+            this.DateEmploymentInsuranceDate.Location = new System.Drawing.Point(100, 104);
+            this.DateEmploymentInsuranceDate.Name = "DateEmploymentInsuranceDate";
+            this.DateEmploymentInsuranceDate.Size = new System.Drawing.Size(183, 23);
+            this.DateEmploymentInsuranceDate.TabIndex = 118;
+            // 
+            // DateWelfarePensionDate
+            // 
+            this.DateWelfarePensionDate.Location = new System.Drawing.Point(100, 76);
+            this.DateWelfarePensionDate.Name = "DateWelfarePensionDate";
+            this.DateWelfarePensionDate.Size = new System.Drawing.Size(183, 23);
+            this.DateWelfarePensionDate.TabIndex = 117;
+            // 
+            // DateHealthInsuranceDate
+            // 
+            this.DateHealthInsuranceDate.Location = new System.Drawing.Point(100, 48);
+            this.DateHealthInsuranceDate.Name = "DateHealthInsuranceDate";
+            this.DateHealthInsuranceDate.Size = new System.Drawing.Size(183, 23);
+            this.DateHealthInsuranceDate.TabIndex = 116;
+            // 
             // ComboBoxHealthInsuranceNumber
             // 
             this.ComboBoxHealthInsuranceNumber.FormattingEnabled = true;
             this.ComboBoxHealthInsuranceNumber.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
             this.ComboBoxHealthInsuranceNumber.Items.AddRange(new object[] {
             "記号0307 番号 枝番00"});
-            this.ComboBoxHealthInsuranceNumber.Location = new System.Drawing.Point(252, 48);
+            this.ComboBoxHealthInsuranceNumber.Location = new System.Drawing.Point(292, 48);
             this.ComboBoxHealthInsuranceNumber.Name = "ComboBoxHealthInsuranceNumber";
-            this.ComboBoxHealthInsuranceNumber.Size = new System.Drawing.Size(264, 23);
+            this.ComboBoxHealthInsuranceNumber.Size = new System.Drawing.Size(224, 23);
             this.ComboBoxHealthInsuranceNumber.TabIndex = 97;
             this.ComboBoxHealthInsuranceNumber.Text = "記号0307 番号 枝番00";
             // 
             // TextBoxWorkerAccidentInsuranceNumber
             // 
             this.TextBoxWorkerAccidentInsuranceNumber.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxWorkerAccidentInsuranceNumber.Location = new System.Drawing.Point(252, 132);
+            this.TextBoxWorkerAccidentInsuranceNumber.Location = new System.Drawing.Point(292, 132);
             this.TextBoxWorkerAccidentInsuranceNumber.Name = "TextBoxWorkerAccidentInsuranceNumber";
-            this.TextBoxWorkerAccidentInsuranceNumber.Size = new System.Drawing.Size(264, 23);
+            this.TextBoxWorkerAccidentInsuranceNumber.Size = new System.Drawing.Size(224, 23);
             this.TextBoxWorkerAccidentInsuranceNumber.TabIndex = 89;
             // 
             // TextBoxEmploymentInsuranceNumber
             // 
             this.TextBoxEmploymentInsuranceNumber.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxEmploymentInsuranceNumber.Location = new System.Drawing.Point(252, 104);
+            this.TextBoxEmploymentInsuranceNumber.Location = new System.Drawing.Point(292, 104);
             this.TextBoxEmploymentInsuranceNumber.Name = "TextBoxEmploymentInsuranceNumber";
-            this.TextBoxEmploymentInsuranceNumber.Size = new System.Drawing.Size(264, 23);
+            this.TextBoxEmploymentInsuranceNumber.Size = new System.Drawing.Size(224, 23);
             this.TextBoxEmploymentInsuranceNumber.TabIndex = 88;
             // 
             // TextBoxWelfarePensionNumber
             // 
             this.TextBoxWelfarePensionNumber.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxWelfarePensionNumber.Location = new System.Drawing.Point(252, 76);
+            this.TextBoxWelfarePensionNumber.Location = new System.Drawing.Point(292, 76);
             this.TextBoxWelfarePensionNumber.Name = "TextBoxWelfarePensionNumber";
-            this.TextBoxWelfarePensionNumber.Size = new System.Drawing.Size(264, 23);
+            this.TextBoxWelfarePensionNumber.Size = new System.Drawing.Size(224, 23);
             this.TextBoxWelfarePensionNumber.TabIndex = 87;
-            // 
-            // DateWorkerAccidentInsuranceDate
-            // 
-            this.DateWorkerAccidentInsuranceDate.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateWorkerAccidentInsuranceDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateWorkerAccidentInsuranceDate.Location = new System.Drawing.Point(100, 132);
-            this.DateWorkerAccidentInsuranceDate.Name = "DateWorkerAccidentInsuranceDate";
-            this.DateWorkerAccidentInsuranceDate.Size = new System.Drawing.Size(144, 23);
-            this.DateWorkerAccidentInsuranceDate.TabIndex = 86;
-            this.DateWorkerAccidentInsuranceDate.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateWorkerAccidentInsuranceDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
             // 
             // TextBoxWorkerAccidentInsuranceNote
             // 
@@ -3296,17 +3136,6 @@
             this.TextBoxWorkerAccidentInsuranceNote.Size = new System.Drawing.Size(372, 23);
             this.TextBoxWorkerAccidentInsuranceNote.TabIndex = 85;
             // 
-            // DateEmploymentInsuranceDate
-            // 
-            this.DateEmploymentInsuranceDate.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateEmploymentInsuranceDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateEmploymentInsuranceDate.Location = new System.Drawing.Point(100, 104);
-            this.DateEmploymentInsuranceDate.Name = "DateEmploymentInsuranceDate";
-            this.DateEmploymentInsuranceDate.Size = new System.Drawing.Size(144, 23);
-            this.DateEmploymentInsuranceDate.TabIndex = 83;
-            this.DateEmploymentInsuranceDate.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateEmploymentInsuranceDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
             // TextBoxEmploymentInsuranceNote
             // 
             this.TextBoxEmploymentInsuranceNote.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
@@ -3314,17 +3143,6 @@
             this.TextBoxEmploymentInsuranceNote.Name = "TextBoxEmploymentInsuranceNote";
             this.TextBoxEmploymentInsuranceNote.Size = new System.Drawing.Size(372, 23);
             this.TextBoxEmploymentInsuranceNote.TabIndex = 82;
-            // 
-            // DateWelfarePensionDate
-            // 
-            this.DateWelfarePensionDate.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateWelfarePensionDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateWelfarePensionDate.Location = new System.Drawing.Point(100, 76);
-            this.DateWelfarePensionDate.Name = "DateWelfarePensionDate";
-            this.DateWelfarePensionDate.Size = new System.Drawing.Size(144, 23);
-            this.DateWelfarePensionDate.TabIndex = 80;
-            this.DateWelfarePensionDate.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateWelfarePensionDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
             // 
             // TextBoxWelfarePensionNote
             // 
@@ -3346,22 +3164,11 @@
             // label60
             // 
             this.label60.AutoSize = true;
-            this.label60.Location = new System.Drawing.Point(256, 28);
+            this.label60.Location = new System.Drawing.Point(296, 28);
             this.label60.Name = "label60";
             this.label60.Size = new System.Drawing.Size(95, 15);
             this.label60.TabIndex = 77;
             this.label60.Text = "保険の記号・番号";
-            // 
-            // DateHealthInsuranceDate
-            // 
-            this.DateHealthInsuranceDate.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateHealthInsuranceDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateHealthInsuranceDate.Location = new System.Drawing.Point(100, 48);
-            this.DateHealthInsuranceDate.Name = "DateHealthInsuranceDate";
-            this.DateHealthInsuranceDate.Size = new System.Drawing.Size(144, 23);
-            this.DateHealthInsuranceDate.TabIndex = 75;
-            this.DateHealthInsuranceDate.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateHealthInsuranceDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
             // 
             // label61
             // 
@@ -3418,28 +3225,28 @@
             // 
             // groupBox11
             // 
+            this.groupBox11.Controls.Add(this.DateFamilyBirthDate6);
+            this.groupBox11.Controls.Add(this.DateFamilyBirthDate5);
+            this.groupBox11.Controls.Add(this.DateFamilyBirthDate4);
+            this.groupBox11.Controls.Add(this.DateFamilyBirthDate3);
+            this.groupBox11.Controls.Add(this.DateFamilyBirthDate2);
+            this.groupBox11.Controls.Add(this.DateFamilyBirthDate1);
             this.groupBox11.Controls.Add(this.TextBoxUrgentTelephoneMethod);
             this.groupBox11.Controls.Add(this.TextBoxUrgentTelephoneNumber);
             this.groupBox11.Controls.Add(this.label57);
             this.groupBox11.Controls.Add(this.ComboBoxFamilyRelationship6);
-            this.groupBox11.Controls.Add(this.DateFamilyBirthDate6);
             this.groupBox11.Controls.Add(this.TextBoxFamilyName6);
             this.groupBox11.Controls.Add(this.ComboBoxFamilyRelationship5);
-            this.groupBox11.Controls.Add(this.DateFamilyBirthDate5);
             this.groupBox11.Controls.Add(this.TextBoxFamilyName5);
             this.groupBox11.Controls.Add(this.ComboBoxFamilyRelationship4);
-            this.groupBox11.Controls.Add(this.DateFamilyBirthDate4);
             this.groupBox11.Controls.Add(this.TextBoxFamilyName4);
             this.groupBox11.Controls.Add(this.ComboBoxFamilyRelationship3);
-            this.groupBox11.Controls.Add(this.DateFamilyBirthDate3);
             this.groupBox11.Controls.Add(this.TextBoxFamilyName3);
             this.groupBox11.Controls.Add(this.ComboBoxFamilyRelationship2);
-            this.groupBox11.Controls.Add(this.DateFamilyBirthDate2);
             this.groupBox11.Controls.Add(this.TextBoxFamilyName2);
             this.groupBox11.Controls.Add(this.label56);
             this.groupBox11.Controls.Add(this.label55);
             this.groupBox11.Controls.Add(this.ComboBoxFamilyRelationship1);
-            this.groupBox11.Controls.Add(this.DateFamilyBirthDate1);
             this.groupBox11.Controls.Add(this.label54);
             this.groupBox11.Controls.Add(this.label48);
             this.groupBox11.Controls.Add(this.label49);
@@ -3454,6 +3261,48 @@
             this.groupBox11.TabIndex = 1;
             this.groupBox11.TabStop = false;
             this.groupBox11.Text = "家族状況";
+            // 
+            // DateFamilyBirthDate6
+            // 
+            this.DateFamilyBirthDate6.Location = new System.Drawing.Point(312, 188);
+            this.DateFamilyBirthDate6.Name = "DateFamilyBirthDate6";
+            this.DateFamilyBirthDate6.Size = new System.Drawing.Size(183, 23);
+            this.DateFamilyBirthDate6.TabIndex = 115;
+            // 
+            // DateFamilyBirthDate5
+            // 
+            this.DateFamilyBirthDate5.Location = new System.Drawing.Point(312, 160);
+            this.DateFamilyBirthDate5.Name = "DateFamilyBirthDate5";
+            this.DateFamilyBirthDate5.Size = new System.Drawing.Size(183, 23);
+            this.DateFamilyBirthDate5.TabIndex = 114;
+            // 
+            // DateFamilyBirthDate4
+            // 
+            this.DateFamilyBirthDate4.Location = new System.Drawing.Point(312, 132);
+            this.DateFamilyBirthDate4.Name = "DateFamilyBirthDate4";
+            this.DateFamilyBirthDate4.Size = new System.Drawing.Size(183, 23);
+            this.DateFamilyBirthDate4.TabIndex = 113;
+            // 
+            // DateFamilyBirthDate3
+            // 
+            this.DateFamilyBirthDate3.Location = new System.Drawing.Point(312, 104);
+            this.DateFamilyBirthDate3.Name = "DateFamilyBirthDate3";
+            this.DateFamilyBirthDate3.Size = new System.Drawing.Size(183, 23);
+            this.DateFamilyBirthDate3.TabIndex = 112;
+            // 
+            // DateFamilyBirthDate2
+            // 
+            this.DateFamilyBirthDate2.Location = new System.Drawing.Point(312, 76);
+            this.DateFamilyBirthDate2.Name = "DateFamilyBirthDate2";
+            this.DateFamilyBirthDate2.Size = new System.Drawing.Size(183, 23);
+            this.DateFamilyBirthDate2.TabIndex = 111;
+            // 
+            // DateFamilyBirthDate1
+            // 
+            this.DateFamilyBirthDate1.Location = new System.Drawing.Point(312, 48);
+            this.DateFamilyBirthDate1.Name = "DateFamilyBirthDate1";
+            this.DateFamilyBirthDate1.Size = new System.Drawing.Size(183, 23);
+            this.DateFamilyBirthDate1.TabIndex = 110;
             // 
             // TextBoxUrgentTelephoneMethod
             // 
@@ -3492,21 +3341,10 @@
             "次男",
             "長女",
             "次女"});
-            this.ComboBoxFamilyRelationship6.Location = new System.Drawing.Point(464, 188);
+            this.ComboBoxFamilyRelationship6.Location = new System.Drawing.Point(504, 188);
             this.ComboBoxFamilyRelationship6.Name = "ComboBoxFamilyRelationship6";
             this.ComboBoxFamilyRelationship6.Size = new System.Drawing.Size(56, 23);
             this.ComboBoxFamilyRelationship6.TabIndex = 93;
-            // 
-            // DateFamilyBirthDate6
-            // 
-            this.DateFamilyBirthDate6.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateFamilyBirthDate6.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateFamilyBirthDate6.Location = new System.Drawing.Point(312, 188);
-            this.DateFamilyBirthDate6.Name = "DateFamilyBirthDate6";
-            this.DateFamilyBirthDate6.Size = new System.Drawing.Size(144, 23);
-            this.DateFamilyBirthDate6.TabIndex = 92;
-            this.DateFamilyBirthDate6.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateFamilyBirthDate6.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
             // 
             // TextBoxFamilyName6
             // 
@@ -3528,21 +3366,10 @@
             "次男",
             "長女",
             "次女"});
-            this.ComboBoxFamilyRelationship5.Location = new System.Drawing.Point(464, 160);
+            this.ComboBoxFamilyRelationship5.Location = new System.Drawing.Point(504, 160);
             this.ComboBoxFamilyRelationship5.Name = "ComboBoxFamilyRelationship5";
             this.ComboBoxFamilyRelationship5.Size = new System.Drawing.Size(56, 23);
             this.ComboBoxFamilyRelationship5.TabIndex = 90;
-            // 
-            // DateFamilyBirthDate5
-            // 
-            this.DateFamilyBirthDate5.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateFamilyBirthDate5.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateFamilyBirthDate5.Location = new System.Drawing.Point(312, 160);
-            this.DateFamilyBirthDate5.Name = "DateFamilyBirthDate5";
-            this.DateFamilyBirthDate5.Size = new System.Drawing.Size(144, 23);
-            this.DateFamilyBirthDate5.TabIndex = 89;
-            this.DateFamilyBirthDate5.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateFamilyBirthDate5.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
             // 
             // TextBoxFamilyName5
             // 
@@ -3564,21 +3391,10 @@
             "次男",
             "長女",
             "次女"});
-            this.ComboBoxFamilyRelationship4.Location = new System.Drawing.Point(464, 132);
+            this.ComboBoxFamilyRelationship4.Location = new System.Drawing.Point(504, 132);
             this.ComboBoxFamilyRelationship4.Name = "ComboBoxFamilyRelationship4";
             this.ComboBoxFamilyRelationship4.Size = new System.Drawing.Size(56, 23);
             this.ComboBoxFamilyRelationship4.TabIndex = 87;
-            // 
-            // DateFamilyBirthDate4
-            // 
-            this.DateFamilyBirthDate4.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateFamilyBirthDate4.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateFamilyBirthDate4.Location = new System.Drawing.Point(312, 132);
-            this.DateFamilyBirthDate4.Name = "DateFamilyBirthDate4";
-            this.DateFamilyBirthDate4.Size = new System.Drawing.Size(144, 23);
-            this.DateFamilyBirthDate4.TabIndex = 86;
-            this.DateFamilyBirthDate4.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateFamilyBirthDate4.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
             // 
             // TextBoxFamilyName4
             // 
@@ -3600,21 +3416,10 @@
             "次男",
             "長女",
             "次女"});
-            this.ComboBoxFamilyRelationship3.Location = new System.Drawing.Point(464, 104);
+            this.ComboBoxFamilyRelationship3.Location = new System.Drawing.Point(504, 104);
             this.ComboBoxFamilyRelationship3.Name = "ComboBoxFamilyRelationship3";
             this.ComboBoxFamilyRelationship3.Size = new System.Drawing.Size(56, 23);
             this.ComboBoxFamilyRelationship3.TabIndex = 84;
-            // 
-            // DateFamilyBirthDate3
-            // 
-            this.DateFamilyBirthDate3.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateFamilyBirthDate3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateFamilyBirthDate3.Location = new System.Drawing.Point(312, 104);
-            this.DateFamilyBirthDate3.Name = "DateFamilyBirthDate3";
-            this.DateFamilyBirthDate3.Size = new System.Drawing.Size(144, 23);
-            this.DateFamilyBirthDate3.TabIndex = 83;
-            this.DateFamilyBirthDate3.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateFamilyBirthDate3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
             // 
             // TextBoxFamilyName3
             // 
@@ -3636,21 +3441,10 @@
             "次男",
             "長女",
             "次女"});
-            this.ComboBoxFamilyRelationship2.Location = new System.Drawing.Point(464, 76);
+            this.ComboBoxFamilyRelationship2.Location = new System.Drawing.Point(504, 76);
             this.ComboBoxFamilyRelationship2.Name = "ComboBoxFamilyRelationship2";
             this.ComboBoxFamilyRelationship2.Size = new System.Drawing.Size(56, 23);
             this.ComboBoxFamilyRelationship2.TabIndex = 81;
-            // 
-            // DateFamilyBirthDate2
-            // 
-            this.DateFamilyBirthDate2.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateFamilyBirthDate2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateFamilyBirthDate2.Location = new System.Drawing.Point(312, 76);
-            this.DateFamilyBirthDate2.Name = "DateFamilyBirthDate2";
-            this.DateFamilyBirthDate2.Size = new System.Drawing.Size(144, 23);
-            this.DateFamilyBirthDate2.TabIndex = 80;
-            this.DateFamilyBirthDate2.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateFamilyBirthDate2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
             // 
             // TextBoxFamilyName2
             // 
@@ -3663,7 +3457,7 @@
             // label56
             // 
             this.label56.AutoSize = true;
-            this.label56.Location = new System.Drawing.Point(468, 28);
+            this.label56.Location = new System.Drawing.Point(508, 28);
             this.label56.Name = "label56";
             this.label56.Size = new System.Drawing.Size(31, 15);
             this.label56.TabIndex = 78;
@@ -3690,22 +3484,11 @@
             "次男",
             "長女",
             "次女"});
-            this.ComboBoxFamilyRelationship1.Location = new System.Drawing.Point(464, 48);
+            this.ComboBoxFamilyRelationship1.Location = new System.Drawing.Point(504, 48);
             this.ComboBoxFamilyRelationship1.Name = "ComboBoxFamilyRelationship1";
             this.ComboBoxFamilyRelationship1.Size = new System.Drawing.Size(56, 23);
             this.ComboBoxFamilyRelationship1.TabIndex = 76;
             this.ComboBoxFamilyRelationship1.Text = "父親";
-            // 
-            // DateFamilyBirthDate1
-            // 
-            this.DateFamilyBirthDate1.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateFamilyBirthDate1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateFamilyBirthDate1.Location = new System.Drawing.Point(312, 48);
-            this.DateFamilyBirthDate1.Name = "DateFamilyBirthDate1";
-            this.DateFamilyBirthDate1.Size = new System.Drawing.Size(144, 23);
-            this.DateFamilyBirthDate1.TabIndex = 75;
-            this.DateFamilyBirthDate1.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateFamilyBirthDate1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
             // 
             // label54
             // 
@@ -3856,10 +3639,8 @@
         private ComboBox ComboBoxBelongs;
         private GroupBox groupBox4;
         private Label label9;
-        private DateTimePicker DateEmploymentDate;
         private ComboBox ComboBoxGender;
         private Label label8;
-        private DateTimePicker DateBirthDate;
         private Label label7;
         private TextBox TextBoxDisplayName;
         private Label label6;
@@ -3901,28 +3682,12 @@
         private TextBox TextBoxHistoryNote2;
         private Label label29;
         private TextBox TextBoxHistoryNote1;
-        private DateTimePicker DateHistoryDate6;
         private Label label28;
-        private DateTimePicker DateHistoryDate5;
-        private DateTimePicker DateHistoryDate4;
-        private DateTimePicker DateHistoryDate3;
-        private DateTimePicker DateHistoryDate2;
-        private DateTimePicker DateHistoryDate1;
         private GroupBox groupBox6;
         private GroupBox groupBox8;
         private GroupBox groupBox5;
         private Label label27;
         private Label label26;
-        private DateTimePicker DateLicenseTypeExpirationDate5;
-        private DateTimePicker DateLicenseTypeDate5;
-        private DateTimePicker DateLicenseTypeExpirationDate4;
-        private DateTimePicker DateLicenseTypeDate4;
-        private DateTimePicker DateLicenseTypeExpirationDate3;
-        private DateTimePicker DateLicenseTypeDate3;
-        private DateTimePicker DateLicenseTypeExpirationDate2;
-        private DateTimePicker DateLicenseTypeDate2;
-        private DateTimePicker DateLicenseTypeExpirationDate1;
-        private DateTimePicker DateLicenseTypeDate1;
         private Label label25;
         private Label label24;
         private TextBox TextBoxLicenseType5;
@@ -3939,9 +3704,7 @@
         private Label label18;
         private TextBox TextBoxNotSelectionReason;
         private Label label17;
-        private DateTimePicker DateNotSelectionDate;
         private Label label16;
-        private DateTimePicker DateSelectionDate;
         private Label label15;
         private Label label40;
         private ComboBox ComboBoxExperienceKind4;
@@ -3969,11 +3732,9 @@
         private TextBox TextBoxExperienceLoad1;
         private TextBox TextBoxDeathNote;
         private Label label47;
-        private DateTimePicker DateDeathDate;
         private Label label46;
         private TextBox TextBoxRetirementNote;
         private Label label45;
-        private DateTimePicker DateRetirementDate;
         private CheckBox CheckBoxRetirementFlag;
         private Label label44;
         private GroupBox groupBox17;
@@ -3991,13 +3752,7 @@
         private TextBox TextBoxEducateName2;
         private Label label88;
         private TextBox TextBoxEducateName1;
-        private DateTimePicker DateEducateDate6;
         private Label label89;
-        private DateTimePicker DateEducateDate5;
-        private DateTimePicker DateEducateDate4;
-        private DateTimePicker DateEducateDate3;
-        private DateTimePicker DateEducateDate2;
-        private DateTimePicker DateEducateDate1;
         private GroupBox groupBox16;
         private TextBox TextBoxCarViolatePlace6;
         private TextBox TextBoxCarViolatePlace5;
@@ -4019,13 +3774,7 @@
         private TextBox TextBoxCarViolateContent2;
         private Label label79;
         private TextBox TextBoxCarViolateContent1;
-        private DateTimePicker DateCarViolateDate6;
         private Label label80;
-        private DateTimePicker DateCarViolateDate5;
-        private DateTimePicker DateCarViolateDate4;
-        private DateTimePicker DateCarViolateDate3;
-        private DateTimePicker DateCarViolateDate2;
-        private DateTimePicker DateCarViolateDate1;
         private GroupBox groupBox15;
         private Label label72;
         private GroupBox groupBox14;
@@ -4036,11 +3785,7 @@
         private TextBox TextBoxMedicalExaminationNote4;
         private TextBox TextBoxMedicalExaminationNote3;
         private TextBox TextBoxMedicalExaminationNote2;
-        private DateTimePicker DateMedicalExaminationDate4;
-        private DateTimePicker DateMedicalExaminationDate3;
-        private DateTimePicker DateMedicalExaminationDate2;
         private Label label58;
-        private DateTimePicker DateMedicalExaminationDate1;
         private Label label62;
         private Label label63;
         private Label label68;
@@ -4051,11 +3796,8 @@
         private TextBox TextBoxWorkerAccidentInsuranceNumber;
         private TextBox TextBoxEmploymentInsuranceNumber;
         private TextBox TextBoxWelfarePensionNumber;
-        private DateTimePicker DateWorkerAccidentInsuranceDate;
         private TextBox TextBoxWorkerAccidentInsuranceNote;
-        private DateTimePicker DateEmploymentInsuranceDate;
         private TextBox TextBoxEmploymentInsuranceNote;
-        private DateTimePicker DateWelfarePensionDate;
         private TextBox TextBoxWelfarePensionNote;
         private Label label59;
         private Label label60;
@@ -4070,24 +3812,18 @@
         private TextBox TextBoxUrgentTelephoneNumber;
         private Label label57;
         private ComboBox ComboBoxFamilyRelationship6;
-        private DateTimePicker DateFamilyBirthDate6;
         private TextBox TextBoxFamilyName6;
         private ComboBox ComboBoxFamilyRelationship5;
-        private DateTimePicker DateFamilyBirthDate5;
         private TextBox TextBoxFamilyName5;
         private ComboBox ComboBoxFamilyRelationship4;
-        private DateTimePicker DateFamilyBirthDate4;
         private TextBox TextBoxFamilyName4;
         private ComboBox ComboBoxFamilyRelationship3;
-        private DateTimePicker DateFamilyBirthDate3;
         private TextBox TextBoxFamilyName3;
         private ComboBox ComboBoxFamilyRelationship2;
-        private DateTimePicker DateFamilyBirthDate2;
         private TextBox TextBoxFamilyName2;
         private Label label56;
         private Label label55;
         private ComboBox ComboBoxFamilyRelationship1;
-        private DateTimePicker DateFamilyBirthDate1;
         private Label label54;
         private Label label48;
         private Label label49;
@@ -4098,9 +3834,6 @@
         private TextBox TextBoxFamilyName1;
         private GroupBox groupBox18;
         private Label label102;
-        private DateTimePicker DateProperDate3;
-        private DateTimePicker DateProperDate2;
-        private DateTimePicker DateProperDate1;
         private TextBox TextBoxProperNote3;
         private TextBox TextBoxProperNote2;
         private Label label97;
@@ -4128,14 +3861,9 @@
         private Label label107;
         private TextBox TextBoxPunishmentNote1;
         private Label label108;
-        private DateTimePicker DatePunishmentDate4;
-        private DateTimePicker DatePunishmentDate3;
-        private DateTimePicker DatePunishmentDate2;
-        private DateTimePicker DatePunishmentDate1;
         private TextBox TextBoxRemarks;
         private ComboBox ComboBoxLicenseCondition;
         private PictureBox PictureBoxPicture;
-        private DateTimePicker DateHealthInsuranceDate;
         private ContextMenuStrip ContextMenuStripTextBoxCode;
         private ToolStripMenuItem ToolStripMenuItemNewStaffCode1;
         private ToolStripMenuItem ToolStripMenuItemNewStaffCode2;
@@ -4156,5 +3884,60 @@
         private RadioButton RadioButtonPart1;
         private RadioButton RadioButtonStaff;
         private RadioButton RadioButtonNone1;
+        private ControlEx.UcDateTimeJp DateBirthDate;
+        private ControlEx.UcDateTimeJp DateEmploymentDate;
+        private ControlEx.UcDateTimeJp DateSelectionDate;
+        private ControlEx.UcDateTimeJp DateNotSelectionDate;
+        private ControlEx.UcDateTimeJp DateLicenseTypeExpirationDate5;
+        private ControlEx.UcDateTimeJp DateLicenseTypeExpirationDate4;
+        private ControlEx.UcDateTimeJp DateLicenseTypeExpirationDate3;
+        private ControlEx.UcDateTimeJp DateLicenseTypeExpirationDate2;
+        private ControlEx.UcDateTimeJp DateLicenseTypeExpirationDate1;
+        private ControlEx.UcDateTimeJp DateLicenseTypeDate5;
+        private ControlEx.UcDateTimeJp DateLicenseTypeDate4;
+        private ControlEx.UcDateTimeJp DateLicenseTypeDate3;
+        private ControlEx.UcDateTimeJp DateLicenseTypeDate2;
+        private ControlEx.UcDateTimeJp DateLicenseTypeDate1;
+        private ControlEx.UcDateTimeJp DateHistoryDate6;
+        private ControlEx.UcDateTimeJp DateHistoryDate5;
+        private ControlEx.UcDateTimeJp DateHistoryDate4;
+        private ControlEx.UcDateTimeJp DateHistoryDate3;
+        private ControlEx.UcDateTimeJp DateHistoryDate2;
+        private ControlEx.UcDateTimeJp DateHistoryDate1;
+        private ControlEx.UcDateTimeJp DateDeathDate;
+        private ControlEx.UcDateTimeJp DateRetirementDate;
+        private ControlEx.UcDateTimeJp DateHealthInsuranceDate;
+        private ControlEx.UcDateTimeJp DateFamilyBirthDate6;
+        private ControlEx.UcDateTimeJp DateFamilyBirthDate5;
+        private ControlEx.UcDateTimeJp DateFamilyBirthDate4;
+        private ControlEx.UcDateTimeJp DateFamilyBirthDate3;
+        private ControlEx.UcDateTimeJp DateFamilyBirthDate2;
+        private ControlEx.UcDateTimeJp DateFamilyBirthDate1;
+        private ControlEx.UcDateTimeJp DateWorkerAccidentInsuranceDate;
+        private ControlEx.UcDateTimeJp DateEmploymentInsuranceDate;
+        private ControlEx.UcDateTimeJp DateWelfarePensionDate;
+        private ControlEx.UcDateTimeJp DateMedicalExaminationDate4;
+        private ControlEx.UcDateTimeJp DateMedicalExaminationDate3;
+        private ControlEx.UcDateTimeJp DateMedicalExaminationDate2;
+        private ControlEx.UcDateTimeJp DateMedicalExaminationDate1;
+        private ControlEx.UcDateTimeJp DateCarViolateDate6;
+        private ControlEx.UcDateTimeJp DateCarViolateDate5;
+        private ControlEx.UcDateTimeJp DateCarViolateDate4;
+        private ControlEx.UcDateTimeJp DateCarViolateDate3;
+        private ControlEx.UcDateTimeJp DateCarViolateDate2;
+        private ControlEx.UcDateTimeJp DateCarViolateDate1;
+        private ControlEx.UcDateTimeJp DateProperDate3;
+        private ControlEx.UcDateTimeJp DateProperDate2;
+        private ControlEx.UcDateTimeJp DateProperDate1;
+        private ControlEx.UcDateTimeJp DateEducateDate6;
+        private ControlEx.UcDateTimeJp DateEducateDate5;
+        private ControlEx.UcDateTimeJp DateEducateDate4;
+        private ControlEx.UcDateTimeJp DateEducateDate3;
+        private ControlEx.UcDateTimeJp DateEducateDate2;
+        private ControlEx.UcDateTimeJp DateEducateDate1;
+        private ControlEx.UcDateTimeJp DatePunishmentDate4;
+        private ControlEx.UcDateTimeJp DatePunishmentDate3;
+        private ControlEx.UcDateTimeJp DatePunishmentDate2;
+        private ControlEx.UcDateTimeJp DatePunishmentDate1;
     }
 }

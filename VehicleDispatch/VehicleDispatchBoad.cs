@@ -1210,6 +1210,7 @@ namespace VehicleDispatch {
                 vehicleDispatchDetailVo.Five_lap = vehicleDispatchDetail.Five_lap;
                 vehicleDispatchDetailVo.Move_flag = vehicleDispatchDetail.Move_flag;
                 vehicleDispatchDetailVo.Day_of_week = vehicleDispatchDetail.Day_of_week;
+                vehicleDispatchDetailVo.Stand_by_flag = false;
                 vehicleDispatchDetailVo.Set_code = vehicleDispatchDetail.Set_code;
                 vehicleDispatchDetailVo.Set_note = vehicleDispatchDetail.Set_note; // vehicle_dispatch_body.note
                 vehicleDispatchDetailVo.Car_code = vehicleDispatchDetail.Car_code;

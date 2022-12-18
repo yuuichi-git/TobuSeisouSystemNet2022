@@ -43,6 +43,7 @@
             this.TextBox1.TabIndex = 1;
             this.TextBox1.Text = "令和04年12月31日(日曜日)";
             this.TextBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.TextBox1.TextChanged += new System.EventHandler(this.TextBox1_TextChanged);
             // 
             // UcDateTimeJp
             // 
