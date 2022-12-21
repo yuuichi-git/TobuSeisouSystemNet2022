@@ -44,7 +44,8 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(332, 144);
             this.label1.TabIndex = 1;
-            this.label1.Text = "配車表転記作業での注意事項！\r\n\r\n①深井翔/大橋松生等の特殊な扱いの従事者の記入方法を確認すること。";
+            this.label1.Text = "配車表転記作業での注意事項！\r\n\r\n①深井翔/大橋松生等の特殊な扱いの従事者の記入方法を確認すること。\r\n②千代田配車等に３人目を付けた場合、配車表の枠が対応して" +
+    "いないので、別枠に記載すること。";
             // 
             // VehicleDispatchSimple
             // 

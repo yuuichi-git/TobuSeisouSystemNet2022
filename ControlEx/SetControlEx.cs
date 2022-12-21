@@ -12,7 +12,7 @@ namespace ControlEx {
          */
         private Rectangle rectangleFill = new Rectangle(2, 2, 64, 62);
         private readonly Font _drawFont = new Font("Yu Gothic UI", 12, FontStyle.Italic, GraphicsUnit.Pixel);
-        private readonly SolidBrush _drawBrushFont = new SolidBrush(Color.Gray);
+        private readonly SolidBrush _drawBrushFont = new SolidBrush(Color.LightGray);
         /*
          * イベントを親へ渡す処理
          */
@@ -25,6 +25,10 @@ namespace ControlEx {
         public event MouseEventHandler Event_CarLabelEx_MouseMove = delegate { };
         public event EventHandler Event_StaffLabelEx_Click = delegate { };
         public event MouseEventHandler Event_StaffLabelEx_MouseMove = delegate { };
+        /*
+         * 透かし文字用
+         */
+        private StringFormat stringFormat;
 
         /// <summary>
         /// コンストラクタ
@@ -62,7 +66,7 @@ namespace ControlEx {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void SetControlEx_CellPaint(object? sender, TableLayoutCellPaintEventArgs e) {
+        private void SetControlEx_CellPaint(object sender, TableLayoutCellPaintEventArgs e) {
             if(SetFlag) { // 表示
                 var rectangle = e.CellBounds;
                 rectangle.Inflate(-1, -1); // 枠のサイズを小さくする
@@ -123,10 +127,37 @@ namespace ControlEx {
                     case 84:
                     case 85:
                     case 86:
-                        StringFormat stringFormat = new StringFormat();
+                        stringFormat = new StringFormat();
                         stringFormat.LineAlignment = StringAlignment.Center;
                         stringFormat.Alignment = StringAlignment.Center;
-                        e.Graphics.DrawString("大型用", _drawFont, _drawBrushFont, rectangleFill, stringFormat);
+                        e.Graphics.DrawString("大型", _drawFont, _drawBrushFont, rectangleFill, stringFormat);
+                        break;
+                    case 89:
+                    case 90:
+                    case 91:
+                    case 92:
+                    case 93:
+                    case 94:
+                    case 95:
+                    case 96:
+                    case 97:
+                    case 98:
+                    case 99:
+                    case 100:
+                    case 114:
+                    case 115:
+                    case 116:
+                    case 117:
+                    case 118:
+                    case 119:
+                    case 120:
+                    case 121:
+                    case 122:
+                    case 123:
+                        stringFormat = new StringFormat();
+                        stringFormat.LineAlignment = StringAlignment.Center;
+                        stringFormat.Alignment = StringAlignment.Center;
+                        e.Graphics.DrawString("臨時", _drawFont, _drawBrushFont, rectangleFill, stringFormat);
                         break;
                 }
             }
@@ -199,39 +230,39 @@ namespace ControlEx {
         /*
          * Event
          */
-        private void SetControlEx_Click(object? sender, EventArgs e) {
+        private void SetControlEx_Click(object sender, EventArgs e) {
             if(Event_SetControlEx_Click != null)
                 Event_SetControlEx_Click(sender, e);
         }
-        private void SetControlEx_DragDrop(object? sender, DragEventArgs e) {
+        private void SetControlEx_DragDrop(object sender, DragEventArgs e) {
             if(Event_SetControlEx_DragDrop != null)
                 Event_SetControlEx_DragDrop(sender, e);
         }
-        private void SetControlEx_DragEnter(object? sender, DragEventArgs e) {
+        private void SetControlEx_DragEnter(object sender, DragEventArgs e) {
             if(Event_SetControlEx_DragEnter != null)
                 Event_SetControlEx_DragEnter(sender, e);
         }
-        private void SetLabelEx_Click(object? sender, EventArgs e) {
+        private void SetLabelEx_Click(object sender, EventArgs e) {
             if(Event_SetLabelEx_Click != null)
                 Event_SetLabelEx_Click(sender, e);
         }
-        private void SetLabelEx_MouseMove(object? sender, MouseEventArgs e) {
+        private void SetLabelEx_MouseMove(object sender, MouseEventArgs e) {
             if(Event_SetLabelEx_MouseMove != null)
                 Event_SetLabelEx_MouseMove(sender, e);
         }
-        private void CarLabelEx_Click(object? sender, EventArgs e) {
+        private void CarLabelEx_Click(object sender, EventArgs e) {
             if(Event_CarLabelEx_Click != null)
                 Event_CarLabelEx_Click(sender, e);
         }
-        private void CarLabelEx_MouseMove(object? sender, MouseEventArgs e) {
+        private void CarLabelEx_MouseMove(object sender, MouseEventArgs e) {
             if(Event_CarLabelEx_MouseMove != null)
                 Event_CarLabelEx_MouseMove(sender, e);
         }
-        private void StaffLabelEx_Click(object? sender, EventArgs e) {
+        private void StaffLabelEx_Click(object sender, EventArgs e) {
             if(Event_StaffLabelEx_Click != null)
                 Event_StaffLabelEx_Click(sender, e);
         }
-        private void StaffLabelEx_MouseMove(object? sender, MouseEventArgs e) {
+        private void StaffLabelEx_MouseMove(object sender, MouseEventArgs e) {
             if(Event_StaffLabelEx_MouseMove != null)
                 Event_StaffLabelEx_MouseMove(sender, e);
         }

@@ -116,19 +116,19 @@ namespace VehicleDispatchConvert {
                                                                                             { 1312118, "AA88" }, // 浄化槽１
                                                                                             { 1312123, "AA90" }, // 浄化槽２
 
-                                                                                            { 1312115, "AA70" }, // ルート１(自家用)
-                                                                                            { 1312124, "AA71" }, // ルート２(自家用)
                                                                                             { 1312115, "AA75" }, // ルート１(事業用)
                                                                                             { 1312124, "AA76" }, // ルート２(事業用)
+                                                                                            { 1312129, "AA70" }, // ルート１(自家用)
+                                                                                            { 1312130, "AA71" }, // ルート２(自家用)
 
-                                                                                            { 1312124, "AA84" }  // 廃家電(事業用)
+                                                                                            { 1312117, "AA84" }  // 廃家電(事業用)
                                                                                                               };
 
         private Dictionary<int, string> dictionaryBelongs = new Dictionary<int, string> { { 10, "" }, { 11, "" }, { 12, "バ" }, { 20, "新" }, { 21, "自" } };
         private Dictionary<int, string> dictionaryOccupation = new Dictionary<int, string> { { 10, "" }, { 11, "作" }, { 99, "" } };
 
-        JapaneseCalendar japaneseCalendar;
-        CultureInfo cultureInfo;
+        private JapaneseCalendar japaneseCalendar;
+        private CultureInfo cultureInfo;
 
         /// <summary>
         /// コンストラクター
@@ -511,8 +511,8 @@ namespace VehicleDispatchConvert {
                 case 1312112: // 整備三郷
                 case 1312118: // 浄化槽１
                 case 1312123: // 浄化槽２
-                case 1312115: // ルート１
-                case 1312124: // ルート２
+                case 1312115: // ルート１(事業用)
+                case 1312124: // ルート２(事業用)
                     return "";
                 default:
                     switch(vehicleDispatchDetailVo.Cell_number) {
