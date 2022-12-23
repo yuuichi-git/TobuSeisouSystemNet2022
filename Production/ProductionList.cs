@@ -44,9 +44,10 @@ namespace Production {
         /// </summary>
         private string _flagName = "";
         /// <summary>
-        /// コンストラクタ
+        /// コンストラクター
         /// </summary>
         /// <param name="connectionVo"></param>
+        /// <param name="flagName"></param>
         public ProductionList(ConnectionVo connectionVo, string flagName) {
             /*
              * Formを初期化する
@@ -127,7 +128,7 @@ namespace Production {
                 MessageBox.Show(MessageText.Message201, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            this.DataUpdate();
+            DataUpdate();
         }
 
         /// <summary>

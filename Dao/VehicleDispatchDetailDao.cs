@@ -52,7 +52,7 @@ namespace Dao {
                                             "vehicle_dispatch_body_office.note " +
                                      "FROM vehicle_dispatch_head " +
                                      "LEFT OUTER JOIN vehicle_dispatch_body_office ON vehicle_dispatch_head.cell_number = vehicle_dispatch_body_office.cell_number " +
-                                                                          "AND vehicle_dispatch_body_office.day_of_week = '" + dayOfWeek + "'";
+                                                 "AND vehicle_dispatch_body_office.day_of_week = '" + dayOfWeek + "'";
             using(var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while(sqlDataReader.Read() == true) {
                     var vehicleDispatchDetailVo = new VehicleDispatchDetailVo();

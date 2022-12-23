@@ -104,6 +104,9 @@
             this.ToolStripMenuItemSetGarageAdachi = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemSetGarageMisato = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemSetDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemStandByFlag = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemStandByTrue = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemStandByFalse = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemFax = new System.Windows.Forms.ToolStripMenuItem();
             this.ContextMenuStripCarLabel = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ToolStripMenuItemCarDetail = new System.Windows.Forms.ToolStripMenuItem();
@@ -122,9 +125,6 @@
             this.ToolStripMenuItemTelephoneMarkTrue = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemTelephoneMarkFalse = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.ToolStripMenuItemStandByFlag = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemStandByTrue = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemStandByFalse = new System.Windows.Forms.ToolStripMenuItem();
             this.TableLayoutPanelBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -1126,7 +1126,7 @@
             this.ToolStripMenuItemStandByFlag,
             this.ToolStripMenuItemFax});
             this.ContextMenuStripSetLabel.Name = "ContextMenuStripSetLabel";
-            this.ContextMenuStripSetLabel.Size = new System.Drawing.Size(208, 142);
+            this.ContextMenuStripSetLabel.Size = new System.Drawing.Size(208, 120);
             this.ContextMenuStripSetLabel.Opened += new System.EventHandler(this.ContextMenuStrip_Opened);
             // 
             // ToolStripMenuItemSetDetail
@@ -1153,14 +1153,14 @@
             // ToolStripMenuItemSetGarageAdachi
             // 
             this.ToolStripMenuItemSetGarageAdachi.Name = "ToolStripMenuItemSetGarageAdachi";
-            this.ToolStripMenuItemSetGarageAdachi.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItemSetGarageAdachi.Size = new System.Drawing.Size(139, 22);
             this.ToolStripMenuItemSetGarageAdachi.Text = "本社より出庫";
             this.ToolStripMenuItemSetGarageAdachi.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // ToolStripMenuItemSetGarageMisato
             // 
             this.ToolStripMenuItemSetGarageMisato.Name = "ToolStripMenuItemSetGarageMisato";
-            this.ToolStripMenuItemSetGarageMisato.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItemSetGarageMisato.Size = new System.Drawing.Size(139, 22);
             this.ToolStripMenuItemSetGarageMisato.Text = "三郷より出庫";
             this.ToolStripMenuItemSetGarageMisato.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
@@ -1170,6 +1170,29 @@
             this.ToolStripMenuItemSetDelete.Size = new System.Drawing.Size(207, 22);
             this.ToolStripMenuItemSetDelete.Text = "配車先を削除する";
             this.ToolStripMenuItemSetDelete.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            // 
+            // ToolStripMenuItemStandByFlag
+            // 
+            this.ToolStripMenuItemStandByFlag.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemStandByTrue,
+            this.ToolStripMenuItemStandByFalse});
+            this.ToolStripMenuItemStandByFlag.Name = "ToolStripMenuItemStandByFlag";
+            this.ToolStripMenuItemStandByFlag.Size = new System.Drawing.Size(207, 22);
+            this.ToolStripMenuItemStandByFlag.Text = "待機を変更する";
+            // 
+            // ToolStripMenuItemStandByTrue
+            // 
+            this.ToolStripMenuItemStandByTrue.Name = "ToolStripMenuItemStandByTrue";
+            this.ToolStripMenuItemStandByTrue.Size = new System.Drawing.Size(117, 22);
+            this.ToolStripMenuItemStandByTrue.Text = "設定する";
+            this.ToolStripMenuItemStandByTrue.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            // 
+            // ToolStripMenuItemStandByFalse
+            // 
+            this.ToolStripMenuItemStandByFalse.Name = "ToolStripMenuItemStandByFalse";
+            this.ToolStripMenuItemStandByFalse.Size = new System.Drawing.Size(117, 22);
+            this.ToolStripMenuItemStandByFalse.Text = "解除する";
+            this.ToolStripMenuItemStandByFalse.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // ToolStripMenuItemFax
             // 
@@ -1302,34 +1325,11 @@
             this.ToolTip1.InitialDelay = 500;
             this.ToolTip1.ReshowDelay = 0;
             // 
-            // ToolStripMenuItemStandByFlag
-            // 
-            this.ToolStripMenuItemStandByFlag.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemStandByTrue,
-            this.ToolStripMenuItemStandByFalse});
-            this.ToolStripMenuItemStandByFlag.Name = "ToolStripMenuItemStandByFlag";
-            this.ToolStripMenuItemStandByFlag.Size = new System.Drawing.Size(207, 22);
-            this.ToolStripMenuItemStandByFlag.Text = "待機を変更する";
-            // 
-            // ToolStripMenuItemStandByTrue
-            // 
-            this.ToolStripMenuItemStandByTrue.Name = "ToolStripMenuItemStandByTrue";
-            this.ToolStripMenuItemStandByTrue.Size = new System.Drawing.Size(180, 22);
-            this.ToolStripMenuItemStandByTrue.Text = "設定する";
-            this.ToolStripMenuItemStandByTrue.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
-            // 
-            // ToolStripMenuItemStandByFalse
-            // 
-            this.ToolStripMenuItemStandByFalse.Name = "ToolStripMenuItemStandByFalse";
-            this.ToolStripMenuItemStandByFalse.Size = new System.Drawing.Size(180, 22);
-            this.ToolStripMenuItemStandByFalse.Text = "解除する";
-            this.ToolStripMenuItemStandByFalse.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
-            // 
             // VehicleDispatchBoad
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
             this.Controls.Add(this.TableLayoutPanelBase);
             this.DoubleBuffered = true;

@@ -16,7 +16,7 @@ namespace VehicleDispatchConvert {
         private List<SetMasterVo> _listSetMasterVo;
         private List<CarMasterVo> _listCarMasterVo;
         private List<StaffMasterVo> _listStaffMasterVo;
-
+        private string[] _arrayTenkoName;
         private Dictionary<int, string> dictionaryWordCode = new Dictionary<int, string> { { 13101, "千代田区" },
                                                                                            { 13102, "中央区" },
                                                                                            { 13103, "港区" },
@@ -130,10 +130,18 @@ namespace VehicleDispatchConvert {
         private JapaneseCalendar japaneseCalendar;
         private CultureInfo cultureInfo;
 
+        /*
+         * 登録された行数(臨時　小プ)
+         * クラスが解放されるまで値を維持するのでここで宣言する
+         */
+        private int RINJI_SINDAI = 0; // 臨時　新大　カウント用
+        private int RINJI_KOPURE = 0; // 臨時　小プ　カウント用
+        private int RINJI_KEIDA = 0; // 臨時　軽ダ・軽小　カウント用
+
         /// <summary>
         /// コンストラクター
         /// </summary>
-        public ConvertXls(IWorkbook iWorkbook, ISheet iSheet, List<SetMasterVo> listSetMasterVo, List<CarMasterVo> listCarMasterVo, List<StaffMasterVo> listStaffMasterVo) {
+        public ConvertXls(IWorkbook iWorkbook, ISheet iSheet, List<SetMasterVo> listSetMasterVo, List<CarMasterVo> listCarMasterVo, List<StaffMasterVo> listStaffMasterVo, string[] arrayTenkoName) {
             _iWorkbook = iWorkbook;
             _iSheet = iSheet;
             /*
@@ -142,7 +150,7 @@ namespace VehicleDispatchConvert {
             _listSetMasterVo = listSetMasterVo;
             _listCarMasterVo = listCarMasterVo;
             _listStaffMasterVo = listStaffMasterVo;
-
+            _arrayTenkoName = arrayTenkoName;
             /*
              * 和暦の使用準備
              */
@@ -171,13 +179,11 @@ namespace VehicleDispatchConvert {
             IFont iFontDate = _iWorkbook.CreateFont();
             iFontDate.FontName = "ＭＳ Ｐ明朝";
             iFontDate.FontHeightInPoints = 18;
-
-            string dictionaryCellPointValue;
             /*
              * dictionaryCellPointにリストが無かったらA1形式を作成する
              * 配車先が固定出来ないもの（大G等）
              */
-            if(dictionaryCellPoint.TryGetValue(vehicleDispatchDetailVo.Set_code, out dictionaryCellPointValue)) {
+            if(dictionaryCellPoint.TryGetValue(vehicleDispatchDetailVo.Set_code, out string? dictionaryCellPointValue)) {
 
             } else {
                 /*
@@ -268,11 +274,50 @@ namespace VehicleDispatchConvert {
                             return;
                         }
                         break;
-                    default:
+                        //default:
+                        //    /*
+                        //     * リストに無ければ終了
+                        //     */
+                        //    return;
+                }
+
+                /*
+                 * 臨時　小プレ等コード：１
+                 * AA38から上詰めで表示する処理
+                 */
+                if(vehicleDispatchDetailVo.Set_code > 0 && vehicleDispatchDetailVo.Car_code > 0) {
+                    SetMasterVo setMasterVo = _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code);
+                    string disguiseKind = _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Disguise_kind_1;
+
+                    if(setMasterVo is not null && setMasterVo.Classification_code == 12) {
+                        switch(disguiseKind) {
+                            case "新大":
+                                dictionaryCellPointValue = string.Concat("AA", 55 + RINJI_SINDAI);
+                                RINJI_SINDAI++;
+                                break;
+                            case "小プ":
+                                dictionaryCellPointValue = string.Concat("AA", 38 + RINJI_KOPURE);
+                                RINJI_KOPURE++;
+                                break;
+                            case "軽ダ":
+                            case "軽小":
+                                dictionaryCellPointValue = string.Concat("AA", 60 + RINJI_KEIDA);
+                                RINJI_KEIDA++;
+                                break;
+                            default:
+                                return;
+                        }
+                    } else {
                         /*
-                         * リストに無ければ終了
+                         * 配車先が臨時ではない場合はReturn
                          */
                         return;
+                    }
+                } else {
+                    /*
+                     * Set_codeとCar_codeが入っていなかったらReturn
+                     */
+                    return;
                 }
             }
 
@@ -429,7 +474,32 @@ namespace VehicleDispatchConvert {
                     iCell = _iSheet.GetRow(cellReference.Row).GetCell(cellReference.Col + 21); // Column Row
                     iCell.CellStyle.Alignment = HorizontalAlignment.Center;
                     iCell.SetCellValue(hSSFRichTextString);
-
+                    /*
+                     * 点呼執行者
+                     */
+                    switch(vehicleDispatchDetailVo.Garage_flag) {
+                        case true:
+                            /*
+                             * 点呼時刻の秒数が偶数なら”点呼執行者本社１”、奇数なら”点呼執行者本社２”を選択する
+                             */
+                            int second = vehicleDispatchDetailVo.Operator_1_roll_call_ymd_hms.Second; //秒（0～59）
+                            hSSFRichTextString = new HSSFRichTextString((second % 2 == 0) ? _arrayTenkoName[0] : _arrayTenkoName[1]);
+                            hSSFRichTextString.ApplyFont(iFont);
+                            iCell = _iSheet.GetRow(cellReference.Row).GetCell(cellReference.Col + 23); // Column Row
+                            iCell.CellStyle.Alignment = HorizontalAlignment.Center;
+                            iCell.SetCellValue(hSSFRichTextString);
+                            break;
+                        case false:
+                            /*
+                             * ”点呼執行者三郷”を選択する
+                             */
+                            hSSFRichTextString = new HSSFRichTextString(_arrayTenkoName[2]);
+                            hSSFRichTextString.ApplyFont(iFont);
+                            iCell = _iSheet.GetRow(cellReference.Row).GetCell(cellReference.Col + 23); // Column Row
+                            iCell.CellStyle.Alignment = HorizontalAlignment.Center;
+                            iCell.SetCellValue(hSSFRichTextString);
+                            break;
+                    }
                 }
             }
             if(vehicleDispatchDetailVo.Operator_code_2 != 0) {

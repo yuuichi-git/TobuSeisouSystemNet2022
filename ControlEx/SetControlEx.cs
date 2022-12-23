@@ -115,6 +115,9 @@ namespace ControlEx {
                  * 文字を描画
                  */
                 switch(_cellNumber) {
+                    /*
+                     * 大型枠
+                     */
                     case 75:
                     case 76:
                     case 77:
@@ -132,6 +135,10 @@ namespace ControlEx {
                         stringFormat.Alignment = StringAlignment.Center;
                         e.Graphics.DrawString("大型", _drawFont, _drawBrushFont, rectangleFill, stringFormat);
                         break;
+                    /*
+                     * 臨時枠
+                     */
+                    case 88:
                     case 89:
                     case 90:
                     case 91:
@@ -143,7 +150,7 @@ namespace ControlEx {
                     case 97:
                     case 98:
                     case 99:
-                    case 100:
+                    case 113:
                     case 114:
                     case 115:
                     case 116:
@@ -154,6 +161,7 @@ namespace ControlEx {
                     case 121:
                     case 122:
                     case 123:
+                    case 124:
                         stringFormat = new StringFormat();
                         stringFormat.LineAlignment = StringAlignment.Center;
                         stringFormat.Alignment = StringAlignment.Center;

@@ -1,4 +1,5 @@
 using System.Drawing.Printing;
+using System.Globalization;
 
 using Common;
 
@@ -2301,7 +2302,25 @@ namespace VehicleDispatch {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e) {
+            Rectangle rectangleFill = new Rectangle(10, 20, 300, 40);
+            /*
+             * âÊëú
+             */
             e.Graphics?.DrawImage(captureImage, 0, 100, 1400, 740);
+
+            /*
+             * ì˙ït
+             */
+            // òaóÔê›íË
+            CultureInfo Japanese = new CultureInfo("ja-JP");
+            Japanese.DateTimeFormat.Calendar = new JapaneseCalendar();
+
+            Font drawFont = new Font("Yu Gothic UI", 14, FontStyle.Regular, GraphicsUnit.Pixel);
+
+            StringFormat stringFormat = new StringFormat();
+            stringFormat.LineAlignment = StringAlignment.Center;
+            stringFormat.Alignment = StringAlignment.Center;
+            e.Graphics?.DrawString(UcDateTimeJpOperationDate.GetValue().ToString("ggyyîNMMåéddì˙(dddd)", Japanese), drawFont, new SolidBrush(Color.Black), rectangleFill, stringFormat);
         }
 
         /// <summary>

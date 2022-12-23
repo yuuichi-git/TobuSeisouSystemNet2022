@@ -86,24 +86,29 @@ namespace VehicleDispatchConvert {
         }
 
         /// <summary>
-        /// 
+        /// ButtonUpdate_Click
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ButtonUpdate_Click(object sender, EventArgs e) {
-            // 数式を計算させる
-            //_iWorkbook.GetCreationHelper().CreateFormulaEvaluator().EvaluateAll();
-
-            ConvertXls convertXls = new ConvertXls(_iWorkbook, _iSheet_1, _listSetMasterVo, _listCarMasterVo, _listStaffMasterVo);
-            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(_operationDate)) {
-                convertXls.SetCellString(vehicleDispatchDetailVo);
-            }
-            try {
-                var fileStream = new FileStream(new Directry().GetExcelDesktopPassXls("配車当日"), FileMode.Open);
-                _iWorkbook.Write(fileStream, false);
-                MessageBox.Show("書き出しを完了しました");
-            } catch(Exception exception) { //ファイル作成時に例外が発生した場合の処理
-                MessageBox.Show(exception.Message);
+            /*
+             * 点呼執行者が選択されているかをチェックする
+             */
+            if(ComboBox1.Text.Length > 0 && ComboBox2.Text.Length != 0 && ComboBox3.Text.Length != 0) {
+                string[] arrayTenkoName = new string[]{ ComboBox1.Text, ComboBox2.Text, ComboBox3.Text};
+                ConvertXls convertXls = new ConvertXls(_iWorkbook, _iSheet_1, _listSetMasterVo, _listCarMasterVo, _listStaffMasterVo, arrayTenkoName);
+                foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(_operationDate)) {
+                    convertXls.SetCellString(vehicleDispatchDetailVo);
+                }
+                try {
+                    var fileStream = new FileStream(new Directry().GetExcelDesktopPassXls("配車当日"), FileMode.Open);
+                    _iWorkbook.Write(fileStream, false);
+                    MessageBox.Show("書き出しを完了しました");
+                } catch(Exception exception) { //ファイル作成時に例外が発生した場合の処理
+                    MessageBox.Show(exception.Message);
+                }
+            } else {
+                MessageBox.Show("点呼執行者を選択して下さい", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
