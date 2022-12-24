@@ -8,22 +8,31 @@ namespace ControlEx {
          */
         private const int _setLabelHeight = 68;
         private const int _setLabelWidth = 70;
-        private readonly Color _setLabelBorderColor = new();
+        private  Color _setLabelBorderColor = new();
         private readonly Font _setLabelDrawFont = new Font("Yu Gothic UI", 13, FontStyle.Regular, GraphicsUnit.Pixel);
 
         private bool _garageFlag;
-        
+
         private string _drawStringContactMethod = "";
         private readonly Font _drawFontContactMethod = new Font("Yu Gothic UI", 8, FontStyle.Regular, GraphicsUnit.Pixel);
+       
         /*
+         * AddWorkerFlag
+         * 作業員付き
+         */
+        private bool _addWorkerFlag = false;
+        private readonly Font _drawFontAddWorkerFlag = new Font("Yu Gothic UI", 10, FontStyle.Regular, GraphicsUnit.Pixel);
+        private readonly SolidBrush _brushColorAddWorkerFlag = new SolidBrush(Color.Blue);
+         /*
          * StandByFlag
+         * 待機
          */
         private bool _standByFlag = false;
         private readonly Font _drawFontStandByFlag = new Font("Yu Gothic UI", 10, FontStyle.Regular, GraphicsUnit.Pixel);
         private readonly SolidBrush _brushColorStandByFlag = new SolidBrush(Color.Blue);
 
         private readonly SolidBrush _brushColorBlack = new SolidBrush(Color.Black);
-        
+
         private  SolidBrush _drowBrushFill = new SolidBrush(Color.White);
 
         /// <summary>
@@ -103,7 +112,6 @@ namespace ControlEx {
         /// <param name="vehicleDispatchDetailVo"></param>
         public SetLabelEx(SetMasterVo setMasterVo, VehicleDispatchDetailVo vehicleDispatchDetailVo) {
             _setMasterVo = setMasterVo;
-
             /*
              * Classification_code
              */
@@ -114,10 +122,21 @@ namespace ControlEx {
                 case 11:
                     _setLabelBorderColor = Color.DarkOrange;
                     break;
+                /*
+                 * 臨時配車先だった場合雇上・区契の区別を処理
+                 */
+                case 12:
+                    _setLabelBorderColor = vehicleDispatchDetailVo.Classification_flag ? Color.DarkGray : Color.DarkOrange;
+                    break;
                 default:
                     _setLabelBorderColor = Color.White;
                     break;
             }
+            /*
+             * Operation_flag
+             */
+            if(!vehicleDispatchDetailVo.Operation_flag)
+                _drowBrushFill = new SolidBrush(Color.Pink);
             /*
              * Garage_flag
              */
@@ -127,10 +146,9 @@ namespace ControlEx {
                 _drowBrushFill = new SolidBrush(Color.PowderBlue);
             }
             /*
-             * Operation_flag
+             * Add_Worker_Flag
              */
-            if(!vehicleDispatchDetailVo.Operation_flag)
-                _drowBrushFill = new SolidBrush(Color.Pink);
+            _addWorkerFlag = vehicleDispatchDetailVo.Add_worker_flag;
             /*
              * Stand_By_Flag
              */
@@ -180,6 +198,12 @@ namespace ControlEx {
             }
             e.Graphics.DrawString(_drawStringContactMethod, _drawFontContactMethod, _brushColorBlack, new Point(4, 2));
             /*
+             * 作業員付きを描画
+             */
+            if(_addWorkerFlag) {
+                e.Graphics.DrawString("作付", _drawFontAddWorkerFlag, _brushColorAddWorkerFlag, new Point(4, 50));
+            }
+            /*
              * 待機を描画
              */
             if(_standByFlag) {
@@ -215,6 +239,33 @@ namespace ControlEx {
             } else {
                 _drowBrushFill = new SolidBrush(Color.PowderBlue);
             }
+            this.Refresh();
+        }
+
+        /// <summary>
+        /// SetClassificationFlag
+        /// 臨時の雇上・区契を設定する
+        /// </summary>
+        /// <param name="classificationFlag"></param>
+        public void SetClassificationFlag(bool classificationFlag) {
+            /*
+             * Garage_flag
+             */
+            if(classificationFlag) {
+                _setLabelBorderColor = Color.DarkGray;
+            } else {
+                _setLabelBorderColor = Color.DarkOrange;
+            }
+            this.Refresh();
+        }
+
+        /// <summary>
+        /// SetAddWorkerFlag
+        /// 臨時の作業員付きを設定する
+        /// </summary>
+        /// <param name="addWorkerFlag"></param>
+        public void SetAddWorkerFlag(bool addWorkerFlag) {
+            _addWorkerFlag = addWorkerFlag;
             this.Refresh();
         }
 

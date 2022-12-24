@@ -103,6 +103,13 @@
             this.ToolStripMenuItemSetGarageChange = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemSetGarageAdachi = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemSetGarageMisato = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemClassification = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemYOUJYOU = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemKUKEI = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemAddWorker = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemAddWorkerTrue = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemAddWorkerFalse = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItemSetDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemStandByFlag = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemStandByTrue = new System.Windows.Forms.ToolStripMenuItem();
@@ -125,6 +132,7 @@
             this.ToolStripMenuItemTelephoneMarkTrue = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemTelephoneMarkFalse = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.TableLayoutPanelBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -1123,10 +1131,14 @@
             this.toolStripSeparator4,
             this.ToolStripMenuItemSetGarageChange,
             this.ToolStripMenuItemSetDelete,
+            this.toolStripSeparator6,
+            this.ToolStripMenuItemClassification,
+            this.ToolStripMenuItemAddWorker,
             this.ToolStripMenuItemStandByFlag,
+            this.toolStripSeparator7,
             this.ToolStripMenuItemFax});
             this.ContextMenuStripSetLabel.Name = "ContextMenuStripSetLabel";
-            this.ContextMenuStripSetLabel.Size = new System.Drawing.Size(208, 120);
+            this.ContextMenuStripSetLabel.Size = new System.Drawing.Size(208, 176);
             this.ContextMenuStripSetLabel.Opened += new System.EventHandler(this.ContextMenuStrip_Opened);
             // 
             // ToolStripMenuItemSetDetail
@@ -1163,6 +1175,57 @@
             this.ToolStripMenuItemSetGarageMisato.Size = new System.Drawing.Size(139, 22);
             this.ToolStripMenuItemSetGarageMisato.Text = "三郷より出庫";
             this.ToolStripMenuItemSetGarageMisato.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            // 
+            // ToolStripMenuItemClassification
+            // 
+            this.ToolStripMenuItemClassification.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemYOUJYOU,
+            this.ToolStripMenuItemKUKEI});
+            this.ToolStripMenuItemClassification.Name = "ToolStripMenuItemClassification";
+            this.ToolStripMenuItemClassification.Size = new System.Drawing.Size(207, 22);
+            this.ToolStripMenuItemClassification.Text = "雇上・区契";
+            // 
+            // ToolStripMenuItemYOUJYOU
+            // 
+            this.ToolStripMenuItemYOUJYOU.Name = "ToolStripMenuItemYOUJYOU";
+            this.ToolStripMenuItemYOUJYOU.Size = new System.Drawing.Size(174, 22);
+            this.ToolStripMenuItemYOUJYOU.Text = "雇上契約に変更する";
+            this.ToolStripMenuItemYOUJYOU.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            // 
+            // ToolStripMenuItemKUKEI
+            // 
+            this.ToolStripMenuItemKUKEI.Name = "ToolStripMenuItemKUKEI";
+            this.ToolStripMenuItemKUKEI.Size = new System.Drawing.Size(174, 22);
+            this.ToolStripMenuItemKUKEI.Text = "区契約に変更する";
+            this.ToolStripMenuItemKUKEI.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            // 
+            // ToolStripMenuItemAddWorker
+            // 
+            this.ToolStripMenuItemAddWorker.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemAddWorkerTrue,
+            this.ToolStripMenuItemAddWorkerFalse});
+            this.ToolStripMenuItemAddWorker.Name = "ToolStripMenuItemAddWorker";
+            this.ToolStripMenuItemAddWorker.Size = new System.Drawing.Size(207, 22);
+            this.ToolStripMenuItemAddWorker.Text = "作業員の配置を変更する";
+            // 
+            // ToolStripMenuItemAddWorkerTrue
+            // 
+            this.ToolStripMenuItemAddWorkerTrue.Name = "ToolStripMenuItemAddWorkerTrue";
+            this.ToolStripMenuItemAddWorkerTrue.Size = new System.Drawing.Size(183, 22);
+            this.ToolStripMenuItemAddWorkerTrue.Text = "作業員付きに変更する";
+            this.ToolStripMenuItemAddWorkerTrue.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            // 
+            // ToolStripMenuItemAddWorkerFalse
+            // 
+            this.ToolStripMenuItemAddWorkerFalse.Name = "ToolStripMenuItemAddWorkerFalse";
+            this.ToolStripMenuItemAddWorkerFalse.Size = new System.Drawing.Size(183, 22);
+            this.ToolStripMenuItemAddWorkerFalse.Text = "作業員なしに変更する";
+            this.ToolStripMenuItemAddWorkerFalse.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(204, 6);
             // 
             // ToolStripMenuItemSetDelete
             // 
@@ -1325,11 +1388,16 @@
             this.ToolTip1.InitialDelay = 500;
             this.ToolTip1.ReshowDelay = 0;
             // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(204, 6);
+            // 
             // VehicleDispatchBoad
             // 
             this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
             this.Controls.Add(this.TableLayoutPanelBase);
             this.DoubleBuffered = true;
@@ -1480,5 +1548,13 @@
         private ToolStripMenuItem ToolStripMenuItemStandByFlag;
         private ToolStripMenuItem ToolStripMenuItemStandByTrue;
         private ToolStripMenuItem ToolStripMenuItemStandByFalse;
+        private ToolStripMenuItem ToolStripMenuItemClassification;
+        private ToolStripMenuItem ToolStripMenuItemYOUJYOU;
+        private ToolStripMenuItem ToolStripMenuItemKUKEI;
+        private ToolStripMenuItem ToolStripMenuItemAddWorker;
+        private ToolStripMenuItem ToolStripMenuItemAddWorkerTrue;
+        private ToolStripMenuItem ToolStripMenuItemAddWorkerFalse;
+        private ToolStripSeparator toolStripSeparator6;
+        private ToolStripSeparator toolStripSeparator7;
     }
 }

@@ -753,6 +753,10 @@ namespace VehicleDispatch {
                         ToolStripMenuItemSetGarageChange.Enabled = true;
                         // 配車先を削除する
                         ToolStripMenuItemSetDelete.Enabled = setMasterVo.Move_flag;
+                        // 雇上・区契
+                        ToolStripMenuItemClassification.Enabled = ((SetMasterVo)EvacuationSetLabelEx.Tag).Classification_code == 12 ? true : false;
+                        // 作業員付き
+                        ToolStripMenuItemAddWorker.Enabled = ((SetMasterVo)EvacuationSetLabelEx.Tag).Classification_code == 12 ? true : false;
                         // 待機
                         ToolStripMenuItemStandByFlag.Enabled = true;
                         // 代車・代番のFAXを作成する
@@ -771,6 +775,10 @@ namespace VehicleDispatch {
                         ToolStripMenuItemSetGarageChange.Enabled = false;
                         // 配車先を削除する
                         ToolStripMenuItemSetDelete.Enabled = false;
+                        // 雇上・区契
+                        ToolStripMenuItemClassification.Enabled = false;
+                        // 作業員付き
+                        ToolStripMenuItemAddWorker.Enabled = false;
                         // 待機
                         ToolStripMenuItemStandByFlag.Enabled = false;
                         // 代車・代番のFAXを作成する
@@ -859,7 +867,6 @@ namespace VehicleDispatch {
                                 break;
                         }
                     }
-
                     break;
             }
         }
@@ -945,6 +952,52 @@ namespace VehicleDispatch {
                 // 配車先詳細
                 case "ToolStripMenuItemSetDetail":
                     MessageBox.Show("配車先詳細画面は作成中です。提案を受付ています。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+                // 雇上・区契の別
+                case "ToolStripMenuItemYOUJYOU":
+                    try {
+                        _vehicleDispatchDetailDao.UpdateClassificationFlag(UcDateTimeJpOperationDate.GetValue(),
+                                                                           (int)EvacuationSetControlEx.Tag,
+                                                                           true);
+                        // SetLabelExを雇上の色に変える
+                        EvacuationSetLabelEx.SetClassificationFlag(true);
+                    } catch(Exception exception) {
+                        MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    }
+                    break;
+                case "ToolStripMenuItemKUKEI":
+                    try {
+                        _vehicleDispatchDetailDao.UpdateClassificationFlag(UcDateTimeJpOperationDate.GetValue(),
+                                                                           (int)EvacuationSetControlEx.Tag,
+                                                                           false);
+                        // SetLabelExを雇上の色に変える
+                        EvacuationSetLabelEx.SetClassificationFlag(false);
+                    } catch(Exception exception) {
+                        MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    }
+                    break;
+                // 作業員の配置
+                case "ToolStripMenuItemAddWorkerTrue":
+                    try {
+                        _vehicleDispatchDetailDao.UpdateAddWorkerFlag(UcDateTimeJpOperationDate.GetValue(),
+                                                                      (int)EvacuationSetControlEx.Tag,
+                                                                      true);
+                        // SetLabelExを雇上の色に変える
+                        EvacuationSetLabelEx.SetAddWorkerFlag(true);
+                    } catch(Exception exception) {
+                        MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    }
+                    break;
+                case "ToolStripMenuItemAddWorkerFalse":
+                    try {
+                        _vehicleDispatchDetailDao.UpdateAddWorkerFlag(UcDateTimeJpOperationDate.GetValue(),
+                                                                      (int)EvacuationSetControlEx.Tag,
+                                                                      false);
+                        // SetLabelExを雇上の色に変える
+                        EvacuationSetLabelEx.SetAddWorkerFlag(false);
+                    } catch(Exception exception) {
+                        MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    }
                     break;
                 // 配車先を削除
                 case "ToolStripMenuItemSetDelete":
@@ -1213,6 +1266,8 @@ namespace VehicleDispatch {
                 vehicleDispatchDetailVo.Move_flag = vehicleDispatchDetail.Move_flag;
                 vehicleDispatchDetailVo.Day_of_week = vehicleDispatchDetail.Day_of_week;
                 vehicleDispatchDetailVo.Stand_by_flag = false;
+                vehicleDispatchDetailVo.Classification_flag = false;
+                vehicleDispatchDetailVo.Add_worker_flag = false;
                 vehicleDispatchDetailVo.Set_code = vehicleDispatchDetail.Set_code;
                 vehicleDispatchDetailVo.Set_note = vehicleDispatchDetail.Set_note; // vehicle_dispatch_body.note
                 vehicleDispatchDetailVo.Car_code = vehicleDispatchDetail.Car_code;

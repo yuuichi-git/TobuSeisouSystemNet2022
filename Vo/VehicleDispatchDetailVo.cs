@@ -8,6 +8,8 @@
         private bool _move_flag;
         private string _day_of_week = "";
         private bool _stand_by_flag;
+        private bool _classification_flag;
+        private bool _add_worker_flag;
         private int _set_code;
         private string _set_note = "";
         private int _car_code;
@@ -102,6 +104,22 @@
         public bool Stand_by_flag {
             get => _stand_by_flag;
             set => _stand_by_flag = value;
+        }
+        /// <summary>
+        /// 雇上・区契フラグ
+        /// true:雇上 false:区契
+        /// </summary>
+        public bool Classification_flag {
+            get => _classification_flag;
+            set => _classification_flag = value;
+        }
+        /// <summary>
+        /// 作業員付きフラグ
+        /// true:作業員付き false:作業員なし
+        /// </summary>
+        public bool Add_worker_flag {
+            get => _add_worker_flag;
+            set => _add_worker_flag = value;
         }
         /// <summary>
         /// 組コード
