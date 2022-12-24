@@ -551,7 +551,8 @@ namespace VehicleDispatch {
         /// </summary>
         private void CreateLabelTabControlExLeft() {
             // FlowLayoutPanelExSet
-            foreach(var deepCopySetMasterVo in _listDeepCopySetMasterVo.FindAll(x => x.Classification_code != 10 && x.Classification_code != 11).OrderBy(x => x.Classification_code)) {
+            foreach(var deepCopySetMasterVo in _listDeepCopySetMasterVo.FindAll(x => x.Classification_code != 10 && x.Classification_code != 11)
+                                                                       .OrderBy(x => x.Classification_code).ThenBy(x => x.Set_name)) {
                 SetLabelEx setLabelEx = new SetLabelEx(deepCopySetMasterVo).CreateLabel();
                 // プロパティを設定
                 setLabelEx.ContextMenuStrip = ContextMenuStripSetLabel;

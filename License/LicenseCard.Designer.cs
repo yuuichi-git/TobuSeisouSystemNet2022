@@ -1,4 +1,4 @@
-﻿namespace LicenseLedger {
+﻿namespace License {
     partial class LicenseCard {
         /// <summary>
         /// Required designer variable.

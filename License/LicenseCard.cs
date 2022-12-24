@@ -2,7 +2,7 @@
 
 using Vo;
 
-namespace LicenseLedger {
+namespace License {
     public partial class LicenseCard : Form {
         private readonly ConnectionVo _connectionVo;
 

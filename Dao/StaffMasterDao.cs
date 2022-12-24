@@ -650,8 +650,11 @@ namespace Dao {
         /// SelectAllExtendsStaffMasterVo
         /// StaffList用
         /// </summary>
+        /// <param name="sqlBelongs"></param>
+        /// <param name="sqlJobForm"></param>
+        /// <param name="sqlOccupation"></param>
         /// <returns></returns>
-        public List<ExtendsStaffMasterVo> SelectAllExtendsStaffMasterVo() {
+        public List<ExtendsStaffMasterVo> SelectAllExtendsStaffMasterVo(string sqlBelongs, string sqlJobForm, string sqlOccupation) {
             /*
              * 期首・期末の日時を作成する
              */
@@ -696,7 +699,8 @@ namespace Dao {
                                                                                                  "AND car_accident_master.occurrence_ymd_hms BETWEEN '" + _fiscalYearStart.ToString("yyyy-MM-dd 0:00:00") + "' AND '" + _fiscalYearEnd.ToString("yyyy-MM-dd 23:59:59") + "') AS car_accident_count " +
                                      "FROM staff_master LEFT OUTER JOIN toukanpo_training_card ON staff_master.staff_code = toukanpo_training_card.staff_code " +
                                                        "LEFT OUTER JOIN license_master ON staff_master.staff_code = license_master.staff_code " +
-                                                       "LEFT OUTER JOIN commuterInsurance ON staff_master.staff_code = commuterInsurance.staff_code";
+                                                       "LEFT OUTER JOIN commuterInsurance ON staff_master.staff_code = commuterInsurance.staff_code " +
+                                                       "WHERE belongs IN (" + sqlBelongs + ") AND job_form IN (" + sqlJobForm + ") AND occupation IN (" + sqlOccupation + ")";
             using(var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while(sqlDataReader.Read() == true) {
                     var extendsStaffMasterVo = new ExtendsStaffMasterVo();

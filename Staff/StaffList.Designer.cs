@@ -37,16 +37,16 @@
             this.CheckBoxRetired = new System.Windows.Forms.CheckBox();
             this.ComboBoxAccidentYear = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.GroupBox3 = new System.Windows.Forms.GroupBox();
             this.CheckBoxNone2 = new System.Windows.Forms.CheckBox();
             this.CheckBoxWorkStaff = new System.Windows.Forms.CheckBox();
             this.CheckBoxDriver = new System.Windows.Forms.CheckBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.GroupBox2 = new System.Windows.Forms.GroupBox();
             this.CheckBoxNone1 = new System.Windows.Forms.CheckBox();
             this.CheckBoxPartTimeJob2 = new System.Windows.Forms.CheckBox();
             this.CheckBoxNoteBook = new System.Windows.Forms.CheckBox();
             this.CheckBoxFullTimeJob = new System.Windows.Forms.CheckBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.GroupBox1 = new System.Windows.Forms.GroupBox();
             this.CheckBoxJiunrou = new System.Windows.Forms.CheckBox();
             this.CheckBoxSinunten = new System.Windows.Forms.CheckBox();
             this.CheckBoxPartTimeJob1 = new System.Windows.Forms.CheckBox();
@@ -61,7 +61,6 @@
             this.ToolStripMenuItemLicense = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemToukanpo = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemMap = new System.Windows.Forms.ToolStripMenuItem();
-            this.SheetViewList = this.SpreadList.GetSheet(0);
             this.TabControlExStaff = new ControlEx.TabControlEx();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -74,12 +73,13 @@
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.tabPage11 = new System.Windows.Forms.TabPage();
+            this.SheetViewList = this.SpreadList.GetSheet(0);
             this.TableLayoutPanelExBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.PanelUp.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.GroupBox3.SuspendLayout();
+            this.GroupBox2.SuspendLayout();
+            this.GroupBox1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpreadList)).BeginInit();
             this.ContextMenuStrip1.SuspendLayout();
@@ -168,9 +168,9 @@
             this.PanelUp.Controls.Add(this.CheckBoxRetired);
             this.PanelUp.Controls.Add(this.ComboBoxAccidentYear);
             this.PanelUp.Controls.Add(this.label1);
-            this.PanelUp.Controls.Add(this.groupBox3);
-            this.PanelUp.Controls.Add(this.groupBox2);
-            this.PanelUp.Controls.Add(this.groupBox1);
+            this.PanelUp.Controls.Add(this.GroupBox3);
+            this.PanelUp.Controls.Add(this.GroupBox2);
+            this.PanelUp.Controls.Add(this.GroupBox1);
             this.PanelUp.Controls.Add(this.ButtonUpdate);
             this.PanelUp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelUp.Location = new System.Drawing.Point(3, 27);
@@ -212,17 +212,17 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "事故件数集計年度";
             // 
-            // groupBox3
+            // GroupBox3
             // 
-            this.groupBox3.Controls.Add(this.CheckBoxNone2);
-            this.groupBox3.Controls.Add(this.CheckBoxWorkStaff);
-            this.groupBox3.Controls.Add(this.CheckBoxDriver);
-            this.groupBox3.Location = new System.Drawing.Point(620, 4);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(208, 44);
-            this.groupBox3.TabIndex = 6;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "職種(第三条件)";
+            this.GroupBox3.Controls.Add(this.CheckBoxNone2);
+            this.GroupBox3.Controls.Add(this.CheckBoxWorkStaff);
+            this.GroupBox3.Controls.Add(this.CheckBoxDriver);
+            this.GroupBox3.Location = new System.Drawing.Point(620, 4);
+            this.GroupBox3.Name = "GroupBox3";
+            this.GroupBox3.Size = new System.Drawing.Size(208, 44);
+            this.GroupBox3.TabIndex = 6;
+            this.GroupBox3.TabStop = false;
+            this.GroupBox3.Text = "職種(第三条件)";
             // 
             // CheckBoxNone2
             // 
@@ -233,6 +233,7 @@
             this.CheckBoxNone2.Name = "CheckBoxNone2";
             this.CheckBoxNone2.Size = new System.Drawing.Size(68, 19);
             this.CheckBoxNone2.TabIndex = 2;
+            this.CheckBoxNone2.Tag = "99";
             this.CheckBoxNone2.Text = "指定なし";
             this.CheckBoxNone2.UseVisualStyleBackColor = true;
             // 
@@ -245,6 +246,7 @@
             this.CheckBoxWorkStaff.Name = "CheckBoxWorkStaff";
             this.CheckBoxWorkStaff.Size = new System.Drawing.Size(62, 19);
             this.CheckBoxWorkStaff.TabIndex = 1;
+            this.CheckBoxWorkStaff.Tag = "11";
             this.CheckBoxWorkStaff.Text = "作業員";
             this.CheckBoxWorkStaff.UseVisualStyleBackColor = true;
             // 
@@ -257,21 +259,22 @@
             this.CheckBoxDriver.Name = "CheckBoxDriver";
             this.CheckBoxDriver.Size = new System.Drawing.Size(62, 19);
             this.CheckBoxDriver.TabIndex = 0;
+            this.CheckBoxDriver.Tag = "10";
             this.CheckBoxDriver.Text = "運転手";
             this.CheckBoxDriver.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
+            // GroupBox2
             // 
-            this.groupBox2.Controls.Add(this.CheckBoxNone1);
-            this.groupBox2.Controls.Add(this.CheckBoxPartTimeJob2);
-            this.groupBox2.Controls.Add(this.CheckBoxNoteBook);
-            this.groupBox2.Controls.Add(this.CheckBoxFullTimeJob);
-            this.groupBox2.Location = new System.Drawing.Point(348, 4);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(256, 44);
-            this.groupBox2.TabIndex = 5;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "雇用形態(第二条件)";
+            this.GroupBox2.Controls.Add(this.CheckBoxNone1);
+            this.GroupBox2.Controls.Add(this.CheckBoxPartTimeJob2);
+            this.GroupBox2.Controls.Add(this.CheckBoxNoteBook);
+            this.GroupBox2.Controls.Add(this.CheckBoxFullTimeJob);
+            this.GroupBox2.Location = new System.Drawing.Point(348, 4);
+            this.GroupBox2.Name = "GroupBox2";
+            this.GroupBox2.Size = new System.Drawing.Size(256, 44);
+            this.GroupBox2.TabIndex = 5;
+            this.GroupBox2.TabStop = false;
+            this.GroupBox2.Text = "雇用形態(第二条件)";
             // 
             // CheckBoxNone1
             // 
@@ -282,6 +285,7 @@
             this.CheckBoxNone1.Name = "CheckBoxNone1";
             this.CheckBoxNone1.Size = new System.Drawing.Size(68, 19);
             this.CheckBoxNone1.TabIndex = 3;
+            this.CheckBoxNone1.Tag = "99";
             this.CheckBoxNone1.Text = "指定なし";
             this.CheckBoxNone1.UseVisualStyleBackColor = true;
             // 
@@ -294,6 +298,7 @@
             this.CheckBoxPartTimeJob2.Name = "CheckBoxPartTimeJob2";
             this.CheckBoxPartTimeJob2.Size = new System.Drawing.Size(72, 19);
             this.CheckBoxPartTimeJob2.TabIndex = 2;
+            this.CheckBoxPartTimeJob2.Tag = "12";
             this.CheckBoxPartTimeJob2.Text = "アルバイト";
             this.CheckBoxPartTimeJob2.UseVisualStyleBackColor = true;
             // 
@@ -306,6 +311,7 @@
             this.CheckBoxNoteBook.Name = "CheckBoxNoteBook";
             this.CheckBoxNoteBook.Size = new System.Drawing.Size(50, 19);
             this.CheckBoxNoteBook.TabIndex = 1;
+            this.CheckBoxNoteBook.Tag = "11";
             this.CheckBoxNoteBook.Text = "手帳";
             this.CheckBoxNoteBook.UseVisualStyleBackColor = true;
             // 
@@ -318,22 +324,23 @@
             this.CheckBoxFullTimeJob.Name = "CheckBoxFullTimeJob";
             this.CheckBoxFullTimeJob.Size = new System.Drawing.Size(50, 19);
             this.CheckBoxFullTimeJob.TabIndex = 0;
+            this.CheckBoxFullTimeJob.Tag = "10";
             this.CheckBoxFullTimeJob.Text = "長期";
             this.CheckBoxFullTimeJob.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // GroupBox1
             // 
-            this.groupBox1.Controls.Add(this.CheckBoxJiunrou);
-            this.groupBox1.Controls.Add(this.CheckBoxSinunten);
-            this.groupBox1.Controls.Add(this.CheckBoxPartTimeJob1);
-            this.groupBox1.Controls.Add(this.CheckBoxCompanyEmployee);
-            this.groupBox1.Controls.Add(this.CheckBoxOfficer);
-            this.groupBox1.Location = new System.Drawing.Point(16, 4);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(316, 44);
-            this.groupBox1.TabIndex = 1;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "役職又は所属(第一条件)";
+            this.GroupBox1.Controls.Add(this.CheckBoxJiunrou);
+            this.GroupBox1.Controls.Add(this.CheckBoxSinunten);
+            this.GroupBox1.Controls.Add(this.CheckBoxPartTimeJob1);
+            this.GroupBox1.Controls.Add(this.CheckBoxCompanyEmployee);
+            this.GroupBox1.Controls.Add(this.CheckBoxOfficer);
+            this.GroupBox1.Location = new System.Drawing.Point(16, 4);
+            this.GroupBox1.Name = "GroupBox1";
+            this.GroupBox1.Size = new System.Drawing.Size(316, 44);
+            this.GroupBox1.TabIndex = 1;
+            this.GroupBox1.TabStop = false;
+            this.GroupBox1.Text = "役職又は所属(第一条件)";
             // 
             // CheckBoxJiunrou
             // 
@@ -344,6 +351,7 @@
             this.CheckBoxJiunrou.Name = "CheckBoxJiunrou";
             this.CheckBoxJiunrou.Size = new System.Drawing.Size(62, 19);
             this.CheckBoxJiunrou.TabIndex = 4;
+            this.CheckBoxJiunrou.Tag = "21";
             this.CheckBoxJiunrou.Text = "自運労";
             this.CheckBoxJiunrou.UseVisualStyleBackColor = true;
             // 
@@ -356,6 +364,7 @@
             this.CheckBoxSinunten.Name = "CheckBoxSinunten";
             this.CheckBoxSinunten.Size = new System.Drawing.Size(62, 19);
             this.CheckBoxSinunten.TabIndex = 3;
+            this.CheckBoxSinunten.Tag = "20";
             this.CheckBoxSinunten.Text = "新運転";
             this.CheckBoxSinunten.UseVisualStyleBackColor = true;
             // 
@@ -368,6 +377,7 @@
             this.CheckBoxPartTimeJob1.Name = "CheckBoxPartTimeJob1";
             this.CheckBoxPartTimeJob1.Size = new System.Drawing.Size(72, 19);
             this.CheckBoxPartTimeJob1.TabIndex = 2;
+            this.CheckBoxPartTimeJob1.Tag = "12";
             this.CheckBoxPartTimeJob1.Text = "アルバイト";
             this.CheckBoxPartTimeJob1.UseVisualStyleBackColor = true;
             // 
@@ -380,6 +390,7 @@
             this.CheckBoxCompanyEmployee.Name = "CheckBoxCompanyEmployee";
             this.CheckBoxCompanyEmployee.Size = new System.Drawing.Size(50, 19);
             this.CheckBoxCompanyEmployee.TabIndex = 1;
+            this.CheckBoxCompanyEmployee.Tag = "11";
             this.CheckBoxCompanyEmployee.Text = "社員";
             this.CheckBoxCompanyEmployee.UseVisualStyleBackColor = true;
             // 
@@ -392,6 +403,7 @@
             this.CheckBoxOfficer.Name = "CheckBoxOfficer";
             this.CheckBoxOfficer.Size = new System.Drawing.Size(50, 19);
             this.CheckBoxOfficer.TabIndex = 0;
+            this.CheckBoxOfficer.Tag = "10";
             this.CheckBoxOfficer.Text = "役員";
             this.CheckBoxOfficer.UseVisualStyleBackColor = true;
             // 
@@ -631,12 +643,12 @@
             this.MenuStrip1.PerformLayout();
             this.PanelUp.ResumeLayout(false);
             this.PanelUp.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.GroupBox3.ResumeLayout(false);
+            this.GroupBox3.PerformLayout();
+            this.GroupBox2.ResumeLayout(false);
+            this.GroupBox2.PerformLayout();
+            this.GroupBox1.ResumeLayout(false);
+            this.GroupBox1.PerformLayout();
             this.StatusStrip1.ResumeLayout(false);
             this.StatusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpreadList)).EndInit();
@@ -671,15 +683,15 @@
         private TabPage tabPage9;
         private TabPage tabPage10;
         private TabPage tabPage11;
-        private GroupBox groupBox3;
+        private GroupBox GroupBox3;
         private CheckBox CheckBoxNone2;
         private CheckBox CheckBoxWorkStaff;
         private CheckBox CheckBoxDriver;
-        private GroupBox groupBox2;
+        private GroupBox GroupBox2;
         private CheckBox CheckBoxPartTimeJob2;
         private CheckBox CheckBoxNoteBook;
         private CheckBox CheckBoxFullTimeJob;
-        private GroupBox groupBox1;
+        private GroupBox GroupBox1;
         private CheckBox CheckBoxJiunrou;
         private CheckBox CheckBoxSinunten;
         private CheckBox CheckBoxPartTimeJob1;

@@ -4,7 +4,7 @@ using Dao;
 
 using Vo;
 
-namespace LicenseLedger {
+namespace License {
     public partial class LicenseList : Form {
         private readonly ConnectionVo _connectionVo;
         private InitializeForm _initializeForm = new();

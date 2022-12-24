@@ -6,7 +6,7 @@ using Dao;
 
 using Vo;
 
-namespace LicenseLedger {
+namespace License {
     public partial class LicenseDetail : Form {
         private readonly ConnectionVo _connectionVo;
 

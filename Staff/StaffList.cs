@@ -7,7 +7,7 @@ using Dao;
 using FarPoint.Excel;
 using FarPoint.Win.Spread;
 
-using LicenseLedger;
+using License;
 
 using Vo;
 
@@ -160,8 +160,37 @@ namespace Staff {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ButtonUpdate_Click(object sender, EventArgs e) {
-            _listExtendsStaffMasterVo = new StaffMasterDao(_connectionVo).SelectAllExtendsStaffMasterVo();
+            /*
+             * SQLèåèÇçÏê¨Ç∑ÇÈ
+             */
+            string sqlBelongs = CreateSqlString(GroupBox1);
+            string sqlJobForm = CreateSqlString(GroupBox2);
+            string sqlOccupation = CreateSqlString(GroupBox3);
+            _listExtendsStaffMasterVo = new StaffMasterDao(_connectionVo).SelectAllExtendsStaffMasterVo(sqlBelongs, sqlJobForm, sqlOccupation);
             SheetViewListOutPut();
+        }
+
+        /// <summary>
+        /// CreateSqlString
+        /// SQLï∂ÇçÏê¨Ç∑ÇÈ
+        /// INãÊÇóòópÇ∑ÇÈ
+        /// </summary>
+        /// <param name="groupBox"></param>
+        /// <returns></returns>
+        private string CreateSqlString(GroupBox groupBox) {
+            int i = 0;
+            string sql = "";
+            foreach(CheckBox checkBox in groupBox.Controls) {
+                if(checkBox.Checked) {
+                    if(i == 0) {
+                        sql += string.Concat(checkBox.Tag.ToString());
+                    } else {
+                        sql += string.Concat(",", checkBox.Tag.ToString());
+                    }
+                    i++;
+                }
+            }
+            return sql;
         }
 
         /// <summary>
@@ -200,48 +229,6 @@ namespace Staff {
                 "Éè" => _listExtendsStaffMasterVo?.FindAll(x => x.Name_kana.StartsWith("Éè") || x.Name_kana.StartsWith("Éí") || x.Name_kana.StartsWith("Éì")),
                 _ => _listExtendsStaffMasterVo,
             };
-
-            /*
-             * ëÊàÍèåèÇê›íËÇ∑ÇÈ
-             */
-            // ñàı
-            if(!CheckBoxOfficer.Checked)
-                _listFindAllStaffMasterVo = _listFindAllStaffMasterVo?.FindAll(x => x.Belongs != 10); // ñàı
-            // é–àı
-            if(!CheckBoxCompanyEmployee.Checked)
-                _listFindAllStaffMasterVo = _listFindAllStaffMasterVo?.FindAll(x => x.Belongs != 11); // é–àı
-            // ÉAÉãÉoÉCÉg
-            if(!CheckBoxPartTimeJob1.Checked)
-                _listFindAllStaffMasterVo = _listFindAllStaffMasterVo?.FindAll(x => x.Belongs != 12); // ÉAÉãÉoÉCÉg
-            // êVâ^ì]
-            if(!CheckBoxSinunten.Checked)
-                _listFindAllStaffMasterVo = _listFindAllStaffMasterVo?.FindAll(x => x.Belongs != 20); // êVâ^ì]
-            // é©â^òJ
-            if(!CheckBoxJiunrou.Checked)
-                _listFindAllStaffMasterVo = _listFindAllStaffMasterVo?.FindAll(x => x.Belongs != 21); // é©â^òJ
-
-            // í∑ä˙
-            if(!CheckBoxFullTimeJob.Checked)
-                _listFindAllStaffMasterVo = _listFindAllStaffMasterVo?.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.Job_form != 10); // òJãüÇ≈í∑ä˙
-            // éËí†
-            if(!CheckBoxNoteBook.Checked)
-                _listFindAllStaffMasterVo = _listFindAllStaffMasterVo?.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.Job_form != 11); // òJãüÇ≈éËí†
-            // ÉAÉãÉoÉCÉg
-            if(!CheckBoxPartTimeJob2.Checked)
-                _listFindAllStaffMasterVo = _listFindAllStaffMasterVo?.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.Job_form != 12); //Å@òJã§Ç≈ÉAÉãÉoÉCÉg
-            // éwíËÇ»Çµ
-            if(!CheckBoxNone1.Checked)
-                _listFindAllStaffMasterVo = _listFindAllStaffMasterVo?.FindAll(x => x.Job_form != 99);
-
-            // â^ì]éË
-            if(!CheckBoxDriver.Checked)
-                _listFindAllStaffMasterVo = _listFindAllStaffMasterVo?.FindAll(x => x.Occupation != 10); // â^ì]éË
-            // çÏã∆àı
-            if(!CheckBoxWorkStaff.Checked)
-                _listFindAllStaffMasterVo = _listFindAllStaffMasterVo?.FindAll(x => x.Occupation != 11); // çÏã∆àı
-            // éwíËÇ»Çµ
-            if(!CheckBoxNone2.Checked)
-                _listFindAllStaffMasterVo = _listFindAllStaffMasterVo?.FindAll(x => x.Occupation != 99); // éwíËÇ»Çµ
 
             // ëﬁêEé“
             if(!CheckBoxRetired.Checked)
@@ -332,6 +319,16 @@ namespace Staff {
                     if(extendsStaffMasterVo is not null && extendsStaffMasterVo.CarAccidentMasterCount != 0) {
                         _car_accident_count = string.Concat(extendsStaffMasterVo.CarAccidentMasterCount, "åè");
                     }
+                    /*
+                     * ÇPîNà»ì‡ÇÃåíçNêfíf
+                     */
+                    string _medical_examination;
+                    if(extendsStaffMasterVo.Medical_examination_date_1 < DateTime.Now.Date.AddYears(-1)) {
+                        _medical_examination = "åíçNêfífÇéÛÇØÇƒâ∫Ç≥Ç¢";
+                    } else {
+                        _medical_examination = string.Concat("éÛêf(", extendsStaffMasterVo.Medical_examination_date_1.ToString("yyyy/MM/dd"), ")");
+                    }
+
                     // åªèZèä
                     var _current_address = extendsStaffMasterVo?.Current_address;
                     // åíçNï€åØ
@@ -368,6 +365,8 @@ namespace Staff {
                     SheetViewList.Cells[i, colFirstTerm].Value = _proper_kind_syonin;
                     SheetViewList.Cells[i, colSuitableAge].Value = _proper_kind_tekirei;
                     SheetViewList.Cells[i, colCarAccidentCount].Value = _car_accident_count;
+                    SheetViewList.Cells[i, colMedicalExaminationDate].Value = _medical_examination;
+                    SheetViewList.Cells[i, colMedicalExaminationDate].ForeColor = _medical_examination == "åíçNêfífÇéÛÇØÇƒâ∫Ç≥Ç¢" ? Color.Red : Color.Black;
                     SheetViewList.Cells[i, colCurrentAddress].Value = _current_address;
                     SheetViewList.Cells[i, colHealthInsuranceNumber].Value = _health_insurance_number;
                     SheetViewList.Cells[i, colWelfarePensionNumber].Value = _welfare_pension_number;

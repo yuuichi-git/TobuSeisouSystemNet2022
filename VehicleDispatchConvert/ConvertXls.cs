@@ -196,94 +196,94 @@ namespace VehicleDispatchConvert {
                         } else {
                             return;
                         }
-                        break;
+                        goto goto1;
                     case 77:
                         if(vehicleDispatchDetailVo.Operation_flag) {
                             dictionaryCellPointValue = "AA26"; // 破砕等２
                         } else {
                             return;
                         }
-                        break;
+                        goto goto1;
                     case 78:
                         if(vehicleDispatchDetailVo.Operation_flag) {
                             dictionaryCellPointValue = "AA27"; // 破砕等３
                         } else {
                             return;
                         }
-                        break;
+                        goto goto1;
                     case 79:
                         if(vehicleDispatchDetailVo.Operation_flag) {
                             dictionaryCellPointValue = "AA28"; // 破砕等４
                         } else {
                             return;
                         }
-                        break;
+                        goto goto1;
                     case 80:
                         if(vehicleDispatchDetailVo.Operation_flag) {
                             dictionaryCellPointValue = "AA29"; // 破砕等５
                         } else {
                             return;
                         }
-                        break;
+                        goto goto1;
                     case 81:
                         if(vehicleDispatchDetailVo.Operation_flag) {
                             dictionaryCellPointValue = "AA30"; // 破砕等６
                         } else {
                             return;
                         }
-                        break;
+                        goto goto1;
                     case 82:
                         if(vehicleDispatchDetailVo.Operation_flag) {
                             dictionaryCellPointValue = "AA31"; // 破砕等７
                         } else {
                             return;
                         }
-                        break;
+                        goto goto1;
                     case 83:
                         if(vehicleDispatchDetailVo.Operation_flag) {
                             dictionaryCellPointValue = "AA32"; // 破砕等８
                         } else {
                             return;
                         }
-                        break;
+                        goto goto1;
                     case 84:
                         if(vehicleDispatchDetailVo.Operation_flag) {
                             dictionaryCellPointValue = "AA33"; // 破砕等９
                         } else {
                             return;
                         }
-                        break;
+                        goto goto1;
                     case 85:
                         if(vehicleDispatchDetailVo.Operation_flag) {
                             dictionaryCellPointValue = "AA34"; // 破砕等１０
                         } else {
                             return;
                         }
-                        break;
+                        goto goto1;
                     case 86:
                         if(vehicleDispatchDetailVo.Operation_flag) {
                             dictionaryCellPointValue = "AA35"; // 破砕等１１
                         } else {
                             return;
                         }
-                        break;
+                        goto goto1;
                     case 87:
                         if(vehicleDispatchDetailVo.Operation_flag) {
                             dictionaryCellPointValue = "AA36"; // 破砕等１２
                         } else {
                             return;
                         }
-                        break;
+                        goto goto1;
                         //default:
                         //    /*
                         //     * リストに無ければ終了
                         //     */
                         //    return;
                 }
-
+                
                 /*
-                 * 臨時　小プレ等コード：１
-                 * AA38から上詰めで表示する処理
+                 * 臨時
+                 * 上詰めで表示する処理
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && vehicleDispatchDetailVo.Car_code > 0) {
                     SetMasterVo setMasterVo = _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code);
@@ -320,10 +320,10 @@ namespace VehicleDispatchConvert {
                     return;
                 }
             }
-
-            CellReference cellReference = new CellReference(dictionaryCellPointValue); // A1形式
+goto1:
+            CellReference cellReference = new(dictionaryCellPointValue); // A1形式
             ICell iCell;
-            HSSFRichTextString hSSFRichTextString = new HSSFRichTextString();
+            HSSFRichTextString hSSFRichTextString = new();
             /*
              * 点呼日 
              */

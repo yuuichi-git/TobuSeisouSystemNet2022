@@ -33,7 +33,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StaffDetail", "StaffDetail\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Substitute", "Substitute\Substitute.csproj", "{C3DA2136-AA0E-44ED-94D3-93449E16E864}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accounting", "Accounting\Accounting.csproj", "{D739C646-1E4B-4283-93C2-9344256EA817}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounting", "Accounting\Accounting.csproj", "{D739C646-1E4B-4283-93C2-9344256EA817}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
