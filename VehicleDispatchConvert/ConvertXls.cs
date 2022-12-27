@@ -136,6 +136,7 @@ namespace VehicleDispatchConvert {
          */
         private int RINJI_SINDAI = 0; // 臨時　新大　カウント用
         private int RINJI_KOPURE = 0; // 臨時　小プ　カウント用
+        private int RINJI_HIRABO = 0; // 臨時　平ボ
         private int RINJI_KEIDA = 0; // 臨時　軽ダ・軽小　カウント用
 
         /// <summary>
@@ -298,6 +299,10 @@ namespace VehicleDispatchConvert {
                             case "小プ":
                                 dictionaryCellPointValue = string.Concat("AA", 38 + RINJI_KOPURE);
                                 RINJI_KOPURE++;
+                                break;
+                            case "平ボ":
+                                dictionaryCellPointValue = string.Concat("AA", 65 + RINJI_HIRABO);
+                                RINJI_HIRABO++;
                                 break;
                             case "軽ダ":
                             case "軽小":

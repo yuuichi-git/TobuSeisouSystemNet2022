@@ -28,6 +28,7 @@ namespace VehicleDispatch {
         private VehicleDispatchDetailDao _vehicleDispatchDetailDao;
         private VehicleDispatchDetailCarDao _vehicleDispatchDetailCarDao;
         private VehicleDispatchDetailStaffDao _vehicleDispatchDetailStaffDao;
+        private TriggerCheckDao _triggerCheckDao;
         /*
          * Vo
          */
@@ -91,6 +92,7 @@ namespace VehicleDispatch {
             _vehicleDispatchDetailDao = new VehicleDispatchDetailDao(connectionVo);
             _vehicleDispatchDetailCarDao = new VehicleDispatchDetailCarDao(connectionVo);
             _vehicleDispatchDetailStaffDao = new VehicleDispatchDetailStaffDao(connectionVo);
+            _triggerCheckDao = new TriggerCheckDao(connectionVo);
             /*
              * Vo
              */

@@ -12,7 +12,7 @@ namespace ControlEx {
         private bool _rollCallFlag;
         // ノートフラグ
         private bool _noteFlag;
-        
+
         private const int _staffLabelHeight = 36;
         private const int _staffLabelWidth = 70;
 
@@ -204,8 +204,10 @@ namespace ControlEx {
              * 点呼の印を描画
              */
             if(_tenkoModeFlag) {
-                if(!_rollCallFlag)
+                if(!_rollCallFlag) {
                     e.Graphics.FillEllipse(Brushes.Crimson, 55, 21, 10, 10);
+                    e.Graphics.FillEllipse(Brushes.LightPink, 59, 25, 4, 4);
+                }
             }
             /*
              * メモの印を描画

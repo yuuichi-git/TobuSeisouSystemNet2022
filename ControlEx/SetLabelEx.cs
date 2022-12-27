@@ -133,11 +133,6 @@ namespace ControlEx {
                     break;
             }
             /*
-             * Operation_flag
-             */
-            if(!vehicleDispatchDetailVo.Operation_flag)
-                _drowBrushFill = new SolidBrush(Color.Pink);
-            /*
              * Garage_flag
              */
             if(vehicleDispatchDetailVo.Garage_flag) {
@@ -145,6 +140,12 @@ namespace ControlEx {
             } else {
                 _drowBrushFill = new SolidBrush(Color.PowderBlue);
             }
+            /*
+             * Operation_flag
+             * 休車処理はGarage_flagの後に書かないと処理が上書きされちゃうよ
+             */
+            if(!vehicleDispatchDetailVo.Operation_flag)
+                _drowBrushFill = new SolidBrush(Color.Pink);
             /*
              * Add_Worker_Flag
              */
