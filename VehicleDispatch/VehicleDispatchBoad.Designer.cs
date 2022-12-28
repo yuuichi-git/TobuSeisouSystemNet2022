@@ -103,17 +103,18 @@
             this.ToolStripMenuItemSetGarageChange = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemSetGarageAdachi = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemSetGarageMisato = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemSetDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItemClassification = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemYOUJYOU = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemKUKEI = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemAddWorker = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemAddWorkerTrue = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemAddWorkerFalse = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolStripMenuItemSetDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemStandByFlag = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemStandByTrue = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemStandByFalse = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItemFax = new System.Windows.Forms.ToolStripMenuItem();
             this.ContextMenuStripCarLabel = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ToolStripMenuItemCarDetail = new System.Windows.Forms.ToolStripMenuItem();
@@ -132,7 +133,8 @@
             this.ToolStripMenuItemTelephoneMarkTrue = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemTelephoneMarkFalse = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ToolStripStatusLabelLastUpdate = new System.Windows.Forms.ToolStripStatusLabel();
             this.TableLayoutPanelBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -302,6 +304,8 @@
             this.StatusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripStatusLabel2,
             this.ToolStripStatusLabelMemory,
+            this.toolStripStatusLabel3,
+            this.ToolStripStatusLabelLastUpdate,
             this.ToolStripStatusLabel1,
             this.ToolStripStatusLabelStatus});
             this.StatusStrip1.Location = new System.Drawing.Point(0, 1019);
@@ -1176,6 +1180,18 @@
             this.ToolStripMenuItemSetGarageMisato.Text = "三郷より出庫";
             this.ToolStripMenuItemSetGarageMisato.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
+            // ToolStripMenuItemSetDelete
+            // 
+            this.ToolStripMenuItemSetDelete.Name = "ToolStripMenuItemSetDelete";
+            this.ToolStripMenuItemSetDelete.Size = new System.Drawing.Size(207, 22);
+            this.ToolStripMenuItemSetDelete.Text = "配車先を削除する";
+            this.ToolStripMenuItemSetDelete.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(204, 6);
+            // 
             // ToolStripMenuItemClassification
             // 
             this.ToolStripMenuItemClassification.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1222,18 +1238,6 @@
             this.ToolStripMenuItemAddWorkerFalse.Text = "作業員なしに変更する";
             this.ToolStripMenuItemAddWorkerFalse.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(204, 6);
-            // 
-            // ToolStripMenuItemSetDelete
-            // 
-            this.ToolStripMenuItemSetDelete.Name = "ToolStripMenuItemSetDelete";
-            this.ToolStripMenuItemSetDelete.Size = new System.Drawing.Size(207, 22);
-            this.ToolStripMenuItemSetDelete.Text = "配車先を削除する";
-            this.ToolStripMenuItemSetDelete.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
-            // 
             // ToolStripMenuItemStandByFlag
             // 
             this.ToolStripMenuItemStandByFlag.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1256,6 +1260,11 @@
             this.ToolStripMenuItemStandByFalse.Size = new System.Drawing.Size(117, 22);
             this.ToolStripMenuItemStandByFalse.Text = "解除する";
             this.ToolStripMenuItemStandByFalse.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator7
+            // 
+            this.toolStripSeparator7.Name = "toolStripSeparator7";
+            this.toolStripSeparator7.Size = new System.Drawing.Size(204, 6);
             // 
             // ToolStripMenuItemFax
             // 
@@ -1388,10 +1397,17 @@
             this.ToolTip1.InitialDelay = 500;
             this.ToolTip1.ReshowDelay = 0;
             // 
-            // toolStripSeparator7
+            // toolStripStatusLabel3
             // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(204, 6);
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(105, 17);
+            this.toolStripStatusLabel3.Text = "             LastUpdate";
+            // 
+            // ToolStripStatusLabelLastUpdate
+            // 
+            this.ToolStripStatusLabelLastUpdate.Name = "ToolStripStatusLabelLastUpdate";
+            this.ToolStripStatusLabelLastUpdate.Size = new System.Drawing.Size(104, 17);
+            this.ToolStripStatusLabelLastUpdate.Text = "2022/12/31 0:00:00";
             // 
             // VehicleDispatchBoad
             // 
@@ -1556,5 +1572,7 @@
         private ToolStripMenuItem ToolStripMenuItemAddWorkerFalse;
         private ToolStripSeparator toolStripSeparator6;
         private ToolStripSeparator toolStripSeparator7;
+        private ToolStripStatusLabel toolStripStatusLabel3;
+        private ToolStripStatusLabel ToolStripStatusLabelLastUpdate;
     }
 }

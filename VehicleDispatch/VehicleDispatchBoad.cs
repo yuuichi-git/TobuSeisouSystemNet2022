@@ -53,9 +53,13 @@ namespace VehicleDispatch {
          * 編集画面の場合False
          */
         private bool tenkoModeFlag = false;
+        /*
+         * DragDrop操作をした瞬間の日時を保持する
+         */
+        private DateTime _lastOperateDateTime = DateTime.Now;
 
         /// <summary>
-        /// コンストラクタ
+        /// コンストラクター
         /// </summary>
         public VehicleDispatchBoad(ConnectionVo connectionVo) {
             _connectionVo = connectionVo;
@@ -80,8 +84,9 @@ namespace VehicleDispatch {
             /*
              * Center
              */
-            ToolStripStatusLabelMemory.Text = "";
-            ToolStripStatusLabelStatus.Text = "";
+            ToolStripStatusLabelMemory.Text = ""; // メモリー使用量
+            ToolStripStatusLabelLastUpdate.Text = ""; // 最終更新日時
+            ToolStripStatusLabelStatus.Text = ""; // ステータス
             /*
              * Right
              */
@@ -106,7 +111,6 @@ namespace VehicleDispatch {
             _listVehicleDispatchDetailStaffVo = new();
         }
 
-
         /// <summary>
         /// エントリーポイント
         /// </summary>
@@ -126,6 +130,11 @@ namespace VehicleDispatch {
             CreateLabelTabControlExLeft();
             // TabControlExRight
             CreateLabelTabControlExRight();
+            /*
+             * 最終更新日時
+             */
+            DateTime? dateTime = _triggerCheckDao.GetLastUpdate(UcDateTimeJpOperationDate.GetValue());
+            ToolStripStatusLabelLastUpdate.Text = dateTime != null ? string.Concat(dateTime) : "更新記録なし";
         }
 
         /// <summary>
@@ -1871,6 +1880,10 @@ namespace VehicleDispatch {
                         break;
                 }
             }
+            /*
+             * 最終更新日時を退避する
+             */
+            _lastOperateDateTime = DateTime.Now;
         }
 
         private void SetControlEx_DragEnter(object sender, DragEventArgs e) {
@@ -2069,7 +2082,6 @@ namespace VehicleDispatch {
                                 } catch(Exception exception) {
                                     MessageBox.Show(exception.Message);
                                 }
-
                                 break;
                             case "FlowLayoutPanelExFullSalaried":
                             case "FlowLayoutPanelExFullClose":
@@ -2172,6 +2184,10 @@ namespace VehicleDispatch {
                 ((FlowLayoutPanelEx)sender).Controls.Add(dragItem);
                 ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
             }
+            /*
+             * 最終更新日時を退避する
+             */
+            _lastOperateDateTime = DateTime.Now;
         }
 
         /// <summary>
@@ -2183,12 +2199,12 @@ namespace VehicleDispatch {
             // マウスポインター形状変更
             //
             // DragDropEffects
-            //  Copy  :データがドロップ先にコピーされようとしている状態
-            //  Move  :データがドロップ先に移動されようとしている状態
-            //  Scroll:データによってドロップ先でスクロールが開始されようとしている状態、あるいは現在スクロール中である状態
-            //  All   :上の3つを組み合わせたもの
-            //  Link  :データのリンクがドロップ先に作成されようとしている状態
-            //  None  :いかなるデータもドロップ先が受け付けようとしない状態
+            // Copy  :データがドロップ先にコピーされようとしている状態
+            // Move  :データがドロップ先に移動されようとしている状態
+            // Scroll:データによってドロップ先でスクロールが開始されようとしている状態、あるいは現在スクロール中である状態
+            // All   :上の3つを組み合わせたもの
+            // Link  :データのリンクがドロップ先に作成されようとしている状態
+            // None  :いかなるデータもドロップ先が受け付けようとしない状態
             switch(((FlowLayoutPanelEx)sender).Name) {
                 case "SetControlEx":
                     if(e.Data != null && e.Data.GetDataPresent(typeof(SetLabelEx))) {

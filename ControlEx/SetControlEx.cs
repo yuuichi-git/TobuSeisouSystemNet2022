@@ -86,29 +86,25 @@ namespace ControlEx {
                 /*
                  * StaffLabelの部分
                  */
-                if(OperationFlag) { // 配車日の場合
-                    if(e.Row < ProductionNumberOfPeople + 2) {
-                        switch(e.Row) {
-                            // StaffLabelExの枠線
-                            case 2: // StaffLabel1
-                                ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Black, ButtonBorderStyle.Dotted);
-                                break;
-                            // StaffLabelExの枠線
-                            case 3: // StaffLabel2
-                                ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Black, ButtonBorderStyle.Dotted);
-                                break;
-                            // StaffLabelExの枠線
-                            case 4: // StaffLabel3
-                                ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Black, ButtonBorderStyle.Dotted);
-                                break;
-                            // StaffLabelExの枠線
-                            case 5: // StaffLabel4
-                                ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Black, ButtonBorderStyle.Dotted);
-                                break;
-                        }
+                if(e.Row < ProductionNumberOfPeople + 2) {
+                    switch(e.Row) {
+                        // StaffLabelExの枠線
+                        case 2: // StaffLabel1
+                            ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Black, ButtonBorderStyle.Dotted);
+                            break;
+                        // StaffLabelExの枠線
+                        case 3: // StaffLabel2
+                            ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Black, ButtonBorderStyle.Dotted);
+                            break;
+                        // StaffLabelExの枠線
+                        case 4: // StaffLabel3
+                            ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Black, ButtonBorderStyle.Dotted);
+                            break;
+                        // StaffLabelExの枠線
+                        case 5: // StaffLabel4
+                            ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Black, ButtonBorderStyle.Dotted);
+                            break;
                     }
-                } else { // 休車日の場合
-
                 }
             } else { //非表示
                 /*

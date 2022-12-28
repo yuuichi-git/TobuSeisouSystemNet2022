@@ -15,7 +15,7 @@ namespace ControlEx {
 
         private string _drawStringContactMethod = "";
         private readonly Font _drawFontContactMethod = new Font("Yu Gothic UI", 8, FontStyle.Regular, GraphicsUnit.Pixel);
-       
+
         /*
          * AddWorkerFlag
          * 作業員付き
@@ -23,10 +23,10 @@ namespace ControlEx {
         private bool _addWorkerFlag = false;
         private readonly Font _drawFontAddWorkerFlag = new Font("Yu Gothic UI", 10, FontStyle.Regular, GraphicsUnit.Pixel);
         private readonly SolidBrush _brushColorAddWorkerFlag = new SolidBrush(Color.Blue);
-         /*
-         * StandByFlag
-         * 待機
-         */
+        /*
+        * StandByFlag
+        * 待機
+        */
         private bool _standByFlag = false;
         private readonly Font _drawFontStandByFlag = new Font("Yu Gothic UI", 10, FontStyle.Regular, GraphicsUnit.Pixel);
         private readonly SolidBrush _brushColorStandByFlag = new SolidBrush(Color.Blue);
@@ -145,6 +145,11 @@ namespace ControlEx {
              * 休車処理はGarage_flagの後に書かないと処理が上書きされちゃうよ
              */
             if(!vehicleDispatchDetailVo.Operation_flag)
+                _drowBrushFill = new SolidBrush(Color.Pink);
+            /*
+             * 第五週の処理
+             */
+            if(!vehicleDispatchDetailVo.Five_lap && vehicleDispatchDetailVo.Operation_date.Day > 28)
                 _drowBrushFill = new SolidBrush(Color.Pink);
             /*
              * Add_Worker_Flag
