@@ -162,11 +162,40 @@ namespace Staff {
         private void ButtonUpdate_Click(object sender, EventArgs e) {
             /*
              * SQL条件を作成する
+             * SQLを作成する際に、全てのチェック項目のチェックが外れていないかを確認する
              */
-            string sqlBelongs = CreateSqlString(GroupBox1);
-            string sqlJobForm = CreateSqlString(GroupBox2);
-            string sqlOccupation = CreateSqlString(GroupBox3);
-            _listExtendsStaffMasterVo = new StaffMasterDao(_connectionVo).SelectAllExtendsStaffMasterVo(sqlBelongs, sqlJobForm, sqlOccupation);
+            bool check;
+            check = false;
+            foreach(CheckBox checkBox in GroupBox1.Controls) {
+                if(checkBox.Checked)
+                    check = true;
+            }
+            if(!check) {
+                MessageBox.Show("役職又は所属(第一条件)の全てのチェックを外す事は出来ません", MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                return;
+            }
+
+            check = false;
+            foreach(CheckBox checkBox in GroupBox2.Controls) {
+                if(checkBox.Checked)
+                    check = true;
+            }
+            if(!check) {
+                MessageBox.Show("雇用形態(第二条件)の全てのチェックを外す事は出来ません", MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                return;
+            }
+
+            check = false;
+            foreach(CheckBox checkBox in GroupBox3.Controls) {
+                if(checkBox.Checked)
+                    check = true;
+            }
+            if(!check) {
+                MessageBox.Show("職種(第三条件)の全てのチェックを外す事は出来ません", MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                return;
+            }
+
+            _listExtendsStaffMasterVo = new StaffMasterDao(_connectionVo).SelectAllExtendsStaffMasterVo(CreateSqlString(GroupBox1), CreateSqlString(GroupBox2), CreateSqlString(GroupBox3));
             SheetViewListOutPut();
         }
 
