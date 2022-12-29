@@ -13,6 +13,7 @@ namespace ControlEx {
 
         private bool _garageFlag;
         private bool _operationFlag;
+        private bool _fiveLapFlag;
 
         private string _drawStringContactMethod = "";
         private readonly Font _drawFontContactMethod = new Font("Yu Gothic UI", 8, FontStyle.Regular, GraphicsUnit.Pixel);
@@ -43,7 +44,10 @@ namespace ControlEx {
         /// <param name="setMasterVo"></param>
         public SetLabelEx(SetMasterVo setMasterVo) {
             _setMasterVo = setMasterVo;
-
+            // 車庫地は本社で初期化
+            _garageFlag = true;
+            // 配車状態で初期化
+            _operationFlag = true;
             /*
              * Classification_code
              */
@@ -137,9 +141,10 @@ namespace ControlEx {
             _operationFlag = vehicleDispatchDetailVo.Operation_flag;
             /*
              * 第五週の処理
+             * 第五週が休車対象で、第５週になった場合の処理
              */
             if(!vehicleDispatchDetailVo.Five_lap && vehicleDispatchDetailVo.Operation_date.Day > 28)
-                _drowBrushFill = new SolidBrush(Color.Pink);
+                _fiveLapFlag = true;
             /*
              * Add_Worker_Flag
              */
@@ -170,7 +175,7 @@ namespace ControlEx {
              * Fillを描画
              */
             // 配車・休車
-            if(_operationFlag) {
+            if(_operationFlag && !_fiveLapFlag) {
                 // 車庫地
                 if(_garageFlag) {
                     _drowBrushFill = new SolidBrush(Color.White);
@@ -237,14 +242,7 @@ namespace ControlEx {
         /// </summary>
         /// <param name="garageFlag"></param>
         public void SetGarageFlag(bool garageFlag) {
-            /*
-             * Garage_flag
-             */
-            if(garageFlag) {
-                _drowBrushFill = new SolidBrush(Color.White);
-            } else {
-                _drowBrushFill = new SolidBrush(Color.PowderBlue);
-            }
+            _garageFlag = garageFlag;
             this.Refresh();
         }
 
@@ -254,9 +252,6 @@ namespace ControlEx {
         /// </summary>
         /// <param name="classificationFlag"></param>
         public void SetClassificationFlag(bool classificationFlag) {
-            /*
-             * Garage_flag
-             */
             if(classificationFlag) {
                 _setLabelBorderColor = Color.DarkGray;
             } else {

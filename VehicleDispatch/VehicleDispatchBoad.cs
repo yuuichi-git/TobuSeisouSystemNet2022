@@ -765,6 +765,8 @@ namespace VehicleDispatch {
                         ToolStripMenuItemSetGarageChange.Enabled = true;
                         // 配車先を削除する
                         ToolStripMenuItemSetDelete.Enabled = setMasterVo.Move_flag;
+                        // 配車・休車
+                        ToolStripMenuItemOperationFlag.Enabled = true;
                         // 雇上・区契
                         ToolStripMenuItemClassification.Enabled = ((SetMasterVo)EvacuationSetLabelEx.Tag).Classification_code == 12 ? true : false;
                         // 連絡事項
@@ -789,6 +791,8 @@ namespace VehicleDispatch {
                         ToolStripMenuItemSetGarageChange.Enabled = false;
                         // 配車先を削除する
                         ToolStripMenuItemSetDelete.Enabled = false;
+                        // 配車・休車
+                        ToolStripMenuItemOperationFlag.Enabled = false;
                         // 雇上・区契
                         ToolStripMenuItemClassification.Enabled = false;
                         // 連絡事項
