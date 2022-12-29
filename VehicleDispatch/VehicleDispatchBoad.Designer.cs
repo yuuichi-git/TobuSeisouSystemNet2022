@@ -41,6 +41,8 @@
             this.StatusStrip1 = new System.Windows.Forms.StatusStrip();
             this.ToolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabelMemory = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ToolStripStatusLabelLastUpdate = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.PanelUp = new System.Windows.Forms.Panel();
@@ -108,6 +110,9 @@
             this.ToolStripMenuItemClassification = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemYOUJYOU = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemKUKEI = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemContactInformation = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemContactInformationTrue = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemContactInformationFalse = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemAddWorker = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemAddWorkerTrue = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemAddWorkerFalse = new System.Windows.Forms.ToolStripMenuItem();
@@ -133,8 +138,9 @@
             this.ToolStripMenuItemTelephoneMarkTrue = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemTelephoneMarkFalse = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.ToolStripStatusLabelLastUpdate = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ToolStripMenuItemOperationFlag = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemOperationFlagTrue = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemOperationFlagFalse = new System.Windows.Forms.ToolStripMenuItem();
             this.TableLayoutPanelBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -327,6 +333,18 @@
             this.ToolStripStatusLabelMemory.Size = new System.Drawing.Size(157, 17);
             this.ToolStripStatusLabelMemory.Text = "ToolStripStatusLabelMemory";
             // 
+            // toolStripStatusLabel3
+            // 
+            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            this.toolStripStatusLabel3.Size = new System.Drawing.Size(105, 17);
+            this.toolStripStatusLabel3.Text = "             LastUpdate";
+            // 
+            // ToolStripStatusLabelLastUpdate
+            // 
+            this.ToolStripStatusLabelLastUpdate.Name = "ToolStripStatusLabelLastUpdate";
+            this.ToolStripStatusLabelLastUpdate.Size = new System.Drawing.Size(104, 17);
+            this.ToolStripStatusLabelLastUpdate.Text = "2022/12/31 0:00:00";
+            // 
             // ToolStripStatusLabel1
             // 
             this.ToolStripStatusLabel1.ForeColor = System.Drawing.Color.Black;
@@ -503,31 +521,9 @@
             this.TableLayoutPanelEx2.MaximumSize = new System.Drawing.Size(0, 1850);
             this.TableLayoutPanelEx2.Name = "TableLayoutPanelEx2";
             this.TableLayoutPanelEx2.RowCount = 3;
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 300F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 304F));
+            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 304F));
+            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 304F));
             this.TableLayoutPanelEx2.Size = new System.Drawing.Size(1156, 871);
             this.TableLayoutPanelEx2.TabIndex = 4;
             // 
@@ -1136,13 +1132,15 @@
             this.ToolStripMenuItemSetGarageChange,
             this.ToolStripMenuItemSetDelete,
             this.toolStripSeparator6,
+            this.ToolStripMenuItemOperationFlag,
             this.ToolStripMenuItemClassification,
+            this.ToolStripMenuItemContactInformation,
             this.ToolStripMenuItemAddWorker,
             this.ToolStripMenuItemStandByFlag,
             this.toolStripSeparator7,
             this.ToolStripMenuItemFax});
             this.ContextMenuStripSetLabel.Name = "ContextMenuStripSetLabel";
-            this.ContextMenuStripSetLabel.Size = new System.Drawing.Size(208, 176);
+            this.ContextMenuStripSetLabel.Size = new System.Drawing.Size(208, 242);
             this.ContextMenuStripSetLabel.Opened += new System.EventHandler(this.ContextMenuStrip_Opened);
             // 
             // ToolStripMenuItemSetDetail
@@ -1214,6 +1212,29 @@
             this.ToolStripMenuItemKUKEI.Size = new System.Drawing.Size(174, 22);
             this.ToolStripMenuItemKUKEI.Text = "区契約に変更する";
             this.ToolStripMenuItemKUKEI.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            // 
+            // ToolStripMenuItemContactInformation
+            // 
+            this.ToolStripMenuItemContactInformation.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemContactInformationTrue,
+            this.ToolStripMenuItemContactInformationFalse});
+            this.ToolStripMenuItemContactInformation.Name = "ToolStripMenuItemContactInformation";
+            this.ToolStripMenuItemContactInformation.Size = new System.Drawing.Size(207, 22);
+            this.ToolStripMenuItemContactInformation.Text = "連絡事項";
+            // 
+            // ToolStripMenuItemContactInformationTrue
+            // 
+            this.ToolStripMenuItemContactInformationTrue.Name = "ToolStripMenuItemContactInformationTrue";
+            this.ToolStripMenuItemContactInformationTrue.Size = new System.Drawing.Size(140, 22);
+            this.ToolStripMenuItemContactInformationTrue.Text = "連絡事項あり";
+            this.ToolStripMenuItemContactInformationTrue.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            // 
+            // ToolStripMenuItemContactInformationFalse
+            // 
+            this.ToolStripMenuItemContactInformationFalse.Name = "ToolStripMenuItemContactInformationFalse";
+            this.ToolStripMenuItemContactInformationFalse.Size = new System.Drawing.Size(140, 22);
+            this.ToolStripMenuItemContactInformationFalse.Text = "連絡事項なし";
+            this.ToolStripMenuItemContactInformationFalse.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // ToolStripMenuItemAddWorker
             // 
@@ -1397,17 +1418,28 @@
             this.ToolTip1.InitialDelay = 500;
             this.ToolTip1.ReshowDelay = 0;
             // 
-            // toolStripStatusLabel3
+            // ToolStripMenuItemOperationFlag
             // 
-            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(105, 17);
-            this.toolStripStatusLabel3.Text = "             LastUpdate";
+            this.ToolStripMenuItemOperationFlag.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemOperationFlagTrue,
+            this.ToolStripMenuItemOperationFlagFalse});
+            this.ToolStripMenuItemOperationFlag.Name = "ToolStripMenuItemOperationFlag";
+            this.ToolStripMenuItemOperationFlag.Size = new System.Drawing.Size(207, 22);
+            this.ToolStripMenuItemOperationFlag.Text = "配車の状態";
             // 
-            // ToolStripStatusLabelLastUpdate
+            // ToolStripMenuItemOperationFlagTrue
             // 
-            this.ToolStripStatusLabelLastUpdate.Name = "ToolStripStatusLabelLastUpdate";
-            this.ToolStripStatusLabelLastUpdate.Size = new System.Drawing.Size(104, 17);
-            this.ToolStripStatusLabelLastUpdate.Text = "2022/12/31 0:00:00";
+            this.ToolStripMenuItemOperationFlagTrue.Name = "ToolStripMenuItemOperationFlagTrue";
+            this.ToolStripMenuItemOperationFlagTrue.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItemOperationFlagTrue.Text = "配車する";
+            this.ToolStripMenuItemOperationFlagTrue.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            // 
+            // ToolStripMenuItemOperationFlagFalse
+            // 
+            this.ToolStripMenuItemOperationFlagFalse.Name = "ToolStripMenuItemOperationFlagFalse";
+            this.ToolStripMenuItemOperationFlagFalse.Size = new System.Drawing.Size(180, 22);
+            this.ToolStripMenuItemOperationFlagFalse.Text = "休車する";
+            this.ToolStripMenuItemOperationFlagFalse.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // VehicleDispatchBoad
             // 
@@ -1574,5 +1606,11 @@
         private ToolStripSeparator toolStripSeparator7;
         private ToolStripStatusLabel toolStripStatusLabel3;
         private ToolStripStatusLabel ToolStripStatusLabelLastUpdate;
+        private ToolStripMenuItem ToolStripMenuItemContactInformation;
+        private ToolStripMenuItem ToolStripMenuItemContactInformationTrue;
+        private ToolStripMenuItem ToolStripMenuItemContactInformationFalse;
+        private ToolStripMenuItem ToolStripMenuItemOperationFlag;
+        private ToolStripMenuItem ToolStripMenuItemOperationFlagTrue;
+        private ToolStripMenuItem ToolStripMenuItemOperationFlagFalse;
     }
 }

@@ -93,6 +93,7 @@ namespace Dao {
                                             "stand_by_flag," +
                                             "classification_flag," +
                                             "add_worker_flag," +
+                                            "contact_infomation_flag," +
                                             "set_code," +
                                             "set_note," +
                                             "car_code," +
@@ -139,6 +140,7 @@ namespace Dao {
                     vehicleDispatchDetailVo.Stand_by_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["stand_by_flag"]);
                     vehicleDispatchDetailVo.Classification_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["classification_flag"]);
                     vehicleDispatchDetailVo.Add_worker_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["add_worker_flag"]);
+                    vehicleDispatchDetailVo.Contact_infomation_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["contact_infomation_flag"]);
                     vehicleDispatchDetailVo.Set_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["set_code"]);
                     vehicleDispatchDetailVo.Set_note = _defaultValue.GetDefaultValue<string>(sqlDataReader["set_note"]);
                     vehicleDispatchDetailVo.Car_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["car_code"]);
@@ -194,6 +196,7 @@ namespace Dao {
                                             "stand_by_flag," +
                                             "classification_flag," +
                                             "add_worker_flag," +
+                                            "contact_infomation_flag," +
                                             "set_code," +
                                             "set_note," +
                                             "car_code," +
@@ -241,6 +244,7 @@ namespace Dao {
                     vehicleDispatchDetailVo.Stand_by_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["stand_by_flag"]);
                     vehicleDispatchDetailVo.Classification_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["classification_flag"]);
                     vehicleDispatchDetailVo.Add_worker_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["add_worker_flag"]);
+                    vehicleDispatchDetailVo.Contact_infomation_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["contact_infomation_flag"]);
                     vehicleDispatchDetailVo.Set_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["set_code"]);
                     vehicleDispatchDetailVo.Set_note = _defaultValue.GetDefaultValue<string>(sqlDataReader["set_note"]);
                     vehicleDispatchDetailVo.Car_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["car_code"]);
@@ -298,6 +302,7 @@ namespace Dao {
                              "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Stand_by_flag) + "'," +
                              "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Classification_flag) + "'," +
                              "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Add_worker_flag) + "'," +
+                             "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Contact_infomation_flag) + "'," +
                                    _defaultValue.GetDefaultValue<int>(vehicleDispatchDetailVo.Set_code) + "," +
                              "'" + _defaultValue.GetDefaultValue<string>(vehicleDispatchDetailVo.Set_note) + "'," +
                                    _defaultValue.GetDefaultValue<int>(vehicleDispatchDetailVo.Car_code) + "," +
@@ -346,6 +351,7 @@ namespace Dao {
                                                                          "stand_by_flag," +
                                                                          "classification_flag," +
                                                                          "add_worker_flag," +
+                                                                         "contact_infomation_flag," +
                                                                          "set_code," +
                                                                          "set_note," +
                                                                          "car_code," +
@@ -819,6 +825,32 @@ namespace Dao {
         }
 
         /// <summary>
+        /// UpdateContactInformationFlag
+        /// SetControlExに連絡事項あり・なしの枠を付ける
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="dropCellNumber"></param>
+        /// <param name="contactInformationFlag"></param>
+        /// <returns></returns>
+        public int UpdateContactInformationFlag(DateTime operationDate, int dropCellNumber, bool contactInformationFlag) {
+            /*
+             * Tagがゼロから始まっているので１をプラスする
+             */
+            dropCellNumber++;
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE vehicle_dispatch_detail " +
+                                     "SET contact_infomation_flag = '" + contactInformationFlag + "'," +
+                                         "update_pc_name = '" + Environment.MachineName + "'," +
+                                         "update_ymd_hms = '" + DateTime.Now + "' " +
+                                     "WHERE cell_number = " + dropCellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                return sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
         /// UpdateAddWorkerFlag
         /// 臨時に対しての作業員付きかどうかを設定する
         /// </summary>
@@ -1104,6 +1136,33 @@ namespace Dao {
                 }
             }
             return note.Length > 0 ? true : false;
+        }
+
+        /// <summary>
+        /// SetOperationFlag
+        /// 配車か休車かを設定
+        /// true:配車 false:休車
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="cellNumber"></param>
+        /// <param name="operationFlag"></param>
+        public void SetOperationFlag(DateTime operationDate, int cellNumber, bool operationFlag) {
+            /*
+             * Tagがゼロから始まっているので１をプラスする
+             */
+            cellNumber++;
+
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE vehicle_dispatch_detail " +
+                                     "SET operation_flag = '" + operationFlag + "'," +
+                                          "update_pc_name = '" + Environment.MachineName + "'," +
+                                          "update_ymd_hms = '" + DateTime.Now + "' " +
+                                     "WHERE cell_number = " + cellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
         }
     }
 }

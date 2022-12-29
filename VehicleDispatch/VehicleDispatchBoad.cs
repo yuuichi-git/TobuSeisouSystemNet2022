@@ -207,6 +207,7 @@ namespace VehicleDispatch {
                     setControlEx.ProductionNumberOfPeople = vehicleDispatchDetailVo.Number_of_people;
                     setControlEx.SetFlag = true;
                     setControlEx.OperationFlag = vehicleDispatchDetailVo.Operation_flag;
+                    setControlEx.ContactInformationFlag = vehicleDispatchDetailVo.Contact_infomation_flag;
                     setControlEx.CreateLabel(_listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code), vehicleDispatchDetailVo, ContextMenuStripSetLabel);
                 }
                 /*
@@ -766,6 +767,8 @@ namespace VehicleDispatch {
                         ToolStripMenuItemSetDelete.Enabled = setMasterVo.Move_flag;
                         // 雇上・区契
                         ToolStripMenuItemClassification.Enabled = ((SetMasterVo)EvacuationSetLabelEx.Tag).Classification_code == 12 ? true : false;
+                        // 連絡事項
+                        ToolStripMenuItemContactInformation.Enabled = true;
                         // 作業員付き
                         ToolStripMenuItemAddWorker.Enabled = ((SetMasterVo)EvacuationSetLabelEx.Tag).Classification_code == 12 ? true : false;
                         // 待機
@@ -788,6 +791,8 @@ namespace VehicleDispatch {
                         ToolStripMenuItemSetDelete.Enabled = false;
                         // 雇上・区契
                         ToolStripMenuItemClassification.Enabled = false;
+                        // 連絡事項
+                        ToolStripMenuItemContactInformation.Enabled = false;
                         // 作業員付き
                         ToolStripMenuItemAddWorker.Enabled = false;
                         // 待機
@@ -964,6 +969,29 @@ namespace VehicleDispatch {
                 case "ToolStripMenuItemSetDetail":
                     MessageBox.Show("配車先詳細画面は作成中です。提案を受付ています。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
+                // 配車の状態
+                case "ToolStripMenuItemOperationFlagTrue":
+                    try {
+                        _vehicleDispatchDetailDao.SetOperationFlag(UcDateTimeJpOperationDate.GetValue(),
+                                                                   (int)EvacuationSetControlEx.Tag,
+                                                                   true);
+                        // 配車状態
+                        EvacuationSetLabelEx.SetOperationFlag(true);
+                    } catch(Exception exception) {
+                        MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    }
+                    break;
+                case "ToolStripMenuItemOperationFlagFalse":
+                    try {
+                        _vehicleDispatchDetailDao.SetOperationFlag(UcDateTimeJpOperationDate.GetValue(),
+                                                                   (int)EvacuationSetControlEx.Tag,
+                                                                   false);
+                        // 配車状態
+                        EvacuationSetLabelEx.SetOperationFlag(false);
+                    } catch(Exception exception) {
+                        MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    }
+                    break;
                 // 雇上・区契の別
                 case "ToolStripMenuItemYOUJYOU":
                     try {
@@ -983,6 +1011,29 @@ namespace VehicleDispatch {
                                                                            false);
                         // SetLabelExを雇上の色に変える
                         EvacuationSetLabelEx.SetClassificationFlag(false);
+                    } catch(Exception exception) {
+                        MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    }
+                    break;
+                // 連絡事項
+                case "ToolStripMenuItemContactInformationTrue":
+                    try {
+                        _vehicleDispatchDetailDao.UpdateContactInformationFlag(UcDateTimeJpOperationDate.GetValue(),
+                                                                           (int)EvacuationSetControlEx.Tag,
+                                                                           true);
+                        // SetLabelExを連絡事項ありにする
+                        EvacuationSetControlEx.SetContactInformationFlag(true);
+                    } catch(Exception exception) {
+                        MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    }
+                    break;
+                case "ToolStripMenuItemContactInformationFalse":
+                    try {
+                        _vehicleDispatchDetailDao.UpdateContactInformationFlag(UcDateTimeJpOperationDate.GetValue(),
+                                                                           (int)EvacuationSetControlEx.Tag,
+                                                                           false);
+                        // SetLabelExを連絡事項なしにする
+                        EvacuationSetControlEx.SetContactInformationFlag(false);
                     } catch(Exception exception) {
                         MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     }

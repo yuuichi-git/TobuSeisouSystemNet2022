@@ -12,6 +12,7 @@ namespace ControlEx {
         private readonly Font _setLabelDrawFont = new Font("Yu Gothic UI", 13, FontStyle.Regular, GraphicsUnit.Pixel);
 
         private bool _garageFlag;
+        private bool _operationFlag;
 
         private string _drawStringContactMethod = "";
         private readonly Font _drawFontContactMethod = new Font("Yu Gothic UI", 8, FontStyle.Regular, GraphicsUnit.Pixel);
@@ -72,8 +73,6 @@ namespace ControlEx {
         /// <param name="vehicleDispatchDetailVo"></param>
         public SetLabelEx(SetMasterVo setMasterVo, bool garageFlag) {
             _setMasterVo = setMasterVo;
-            _garageFlag = garageFlag;
-
             /*
              * Classification_code
              */
@@ -91,11 +90,7 @@ namespace ControlEx {
             /*
              * Garage_flag
              */
-            if(_garageFlag) {
-                _drowBrushFill = new SolidBrush(Color.White);
-            } else {
-                _drowBrushFill = new SolidBrush(Color.PowderBlue);
-            }
+            _garageFlag = garageFlag;
 
             InitializeComponent();
             /*
@@ -135,17 +130,11 @@ namespace ControlEx {
             /*
              * Garage_flag
              */
-            if(vehicleDispatchDetailVo.Garage_flag) {
-                _drowBrushFill = new SolidBrush(Color.White);
-            } else {
-                _drowBrushFill = new SolidBrush(Color.PowderBlue);
-            }
+            _garageFlag = vehicleDispatchDetailVo.Garage_flag;
             /*
              * Operation_flag
-             * 休車処理はGarage_flagの後に書かないと処理が上書きされちゃうよ
              */
-            if(!vehicleDispatchDetailVo.Operation_flag)
-                _drowBrushFill = new SolidBrush(Color.Pink);
+            _operationFlag = vehicleDispatchDetailVo.Operation_flag;
             /*
              * 第五週の処理
              */
@@ -180,6 +169,17 @@ namespace ControlEx {
             /*
              * Fillを描画
              */
+            // 配車・休車
+            if(_operationFlag) {
+                // 車庫地
+                if(_garageFlag) {
+                    _drowBrushFill = new SolidBrush(Color.White);
+                } else {
+                    _drowBrushFill = new SolidBrush(Color.PowderBlue);
+                }
+            } else {
+                _drowBrushFill = new SolidBrush(Color.Pink);
+            }
             e.Graphics.FillRectangle(_drowBrushFill, new Rectangle(2, 2, 64, 62));
             /*
              * 文字(配車先)を描画
@@ -282,6 +282,16 @@ namespace ControlEx {
         /// <param name="standByFlag"></param>
         public void SetStandByFlag(bool standByFlag) {
             _standByFlag = standByFlag;
+            this.Refresh();
+        }
+
+        /// <summary>
+        /// SetOperationFlag
+        /// 配車状態
+        /// </summary>
+        /// <param name="operationFlag"></param>
+        public void SetOperationFlag(bool operationFlag) {
+            _operationFlag = operationFlag;
             this.Refresh();
         }
     }

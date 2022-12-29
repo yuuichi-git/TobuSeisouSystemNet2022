@@ -10,6 +10,7 @@
         private bool _stand_by_flag;
         private bool _classification_flag;
         private bool _add_worker_flag;
+        private bool _contact_infomation_flag;
         private int _set_code;
         private string _set_note = "";
         private int _car_code;
@@ -120,6 +121,14 @@
         public bool Add_worker_flag {
             get => _add_worker_flag;
             set => _add_worker_flag = value;
+        }
+        /// <summary>
+        /// 連絡事項フラグ
+        /// true:連絡事項あり false:連絡事項なし
+        /// </summary>
+        public bool Contact_infomation_flag {
+            get => _contact_infomation_flag;
+            set => _contact_infomation_flag = value;
         }
         /// <summary>
         /// 組コード

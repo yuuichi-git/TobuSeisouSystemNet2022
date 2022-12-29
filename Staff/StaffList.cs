@@ -171,7 +171,7 @@ namespace Staff {
                     check = true;
             }
             if(!check) {
-                MessageBox.Show("役職又は所属(第一条件)の全てのチェックを外す事は出来ません", MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                MessageBox.Show("役職又は所属(第一条件)の全てのチェックを外す事は出来ません", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
 
@@ -181,7 +181,7 @@ namespace Staff {
                     check = true;
             }
             if(!check) {
-                MessageBox.Show("雇用形態(第二条件)の全てのチェックを外す事は出来ません", MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                MessageBox.Show("雇用形態(第二条件)の全てのチェックを外す事は出来ません", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
 
@@ -191,7 +191,7 @@ namespace Staff {
                     check = true;
             }
             if(!check) {
-                MessageBox.Show("職種(第三条件)の全てのチェックを外す事は出来ません", MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                MessageBox.Show("職種(第三条件)の全てのチェックを外す事は出来ません", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
 

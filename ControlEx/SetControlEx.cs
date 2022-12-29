@@ -7,6 +7,12 @@ namespace ControlEx {
         private bool _operationFlag = default;
         private int _productionNumberOfPeople = default;
         private bool _setFlag = default;
+        /// <summary>
+        /// SetControlExのContactInformation(Border)を描画
+        /// true:表示 false:非表示
+        /// </summary>
+        private bool _setContactInformation = default;
+
         /*
          * 空のSetControlExの文字列表示用
          */
@@ -31,7 +37,7 @@ namespace ControlEx {
         private StringFormat stringFormat;
 
         /// <summary>
-        /// コンストラクタ
+        /// コンストラクター
         /// </summary>
         public SetControlEx(int cellNumber) {
             _cellNumber = cellNumber;
@@ -67,6 +73,12 @@ namespace ControlEx {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void SetControlEx_CellPaint(object sender, TableLayoutCellPaintEventArgs e) {
+            /*
+             * SetControlEx全体にBorderを掛ける
+             * 連絡事項ありの印
+             */
+            if(_setContactInformation)
+                this.CreateGraphics().DrawRectangle(Pens.Red, 0, 0, 73, 303);
             if(SetFlag) { // 表示
                 var rectangle = e.CellBounds;
                 rectangle.Inflate(-1, -1); // 枠のサイズを小さくする
@@ -305,6 +317,27 @@ namespace ControlEx {
         public int ProductionNumberOfPeople {
             get => _productionNumberOfPeople;
             set => _productionNumberOfPeople = value;
+        }
+        /// <summary>
+        /// 連絡事項
+        /// true:連絡事項あり false:連絡事項なし
+        /// </summary>
+        public bool ContactInformationFlag {
+            get => _setContactInformation;
+            set => _setContactInformation = value;
+        }
+
+        /*
+         * 公開メソッド
+         */
+        /// <summary>
+        /// SetBorder
+        /// true:表示 false:非表示
+        /// </summary>
+        /// <param name="contactInformationFlag"></param>
+        public void SetContactInformationFlag(bool contactInformationFlag) {
+            _setContactInformation = contactInformationFlag;
+            this.Refresh();
         }
     }
 }
