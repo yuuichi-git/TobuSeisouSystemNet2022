@@ -34,6 +34,19 @@ namespace Common {
         }
 
         /// <summary>
+        /// VehicleDispatchSheet
+        /// </summary>
+        /// <param name="form"></param>
+        /// <returns></returns>
+        public Form VehicleDispatchSheet(Form form) {
+            form.KeyPreview = true;
+            form.MaximumSize = new Size(1920, 1080);
+            form.MinimumSize = new Size(1920, 1048);
+            GetWorkingArea(form);
+            return form;
+        }
+
+        /// <summary>
         /// ProductionList
         /// </summary>
         /// <param name="form"></param>

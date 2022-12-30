@@ -146,7 +146,7 @@ namespace VehicleDispatchConvert {
         private int RINJI_HIRABO = 0; // 臨時　平ボ
         private int RINJI_KEIDA = 0; // 臨時　軽ダ・軽小　カウント用
 
-        /// <summary>
+        /// <summary> 
         /// コンストラクター
         /// </summary>
         public ConvertXls(IWorkbook iWorkbook, ISheet iSheet, List<SetMasterVo> listSetMasterVo, List<CarMasterVo> listCarMasterVo, List<StaffMasterVo> listStaffMasterVo, string[] arrayTenkoName) {
@@ -405,7 +405,6 @@ namespace VehicleDispatchConvert {
                 iCell.CellStyle.Alignment = HorizontalAlignment.Right;
                 iCell.SetCellValue(hSSFRichTextString);
             }
-
             /*
              * 休車
              */
@@ -416,7 +415,6 @@ namespace VehicleDispatchConvert {
                 iCell.CellStyle.Alignment = HorizontalAlignment.Center;
                 iCell.SetCellValue(hSSFRichTextString);
             }
-
             /*
              * 運転手と点呼
              */

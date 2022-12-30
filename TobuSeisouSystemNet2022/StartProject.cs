@@ -23,6 +23,8 @@ using StaffDetail;
 
 using VehicleDispatch;
 
+using VehicleDispatchSheet;
+
 using Vo;
 
 namespace TobuSeisouSystemNet2022 {
@@ -66,6 +68,11 @@ namespace TobuSeisouSystemNet2022 {
                             case "VehicleDispatch":
                                 var vehicleDispatchBoad = new VehicleDispatchBoad(_connectionVo);
                                 vehicleDispatchBoad.Show(this);
+                                break;
+                            // VehicleDispatchSheetBoad
+                            case "VehicleDispatchSheetBoad":
+                                var vehicleDispatchSheetBoad = new VehicleDispatchSheetBoad(_connectionVo);
+                                vehicleDispatchSheetBoad.Show(this);
                                 break;
                             // ProductionCleanOfficeList
                             case "ProductionCleanOfficeList":

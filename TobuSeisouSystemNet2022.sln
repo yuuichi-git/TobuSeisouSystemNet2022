@@ -35,6 +35,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Substitute", "Substitute\Su
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounting", "Accounting\Accounting.csproj", "{D739C646-1E4B-4283-93C2-9344256EA817}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VehicleDispatchSheet", "VehicleDispatchSheet\VehicleDispatchSheet.csproj", "{77477FFA-DDC9-40D7-BE01-80FE4050FB54}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -171,6 +173,14 @@ Global
 		{D739C646-1E4B-4283-93C2-9344256EA817}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D739C646-1E4B-4283-93C2-9344256EA817}.Release|x64.ActiveCfg = Release|Any CPU
 		{D739C646-1E4B-4283-93C2-9344256EA817}.Release|x64.Build.0 = Release|Any CPU
+		{77477FFA-DDC9-40D7-BE01-80FE4050FB54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77477FFA-DDC9-40D7-BE01-80FE4050FB54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77477FFA-DDC9-40D7-BE01-80FE4050FB54}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{77477FFA-DDC9-40D7-BE01-80FE4050FB54}.Debug|x64.Build.0 = Debug|Any CPU
+		{77477FFA-DDC9-40D7-BE01-80FE4050FB54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77477FFA-DDC9-40D7-BE01-80FE4050FB54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77477FFA-DDC9-40D7-BE01-80FE4050FB54}.Release|x64.ActiveCfg = Release|Any CPU
+		{77477FFA-DDC9-40D7-BE01-80FE4050FB54}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
