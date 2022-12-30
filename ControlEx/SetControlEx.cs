@@ -16,9 +16,9 @@ namespace ControlEx {
         /*
          * 空のSetControlExの文字列表示用
          */
-        private Rectangle rectangleFill = new Rectangle(2, 2, 64, 62);
-        private readonly Font _drawFont = new Font("Yu Gothic UI", 12, FontStyle.Italic, GraphicsUnit.Pixel);
-        private readonly SolidBrush _drawBrushFont = new SolidBrush(Color.LightGray);
+        private readonly Rectangle rectangleFill = new(2, 2, 64, 62);
+        private readonly Font _drawFont = new("Yu Gothic UI", 12, FontStyle.Italic, GraphicsUnit.Pixel);
+        private readonly SolidBrush _drawBrushFont = new(Color.LightGray);
         /*
          * イベントを親へ渡す処理
          */
@@ -67,6 +67,11 @@ namespace ControlEx {
             this.DragEnter += new DragEventHandler(this.SetControlEx_DragEnter);
         }
 
+        /*
+         * SetControlExを囲うPointと半透明色を設定する
+         */
+        Point[] _points = {new Point(1,  0),new Point(73, 0),new Point(73,  303),new Point(1, 303)};
+        SolidBrush _solidBrush = new(Color.FromArgb(15, Color.LimeGreen));
         /// <summary>
         /// SetControlEx_CellPaint
         /// </summary>
@@ -78,9 +83,12 @@ namespace ControlEx {
              * 連絡事項ありの印
              */
             if(_setContactInformation)
-                this.CreateGraphics().DrawRectangle(Pens.Red, 0, 0, 73, 303);
-            if(SetFlag) { // 表示
-                var rectangle = e.CellBounds;
+                this.CreateGraphics().FillPolygon(_solidBrush, _points);
+            /*
+             * 表示
+             */
+            if(SetFlag) {
+                Rectangle rectangle = e.CellBounds;
                 rectangle.Inflate(-1, -1); // 枠のサイズを小さくする
                 /*
                  * SetLabelとCarLabelの部分
@@ -247,40 +255,31 @@ namespace ControlEx {
          * Event
          */
         private void SetControlEx_Click(object sender, EventArgs e) {
-            if(Event_SetControlEx_Click != null)
-                Event_SetControlEx_Click(sender, e);
+            Event_SetControlEx_Click?.Invoke(sender, e);
         }
         private void SetControlEx_DragDrop(object sender, DragEventArgs e) {
-            if(Event_SetControlEx_DragDrop != null)
-                Event_SetControlEx_DragDrop(sender, e);
+            Event_SetControlEx_DragDrop?.Invoke(sender, e);
         }
         private void SetControlEx_DragEnter(object sender, DragEventArgs e) {
-            if(Event_SetControlEx_DragEnter != null)
-                Event_SetControlEx_DragEnter(sender, e);
+            Event_SetControlEx_DragEnter?.Invoke(sender, e);
         }
         private void SetLabelEx_Click(object sender, EventArgs e) {
-            if(Event_SetLabelEx_Click != null)
-                Event_SetLabelEx_Click(sender, e);
+            Event_SetLabelEx_Click?.Invoke(sender, e);
         }
         private void SetLabelEx_MouseMove(object sender, MouseEventArgs e) {
-            if(Event_SetLabelEx_MouseMove != null)
-                Event_SetLabelEx_MouseMove(sender, e);
+            Event_SetLabelEx_MouseMove?.Invoke(sender, e);
         }
         private void CarLabelEx_Click(object sender, EventArgs e) {
-            if(Event_CarLabelEx_Click != null)
-                Event_CarLabelEx_Click(sender, e);
+            Event_CarLabelEx_Click?.Invoke(sender, e);
         }
         private void CarLabelEx_MouseMove(object sender, MouseEventArgs e) {
-            if(Event_CarLabelEx_MouseMove != null)
-                Event_CarLabelEx_MouseMove(sender, e);
+            Event_CarLabelEx_MouseMove?.Invoke(sender, e);
         }
         private void StaffLabelEx_Click(object sender, EventArgs e) {
-            if(Event_StaffLabelEx_Click != null)
-                Event_StaffLabelEx_Click(sender, e);
+            Event_StaffLabelEx_Click?.Invoke(sender, e);
         }
         private void StaffLabelEx_MouseMove(object sender, MouseEventArgs e) {
-            if(Event_StaffLabelEx_MouseMove != null)
-                Event_StaffLabelEx_MouseMove(sender, e);
+            Event_StaffLabelEx_MouseMove?.Invoke(sender, e);
         }
 
         /*
