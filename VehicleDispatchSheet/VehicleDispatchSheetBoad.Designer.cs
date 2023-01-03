@@ -31,26 +31,28 @@
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabelPosition = new System.Windows.Forms.ToolStripStatusLabel();
             this.SpreadBase = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, ((object)(resources.GetObject("TableLayoutPanelExBase.Controls"))));
-            this.SheetView1 = this.SpreadBase.GetSheet(0);
             this.MenuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ToolStripMenuItemMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemTest = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemTest1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemTest2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemTest3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemTest4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemTest5 = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.PanelUp = new System.Windows.Forms.Panel();
+            this.GroupBox1 = new System.Windows.Forms.GroupBox();
+            this.ComboBox2 = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.ComboBox1 = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.ComboBox3 = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.UcDateTimeJpOperationDate = new ControlEx.UcDateTimeJp();
             this.label1 = new System.Windows.Forms.Label();
             this.ButtonUpdate = new System.Windows.Forms.Button();
+            this.SheetView1 = this.SpreadBase.GetSheet(0);
             this.TableLayoutPanelExBase.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpreadBase)).BeginInit();
             this.MenuStrip1.SuspendLayout();
             this.PanelUp.SuspendLayout();
+            this.GroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // TableLayoutPanelExBase
@@ -124,7 +126,6 @@
             // 
             this.MenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripMenuItemMenu,
-            this.ToolStripMenuItemTest,
             this.ToolStripMenuItemHelp});
             this.MenuStrip1.Location = new System.Drawing.Point(0, 0);
             this.MenuStrip1.Name = "MenuStrip1";
@@ -145,53 +146,7 @@
             this.ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
             this.ToolStripMenuItemExit.Size = new System.Drawing.Size(195, 22);
             this.ToolStripMenuItemExit.Text = "アプリケーションを終了する";
-            // 
-            // ToolStripMenuItemTest
-            // 
-            this.ToolStripMenuItemTest.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemTest1,
-            this.ToolStripMenuItemTest2,
-            this.ToolStripMenuItemTest3,
-            this.ToolStripMenuItemTest4,
-            this.ToolStripMenuItemTest5});
-            this.ToolStripMenuItemTest.Name = "ToolStripMenuItemTest";
-            this.ToolStripMenuItemTest.Size = new System.Drawing.Size(45, 20);
-            this.ToolStripMenuItemTest.Text = "テスト";
-            // 
-            // ToolStripMenuItemTest1
-            // 
-            this.ToolStripMenuItemTest1.Name = "ToolStripMenuItemTest1";
-            this.ToolStripMenuItemTest1.Size = new System.Drawing.Size(193, 22);
-            this.ToolStripMenuItemTest1.Text = "運賃項目を挿入する";
-            this.ToolStripMenuItemTest1.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
-            // 
-            // ToolStripMenuItemTest2
-            // 
-            this.ToolStripMenuItemTest2.Name = "ToolStripMenuItemTest2";
-            this.ToolStripMenuItemTest2.Size = new System.Drawing.Size(193, 22);
-            this.ToolStripMenuItemTest2.Text = "１名のレコードを挿入する";
-            this.ToolStripMenuItemTest2.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
-            // 
-            // ToolStripMenuItemTest3
-            // 
-            this.ToolStripMenuItemTest3.Name = "ToolStripMenuItemTest3";
-            this.ToolStripMenuItemTest3.Size = new System.Drawing.Size(193, 22);
-            this.ToolStripMenuItemTest3.Text = "２名のレコードを挿入する";
-            this.ToolStripMenuItemTest3.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
-            // 
-            // ToolStripMenuItemTest4
-            // 
-            this.ToolStripMenuItemTest4.Name = "ToolStripMenuItemTest4";
-            this.ToolStripMenuItemTest4.Size = new System.Drawing.Size(193, 22);
-            this.ToolStripMenuItemTest4.Text = "３名のレコードを挿入する";
-            this.ToolStripMenuItemTest4.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
-            // 
-            // ToolStripMenuItemTest5
-            // 
-            this.ToolStripMenuItemTest5.Name = "ToolStripMenuItemTest5";
-            this.ToolStripMenuItemTest5.Size = new System.Drawing.Size(193, 22);
-            this.ToolStripMenuItemTest5.Text = "４名のレコードを挿入する";
-            this.ToolStripMenuItemTest5.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            this.ToolStripMenuItemExit.Click += new System.EventHandler(this.ToolStripMenuItemExit_Click);
             // 
             // ToolStripMenuItemHelp
             // 
@@ -201,6 +156,7 @@
             // 
             // PanelUp
             // 
+            this.PanelUp.Controls.Add(this.GroupBox1);
             this.PanelUp.Controls.Add(this.UcDateTimeJpOperationDate);
             this.PanelUp.Controls.Add(this.label1);
             this.PanelUp.Controls.Add(this.ButtonUpdate);
@@ -209,6 +165,91 @@
             this.PanelUp.Name = "PanelUp";
             this.PanelUp.Size = new System.Drawing.Size(1898, 54);
             this.PanelUp.TabIndex = 3;
+            // 
+            // GroupBox1
+            // 
+            this.GroupBox1.Controls.Add(this.ComboBox2);
+            this.GroupBox1.Controls.Add(this.label4);
+            this.GroupBox1.Controls.Add(this.ComboBox1);
+            this.GroupBox1.Controls.Add(this.label3);
+            this.GroupBox1.Controls.Add(this.ComboBox3);
+            this.GroupBox1.Controls.Add(this.label2);
+            this.GroupBox1.Location = new System.Drawing.Point(348, 4);
+            this.GroupBox1.Name = "GroupBox1";
+            this.GroupBox1.Size = new System.Drawing.Size(652, 44);
+            this.GroupBox1.TabIndex = 15;
+            this.GroupBox1.TabStop = false;
+            this.GroupBox1.Text = "点呼執行者";
+            // 
+            // ComboBox2
+            // 
+            this.ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox2.FormattingEnabled = true;
+            this.ComboBox2.Items.AddRange(new object[] {
+            "新井",
+            "波潟",
+            "川名",
+            "石原",
+            "辻"});
+            this.ComboBox2.Location = new System.Drawing.Point(316, 14);
+            this.ComboBox2.Name = "ComboBox2";
+            this.ComboBox2.Size = new System.Drawing.Size(104, 23);
+            this.ComboBox2.TabIndex = 10;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(444, 18);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(67, 15);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "三郷点呼者";
+            // 
+            // ComboBox1
+            // 
+            this.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox1.FormattingEnabled = true;
+            this.ComboBox1.Items.AddRange(new object[] {
+            "新井",
+            "波潟",
+            "川名",
+            "石原",
+            "辻"});
+            this.ComboBox1.Location = new System.Drawing.Point(112, 14);
+            this.ComboBox1.Name = "ComboBox1";
+            this.ComboBox1.Size = new System.Drawing.Size(104, 23);
+            this.ComboBox1.TabIndex = 9;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(232, 18);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(79, 15);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "本社点呼者２";
+            // 
+            // ComboBox3
+            // 
+            this.ComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox3.FormattingEnabled = true;
+            this.ComboBox3.Items.AddRange(new object[] {
+            "川名",
+            "酒井",
+            "青木"});
+            this.ComboBox3.Location = new System.Drawing.Point(516, 14);
+            this.ComboBox3.Name = "ComboBox3";
+            this.ComboBox3.Size = new System.Drawing.Size(104, 23);
+            this.ComboBox3.TabIndex = 11;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(28, 18);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 15);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "本社点呼者１";
             // 
             // UcDateTimeJpOperationDate
             // 
@@ -248,6 +289,7 @@
             this.Name = "VehicleDispatchSheetBoad";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "VehicleDispatchSheetBoad";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.VehicleDispatchSheetBoad_FormClosing);
             this.TableLayoutPanelExBase.ResumeLayout(false);
             this.TableLayoutPanelExBase.PerformLayout();
             this.StatusStrip1.ResumeLayout(false);
@@ -257,6 +299,8 @@
             this.MenuStrip1.PerformLayout();
             this.PanelUp.ResumeLayout(false);
             this.PanelUp.PerformLayout();
+            this.GroupBox1.ResumeLayout(false);
+            this.GroupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -274,16 +318,17 @@
         private ToolStripStatusLabel ToolStripStatusLabelStatus;
         private Panel PanelUp;
         private Button ButtonUpdate;
-        private ToolStripMenuItem ToolStripMenuItemTest;
-        private ToolStripMenuItem ToolStripMenuItemTest1;
-        private ToolStripMenuItem ToolStripMenuItemTest2;
-        private ToolStripMenuItem ToolStripMenuItemTest3;
-        private ToolStripMenuItem ToolStripMenuItemTest4;
-        private ToolStripMenuItem ToolStripMenuItemTest5;
         private ToolStripStatusLabel toolStripStatusLabel2;
         private ToolStripStatusLabel ToolStripStatusLabelPosition;
         private ControlEx.UcDateTimeJp UcDateTimeJpOperationDate;
         private Label label1;
+        private Label label4;
+        private Label label3;
+        private Label label2;
+        private ComboBox ComboBox3;
+        private ComboBox ComboBox2;
+        private ComboBox ComboBox1;
+        private GroupBox GroupBox1;
         private FarPoint.Win.Spread.SheetView SheetView1;
     }
 }

@@ -1,8 +1,6 @@
-using Common;
+ï»¿using Common;
 
 using Dao;
-
-using FarPoint.Win.Spread;
 
 using GrapeCity.Spreadsheet;
 
@@ -25,55 +23,55 @@ namespace VehicleDispatchSheet {
         private List<CarMasterVo> _listCarMasterVo;
         private List<StaffMasterVo> _listStaffMasterVo;
         /*
-         * ‰Šú‰»
+         * åˆæœŸåŒ–
          */
         private InitializeForm _initializeForm = new();
         private EntryCellPosition? _entryCellPosition;
         private string _beforeBlockName = string.Empty;
         /// <summary>
-        /// Row‚ÌƒXƒ^[ƒgˆÊ’u
+        /// Rowã®ã‚¹ã‚¿ãƒ¼ãƒˆä½ç½®
         /// </summary>
         private int _startRow = 4;
         /// <summary>
-        /// Column‚ÌƒXƒ^[ƒgˆÊ’u
+        /// Columnã®ã‚¹ã‚¿ãƒ¼ãƒˆä½ç½®
         /// </summary>
         readonly Dictionary<int, int> _dictionaryColNumber = new Dictionary<int, int> { { 0, 0 },{ 1, 26 } };
         /// <summary>
-        /// Row‚ÌÅ‘å”
-        /// Sheet‚à’²®‚µ‚Ä‚ËI
+        /// Rowã®æœ€å¤§æ•°
+        /// Sheetã‚‚èª¿æ•´ã—ã¦ã­ï¼
         /// </summary>
-        readonly int _rowMax = 75;
+        readonly int _rowMax = 74;
         /// <summary>
-        /// ”zÔæ‚Ì•Ê–¼
+        /// é…è»Šå…ˆã®åˆ¥å
         /// </summary>
-        private Dictionary<int, string> dictionaryWordCode = new Dictionary<int, string> { { 13101, "ç‘ã“c‹æ" },
-                                                                                           { 13102, "’†‰›‹æ" },
-                                                                                           { 13103, "`‹æ" },
-                                                                                           { 13104, "Vh‹æ" },
-                                                                                           { 13105, "•¶‹‹æ" },
-                                                                                           { 13106, "‘ä“Œ‹æ" },
-                                                                                           { 13107, "–n“c‹æ" },
-                                                                                           { 13108, "]“Œ‹æ" },
-                                                                                           { 13109, "•iì‹æ" },
-                                                                                           { 13110, "–Ú•‹æ" },
-                                                                                           { 13111, "‘å“c‹æ" },
-                                                                                           { 13112, "¢“c’J‹æ" },
-                                                                                           { 13113, "a’J‹æ" },
-                                                                                           { 13114, "’†–ì‹æ" },
-                                                                                           { 13115, "™•À‹æ" },
-                                                                                           { 13116, "–L“‡‹æ" },
-                                                                                           { 13117, "–k‹æ" },
-                                                                                           { 13118, "rì‹æ" },
-                                                                                           { 13119, "”Â‹´‹æ" },
-                                                                                           { 13120, "—û”n‹æ" },
-                                                                                           { 13121, "‘«—§‹æ" },
-                                                                                           { 13122, "Š‹ü‹æ" },
-                                                                                           { 13123, "]ŒËì‹æ" } };
-        private Dictionary<int, string> dictionaryBelongs = new Dictionary<int, string> { { 10, "" }, { 11, "" }, { 12, "ƒo" }, { 20, "V" }, { 21, "©" } };
-        private Dictionary<int, string> dictionaryOccupation = new Dictionary<int, string> { { 10, "" }, { 11, "ì" }, { 99, "" } };
+        private Dictionary<int, string> dictionaryWordCode = new Dictionary<int, string> { { 13101, "åƒä»£ç”°åŒº" },
+                                                                                           { 13102, "ä¸­å¤®åŒº" },
+                                                                                           { 13103, "æ¸¯åŒº" },
+                                                                                           { 13104, "æ–°å®¿åŒº" },
+                                                                                           { 13105, "æ–‡äº¬åŒº" },
+                                                                                           { 13106, "å°æ±åŒº" },
+                                                                                           { 13107, "å¢¨ç”°åŒº" },
+                                                                                           { 13108, "æ±Ÿæ±åŒº" },
+                                                                                           { 13109, "å“å·åŒº" },
+                                                                                           { 13110, "ç›®é»’åŒº" },
+                                                                                           { 13111, "å¤§ç”°åŒº" },
+                                                                                           { 13112, "ä¸–ç”°è°·åŒº" },
+                                                                                           { 13113, "æ¸‹è°·åŒº" },
+                                                                                           { 13114, "ä¸­é‡åŒº" },
+                                                                                           { 13115, "æ‰ä¸¦åŒº" },
+                                                                                           { 13116, "è±Šå³¶åŒº" },
+                                                                                           { 13117, "åŒ—åŒº" },
+                                                                                           { 13118, "è’å·åŒº" },
+                                                                                           { 13119, "æ¿æ©‹åŒº" },
+                                                                                           { 13120, "ç·´é¦¬åŒº" },
+                                                                                           { 13121, "è¶³ç«‹åŒº" },
+                                                                                           { 13122, "è‘›é£¾åŒº" },
+                                                                                           { 13123, "æ±Ÿæˆ¸å·åŒº" } };
+        private Dictionary<int, string> dictionaryBelongs = new Dictionary<int, string> { { 10, "" }, { 11, "" }, { 12, "ãƒ" }, { 20, "æ–°" }, { 21, "è‡ª" } };
+        private Dictionary<int, string> dictionaryOccupation = new Dictionary<int, string> { { 10, "" }, { 11, "ä½œ" }, { 99, "" } };
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
         /// </summary>
         /// <param name="connectionVo"></param>
         public VehicleDispatchSheetBoad(ConnectionVo connectionVo) {
@@ -91,27 +89,27 @@ namespace VehicleDispatchSheet {
             _listCarMasterVo = new CarMasterDao(connectionVo).SelectAllCarMaster();
             _listStaffMasterVo = new StaffMasterDao(connectionVo).SelectAllStaffMaster();
             /*
-             * ƒRƒ“ƒgƒ[ƒ‹‰Šú‰»
+             * ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ«åˆæœŸåŒ–
              */
             InitializeComponent();
             _initializeForm.VehicleDispatchSheet(this);
             /*
-             * SPREAD‰Šú‰»
+             * SPREADåˆæœŸåŒ–
              */
             SpreadBase.StatusBarVisible = true;
             /*
-             * “ú•t
+             * æ—¥ä»˜
              */
-            // “ú•t‚ğ‰Šú‰»
+            // æ—¥ä»˜ã‚’åˆæœŸåŒ–
             UcDateTimeJpOperationDate.SetValue(DateTime.Now);
-            // “Çæ‚èê—p
+            // èª­å–ã‚Šå°‚ç”¨
             UcDateTimeJpOperationDate.SetReadOnly(true);
             ToolStripStatusLabelStatus.Text = string.Empty;
             ToolStripStatusLabelPosition.Text = string.Empty;
         }
 
         /// <summary>
-        /// ƒGƒ“ƒgƒŠ[ƒ|ƒCƒ“ƒg
+        /// ã‚¨ãƒ³ãƒˆãƒªãƒ¼ãƒã‚¤ãƒ³ãƒˆ
         /// </summary>
         public static void Main() {
         }
@@ -122,26 +120,44 @@ namespace VehicleDispatchSheet {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ButtonUpdate_Click(object sender, EventArgs e) {
+            /*
+             * ç‚¹å‘¼åŸ·è¡Œè€…ãŒé¸æŠã•ã‚Œã¦ã„ã‚‹ã‹ã®ç¢ºèª
+             */
+            if(ComboBox1.Text == "" || ComboBox2.Text == "" || ComboBox3.Text == "") {
+                MessageBox.Show("ç‚¹å‘¼åŸ·è¡Œè€…ã‚’é¸æŠã—ã¦ä¸‹ã•ã„", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            } else {
+
+            }
+            /*
+             * å†æ›´æ–°ã§ããªã„ã‚ˆã†ã«ã™ã‚‹
+             */
+            ((Button)sender).Enabled = false;
+
             EntryCellPosition? entryCellPosition;
             int blockRowCount;
 
             SpreadBase.SuspendLayout();
             /*
-             * 10:™—f@ã@¬@“ÁƒR[ƒhF1
+             * é…è»Šæ—¥æ™‚
+             */
+            SheetView1.Cells[0, 0].Text = UcDateTimeJpOperationDate.GetText();
+            /*
+             * 10:â˜†åº¸ã€€ä¸Šã€€å°ã€€ç‰¹ã‚³ãƒ¼ãƒ‰ï¼š1
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
                 /*
-                 * ‰^’À‘ÎÛ‚ÌƒŒƒR[ƒhˆÈŠO‚ÍBreak‚·‚é
+                 * é‹è³ƒå¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä»¥å¤–ã¯Breakã™ã‚‹
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 10) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "™—f@ã@¬@“ÁƒR[ƒhF1";
+                        _beforeBlockName = "â˜†åº¸ã€€ä¸Šã€€å°ã€€ç‰¹ã‚³ãƒ¼ãƒ‰ï¼š1";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
                     /*
-                     * —ñ‚ªhAA"‚É•Ï‚í‚Á‚½ê‡‚ÍBlockName‚ğ‘}“ü‚·‚é
+                     * åˆ—ãŒâ€AA"ã«å¤‰ã‚ã£ãŸå ´åˆã¯BlockNameã‚’æŒ¿å…¥ã™ã‚‹
                      */
                     if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
                         CreateSpan(entryCellPosition, _beforeBlockName);
@@ -155,27 +171,27 @@ namespace VehicleDispatchSheet {
                         CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
                         CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
                     } else {
-                        MessageBox.Show("”zÔ•\‚Ìs”‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·BƒVƒXƒeƒ€ŠÇ—Ò‚Ö•ñ‚µ‚Ä‰º‚³‚¢B", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        MessageBox.Show("é…è»Šè¡¨ã®è¡Œæ•°ãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚ã‚·ã‚¹ãƒ†ãƒ ç®¡ç†è€…ã¸å ±å‘Šã—ã¦ä¸‹ã•ã„ã€‚", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     blockRowCount++;
                 }
             }
             /*
-             * 11:™—f@ã@¬ƒvƒŒƒR[ƒhF1
+             * 11:â˜†åº¸ã€€ä¸Šã€€å°ãƒ—ãƒ¬ã‚³ãƒ¼ãƒ‰ï¼š1
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
                 /*
-                 * ‰^’À‘ÎÛ‚ÌƒŒƒR[ƒhˆÈŠO‚ÍBreak‚·‚é
+                 * é‹è³ƒå¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä»¥å¤–ã¯Breakã™ã‚‹
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 11) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "™—f@ã@¬ƒvƒŒƒR[ƒhF1";
+                        _beforeBlockName = "â˜†åº¸ã€€ä¸Šã€€å°ãƒ—ãƒ¬ã‚³ãƒ¼ãƒ‰ï¼š1";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
                     /*
-                     * —ñ‚ªhAA"‚É•Ï‚í‚Á‚½ê‡‚ÍBlockName‚ğ‘}“ü‚·‚é
+                     * åˆ—ãŒâ€AA"ã«å¤‰ã‚ã£ãŸå ´åˆã¯BlockNameã‚’æŒ¿å…¥ã™ã‚‹
                      */
                     if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
                         CreateSpan(entryCellPosition, _beforeBlockName);
@@ -189,27 +205,27 @@ namespace VehicleDispatchSheet {
                         CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
                         CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
                     } else {
-                        MessageBox.Show("”zÔ•\‚Ìs”‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·BƒVƒXƒeƒ€ŠÇ—Ò‚Ö•ñ‚µ‚Ä‰º‚³‚¢B", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        MessageBox.Show("é…è»Šè¡¨ã®è¡Œæ•°ãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚ã‚·ã‚¹ãƒ†ãƒ ç®¡ç†è€…ã¸å ±å‘Šã—ã¦ä¸‹ã•ã„ã€‚", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     blockRowCount++;
                 }
             }
             /*
-             * 12:™—f@ã@V‘å“ÁƒR[ƒhF2
+             * 12:â˜†åº¸ã€€ä¸Šã€€æ–°å¤§ç‰¹ã‚³ãƒ¼ãƒ‰ï¼š2
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
                 /*
-                 * ‰^’À‘ÎÛ‚ÌƒŒƒR[ƒhˆÈŠO‚ÍBreak‚·‚é
+                 * é‹è³ƒå¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä»¥å¤–ã¯Breakã™ã‚‹
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 12) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "™—f@ã@V‘å“ÁƒR[ƒhF2";
+                        _beforeBlockName = "â˜†åº¸ã€€ä¸Šã€€æ–°å¤§ç‰¹ã‚³ãƒ¼ãƒ‰ï¼š2";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
                     /*
-                     * —ñ‚ªhAA"‚É•Ï‚í‚Á‚½ê‡‚ÍBlockName‚ğ‘}“ü‚·‚é
+                     * åˆ—ãŒâ€AA"ã«å¤‰ã‚ã£ãŸå ´åˆã¯BlockNameã‚’æŒ¿å…¥ã™ã‚‹
                      */
                     if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
                         CreateSpan(entryCellPosition, _beforeBlockName);
@@ -223,27 +239,27 @@ namespace VehicleDispatchSheet {
                         CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
                         CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
                     } else {
-                        MessageBox.Show("”zÔ•\‚Ìs”‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·BƒVƒXƒeƒ€ŠÇ—Ò‚Ö•ñ‚µ‚Ä‰º‚³‚¢B", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        MessageBox.Show("é…è»Šè¡¨ã®è¡Œæ•°ãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚ã‚·ã‚¹ãƒ†ãƒ ç®¡ç†è€…ã¸å ±å‘Šã—ã¦ä¸‹ã•ã„ã€‚", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     blockRowCount++;
                 }
             }
             /*
-             * 13:™—f@ã@Œy¬ƒ_ƒ“ƒvƒR[ƒhF51
+             * 13:â˜†åº¸ã€€ä¸Šã€€è»½å°ãƒ€ãƒ³ãƒ—ã‚³ãƒ¼ãƒ‰ï¼š51
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
                 /*
-                 * ‰^’À‘ÎÛ‚ÌƒŒƒR[ƒhˆÈŠO‚ÍBreak‚·‚é
+                 * é‹è³ƒå¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä»¥å¤–ã¯Breakã™ã‚‹
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 13) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "™—f@ã@Œy¬ƒ_ƒ“ƒvƒR[ƒhF51";
+                        _beforeBlockName = "â˜†åº¸ã€€ä¸Šã€€è»½å°ãƒ€ãƒ³ãƒ—ã‚³ãƒ¼ãƒ‰ï¼š51";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
                     /*
-                     * —ñ‚ªhAA"‚É•Ï‚í‚Á‚½ê‡‚ÍBlockName‚ğ‘}“ü‚·‚é
+                     * åˆ—ãŒâ€AA"ã«å¤‰ã‚ã£ãŸå ´åˆã¯BlockNameã‚’æŒ¿å…¥ã™ã‚‹
                      */
                     if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
                         CreateSpan(entryCellPosition, _beforeBlockName);
@@ -257,27 +273,27 @@ namespace VehicleDispatchSheet {
                         CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
                         CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
                     } else {
-                        MessageBox.Show("”zÔ•\‚Ìs”‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·BƒVƒXƒeƒ€ŠÇ—Ò‚Ö•ñ‚µ‚Ä‰º‚³‚¢B", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        MessageBox.Show("é…è»Šè¡¨ã®è¡Œæ•°ãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚ã‚·ã‚¹ãƒ†ãƒ ç®¡ç†è€…ã¸å ±å‘Šã—ã¦ä¸‹ã•ã„ã€‚", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     blockRowCount++;
                 }
             }
             /*
-             * 14:™—f@ã@Œy¬Œ^‰İ•¨ƒR[ƒhF11
+             * 14:â˜†åº¸ã€€ä¸Šã€€è»½å°å‹è²¨ç‰©ã‚³ãƒ¼ãƒ‰ï¼š11
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
                 /*
-                 * ‰^’À‘ÎÛ‚ÌƒŒƒR[ƒhˆÈŠO‚ÍBreak‚·‚é
+                 * é‹è³ƒå¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä»¥å¤–ã¯Breakã™ã‚‹
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 14) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "™—f@ã@Œy¬Œ^‰İ•¨ƒR[ƒhF11";
+                        _beforeBlockName = "â˜†åº¸ã€€ä¸Šã€€è»½å°å‹è²¨ç‰©ã‚³ãƒ¼ãƒ‰ï¼š11";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
                     /*
-                     * —ñ‚ªhAA"‚É•Ï‚í‚Á‚½ê‡‚ÍBlockName‚ğ‘}“ü‚·‚é
+                     * åˆ—ãŒâ€AA"ã«å¤‰ã‚ã£ãŸå ´åˆã¯BlockNameã‚’æŒ¿å…¥ã™ã‚‹
                      */
                     if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
                         CreateSpan(entryCellPosition, _beforeBlockName);
@@ -291,27 +307,27 @@ namespace VehicleDispatchSheet {
                         CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
                         CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
                     } else {
-                        MessageBox.Show("”zÔ•\‚Ìs”‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·BƒVƒXƒeƒ€ŠÇ—Ò‚Ö•ñ‚µ‚Ä‰º‚³‚¢B", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        MessageBox.Show("é…è»Šè¡¨ã®è¡Œæ•°ãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚ã‚·ã‚¹ãƒ†ãƒ ç®¡ç†è€…ã¸å ±å‘Šã—ã¦ä¸‹ã•ã„ã€‚", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     blockRowCount++;
                 }
             }
             /*
-             * 15:™‹æ@Œ_@Œy¬Œ^‰İ•¨ƒR[ƒhF11
+             * 15:â˜†åŒºã€€å¥‘ã€€è»½å°å‹è²¨ç‰©ã‚³ãƒ¼ãƒ‰ï¼š11
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
                 /*
-                 * ‰^’À‘ÎÛ‚ÌƒŒƒR[ƒhˆÈŠO‚ÍBreak‚·‚é
+                 * é‹è³ƒå¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä»¥å¤–ã¯Breakã™ã‚‹
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 15) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "™‹æ@Œ_@Œy¬Œ^‰İ•¨ƒR[ƒhF11";
+                        _beforeBlockName = "â˜†åŒºã€€å¥‘ã€€è»½å°å‹è²¨ç‰©ã‚³ãƒ¼ãƒ‰ï¼š11";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
                     /*
-                     * —ñ‚ªhAA"‚É•Ï‚í‚Á‚½ê‡‚ÍBlockName‚ğ‘}“ü‚·‚é
+                     * åˆ—ãŒâ€AA"ã«å¤‰ã‚ã£ãŸå ´åˆã¯BlockNameã‚’æŒ¿å…¥ã™ã‚‹
                      */
                     if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
                         CreateSpan(entryCellPosition, _beforeBlockName);
@@ -325,27 +341,27 @@ namespace VehicleDispatchSheet {
                         CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
                         CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
                     } else {
-                        MessageBox.Show("”zÔ•\‚Ìs”‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·BƒVƒXƒeƒ€ŠÇ—Ò‚Ö•ñ‚µ‚Ä‰º‚³‚¢B", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        MessageBox.Show("é…è»Šè¡¨ã®è¡Œæ•°ãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚ã‚·ã‚¹ãƒ†ãƒ ç®¡ç†è€…ã¸å ±å‘Šã—ã¦ä¸‹ã•ã„ã€‚", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     blockRowCount++;
                 }
             }
             /*
-             * 16:™‹æ@Œ_@¬ƒvƒŒƒR[ƒhF1
+             * 16:â˜†åŒºã€€å¥‘ã€€å°ãƒ—ãƒ¬ã‚³ãƒ¼ãƒ‰ï¼š1
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
                 /*
-                 * ‰^’À‘ÎÛ‚ÌƒŒƒR[ƒhˆÈŠO‚ÍBreak‚·‚é
+                 * é‹è³ƒå¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä»¥å¤–ã¯Breakã™ã‚‹
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 16) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "™‹æ@Œ_@¬ƒvƒŒƒR[ƒhF1";
+                        _beforeBlockName = "â˜†åŒºã€€å¥‘ã€€å°ãƒ—ãƒ¬ã‚³ãƒ¼ãƒ‰ï¼š1";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
                     /*
-                     * —ñ‚ªhAA"‚É•Ï‚í‚Á‚½ê‡‚ÍBlockName‚ğ‘}“ü‚·‚é
+                     * åˆ—ãŒâ€AA"ã«å¤‰ã‚ã£ãŸå ´åˆã¯BlockNameã‚’æŒ¿å…¥ã™ã‚‹
                      */
                     if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
                         CreateSpan(entryCellPosition, _beforeBlockName);
@@ -359,27 +375,27 @@ namespace VehicleDispatchSheet {
                         CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
                         CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
                     } else {
-                        MessageBox.Show("”zÔ•\‚Ìs”‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·BƒVƒXƒeƒ€ŠÇ—Ò‚Ö•ñ‚µ‚Ä‰º‚³‚¢B", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        MessageBox.Show("é…è»Šè¡¨ã®è¡Œæ•°ãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚ã‚·ã‚¹ãƒ†ãƒ ç®¡ç†è€…ã¸å ±å‘Šã—ã¦ä¸‹ã•ã„ã€‚", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     blockRowCount++;
                 }
             }
             /*
-             * 17:™‹æ@Œ_@¬ƒvƒŒ ƒR[ƒhF23
+             * 17:â˜†åŒºã€€å¥‘ã€€å°ãƒ—ãƒ¬ ã‚³ãƒ¼ãƒ‰ï¼š23
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
                 /*
-                 * ‰^’À‘ÎÛ‚ÌƒŒƒR[ƒhˆÈŠO‚ÍBreak‚·‚é
+                 * é‹è³ƒå¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä»¥å¤–ã¯Breakã™ã‚‹
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 17) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "™‹æ@Œ_@¬ƒvƒŒ ƒR[ƒhF23";
+                        _beforeBlockName = "â˜†åŒºã€€å¥‘ã€€å°ãƒ—ãƒ¬ ã‚³ãƒ¼ãƒ‰ï¼š23";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
                     /*
-                     * —ñ‚ªhAA"‚É•Ï‚í‚Á‚½ê‡‚ÍBlockName‚ğ‘}“ü‚·‚é
+                     * åˆ—ãŒâ€AA"ã«å¤‰ã‚ã£ãŸå ´åˆã¯BlockNameã‚’æŒ¿å…¥ã™ã‚‹
                      */
                     if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
                         CreateSpan(entryCellPosition, _beforeBlockName);
@@ -393,27 +409,27 @@ namespace VehicleDispatchSheet {
                         CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
                         CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
                     } else {
-                        MessageBox.Show("”zÔ•\‚Ìs”‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·BƒVƒXƒeƒ€ŠÇ—Ò‚Ö•ñ‚µ‚Ä‰º‚³‚¢B", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        MessageBox.Show("é…è»Šè¡¨ã®è¡Œæ•°ãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚ã‚·ã‚¹ãƒ†ãƒ ç®¡ç†è€…ã¸å ±å‘Šã—ã¦ä¸‹ã•ã„ã€‚", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     blockRowCount++;
                 }
             }
             /*
-             * 18:™‹æ@Œ_@¬ƒvƒŒƒR[ƒhF8
+             * 18:â˜†åŒºã€€å¥‘ã€€å°ãƒ—ãƒ¬ã‚³ãƒ¼ãƒ‰ï¼š8
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
                 /*
-                 * ‰^’À‘ÎÛ‚ÌƒŒƒR[ƒhˆÈŠO‚ÍBreak‚·‚é
+                 * é‹è³ƒå¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä»¥å¤–ã¯Breakã™ã‚‹
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 18) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "™‹æ@Œ_@¬ƒvƒŒƒR[ƒhF8";
+                        _beforeBlockName = "â˜†åŒºã€€å¥‘ã€€å°ãƒ—ãƒ¬ã‚³ãƒ¼ãƒ‰ï¼š8";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
                     /*
-                     * —ñ‚ªhAA"‚É•Ï‚í‚Á‚½ê‡‚ÍBlockName‚ğ‘}“ü‚·‚é
+                     * åˆ—ãŒâ€AA"ã«å¤‰ã‚ã£ãŸå ´åˆã¯BlockNameã‚’æŒ¿å…¥ã™ã‚‹
                      */
                     if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
                         CreateSpan(entryCellPosition, _beforeBlockName);
@@ -427,27 +443,27 @@ namespace VehicleDispatchSheet {
                         CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
                         CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
                     } else {
-                        MessageBox.Show("”zÔ•\‚Ìs”‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·BƒVƒXƒeƒ€ŠÇ—Ò‚Ö•ñ‚µ‚Ä‰º‚³‚¢B", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        MessageBox.Show("é…è»Šè¡¨ã®è¡Œæ•°ãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚ã‚·ã‚¹ãƒ†ãƒ ç®¡ç†è€…ã¸å ±å‘Šã—ã¦ä¸‹ã•ã„ã€‚", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     blockRowCount++;
                 }
             }
             /*
-             * 19:™‹æ@Œ_@•½ƒ{ƒfƒBƒR[ƒhF15
+             * 19:â˜†åŒºã€€å¥‘ã€€å¹³ãƒœãƒ‡ã‚£ã‚³ãƒ¼ãƒ‰ï¼š15
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
                 /*
-                 * ‰^’À‘ÎÛ‚ÌƒŒƒR[ƒhˆÈŠO‚ÍBreak‚·‚é
+                 * é‹è³ƒå¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä»¥å¤–ã¯Breakã™ã‚‹
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 19) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "™‹æ@Œ_@•½ƒ{ƒfƒBƒR[ƒhF15";
+                        _beforeBlockName = "â˜†åŒºã€€å¥‘ã€€å¹³ãƒœãƒ‡ã‚£ã‚³ãƒ¼ãƒ‰ï¼š15";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
                     /*
-                     * —ñ‚ªhAA"‚É•Ï‚í‚Á‚½ê‡‚ÍBlockName‚ğ‘}“ü‚·‚é
+                     * åˆ—ãŒâ€AA"ã«å¤‰ã‚ã£ãŸå ´åˆã¯BlockNameã‚’æŒ¿å…¥ã™ã‚‹
                      */
                     if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
                         CreateSpan(entryCellPosition, _beforeBlockName);
@@ -461,27 +477,27 @@ namespace VehicleDispatchSheet {
                         CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
                         CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
                     } else {
-                        MessageBox.Show("”zÔ•\‚Ìs”‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·BƒVƒXƒeƒ€ŠÇ—Ò‚Ö•ñ‚µ‚Ä‰º‚³‚¢B", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        MessageBox.Show("é…è»Šè¡¨ã®è¡Œæ•°ãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚ã‚·ã‚¹ãƒ†ãƒ ç®¡ç†è€…ã¸å ±å‘Šã—ã¦ä¸‹ã•ã„ã€‚", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     blockRowCount++;
                 }
             }
             /*
-             * 20:™‹æ@Œ_@¬@‚fƒR[ƒhF1
+             * 20:â˜†åŒºã€€å¥‘ã€€å°ã€€ï¼§ã‚³ãƒ¼ãƒ‰ï¼š1
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
                 /*
-                 * ‰^’À‘ÎÛ‚ÌƒŒƒR[ƒhˆÈŠO‚ÍBreak‚·‚é
+                 * é‹è³ƒå¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä»¥å¤–ã¯Breakã™ã‚‹
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 20) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "™‹æ@Œ_@¬@‚fƒR[ƒhF1";
+                        _beforeBlockName = "â˜†åŒºã€€å¥‘ã€€å°ã€€ï¼§ã‚³ãƒ¼ãƒ‰ï¼š1";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
                     /*
-                     * —ñ‚ªhAA"‚É•Ï‚í‚Á‚½ê‡‚ÍBlockName‚ğ‘}“ü‚·‚é
+                     * åˆ—ãŒâ€AA"ã«å¤‰ã‚ã£ãŸå ´åˆã¯BlockNameã‚’æŒ¿å…¥ã™ã‚‹
                      */
                     if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
                         CreateSpan(entryCellPosition, _beforeBlockName);
@@ -495,27 +511,27 @@ namespace VehicleDispatchSheet {
                         CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
                         CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
                     } else {
-                        MessageBox.Show("”zÔ•\‚Ìs”‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·BƒVƒXƒeƒ€ŠÇ—Ò‚Ö•ñ‚µ‚Ä‰º‚³‚¢B", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        MessageBox.Show("é…è»Šè¡¨ã®è¡Œæ•°ãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚ã‚·ã‚¹ãƒ†ãƒ ç®¡ç†è€…ã¸å ±å‘Šã—ã¦ä¸‹ã•ã„ã€‚", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     blockRowCount++;
                 }
             }
             /*
-             * 21:™—f@ã@‘å@‚fƒR[ƒhF5
+             * 21:â˜†åº¸ã€€ä¸Šã€€å¤§ã€€ï¼§ã‚³ãƒ¼ãƒ‰ï¼š5
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
                 /*
-                 * ‰^’À‘ÎÛ‚ÌƒŒƒR[ƒhˆÈŠO‚ÍBreak‚·‚é
+                 * é‹è³ƒå¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä»¥å¤–ã¯Breakã™ã‚‹
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 21) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "™—f@ã@‘å@‚fƒR[ƒhF5";
+                        _beforeBlockName = "â˜†åº¸ã€€ä¸Šã€€å¤§ã€€ï¼§ã‚³ãƒ¼ãƒ‰ï¼š5";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
                     /*
-                     * —ñ‚ªhAA"‚É•Ï‚í‚Á‚½ê‡‚ÍBlockName‚ğ‘}“ü‚·‚é
+                     * åˆ—ãŒâ€AA"ã«å¤‰ã‚ã£ãŸå ´åˆã¯BlockNameã‚’æŒ¿å…¥ã™ã‚‹
                      */
                     if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
                         CreateSpan(entryCellPosition, _beforeBlockName);
@@ -529,30 +545,30 @@ namespace VehicleDispatchSheet {
                         CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
                         CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
                     } else {
-                        MessageBox.Show("”zÔ•\‚Ìs”‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·BƒVƒXƒeƒ€ŠÇ—Ò‚Ö•ñ‚µ‚Ä‰º‚³‚¢B", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        MessageBox.Show("é…è»Šè¡¨ã®è¡Œæ•°ãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚ã‚·ã‚¹ãƒ†ãƒ ç®¡ç†è€…ã¸å ±å‘Šã—ã¦ä¸‹ã•ã„ã€‚", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     blockRowCount++;
                 }
             }
             /*
-             * 22:™—Õ@@¬ƒvƒŒ“™ƒR[ƒhF1
+             * 22:â˜†è‡¨ã€€æ™‚ã€€å°ãƒ—ãƒ¬ç­‰ã‚³ãƒ¼ãƒ‰ï¼š1
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
                 /*
-                 * ‰^’À‘ÎÛ‚ÌƒŒƒR[ƒhˆÈŠO‚ÍBreak‚·‚é
+                 * é‹è³ƒå¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä»¥å¤–ã¯Breakã™ã‚‹
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 0 &&
                                                            _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Classification_code == 12 &&
-                                                           _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Disguise_kind_1 == "¬ƒv") {
+                                                           _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Disguise_kind_1 == "å°ãƒ—") {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "™—Õ@@¬ƒvƒŒ“™ƒR[ƒhF1";
+                        _beforeBlockName = "â˜†è‡¨ã€€æ™‚ã€€å°ãƒ—ãƒ¬ç­‰ã‚³ãƒ¼ãƒ‰ï¼š1";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
 
                     }
                     entryCellPosition = GetNextCellPosition();
                     /*
-                     * —ñ‚ªhAA"‚É•Ï‚í‚Á‚½ê‡‚ÍBlockName‚ğ‘}“ü‚·‚é
+                     * åˆ—ãŒâ€AA"ã«å¤‰ã‚ã£ãŸå ´åˆã¯BlockNameã‚’æŒ¿å…¥ã™ã‚‹
                      */
                     if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
                         CreateSpan(entryCellPosition, _beforeBlockName);
@@ -566,29 +582,29 @@ namespace VehicleDispatchSheet {
                         CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
                         CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
                     } else {
-                        MessageBox.Show("”zÔ•\‚Ìs”‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·BƒVƒXƒeƒ€ŠÇ—Ò‚Ö•ñ‚µ‚Ä‰º‚³‚¢B", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        MessageBox.Show("é…è»Šè¡¨ã®è¡Œæ•°ãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚ã‚·ã‚¹ãƒ†ãƒ ç®¡ç†è€…ã¸å ±å‘Šã—ã¦ä¸‹ã•ã„ã€‚", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     blockRowCount++;
                 }
             }
             /*
-             * 23:™—Õ@@ŒÙ@ã@V‘å“ÁƒR[ƒhF2
+             * 23:â˜†è‡¨ã€€æ™‚ã€€é›‡ã€€ä¸Šã€€æ–°å¤§ç‰¹ã‚³ãƒ¼ãƒ‰ï¼š2
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
                 /*
-                 * ‰^’À‘ÎÛ‚ÌƒŒƒR[ƒhˆÈŠO‚ÍBreak‚·‚é
+                 * é‹è³ƒå¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä»¥å¤–ã¯Breakã™ã‚‹
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 0 &&
                                                            _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Classification_code == 12 &&
-                                                           _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Disguise_kind_1 == "V‘å") {
+                                                           _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Disguise_kind_1 == "æ–°å¤§") {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "™—Õ@@ŒÙ@ã@V‘å“ÁƒR[ƒhF2";
+                        _beforeBlockName = "â˜†è‡¨ã€€æ™‚ã€€é›‡ã€€ä¸Šã€€æ–°å¤§ç‰¹ã‚³ãƒ¼ãƒ‰ï¼š2";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
                     /*
-                     * —ñ‚ªhAA"‚É•Ï‚í‚Á‚½ê‡‚ÍBlockName‚ğ‘}“ü‚·‚é
+                     * åˆ—ãŒâ€AA"ã«å¤‰ã‚ã£ãŸå ´åˆã¯BlockNameã‚’æŒ¿å…¥ã™ã‚‹
                      */
                     if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
                         CreateSpan(entryCellPosition, _beforeBlockName);
@@ -602,29 +618,29 @@ namespace VehicleDispatchSheet {
                         CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
                         CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
                     } else {
-                        MessageBox.Show("”zÔ•\‚Ìs”‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·BƒVƒXƒeƒ€ŠÇ—Ò‚Ö•ñ‚µ‚Ä‰º‚³‚¢B", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        MessageBox.Show("é…è»Šè¡¨ã®è¡Œæ•°ãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚ã‚·ã‚¹ãƒ†ãƒ ç®¡ç†è€…ã¸å ±å‘Šã—ã¦ä¸‹ã•ã„ã€‚", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     blockRowCount++;
                 }
             }
             /*
-             * 24:™—Õ@@ŒÙ@ã@Œy¬Œ^‰İ•¨ƒR[ƒhF11
+             * 24:â˜†è‡¨ã€€æ™‚ã€€é›‡ã€€ä¸Šã€€è»½å°å‹è²¨ç‰©ã‚³ãƒ¼ãƒ‰ï¼š11
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
                 /*
-                 * ‰^’À‘ÎÛ‚ÌƒŒƒR[ƒhˆÈŠO‚ÍBreak‚·‚é
+                 * é‹è³ƒå¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä»¥å¤–ã¯Breakã™ã‚‹
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 0 &&
                                                            _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Classification_code == 12 &&
-                                                           _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Disguise_kind_1 == "Œy¬‰İ") {
+                                                           _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Disguise_kind_1 == "è»½å°è²¨") {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "™—Õ@@ŒÙ@ã@Œy¬Œ^‰İ•¨ƒR[ƒhF11";
+                        _beforeBlockName = "â˜†è‡¨ã€€æ™‚ã€€é›‡ã€€ä¸Šã€€è»½å°å‹è²¨ç‰©ã‚³ãƒ¼ãƒ‰ï¼š11";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
                     /*
-                     * —ñ‚ªhAA"‚É•Ï‚í‚Á‚½ê‡‚ÍBlockName‚ğ‘}“ü‚·‚é
+                     * åˆ—ãŒâ€AA"ã«å¤‰ã‚ã£ãŸå ´åˆã¯BlockNameã‚’æŒ¿å…¥ã™ã‚‹
                      */
                     if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
                         CreateSpan(entryCellPosition, _beforeBlockName);
@@ -638,29 +654,29 @@ namespace VehicleDispatchSheet {
                         CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
                         CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
                     } else {
-                        MessageBox.Show("”zÔ•\‚Ìs”‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·BƒVƒXƒeƒ€ŠÇ—Ò‚Ö•ñ‚µ‚Ä‰º‚³‚¢B", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        MessageBox.Show("é…è»Šè¡¨ã®è¡Œæ•°ãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚ã‚·ã‚¹ãƒ†ãƒ ç®¡ç†è€…ã¸å ±å‘Šã—ã¦ä¸‹ã•ã„ã€‚", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     blockRowCount++;
                 }
             }
             /*
-             * 25:™—Õ@@‹æ@Œ_@•½ƒ{ƒfƒBƒR[ƒhF15@
+             * 25:â˜†è‡¨ã€€æ™‚ã€€åŒºã€€å¥‘ã€€å¹³ãƒœãƒ‡ã‚£ã‚³ãƒ¼ãƒ‰ï¼š15ã€€
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
                 /*
-                 * ‰^’À‘ÎÛ‚ÌƒŒƒR[ƒhˆÈŠO‚ÍBreak‚·‚é
+                 * é‹è³ƒå¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä»¥å¤–ã¯Breakã™ã‚‹
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 0 &&
                                                            _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Classification_code == 12 &&
-                                                           _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Disguise_kind_1 == "•½ƒ{") {
+                                                           _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Disguise_kind_1 == "å¹³ãƒœ") {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "™—Õ@@‹æ@Œ_@•½ƒ{ƒfƒBƒR[ƒhF15";
+                        _beforeBlockName = "â˜†è‡¨ã€€æ™‚ã€€åŒºã€€å¥‘ã€€å¹³ãƒœãƒ‡ã‚£ã‚³ãƒ¼ãƒ‰ï¼š15";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
                     /*
-                     * —ñ‚ªhAA"‚É•Ï‚í‚Á‚½ê‡‚ÍBlockName‚ğ‘}“ü‚·‚é
+                     * åˆ—ãŒâ€AA"ã«å¤‰ã‚ã£ãŸå ´åˆã¯BlockNameã‚’æŒ¿å…¥ã™ã‚‹
                      */
                     if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
                         CreateSpan(entryCellPosition, _beforeBlockName);
@@ -674,27 +690,27 @@ namespace VehicleDispatchSheet {
                         CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
                         CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
                     } else {
-                        MessageBox.Show("”zÔ•\‚Ìs”‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·BƒVƒXƒeƒ€ŠÇ—Ò‚Ö•ñ‚µ‚Ä‰º‚³‚¢B", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        MessageBox.Show("é…è»Šè¡¨ã®è¡Œæ•°ãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚ã‚·ã‚¹ãƒ†ãƒ ç®¡ç†è€…ã¸å ±å‘Šã—ã¦ä¸‹ã•ã„ã€‚", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     blockRowCount++;
                 }
             }
             /*
-             * 26:™ˆê”pEY”py”’ƒiƒ“ƒo[z ƒR[ƒhF12
+             * 26:â˜†ä¸€å»ƒãƒ»ç”£å»ƒã€ç™½ãƒŠãƒ³ãƒãƒ¼ã€‘ ã‚³ãƒ¼ãƒ‰ï¼š12
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
                 /*
-                 * ‰^’À‘ÎÛ‚ÌƒŒƒR[ƒhˆÈŠO‚ÍBreak‚·‚é
+                 * é‹è³ƒå¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä»¥å¤–ã¯Breakã™ã‚‹
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 26) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "™ˆê”pEY”py”’ƒiƒ“ƒo[z ƒR[ƒhF12";
+                        _beforeBlockName = "â˜†ä¸€å»ƒãƒ»ç”£å»ƒã€ç™½ãƒŠãƒ³ãƒãƒ¼ã€‘ ã‚³ãƒ¼ãƒ‰ï¼š12";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
                     /*
-                     * —ñ‚ªhAA"‚É•Ï‚í‚Á‚½ê‡‚ÍBlockName‚ğ‘}“ü‚·‚é
+                     * åˆ—ãŒâ€AA"ã«å¤‰ã‚ã£ãŸå ´åˆã¯BlockNameã‚’æŒ¿å…¥ã™ã‚‹
                      */
                     if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
                         CreateSpan(entryCellPosition, _beforeBlockName);
@@ -708,27 +724,27 @@ namespace VehicleDispatchSheet {
                         CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
                         CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
                     } else {
-                        MessageBox.Show("”zÔ•\‚Ìs”‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·BƒVƒXƒeƒ€ŠÇ—Ò‚Ö•ñ‚µ‚Ä‰º‚³‚¢B", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        MessageBox.Show("é…è»Šè¡¨ã®è¡Œæ•°ãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚ã‚·ã‚¹ãƒ†ãƒ ç®¡ç†è€…ã¸å ±å‘Šã—ã¦ä¸‹ã•ã„ã€‚", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     blockRowCount++;
                 }
             }
             /*
-             * 27:™ˆê”pEY”py‰c‹Æƒiƒ“ƒo[z ƒR[ƒhF12
+             * 27:â˜†ä¸€å»ƒãƒ»ç”£å»ƒã€å–¶æ¥­ãƒŠãƒ³ãƒãƒ¼ã€‘ ã‚³ãƒ¼ãƒ‰ï¼š12
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
                 /*
-                 * ‰^’À‘ÎÛ‚ÌƒŒƒR[ƒhˆÈŠO‚ÍBreak‚·‚é
+                 * é‹è³ƒå¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä»¥å¤–ã¯Breakã™ã‚‹
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 27) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "™ˆê”pEY”py‰c‹Æƒiƒ“ƒo[z ƒR[ƒhF12";
+                        _beforeBlockName = "â˜†ä¸€å»ƒãƒ»ç”£å»ƒã€å–¶æ¥­ãƒŠãƒ³ãƒãƒ¼ã€‘ ã‚³ãƒ¼ãƒ‰ï¼š12";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
                     /*
-                     * —ñ‚ªhAA"‚É•Ï‚í‚Á‚½ê‡‚ÍBlockName‚ğ‘}“ü‚·‚é
+                     * åˆ—ãŒâ€AA"ã«å¤‰ã‚ã£ãŸå ´åˆã¯BlockNameã‚’æŒ¿å…¥ã™ã‚‹
                      */
                     if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
                         CreateSpan(entryCellPosition, _beforeBlockName);
@@ -742,27 +758,27 @@ namespace VehicleDispatchSheet {
                         CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
                         CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
                     } else {
-                        MessageBox.Show("”zÔ•\‚Ìs”‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·BƒVƒXƒeƒ€ŠÇ—Ò‚Ö•ñ‚µ‚Ä‰º‚³‚¢B", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        MessageBox.Show("é…è»Šè¡¨ã®è¡Œæ•°ãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚ã‚·ã‚¹ãƒ†ãƒ ç®¡ç†è€…ã¸å ±å‘Šã—ã¦ä¸‹ã•ã„ã€‚", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     blockRowCount++;
                 }
             }
             /*
-             * 28:™“Œ‹˜ğŠÚEƒ}ƒCƒ“ƒYEŒö‰€´‘|@‘¼y”’ƒiƒ“ƒo[z ƒR[ƒhF1
+             * 28:â˜†æ±äº¬æœƒèˆ˜ãƒ»ãƒã‚¤ãƒ³ã‚ºãƒ»å…¬åœ’æ¸…æƒã€€ä»–ã€ç™½ãƒŠãƒ³ãƒãƒ¼ã€‘ ã‚³ãƒ¼ãƒ‰ï¼š1
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
                 /*
-                 * ‰^’À‘ÎÛ‚ÌƒŒƒR[ƒhˆÈŠO‚ÍBreak‚·‚é
+                 * é‹è³ƒå¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä»¥å¤–ã¯Breakã™ã‚‹
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 28) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "™“Œ‹˜ğŠÚEƒ}ƒCƒ“ƒYEŒö‰€´‘|@‘¼y”’ƒiƒ“ƒo[z ƒR[ƒhF1";
+                        _beforeBlockName = "â˜†æ±äº¬æœƒèˆ˜ãƒ»ãƒã‚¤ãƒ³ã‚ºãƒ»å…¬åœ’æ¸…æƒã€€ä»–ã€ç™½ãƒŠãƒ³ãƒãƒ¼ã€‘ ã‚³ãƒ¼ãƒ‰ï¼š1";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
                     /*
-                     * —ñ‚ªhAA"‚É•Ï‚í‚Á‚½ê‡‚ÍBlockName‚ğ‘}“ü‚·‚é
+                     * åˆ—ãŒâ€AA"ã«å¤‰ã‚ã£ãŸå ´åˆã¯BlockNameã‚’æŒ¿å…¥ã™ã‚‹
                      */
                     if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
                         CreateSpan(entryCellPosition, _beforeBlockName);
@@ -776,27 +792,27 @@ namespace VehicleDispatchSheet {
                         CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
                         CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
                     } else {
-                        MessageBox.Show("”zÔ•\‚Ìs”‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·BƒVƒXƒeƒ€ŠÇ—Ò‚Ö•ñ‚µ‚Ä‰º‚³‚¢B", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        MessageBox.Show("é…è»Šè¡¨ã®è¡Œæ•°ãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚ã‚·ã‚¹ãƒ†ãƒ ç®¡ç†è€…ã¸å ±å‘Šã—ã¦ä¸‹ã•ã„ã€‚", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     blockRowCount++;
                 }
             }
             /*
-             * 29:™”p‰Æ“d@‘¼y‰c‹Æƒiƒ“ƒo[z ƒR[ƒhF1
+             * 29:â˜†å»ƒå®¶é›»ã€€ä»–ã€å–¶æ¥­ãƒŠãƒ³ãƒãƒ¼ã€‘ ã‚³ãƒ¼ãƒ‰ï¼š1
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
                 /*
-                 * ‰^’À‘ÎÛ‚ÌƒŒƒR[ƒhˆÈŠO‚ÍBreak‚·‚é
+                 * é‹è³ƒå¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä»¥å¤–ã¯Breakã™ã‚‹
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 29) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "™”p‰Æ“d@‘¼y‰c‹Æƒiƒ“ƒo[z ƒR[ƒhF1";
+                        _beforeBlockName = "â˜†å»ƒå®¶é›»ã€€ä»–ã€å–¶æ¥­ãƒŠãƒ³ãƒãƒ¼ã€‘ ã‚³ãƒ¼ãƒ‰ï¼š1";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
                     /*
-                     * —ñ‚ªhAA"‚É•Ï‚í‚Á‚½ê‡‚ÍBlockName‚ğ‘}“ü‚·‚é
+                     * åˆ—ãŒâ€AA"ã«å¤‰ã‚ã£ãŸå ´åˆã¯BlockNameã‚’æŒ¿å…¥ã™ã‚‹
                      */
                     if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
                         CreateSpan(entryCellPosition, _beforeBlockName);
@@ -810,27 +826,27 @@ namespace VehicleDispatchSheet {
                         CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
                         CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
                     } else {
-                        MessageBox.Show("”zÔ•\‚Ìs”‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·BƒVƒXƒeƒ€ŠÇ—Ò‚Ö•ñ‚µ‚Ä‰º‚³‚¢B", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        MessageBox.Show("é…è»Šè¡¨ã®è¡Œæ•°ãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚ã‚·ã‚¹ãƒ†ãƒ ç®¡ç†è€…ã¸å ±å‘Šã—ã¦ä¸‹ã•ã„ã€‚", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     blockRowCount++;
                 }
             }
             /*
-             * 30:™ò‰»‘… ƒR[ƒhF1
+             * 30:â˜†æµ„åŒ–æ§½ ã‚³ãƒ¼ãƒ‰ï¼š1
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
                 /*
-                 * ‰^’À‘ÎÛ‚ÌƒŒƒR[ƒhˆÈŠO‚ÍBreak‚·‚é
+                 * é‹è³ƒå¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä»¥å¤–ã¯Breakã™ã‚‹
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 30) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "™ò‰»‘… ƒR[ƒhF1";
+                        _beforeBlockName = "â˜†æµ„åŒ–æ§½ ã‚³ãƒ¼ãƒ‰ï¼š1";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
                     /*
-                     * —ñ‚ªhAA"‚É•Ï‚í‚Á‚½ê‡‚ÍBlockName‚ğ‘}“ü‚·‚é
+                     * åˆ—ãŒâ€AA"ã«å¤‰ã‚ã£ãŸå ´åˆã¯BlockNameã‚’æŒ¿å…¥ã™ã‚‹
                      */
                     if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
                         CreateSpan(entryCellPosition, _beforeBlockName);
@@ -844,27 +860,27 @@ namespace VehicleDispatchSheet {
                         CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
                         CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
                     } else {
-                        MessageBox.Show("”zÔ•\‚Ìs”‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·BƒVƒXƒeƒ€ŠÇ—Ò‚Ö•ñ‚µ‚Ä‰º‚³‚¢B", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        MessageBox.Show("é…è»Šè¡¨ã®è¡Œæ•°ãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚ã‚·ã‚¹ãƒ†ãƒ ç®¡ç†è€…ã¸å ±å‘Šã—ã¦ä¸‹ã•ã„ã€‚", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     blockRowCount++;
                 }
             }
             /*
-             * 31:—\”õÒEĞˆõ
+             * 31:äºˆå‚™è€…ãƒ»ç¤¾å“¡
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
                 /*
-                 * ‰^’À‘ÎÛ‚ÌƒŒƒR[ƒhˆÈŠO‚ÍBreak‚·‚é
+                 * é‹è³ƒå¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä»¥å¤–ã¯Breakã™ã‚‹
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 31) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "—\”õÒEĞˆõ";
+                        _beforeBlockName = "äºˆå‚™è€…ãƒ»ç¤¾å“¡";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
                     /*
-                     * —ñ‚ªhAA"‚É•Ï‚í‚Á‚½ê‡‚ÍBlockName‚ğ‘}“ü‚·‚é
+                     * åˆ—ãŒâ€AA"ã«å¤‰ã‚ã£ãŸå ´åˆã¯BlockNameã‚’æŒ¿å…¥ã™ã‚‹
                      */
                     if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
                         CreateSpan(entryCellPosition, _beforeBlockName);
@@ -878,27 +894,27 @@ namespace VehicleDispatchSheet {
                         CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
                         CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
                     } else {
-                        MessageBox.Show("”zÔ•\‚Ìs”‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·BƒVƒXƒeƒ€ŠÇ—Ò‚Ö•ñ‚µ‚Ä‰º‚³‚¢B", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        MessageBox.Show("é…è»Šè¡¨ã®è¡Œæ•°ãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚ã‚·ã‚¹ãƒ†ãƒ ç®¡ç†è€…ã¸å ±å‘Šã—ã¦ä¸‹ã•ã„ã€‚", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     blockRowCount++;
                 }
             }
             /*
-             * 32:™®@”õƒR[ƒhF1
+             * 32:â˜†æ•´ã€€å‚™ã‚³ãƒ¼ãƒ‰ï¼š1
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
                 /*
-                 * ‰^’À‘ÎÛ‚ÌƒŒƒR[ƒhˆÈŠO‚ÍBreak‚·‚é
+                 * é‹è³ƒå¯¾è±¡ã®ãƒ¬ã‚³ãƒ¼ãƒ‰ä»¥å¤–ã¯Breakã™ã‚‹
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 32) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "™®@”õƒR[ƒhF1";
+                        _beforeBlockName = "â˜†æ•´ã€€å‚™ã‚³ãƒ¼ãƒ‰ï¼š1";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
                     /*
-                     * —ñ‚ªhAA"‚É•Ï‚í‚Á‚½ê‡‚ÍBlockName‚ğ‘}“ü‚·‚é
+                     * åˆ—ãŒâ€AA"ã«å¤‰ã‚ã£ãŸå ´åˆã¯BlockNameã‚’æŒ¿å…¥ã™ã‚‹
                      */
                     if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
                         CreateSpan(entryCellPosition, _beforeBlockName);
@@ -912,13 +928,13 @@ namespace VehicleDispatchSheet {
                         CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
                         CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
                     } else {
-                        MessageBox.Show("”zÔ•\‚Ìs”‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·BƒVƒXƒeƒ€ŠÇ—Ò‚Ö•ñ‚µ‚Ä‰º‚³‚¢B", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        MessageBox.Show("é…è»Šè¡¨ã®è¡Œæ•°ãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚ã‚·ã‚¹ãƒ†ãƒ ç®¡ç†è€…ã¸å ±å‘Šã—ã¦ä¸‹ã•ã„ã€‚", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
                     }
                     blockRowCount++;
                 }
             }
             /*
-             * ‚»‚Ì‘¼Ú×‚ğ•\¦‚·‚é
+             * ãã®ä»–è©³ç´°ã‚’è¡¨ç¤ºã™ã‚‹
              */
             SheetView1.Cells[11, 52].Value = _staffDriverSHINUNTEN;
             SheetView1.Cells[12, 52].Value = _staffDriverJIUNROU;
@@ -933,28 +949,28 @@ namespace VehicleDispatchSheet {
 
         /// <summary>
         /// GetNextCellPosition
-        /// Ÿ‚É‘}“ü‚·‚éRow‚ğ“Á’è‚·‚é
+        /// æ¬¡ã«æŒ¿å…¥ã™ã‚‹Rowã‚’ç‰¹å®šã™ã‚‹
         /// </summary>
         /// <param name="blockName"></param>
         /// <returns></returns>
         private EntryCellPosition? GetNextCellPosition() {
             var entryCellPosition = new EntryCellPosition();
-            for(int colPosition = 0; colPosition <= 1; colPosition++) { // 0:A—ñ 1:AA—ñ
+            for(int colPosition = 0; colPosition <= 1; colPosition++) { // 0:Aåˆ— 1:AAåˆ—
                 for(int row = _startRow; row <= _rowMax - 1; row++) {
-                    if(SheetView1.Cells[row, _dictionaryColNumber[colPosition] + 0].Text == "" &&  // ‰^’ÀƒR[ƒh–”‚Í”zÔæ‚ÌˆÊ’u
-                       SheetView1.Cells[row, _dictionaryColNumber[colPosition] + 8].Text == "" &&  // ‰^“]è‚ÌˆÊ’u
-                       SheetView1.Cells[row, _dictionaryColNumber[colPosition] + 11].Text == "" &&  // ì‹Æˆõ2‚ÌˆÊ’u
-                       SheetView1.Cells[row + 1, _dictionaryColNumber[colPosition] + 11].Text == "") { // ì‹Æˆõ3‚ÌˆÊ’u
+                    if(SheetView1.Cells[row, _dictionaryColNumber[colPosition] + 0].Text == "" &&  // é‹è³ƒã‚³ãƒ¼ãƒ‰åˆã¯é…è»Šå…ˆã®ä½ç½®
+                       SheetView1.Cells[row, _dictionaryColNumber[colPosition] + 8].Text == "" &&  // é‹è»¢æ‰‹ã®ä½ç½®
+                       SheetView1.Cells[row, _dictionaryColNumber[colPosition] + 11].Text == "" &&  // ä½œæ¥­å“¡2ã®ä½ç½®
+                       SheetView1.Cells[row + 1, _dictionaryColNumber[colPosition] + 11].Text == "") { // ä½œæ¥­å“¡3ã®ä½ç½®
                         entryCellPosition.Row = row;
                         entryCellPosition.Col = _dictionaryColNumber[colPosition];
                         entryCellPosition.RemainingRows = _rowMax - row;
-                        ToolStripStatusLabelPosition.Text = string.Concat("Row:", entryCellPosition.Row, " Col:", entryCellPosition.Col, " c‚è", entryCellPosition.RemainingRows);
+                        ToolStripStatusLabelPosition.Text = string.Concat("Row:", entryCellPosition.Row, " Col:", entryCellPosition.Col, " æ®‹ã‚Š", entryCellPosition.RemainingRows);
                         return entryCellPosition;
                     }
                 }
             }
             /*
-             * Null:s‚É‹ó‚«‚ª–³‚¢
+             * Null:è¡Œã«ç©ºããŒç„¡ã„
              */
             return null;
         }
@@ -966,7 +982,7 @@ namespace VehicleDispatchSheet {
         /// <param name="column"></param>
         /// <param name="blockName"></param>
         private void CreateSpan(EntryCellPosition entryCellPosition, string blockName) {
-            // ƒZƒ‹‚ğŒ‹‡‚·‚é
+            // ã‚»ãƒ«ã‚’çµåˆã™ã‚‹
             SheetView1.AddSpanCell(entryCellPosition.Row, entryCellPosition.Col, 1, 24);
             SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col].BackColor = System.Drawing.Color.Green;
             SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col].Text = blockName;
@@ -981,11 +997,11 @@ namespace VehicleDispatchSheet {
             string setName1;
             string setName2;
             /*
-             * ‘g‚ªƒZƒbƒg‚³‚ê‚Ä‚¢‚È‚¯‚ê‚Î‰½‚à‚µ‚È‚¢
+             * çµ„ãŒã‚»ãƒƒãƒˆã•ã‚Œã¦ã„ãªã‘ã‚Œã°ä½•ã‚‚ã—ãªã„
              */
             if(vehicleDispatchDetailVo.Set_code > 0) {
                 /*
-                 * ‹æŒ_‚Ìê‡‚Ì•\¦‚ÍhZZ‹æh‚Æ‚·‚é‚½‚ßAğŒ•ªŠò‚·‚é
+                 * åŒºå¥‘ã®å ´åˆã®è¡¨ç¤ºã¯â€ã€‡ã€‡åŒºâ€ã¨ã™ã‚‹ãŸã‚ã€æ¡ä»¶åˆ†å²ã™ã‚‹
                  */
                 if(_listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Classification_code != 11) {
                     setName1 = _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_1;
@@ -1019,20 +1035,20 @@ namespace VehicleDispatchSheet {
             string registrationNumber;
             string doorNumberDAIBAN;
             /*
-             * ‘g‚ªƒZƒbƒg‚³‚ê‚Ä‚¢‚È‚¯‚ê‚Î‰½‚à‚µ‚È‚¢
+             * çµ„ãŒã‚»ãƒƒãƒˆã•ã‚Œã¦ã„ãªã‘ã‚Œã°ä½•ã‚‚ã—ãªã„
              */
             if(vehicleDispatchDetailVo.Set_code > 0 && vehicleDispatchDetailVo.Car_code > 0) {
                 doorNumberHONBAN = _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Door_number.ToString();
                 registrationNumber = string.Concat(_listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Registration_number_3,
                                                    _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Registration_number_4);
                 /*
-                 * –{”Ô‚ÌƒhƒAƒiƒ“ƒo[
+                 * æœ¬ç•ªã®ãƒ‰ã‚¢ãƒŠãƒ³ãƒãƒ¼
                  */
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 2].Font = new System.Drawing.Font("Yu Gothic UI", 9);
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 2].ForeColor = vehicleDispatchDetailVo.Operation_flag ? System.Drawing.Color.Black : System.Drawing.Color.Red;
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 2].Text = doorNumberHONBAN;
                 /*
-                 * –{”Ô‚ÌÔ”Ô
+                 * æœ¬ç•ªã®è»Šç•ª
                  */
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 3].Font = new System.Drawing.Font("Yu Gothic UI", 9);
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 3].ForeColor = vehicleDispatchDetailVo.Operation_flag ? System.Drawing.Color.Black : System.Drawing.Color.Red;
@@ -1041,79 +1057,139 @@ namespace VehicleDispatchSheet {
             }
         }
 
-        // ‰^“]èiƒoƒCƒgj‚Ìl”
+        // é‹è»¢æ‰‹ï¼ˆãƒã‚¤ãƒˆï¼‰ã®äººæ•°
         int _staffDriverBAITO = 0;
-        // ‰^“]èiV‰^“]j‚Ìl”
+        // é‹è»¢æ‰‹ï¼ˆæ–°é‹è»¢ï¼‰ã®äººæ•°
         int _staffDriverSHINUNTEN = 0;
-        // ‰^“]èi©‰^˜Jj‚Ìl”
+        // é‹è»¢æ‰‹ï¼ˆè‡ªé‹åŠ´ï¼‰ã®äººæ•°
         int _staffDriverJIUNROU = 0;
 
         /// <summary>
         /// CreateOperator1Row
-        /// ‰^“]è
+        /// é‹è»¢æ‰‹
         /// </summary>
         /// <param name="entryCellPosition"></param>
         /// <param name="vehicleDispatchDetailVo"></param>
         private void CreateOperator1Row(EntryCellPosition entryCellPosition, VehicleDispatchDetailVo vehicleDispatchDetailVo) {
-            RichText displayName; // •\¦–¼
-            string occupation; // Š‘®
-            string garage; // oŒÉ’n
+            RichText displayName; // è¡¨ç¤ºå
+            string occupation; // æ‰€å±
+            string garage; // å‡ºåº«åœ°
             /*
-             * ‘g‚ªƒZƒbƒg‚³‚ê‚Ä‚¢‚È‚¯‚ê‚Î‰½‚à‚µ‚È‚¢
+             * çµ„ãŒã‚»ãƒƒãƒˆã•ã‚Œã¦ã„ãªã‘ã‚Œã°ä½•ã‚‚ã—ãªã„
              */
             if(vehicleDispatchDetailVo.Set_code > 0 && vehicleDispatchDetailVo.Operator_code_1 > 0) {
                 displayName = new RichText(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Display_name);
                 occupation = dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Belongs];
                 /*
-                 * Šel”‚ğŒvZ‚·‚é
+                 * å„äººæ•°ã‚’è¨ˆç®—ã™ã‚‹
                  */
-                switch(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Belongs]) {
-                    case "ƒo":
+                switch(occupation) {
+                    case "ãƒ":
+                        SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 8].BackColor = System.Drawing.Color.Yellow;
                         _staffDriverBAITO++;
                         break;
-                    case "V":
+                    case "æ–°":
                         _staffDriverSHINUNTEN++;
                         break;
-                    case "©":
+                    case "è‡ª":
                         _staffDriverJIUNROU++;
                         break;
                 }
-                garage = vehicleDispatchDetailVo.Garage_flag ? "" : "O";
+                garage = vehicleDispatchDetailVo.Garage_flag ? "" : "ä¸‰";
                 /*
-                 * •\¦–¼
+                 * è¡¨ç¤ºå
                  */
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 8].CellType = new FarPoint.Win.Spread.CellType.RichTextCellType();
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 8].Value = displayName;
                 /*
-                 * Š‘®
+                 * æ‰€å±
                  */
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 9].Font = new System.Drawing.Font("Yu Gothic UI", 9);
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 9].Text = occupation;
                 /*
-                 * oŒÉ’n
+                 * å‡ºåº«åœ°
                  */
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 10].Font = new System.Drawing.Font("Yu Gothic UI", 9);
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 10].Text = garage;
+                /*
+                 * æŒ‡å®šã•ã‚ŒãŸé…è»Šå…ˆã®ç‚¹å‘¼ã‚’é™¤å¤–ã™ã‚‹
+                 */
+                switch(vehicleDispatchDetailVo.Set_code) {
+                    case 1312109: // æœ¬ç¤¾äº‹å‹™æ‰€
+                    case 1312110: // ä¸‰éƒ·äº‹å‹™æ‰€
+                    case 1312111: // æ•´å‚™æœ¬ç¤¾
+                    case 1312112: // æ•´å‚™ä¸‰éƒ·
+                    case 1312118: // æµ„åŒ–æ§½ï¼‘
+                    case 1312123: // æµ„åŒ–æ§½ï¼’
+                        return;
+                }
+                /*
+                 * ç‚¹å‘¼æ–¹æ³•
+                 */
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 14].Font = new System.Drawing.Font("Yu Gothic UI", 9);
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 14].Text = "å¯¾é¢";
+                /*
+                 * ç‚¹å‘¼æ™‚åˆ»
+                 */
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 16].Font = new System.Drawing.Font("Yu Gothic UI", 9);
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 16].Text = vehicleDispatchDetailVo.Operator_1_roll_call_flag ? vehicleDispatchDetailVo.Operator_1_roll_call_ymd_hms.ToString("HH:mm") : "æœªç‚¹å‘¼";
+                /*
+                 * å…è¨±ãƒ»å¥åº·ãƒ»è»Šä¸¡ãƒ»é£²é…’ãƒ»æ¤œçŸ¥å™¨
+                 */
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 17].Font = new System.Drawing.Font("Yu Gothic UI", 9);
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 17].Text = "âœ“";
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 18].Font = new System.Drawing.Font("Yu Gothic UI", 9);
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 18].Text = "âœ“";
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 19].Font = new System.Drawing.Font("Yu Gothic UI", 9);
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 19].Text = "âœ“";
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 20].Font = new System.Drawing.Font("Yu Gothic UI", 9);
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 20].Text = "âœ“";
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 21].Font = new System.Drawing.Font("Yu Gothic UI", 9);
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 21].Text = "âœ“";
+                /*
+                 * å‘¨çŸ¥äº‹é …
+                 */
+
+                /*
+                 * ç‚¹å‘¼åŸ·è¡Œè€…
+                 */
+                switch(vehicleDispatchDetailVo.Garage_flag) {
+                    case true:
+                        /*
+                         * ç‚¹å‘¼æ™‚åˆ»ã®ç§’æ•°ãŒå¶æ•°ãªã‚‰â€ç‚¹å‘¼åŸ·è¡Œè€…æœ¬ç¤¾ï¼‘â€ã€å¥‡æ•°ãªã‚‰â€ç‚¹å‘¼åŸ·è¡Œè€…æœ¬ç¤¾ï¼’â€ã‚’é¸æŠã™ã‚‹
+                         */
+                        int second = vehicleDispatchDetailVo.Operator_1_roll_call_ymd_hms.Second; //ç§’ï¼ˆ0ï½59ï¼‰
+                        SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 23].Font = new System.Drawing.Font("Yu Gothic UI", 9);
+                        SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 23].Text = ((second % 2 == 0) ? ComboBox1.Text : ComboBox2.Text);
+                        break;
+                    case false:
+                        /*
+                         * â€ç‚¹å‘¼åŸ·è¡Œè€…ä¸‰éƒ·â€ã‚’é¸æŠã™ã‚‹
+                         */
+                        SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 23].Font = new System.Drawing.Font("Yu Gothic UI", 9);
+                        SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 23].Text = ComboBox3.Text;
+                        break;
+                }
             }
         }
 
-        // ì‹ÆˆõiƒoƒCƒgj‚Ìl”
+        // ä½œæ¥­å“¡ï¼ˆãƒã‚¤ãƒˆï¼‰ã®äººæ•°
         int _staffOperatoeBAITO = 0;
-        // ì‹ÆˆõiV‰^“]j‚Ìl”
+        // ä½œæ¥­å“¡ï¼ˆæ–°é‹è»¢ï¼‰ã®äººæ•°
         int _staffOperatoeSHINUNTEN = 0;
-        // ì‹Æˆõi©‰^˜Jj‚Ìl”
+        // ä½œæ¥­å“¡ï¼ˆè‡ªé‹åŠ´ï¼‰ã®äººæ•°
         int _staffOperatoeJIUNROU = 0;
 
         /// <summary>
         /// CreateOperator2Row
-        /// ì‹Æˆõ‚P
+        /// ä½œæ¥­å“¡ï¼‘
         /// </summary>
         /// <param name="entryCellPosition"></param>
         /// <param name="vehicleDispatchDetailVo"></param>
         private void CreateOperator2Row(EntryCellPosition entryCellPosition, VehicleDispatchDetailVo vehicleDispatchDetailVo) {
-            string garage; // oŒÉ’n
+            string garage; // å‡ºåº«åœ°
             /*
-             * ‘g‚ªƒZƒbƒg‚³‚ê‚Ä‚¢‚È‚¯‚ê‚Î‰½‚à‚µ‚È‚¢
+             * çµ„ãŒã‚»ãƒƒãƒˆã•ã‚Œã¦ã„ãªã‘ã‚Œã°ä½•ã‚‚ã—ãªã„
              */
             if(vehicleDispatchDetailVo.Set_code > 0 && vehicleDispatchDetailVo.Operator_code_2 > 0) {
                 switch(vehicleDispatchDetailVo.Cell_number) {
@@ -1129,39 +1205,41 @@ namespace VehicleDispatchSheet {
                     case 85:
                     case 86:
                     case 87:
-                        garage = vehicleDispatchDetailVo.Garage_flag ? "" : "O";
+                        garage = vehicleDispatchDetailVo.Garage_flag ? "" : "ä¸‰";
                         break;
                     default:
                         garage = "";
                         break;
                 }
                 /*
-                 * •\¦–¼
+                 * è¡¨ç¤ºå
                  */
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 11].CellType = new FarPoint.Win.Spread.CellType.RichTextCellType();
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 11].Value = GetWorkStaffName(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2));
                 /*
-                 * Š‘®
+                 * æ‰€å±
                  */
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 12].Font = new System.Drawing.Font("Yu Gothic UI", 9);
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 12].Text = string.Concat(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Belongs],
                                                                                                          dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Occupation]);
                 /*
-                 * Šel”‚ğŒvZ‚·‚é
+                 * å„äººæ•°ã‚’è¨ˆç®—ã™ã‚‹
                  */
                 switch(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Belongs]) {
-                    case "ƒo":
+                    case "ãƒ":
+                        if(dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Occupation].Equals("ä½œ"))
+                            SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 11].BackColor = System.Drawing.Color.LightBlue;
                         _staffOperatoeBAITO++;
                         break;
-                    case "V":
+                    case "æ–°":
                         _staffOperatoeSHINUNTEN++;
                         break;
-                    case "©":
+                    case "è‡ª":
                         _staffOperatoeJIUNROU++;
                         break;
                 }
                 /*
-                 * oŒÉ’n
+                 * å‡ºåº«åœ°
                  */
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 13].Font = new System.Drawing.Font("Yu Gothic UI", 9);
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 13].Text = garage;
@@ -1170,42 +1248,44 @@ namespace VehicleDispatchSheet {
 
         /// <summary>
         /// CreateOperator3Row
-        /// ì‹Æˆõ‚Q
+        /// ä½œæ¥­å“¡ï¼’
         /// </summary>
         /// <param name="entryCellPosition"></param>
         /// <param name="vehicleDispatchDetailVo"></param>
         private void CreateOperator3Row(EntryCellPosition entryCellPosition, VehicleDispatchDetailVo vehicleDispatchDetailVo) {
             /*
-             * ‘g‚ªƒZƒbƒg‚³‚ê‚Ä‚¢‚È‚¯‚ê‚Î‰½‚à‚µ‚È‚¢
+             * çµ„ãŒã‚»ãƒƒãƒˆã•ã‚Œã¦ã„ãªã‘ã‚Œã°ä½•ã‚‚ã—ãªã„
              */
             if(vehicleDispatchDetailVo.Set_code > 0 && vehicleDispatchDetailVo.Operator_code_3 > 0) {
                 /*
-                 * •\¦–¼
+                 * è¡¨ç¤ºå
                  */
                 SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 11].CellType = new FarPoint.Win.Spread.CellType.RichTextCellType();
                 SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 11].Value = GetWorkStaffName(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3));
                 /*
-                 * Š‘®
+                 * æ‰€å±
                  */
                 SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 12].Font = new System.Drawing.Font("Yu Gothic UI", 9);
                 SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 12].Text = string.Concat(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Belongs],
                                                                                                              dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Occupation]);
                 /*
-                 * Šel”‚ğŒvZ‚·‚é
+                 * å„äººæ•°ã‚’è¨ˆç®—ã™ã‚‹
                  */
                 switch(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Belongs]) {
-                    case "ƒo":
+                    case "ãƒ":
+                        if(dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Occupation].Equals("ä½œ"))
+                            SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 11].BackColor = System.Drawing.Color.LightBlue;
                         _staffOperatoeBAITO++;
                         break;
-                    case "V":
+                    case "æ–°":
                         _staffOperatoeSHINUNTEN++;
                         break;
-                    case "©":
+                    case "è‡ª":
                         _staffOperatoeJIUNROU++;
                         break;
                 }
                 /*
-                 * oŒÉ’n
+                 * å‡ºåº«åœ°
                  */
                 SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 13].Font = new System.Drawing.Font("Yu Gothic UI", 9);
                 SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 13].Text = "";
@@ -1214,42 +1294,44 @@ namespace VehicleDispatchSheet {
 
         /// <summary>
         /// CreateOperator4Row
-        /// ì‹Æˆõ‚R
+        /// ä½œæ¥­å“¡ï¼“
         /// </summary>
         /// <param name="entryCellPosition"></param>
         /// <param name="vehicleDispatchDetailVo"></param>
         private void CreateOperator4Row(EntryCellPosition entryCellPosition, VehicleDispatchDetailVo vehicleDispatchDetailVo) {
             /*
-             * ‘g‚ªƒZƒbƒg‚³‚ê‚Ä‚¢‚È‚¯‚ê‚Î‰½‚à‚µ‚È‚¢
+             * çµ„ãŒã‚»ãƒƒãƒˆã•ã‚Œã¦ã„ãªã‘ã‚Œã°ä½•ã‚‚ã—ãªã„
              */
             if(vehicleDispatchDetailVo.Set_code > 0 && vehicleDispatchDetailVo.Operator_code_4 > 0) {
                 /*
-                 * •\¦–¼
+                 * è¡¨ç¤ºå
                  */
                 SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 8].CellType = new FarPoint.Win.Spread.CellType.RichTextCellType();
                 SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 8].Value = GetWorkStaffName(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4));
                 /*
-                 * Š‘®
+                 * æ‰€å±
                  */
                 SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 9].Font = new System.Drawing.Font("Yu Gothic UI", 9);
                 SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 9].Text = string.Concat(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4).Belongs],
                                                                                                             dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4).Occupation]);
                 /*
-                 * Šel”‚ğŒvZ‚·‚é
+                 * å„äººæ•°ã‚’è¨ˆç®—ã™ã‚‹
                  */
                 switch(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4).Belongs]) {
-                    case "ƒo":
+                    case "ãƒ":
+                        if(dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4).Occupation].Equals("ä½œ"))
+                            SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 8].BackColor = System.Drawing.Color.LightBlue;
                         _staffOperatoeBAITO++;
                         break;
-                    case "V":
+                    case "æ–°":
                         _staffOperatoeSHINUNTEN++;
                         break;
-                    case "©":
+                    case "è‡ª":
                         _staffOperatoeJIUNROU++;
                         break;
                 }
                 /*
-                 * oŒÉ’n
+                 * å‡ºåº«åœ°
                  */
                 SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 10].Font = new System.Drawing.Font("Yu Gothic UI", 9);
                 SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 10].Text = "";
@@ -1258,7 +1340,7 @@ namespace VehicleDispatchSheet {
 
         /// <summary>
         /// GetWorkStaffName
-        /// hì‹Æˆõh‚ğ‰Á‚¦‚é‚©‚Ç‚¤‚©
+        /// â€ä½œæ¥­å“¡â€ã‚’åŠ ãˆã‚‹ã‹ã©ã†ã‹
         /// </summary>
         /// <returns></returns>
         private string GetWorkStaffName(StaffMasterVo staffMasterVo) {
@@ -1273,13 +1355,14 @@ namespace VehicleDispatchSheet {
                 case 20:
                 case 21:
                     switch(staffMasterVo.Staff_code) {
-                        case 20675: // [ˆäãÄ
+                        case 20675: // æ·±äº•ç¿”
+                        case 20630: // å¤§æ©‹ç¥å“‰
                             rtfText = string.Concat("", staffMasterVo.Display_name);
                             break;
                         default:
-                            displayName = string.Concat("ì‹Æˆõ", staffMasterVo.Display_name);
+                            displayName = string.Concat("ä½œæ¥­å“¡", staffMasterVo.Display_name);
                             /*
-                             * ƒŠƒbƒ`ƒeƒLƒXƒg•¶š—ñ‚Ìì¬
+                             * ãƒªãƒƒãƒãƒ†ã‚­ã‚¹ãƒˆæ–‡å­—åˆ—ã®ä½œæˆ
                              */
                             using(RichTextBox temp = new RichTextBox()) {
                                 temp.Text = displayName;
@@ -1309,21 +1392,21 @@ namespace VehicleDispatchSheet {
                 _col = 0;
             }
             /// <summary>
-            /// ‘}“ü‰Â”\‚ÈˆÊ’u‚ğ•Û
+            /// æŒ¿å…¥å¯èƒ½ãªä½ç½®ã‚’ä¿æŒ
             /// </summary>
             public int Row {
                 get => _row;
                 set => _row = value;
             }
             /// <summary>
-            /// ‘}“ü‰Â”\‚ÈˆÊ’u‚ğ•Û
+            /// æŒ¿å…¥å¯èƒ½ãªä½ç½®ã‚’ä¿æŒ
             /// </summary>
             public int Col {
                 get => _col;
                 set => _col = value;
             }
             /// <summary>
-            /// c‚è‚Ìs”
+            /// æ®‹ã‚Šã®è¡Œæ•°
             /// </summary>
             public int RemainingRows {
                 get => _remainingRows;
@@ -1338,20 +1421,35 @@ namespace VehicleDispatchSheet {
         /// <param name="e"></param>
         private void ToolStripMenuItem_Click(object sender, EventArgs e) {
             switch(((ToolStripMenuItem)sender).Name) {
-                case "ToolStripMenuItemTest1":
-                    CreateSpan(GetNextCellPosition(), "Test");
-                    break;
-                case "ToolStripMenuItemTest2":
+                case "":
 
                     break;
-                case "ToolStripMenuItemTest3":
+            }
+        }
 
+        /// <summary>
+        /// ToolStripMenuItemExit_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItemExit_Click(object sender, EventArgs e) {
+            Close();
+        }
+
+        /// <summary>
+        /// VehicleDispatchSheetBoad_FormClosing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void VehicleDispatchSheetBoad_FormClosing(object sender, FormClosingEventArgs e) {
+            var dialogResult = MessageBox.Show(MessageText.Message102, MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            switch(dialogResult) {
+                case DialogResult.OK:
+                    e.Cancel = false;
+                    Dispose();
                     break;
-                case "ToolStripMenuItemTest4":
-
-                    break;
-                case "ToolStripMenuItemTest5":
-
+                case DialogResult.Cancel:
+                    e.Cancel = true;
                     break;
             }
         }
