@@ -364,6 +364,7 @@ namespace VehicleDispatchConvert {
             iCell.SetCellValue(hSSFRichTextString);
             /*
              * 配車先
+             * 区契約は配車先名で、それ以外は”区”で表示する
              */
             if(_listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Classification_code != 11) {
                 hSSFRichTextString = new HSSFRichTextString(_listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_1);

@@ -25,7 +25,9 @@ namespace VehicleDispatchConvert {
         private VehicleDispatchDetailDao _vehicleDispatchDetailDao;
         private VehicleDispatchDetailCarDao _vehicleDispatchDetailCarDao;
         private VehicleDispatchDetailStaffDao _vehicleDispatchDetailStaffDao;
-
+        /*
+         * Vo
+         */
         private List<SetMasterVo> _listSetMasterVo;
         private List<CarMasterVo> _listCarMasterVo;
         private List<StaffMasterVo> _listStaffMasterVo;

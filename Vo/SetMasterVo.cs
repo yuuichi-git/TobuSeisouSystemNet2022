@@ -9,6 +9,7 @@ namespace Vo {
         private string _set_name = "";
         private string _set_name_1 = "";
         private string _set_name_2 = "";
+        private int _fare_code;
         private bool _garage_flag;
         private int _classification_code;
         private string _classification_name = ""; // 外部結合で取得
@@ -60,6 +61,13 @@ namespace Vo {
         public string Set_name_2 {
             get => _set_name_2;
             set => _set_name_2 = value;
+        }
+        /// <summary>
+        /// 運賃コード
+        /// </summary>
+        public int Fare_code {
+            get => _fare_code;
+            set => _fare_code = value;
         }
         /// <summary>
         /// 車庫地

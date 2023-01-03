@@ -1,25 +1,1359 @@
 using Common;
 
+using Dao;
+
+using FarPoint.Win.Spread;
+
+using GrapeCity.Spreadsheet;
+
 using Vo;
+
 
 namespace VehicleDispatchSheet {
     public partial class VehicleDispatchSheetBoad : Form {
+        /*
+         * Dao
+         */
+        private VehicleDispatchDetailDao _vehicleDispatchDetailDao;
+        private VehicleDispatchDetailCarDao _vehicleDispatchDetailCarDao;
+        private VehicleDispatchDetailStaffDao _vehicleDispatchDetailStaffDao;
+        /*
+         * Vo
+         */
         private ConnectionVo _connectionVo;
+        private List<SetMasterVo> _listSetMasterVo;
+        private List<CarMasterVo> _listCarMasterVo;
+        private List<StaffMasterVo> _listStaffMasterVo;
+        /*
+         * 初期化
+         */
         private InitializeForm _initializeForm = new();
+        private EntryCellPosition? _entryCellPosition;
+        private string _beforeBlockName = string.Empty;
+        /// <summary>
+        /// Rowのスタート位置
+        /// </summary>
+        private int _startRow = 4;
+        /// <summary>
+        /// Columnのスタート位置
+        /// </summary>
+        readonly Dictionary<int, int> _dictionaryColNumber = new Dictionary<int, int> { { 0, 0 },{ 1, 26 } };
+        /// <summary>
+        /// Rowの最大数
+        /// Sheetも調整してね！
+        /// </summary>
+        readonly int _rowMax = 75;
+        /// <summary>
+        /// 配車先の別名
+        /// </summary>
+        private Dictionary<int, string> dictionaryWordCode = new Dictionary<int, string> { { 13101, "千代田区" },
+                                                                                           { 13102, "中央区" },
+                                                                                           { 13103, "港区" },
+                                                                                           { 13104, "新宿区" },
+                                                                                           { 13105, "文京区" },
+                                                                                           { 13106, "台東区" },
+                                                                                           { 13107, "墨田区" },
+                                                                                           { 13108, "江東区" },
+                                                                                           { 13109, "品川区" },
+                                                                                           { 13110, "目黒区" },
+                                                                                           { 13111, "大田区" },
+                                                                                           { 13112, "世田谷区" },
+                                                                                           { 13113, "渋谷区" },
+                                                                                           { 13114, "中野区" },
+                                                                                           { 13115, "杉並区" },
+                                                                                           { 13116, "豊島区" },
+                                                                                           { 13117, "北区" },
+                                                                                           { 13118, "荒川区" },
+                                                                                           { 13119, "板橋区" },
+                                                                                           { 13120, "練馬区" },
+                                                                                           { 13121, "足立区" },
+                                                                                           { 13122, "葛飾区" },
+                                                                                           { 13123, "江戸川区" } };
+        private Dictionary<int, string> dictionaryBelongs = new Dictionary<int, string> { { 10, "" }, { 11, "" }, { 12, "バ" }, { 20, "新" }, { 21, "自" } };
+        private Dictionary<int, string> dictionaryOccupation = new Dictionary<int, string> { { 10, "" }, { 11, "作" }, { 99, "" } };
 
+        /// <summary>
+        /// コンストラクター
+        /// </summary>
+        /// <param name="connectionVo"></param>
         public VehicleDispatchSheetBoad(ConnectionVo connectionVo) {
+            /*
+             * Dao
+             */
+            _vehicleDispatchDetailDao = new VehicleDispatchDetailDao(connectionVo);
+            _vehicleDispatchDetailCarDao = new VehicleDispatchDetailCarDao(connectionVo);
+            _vehicleDispatchDetailStaffDao = new VehicleDispatchDetailStaffDao(connectionVo);
+            /*
+             * Vo
+             */
             _connectionVo = connectionVo;
+            _listSetMasterVo = new SetMasterDao(connectionVo).SelectAllSetMaster();
+            _listCarMasterVo = new CarMasterDao(connectionVo).SelectAllCarMaster();
+            _listStaffMasterVo = new StaffMasterDao(connectionVo).SelectAllStaffMaster();
             /*
              * コントロール初期化
              */
             InitializeComponent();
             _initializeForm.VehicleDispatchSheet(this);
-
+            /*
+             * SPREAD初期化
+             */
+            SpreadBase.StatusBarVisible = true;
+            /*
+             * 日付
+             */
+            // 日付を初期化
+            UcDateTimeJpOperationDate.SetValue(DateTime.Now);
+            // 読取り専用
+            UcDateTimeJpOperationDate.SetReadOnly(true);
+            ToolStripStatusLabelStatus.Text = string.Empty;
+            ToolStripStatusLabelPosition.Text = string.Empty;
         }
 
+        /// <summary>
+        /// エントリーポイント
+        /// </summary>
         public static void Main() {
         }
 
+        /// <summary>
+        /// ButtonUpdate_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonUpdate_Click(object sender, EventArgs e) {
+            EntryCellPosition? entryCellPosition;
+            int blockRowCount;
 
+            SpreadBase.SuspendLayout();
+            /*
+             * 10:☆庸　上　小　特コード：1
+             */
+            blockRowCount = 0;
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+                /*
+                 * 運賃対象のレコード以外はBreakする
+                 */
+                if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 10) {
+                    if(blockRowCount == 0) {
+                        _beforeBlockName = "☆庸　上　小　特コード：1";
+                        CreateSpan(GetNextCellPosition(), _beforeBlockName);
+                    }
+                    entryCellPosition = GetNextCellPosition();
+                    /*
+                     * 列が”AA"に変わった場合はBlockNameを挿入する
+                     */
+                    if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
+                        CreateSpan(entryCellPosition, _beforeBlockName);
+                        entryCellPosition.Row++;
+                    }
+                    if(entryCellPosition != null) {
+                        CreateSetRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateCarRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator1Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator2Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
+                    } else {
+                        MessageBox.Show("配車表の行数が不足しています。システム管理者へ報告して下さい。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    }
+                    blockRowCount++;
+                }
+            }
+            /*
+             * 11:☆庸　上　小プレコード：1
+             */
+            blockRowCount = 0;
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+                /*
+                 * 運賃対象のレコード以外はBreakする
+                 */
+                if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 11) {
+                    if(blockRowCount == 0) {
+                        _beforeBlockName = "☆庸　上　小プレコード：1";
+                        CreateSpan(GetNextCellPosition(), _beforeBlockName);
+                    }
+                    entryCellPosition = GetNextCellPosition();
+                    /*
+                     * 列が”AA"に変わった場合はBlockNameを挿入する
+                     */
+                    if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
+                        CreateSpan(entryCellPosition, _beforeBlockName);
+                        entryCellPosition.Row++;
+                    }
+                    if(entryCellPosition != null) {
+                        CreateSetRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateCarRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator1Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator2Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
+                    } else {
+                        MessageBox.Show("配車表の行数が不足しています。システム管理者へ報告して下さい。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    }
+                    blockRowCount++;
+                }
+            }
+            /*
+             * 12:☆庸　上　新大特コード：2
+             */
+            blockRowCount = 0;
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+                /*
+                 * 運賃対象のレコード以外はBreakする
+                 */
+                if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 12) {
+                    if(blockRowCount == 0) {
+                        _beforeBlockName = "☆庸　上　新大特コード：2";
+                        CreateSpan(GetNextCellPosition(), _beforeBlockName);
+                    }
+                    entryCellPosition = GetNextCellPosition();
+                    /*
+                     * 列が”AA"に変わった場合はBlockNameを挿入する
+                     */
+                    if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
+                        CreateSpan(entryCellPosition, _beforeBlockName);
+                        entryCellPosition.Row++;
+                    }
+                    if(entryCellPosition != null) {
+                        CreateSetRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateCarRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator1Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator2Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
+                    } else {
+                        MessageBox.Show("配車表の行数が不足しています。システム管理者へ報告して下さい。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    }
+                    blockRowCount++;
+                }
+            }
+            /*
+             * 13:☆庸　上　軽小ダンプコード：51
+             */
+            blockRowCount = 0;
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+                /*
+                 * 運賃対象のレコード以外はBreakする
+                 */
+                if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 13) {
+                    if(blockRowCount == 0) {
+                        _beforeBlockName = "☆庸　上　軽小ダンプコード：51";
+                        CreateSpan(GetNextCellPosition(), _beforeBlockName);
+                    }
+                    entryCellPosition = GetNextCellPosition();
+                    /*
+                     * 列が”AA"に変わった場合はBlockNameを挿入する
+                     */
+                    if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
+                        CreateSpan(entryCellPosition, _beforeBlockName);
+                        entryCellPosition.Row++;
+                    }
+                    if(entryCellPosition != null) {
+                        CreateSetRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateCarRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator1Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator2Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
+                    } else {
+                        MessageBox.Show("配車表の行数が不足しています。システム管理者へ報告して下さい。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    }
+                    blockRowCount++;
+                }
+            }
+            /*
+             * 14:☆庸　上　軽小型貨物コード：11
+             */
+            blockRowCount = 0;
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+                /*
+                 * 運賃対象のレコード以外はBreakする
+                 */
+                if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 14) {
+                    if(blockRowCount == 0) {
+                        _beforeBlockName = "☆庸　上　軽小型貨物コード：11";
+                        CreateSpan(GetNextCellPosition(), _beforeBlockName);
+                    }
+                    entryCellPosition = GetNextCellPosition();
+                    /*
+                     * 列が”AA"に変わった場合はBlockNameを挿入する
+                     */
+                    if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
+                        CreateSpan(entryCellPosition, _beforeBlockName);
+                        entryCellPosition.Row++;
+                    }
+                    if(entryCellPosition != null) {
+                        CreateSetRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateCarRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator1Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator2Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
+                    } else {
+                        MessageBox.Show("配車表の行数が不足しています。システム管理者へ報告して下さい。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    }
+                    blockRowCount++;
+                }
+            }
+            /*
+             * 15:☆区　契　軽小型貨物コード：11
+             */
+            blockRowCount = 0;
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+                /*
+                 * 運賃対象のレコード以外はBreakする
+                 */
+                if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 15) {
+                    if(blockRowCount == 0) {
+                        _beforeBlockName = "☆区　契　軽小型貨物コード：11";
+                        CreateSpan(GetNextCellPosition(), _beforeBlockName);
+                    }
+                    entryCellPosition = GetNextCellPosition();
+                    /*
+                     * 列が”AA"に変わった場合はBlockNameを挿入する
+                     */
+                    if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
+                        CreateSpan(entryCellPosition, _beforeBlockName);
+                        entryCellPosition.Row++;
+                    }
+                    if(entryCellPosition != null) {
+                        CreateSetRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateCarRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator1Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator2Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
+                    } else {
+                        MessageBox.Show("配車表の行数が不足しています。システム管理者へ報告して下さい。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    }
+                    blockRowCount++;
+                }
+            }
+            /*
+             * 16:☆区　契　小プレコード：1
+             */
+            blockRowCount = 0;
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+                /*
+                 * 運賃対象のレコード以外はBreakする
+                 */
+                if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 16) {
+                    if(blockRowCount == 0) {
+                        _beforeBlockName = "☆区　契　小プレコード：1";
+                        CreateSpan(GetNextCellPosition(), _beforeBlockName);
+                    }
+                    entryCellPosition = GetNextCellPosition();
+                    /*
+                     * 列が”AA"に変わった場合はBlockNameを挿入する
+                     */
+                    if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
+                        CreateSpan(entryCellPosition, _beforeBlockName);
+                        entryCellPosition.Row++;
+                    }
+                    if(entryCellPosition != null) {
+                        CreateSetRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateCarRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator1Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator2Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
+                    } else {
+                        MessageBox.Show("配車表の行数が不足しています。システム管理者へ報告して下さい。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    }
+                    blockRowCount++;
+                }
+            }
+            /*
+             * 17:☆区　契　小プレ コード：23
+             */
+            blockRowCount = 0;
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+                /*
+                 * 運賃対象のレコード以外はBreakする
+                 */
+                if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 17) {
+                    if(blockRowCount == 0) {
+                        _beforeBlockName = "☆区　契　小プレ コード：23";
+                        CreateSpan(GetNextCellPosition(), _beforeBlockName);
+                    }
+                    entryCellPosition = GetNextCellPosition();
+                    /*
+                     * 列が”AA"に変わった場合はBlockNameを挿入する
+                     */
+                    if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
+                        CreateSpan(entryCellPosition, _beforeBlockName);
+                        entryCellPosition.Row++;
+                    }
+                    if(entryCellPosition != null) {
+                        CreateSetRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateCarRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator1Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator2Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
+                    } else {
+                        MessageBox.Show("配車表の行数が不足しています。システム管理者へ報告して下さい。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    }
+                    blockRowCount++;
+                }
+            }
+            /*
+             * 18:☆区　契　小プレコード：8
+             */
+            blockRowCount = 0;
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+                /*
+                 * 運賃対象のレコード以外はBreakする
+                 */
+                if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 18) {
+                    if(blockRowCount == 0) {
+                        _beforeBlockName = "☆区　契　小プレコード：8";
+                        CreateSpan(GetNextCellPosition(), _beforeBlockName);
+                    }
+                    entryCellPosition = GetNextCellPosition();
+                    /*
+                     * 列が”AA"に変わった場合はBlockNameを挿入する
+                     */
+                    if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
+                        CreateSpan(entryCellPosition, _beforeBlockName);
+                        entryCellPosition.Row++;
+                    }
+                    if(entryCellPosition != null) {
+                        CreateSetRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateCarRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator1Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator2Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
+                    } else {
+                        MessageBox.Show("配車表の行数が不足しています。システム管理者へ報告して下さい。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    }
+                    blockRowCount++;
+                }
+            }
+            /*
+             * 19:☆区　契　平ボディコード：15
+             */
+            blockRowCount = 0;
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+                /*
+                 * 運賃対象のレコード以外はBreakする
+                 */
+                if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 19) {
+                    if(blockRowCount == 0) {
+                        _beforeBlockName = "☆区　契　平ボディコード：15";
+                        CreateSpan(GetNextCellPosition(), _beforeBlockName);
+                    }
+                    entryCellPosition = GetNextCellPosition();
+                    /*
+                     * 列が”AA"に変わった場合はBlockNameを挿入する
+                     */
+                    if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
+                        CreateSpan(entryCellPosition, _beforeBlockName);
+                        entryCellPosition.Row++;
+                    }
+                    if(entryCellPosition != null) {
+                        CreateSetRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateCarRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator1Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator2Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
+                    } else {
+                        MessageBox.Show("配車表の行数が不足しています。システム管理者へ報告して下さい。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    }
+                    blockRowCount++;
+                }
+            }
+            /*
+             * 20:☆区　契　小　Ｇコード：1
+             */
+            blockRowCount = 0;
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+                /*
+                 * 運賃対象のレコード以外はBreakする
+                 */
+                if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 20) {
+                    if(blockRowCount == 0) {
+                        _beforeBlockName = "☆区　契　小　Ｇコード：1";
+                        CreateSpan(GetNextCellPosition(), _beforeBlockName);
+                    }
+                    entryCellPosition = GetNextCellPosition();
+                    /*
+                     * 列が”AA"に変わった場合はBlockNameを挿入する
+                     */
+                    if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
+                        CreateSpan(entryCellPosition, _beforeBlockName);
+                        entryCellPosition.Row++;
+                    }
+                    if(entryCellPosition != null) {
+                        CreateSetRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateCarRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator1Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator2Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
+                    } else {
+                        MessageBox.Show("配車表の行数が不足しています。システム管理者へ報告して下さい。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    }
+                    blockRowCount++;
+                }
+            }
+            /*
+             * 21:☆庸　上　大　Ｇコード：5
+             */
+            blockRowCount = 0;
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+                /*
+                 * 運賃対象のレコード以外はBreakする
+                 */
+                if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 21) {
+                    if(blockRowCount == 0) {
+                        _beforeBlockName = "☆庸　上　大　Ｇコード：5";
+                        CreateSpan(GetNextCellPosition(), _beforeBlockName);
+                    }
+                    entryCellPosition = GetNextCellPosition();
+                    /*
+                     * 列が”AA"に変わった場合はBlockNameを挿入する
+                     */
+                    if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
+                        CreateSpan(entryCellPosition, _beforeBlockName);
+                        entryCellPosition.Row++;
+                    }
+                    if(entryCellPosition != null) {
+                        CreateSetRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateCarRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator1Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator2Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
+                    } else {
+                        MessageBox.Show("配車表の行数が不足しています。システム管理者へ報告して下さい。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    }
+                    blockRowCount++;
+                }
+            }
+            /*
+             * 22:☆臨　時　小プレ等コード：1
+             */
+            blockRowCount = 0;
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+                /*
+                 * 運賃対象のレコード以外はBreakする
+                 */
+                if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 0 &&
+                                                           _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Classification_code == 12 &&
+                                                           _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Disguise_kind_1 == "小プ") {
+                    if(blockRowCount == 0) {
+                        _beforeBlockName = "☆臨　時　小プレ等コード：1";
+                        CreateSpan(GetNextCellPosition(), _beforeBlockName);
+
+                    }
+                    entryCellPosition = GetNextCellPosition();
+                    /*
+                     * 列が”AA"に変わった場合はBlockNameを挿入する
+                     */
+                    if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
+                        CreateSpan(entryCellPosition, _beforeBlockName);
+                        entryCellPosition.Row++;
+                    }
+                    if(entryCellPosition != null) {
+                        CreateSetRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateCarRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator1Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator2Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
+                    } else {
+                        MessageBox.Show("配車表の行数が不足しています。システム管理者へ報告して下さい。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    }
+                    blockRowCount++;
+                }
+            }
+            /*
+             * 23:☆臨　時　雇　上　新大特コード：2
+             */
+            blockRowCount = 0;
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+                /*
+                 * 運賃対象のレコード以外はBreakする
+                 */
+                if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 0 &&
+                                                           _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Classification_code == 12 &&
+                                                           _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Disguise_kind_1 == "新大") {
+                    if(blockRowCount == 0) {
+                        _beforeBlockName = "☆臨　時　雇　上　新大特コード：2";
+                        CreateSpan(GetNextCellPosition(), _beforeBlockName);
+                    }
+                    entryCellPosition = GetNextCellPosition();
+                    /*
+                     * 列が”AA"に変わった場合はBlockNameを挿入する
+                     */
+                    if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
+                        CreateSpan(entryCellPosition, _beforeBlockName);
+                        entryCellPosition.Row++;
+                    }
+                    if(entryCellPosition != null) {
+                        CreateSetRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateCarRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator1Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator2Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
+                    } else {
+                        MessageBox.Show("配車表の行数が不足しています。システム管理者へ報告して下さい。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    }
+                    blockRowCount++;
+                }
+            }
+            /*
+             * 24:☆臨　時　雇　上　軽小型貨物コード：11
+             */
+            blockRowCount = 0;
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+                /*
+                 * 運賃対象のレコード以外はBreakする
+                 */
+                if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 0 &&
+                                                           _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Classification_code == 12 &&
+                                                           _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Disguise_kind_1 == "軽小貨") {
+                    if(blockRowCount == 0) {
+                        _beforeBlockName = "☆臨　時　雇　上　軽小型貨物コード：11";
+                        CreateSpan(GetNextCellPosition(), _beforeBlockName);
+                    }
+                    entryCellPosition = GetNextCellPosition();
+                    /*
+                     * 列が”AA"に変わった場合はBlockNameを挿入する
+                     */
+                    if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
+                        CreateSpan(entryCellPosition, _beforeBlockName);
+                        entryCellPosition.Row++;
+                    }
+                    if(entryCellPosition != null) {
+                        CreateSetRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateCarRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator1Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator2Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
+                    } else {
+                        MessageBox.Show("配車表の行数が不足しています。システム管理者へ報告して下さい。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    }
+                    blockRowCount++;
+                }
+            }
+            /*
+             * 25:☆臨　時　区　契　平ボディコード：15　
+             */
+            blockRowCount = 0;
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+                /*
+                 * 運賃対象のレコード以外はBreakする
+                 */
+                if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 0 &&
+                                                           _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Classification_code == 12 &&
+                                                           _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Disguise_kind_1 == "平ボ") {
+                    if(blockRowCount == 0) {
+                        _beforeBlockName = "☆臨　時　区　契　平ボディコード：15";
+                        CreateSpan(GetNextCellPosition(), _beforeBlockName);
+                    }
+                    entryCellPosition = GetNextCellPosition();
+                    /*
+                     * 列が”AA"に変わった場合はBlockNameを挿入する
+                     */
+                    if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
+                        CreateSpan(entryCellPosition, _beforeBlockName);
+                        entryCellPosition.Row++;
+                    }
+                    if(entryCellPosition != null) {
+                        CreateSetRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateCarRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator1Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator2Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
+                    } else {
+                        MessageBox.Show("配車表の行数が不足しています。システム管理者へ報告して下さい。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    }
+                    blockRowCount++;
+                }
+            }
+            /*
+             * 26:☆一廃・産廃【白ナンバー】 コード：12
+             */
+            blockRowCount = 0;
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+                /*
+                 * 運賃対象のレコード以外はBreakする
+                 */
+                if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 26) {
+                    if(blockRowCount == 0) {
+                        _beforeBlockName = "☆一廃・産廃【白ナンバー】 コード：12";
+                        CreateSpan(GetNextCellPosition(), _beforeBlockName);
+                    }
+                    entryCellPosition = GetNextCellPosition();
+                    /*
+                     * 列が”AA"に変わった場合はBlockNameを挿入する
+                     */
+                    if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
+                        CreateSpan(entryCellPosition, _beforeBlockName);
+                        entryCellPosition.Row++;
+                    }
+                    if(entryCellPosition != null) {
+                        CreateSetRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateCarRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator1Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator2Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
+                    } else {
+                        MessageBox.Show("配車表の行数が不足しています。システム管理者へ報告して下さい。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    }
+                    blockRowCount++;
+                }
+            }
+            /*
+             * 27:☆一廃・産廃【営業ナンバー】 コード：12
+             */
+            blockRowCount = 0;
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+                /*
+                 * 運賃対象のレコード以外はBreakする
+                 */
+                if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 27) {
+                    if(blockRowCount == 0) {
+                        _beforeBlockName = "☆一廃・産廃【営業ナンバー】 コード：12";
+                        CreateSpan(GetNextCellPosition(), _beforeBlockName);
+                    }
+                    entryCellPosition = GetNextCellPosition();
+                    /*
+                     * 列が”AA"に変わった場合はBlockNameを挿入する
+                     */
+                    if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
+                        CreateSpan(entryCellPosition, _beforeBlockName);
+                        entryCellPosition.Row++;
+                    }
+                    if(entryCellPosition != null) {
+                        CreateSetRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateCarRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator1Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator2Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
+                    } else {
+                        MessageBox.Show("配車表の行数が不足しています。システム管理者へ報告して下さい。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    }
+                    blockRowCount++;
+                }
+            }
+            /*
+             * 28:☆東京會舘・マインズ・公園清掃　他【白ナンバー】 コード：1
+             */
+            blockRowCount = 0;
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+                /*
+                 * 運賃対象のレコード以外はBreakする
+                 */
+                if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 28) {
+                    if(blockRowCount == 0) {
+                        _beforeBlockName = "☆東京會舘・マインズ・公園清掃　他【白ナンバー】 コード：1";
+                        CreateSpan(GetNextCellPosition(), _beforeBlockName);
+                    }
+                    entryCellPosition = GetNextCellPosition();
+                    /*
+                     * 列が”AA"に変わった場合はBlockNameを挿入する
+                     */
+                    if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
+                        CreateSpan(entryCellPosition, _beforeBlockName);
+                        entryCellPosition.Row++;
+                    }
+                    if(entryCellPosition != null) {
+                        CreateSetRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateCarRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator1Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator2Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
+                    } else {
+                        MessageBox.Show("配車表の行数が不足しています。システム管理者へ報告して下さい。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    }
+                    blockRowCount++;
+                }
+            }
+            /*
+             * 29:☆廃家電　他【営業ナンバー】 コード：1
+             */
+            blockRowCount = 0;
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+                /*
+                 * 運賃対象のレコード以外はBreakする
+                 */
+                if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 29) {
+                    if(blockRowCount == 0) {
+                        _beforeBlockName = "☆廃家電　他【営業ナンバー】 コード：1";
+                        CreateSpan(GetNextCellPosition(), _beforeBlockName);
+                    }
+                    entryCellPosition = GetNextCellPosition();
+                    /*
+                     * 列が”AA"に変わった場合はBlockNameを挿入する
+                     */
+                    if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
+                        CreateSpan(entryCellPosition, _beforeBlockName);
+                        entryCellPosition.Row++;
+                    }
+                    if(entryCellPosition != null) {
+                        CreateSetRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateCarRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator1Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator2Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
+                    } else {
+                        MessageBox.Show("配車表の行数が不足しています。システム管理者へ報告して下さい。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    }
+                    blockRowCount++;
+                }
+            }
+            /*
+             * 30:☆浄化槽 コード：1
+             */
+            blockRowCount = 0;
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+                /*
+                 * 運賃対象のレコード以外はBreakする
+                 */
+                if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 30) {
+                    if(blockRowCount == 0) {
+                        _beforeBlockName = "☆浄化槽 コード：1";
+                        CreateSpan(GetNextCellPosition(), _beforeBlockName);
+                    }
+                    entryCellPosition = GetNextCellPosition();
+                    /*
+                     * 列が”AA"に変わった場合はBlockNameを挿入する
+                     */
+                    if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
+                        CreateSpan(entryCellPosition, _beforeBlockName);
+                        entryCellPosition.Row++;
+                    }
+                    if(entryCellPosition != null) {
+                        CreateSetRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateCarRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator1Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator2Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
+                    } else {
+                        MessageBox.Show("配車表の行数が不足しています。システム管理者へ報告して下さい。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    }
+                    blockRowCount++;
+                }
+            }
+            /*
+             * 31:予備者・社員
+             */
+            blockRowCount = 0;
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+                /*
+                 * 運賃対象のレコード以外はBreakする
+                 */
+                if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 31) {
+                    if(blockRowCount == 0) {
+                        _beforeBlockName = "予備者・社員";
+                        CreateSpan(GetNextCellPosition(), _beforeBlockName);
+                    }
+                    entryCellPosition = GetNextCellPosition();
+                    /*
+                     * 列が”AA"に変わった場合はBlockNameを挿入する
+                     */
+                    if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
+                        CreateSpan(entryCellPosition, _beforeBlockName);
+                        entryCellPosition.Row++;
+                    }
+                    if(entryCellPosition != null) {
+                        CreateSetRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateCarRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator1Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator2Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
+                    } else {
+                        MessageBox.Show("配車表の行数が不足しています。システム管理者へ報告して下さい。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    }
+                    blockRowCount++;
+                }
+            }
+            /*
+             * 32:☆整　備コード：1
+             */
+            blockRowCount = 0;
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+                /*
+                 * 運賃対象のレコード以外はBreakする
+                 */
+                if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 32) {
+                    if(blockRowCount == 0) {
+                        _beforeBlockName = "☆整　備コード：1";
+                        CreateSpan(GetNextCellPosition(), _beforeBlockName);
+                    }
+                    entryCellPosition = GetNextCellPosition();
+                    /*
+                     * 列が”AA"に変わった場合はBlockNameを挿入する
+                     */
+                    if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
+                        CreateSpan(entryCellPosition, _beforeBlockName);
+                        entryCellPosition.Row++;
+                    }
+                    if(entryCellPosition != null) {
+                        CreateSetRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateCarRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator1Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator2Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
+                    } else {
+                        MessageBox.Show("配車表の行数が不足しています。システム管理者へ報告して下さい。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    }
+                    blockRowCount++;
+                }
+            }
+            /*
+             * その他詳細を表示する
+             */
+            SheetView1.Cells[11, 52].Value = _staffDriverSHINUNTEN;
+            SheetView1.Cells[12, 52].Value = _staffDriverJIUNROU;
+            SheetView1.Cells[13, 52].Value = _staffDriverBAITO;
+
+            SheetView1.Cells[11, 54].Value = _staffOperatoeSHINUNTEN;
+            SheetView1.Cells[12, 54].Value = _staffOperatoeJIUNROU;
+            SheetView1.Cells[13, 54].Value = _staffOperatoeBAITO;
+
+            SpreadBase.ResumeLayout(true);
+        }
+
+        /// <summary>
+        /// GetNextCellPosition
+        /// 次に挿入するRowを特定する
+        /// </summary>
+        /// <param name="blockName"></param>
+        /// <returns></returns>
+        private EntryCellPosition? GetNextCellPosition() {
+            var entryCellPosition = new EntryCellPosition();
+            for(int colPosition = 0; colPosition <= 1; colPosition++) { // 0:A列 1:AA列
+                for(int row = _startRow; row <= _rowMax - 1; row++) {
+                    if(SheetView1.Cells[row, _dictionaryColNumber[colPosition] + 0].Text == "" &&  // 運賃コード又は配車先の位置
+                       SheetView1.Cells[row, _dictionaryColNumber[colPosition] + 8].Text == "" &&  // 運転手の位置
+                       SheetView1.Cells[row, _dictionaryColNumber[colPosition] + 11].Text == "" &&  // 作業員2の位置
+                       SheetView1.Cells[row + 1, _dictionaryColNumber[colPosition] + 11].Text == "") { // 作業員3の位置
+                        entryCellPosition.Row = row;
+                        entryCellPosition.Col = _dictionaryColNumber[colPosition];
+                        entryCellPosition.RemainingRows = _rowMax - row;
+                        ToolStripStatusLabelPosition.Text = string.Concat("Row:", entryCellPosition.Row, " Col:", entryCellPosition.Col, " 残り", entryCellPosition.RemainingRows);
+                        return entryCellPosition;
+                    }
+                }
+            }
+            /*
+             * Null:行に空きが無い
+             */
+            return null;
+        }
+
+        /// <summary>
+        /// SetSpan
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="column"></param>
+        /// <param name="blockName"></param>
+        private void CreateSpan(EntryCellPosition entryCellPosition, string blockName) {
+            // セルを結合する
+            SheetView1.AddSpanCell(entryCellPosition.Row, entryCellPosition.Col, 1, 24);
+            SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col].BackColor = System.Drawing.Color.Green;
+            SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col].Text = blockName;
+        }
+
+        /// <summary>
+        /// CreateSetRow
+        /// </summary>
+        /// <param name="entryCellPosition"></param>
+        /// <param name="vehicleDispatchDetailVo"></param>
+        private void CreateSetRow(EntryCellPosition entryCellPosition, VehicleDispatchDetailVo vehicleDispatchDetailVo) {
+            string setName1;
+            string setName2;
+            /*
+             * 組がセットされていなければ何もしない
+             */
+            if(vehicleDispatchDetailVo.Set_code > 0) {
+                /*
+                 * 区契の場合の表示は”〇〇区”とするため、条件分岐する
+                 */
+                if(_listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Classification_code != 11) {
+                    setName1 = _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_1;
+                    setName2 = _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_2;
+                } else {
+                    setName1 = dictionaryWordCode[_listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Word_code];
+                    setName2 = _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_2;
+                }
+                /*
+                 * setName1
+                 */
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col].Font = new System.Drawing.Font("Yu Gothic UI", 9);
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col].ForeColor = vehicleDispatchDetailVo.Operation_flag ? System.Drawing.Color.Black : System.Drawing.Color.Red;
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col].Text = setName1;
+                /*
+                 * setName2
+                 */
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 1].Font = new System.Drawing.Font("Yu Gothic UI", 9);
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 1].ForeColor = vehicleDispatchDetailVo.Operation_flag ? System.Drawing.Color.Black : System.Drawing.Color.Red;
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 1].Text = setName2;
+            }
+        }
+
+        /// <summary>
+        /// CreateCarRow
+        /// </summary>
+        /// <param name="entryCellPosition"></param>
+        /// <param name="vehicleDispatchDetailVo"></param>
+        private void CreateCarRow(EntryCellPosition entryCellPosition, VehicleDispatchDetailVo vehicleDispatchDetailVo) {
+            string doorNumberHONBAN;
+            string registrationNumber;
+            string doorNumberDAIBAN;
+            /*
+             * 組がセットされていなければ何もしない
+             */
+            if(vehicleDispatchDetailVo.Set_code > 0 && vehicleDispatchDetailVo.Car_code > 0) {
+                doorNumberHONBAN = _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Door_number.ToString();
+                registrationNumber = string.Concat(_listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Registration_number_3,
+                                                   _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Registration_number_4);
+                /*
+                 * 本番のドアナンバー
+                 */
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 2].Font = new System.Drawing.Font("Yu Gothic UI", 9);
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 2].ForeColor = vehicleDispatchDetailVo.Operation_flag ? System.Drawing.Color.Black : System.Drawing.Color.Red;
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 2].Text = doorNumberHONBAN;
+                /*
+                 * 本番の車番
+                 */
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 3].Font = new System.Drawing.Font("Yu Gothic UI", 9);
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 3].ForeColor = vehicleDispatchDetailVo.Operation_flag ? System.Drawing.Color.Black : System.Drawing.Color.Red;
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 3].Text = registrationNumber;
+
+            }
+        }
+
+        // 運転手（バイト）の人数
+        int _staffDriverBAITO = 0;
+        // 運転手（新運転）の人数
+        int _staffDriverSHINUNTEN = 0;
+        // 運転手（自運労）の人数
+        int _staffDriverJIUNROU = 0;
+
+        /// <summary>
+        /// CreateOperator1Row
+        /// 運転手
+        /// </summary>
+        /// <param name="entryCellPosition"></param>
+        /// <param name="vehicleDispatchDetailVo"></param>
+        private void CreateOperator1Row(EntryCellPosition entryCellPosition, VehicleDispatchDetailVo vehicleDispatchDetailVo) {
+            RichText displayName; // 表示名
+            string occupation; // 所属
+            string garage; // 出庫地
+            /*
+             * 組がセットされていなければ何もしない
+             */
+            if(vehicleDispatchDetailVo.Set_code > 0 && vehicleDispatchDetailVo.Operator_code_1 > 0) {
+                displayName = new RichText(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Display_name);
+                occupation = dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Belongs];
+                /*
+                 * 各人数を計算する
+                 */
+                switch(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Belongs]) {
+                    case "バ":
+                        _staffDriverBAITO++;
+                        break;
+                    case "新":
+                        _staffDriverSHINUNTEN++;
+                        break;
+                    case "自":
+                        _staffDriverJIUNROU++;
+                        break;
+                }
+                garage = vehicleDispatchDetailVo.Garage_flag ? "" : "三";
+                /*
+                 * 表示名
+                 */
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 8].CellType = new FarPoint.Win.Spread.CellType.RichTextCellType();
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 8].Value = displayName;
+                /*
+                 * 所属
+                 */
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 9].Font = new System.Drawing.Font("Yu Gothic UI", 9);
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 9].Text = occupation;
+                /*
+                 * 出庫地
+                 */
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 10].Font = new System.Drawing.Font("Yu Gothic UI", 9);
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 10].Text = garage;
+            }
+        }
+
+        // 作業員（バイト）の人数
+        int _staffOperatoeBAITO = 0;
+        // 作業員（新運転）の人数
+        int _staffOperatoeSHINUNTEN = 0;
+        // 作業員（自運労）の人数
+        int _staffOperatoeJIUNROU = 0;
+
+        /// <summary>
+        /// CreateOperator2Row
+        /// 作業員１
+        /// </summary>
+        /// <param name="entryCellPosition"></param>
+        /// <param name="vehicleDispatchDetailVo"></param>
+        private void CreateOperator2Row(EntryCellPosition entryCellPosition, VehicleDispatchDetailVo vehicleDispatchDetailVo) {
+            string garage; // 出庫地
+            /*
+             * 組がセットされていなければ何もしない
+             */
+            if(vehicleDispatchDetailVo.Set_code > 0 && vehicleDispatchDetailVo.Operator_code_2 > 0) {
+                switch(vehicleDispatchDetailVo.Cell_number) {
+                    case 76:
+                    case 77:
+                    case 78:
+                    case 79:
+                    case 80:
+                    case 81:
+                    case 82:
+                    case 83:
+                    case 84:
+                    case 85:
+                    case 86:
+                    case 87:
+                        garage = vehicleDispatchDetailVo.Garage_flag ? "" : "三";
+                        break;
+                    default:
+                        garage = "";
+                        break;
+                }
+                /*
+                 * 表示名
+                 */
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 11].CellType = new FarPoint.Win.Spread.CellType.RichTextCellType();
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 11].Value = GetWorkStaffName(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2));
+                /*
+                 * 所属
+                 */
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 12].Font = new System.Drawing.Font("Yu Gothic UI", 9);
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 12].Text = string.Concat(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Belongs],
+                                                                                                         dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Occupation]);
+                /*
+                 * 各人数を計算する
+                 */
+                switch(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Belongs]) {
+                    case "バ":
+                        _staffOperatoeBAITO++;
+                        break;
+                    case "新":
+                        _staffOperatoeSHINUNTEN++;
+                        break;
+                    case "自":
+                        _staffOperatoeJIUNROU++;
+                        break;
+                }
+                /*
+                 * 出庫地
+                 */
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 13].Font = new System.Drawing.Font("Yu Gothic UI", 9);
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 13].Text = garage;
+            }
+        }
+
+        /// <summary>
+        /// CreateOperator3Row
+        /// 作業員２
+        /// </summary>
+        /// <param name="entryCellPosition"></param>
+        /// <param name="vehicleDispatchDetailVo"></param>
+        private void CreateOperator3Row(EntryCellPosition entryCellPosition, VehicleDispatchDetailVo vehicleDispatchDetailVo) {
+            /*
+             * 組がセットされていなければ何もしない
+             */
+            if(vehicleDispatchDetailVo.Set_code > 0 && vehicleDispatchDetailVo.Operator_code_3 > 0) {
+                /*
+                 * 表示名
+                 */
+                SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 11].CellType = new FarPoint.Win.Spread.CellType.RichTextCellType();
+                SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 11].Value = GetWorkStaffName(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3));
+                /*
+                 * 所属
+                 */
+                SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 12].Font = new System.Drawing.Font("Yu Gothic UI", 9);
+                SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 12].Text = string.Concat(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Belongs],
+                                                                                                             dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Occupation]);
+                /*
+                 * 各人数を計算する
+                 */
+                switch(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Belongs]) {
+                    case "バ":
+                        _staffOperatoeBAITO++;
+                        break;
+                    case "新":
+                        _staffOperatoeSHINUNTEN++;
+                        break;
+                    case "自":
+                        _staffOperatoeJIUNROU++;
+                        break;
+                }
+                /*
+                 * 出庫地
+                 */
+                SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 13].Font = new System.Drawing.Font("Yu Gothic UI", 9);
+                SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 13].Text = "";
+            }
+        }
+
+        /// <summary>
+        /// CreateOperator4Row
+        /// 作業員３
+        /// </summary>
+        /// <param name="entryCellPosition"></param>
+        /// <param name="vehicleDispatchDetailVo"></param>
+        private void CreateOperator4Row(EntryCellPosition entryCellPosition, VehicleDispatchDetailVo vehicleDispatchDetailVo) {
+            /*
+             * 組がセットされていなければ何もしない
+             */
+            if(vehicleDispatchDetailVo.Set_code > 0 && vehicleDispatchDetailVo.Operator_code_4 > 0) {
+                /*
+                 * 表示名
+                 */
+                SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 8].CellType = new FarPoint.Win.Spread.CellType.RichTextCellType();
+                SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 8].Value = GetWorkStaffName(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4));
+                /*
+                 * 所属
+                 */
+                SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 9].Font = new System.Drawing.Font("Yu Gothic UI", 9);
+                SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 9].Text = string.Concat(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4).Belongs],
+                                                                                                            dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4).Occupation]);
+                /*
+                 * 各人数を計算する
+                 */
+                switch(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4).Belongs]) {
+                    case "バ":
+                        _staffOperatoeBAITO++;
+                        break;
+                    case "新":
+                        _staffOperatoeSHINUNTEN++;
+                        break;
+                    case "自":
+                        _staffOperatoeJIUNROU++;
+                        break;
+                }
+                /*
+                 * 出庫地
+                 */
+                SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 10].Font = new System.Drawing.Font("Yu Gothic UI", 9);
+                SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 10].Text = "";
+            }
+        }
+
+        /// <summary>
+        /// GetWorkStaffName
+        /// ”作業員”を加えるかどうか
+        /// </summary>
+        /// <returns></returns>
+        private string GetWorkStaffName(StaffMasterVo staffMasterVo) {
+            string rtfText = "";
+            string displayName;
+            switch(staffMasterVo.Belongs) {
+                case 10:
+                case 11:
+                    rtfText = staffMasterVo.Display_name;
+                    break;
+                case 12:
+                case 20:
+                case 21:
+                    switch(staffMasterVo.Staff_code) {
+                        case 20675: // 深井翔
+                            rtfText = string.Concat("", staffMasterVo.Display_name);
+                            break;
+                        default:
+                            displayName = string.Concat("作業員", staffMasterVo.Display_name);
+                            /*
+                             * リッチテキスト文字列の作成
+                             */
+                            using(RichTextBox temp = new RichTextBox()) {
+                                temp.Text = displayName;
+                                temp.SelectionStart = 0;
+                                temp.SelectionLength = 3;
+                                temp.SelectionColor = System.Drawing.Color.Gray;
+                                temp.SelectionFont = new System.Drawing.Font("Yu Gothic UI", 6);
+                                rtfText = temp.Rtf;
+                            }
+                            break;
+                    }
+                    break;
+            }
+            return rtfText;
+        }
+
+        /// <summary>
+        /// EntryCellPosition
+        /// </summary>
+        private class EntryCellPosition {
+            int _row;
+            int _col;
+            int _remainingRows;
+
+            public EntryCellPosition() {
+                _row = 0;
+                _col = 0;
+            }
+            /// <summary>
+            /// 挿入可能な位置を保持
+            /// </summary>
+            public int Row {
+                get => _row;
+                set => _row = value;
+            }
+            /// <summary>
+            /// 挿入可能な位置を保持
+            /// </summary>
+            public int Col {
+                get => _col;
+                set => _col = value;
+            }
+            /// <summary>
+            /// 残りの行数
+            /// </summary>
+            public int RemainingRows {
+                get => _remainingRows;
+                set => _remainingRows = value;
+            }
+        }
+
+        /// <summary>
+        /// ToolStripMenuItem_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItem_Click(object sender, EventArgs e) {
+            switch(((ToolStripMenuItem)sender).Name) {
+                case "ToolStripMenuItemTest1":
+                    CreateSpan(GetNextCellPosition(), "Test");
+                    break;
+                case "ToolStripMenuItemTest2":
+
+                    break;
+                case "ToolStripMenuItemTest3":
+
+                    break;
+                case "ToolStripMenuItemTest4":
+
+                    break;
+                case "ToolStripMenuItemTest5":
+
+                    break;
+            }
+        }
     }
 }
