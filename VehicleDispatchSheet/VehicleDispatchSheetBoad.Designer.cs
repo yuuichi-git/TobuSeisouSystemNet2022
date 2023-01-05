@@ -31,8 +31,12 @@
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabelPosition = new System.Windows.Forms.ToolStripStatusLabel();
             this.SpreadBase = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, ((object)(resources.GetObject("TableLayoutPanelExBase.Controls"))));
+            this.SheetView1 = this.SpreadBase.GetSheet(0);
             this.MenuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ToolStripMenuItemMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.配車表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemPrint = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemExport = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.PanelUp = new System.Windows.Forms.Panel();
@@ -46,7 +50,6 @@
             this.UcDateTimeJpOperationDate = new ControlEx.UcDateTimeJp();
             this.label1 = new System.Windows.Forms.Label();
             this.ButtonUpdate = new System.Windows.Forms.Button();
-            this.SheetView1 = this.SpreadBase.GetSheet(0);
             this.TableLayoutPanelExBase.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpreadBase)).BeginInit();
@@ -136,10 +139,34 @@
             // ToolStripMenuItemMenu
             // 
             this.ToolStripMenuItemMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.配車表ToolStripMenuItem,
             this.ToolStripMenuItemExit});
             this.ToolStripMenuItemMenu.Name = "ToolStripMenuItemMenu";
             this.ToolStripMenuItemMenu.Size = new System.Drawing.Size(52, 20);
             this.ToolStripMenuItemMenu.Text = "メニュー";
+            // 
+            // 配車表ToolStripMenuItem
+            // 
+            this.配車表ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemPrint,
+            this.ToolStripMenuItemExport});
+            this.配車表ToolStripMenuItem.Name = "配車表ToolStripMenuItem";
+            this.配車表ToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.配車表ToolStripMenuItem.Text = "配車表";
+            // 
+            // ToolStripMenuItemPrint
+            // 
+            this.ToolStripMenuItemPrint.Name = "ToolStripMenuItemPrint";
+            this.ToolStripMenuItemPrint.Size = new System.Drawing.Size(238, 22);
+            this.ToolStripMenuItemPrint.Text = "印刷する (B4横)";
+            this.ToolStripMenuItemPrint.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            // 
+            // ToolStripMenuItemExport
+            // 
+            this.ToolStripMenuItemExport.Name = "ToolStripMenuItemExport";
+            this.ToolStripMenuItemExport.Size = new System.Drawing.Size(238, 22);
+            this.ToolStripMenuItemExport.Text = "Excel (.xls) 形式でエクスポートする";
+            this.ToolStripMenuItemExport.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // ToolStripMenuItemExit
             // 
@@ -329,6 +356,9 @@
         private ComboBox ComboBox2;
         private ComboBox ComboBox1;
         private GroupBox GroupBox1;
+        private ToolStripMenuItem 配車表ToolStripMenuItem;
+        private ToolStripMenuItem ToolStripMenuItemPrint;
+        private ToolStripMenuItem ToolStripMenuItemExport;
         private FarPoint.Win.Spread.SheetView SheetView1;
     }
 }

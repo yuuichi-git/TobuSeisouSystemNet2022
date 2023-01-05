@@ -2,6 +2,9 @@
 
 using Dao;
 
+using FarPoint.Excel;
+using FarPoint.Win.Spread;
+
 using GrapeCity.Spreadsheet;
 
 using Vo;
@@ -40,7 +43,7 @@ namespace VehicleDispatchSheet {
         /// Rowの最大数
         /// Sheetも調整してね！
         /// </summary>
-        readonly int _rowMax = 74;
+        readonly int _rowMax = 79;
         /// <summary>
         /// 配車先の別名
         /// </summary>
@@ -96,6 +99,7 @@ namespace VehicleDispatchSheet {
             /*
              * SPREAD初期化
              */
+            SpreadBase.TabStripPolicy = TabStripPolicy.Never;
             SpreadBase.StatusBarVisible = true;
             /*
              * 日付
@@ -143,7 +147,7 @@ namespace VehicleDispatchSheet {
              */
             SheetView1.Cells[0, 0].Text = UcDateTimeJpOperationDate.GetText();
             /*
-             * 10:☆庸　上　小　特コード：1
+             * 10:☆庸上　小特　コード：1
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
@@ -152,7 +156,7 @@ namespace VehicleDispatchSheet {
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 10) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "☆庸　上　小　特コード：1";
+                        _beforeBlockName = "☆庸上　小特　コード：1";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
@@ -177,7 +181,7 @@ namespace VehicleDispatchSheet {
                 }
             }
             /*
-             * 11:☆庸　上　小プレコード：1
+             * 11:☆庸上　小プレ　コード：1
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
@@ -186,7 +190,7 @@ namespace VehicleDispatchSheet {
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 11) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "☆庸　上　小プレコード：1";
+                        _beforeBlockName = "☆庸上　小プレ　コード：1";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
@@ -211,7 +215,7 @@ namespace VehicleDispatchSheet {
                 }
             }
             /*
-             * 12:☆庸　上　新大特コード：2
+             * 12:☆庸上　新大特　コード：2
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
@@ -220,7 +224,7 @@ namespace VehicleDispatchSheet {
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 12) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "☆庸　上　新大特コード：2";
+                        _beforeBlockName = "☆庸上　新大特　コード：2";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
@@ -245,7 +249,7 @@ namespace VehicleDispatchSheet {
                 }
             }
             /*
-             * 13:☆庸　上　軽小ダンプコード：51
+             * 13:☆庸上　軽小ダンプ　コード：51
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
@@ -254,7 +258,7 @@ namespace VehicleDispatchSheet {
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 13) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "☆庸　上　軽小ダンプコード：51";
+                        _beforeBlockName = "☆庸上　軽小ダンプ　コード：51";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
@@ -279,7 +283,7 @@ namespace VehicleDispatchSheet {
                 }
             }
             /*
-             * 14:☆庸　上　軽小型貨物コード：11
+             * 14:☆庸上　軽小型貨物　コード：11
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
@@ -288,7 +292,7 @@ namespace VehicleDispatchSheet {
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 14) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "☆庸　上　軽小型貨物コード：11";
+                        _beforeBlockName = "☆庸上　軽小型貨物　コード：11";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
@@ -313,7 +317,7 @@ namespace VehicleDispatchSheet {
                 }
             }
             /*
-             * 15:☆区　契　軽小型貨物コード：11
+             * 15:☆区契　軽小型貨物　コード：11
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
@@ -322,7 +326,7 @@ namespace VehicleDispatchSheet {
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 15) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "☆区　契　軽小型貨物コード：11";
+                        _beforeBlockName = "☆区契　軽小型貨物　コード：11";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
@@ -347,7 +351,7 @@ namespace VehicleDispatchSheet {
                 }
             }
             /*
-             * 16:☆区　契　小プレコード：1
+             * 16:☆区契　小プレ　コード：1
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
@@ -356,7 +360,7 @@ namespace VehicleDispatchSheet {
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 16) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "☆区　契　小プレコード：1";
+                        _beforeBlockName = "☆区契　小プレ　コード：1";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
@@ -381,7 +385,7 @@ namespace VehicleDispatchSheet {
                 }
             }
             /*
-             * 17:☆区　契　小プレ コード：23
+             * 17:☆区契　小プレ コード：23
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
@@ -390,7 +394,7 @@ namespace VehicleDispatchSheet {
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 17) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "☆区　契　小プレ コード：23";
+                        _beforeBlockName = "☆区契　小プレ コード：23";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
@@ -415,7 +419,7 @@ namespace VehicleDispatchSheet {
                 }
             }
             /*
-             * 18:☆区　契　小プレコード：8
+             * 18:☆区契　小プレ　コード：8
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
@@ -424,7 +428,7 @@ namespace VehicleDispatchSheet {
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 18) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "☆区　契　小プレコード：8";
+                        _beforeBlockName = "☆区契　小プレ　コード：8";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
@@ -449,7 +453,7 @@ namespace VehicleDispatchSheet {
                 }
             }
             /*
-             * 19:☆区　契　平ボディコード：15
+             * 19:☆区契　平ボディ　コード：15
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
@@ -458,7 +462,7 @@ namespace VehicleDispatchSheet {
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 19) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "☆区　契　平ボディコード：15";
+                        _beforeBlockName = "☆区契　平ボディ　コード：15";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
@@ -483,7 +487,7 @@ namespace VehicleDispatchSheet {
                 }
             }
             /*
-             * 20:☆区　契　小　Ｇコード：1
+             * 20:☆区契　小Ｇ　コード：1
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
@@ -492,7 +496,7 @@ namespace VehicleDispatchSheet {
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 20) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "☆区　契　小　Ｇコード：1";
+                        _beforeBlockName = "☆区契　小Ｇ　コード：1";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
@@ -517,7 +521,7 @@ namespace VehicleDispatchSheet {
                 }
             }
             /*
-             * 21:☆庸　上　大　Ｇコード：5
+             * 21:☆庸上　大Ｇ　コード：5
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
@@ -526,7 +530,7 @@ namespace VehicleDispatchSheet {
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 21) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "☆庸　上　大　Ｇコード：5";
+                        _beforeBlockName = "☆庸上　大Ｇ　コード：5";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
@@ -551,7 +555,7 @@ namespace VehicleDispatchSheet {
                 }
             }
             /*
-             * 22:☆臨　時　小プレ等コード：1
+             * 22:☆臨時　小プレ等　コード：1
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
@@ -560,9 +564,10 @@ namespace VehicleDispatchSheet {
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 0 &&
                                                            _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Classification_code == 12 &&
-                                                           _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Disguise_kind_1 == "小プ") {
+                                                          (_listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Disguise_kind_1 == "小プ" ||
+                                                           _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Disguise_kind_1 == "小特")) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "☆臨　時　小プレ等コード：1";
+                        _beforeBlockName = "☆臨時　小プレ等　コード：1";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
 
                     }
@@ -588,7 +593,7 @@ namespace VehicleDispatchSheet {
                 }
             }
             /*
-             * 23:☆臨　時　雇　上　新大特コード：2
+             * 23:☆臨時　雇上　新大特　コード：2
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
@@ -599,7 +604,7 @@ namespace VehicleDispatchSheet {
                                                            _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Classification_code == 12 &&
                                                            _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Disguise_kind_1 == "新大") {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "☆臨　時　雇　上　新大特コード：2";
+                        _beforeBlockName = "☆臨時　雇上　新大特　コード：2";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
@@ -624,7 +629,7 @@ namespace VehicleDispatchSheet {
                 }
             }
             /*
-             * 24:☆臨　時　雇　上　軽小型貨物コード：11
+             * 24:☆臨時　雇上　軽小貨/軽ダ　コード：11
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
@@ -633,9 +638,10 @@ namespace VehicleDispatchSheet {
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 0 &&
                                                            _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Classification_code == 12 &&
-                                                           _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Disguise_kind_1 == "軽小貨") {
+                                                          (_listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Disguise_kind_1 == "軽小貨" ||
+                                                           _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Disguise_kind_1 == "軽ダ")) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "☆臨　時　雇　上　軽小型貨物コード：11";
+                        _beforeBlockName = "☆臨時　雇上　軽小貨/軽ダ　コード：11";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
@@ -660,7 +666,7 @@ namespace VehicleDispatchSheet {
                 }
             }
             /*
-             * 25:☆臨　時　区　契　平ボディコード：15　
+             * 25:☆臨時　区契　平ボディ　コード：15　
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
@@ -671,7 +677,7 @@ namespace VehicleDispatchSheet {
                                                            _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Classification_code == 12 &&
                                                            _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Disguise_kind_1 == "平ボ") {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "☆臨　時　区　契　平ボディコード：15";
+                        _beforeBlockName = "☆臨時　区契　平ボディ　コード：15";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
@@ -900,7 +906,7 @@ namespace VehicleDispatchSheet {
                 }
             }
             /*
-             * 32:☆整　備コード：1
+             * 32:☆整備 コード：1
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
@@ -909,7 +915,7 @@ namespace VehicleDispatchSheet {
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 32) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "☆整　備コード：1";
+                        _beforeBlockName = "☆整備 コード：1";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();
@@ -933,17 +939,6 @@ namespace VehicleDispatchSheet {
                     blockRowCount++;
                 }
             }
-            /*
-             * その他詳細を表示する
-             */
-            SheetView1.Cells[11, 52].Value = _staffDriverSHINUNTEN;
-            SheetView1.Cells[12, 52].Value = _staffDriverJIUNROU;
-            SheetView1.Cells[13, 52].Value = _staffDriverBAITO;
-
-            SheetView1.Cells[11, 54].Value = _staffOperatoeSHINUNTEN;
-            SheetView1.Cells[12, 54].Value = _staffOperatoeJIUNROU;
-            SheetView1.Cells[13, 54].Value = _staffOperatoeBAITO;
-
             SpreadBase.ResumeLayout(true);
         }
 
@@ -1057,13 +1052,6 @@ namespace VehicleDispatchSheet {
             }
         }
 
-        // 運転手（バイト）の人数
-        int _staffDriverBAITO = 0;
-        // 運転手（新運転）の人数
-        int _staffDriverSHINUNTEN = 0;
-        // 運転手（自運労）の人数
-        int _staffDriverJIUNROU = 0;
-
         /// <summary>
         /// CreateOperator1Row
         /// 運転手
@@ -1080,21 +1068,6 @@ namespace VehicleDispatchSheet {
             if(vehicleDispatchDetailVo.Set_code > 0 && vehicleDispatchDetailVo.Operator_code_1 > 0) {
                 displayName = new RichText(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Display_name);
                 occupation = dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Belongs];
-                /*
-                 * 各人数を計算する
-                 */
-                switch(occupation) {
-                    case "バ":
-                        SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 8].BackColor = System.Drawing.Color.Yellow;
-                        _staffDriverBAITO++;
-                        break;
-                    case "新":
-                        _staffDriverSHINUNTEN++;
-                        break;
-                    case "自":
-                        _staffDriverJIUNROU++;
-                        break;
-                }
                 garage = vehicleDispatchDetailVo.Garage_flag ? "" : "三";
                 /*
                  * 表示名
@@ -1137,15 +1110,15 @@ namespace VehicleDispatchSheet {
                  * 免許・健康・車両・飲酒・検知器
                  */
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 17].Font = new System.Drawing.Font("Yu Gothic UI", 9);
-                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 17].Text = "✓";
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 17].Text = vehicleDispatchDetailVo.Operator_1_roll_call_flag ? "✓" : "";
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 18].Font = new System.Drawing.Font("Yu Gothic UI", 9);
-                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 18].Text = "✓";
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 18].Text = vehicleDispatchDetailVo.Operator_1_roll_call_flag ? "✓" : "";
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 19].Font = new System.Drawing.Font("Yu Gothic UI", 9);
-                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 19].Text = "✓";
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 19].Text = vehicleDispatchDetailVo.Operator_1_roll_call_flag ? "✓" : "";
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 20].Font = new System.Drawing.Font("Yu Gothic UI", 9);
-                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 20].Text = "✓";
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 20].Text = vehicleDispatchDetailVo.Operator_1_roll_call_flag ? "✓" : "";
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 21].Font = new System.Drawing.Font("Yu Gothic UI", 9);
-                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 21].Text = "✓";
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 21].Text = vehicleDispatchDetailVo.Operator_1_roll_call_flag ? "有" : "";
                 /*
                  * 周知事項
                  */
@@ -1160,25 +1133,20 @@ namespace VehicleDispatchSheet {
                          */
                         int second = vehicleDispatchDetailVo.Operator_1_roll_call_ymd_hms.Second; //秒（0～59）
                         SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 23].Font = new System.Drawing.Font("Yu Gothic UI", 9);
-                        SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 23].Text = ((second % 2 == 0) ? ComboBox1.Text : ComboBox2.Text);
+                        if(vehicleDispatchDetailVo.Operator_1_roll_call_flag)
+                            SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 23].Text = (second % 2 == 0) ? ComboBox1.Text : ComboBox2.Text;
                         break;
                     case false:
                         /*
                          * ”点呼執行者三郷”を選択する
                          */
                         SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 23].Font = new System.Drawing.Font("Yu Gothic UI", 9);
-                        SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 23].Text = ComboBox3.Text;
+                        if(vehicleDispatchDetailVo.Operator_1_roll_call_flag)
+                            SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 23].Text = ComboBox3.Text;
                         break;
                 }
             }
         }
-
-        // 作業員（バイト）の人数
-        int _staffOperatoeBAITO = 0;
-        // 作業員（新運転）の人数
-        int _staffOperatoeSHINUNTEN = 0;
-        // 作業員（自運労）の人数
-        int _staffOperatoeJIUNROU = 0;
 
         /// <summary>
         /// CreateOperator2Row
@@ -1223,22 +1191,6 @@ namespace VehicleDispatchSheet {
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 12].Text = string.Concat(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Belongs],
                                                                                                          dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Occupation]);
                 /*
-                 * 各人数を計算する
-                 */
-                switch(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Belongs]) {
-                    case "バ":
-                        if(dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Occupation].Equals("作"))
-                            SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 11].BackColor = System.Drawing.Color.LightBlue;
-                        _staffOperatoeBAITO++;
-                        break;
-                    case "新":
-                        _staffOperatoeSHINUNTEN++;
-                        break;
-                    case "自":
-                        _staffOperatoeJIUNROU++;
-                        break;
-                }
-                /*
                  * 出庫地
                  */
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 13].Font = new System.Drawing.Font("Yu Gothic UI", 9);
@@ -1269,22 +1221,6 @@ namespace VehicleDispatchSheet {
                 SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 12].Text = string.Concat(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Belongs],
                                                                                                              dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Occupation]);
                 /*
-                 * 各人数を計算する
-                 */
-                switch(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Belongs]) {
-                    case "バ":
-                        if(dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Occupation].Equals("作"))
-                            SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 11].BackColor = System.Drawing.Color.LightBlue;
-                        _staffOperatoeBAITO++;
-                        break;
-                    case "新":
-                        _staffOperatoeSHINUNTEN++;
-                        break;
-                    case "自":
-                        _staffOperatoeJIUNROU++;
-                        break;
-                }
-                /*
                  * 出庫地
                  */
                 SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 13].Font = new System.Drawing.Font("Yu Gothic UI", 9);
@@ -1314,22 +1250,6 @@ namespace VehicleDispatchSheet {
                 SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 9].Font = new System.Drawing.Font("Yu Gothic UI", 9);
                 SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 9].Text = string.Concat(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4).Belongs],
                                                                                                             dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4).Occupation]);
-                /*
-                 * 各人数を計算する
-                 */
-                switch(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4).Belongs]) {
-                    case "バ":
-                        if(dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4).Occupation].Equals("作"))
-                            SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 8].BackColor = System.Drawing.Color.LightBlue;
-                        _staffOperatoeBAITO++;
-                        break;
-                    case "新":
-                        _staffOperatoeSHINUNTEN++;
-                        break;
-                    case "自":
-                        _staffOperatoeJIUNROU++;
-                        break;
-                }
                 /*
                  * 出庫地
                  */
@@ -1421,8 +1341,14 @@ namespace VehicleDispatchSheet {
         /// <param name="e"></param>
         private void ToolStripMenuItem_Click(object sender, EventArgs e) {
             switch(((ToolStripMenuItem)sender).Name) {
-                case "":
-
+                case "ToolStripMenuItemPrint":
+                    SpreadBase.PrintSheet(SheetView1);
+                    break;
+                case "ToolStripMenuItemExport":
+                    //xls形式ファイルをエクスポートします
+                    string fileName = string.Concat("配車当日", DateTime.Now.ToString("MM月dd日"), "作成");
+                    SpreadBase.SaveExcel(new Directry().GetExcelDesktopPassXlsx(fileName), ExcelSaveFlags.UseOOXMLFormat);
+                    MessageBox.Show("デスクトップへエクスポートしました", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
             }
         }
