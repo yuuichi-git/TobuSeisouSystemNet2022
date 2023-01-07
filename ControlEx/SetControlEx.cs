@@ -26,6 +26,7 @@ namespace ControlEx {
         public event DragEventHandler Event_SetControlEx_DragDrop = delegate { };
         public event DragEventHandler Event_SetControlEx_DragEnter = delegate { };
         public event EventHandler Event_SetLabelEx_Click = delegate { };
+        public event EventHandler Event_SetLabelEx_DoubleClick = delegate { };
         public event MouseEventHandler Event_SetLabelEx_MouseMove = delegate { };
         public event EventHandler Event_CarLabelEx_Click = delegate { };
         public event MouseEventHandler Event_CarLabelEx_MouseMove = delegate { };
@@ -202,6 +203,7 @@ namespace ControlEx {
              * イベントを設定
              */
             labelEx.Click += new EventHandler(SetLabelEx_Click);
+            labelEx.DoubleClick += new EventHandler(SetLabelEx_DoubleClick);
             labelEx.MouseMove += new MouseEventHandler(SetLabelEx_MouseMove);
             this.Controls.Add(labelEx, 0, 0);
         }
@@ -265,6 +267,9 @@ namespace ControlEx {
         }
         private void SetLabelEx_Click(object sender, EventArgs e) {
             Event_SetLabelEx_Click?.Invoke(sender, e);
+        }
+        private void SetLabelEx_DoubleClick(object sender, EventArgs e) {
+            Event_SetLabelEx_DoubleClick?.Invoke(sender, e);
         }
         private void SetLabelEx_MouseMove(object sender, MouseEventArgs e) {
             Event_SetLabelEx_MouseMove?.Invoke(sender, e);

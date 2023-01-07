@@ -95,6 +95,10 @@ namespace ControlEx {
              * Garage_flag
              */
             _garageFlag = garageFlag;
+            /*
+             * Operation_flag
+             */
+            _operationFlag = true;
 
             InitializeComponent();
             /*

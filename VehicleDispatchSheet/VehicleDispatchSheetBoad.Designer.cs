@@ -31,7 +31,6 @@
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabelPosition = new System.Windows.Forms.ToolStripStatusLabel();
             this.SpreadBase = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, ((object)(resources.GetObject("TableLayoutPanelExBase.Controls"))));
-            this.SheetView1 = this.SpreadBase.GetSheet(0);
             this.MenuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ToolStripMenuItemMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.配車表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,6 +39,8 @@
             this.ToolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.PanelUp = new System.Windows.Forms.Panel();
+            this.ComboBox4 = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
             this.ComboBox2 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -50,6 +51,7 @@
             this.UcDateTimeJpOperationDate = new ControlEx.UcDateTimeJp();
             this.label1 = new System.Windows.Forms.Label();
             this.ButtonUpdate = new System.Windows.Forms.Button();
+            this.SheetView1 = this.SpreadBase.GetSheet(0);
             this.TableLayoutPanelExBase.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpreadBase)).BeginInit();
@@ -183,6 +185,8 @@
             // 
             // PanelUp
             // 
+            this.PanelUp.Controls.Add(this.ComboBox4);
+            this.PanelUp.Controls.Add(this.label5);
             this.PanelUp.Controls.Add(this.GroupBox1);
             this.PanelUp.Controls.Add(this.UcDateTimeJpOperationDate);
             this.PanelUp.Controls.Add(this.label1);
@@ -192,6 +196,30 @@
             this.PanelUp.Name = "PanelUp";
             this.PanelUp.Size = new System.Drawing.Size(1898, 54);
             this.PanelUp.TabIndex = 3;
+            // 
+            // ComboBox4
+            // 
+            this.ComboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBox4.FormattingEnabled = true;
+            this.ComboBox4.Items.AddRange(new object[] {
+            "晴れ",
+            "曇り",
+            "小雨",
+            "雨",
+            "雪"});
+            this.ComboBox4.Location = new System.Drawing.Point(1068, 16);
+            this.ComboBox4.Name = "ComboBox4";
+            this.ComboBox4.Size = new System.Drawing.Size(80, 23);
+            this.ComboBox4.TabIndex = 16;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(1032, 20);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(31, 15);
+            this.label5.TabIndex = 17;
+            this.label5.Text = "天候";
             // 
             // GroupBox1
             // 
@@ -359,6 +387,8 @@
         private ToolStripMenuItem 配車表ToolStripMenuItem;
         private ToolStripMenuItem ToolStripMenuItemPrint;
         private ToolStripMenuItem ToolStripMenuItemExport;
+        private ComboBox ComboBox4;
+        private Label label5;
         private FarPoint.Win.Spread.SheetView SheetView1;
     }
 }

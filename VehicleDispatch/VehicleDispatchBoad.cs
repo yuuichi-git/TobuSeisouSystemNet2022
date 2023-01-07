@@ -281,7 +281,9 @@ namespace VehicleDispatch {
                 setControlEx.Event_SetControlEx_Click += new EventHandler(this.SetControlEx_Click);
                 setControlEx.Event_SetControlEx_DragDrop += new DragEventHandler(this.SetControlEx_DragDrop);
                 setControlEx.Event_SetControlEx_DragEnter += new DragEventHandler(this.SetControlEx_DragEnter);
-                setControlEx.Event_SetLabelEx_Click += new EventHandler(this.SetLabelEx_Click);
+                // DoubleClickを有効にするために、Clickを無効にしている
+                //setControlEx.Event_SetLabelEx_Click += new EventHandler(this.SetLabelEx_Click);
+                setControlEx.Event_SetLabelEx_DoubleClick += new EventHandler(this.SetLabelEx_DoubleClick);
                 setControlEx.Event_SetLabelEx_MouseMove += new MouseEventHandler(this.SetLabelEx_MouseMove);
                 setControlEx.Event_CarLabelEx_Click += new EventHandler(this.CarLabelEx_Click);
                 setControlEx.Event_CarLabelEx_MouseMove += new MouseEventHandler(this.CarLabelEx_MouseMove);
@@ -571,7 +573,9 @@ namespace VehicleDispatch {
                 /*
                  * イベントを設定
                  */
-                setLabelEx.Click += new EventHandler(SetLabelEx_Click);
+                // DoubleClickを有効にするために、Clickを無効にしている
+                //setLabelEx.Click += new EventHandler(SetLabelEx_Click);
+                setLabelEx.DoubleClick += new EventHandler(SetLabelEx_DoubleClick);
                 setLabelEx.MouseMove += new MouseEventHandler(SetLabelEx_MouseMove);
                 FlowLayoutPanelExSet.Controls.Add(setLabelEx);
             }
@@ -1443,7 +1447,9 @@ namespace VehicleDispatch {
                                 /*
                                  * イベントを設定
                                  */
-                                newDropItem.Click += new EventHandler(SetLabelEx_Click);
+                                // DoubleClickを有効にするために、Clickを無効にしている
+                                //newDropItem.Click += new EventHandler(SetLabelEx_Click);
+                                newDropItem.DoubleClick += new EventHandler(SetLabelEx_DoubleClick);
                                 newDropItem.MouseMove += new MouseEventHandler(SetLabelEx_MouseMove);
                                 _vehicleDispatchDetailDao.SetSet(UcDateTimeJpOperationDate.GetValue(),
                                                                 (int)setControlEx.Tag,
@@ -1945,8 +1951,13 @@ namespace VehicleDispatch {
             e.Effect = DragDropEffects.Move;
         }
 
-        private void SetLabelEx_Click(object sender, EventArgs e) {
-            //MessageBox.Show("SetLabelEx_Click");
+        // DoubleClickを有効にするために、Clickを無効にしている
+        //private void SetLabelEx_Click(object sender, EventArgs e) {
+        //    MessageBox.Show("SetLabelEx_Click");
+        //}
+
+        private void SetLabelEx_DoubleClick(object sender, EventArgs e) {
+            MessageBox.Show("SetLabelEx_DoubleClick");
         }
 
         private void SetLabelEx_MouseMove(object sender, MouseEventArgs e) {

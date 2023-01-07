@@ -130,8 +130,13 @@ namespace VehicleDispatchSheet {
             if(ComboBox1.Text == "" || ComboBox2.Text == "" || ComboBox3.Text == "") {
                 MessageBox.Show("点呼執行者を選択して下さい", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
-            } else {
-
+            }
+            /*
+             * 天候が選択されているかを確認
+             */
+            if(ComboBox4.Text == "") {
+                MessageBox.Show("天候を選択して下さい", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
             }
             /*
              * 再更新できないようにする
@@ -146,6 +151,10 @@ namespace VehicleDispatchSheet {
              * 配車日時
              */
             SheetView1.Cells[0, 0].Text = UcDateTimeJpOperationDate.GetText();
+            /*
+             * 天候
+             */
+            SheetView1.Cells[0, 12].Text = ComboBox4.Text;
             /*
              * 10:☆庸上　小特　コード：1
              */
@@ -979,7 +988,7 @@ namespace VehicleDispatchSheet {
         private void CreateSpan(EntryCellPosition entryCellPosition, string blockName) {
             // セルを結合する
             SheetView1.AddSpanCell(entryCellPosition.Row, entryCellPosition.Col, 1, 24);
-            SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col].BackColor = System.Drawing.Color.Green;
+            SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col].BackColor = System.Drawing.Color.LightGreen;
             SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col].Text = blockName;
         }
 
@@ -1013,10 +1022,26 @@ namespace VehicleDispatchSheet {
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col].Text = setName1;
                 /*
                  * setName2
+                 * 北区軽粗大・資源(１３１１７０６)は金曜日だけ資源車になって、作業員の料金が変わる。だから印を付ける
                  */
-                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 1].Font = new System.Drawing.Font("Yu Gothic UI", 9);
-                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 1].ForeColor = vehicleDispatchDetailVo.Operation_flag ? System.Drawing.Color.Black : System.Drawing.Color.Red;
-                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 1].Text = setName2;
+                switch(vehicleDispatchDetailVo.Set_code) {
+                    case 1311706: // 北区軽粗大・資源
+                        SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 1].Font = new System.Drawing.Font("Yu Gothic UI", 9);
+                        SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 1].ForeColor = vehicleDispatchDetailVo.Operation_flag ? System.Drawing.Color.Black : System.Drawing.Color.Red;
+                        if(UcDateTimeJpOperationDate.GetValue().DayOfWeek != DayOfWeek.Friday) {
+                            SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 1].Text = setName2;
+                        } else {
+                            SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 1].BackColor = System.Drawing.Color.Yellow;
+                            SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 1].Text = "資源";
+                        }
+                        break;
+                    default:
+                        SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 1].Font = new System.Drawing.Font("Yu Gothic UI", 9);
+                        SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 1].ForeColor = vehicleDispatchDetailVo.Operation_flag ? System.Drawing.Color.Black : System.Drawing.Color.Red;
+                        SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 1].Text = setName2;
+                        break;
+                }
+
             }
         }
 
@@ -1072,6 +1097,7 @@ namespace VehicleDispatchSheet {
                 /*
                  * 表示名
                  */
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 8].BackColor = occupation.Equals("バ") ? System.Drawing.Color.LightYellow : System.Drawing.Color.White;
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 8].CellType = new FarPoint.Win.Spread.CellType.RichTextCellType();
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 8].Value = displayName;
                 /*
@@ -1155,7 +1181,9 @@ namespace VehicleDispatchSheet {
         /// <param name="entryCellPosition"></param>
         /// <param name="vehicleDispatchDetailVo"></param>
         private void CreateOperator2Row(EntryCellPosition entryCellPosition, VehicleDispatchDetailVo vehicleDispatchDetailVo) {
+            string occupation; // 所属
             string garage; // 出庫地
+            System.Drawing.Color _backColor = System.Drawing.Color.White; // セルの背景色
             /*
              * 組がセットされていなければ何もしない
              */
@@ -1179,17 +1207,31 @@ namespace VehicleDispatchSheet {
                         garage = "";
                         break;
                 }
+
+                occupation = string.Concat(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Belongs],
+                                           dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Occupation]);
+                switch(occupation) {
+                    case "バ":
+                        _backColor = System.Drawing.Color.LightYellow;
+                        break;
+                    case "バ作":
+                        _backColor = System.Drawing.Color.LightBlue;
+                        break;
+                    default:
+                        _backColor = System.Drawing.Color.White;
+                        break;
+                }
                 /*
                  * 表示名
                  */
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 11].BackColor = _backColor;
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 11].CellType = new FarPoint.Win.Spread.CellType.RichTextCellType();
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 11].Value = GetWorkStaffName(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2));
                 /*
                  * 所属
                  */
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 12].Font = new System.Drawing.Font("Yu Gothic UI", 9);
-                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 12].Text = string.Concat(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Belongs],
-                                                                                                         dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Occupation]);
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 12].Text = occupation;
                 /*
                  * 出庫地
                  */
@@ -1205,21 +1247,37 @@ namespace VehicleDispatchSheet {
         /// <param name="entryCellPosition"></param>
         /// <param name="vehicleDispatchDetailVo"></param>
         private void CreateOperator3Row(EntryCellPosition entryCellPosition, VehicleDispatchDetailVo vehicleDispatchDetailVo) {
+            string occupation; // 所属
+            string garage; // 出庫地
+            System.Drawing.Color _backColor = System.Drawing.Color.White; // セルの背景色
             /*
              * 組がセットされていなければ何もしない
              */
             if(vehicleDispatchDetailVo.Set_code > 0 && vehicleDispatchDetailVo.Operator_code_3 > 0) {
+                occupation = string.Concat(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Belongs],
+                                           dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Occupation]);
+                switch(occupation) {
+                    case "バ":
+                        _backColor = System.Drawing.Color.LightYellow;
+                        break;
+                    case "バ作":
+                        _backColor = System.Drawing.Color.LightBlue;
+                        break;
+                    default:
+                        _backColor = System.Drawing.Color.White;
+                        break;
+                }
                 /*
                  * 表示名
                  */
+                SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 11].BackColor = _backColor;
                 SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 11].CellType = new FarPoint.Win.Spread.CellType.RichTextCellType();
                 SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 11].Value = GetWorkStaffName(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3));
                 /*
                  * 所属
                  */
                 SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 12].Font = new System.Drawing.Font("Yu Gothic UI", 9);
-                SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 12].Text = string.Concat(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Belongs],
-                                                                                                             dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Occupation]);
+                SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 12].Text = occupation;
                 /*
                  * 出庫地
                  */
@@ -1235,21 +1293,37 @@ namespace VehicleDispatchSheet {
         /// <param name="entryCellPosition"></param>
         /// <param name="vehicleDispatchDetailVo"></param>
         private void CreateOperator4Row(EntryCellPosition entryCellPosition, VehicleDispatchDetailVo vehicleDispatchDetailVo) {
+            string occupation; // 所属
+            string garage; // 出庫地
+            System.Drawing.Color _backColor = System.Drawing.Color.White; // セルの背景色
             /*
              * 組がセットされていなければ何もしない
              */
             if(vehicleDispatchDetailVo.Set_code > 0 && vehicleDispatchDetailVo.Operator_code_4 > 0) {
+                occupation = string.Concat(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4).Belongs],
+                                           dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4).Occupation]);
+                switch(occupation) {
+                    case "バ":
+                        _backColor = System.Drawing.Color.LightYellow;
+                        break;
+                    case "バ作":
+                        _backColor = System.Drawing.Color.LightBlue;
+                        break;
+                    default:
+                        _backColor = System.Drawing.Color.White;
+                        break;
+                }
                 /*
                  * 表示名
                  */
+                SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 8].BackColor = _backColor;
                 SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 8].CellType = new FarPoint.Win.Spread.CellType.RichTextCellType();
                 SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 8].Value = GetWorkStaffName(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4));
                 /*
                  * 所属
                  */
                 SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 9].Font = new System.Drawing.Font("Yu Gothic UI", 9);
-                SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 9].Text = string.Concat(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4).Belongs],
-                                                                                                            dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4).Occupation]);
+                SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 9].Text = occupation;
                 /*
                  * 出庫地
                  */
