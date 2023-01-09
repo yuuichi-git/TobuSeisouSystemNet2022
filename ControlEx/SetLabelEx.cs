@@ -2,6 +2,12 @@
 
 namespace ControlEx {
     public partial class SetLabelEx : Label {
+        /*
+         * setter getter
+         */
+        // 帰庫点呼フラグ(True:点呼済 False:未点呼)
+        private bool _lastRollCallFlag;
+
         private SetMasterVo _setMasterVo;
         /*
          * SetLabel
@@ -157,6 +163,10 @@ namespace ControlEx {
              * Stand_By_Flag
              */
             _standByFlag = vehicleDispatchDetailVo.Stand_by_flag;
+            /*
+             * 帰庫点呼フラグ
+             */
+            _lastRollCallFlag = vehicleDispatchDetailVo.Last_roll_call_flag;
 
             InitializeComponent();
             /*
@@ -223,6 +233,13 @@ namespace ControlEx {
              */
             if(_standByFlag) {
                 e.Graphics.DrawString("待機", _drawFontStandByFlag, _brushColorStandByFlag, new Point(40, 50));
+            }
+            /*
+             * 帰庫点呼の印を描画
+             */
+            if(_lastRollCallFlag) {
+                Point[] points = { new Point(51, 3), new Point(65, 3), new Point(65, 17) };
+                e.Graphics.FillPolygon(new SolidBrush(Color.Blue), points);
             }
         }
 
@@ -291,6 +308,16 @@ namespace ControlEx {
         /// <param name="operationFlag"></param>
         public void SetOperationFlag(bool operationFlag) {
             _operationFlag = operationFlag;
+            this.Refresh();
+        }
+
+        /// <summary>
+        /// SetLastRollCallFlag
+        /// 帰庫点呼フラグ
+        /// </summary>
+        /// <param name="operationFlag"></param>
+        public void SetLastRollCallFlag(bool lastRollCallFlag) {
+            _lastRollCallFlag = lastRollCallFlag;
             this.Refresh();
         }
     }

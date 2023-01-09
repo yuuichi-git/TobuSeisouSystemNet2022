@@ -31,6 +31,7 @@ namespace Dao {
 
         /// <summary>
         /// SelectVehicleDispatch
+        /// 社内での本番を取得
         /// </summary>
         /// <param name="dayOfWeek"></param>
         /// <returns></returns>
@@ -120,6 +121,11 @@ namespace Dao {
                                             "operator_4_roll_call_flag," +
                                             "operator_4_roll_call_ymd_hms," +
                                             "operator_4_note," +
+                                            "last_roll_call_flag," +
+                                            "last_plant_count," +
+                                            "last_plant_name," +
+                                            "last_plant_ymd_hms," +
+                                            "last_roll_call_ymd_hms," +
                                             "insert_pc_name," +
                                             "insert_ymd_hms," +
                                             "update_pc_name," +
@@ -167,6 +173,11 @@ namespace Dao {
                     vehicleDispatchDetailVo.Operator_4_roll_call_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["operator_4_roll_call_flag"]);
                     vehicleDispatchDetailVo.Operator_4_roll_call_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["operator_4_roll_call_ymd_hms"]);
                     vehicleDispatchDetailVo.Operator_4_note = _defaultValue.GetDefaultValue<string>(sqlDataReader["operator_4_note"]);
+                    vehicleDispatchDetailVo.Last_roll_call_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["last_roll_call_flag"]);
+                    vehicleDispatchDetailVo.Last_plant_count = _defaultValue.GetDefaultValue<int>(sqlDataReader["last_plant_count"]);
+                    vehicleDispatchDetailVo.Last_plant_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["last_plant_name"]);
+                    vehicleDispatchDetailVo.Last_plant_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["last_plant_ymd_hms"]);
+                    vehicleDispatchDetailVo.Last_roll_call_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["last_roll_call_ymd_hms"]);
                     vehicleDispatchDetailVo.Insert_pc_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["insert_pc_name"]);
                     vehicleDispatchDetailVo.Insert_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["insert_ymd_hms"]);
                     vehicleDispatchDetailVo.Update_pc_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["update_pc_name"]);
@@ -223,6 +234,11 @@ namespace Dao {
                                             "operator_4_roll_call_flag," +
                                             "operator_4_roll_call_ymd_hms," +
                                             "operator_4_note," +
+                                            "last_roll_call_flag," +
+                                            "last_plant_count," +
+                                            "last_plant_name," +
+                                            "last_plant_ymd_hms," +
+                                            "last_roll_call_ymd_hms," +
                                             "insert_pc_name," +
                                             "insert_ymd_hms," +
                                             "update_pc_name," +
@@ -271,6 +287,11 @@ namespace Dao {
                     vehicleDispatchDetailVo.Operator_4_roll_call_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["operator_4_roll_call_flag"]);
                     vehicleDispatchDetailVo.Operator_4_roll_call_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["operator_4_roll_call_ymd_hms"]);
                     vehicleDispatchDetailVo.Operator_4_note = _defaultValue.GetDefaultValue<string>(sqlDataReader["operator_4_note"]);
+                    vehicleDispatchDetailVo.Last_roll_call_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["last_roll_call_flag"]);
+                    vehicleDispatchDetailVo.Last_plant_count = _defaultValue.GetDefaultValue<int>(sqlDataReader["last_plant_count"]);
+                    vehicleDispatchDetailVo.Last_plant_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["last_plant_name"]);
+                    vehicleDispatchDetailVo.Last_plant_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["last_plant_ymd_hms"]);
+                    vehicleDispatchDetailVo.Last_roll_call_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["last_roll_call_ymd_hms"]);
                     vehicleDispatchDetailVo.Insert_pc_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["insert_pc_name"]);
                     vehicleDispatchDetailVo.Insert_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["insert_ymd_hms"]);
                     vehicleDispatchDetailVo.Update_pc_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["update_pc_name"]);
@@ -329,6 +350,11 @@ namespace Dao {
                              "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Operator_4_roll_call_flag) + "'," +
                              "'" + _defaultValue.GetDefaultValue<DateTime>(vehicleDispatchDetailVo.Operator_4_roll_call_ymd_hms) + "'," +
                              "'" + _defaultValue.GetDefaultValue<string>(vehicleDispatchDetailVo.Operator_4_note) + "'," +
+                             "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Last_roll_call_flag) + "'," +
+                                 +_defaultValue.GetDefaultValue<int>(vehicleDispatchDetailVo.Last_plant_count) + "," +
+                             "'" + _defaultValue.GetDefaultValue<string>(vehicleDispatchDetailVo.Last_plant_name) + "'," +
+                             "'" + _defaultValue.GetDefaultValue<DateTime>(vehicleDispatchDetailVo.Last_plant_ymd_hms) + "'," +
+                             "'" + _defaultValue.GetDefaultValue<DateTime>(vehicleDispatchDetailVo.Last_roll_call_ymd_hms) + "'," +
                              "'" + _defaultValue.GetDefaultValue<string>(vehicleDispatchDetailVo.Insert_pc_name) + "'," +
                              "'" + _defaultValue.GetDefaultValue<DateTime>(vehicleDispatchDetailVo.Insert_ymd_hms) + "'," +
                              "'" + _defaultValue.GetDefaultValue<string>(vehicleDispatchDetailVo.Update_pc_name) + "'," +
@@ -378,6 +404,11 @@ namespace Dao {
                                                                          "operator_4_roll_call_flag," +
                                                                          "operator_4_roll_call_ymd_hms," +
                                                                          "operator_4_note," +
+                                                                         "last_roll_call_flag," +
+                                                                         "last_plant_count," +
+                                                                         "last_plant_name," +
+                                                                         "last_plant_ymd_hms," +
+                                                                         "last_roll_call_ymd_hms," +
                                                                          "insert_pc_name," +
                                                                          "insert_ymd_hms," +
                                                                          "update_pc_name," +
@@ -436,6 +467,11 @@ namespace Dao {
                                          "add_worker_flag = (SELECT add_worker_flag FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
                                          "set_code = (SELECT set_code FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
                                          "set_note = (SELECT set_note FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
+                                         "last_roll_call_flag = (SELECT last_roll_call_flag FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
+                                         "last_plant_count = (SELECT last_plant_count FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
+                                         "last_plant_name = (SELECT last_plant_name FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
+                                         "last_plant_ymd_hms = (SELECT last_plant_ymd_hms FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
+                                         "last_roll_call_ymd_hms = (SELECT last_roll_call_ymd_hms FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
                                          "update_pc_name = '" + Environment.MachineName + "'," +
                                          "update_ymd_hms = '" + DateTime.Now + "' " +
                                      "WHERE cell_number = " + dropCellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
@@ -469,6 +505,11 @@ namespace Dao {
                                          "day_of_week = '" + operationDate.ToString("ddd") + "'," +
                                          "set_code = '" + setMasterVo.Set_code + "'," +
                                          "set_note = '" + setMasterVo.Remarks + "'," +
+                                         "last_roll_call_flag = 'False'," +
+                                         "last_plant_count = 0," +
+                                         "last_plant_name = ''," +
+                                         "last_plant_ymd_hms = '1900-01-01'," +
+                                         "last_roll_call_ymd_hms = '1900-01-01'," +
                                          "update_pc_name = '" + Environment.MachineName + "'," +
                                          "update_ymd_hms = '" + DateTime.Now + "' " +
                                      "WHERE cell_number = " + dropCellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
@@ -504,6 +545,11 @@ namespace Dao {
                                          "add_worker_flag = 'False'," +
                                          "set_code = 0," +
                                          "set_note = ''," +
+                                         "last_roll_call_flag = 'False'," +
+                                         "last_plant_count = 0," +
+                                         "last_plant_name = ''," +
+                                         "last_plant_ymd_hms = '1900-01-01'," +
+                                         "last_roll_call_ymd_hms = '1900-01-01'," +
                                          "update_pc_name = '" + Environment.MachineName + "'," +
                                          "update_ymd_hms = '" + DateTime.Now + "' " +
                                      "WHERE cell_number = " + dragCellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
@@ -1157,6 +1203,40 @@ namespace Dao {
                                      "SET operation_flag = '" + operationFlag + "'," +
                                           "update_pc_name = '" + Environment.MachineName + "'," +
                                           "update_ymd_hms = '" + DateTime.Now + "' " +
+                                     "WHERE cell_number = " + cellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// SetLastRollCallFlag
+        /// 帰庫点呼に関る情報を更新する
+        /// </summary>
+        /// <param name="operationDate">配車日</param>
+        /// <param name="cellNumber">配車先セル№</param>
+        /// <param name="lastRollCallFlag">帰庫点呼フラグ</param>
+        /// <param name="lastPlantCount">収集回数</param>
+        /// <param name="lastPlantName">最終空け場名</param>
+        /// <param name="lastPlantYmdHms">最終空け日時</param>
+        /// <param name="lastRollCallYmdHms">帰庫点呼日時</param>
+        public void SetLastRollCallFlag(DateTime operationDate, int cellNumber, bool lastRollCallFlag, int lastPlantCount, string lastPlantName, DateTime lastPlantYmdHms, DateTime lastRollCallYmdHms) {
+            /*
+             * Tagがゼロから始まっているので１をプラスする
+             */
+            cellNumber++;
+
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE vehicle_dispatch_detail " +
+                                        "SET last_roll_call_flag = '" + lastRollCallFlag + "'," +
+                                            "last_plant_count = " + lastPlantCount + "," +
+                                            "last_plant_name = '" + lastPlantName + "'," +
+                                            "last_plant_ymd_hms = '" + lastPlantYmdHms + "'," +
+                                            "last_roll_call_ymd_hms = '" + lastRollCallYmdHms + "'," +
+                                            "update_pc_name = '" + Environment.MachineName + "'," +
+                                            "update_ymd_hms = '" + DateTime.Now + "' " +
                                      "WHERE cell_number = " + cellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
             try {
                 sqlCommand.ExecuteNonQuery();

@@ -37,6 +37,16 @@
         private bool _operator_4_roll_call_flag;
         private DateTime _operator_4_roll_call_ymd_hms;
         private string _operator_4_note = "";
+        /*
+         * 2023-01-08
+         * 帰庫点呼関連
+         */
+        private bool _last_roll_call_flag;
+        private int _last_plant_count;
+        private string _last_plant_name = "";
+        private DateTime _last_plant_ymd_hms;
+        private DateTime _last_roll_call_ymd_hms;
+
         private string _insert_pc_name = "";
         private DateTime _insert_ymd_hms;
         private string _update_pc_name = "";
@@ -316,6 +326,42 @@
         public string Operator_4_note {
             get => _operator_4_note;
             set => _operator_4_note = value;
+        }
+        /// <summary>
+        /// 帰庫点呼フラグ
+        /// true:帰庫点呼を実施 false:未実施
+        /// </summary>
+        public bool Last_roll_call_flag {
+            get => _last_roll_call_flag;
+            set => _last_roll_call_flag = value;
+        }
+        /// <summary>
+        /// 収集回数
+        /// </summary>
+        public int Last_plant_count {
+            get => _last_plant_count;
+            set => _last_plant_count = value;
+        }
+        /// <summary>
+        /// 最終空け場名
+        /// </summary>
+        public string Last_plant_name {
+            get => _last_plant_name;
+            set => _last_plant_name = value;
+        }
+        /// <summary>
+        /// 最終空け日時
+        /// </summary>
+        public DateTime Last_plant_ymd_hms {
+            get => _last_plant_ymd_hms;
+            set => _last_plant_ymd_hms = value;
+        }
+        /// <summary>
+        /// 帰庫点呼日時
+        /// </summary>
+        public DateTime Last_roll_call_ymd_hms {
+            get => _last_roll_call_ymd_hms;
+            set => _last_roll_call_ymd_hms = value;
         }
         public string Insert_pc_name {
             get => _insert_pc_name;

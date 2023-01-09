@@ -2,11 +2,14 @@
 
 namespace ControlEx {
     public partial class SetControlEx : TableLayoutPanelEx {
-        private int _cellNumber;
-        private bool _garageFlag = default;
-        private bool _operationFlag = default;
-        private int _productionNumberOfPeople = default;
         private bool _setFlag = default;
+        private int _cellNumber;
+        private bool _operationFlag = default;
+        private bool _garageFlag = default;
+        private bool _classificationFlag = default;
+        private int _productionNumberOfPeople = default;
+        private bool _lastRollCallFlag = default;
+
         /// <summary>
         /// SetControlExのContactInformation(Border)を描画
         /// true:表示 false:非表示
@@ -315,6 +318,14 @@ namespace ControlEx {
             set => _garageFlag = value;
         }
         /// <summary>
+        /// 雇上・区契フラグ
+        /// true:雇上 false:区契
+        /// </summary>
+        public bool ClassificationFlag {
+            get => _classificationFlag;
+            set => _classificationFlag = value;
+        }
+        /// <summary>
         /// 本番人数
         /// 枠の数量
         /// </summary>
@@ -329,6 +340,14 @@ namespace ControlEx {
         public bool ContactInformationFlag {
             get => _setContactInformation;
             set => _setContactInformation = value;
+        }
+        /// <summary>
+        /// 帰庫点呼フラグ
+        /// true:実施 false:未実施
+        /// </summary>
+        public bool LastRollCallFlag {
+            get => _lastRollCallFlag;
+            set => _lastRollCallFlag = value;
         }
 
         /*

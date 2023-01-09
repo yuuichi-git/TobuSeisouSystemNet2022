@@ -8,7 +8,7 @@ namespace ControlEx {
         private bool _proxyFlag;
         // 点呼モードフラグ(True:点呼モード False:通常モード)
         private bool _tenkoModeFlag;
-        // 点呼フラグ(True:点呼済 False:未点呼)
+        // 出庫点呼フラグ(True:点呼済 False:未点呼)
         private bool _rollCallFlag;
         // ノートフラグ
         private bool _noteFlag;
@@ -250,6 +250,7 @@ namespace ControlEx {
 
         /// <summary>
         /// SetRollCallFlag
+        /// 出庫点呼フラグ
         /// </summary>
         /// <param name="rollCallFlag"></param>
         public void SetRollCallFlag(bool rollCallFlag) {

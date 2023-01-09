@@ -21,7 +21,6 @@ namespace VehicleDispatchSheet {
         /*
          * Vo
          */
-        private ConnectionVo _connectionVo;
         private List<SetMasterVo> _listSetMasterVo;
         private List<CarMasterVo> _listCarMasterVo;
         private List<StaffMasterVo> _listStaffMasterVo;
@@ -29,7 +28,6 @@ namespace VehicleDispatchSheet {
          * 初期化
          */
         private InitializeForm _initializeForm = new();
-        private EntryCellPosition? _entryCellPosition;
         private string _beforeBlockName = string.Empty;
         /// <summary>
         /// Rowのスタート位置
@@ -87,7 +85,6 @@ namespace VehicleDispatchSheet {
             /*
              * Vo
              */
-            _connectionVo = connectionVo;
             _listSetMasterVo = new SetMasterDao(connectionVo).SelectAllSetMaster();
             _listCarMasterVo = new CarMasterDao(connectionVo).SelectAllCarMaster();
             _listStaffMasterVo = new StaffMasterDao(connectionVo).SelectAllStaffMaster();
@@ -957,7 +954,7 @@ namespace VehicleDispatchSheet {
         /// </summary>
         /// <param name="blockName"></param>
         /// <returns></returns>
-        private EntryCellPosition? GetNextCellPosition() {
+        private EntryCellPosition GetNextCellPosition() {
             var entryCellPosition = new EntryCellPosition();
             for(int colPosition = 0; colPosition <= 1; colPosition++) { // 0:A列 1:AA列
                 for(int row = _startRow; row <= _rowMax - 1; row++) {
@@ -1009,7 +1006,32 @@ namespace VehicleDispatchSheet {
                  */
                 if(_listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Classification_code != 11) {
                     setName1 = _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_1;
-                    setName2 = _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_2;
+                    /*
+                     * 組数に大G・鉄道・飛灰の表示を付ける
+                     */
+                    switch(vehicleDispatchDetailVo.Cell_number) {
+                        case 76:
+                        case 77:
+                        case 78:
+                        case 79:
+                        case 80:
+                        case 81:
+                        case 82:
+                        case 83:
+                        case 84:
+                        case 85:
+                        case 86:
+                        case 87:
+                            if(vehicleDispatchDetailVo.Car_code > 0) {
+                                setName2 = _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Disguise_kind_1;
+                            } else {
+                                setName2 = _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_2;
+                            }
+                            break;
+                        default:
+                            setName2 = _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_2;
+                            break;
+                    }
                 } else {
                     setName1 = dictionaryWordCode[_listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Word_code];
                     setName2 = _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_2;

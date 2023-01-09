@@ -9,6 +9,8 @@ using Dao;
 
 using Microsoft.VisualBasic.Devices;
 
+using RollCall;
+
 using Staff;
 
 using Substitute;
@@ -194,7 +196,7 @@ namespace VehicleDispatch {
                  */
                 tabNumber = i / 75;
                 column = i % 25;
-                row = (i / 25) % 3;
+                row = i / 25 % 3;
                 var vehicleDispatchDetailVo = listVehicleDispatchDetailVo.Find(x => x.Cell_number == i + 1);
                 var setControlEx = new SetControlEx(i);
                 setControlEx.AllowDrop = true;
@@ -208,6 +210,8 @@ namespace VehicleDispatch {
                     setControlEx.SetFlag = true;
                     setControlEx.OperationFlag = vehicleDispatchDetailVo.Operation_flag;
                     setControlEx.ContactInformationFlag = vehicleDispatchDetailVo.Contact_infomation_flag;
+                    setControlEx.ClassificationFlag = vehicleDispatchDetailVo.Classification_flag;
+                    setControlEx.LastRollCallFlag = vehicleDispatchDetailVo.Last_roll_call_flag;
                     setControlEx.CreateLabel(_listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code), vehicleDispatchDetailVo, ContextMenuStripSetLabel);
                 }
                 /*
@@ -1304,7 +1308,7 @@ namespace VehicleDispatch {
         /// </summary>
         private void InsertVehicleDispatchDetail() {
             List<VehicleDispatchDetailVo> listvehicleDispatchDetailVo = new();
-            DateTime defaultDate = new DateTime(1900, 01, 01);
+            DateTime _defaultDate = new DateTime(1900, 01, 01);
             /*
              * INSERTを実行する前に対象レコードが存在していたらDELETEする
              * ①VehicleDispatchDetailの対象レコードをDELETE
@@ -1346,26 +1350,31 @@ namespace VehicleDispatch {
                 vehicleDispatchDetailVo.Number_of_people = vehicleDispatchDetail.Number_of_people;
                 vehicleDispatchDetailVo.Operator_code_1 = vehicleDispatchDetail.Operator_code_1;
                 vehicleDispatchDetailVo.Operator_1_proxy_flag = false; // 値を作成
-                vehicleDispatchDetailVo.Operator_1_roll_call_ymd_hms = defaultDate; // 値を作成
+                vehicleDispatchDetailVo.Operator_1_roll_call_ymd_hms = _defaultDate; // 値を作成
                 vehicleDispatchDetailVo.Operator_1_note = ""; // 値を作成
                 vehicleDispatchDetailVo.Operator_code_2 = vehicleDispatchDetail.Operator_code_2;
                 vehicleDispatchDetailVo.Operator_2_proxy_flag = false; // 値を作成
-                vehicleDispatchDetailVo.Operator_2_roll_call_ymd_hms = defaultDate; // 値を作成
+                vehicleDispatchDetailVo.Operator_2_roll_call_ymd_hms = _defaultDate; // 値を作成
                 vehicleDispatchDetailVo.Operator_2_note = ""; // 値を作成
                 vehicleDispatchDetailVo.Operator_code_3 = vehicleDispatchDetail.Operator_code_3;
                 vehicleDispatchDetailVo.Operator_3_proxy_flag = false; // 値を作成
-                vehicleDispatchDetailVo.Operator_3_roll_call_ymd_hms = defaultDate; // 値を作成
+                vehicleDispatchDetailVo.Operator_3_roll_call_ymd_hms = _defaultDate; // 値を作成
                 vehicleDispatchDetailVo.Operator_3_note = ""; // 値を作成
                 vehicleDispatchDetailVo.Operator_code_4 = vehicleDispatchDetail.Operator_code_4;
                 vehicleDispatchDetailVo.Operator_4_proxy_flag = false; // 値を作成
-                vehicleDispatchDetailVo.Operator_4_roll_call_ymd_hms = defaultDate; // 値を作成
+                vehicleDispatchDetailVo.Operator_4_roll_call_ymd_hms = _defaultDate; // 値を作成
                 vehicleDispatchDetailVo.Operator_4_note = ""; // 値を作成
+                vehicleDispatchDetailVo.Last_roll_call_flag = false; // 値を作成
+                vehicleDispatchDetailVo.Last_plant_count = 0; // 値を作成
+                vehicleDispatchDetailVo.Last_plant_name = ""; // 値を作成
+                vehicleDispatchDetailVo.Last_plant_ymd_hms = _defaultDate; // 値を作成
+                vehicleDispatchDetailVo.Last_roll_call_ymd_hms = _defaultDate; // 値を作成
                 vehicleDispatchDetailVo.Insert_pc_name = Environment.MachineName; // 値を作成
                 vehicleDispatchDetailVo.Insert_ymd_hms = DateTime.Now; // 値を作成
                 vehicleDispatchDetailVo.Update_pc_name = ""; // 値を作成
-                vehicleDispatchDetailVo.Update_ymd_hms = defaultDate; // 値を作成
+                vehicleDispatchDetailVo.Update_ymd_hms = _defaultDate; // 値を作成
                 vehicleDispatchDetailVo.Delete_pc_name = ""; // 値を作成
-                vehicleDispatchDetailVo.Delete_ymd_hms = defaultDate; // 値を作成
+                vehicleDispatchDetailVo.Delete_ymd_hms = _defaultDate; // 値を作成
                 vehicleDispatchDetailVo.Delete_flag = false; // 値を作成
                 listvehicleDispatchDetailVo.Add(vehicleDispatchDetailVo);
             }
@@ -1957,7 +1966,15 @@ namespace VehicleDispatch {
         //}
 
         private void SetLabelEx_DoubleClick(object sender, EventArgs e) {
-            MessageBox.Show("SetLabelEx_DoubleClick");
+            // SetControlExを退避
+            EvacuationSetControlEx = (SetControlEx)((SetLabelEx)sender).Parent;
+            // SetLabelExを退避
+            EvacuationSetLabelEx = (SetLabelEx)sender;
+            /*
+             * 入力ダイアログを開く
+             */
+            RollCallDialog rollCallDialog = new RollCallDialog(_connectionVo, UcDateTimeJpOperationDate.GetValue(), EvacuationSetControlEx);
+            rollCallDialog.ShowDialog(this);
         }
 
         private void SetLabelEx_MouseMove(object sender, MouseEventArgs e) {
