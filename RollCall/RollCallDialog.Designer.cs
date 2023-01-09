@@ -74,14 +74,10 @@
             // 
             // NumericLastPlantCount
             // 
+            this.NumericLastPlantCount.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.NumericLastPlantCount.Location = new System.Drawing.Point(112, 20);
             this.NumericLastPlantCount.Maximum = new decimal(new int[] {
             9,
-            0,
-            0,
-            0});
-            this.NumericLastPlantCount.Minimum = new decimal(new int[] {
-            1,
             0,
             0,
             0});
@@ -89,16 +85,12 @@
             this.NumericLastPlantCount.Size = new System.Drawing.Size(44, 23);
             this.NumericLastPlantCount.TabIndex = 0;
             this.NumericLastPlantCount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.NumericLastPlantCount.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.NumericLastPlantCount.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Control_KeyDown);
             // 
             // ComboBoxLastPlantName
             // 
             this.ComboBoxLastPlantName.FormattingEnabled = true;
+            this.ComboBoxLastPlantName.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
             this.ComboBoxLastPlantName.Location = new System.Drawing.Point(112, 48);
             this.ComboBoxLastPlantName.Name = "ComboBoxLastPlantName";
             this.ComboBoxLastPlantName.Size = new System.Drawing.Size(124, 23);
@@ -109,9 +101,10 @@
             // 
             this.DateTimePickerLastPlantTime.CustomFormat = "HH:mm";
             this.DateTimePickerLastPlantTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.DateTimePickerLastPlantTime.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.DateTimePickerLastPlantTime.Location = new System.Drawing.Point(112, 76);
             this.DateTimePickerLastPlantTime.Name = "DateTimePickerLastPlantTime";
-            this.DateTimePickerLastPlantTime.Size = new System.Drawing.Size(68, 23);
+            this.DateTimePickerLastPlantTime.Size = new System.Drawing.Size(52, 23);
             this.DateTimePickerLastPlantTime.TabIndex = 2;
             this.DateTimePickerLastPlantTime.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Control_KeyDown);
             // 
@@ -119,9 +112,10 @@
             // 
             this.DateTimePickerLastRollCallTime.CustomFormat = "HH:mm";
             this.DateTimePickerLastRollCallTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.DateTimePickerLastRollCallTime.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.DateTimePickerLastRollCallTime.Location = new System.Drawing.Point(112, 104);
             this.DateTimePickerLastRollCallTime.Name = "DateTimePickerLastRollCallTime";
-            this.DateTimePickerLastRollCallTime.Size = new System.Drawing.Size(68, 23);
+            this.DateTimePickerLastRollCallTime.Size = new System.Drawing.Size(52, 23);
             this.DateTimePickerLastRollCallTime.TabIndex = 3;
             this.DateTimePickerLastRollCallTime.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Control_KeyDown);
             // 
@@ -150,7 +144,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(263, 184);
+            this.ClientSize = new System.Drawing.Size(271, 190);
             this.Controls.Add(this.ButtonClear);
             this.Controls.Add(this.ButtonUpdate);
             this.Controls.Add(this.DateTimePickerLastRollCallTime);

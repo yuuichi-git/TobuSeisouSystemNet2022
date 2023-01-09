@@ -1973,7 +1973,7 @@ namespace VehicleDispatch {
             /*
              * 入力ダイアログを開く
              */
-            RollCallDialog rollCallDialog = new RollCallDialog(_connectionVo, UcDateTimeJpOperationDate.GetValue(), EvacuationSetControlEx);
+            RollCallDialog rollCallDialog = new RollCallDialog(_connectionVo, UcDateTimeJpOperationDate.GetValue(), EvacuationSetControlEx, EvacuationSetLabelEx);
             rollCallDialog.ShowDialog(this);
         }
 
