@@ -16,6 +16,10 @@ namespace RollCall {
          * Dao
          */
         private VehicleDispatchDetailDao _vehicleDispatchDetailDao;
+        /*
+         * Vo
+         */
+        VehicleDispatchDetailVo _vehicleDispatchDetailVo;
 
         /// <summary>
         /// コンストラクター
@@ -30,8 +34,15 @@ namespace RollCall {
             _vehicleDispatchDetailDao = new VehicleDispatchDetailDao(connectionVo);
 
             InitializeComponent();
-            DateTimePickerLastPlantTime.Value = DateTime.Now.Date;
-            DateTimePickerLastRollCallTime.Value = DateTime.Now.Date;
+            /*
+             * DBから読込んでControlへ入れる
+             */
+            _vehicleDispatchDetailVo = _vehicleDispatchDetailDao.SelectOneVehicleDispatchDetail(operationDate.Date, ((SetMasterVo)setLabelEx.Tag).Set_code);
+            NumericLastPlantCount.Value = _vehicleDispatchDetailVo.Last_plant_count;
+            ComboBoxLastPlantName.Text = _vehicleDispatchDetailVo.Last_plant_name;
+            MaskedTextBoxLastPlantTime.Text = _vehicleDispatchDetailVo.Last_plant_hm;
+            MaskedTextBoxLastRollCallTime.Text = _vehicleDispatchDetailVo.Last_roll_call_hm;
+
             // 最初のコントロールテキストを選択状態に設定
             NumericLastPlantCount.Select(0, NumericLastPlantCount.Text.Length);
         }
@@ -50,10 +61,10 @@ namespace RollCall {
                     case "ComboBoxLastPlantName":
                         ComboBoxLastPlantName.Select(0, ComboBoxLastPlantName.Text.Length);
                         break;
-                    case "DateTimePickerLastPlantTime":
+                    case "MaskedTextBoxLastPlantTime":
 
                         break;
-                    case "DateTimePickerLastRollCallTime":
+                    case "MaskedTextBoxLastRollCallTime":
 
                         break;
                     case "ButtonUpdate":
@@ -73,8 +84,8 @@ namespace RollCall {
             bool last_roll_call_flag;
             int last_plant_count;
             string last_plant_name;
-            DateTime last_plant_ymd_hms;
-            DateTime last_roll_call_ymd_hms;
+            string last_plant_ymd_hms;
+            string last_roll_call_ymd_hms;
             /*
              * 入力項目のチェック
              */
@@ -91,14 +102,14 @@ namespace RollCall {
                 MessageBox.Show("最終搬入場所が不正です", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if(DateTimePickerLastPlantTime.Value.Hour != 0) {
-                last_plant_ymd_hms = DateTimePickerLastPlantTime.Value;
+            if(MaskedTextBoxLastPlantTime.Text != "") {
+                last_plant_ymd_hms = MaskedTextBoxLastPlantTime.Text;
             } else {
                 MessageBox.Show("最終搬入時間が不正です", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if(DateTimePickerLastRollCallTime.Value.Hour != 0) {
-                last_roll_call_ymd_hms = DateTimePickerLastRollCallTime.Value;
+            if(MaskedTextBoxLastRollCallTime.Text != "") {
+                last_roll_call_ymd_hms = MaskedTextBoxLastRollCallTime.Text;
             } else {
                 MessageBox.Show("帰庫点呼時間が不正です", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -137,8 +148,8 @@ namespace RollCall {
             bool last_roll_call_flag = false;
             int last_plant_count = 0;
             string last_plant_name = "";
-            DateTime last_plant_ymd_hms = _defaultDateTime;
-            DateTime last_roll_call_ymd_hms = _defaultDateTime;
+            string last_plant_ymd_hms = "";
+            string last_roll_call_ymd_hms = "";
             try {
                 _vehicleDispatchDetailDao.SetLastRollCallFlag(_operationDate,
                                                               (int)_setControlEx.Tag,

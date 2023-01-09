@@ -44,8 +44,8 @@
         private bool _last_roll_call_flag;
         private int _last_plant_count;
         private string _last_plant_name = "";
-        private DateTime _last_plant_ymd_hms;
-        private DateTime _last_roll_call_ymd_hms;
+        private string _last_plant_hm;
+        private string _last_roll_call_hm;
 
         private string _insert_pc_name = "";
         private DateTime _insert_ymd_hms;
@@ -352,16 +352,16 @@
         /// <summary>
         /// 最終空け日時
         /// </summary>
-        public DateTime Last_plant_ymd_hms {
-            get => _last_plant_ymd_hms;
-            set => _last_plant_ymd_hms = value;
+        public string Last_plant_hm {
+            get => _last_plant_hm;
+            set => _last_plant_hm = value;
         }
         /// <summary>
         /// 帰庫点呼日時
         /// </summary>
-        public DateTime Last_roll_call_ymd_hms {
-            get => _last_roll_call_ymd_hms;
-            set => _last_roll_call_ymd_hms = value;
+        public string Last_roll_call_hm {
+            get => _last_roll_call_hm;
+            set => _last_roll_call_hm = value;
         }
         public string Insert_pc_name {
             get => _insert_pc_name;

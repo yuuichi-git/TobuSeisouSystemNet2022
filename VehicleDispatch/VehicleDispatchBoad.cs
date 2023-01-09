@@ -1367,8 +1367,8 @@ namespace VehicleDispatch {
                 vehicleDispatchDetailVo.Last_roll_call_flag = false; // 値を作成
                 vehicleDispatchDetailVo.Last_plant_count = 0; // 値を作成
                 vehicleDispatchDetailVo.Last_plant_name = ""; // 値を作成
-                vehicleDispatchDetailVo.Last_plant_ymd_hms = _defaultDate; // 値を作成
-                vehicleDispatchDetailVo.Last_roll_call_ymd_hms = _defaultDate; // 値を作成
+                vehicleDispatchDetailVo.Last_plant_hm = ""; // 値を作成
+                vehicleDispatchDetailVo.Last_roll_call_hm = ""; // 値を作成
                 vehicleDispatchDetailVo.Insert_pc_name = Environment.MachineName; // 値を作成
                 vehicleDispatchDetailVo.Insert_ymd_hms = DateTime.Now; // 値を作成
                 vehicleDispatchDetailVo.Update_pc_name = ""; // 値を作成

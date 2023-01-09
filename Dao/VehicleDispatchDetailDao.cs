@@ -176,8 +176,8 @@ namespace Dao {
                     vehicleDispatchDetailVo.Last_roll_call_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["last_roll_call_flag"]);
                     vehicleDispatchDetailVo.Last_plant_count = _defaultValue.GetDefaultValue<int>(sqlDataReader["last_plant_count"]);
                     vehicleDispatchDetailVo.Last_plant_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["last_plant_name"]);
-                    vehicleDispatchDetailVo.Last_plant_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["last_plant_ymd_hms"]);
-                    vehicleDispatchDetailVo.Last_roll_call_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["last_roll_call_ymd_hms"]);
+                    vehicleDispatchDetailVo.Last_plant_hm = _defaultValue.GetDefaultValue<string>(sqlDataReader["last_plant_ymd_hms"]);
+                    vehicleDispatchDetailVo.Last_roll_call_hm = _defaultValue.GetDefaultValue<string>(sqlDataReader["last_roll_call_ymd_hms"]);
                     vehicleDispatchDetailVo.Insert_pc_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["insert_pc_name"]);
                     vehicleDispatchDetailVo.Insert_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["insert_ymd_hms"]);
                     vehicleDispatchDetailVo.Update_pc_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["update_pc_name"]);
@@ -290,8 +290,8 @@ namespace Dao {
                     vehicleDispatchDetailVo.Last_roll_call_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["last_roll_call_flag"]);
                     vehicleDispatchDetailVo.Last_plant_count = _defaultValue.GetDefaultValue<int>(sqlDataReader["last_plant_count"]);
                     vehicleDispatchDetailVo.Last_plant_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["last_plant_name"]);
-                    vehicleDispatchDetailVo.Last_plant_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["last_plant_ymd_hms"]);
-                    vehicleDispatchDetailVo.Last_roll_call_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["last_roll_call_ymd_hms"]);
+                    vehicleDispatchDetailVo.Last_plant_hm = _defaultValue.GetDefaultValue<string>(sqlDataReader["last_plant_ymd_hms"]);
+                    vehicleDispatchDetailVo.Last_roll_call_hm = _defaultValue.GetDefaultValue<string>(sqlDataReader["last_roll_call_ymd_hms"]);
                     vehicleDispatchDetailVo.Insert_pc_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["insert_pc_name"]);
                     vehicleDispatchDetailVo.Insert_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["insert_ymd_hms"]);
                     vehicleDispatchDetailVo.Update_pc_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["update_pc_name"]);
@@ -353,8 +353,8 @@ namespace Dao {
                              "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Last_roll_call_flag) + "'," +
                                  +_defaultValue.GetDefaultValue<int>(vehicleDispatchDetailVo.Last_plant_count) + "," +
                              "'" + _defaultValue.GetDefaultValue<string>(vehicleDispatchDetailVo.Last_plant_name) + "'," +
-                             "'" + _defaultValue.GetDefaultValue<DateTime>(vehicleDispatchDetailVo.Last_plant_ymd_hms) + "'," +
-                             "'" + _defaultValue.GetDefaultValue<DateTime>(vehicleDispatchDetailVo.Last_roll_call_ymd_hms) + "'," +
+                             "'" + _defaultValue.GetDefaultValue<DateTime>(vehicleDispatchDetailVo.Last_plant_hm) + "'," +
+                             "'" + _defaultValue.GetDefaultValue<DateTime>(vehicleDispatchDetailVo.Last_roll_call_hm) + "'," +
                              "'" + _defaultValue.GetDefaultValue<string>(vehicleDispatchDetailVo.Insert_pc_name) + "'," +
                              "'" + _defaultValue.GetDefaultValue<DateTime>(vehicleDispatchDetailVo.Insert_ymd_hms) + "'," +
                              "'" + _defaultValue.GetDefaultValue<string>(vehicleDispatchDetailVo.Update_pc_name) + "'," +
@@ -1222,7 +1222,7 @@ namespace Dao {
         /// <param name="lastPlantName">最終空け場名</param>
         /// <param name="lastPlantYmdHms">最終空け日時</param>
         /// <param name="lastRollCallYmdHms">帰庫点呼日時</param>
-        public void SetLastRollCallFlag(DateTime operationDate, int cellNumber, bool lastRollCallFlag, int lastPlantCount, string lastPlantName, DateTime lastPlantYmdHms, DateTime lastRollCallYmdHms) {
+        public void SetLastRollCallFlag(DateTime operationDate, int cellNumber, bool lastRollCallFlag, int lastPlantCount, string lastPlantName, string lastPlantYmdHms, string lastRollCallYmdHms) {
             /*
              * Tagがゼロから始まっているので１をプラスする
              */

@@ -79,7 +79,7 @@ namespace Substitute {
             /*
              * Vo
              */
-            _vehicleDispatchDetailVo = new VehicleDispatchDetailDao(_connectionVo).SelectOneVehicleDispatchDetail(DateTime.Now.Date, setCode);
+            _vehicleDispatchDetailVo = _vehicleDispatchDetailDao.SelectOneVehicleDispatchDetail(DateTime.Now.Date, setCode);
 
             /*
              * ƒRƒ“ƒgƒ[ƒ‹‰Šú‰»
