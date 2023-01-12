@@ -37,7 +37,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounting", "Accounting\Ac
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleDispatchSheet", "VehicleDispatchSheet\VehicleDispatchSheet.csproj", "{77477FFA-DDC9-40D7-BE01-80FE4050FB54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RollCall", "RollCall\RollCall.csproj", "{B474178E-12BD-4381-A286-A759362581A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RollCall", "RollCall\RollCall.csproj", "{B474178E-12BD-4381-A286-A759362581A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HighWayReport", "HighWayReport\HighWayReport.csproj", "{19ED15AF-AD54-4738-B2EA-E7B73CE16AA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -191,6 +193,14 @@ Global
 		{B474178E-12BD-4381-A286-A759362581A5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B474178E-12BD-4381-A286-A759362581A5}.Release|x64.ActiveCfg = Release|Any CPU
 		{B474178E-12BD-4381-A286-A759362581A5}.Release|x64.Build.0 = Release|Any CPU
+		{19ED15AF-AD54-4738-B2EA-E7B73CE16AA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19ED15AF-AD54-4738-B2EA-E7B73CE16AA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19ED15AF-AD54-4738-B2EA-E7B73CE16AA6}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{19ED15AF-AD54-4738-B2EA-E7B73CE16AA6}.Debug|x64.Build.0 = Debug|Any CPU
+		{19ED15AF-AD54-4738-B2EA-E7B73CE16AA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19ED15AF-AD54-4738-B2EA-E7B73CE16AA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19ED15AF-AD54-4738-B2EA-E7B73CE16AA6}.Release|x64.ActiveCfg = Release|Any CPU
+		{19ED15AF-AD54-4738-B2EA-E7B73CE16AA6}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

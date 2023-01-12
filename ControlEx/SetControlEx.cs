@@ -217,7 +217,7 @@ namespace ControlEx {
         /// </summary>
         /// <param name="carMasterVo"></param>
         public void CreateLabel(VehicleDispatchDetailVo vehicleDispatchDetailVo, CarMasterVo carMasterVo, ContextMenuStrip contextMenuStrip) {
-            var labelEx = new CarLabelEx(vehicleDispatchDetailVo,carMasterVo).CreateLabel();
+            var labelEx = new CarLabelEx(vehicleDispatchDetailVo, carMasterVo).CreateLabel();
             /*
              * プロパティを設定
              */

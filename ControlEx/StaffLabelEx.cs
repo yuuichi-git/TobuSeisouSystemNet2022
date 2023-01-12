@@ -48,6 +48,7 @@ namespace ControlEx {
                     _drowBrushFill = new SolidBrush(Color.White);
                     break;
                 case 12: // アルバイト
+                case 13: // 派遣
                     this._borderColor = Pens.DarkOrange;
                     _drowBrushFill = new SolidBrush(Color.Orange);
                     break;
@@ -95,6 +96,7 @@ namespace ControlEx {
                     _drowBrushFill = new SolidBrush(Color.White);
                     break;
                 case 12: // アルバイト
+                case 13: // 派遣
                     this._borderColor = Pens.DarkOrange;
                     _drowBrushFill = new SolidBrush(Color.Orange);
                     break;
@@ -142,6 +144,7 @@ namespace ControlEx {
                     _drowBrushFill = new SolidBrush(Color.White);
                     break;
                 case 12: // アルバイト
+                case 13: // 派遣
                     this._borderColor = Pens.DarkOrange;
                     _drowBrushFill = new SolidBrush(Color.Orange);
                     break;

@@ -353,8 +353,8 @@ namespace Dao {
                              "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Last_roll_call_flag) + "'," +
                                  +_defaultValue.GetDefaultValue<int>(vehicleDispatchDetailVo.Last_plant_count) + "," +
                              "'" + _defaultValue.GetDefaultValue<string>(vehicleDispatchDetailVo.Last_plant_name) + "'," +
-                             "'" + _defaultValue.GetDefaultValue<DateTime>(vehicleDispatchDetailVo.Last_plant_hm) + "'," +
-                             "'" + _defaultValue.GetDefaultValue<DateTime>(vehicleDispatchDetailVo.Last_roll_call_hm) + "'," +
+                             "'" + _defaultValue.GetDefaultValue<string>(vehicleDispatchDetailVo.Last_plant_hm) + "'," +
+                             "'" + _defaultValue.GetDefaultValue<string>(vehicleDispatchDetailVo.Last_roll_call_hm) + "'," +
                              "'" + _defaultValue.GetDefaultValue<string>(vehicleDispatchDetailVo.Insert_pc_name) + "'," +
                              "'" + _defaultValue.GetDefaultValue<DateTime>(vehicleDispatchDetailVo.Insert_ymd_hms) + "'," +
                              "'" + _defaultValue.GetDefaultValue<string>(vehicleDispatchDetailVo.Update_pc_name) + "'," +
@@ -508,8 +508,8 @@ namespace Dao {
                                          "last_roll_call_flag = 'False'," +
                                          "last_plant_count = 0," +
                                          "last_plant_name = ''," +
-                                         "last_plant_ymd_hms = '1900-01-01'," +
-                                         "last_roll_call_ymd_hms = '1900-01-01'," +
+                                         "last_plant_ymd_hms = ''," +
+                                         "last_roll_call_ymd_hms = ''," +
                                          "update_pc_name = '" + Environment.MachineName + "'," +
                                          "update_ymd_hms = '" + DateTime.Now + "' " +
                                      "WHERE cell_number = " + dropCellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
@@ -548,8 +548,8 @@ namespace Dao {
                                          "last_roll_call_flag = 'False'," +
                                          "last_plant_count = 0," +
                                          "last_plant_name = ''," +
-                                         "last_plant_ymd_hms = '1900-01-01'," +
-                                         "last_roll_call_ymd_hms = '1900-01-01'," +
+                                         "last_plant_ymd_hms = ''," +
+                                         "last_roll_call_ymd_hms = ''," +
                                          "update_pc_name = '" + Environment.MachineName + "'," +
                                          "update_ymd_hms = '" + DateTime.Now + "' " +
                                      "WHERE cell_number = " + dragCellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";

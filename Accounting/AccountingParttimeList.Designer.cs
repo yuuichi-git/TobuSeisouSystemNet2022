@@ -34,9 +34,9 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.PanelUp = new System.Windows.Forms.Panel();
+            this.DateTimePickerExOperationDate = new ControlEx.DateTimePickerEx();
             this.label1 = new System.Windows.Forms.Label();
             this.ButtonUpdate = new System.Windows.Forms.Button();
-            this.DateTimePickerExOperationDate = new ControlEx.DateTimePickerEx();
             this.SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, ((object)(resources.GetObject("tableLayoutPanel1.Controls"))));
             this.SheetViewList = this.SpreadList.GetSheet(0);
             this.tableLayoutPanel1.SuspendLayout();
@@ -131,14 +131,24 @@
             // 
             // PanelUp
             // 
+            this.PanelUp.Controls.Add(this.DateTimePickerExOperationDate);
             this.PanelUp.Controls.Add(this.label1);
             this.PanelUp.Controls.Add(this.ButtonUpdate);
-            this.PanelUp.Controls.Add(this.DateTimePickerExOperationDate);
             this.PanelUp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelUp.Location = new System.Drawing.Point(3, 27);
             this.PanelUp.Name = "PanelUp";
             this.PanelUp.Size = new System.Drawing.Size(843, 54);
             this.PanelUp.TabIndex = 2;
+            // 
+            // DateTimePickerExOperationDate
+            // 
+            this.DateTimePickerExOperationDate.CustomFormat = "yyyy年MM月dd日(dddd)";
+            this.DateTimePickerExOperationDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.DateTimePickerExOperationDate.Location = new System.Drawing.Point(72, 16);
+            this.DateTimePickerExOperationDate.Name = "DateTimePickerExOperationDate";
+            this.DateTimePickerExOperationDate.Size = new System.Drawing.Size(172, 23);
+            this.DateTimePickerExOperationDate.TabIndex = 3;
+            this.DateTimePickerExOperationDate.ValueChanged += new System.EventHandler(this.DateTimePickerExOperationDate_ValueChanged);
             // 
             // label1
             // 
@@ -159,16 +169,6 @@
             this.ButtonUpdate.Text = "最　新　化";
             this.ButtonUpdate.UseVisualStyleBackColor = true;
             this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
-            // 
-            // DateTimePickerExOperationDate
-            // 
-            this.DateTimePickerExOperationDate.CustomFormat = "yyyy年MM月dd日";
-            this.DateTimePickerExOperationDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateTimePickerExOperationDate.Location = new System.Drawing.Point(72, 16);
-            this.DateTimePickerExOperationDate.Name = "DateTimePickerExOperationDate";
-            this.DateTimePickerExOperationDate.Size = new System.Drawing.Size(128, 23);
-            this.DateTimePickerExOperationDate.TabIndex = 0;
-            this.DateTimePickerExOperationDate.ValueChanged += new System.EventHandler(this.DateTimePickerExOperationDate_ValueChanged);
             // 
             // SpreadList
             // 
@@ -217,11 +217,11 @@
         private ToolStripStatusLabel ToolStripStatusLabelStatus;
         private Panel PanelUp;
         private FarPoint.Win.Spread.FpSpread SpreadList;
-        private ControlEx.DateTimePickerEx DateTimePickerExOperationDate;
         private Button ButtonUpdate;
         private ToolStripMenuItem ToolStripMenuItemPrint;
         private ToolStripMenuItem ToolStripMenuItemExit;
         private Label label1;
         private FarPoint.Win.Spread.SheetView SheetViewList;
+        private ControlEx.DateTimePickerEx DateTimePickerExOperationDate;
     }
 }

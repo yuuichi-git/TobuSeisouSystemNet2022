@@ -257,6 +257,18 @@ namespace ControlEx {
             return this;
         }
 
+        /*
+         * Setter Getter
+         */
+        /// <summary>
+        /// 稼働フラグ
+        /// true:稼働 false:休車
+        /// </summary>
+        public bool OperationFlag {
+            get => _operationFlag;
+            set => _operationFlag = value;
+        }
+
         /// <summary>
         /// SetGarageFlag
         /// 本社・三郷で色を変える

@@ -7,6 +7,8 @@ using ControlEx;
 
 using Dao;
 
+using HighWayReport;
+
 using Microsoft.VisualBasic.Devices;
 
 using RollCall;
@@ -620,7 +622,7 @@ namespace VehicleDispatch {
                 FlowLayoutPanelExLongTerm.Controls.Add(staffLabelEx);
             }
             // FlowLayoutPanelExPartTime(左側)
-            foreach(var deepCopyStaffMasterVo in _listDeepCopyStaffMasterVo.FindAll(x => x.Belongs == 12 && x.Retirement_flag == false).OrderBy(x => x.Name_kana)) {
+            foreach(var deepCopyStaffMasterVo in _listDeepCopyStaffMasterVo.FindAll(x => (x.Belongs == 12 || x.Belongs == 13) && x.Retirement_flag == false).OrderBy(x => x.Name_kana)) {
                 StaffLabelEx staffLabelEx = new StaffLabelEx(deepCopyStaffMasterVo).CreateLabel();
                 // プロパティを設定
                 staffLabelEx.ContextMenuStrip = ContextMenuStripStaffLabel;
@@ -785,6 +787,8 @@ namespace VehicleDispatch {
                         ToolStripMenuItemStandByFlag.Enabled = true;
                         // 代車・代番のFAXを作成する
                         ToolStripMenuItemFax.Enabled = (setMasterVo.Contact_method == 11 && UcDateTimeJpOperationDate.GetValue().Date == DateTime.Now.Date && EvacuationSetControlEx.OperationFlag) ? true : false;
+                        // 高速道路使用報告書
+                        ToolStripMenuItemHighWayReport.Enabled = EvacuationSetLabelEx.OperationFlag;
                     }
                     /*
                      * FlowLayoutPanelEx上でクリックされた時
@@ -811,6 +815,8 @@ namespace VehicleDispatch {
                         ToolStripMenuItemStandByFlag.Enabled = false;
                         // 代車・代番のFAXを作成する
                         ToolStripMenuItemFax.Enabled = false;
+                        // 高速道路使用報告書
+                        ToolStripMenuItemHighWayReport.Enabled = false;
                     }
                     break;
                 /*
@@ -1162,6 +1168,11 @@ namespace VehicleDispatch {
                             MessageBox.Show("代車代番のFAXを作成画面は作成中です。提案を受付ています。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
                             break;
                     }
+                    break;
+                    // 高速道路使用報告書
+                case "ToolStripMenuItemHighWayReport":
+                    HighWayReportPaper highWayReportPaper = new HighWayReportPaper();
+                    highWayReportPaper.ShowDialog(this);
                     break;
                 /*
                  * ContextMenuStripCarLabel

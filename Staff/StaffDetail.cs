@@ -75,6 +75,9 @@ namespace Staff {
                 case 12: // アルバイト
                     RadioButtonPart1.Checked = true;
                     break;
+                case 13: // 派遣
+                    RadioButtonDispatch.Checked = true;
+                    break;
                 case 20: // 新運転
                     RadioButtonSinunten.Checked = true;
                     break;
@@ -379,6 +382,9 @@ namespace Staff {
                     break;
                 case "アルバイト":
                     staffMasterVo.Belongs = 12;
+                    break;
+                case "派遣":
+                    staffMasterVo.Belongs = 13;
                     break;
                 case "新運転":
                     staffMasterVo.Belongs = 20;

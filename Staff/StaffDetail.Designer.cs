@@ -173,6 +173,7 @@
             this.RadioButtonOperator = new System.Windows.Forms.RadioButton();
             this.RadioButtonDriver = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.RadioButtonDispatch = new System.Windows.Forms.RadioButton();
             this.RadioButtonJiunrou = new System.Windows.Forms.RadioButton();
             this.RadioButtonSinunten = new System.Windows.Forms.RadioButton();
             this.RadioButtonPart1 = new System.Windows.Forms.RadioButton();
@@ -1871,6 +1872,7 @@
             // groupBox1
             // 
             this.groupBox1.ContextMenuStrip = this.ContextMenuStripRadioButtonClear;
+            this.groupBox1.Controls.Add(this.RadioButtonDispatch);
             this.groupBox1.Controls.Add(this.RadioButtonJiunrou);
             this.groupBox1.Controls.Add(this.RadioButtonSinunten);
             this.groupBox1.Controls.Add(this.RadioButtonPart1);
@@ -1886,10 +1888,21 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "役職又は所属";
             // 
+            // RadioButtonDispatch
+            // 
+            this.RadioButtonDispatch.AutoSize = true;
+            this.RadioButtonDispatch.Location = new System.Drawing.Point(504, 24);
+            this.RadioButtonDispatch.Name = "RadioButtonDispatch";
+            this.RadioButtonDispatch.Size = new System.Drawing.Size(49, 19);
+            this.RadioButtonDispatch.TabIndex = 8;
+            this.RadioButtonDispatch.TabStop = true;
+            this.RadioButtonDispatch.Text = "派遣";
+            this.RadioButtonDispatch.UseVisualStyleBackColor = true;
+            // 
             // RadioButtonJiunrou
             // 
             this.RadioButtonJiunrou.AutoSize = true;
-            this.RadioButtonJiunrou.Location = new System.Drawing.Point(572, 24);
+            this.RadioButtonJiunrou.Location = new System.Drawing.Point(628, 24);
             this.RadioButtonJiunrou.Name = "RadioButtonJiunrou";
             this.RadioButtonJiunrou.Size = new System.Drawing.Size(61, 19);
             this.RadioButtonJiunrou.TabIndex = 7;
@@ -1900,7 +1913,7 @@
             // RadioButtonSinunten
             // 
             this.RadioButtonSinunten.AutoSize = true;
-            this.RadioButtonSinunten.Location = new System.Drawing.Point(504, 24);
+            this.RadioButtonSinunten.Location = new System.Drawing.Point(560, 24);
             this.RadioButtonSinunten.Name = "RadioButtonSinunten";
             this.RadioButtonSinunten.Size = new System.Drawing.Size(61, 19);
             this.RadioButtonSinunten.TabIndex = 6;
@@ -1967,6 +1980,7 @@
             "役員",
             "社員",
             "アルバイト",
+            "派遣",
             "新運転",
             "自運労"});
             this.ComboBoxBelongs.Location = new System.Drawing.Point(168, 21);
@@ -3939,5 +3953,6 @@
         private ControlEx.UcDateTimeJp DatePunishmentDate3;
         private ControlEx.UcDateTimeJp DatePunishmentDate2;
         private ControlEx.UcDateTimeJp DatePunishmentDate1;
+        private RadioButton RadioButtonDispatch;
     }
 }

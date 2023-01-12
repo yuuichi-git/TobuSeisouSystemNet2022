@@ -22,6 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ControlEx\ControlEx.csproj" />
     <ProjectReference Include="..\Dao\Dao.csproj" />
+    <ProjectReference Include="..\HighWayReport\HighWayReport.csproj" />
     <ProjectReference Include="..\RollCall\RollCall.csproj" />
     <ProjectReference Include="..\Staff\Staff.csproj" />
     <ProjectReference Include="..\Substitute\Substitute.csproj" />

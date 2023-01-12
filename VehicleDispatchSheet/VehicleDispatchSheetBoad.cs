@@ -68,7 +68,7 @@ namespace VehicleDispatchSheet {
                                                                                            { 13121, "足立区" },
                                                                                            { 13122, "葛飾区" },
                                                                                            { 13123, "江戸川区" } };
-        private Dictionary<int, string> dictionaryBelongs = new Dictionary<int, string> { { 10, "" }, { 11, "" }, { 12, "バ" }, { 20, "新" }, { 21, "自" } };
+        private Dictionary<int, string> dictionaryBelongs = new Dictionary<int, string> { { 10, "" }, { 11, "" }, { 12, "バ" }, { 13, "派" }, { 20, "新" }, { 21, "自" } };
         private Dictionary<int, string> dictionaryOccupation = new Dictionary<int, string> { { 10, "" }, { 11, "作" }, { 99, "" } };
 
         /// <summary>
@@ -1109,17 +1109,32 @@ namespace VehicleDispatchSheet {
             RichText displayName; // 表示名
             string occupation; // 所属
             string garage; // 出庫地
+            System.Drawing.Color _backColor = System.Drawing.Color.White; // セルの背景色
             /*
              * 組がセットされていなければ何もしない
              */
             if(vehicleDispatchDetailVo.Set_code > 0 && vehicleDispatchDetailVo.Operator_code_1 > 0) {
                 displayName = new RichText(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Display_name);
                 occupation = dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Belongs];
+                switch(occupation) {
+                    case "バ":
+                        _backColor = System.Drawing.Color.Wheat;
+                        break;
+                    case "バ作":
+                        _backColor = System.Drawing.Color.LightBlue;
+                        break;
+                    case "派作":
+                        _backColor = System.Drawing.Color.MistyRose;
+                        break;
+                    default:
+                        _backColor = System.Drawing.Color.White;
+                        break;
+                }
                 garage = vehicleDispatchDetailVo.Garage_flag ? "" : "三";
                 /*
                  * 表示名
                  */
-                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 8].BackColor = occupation.Equals("バ") ? System.Drawing.Color.LightYellow : System.Drawing.Color.White;
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 8].BackColor = _backColor;
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 8].CellType = new FarPoint.Win.Spread.CellType.RichTextCellType();
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 8].Value = displayName;
                 /*
@@ -1234,10 +1249,13 @@ namespace VehicleDispatchSheet {
                                            dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Occupation]);
                 switch(occupation) {
                     case "バ":
-                        _backColor = System.Drawing.Color.LightYellow;
+                        _backColor = System.Drawing.Color.Wheat;
                         break;
                     case "バ作":
                         _backColor = System.Drawing.Color.LightBlue;
+                        break;
+                    case "派作":
+                        _backColor = System.Drawing.Color.MistyRose;
                         break;
                     default:
                         _backColor = System.Drawing.Color.White;
@@ -1280,10 +1298,13 @@ namespace VehicleDispatchSheet {
                                            dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Occupation]);
                 switch(occupation) {
                     case "バ":
-                        _backColor = System.Drawing.Color.LightYellow;
+                        _backColor = System.Drawing.Color.Wheat;
                         break;
                     case "バ作":
                         _backColor = System.Drawing.Color.LightBlue;
+                        break;
+                    case "派作":
+                        _backColor = System.Drawing.Color.MistyRose;
                         break;
                     default:
                         _backColor = System.Drawing.Color.White;
@@ -1326,10 +1347,13 @@ namespace VehicleDispatchSheet {
                                            dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4).Occupation]);
                 switch(occupation) {
                     case "バ":
-                        _backColor = System.Drawing.Color.LightYellow;
+                        _backColor = System.Drawing.Color.Wheat;
                         break;
                     case "バ作":
                         _backColor = System.Drawing.Color.LightBlue;
+                        break;
+                    case "派作":
+                        _backColor = System.Drawing.Color.MistyRose;
                         break;
                     default:
                         _backColor = System.Drawing.Color.White;
@@ -1368,6 +1392,7 @@ namespace VehicleDispatchSheet {
                     rtfText = staffMasterVo.Display_name;
                     break;
                 case 12:
+                case 13:
                 case 20:
                 case 21:
                     switch(staffMasterVo.Staff_code) {

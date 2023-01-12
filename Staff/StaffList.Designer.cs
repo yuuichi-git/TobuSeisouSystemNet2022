@@ -61,6 +61,7 @@
             this.ToolStripMenuItemLicense = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemToukanpo = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemMap = new System.Windows.Forms.ToolStripMenuItem();
+            this.SheetViewList = this.SpreadList.GetSheet(0);
             this.TabControlExStaff = new ControlEx.TabControlEx();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -73,7 +74,7 @@
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.tabPage11 = new System.Windows.Forms.TabPage();
-            this.SheetViewList = this.SpreadList.GetSheet(0);
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.TableLayoutPanelExBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.PanelUp.SuspendLayout();
@@ -181,7 +182,7 @@
             // CheckBoxRetired
             // 
             this.CheckBoxRetired.AutoSize = true;
-            this.CheckBoxRetired.Location = new System.Drawing.Point(1056, 20);
+            this.CheckBoxRetired.Location = new System.Drawing.Point(1104, 20);
             this.CheckBoxRetired.Name = "CheckBoxRetired";
             this.CheckBoxRetired.Size = new System.Drawing.Size(114, 19);
             this.CheckBoxRetired.TabIndex = 3;
@@ -198,7 +199,7 @@
             "2021年度",
             "2022年度",
             "2023年度"});
-            this.ComboBoxAccidentYear.Location = new System.Drawing.Point(960, 16);
+            this.ComboBoxAccidentYear.Location = new System.Drawing.Point(1008, 16);
             this.ComboBoxAccidentYear.Name = "ComboBoxAccidentYear";
             this.ComboBoxAccidentYear.Size = new System.Drawing.Size(84, 23);
             this.ComboBoxAccidentYear.TabIndex = 8;
@@ -206,7 +207,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(856, 20);
+            this.label1.Location = new System.Drawing.Point(904, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(103, 15);
             this.label1.TabIndex = 7;
@@ -217,7 +218,7 @@
             this.GroupBox3.Controls.Add(this.CheckBoxNone2);
             this.GroupBox3.Controls.Add(this.CheckBoxWorkStaff);
             this.GroupBox3.Controls.Add(this.CheckBoxDriver);
-            this.GroupBox3.Location = new System.Drawing.Point(620, 4);
+            this.GroupBox3.Location = new System.Drawing.Point(668, 4);
             this.GroupBox3.Name = "GroupBox3";
             this.GroupBox3.Size = new System.Drawing.Size(208, 44);
             this.GroupBox3.TabIndex = 6;
@@ -269,7 +270,7 @@
             this.GroupBox2.Controls.Add(this.CheckBoxPartTimeJob2);
             this.GroupBox2.Controls.Add(this.CheckBoxNoteBook);
             this.GroupBox2.Controls.Add(this.CheckBoxFullTimeJob);
-            this.GroupBox2.Location = new System.Drawing.Point(348, 4);
+            this.GroupBox2.Location = new System.Drawing.Point(396, 4);
             this.GroupBox2.Name = "GroupBox2";
             this.GroupBox2.Size = new System.Drawing.Size(256, 44);
             this.GroupBox2.TabIndex = 5;
@@ -330,6 +331,7 @@
             // 
             // GroupBox1
             // 
+            this.GroupBox1.Controls.Add(this.checkBox1);
             this.GroupBox1.Controls.Add(this.CheckBoxJiunrou);
             this.GroupBox1.Controls.Add(this.CheckBoxSinunten);
             this.GroupBox1.Controls.Add(this.CheckBoxPartTimeJob1);
@@ -337,7 +339,7 @@
             this.GroupBox1.Controls.Add(this.CheckBoxOfficer);
             this.GroupBox1.Location = new System.Drawing.Point(16, 4);
             this.GroupBox1.Name = "GroupBox1";
-            this.GroupBox1.Size = new System.Drawing.Size(316, 44);
+            this.GroupBox1.Size = new System.Drawing.Size(368, 44);
             this.GroupBox1.TabIndex = 1;
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "役職又は所属(第一条件)";
@@ -347,7 +349,7 @@
             this.CheckBoxJiunrou.AutoSize = true;
             this.CheckBoxJiunrou.Checked = true;
             this.CheckBoxJiunrou.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxJiunrou.Location = new System.Drawing.Point(248, 16);
+            this.CheckBoxJiunrou.Location = new System.Drawing.Point(300, 16);
             this.CheckBoxJiunrou.Name = "CheckBoxJiunrou";
             this.CheckBoxJiunrou.Size = new System.Drawing.Size(62, 19);
             this.CheckBoxJiunrou.TabIndex = 4;
@@ -360,7 +362,7 @@
             this.CheckBoxSinunten.AutoSize = true;
             this.CheckBoxSinunten.Checked = true;
             this.CheckBoxSinunten.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxSinunten.Location = new System.Drawing.Point(184, 16);
+            this.CheckBoxSinunten.Location = new System.Drawing.Point(236, 16);
             this.CheckBoxSinunten.Name = "CheckBoxSinunten";
             this.CheckBoxSinunten.Size = new System.Drawing.Size(62, 19);
             this.CheckBoxSinunten.TabIndex = 3;
@@ -626,6 +628,19 @@
             this.tabPage11.Text = "わ行";
             this.tabPage11.UseVisualStyleBackColor = true;
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(184, 16);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(50, 19);
+            this.checkBox1.TabIndex = 5;
+            this.checkBox1.Tag = "13";
+            this.checkBox1.Text = "派遣";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
             // StaffList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -709,5 +724,6 @@
         private ToolStripMenuItem ToolStripMenuItemToukanpo;
         private ToolStripMenuItem ToolStripMenuItemMap;
         private FarPoint.Win.Spread.SheetView SheetViewList;
+        private CheckBox checkBox1;
     }
 }

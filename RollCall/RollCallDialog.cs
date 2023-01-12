@@ -124,12 +124,7 @@ namespace RollCall {
                                                               last_roll_call_ymd_hms);
                 // Labelをセット
                 _setLabelEx.SetLastRollCallFlag(true);
-                var dialogResult = MessageBox.Show("帰庫点呼記録を登録しました", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                switch(dialogResult) {
-                    case DialogResult.OK:
-                        Dispose();
-                        break;
-                }
+                this.Close();
             } catch(Exception exception) {
                 MessageBox.Show(exception.Message);
             }
@@ -142,32 +137,35 @@ namespace RollCall {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ButtonClear_Click(object sender, EventArgs e) {
-            /*
-             * データをリセットする
-             */
-            bool last_roll_call_flag = false;
-            int last_plant_count = 0;
-            string last_plant_name = "";
-            string last_plant_ymd_hms = "";
-            string last_roll_call_ymd_hms = "";
-            try {
-                _vehicleDispatchDetailDao.SetLastRollCallFlag(_operationDate,
-                                                              (int)_setControlEx.Tag,
-                                                              last_roll_call_flag,
-                                                              last_plant_count,
-                                                              last_plant_name,
-                                                              last_plant_ymd_hms,
-                                                              last_roll_call_ymd_hms);
-                // Labelをセット
-                _setLabelEx.SetLastRollCallFlag(false);
-                var dialogResult = MessageBox.Show("帰庫点呼記録を削除しました", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                switch(dialogResult) {
-                    case DialogResult.OK:
+            var dialogResult = MessageBox.Show("本当に削除してもよろしいですか？", MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            switch(dialogResult) {
+                case DialogResult.OK:
+                    /*
+                     * データをリセットする
+                     */
+                    bool last_roll_call_flag = false;
+                    int last_plant_count = 0;
+                    string last_plant_name = "";
+                    string last_plant_ymd_hms = "";
+                    string last_roll_call_ymd_hms = "";
+                    try {
+                        _vehicleDispatchDetailDao.SetLastRollCallFlag(_operationDate,
+                                                                      (int)_setControlEx.Tag,
+                                                                      last_roll_call_flag,
+                                                                      last_plant_count,
+                                                                      last_plant_name,
+                                                                      last_plant_ymd_hms,
+                                                                      last_roll_call_ymd_hms);
+                        // Labelをセット
+                        _setLabelEx.SetLastRollCallFlag(false);
+                        this.Close();
                         Dispose();
-                        break;
-                }
-            } catch(Exception exception) {
-                MessageBox.Show(exception.Message);
+                    } catch(Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
+                    break;
+                case DialogResult.Cancel:
+                    break;
             }
         }
     }

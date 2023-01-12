@@ -15,7 +15,6 @@ namespace Accounting {
         private ConnectionVo _connectionVo;
         private readonly InitializeForm _initializeForm = new();
         private DateTime _operationDate;
-
         private string _operationName;
 
         /*
@@ -33,12 +32,11 @@ namespace Accounting {
         public AccountingParttimeList(ConnectionVo connectionVo) {
             _connectionVo = connectionVo;
             /*
-             * 
+             * Dao
              */
             _listSetMasterVo = new SetMasterDao(_connectionVo).SelectAllSetMaster();
             _listCarMasterVo = new CarMasterDao(_connectionVo).SelectAllCarMaster();
             _listStaffMasterVo = new StaffMasterDao(_connectionVo).SelectAllStaffMaster();
-
             /*
              * コントロール初期化
              */
@@ -87,7 +85,11 @@ namespace Accounting {
                                                                                       x.Operator_code_3 == staffMasterVo.Staff_code ||
                                                                                       x.Operator_code_4 == staffMasterVo.Staff_code) &&
                                                                                       x.Operation_date == _operationDate.Date);
-                if(vehicleDispatchDetailVo != null) {
+                /*
+                 * 配車先が設定されてなくてStaffLabelExだけ置いてある場合処理をしない
+                 * ”vehicleDispatchDetailVo.Set_code > 0” → この部分
+                 */
+                if(vehicleDispatchDetailVo != null && vehicleDispatchDetailVo.Set_code > 0) {
                     SheetViewList.Cells[startRow, startCol + 1].Text = "出勤";
                     /*
                      * 除外を設定
@@ -150,10 +152,20 @@ namespace Accounting {
             SpreadList.PrintSheet(SheetViewList);
         }
 
+        /// <summary>
+        /// ToolStripMenuItemExit_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ToolStripMenuItemExit_Click(object sender, EventArgs e) {
             Close();
         }
 
+        /// <summary>
+        /// AccountingParttimeList_FormClosing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AccountingParttimeList_FormClosing(object sender, FormClosingEventArgs e) {
             Dispose();
         }
