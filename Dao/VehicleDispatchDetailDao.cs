@@ -44,7 +44,7 @@ namespace Dao {
                                             "vehicle_dispatch_head.move_flag," +
                                             "vehicle_dispatch_body_office.day_of_week," +
                                             "vehicle_dispatch_head.set_code," +
-                                            "vehicle_dispatch_head.car_code," +
+                                            "vehicle_dispatch_body_office.car_code," + // vehicle_dispatch_body_officeのカラムを使用する
                                             "vehicle_dispatch_head.number_of_people," +
                                             "vehicle_dispatch_body_office.operator_code_1," +
                                             "vehicle_dispatch_body_office.operator_code_2," +

@@ -1171,7 +1171,7 @@ namespace VehicleDispatch {
                     break;
                     // çÇë¨ìπòHégópïÒçêèë
                 case "ToolStripMenuItemHighWayReport":
-                    HighWayReportPaper highWayReportPaper = new HighWayReportPaper();
+                    HighWayReportPaper highWayReportPaper = new HighWayReportPaper(EvacuationSetControlEx);
                     highWayReportPaper.ShowDialog(this);
                     break;
                 /*

@@ -16,8 +16,6 @@ namespace VehicleDispatchSheet {
          * Dao
          */
         private VehicleDispatchDetailDao _vehicleDispatchDetailDao;
-        private VehicleDispatchDetailCarDao _vehicleDispatchDetailCarDao;
-        private VehicleDispatchDetailStaffDao _vehicleDispatchDetailStaffDao;
         /*
          * Vo
          */
@@ -80,8 +78,6 @@ namespace VehicleDispatchSheet {
              * Dao
              */
             _vehicleDispatchDetailDao = new VehicleDispatchDetailDao(connectionVo);
-            _vehicleDispatchDetailCarDao = new VehicleDispatchDetailCarDao(connectionVo);
-            _vehicleDispatchDetailStaffDao = new VehicleDispatchDetailStaffDao(connectionVo);
             /*
              * Vo
              */
@@ -1266,7 +1262,8 @@ namespace VehicleDispatchSheet {
                  */
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 11].BackColor = _backColor;
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 11].CellType = new FarPoint.Win.Spread.CellType.RichTextCellType();
-                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 11].Value = GetWorkStaffName(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2));
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 11].Value = GetWorkStaffName(vehicleDispatchDetailVo,
+                                                                                                             _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2));
                 /*
                  * 所属
                  */
@@ -1315,7 +1312,8 @@ namespace VehicleDispatchSheet {
                  */
                 SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 11].BackColor = _backColor;
                 SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 11].CellType = new FarPoint.Win.Spread.CellType.RichTextCellType();
-                SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 11].Value = GetWorkStaffName(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3));
+                SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 11].Value = GetWorkStaffName(vehicleDispatchDetailVo,
+                                                                                                                 _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3));
                 /*
                  * 所属
                  */
@@ -1364,7 +1362,8 @@ namespace VehicleDispatchSheet {
                  */
                 SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 8].BackColor = _backColor;
                 SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 8].CellType = new FarPoint.Win.Spread.CellType.RichTextCellType();
-                SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 8].Value = GetWorkStaffName(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4));
+                SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 8].Value = GetWorkStaffName(vehicleDispatchDetailVo,
+                                                                                                                _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4));
                 /*
                  * 所属
                  */
@@ -1383,7 +1382,7 @@ namespace VehicleDispatchSheet {
         /// ”作業員”を加えるかどうか
         /// </summary>
         /// <returns></returns>
-        private string GetWorkStaffName(StaffMasterVo staffMasterVo) {
+        private string GetWorkStaffName(VehicleDispatchDetailVo vehicleDispatchDetailVo, StaffMasterVo staffMasterVo) {
             string rtfText = "";
             string displayName;
             switch(staffMasterVo.Belongs) {
@@ -1395,23 +1394,37 @@ namespace VehicleDispatchSheet {
                 case 13:
                 case 20:
                 case 21:
-                    switch(staffMasterVo.Staff_code) {
-                        case 20675: // 深井翔
-                        case 20630: // 大橋祐哉
+                    /*
+                     * ここで指定した配車先の作業員には”作業員”は付けないようにする処理
+                     */
+                    switch(vehicleDispatchDetailVo.Set_code) {
+                        case 1312118: // 浄化槽１
+                        case 1312123: // 浄化槽２
                             rtfText = string.Concat("", staffMasterVo.Display_name);
                             break;
                         default:
-                            displayName = string.Concat("作業員", staffMasterVo.Display_name);
                             /*
-                             * リッチテキスト文字列の作成
+                             * ここで指定した作業員には”作業員”は付けないようにする処理
                              */
-                            using(RichTextBox temp = new RichTextBox()) {
-                                temp.Text = displayName;
-                                temp.SelectionStart = 0;
-                                temp.SelectionLength = 3;
-                                temp.SelectionColor = System.Drawing.Color.Gray;
-                                temp.SelectionFont = new System.Drawing.Font("Yu Gothic UI", 6);
-                                rtfText = temp.Rtf;
+                            switch(staffMasterVo.Staff_code) {
+                                case 20675: // 深井翔
+                                case 20630: // 大橋祐哉
+                                    rtfText = string.Concat("", staffMasterVo.Display_name);
+                                    break;
+                                default:
+                                    displayName = string.Concat("作業員", staffMasterVo.Display_name);
+                                    /*
+                                     * リッチテキスト文字列の作成
+                                     */
+                                    using(RichTextBox temp = new RichTextBox()) {
+                                        temp.Text = displayName;
+                                        temp.SelectionStart = 0;
+                                        temp.SelectionLength = 3;
+                                        temp.SelectionColor = System.Drawing.Color.Gray;
+                                        temp.SelectionFont = new System.Drawing.Font("Yu Gothic UI", 6);
+                                        rtfText = temp.Rtf;
+                                    }
+                                    break;
                             }
                             break;
                     }

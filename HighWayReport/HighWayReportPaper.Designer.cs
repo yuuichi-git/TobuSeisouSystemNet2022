@@ -25,6 +25,8 @@
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HighWayReportPaper));
             this.TableLayoutPanelExBase = new ControlEx.TableLayoutPanelEx();
+            this.SpreadReport = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, ((object)(resources.GetObject("TableLayoutPanelExBase.Controls"))));
+            this.SheetViewReport = this.SpreadReport.GetSheet(0);
             this.MenuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ToolStripMenuItemMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
@@ -33,13 +35,11 @@
             this.ToolStripStatusLabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.PanelUp = new System.Windows.Forms.Panel();
             this.ButtonUpdate = new System.Windows.Forms.Button();
-            this.SpreadReport = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, ((object)(resources.GetObject("TableLayoutPanelExBase.Controls"))));
-            this.SheetViewReport = this.SpreadReport.GetSheet(0);
             this.TableLayoutPanelExBase.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SpreadReport)).BeginInit();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
             this.PanelUp.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SpreadReport)).BeginInit();
             this.SuspendLayout();
             // 
             // TableLayoutPanelExBase
@@ -47,10 +47,10 @@
             this.TableLayoutPanelExBase.ColumnCount = 1;
             this.TableLayoutPanelExBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TableLayoutPanelExBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TableLayoutPanelExBase.Controls.Add(this.SpreadReport, 0, 2);
             this.TableLayoutPanelExBase.Controls.Add(this.MenuStrip1, 0, 0);
             this.TableLayoutPanelExBase.Controls.Add(this.StatusStrip1, 0, 3);
             this.TableLayoutPanelExBase.Controls.Add(this.PanelUp, 0, 1);
-            this.TableLayoutPanelExBase.Controls.Add(this.SpreadReport, 0, 2);
             this.TableLayoutPanelExBase.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanelExBase.Location = new System.Drawing.Point(0, 0);
             this.TableLayoutPanelExBase.Name = "TableLayoutPanelExBase";
@@ -59,8 +59,18 @@
             this.TableLayoutPanelExBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
             this.TableLayoutPanelExBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TableLayoutPanelExBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.TableLayoutPanelExBase.Size = new System.Drawing.Size(1399, 766);
+            this.TableLayoutPanelExBase.Size = new System.Drawing.Size(1159, 802);
             this.TableLayoutPanelExBase.TabIndex = 0;
+            // 
+            // SpreadReport
+            // 
+            this.SpreadReport.AccessibleDescription = "SpreadReport, Sheet1, Row 0, Column 0";
+            this.SpreadReport.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.SpreadReport.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.SpreadReport.Location = new System.Drawing.Point(3, 87);
+            this.SpreadReport.Name = "SpreadReport";
+            this.SpreadReport.Size = new System.Drawing.Size(1153, 688);
+            this.SpreadReport.TabIndex = 3;
             // 
             // MenuStrip1
             // 
@@ -69,7 +79,7 @@
             this.ToolStripMenuItemHelp});
             this.MenuStrip1.Location = new System.Drawing.Point(0, 0);
             this.MenuStrip1.Name = "MenuStrip1";
-            this.MenuStrip1.Size = new System.Drawing.Size(1399, 24);
+            this.MenuStrip1.Size = new System.Drawing.Size(1159, 24);
             this.MenuStrip1.TabIndex = 0;
             this.MenuStrip1.Text = "menuStrip1";
             // 
@@ -90,9 +100,10 @@
             this.StatusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.ToolStripStatusLabelStatus});
-            this.StatusStrip1.Location = new System.Drawing.Point(0, 744);
+            this.StatusStrip1.Location = new System.Drawing.Point(0, 780);
             this.StatusStrip1.Name = "StatusStrip1";
-            this.StatusStrip1.Size = new System.Drawing.Size(1399, 22);
+            this.StatusStrip1.Size = new System.Drawing.Size(1159, 22);
+            this.StatusStrip1.SizingGrip = false;
             this.StatusStrip1.TabIndex = 1;
             this.StatusStrip1.Text = "statusStrip1";
             // 
@@ -114,7 +125,7 @@
             this.PanelUp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelUp.Location = new System.Drawing.Point(3, 27);
             this.PanelUp.Name = "PanelUp";
-            this.PanelUp.Size = new System.Drawing.Size(1393, 54);
+            this.PanelUp.Size = new System.Drawing.Size(1153, 54);
             this.PanelUp.TabIndex = 2;
             // 
             // ButtonUpdate
@@ -128,34 +139,25 @@
             this.ButtonUpdate.UseVisualStyleBackColor = true;
             this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
             // 
-            // SpreadReport
-            // 
-            this.SpreadReport.AccessibleDescription = "SpreadReport, Sheet1, Row 0, Column 0";
-            this.SpreadReport.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.SpreadReport.Location = new System.Drawing.Point(3, 87);
-            this.SpreadReport.Name = "SpreadReport";
-            this.SpreadReport.Size = new System.Drawing.Size(1117, 652);
-            this.SpreadReport.TabIndex = 3;
-            this.SpreadReport.PrintDocument += new FarPoint.Win.Spread.PrintDocumentEventHandler(this.SpreadReport_PrintDocument);
-            // 
             // HighWayReportPaper
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1399, 766);
+            this.ClientSize = new System.Drawing.Size(1159, 802);
             this.Controls.Add(this.TableLayoutPanelExBase);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.MenuStrip1;
             this.Name = "HighWayReportPaper";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HighWayReportPaper";
             this.TableLayoutPanelExBase.ResumeLayout(false);
             this.TableLayoutPanelExBase.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.SpreadReport)).EndInit();
             this.MenuStrip1.ResumeLayout(false);
             this.MenuStrip1.PerformLayout();
             this.StatusStrip1.ResumeLayout(false);
             this.StatusStrip1.PerformLayout();
             this.PanelUp.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.SpreadReport)).EndInit();
             this.ResumeLayout(false);
 
         }
