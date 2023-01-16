@@ -161,18 +161,18 @@
             this.ToolStripMenuItemNewStaffCode1 = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemNewStaffCode2 = new System.Windows.Forms.ToolStripMenuItem();
             this.label2 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.GroupBoxJobForm = new System.Windows.Forms.GroupBox();
             this.ContextMenuStripRadioButtonClear = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ToolStripMenuItemRadioButtonClear = new System.Windows.Forms.ToolStripMenuItem();
             this.RadioButtonNone1 = new System.Windows.Forms.RadioButton();
             this.RadioButtonPart2 = new System.Windows.Forms.RadioButton();
             this.RadioButtonNote = new System.Windows.Forms.RadioButton();
             this.RadioButtonLongTarm = new System.Windows.Forms.RadioButton();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.GroupBoxOccupation = new System.Windows.Forms.GroupBox();
             this.RadioButtonNone2 = new System.Windows.Forms.RadioButton();
             this.RadioButtonOperator = new System.Windows.Forms.RadioButton();
             this.RadioButtonDriver = new System.Windows.Forms.RadioButton();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.GroupBoxBelongs = new System.Windows.Forms.GroupBox();
             this.RadioButtonDispatch = new System.Windows.Forms.RadioButton();
             this.RadioButtonJiunrou = new System.Windows.Forms.RadioButton();
             this.RadioButtonSinunten = new System.Windows.Forms.RadioButton();
@@ -355,10 +355,10 @@
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxPicture)).BeginInit();
             this.ContextMenuStripTextBoxCode.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.GroupBoxJobForm.SuspendLayout();
             this.ContextMenuStripRadioButtonClear.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.GroupBoxOccupation.SuspendLayout();
+            this.GroupBoxBelongs.SuspendLayout();
             this.PanelRight.SuspendLayout();
             this.groupBox18.SuspendLayout();
             this.groupBox17.SuspendLayout();
@@ -480,9 +480,9 @@
             this.PanelLeft.Controls.Add(this.groupBox6);
             this.PanelLeft.Controls.Add(this.groupBox5);
             this.PanelLeft.Controls.Add(this.groupBox4);
-            this.PanelLeft.Controls.Add(this.groupBox3);
-            this.PanelLeft.Controls.Add(this.groupBox2);
-            this.PanelLeft.Controls.Add(this.groupBox1);
+            this.PanelLeft.Controls.Add(this.GroupBoxJobForm);
+            this.PanelLeft.Controls.Add(this.GroupBoxOccupation);
+            this.PanelLeft.Controls.Add(this.GroupBoxBelongs);
             this.PanelLeft.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelLeft.Location = new System.Drawing.Point(3, 83);
             this.PanelLeft.Name = "PanelLeft";
@@ -1751,19 +1751,19 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "社員CD";
             // 
-            // groupBox3
+            // GroupBoxJobForm
             // 
-            this.groupBox3.ContextMenuStrip = this.ContextMenuStripRadioButtonClear;
-            this.groupBox3.Controls.Add(this.RadioButtonNone1);
-            this.groupBox3.Controls.Add(this.RadioButtonPart2);
-            this.groupBox3.Controls.Add(this.RadioButtonNote);
-            this.groupBox3.Controls.Add(this.RadioButtonLongTarm);
-            this.groupBox3.Location = new System.Drawing.Point(12, 84);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(912, 60);
-            this.groupBox3.TabIndex = 9;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "雇用形態";
+            this.GroupBoxJobForm.ContextMenuStrip = this.ContextMenuStripRadioButtonClear;
+            this.GroupBoxJobForm.Controls.Add(this.RadioButtonNone1);
+            this.GroupBoxJobForm.Controls.Add(this.RadioButtonPart2);
+            this.GroupBoxJobForm.Controls.Add(this.RadioButtonNote);
+            this.GroupBoxJobForm.Controls.Add(this.RadioButtonLongTarm);
+            this.GroupBoxJobForm.Location = new System.Drawing.Point(12, 84);
+            this.GroupBoxJobForm.Name = "GroupBoxJobForm";
+            this.GroupBoxJobForm.Size = new System.Drawing.Size(912, 60);
+            this.GroupBoxJobForm.TabIndex = 9;
+            this.GroupBoxJobForm.TabStop = false;
+            this.GroupBoxJobForm.Text = "雇用形態";
             // 
             // ContextMenuStripRadioButtonClear
             // 
@@ -1823,18 +1823,18 @@
             this.RadioButtonLongTarm.Text = "長期";
             this.RadioButtonLongTarm.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
+            // GroupBoxOccupation
             // 
-            this.groupBox2.ContextMenuStrip = this.ContextMenuStripRadioButtonClear;
-            this.groupBox2.Controls.Add(this.RadioButtonNone2);
-            this.groupBox2.Controls.Add(this.RadioButtonOperator);
-            this.groupBox2.Controls.Add(this.RadioButtonDriver);
-            this.groupBox2.Location = new System.Drawing.Point(12, 156);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(912, 60);
-            this.groupBox2.TabIndex = 7;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "職種";
+            this.GroupBoxOccupation.ContextMenuStrip = this.ContextMenuStripRadioButtonClear;
+            this.GroupBoxOccupation.Controls.Add(this.RadioButtonNone2);
+            this.GroupBoxOccupation.Controls.Add(this.RadioButtonOperator);
+            this.GroupBoxOccupation.Controls.Add(this.RadioButtonDriver);
+            this.GroupBoxOccupation.Location = new System.Drawing.Point(12, 156);
+            this.GroupBoxOccupation.Name = "GroupBoxOccupation";
+            this.GroupBoxOccupation.Size = new System.Drawing.Size(912, 60);
+            this.GroupBoxOccupation.TabIndex = 7;
+            this.GroupBoxOccupation.TabStop = false;
+            this.GroupBoxOccupation.Text = "職種";
             // 
             // RadioButtonNone2
             // 
@@ -1869,24 +1869,24 @@
             this.RadioButtonDriver.Text = "運転手";
             this.RadioButtonDriver.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // GroupBoxBelongs
             // 
-            this.groupBox1.ContextMenuStrip = this.ContextMenuStripRadioButtonClear;
-            this.groupBox1.Controls.Add(this.RadioButtonDispatch);
-            this.groupBox1.Controls.Add(this.RadioButtonJiunrou);
-            this.groupBox1.Controls.Add(this.RadioButtonSinunten);
-            this.groupBox1.Controls.Add(this.RadioButtonPart1);
-            this.groupBox1.Controls.Add(this.RadioButtonStaff);
-            this.groupBox1.Controls.Add(this.RadioButtonOfficer);
-            this.groupBox1.Controls.Add(this.CheckBoxTargetFlag);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.ComboBoxBelongs);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(912, 60);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "役職又は所属";
+            this.GroupBoxBelongs.ContextMenuStrip = this.ContextMenuStripRadioButtonClear;
+            this.GroupBoxBelongs.Controls.Add(this.RadioButtonDispatch);
+            this.GroupBoxBelongs.Controls.Add(this.RadioButtonJiunrou);
+            this.GroupBoxBelongs.Controls.Add(this.RadioButtonSinunten);
+            this.GroupBoxBelongs.Controls.Add(this.RadioButtonPart1);
+            this.GroupBoxBelongs.Controls.Add(this.RadioButtonStaff);
+            this.GroupBoxBelongs.Controls.Add(this.RadioButtonOfficer);
+            this.GroupBoxBelongs.Controls.Add(this.CheckBoxTargetFlag);
+            this.GroupBoxBelongs.Controls.Add(this.label1);
+            this.GroupBoxBelongs.Controls.Add(this.ComboBoxBelongs);
+            this.GroupBoxBelongs.Location = new System.Drawing.Point(12, 12);
+            this.GroupBoxBelongs.Name = "GroupBoxBelongs";
+            this.GroupBoxBelongs.Size = new System.Drawing.Size(912, 60);
+            this.GroupBoxBelongs.TabIndex = 0;
+            this.GroupBoxBelongs.TabStop = false;
+            this.GroupBoxBelongs.Text = "役職又は所属";
             // 
             // RadioButtonDispatch
             // 
@@ -3605,13 +3605,13 @@
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PictureBoxPicture)).EndInit();
             this.ContextMenuStripTextBoxCode.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.GroupBoxJobForm.ResumeLayout(false);
+            this.GroupBoxJobForm.PerformLayout();
             this.ContextMenuStripRadioButtonClear.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.GroupBoxOccupation.ResumeLayout(false);
+            this.GroupBoxOccupation.PerformLayout();
+            this.GroupBoxBelongs.ResumeLayout(false);
+            this.GroupBoxBelongs.PerformLayout();
             this.PanelRight.ResumeLayout(false);
             this.groupBox18.ResumeLayout(false);
             this.groupBox18.PerformLayout();
@@ -3647,7 +3647,7 @@
         private ToolStripMenuItem ToolStripMenuItemExit;
         private Panel PanelLeft;
         private Panel PanelRight;
-        private GroupBox groupBox1;
+        private GroupBox GroupBoxBelongs;
         private CheckBox CheckBoxTargetFlag;
         private Label label1;
         private ComboBox ComboBoxBelongs;
@@ -3666,8 +3666,8 @@
         private Label label3;
         private TextBox TextBoxStaffCode;
         private Label label2;
-        private GroupBox groupBox3;
-        private GroupBox groupBox2;
+        private GroupBox GroupBoxJobForm;
+        private GroupBox GroupBoxOccupation;
         private Label label14;
         private ComboBox ComboBoxBloodType;
         private TextBox TextBoxCellphoneNumber;

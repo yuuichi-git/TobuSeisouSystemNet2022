@@ -323,10 +323,42 @@ namespace Staff {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ButtonUpdate_Click(object sender, EventArgs e) {
-            // 入力項目をチェックする
+            /*
+             * 最低限の入力チェックをする
+             */
             if(ComboBoxBelongs.Text.Length < 1) {
                 _errorProvider.SetError(ComboBoxBelongs, "所属を選択して下さい");
                 return; // メソッドを出る
+            }
+            /*
+             * 役職又は所属の入力確認
+             */
+            bool checkGroupBoxBelongs = false;
+            foreach(var control in GroupBoxBelongs.Controls) {
+                if(control.GetType().Equals(typeof(RadioButton))) {
+                    if(((RadioButton)control).Checked)
+                        checkGroupBoxBelongs = true;
+                }
+            }
+            /*
+             * 雇用形態の入力確認
+             */
+            bool checkGroupBoxJobForm = false;
+            foreach(var control in GroupBoxJobForm.Controls) {
+                if(control.GetType().Equals(typeof(RadioButton))) {
+                    if(((RadioButton)control).Checked)
+                        checkGroupBoxJobForm = true;
+                }
+            }
+            /*
+             * 職種の入力確認
+             */
+            bool checkGroupBoxOccupation = false;
+            foreach(var control in GroupBoxOccupation.Controls) {
+                if(control.GetType().Equals(typeof(RadioButton))) {
+                    if(((RadioButton)control).Checked)
+                        checkGroupBoxOccupation = true;
+                }
             }
             if(TextBoxStaffCode.Text.Length < 1) {
                 _errorProvider.SetError(TextBoxStaffCode, "社員CDを入力して下さい");
@@ -334,6 +366,11 @@ namespace Staff {
             } else {
                 // ErrorProviderをクリアします。
                 _errorProvider.Clear();
+            }
+
+            if(!checkGroupBoxBelongs || !checkGroupBoxJobForm || !checkGroupBoxOccupation) {
+                MessageBox.Show("役職又は所属 雇用形態 職種のいずれかが選択されていません。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                return; // メソッドを出る
             }
 
             var dialogResult = MessageBox.Show(MessageText.Message401, MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
