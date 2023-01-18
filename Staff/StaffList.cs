@@ -9,6 +9,8 @@ using FarPoint.Win.Spread;
 
 using License;
 
+using Toukanpo;
+
 using Vo;
 
 namespace Staff {
@@ -537,12 +539,12 @@ namespace Staff {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ToolStripMenuItem_Click(object sender, EventArgs e) {
+            int staffCode = ((ExtendsStaffMasterVo)SheetViewList.Cells[SheetViewList.ActiveRowIndex, colName].Tag).Staff_code;
             switch(((ToolStripMenuItem)sender).Name) {
                 /*
                  * 免許証を表示
                  */
                 case "ToolStripMenuItemLicense":
-                    var staffCode = ((ExtendsStaffMasterVo)SheetViewList.Cells[SheetViewList.ActiveRowIndex, colName].Tag).Staff_code;
                     var licenseMasterPicture = new LicenseCard(_connectionVo, staffCode);
                     licenseMasterPicture.ShowDialog();
                     break;
@@ -550,7 +552,8 @@ namespace Staff {
                  * 東環保修了証を表示
                  */
                 case "ToolStripMenuItemToukanpo":
-
+                    var toukanpoCard = new ToukanpoCard(_connectionVo, staffCode);
+                    toukanpoCard.ShowDialog(this);
                     break;
                 /*
                  * 地図を表示

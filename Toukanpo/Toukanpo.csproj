@@ -6,18 +6,10 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="grapecity.spread.winforms.ja" Version="15.1.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\ControlEx\ControlEx.csproj" />
     <ProjectReference Include="..\Dao\Dao.csproj" />
-    <ProjectReference Include="..\License\License.csproj" />
-    <ProjectReference Include="..\Toukanpo\Toukanpo.csproj" />
     <ProjectReference Include="..\Vo\Vo.csproj" />
   </ItemGroup>
 

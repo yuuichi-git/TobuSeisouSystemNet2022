@@ -17,6 +17,8 @@ using License;
 
 using Production;
 
+using RollCall;
+
 using Staff;
 
 using StaffDetail;
@@ -37,7 +39,6 @@ namespace TobuSeisouSystemNet2022 {
         public StartProject() {
             InitializeComponent();
             new InitializeForm().StartProject(this);
-            NotifyIcon1.Visible = true;
         }
 
         /// <summary>
@@ -121,6 +122,14 @@ namespace TobuSeisouSystemNet2022 {
                                 var accountingParttimeList = new AccountingParttimeList(_connectionVo);
                                 accountingParttimeList.Show(this);
                                 break;
+                            /*
+                             * RollCallRecordBook
+                             * 点呼記録簿
+                             */
+                            case "RollCallRecordBook":
+                                var rollCallRecordBook = new RollCallRecordBook(_connectionVo);
+                                rollCallRecordBook.Show(this);
+                                break;
                         }
                         break;
                     case ConnectionState.Connecting: //接続オブジェクトがデータ ソースに接続しています。
@@ -143,26 +152,6 @@ namespace TobuSeisouSystemNet2022 {
 
         private void Label_MouseLeave(object sender, EventArgs e) {
             ((Label)sender).ForeColor = Color.Black;
-        }
-
-        /// <summary>
-        /// ToolStripMenuItemStartProject_Click
-        /// タスクバーに入れる
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ToolStripMenuItemStartProject_Click(object sender, EventArgs e) {
-            this.Visible = true;
-        }
-
-        /// <summary>
-        /// ToolStripMenuItemTaskBar_Click
-        /// Windowを表示する
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ToolStripMenuItemTaskBar_Click(object sender, EventArgs e) {
-            this.Visible = false;
         }
 
         /// <summary>

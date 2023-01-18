@@ -16,7 +16,7 @@ namespace Staff {
         private readonly List<CarAccidentMasterVo> _listCarAccidentLedgerVo;
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01, 00, 00, 00, 000);
 
-        Dictionary<int, string> dictionaryBelongsName = new Dictionary<int, string> { { 10, "役員" }, { 11, "社員" }, { 12, "アルバイト" }, { 20, "新運転" }, { 21, "自運労" } };
+        Dictionary<int, string> dictionaryBelongsName = new Dictionary<int, string> { { 10, "役員" }, { 11, "社員" }, { 12, "アルバイト" }, { 13, "派遣" }, { 20, "新運転" }, { 21, "自運労" } };
 
         /// <summary>
         /// コンストラクタ
