@@ -121,9 +121,9 @@
             // MaskedTextBoxLastPlantTime
             // 
             this.MaskedTextBoxLastPlantTime.Location = new System.Drawing.Point(112, 76);
-            this.MaskedTextBoxLastPlantTime.Mask = "00時00分";
+            this.MaskedTextBoxLastPlantTime.Mask = "90:00";
             this.MaskedTextBoxLastPlantTime.Name = "MaskedTextBoxLastPlantTime";
-            this.MaskedTextBoxLastPlantTime.Size = new System.Drawing.Size(64, 23);
+            this.MaskedTextBoxLastPlantTime.Size = new System.Drawing.Size(48, 23);
             this.MaskedTextBoxLastPlantTime.TabIndex = 2;
             this.MaskedTextBoxLastPlantTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.MaskedTextBoxLastPlantTime.ValidatingType = typeof(System.DateTime);
@@ -132,9 +132,9 @@
             // MaskedTextBoxLastRollCallTime
             // 
             this.MaskedTextBoxLastRollCallTime.Location = new System.Drawing.Point(112, 104);
-            this.MaskedTextBoxLastRollCallTime.Mask = "00時00分";
+            this.MaskedTextBoxLastRollCallTime.Mask = "90:00";
             this.MaskedTextBoxLastRollCallTime.Name = "MaskedTextBoxLastRollCallTime";
-            this.MaskedTextBoxLastRollCallTime.Size = new System.Drawing.Size(64, 23);
+            this.MaskedTextBoxLastRollCallTime.Size = new System.Drawing.Size(48, 23);
             this.MaskedTextBoxLastRollCallTime.TabIndex = 3;
             this.MaskedTextBoxLastRollCallTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.MaskedTextBoxLastRollCallTime.ValidatingType = typeof(System.DateTime);

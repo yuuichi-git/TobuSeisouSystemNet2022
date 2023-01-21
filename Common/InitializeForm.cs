@@ -46,6 +46,14 @@ namespace Common {
             return form;
         }
 
+        public Form RollCallRecordBook(Form form) {
+            form.KeyPreview = true;
+            form.MaximumSize = new Size(1362, 1080);
+            form.MinimumSize = new Size(1362, 1048);
+            GetWorkingArea(form);
+            return form;
+        }
+
         /// <summary>
         /// ProductionList
         /// </summary>

@@ -16,6 +16,7 @@ namespace VehicleDispatchSheet {
          * Dao
          */
         private VehicleDispatchDetailDao _vehicleDispatchDetailDao;
+        private RollCallDetailDao _rollCallDetailDao;
         /*
          * Vo
          */
@@ -78,6 +79,7 @@ namespace VehicleDispatchSheet {
              * Dao
              */
             _vehicleDispatchDetailDao = new VehicleDispatchDetailDao(connectionVo);
+            _rollCallDetailDao = new RollCallDetailDao(connectionVo);
             /*
              * Vo
              */
@@ -120,21 +122,64 @@ namespace VehicleDispatchSheet {
             /*
              * 点呼執行者が選択されているかの確認
              */
-            if(ComboBox1.Text == "" || ComboBox2.Text == "" || ComboBox3.Text == "") {
+            if(ComboBox1.Text == "" || ComboBox2.Text == "" || ComboBox3.Text == "" || ComboBox4.Text == "" || ComboBoxMISATO.Text == "") {
                 MessageBox.Show("点呼執行者を選択して下さい", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             /*
              * 天候が選択されているかを確認
              */
-            if(ComboBox4.Text == "") {
+            if(ComboBoxWEATHER.Text == "") {
                 MessageBox.Show("天候を選択して下さい", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            /*
+             * 指示事項が
+             */
+            if(ComboBoxInstruction1.Text.Length < 20) {
+                MessageBox.Show("指示事項(20文字以上)を入力して下さい", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             /*
              * 再更新できないようにする
              */
             ((Button)sender).Enabled = false;
+
+            /*
+             * roll_call_detailを記録する
+             */
+            RollCallDetailVo rollCallDetailVo = new RollCallDetailVo();
+            if(_rollCallDetailDao.CheckRollCallDetail(UcDateTimeJpOperationDate.GetValue()) > 0) {
+                /*
+                 * 更新登録(UPDATE)
+                 */
+                rollCallDetailVo.Operation_date = UcDateTimeJpOperationDate.GetValue().Date;
+                rollCallDetailVo.Roll_call_name_1 = ComboBox1.Text;
+                rollCallDetailVo.Roll_call_name_2 = ComboBox2.Text;
+                rollCallDetailVo.Roll_call_name_3 = ComboBox3.Text;
+                rollCallDetailVo.Roll_call_name_4 = ComboBox4.Text;
+                rollCallDetailVo.Roll_call_name_5 = ComboBoxMISATO.Text;
+                rollCallDetailVo.Instruction1 = ComboBoxInstruction1.Text;
+                rollCallDetailVo.Instruction2 = ComboBoxInstruction2.Text;
+                rollCallDetailVo.Weather = ComboBoxWEATHER.Text;
+                _rollCallDetailDao.UpdateOneRollCallDetail(rollCallDetailVo);
+            } else {
+                /*
+                 * 新規登録(INSERT)
+                 */
+                rollCallDetailVo.Operation_date = UcDateTimeJpOperationDate.GetValue().Date;
+                rollCallDetailVo.Roll_call_name_1 = ComboBox1.Text;
+                rollCallDetailVo.Roll_call_name_2 = ComboBox2.Text;
+                rollCallDetailVo.Roll_call_name_3 = ComboBox3.Text;
+                rollCallDetailVo.Roll_call_name_4 = ComboBox4.Text;
+                rollCallDetailVo.Roll_call_name_5 = ComboBoxMISATO.Text;
+                rollCallDetailVo.Instruction1 = ComboBoxInstruction1.Text;
+                rollCallDetailVo.Instruction2 = ComboBoxInstruction2.Text;
+                rollCallDetailVo.Weather = ComboBoxWEATHER.Text;
+                _rollCallDetailDao.InsertOneRollCallDetail(rollCallDetailVo);
+            }
+
+            ToolStripStatusLabelPosition.Text = "roll_call_detailを更新しました。";
 
             EntryCellPosition? entryCellPosition;
             int blockRowCount;
@@ -147,7 +192,7 @@ namespace VehicleDispatchSheet {
             /*
              * 天候
              */
-            SheetView1.Cells[0, 12].Text = ComboBox4.Text;
+            SheetView1.Cells[0, 12].Text = ComboBoxWEATHER.Text;
             /*
              * 10:☆庸上　小特　コード：1
              */
@@ -1201,7 +1246,7 @@ namespace VehicleDispatchSheet {
                          */
                         SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 23].Font = new System.Drawing.Font("Yu Gothic UI", 9);
                         if(vehicleDispatchDetailVo.Operator_1_roll_call_flag)
-                            SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 23].Text = ComboBox3.Text;
+                            SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 23].Text = ComboBoxMISATO.Text;
                         break;
                 }
             }

@@ -23,7 +23,6 @@ using Vo;
 
 namespace VehicleDispatch {
     public partial class VehicleDispatchBoad : Form {
-        private ConnectionVo _connectionVo;
         private InitializeForm _initializeForm = new();
         private TableLayoutPanelEx[] _arrayTableLayoutPanelEx = new TableLayoutPanelEx[2];
         /*
@@ -36,6 +35,7 @@ namespace VehicleDispatch {
         /*
          * Vo
          */
+        private ConnectionVo _connectionVo;
         private List<SetMasterVo> _listSetMasterVo;
         private List<SetMasterVo> _listDeepCopySetMasterVo;
         private List<CarMasterVo> _listCarMasterVo;
