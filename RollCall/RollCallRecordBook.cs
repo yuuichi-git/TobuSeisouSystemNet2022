@@ -44,7 +44,11 @@ namespace RollCall {
              */
             InitializeComponent();
             _initializeForm.RollCallRecordBook(this);
+            // 読取り専用
+            UcDateTimeJpOperationDate.SetReadOnly(true);
+            // 本日の日付をセット
             UcDateTimeJpOperationDate.SetValue(DateTime.Now.Date);
+            // 初期値をセット
             ComboBoxArea.Text = "本社営業所";
         }
 

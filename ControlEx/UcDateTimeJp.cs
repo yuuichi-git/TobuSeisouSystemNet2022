@@ -4,7 +4,7 @@ namespace ControlEx {
     public partial class UcDateTimeJp : UserControl {
         private readonly DateTime _defaultDateTime = new(1900, 01, 01, 00, 00, 00, 000);
         // 和暦設定
-        private readonly CultureInfo Japanese = new CultureInfo("ja-JP");
+        private readonly CultureInfo cultureInfo = new CultureInfo("ja-JP");
 
         /// <summary>
         /// コンストラクター
@@ -12,10 +12,10 @@ namespace ControlEx {
         public UcDateTimeJp() {
             InitializeComponent();
             this.Height = 23;
-            this.TextBox1.ReadOnly = false;
+            this.MaskedTextBox1.ReadOnly = false;
             this.Width = 183;
             // 和暦設定
-            Japanese.DateTimeFormat.Calendar = new JapaneseCalendar();
+            cultureInfo.DateTimeFormat.Calendar = new JapaneseCalendar();
         }
 
         /*
@@ -48,10 +48,10 @@ namespace ControlEx {
                     outputDate = "";
                     break;
                 default:
-                    outputDate = ((DateTimePicker)sender).Value.ToString("ggyy年MM月dd日(dddd)", Japanese);
+                    outputDate = ((DateTimePicker)sender).Value.ToString("ggyy年MM月dd日(dddd)", cultureInfo);
                     break;
             }
-            this.TextBox1.Text = outputDate;
+            this.MaskedTextBox1.Text = outputDate;
         }
 
         /*
@@ -63,7 +63,7 @@ namespace ControlEx {
         /// </summary>
         /// <returns></returns>
         public string GetText() {
-            return this.TextBox1.Text;
+            return this.MaskedTextBox1.Text;
         }
         /// <summary>
         /// GetValue
@@ -79,7 +79,7 @@ namespace ControlEx {
         /// </summary>
         public void SetBlank() {
             this.DateTimePicker1.Value = _defaultDateTime;
-            this.TextBox1.Text = "";
+            this.MaskedTextBox1.Text = "";
         }
         /// <summary>
         /// SetReadOnly
@@ -87,7 +87,7 @@ namespace ControlEx {
         /// </summary>
         /// <param name="readOnly"></param>
         public void SetReadOnly(bool readOnly) {
-            this.TextBox1.ReadOnly = readOnly;
+            this.MaskedTextBox1.ReadOnly = readOnly;
         }
         /// <summary>
         /// SetValue

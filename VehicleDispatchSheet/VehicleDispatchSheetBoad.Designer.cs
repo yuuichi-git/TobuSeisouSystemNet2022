@@ -454,7 +454,7 @@
             // 
             // UcDateTimeJpOperationDate
             // 
-            this.UcDateTimeJpOperationDate.Location = new System.Drawing.Point(96, 16);
+            this.UcDateTimeJpOperationDate.Location = new System.Drawing.Point(96, 56);
             this.UcDateTimeJpOperationDate.Name = "UcDateTimeJpOperationDate";
             this.UcDateTimeJpOperationDate.Size = new System.Drawing.Size(183, 23);
             this.UcDateTimeJpOperationDate.TabIndex = 8;
@@ -462,7 +462,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 20);
+            this.label1.Location = new System.Drawing.Point(40, 60);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 15);
             this.label1.TabIndex = 7;
@@ -471,7 +471,7 @@
             // ButtonUpdate
             // 
             this.ButtonUpdate.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ButtonUpdate.Location = new System.Drawing.Point(1672, 8);
+            this.ButtonUpdate.Location = new System.Drawing.Point(1672, 52);
             this.ButtonUpdate.Name = "ButtonUpdate";
             this.ButtonUpdate.Size = new System.Drawing.Size(180, 36);
             this.ButtonUpdate.TabIndex = 1;

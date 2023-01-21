@@ -120,6 +120,7 @@
             // 
             // MaskedTextBoxLastPlantTime
             // 
+            this.MaskedTextBoxLastPlantTime.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.MaskedTextBoxLastPlantTime.Location = new System.Drawing.Point(112, 76);
             this.MaskedTextBoxLastPlantTime.Mask = "90:00";
             this.MaskedTextBoxLastPlantTime.Name = "MaskedTextBoxLastPlantTime";
@@ -131,6 +132,7 @@
             // 
             // MaskedTextBoxLastRollCallTime
             // 
+            this.MaskedTextBoxLastRollCallTime.ImeMode = System.Windows.Forms.ImeMode.Off;
             this.MaskedTextBoxLastRollCallTime.Location = new System.Drawing.Point(112, 104);
             this.MaskedTextBoxLastRollCallTime.Mask = "90:00";
             this.MaskedTextBoxLastRollCallTime.Name = "MaskedTextBoxLastRollCallTime";

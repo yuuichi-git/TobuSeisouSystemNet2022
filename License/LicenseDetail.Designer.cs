@@ -57,23 +57,17 @@
             this.CheckBoxQuasiMedium = new System.Windows.Forms.CheckBox();
             this.CheckBoxMedium = new System.Windows.Forms.CheckBox();
             this.CheckBoxLarge = new System.Windows.Forms.CheckBox();
-            this.DateTimePickerGetDate3 = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
-            this.DateTimePickerGetDate2 = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.DateTimePickerGetDate1 = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.TextBoxLicenseNumber = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.ComboBoxLicenseCondition = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.DateExpirationDate = new System.Windows.Forms.DateTimePicker();
             this.label16 = new System.Windows.Forms.Label();
-            this.DateDeliveryDate = new System.Windows.Forms.DateTimePicker();
             this.label15 = new System.Windows.Forms.Label();
             this.TextBoxCurrentAddress = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.DateBirthDate = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.TextBoxName = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -90,6 +84,12 @@
             this.ContextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ToolStripMenuItemPrint = new System.Windows.Forms.ToolStripMenuItem();
             this.PictureBoxHead = new System.Windows.Forms.PictureBox();
+            this.DateBirthDate = new ControlEx.UcDateTimeJp();
+            this.DateDeliveryDate = new ControlEx.UcDateTimeJp();
+            this.DateExpirationDate = new ControlEx.UcDateTimeJp();
+            this.DateTimePickerGetDate1 = new ControlEx.UcDateTimeJp();
+            this.DateTimePickerGetDate2 = new ControlEx.UcDateTimeJp();
+            this.DateTimePickerGetDate3 = new ControlEx.UcDateTimeJp();
             this.TableLayoutPanelBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -243,37 +243,37 @@
             // ButtonUpdate
             // 
             this.ButtonUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ButtonUpdate.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ButtonUpdate.Location = new System.Drawing.Point(968, 8);
+            this.ButtonUpdate.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ButtonUpdate.Location = new System.Drawing.Point(968, 12);
             this.ButtonUpdate.Name = "ButtonUpdate";
-            this.ButtonUpdate.Size = new System.Drawing.Size(200, 44);
+            this.ButtonUpdate.Size = new System.Drawing.Size(180, 36);
             this.ButtonUpdate.TabIndex = 1;
-            this.ButtonUpdate.Text = "レコードを更新する";
+            this.ButtonUpdate.Text = "UPDATE";
             this.ButtonUpdate.UseVisualStyleBackColor = true;
             this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
             // 
             // PanelLeft
             // 
+            this.PanelLeft.Controls.Add(this.DateTimePickerGetDate3);
+            this.PanelLeft.Controls.Add(this.DateTimePickerGetDate2);
+            this.PanelLeft.Controls.Add(this.DateTimePickerGetDate1);
+            this.PanelLeft.Controls.Add(this.DateExpirationDate);
+            this.PanelLeft.Controls.Add(this.DateDeliveryDate);
+            this.PanelLeft.Controls.Add(this.DateBirthDate);
             this.PanelLeft.Controls.Add(this.label6);
             this.PanelLeft.Controls.Add(this.TextBoxStaffCode);
             this.PanelLeft.Controls.Add(this.groupBox1);
-            this.PanelLeft.Controls.Add(this.DateTimePickerGetDate3);
             this.PanelLeft.Controls.Add(this.label3);
-            this.PanelLeft.Controls.Add(this.DateTimePickerGetDate2);
             this.PanelLeft.Controls.Add(this.label2);
-            this.PanelLeft.Controls.Add(this.DateTimePickerGetDate1);
             this.PanelLeft.Controls.Add(this.label1);
             this.PanelLeft.Controls.Add(this.TextBoxLicenseNumber);
             this.PanelLeft.Controls.Add(this.label18);
             this.PanelLeft.Controls.Add(this.ComboBoxLicenseCondition);
             this.PanelLeft.Controls.Add(this.label19);
-            this.PanelLeft.Controls.Add(this.DateExpirationDate);
             this.PanelLeft.Controls.Add(this.label16);
-            this.PanelLeft.Controls.Add(this.DateDeliveryDate);
             this.PanelLeft.Controls.Add(this.label15);
             this.PanelLeft.Controls.Add(this.TextBoxCurrentAddress);
             this.PanelLeft.Controls.Add(this.label10);
-            this.PanelLeft.Controls.Add(this.DateBirthDate);
             this.PanelLeft.Controls.Add(this.label7);
             this.PanelLeft.Controls.Add(this.TextBoxName);
             this.PanelLeft.Controls.Add(this.label5);
@@ -469,17 +469,6 @@
             this.CheckBoxLarge.Text = "大型";
             this.CheckBoxLarge.UseVisualStyleBackColor = true;
             // 
-            // DateTimePickerGetDate3
-            // 
-            this.DateTimePickerGetDate3.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateTimePickerGetDate3.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateTimePickerGetDate3.Location = new System.Drawing.Point(76, 320);
-            this.DateTimePickerGetDate3.Name = "DateTimePickerGetDate3";
-            this.DateTimePickerGetDate3.Size = new System.Drawing.Size(144, 23);
-            this.DateTimePickerGetDate3.TabIndex = 100;
-            this.DateTimePickerGetDate3.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateTimePickerGetDate3.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -489,17 +478,6 @@
             this.label3.TabIndex = 99;
             this.label3.Text = "二種";
             // 
-            // DateTimePickerGetDate2
-            // 
-            this.DateTimePickerGetDate2.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateTimePickerGetDate2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateTimePickerGetDate2.Location = new System.Drawing.Point(76, 292);
-            this.DateTimePickerGetDate2.Name = "DateTimePickerGetDate2";
-            this.DateTimePickerGetDate2.Size = new System.Drawing.Size(144, 23);
-            this.DateTimePickerGetDate2.TabIndex = 98;
-            this.DateTimePickerGetDate2.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateTimePickerGetDate2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -508,17 +486,6 @@
             this.label2.Size = new System.Drawing.Size(19, 15);
             this.label2.TabIndex = 97;
             this.label2.Text = "他";
-            // 
-            // DateTimePickerGetDate1
-            // 
-            this.DateTimePickerGetDate1.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateTimePickerGetDate1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateTimePickerGetDate1.Location = new System.Drawing.Point(76, 264);
-            this.DateTimePickerGetDate1.Name = "DateTimePickerGetDate1";
-            this.DateTimePickerGetDate1.Size = new System.Drawing.Size(144, 23);
-            this.DateTimePickerGetDate1.TabIndex = 96;
-            this.DateTimePickerGetDate1.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateTimePickerGetDate1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
             // 
             // label1
             // 
@@ -572,17 +539,6 @@
             this.label19.TabIndex = 91;
             this.label19.Text = "条件等";
             // 
-            // DateExpirationDate
-            // 
-            this.DateExpirationDate.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateExpirationDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateExpirationDate.Location = new System.Drawing.Point(76, 180);
-            this.DateExpirationDate.Name = "DateExpirationDate";
-            this.DateExpirationDate.Size = new System.Drawing.Size(144, 23);
-            this.DateExpirationDate.TabIndex = 23;
-            this.DateExpirationDate.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateExpirationDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
             // label16
             // 
             this.label16.AutoSize = true;
@@ -591,17 +547,6 @@
             this.label16.Size = new System.Drawing.Size(55, 15);
             this.label16.TabIndex = 22;
             this.label16.Text = "有効期限";
-            // 
-            // DateDeliveryDate
-            // 
-            this.DateDeliveryDate.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateDeliveryDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateDeliveryDate.Location = new System.Drawing.Point(76, 152);
-            this.DateDeliveryDate.Name = "DateDeliveryDate";
-            this.DateDeliveryDate.Size = new System.Drawing.Size(144, 23);
-            this.DateDeliveryDate.TabIndex = 21;
-            this.DateDeliveryDate.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateDeliveryDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
             // 
             // label15
             // 
@@ -629,17 +574,6 @@
             this.label10.Size = new System.Drawing.Size(31, 15);
             this.label10.TabIndex = 18;
             this.label10.Text = "住所";
-            // 
-            // DateBirthDate
-            // 
-            this.DateBirthDate.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateBirthDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateBirthDate.Location = new System.Drawing.Point(76, 96);
-            this.DateBirthDate.Name = "DateBirthDate";
-            this.DateBirthDate.Size = new System.Drawing.Size(144, 23);
-            this.DateBirthDate.TabIndex = 15;
-            this.DateBirthDate.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateBirthDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
             // 
             // label7
             // 
@@ -808,7 +742,49 @@
             this.PictureBoxHead.TabIndex = 0;
             this.PictureBoxHead.TabStop = false;
             // 
-            // LicenseLedgerDetail
+            // DateBirthDate
+            // 
+            this.DateBirthDate.Location = new System.Drawing.Point(76, 96);
+            this.DateBirthDate.Name = "DateBirthDate";
+            this.DateBirthDate.Size = new System.Drawing.Size(183, 23);
+            this.DateBirthDate.TabIndex = 1;
+            // 
+            // DateDeliveryDate
+            // 
+            this.DateDeliveryDate.Location = new System.Drawing.Point(76, 152);
+            this.DateDeliveryDate.Name = "DateDeliveryDate";
+            this.DateDeliveryDate.Size = new System.Drawing.Size(183, 23);
+            this.DateDeliveryDate.TabIndex = 104;
+            // 
+            // DateExpirationDate
+            // 
+            this.DateExpirationDate.Location = new System.Drawing.Point(76, 180);
+            this.DateExpirationDate.Name = "DateExpirationDate";
+            this.DateExpirationDate.Size = new System.Drawing.Size(183, 23);
+            this.DateExpirationDate.TabIndex = 105;
+            // 
+            // DateTimePickerGetDate1
+            // 
+            this.DateTimePickerGetDate1.Location = new System.Drawing.Point(76, 264);
+            this.DateTimePickerGetDate1.Name = "DateTimePickerGetDate1";
+            this.DateTimePickerGetDate1.Size = new System.Drawing.Size(183, 23);
+            this.DateTimePickerGetDate1.TabIndex = 106;
+            // 
+            // DateTimePickerGetDate2
+            // 
+            this.DateTimePickerGetDate2.Location = new System.Drawing.Point(76, 292);
+            this.DateTimePickerGetDate2.Name = "DateTimePickerGetDate2";
+            this.DateTimePickerGetDate2.Size = new System.Drawing.Size(183, 23);
+            this.DateTimePickerGetDate2.TabIndex = 107;
+            // 
+            // DateTimePickerGetDate3
+            // 
+            this.DateTimePickerGetDate3.Location = new System.Drawing.Point(76, 320);
+            this.DateTimePickerGetDate3.Name = "DateTimePickerGetDate3";
+            this.DateTimePickerGetDate3.Size = new System.Drawing.Size(183, 23);
+            this.DateTimePickerGetDate3.TabIndex = 108;
+            // 
+            // LicenseDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -817,7 +793,7 @@
             this.MainMenuStrip = this.MenuStrip1;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "LicenseLedgerDetail";
+            this.Name = "LicenseDetail";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "LicenseLedgerDetail";
             this.TableLayoutPanelBase.ResumeLayout(false);
@@ -857,22 +833,16 @@
         private Label label5;
         private Label label4;
         private TextBox TextBoxNameKana;
-        private DateTimePicker DateBirthDate;
         private Label label7;
         private TextBox TextBoxCurrentAddress;
         private Label label10;
-        private DateTimePicker DateExpirationDate;
         private Label label16;
-        private DateTimePicker DateDeliveryDate;
         private Label label15;
         private ComboBox ComboBoxLicenseCondition;
         private Label label19;
         private GroupBox groupBox1;
-        private DateTimePicker DateTimePickerGetDate3;
         private Label label3;
-        private DateTimePicker DateTimePickerGetDate2;
         private Label label2;
-        private DateTimePicker DateTimePickerGetDate1;
         private Label label1;
         private TextBox TextBoxLicenseNumber;
         private Label label18;
@@ -909,5 +879,11 @@
         private GroupBox GroupBoxSelectName;
         private ContextMenuStrip ContextMenuStrip1;
         private ToolStripMenuItem ToolStripMenuItemPrint;
+        private ControlEx.UcDateTimeJp DateBirthDate;
+        private ControlEx.UcDateTimeJp DateTimePickerGetDate3;
+        private ControlEx.UcDateTimeJp DateTimePickerGetDate2;
+        private ControlEx.UcDateTimeJp DateTimePickerGetDate1;
+        private ControlEx.UcDateTimeJp DateExpirationDate;
+        private ControlEx.UcDateTimeJp DateDeliveryDate;
     }
 }

@@ -41,7 +41,6 @@
             this.label40 = new System.Windows.Forms.Label();
             this.TextBoxDoorNumber = new System.Windows.Forms.TextBox();
             this.label39 = new System.Windows.Forms.Label();
-            this.DateTimePickerExpirationDate = new System.Windows.Forms.DateTimePicker();
             this.label38 = new System.Windows.Forms.Label();
             this.ComboBoxBaseAddress = new System.Windows.Forms.ComboBox();
             this.label37 = new System.Windows.Forms.Label();
@@ -108,7 +107,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.DateTimePickerFirstRegistrationDate = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
-            this.DateTimePickerRegistrationDate = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.ComboBoxGarage = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -123,6 +121,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.ComboBoxClassificationName = new System.Windows.Forms.ComboBox();
             this.PictureBox1 = new System.Windows.Forms.PictureBox();
+            this.DateTimePickerRegistrationDate = new ControlEx.UcDateTimeJp();
+            this.DateTimePickerExpirationDate = new ControlEx.UcDateTimeJp();
             this.TableLayoutPanelBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -293,10 +293,11 @@
             // 
             this.panel1.AutoScroll = true;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.DateTimePickerExpirationDate);
+            this.panel1.Controls.Add(this.DateTimePickerRegistrationDate);
             this.panel1.Controls.Add(this.label40);
             this.panel1.Controls.Add(this.TextBoxDoorNumber);
             this.panel1.Controls.Add(this.label39);
-            this.panel1.Controls.Add(this.DateTimePickerExpirationDate);
             this.panel1.Controls.Add(this.label38);
             this.panel1.Controls.Add(this.ComboBoxBaseAddress);
             this.panel1.Controls.Add(this.label37);
@@ -363,7 +364,6 @@
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.DateTimePickerFirstRegistrationDate);
             this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.DateTimePickerRegistrationDate);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.ComboBoxGarage);
             this.panel1.Controls.Add(this.label4);
@@ -410,18 +410,6 @@
             this.label39.TabIndex = 83;
             this.label39.Text = "備考";
             this.label39.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // DateTimePickerExpirationDate
-            // 
-            this.DateTimePickerExpirationDate.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateTimePickerExpirationDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateTimePickerExpirationDate.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.DateTimePickerExpirationDate.Location = new System.Drawing.Point(180, 1043);
-            this.DateTimePickerExpirationDate.Name = "DateTimePickerExpirationDate";
-            this.DateTimePickerExpirationDate.Size = new System.Drawing.Size(144, 23);
-            this.DateTimePickerExpirationDate.TabIndex = 43;
-            this.DateTimePickerExpirationDate.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateTimePickerExpirationDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
             // 
             // label38
             // 
@@ -1195,17 +1183,6 @@
             this.label6.Text = "初度登録年月";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // DateTimePickerRegistrationDate
-            // 
-            this.DateTimePickerRegistrationDate.CustomFormat = "yyyy年MM月dd日(ddd)";
-            this.DateTimePickerRegistrationDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateTimePickerRegistrationDate.Location = new System.Drawing.Point(180, 120);
-            this.DateTimePickerRegistrationDate.Name = "DateTimePickerRegistrationDate";
-            this.DateTimePickerRegistrationDate.Size = new System.Drawing.Size(144, 23);
-            this.DateTimePickerRegistrationDate.TabIndex = 10;
-            this.DateTimePickerRegistrationDate.ValueChanged += new System.EventHandler(this.DateTimePicker_ValueChanged);
-            this.DateTimePickerRegistrationDate.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DateTimePicker_KeyDown);
-            // 
             // label5
             // 
             this.label5.Location = new System.Drawing.Point(12, 124);
@@ -1353,6 +1330,20 @@
             this.PictureBox1.TabIndex = 4;
             this.PictureBox1.TabStop = false;
             // 
+            // DateTimePickerRegistrationDate
+            // 
+            this.DateTimePickerRegistrationDate.Location = new System.Drawing.Point(180, 120);
+            this.DateTimePickerRegistrationDate.Name = "DateTimePickerRegistrationDate";
+            this.DateTimePickerRegistrationDate.Size = new System.Drawing.Size(183, 23);
+            this.DateTimePickerRegistrationDate.TabIndex = 86;
+            // 
+            // DateTimePickerExpirationDate
+            // 
+            this.DateTimePickerExpirationDate.Location = new System.Drawing.Point(180, 1043);
+            this.DateTimePickerExpirationDate.Name = "DateTimePickerExpirationDate";
+            this.DateTimePickerExpirationDate.Size = new System.Drawing.Size(183, 23);
+            this.DateTimePickerExpirationDate.TabIndex = 87;
+            // 
             // CarDetail
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1433,9 +1424,7 @@
         private Label label7;
         private DateTimePicker DateTimePickerFirstRegistrationDate;
         private Label label6;
-        private DateTimePicker DateTimePickerRegistrationDate;
         private Label label39;
-        private DateTimePicker DateTimePickerExpirationDate;
         private Label label38;
         private ComboBox ComboBoxBaseAddress;
         private Label label37;
@@ -1492,5 +1481,7 @@
         private Button ButtonSelectPicture;
         private Button ButtonDeletePicture;
         private Button ButtonClipPicture;
+        private ControlEx.UcDateTimeJp DateTimePickerExpirationDate;
+        private ControlEx.UcDateTimeJp DateTimePickerRegistrationDate;
     }
 }

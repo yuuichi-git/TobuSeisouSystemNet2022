@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "TobuSeisouSystemNet2022": {
+      "commandName": "Project",
+      "sqlDebugging": true,
+      "nativeDebugging": true
+    }
+  }
+}

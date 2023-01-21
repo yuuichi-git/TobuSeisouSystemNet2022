@@ -89,15 +89,15 @@ namespace License {
             licenseMasterVo.Staff_code = int.Parse(TextBoxStaffCode.Text); // 社員コード
             licenseMasterVo.Name_kana = TextBoxNameKana.Text; // フリガナ
             licenseMasterVo.Name = TextBoxName.Text; // 氏名
-            licenseMasterVo.Birth_date = GetDateTimePickerValue(DateBirthDate); // 生年月日
+            licenseMasterVo.Birth_date = DateBirthDate.GetValue(); // 生年月日
             licenseMasterVo.Current_address = TextBoxCurrentAddress.Text; // 住所
-            licenseMasterVo.Delivery_date = GetDateTimePickerValue(DateDeliveryDate); // 交付
-            licenseMasterVo.Expiration_date = GetDateTimePickerValue(DateExpirationDate); // 有効期限
+            licenseMasterVo.Delivery_date = DateDeliveryDate.GetValue(); // 交付
+            licenseMasterVo.Expiration_date = DateExpirationDate.GetValue(); // 有効期限
             licenseMasterVo.License_condition = ComboBoxLicenseCondition.Text; // 条件等
             licenseMasterVo.License_number = TextBoxLicenseNumber.Text; // 番号
-            licenseMasterVo.Get_date_1 = GetDateTimePickerValue(DateTimePickerGetDate1); // 二・小・原
-            licenseMasterVo.Get_date_2 = GetDateTimePickerValue(DateTimePickerGetDate2); // 他
-            licenseMasterVo.Get_date_3 = GetDateTimePickerValue(DateTimePickerGetDate3); // 二種
+            licenseMasterVo.Get_date_1 = DateTimePickerGetDate1.GetValue(); // 二・小・原
+            licenseMasterVo.Get_date_2 = DateTimePickerGetDate2.GetValue(); // 他
+            licenseMasterVo.Get_date_3 = DateTimePickerGetDate3.GetValue(); // 二種
             licenseMasterVo.Large = CheckBoxLarge.Checked; //
             licenseMasterVo.Medium = CheckBoxMedium.Checked; //
             licenseMasterVo.Quasi_medium = CheckBoxQuasiMedium.Checked; //
@@ -125,15 +125,15 @@ namespace License {
             TextBoxStaffCode.Text = licenseMasterVo.Staff_code.ToString(); // 社員コード
             TextBoxNameKana.Text = licenseMasterVo.Name_kana; // フリガナ
             TextBoxName.Text = licenseMasterVo.Name; // 氏名
-            DateBirthDate.Value = licenseMasterVo.Birth_date.Date; // 生年月日
+            DateBirthDate.SetValue(licenseMasterVo.Birth_date.Date); // 生年月日
             TextBoxCurrentAddress.Text = licenseMasterVo.Current_address; // 住所
-            DateDeliveryDate.Value = licenseMasterVo.Delivery_date.Date; // 交付
-            DateExpirationDate.Value = licenseMasterVo.Expiration_date.Date; // 有効期限
+            DateDeliveryDate.SetValue(licenseMasterVo.Delivery_date.Date); // 交付
+            DateExpirationDate.SetValue(licenseMasterVo.Expiration_date.Date); // 有効期限
             ComboBoxLicenseCondition.Text = licenseMasterVo.License_condition; // 条件等
             TextBoxLicenseNumber.Text = licenseMasterVo.License_number; // 番号
-            DateTimePickerGetDate1.Value = licenseMasterVo.Get_date_1.Date; // 二・小・原
-            DateTimePickerGetDate2.Value = licenseMasterVo.Get_date_2.Date; // 他
-            DateTimePickerGetDate3.Value = licenseMasterVo.Get_date_3.Date; // 二種
+            DateTimePickerGetDate1.SetValue(licenseMasterVo.Get_date_1.Date); // 二・小・原
+            DateTimePickerGetDate2.SetValue(licenseMasterVo.Get_date_2.Date); // 他
+            DateTimePickerGetDate3.SetValue(licenseMasterVo.Get_date_3.Date); // 二種
             CheckBoxLarge.Checked = licenseMasterVo.Large; //
             CheckBoxMedium.Checked = licenseMasterVo.Medium; //
             CheckBoxQuasiMedium.Checked = licenseMasterVo.Quasi_medium; //
@@ -213,15 +213,15 @@ namespace License {
             TextBoxStaffCode.Text = ""; // 社員コード
             TextBoxNameKana.Text = ""; // フリガナ
             TextBoxName.Text = ""; // 氏名
-            SetDateTimePicker(DateBirthDate, null); // 生年月日
+            DateBirthDate.SetBlank(); // 生年月日
             TextBoxCurrentAddress.Text = ""; // 住所
-            SetDateTimePicker(DateDeliveryDate, null); // 交付
-            SetDateTimePicker(DateExpirationDate, null); // 有効期限
+            DateDeliveryDate.SetBlank(); // 交付
+            DateExpirationDate.SetBlank(); // 有効期限
             ComboBoxLicenseCondition.Text = ""; // 条件等
             TextBoxLicenseNumber.Text = ""; // 番号
-            SetDateTimePicker(DateTimePickerGetDate1, null); // 二・小・原
-            SetDateTimePicker(DateTimePickerGetDate2, null); // 他
-            SetDateTimePicker(DateTimePickerGetDate3, null); // 二種
+            DateTimePickerGetDate1.SetBlank(); // 二・小・原
+            DateTimePickerGetDate2.SetBlank(); // 他
+            DateTimePickerGetDate3.SetBlank(); // 二種
             CheckBoxLarge.Checked = false; //
             CheckBoxMedium.Checked = false; //
             CheckBoxQuasiMedium.Checked = false; //
@@ -256,44 +256,6 @@ namespace License {
                 dateTimePicker.CustomFormat = "yyyy年MM月dd日(ddd)";
                 dateTimePicker.Value = (DateTime)datetime;
             }
-        }
-
-        /// <summary>
-        /// GetDateTimePickerValue
-        /// </summary>
-        /// <param name="dateTimePicker"></param>
-        /// <returns></returns>
-        private DateTime GetDateTimePickerValue(DateTimePicker dateTimePicker) {
-            DateTime dateTime;
-            if (dateTimePicker.Text != " ") {
-                dateTime = dateTimePicker.Value.Date;
-            } else {
-                dateTime = _defaultDateTime;
-            }
-            return dateTime;
-        }
-
-        /// <summary>
-        /// DateTimePicker_KeyDown
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void DateTimePicker_KeyDown(object sender, KeyEventArgs e) {
-            if (e.KeyData == Keys.Delete) {
-                //Deleteキーが押されたら、dateTimeにnullを設定してdateTimePicker1を非表示に
-                SetDateTimePicker((DateTimePicker)sender, null);
-            }
-        }
-
-        /// <summary>
-        /// DateTimePicker_ValueChanged
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void DateTimePicker_ValueChanged(object sender, EventArgs e) {
-            //dateTimePicker1の値が変更されたら表示する
-            var dateTime = ((DateTimePicker)sender).Value;
-            SetDateTimePicker((DateTimePicker)sender, dateTime);
         }
 
         /// <summary>

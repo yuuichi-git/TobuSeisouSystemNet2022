@@ -1257,7 +1257,7 @@ namespace VehicleDispatch {
                     break;
                 // ƒƒ‚‚ğ‘‚«‚Ş
                 case "ToolStripMenuItemMemoWrite":
-                    string stringMemo = Microsoft.VisualBasic.Interaction.InputBox("]–Òƒƒ‚‚ğ‘‚«‚ñ‚Å‰º‚³‚¢", "ƒƒ‚");
+                    string stringMemo = Microsoft.VisualBasic.Interaction.InputBox("]–Òƒƒ‚‚ğ‘‚«‚ñ‚Å‰º‚³‚¢", "ƒƒ‚","");
                     try {
                         /*
                          * SetControlExã‚ÅƒNƒŠƒbƒN‚³‚ê‚½

@@ -97,7 +97,7 @@ namespace CarRegister {
             carMasterVo.Registration_number_3 = TextBoxRegistrationNumber3.Text; // 車両ナンバー３
             carMasterVo.Registration_number_4 = TextBoxRegistrationNumber4.Text; // 車両ナンバー４
             carMasterVo.Garage_flag = dictionaryGarageFlag[ComboBoxGarage.Text]; // 実際の車庫地
-            carMasterVo.Registration_date = DateTimePickerRegistrationDate.Value.Date; // 登録年月日/交付年月日
+            carMasterVo.Registration_date = DateTimePickerRegistrationDate.GetValue().Date; // 登録年月日/交付年月日
             carMasterVo.First_registration_date = DateTimePickerFirstRegistrationDate.Value.Date; // 初度登録年月
             carMasterVo.Car_kind_code = dictionaryCarKindCode[ComboBoxCarKindName.Text]; // 自動車の種別
             carMasterVo.Disguise_kind_1 = ComboBoxDisguiseKind1.Text; // 仮装の略称名(配車)
@@ -131,7 +131,7 @@ namespace CarRegister {
             carMasterVo.User_name = ComboBoxUserName.Text; // 使用者の氏名又は名称
             carMasterVo.User_address = ComboBoxUserAddress.Text; // 使用者の住所
             carMasterVo.Base_address = ComboBoxBaseAddress.Text; // 使用の本拠の位置
-            carMasterVo.Expiration_date = DateTimePickerExpirationDate.Value.Date; // 有効期限の満了する日
+            carMasterVo.Expiration_date = DateTimePickerExpirationDate.GetValue().Date; // 有効期限の満了する日
             carMasterVo.Remarks = TextBoxRemarks.Text; // 備考
             carMasterVo.Picture = (byte[]?)new ImageConverter().ConvertTo(PictureBox1.Image, typeof(byte[]));
             return carMasterVo;
@@ -151,7 +151,7 @@ namespace CarRegister {
             TextBoxRegistrationNumber3.Text = carMasterVo.Registration_number_3; // 車両ナンバー３
             TextBoxRegistrationNumber4.Text = string.Format("{0:#}", carMasterVo.Registration_number_4); // 車両ナンバー４
             ComboBoxGarage.Text = carMasterVo.Garage_flag ? "本社" : "三郷"; // 実際の車庫地
-            DateTimePickerRegistrationDate.Value = carMasterVo.Registration_date.Date; // 登録年月日/交付年月日
+            DateTimePickerRegistrationDate.SetValue(carMasterVo.Registration_date.Date); // 登録年月日/交付年月日
             DateTimePickerFirstRegistrationDate.Text = carMasterVo.First_registration_date.Date.ToString("yyyy年MM月"); // 初度登録年月
             ComboBoxCarKindName.Text = carMasterVo.Car_kind_name; // 自動車の種別
             ComboBoxDisguiseKind1.Text = carMasterVo.Disguise_kind_1; // 仮装の略称名(配車)
@@ -184,7 +184,7 @@ namespace CarRegister {
             ComboBoxUserName.Text = carMasterVo.User_name; // 使用者の氏名又は名称
             ComboBoxUserAddress.Text = carMasterVo.User_address; // 使用者の住所
             ComboBoxBaseAddress.Text = carMasterVo.Base_address; // 使用の本拠の位置
-            DateTimePickerExpirationDate.Value = carMasterVo.Expiration_date.Date; // 有効期限の満了する日
+            DateTimePickerExpirationDate.SetValue(carMasterVo.Expiration_date.Date); // 有効期限の満了する日
             TextBoxRemarks.Text = carMasterVo.Remarks; // 備考
             if(carMasterVo.Picture.Length != 0) {
                 var imageConv = new ImageConverter();
@@ -206,7 +206,7 @@ namespace CarRegister {
             TextBoxRegistrationNumber3.Text = ""; // 車両ナンバー３
             TextBoxRegistrationNumber4.Text = ""; // 車両ナンバー４
             ComboBoxGarage.SelectedIndex = -1; // 実際の車庫地
-            SetDateTimePicker(DateTimePickerRegistrationDate, null); // 登録年月日/交付年月日
+            DateTimePickerRegistrationDate.SetBlank(); // 登録年月日/交付年月日
             SetDateTimePicker(DateTimePickerFirstRegistrationDate, null); // 初度登録年月
             ComboBoxCarKindName.SelectedIndex = -1; // 自動車の種別
             ComboBoxDisguiseKind1.SelectedIndex = -1; // 仮装の略称名(配車)
@@ -239,7 +239,7 @@ namespace CarRegister {
             ComboBoxUserName.SelectedIndex = 0; // 使用者の氏名又は名称
             ComboBoxUserAddress.SelectedIndex = 0; // 使用者の住所
             ComboBoxBaseAddress.SelectedIndex = 0; // 使用の本拠の位置
-            SetDateTimePicker(DateTimePickerExpirationDate, null); // 有効期限の満了する日
+            DateTimePickerExpirationDate.SetBlank(); // 有効期限の満了する日
             TextBoxRemarks.Text = ""; // 備考
             PictureBox1.Image = null; // 写真
         }
@@ -341,6 +341,16 @@ namespace CarRegister {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void CarDetail_FormClosing(object sender, FormClosingEventArgs e) {
+            var dialogResult = MessageBox.Show(MessageText.Message102, MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            switch(dialogResult) {
+                case DialogResult.OK:
+                    e.Cancel = false;
+                    Dispose();
+                    break;
+                case DialogResult.Cancel:
+                    e.Cancel = true;
+                    break;
+            }
         }
     }
 }
