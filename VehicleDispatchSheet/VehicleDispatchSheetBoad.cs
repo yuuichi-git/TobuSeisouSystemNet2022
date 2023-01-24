@@ -23,6 +23,7 @@ namespace VehicleDispatchSheet {
         private List<SetMasterVo> _listSetMasterVo;
         private List<CarMasterVo> _listCarMasterVo;
         private List<StaffMasterVo> _listStaffMasterVo;
+        private RollCallDetailVo? _rollCallDetailVo;
         /*
          * 初期化
          */
@@ -119,33 +120,26 @@ namespace VehicleDispatchSheet {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ButtonUpdate_Click(object sender, EventArgs e) {
-            if(!CheckBox1.Checked) {
-                // 必須事項が入力されている状態なので、エクスポートを許可する
-                ToolStripMenuItemExport.Enabled = true;
-                /*
-                 * 点呼執行者が選択されているかの確認
-                 */
-                if(ComboBox1.Text == "" || ComboBox2.Text == "" || ComboBox3.Text == "" || ComboBox4.Text == "" || ComboBoxMISATO.Text == "") {
-                    MessageBox.Show("点呼執行者を選択して下さい", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                /*
-                 * 天候が選択されているかを確認
-                 */
-                if(ComboBoxWEATHER.Text == "") {
-                    MessageBox.Show("天候を選択して下さい", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-                /*
-                 * 指示事項が
-                 */
-                if(ComboBoxInstruction1.Text.Length < 10) {
-                    MessageBox.Show("指示事項(10文字以上)を入力して下さい", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-            } else {
-                // 必須事項が入力されていない状態なので、エクスポートを禁止する
-                ToolStripMenuItemExport.Enabled = false;
+            /*
+             * 点呼執行者が選択されているかの確認
+             */
+            if(ComboBox1.Text == "" || ComboBox2.Text == "" || ComboBox3.Text == "" || ComboBox4.Text == "" || ComboBoxMISATO.Text == "") {
+                MessageBox.Show("点呼執行者を選択して下さい", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            /*
+             * 天候が選択されているかを確認
+             */
+            if(ComboBoxWEATHER.Text == "") {
+                MessageBox.Show("天候を選択して下さい", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            /*
+             * 指示事項が
+             */
+            if(ComboBoxInstruction1.Text.Length < 10) {
+                MessageBox.Show("指示事項(10文字以上)を入力して下さい", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
             /*
              * 再更新できないようにする
@@ -155,35 +149,36 @@ namespace VehicleDispatchSheet {
             /*
              * roll_call_detailを記録する
              */
-            RollCallDetailVo rollCallDetailVo = new RollCallDetailVo();
             if(_rollCallDetailDao.CheckRollCallDetail(UcDateTimeJpOperationDate.GetValue()) > 0) {
                 /*
                  * 更新登録(UPDATE)
                  */
-                rollCallDetailVo.Operation_date = UcDateTimeJpOperationDate.GetValue().Date;
-                rollCallDetailVo.Roll_call_name_1 = ComboBox1.Text;
-                rollCallDetailVo.Roll_call_name_2 = ComboBox2.Text;
-                rollCallDetailVo.Roll_call_name_3 = ComboBox3.Text;
-                rollCallDetailVo.Roll_call_name_4 = ComboBox4.Text;
-                rollCallDetailVo.Roll_call_name_5 = ComboBoxMISATO.Text;
-                rollCallDetailVo.Instruction1 = ComboBoxInstruction1.Text;
-                rollCallDetailVo.Instruction2 = ComboBoxInstruction2.Text;
-                rollCallDetailVo.Weather = ComboBoxWEATHER.Text;
-                _rollCallDetailDao.UpdateOneRollCallDetail(rollCallDetailVo);
+                _rollCallDetailVo = new RollCallDetailVo();
+                _rollCallDetailVo.Operation_date = UcDateTimeJpOperationDate.GetValue().Date;
+                _rollCallDetailVo.Roll_call_name_1 = ComboBox1.Text;
+                _rollCallDetailVo.Roll_call_name_2 = ComboBox2.Text;
+                _rollCallDetailVo.Roll_call_name_3 = ComboBox3.Text;
+                _rollCallDetailVo.Roll_call_name_4 = ComboBox4.Text;
+                _rollCallDetailVo.Roll_call_name_5 = ComboBoxMISATO.Text;
+                _rollCallDetailVo.Instruction1 = ComboBoxInstruction1.Text;
+                _rollCallDetailVo.Instruction2 = ComboBoxInstruction2.Text;
+                _rollCallDetailVo.Weather = ComboBoxWEATHER.Text;
+                _rollCallDetailDao.UpdateOneRollCallDetail(_rollCallDetailVo);
             } else {
                 /*
                  * 新規登録(INSERT)
                  */
-                rollCallDetailVo.Operation_date = UcDateTimeJpOperationDate.GetValue().Date;
-                rollCallDetailVo.Roll_call_name_1 = ComboBox1.Text;
-                rollCallDetailVo.Roll_call_name_2 = ComboBox2.Text;
-                rollCallDetailVo.Roll_call_name_3 = ComboBox3.Text;
-                rollCallDetailVo.Roll_call_name_4 = ComboBox4.Text;
-                rollCallDetailVo.Roll_call_name_5 = ComboBoxMISATO.Text;
-                rollCallDetailVo.Instruction1 = ComboBoxInstruction1.Text;
-                rollCallDetailVo.Instruction2 = ComboBoxInstruction2.Text;
-                rollCallDetailVo.Weather = ComboBoxWEATHER.Text;
-                _rollCallDetailDao.InsertOneRollCallDetail(rollCallDetailVo);
+                _rollCallDetailVo = new RollCallDetailVo();
+                _rollCallDetailVo.Operation_date = UcDateTimeJpOperationDate.GetValue().Date;
+                _rollCallDetailVo.Roll_call_name_1 = ComboBox1.Text;
+                _rollCallDetailVo.Roll_call_name_2 = ComboBox2.Text;
+                _rollCallDetailVo.Roll_call_name_3 = ComboBox3.Text;
+                _rollCallDetailVo.Roll_call_name_4 = ComboBox4.Text;
+                _rollCallDetailVo.Roll_call_name_5 = ComboBoxMISATO.Text;
+                _rollCallDetailVo.Instruction1 = ComboBoxInstruction1.Text;
+                _rollCallDetailVo.Instruction2 = ComboBoxInstruction2.Text;
+                _rollCallDetailVo.Weather = ComboBoxWEATHER.Text;
+                _rollCallDetailDao.InsertOneRollCallDetail(_rollCallDetailVo);
             }
 
             ToolStripStatusLabelPosition.Text = "roll_call_detailを更新しました。";
@@ -1536,6 +1531,43 @@ namespace VehicleDispatchSheet {
                     SpreadBase.SaveExcel(new Directry().GetExcelDesktopPassXlsx(fileName), ExcelSaveFlags.UseOOXMLFormat);
                     MessageBox.Show("デスクトップへエクスポートしました", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
+            }
+        }
+
+        /// <summary>
+        /// CheckBox1_CheckedChanged
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CheckBox1_CheckedChanged(object sender, EventArgs e) {
+            if(((CheckBox)sender).Checked) {
+                /*
+                 * RollCallDetailが存在すれば転記する
+                 */
+                _rollCallDetailVo = _rollCallDetailDao.SelectOneRollCallDetail(UcDateTimeJpOperationDate.GetValue());
+                if(_rollCallDetailVo != null) {
+                    ComboBox1.Text = _rollCallDetailVo.Roll_call_name_1;
+                    ComboBox2.Text = _rollCallDetailVo.Roll_call_name_2;
+                    ComboBox3.Text = _rollCallDetailVo.Roll_call_name_3;
+                    ComboBox4.Text = _rollCallDetailVo.Roll_call_name_4;
+                    ComboBoxMISATO.Text = _rollCallDetailVo.Roll_call_name_5;
+                    ComboBoxWEATHER.Text = _rollCallDetailVo.Weather;
+                    ComboBoxInstruction1.Text = _rollCallDetailVo.Instruction1;
+                    ComboBoxInstruction2.Text = _rollCallDetailVo.Instruction2;
+                    Application.DoEvents();
+                } else {
+                    MessageBox.Show("記録は存在しません。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            } else {
+                ComboBox1.Text = "";
+                ComboBox2.Text = "";
+                ComboBox3.Text = "";
+                ComboBox4.Text = "";
+                ComboBoxMISATO.Text = "";
+                ComboBoxWEATHER.Text = "";
+                ComboBoxInstruction1.Text = "";
+                ComboBoxInstruction2.Text = "";
+                Application.DoEvents();
             }
         }
 

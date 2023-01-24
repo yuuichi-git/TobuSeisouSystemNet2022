@@ -41,7 +41,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RollCall", "RollCall\RollCa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HighWayReport", "HighWayReport\HighWayReport.csproj", "{19ED15AF-AD54-4738-B2EA-E7B73CE16AA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Toukanpo", "Toukanpo\Toukanpo.csproj", "{50F46F30-028D-4F32-A4C4-4E69A9EA9C7A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Toukanpo", "Toukanpo\Toukanpo.csproj", "{50F46F30-028D-4F32-A4C4-4E69A9EA9C7A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

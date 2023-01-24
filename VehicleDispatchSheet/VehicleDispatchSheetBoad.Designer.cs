@@ -484,12 +484,13 @@
             // CheckBox1
             // 
             this.CheckBox1.AutoSize = true;
-            this.CheckBox1.Location = new System.Drawing.Point(1596, 64);
+            this.CheckBox1.Location = new System.Drawing.Point(1508, 64);
             this.CheckBox1.Name = "CheckBox1";
-            this.CheckBox1.Size = new System.Drawing.Size(62, 19);
+            this.CheckBox1.Size = new System.Drawing.Size(150, 19);
             this.CheckBox1.TabIndex = 19;
-            this.CheckBox1.Text = "確認用";
+            this.CheckBox1.Text = "記録済の項目を読み込む";
             this.CheckBox1.UseVisualStyleBackColor = true;
+            this.CheckBox1.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
             // 
             // VehicleDispatchSheetBoad
             // 
