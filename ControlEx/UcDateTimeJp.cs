@@ -12,7 +12,7 @@ namespace ControlEx {
         public UcDateTimeJp() {
             InitializeComponent();
             this.Height = 23;
-            this.MaskedTextBox1.ReadOnly = false;
+            this.MaskedTextBox1.ReadOnly = true;
             this.Width = 183;
             // 和暦設定
             cultureInfo.DateTimeFormat.Calendar = new JapaneseCalendar();

@@ -1169,7 +1169,7 @@ namespace VehicleDispatch {
                             break;
                     }
                     break;
-                    // 高速道路使用報告書
+                // 高速道路使用報告書
                 case "ToolStripMenuItemHighWayReport":
                     HighWayReportPaper highWayReportPaper = new HighWayReportPaper(EvacuationSetControlEx);
                     highWayReportPaper.ShowDialog(this);
@@ -1257,7 +1257,7 @@ namespace VehicleDispatch {
                     break;
                 // メモを書き込む
                 case "ToolStripMenuItemMemoWrite":
-                    string stringMemo = Microsoft.VisualBasic.Interaction.InputBox("従事者メモを書き込んで下さい", "メモ","");
+                    string stringMemo = Microsoft.VisualBasic.Interaction.InputBox("従事者メモを書き込んで下さい", "メモ");
                     try {
                         /*
                          * SetControlEx上でクリックされた時

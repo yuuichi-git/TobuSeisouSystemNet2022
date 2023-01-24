@@ -1222,7 +1222,7 @@ namespace Dao {
         /// <param name="lastPlantName">最終空け場名</param>
         /// <param name="lastPlantYmdHms">最終空け日時</param>
         /// <param name="lastRollCallYmdHms">帰庫点呼日時</param>
-        public void SetLastRollCallFlag(DateTime operationDate, int cellNumber, bool lastRollCallFlag, int lastPlantCount, string lastPlantName, string lastPlantYmdHms, string lastRollCallYmdHms) {
+        public void SetLastRollCallFlag(DateTime operationDate, int cellNumber, bool operator1RollCallFlag, DateTime operator1RollCallYmdHms, bool lastRollCallFlag, int lastPlantCount, string lastPlantName, string lastPlantYmdHms, string lastRollCallYmdHms) {
             /*
              * Tagがゼロから始まっているので１をプラスする
              */
@@ -1230,7 +1230,9 @@ namespace Dao {
 
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "UPDATE vehicle_dispatch_detail " +
-                                        "SET last_roll_call_flag = '" + lastRollCallFlag + "'," +
+                                        "SET operator_1_roll_call_flag = '" + operator1RollCallFlag + "'," +
+                                            "operator_1_roll_call_ymd_hms = '" + operator1RollCallYmdHms + "'," +
+                                            "last_roll_call_flag = '" + lastRollCallFlag + "'," +
                                             "last_plant_count = " + lastPlantCount + "," +
                                             "last_plant_name = '" + lastPlantName + "'," +
                                             "last_plant_ymd_hms = '" + lastPlantYmdHms + "'," +

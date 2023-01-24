@@ -128,7 +128,7 @@ namespace RollCall {
                     SheetViewList.Cells[row + 4, 12].Text = string.Concat(_rollCallDetailVo.Instruction1, "\r\n\r\n", _rollCallDetailVo.Instruction2);
                     // 点呼実施者
                     if(garageFlag) {
-                        int secondStart = vehicleDispatchDetailVo.Operator_1_roll_call_ymd_hms.Second; //秒（0～59）
+                        int secondStart = vehicleDispatchDetailVo.Operator_1_roll_call_ymd_hms.Second; // 秒（0～59）
                         SheetViewList.Cells[row + 4, 13].Text = (secondStart % 2 == 0) ? _rollCallDetailVo.Roll_call_name_1 : _rollCallDetailVo.Roll_call_name_2;
                     } else {
                         SheetViewList.Cells[row + 4, 13].Text = _rollCallDetailVo.Roll_call_name_5;
@@ -155,7 +155,7 @@ namespace RollCall {
                         SheetViewList.Cells[row + 4, 21].Text = vehicleDispatchDetailVo.Operator_1_note;
                         // 点呼実施者
                         if(garageFlag) {
-                            int secondEnd = vehicleDispatchDetailVo.Operator_1_roll_call_ymd_hms.Second; //秒（0～59）
+                            int secondEnd = vehicleDispatchDetailVo.Operator_1_roll_call_ymd_hms.Second; // 秒（0～59）
                             /*
                              * 秒の数字によって点呼者を帰る
                              */

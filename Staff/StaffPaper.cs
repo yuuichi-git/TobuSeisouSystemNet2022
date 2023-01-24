@@ -58,13 +58,20 @@ namespace Staff {
              * 社員
              */
             if (extendsStaffMasterVo.Belongs == 10 || extendsStaffMasterVo.Belongs == 11) {
-                sheetView.Cells[3, 1].ForeColor = Color.Red;
-                sheetView.Cells[3, 2].ForeColor = Color.Red;
+                sheetView.Cells[2, 1].ForeColor = Color.Red;
+                sheetView.Cells[2, 2].ForeColor = Color.Red;
             }
             /*
              * アルバイト
              */
             if (extendsStaffMasterVo.Belongs == 12) {
+                sheetView.Cells[3, 1].ForeColor = Color.Red;
+                sheetView.Cells[3, 2].ForeColor = Color.Red;
+            }
+            /*
+             * 派遣
+             */
+            if(extendsStaffMasterVo.Belongs == 13) {
                 sheetView.Cells[4, 1].ForeColor = Color.Red;
                 sheetView.Cells[4, 2].ForeColor = Color.Red;
             }

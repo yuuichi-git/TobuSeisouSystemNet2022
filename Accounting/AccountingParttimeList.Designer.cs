@@ -34,11 +34,11 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.PanelUp = new System.Windows.Forms.Panel();
-            this.DateTimePickerExOperationDate = new ControlEx.DateTimePickerEx();
             this.label1 = new System.Windows.Forms.Label();
             this.ButtonUpdate = new System.Windows.Forms.Button();
             this.SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, ((object)(resources.GetObject("tableLayoutPanel1.Controls"))));
             this.SheetViewList = this.SpreadList.GetSheet(0);
+            this.DateTimePickerExOperationDate = new ControlEx.UcDateTimeJp();
             this.tableLayoutPanel1.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -140,16 +140,6 @@
             this.PanelUp.Size = new System.Drawing.Size(843, 54);
             this.PanelUp.TabIndex = 2;
             // 
-            // DateTimePickerExOperationDate
-            // 
-            this.DateTimePickerExOperationDate.CustomFormat = "yyyy年MM月dd日(dddd)";
-            this.DateTimePickerExOperationDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateTimePickerExOperationDate.Location = new System.Drawing.Point(72, 16);
-            this.DateTimePickerExOperationDate.Name = "DateTimePickerExOperationDate";
-            this.DateTimePickerExOperationDate.Size = new System.Drawing.Size(172, 23);
-            this.DateTimePickerExOperationDate.TabIndex = 3;
-            this.DateTimePickerExOperationDate.ValueChanged += new System.EventHandler(this.DateTimePickerExOperationDate_ValueChanged);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -179,6 +169,13 @@
             this.SpreadList.Name = "SpreadList";
             this.SpreadList.Size = new System.Drawing.Size(843, 668);
             this.SpreadList.TabIndex = 3;
+            // 
+            // DateTimePickerExOperationDate
+            // 
+            this.DateTimePickerExOperationDate.Location = new System.Drawing.Point(68, 16);
+            this.DateTimePickerExOperationDate.Name = "DateTimePickerExOperationDate";
+            this.DateTimePickerExOperationDate.Size = new System.Drawing.Size(184, 24);
+            this.DateTimePickerExOperationDate.TabIndex = 4;
             // 
             // AccountingParttimeList
             // 
@@ -222,6 +219,6 @@
         private ToolStripMenuItem ToolStripMenuItemExit;
         private Label label1;
         private FarPoint.Win.Spread.SheetView SheetViewList;
-        private ControlEx.DateTimePickerEx DateTimePickerExOperationDate;
+        private ControlEx.UcDateTimeJp DateTimePickerExOperationDate;
     }
 }

@@ -61,6 +61,7 @@
             this.UcDateTimeJpOperationDate = new ControlEx.UcDateTimeJp();
             this.label1 = new System.Windows.Forms.Label();
             this.ButtonUpdate = new System.Windows.Forms.Button();
+            this.CheckBox1 = new System.Windows.Forms.CheckBox();
             this.TableLayoutPanelExBase.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpreadBase)).BeginInit();
@@ -194,6 +195,7 @@
             // 
             // PanelUp
             // 
+            this.PanelUp.Controls.Add(this.CheckBox1);
             this.PanelUp.Controls.Add(this.groupBox2);
             this.PanelUp.Controls.Add(this.ComboBoxWEATHER);
             this.PanelUp.Controls.Add(this.label5);
@@ -479,6 +481,16 @@
             this.ButtonUpdate.UseVisualStyleBackColor = true;
             this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
             // 
+            // CheckBox1
+            // 
+            this.CheckBox1.AutoSize = true;
+            this.CheckBox1.Location = new System.Drawing.Point(1596, 64);
+            this.CheckBox1.Name = "CheckBox1";
+            this.CheckBox1.Size = new System.Drawing.Size(62, 19);
+            this.CheckBox1.TabIndex = 19;
+            this.CheckBox1.Text = "確認用";
+            this.CheckBox1.UseVisualStyleBackColor = true;
+            // 
             // VehicleDispatchSheetBoad
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -547,5 +559,6 @@
         private ComboBox ComboBoxInstruction2;
         private Label label8;
         private ComboBox ComboBoxInstruction1;
+        private CheckBox CheckBox1;
     }
 }

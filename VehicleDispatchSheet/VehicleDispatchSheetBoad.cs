@@ -119,26 +119,33 @@ namespace VehicleDispatchSheet {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ButtonUpdate_Click(object sender, EventArgs e) {
-            /*
-             * 点呼執行者が選択されているかの確認
-             */
-            if(ComboBox1.Text == "" || ComboBox2.Text == "" || ComboBox3.Text == "" || ComboBox4.Text == "" || ComboBoxMISATO.Text == "") {
-                MessageBox.Show("点呼執行者を選択して下さい", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            /*
-             * 天候が選択されているかを確認
-             */
-            if(ComboBoxWEATHER.Text == "") {
-                MessageBox.Show("天候を選択して下さい", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            /*
-             * 指示事項が
-             */
-            if(ComboBoxInstruction1.Text.Length < 20) {
-                MessageBox.Show("指示事項(20文字以上)を入力して下さい", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+            if(!CheckBox1.Checked) {
+                // 必須事項が入力されている状態なので、エクスポートを許可する
+                ToolStripMenuItemExport.Enabled = true;
+                /*
+                 * 点呼執行者が選択されているかの確認
+                 */
+                if(ComboBox1.Text == "" || ComboBox2.Text == "" || ComboBox3.Text == "" || ComboBox4.Text == "" || ComboBoxMISATO.Text == "") {
+                    MessageBox.Show("点呼執行者を選択して下さい", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                /*
+                 * 天候が選択されているかを確認
+                 */
+                if(ComboBoxWEATHER.Text == "") {
+                    MessageBox.Show("天候を選択して下さい", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                /*
+                 * 指示事項が
+                 */
+                if(ComboBoxInstruction1.Text.Length < 10) {
+                    MessageBox.Show("指示事項(10文字以上)を入力して下さい", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            } else {
+                // 必須事項が入力されていない状態なので、エクスポートを禁止する
+                ToolStripMenuItemExport.Enabled = false;
             }
             /*
              * 再更新できないようにする

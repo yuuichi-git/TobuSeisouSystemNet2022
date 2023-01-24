@@ -19,7 +19,7 @@ namespace RollCall {
         /*
          * Vo
          */
-        VehicleDispatchDetailVo _vehicleDispatchDetailVo;
+        private VehicleDispatchDetailVo _vehicleDispatchDetailVo;
 
         /// <summary>
         /// コンストラクター
@@ -38,6 +38,7 @@ namespace RollCall {
              * DBから読込んでControlへ入れる
              */
             _vehicleDispatchDetailVo = _vehicleDispatchDetailDao.SelectOneVehicleDispatchDetail(operationDate.Date, ((SetMasterVo)setLabelEx.Tag).Set_code);
+            DateTimePickerFarstRollCallTime.Text = _vehicleDispatchDetailVo.Operator_1_roll_call_ymd_hms.ToString("HH:mm:ss");
             NumericLastPlantCount.Value = _vehicleDispatchDetailVo.Last_plant_count;
             ComboBoxLastPlantName.Text = _vehicleDispatchDetailVo.Last_plant_name;
             MaskedTextBoxLastPlantTime.Text = _vehicleDispatchDetailVo.Last_plant_hm;
@@ -50,11 +51,19 @@ namespace RollCall {
         public static void Main() {
         }
 
+        /// <summary>
+        /// Control_KeyDown
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Control_KeyDown(object sender, KeyEventArgs e) {
             if(e.KeyCode == Keys.Enter) {
                 // タブオーダー順で次のコントロールにフォーカスを移動
                 SendKeys.Send("{TAB}");
                 switch(this.ActiveControl.GetType().Name) {
+                    case "DateTimePickerFarstPlantTime":
+
+                        break;
                     case "NumericLastPlantCount":
                         NumericLastPlantCount.Select(0, NumericLastPlantCount.Text.Length);
                         break;
@@ -81,6 +90,8 @@ namespace RollCall {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ButtonUpdate_Click(object sender, EventArgs e) {
+            bool operator1RollCallFlag;
+            DateTime operator1RollCallYmdHms;
             bool last_roll_call_flag;
             int last_plant_count;
             string last_plant_name;
@@ -89,6 +100,13 @@ namespace RollCall {
             /*
              * 入力項目のチェック
              */
+            if(DateTimePickerFarstRollCallTime.Value.ToString("HH:mm") != "00:00") {
+                operator1RollCallFlag = true;
+            } else {
+                MessageBox.Show("出庫時刻が不正です。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            operator1RollCallYmdHms = DateTimePickerFarstRollCallTime.Value;
             last_roll_call_flag = true;
             if((int)NumericLastPlantCount.Value > 0) {
                 last_plant_count = (int)NumericLastPlantCount.Value;
@@ -117,6 +135,8 @@ namespace RollCall {
             try {
                 _vehicleDispatchDetailDao.SetLastRollCallFlag(_operationDate,
                                                               (int)_setControlEx.Tag,
+                                                              operator1RollCallFlag,
+                                                              operator1RollCallYmdHms,
                                                               last_roll_call_flag,
                                                               last_plant_count,
                                                               last_plant_name,
@@ -143,6 +163,8 @@ namespace RollCall {
                     /*
                      * データをリセットする
                      */
+                    bool operator1RollCallFlag = false;
+                    DateTime operator1RollCallYmdHms = new DateTime(1900, 01, 01);
                     bool last_roll_call_flag = false;
                     int last_plant_count = 0;
                     string last_plant_name = "";
@@ -151,6 +173,8 @@ namespace RollCall {
                     try {
                         _vehicleDispatchDetailDao.SetLastRollCallFlag(_operationDate,
                                                                       (int)_setControlEx.Tag,
+                                                                      operator1RollCallFlag,
+                                                                      operator1RollCallYmdHms,
                                                                       last_roll_call_flag,
                                                                       last_plant_count,
                                                                       last_plant_name,

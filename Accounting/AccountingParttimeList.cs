@@ -1,8 +1,4 @@
-using System.Globalization;
-
 using Common;
-
-using ControlEx;
 
 using Dao;
 
@@ -14,7 +10,6 @@ namespace Accounting {
     public partial class AccountingParttimeList : Form {
         private ConnectionVo _connectionVo;
         private readonly InitializeForm _initializeForm = new();
-        private DateTime _operationDate;
         private string _operationName;
 
         /*
@@ -42,7 +37,8 @@ namespace Accounting {
              */
             InitializeComponent();
             _initializeForm.AccountingParttimeList(this);
-            DateTimePickerExOperationDate.Value = DateTime.Now;
+            DateTimePickerExOperationDate.SetReadOnly(true);
+            DateTimePickerExOperationDate.SetValue(DateTime.Now.Date);
             // シート
             SpreadList.TabStripPolicy = TabStripPolicy.Never;
             // ステータスバー
@@ -65,7 +61,7 @@ namespace Accounting {
         /// <param name="e"></param>
         private void ButtonUpdate_Click(object sender, EventArgs e) {
             InitializeSheetViewList();
-            _listVehicleDispatchDetailVo = new VehicleDispatchDetailDao(_connectionVo).SelectAllVehicleDispatchDetail(_operationDate);
+            _listVehicleDispatchDetailVo = new VehicleDispatchDetailDao(_connectionVo).SelectAllVehicleDispatchDetail(DateTimePickerExOperationDate.GetValue());
             PutSheetViewList();
         }
 
@@ -74,9 +70,7 @@ namespace Accounting {
             int startCol = 1;
 
             // 日付
-            var Japanese = new CultureInfo("ja-JP", true);
-            Japanese.DateTimeFormat.Calendar = new JapaneseCalendar();
-            SheetViewList.Cells["E2"].Text = _operationDate.ToString("gg y年M月d日(dddd)", Japanese);
+            SheetViewList.Cells["E2"].Text = DateTimePickerExOperationDate.GetText();
 
             foreach(var staffMasterVo in _listStaffMasterVo.FindAll(x => x.Belongs == 12 && x.Vehicle_dispatch_target == true && x.Retirement_flag == false).OrderBy(x => x.Employment_date)) {
                 SheetViewList.Cells[startRow, startCol].Text = staffMasterVo.Display_name;
@@ -84,7 +78,7 @@ namespace Accounting {
                                                                                       x.Operator_code_2 == staffMasterVo.Staff_code ||
                                                                                       x.Operator_code_3 == staffMasterVo.Staff_code ||
                                                                                       x.Operator_code_4 == staffMasterVo.Staff_code) &&
-                                                                                      x.Operation_date == _operationDate.Date);
+                                                                                      x.Operation_date == DateTimePickerExOperationDate.GetValue().Date);
                 /*
                  * 配車先が設定されてなくてStaffLabelExだけ置いてある場合処理をしない
                  * ”vehicleDispatchDetailVo.Set_code > 0” → この部分
@@ -134,17 +128,13 @@ namespace Accounting {
                 }
                 startRow++;
             }
-            ToolStripStatusLabelStatus.Text = string.Concat(_operationDate.ToString("yyyy年MM月dd日(dddd)"), "のデータを更新しました。");
+            ToolStripStatusLabelStatus.Text = string.Concat(DateTimePickerExOperationDate.GetText(), "のデータを更新しました。");
         }
 
         private void InitializeSheetViewList() {
             SheetViewList.Cells["E2"].Text = string.Empty;
             // 指定範囲のデータをクリア
             SheetViewList.ClearRange(3, 1, 40, 5, true);
-        }
-
-        private void DateTimePickerExOperationDate_ValueChanged(object sender, EventArgs e) {
-            _operationDate = ((DateTimePickerEx)sender).Value;
         }
 
         private void ToolStripMenuItemPrint_Click(object sender, EventArgs e) {
