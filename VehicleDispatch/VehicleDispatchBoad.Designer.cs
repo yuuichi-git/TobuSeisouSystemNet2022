@@ -124,6 +124,7 @@
             this.ToolStripMenuItemStandByFalse = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItemFax = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemHighWayReport = new System.Windows.Forms.ToolStripMenuItem();
             this.ContextMenuStripCarLabel = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ToolStripMenuItemCarDetail = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -136,12 +137,10 @@
             this.ToolStripMenuItemStaffProxyFalse = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItemMemoWrite = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemMemoRead = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItemTelephoneMarkTrue = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemTelephoneMarkFalse = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.ToolStripMenuItemHighWayReport = new System.Windows.Forms.ToolStripMenuItem();
             this.TableLayoutPanelBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -1142,7 +1141,7 @@
             this.ToolStripMenuItemFax,
             this.ToolStripMenuItemHighWayReport});
             this.ContextMenuStripSetLabel.Name = "ContextMenuStripSetLabel";
-            this.ContextMenuStripSetLabel.Size = new System.Drawing.Size(235, 264);
+            this.ContextMenuStripSetLabel.Size = new System.Drawing.Size(235, 242);
             this.ContextMenuStripSetLabel.Opened += new System.EventHandler(this.ContextMenuStrip_Opened);
             // 
             // ToolStripMenuItemSetDetail
@@ -1319,6 +1318,13 @@
             this.ToolStripMenuItemFax.Text = "代車・代番のFaxを作成する";
             this.ToolStripMenuItemFax.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
+            // ToolStripMenuItemHighWayReport
+            // 
+            this.ToolStripMenuItemHighWayReport.Name = "ToolStripMenuItemHighWayReport";
+            this.ToolStripMenuItemHighWayReport.Size = new System.Drawing.Size(234, 22);
+            this.ToolStripMenuItemHighWayReport.Text = "高速道路使用報告書を作成する";
+            this.ToolStripMenuItemHighWayReport.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            // 
             // ContextMenuStripCarLabel
             // 
             this.ContextMenuStripCarLabel.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1365,12 +1371,11 @@
             this.ToolStripMenuItemStaffProxyFalse,
             this.toolStripSeparator3,
             this.ToolStripMenuItemMemoWrite,
-            this.ToolStripMenuItemMemoRead,
             this.toolStripSeparator5,
             this.ToolStripMenuItemTelephoneMarkTrue,
             this.ToolStripMenuItemTelephoneMarkFalse});
             this.ContextMenuStripStaffLabel.Name = "ContextMenuStripStaffLabel";
-            this.ContextMenuStripStaffLabel.Size = new System.Drawing.Size(188, 176);
+            this.ContextMenuStripStaffLabel.Size = new System.Drawing.Size(188, 154);
             this.ContextMenuStripStaffLabel.Opened += new System.EventHandler(this.ContextMenuStrip_Opened);
             // 
             // ToolStripMenuItemStaffDetail
@@ -1408,15 +1413,8 @@
             // 
             this.ToolStripMenuItemMemoWrite.Name = "ToolStripMenuItemMemoWrite";
             this.ToolStripMenuItemMemoWrite.Size = new System.Drawing.Size(187, 22);
-            this.ToolStripMenuItemMemoWrite.Text = "メモを書き込む";
+            this.ToolStripMenuItemMemoWrite.Text = "メモを作成・編集する";
             this.ToolStripMenuItemMemoWrite.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
-            // 
-            // ToolStripMenuItemMemoRead
-            // 
-            this.ToolStripMenuItemMemoRead.Name = "ToolStripMenuItemMemoRead";
-            this.ToolStripMenuItemMemoRead.Size = new System.Drawing.Size(187, 22);
-            this.ToolStripMenuItemMemoRead.Text = "メモを表示する";
-            this.ToolStripMenuItemMemoRead.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
@@ -1442,13 +1440,6 @@
             this.ToolTip1.AutoPopDelay = 5000;
             this.ToolTip1.InitialDelay = 500;
             this.ToolTip1.ReshowDelay = 0;
-            // 
-            // ToolStripMenuItemHighWayReport
-            // 
-            this.ToolStripMenuItemHighWayReport.Name = "ToolStripMenuItemHighWayReport";
-            this.ToolStripMenuItemHighWayReport.Size = new System.Drawing.Size(234, 22);
-            this.ToolStripMenuItemHighWayReport.Text = "高速道路使用報告書を作成する";
-            this.ToolStripMenuItemHighWayReport.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // VehicleDispatchBoad
             // 
@@ -1596,7 +1587,6 @@
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripSeparator toolStripSeparator4;
         private ToolTip ToolTip1;
-        private ToolStripMenuItem ToolStripMenuItemMemoRead;
         private ToolStripMenuItem ToolStripMenuItemPrint;
         private ToolStripSeparator toolStripSeparator5;
         private ToolStripMenuItem ToolStripMenuItemTelephoneMarkTrue;

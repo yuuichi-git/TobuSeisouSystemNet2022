@@ -863,10 +863,6 @@ namespace VehicleDispatch {
                         ToolStripMenuItemStaffProxyTrue.Enabled = true;
                         ToolStripMenuItemStaffProxyFalse.Enabled = true;
                         ToolStripMenuItemMemoWrite.Enabled = true;
-                        // メモがあるかのチェック
-                        ToolStripMenuItemMemoRead.Enabled = _vehicleDispatchDetailDao.GetOperatorFlag(UcDateTimeJpOperationDate.GetValue(),
-                                                                                                      Convert.ToInt32(EvacuationSetControlEx.Tag),
-                                                                                                      EvacuationSetControlEx.GetPositionFromControl(EvacuationStaffLabelEx).Row);
                     }
                     /*
                      * FlowLayoutPanelEx上でクリックされた時
@@ -890,14 +886,9 @@ namespace VehicleDispatch {
                             case 155:
                             case 156:
                                 ToolStripMenuItemMemoWrite.Enabled = false;
-                                ToolStripMenuItemMemoRead.Enabled = false;
                                 break;
                             default:
                                 ToolStripMenuItemMemoWrite.Enabled = true;
-                                // メモがあるかのチェック
-                                ToolStripMenuItemMemoRead.Enabled = _vehicleDispatchDetailStaffDao.GetOperatorFlag(UcDateTimeJpOperationDate.GetValue(),
-                                                                                                                   Convert.ToInt32(EvacuationFlowLayoutPanelEx.Tag),
-                                                                                                                   ((StaffMasterVo)EvacuationStaffLabelEx.Tag).Staff_code);
                                 break;
                         }
                     }
@@ -1255,51 +1246,13 @@ namespace VehicleDispatch {
                         MessageBox.Show(exception.Message);
                     }
                     break;
-                // メモを書き込む
+                // メモを作成・編集
                 case "ToolStripMenuItemMemoWrite":
-                    string stringMemo = Microsoft.VisualBasic.Interaction.InputBox("従事者メモを書き込んで下さい", "メモ");
                     try {
-                        /*
-                         * SetControlEx上でクリックされた時
-                         */
-                        if(EvacuationStaffLabelEx.Parent.GetType() == typeof(SetControlEx)) {
-                            _vehicleDispatchDetailDao.SetOperatorNote(UcDateTimeJpOperationDate.GetValue(),
-                                                                      (int)EvacuationSetControlEx.Tag,
-                                                                      EvacuationSetControlEx.GetPositionFromControl(EvacuationStaffLabelEx).Row,
-                                                                      stringMemo);
-                        }
-                        /*
-                         * FlowLayoutPanelEx上でクリックされた時
-                         */
-                        if(EvacuationStaffLabelEx.Parent.GetType() == typeof(FlowLayoutPanelEx)) {
-                            _vehicleDispatchDetailStaffDao.SetOperatorNote(UcDateTimeJpOperationDate.GetValue(),
-                                                                           ((StaffMasterVo)EvacuationStaffLabelEx.Tag).Staff_code,
-                                                                           stringMemo);
-                        }
-                        EvacuationStaffLabelEx.SetNoteFlag(stringMemo.Length > 0 ? true : false);
+                        StaffMemo staffMemo = new StaffMemo(_connectionVo, UcDateTimeJpOperationDate.GetValue(), EvacuationSetControlEx, EvacuationFlowLayoutPanelEx, EvacuationStaffLabelEx);
+                        staffMemo.ShowDialog(this);
                     } catch(Exception exception) {
                         MessageBox.Show(exception.Message);
-                    }
-                    break;
-                // メモを表示する
-                case "ToolStripMenuItemMemoRead":
-                    /*
-                     * SetControlEx上でクリックされた時
-                     */
-                    if(EvacuationStaffLabelEx.Parent.GetType() == typeof(SetControlEx)) {
-                        var operatorMemo = _vehicleDispatchDetailDao.GetOperatorNote(UcDateTimeJpOperationDate.GetValue(),
-                                                                                     Convert.ToInt32(EvacuationSetControlEx.Tag),
-                                                                                     EvacuationSetControlEx.GetPositionFromControl(EvacuationStaffLabelEx).Row);
-                        MessageBox.Show(operatorMemo, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    /*
-                     * FlowLayoutPanelEx上でクリックされた時
-                     */
-                    if(EvacuationStaffLabelEx.Parent.GetType() == typeof(FlowLayoutPanelEx)) {
-                        var operatorMemo = _vehicleDispatchDetailStaffDao.GetOperatorNote(UcDateTimeJpOperationDate.GetValue(),
-                                                                                          Convert.ToInt32(EvacuationFlowLayoutPanelEx.Tag),
-                                                                                          ((StaffMasterVo)EvacuationStaffLabelEx.Tag).Staff_code);
-                        MessageBox.Show(operatorMemo, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     break;
                 /*

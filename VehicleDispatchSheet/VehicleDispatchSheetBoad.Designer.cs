@@ -40,6 +40,7 @@
             this.ToolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.PanelUp = new System.Windows.Forms.Panel();
+            this.CheckBox1 = new System.Windows.Forms.CheckBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label9 = new System.Windows.Forms.Label();
             this.ComboBoxInstruction2 = new System.Windows.Forms.ComboBox();
@@ -61,7 +62,6 @@
             this.UcDateTimeJpOperationDate = new ControlEx.UcDateTimeJp();
             this.label1 = new System.Windows.Forms.Label();
             this.ButtonUpdate = new System.Windows.Forms.Button();
-            this.CheckBox1 = new System.Windows.Forms.CheckBox();
             this.TableLayoutPanelExBase.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SpreadBase)).BeginInit();
@@ -209,6 +209,17 @@
             this.PanelUp.Size = new System.Drawing.Size(1898, 144);
             this.PanelUp.TabIndex = 3;
             // 
+            // CheckBox1
+            // 
+            this.CheckBox1.AutoSize = true;
+            this.CheckBox1.Location = new System.Drawing.Point(1508, 64);
+            this.CheckBox1.Name = "CheckBox1";
+            this.CheckBox1.Size = new System.Drawing.Size(150, 19);
+            this.CheckBox1.TabIndex = 19;
+            this.CheckBox1.Text = "記録済の項目を読み込む";
+            this.CheckBox1.UseVisualStyleBackColor = true;
+            this.CheckBox1.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label9);
@@ -294,6 +305,7 @@
             this.ComboBoxWEATHER.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxWEATHER.FormattingEnabled = true;
             this.ComboBoxWEATHER.Items.AddRange(new object[] {
+            "",
             "晴れ",
             "曇り",
             "小雨",
@@ -337,6 +349,7 @@
             this.ComboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBox4.FormattingEnabled = true;
             this.ComboBox4.Items.AddRange(new object[] {
+            "",
             "新井",
             "波潟",
             "五十嵐",
@@ -354,6 +367,7 @@
             this.ComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBox3.FormattingEnabled = true;
             this.ComboBox3.Items.AddRange(new object[] {
+            "",
             "新井",
             "波潟",
             "五十嵐",
@@ -389,6 +403,7 @@
             this.ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBox2.FormattingEnabled = true;
             this.ComboBox2.Items.AddRange(new object[] {
+            "",
             "新井",
             "波潟",
             "川名",
@@ -413,6 +428,7 @@
             this.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBox1.FormattingEnabled = true;
             this.ComboBox1.Items.AddRange(new object[] {
+            "",
             "新井",
             "波潟",
             "川名",
@@ -437,6 +453,7 @@
             this.ComboBoxMISATO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComboBoxMISATO.FormattingEnabled = true;
             this.ComboBoxMISATO.Items.AddRange(new object[] {
+            "",
             "川名",
             "酒井",
             "青木"});
@@ -480,17 +497,6 @@
             this.ButtonUpdate.Text = "最 新 化";
             this.ButtonUpdate.UseVisualStyleBackColor = true;
             this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
-            // 
-            // CheckBox1
-            // 
-            this.CheckBox1.AutoSize = true;
-            this.CheckBox1.Location = new System.Drawing.Point(1508, 64);
-            this.CheckBox1.Name = "CheckBox1";
-            this.CheckBox1.Size = new System.Drawing.Size(150, 19);
-            this.CheckBox1.TabIndex = 19;
-            this.CheckBox1.Text = "記録済の項目を読み込む";
-            this.CheckBox1.UseVisualStyleBackColor = true;
-            this.CheckBox1.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
             // 
             // VehicleDispatchSheetBoad
             // 
