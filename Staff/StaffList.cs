@@ -552,7 +552,7 @@ namespace Staff {
                  * “ŒŠÂ•ÛC—¹Ø‚ğ•\¦
                  */
                 case "ToolStripMenuItemToukanpo":
-                    var toukanpoCard = new ToukanpoCard(_connectionVo, staffCode);
+                    var toukanpoCard = new ToukanpoTrainingCard(_connectionVo, staffCode);
                     toukanpoCard.ShowDialog(this);
                     break;
                 /*

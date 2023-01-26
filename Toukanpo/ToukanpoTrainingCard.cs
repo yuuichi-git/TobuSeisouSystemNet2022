@@ -5,17 +5,17 @@ using Dao;
 using Vo;
 
 namespace Toukanpo {
-    public partial class ToukanpoCard : Form {
+    public partial class ToukanpoTrainingCard : Form {
         private readonly ConnectionVo _connectionVo;
 
-        public ToukanpoCard(ConnectionVo connectionVo, int staffCode) {
+        public ToukanpoTrainingCard(ConnectionVo connectionVo, int staffCode) {
             _connectionVo = connectionVo;
             InitializeComponent();
 
-            ToukanpoVo toukanpoTrainingCardVo = new();
+            ToukanpoTrainingCardVo toukanpoTrainingCardVo = new();
             try {
                 // ÉfÅ[É^ÇéÊìæ
-                toukanpoTrainingCardVo = new ToukanpoDao(_connectionVo).SelectOneToukanpoTrainingCard(staffCode);
+                toukanpoTrainingCardVo = new ToukanpoTrainingCardDao(_connectionVo).SelectOneToukanpoTrainingCard(staffCode);
             } catch(Exception exception) {
                 MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Stop);
             }

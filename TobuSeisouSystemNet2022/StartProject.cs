@@ -23,6 +23,8 @@ using Staff;
 
 using StaffDetail;
 
+using Toukanpo;
+
 using VehicleDispatch;
 
 using VehicleDispatchSheet;
@@ -129,6 +131,13 @@ namespace TobuSeisouSystemNet2022 {
                             case "RollCallRecordBook":
                                 var rollCallRecordBook = new RollCallRecordBook(_connectionVo);
                                 rollCallRecordBook.Show(this);
+                                break;
+                            /*
+                             * 東環保研修センター　修了書
+                             */
+                            case "ToukanpoTrainingCardDetail":
+                                var toukanpoTrainingCardDetail = new ToukanpoTrainingCardDetail(_connectionVo);
+                                toukanpoTrainingCardDetail.Show(this);
                                 break;
                         }
                         break;

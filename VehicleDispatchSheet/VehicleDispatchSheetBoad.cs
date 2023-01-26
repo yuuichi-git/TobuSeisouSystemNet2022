@@ -98,12 +98,11 @@ namespace VehicleDispatchSheet {
             SpreadBase.TabStripPolicy = TabStripPolicy.Never;
             SpreadBase.StatusBarVisible = true;
             /*
-             * 日付
+             * 日付を初期化
              */
-            // 日付を初期化
             UcDateTimeJpOperationDate.SetValue(DateTime.Now);
-            // 読取り専用
             UcDateTimeJpOperationDate.SetReadOnly(true);
+
             ToolStripStatusLabelStatus.Text = string.Empty;
             ToolStripStatusLabelPosition.Text = string.Empty;
         }

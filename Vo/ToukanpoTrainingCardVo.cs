@@ -1,6 +1,6 @@
 ﻿namespace Vo {
-    public class ToukanpoVo {
-        private int _staff_code;
+    public class ToukanpoTrainingCardVo {
+        private int _staff_code = 0;
         private string _display_name = "";
         private string _company_name = "";
         private string _card_name = "";
@@ -9,7 +9,7 @@
         private DateTime _insert_ymd_hms;
         private DateTime _update_ymd_hms;
         private DateTime _delete_ymd_hms;
-        private bool _delete_flag;
+        private bool _delete_flag = false;
 
         /// <summary>
         /// 社員コード

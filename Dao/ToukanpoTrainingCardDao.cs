@@ -3,11 +3,11 @@
 using Vo;
 
 namespace Dao {
-    public class ToukanpoDao {
+    public class ToukanpoTrainingCardDao {
         private readonly ConnectionVo _connectionVo;
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
 
-        public ToukanpoDao(ConnectionVo connectionVo) {
+        public ToukanpoTrainingCardDao(ConnectionVo connectionVo) {
             _connectionVo = connectionVo;
         }
 
@@ -16,8 +16,8 @@ namespace Dao {
         /// </summary>
         /// <param name="staffCode"></param>
         /// <returns></returns>
-        public ToukanpoVo SelectOneToukanpoTrainingCard(int staffCode) {
-            var toukanpoVo = new ToukanpoVo();
+        public ToukanpoTrainingCardVo SelectOneToukanpoTrainingCard(int staffCode) {
+            var toukanpoVo = new ToukanpoTrainingCardVo();
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT staff_code," +
                                             "display_name," +
@@ -53,7 +53,7 @@ namespace Dao {
         /// </summary>
         /// <param name="toukanpoVo"></param>
         /// <returns></returns>
-        public int InsertOneToukanpoTrainingCard(ToukanpoVo toukanpoVo) {
+        public int InsertOneToukanpoTrainingCard(ToukanpoTrainingCardVo toukanpoVo) {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "INSERT INTO toukanpo_training_card(staff_code," +
                                                                         "display_name," +
@@ -89,7 +89,7 @@ namespace Dao {
         /// </summary>
         /// <param name="toukanpoVo"></param>
         /// <returns></returns>
-        public int UpdateOneToukanpoTrainingCard(ToukanpoVo toukanpoVo) {
+        public int UpdateOneToukanpoTrainingCard(ToukanpoTrainingCardVo toukanpoVo) {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "UPDATE toukanpo_training_card " +
                                      "SET company_name = '" + toukanpoVo.Company_name + "'," +

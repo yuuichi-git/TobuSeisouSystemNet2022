@@ -62,6 +62,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label27 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
             this.TableLayoutPanelBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
@@ -84,7 +86,7 @@
             this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.TableLayoutPanelBase.Size = new System.Drawing.Size(1316, 832);
+            this.TableLayoutPanelBase.Size = new System.Drawing.Size(1316, 761);
             this.TableLayoutPanelBase.TabIndex = 0;
             // 
             // MenuStrip1
@@ -125,7 +127,7 @@
             this.TableLayoutPanelBase.SetColumnSpan(this.StatusStrip1, 3);
             this.StatusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ToolStripStatusLabel1});
-            this.StatusStrip1.Location = new System.Drawing.Point(0, 810);
+            this.StatusStrip1.Location = new System.Drawing.Point(0, 739);
             this.StatusStrip1.Name = "StatusStrip1";
             this.StatusStrip1.Size = new System.Drawing.Size(1316, 22);
             this.StatusStrip1.SizingGrip = false;
@@ -175,6 +177,8 @@
             this.TableLayoutPanelCenter.Controls.Add(this.label8, 0, 16);
             this.TableLayoutPanelCenter.Controls.Add(this.label26, 0, 13);
             this.TableLayoutPanelCenter.Controls.Add(this.label27, 0, 14);
+            this.TableLayoutPanelCenter.Controls.Add(this.label28, 0, 43);
+            this.TableLayoutPanelCenter.Controls.Add(this.label29, 0, 44);
             this.TableLayoutPanelCenter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanelCenter.Location = new System.Drawing.Point(303, 27);
             this.TableLayoutPanelCenter.Name = "TableLayoutPanelCenter";
@@ -226,7 +230,7 @@
             this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.Size = new System.Drawing.Size(710, 778);
+            this.TableLayoutPanelCenter.Size = new System.Drawing.Size(710, 707);
             this.TableLayoutPanelCenter.TabIndex = 2;
             // 
             // label1
@@ -258,7 +262,7 @@
             this.ButtonDbConnect.Location = new System.Drawing.Point(513, 33);
             this.ButtonDbConnect.Name = "ButtonDbConnect";
             this.TableLayoutPanelCenter.SetRowSpan(this.ButtonDbConnect, 2);
-            this.ButtonDbConnect.Size = new System.Drawing.Size(135, 31);
+            this.ButtonDbConnect.Size = new System.Drawing.Size(175, 34);
             this.ButtonDbConnect.TabIndex = 3;
             this.ButtonDbConnect.Text = "データベース接続";
             this.ButtonDbConnect.UseVisualStyleBackColor = true;
@@ -611,16 +615,40 @@
             this.label27.TabIndex = 31;
             this.label27.Text = "　点呼記録簿を作成、印刷をします。";
             // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label28.Location = new System.Drawing.Point(3, 880);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(190, 17);
+            this.label28.TabIndex = 32;
+            this.label28.Tag = "ToukanpoTrainingCardDetail";
+            this.label28.Text = "　東環保研修センター修了書登録";
+            this.label28.Click += new System.EventHandler(this.Label_Click);
+            this.label28.MouseEnter += new System.EventHandler(this.Label_MouseEnter);
+            this.label28.MouseLeave += new System.EventHandler(this.Label_MouseLeave);
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label29.ForeColor = System.Drawing.Color.Gray;
+            this.label29.Location = new System.Drawing.Point(3, 900);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(162, 17);
+            this.label29.TabIndex = 33;
+            this.label29.Text = "　修了書カードを登録します。";
+            // 
             // StartProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1316, 832);
+            this.ClientSize = new System.Drawing.Size(1316, 761);
             this.Controls.Add(this.TableLayoutPanelBase);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "StartProject";
-            this.ShowInTaskbar = false;
             this.Text = "StartProject";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StartProject_FormClosing);
             this.TableLayoutPanelBase.ResumeLayout(false);
@@ -676,5 +704,7 @@
         private Label label25;
         private Label label26;
         private Label label27;
+        private Label label28;
+        private Label label29;
     }
 }

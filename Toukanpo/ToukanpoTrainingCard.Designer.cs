@@ -1,5 +1,5 @@
 ﻿namespace Toukanpo {
-    partial class ToukanpoCard {
+    partial class ToukanpoTrainingCard {
         /// <summary>
         ///  Required designer variable.
         /// </summary>
