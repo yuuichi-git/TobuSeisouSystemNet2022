@@ -23,6 +23,103 @@
         ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("データベース接続");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("　　環境マネジメントマニュアル");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("１　目的");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("２　適用範囲");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("３　用語の定義");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("４.１　外部及び内部の課題");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("４.２　利害関係者のニーズ及び期待");
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("４.３　環境マネジメントシステムの範囲");
+            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("４.４　環境マネジメントシステムの概要");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("４　当社をとりまく状況の理解", new System.Windows.Forms.TreeNode[] {
+            treeNode6,
+            treeNode7,
+            treeNode8,
+            treeNode9});
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("５.１　リーダーシップ及びコミットメント");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("５.２　環境方針");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("５.３　役割、責任及び権限");
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("５　リーダーシップ", new System.Windows.Forms.TreeNode[] {
+            treeNode11,
+            treeNode12,
+            treeNode13});
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("６.１.１　リスク及び機会の決定");
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("６.１.２　環境側面");
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("６.１.３　順守義務(法的及びその他の要求事項)");
+            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("６.１.４　取組みの計画策定");
+            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("６.１　リスク及び機会への取組み", new System.Windows.Forms.TreeNode[] {
+            treeNode15,
+            treeNode16,
+            treeNode17,
+            treeNode18});
+            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("６.２　環境目標及びプログラム");
+            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("６　計画", new System.Windows.Forms.TreeNode[] {
+            treeNode19,
+            treeNode20});
+            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("７.１　資源");
+            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("７.２.１　力量(有資格者)");
+            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("７.２.２　教育訓練");
+            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("７.２　力量、教育訓練", new System.Windows.Forms.TreeNode[] {
+            treeNode23,
+            treeNode24});
+            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("７.３　認識");
+            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("７.４　コミュニケーション");
+            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("７.５　文章管理");
+            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("７　支援(サポート)", new System.Windows.Forms.TreeNode[] {
+            treeNode22,
+            treeNode25,
+            treeNode26,
+            treeNode27,
+            treeNode28});
+            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("８.１　運用の計画及び管理");
+            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("８.２.１　緊急事態の可能性の特定");
+            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("８.２.２　緊急事態対応手順書の作成");
+            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("８.２.３　緊急事態対応訓練(対応手順のテスト)");
+            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("８.２.４　手順書の見直し");
+            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("８.２.５　取引先を含む利害関係者への情報提供");
+            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("８.２　緊急事態への準備及び対応", new System.Windows.Forms.TreeNode[] {
+            treeNode31,
+            treeNode32,
+            treeNode33,
+            treeNode34,
+            treeNode35});
+            System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("８　運用", new System.Windows.Forms.TreeNode[] {
+            treeNode30,
+            treeNode36});
+            System.Windows.Forms.TreeNode treeNode38 = new System.Windows.Forms.TreeNode("９.１.１　取組みの項目の監視、測定");
+            System.Windows.Forms.TreeNode treeNode39 = new System.Windows.Forms.TreeNode("９.１.２　順守評価(法的及びその他の要求事項)");
+            System.Windows.Forms.TreeNode treeNode40 = new System.Windows.Forms.TreeNode("９.１　監視、測定、分析及び評価", new System.Windows.Forms.TreeNode[] {
+            treeNode38,
+            treeNode39});
+            System.Windows.Forms.TreeNode treeNode41 = new System.Windows.Forms.TreeNode("９.２　内部監査");
+            System.Windows.Forms.TreeNode treeNode42 = new System.Windows.Forms.TreeNode("９.３　経営層による見直し(マネジメントレビュー)");
+            System.Windows.Forms.TreeNode treeNode43 = new System.Windows.Forms.TreeNode("９　パフォーマンス評価", new System.Windows.Forms.TreeNode[] {
+            treeNode40,
+            treeNode41,
+            treeNode42});
+            System.Windows.Forms.TreeNode treeNode44 = new System.Windows.Forms.TreeNode("１０.１　一般");
+            System.Windows.Forms.TreeNode treeNode45 = new System.Windows.Forms.TreeNode("１０.２　不適合への対応");
+            System.Windows.Forms.TreeNode treeNode46 = new System.Windows.Forms.TreeNode("１０.３　継続的改善");
+            System.Windows.Forms.TreeNode treeNode47 = new System.Windows.Forms.TreeNode("１０改善", new System.Windows.Forms.TreeNode[] {
+            treeNode44,
+            treeNode45,
+            treeNode46});
+            System.Windows.Forms.TreeNode treeNode48 = new System.Windows.Forms.TreeNode("ISO14001", new System.Windows.Forms.TreeNode[] {
+            treeNode2,
+            treeNode3,
+            treeNode4,
+            treeNode5,
+            treeNode10,
+            treeNode14,
+            treeNode21,
+            treeNode29,
+            treeNode37,
+            treeNode43,
+            treeNode47});
+            System.Windows.Forms.TreeNode treeNode49 = new System.Windows.Forms.TreeNode("本社営業所");
+            System.Windows.Forms.TreeNode treeNode50 = new System.Windows.Forms.TreeNode("三郷車庫");
+            System.Windows.Forms.TreeNode treeNode51 = new System.Windows.Forms.TreeNode("中間処理場");
             this.TableLayoutPanelBase = new System.Windows.Forms.TableLayoutPanel();
             this.MenuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ToolStripMenuItemMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -64,10 +161,19 @@
             this.label27 = new System.Windows.Forms.Label();
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
+            this.TableLayoutPanelLeft = new System.Windows.Forms.TableLayoutPanel();
+            this.PanelLeftMiddle = new System.Windows.Forms.Panel();
+            this.TreeView1 = new System.Windows.Forms.TreeView();
+            this.PanelLeftTop = new System.Windows.Forms.Panel();
+            this.LabelIpAddress = new System.Windows.Forms.Label();
+            this.LabelPcName = new System.Windows.Forms.Label();
             this.TableLayoutPanelBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
             this.TableLayoutPanelCenter.SuspendLayout();
+            this.TableLayoutPanelLeft.SuspendLayout();
+            this.PanelLeftMiddle.SuspendLayout();
+            this.PanelLeftTop.SuspendLayout();
             this.SuspendLayout();
             // 
             // TableLayoutPanelBase
@@ -79,6 +185,7 @@
             this.TableLayoutPanelBase.Controls.Add(this.MenuStrip1, 0, 0);
             this.TableLayoutPanelBase.Controls.Add(this.StatusStrip1, 0, 2);
             this.TableLayoutPanelBase.Controls.Add(this.TableLayoutPanelCenter, 1, 1);
+            this.TableLayoutPanelBase.Controls.Add(this.TableLayoutPanelLeft, 0, 1);
             this.TableLayoutPanelBase.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanelBase.Location = new System.Drawing.Point(0, 0);
             this.TableLayoutPanelBase.Name = "TableLayoutPanelBase";
@@ -640,6 +747,214 @@
             this.label29.TabIndex = 33;
             this.label29.Text = "　修了書カードを登録します。";
             // 
+            // TableLayoutPanelLeft
+            // 
+            this.TableLayoutPanelLeft.ColumnCount = 1;
+            this.TableLayoutPanelLeft.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.TableLayoutPanelLeft.Controls.Add(this.PanelLeftMiddle, 0, 1);
+            this.TableLayoutPanelLeft.Controls.Add(this.PanelLeftTop, 0, 0);
+            this.TableLayoutPanelLeft.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TableLayoutPanelLeft.Location = new System.Drawing.Point(3, 27);
+            this.TableLayoutPanelLeft.Name = "TableLayoutPanelLeft";
+            this.TableLayoutPanelLeft.RowCount = 2;
+            this.TableLayoutPanelLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.TableLayoutPanelLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.TableLayoutPanelLeft.Size = new System.Drawing.Size(294, 707);
+            this.TableLayoutPanelLeft.TabIndex = 3;
+            // 
+            // PanelLeftMiddle
+            // 
+            this.PanelLeftMiddle.Controls.Add(this.TreeView1);
+            this.PanelLeftMiddle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelLeftMiddle.Location = new System.Drawing.Point(3, 63);
+            this.PanelLeftMiddle.Name = "PanelLeftMiddle";
+            this.PanelLeftMiddle.Size = new System.Drawing.Size(288, 641);
+            this.PanelLeftMiddle.TabIndex = 0;
+            // 
+            // TreeView1
+            // 
+            this.TreeView1.BackColor = System.Drawing.SystemColors.Control;
+            this.TreeView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TreeView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TreeView1.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TreeView1.Location = new System.Drawing.Point(0, 0);
+            this.TreeView1.Name = "TreeView1";
+            treeNode1.Name = "ノード5";
+            treeNode1.Text = "データベース接続";
+            treeNode2.Name = "NodeISO0000";
+            treeNode2.Text = "　　環境マネジメントマニュアル";
+            treeNode3.Name = "NodeISO0100";
+            treeNode3.NodeFont = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            treeNode3.Text = "１　目的";
+            treeNode4.Name = "NodeISO0200";
+            treeNode4.Text = "２　適用範囲";
+            treeNode5.Name = "NodeISO0300";
+            treeNode5.Text = "３　用語の定義";
+            treeNode6.ForeColor = System.Drawing.Color.Gray;
+            treeNode6.Name = "NodeISO0410";
+            treeNode6.Text = "４.１　外部及び内部の課題";
+            treeNode7.ForeColor = System.Drawing.Color.Gray;
+            treeNode7.Name = "NodeISO0420";
+            treeNode7.Text = "４.２　利害関係者のニーズ及び期待";
+            treeNode8.ForeColor = System.Drawing.Color.Gray;
+            treeNode8.Name = "NodeISO0430";
+            treeNode8.Text = "４.３　環境マネジメントシステムの範囲";
+            treeNode9.ForeColor = System.Drawing.Color.Gray;
+            treeNode9.Name = "NodeISO0440";
+            treeNode9.Text = "４.４　環境マネジメントシステムの概要";
+            treeNode10.Name = "NodeISO0400";
+            treeNode10.Text = "４　当社をとりまく状況の理解";
+            treeNode11.ForeColor = System.Drawing.Color.Gray;
+            treeNode11.Name = "NodeISO0510";
+            treeNode11.Text = "５.１　リーダーシップ及びコミットメント";
+            treeNode12.ForeColor = System.Drawing.Color.Gray;
+            treeNode12.Name = "NodeISO0520";
+            treeNode12.Text = "５.２　環境方針";
+            treeNode13.ForeColor = System.Drawing.Color.Gray;
+            treeNode13.Name = "NodeISO0530";
+            treeNode13.Text = "５.３　役割、責任及び権限";
+            treeNode14.Name = "NodeISO0500";
+            treeNode14.Text = "５　リーダーシップ";
+            treeNode15.ForeColor = System.Drawing.Color.Gray;
+            treeNode15.Name = "NodeISO0611";
+            treeNode15.Text = "６.１.１　リスク及び機会の決定";
+            treeNode16.ForeColor = System.Drawing.Color.Gray;
+            treeNode16.Name = "NodeISO0612";
+            treeNode16.Text = "６.１.２　環境側面";
+            treeNode17.ForeColor = System.Drawing.Color.Gray;
+            treeNode17.Name = "NodeISO0613";
+            treeNode17.Text = "６.１.３　順守義務(法的及びその他の要求事項)";
+            treeNode18.ForeColor = System.Drawing.Color.Gray;
+            treeNode18.Name = "NodeISO0614";
+            treeNode18.Text = "６.１.４　取組みの計画策定";
+            treeNode19.ForeColor = System.Drawing.Color.Gray;
+            treeNode19.Name = "NodeISO0610";
+            treeNode19.Text = "６.１　リスク及び機会への取組み";
+            treeNode20.ForeColor = System.Drawing.Color.Gray;
+            treeNode20.Name = "NodeISO0620";
+            treeNode20.Text = "６.２　環境目標及びプログラム";
+            treeNode21.Name = "NodeISO0600";
+            treeNode21.Text = "６　計画";
+            treeNode22.ForeColor = System.Drawing.Color.Gray;
+            treeNode22.Name = "NodeISO0710";
+            treeNode22.Text = "７.１　資源";
+            treeNode23.Name = "NodeISO0721";
+            treeNode23.Text = "７.２.１　力量(有資格者)";
+            treeNode24.ForeColor = System.Drawing.Color.Gray;
+            treeNode24.Name = "NodeISO0722";
+            treeNode24.Text = "７.２.２　教育訓練";
+            treeNode25.ForeColor = System.Drawing.Color.Gray;
+            treeNode25.Name = "NodeISO0720";
+            treeNode25.Text = "７.２　力量、教育訓練";
+            treeNode26.ForeColor = System.Drawing.Color.Gray;
+            treeNode26.Name = "NodeISO0730";
+            treeNode26.Text = "７.３　認識";
+            treeNode27.ForeColor = System.Drawing.Color.Gray;
+            treeNode27.Name = "NodeISO0740";
+            treeNode27.Text = "７.４　コミュニケーション";
+            treeNode28.ForeColor = System.Drawing.Color.Gray;
+            treeNode28.Name = "NodeISO0750";
+            treeNode28.Text = "７.５　文章管理";
+            treeNode29.Name = "NodeISO0700";
+            treeNode29.Text = "７　支援(サポート)";
+            treeNode30.ForeColor = System.Drawing.Color.Gray;
+            treeNode30.Name = "NodeISO0810";
+            treeNode30.Text = "８.１　運用の計画及び管理";
+            treeNode31.ForeColor = System.Drawing.Color.Gray;
+            treeNode31.Name = "NodeISO0821";
+            treeNode31.Text = "８.２.１　緊急事態の可能性の特定";
+            treeNode32.ForeColor = System.Drawing.Color.Gray;
+            treeNode32.Name = "NodeISO0822";
+            treeNode32.Text = "８.２.２　緊急事態対応手順書の作成";
+            treeNode33.ForeColor = System.Drawing.Color.Gray;
+            treeNode33.Name = "NodeISO0823";
+            treeNode33.Text = "８.２.３　緊急事態対応訓練(対応手順のテスト)";
+            treeNode34.ForeColor = System.Drawing.Color.Gray;
+            treeNode34.Name = "NodeISO0824";
+            treeNode34.Text = "８.２.４　手順書の見直し";
+            treeNode35.ForeColor = System.Drawing.Color.Gray;
+            treeNode35.Name = "NodeISO0825";
+            treeNode35.Text = "８.２.５　取引先を含む利害関係者への情報提供";
+            treeNode36.ForeColor = System.Drawing.Color.Gray;
+            treeNode36.Name = "NodeISO0820";
+            treeNode36.Text = "８.２　緊急事態への準備及び対応";
+            treeNode37.Name = "NodeISO0800";
+            treeNode37.Text = "８　運用";
+            treeNode38.ForeColor = System.Drawing.Color.Gray;
+            treeNode38.Name = "NodeISO0911";
+            treeNode38.Text = "９.１.１　取組みの項目の監視、測定";
+            treeNode39.ForeColor = System.Drawing.Color.Gray;
+            treeNode39.Name = "NodeISO0912";
+            treeNode39.Text = "９.１.２　順守評価(法的及びその他の要求事項)";
+            treeNode40.ForeColor = System.Drawing.Color.Gray;
+            treeNode40.Name = "NodeISO0910";
+            treeNode40.Text = "９.１　監視、測定、分析及び評価";
+            treeNode41.ForeColor = System.Drawing.Color.Gray;
+            treeNode41.Name = "NodeISO0920";
+            treeNode41.Text = "９.２　内部監査";
+            treeNode42.ForeColor = System.Drawing.Color.Gray;
+            treeNode42.Name = "NodeISO0930";
+            treeNode42.Text = "９.３　経営層による見直し(マネジメントレビュー)";
+            treeNode43.Name = "NodeISO0900";
+            treeNode43.Text = "９　パフォーマンス評価";
+            treeNode44.ForeColor = System.Drawing.Color.Gray;
+            treeNode44.Name = "NodeISO1010";
+            treeNode44.Text = "１０.１　一般";
+            treeNode45.ForeColor = System.Drawing.Color.Gray;
+            treeNode45.Name = "NodeISO1020";
+            treeNode45.Text = "１０.２　不適合への対応";
+            treeNode46.ForeColor = System.Drawing.Color.Gray;
+            treeNode46.Name = "NodeISO1030";
+            treeNode46.Text = "１０.３　継続的改善";
+            treeNode47.Name = "NodeISO1000";
+            treeNode47.Text = "１０改善";
+            treeNode48.Name = "ノード11";
+            treeNode48.Text = "ISO14001";
+            treeNode49.Name = "ノード0";
+            treeNode49.Text = "本社営業所";
+            treeNode50.Name = "ノード1";
+            treeNode50.Text = "三郷車庫";
+            treeNode51.Name = "NodeTreatmentPlant";
+            treeNode51.Text = "中間処理場";
+            this.TreeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode48,
+            treeNode49,
+            treeNode50,
+            treeNode51});
+            this.TreeView1.Size = new System.Drawing.Size(288, 641);
+            this.TreeView1.TabIndex = 4;
+            this.TreeView1.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.TreeView1_NodeMouseDoubleClick);
+            // 
+            // PanelLeftTop
+            // 
+            this.PanelLeftTop.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.PanelLeftTop.Controls.Add(this.LabelIpAddress);
+            this.PanelLeftTop.Controls.Add(this.LabelPcName);
+            this.PanelLeftTop.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelLeftTop.Location = new System.Drawing.Point(3, 3);
+            this.PanelLeftTop.Name = "PanelLeftTop";
+            this.PanelLeftTop.Size = new System.Drawing.Size(288, 54);
+            this.PanelLeftTop.TabIndex = 1;
+            // 
+            // LabelIpAddress
+            // 
+            this.LabelIpAddress.AutoSize = true;
+            this.LabelIpAddress.Location = new System.Drawing.Point(8, 28);
+            this.LabelIpAddress.Name = "LabelIpAddress";
+            this.LabelIpAddress.Size = new System.Drawing.Size(71, 15);
+            this.LabelIpAddress.TabIndex = 1;
+            this.LabelIpAddress.Text = "IP-ADDRESS";
+            // 
+            // LabelPcName
+            // 
+            this.LabelPcName.AutoSize = true;
+            this.LabelPcName.Location = new System.Drawing.Point(8, 8);
+            this.LabelPcName.Name = "LabelPcName";
+            this.LabelPcName.Size = new System.Drawing.Size(60, 15);
+            this.LabelPcName.TabIndex = 0;
+            this.LabelPcName.Text = "PC-NAME";
+            // 
             // StartProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -659,6 +974,10 @@
             this.StatusStrip1.PerformLayout();
             this.TableLayoutPanelCenter.ResumeLayout(false);
             this.TableLayoutPanelCenter.PerformLayout();
+            this.TableLayoutPanelLeft.ResumeLayout(false);
+            this.PanelLeftMiddle.ResumeLayout(false);
+            this.PanelLeftTop.ResumeLayout(false);
+            this.PanelLeftTop.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -706,5 +1025,11 @@
         private Label label27;
         private Label label28;
         private Label label29;
+        private TableLayoutPanel TableLayoutPanelLeft;
+        private Panel PanelLeftMiddle;
+        private TreeView TreeView1;
+        private Panel PanelLeftTop;
+        private Label LabelIpAddress;
+        private Label LabelPcName;
     }
 }

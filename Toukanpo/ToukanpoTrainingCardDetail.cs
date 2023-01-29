@@ -88,18 +88,18 @@ namespace Toukanpo {
         /// </summary>
         /// <returns></returns>
         private ToukanpoTrainingCardVo SetToukanpoTrainingCardVo() {
-            ToukanpoTrainingCardVo toukanpoVo = new ToukanpoTrainingCardVo();
-            toukanpoVo.Staff_code = _selectedStaffMasterVo.Staff_code;
-            toukanpoVo.Display_name = _selectedStaffMasterVo.Display_name;
-            toukanpoVo.Company_name = ComboBoxCompanyName.Text;
-            toukanpoVo.Card_name = _selectedStaffMasterVo.Display_name;
-            toukanpoVo.CertificationDate = DateTimeCertificationDate.Value.Date;
-            toukanpoVo.Picture = (byte[]?)new ImageConverter().ConvertTo(PictureBoxCard.Image, typeof(byte[])); // 写真
-            toukanpoVo.Insert_ymd_hms = _selectedToukanpoVo != null ? _selectedToukanpoVo.Insert_ymd_hms : DateTime.Now;
-            toukanpoVo.Update_ymd_hms = DateTime.Now;
-            toukanpoVo.Delete_ymd_hms = _defaultDateTime;
-            toukanpoVo.Delete_flag = false;
-            return toukanpoVo;
+            ToukanpoTrainingCardVo toukanpoTrainingCardVo = new ToukanpoTrainingCardVo();
+            toukanpoTrainingCardVo.Staff_code = _selectedStaffMasterVo.Staff_code;
+            toukanpoTrainingCardVo.Display_name = _selectedStaffMasterVo.Display_name;
+            toukanpoTrainingCardVo.Company_name = ComboBoxCompanyName.Text;
+            toukanpoTrainingCardVo.Card_name = _selectedStaffMasterVo.Display_name;
+            toukanpoTrainingCardVo.CertificationDate = DateTimeCertificationDate.Value.Date;
+            toukanpoTrainingCardVo.Picture = (byte[]?)new ImageConverter().ConvertTo(PictureBoxCard.Image, typeof(byte[])); // 写真
+            toukanpoTrainingCardVo.Insert_ymd_hms = _selectedToukanpoVo != null ? _selectedToukanpoVo.Insert_ymd_hms : DateTime.Now;
+            toukanpoTrainingCardVo.Update_ymd_hms = DateTime.Now;
+            toukanpoTrainingCardVo.Delete_ymd_hms = _defaultDateTime;
+            toukanpoTrainingCardVo.Delete_flag = false;
+            return toukanpoTrainingCardVo;
         }
 
         /// <summary>

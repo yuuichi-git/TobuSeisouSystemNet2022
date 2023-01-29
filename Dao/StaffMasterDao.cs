@@ -487,7 +487,8 @@ namespace Dao {
                                             "update_ymd_hms," +
                                             "delete_ymd_hms," +
                                             "delete_flag " +
-                                     "FROM view_staff_master ";
+                                     "FROM view_staff_master " +
+                                     "ORDER BY name_kana ASC";
             using(var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while(sqlDataReader.Read() == true) {
                     var staffMasterVo = new StaffMasterVo();

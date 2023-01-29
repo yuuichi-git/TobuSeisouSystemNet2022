@@ -17,7 +17,7 @@ namespace Dao {
         /// <param name="staffCode"></param>
         /// <returns></returns>
         public ToukanpoTrainingCardVo SelectOneToukanpoTrainingCard(int staffCode) {
-            var toukanpoVo = new ToukanpoTrainingCardVo();
+            var toukanpoTrainingCardVo = new ToukanpoTrainingCardVo();
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT staff_code," +
                                             "display_name," +
@@ -33,27 +33,27 @@ namespace Dao {
                                      "WHERE staff_code = '" + staffCode + "'";
             using(var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while(sqlDataReader.Read() == true) {
-                    toukanpoVo.Staff_code = (int)sqlDataReader["staff_code"];
-                    toukanpoVo.Display_name = (string)sqlDataReader["display_name"];
-                    toukanpoVo.Company_name = (string)sqlDataReader["company_name"];
-                    toukanpoVo.Card_name = (string)sqlDataReader["card_name"];
-                    toukanpoVo.CertificationDate = (DateTime)sqlDataReader["certification_date"];
-                    toukanpoVo.Picture = (byte[])sqlDataReader["picture"];
-                    toukanpoVo.Insert_ymd_hms = (DateTime)sqlDataReader["insert_ymd_hms"];
-                    toukanpoVo.Update_ymd_hms = (DateTime)sqlDataReader["update_ymd_hms"];
-                    toukanpoVo.Delete_ymd_hms = (DateTime)sqlDataReader["delete_ymd_hms"];
-                    toukanpoVo.Delete_flag = (bool)sqlDataReader["delete_flag"];
+                    toukanpoTrainingCardVo.Staff_code = (int)sqlDataReader["staff_code"];
+                    toukanpoTrainingCardVo.Display_name = (string)sqlDataReader["display_name"];
+                    toukanpoTrainingCardVo.Company_name = (string)sqlDataReader["company_name"];
+                    toukanpoTrainingCardVo.Card_name = (string)sqlDataReader["card_name"];
+                    toukanpoTrainingCardVo.CertificationDate = (DateTime)sqlDataReader["certification_date"];
+                    toukanpoTrainingCardVo.Picture = (byte[])sqlDataReader["picture"];
+                    toukanpoTrainingCardVo.Insert_ymd_hms = (DateTime)sqlDataReader["insert_ymd_hms"];
+                    toukanpoTrainingCardVo.Update_ymd_hms = (DateTime)sqlDataReader["update_ymd_hms"];
+                    toukanpoTrainingCardVo.Delete_ymd_hms = (DateTime)sqlDataReader["delete_ymd_hms"];
+                    toukanpoTrainingCardVo.Delete_flag = (bool)sqlDataReader["delete_flag"];
                 }
             }
-            return toukanpoVo;
+            return toukanpoTrainingCardVo;
         }
 
         /// <summary>
         /// InsertOneToukanpoTrainingCard
         /// </summary>
-        /// <param name="toukanpoVo"></param>
+        /// <param name="toukanpoTrainingCardVo"></param>
         /// <returns></returns>
-        public int InsertOneToukanpoTrainingCard(ToukanpoTrainingCardVo toukanpoVo) {
+        public int InsertOneToukanpoTrainingCard(ToukanpoTrainingCardVo toukanpoTrainingCardVo) {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "INSERT INTO toukanpo_training_card(staff_code," +
                                                                         "display_name," +
@@ -65,11 +65,11 @@ namespace Dao {
                                                                         "update_ymd_hms," +
                                                                         "delete_ymd_hms," +
                                                                         "delete_flag) " +
-                                     "VALUES (" + toukanpoVo.Staff_code + "," +
-                                            "'" + toukanpoVo.Display_name + "'," +
-                                            "'" + toukanpoVo.Company_name + "'," +
-                                            "'" + toukanpoVo.Card_name + "'," +
-                                            "'" + toukanpoVo.CertificationDate + "'," +
+                                     "VALUES (" + toukanpoTrainingCardVo.Staff_code + "," +
+                                            "'" + toukanpoTrainingCardVo.Display_name + "'," +
+                                            "'" + toukanpoTrainingCardVo.Company_name + "'," +
+                                            "'" + toukanpoTrainingCardVo.Card_name + "'," +
+                                            "'" + toukanpoTrainingCardVo.CertificationDate + "'," +
                                             "@pictureCard," +
                                             "'" + DateTime.Now + "'," +
                                             "'" + _defaultDateTime + "'," +
@@ -77,7 +77,7 @@ namespace Dao {
                                             "'false'" +
                                             ");";
             try {
-                sqlCommand.Parameters.Add("@pictureCard", SqlDbType.Image, toukanpoVo.Picture.Length).Value = toukanpoVo.Picture;
+                sqlCommand.Parameters.Add("@pictureCard", SqlDbType.Image, toukanpoTrainingCardVo.Picture.Length).Value = toukanpoTrainingCardVo.Picture;
                 return sqlCommand.ExecuteNonQuery();
             } catch {
                 throw;
@@ -87,20 +87,20 @@ namespace Dao {
         /// <summary>
         /// UpdateOneToukanpoTrainingCard
         /// </summary>
-        /// <param name="toukanpoVo"></param>
+        /// <param name="toukanpoTrainingCardVo"></param>
         /// <returns></returns>
-        public int UpdateOneToukanpoTrainingCard(ToukanpoTrainingCardVo toukanpoVo) {
+        public int UpdateOneToukanpoTrainingCard(ToukanpoTrainingCardVo toukanpoTrainingCardVo) {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "UPDATE toukanpo_training_card " +
-                                     "SET company_name = '" + toukanpoVo.Company_name + "'," +
-                                         "display_name = '" + toukanpoVo.Display_name + "'," +
-                                         "card_name = '" + toukanpoVo.Card_name + "'," +
-                                         "certification_date = '" + toukanpoVo.CertificationDate + "'," +
+                                     "SET company_name = '" + toukanpoTrainingCardVo.Company_name + "'," +
+                                         "display_name = '" + toukanpoTrainingCardVo.Display_name + "'," +
+                                         "card_name = '" + toukanpoTrainingCardVo.Card_name + "'," +
+                                         "certification_date = '" + toukanpoTrainingCardVo.CertificationDate + "'," +
                                          "picture = @pictureCard," +
                                          "update_ymd_hms = '" + DateTime.Now + "' " +
-                                     "WHERE staff_code = " + toukanpoVo.Staff_code;
+                                     "WHERE staff_code = " + toukanpoTrainingCardVo.Staff_code;
             try {
-                sqlCommand.Parameters.Add("@pictureCard", SqlDbType.Image, toukanpoVo.Picture.Length).Value = toukanpoVo.Picture;
+                sqlCommand.Parameters.Add("@pictureCard", SqlDbType.Image, toukanpoTrainingCardVo.Picture.Length).Value = toukanpoTrainingCardVo.Picture;
                 return sqlCommand.ExecuteNonQuery();
             } catch {
                 throw;

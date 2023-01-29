@@ -326,12 +326,12 @@
             // ButtonUpdate
             // 
             this.ButtonUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ButtonUpdate.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ButtonUpdate.Location = new System.Drawing.Point(1670, 8);
+            this.ButtonUpdate.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ButtonUpdate.Location = new System.Drawing.Point(1672, 12);
             this.ButtonUpdate.Name = "ButtonUpdate";
-            this.ButtonUpdate.Size = new System.Drawing.Size(200, 44);
+            this.ButtonUpdate.Size = new System.Drawing.Size(180, 36);
             this.ButtonUpdate.TabIndex = 6;
-            this.ButtonUpdate.Text = "更 新 す る";
+            this.ButtonUpdate.Text = "Update";
             this.ButtonUpdate.UseVisualStyleBackColor = true;
             this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
             // 
