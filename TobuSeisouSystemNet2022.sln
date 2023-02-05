@@ -43,7 +43,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HighWayReport", "HighWayRep
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Toukanpo", "Toukanpo\Toukanpo.csproj", "{50F46F30-028D-4F32-A4C4-4E69A9EA9C7A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Certification", "Certification\Certification.csproj", "{2B863556-B31A-4C11-ACD1-2BB96E5510C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Certification", "Certification\Certification.csproj", "{2B863556-B31A-4C11-ACD1-2BB96E5510C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WardSpreadsheet", "WardSpreadsheet\WardSpreadsheet.csproj", "{73622704-7A67-4358-99CD-0883FD0905C3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -221,6 +223,14 @@ Global
 		{2B863556-B31A-4C11-ACD1-2BB96E5510C1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2B863556-B31A-4C11-ACD1-2BB96E5510C1}.Release|x64.ActiveCfg = Release|Any CPU
 		{2B863556-B31A-4C11-ACD1-2BB96E5510C1}.Release|x64.Build.0 = Release|Any CPU
+		{73622704-7A67-4358-99CD-0883FD0905C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73622704-7A67-4358-99CD-0883FD0905C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73622704-7A67-4358-99CD-0883FD0905C3}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{73622704-7A67-4358-99CD-0883FD0905C3}.Debug|x64.Build.0 = Debug|Any CPU
+		{73622704-7A67-4358-99CD-0883FD0905C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73622704-7A67-4358-99CD-0883FD0905C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73622704-7A67-4358-99CD-0883FD0905C3}.Release|x64.ActiveCfg = Release|Any CPU
+		{73622704-7A67-4358-99CD-0883FD0905C3}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

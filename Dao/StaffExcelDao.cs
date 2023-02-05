@@ -228,6 +228,8 @@ namespace Dao {
         /// <param name="operationDate"></param>
         /// <returns></returns>
         public List<VehicleDispatchDetailVo> SelectAllVehicleDispatchDetailVo(DateTime operationDate) {
+            // 指定月の最終日を算出する
+            int daysInMonth = DateTime.DaysInMonth(operationDate.Year, operationDate.Month);
             List<VehicleDispatchDetailVo> listVehicleDispatchDetailVo = new List<VehicleDispatchDetailVo>();
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT operation_date," +
@@ -237,7 +239,7 @@ namespace Dao {
                                             "operator_code_3," +
                                             "operator_code_4 " +
                                      "FROM vehicle_dispatch_detail " +
-                                     "WHERE operation_date BETWEEN '" + operationDate.ToString("yyyy-MM") + "-01' AND '" + operationDate.ToString("yyyy-MM") + "-30'";
+                                     "WHERE operation_date BETWEEN '" + operationDate.ToString("yyyy-MM") + "-01' AND '" + operationDate.ToString("yyyy-MM") + daysInMonth.ToString("-00") + "'";
             using(var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while(sqlDataReader.Read() == true) {
                     var vehicleDispatchDetailVo = new VehicleDispatchDetailVo();

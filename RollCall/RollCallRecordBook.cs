@@ -17,7 +17,6 @@ namespace RollCall {
         /*
          * Vo
          */
-        private ConnectionVo _connectionVo;
         private List<SetMasterVo> _listSetMasterVo;
         private List<CarMasterVo> _listCarMasterVo;
         private List<StaffMasterVo> _listStaffMasterVo;
@@ -33,7 +32,6 @@ namespace RollCall {
             /*
              * Vo
              */
-            _connectionVo = connectionVo;
             _listSetMasterVo = new SetMasterDao(connectionVo).SelectAllSetMaster();
             _listCarMasterVo = new CarMasterDao(connectionVo).SelectAllCarMaster();
             _listStaffMasterVo = new StaffMasterDao(connectionVo).SelectAllStaffMaster();
@@ -87,100 +85,100 @@ namespace RollCall {
              */
             CultureInfo Japanese = new CultureInfo("ja-JP");
             Japanese.DateTimeFormat.Calendar = new JapaneseCalendar();
-
-            SheetViewList.Cells[1, 1].Text = string.Concat(UcDateTimeJpOperationDate.GetValue().ToString("ggyy年MM月dd日(dddd)", Japanese),
-                                                           "  天候：", _rollCallDetailVo.Weather,
-                                                           "  ", ComboBoxArea.Text);
+            SheetViewList.Cells[1, 1].Text = string.Concat(UcDateTimeJpOperationDate.GetValue().ToString("ggyy年MM月dd日(dddd)", Japanese), "  天候：", _rollCallDetailVo.Weather, "  ", ComboBoxArea.Text);
             /*
              * Rowの処理
              */
             int row = 0;
             _listVehicleDispatchDetailVo = _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue());
-            foreach(var vehicleDispatchDetailVo in _listVehicleDispatchDetailVo.FindAll(x => x.Operation_flag == true &&
-                                                                                             x.Garage_flag == garageFlag)
-                                                                               .OrderBy(x => x.Operator_1_roll_call_ymd_hms)) {
+            foreach(var vehicleDispatchDetailVo in _listVehicleDispatchDetailVo.FindAll(x => x.Operation_flag == true && x.Garage_flag == garageFlag).OrderBy(x => x.Operator_1_roll_call_ymd_hms)) {
                 /*
-                 * 車両が指定されていないものは、点呼記録簿から除外する
+                 * 第五週が休車対象で、第５週になった場合点呼記録簿から除外する
                  */
-                if(vehicleDispatchDetailVo.Car_code > 0) {
-                    // 配車先
-                    SheetViewList.Cells[row + 4, 1].Text = string.Concat(_listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_1,
-                                                                         _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_2);
-                    // 自動車登録番号
-                    SheetViewList.Cells[row + 4, 2].Text = _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Registration_number;
-                    // 運転手
-                    SheetViewList.Cells[row + 4, 3].Text = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Display_name;
-                    // 点呼方法
-                    SheetViewList.Cells[row + 4, 4].Text = "対面";
-                    // 点呼時刻
-                    SheetViewList.Cells[row + 4, 5].Text = vehicleDispatchDetailVo.Operator_1_roll_call_ymd_hms.ToString("H:mm");
-                    // 免許の所持
-                    SheetViewList.Cells[row + 4, 6].Text = "✓";
-                    // 健康状態・睡眠状況
-                    SheetViewList.Cells[row + 4, 7].Text = "✓";
-                    // 日常の点検
-                    SheetViewList.Cells[row + 4, 9].Text = "✓";
-                    // 酒気帯びの有無
-                    SheetViewList.Cells[row + 4, 10].Text = "✓";
-                    // 検知器使用の有無
-                    SheetViewList.Cells[row + 4, 11].Text = "有";
-                    // 指示事項・その他の事項
-                    SheetViewList.Cells[row + 4, 12].Text = string.Concat(_rollCallDetailVo.Instruction1, "\r\n\r\n", _rollCallDetailVo.Instruction2);
-                    // 点呼実施者
-                    if(garageFlag) {
-                        int secondStart = vehicleDispatchDetailVo.Operator_1_roll_call_ymd_hms.Second; // 秒（0～59）
-                        SheetViewList.Cells[row + 4, 13].Text = (secondStart % 2 == 0) ? _rollCallDetailVo.Roll_call_name_1 : _rollCallDetailVo.Roll_call_name_2;
-                    } else {
-                        SheetViewList.Cells[row + 4, 13].Text = _rollCallDetailVo.Roll_call_name_5;
-                    }
+                if(vehicleDispatchDetailVo.Operation_date.Day > 28 && vehicleDispatchDetailVo.Five_lap == false) {
+                } else {
                     /*
-                     * 乗務後点呼
+                     * 車両が指定されていないものは、点呼記録簿から除外する
                      */
-                    if(vehicleDispatchDetailVo.Last_roll_call_flag) {
-                        // 最終搬入先
-                        SheetViewList.Cells[row + 4, 14].Text = vehicleDispatchDetailVo.Last_plant_name;
-                        // 回数
-                        SheetViewList.Cells[row + 4, 15].Text = vehicleDispatchDetailVo.Last_plant_count.ToString();
-                        // 搬入時刻
-                        SheetViewList.Cells[row + 4, 16].Text = vehicleDispatchDetailVo.Last_plant_hm;
-                        // 帰庫時刻
-                        SheetViewList.Cells[row + 4, 17].Text = vehicleDispatchDetailVo.Last_roll_call_hm;
+                    if(vehicleDispatchDetailVo.Car_code > 0) {
+                        // 配車先
+                        SheetViewList.Cells[row + 4, 1].Text = string.Concat(_listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_1,
+                                                                             _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_2);
+                        // 自動車登録番号
+                        SheetViewList.Cells[row + 4, 2].Text = _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Registration_number;
+                        // 運転手
+                        SheetViewList.Cells[row + 4, 3].Text = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Display_name;
                         // 点呼方法
-                        SheetViewList.Cells[row + 4, 18].Text = "対面";
+                        SheetViewList.Cells[row + 4, 4].Text = "対面";
+                        // 点呼時刻
+                        SheetViewList.Cells[row + 4, 5].Text = vehicleDispatchDetailVo.Operator_1_roll_call_ymd_hms.ToString("H:mm");
+                        // 免許の所持
+                        SheetViewList.Cells[row + 4, 6].Text = "✓";
+                        // 健康状態・睡眠状況
+                        SheetViewList.Cells[row + 4, 7].Text = "✓";
+                        // 日常の点検
+                        SheetViewList.Cells[row + 4, 9].Text = "✓";
                         // 酒気帯びの有無
-                        SheetViewList.Cells[row + 4, 19].Text = "✓";
+                        SheetViewList.Cells[row + 4, 10].Text = "✓";
                         // 検知器使用の有無
-                        SheetViewList.Cells[row + 4, 20].Text = "有";
-                        // 自動車、道路及び運行の状況　その他必要な事項
-                        SheetViewList.Cells[row + 4, 21].Text = vehicleDispatchDetailVo.Operator_1_note;
+                        SheetViewList.Cells[row + 4, 11].Text = "有";
+                        // 指示事項・その他の事項
+                        SheetViewList.Cells[row + 4, 12].Text = string.Concat(_rollCallDetailVo.Instruction1, "\r\n\r\n", _rollCallDetailVo.Instruction2);
                         // 点呼実施者
                         if(garageFlag) {
-                            int secondEnd = vehicleDispatchDetailVo.Operator_1_roll_call_ymd_hms.Second; // 秒（0～59）
-                            /*
-                             * 秒の数字によって点呼者を帰る
-                             */
-                            switch(secondEnd.ToString("00").Substring(1, 1)) {
-                                case "0":
-                                case "1":
-                                case "2":
-                                case "3":
-                                case "4":
-                                    SheetViewList.Cells[row + 4, 22].Text = _rollCallDetailVo.Roll_call_name_3;
-                                    break;
-                                case "5":
-                                case "6":
-                                case "7":
-                                case "8":
-                                case "9":
-                                    SheetViewList.Cells[row + 4, 22].Text = _rollCallDetailVo.Roll_call_name_4;
-                                    break;
-                            }
+                            int secondStart = vehicleDispatchDetailVo.Operator_1_roll_call_ymd_hms.Second; // 秒（0～59）
+                            SheetViewList.Cells[row + 4, 13].Text = (secondStart % 2 == 0) ? _rollCallDetailVo.Roll_call_name_1 : _rollCallDetailVo.Roll_call_name_2;
                         } else {
-                            SheetViewList.Cells[row + 4, 22].Text = _rollCallDetailVo.Roll_call_name_5;
+                            SheetViewList.Cells[row + 4, 13].Text = _rollCallDetailVo.Roll_call_name_5;
                         }
+                        /*
+                         * 乗務後点呼
+                         */
+                        if(vehicleDispatchDetailVo.Last_roll_call_flag) {
+                            // 最終搬入先
+                            SheetViewList.Cells[row + 4, 14].Text = vehicleDispatchDetailVo.Last_plant_name;
+                            // 回数
+                            SheetViewList.Cells[row + 4, 15].Text = vehicleDispatchDetailVo.Last_plant_count.ToString();
+                            // 搬入時刻
+                            SheetViewList.Cells[row + 4, 16].Text = vehicleDispatchDetailVo.Last_plant_hm;
+                            // 帰庫時刻
+                            SheetViewList.Cells[row + 4, 17].Text = vehicleDispatchDetailVo.Last_roll_call_hm;
+                            // 点呼方法
+                            SheetViewList.Cells[row + 4, 18].Text = "対面";
+                            // 酒気帯びの有無
+                            SheetViewList.Cells[row + 4, 19].Text = "✓";
+                            // 検知器使用の有無
+                            SheetViewList.Cells[row + 4, 20].Text = "有";
+                            // 自動車、道路及び運行の状況　その他必要な事項
+                            SheetViewList.Cells[row + 4, 21].Text = vehicleDispatchDetailVo.Operator_1_note;
+                            // 点呼実施者
+                            if(garageFlag) {
+                                int secondEnd = vehicleDispatchDetailVo.Operator_1_roll_call_ymd_hms.Second; // 秒（0～59）
+                                /*
+                                 * 秒の数字によって点呼者を帰る
+                                 */
+                                switch(secondEnd.ToString("00").Substring(1, 1)) {
+                                    case "0":
+                                    case "1":
+                                    case "2":
+                                    case "3":
+                                    case "4":
+                                        SheetViewList.Cells[row + 4, 22].Text = _rollCallDetailVo.Roll_call_name_3;
+                                        break;
+                                    case "5":
+                                    case "6":
+                                    case "7":
+                                    case "8":
+                                    case "9":
+                                        SheetViewList.Cells[row + 4, 22].Text = _rollCallDetailVo.Roll_call_name_4;
+                                        break;
+                                }
+                            } else {
+                                SheetViewList.Cells[row + 4, 22].Text = _rollCallDetailVo.Roll_call_name_5;
+                            }
+                        }
+                        row++;
                     }
-
-                    row++;
                 }
             }
         }

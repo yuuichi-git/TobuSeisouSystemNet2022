@@ -28,6 +28,7 @@
     <ProjectReference Include="..\VehicleDispatchSheet\VehicleDispatchSheet.csproj" />
     <ProjectReference Include="..\VehicleDispatch\VehicleDispatch.csproj" />
     <ProjectReference Include="..\Vo\Vo.csproj" />
+    <ProjectReference Include="..\WardSpreadsheet\WardSpreadsheet.csproj" />
   </ItemGroup>
 
   <ItemGroup>
