@@ -1136,24 +1136,24 @@ namespace VehicleDispatch {
                         case 1310101: // ç‘ã“c‚Q
                         case 1310102: // ç‘ã“c‚U
                         case 1310103: // ç‘ã“c†‚P
-                            new SubstitutePaper(_connectionVo, setMasterVo.Set_code).ShowDialog(this);
+                            new SubstitutePaper(_connectionVo, (int)EvacuationSetControlEx.Tag, setMasterVo.Set_code).ShowDialog(this);
                             break;
                         case 1310201: // ’†‰›ƒyƒbƒg‚V
                         case 1310202: // ’†‰›ƒyƒbƒg‚W
-                            new SubstitutePaper(_connectionVo, setMasterVo.Set_code).ShowDialog(this);
+                            new SubstitutePaper(_connectionVo, (int)EvacuationSetControlEx.Tag, setMasterVo.Set_code).ShowDialog(this);
                             break;
                         case 1312101: // ‘«—§‚P‚W
                         case 1312102: // ‘«—§‚Q‚R
                         case 1312103: // ‘«—§‚Q‚S
                         case 1312104: // ‘«—§‚R‚W
                         case 1312105: // ‘«—§•s”R‚S
-                            new SubstitutePaper(_connectionVo, setMasterVo.Set_code).ShowDialog(this);
+                            new SubstitutePaper(_connectionVo, (int)EvacuationSetControlEx.Tag, setMasterVo.Set_code).ShowDialog(this);
                             break;
                         case 1312204: // Š‹ü‚P‚P
                         case 1312201: // Š‹ü‚R‚R
                         case 1312202: // Š‹ü‚T‚T
                         case 1312203: // ¬Šâ‚S
-                            new SubstitutePaper(_connectionVo, setMasterVo.Set_code).ShowDialog(this);
+                            new SubstitutePaper(_connectionVo, (int)EvacuationSetControlEx.Tag, setMasterVo.Set_code).ShowDialog(this);
                             break;
                         default:
                             MessageBox.Show("‘ãÔ‘ã”Ô‚ÌFAX‚ğì¬‰æ–Ê‚Íì¬’†‚Å‚·B’ñˆÄ‚ğó•t‚Ä‚¢‚Ü‚·B", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -37,7 +37,7 @@ namespace RollCall {
             /*
              * DBÇ©ÇÁì«çûÇÒÇ≈ControlÇ÷ì¸ÇÍÇÈ
              */
-            _vehicleDispatchDetailVo = _vehicleDispatchDetailDao.SelectOneVehicleDispatchDetail(operationDate.Date, ((SetMasterVo)setLabelEx.Tag).Set_code);
+            _vehicleDispatchDetailVo = _vehicleDispatchDetailDao.SelectOneVehicleDispatchDetail(operationDate.Date, (int)setControlEx.Tag + 1);
             DateTimePickerFarstRollCallTime.Text = _vehicleDispatchDetailVo.Operator_1_roll_call_ymd_hms.ToString("HH:mm:ss");
             NumericLastPlantCount.Value = _vehicleDispatchDetailVo.Last_plant_count;
             ComboBoxLastPlantName.Text = _vehicleDispatchDetailVo.Last_plant_name;

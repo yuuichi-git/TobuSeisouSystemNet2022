@@ -78,11 +78,13 @@ namespace Dao {
 
         /// <summary>
         /// SelectOneVehicleDispatchDetail
+        /// 代車・代番
+        /// 帰庫点呼記録入力
         /// </summary>
         /// <param name="operationDate"></param>
-        /// <param name="setCode"></param>
+        /// <param name="cellNumber"></param>
         /// <returns></returns>
-        public VehicleDispatchDetailVo SelectOneVehicleDispatchDetail(DateTime operationDate, int sellNumber) {
+        public VehicleDispatchDetailVo SelectOneVehicleDispatchDetail(DateTime operationDate, int cellNumber) {
             var vehicleDispatchDetailVo = new VehicleDispatchDetailVo();
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT cell_number," +
@@ -134,7 +136,7 @@ namespace Dao {
                                             "delete_ymd_hms," +
                                             "delete_flag " +
                                      "FROM vehicle_dispatch_detail " +
-                                     "WHERE operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "' AND cell_number = " + setCode;
+                                     "WHERE operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "' AND cell_number = " + cellNumber;
             using(var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while(sqlDataReader.Read() == true) {
                     vehicleDispatchDetailVo.Cell_number = _defaultValue.GetDefaultValue<int>(sqlDataReader["cell_number"]);

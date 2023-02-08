@@ -52,6 +52,12 @@ namespace Dao {
             return listWardChiyodaVo;
         }
 
+        /// <summary>
+        /// SelectGroupByChiyodaVehicleDispatchDetail
+        /// </summary>
+        /// <param name="operationDate1"></param>
+        /// <param name="operationDate2"></param>
+        /// <returns></returns>
         public List<WardChiyodaVo2> SelectGroupByChiyodaVehicleDispatchDetail(DateTime operationDate1, DateTime operationDate2) {
             List<WardChiyodaVo2> listWardChiyodaVo2 = new List<WardChiyodaVo2>();
             WardChiyodaVo2 wardChiyodaVo2;

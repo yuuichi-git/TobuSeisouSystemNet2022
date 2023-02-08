@@ -67,8 +67,9 @@ namespace Substitute {
         /// コンストラクター
         /// </summary>
         /// <param name="connectionVo"></param>
+        /// <param name="cellNumber"></param>
         /// <param name="setCode"></param>
-        public SubstitutePaper(ConnectionVo connectionVo, int setCode) {
+        public SubstitutePaper(ConnectionVo connectionVo, int cellNumber, int setCode) {
             _connectionVo = connectionVo;
             /*
              * Dao
@@ -79,7 +80,7 @@ namespace Substitute {
             /*
              * Vo
              */
-            _vehicleDispatchDetailVo = _vehicleDispatchDetailDao.SelectOneVehicleDispatchDetail(DateTime.Now.Date, setCode);
+            _vehicleDispatchDetailVo = _vehicleDispatchDetailDao.SelectOneVehicleDispatchDetail(DateTime.Now.Date, cellNumber + 1);
 
             /*
              * コントロール初期化
