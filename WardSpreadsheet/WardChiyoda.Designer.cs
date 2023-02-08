@@ -30,6 +30,8 @@
             this.ToolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.PanelUp = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.DateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.DateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.ButtonUpdate = new System.Windows.Forms.Button();
@@ -39,9 +41,9 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.PanelMiddle = new System.Windows.Forms.Panel();
-            this.SpreadCount = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, ((object)(resources.GetObject("PanelMiddle.Controls"))));
+            this.SpreadCount = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("resource1"));
             this.SheetViewAggregate = this.SpreadCount.GetSheet(0);
-            this.SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, ((object)(resources.GetObject("PanelMiddle.Controls1"))));
+            this.SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("resource2"));
             this.SheetViewList = this.SpreadList.GetSheet(0);
             this.TableLayoutPanelBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
@@ -56,7 +58,6 @@
             // 
             this.TableLayoutPanelBase.ColumnCount = 1;
             this.TableLayoutPanelBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanelBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TableLayoutPanelBase.Controls.Add(this.MenuStrip1, 0, 0);
             this.TableLayoutPanelBase.Controls.Add(this.PanelUp, 0, 1);
             this.TableLayoutPanelBase.Controls.Add(this.StatusStrip1, 0, 3);
@@ -66,10 +67,10 @@
             this.TableLayoutPanelBase.Name = "TableLayoutPanelBase";
             this.TableLayoutPanelBase.RowCount = 4;
             this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
+            this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 84F));
             this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.TableLayoutPanelBase.Size = new System.Drawing.Size(833, 745);
+            this.TableLayoutPanelBase.Size = new System.Drawing.Size(833, 786);
             this.TableLayoutPanelBase.TabIndex = 0;
             // 
             // MenuStrip1
@@ -106,6 +107,8 @@
             // 
             // PanelUp
             // 
+            this.PanelUp.Controls.Add(this.label4);
+            this.PanelUp.Controls.Add(this.label3);
             this.PanelUp.Controls.Add(this.DateTimePicker2);
             this.PanelUp.Controls.Add(this.DateTimePicker1);
             this.PanelUp.Controls.Add(this.ButtonUpdate);
@@ -114,8 +117,30 @@
             this.PanelUp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelUp.Location = new System.Drawing.Point(3, 27);
             this.PanelUp.Name = "PanelUp";
-            this.PanelUp.Size = new System.Drawing.Size(827, 54);
+            this.PanelUp.Size = new System.Drawing.Size(827, 78);
             this.PanelUp.TabIndex = 1;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.Color.Blue;
+            this.label4.Location = new System.Drawing.Point(500, 56);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(156, 20);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "期間内の従事者集計表";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.Color.Blue;
+            this.label3.Location = new System.Drawing.Point(8, 56);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(156, 20);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "期間内の従事者一覧表";
             // 
             // DateTimePicker2
             // 
@@ -141,7 +166,7 @@
             // 
             this.ButtonUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ButtonUpdate.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ButtonUpdate.Location = new System.Drawing.Point(592, 8);
+            this.ButtonUpdate.Location = new System.Drawing.Point(592, 12);
             this.ButtonUpdate.Name = "ButtonUpdate";
             this.ButtonUpdate.Size = new System.Drawing.Size(180, 36);
             this.ButtonUpdate.TabIndex = 7;
@@ -172,7 +197,7 @@
             this.StatusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1,
             this.ToolStripStatusLabelStatus});
-            this.StatusStrip1.Location = new System.Drawing.Point(0, 723);
+            this.StatusStrip1.Location = new System.Drawing.Point(0, 764);
             this.StatusStrip1.Name = "StatusStrip1";
             this.StatusStrip1.Size = new System.Drawing.Size(833, 22);
             this.StatusStrip1.SizingGrip = false;
@@ -196,9 +221,9 @@
             this.PanelMiddle.Controls.Add(this.SpreadCount);
             this.PanelMiddle.Controls.Add(this.SpreadList);
             this.PanelMiddle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelMiddle.Location = new System.Drawing.Point(3, 87);
+            this.PanelMiddle.Location = new System.Drawing.Point(3, 111);
             this.PanelMiddle.Name = "PanelMiddle";
-            this.PanelMiddle.Size = new System.Drawing.Size(827, 631);
+            this.PanelMiddle.Size = new System.Drawing.Size(827, 648);
             this.PanelMiddle.TabIndex = 3;
             // 
             // SpreadCount
@@ -223,7 +248,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(833, 745);
+            this.ClientSize = new System.Drawing.Size(833, 786);
             this.Controls.Add(this.TableLayoutPanelBase);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.MenuStrip1;
@@ -267,7 +292,9 @@
         private Panel PanelMiddle;
         private FarPoint.Win.Spread.FpSpread SpreadCount;
         private ToolStripMenuItem ToolStripMenuItemExit;
-        private FarPoint.Win.Spread.SheetView SheetViewAggregate;
         private FarPoint.Win.Spread.SheetView SheetViewList;
+        private FarPoint.Win.Spread.SheetView SheetViewAggregate;
+        private Label label4;
+        private Label label3;
     }
 }

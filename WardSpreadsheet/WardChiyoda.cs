@@ -37,6 +37,7 @@ namespace WardSpreadsheet {
             DateTimePicker2.Value = DateTime.Now;
             InitializeSheetViewList(SheetViewList);
             InitializeSheetViewCount(SheetViewAggregate);
+            ToolStripStatusLabelStatus.Text = string.Empty;
         }
 
         /// <summary>
@@ -98,7 +99,6 @@ namespace WardSpreadsheet {
             SpreadList.SetViewportTopRow(0, sheetViewListTopRow);
             // Spread äàê´âª
             SpreadList.ResumeLayout();
-            ToolStripStatusLabelStatus.Text = string.Concat(" ", i, " åè");
         }
 
         /// <summary>
