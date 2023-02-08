@@ -47,6 +47,7 @@
             this.CheckBoxNoteBook = new System.Windows.Forms.CheckBox();
             this.CheckBoxFullTimeJob = new System.Windows.Forms.CheckBox();
             this.GroupBox1 = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.CheckBoxJiunrou = new System.Windows.Forms.CheckBox();
             this.CheckBoxSinunten = new System.Windows.Forms.CheckBox();
             this.CheckBoxPartTimeJob1 = new System.Windows.Forms.CheckBox();
@@ -74,7 +75,6 @@
             this.tabPage9 = new System.Windows.Forms.TabPage();
             this.tabPage10 = new System.Windows.Forms.TabPage();
             this.tabPage11 = new System.Windows.Forms.TabPage();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.TableLayoutPanelExBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.PanelUp.SuspendLayout();
@@ -343,6 +343,19 @@
             this.GroupBox1.TabIndex = 1;
             this.GroupBox1.TabStop = false;
             this.GroupBox1.Text = "役職又は所属(第一条件)";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Checked = true;
+            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBox1.Location = new System.Drawing.Point(184, 16);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(50, 19);
+            this.checkBox1.TabIndex = 5;
+            this.checkBox1.Tag = "13";
+            this.checkBox1.Text = "派遣";
+            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // CheckBoxJiunrou
             // 
@@ -627,19 +640,6 @@
             this.tabPage11.Tag = "ワ";
             this.tabPage11.Text = "わ行";
             this.tabPage11.UseVisualStyleBackColor = true;
-            // 
-            // checkBox1
-            // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(184, 16);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(50, 19);
-            this.checkBox1.TabIndex = 5;
-            this.checkBox1.Tag = "13";
-            this.checkBox1.Text = "派遣";
-            this.checkBox1.UseVisualStyleBackColor = true;
             // 
             // StaffList
             // 

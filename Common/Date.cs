@@ -10,7 +10,7 @@
         public int GetStaffAge(DateTime dateTime) {
             int age = _todayDate.Year - dateTime.Year;
             //誕生日がまだ来ていなければ、1引く
-            if (_todayDate.Month < dateTime.Month || (_todayDate.Month == dateTime.Month && _todayDate.Day < dateTime.Day)) {
+            if(_todayDate.Month < dateTime.Month || (_todayDate.Month == dateTime.Month && _todayDate.Day < dateTime.Day)) {
                 age--;
             }
             return age;
@@ -57,3 +57,4 @@
         }
     }
 }
+
