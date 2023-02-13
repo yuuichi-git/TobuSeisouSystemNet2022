@@ -45,31 +45,31 @@ namespace VehicleDispatchSheet {
         /// <summary>
         /// 配車先の別名
         /// </summary>
-        private Dictionary<int, string> dictionaryWordCode = new Dictionary<int, string> { { 13101, "千代田区" },
-                                                                                           { 13102, "中央区" },
-                                                                                           { 13103, "港区" },
-                                                                                           { 13104, "新宿区" },
-                                                                                           { 13105, "文京区" },
-                                                                                           { 13106, "台東区" },
-                                                                                           { 13107, "墨田区" },
-                                                                                           { 13108, "江東区" },
-                                                                                           { 13109, "品川区" },
-                                                                                           { 13110, "目黒区" },
-                                                                                           { 13111, "大田区" },
-                                                                                           { 13112, "世田谷区" },
-                                                                                           { 13113, "渋谷区" },
-                                                                                           { 13114, "中野区" },
-                                                                                           { 13115, "杉並区" },
-                                                                                           { 13116, "豊島区" },
-                                                                                           { 13117, "北区" },
-                                                                                           { 13118, "荒川区" },
-                                                                                           { 13119, "板橋区" },
-                                                                                           { 13120, "練馬区" },
-                                                                                           { 13121, "足立区" },
-                                                                                           { 13122, "葛飾区" },
-                                                                                           { 13123, "江戸川区" } };
-        private Dictionary<int, string> dictionaryBelongs = new Dictionary<int, string> { { 10, "" }, { 11, "" }, { 12, "バ" }, { 13, "派" }, { 20, "新" }, { 21, "自" } };
-        private Dictionary<int, string> dictionaryOccupation = new Dictionary<int, string> { { 10, "" }, { 11, "作" }, { 99, "" } };
+        private readonly Dictionary<int, string> dictionaryWordCode = new Dictionary<int, string> { { 13101, "千代田区" },
+                                                                                                    { 13102, "中央区" },
+                                                                                                    { 13103, "港区" },
+                                                                                                    { 13104, "新宿区" },
+                                                                                                    { 13105, "文京区" },
+                                                                                                    { 13106, "台東区" },
+                                                                                                    { 13107, "墨田区" },
+                                                                                                    { 13108, "江東区" },
+                                                                                                    { 13109, "品川区" },
+                                                                                                    { 13110, "目黒区" },
+                                                                                                    { 13111, "大田区" },
+                                                                                                    { 13112, "世田谷区" },
+                                                                                                    { 13113, "渋谷区" },
+                                                                                                    { 13114, "中野区" },
+                                                                                                    { 13115, "杉並区" },
+                                                                                                    { 13116, "豊島区" },
+                                                                                                    { 13117, "北区" },
+                                                                                                    { 13118, "荒川区" },
+                                                                                                    { 13119, "板橋区" },
+                                                                                                    { 13120, "練馬区" },
+                                                                                                    { 13121, "足立区" },
+                                                                                                    { 13122, "葛飾区" },
+                                                                                                    { 13123, "江戸川区" } };
+        private readonly Dictionary<int, string> dictionaryBelongs = new Dictionary<int, string> { { 10, "" }, { 11, "" }, { 12, "バ" }, { 13, "派" }, { 20, "新" }, { 21, "自" } };
+        private readonly Dictionary<int, string> dictionaryOccupation = new Dictionary<int, string> { { 10, "" }, { 11, "作" }, { 99, "" } };
 
         /// <summary>
         /// コンストラクター
@@ -179,7 +179,6 @@ namespace VehicleDispatchSheet {
                 _rollCallDetailVo.Weather = ComboBoxWEATHER.Text;
                 _rollCallDetailDao.InsertOneRollCallDetail(_rollCallDetailVo);
             }
-
             ToolStripStatusLabelPosition.Text = "roll_call_detailを更新しました。";
 
             EntryCellPosition? entryCellPosition;
@@ -1075,6 +1074,9 @@ namespace VehicleDispatchSheet {
                             break;
                     }
                 } else {
+                    /*
+                     * 配車先が区契の場合、dictionaryWordCodeを参照する
+                     */
                     setName1 = dictionaryWordCode[_listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Word_code];
                     setName2 = _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_2;
                 }
@@ -1105,7 +1107,6 @@ namespace VehicleDispatchSheet {
                         SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 1].Text = setName2;
                         break;
                 }
-
             }
         }
 
@@ -1117,7 +1118,6 @@ namespace VehicleDispatchSheet {
         private void CreateCarRow(EntryCellPosition entryCellPosition, VehicleDispatchDetailVo vehicleDispatchDetailVo) {
             string doorNumberHONBAN;
             string registrationNumber;
-            string doorNumberDAIBAN;
             /*
              * 組がセットされていなければ何もしない
              */
@@ -1149,7 +1149,7 @@ namespace VehicleDispatchSheet {
         /// <param name="vehicleDispatchDetailVo"></param>
         private void CreateOperator1Row(EntryCellPosition entryCellPosition, VehicleDispatchDetailVo vehicleDispatchDetailVo) {
             RichText displayName; // 表示名
-            string occupation; // 所属
+            string belongs; // 所属
             string garage; // 出庫地
             System.Drawing.Color _backColor = System.Drawing.Color.White; // セルの背景色
             /*
@@ -1157,8 +1157,8 @@ namespace VehicleDispatchSheet {
              */
             if(vehicleDispatchDetailVo.Set_code > 0 && vehicleDispatchDetailVo.Operator_code_1 > 0) {
                 displayName = new RichText(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Display_name);
-                occupation = dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Belongs];
-                switch(occupation) {
+                belongs = dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Belongs];
+                switch(belongs) {
                     case "バ":
                         _backColor = System.Drawing.Color.Wheat;
                         break;
@@ -1183,7 +1183,7 @@ namespace VehicleDispatchSheet {
                  * 所属
                  */
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 9].Font = new System.Drawing.Font("Yu Gothic UI", 9);
-                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 9].Text = occupation;
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 9].Text = belongs;
                 /*
                  * 出庫地
                  */
@@ -1260,7 +1260,7 @@ namespace VehicleDispatchSheet {
         /// <param name="entryCellPosition"></param>
         /// <param name="vehicleDispatchDetailVo"></param>
         private void CreateOperator2Row(EntryCellPosition entryCellPosition, VehicleDispatchDetailVo vehicleDispatchDetailVo) {
-            string occupation; // 所属
+            string belongs; // 所属
             string garage; // 出庫地
             System.Drawing.Color _backColor = System.Drawing.Color.White; // セルの背景色
             /*
@@ -1287,9 +1287,9 @@ namespace VehicleDispatchSheet {
                         break;
                 }
 
-                occupation = string.Concat(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Belongs],
-                                           dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Occupation]);
-                switch(occupation) {
+                belongs = string.Concat(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Belongs],
+                                        dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Occupation]);
+                switch(belongs) {
                     case "バ":
                         _backColor = System.Drawing.Color.Wheat;
                         break;
@@ -1314,7 +1314,7 @@ namespace VehicleDispatchSheet {
                  * 所属
                  */
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 12].Font = new System.Drawing.Font("Yu Gothic UI", 9);
-                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 12].Text = occupation;
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 12].Text = belongs;
                 /*
                  * 出庫地
                  */
@@ -1330,16 +1330,15 @@ namespace VehicleDispatchSheet {
         /// <param name="entryCellPosition"></param>
         /// <param name="vehicleDispatchDetailVo"></param>
         private void CreateOperator3Row(EntryCellPosition entryCellPosition, VehicleDispatchDetailVo vehicleDispatchDetailVo) {
-            string occupation; // 所属
-            string garage; // 出庫地
+            string belongs; // 所属
             System.Drawing.Color _backColor = System.Drawing.Color.White; // セルの背景色
             /*
              * 組がセットされていなければ何もしない
              */
             if(vehicleDispatchDetailVo.Set_code > 0 && vehicleDispatchDetailVo.Operator_code_3 > 0) {
-                occupation = string.Concat(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Belongs],
-                                           dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Occupation]);
-                switch(occupation) {
+                belongs = string.Concat(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Belongs],
+                                        dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Occupation]);
+                switch(belongs) {
                     case "バ":
                         _backColor = System.Drawing.Color.Wheat;
                         break;
@@ -1364,7 +1363,7 @@ namespace VehicleDispatchSheet {
                  * 所属
                  */
                 SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 12].Font = new System.Drawing.Font("Yu Gothic UI", 9);
-                SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 12].Text = occupation;
+                SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 12].Text = belongs;
                 /*
                  * 出庫地
                  */
@@ -1380,16 +1379,15 @@ namespace VehicleDispatchSheet {
         /// <param name="entryCellPosition"></param>
         /// <param name="vehicleDispatchDetailVo"></param>
         private void CreateOperator4Row(EntryCellPosition entryCellPosition, VehicleDispatchDetailVo vehicleDispatchDetailVo) {
-            string occupation; // 所属
-            string garage; // 出庫地
+            string belongs; // 所属
             System.Drawing.Color _backColor = System.Drawing.Color.White; // セルの背景色
             /*
              * 組がセットされていなければ何もしない
              */
             if(vehicleDispatchDetailVo.Set_code > 0 && vehicleDispatchDetailVo.Operator_code_4 > 0) {
-                occupation = string.Concat(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4).Belongs],
-                                           dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4).Occupation]);
-                switch(occupation) {
+                belongs = string.Concat(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4).Belongs],
+                                        dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4).Occupation]);
+                switch(belongs) {
                     case "バ":
                         _backColor = System.Drawing.Color.Wheat;
                         break;
@@ -1414,7 +1412,7 @@ namespace VehicleDispatchSheet {
                  * 所属
                  */
                 SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 9].Font = new System.Drawing.Font("Yu Gothic UI", 9);
-                SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 9].Text = occupation;
+                SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 9].Text = belongs;
                 /*
                  * 出庫地
                  */
@@ -1432,20 +1430,27 @@ namespace VehicleDispatchSheet {
             string rtfText = "";
             string displayName;
             switch(staffMasterVo.Belongs) {
-                case 10:
-                case 11:
+                case 10: // 役員
+                case 11: // 社員
                     rtfText = staffMasterVo.Display_name;
                     break;
-                case 12:
-                case 13:
-                case 20:
-                case 21:
+                case 12: // アルバイト
+                case 13: // 派遣
+                case 20: // 新運転
+                case 21: // 自運労
                     /*
                      * ここで指定した配車先の作業員には”作業員”は付けないようにする処理
                      */
                     switch(vehicleDispatchDetailVo.Set_code) {
                         case 1312118: // 浄化槽１
                         case 1312123: // 浄化槽２
+                        case 1312115: // ルート１（事業用）
+                        case 1312124: // ルート２（事業用）
+                        case 1312116: // 廃棄物１（事業用）
+                        case 1312125: // 廃棄物２（事業用）
+                        case 1312122: // 新井清掃
+                        case 1312111: // 整備本社
+                        case 1312112: // 整備三郷
                             rtfText = string.Concat("", staffMasterVo.Display_name);
                             break;
                         default:
@@ -1454,7 +1459,9 @@ namespace VehicleDispatchSheet {
                              */
                             switch(staffMasterVo.Staff_code) {
                                 case 20675: // 深井翔
+                                case 22093: // 佐藤貴志
                                 case 20630: // 大橋祐哉
+                                case 22038: // 髙﨑慶藏
                                     rtfText = string.Concat("", staffMasterVo.Display_name);
                                     break;
                                 default:
@@ -1477,41 +1484,6 @@ namespace VehicleDispatchSheet {
                     break;
             }
             return rtfText;
-        }
-
-        /// <summary>
-        /// EntryCellPosition
-        /// </summary>
-        private class EntryCellPosition {
-            int _row;
-            int _col;
-            int _remainingRows;
-
-            public EntryCellPosition() {
-                _row = 0;
-                _col = 0;
-            }
-            /// <summary>
-            /// 挿入可能な位置を保持
-            /// </summary>
-            public int Row {
-                get => _row;
-                set => _row = value;
-            }
-            /// <summary>
-            /// 挿入可能な位置を保持
-            /// </summary>
-            public int Col {
-                get => _col;
-                set => _col = value;
-            }
-            /// <summary>
-            /// 残りの行数
-            /// </summary>
-            public int RemainingRows {
-                get => _remainingRows;
-                set => _remainingRows = value;
-            }
         }
 
         /// <summary>
@@ -1594,6 +1566,41 @@ namespace VehicleDispatchSheet {
                 case DialogResult.Cancel:
                     e.Cancel = true;
                     break;
+            }
+        }
+
+        /// <summary>
+        /// EntryCellPosition
+        /// </summary>
+        private class EntryCellPosition {
+            int _row;
+            int _col;
+            int _remainingRows;
+
+            public EntryCellPosition() {
+                _row = 0;
+                _col = 0;
+            }
+            /// <summary>
+            /// 挿入可能な位置を保持
+            /// </summary>
+            public int Row {
+                get => _row;
+                set => _row = value;
+            }
+            /// <summary>
+            /// 挿入可能な位置を保持
+            /// </summary>
+            public int Col {
+                get => _col;
+                set => _col = value;
+            }
+            /// <summary>
+            /// 残りの行数
+            /// </summary>
+            public int RemainingRows {
+                get => _remainingRows;
+                set => _remainingRows = value;
             }
         }
     }

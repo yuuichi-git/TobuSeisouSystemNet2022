@@ -1,11 +1,16 @@
-﻿using Common;
+﻿using System.Data.SqlClient;
+
+using Common;
 
 using Vo;
 
 namespace Dao {
     public class VehicleDispatchDetailDao {
-        private ConnectionVo _connectionVo;
         private readonly DefaultValue _defaultValue = new();
+        /*
+         * Vo
+         */
+        private readonly ConnectionVo _connectionVo;
 
         /// <summary>
         /// コンストラクタ
@@ -21,7 +26,7 @@ namespace Dao {
         /// </summary>
         /// <returns></returns>
         public bool CheckVehicleDispatchDetail(DateTime operationDate) {
-            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT TOP 1 * " +
                                      "FROM vehicle_dispatch_detail " +
                                      "WHERE operation_date = '" + operationDate + "'";
@@ -36,27 +41,35 @@ namespace Dao {
         /// <param name="dayOfWeek"></param>
         /// <returns></returns>
         public List<VehicleDispatchDetailVo> SelectVehicleDispatch(string dayOfWeek) {
-            var listVehicleDispatchDetailVo = new List<VehicleDispatchDetailVo>();
-            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            List<VehicleDispatchDetailVo> listVehicleDispatchDetailVo = new List<VehicleDispatchDetailVo>();
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT vehicle_dispatch_head.cell_number," +
                                             "vehicle_dispatch_head.garage_flag," +
                                             "vehicle_dispatch_head.five_lap," +
                                             "vehicle_dispatch_head.move_flag," +
-                                            "vehicle_dispatch_body_office.day_of_week," +
+                                            "vehicle_dispatch_body_office.day_of_week," + // vehicle_dispatch_body_officeから
                                             "vehicle_dispatch_head.set_code," +
-                                            "vehicle_dispatch_body_office.car_code," + // vehicle_dispatch_body_officeのカラムを使用する
+                                            "vehicle_dispatch_body_office.car_code," +  // vehicle_dispatch_body_officeから
                                             "vehicle_dispatch_head.number_of_people," +
-                                            "vehicle_dispatch_body_office.operator_code_1," +
-                                            "vehicle_dispatch_body_office.operator_code_2," +
-                                            "vehicle_dispatch_body_office.operator_code_3," +
-                                            "vehicle_dispatch_body_office.operator_code_4," +
-                                            "vehicle_dispatch_body_office.note " +
-                                     "FROM vehicle_dispatch_head " +
-                                     "LEFT OUTER JOIN vehicle_dispatch_body_office ON vehicle_dispatch_head.cell_number = vehicle_dispatch_body_office.cell_number " +
-                                                 "AND vehicle_dispatch_body_office.day_of_week = '" + dayOfWeek + "'";
+                                            "vehicle_dispatch_body_office.operator_code_1," + // vehicle_dispatch_body_officeから
+                                            "staff_master_1.occupation AS operator_1_occupation," +
+                                            "vehicle_dispatch_body_office.operator_code_2," +  // vehicle_dispatch_body_officeから
+                                            "staff_master_2.occupation AS operator_2_occupation," +
+                                            "vehicle_dispatch_body_office.operator_code_3," +  // vehicle_dispatch_body_officeから
+                                            "staff_master_3.occupation AS operator_3_occupation," +
+                                            "vehicle_dispatch_body_office.operator_code_4," +  // vehicle_dispatch_body_officeから
+                                            "staff_master_4.occupation AS operator_4_occupation," +
+                                            "vehicle_dispatch_body_office.note " +  // vehicle_dispatch_body_officeから
+                                      "FROM vehicle_dispatch_head " +
+                                      "LEFT JOIN vehicle_dispatch_body_office ON vehicle_dispatch_head.cell_number = vehicle_dispatch_body_office.cell_number " +
+                                            "AND vehicle_dispatch_body_office.day_of_week = '" + dayOfWeek + "' " +
+                                      "LEFT OUTER JOIN staff_master AS staff_master_1 ON vehicle_dispatch_body_office.operator_code_1 = staff_master_1.staff_code " +
+                                      "LEFT OUTER JOIN staff_master AS staff_master_2 ON vehicle_dispatch_body_office.operator_code_2 = staff_master_2.staff_code " +
+                                      "LEFT OUTER JOIN staff_master AS staff_master_3 ON vehicle_dispatch_body_office.operator_code_3 = staff_master_3.staff_code " +
+                                      "LEFT OUTER JOIN staff_master AS staff_master_4 ON vehicle_dispatch_body_office.operator_code_4 = staff_master_4.staff_code";
             using(var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while(sqlDataReader.Read() == true) {
-                    var vehicleDispatchDetailVo = new VehicleDispatchDetailVo();
+                    VehicleDispatchDetailVo vehicleDispatchDetailVo = new VehicleDispatchDetailVo();
                     vehicleDispatchDetailVo.Cell_number = _defaultValue.GetDefaultValue<int>(sqlDataReader["cell_number"]);
                     vehicleDispatchDetailVo.Garage_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["garage_flag"]);
                     vehicleDispatchDetailVo.Five_lap = _defaultValue.GetDefaultValue<bool>(sqlDataReader["five_lap"]);
@@ -66,9 +79,13 @@ namespace Dao {
                     vehicleDispatchDetailVo.Car_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["car_code"]);
                     vehicleDispatchDetailVo.Number_of_people = _defaultValue.GetDefaultValue<int>(sqlDataReader["number_of_people"]);
                     vehicleDispatchDetailVo.Operator_code_1 = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_code_1"]);
+                    vehicleDispatchDetailVo.Operator_1_occupation = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_1_occupation"]);
                     vehicleDispatchDetailVo.Operator_code_2 = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_code_2"]);
+                    vehicleDispatchDetailVo.Operator_2_occupation = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_2_occupation"]);
                     vehicleDispatchDetailVo.Operator_code_3 = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_code_3"]);
+                    vehicleDispatchDetailVo.Operator_3_occupation = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_3_occupation"]);
                     vehicleDispatchDetailVo.Operator_code_4 = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_code_4"]);
+                    vehicleDispatchDetailVo.Operator_4_occupation = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_4_occupation"]);
                     vehicleDispatchDetailVo.Set_note = _defaultValue.GetDefaultValue<string>(sqlDataReader["note"]);
                     listVehicleDispatchDetailVo.Add(vehicleDispatchDetailVo);
                 }
@@ -78,65 +95,71 @@ namespace Dao {
 
         /// <summary>
         /// SelectOneVehicleDispatchDetail
-        /// 代車・代番
-        /// 帰庫点呼記録入力
         /// </summary>
         /// <param name="operationDate"></param>
         /// <param name="cellNumber"></param>
         /// <returns></returns>
         public VehicleDispatchDetailVo SelectOneVehicleDispatchDetail(DateTime operationDate, int cellNumber) {
-            var vehicleDispatchDetailVo = new VehicleDispatchDetailVo();
-            var sqlCommand = _connectionVo.Connection.CreateCommand();
-            sqlCommand.CommandText = "SELECT cell_number," +
-                                            "operation_date," +
-                                            "operation_flag," +
-                                            "garage_flag," +
-                                            "five_lap," +
-                                            "day_of_week," +
-                                            "stand_by_flag," +
-                                            "classification_flag," +
-                                            "add_worker_flag," +
-                                            "contact_infomation_flag," +
-                                            "set_code," +
-                                            "set_note," +
-                                            "car_code," +
-                                            "car_proxy_flag," +
-                                            "car_note," +
-                                            "number_of_people," +
-                                            "operator_code_1," +
-                                            "operator_1_proxy_flag," +
-                                            "operator_1_roll_call_flag," +
-                                            "operator_1_roll_call_ymd_hms," +
-                                            "operator_1_note," +
-                                            "operator_code_2," +
-                                            "operator_2_proxy_flag," +
-                                            "operator_2_roll_call_flag," +
-                                            "operator_2_roll_call_ymd_hms," +
-                                            "operator_2_note," +
-                                            "operator_code_3," +
-                                            "operator_3_proxy_flag," +
-                                            "operator_3_roll_call_flag," +
-                                            "operator_3_roll_call_ymd_hms," +
-                                            "operator_3_note," +
-                                            "operator_code_4," +
-                                            "operator_4_proxy_flag," +
-                                            "operator_4_roll_call_flag," +
-                                            "operator_4_roll_call_ymd_hms," +
-                                            "operator_4_note," +
-                                            "last_roll_call_flag," +
-                                            "last_plant_count," +
-                                            "last_plant_name," +
-                                            "last_plant_ymd_hms," +
-                                            "last_roll_call_ymd_hms," +
-                                            "insert_pc_name," +
-                                            "insert_ymd_hms," +
-                                            "update_pc_name," +
-                                            "update_ymd_hms," +
-                                            "delete_pc_name," +
-                                            "delete_ymd_hms," +
-                                            "delete_flag " +
+            VehicleDispatchDetailVo vehicleDispatchDetailVo = new VehicleDispatchDetailVo();
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT vehicle_dispatch_detail.cell_number," +
+                                            "vehicle_dispatch_detail.operation_date," +
+                                            "vehicle_dispatch_detail.operation_flag," +
+                                            "vehicle_dispatch_detail.garage_flag," +
+                                            "vehicle_dispatch_detail.five_lap," +
+                                            "vehicle_dispatch_detail.day_of_week," +
+                                            "vehicle_dispatch_detail.stand_by_flag," +
+                                            "vehicle_dispatch_detail.classification_flag," +
+                                            "vehicle_dispatch_detail.add_worker_flag," +
+                                            "vehicle_dispatch_detail.contact_infomation_flag," +
+                                            "vehicle_dispatch_detail.set_code," +
+                                            "vehicle_dispatch_detail.set_note," +
+                                            "vehicle_dispatch_detail.car_code," +
+                                            "vehicle_dispatch_detail.car_proxy_flag," +
+                                            "vehicle_dispatch_detail.car_note," +
+                                            "vehicle_dispatch_detail.number_of_people," +
+                                            "vehicle_dispatch_detail.operator_code_1," +
+                                            "vehicle_dispatch_detail.operator_1_proxy_flag," +
+                                            "vehicle_dispatch_detail.operator_1_roll_call_flag," +
+                                            "vehicle_dispatch_detail.operator_1_roll_call_ymd_hms," +
+                                            "vehicle_dispatch_detail.operator_1_note," +
+                                            "vehicle_dispatch_detail.operator_1_occupation," +
+                                            "vehicle_dispatch_detail.operator_code_2," +
+                                            "vehicle_dispatch_detail.operator_2_proxy_flag," +
+                                            "vehicle_dispatch_detail.operator_2_roll_call_flag," +
+                                            "vehicle_dispatch_detail.operator_2_roll_call_ymd_hms," +
+                                            "vehicle_dispatch_detail.operator_2_note," +
+                                            "vehicle_dispatch_detail.operator_2_occupation," +
+                                            "vehicle_dispatch_detail.operator_code_3," +
+                                            "vehicle_dispatch_detail.operator_3_proxy_flag," +
+                                            "vehicle_dispatch_detail.operator_3_roll_call_flag," +
+                                            "vehicle_dispatch_detail.operator_3_roll_call_ymd_hms," +
+                                            "vehicle_dispatch_detail.operator_3_note," +
+                                            "vehicle_dispatch_detail.operator_3_occupation," +
+                                            "vehicle_dispatch_detail.operator_code_4," +
+                                            "vehicle_dispatch_detail.operator_4_proxy_flag," +
+                                            "vehicle_dispatch_detail.operator_4_roll_call_flag," +
+                                            "vehicle_dispatch_detail.operator_4_roll_call_ymd_hms," +
+                                            "vehicle_dispatch_detail.operator_4_note," +
+                                            "vehicle_dispatch_detail.operator_4_occupation," +
+                                            "vehicle_dispatch_detail.last_roll_call_flag," +
+                                            "vehicle_dispatch_detail.last_plant_count," +
+                                            "vehicle_dispatch_detail.last_plant_name," +
+                                            "vehicle_dispatch_detail.last_plant_ymd_hms," +
+                                            "vehicle_dispatch_detail.last_roll_call_ymd_hms," +
+                                            "vehicle_dispatch_detail.insert_pc_name," +
+                                            "vehicle_dispatch_detail.insert_ymd_hms," +
+                                            "vehicle_dispatch_detail.update_pc_name," +
+                                            "vehicle_dispatch_detail.update_ymd_hms," +
+                                            "vehicle_dispatch_detail.delete_pc_name," +
+                                            "vehicle_dispatch_detail.delete_ymd_hms," +
+                                            "vehicle_dispatch_detail.delete_flag " +
                                      "FROM vehicle_dispatch_detail " +
-                                     "WHERE operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "' AND cell_number = " + cellNumber;
+                                     "LEFT OUTER JOIN staff_master AS staff_master_1 ON vehicle_dispatch_detail.operator_code_1 = staff_master_1.staff_code " +
+                                     "LEFT OUTER JOIN staff_master AS staff_master_2 ON vehicle_dispatch_detail.operator_code_2 = staff_master_2.staff_code " +
+                                     "LEFT OUTER JOIN staff_master AS staff_master_3 ON vehicle_dispatch_detail.operator_code_3 = staff_master_3.staff_code " +
+                                     "LEFT OUTER JOIN staff_master AS staff_master_4 ON vehicle_dispatch_detail.operator_code_4 = staff_master_4.staff_code " +
+                                     "WHERE vehicle_dispatch_detail.operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "' AND vehicle_dispatch_detail.cell_number = " + cellNumber;
             using(var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while(sqlDataReader.Read() == true) {
                     vehicleDispatchDetailVo.Cell_number = _defaultValue.GetDefaultValue<int>(sqlDataReader["cell_number"]);
@@ -160,21 +183,25 @@ namespace Dao {
                     vehicleDispatchDetailVo.Operator_1_roll_call_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["operator_1_roll_call_flag"]);
                     vehicleDispatchDetailVo.Operator_1_roll_call_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["operator_1_roll_call_ymd_hms"]);
                     vehicleDispatchDetailVo.Operator_1_note = _defaultValue.GetDefaultValue<string>(sqlDataReader["operator_1_note"]);
+                    vehicleDispatchDetailVo.Operator_1_occupation = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_1_occupation"]);
                     vehicleDispatchDetailVo.Operator_code_2 = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_code_2"]);
                     vehicleDispatchDetailVo.Operator_2_proxy_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["operator_2_proxy_flag"]);
                     vehicleDispatchDetailVo.Operator_2_roll_call_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["operator_2_roll_call_flag"]);
                     vehicleDispatchDetailVo.Operator_2_roll_call_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["operator_2_roll_call_ymd_hms"]);
                     vehicleDispatchDetailVo.Operator_2_note = _defaultValue.GetDefaultValue<string>(sqlDataReader["operator_2_note"]);
+                    vehicleDispatchDetailVo.Operator_2_occupation = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_2_occupation"]);
                     vehicleDispatchDetailVo.Operator_code_3 = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_code_3"]);
                     vehicleDispatchDetailVo.Operator_3_proxy_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["operator_3_proxy_flag"]);
                     vehicleDispatchDetailVo.Operator_3_roll_call_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["operator_3_roll_call_flag"]);
                     vehicleDispatchDetailVo.Operator_3_roll_call_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["operator_3_roll_call_ymd_hms"]);
                     vehicleDispatchDetailVo.Operator_3_note = _defaultValue.GetDefaultValue<string>(sqlDataReader["operator_3_note"]);
+                    vehicleDispatchDetailVo.Operator_3_occupation = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_3_occupation"]);
                     vehicleDispatchDetailVo.Operator_code_4 = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_code_4"]);
                     vehicleDispatchDetailVo.Operator_4_proxy_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["operator_4_proxy_flag"]);
                     vehicleDispatchDetailVo.Operator_4_roll_call_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["operator_4_roll_call_flag"]);
                     vehicleDispatchDetailVo.Operator_4_roll_call_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["operator_4_roll_call_ymd_hms"]);
                     vehicleDispatchDetailVo.Operator_4_note = _defaultValue.GetDefaultValue<string>(sqlDataReader["operator_4_note"]);
+                    vehicleDispatchDetailVo.Operator_4_occupation = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_4_occupation"]);
                     vehicleDispatchDetailVo.Last_roll_call_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["last_roll_call_flag"]);
                     vehicleDispatchDetailVo.Last_plant_count = _defaultValue.GetDefaultValue<int>(sqlDataReader["last_plant_count"]);
                     vehicleDispatchDetailVo.Last_plant_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["last_plant_name"]);
@@ -200,56 +227,64 @@ namespace Dao {
         public List<VehicleDispatchDetailVo> SelectAllVehicleDispatchDetail(DateTime operationDate) {
             var listVehicleDispatchDetailVo = new List<VehicleDispatchDetailVo>();
             var sqlCommand = _connectionVo.Connection.CreateCommand();
-            sqlCommand.CommandText = "SELECT cell_number," +
-                                            "operation_date," +
-                                            "operation_flag," +
-                                            "garage_flag," +
-                                            "five_lap," +
-                                            "day_of_week," +
-                                            "stand_by_flag," +
-                                            "classification_flag," +
-                                            "add_worker_flag," +
-                                            "contact_infomation_flag," +
-                                            "set_code," +
-                                            "set_note," +
-                                            "car_code," +
-                                            "car_proxy_flag," +
-                                            "car_note," +
-                                            "number_of_people," +
-                                            "operator_code_1," +
-                                            "operator_1_proxy_flag," +
-                                            "operator_1_roll_call_flag," +
-                                            "operator_1_roll_call_ymd_hms," +
-                                            "operator_1_note," +
-                                            "operator_code_2," +
-                                            "operator_2_proxy_flag," +
-                                            "operator_2_roll_call_flag," +
-                                            "operator_2_roll_call_ymd_hms," +
-                                            "operator_2_note," +
-                                            "operator_code_3," +
-                                            "operator_3_proxy_flag," +
-                                            "operator_3_roll_call_flag," +
-                                            "operator_3_roll_call_ymd_hms," +
-                                            "operator_3_note," +
-                                            "operator_code_4," +
-                                            "operator_4_proxy_flag," +
-                                            "operator_4_roll_call_flag," +
-                                            "operator_4_roll_call_ymd_hms," +
-                                            "operator_4_note," +
-                                            "last_roll_call_flag," +
-                                            "last_plant_count," +
-                                            "last_plant_name," +
-                                            "last_plant_ymd_hms," +
-                                            "last_roll_call_ymd_hms," +
-                                            "insert_pc_name," +
-                                            "insert_ymd_hms," +
-                                            "update_pc_name," +
-                                            "update_ymd_hms," +
-                                            "delete_pc_name," +
-                                            "delete_ymd_hms," +
-                                            "delete_flag " +
+            sqlCommand.CommandText = "SELECT vehicle_dispatch_detail.cell_number," +
+                                            "vehicle_dispatch_detail.operation_date," +
+                                            "vehicle_dispatch_detail.operation_flag," +
+                                            "vehicle_dispatch_detail.garage_flag," +
+                                            "vehicle_dispatch_detail.five_lap," +
+                                            "vehicle_dispatch_detail.day_of_week," +
+                                            "vehicle_dispatch_detail.stand_by_flag," +
+                                            "vehicle_dispatch_detail.classification_flag," +
+                                            "vehicle_dispatch_detail.add_worker_flag," +
+                                            "vehicle_dispatch_detail.contact_infomation_flag," +
+                                            "vehicle_dispatch_detail.set_code," +
+                                            "vehicle_dispatch_detail.set_note," +
+                                            "vehicle_dispatch_detail.car_code," +
+                                            "vehicle_dispatch_detail.car_proxy_flag," +
+                                            "vehicle_dispatch_detail.car_note," +
+                                            "vehicle_dispatch_detail.number_of_people," +
+                                            "vehicle_dispatch_detail.operator_code_1," +
+                                            "vehicle_dispatch_detail.operator_1_proxy_flag," +
+                                            "vehicle_dispatch_detail.operator_1_roll_call_flag," +
+                                            "vehicle_dispatch_detail.operator_1_roll_call_ymd_hms," +
+                                            "vehicle_dispatch_detail.operator_1_note," +
+                                            "vehicle_dispatch_detail.operator_1_occupation," +
+                                            "vehicle_dispatch_detail.operator_code_2," +
+                                            "vehicle_dispatch_detail.operator_2_proxy_flag," +
+                                            "vehicle_dispatch_detail.operator_2_roll_call_flag," +
+                                            "vehicle_dispatch_detail.operator_2_roll_call_ymd_hms," +
+                                            "vehicle_dispatch_detail.operator_2_note," +
+                                            "vehicle_dispatch_detail.operator_2_occupation," +
+                                            "vehicle_dispatch_detail.operator_code_3," +
+                                            "vehicle_dispatch_detail.operator_3_proxy_flag," +
+                                            "vehicle_dispatch_detail.operator_3_roll_call_flag," +
+                                            "vehicle_dispatch_detail.operator_3_roll_call_ymd_hms," +
+                                            "vehicle_dispatch_detail.operator_3_note," +
+                                            "vehicle_dispatch_detail.operator_3_occupation," +
+                                            "vehicle_dispatch_detail.operator_code_4," +
+                                            "vehicle_dispatch_detail.operator_4_proxy_flag," +
+                                            "vehicle_dispatch_detail.operator_4_roll_call_flag," +
+                                            "vehicle_dispatch_detail.operator_4_roll_call_ymd_hms," +
+                                            "vehicle_dispatch_detail.operator_4_note," +
+                                            "vehicle_dispatch_detail.operator_4_occupation," +
+                                            "vehicle_dispatch_detail.last_roll_call_flag," +
+                                            "vehicle_dispatch_detail.last_plant_count," +
+                                            "vehicle_dispatch_detail.last_plant_name," +
+                                            "vehicle_dispatch_detail.last_plant_ymd_hms," +
+                                            "vehicle_dispatch_detail.last_roll_call_ymd_hms," +
+                                            "vehicle_dispatch_detail.insert_pc_name," +
+                                            "vehicle_dispatch_detail.insert_ymd_hms," +
+                                            "vehicle_dispatch_detail.update_pc_name," +
+                                            "vehicle_dispatch_detail.update_ymd_hms," +
+                                            "vehicle_dispatch_detail.delete_pc_name," +
+                                            "vehicle_dispatch_detail.delete_ymd_hms," +
+                                            "vehicle_dispatch_detail.delete_flag " +
                                      "FROM vehicle_dispatch_detail " +
-                                     "WHERE operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+                                     "LEFT OUTER JOIN staff_master AS staff_master_1 ON vehicle_dispatch_detail.operator_code_1 = staff_master_1.staff_code " +
+                                     "LEFT OUTER JOIN staff_master AS staff_master_2 ON vehicle_dispatch_detail.operator_code_2 = staff_master_2.staff_code " +
+                                     "LEFT OUTER JOIN staff_master AS staff_master_3 ON vehicle_dispatch_detail.operator_code_3 = staff_master_3.staff_code " +
+                                     "LEFT OUTER JOIN staff_master AS staff_master_4 ON vehicle_dispatch_detail.operator_code_4 = staff_master_4.staff_code " +
+                                     "WHERE vehicle_dispatch_detail.operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
             using(var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while(sqlDataReader.Read() == true) {
                     var vehicleDispatchDetailVo = new VehicleDispatchDetailVo();
@@ -274,21 +309,25 @@ namespace Dao {
                     vehicleDispatchDetailVo.Operator_1_roll_call_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["operator_1_roll_call_flag"]);
                     vehicleDispatchDetailVo.Operator_1_roll_call_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["operator_1_roll_call_ymd_hms"]);
                     vehicleDispatchDetailVo.Operator_1_note = _defaultValue.GetDefaultValue<string>(sqlDataReader["operator_1_note"]);
+                    vehicleDispatchDetailVo.Operator_1_occupation = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_1_occupation"]);
                     vehicleDispatchDetailVo.Operator_code_2 = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_code_2"]);
                     vehicleDispatchDetailVo.Operator_2_proxy_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["operator_2_proxy_flag"]);
                     vehicleDispatchDetailVo.Operator_2_roll_call_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["operator_2_roll_call_flag"]);
                     vehicleDispatchDetailVo.Operator_2_roll_call_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["operator_2_roll_call_ymd_hms"]);
                     vehicleDispatchDetailVo.Operator_2_note = _defaultValue.GetDefaultValue<string>(sqlDataReader["operator_2_note"]);
+                    vehicleDispatchDetailVo.Operator_2_occupation = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_2_occupation"]);
                     vehicleDispatchDetailVo.Operator_code_3 = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_code_3"]);
                     vehicleDispatchDetailVo.Operator_3_proxy_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["operator_3_proxy_flag"]);
                     vehicleDispatchDetailVo.Operator_3_roll_call_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["operator_3_roll_call_flag"]);
                     vehicleDispatchDetailVo.Operator_3_roll_call_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["operator_3_roll_call_ymd_hms"]);
                     vehicleDispatchDetailVo.Operator_3_note = _defaultValue.GetDefaultValue<string>(sqlDataReader["operator_3_note"]);
+                    vehicleDispatchDetailVo.Operator_3_occupation = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_3_occupation"]);
                     vehicleDispatchDetailVo.Operator_code_4 = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_code_4"]);
                     vehicleDispatchDetailVo.Operator_4_proxy_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["operator_4_proxy_flag"]);
                     vehicleDispatchDetailVo.Operator_4_roll_call_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["operator_4_roll_call_flag"]);
                     vehicleDispatchDetailVo.Operator_4_roll_call_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["operator_4_roll_call_ymd_hms"]);
                     vehicleDispatchDetailVo.Operator_4_note = _defaultValue.GetDefaultValue<string>(sqlDataReader["operator_4_note"]);
+                    vehicleDispatchDetailVo.Operator_4_occupation = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_4_occupation"]);
                     vehicleDispatchDetailVo.Last_roll_call_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["last_roll_call_flag"]);
                     vehicleDispatchDetailVo.Last_plant_count = _defaultValue.GetDefaultValue<int>(sqlDataReader["last_plant_count"]);
                     vehicleDispatchDetailVo.Last_plant_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["last_plant_name"]);
@@ -337,21 +376,25 @@ namespace Dao {
                              "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Operator_1_roll_call_flag) + "'," +
                              "'" + _defaultValue.GetDefaultValue<DateTime>(vehicleDispatchDetailVo.Operator_1_roll_call_ymd_hms) + "'," +
                              "'" + _defaultValue.GetDefaultValue<string>(vehicleDispatchDetailVo.Operator_1_note) + "'," +
+                                   _defaultValue.GetDefaultValue<int>(vehicleDispatchDetailVo.Operator_1_occupation) + "," +
                                    _defaultValue.GetDefaultValue<int>(vehicleDispatchDetailVo.Operator_code_2) + "," +
                              "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Operator_2_proxy_flag) + "'," +
                              "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Operator_2_roll_call_flag) + "'," +
                              "'" + _defaultValue.GetDefaultValue<DateTime>(vehicleDispatchDetailVo.Operator_2_roll_call_ymd_hms) + "'," +
                              "'" + _defaultValue.GetDefaultValue<string>(vehicleDispatchDetailVo.Operator_2_note) + "'," +
+                                   _defaultValue.GetDefaultValue<int>(vehicleDispatchDetailVo.Operator_2_occupation) + "," +
                                    _defaultValue.GetDefaultValue<int>(vehicleDispatchDetailVo.Operator_code_3) + "," +
                              "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Operator_3_proxy_flag) + "'," +
                              "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Operator_3_roll_call_flag) + "'," +
                              "'" + _defaultValue.GetDefaultValue<DateTime>(vehicleDispatchDetailVo.Operator_3_roll_call_ymd_hms) + "'," +
                              "'" + _defaultValue.GetDefaultValue<string>(vehicleDispatchDetailVo.Operator_3_note) + "'," +
+                                   _defaultValue.GetDefaultValue<int>(vehicleDispatchDetailVo.Operator_3_occupation) + "," +
                                    _defaultValue.GetDefaultValue<int>(vehicleDispatchDetailVo.Operator_code_4) + "," +
                              "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Operator_4_proxy_flag) + "'," +
                              "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Operator_4_roll_call_flag) + "'," +
                              "'" + _defaultValue.GetDefaultValue<DateTime>(vehicleDispatchDetailVo.Operator_4_roll_call_ymd_hms) + "'," +
                              "'" + _defaultValue.GetDefaultValue<string>(vehicleDispatchDetailVo.Operator_4_note) + "'," +
+                                   _defaultValue.GetDefaultValue<int>(vehicleDispatchDetailVo.Operator_4_occupation) + "," +
                              "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Last_roll_call_flag) + "'," +
                                  +_defaultValue.GetDefaultValue<int>(vehicleDispatchDetailVo.Last_plant_count) + "," +
                              "'" + _defaultValue.GetDefaultValue<string>(vehicleDispatchDetailVo.Last_plant_name) + "'," +
@@ -391,21 +434,25 @@ namespace Dao {
                                                                          "operator_1_roll_call_flag," +
                                                                          "operator_1_roll_call_ymd_hms," +
                                                                          "operator_1_note," +
+                                                                         "operator_1_occupation," +
                                                                          "operator_code_2," +
                                                                          "operator_2_proxy_flag," +
                                                                          "operator_2_roll_call_flag," +
                                                                          "operator_2_roll_call_ymd_hms," +
                                                                          "operator_2_note," +
+                                                                         "operator_2_occupation," +
                                                                          "operator_code_3," +
                                                                          "operator_3_proxy_flag," +
                                                                          "operator_3_roll_call_flag," +
                                                                          "operator_3_roll_call_ymd_hms," +
                                                                          "operator_3_note," +
+                                                                         "operator_3_occupation," +
                                                                          "operator_code_4," +
                                                                          "operator_4_proxy_flag," +
                                                                          "operator_4_roll_call_flag," +
                                                                          "operator_4_roll_call_ymd_hms," +
                                                                          "operator_4_note," +
+                                                                         "operator_4_occupation," +
                                                                          "last_roll_call_flag," +
                                                                          "last_plant_count," +
                                                                          "last_plant_name," +
@@ -450,7 +497,7 @@ namespace Dao {
         /// <param name="dragCellNumber"></param>
         /// <param name="dropCellNumber"></param>
         /// <returns></returns>
-        public int CopySet(DateTime operationDate, int dragCellNumber, int dropCellNumber) {
+        public int CopySetLabel(DateTime operationDate, int dragCellNumber, int dropCellNumber) {
             /*
              * Tagがゼロから始まっているので１をプラスする
              */
@@ -492,7 +539,7 @@ namespace Dao {
         /// <param name="dropCellNumber"></param>
         /// <param name="setMasterVo"></param>
         /// <returns></returns>
-        public int SetSet(DateTime operationDate, int dropCellNumber, SetMasterVo setMasterVo) {
+        public int CreateSetLabel(DateTime operationDate, int dropCellNumber, SetMasterVo setMasterVo) {
             /*
              * Tagがゼロから始まっているので１をプラスする
              */
@@ -529,7 +576,7 @@ namespace Dao {
         /// <param name="operationDate"></param>
         /// <param name="dragCellNumber"></param>
         /// <returns></returns>
-        public int ResetSet(DateTime operationDate, int dragCellNumber) {
+        public int ResetSetLabel(DateTime operationDate, int dragCellNumber) {
             /*
              * Tagがゼロから始まっているので１をプラスする
              */
@@ -570,7 +617,7 @@ namespace Dao {
         /// <param name="dragCellNumber"></param>
         /// <param name="dropCellNumber"></param>
         /// <returns></returns>
-        public int SetCar(DateTime operationDate, int dragCellNumber, int dropCellNumber) {
+        public int MoveCarLabel(DateTime operationDate, int dragCellNumber, int dropCellNumber) {
             /*
              * Tagがゼロから始まっているので１をプラスする
              */
@@ -600,7 +647,7 @@ namespace Dao {
         /// <param name="dropCellNumber"></param>
         /// <param name="carMasterVo"></param>
         /// <returns></returns>
-        public int SetCar(DateTime operationDate, int dropCellNumber, CarMasterVo carMasterVo) {
+        public int CreateCarLabel(DateTime operationDate, int dropCellNumber, CarMasterVo carMasterVo) {
             /*
              * Tagがゼロから始まっているので１をプラスする
              */
@@ -628,7 +675,7 @@ namespace Dao {
         /// <param name="operationDate"></param>
         /// <param name="dragCellNumber"></param>
         /// <returns></returns>
-        public int ResetCar(DateTime operationDate, int dragCellNumber) {
+        public int ResetCarLabel(DateTime operationDate, int dragCellNumber) {
             /*
              * Tagがゼロから始まっているので１をプラスする
              */
@@ -658,7 +705,7 @@ namespace Dao {
         /// <param name="dragRowNumber">StaffLabelExのSetControlEx上でのRowの位置</param>
         /// <param name="dropCellNumber"></param>
         /// <returns></returns>
-        public int SetStaff(DateTime operationDate, int dragCellNumber, int dragRowNumber, int dropCellNumber, int dropRowNumber) {
+        public int MoveStaffLabel(DateTime operationDate, int dragCellNumber, int dragRowNumber, int dropCellNumber, int dropRowNumber) {
             /*
              * Tagがゼロから始まっているので１をプラスする
              */
@@ -677,6 +724,7 @@ namespace Dao {
             string sqlDragOperatorRollCallFlag = string.Concat("operator_" + dragRowNumber + "_roll_call_Flag");
             string sqlDragOperatorRollCallYmdHms = string.Concat("operator_" + dragRowNumber + "_roll_call_ymd_hms");
             string sqlDragOperatorNote = string.Concat("operator_" + dragRowNumber, "_note");
+            string sqlDragOperatorOccupation = string.Concat("operator_" + dragRowNumber, "_occupation");
             /*
              * Drop項目のSQL文を作成
              */
@@ -685,6 +733,7 @@ namespace Dao {
             string sqlDropOperatorRollCallFlag = string.Concat("operator_" + dropRowNumber + "_roll_call_flag");
             string sqlDropOperatorRollCallYmdHms = string.Concat("operator_" + dropRowNumber + "_roll_call_ymd_hms");
             string sqlDropOperatorNote = string.Concat("operator_" + dropRowNumber, "_note");
+            string sqlDropOperatorOccupation = string.Concat("operator_" + dropRowNumber, "_occupation");
 
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "UPDATE vehicle_dispatch_detail " +
@@ -701,6 +750,9 @@ namespace Dao {
                                                                         "FROM vehicle_dispatch_detail " +
                                                                         "WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
                                               sqlDropOperatorNote + " = (SELECT " + sqlDragOperatorNote + " " +
+                                                                        "FROM vehicle_dispatch_detail " +
+                                                                        "WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
+                                        sqlDropOperatorOccupation + " = (SELECT " + sqlDragOperatorOccupation + " " +
                                                                         "FROM vehicle_dispatch_detail " +
                                                                         "WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
                                           "update_pc_name = '" + Environment.MachineName + "'," +
@@ -723,7 +775,7 @@ namespace Dao {
         /// <param name="dropRowNumber"></param>
         /// <param name="staffMasterVo"></param>
         /// <returns></returns>
-        public int SetStaff(DateTime operationDate, int dragCellNumber, int dropCellNumber, int dropRowNumber, StaffMasterVo staffMasterVo) {
+        public int MoveStaffLabel(DateTime operationDate, int dragCellNumber, int dropCellNumber, int dropRowNumber, StaffMasterVo staffMasterVo) {
             /*
              * Tagがゼロから始まっているので１をプラスする
              */
@@ -736,6 +788,7 @@ namespace Dao {
             string sqlDropOperatorRollCallFlag = string.Concat("operator_" + dropRowNumber + "_roll_call_flag");
             string sqlDropOperatorRollCallYmdHms = string.Concat("operator_" + dropRowNumber + "_roll_call_ymd_hms");
             string sqlDropOperatorNote = string.Concat("operator_" + dropRowNumber, "_note");
+            string sqlDropOperatorOccupation = string.Concat("operator_" + dropRowNumber, "_occupation");
 
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "UPDATE vehicle_dispatch_detail " +
@@ -754,6 +807,7 @@ namespace Dao {
                                               sqlDropOperatorNote + " = (SELECT operator_note " +
                                                                         "FROM vehicle_dispatch_detail_staff " +
                                                                         "WHERE cell_number = " + dragCellNumber + " AND operator_code = '" + staffMasterVo.Staff_code + "' AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "')," +
+                                           sqlDropOperatorOccupation + " = " + staffMasterVo.Occupation + "," +
                                           "update_pc_name = '" + Environment.MachineName + "'," +
                                           "update_ymd_hms = '" + DateTime.Now + "' " +
                                      "WHERE cell_number = " + dropCellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
@@ -773,7 +827,7 @@ namespace Dao {
         /// <param name="dropRowNumber"></param>
         /// <param name="staffMasterVo"></param>
         /// <returns></returns>
-        public int SetStaff(DateTime operationDate, int dropCellNumber, int dropRowNumber, StaffMasterVo staffMasterVo) {
+        public int MoveStaffLabel(DateTime operationDate, int dropCellNumber, int dropRowNumber, StaffMasterVo staffMasterVo) {
             /*
              * Tagがゼロから始まっているので１をプラスする
              */
@@ -786,6 +840,7 @@ namespace Dao {
             string sqlDropOperatorRollCallFlag = string.Concat("operator_" + dropRowNumber + "_roll_call_flag");
             string sqlDropOperatorRollCallYmdHms = string.Concat("operator_" + dropRowNumber + "_roll_call_ymd_hms");
             string sqlDropOperatorNote = string.Concat("operator_" + dropRowNumber, "_note");
+            string sqlDropOperatorOccupation = string.Concat("operator_" + dropRowNumber, "_occupation");
 
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "UPDATE vehicle_dispatch_detail " +
@@ -794,6 +849,7 @@ namespace Dao {
                                       sqlDropOperatorRollCallFlag + " = 'False'," +
                                     sqlDropOperatorRollCallYmdHms + " = '1900-01-01'," +
                                               sqlDropOperatorNote + " = ''," +
+                                        sqlDropOperatorOccupation + " = " + staffMasterVo.Occupation + "," +
                                           "update_pc_name = '" + Environment.MachineName + "'," +
                                           "update_ymd_hms = '" + DateTime.Now + "' " +
                                      "WHERE cell_number = " + dropCellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
@@ -811,7 +867,7 @@ namespace Dao {
         /// <param name="dragCellNumber"></param>
         /// <param name="dragRowNumber"></param>
         /// <returns></returns>
-        public int ResetStaff(DateTime operationDate, int dragCellNumber, int dragRowNumber) {
+        public int ResetStaffLabel(DateTime operationDate, int dragCellNumber, int dragRowNumber) {
             /*
              * Tagがゼロから始まっているので１をプラスする
              */
@@ -828,6 +884,7 @@ namespace Dao {
             string sqlDragOperatorRollCallFlag = string.Concat("operator_" + dragRowNumber + "_roll_call_flag");
             string sqlDragOperatorRollCallYmdHms = string.Concat("operator_" + dragRowNumber + "_roll_call_ymd_hms");
             string sqlDragOperatorNote = string.Concat("operator_" + dragRowNumber, "_note");
+            string sqlDragOperatorOccupation = string.Concat("operator_" + dragRowNumber, "_occupation");
 
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "UPDATE vehicle_dispatch_detail " +
@@ -836,6 +893,7 @@ namespace Dao {
                                               sqlDragOperatorRollCallFlag + " = 'False'," +
                                               sqlDragOperatorRollCallYmdHms + " = '1900-01-01 00:00:00'," +
                                               sqlDragOperatorNote + " = ''," +
+                                              sqlDragOperatorOccupation + " = 99," +
                                              "update_pc_name = '" + Environment.MachineName + "'," +
                                              "update_ymd_hms = '" + DateTime.Now + "' " +
                                      "WHERE cell_number = " + dragCellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
@@ -950,6 +1008,14 @@ namespace Dao {
             }
         }
 
+        /// <summary>
+        /// UpdateStandByFlag
+        /// 待機を設定する
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="dropCellNumber"></param>
+        /// <param name="standByFlag"></param>
+        /// <returns></returns>
         public int UpdateStandByFlag(DateTime operationDate, int dropCellNumber, bool standByFlag) {
             /*
              * Tagがゼロから始まっているので１をプラスする
@@ -1241,6 +1307,41 @@ namespace Dao {
                                             "last_roll_call_ymd_hms = '" + lastRollCallYmdHms + "'," +
                                             "update_pc_name = '" + Environment.MachineName + "'," +
                                             "update_ymd_hms = '" + DateTime.Now + "' " +
+                                     "WHERE cell_number = " + cellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// UpdatePayFlag
+        /// true:運転手 false:作業員
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="cellNumber"></param>
+        /// <param name="row"></param>
+        /// <param name="payFlag">true:運転手 false:作業員</param>
+        public void UpdateOccupation(DateTime operationDate, int cellNumber, int row, int occupation) {
+            /*
+             * Tagがゼロから始まっているので１をプラスする
+             */
+            cellNumber++;
+            /*
+             * SetControlExのRowがゼロから始まっているので１をプラスする
+             */
+            row--;
+            /*
+             * Drop項目のSQL文を作成
+             */
+            string sqlOperatorOccupation = string.Concat("operator_" + row + "_occupation");
+
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE vehicle_dispatch_detail " +
+                                     "SET " + sqlOperatorOccupation + " = " + occupation + "," +
+                                          "update_pc_name = '" + Environment.MachineName + "'," +
+                                          "update_ymd_hms = '" + DateTime.Now + "' " +
                                      "WHERE cell_number = " + cellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
             try {
                 sqlCommand.ExecuteNonQuery();

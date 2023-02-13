@@ -2,6 +2,12 @@
 
 namespace ControlEx {
     public partial class StaffLabelEx : Label {
+        /*
+         * Labelのサイズ
+         */
+        private const int _staffLabelHeight = 36;
+        private const int _staffLabelWidth = 70;
+
         // StaffMasterVo
         private readonly StaffMasterVo _staffMasterVo;
         // 代番フラグ(True:代番 False:本番)
@@ -13,18 +19,23 @@ namespace ControlEx {
         // ノートフラグ
         private bool _noteFlag;
 
-        private const int _staffLabelHeight = 36;
-        private const int _staffLabelWidth = 70;
-
-        private Font drawFont = new Font("Yu Gothic UI", 11, FontStyle.Regular, GraphicsUnit.Pixel);
+        private Font _drawFont = new Font("Yu Gothic UI", 11, FontStyle.Regular, GraphicsUnit.Pixel);
         private Pen _borderColor = Pens.White;
-        private SolidBrush _drawBrushFont = new SolidBrush(Color.Black);
         private SolidBrush _drowBrushFill = new SolidBrush(Color.White);
 
-        // 電話連絡マーク
+        /*
+         * 電話連絡マーク
+         */
         private bool _telephoneMark = false;
         private Font _drawTelephoneMarkFont = new Font("Yu Gothic UI", 9, FontStyle.Regular, GraphicsUnit.Pixel);
         private SolidBrush _drawTelephoneMarkBrushFont = new SolidBrush(Color.Blue);
+
+        /*
+         * 作業員マーク
+         */
+        private int _occupation;
+        private Font _occupationFont = new Font("Yu Gothic UI", 9, FontStyle.Regular, GraphicsUnit.Pixel);
+        private SolidBrush _occupationBrushFont = new SolidBrush(Color.Blue);
 
         /// <summary>
         /// コンストラクター(オーバーロード)
@@ -34,12 +45,13 @@ namespace ControlEx {
         /// <param name="tenkoModeFlag"></param>
         /// <param name="rollCallFlag"></param>
         /// <param name="noteFlag"></param>
-        public StaffLabelEx(StaffMasterVo staffMasterVo, bool proxyFlag, bool tenkoModeFlag, bool rollCallFlag, bool noteFlag) {
+        public StaffLabelEx(StaffMasterVo staffMasterVo, bool proxyFlag, bool tenkoModeFlag, bool rollCallFlag, bool noteFlag, int occupation) {
             _staffMasterVo = staffMasterVo;
             _proxyFlag = proxyFlag;
             _tenkoModeFlag = tenkoModeFlag;
             _rollCallFlag = rollCallFlag;
             _noteFlag = noteFlag;
+            _occupation = occupation;
 
             switch(staffMasterVo.Belongs) {
                 case 10: // 役員
@@ -71,9 +83,7 @@ namespace ControlEx {
                     break;
             }
             InitializeComponent();
-            /*
-             * StaffControlExのイベントを登録
-             */
+            // StaffControlExのイベントを登録
             this.Paint += new PaintEventHandler(this.LabelEx_CellPaint);
         }
 
@@ -119,9 +129,7 @@ namespace ControlEx {
                     break;
             }
             InitializeComponent();
-            /*
-             * StaffControlExのイベントを登録
-             */
+            // StaffControlExのイベントを登録
             this.Paint += new PaintEventHandler(this.LabelEx_CellPaint);
         }
 
@@ -167,9 +175,7 @@ namespace ControlEx {
                     break;
             }
             InitializeComponent();
-            /*
-             * StaffControlExのイベントを登録
-             */
+            // StaffControlExのイベントを登録
             this.Paint += new PaintEventHandler(this.LabelEx_CellPaint);
         }
 
@@ -198,11 +204,16 @@ namespace ControlEx {
             }
             /*
              * 文字(氏名)を描画
+             * 誕生日の従事者の文字色を変える
              */
             StringFormat stringFormat = new StringFormat();
             stringFormat.LineAlignment = StringAlignment.Center;
             stringFormat.Alignment = StringAlignment.Center;
-            e.Graphics.DrawString(_staffMasterVo.Display_name, drawFont, _drawBrushFont, rectangleFill, stringFormat);
+            if(_staffMasterVo.Birth_date.Month == DateTime.Now.Month && _staffMasterVo.Birth_date.Day == DateTime.Now.Day) {
+                e.Graphics.DrawString(_staffMasterVo.Display_name, _drawFont, new SolidBrush(Color.Red), rectangleFill, stringFormat);
+            } else {
+                e.Graphics.DrawString(_staffMasterVo.Display_name, _drawFont, new SolidBrush(Color.Black), rectangleFill, stringFormat);
+            }
             /*
              * 点呼の印を描画
              */
@@ -225,6 +236,18 @@ namespace ControlEx {
             if(_telephoneMark) {
                 Point point = new Point(54, 0);
                 e.Graphics.DrawString("☎", _drawTelephoneMarkFont, _drawTelephoneMarkBrushFont, point);
+            }
+            /*
+             * 作業員マーク
+             */
+            switch(_occupation) {
+                case 10:
+                    break;
+                case 11:
+                    e.Graphics.DrawString("作", _occupationFont, _occupationBrushFont, new Point(1, 21));
+                    break;
+                case 99:
+                    break;
             }
         }
 
@@ -287,6 +310,16 @@ namespace ControlEx {
         /// <param name="telephoneMarkFlag"></param>
         public void SetTelephoneMark(bool telephoneMarkFlag) {
             _telephoneMark = telephoneMarkFlag;
+            this.Refresh();
+        }
+
+        /// <summary>
+        /// SetPayFlag
+        /// 10:運転手 11:作業員 99:その他
+        /// </summary>
+        /// <param name="occupation"></param>
+        public void SetOccupation(int occupation) {
+            _occupation = occupation;
             this.Refresh();
         }
     }

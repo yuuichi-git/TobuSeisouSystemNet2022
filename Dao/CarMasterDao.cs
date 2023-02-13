@@ -22,61 +22,65 @@ namespace Dao {
         public CarMasterVo SelectOneCarMaster(int carCode) {
             var carMasterVo = new CarMasterVo();
             var sqlCommand = _connectionVo.Connection.CreateCommand();
-            sqlCommand.CommandText = "SELECT car_code," +
-                                            "classification_code," +
-                                            "classification_name," + // 外部結合で取得
-                                            "registration_number," +
-                                            "registration_number_1," +
-                                            "registration_number_2," +
-                                            "registration_number_3," +
-                                            "registration_number_4," +
-                                            "garage_flag," +
-                                            "door_number," +
-                                            "registration_date," +
-                                            "first_registration_date," +
-                                            "car_kind_code," +
-                                            "car_kind_name," + // 外部結合で取得
-                                            "disguise_kind_1," +
-                                            "disguise_kind_2," +
-                                            "disguise_kind_3," +
-                                            "car_use," +
-                                            "other_code," +
-                                            "other_name," +
-                                            "shape_code," +
-                                            "shape_name," + // 外部結合で取得
-                                            "manufacturer_code," +
-                                            "manufacturer_name," + // 外部結合で取得
-                                            "capacity," +
-                                            "maximum_load_capacity," +
-                                            "vehicle_weight," +
-                                            "total_vehicle_weight," +
-                                            "vehicle_number," +
-                                            "length," +
-                                            "width," +
-                                            "height," +
-                                            "ff_axis_weight," +
-                                            "fr_axis_weight," +
-                                            "rf_axis_weight," +
-                                            "rr_axis_weight," +
-                                            "version," +
-                                            "motor_version," +
-                                            "total_displacement," +
-                                            "types_of_fuel," +
-                                            "version_designate_number," +
-                                            "category_distinguish_number," +
-                                            "owner_name," +
-                                            "owner_address," +
-                                            "user_name," +
-                                            "user_address," +
-                                            "base_address," +
-                                            "expiration_date," +
-                                            "remarks," +
-                                            "picture," +
-                                            "insert_ymd_hms," +
-                                            "update_ymd_hms," +
-                                            "delete_ymd_hms," +
-                                            "delete_flag " +
-                                     "FROM view_car_master " +
+            sqlCommand.CommandText = "SELECT car_master.car_code," +
+                                            "car_master.classification_code," +
+                                            "classification_master.name AS classification_name," + // 外部結合で取得
+                                            "car_master.registration_number," +
+                                            "car_master.registration_number_1," +
+                                            "car_master.registration_number_2," +
+                                            "car_master.registration_number_3," +
+                                            "car_master.registration_number_4," +
+                                            "car_master.garage_flag," +
+                                            "car_master.door_number," +
+                                            "car_master.registration_date," +
+                                            "car_master.first_registration_date," +
+                                            "car_master.car_kind_code," +
+                                            "car_kind_master.name AS car_kind_name," + // 外部結合で取得
+                                            "car_master.disguise_kind_1," +
+                                            "car_master.disguise_kind_2," +
+                                            "car_master.disguise_kind_3," +
+                                            "car_master.car_use," +
+                                            "car_master.other_code," +
+                                            "car_master.other_name," +
+                                            "car_master.shape_code," +
+                                            "car_shape_master.name AS shape_name," + // 外部結合で取得
+                                            "car_master.manufacturer_code," +
+                                            "car_manufacturer_master.name AS manufacturer_name," + // 外部結合で取得
+                                            "car_master.capacity," +
+                                            "car_master.maximum_load_capacity," +
+                                            "car_master.vehicle_weight," +
+                                            "car_master.total_vehicle_weight," +
+                                            "car_master.vehicle_number," +
+                                            "car_master.length," +
+                                            "car_master.width," +
+                                            "car_master.height," +
+                                            "car_master.ff_axis_weight," +
+                                            "car_master.fr_axis_weight," +
+                                            "car_master.rf_axis_weight," +
+                                            "car_master.rr_axis_weight," +
+                                            "car_master.version," +
+                                            "car_master.motor_version," +
+                                            "car_master.total_displacement," +
+                                            "car_master.types_of_fuel," +
+                                            "car_master.version_designate_number," +
+                                            "car_master.category_distinguish_number," +
+                                            "car_master.owner_name," +
+                                            "car_master.owner_address," +
+                                            "car_master.user_name," +
+                                            "car_master.user_address," +
+                                            "car_master.base_address," +
+                                            "car_master.expiration_date," +
+                                            "car_master.remarks," +
+                                            "car_master.picture," +
+                                            "car_master.insert_ymd_hms," +
+                                            "car_master.update_ymd_hms," +
+                                            "car_master.delete_ymd_hms," +
+                                            "car_master.delete_flag " +
+                                     "FROM car_master " +
+                                     "LEFT OUTER JOIN car_kind_master ON car_master.car_kind_code = car_kind_master.code " +
+                                     "LEFT OUTER JOIN car_shape_master ON car_master.shape_code = car_shape_master.code " +
+                                     "LEFT OUTER JOIN car_manufacturer_master ON car_master.manufacturer_code = car_manufacturer_master.code " +
+                                     "LEFT OUTER JOIN classification_master ON car_master.classification_code = classification_master.code " +
                                      "WHERE car_code = " + carCode;
             using (var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while (sqlDataReader.Read() == true) {
@@ -146,61 +150,65 @@ namespace Dao {
         public List<CarMasterVo> SelectAllCarMaster() {
             var listCarMasterVo = new List<CarMasterVo>();
             var sqlCommand = _connectionVo.Connection.CreateCommand();
-            sqlCommand.CommandText = "SELECT car_code," +
-                                            "classification_code," +
-                                            "classification_name," + // 外部結合で取得
-                                            "registration_number," +
-                                            "registration_number_1," +
-                                            "registration_number_2," +
-                                            "registration_number_3," +
-                                            "registration_number_4," +
-                                            "garage_flag," +
-                                            "door_number," +
-                                            "registration_date," +
-                                            "first_registration_date," +
-                                            "car_kind_code," +
-                                            "car_kind_name," + // 外部結合で取得
-                                            "disguise_kind_1," +
-                                            "disguise_kind_2," +
-                                            "disguise_kind_3," +
-                                            "car_use," +
-                                            "other_code," +
-                                            "other_name," +
-                                            "shape_code," +
-                                            "shape_name," + // 外部結合で取得
-                                            "manufacturer_code," +
-                                            "manufacturer_name," + // 外部結合で取得
-                                            "capacity," +
-                                            "maximum_load_capacity," +
-                                            "vehicle_weight," +
-                                            "total_vehicle_weight," +
-                                            "vehicle_number," +
-                                            "length," +
-                                            "width," +
-                                            "height," +
-                                            "ff_axis_weight," +
-                                            "fr_axis_weight," +
-                                            "rf_axis_weight," +
-                                            "rr_axis_weight," +
-                                            "version," +
-                                            "motor_version," +
-                                            "total_displacement," +
-                                            "types_of_fuel," +
-                                            "version_designate_number," +
-                                            "category_distinguish_number," +
-                                            "owner_name," +
-                                            "owner_address," +
-                                            "user_name," +
-                                            "user_address," +
-                                            "base_address," +
-                                            "expiration_date," +
-                                            "remarks," +
+            sqlCommand.CommandText = "SELECT car_master.car_code," +
+                                            "car_master.classification_code," +
+                                            "classification_master.name AS classification_name," + // 外部結合で取得
+                                            "car_master.registration_number," +
+                                            "car_master.registration_number_1," +
+                                            "car_master.registration_number_2," +
+                                            "car_master.registration_number_3," +
+                                            "car_master.registration_number_4," +
+                                            "car_master.garage_flag," +
+                                            "car_master.door_number," +
+                                            "car_master.registration_date," +
+                                            "car_master.first_registration_date," +
+                                            "car_master.car_kind_code," +
+                                            "car_kind_master.name AS car_kind_name," + // 外部結合で取得
+                                            "car_master.disguise_kind_1," +
+                                            "car_master.disguise_kind_2," +
+                                            "car_master.disguise_kind_3," +
+                                            "car_master.car_use," +
+                                            "car_master.other_code," +
+                                            "car_master.other_name," +
+                                            "car_master.shape_code," +
+                                            "car_shape_master.name AS shape_name," + // 外部結合で取得
+                                            "car_master.manufacturer_code," +
+                                            "car_manufacturer_master.name AS manufacturer_name," + // 外部結合で取得
+                                            "car_master.capacity," +
+                                            "car_master.maximum_load_capacity," +
+                                            "car_master.vehicle_weight," +
+                                            "car_master.total_vehicle_weight," +
+                                            "car_master.vehicle_number," +
+                                            "car_master.length," +
+                                            "car_master.width," +
+                                            "car_master.height," +
+                                            "car_master.ff_axis_weight," +
+                                            "car_master.fr_axis_weight," +
+                                            "car_master.rf_axis_weight," +
+                                            "car_master.rr_axis_weight," +
+                                            "car_master.version," +
+                                            "car_master.motor_version," +
+                                            "car_master.total_displacement," +
+                                            "car_master.types_of_fuel," +
+                                            "car_master.version_designate_number," +
+                                            "car_master.category_distinguish_number," +
+                                            "car_master.owner_name," +
+                                            "car_master.owner_address," +
+                                            "car_master.user_name," +
+                                            "car_master.user_address," +
+                                            "car_master.base_address," +
+                                            "car_master.expiration_date," +
+                                            "car_master.remarks," +
                                             //"picture," +
-                                            "insert_ymd_hms," +
-                                            "update_ymd_hms," +
-                                            "delete_ymd_hms," +
-                                            "delete_flag " +
-                                     "FROM view_car_master ";
+                                            "car_master.insert_ymd_hms," +
+                                            "car_master.update_ymd_hms," +
+                                            "car_master.delete_ymd_hms," +
+                                            "car_master.delete_flag " +
+                                     "FROM car_master " +
+                                     "LEFT OUTER JOIN car_kind_master ON car_master.car_kind_code = car_kind_master.code " +
+                                     "LEFT OUTER JOIN car_shape_master ON car_master.shape_code = car_shape_master.code " +
+                                     "LEFT OUTER JOIN car_manufacturer_master ON car_master.manufacturer_code = car_manufacturer_master.code " +
+                                     "LEFT OUTER JOIN classification_master ON car_master.classification_code = classification_master.code";
             // "WHERE delete_flag = 'False' " + // 2022-07-08 delete_flagを入れると過去の配車に削除済のCarLabelが反映出来なくなる
             using (var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while (sqlDataReader.Read() == true) {

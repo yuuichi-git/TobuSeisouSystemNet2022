@@ -242,8 +242,8 @@ namespace ControlEx {
         /// <param name="rollCallFlag"></param>
         /// <param name="noteFlag"></param>
         /// <param name="contextMenuStrip"></param>
-        public void CreateLabel(int number, StaffMasterVo staffMasterVo, bool proxyFlag, bool tenkoModeFlag, bool rollCallFlag, bool noteFlag, ContextMenuStrip contextMenuStrip) {
-            var labelEx = new StaffLabelEx(staffMasterVo, proxyFlag, tenkoModeFlag, rollCallFlag, noteFlag).CreateLabel();
+        public void CreateLabel(int number, StaffMasterVo staffMasterVo, bool proxyFlag, bool tenkoModeFlag, bool rollCallFlag, bool noteFlag, int occupation, ContextMenuStrip contextMenuStrip) {
+            var labelEx = new StaffLabelEx(staffMasterVo, proxyFlag, tenkoModeFlag, rollCallFlag, noteFlag, occupation).CreateLabel();
             /*
              * プロパティを設定
              */

@@ -19,6 +19,10 @@ namespace WardSpreadsheet {
         private ConnectionVo _connectionVo;
         List<WardChiyodaVo> _listWardChiyodaVo;
 
+        /// <summary>
+        /// コンストラクター
+        /// </summary>
+        /// <param name="connectionVo"></param>
         public WardChiyoda(ConnectionVo connectionVo) {
             _dictionaryHoliday = new HolidayUtil().GetHoliday();
             /*
@@ -107,12 +111,12 @@ namespace WardSpreadsheet {
         int sheetViewAggregateTopRow = 0;
         private void SheetViewAggregateOutPut() {
             // Spread 非活性化
-            SpreadList.SuspendLayout();
+            SpreadAggregate.SuspendLayout();
             // Rowを削除する
             if(SheetViewAggregate.Rows.Count > 0)
                 SheetViewAggregate.RemoveRows(0, SheetViewAggregate.Rows.Count);
             // 先頭行（列）インデックスを取得
-            sheetViewAggregateTopRow = SpreadCount.GetViewportTopRow(0);
+            sheetViewAggregateTopRow = SpreadAggregate.GetViewportTopRow(0);
             List<WardChiyodaVo2> listWardChiyodaVo2 = _wardSpreadSheetDao.SelectGroupByChiyodaVehicleDispatchDetail(DateTimePicker1.Value, DateTimePicker2.Value);
             foreach(var wardChiyodaVo2 in listWardChiyodaVo2) {
                 bool newRowFlag = true;
@@ -152,27 +156,47 @@ namespace WardSpreadsheet {
                          * 祝日の場合
                          */
                         SheetViewAggregate.AddRows(0, 1);
+                        SheetViewAggregate.Cells[0, 0].Tag = wardChiyodaVo2.Operator_code;
                         SheetViewAggregate.Cells[0, 0].Text = wardChiyodaVo2.Operator_name;
                         SheetViewAggregate.Cells[0, 1].Text = wardChiyodaVo2.Occupation;
                         SheetViewAggregate.Cells[0, 2].Value = 0; // 平日の出勤日数を初期化
                         SheetViewAggregate.Cells[0, 3].Value = 1; // 休日の出勤日数を初期化
+                        SheetViewAggregate.Cells[0, 4].Value = 0;
                     } else {
                         /*
                          * 平日の場合
                          */
                         SheetViewAggregate.AddRows(0, 1);
+                        SheetViewAggregate.Cells[0, 0].Tag = wardChiyodaVo2.Operator_code;
                         SheetViewAggregate.Cells[0, 0].Text = wardChiyodaVo2.Operator_name;
                         SheetViewAggregate.Cells[0, 1].Text = wardChiyodaVo2.Occupation;
                         SheetViewAggregate.Cells[0, 2].Value = 1; // 平日の出勤日数を初期化
                         SheetViewAggregate.Cells[0, 3].Value = 0; // 休日の出勤日数を初期化
+                        SheetViewAggregate.Cells[0, 4].Value = 0;
                     }
                 }
             }
-
+            /*
+             * Footer集計
+             */
+            int H_GKI = 0;
+            int K_GKI = 0;
+            for(int i = 0; i < SheetViewAggregate.RowCount; i++) {
+                H_GKI = H_GKI + (int)SheetViewAggregate.Cells[i, 2].Value;
+                K_GKI = K_GKI + (int)SheetViewAggregate.Cells[i, 3].Value;
+            }
+            SheetViewAggregate.ColumnFooter.Cells[0, 2].Text = H_GKI.ToString();
+            SheetViewAggregate.ColumnFooter.Cells[0, 3].Text = K_GKI.ToString();
+            /*
+             * 全ての配車先での出勤日数計算
+             */
+            for(int i = 0; i < SheetViewAggregate.RowCount; i++) {
+                SheetViewAggregate.Cells[i, 4].Value = _wardSpreadSheetDao.GetWorkDaysForStaff(DateTimePicker1.Value.Date, DateTimePicker2.Value.Date, (int)SheetViewAggregate.Cells[i, 0].Tag);
+            }
             // 先頭行（列）インデックスをセット
-            SpreadList.SetViewportTopRow(0, sheetViewAggregateTopRow);
+            SpreadAggregate.SetViewportTopRow(0, sheetViewAggregateTopRow);
             // Spread 活性化
-            SpreadList.ResumeLayout();
+            SpreadAggregate.ResumeLayout();
         }
 
         /// <summary>
@@ -205,9 +229,9 @@ namespace WardSpreadsheet {
         /// <param name="sheetView"></param>
         /// <returns></returns>
         private SheetView InitializeSheetViewCount(SheetView sheetView) {
-            SpreadCount.AllowDragDrop = false; // DrugDropを禁止する
-            SpreadCount.PaintSelectionHeader = false; // ヘッダの選択状態をしない
-            SpreadCount.TabStripPolicy = TabStripPolicy.Never; // シートタブを非表示
+            SpreadAggregate.AllowDragDrop = false; // DrugDropを禁止する
+            SpreadAggregate.PaintSelectionHeader = false; // ヘッダの選択状態をしない
+            SpreadAggregate.TabStripPolicy = TabStripPolicy.Never; // シートタブを非表示
             sheetView.AlternatingRows.Count = 2; // 行スタイルを２行単位とします
             sheetView.AlternatingRows[0].BackColor = Color.WhiteSmoke; // 1行目の背景色を設定します
             sheetView.AlternatingRows[1].BackColor = Color.White; // 2行目の背景色を設定します
@@ -243,6 +267,16 @@ namespace WardSpreadsheet {
             if(((DateTimePicker)sender).Value < DateTimePicker1.Value) {
                 DateTimePicker1.Value = ((DateTimePicker)sender).Value;
             }
+        }
+
+        /// <summary>
+        /// ToolStripMenuItemPrint_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItemPrint_Click(object sender, EventArgs e) {
+            //アクティブシート印刷します
+            SpreadAggregate.PrintSheet(SheetViewAggregate);
         }
 
         /// <summary>

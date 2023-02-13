@@ -64,7 +64,9 @@ namespace Dao {
 
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT vehicle_dispatch_detail.operation_date," +
+                                            "vehicle_dispatch_detail.operator_code_1," +
                                             "staff_master_1.display_name AS operator_name_1," +
+                                            "vehicle_dispatch_detail.operator_code_2," +
                                             "staff_master_2.display_name AS operator_name_2 " +
                                      "FROM vehicle_dispatch_detail " +
                                      "LEFT OUTER JOIN staff_master AS staff_master_1 ON vehicle_dispatch_detail.operator_code_1 = staff_master_1.staff_code " +
@@ -80,6 +82,7 @@ namespace Dao {
                      */
                     wardChiyodaVo2 = new WardChiyodaVo2();
                     wardChiyodaVo2.Operation_date = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["operation_date"]);
+                    wardChiyodaVo2.Operator_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_code_1"]);
                     wardChiyodaVo2.Operator_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["operator_name_1"]);
                     wardChiyodaVo2.Occupation = "運転手";
                     listWardChiyodaVo2.Add(wardChiyodaVo2);
@@ -88,12 +91,29 @@ namespace Dao {
                      */
                     wardChiyodaVo2 = new WardChiyodaVo2();
                     wardChiyodaVo2.Operation_date = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["operation_date"]);
+                    wardChiyodaVo2.Operator_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_code_2"]);
                     wardChiyodaVo2.Operator_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["operator_name_2"]);
                     wardChiyodaVo2.Occupation = "作業員";
                     listWardChiyodaVo2.Add(wardChiyodaVo2);
                 }
             }
             return listWardChiyodaVo2;
+        }
+
+        /// <summary>
+        /// GetWorkDaysForStaff
+        /// 従事者の期間内の出勤日数を返す
+        /// </summary>
+        /// <param name="staffCode"></param>
+        /// <returns></returns>
+        public int GetWorkDaysForStaff(DateTime operationDate1, DateTime operationDate2, int staffCode) {
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT COUNT(cell_number) " +
+                                     "FROM vehicle_dispatch_detail " +
+                                     "WHERE operation_date BETWEEN '" + operationDate1.ToString("yyyy-MM-dd") + "' AND '" + operationDate2.ToString("yyyy-MM-dd") + "' " +
+                                       "AND operation_flag = 'True' " +
+                                       "AND (operator_code_1 = " + staffCode + " OR operator_code_2 = " + staffCode + " OR operator_code_3 = " + staffCode + " OR operator_code_4 = " + staffCode + ")";
+            return (int)sqlCommand.ExecuteScalar();
         }
     }
 }

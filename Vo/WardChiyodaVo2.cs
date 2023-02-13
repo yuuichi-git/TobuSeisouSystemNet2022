@@ -1,6 +1,7 @@
 ﻿namespace Vo {
     public class WardChiyodaVo2 {
         private DateTime _operation_date;
+        private int _operator_code;
         private string _operator_name = "";
         private string _occupation = "";
 
@@ -10,6 +11,13 @@
         public DateTime Operation_date {
             get => _operation_date;
             set => _operation_date = value;
+        }
+        /// <summary>
+        /// Operator_code
+        /// </summary>
+        public int Operator_code {
+            get => _operator_code;
+            set => _operator_code = value;
         }
         /// <summary>
         /// Display_Name

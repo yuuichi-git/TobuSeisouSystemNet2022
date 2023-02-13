@@ -46,6 +46,7 @@
             this.ToolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.ToolStripStatusLabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.PanelUp = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.UcDateTimeJpOperationDate = new ControlEx.UcDateTimeJp();
             this.FlowLayoutPanelExFree = new ControlEx.FlowLayoutPanelEx(this.components);
             this.label1 = new System.Windows.Forms.Label();
@@ -138,6 +139,9 @@
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItemMemoWrite = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.ToolStripMenuItemOccupation10 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemOccupation11 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItemTelephoneMarkTrue = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemTelephoneMarkFalse = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
@@ -362,6 +366,7 @@
             // PanelUp
             // 
             this.TableLayoutPanelBase.SetColumnSpan(this.PanelUp, 3);
+            this.PanelUp.Controls.Add(this.label4);
             this.PanelUp.Controls.Add(this.UcDateTimeJpOperationDate);
             this.PanelUp.Controls.Add(this.FlowLayoutPanelExFree);
             this.PanelUp.Controls.Add(this.label1);
@@ -372,9 +377,19 @@
             this.PanelUp.Size = new System.Drawing.Size(1898, 76);
             this.PanelUp.TabIndex = 2;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.Red;
+            this.label4.Location = new System.Drawing.Point(96, 48);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(192, 15);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "日付を変えたら”最新化”をクリック！！";
+            // 
             // UcDateTimeJpOperationDate
             // 
-            this.UcDateTimeJpOperationDate.Location = new System.Drawing.Point(100, 24);
+            this.UcDateTimeJpOperationDate.Location = new System.Drawing.Point(100, 20);
             this.UcDateTimeJpOperationDate.Name = "UcDateTimeJpOperationDate";
             this.UcDateTimeJpOperationDate.Size = new System.Drawing.Size(183, 23);
             this.UcDateTimeJpOperationDate.TabIndex = 6;
@@ -395,7 +410,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(44, 28);
+            this.label1.Location = new System.Drawing.Point(44, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 15);
             this.label1.TabIndex = 2;
@@ -1372,66 +1387,88 @@
             this.toolStripSeparator3,
             this.ToolStripMenuItemMemoWrite,
             this.toolStripSeparator5,
+            this.ToolStripMenuItemOccupation10,
+            this.ToolStripMenuItemOccupation11,
+            this.toolStripSeparator8,
             this.ToolStripMenuItemTelephoneMarkTrue,
             this.ToolStripMenuItemTelephoneMarkFalse});
             this.ContextMenuStripStaffLabel.Name = "ContextMenuStripStaffLabel";
-            this.ContextMenuStripStaffLabel.Size = new System.Drawing.Size(188, 154);
+            this.ContextMenuStripStaffLabel.Size = new System.Drawing.Size(296, 204);
             this.ContextMenuStripStaffLabel.Opened += new System.EventHandler(this.ContextMenuStrip_Opened);
             // 
             // ToolStripMenuItemStaffDetail
             // 
             this.ToolStripMenuItemStaffDetail.Name = "ToolStripMenuItemStaffDetail";
-            this.ToolStripMenuItemStaffDetail.Size = new System.Drawing.Size(187, 22);
+            this.ToolStripMenuItemStaffDetail.Size = new System.Drawing.Size(295, 22);
             this.ToolStripMenuItemStaffDetail.Text = "従事者台帳を表示する";
             this.ToolStripMenuItemStaffDetail.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(184, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(292, 6);
             // 
             // ToolStripMenuItemStaffProxyTrue
             // 
             this.ToolStripMenuItemStaffProxyTrue.Name = "ToolStripMenuItemStaffProxyTrue";
-            this.ToolStripMenuItemStaffProxyTrue.Size = new System.Drawing.Size(187, 22);
+            this.ToolStripMenuItemStaffProxyTrue.Size = new System.Drawing.Size(295, 22);
             this.ToolStripMenuItemStaffProxyTrue.Text = "代番として記録する";
             this.ToolStripMenuItemStaffProxyTrue.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // ToolStripMenuItemStaffProxyFalse
             // 
             this.ToolStripMenuItemStaffProxyFalse.Name = "ToolStripMenuItemStaffProxyFalse";
-            this.ToolStripMenuItemStaffProxyFalse.Size = new System.Drawing.Size(187, 22);
+            this.ToolStripMenuItemStaffProxyFalse.Size = new System.Drawing.Size(295, 22);
             this.ToolStripMenuItemStaffProxyFalse.Text = "代番を解除する";
             this.ToolStripMenuItemStaffProxyFalse.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(184, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(292, 6);
             // 
             // ToolStripMenuItemMemoWrite
             // 
             this.ToolStripMenuItemMemoWrite.Name = "ToolStripMenuItemMemoWrite";
-            this.ToolStripMenuItemMemoWrite.Size = new System.Drawing.Size(187, 22);
+            this.ToolStripMenuItemMemoWrite.Size = new System.Drawing.Size(295, 22);
             this.ToolStripMenuItemMemoWrite.Text = "メモを作成・編集する";
             this.ToolStripMenuItemMemoWrite.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(184, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(292, 6);
+            // 
+            // ToolStripMenuItemOccupation10
+            // 
+            this.ToolStripMenuItemOccupation10.Name = "ToolStripMenuItemOccupation10";
+            this.ToolStripMenuItemOccupation10.Size = new System.Drawing.Size(295, 22);
+            this.ToolStripMenuItemOccupation10.Text = "運転手の料金設定にする（運賃コードによる）";
+            this.ToolStripMenuItemOccupation10.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            // 
+            // ToolStripMenuItemOccupation11
+            // 
+            this.ToolStripMenuItemOccupation11.Name = "ToolStripMenuItemOccupation11";
+            this.ToolStripMenuItemOccupation11.Size = new System.Drawing.Size(295, 22);
+            this.ToolStripMenuItemOccupation11.Text = "作業員の料金設定にする";
+            this.ToolStripMenuItemOccupation11.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(292, 6);
             // 
             // ToolStripMenuItemTelephoneMarkTrue
             // 
             this.ToolStripMenuItemTelephoneMarkTrue.Name = "ToolStripMenuItemTelephoneMarkTrue";
-            this.ToolStripMenuItemTelephoneMarkTrue.Size = new System.Drawing.Size(187, 22);
+            this.ToolStripMenuItemTelephoneMarkTrue.Size = new System.Drawing.Size(295, 22);
             this.ToolStripMenuItemTelephoneMarkTrue.Text = "電話連絡マークを付ける";
             this.ToolStripMenuItemTelephoneMarkTrue.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // ToolStripMenuItemTelephoneMarkFalse
             // 
             this.ToolStripMenuItemTelephoneMarkFalse.Name = "ToolStripMenuItemTelephoneMarkFalse";
-            this.ToolStripMenuItemTelephoneMarkFalse.Size = new System.Drawing.Size(187, 22);
+            this.ToolStripMenuItemTelephoneMarkFalse.Size = new System.Drawing.Size(295, 22);
             this.ToolStripMenuItemTelephoneMarkFalse.Text = "電話連絡マークを消す";
             this.ToolStripMenuItemTelephoneMarkFalse.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
@@ -1612,5 +1649,9 @@
         private ToolStripMenuItem ToolStripMenuItemOperationFlagTrue;
         private ToolStripMenuItem ToolStripMenuItemOperationFlagFalse;
         private ToolStripMenuItem ToolStripMenuItemHighWayReport;
+        private Label label4;
+        private ToolStripMenuItem ToolStripMenuItemOccupation10;
+        private ToolStripMenuItem ToolStripMenuItemOccupation11;
+        private ToolStripSeparator toolStripSeparator8;
     }
 }

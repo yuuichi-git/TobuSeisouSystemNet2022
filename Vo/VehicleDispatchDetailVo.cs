@@ -1,4 +1,10 @@
-﻿namespace Vo {
+﻿/*
+ * 2023-01-08
+ * 帰庫点呼関連
+ * 2023-02-10 
+ * 職種コードを追加(occupation)
+ */
+namespace Vo {
     public class VehicleDispatchDetailVo {
         private int _cell_number;
         private DateTime _operation_date;
@@ -22,30 +28,31 @@
         private bool _operator_1_roll_call_flag;
         private DateTime _operator_1_roll_call_ymd_hms;
         private string _operator_1_note = "";
+        private int _operator_1_occupation; // 職種
         private int _operator_code_2;
         private bool _operator_2_proxy_flag;
         private bool _operator_2_roll_call_flag;
         private DateTime _operator_2_roll_call_ymd_hms;
         private string _operator_2_note = "";
+        private int _operator_2_occupation; // 職種
         private int _operator_code_3;
         private bool _operator_3_proxy_flag;
         private bool _operator_3_roll_call_flag;
         private DateTime _operator_3_roll_call_ymd_hms;
         private string _operator_3_note = "";
+        private int _operator_3_occupation; // 職種
         private int _operator_code_4;
         private bool _operator_4_proxy_flag;
         private bool _operator_4_roll_call_flag;
         private DateTime _operator_4_roll_call_ymd_hms;
         private string _operator_4_note = "";
-        /*
-         * 2023-01-08
-         * 帰庫点呼関連
-         */
-        private bool _last_roll_call_flag;
-        private int _last_plant_count;
-        private string _last_plant_name = "";
-        private string _last_plant_hm;
-        private string _last_roll_call_hm;
+        private int _operator_4_occupation; // 職種
+
+        private bool _last_roll_call_flag; // 帰庫点呼関連
+        private int _last_plant_count; // 帰庫点呼関連
+        private string _last_plant_name = ""; // 帰庫点呼関連
+        private string _last_plant_hm = ""; // 帰庫点呼関連
+        private string _last_roll_call_hm = ""; // 帰庫点呼関連
 
         private string _insert_pc_name = "";
         private DateTime _insert_ymd_hms;
@@ -220,6 +227,14 @@
             set => _operator_1_note = value;
         }
         /// <summary>
+        /// 職種
+        /// 10:運転手 11:作業員 99 指定なし
+        /// </summary>
+        public int Operator_1_occupation {
+            get => _operator_1_occupation;
+            set => _operator_1_occupation = value;
+        }
+        /// <summary>
         /// 社員コード2
         /// </summary>
         public int Operator_code_2 {
@@ -227,16 +242,16 @@
             set => _operator_code_2 = value;
         }
         /// <summary>
-        /// 代番フラグ2
-        /// true:代番 false:本番
-        /// </summary>
-        /// /// <summary>
         /// 点呼フラグ2
         /// </summary>
         public bool Operator_2_roll_call_flag {
             get => _operator_2_roll_call_flag;
             set => _operator_2_roll_call_flag = value;
         }
+        /// <summary>
+        /// 代番フラグ2
+        /// true:代番 false:本番
+        /// </summary>
         public bool Operator_2_proxy_flag {
             get => _operator_2_proxy_flag;
             set => _operator_2_proxy_flag = value;
@@ -254,6 +269,14 @@
         public string Operator_2_note {
             get => _operator_2_note;
             set => _operator_2_note = value;
+        }
+        /// <summary>
+        /// 職種
+        /// 10:運転手 11:作業員 99 指定なし
+        /// </summary>
+        public int Operator_2_occupation {
+            get => _operator_2_occupation;
+            set => _operator_2_occupation = value;
         }
         /// <summary>
         /// 社員コード3
@@ -292,6 +315,14 @@
             set => _operator_3_note = value;
         }
         /// <summary>
+        /// 職種
+        /// 10:運転手 11:作業員 99 指定なし
+        /// </summary>
+        public int Operator_3_occupation {
+            get => _operator_3_occupation;
+            set => _operator_3_occupation = value;
+        }
+        /// <summary>
         /// 社員コード4
         /// </summary>
         public int Operator_code_4 {
@@ -326,6 +357,14 @@
         public string Operator_4_note {
             get => _operator_4_note;
             set => _operator_4_note = value;
+        }
+        /// <summary>
+        /// 職種
+        /// 10:運転手 11:作業員 99 指定なし
+        /// </summary>
+        public int Operator_4_occupation {
+            get => _operator_4_occupation;
+            set => _operator_4_occupation = value;
         }
         /// <summary>
         /// 帰庫点呼フラグ
