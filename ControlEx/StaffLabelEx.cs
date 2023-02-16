@@ -28,23 +28,25 @@ namespace ControlEx {
          */
         private bool _telephoneMark = false;
         private Font _drawTelephoneMarkFont = new Font("Yu Gothic UI", 9, FontStyle.Regular, GraphicsUnit.Pixel);
-        private SolidBrush _drawTelephoneMarkBrushFont = new SolidBrush(Color.Blue);
+        private SolidBrush _drawTelephoneMarkSolidBrush = new SolidBrush(Color.Blue);
 
         /*
          * 作業員マーク
          */
         private int _occupation;
         private Font _occupationFont = new Font("Yu Gothic UI", 9, FontStyle.Regular, GraphicsUnit.Pixel);
-        private SolidBrush _occupationBrushFont = new SolidBrush(Color.Blue);
+        private SolidBrush _occupationBrushSolidBrush = new SolidBrush(Color.Blue);
 
         /// <summary>
         /// コンストラクター(オーバーロード)
         /// SetControlExに対してのStaffLabelExを作成
         /// </summary>
         /// <param name="staffMasterVo"></param>
+        /// <param name="proxyFlag"></param>
         /// <param name="tenkoModeFlag"></param>
         /// <param name="rollCallFlag"></param>
         /// <param name="noteFlag"></param>
+        /// <param name="occupation"></param>
         public StaffLabelEx(StaffMasterVo staffMasterVo, bool proxyFlag, bool tenkoModeFlag, bool rollCallFlag, bool noteFlag, int occupation) {
             _staffMasterVo = staffMasterVo;
             _proxyFlag = proxyFlag;
@@ -235,7 +237,7 @@ namespace ControlEx {
              */
             if(_telephoneMark) {
                 Point point = new Point(54, 0);
-                e.Graphics.DrawString("☎", _drawTelephoneMarkFont, _drawTelephoneMarkBrushFont, point);
+                e.Graphics.DrawString("☎", _drawTelephoneMarkFont, _drawTelephoneMarkSolidBrush, point);
             }
             /*
              * 作業員マーク
@@ -244,7 +246,7 @@ namespace ControlEx {
                 case 10:
                     break;
                 case 11:
-                    e.Graphics.DrawString("作", _occupationFont, _occupationBrushFont, new Point(1, 21));
+                    e.Graphics.DrawString("作", _occupationFont, _occupationBrushSolidBrush, new Point(1, 21));
                     break;
                 case 99:
                     break;

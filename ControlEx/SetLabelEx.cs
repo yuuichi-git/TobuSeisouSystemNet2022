@@ -3,18 +3,19 @@
 namespace ControlEx {
     public partial class SetLabelEx : Label {
         /*
+         * Labelのサイズ
+         */
+        private const int _setLabelHeight = 68;
+        private const int _setLabelWidth = 70;
+
+        private SetMasterVo _setMasterVo;
+        /*
          * setter getter
          */
         // 帰庫点呼フラグ(True:点呼済 False:未点呼)
         private bool _lastRollCallFlag;
 
-        private SetMasterVo _setMasterVo;
-        /*
-         * SetLabel
-         */
-        private const int _setLabelHeight = 68;
-        private const int _setLabelWidth = 70;
-        private  Color _setLabelBorderColor = new();
+        private Color _setLabelBorderColor = new();
         private readonly Font _setLabelDrawFont = new Font("Yu Gothic UI", 13, FontStyle.Regular, GraphicsUnit.Pixel);
 
         private bool _garageFlag;
@@ -28,14 +29,14 @@ namespace ControlEx {
          * AddWorkerFlag
          * 作業員付き
          */
-        private bool _addWorkerFlag = false;
+        private bool _addWorkerFlag;
         private readonly Font _drawFontAddWorkerFlag = new Font("Yu Gothic UI", 10, FontStyle.Regular, GraphicsUnit.Pixel);
         private readonly SolidBrush _brushColorAddWorkerFlag = new SolidBrush(Color.Blue);
         /*
         * StandByFlag
         * 待機
         */
-        private bool _standByFlag = false;
+        private bool _standByFlag;
         private readonly Font _drawFontStandByFlag = new Font("Yu Gothic UI", 10, FontStyle.Regular, GraphicsUnit.Pixel);
         private readonly SolidBrush _brushColorStandByFlag = new SolidBrush(Color.Blue);
 

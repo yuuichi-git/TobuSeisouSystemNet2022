@@ -28,7 +28,9 @@
             this.TableLayoutPanelExBase = new ControlEx.TableLayoutPanelEx();
             this.MenuStrip1 = new System.Windows.Forms.MenuStrip();
             this.ToolStripMenuItemMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemExcelExport = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemExport = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemExport1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemExport2 = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.編集ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemNewStaff = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,6 +65,7 @@
             this.ToolStripMenuItemToukanpo = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemMap = new System.Windows.Forms.ToolStripMenuItem();
             this.SheetViewList = this.SpreadList.GetSheet(0);
+            this.SheetViewList2 = this.SpreadList.GetSheet(1);
             this.TabControlExStaff = new ControlEx.TabControlEx();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -123,23 +126,39 @@
             // ToolStripMenuItemMenu
             // 
             this.ToolStripMenuItemMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemExcelExport,
+            this.ToolStripMenuItemExport,
             this.ToolStripMenuItemExit});
             this.ToolStripMenuItemMenu.Name = "ToolStripMenuItemMenu";
             this.ToolStripMenuItemMenu.Size = new System.Drawing.Size(52, 20);
             this.ToolStripMenuItemMenu.Text = "メニュー";
             // 
-            // ToolStripMenuItemExcelExport
+            // ToolStripMenuItemExport
             // 
-            this.ToolStripMenuItemExcelExport.Name = "ToolStripMenuItemExcelExport";
-            this.ToolStripMenuItemExcelExport.Size = new System.Drawing.Size(207, 22);
-            this.ToolStripMenuItemExcelExport.Text = "Excel形式でエクスポートする";
-            this.ToolStripMenuItemExcelExport.Click += new System.EventHandler(this.ToolStripMenuItemExcelExport_Click);
+            this.ToolStripMenuItemExport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemExport1,
+            this.ToolStripMenuItemExport2});
+            this.ToolStripMenuItemExport.Name = "ToolStripMenuItemExport";
+            this.ToolStripMenuItemExport.Size = new System.Drawing.Size(195, 22);
+            this.ToolStripMenuItemExport.Text = "Excel形式でエクスポート";
+            // 
+            // ToolStripMenuItemExport1
+            // 
+            this.ToolStripMenuItemExport1.Name = "ToolStripMenuItemExport1";
+            this.ToolStripMenuItemExport1.Size = new System.Drawing.Size(240, 22);
+            this.ToolStripMenuItemExport1.Text = "従事者リストをエクスポートする";
+            this.ToolStripMenuItemExport1.Click += new System.EventHandler(this.ToolStripMenuItemExport1_Click);
+            // 
+            // ToolStripMenuItemExport2
+            // 
+            this.ToolStripMenuItemExport2.Name = "ToolStripMenuItemExport2";
+            this.ToolStripMenuItemExport2.Size = new System.Drawing.Size(240, 22);
+            this.ToolStripMenuItemExport2.Text = "健康診断用リストをエクスポートする";
+            this.ToolStripMenuItemExport2.Click += new System.EventHandler(this.ToolStripMenuItemExport2_Click);
             // 
             // ToolStripMenuItemExit
             // 
             this.ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
-            this.ToolStripMenuItemExit.Size = new System.Drawing.Size(207, 22);
+            this.ToolStripMenuItemExit.Size = new System.Drawing.Size(195, 22);
             this.ToolStripMenuItemExit.Text = "アプリケーションを終了する";
             this.ToolStripMenuItemExit.Click += new System.EventHandler(this.ToolStripMenuItemExit_Click);
             // 
@@ -458,7 +477,7 @@
             // 
             // SpreadList
             // 
-            this.SpreadList.AccessibleDescription = "SpreadList, Sheet1, Row 0, Column 0";
+            this.SpreadList.AccessibleDescription = "SpreadList, 健康診断用リスト, Row 0, Column 0";
             this.SpreadList.ContextMenuStrip = this.ContextMenuStrip1;
             this.SpreadList.Dock = System.Windows.Forms.DockStyle.Fill;
             this.SpreadList.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -475,7 +494,7 @@
             this.ToolStripMenuItemToukanpo,
             this.ToolStripMenuItemMap});
             this.ContextMenuStrip1.Name = "contextMenuStrip1";
-            this.ContextMenuStrip1.Size = new System.Drawing.Size(199, 70);
+            this.ContextMenuStrip1.Size = new System.Drawing.Size(199, 92);
             this.ContextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuStrip1_Opening);
             // 
             // ToolStripMenuItemLicense
@@ -716,14 +735,17 @@
         private Label label1;
         private CheckBox CheckBoxRetired;
         private CheckBox CheckBoxNone1;
-        private ToolStripMenuItem ToolStripMenuItemExcelExport;
         private ToolStripMenuItem 編集ToolStripMenuItem;
         private ToolStripMenuItem ToolStripMenuItemNewStaff;
         private ContextMenuStrip ContextMenuStrip1;
         private ToolStripMenuItem ToolStripMenuItemLicense;
         private ToolStripMenuItem ToolStripMenuItemToukanpo;
         private ToolStripMenuItem ToolStripMenuItemMap;
-        private FarPoint.Win.Spread.SheetView SheetViewList;
         private CheckBox checkBox1;
+        private FarPoint.Win.Spread.SheetView SheetViewList;
+        private FarPoint.Win.Spread.SheetView SheetViewList2;
+        private ToolStripMenuItem ToolStripMenuItemExport;
+        private ToolStripMenuItem ToolStripMenuItemExport1;
+        private ToolStripMenuItem ToolStripMenuItemExport2;
     }
 }

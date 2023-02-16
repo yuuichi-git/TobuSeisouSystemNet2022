@@ -1038,8 +1038,8 @@ namespace VehicleDispatch {
                 case "ToolStripMenuItemContactInformationTrue":
                     try {
                         _vehicleDispatchDetailDao.UpdateContactInformationFlag(UcDateTimeJpOperationDate.GetValue(),
-                                                                           (int)EvacuationSetControlEx.Tag,
-                                                                           true);
+                                                                               (int)EvacuationSetControlEx.Tag,
+                                                                               true);
                         // SetLabelExÇòAóçéñçÄÇ†ÇËÇ…Ç∑ÇÈ
                         EvacuationSetControlEx.SetContactInformationFlag(true);
                     } catch(Exception exception) {
@@ -1049,8 +1049,8 @@ namespace VehicleDispatch {
                 case "ToolStripMenuItemContactInformationFalse":
                     try {
                         _vehicleDispatchDetailDao.UpdateContactInformationFlag(UcDateTimeJpOperationDate.GetValue(),
-                                                                           (int)EvacuationSetControlEx.Tag,
-                                                                           false);
+                                                                               (int)EvacuationSetControlEx.Tag,
+                                                                               false);
                         // SetLabelExÇòAóçéñçÄÇ»ÇµÇ…Ç∑ÇÈ
                         EvacuationSetControlEx.SetContactInformationFlag(false);
                     } catch(Exception exception) {
@@ -1084,7 +1084,7 @@ namespace VehicleDispatch {
                 case "ToolStripMenuItemSetDelete":
                     try {
                         _vehicleDispatchDetailDao.ResetSetLabel(UcDateTimeJpOperationDate.GetValue(),
-                                                           (int)EvacuationSetControlEx.Tag);
+                                                                (int)EvacuationSetControlEx.Tag);
                     } catch(Exception exception) {
                         MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     }

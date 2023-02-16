@@ -2,11 +2,14 @@
 
 namespace ControlEx {
     public partial class CarLabelEx : Label {
-        private CarMasterVo _carMasterVo;
-        private bool _proxyFlag = false; // 代番フラグ
+        /*
+         * Labelのサイズ
+         */
         private const int _carLabelHeight = 68;
         private const int _carLabelWidth = 70;
 
+        private CarMasterVo _carMasterVo;
+        private bool _proxyFlag; // 代番フラグ
         private readonly Color _borderColor = Color.White;
         private readonly Font _drawFont = new Font("Yu Gothic UI", 12, FontStyle.Regular, GraphicsUnit.Pixel);
         private readonly SolidBrush _drowBrushFill;
@@ -42,8 +45,8 @@ namespace ControlEx {
         /// <param name="vehicleDispatchDetailVo"></param>
         /// <param name="carMasterVo"></param>
         public CarLabelEx(VehicleDispatchDetailVo vehicleDispatchDetailVo, CarMasterVo carMasterVo) {
-            _proxyFlag = vehicleDispatchDetailVo.Car_proxy_flag;
             _carMasterVo = carMasterVo;
+            _proxyFlag = vehicleDispatchDetailVo.Car_proxy_flag;
             /*
              * 本社・三郷で色を変える
              */
@@ -66,7 +69,7 @@ namespace ControlEx {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void LabelEx_CellPaint(object? sender, PaintEventArgs e) {
+        private void LabelEx_CellPaint(object sender, PaintEventArgs e) {
             /*
              * Boderを描画
              */

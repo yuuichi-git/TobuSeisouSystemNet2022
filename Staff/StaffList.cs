@@ -19,9 +19,6 @@ namespace Staff {
         private InitializeForm _initializeForm = new();
         private List<ExtendsStaffMasterVo>? _listExtendsStaffMasterVo;
         private List<ExtendsStaffMasterVo>? _listFindAllStaffMasterVo;
-        private List<ExtendsStaffMasterVo>? _listFindAllStaffMasterVo1;
-        private List<ExtendsStaffMasterVo>? _listFindAllStaffMasterVo2;
-        private List<ExtendsStaffMasterVo>? _listFindAllStaffMasterVo3;
         private IOrderedEnumerable<ExtendsStaffMasterVo>? _linqExtendsStaffMasterVo;
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01, 00, 00, 00, 000);
         private readonly Dictionary<int, string> dictionaryBelongs = new Dictionary<int, string> { { 10, "役員" }, { 11, "社員" }, { 12, "アルバイト" }, { 13, "派遣" }, { 20, "新運転" }, { 21, "自運労" } };
@@ -145,8 +142,12 @@ namespace Staff {
 
             // 事故件数集計の基準となる年度を初期化
             ComboBoxAccidentYear.Text = "2022年度";
-            // FpSpreadを初期化
+            /*
+             * FpSpreadを初期化
+             */
+            SpreadList.TabStrip.DefaultSheetTab.Font = new Font("Yu Gothic UI", 9);
             InitializeSheetViewList(SheetViewList);
+            InitializeSheetViewList2(SheetViewList2);
             ToolStripStatusLabelDetail.Text = "";
         }
 
@@ -198,7 +199,14 @@ namespace Staff {
             }
 
             _listExtendsStaffMasterVo = new StaffMasterDao(_connectionVo).SelectAllExtendsStaffMasterVo(CreateSqlString(GroupBox1), CreateSqlString(GroupBox2), CreateSqlString(GroupBox3));
-            SheetViewListOutPut();
+            switch(SpreadList.ActiveSheet.SheetName) {
+                case "従事者リスト":
+                    SheetViewListOutPut();
+                    break;
+                case "健康診断用リスト":
+                    SheetViewList2OutPut();
+                    break;
+            }
         }
 
         /// <summary>
@@ -230,8 +238,16 @@ namespace Staff {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void TabControlEx1_Click(object sender, EventArgs e) {
-            if(_listFindAllStaffMasterVo != null)
-                SheetViewListOutPut();
+            if(_listFindAllStaffMasterVo != null) {
+                switch(SpreadList.ActiveSheet.SheetName) {
+                    case "従事者リスト":
+                        SheetViewListOutPut();
+                        break;
+                    case "健康診断用リスト":
+                        SheetViewList2OutPut();
+                        break;
+                }
+            }
         }
 
         /// <summary>
@@ -413,11 +429,95 @@ namespace Staff {
         }
 
         /// <summary>
+        /// SheetViewList2OutPut
+        /// </summary>
+        public void SheetViewList2OutPut() {
+            // Spread 非活性化
+            SpreadList.SuspendLayout();
+            // 先頭行（列）インデックスを取得
+            spreadListTopRow = SpreadList.GetViewportTopRow(0);
+            // Rowを削除する
+            if(SheetViewList2.Rows.Count > 0)
+                SheetViewList2.RemoveRows(0, SheetViewList2.Rows.Count);
+
+            _listFindAllStaffMasterVo = TabControlExStaff.SelectedTab.Tag switch {
+                "ア" => _listExtendsStaffMasterVo?.FindAll(x => x.Name_kana.StartsWith("ア") || x.Name_kana.StartsWith("イ") || x.Name_kana.StartsWith("ウ") || x.Name_kana.StartsWith("エ") || x.Name_kana.StartsWith("オ")),
+                "カ" => _listExtendsStaffMasterVo?.FindAll(x => x.Name_kana.StartsWith("カ") || x.Name_kana.StartsWith("ガ") || x.Name_kana.StartsWith("キ") || x.Name_kana.StartsWith("ギ") || x.Name_kana.StartsWith("ク") || x.Name_kana.StartsWith("グ") || x.Name_kana.StartsWith("ケ") || x.Name_kana.StartsWith("コ") || x.Name_kana.StartsWith("ゴ")),
+                "サ" => _listExtendsStaffMasterVo?.FindAll(x => x.Name_kana.StartsWith("サ") || x.Name_kana.StartsWith("シ") || x.Name_kana.StartsWith("ス") || x.Name_kana.StartsWith("セ") || x.Name_kana.StartsWith("ソ")),
+                "タ" => _listExtendsStaffMasterVo?.FindAll(x => x.Name_kana.StartsWith("タ") || x.Name_kana.StartsWith("チ") || x.Name_kana.StartsWith("ツ") || x.Name_kana.StartsWith("テ") || x.Name_kana.StartsWith("デ") || x.Name_kana.StartsWith("ト") || x.Name_kana.StartsWith("ド")),
+                "ナ" => _listExtendsStaffMasterVo?.FindAll(x => x.Name_kana.StartsWith("ナ") || x.Name_kana.StartsWith("ニ") || x.Name_kana.StartsWith("ヌ") || x.Name_kana.StartsWith("ネ") || x.Name_kana.StartsWith("ノ")),
+                "ハ" => _listExtendsStaffMasterVo?.FindAll(x => x.Name_kana.StartsWith("ハ") || x.Name_kana.StartsWith("パ") || x.Name_kana.StartsWith("ヒ") || x.Name_kana.StartsWith("ビ") || x.Name_kana.StartsWith("フ") || x.Name_kana.StartsWith("ブ") || x.Name_kana.StartsWith("ヘ") || x.Name_kana.StartsWith("ベ") || x.Name_kana.StartsWith("ホ")),
+                "マ" => _listExtendsStaffMasterVo?.FindAll(x => x.Name_kana.StartsWith("マ") || x.Name_kana.StartsWith("ミ") || x.Name_kana.StartsWith("ム") || x.Name_kana.StartsWith("メ") || x.Name_kana.StartsWith("モ")),
+                "ヤ" => _listExtendsStaffMasterVo?.FindAll(x => x.Name_kana.StartsWith("ヤ") || x.Name_kana.StartsWith("ユ") || x.Name_kana.StartsWith("ヨ")),
+                "ラ" => _listExtendsStaffMasterVo?.FindAll(x => x.Name_kana.StartsWith("ラ") || x.Name_kana.StartsWith("リ") || x.Name_kana.StartsWith("ル") || x.Name_kana.StartsWith("レ") || x.Name_kana.StartsWith("ロ")),
+                "ワ" => _listExtendsStaffMasterVo?.FindAll(x => x.Name_kana.StartsWith("ワ") || x.Name_kana.StartsWith("ヲ") || x.Name_kana.StartsWith("ン")),
+                _ => _listExtendsStaffMasterVo,
+            };
+
+            // 退職者
+            if(!CheckBoxRetired.Checked)
+                _listFindAllStaffMasterVo = _listFindAllStaffMasterVo?.FindAll(x => x.Retirement_flag != true);
+            // ソート
+            _linqExtendsStaffMasterVo = _listFindAllStaffMasterVo?.OrderBy(x => x.Belongs).ThenBy(x => x.Code);
+
+            int i = 0;
+            if(_linqExtendsStaffMasterVo is not null)
+                foreach(var extendsStaffMasterVo in _linqExtendsStaffMasterVo) {
+                    // 所属
+                    var _belongs = extendsStaffMasterVo.Belongs;
+                    // 種別
+                    var _occupation = extendsStaffMasterVo.Occupation;
+                    // 組合CD
+                    var _code = extendsStaffMasterVo.Code;
+                    // 氏名
+                    var _name = extendsStaffMasterVo.Name;
+                    // カナ
+                    var _name_kana = extendsStaffMasterVo.Name_kana;
+                    // 生年月日・年齢
+                    DateTime? _birth_date = null;
+                    string _age = "";
+                    if(extendsStaffMasterVo is not null && extendsStaffMasterVo.Birth_date != _defaultDateTime) {
+                        _birth_date = extendsStaffMasterVo.Birth_date.Date;
+                        // 年齢
+                        _age = string.Concat(new Date().GetStaffAge(extendsStaffMasterVo.Birth_date.Date), "歳");
+                    }
+                    // 健康保険番号
+                    string _health_insurance_number = extendsStaffMasterVo.Health_insurance_number;
+
+                    SheetViewList2.Rows.Add(i, 1);
+                    SheetViewList2.RowHeader.Columns[0].Label = (i + 1).ToString(); // Rowヘッダ
+                    SheetViewList2.Rows[i].ForeColor = extendsStaffMasterVo is not null && extendsStaffMasterVo.Retirement_flag ? Color.Red : Color.Black; // 退職済のレコードのForeColorをセット
+                    SheetViewList2.Rows[i].Height = 22; // Rowの高さ
+                    SheetViewList2.Rows[i].Resizable = false; // RowのResizableを禁止
+
+                    SheetViewList2.Cells[i, 0].Value = "";
+                    SheetViewList2.Cells[i, 1].Value = dictionaryBelongs[_belongs];
+                    SheetViewList2.Cells[i, 2].Value = dictionaryOccupation[_occupation] == "運転手" ? "運転手" : "";
+                    SheetViewList2.Cells[i, 3].Value = _code;
+                    SheetViewList2.Cells[i, 4].Text = _name;
+                    SheetViewList2.Cells[i, 5].Text = _name_kana;
+                    SheetViewList2.Cells[i, 6].Value = _birth_date;
+                    SheetViewList2.Cells[i, 7].Value = _age;
+                    SheetViewList2.Cells[i, 8].Value = _health_insurance_number;
+                    i++;
+                }
+
+            // 先頭行（列）インデックスをセット
+            SpreadList.SetViewportTopRow(0, spreadListTopRow);
+            // Spread 活性化
+            SpreadList.ResumeLayout();
+            ToolStripStatusLabelDetail.Text = string.Concat(" ", i, " 件");
+        }
+
+        /// <summary>
         /// SpreadList_CellDoubleClick
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void SpreadList_CellDoubleClick(object sender, CellClickEventArgs e) {
+            // ダブルクリックされたのが従事者リストで無ければReturnする
+            if(((FpSpread)sender).ActiveSheet.SheetName != "従事者リスト")
+                return;
             // ヘッダーのDoubleClickを回避
             if(e.ColumnHeader)
                 return;
@@ -450,7 +550,6 @@ namespace Staff {
         private SheetView InitializeSheetViewList(SheetView sheetView) {
             SpreadList.AllowDragDrop = false; // DrugDropを禁止する
             SpreadList.PaintSelectionHeader = false; // ヘッダの選択状態をしない
-            SpreadList.TabStripPolicy = TabStripPolicy.Never; // シートタブを非表示
             sheetView.AlternatingRows.Count = 2; // 行スタイルを２行単位とします
             sheetView.AlternatingRows[0].BackColor = Color.WhiteSmoke; // 1行目の背景色を設定します
             sheetView.AlternatingRows[1].BackColor = Color.White; // 2行目の背景色を設定します
@@ -465,15 +564,24 @@ namespace Staff {
         }
 
         /// <summary>
-        /// ToolStripMenuItemExcelExport_Click
+        /// InitializeSheetViewList2
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ToolStripMenuItemExcelExport_Click(object sender, EventArgs e) {
-            //xlsx形式ファイルをエクスポートします
-            string fileName = string.Concat("従事者リスト", DateTime.Now.ToString("MM月dd日"), "作成");
-            SpreadList.SaveExcel(new Directry().GetExcelDesktopPassXlsx(fileName), ExcelSaveFlags.UseOOXMLFormat | ExcelSaveFlags.Exchangeable);
-            MessageBox.Show("デスクトップへエクスポートしました", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        /// <param name="sheetView"></param>
+        /// <returns></returns>
+        private SheetView InitializeSheetViewList2(SheetView sheetView) {
+            SpreadList.AllowDragDrop = false; // DrugDropを禁止する
+            SpreadList.PaintSelectionHeader = false; // ヘッダの選択状態をしない
+            sheetView.AlternatingRows.Count = 2; // 行スタイルを２行単位とします
+            sheetView.AlternatingRows[0].BackColor = Color.WhiteSmoke; // 1行目の背景色を設定します
+            sheetView.AlternatingRows[1].BackColor = Color.White; // 2行目の背景色を設定します
+            sheetView.ColumnHeader.Rows[0].Height = 28; // Columnヘッダの高さ
+            sheetView.GrayAreaBackColor = Color.White;
+            sheetView.HorizontalGridLine = new GridLine(GridLineType.None);
+            sheetView.RowHeader.Columns[0].Font = new Font("Yu Gothic UI", 9); // 行ヘッダのFont
+            sheetView.RowHeader.Columns[0].Width = 50; // 行ヘッダの幅を変更します
+            sheetView.VerticalGridLine = new GridLine(GridLineType.Flat, Color.LightGray);
+            sheetView.RemoveRows(0, sheetView.Rows.Count);
+            return sheetView;
         }
 
         /// <summary>
@@ -482,55 +590,64 @@ namespace Staff {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ContextMenuStrip1_Opening(object sender, CancelEventArgs e) {
-            /*
-             * SheetViewにRowが無い場合や、Rowが選択されていない場合はReturnする
-             */
-            if(SheetViewList.RowCount < 1 || !SheetViewList.IsBlockSelected) {
-                e.Cancel = true;
-                return;
+            switch(SpreadList.ActiveSheet.SheetName) {
+                case "従事者リスト":
+                    ContextMenuStrip1.Enabled = true;
+                    /*
+                     * SheetViewにRowが無い場合や、Rowが選択されていない場合はReturnする
+                     */
+                    if(SheetViewList.RowCount < 1 || !SheetViewList.IsBlockSelected) {
+                        e.Cancel = true;
+                        return;
+                    }
+
+                    var spreadList = (FpSpread)((ContextMenuStrip)sender).SourceControl;
+                    var cellRange = spreadList.ActiveSheet.GetSelections();
+                    /*
+                     * 免許証
+                     */
+                    if(cellRange[0].RowCount == 1) {
+                        var license = SheetViewList.Cells[SheetViewList.ActiveRowIndex, colLicense].Value;
+                        if((bool)license) {
+                            ToolStripMenuItemLicense.Enabled = true;
+                        } else {
+                            ToolStripMenuItemLicense.Enabled = false;
+                        }
+                    } else {
+                        ToolStripMenuItemLicense.Enabled = false;
+                    }
+                    /*
+                     * 東環保
+                     */
+                    if(cellRange[0].RowCount == 1) {
+                        var toukanpoCard = SheetViewList.Cells[SheetViewList.ActiveRowIndex, colToukanpoCard].Value;
+                        if((bool)toukanpoCard) {
+                            ToolStripMenuItemToukanpo.Enabled = true;
+                        } else {
+                            ToolStripMenuItemToukanpo.Enabled = false;
+                        }
+                    } else {
+                        ToolStripMenuItemLicense.Enabled = false;
+                    }
+                    /*
+                     * 地図を表示する
+                     */
+                    if(cellRange[0].RowCount == 1) {
+                        var currentAddress = SheetViewList.Cells[SheetViewList.ActiveRowIndex, colCurrentAddress].Text;
+                        if(!string.IsNullOrEmpty(currentAddress)) {
+                            ToolStripMenuItemMap.Enabled = true;
+                        } else {
+                            ToolStripMenuItemMap.Enabled = false;
+                        }
+                    } else {
+                        ToolStripMenuItemMap.Enabled = false;
+                    }
+                    break;
+                case "健康診断用リスト":
+                    ContextMenuStrip1.Enabled = false;
+                    break;
             }
 
-            var spreadList = (FpSpread)((ContextMenuStrip)sender).SourceControl;
-            var cellRange = spreadList.ActiveSheet.GetSelections();
-            /*
-             * 免許証
-             */
-            if(cellRange[0].RowCount == 1) {
-                var license = SheetViewList.Cells[SheetViewList.ActiveRowIndex, colLicense].Value;
-                if((bool)license) {
-                    ToolStripMenuItemLicense.Enabled = true;
-                } else {
-                    ToolStripMenuItemLicense.Enabled = false;
-                }
-            } else {
-                ToolStripMenuItemLicense.Enabled = false;
-            }
-            /*
-             * 東環保
-             */
-            if(cellRange[0].RowCount == 1) {
-                var toukanpoCard = SheetViewList.Cells[SheetViewList.ActiveRowIndex, colToukanpoCard].Value;
-                if((bool)toukanpoCard) {
-                    ToolStripMenuItemToukanpo.Enabled = true;
-                } else {
-                    ToolStripMenuItemToukanpo.Enabled = false;
-                }
-            } else {
-                ToolStripMenuItemLicense.Enabled = false;
-            }
-            /*
-             * 地図を表示する
-             */
-            if(cellRange[0].RowCount == 1) {
-                var currentAddress = SheetViewList.Cells[SheetViewList.ActiveRowIndex, colCurrentAddress].Text;
-                if(!string.IsNullOrEmpty(currentAddress)) {
-                    ToolStripMenuItemMap.Enabled = true;
-                } else {
-                    ToolStripMenuItemMap.Enabled = false;
-                }
-            } else {
-                ToolStripMenuItemMap.Enabled = false;
-            }
         }
 
         /// <summary>
@@ -563,6 +680,30 @@ namespace Staff {
                     new Maps().MapOpen(currentAddress);
                     break;
             }
+        }
+
+        /// <summary>
+        /// ToolStripMenuItemExport1_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItemExport1_Click(object sender, EventArgs e) {
+            //xlsx形式ファイルをエクスポートします
+            string fileName = string.Concat("従事者リスト", DateTime.Now.ToString("MM月dd日"), "作成");
+            SpreadList.SaveExcel(new Directry().GetExcelDesktopPassXlsx(fileName), ExcelSaveFlags.UseOOXMLFormat | ExcelSaveFlags.Exchangeable);
+            MessageBox.Show("デスクトップへエクスポートしました", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        /// <summary>
+        /// ToolStripMenuItemExport2_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItemExport2_Click(object sender, EventArgs e) {
+            //xlsx形式ファイルをエクスポートします
+            string fileName = string.Concat("健康保険受診リスト", DateTime.Now.ToString("MM月dd日"), "作成");
+            SpreadList.SaveExcel(new Directry().GetExcelDesktopPassXlsx(fileName), ExcelSaveFlags.UseOOXMLFormat | ExcelSaveFlags.Exchangeable);
+            MessageBox.Show("デスクトップへエクスポートしました", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         /// <summary>
