@@ -84,13 +84,5 @@ namespace VehicleDispatch {
                 throw;
             }
         }
-
-        /// <summary>
-        /// StaffMemo_FormClosing
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void StaffMemo_FormClosing(object sender, FormClosingEventArgs e) {
-        }
     }
 }

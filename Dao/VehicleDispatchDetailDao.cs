@@ -1077,6 +1077,58 @@ namespace Dao {
         }
 
         /// <summary>
+        /// GetSetNote
+        /// 配車先メモを取得する
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="cellNumber"></param>
+        /// <returns></returns>
+        public string GetSetNote(DateTime operationDate, int cellNumber) {
+            string note = string.Empty;
+            /*
+             * Tagがゼロから始まっているので１をプラスする
+             */
+            cellNumber++;
+
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT set_note " +
+                                     "FROM vehicle_dispatch_detail " +
+                                     "WHERE cell_number = " + cellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            using(var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while(sqlDataReader.Read() == true) {
+                    note = _defaultValue.GetDefaultValue<string>(sqlDataReader["set_note"]);
+                }
+            }
+            return note;
+        }
+
+        /// <summary>
+        /// SetSetNote
+        /// 配車先メモの登録・修正
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="cellNumber"></param>
+        /// <param name="note"></param>
+        public void SetSetNote(DateTime operationDate, int cellNumber, string note) {
+            /*
+             * Tagがゼロから始まっているので１をプラスする
+             */
+            cellNumber++;
+
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE vehicle_dispatch_detail " +
+                                     "SET set_note = '" + note + "'," +
+                                         "update_pc_name = '" + Environment.MachineName + "'," +
+                                         "update_ymd_hms = '" + DateTime.Now + "' " +
+                                     "WHERE cell_number = " + cellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
         /// SetOperatorNote
         /// </summary>
         /// <param name="operationDate"></param>
@@ -1185,6 +1237,8 @@ namespace Dao {
             }
             return cellNumber;
         }
+
+
 
         /// <summary>
         /// GetOperatorNote

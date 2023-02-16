@@ -107,6 +107,8 @@
             this.ToolStripMenuItemSetGarageAdachi = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemSetGarageMisato = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemSetDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.ToolStripMenuItemSetMemo = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItemOperationFlag = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemOperationFlagTrue = new System.Windows.Forms.ToolStripMenuItem();
@@ -137,7 +139,7 @@
             this.ToolStripMenuItemStaffProxyTrue = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemStaffProxyFalse = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolStripMenuItemMemoWrite = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemStaffMemo = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.ToolStripMenuItemOccupation10 = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemOccupation11 = new System.Windows.Forms.ToolStripMenuItem();
@@ -1146,6 +1148,8 @@
             this.toolStripSeparator4,
             this.ToolStripMenuItemSetGarageChange,
             this.ToolStripMenuItemSetDelete,
+            this.toolStripSeparator9,
+            this.ToolStripMenuItemSetMemo,
             this.toolStripSeparator6,
             this.ToolStripMenuItemOperationFlag,
             this.ToolStripMenuItemClassification,
@@ -1156,7 +1160,7 @@
             this.ToolStripMenuItemFax,
             this.ToolStripMenuItemHighWayReport});
             this.ContextMenuStripSetLabel.Name = "ContextMenuStripSetLabel";
-            this.ContextMenuStripSetLabel.Size = new System.Drawing.Size(235, 242);
+            this.ContextMenuStripSetLabel.Size = new System.Drawing.Size(235, 270);
             this.ContextMenuStripSetLabel.Opened += new System.EventHandler(this.ContextMenuStrip_Opened);
             // 
             // ToolStripMenuItemSetDetail
@@ -1200,6 +1204,18 @@
             this.ToolStripMenuItemSetDelete.Size = new System.Drawing.Size(234, 22);
             this.ToolStripMenuItemSetDelete.Text = "配車先を削除する";
             this.ToolStripMenuItemSetDelete.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator9
+            // 
+            this.toolStripSeparator9.Name = "toolStripSeparator9";
+            this.toolStripSeparator9.Size = new System.Drawing.Size(231, 6);
+            // 
+            // ToolStripMenuItemSetMemo
+            // 
+            this.ToolStripMenuItemSetMemo.Name = "ToolStripMenuItemSetMemo";
+            this.ToolStripMenuItemSetMemo.Size = new System.Drawing.Size(234, 22);
+            this.ToolStripMenuItemSetMemo.Text = "メモを作成・編集する";
+            this.ToolStripMenuItemSetMemo.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // toolStripSeparator6
             // 
@@ -1385,7 +1401,7 @@
             this.ToolStripMenuItemStaffProxyTrue,
             this.ToolStripMenuItemStaffProxyFalse,
             this.toolStripSeparator3,
-            this.ToolStripMenuItemMemoWrite,
+            this.ToolStripMenuItemStaffMemo,
             this.toolStripSeparator5,
             this.ToolStripMenuItemOccupation10,
             this.ToolStripMenuItemOccupation11,
@@ -1427,12 +1443,12 @@
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(292, 6);
             // 
-            // ToolStripMenuItemMemoWrite
+            // ToolStripMenuItemStaffMemo
             // 
-            this.ToolStripMenuItemMemoWrite.Name = "ToolStripMenuItemMemoWrite";
-            this.ToolStripMenuItemMemoWrite.Size = new System.Drawing.Size(295, 22);
-            this.ToolStripMenuItemMemoWrite.Text = "メモを作成・編集する";
-            this.ToolStripMenuItemMemoWrite.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            this.ToolStripMenuItemStaffMemo.Name = "ToolStripMenuItemStaffMemo";
+            this.ToolStripMenuItemStaffMemo.Size = new System.Drawing.Size(295, 22);
+            this.ToolStripMenuItemStaffMemo.Text = "メモを作成・編集する";
+            this.ToolStripMenuItemStaffMemo.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
             // 
             // toolStripSeparator5
             // 
@@ -1614,7 +1630,7 @@
         private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExFree;
         private ToolStripMenuItem ToolStripMenuItemVehicleDispatch;
         private ToolStripMenuItem ToolStripMenuItemConvertExcel;
-        private ToolStripMenuItem ToolStripMenuItemMemoWrite;
+        private ToolStripMenuItem ToolStripMenuItemStaffMemo;
         private ToolStripMenuItem ToolStripMenuItemCarProxyFalse;
         private ToolStripMenuItem ToolStripMenuItemCarProxyTrue;
         private ToolStripMenuItem ToolStripMenuItemStaffProxyFalse;
@@ -1653,5 +1669,7 @@
         private ToolStripMenuItem ToolStripMenuItemOccupation10;
         private ToolStripMenuItem ToolStripMenuItemOccupation11;
         private ToolStripSeparator toolStripSeparator8;
+        private ToolStripSeparator toolStripSeparator9;
+        private ToolStripMenuItem ToolStripMenuItemSetMemo;
     }
 }

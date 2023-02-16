@@ -866,7 +866,7 @@ namespace VehicleDispatch {
                          */
                         ToolStripMenuItemStaffProxyTrue.Enabled = true;
                         ToolStripMenuItemStaffProxyFalse.Enabled = true;
-                        ToolStripMenuItemMemoWrite.Enabled = true;
+                        ToolStripMenuItemStaffMemo.Enabled = true;
                         // â^ì]éËóøã‡éxï•Ç¢ãÊï™
                         ToolStripMenuItemOccupation10.Enabled = true;
                         ToolStripMenuItemOccupation11.Enabled = true;
@@ -895,10 +895,10 @@ namespace VehicleDispatch {
                             case 154:
                             case 155:
                             case 156:
-                                ToolStripMenuItemMemoWrite.Enabled = false;
+                                ToolStripMenuItemStaffMemo.Enabled = false;
                                 break;
                             default:
-                                ToolStripMenuItemMemoWrite.Enabled = true;
+                                ToolStripMenuItemStaffMemo.Enabled = true;
                                 break;
                         }
                     }
@@ -1092,6 +1092,15 @@ namespace VehicleDispatch {
                     setControlEx.Controls.Remove(EvacuationSetLabelEx);
                     setControlEx.Refresh();
                     break;
+                // îzé‘êÊÉÅÉÇ
+                case "ToolStripMenuItemSetMemo":
+                    try {
+                        SetMemo setMemo = new SetMemo(_connectionVo, UcDateTimeJpOperationDate.GetValue(), EvacuationSetControlEx, EvacuationSetLabelEx);
+                        setMemo.ShowDialog(this);
+                    } catch(Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
+                    break;
                 // ë´óßÇÊÇËèoå…
                 case "ToolStripMenuItemSetGarageAdachi":
                     try {
@@ -1257,7 +1266,7 @@ namespace VehicleDispatch {
                     }
                     break;
                 // ÉÅÉÇÇçÏê¨ÅEï“èW
-                case "ToolStripMenuItemMemoWrite":
+                case "ToolStripMenuItemStaffMemo":
                     try {
                         StaffMemo staffMemo = new StaffMemo(_connectionVo, UcDateTimeJpOperationDate.GetValue(), EvacuationSetControlEx, EvacuationFlowLayoutPanelEx, EvacuationStaffLabelEx);
                         staffMemo.ShowDialog(this);

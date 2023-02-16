@@ -14,6 +14,11 @@ namespace ControlEx {
          */
         // 帰庫点呼フラグ(True:点呼済 False:未点呼)
         private bool _lastRollCallFlag;
+        /*
+         * 配車先メモフラグ
+         * true:メモあり false:メモなし
+         */
+        private bool _memoFlag = false;
 
         private Color _setLabelBorderColor = new();
         private readonly Font _setLabelDrawFont = new Font("Yu Gothic UI", 13, FontStyle.Regular, GraphicsUnit.Pixel);
@@ -168,6 +173,10 @@ namespace ControlEx {
              * 帰庫点呼フラグ
              */
             _lastRollCallFlag = vehicleDispatchDetailVo.Last_roll_call_flag;
+            /*
+             * メモフラグ
+             */
+            _memoFlag = vehicleDispatchDetailVo.Set_note.Length > 0 ? true : false;
 
             InitializeComponent();
             /*
@@ -222,7 +231,7 @@ namespace ControlEx {
                     _drawStringContactMethod = "";
                     break;
             }
-            e.Graphics.DrawString(_drawStringContactMethod, _drawFontContactMethod, _brushColorBlack, new Point(4, 2));
+            e.Graphics.DrawString(_drawStringContactMethod, _drawFontContactMethod, _brushColorBlack, new Point(17, 2));
             /*
              * 作業員付きを描画
              */
@@ -240,7 +249,14 @@ namespace ControlEx {
              */
             if(_lastRollCallFlag) {
                 Point[] points = { new Point(51, 3), new Point(65, 3), new Point(65, 17) };
-                e.Graphics.FillPolygon(new SolidBrush(Color.Blue), points);
+                e.Graphics.FillPolygon(new SolidBrush(Color.Gray), points);
+            }
+            /*
+             * 配車先メモを描画
+             */
+            if(_memoFlag) {
+                Point[] points = { new Point(3, 3), new Point(17, 3), new Point(3, 17) };
+                e.Graphics.FillPolygon(new SolidBrush(Color.Crimson), points);
             }
         }
 
@@ -331,6 +347,16 @@ namespace ControlEx {
         /// <param name="operationFlag"></param>
         public void SetLastRollCallFlag(bool lastRollCallFlag) {
             _lastRollCallFlag = lastRollCallFlag;
+            this.Refresh();
+        }
+
+        /// <summary>
+        /// SetMemoFlag
+        /// メモフラグ
+        /// </summary>
+        /// <param name="memoFlag"></param>
+        public void SetMemoFlag(bool memoFlag) {
+            _memoFlag = memoFlag;
             this.Refresh();
         }
     }

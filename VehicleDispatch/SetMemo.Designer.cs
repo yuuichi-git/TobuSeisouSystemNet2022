@@ -1,5 +1,5 @@
 ﻿namespace VehicleDispatch {
-    partial class StaffMemo {
+    partial class SetMemo {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -23,9 +23,19 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.TextBoxMemo = new System.Windows.Forms.TextBox();
             this.ButtonUpdate = new System.Windows.Forms.Button();
+            this.TextBoxMemo = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
+            // 
+            // ButtonUpdate
+            // 
+            this.ButtonUpdate.Location = new System.Drawing.Point(408, 64);
+            this.ButtonUpdate.Name = "ButtonUpdate";
+            this.ButtonUpdate.Size = new System.Drawing.Size(84, 28);
+            this.ButtonUpdate.TabIndex = 3;
+            this.ButtonUpdate.Text = "Update";
+            this.ButtonUpdate.UseVisualStyleBackColor = true;
+            this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
             // 
             // TextBoxMemo
             // 
@@ -33,20 +43,10 @@
             this.TextBoxMemo.Multiline = true;
             this.TextBoxMemo.Name = "TextBoxMemo";
             this.TextBoxMemo.Size = new System.Drawing.Size(492, 56);
-            this.TextBoxMemo.TabIndex = 0;
+            this.TextBoxMemo.TabIndex = 2;
             this.TextBoxMemo.Text = "あ\r\nあ\r\nあ\r\n";
             // 
-            // ButtonUpdate
-            // 
-            this.ButtonUpdate.Location = new System.Drawing.Point(408, 64);
-            this.ButtonUpdate.Name = "ButtonUpdate";
-            this.ButtonUpdate.Size = new System.Drawing.Size(84, 28);
-            this.ButtonUpdate.TabIndex = 1;
-            this.ButtonUpdate.Text = "Update";
-            this.ButtonUpdate.UseVisualStyleBackColor = true;
-            this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
-            // 
-            // StaffMemo
+            // SetMemo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -56,9 +56,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "StaffMemo";
+            this.Name = "SetMemo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "StaffMemo";
+            this.Text = "SetMemo";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -66,7 +66,7 @@
 
         #endregion
 
-        private TextBox TextBoxMemo;
         private Button ButtonUpdate;
+        private TextBox TextBoxMemo;
     }
 }
