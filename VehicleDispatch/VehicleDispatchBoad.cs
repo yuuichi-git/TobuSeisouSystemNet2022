@@ -1405,7 +1405,7 @@ namespace VehicleDispatch {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void SetControlEx_Click(object sender, EventArgs e) {
+        private void SetControlEx_Click(object? sender, EventArgs e) {
             //MessageBox.Show("SetControlEx_Click");
         }
 
@@ -1414,7 +1414,7 @@ namespace VehicleDispatch {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void SetControlEx_DragDrop(object sender, DragEventArgs e) {
+        private void SetControlEx_DragDrop(object? sender, DragEventArgs e) {
             // Dropを受け入れない
             e.Effect = DragDropEffects.None;
             SetControlEx? setControlEx = null;
@@ -1980,28 +1980,30 @@ namespace VehicleDispatch {
         //    MessageBox.Show("SetLabelEx_Click");
         //}
 
-        private void SetLabelEx_DoubleClick(object sender, EventArgs e) {
-            // SetControlExを退避
-            EvacuationSetControlEx = (SetControlEx)((SetLabelEx)sender).Parent;
-            // SetLabelExを退避
-            EvacuationSetLabelEx = (SetLabelEx)sender;
-            /*
-             * 入力ダイアログを開く
-             */
-            RollCallDialog rollCallDialog = new RollCallDialog(_connectionVo, UcDateTimeJpOperationDate.GetValue(), EvacuationSetControlEx, EvacuationSetLabelEx);
-            rollCallDialog.ShowDialog(this);
+        private void SetLabelEx_DoubleClick(object? sender, EventArgs e) {
+            if(sender is not null) {
+                // SetControlExを退避
+                EvacuationSetControlEx = (SetControlEx)((SetLabelEx)sender).Parent;
+                // SetLabelExを退避
+                EvacuationSetLabelEx = (SetLabelEx)sender;
+                /*
+                 * 入力ダイアログを開く
+                 */
+                RollCallDialog rollCallDialog = new RollCallDialog(_connectionVo, UcDateTimeJpOperationDate.GetValue(), EvacuationSetControlEx, EvacuationSetLabelEx);
+                rollCallDialog.ShowDialog(this);
+            }
         }
 
-        private void SetLabelEx_MouseMove(object sender, MouseEventArgs e) {
+        private void SetLabelEx_MouseMove(object? sender, MouseEventArgs e) {
             if(sender != null && e.Button == MouseButtons.Left)
                 ((SetLabelEx)sender).DoDragDrop(sender, DragDropEffects.Move);
         }
 
-        private void CarLabelEx_Click(object sender, EventArgs e) {
+        private void CarLabelEx_Click(object? sender, EventArgs e) {
             //MessageBox.Show("CarLabelEx_Click");
         }
 
-        private void CarLabelEx_MouseMove(object sender, MouseEventArgs e) {
+        private void CarLabelEx_MouseMove(object? sender, MouseEventArgs e) {
             if(sender != null && e.Button == MouseButtons.Left)
                 ((CarLabelEx)sender).DoDragDrop(sender, DragDropEffects.Move);
         }
@@ -2011,30 +2013,32 @@ namespace VehicleDispatch {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void StaffLabelEx_Click(object sender, EventArgs e) {
-            /*
-             * tenkoFlag → True:StaffLabelExをClickしたら点呼時間を記録
-             */
-            if(tenkoModeFlag) {
-                if((ModifierKeys & Keys.Shift) == Keys.Shift) {
-                    SetControlEx setControlEx = (SetControlEx)((StaffLabelEx)sender).Parent;
-                    StaffLabelEx staffLabelEx = (StaffLabelEx)sender;
-                    /*
-                     * vehicle_dispatch_detailを書き換え
-                     */
-                    var tableLayoutPanelCellPosition = setControlEx.GetCellPosition(staffLabelEx);
-                    try {
-                        _vehicleDispatchDetailDao.UpdateRollCallFlag(UcDateTimeJpOperationDate.GetValue(),
-                                                                     (int)setControlEx.Tag,
-                                                                     tableLayoutPanelCellPosition.Row,
-                                                                     staffLabelEx.GetRollCallFlag);
-                        staffLabelEx.SetRollCallFlag(!staffLabelEx.GetRollCallFlag);
-                    } catch(Exception exception) {
-                        MessageBox.Show(exception.Message);
-                    }
+        private void StaffLabelEx_Click(object? sender, EventArgs e) {
+            if(sender is not null) {
+                /*
+                 * tenkoFlag → True:StaffLabelExをClickしたら点呼時間を記録
+                 */
+                if(tenkoModeFlag) {
+                    if((ModifierKeys & Keys.Shift) == Keys.Shift) {
+                        SetControlEx setControlEx = (SetControlEx)((StaffLabelEx)sender).Parent;
+                        StaffLabelEx staffLabelEx = (StaffLabelEx)sender;
+                        /*
+                         * vehicle_dispatch_detailを書き換え
+                         */
+                        var tableLayoutPanelCellPosition = setControlEx.GetCellPosition(staffLabelEx);
+                        try {
+                            _vehicleDispatchDetailDao.UpdateRollCallFlag(UcDateTimeJpOperationDate.GetValue(),
+                                                                         (int)setControlEx.Tag,
+                                                                         tableLayoutPanelCellPosition.Row,
+                                                                         staffLabelEx.GetRollCallFlag);
+                            staffLabelEx.SetRollCallFlag(!staffLabelEx.GetRollCallFlag);
+                        } catch(Exception exception) {
+                            MessageBox.Show(exception.Message);
+                        }
 
-                    ToolStripStatusLabelStatus.Text = string.Concat(" ", ((StaffMasterVo)staffLabelEx.Tag).Display_name, " の点呼記録を変更しました");
-                    return;
+                        ToolStripStatusLabelStatus.Text = string.Concat(" ", ((StaffMasterVo)staffLabelEx.Tag).Display_name, " の点呼記録を変更しました");
+                        return;
+                    }
                 }
             }
         }
@@ -2045,7 +2049,7 @@ namespace VehicleDispatch {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void StaffLabelEx_MouseMove(object sender, MouseEventArgs e) {
+        private void StaffLabelEx_MouseMove(object? sender, MouseEventArgs e) {
             if(sender != null && e.Button == MouseButtons.Left)
                 ((StaffLabelEx)sender).DoDragDrop(sender, DragDropEffects.Move);
         }

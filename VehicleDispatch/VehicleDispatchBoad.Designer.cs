@@ -234,6 +234,7 @@
             // 
             // ToolStripMenuItemConvertExcel
             // 
+            this.ToolStripMenuItemConvertExcel.Enabled = false;
             this.ToolStripMenuItemConvertExcel.Name = "ToolStripMenuItemConvertExcel";
             this.ToolStripMenuItemConvertExcel.Size = new System.Drawing.Size(288, 22);
             this.ToolStripMenuItemConvertExcel.Text = "当日配車へデータを書き出す(新型の配車表)";

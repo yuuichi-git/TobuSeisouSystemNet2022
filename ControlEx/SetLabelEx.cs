@@ -129,6 +129,7 @@ namespace ControlEx {
             _setMasterVo = setMasterVo;
             /*
              * Classification_code
+             * 分類コードによってBorder色を変える
              */
             switch(setMasterVo.Classification_code) {
                 case 10:
@@ -190,7 +191,7 @@ namespace ControlEx {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void LabelEx_CellPaint(object sender, PaintEventArgs e) {
+        private void LabelEx_CellPaint(object? sender, PaintEventArgs e) {
             /*
              * Boderを描画
              */

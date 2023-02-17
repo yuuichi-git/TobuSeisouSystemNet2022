@@ -34,7 +34,7 @@ namespace Dao {
                                      "FROM vehicle_dispatch_body_clean_office ";
             using(var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while(sqlDataReader.Read() == true) {
-                    var setVehicleDispatchBodyVo = new VehicleDispatchBodyVo();
+                    VehicleDispatchBodyVo setVehicleDispatchBodyVo = new VehicleDispatchBodyVo();
                     setVehicleDispatchBodyVo.Cell_number = _defaultValue.GetDefaultValue<int>(sqlDataReader["cell_number"]);
                     setVehicleDispatchBodyVo.Day_of_week = _defaultValue.GetDefaultValue<string>(sqlDataReader["day_of_week"]);
                     setVehicleDispatchBodyVo.Car_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["car_code"]);

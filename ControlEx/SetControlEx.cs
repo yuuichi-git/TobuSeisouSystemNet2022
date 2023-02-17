@@ -38,7 +38,7 @@ namespace ControlEx {
         /*
          * 透かし文字用
          */
-        private StringFormat stringFormat;
+        private StringFormat? stringFormat = null;
 
         /// <summary>
         /// コンストラクター
@@ -81,7 +81,7 @@ namespace ControlEx {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void SetControlEx_CellPaint(object sender, TableLayoutCellPaintEventArgs e) {
+        private void SetControlEx_CellPaint(object? sender, TableLayoutCellPaintEventArgs e) {
             /*
              * SetControlEx全体にBorderを掛ける
              * 連絡事項ありの印
@@ -197,7 +197,7 @@ namespace ControlEx {
         /// </summary>
         /// <param name="setMasterVo"></param>
         public void CreateLabel(SetMasterVo setMasterVo, VehicleDispatchDetailVo vehicleDispatchDetailVo, ContextMenuStrip contextMenuStrip) {
-            var labelEx = new SetLabelEx(setMasterVo, vehicleDispatchDetailVo).CreateLabel();
+            SetLabelEx labelEx = new SetLabelEx(setMasterVo, vehicleDispatchDetailVo).CreateLabel();
             /*
              * プロパティを設定
              */
@@ -217,7 +217,7 @@ namespace ControlEx {
         /// </summary>
         /// <param name="carMasterVo"></param>
         public void CreateLabel(VehicleDispatchDetailVo vehicleDispatchDetailVo, CarMasterVo carMasterVo, ContextMenuStrip contextMenuStrip) {
-            var labelEx = new CarLabelEx(vehicleDispatchDetailVo, carMasterVo).CreateLabel();
+            CarLabelEx labelEx = new CarLabelEx(vehicleDispatchDetailVo, carMasterVo).CreateLabel();
             /*
              * プロパティを設定
              */
@@ -243,7 +243,7 @@ namespace ControlEx {
         /// <param name="noteFlag"></param>
         /// <param name="contextMenuStrip"></param>
         public void CreateLabel(int number, StaffMasterVo staffMasterVo, bool proxyFlag, bool tenkoModeFlag, bool rollCallFlag, bool noteFlag, int occupation, ContextMenuStrip contextMenuStrip) {
-            var labelEx = new StaffLabelEx(staffMasterVo, proxyFlag, tenkoModeFlag, rollCallFlag, noteFlag, occupation).CreateLabel();
+            StaffLabelEx labelEx = new StaffLabelEx(staffMasterVo, proxyFlag, tenkoModeFlag, rollCallFlag, noteFlag, occupation).CreateLabel();
             /*
              * プロパティを設定
              */
@@ -259,34 +259,34 @@ namespace ControlEx {
         /*
          * Event
          */
-        private void SetControlEx_Click(object sender, EventArgs e) {
+        private void SetControlEx_Click(object? sender, EventArgs e) {
             Event_SetControlEx_Click?.Invoke(sender, e);
         }
-        private void SetControlEx_DragDrop(object sender, DragEventArgs e) {
+        private void SetControlEx_DragDrop(object? sender, DragEventArgs e) {
             Event_SetControlEx_DragDrop?.Invoke(sender, e);
         }
-        private void SetControlEx_DragEnter(object sender, DragEventArgs e) {
+        private void SetControlEx_DragEnter(object? sender, DragEventArgs e) {
             Event_SetControlEx_DragEnter?.Invoke(sender, e);
         }
-        private void SetLabelEx_Click(object sender, EventArgs e) {
+        private void SetLabelEx_Click(object? sender, EventArgs e) {
             Event_SetLabelEx_Click?.Invoke(sender, e);
         }
-        private void SetLabelEx_DoubleClick(object sender, EventArgs e) {
+        private void SetLabelEx_DoubleClick(object? sender, EventArgs e) {
             Event_SetLabelEx_DoubleClick?.Invoke(sender, e);
         }
-        private void SetLabelEx_MouseMove(object sender, MouseEventArgs e) {
+        private void SetLabelEx_MouseMove(object? sender, MouseEventArgs e) {
             Event_SetLabelEx_MouseMove?.Invoke(sender, e);
         }
-        private void CarLabelEx_Click(object sender, EventArgs e) {
+        private void CarLabelEx_Click(object? sender, EventArgs e) {
             Event_CarLabelEx_Click?.Invoke(sender, e);
         }
-        private void CarLabelEx_MouseMove(object sender, MouseEventArgs e) {
+        private void CarLabelEx_MouseMove(object? sender, MouseEventArgs e) {
             Event_CarLabelEx_MouseMove?.Invoke(sender, e);
         }
-        private void StaffLabelEx_Click(object sender, EventArgs e) {
+        private void StaffLabelEx_Click(object? sender, EventArgs e) {
             Event_StaffLabelEx_Click?.Invoke(sender, e);
         }
-        private void StaffLabelEx_MouseMove(object sender, MouseEventArgs e) {
+        private void StaffLabelEx_MouseMove(object? sender, MouseEventArgs e) {
             Event_StaffLabelEx_MouseMove?.Invoke(sender, e);
         }
 
