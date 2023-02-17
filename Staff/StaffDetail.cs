@@ -93,7 +93,7 @@ namespace Staff {
                     RadioButtonLongTarm.Checked = true;
                     break;
                 case 11: // 手帳
-                    RadioButtonNote.Checked = true;
+                    RadioButtonShortTarm.Checked = true;
                     break;
                 case 12: // アルバイト
                     RadioButtonPart2.Checked = true;
@@ -435,7 +435,7 @@ namespace Staff {
              */
             if(RadioButtonLongTarm.Checked)
                 staffMasterVo.Job_form = 10;
-            if(RadioButtonNote.Checked)
+            if(RadioButtonShortTarm.Checked)
                 staffMasterVo.Job_form = 11;
             if(RadioButtonPart2.Checked)
                 staffMasterVo.Job_form = 12;

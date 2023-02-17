@@ -166,7 +166,7 @@
             this.ToolStripMenuItemRadioButtonClear = new System.Windows.Forms.ToolStripMenuItem();
             this.RadioButtonNone1 = new System.Windows.Forms.RadioButton();
             this.RadioButtonPart2 = new System.Windows.Forms.RadioButton();
-            this.RadioButtonNote = new System.Windows.Forms.RadioButton();
+            this.RadioButtonShortTarm = new System.Windows.Forms.RadioButton();
             this.RadioButtonLongTarm = new System.Windows.Forms.RadioButton();
             this.GroupBoxOccupation = new System.Windows.Forms.GroupBox();
             this.RadioButtonNone2 = new System.Windows.Forms.RadioButton();
@@ -1756,7 +1756,7 @@
             this.GroupBoxJobForm.ContextMenuStrip = this.ContextMenuStripRadioButtonClear;
             this.GroupBoxJobForm.Controls.Add(this.RadioButtonNone1);
             this.GroupBoxJobForm.Controls.Add(this.RadioButtonPart2);
-            this.GroupBoxJobForm.Controls.Add(this.RadioButtonNote);
+            this.GroupBoxJobForm.Controls.Add(this.RadioButtonShortTarm);
             this.GroupBoxJobForm.Controls.Add(this.RadioButtonLongTarm);
             this.GroupBoxJobForm.Location = new System.Drawing.Point(12, 84);
             this.GroupBoxJobForm.Name = "GroupBoxJobForm";
@@ -1782,7 +1782,7 @@
             // RadioButtonNone1
             // 
             this.RadioButtonNone1.AutoSize = true;
-            this.RadioButtonNone1.Location = new System.Drawing.Point(256, 24);
+            this.RadioButtonNone1.Location = new System.Drawing.Point(252, 24);
             this.RadioButtonNone1.Name = "RadioButtonNone1";
             this.RadioButtonNone1.Size = new System.Drawing.Size(67, 19);
             this.RadioButtonNone1.TabIndex = 9;
@@ -1801,16 +1801,16 @@
             this.RadioButtonPart2.Text = "アルバイト";
             this.RadioButtonPart2.UseVisualStyleBackColor = true;
             // 
-            // RadioButtonNote
+            // RadioButtonShortTarm
             // 
-            this.RadioButtonNote.AutoSize = true;
-            this.RadioButtonNote.Location = new System.Drawing.Point(100, 24);
-            this.RadioButtonNote.Name = "RadioButtonNote";
-            this.RadioButtonNote.Size = new System.Drawing.Size(49, 19);
-            this.RadioButtonNote.TabIndex = 7;
-            this.RadioButtonNote.TabStop = true;
-            this.RadioButtonNote.Text = "手帳";
-            this.RadioButtonNote.UseVisualStyleBackColor = true;
+            this.RadioButtonShortTarm.AutoSize = true;
+            this.RadioButtonShortTarm.Location = new System.Drawing.Point(100, 24);
+            this.RadioButtonShortTarm.Name = "RadioButtonShortTarm";
+            this.RadioButtonShortTarm.Size = new System.Drawing.Size(49, 19);
+            this.RadioButtonShortTarm.TabIndex = 7;
+            this.RadioButtonShortTarm.TabStop = true;
+            this.RadioButtonShortTarm.Text = "手帳";
+            this.RadioButtonShortTarm.UseVisualStyleBackColor = true;
             // 
             // RadioButtonLongTarm
             // 
@@ -3888,7 +3888,7 @@
         private Button button2;
         private RadioButton RadioButtonOfficer;
         private RadioButton RadioButtonPart2;
-        private RadioButton RadioButtonNote;
+        private RadioButton RadioButtonShortTarm;
         private RadioButton RadioButtonLongTarm;
         private RadioButton RadioButtonNone2;
         private RadioButton RadioButtonOperator;

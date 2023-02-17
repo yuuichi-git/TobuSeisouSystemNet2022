@@ -494,7 +494,7 @@
             this.ToolStripMenuItemToukanpo,
             this.ToolStripMenuItemMap});
             this.ContextMenuStrip1.Name = "contextMenuStrip1";
-            this.ContextMenuStrip1.Size = new System.Drawing.Size(199, 92);
+            this.ContextMenuStrip1.Size = new System.Drawing.Size(199, 70);
             this.ContextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuStrip1_Opening);
             // 
             // ToolStripMenuItemLicense

@@ -458,7 +458,7 @@ namespace Staff {
             if(!CheckBoxRetired.Checked)
                 _listFindAllStaffMasterVo = _listFindAllStaffMasterVo?.FindAll(x => x.Retirement_flag != true);
             // ƒ\[ƒg
-            _linqExtendsStaffMasterVo = _listFindAllStaffMasterVo?.OrderBy(x => x.Belongs).ThenBy(x => x.Code);
+            _linqExtendsStaffMasterVo = _listFindAllStaffMasterVo?.OrderBy(x => x.Belongs).ThenBy(x => x.Code).ThenBy(x => x.Name_kana);
 
             int i = 0;
             if(_linqExtendsStaffMasterVo is not null)
