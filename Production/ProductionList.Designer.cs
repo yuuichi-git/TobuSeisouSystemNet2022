@@ -27,6 +27,7 @@
             this.TableLayoutPanelExBase = new ControlEx.TableLayoutPanelEx();
             this.MenuStrip1 = new System.Windows.Forms.MenuStrip();
             this.メニューToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ToolStripMenuItemReset = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
             this.ヘルプToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.StatusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -110,16 +111,21 @@
             this.label2 = new System.Windows.Forms.Label();
             this.ComboBoxMondayCar = new System.Windows.Forms.ComboBox();
             this.TableLayoutPanelExCenter = new ControlEx.TableLayoutPanelEx();
+            this.ContextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.配車先を設定するToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.配車先を削除するToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PanelTop = new System.Windows.Forms.Panel();
+            this.ButtonRead = new System.Windows.Forms.Button();
+            this.LabelName = new System.Windows.Forms.Label();
             this.ComboBoxFinancialYear = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.ButtonUpdate = new System.Windows.Forms.Button();
             this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.LabelName = new System.Windows.Forms.Label();
             this.TableLayoutPanelExBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
             this.PanelButtom.SuspendLayout();
+            this.ContextMenuStrip1.SuspendLayout();
             this.PanelTop.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -138,7 +144,7 @@
             this.TableLayoutPanelExBase.RowCount = 5;
             this.TableLayoutPanelExBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.TableLayoutPanelExBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 66F));
-            this.TableLayoutPanelExBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 460F));
+            this.TableLayoutPanelExBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 463F));
             this.TableLayoutPanelExBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TableLayoutPanelExBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.TableLayoutPanelExBase.Size = new System.Drawing.Size(1904, 1041);
@@ -158,15 +164,23 @@
             // メニューToolStripMenuItem
             // 
             this.メニューToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemReset,
             this.ToolStripMenuItemExit});
             this.メニューToolStripMenuItem.Name = "メニューToolStripMenuItem";
             this.メニューToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.メニューToolStripMenuItem.Text = "メニュー";
             // 
+            // ToolStripMenuItemReset
+            // 
+            this.ToolStripMenuItemReset.Name = "ToolStripMenuItemReset";
+            this.ToolStripMenuItemReset.Size = new System.Drawing.Size(350, 22);
+            this.ToolStripMenuItemReset.Text = "年度の配車を初期化する(150個の配車がリセットされます)";
+            this.ToolStripMenuItemReset.Click += new System.EventHandler(this.ToolStripMenuItemReset_Click);
+            // 
             // ToolStripMenuItemExit
             // 
             this.ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
-            this.ToolStripMenuItemExit.Size = new System.Drawing.Size(195, 22);
+            this.ToolStripMenuItemExit.Size = new System.Drawing.Size(350, 22);
             this.ToolStripMenuItemExit.Text = "アプリケーションを終了する";
             this.ToolStripMenuItemExit.Click += new System.EventHandler(this.ToolStripMenuItemExit_Click);
             // 
@@ -278,9 +292,9 @@
             this.PanelButtom.Controls.Add(this.label2);
             this.PanelButtom.Controls.Add(this.ComboBoxMondayCar);
             this.PanelButtom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelButtom.Location = new System.Drawing.Point(3, 553);
+            this.PanelButtom.Location = new System.Drawing.Point(3, 556);
             this.PanelButtom.Name = "PanelButtom";
-            this.PanelButtom.Size = new System.Drawing.Size(1898, 461);
+            this.PanelButtom.Size = new System.Drawing.Size(1898, 458);
             this.PanelButtom.TabIndex = 3;
             // 
             // LabelDayOfWeek
@@ -1138,6 +1152,7 @@
             this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
             this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
             this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
+            this.TableLayoutPanelExCenter.ContextMenuStrip = this.ContextMenuStrip1;
             this.TableLayoutPanelExCenter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanelExCenter.Location = new System.Drawing.Point(25, 105);
             this.TableLayoutPanelExCenter.Margin = new System.Windows.Forms.Padding(25, 15, 25, 15);
@@ -1149,11 +1164,33 @@
             this.TableLayoutPanelExCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 72F));
             this.TableLayoutPanelExCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 72F));
             this.TableLayoutPanelExCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 72F));
-            this.TableLayoutPanelExCenter.Size = new System.Drawing.Size(1854, 430);
+            this.TableLayoutPanelExCenter.Size = new System.Drawing.Size(1854, 433);
             this.TableLayoutPanelExCenter.TabIndex = 4;
+            this.TableLayoutPanelExCenter.CellPaint += new System.Windows.Forms.TableLayoutCellPaintEventHandler(this.TableLayoutPanelExCenter_CellPaint);
+            // 
+            // ContextMenuStrip1
+            // 
+            this.ContextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.配車先を設定するToolStripMenuItem,
+            this.配車先を削除するToolStripMenuItem});
+            this.ContextMenuStrip1.Name = "ContextMenuStrip1";
+            this.ContextMenuStrip1.Size = new System.Drawing.Size(163, 48);
+            // 
+            // 配車先を設定するToolStripMenuItem
+            // 
+            this.配車先を設定するToolStripMenuItem.Name = "配車先を設定するToolStripMenuItem";
+            this.配車先を設定するToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.配車先を設定するToolStripMenuItem.Text = "配車先を設定する";
+            // 
+            // 配車先を削除するToolStripMenuItem
+            // 
+            this.配車先を削除するToolStripMenuItem.Name = "配車先を削除するToolStripMenuItem";
+            this.配車先を削除するToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
+            this.配車先を削除するToolStripMenuItem.Text = "配車先を削除する";
             // 
             // PanelTop
             // 
+            this.PanelTop.Controls.Add(this.ButtonRead);
             this.PanelTop.Controls.Add(this.LabelName);
             this.PanelTop.Controls.Add(this.ComboBoxFinancialYear);
             this.PanelTop.Controls.Add(this.label14);
@@ -1164,6 +1201,27 @@
             this.PanelTop.Size = new System.Drawing.Size(1898, 60);
             this.PanelTop.TabIndex = 5;
             // 
+            // ButtonRead
+            // 
+            this.ButtonRead.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.ButtonRead.Location = new System.Drawing.Point(280, 16);
+            this.ButtonRead.Name = "ButtonRead";
+            this.ButtonRead.Size = new System.Drawing.Size(144, 32);
+            this.ButtonRead.TabIndex = 130;
+            this.ButtonRead.Text = "配車先データを読込";
+            this.ButtonRead.UseVisualStyleBackColor = true;
+            this.ButtonRead.Click += new System.EventHandler(this.ButtonRead_Click);
+            // 
+            // LabelName
+            // 
+            this.LabelName.Font = new System.Drawing.Font("Yu Gothic UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.LabelName.Location = new System.Drawing.Point(720, 12);
+            this.LabelName.Name = "LabelName";
+            this.LabelName.Size = new System.Drawing.Size(468, 32);
+            this.LabelName.TabIndex = 129;
+            this.LabelName.Text = "社内で使用している本番登録";
+            this.LabelName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // ComboBoxFinancialYear
             // 
             this.ComboBoxFinancialYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -1172,16 +1230,17 @@
             this.ComboBoxFinancialYear.Items.AddRange(new object[] {
             "2022年4月1日",
             "2023年4月1日"});
-            this.ComboBoxFinancialYear.Location = new System.Drawing.Point(140, 19);
+            this.ComboBoxFinancialYear.Location = new System.Drawing.Point(128, 19);
             this.ComboBoxFinancialYear.Name = "ComboBoxFinancialYear";
             this.ComboBoxFinancialYear.Size = new System.Drawing.Size(140, 25);
             this.ComboBoxFinancialYear.TabIndex = 128;
+            this.ComboBoxFinancialYear.SelectedIndexChanged += new System.EventHandler(this.ComboBoxFinancialYear_SelectedIndexChanged);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(52, 20);
+            this.label14.Location = new System.Drawing.Point(40, 20);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(84, 20);
             this.label14.TabIndex = 127;
@@ -1197,16 +1256,6 @@
             this.ButtonUpdate.Text = "UPDATE";
             this.ButtonUpdate.UseVisualStyleBackColor = true;
             this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
-            // 
-            // LabelName
-            // 
-            this.LabelName.Font = new System.Drawing.Font("Yu Gothic UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LabelName.Location = new System.Drawing.Point(720, 12);
-            this.LabelName.Name = "LabelName";
-            this.LabelName.Size = new System.Drawing.Size(468, 32);
-            this.LabelName.TabIndex = 129;
-            this.LabelName.Text = "社内で使用している本番登録";
-            this.LabelName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ProductionList
             // 
@@ -1227,6 +1276,7 @@
             this.StatusStrip1.PerformLayout();
             this.PanelButtom.ResumeLayout(false);
             this.PanelButtom.PerformLayout();
+            this.ContextMenuStrip1.ResumeLayout(false);
             this.PanelTop.ResumeLayout(false);
             this.PanelTop.PerformLayout();
             this.ResumeLayout(false);
@@ -1327,5 +1377,10 @@
         private Label label18;
         private ToolStripStatusLabel ToolStripStatusLabelDetail;
         private Label LabelName;
+        private Button ButtonRead;
+        private ToolStripMenuItem ToolStripMenuItemReset;
+        private ContextMenuStrip ContextMenuStrip1;
+        private ToolStripMenuItem 配車先を設定するToolStripMenuItem;
+        private ToolStripMenuItem 配車先を削除するToolStripMenuItem;
     }
 }

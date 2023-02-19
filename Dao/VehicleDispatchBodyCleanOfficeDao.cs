@@ -15,7 +15,7 @@ namespace Dao {
         /// SelectAllVehicleDispatchBodyVo
         /// </summary>
         /// <returns></returns>
-        public List<VehicleDispatchBodyVo> SelectAllVehicleDispatchBodyVo() {
+        public List<VehicleDispatchBodyVo> SelectAllVehicleDispatchBodyVo(DateTime financial_year) {
             var listVehicleDispatchBodyVo = new List<VehicleDispatchBodyVo>();
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT cell_number," +
@@ -31,7 +31,8 @@ namespace Dao {
                                             "update_ymd_hms," +
                                             "delete_ymd_hms," +
                                             "delete_flag " +
-                                     "FROM vehicle_dispatch_body_clean_office ";
+                                     "FROM vehicle_dispatch_body_clean_office " +
+                                     "WHERE financial_year = '" + financial_year.ToString("yyyy-MM-dd") + "'";
             using(var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while(sqlDataReader.Read() == true) {
                     VehicleDispatchBodyVo setVehicleDispatchBodyVo = new VehicleDispatchBodyVo();
@@ -161,6 +162,7 @@ namespace Dao {
         /// <summary>
         /// GetCarCode
         /// cell_numberからcar_codeを取得する
+        /// 現時点での会計年度で計算される
         /// </summary>
         /// <param name="cellNumber"></param>
         /// <returns></returns>
@@ -169,7 +171,7 @@ namespace Dao {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT car_code " +
                                      "FROM vehicle_dispatch_body_clean_office " +
-                                     "WHERE cell_number = " + cellNumber;
+                                     "WHERE cell_number = '" + cellNumber + "' AND financial_year = '" + DateTime.Now.AddMonths(-3).ToString("yyyy-04-01") + "'";
             using(var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while(sqlDataReader.Read() == true)
                     carCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["car_code"]);
@@ -179,6 +181,7 @@ namespace Dao {
 
         /// <summary>
         /// GetOperatorCode1
+        /// 現時点での会計年度で計算される
         /// </summary>
         /// <param name="cellNumber"></param>
         /// <returns></returns>
@@ -187,7 +190,7 @@ namespace Dao {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT operator_code_1 " +
                                      "FROM vehicle_dispatch_body_clean_office " +
-                                     "WHERE cell_number = " + cellNumber;
+                                     "WHERE cell_number = '" + cellNumber + "' AND financial_year = '" + DateTime.Now.AddMonths(-3).ToString("yyyy-04-01") + "'";
             using(var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while(sqlDataReader.Read() == true)
                     operatorCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_code_1"]);
@@ -197,6 +200,7 @@ namespace Dao {
 
         /// <summary>
         /// GetOperatorCode2
+        /// 現時点での会計年度で計算される
         /// </summary>
         /// <param name="cellNumber"></param>
         /// <returns></returns>
@@ -205,7 +209,7 @@ namespace Dao {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT operator_code_2 " +
                                      "FROM vehicle_dispatch_body_clean_office " +
-                                     "WHERE cell_number = " + cellNumber;
+                                     "WHERE cell_number = '" + cellNumber + "' AND financial_year = '" + DateTime.Now.AddMonths(-3).ToString("yyyy-04-01") + "'";
             using(var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while(sqlDataReader.Read() == true)
                     operatorCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_code_2"]);
@@ -215,6 +219,7 @@ namespace Dao {
 
         /// <summary>
         /// GetOperatorCode3
+        /// 現時点での会計年度で計算される
         /// </summary>
         /// <param name="cellNumber"></param>
         /// <returns></returns>
@@ -223,7 +228,7 @@ namespace Dao {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT operator_code_3 " +
                                      "FROM vehicle_dispatch_body_clean_office " +
-                                     "WHERE cell_number = " + cellNumber;
+                                     "WHERE cell_number = '" + cellNumber + "' AND financial_year = '" + DateTime.Now.AddMonths(-3).ToString("yyyy-04-01") + "'";
             using(var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while(sqlDataReader.Read() == true)
                     operatorCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_code_3"]);
@@ -233,6 +238,7 @@ namespace Dao {
 
         /// <summary>
         /// GetOperatorCode4
+        /// 現時点での会計年度で計算される
         /// </summary>
         /// <param name="cellNumber"></param>
         /// <returns></returns>
@@ -241,7 +247,7 @@ namespace Dao {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT operator_code_4 " +
                                      "FROM vehicle_dispatch_body_clean_office " +
-                                     "WHERE cell_number = " + cellNumber;
+                                     "WHERE cell_number = '" + cellNumber + "' AND financial_year = '" + DateTime.Now.AddMonths(-3).ToString("yyyy-04-01") + "'";
             using(var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while(sqlDataReader.Read() == true)
                     operatorCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_code_4"]);

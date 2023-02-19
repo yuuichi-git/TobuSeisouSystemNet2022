@@ -15,7 +15,7 @@ namespace Dao {
         /// SelectAllVehicleDispatchBodyVo
         /// </summary>
         /// <returns></returns>
-        public List<VehicleDispatchBodyVo> SelectAllVehicleDispatchBodyVo() {
+        public List<VehicleDispatchBodyVo> SelectAllVehicleDispatchBodyVo(DateTime financial_year) {
             var listVehicleDispatchBodyVo = new List<VehicleDispatchBodyVo>();
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT cell_number," +
@@ -31,10 +31,11 @@ namespace Dao {
                                             "update_ymd_hms," +
                                             "delete_ymd_hms," +
                                             "delete_flag " +
-                                     "FROM vehicle_dispatch_body_office ";
-            using (var sqlDataReader = sqlCommand.ExecuteReader()) {
-                while (sqlDataReader.Read() == true) {
-                    var setVehicleDispatchBodyVo = new VehicleDispatchBodyVo();
+                                     "FROM vehicle_dispatch_body_office " +
+                                     "WHERE financial_year = '" + financial_year.ToString("yyyy-MM-dd") + "'";
+            using(var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while(sqlDataReader.Read() == true) {
+                    VehicleDispatchBodyVo setVehicleDispatchBodyVo = new VehicleDispatchBodyVo();
                     setVehicleDispatchBodyVo.Cell_number = _defaultValue.GetDefaultValue<int>(sqlDataReader["cell_number"]);
                     setVehicleDispatchBodyVo.Day_of_week = _defaultValue.GetDefaultValue<string>(sqlDataReader["day_of_week"]);
                     setVehicleDispatchBodyVo.Car_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["car_code"]);
@@ -101,7 +102,7 @@ namespace Dao {
         public void InsertVehicleDispatchBodyVo(List<ProductionListVo> listProductionListVo) {
             int count = 1;
             string sqlString = "";
-            foreach (var productionListVo in listProductionListVo) {
+            foreach(var productionListVo in listProductionListVo) {
                 sqlString += "(" + _defaultValue.GetDefaultValue<int>(productionListVo.Cell_number) + "," +
                              "'" + _defaultValue.GetDefaultValue<string>(productionListVo.Day_of_week) + "'," +
                                    _defaultValue.GetDefaultValue<int>(productionListVo.Car_code) + "," +
@@ -115,7 +116,7 @@ namespace Dao {
                              "'" + _defaultValue.GetDefaultValue<DateTime>(productionListVo.Update_ymd_hms) + "'," +
                              "'" + _defaultValue.GetDefaultValue<DateTime>(productionListVo.Delete_ymd_hms) + "'," +
                              "'" + _defaultValue.GetDefaultValue<bool>(productionListVo.Delete_flag) + "')";
-                if (count < listProductionListVo.Count)
+                if(count < listProductionListVo.Count)
                     sqlString += ",";
                 count++;
             }
@@ -169,7 +170,7 @@ namespace Dao {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT car_code " +
                                      "FROM vehicle_dispatch_body_office " +
-                                     "WHERE cell_number = " + cellNumber;
+                                     "WHERE cell_number = '" + cellNumber + "' AND financial_year = '" + DateTime.Now.AddMonths(-3).ToString("yyyy-04-01") + "'";
             using(var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while(sqlDataReader.Read() == true)
                     carCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["car_code"]);
