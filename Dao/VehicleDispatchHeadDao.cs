@@ -32,6 +32,48 @@ namespace Dao {
         }
 
         /// <summary>
+        /// SelectAllVehicleDispatchMasterVo
+        /// </summary>
+        /// <returns></returns>
+        public List<VehicleDispatchHeadVo> SelectAllVehicleDispatchHeadVo(DateTime financial_year) {
+            var listVehicleDispatchHeadVo = new List<VehicleDispatchHeadVo>();
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT cell_number," +
+                                            "garage_flag," +
+                                            "five_lap," +
+                                            "day_of_week," +
+                                            "set_code," +
+                                            "car_code," +
+                                            "number_of_people," +
+                                            "financial_year," +
+                                            "insert_ymd_hms," +
+                                            "update_ymd_hms," +
+                                            "delete_ymd_hms," +
+                                            "delete_flag " +
+                                     "FROM vehicle_dispatch_head " +
+                                     "WHERE financial_year = '" + financial_year.ToString("yyyy-MM-dd") + "'";
+            using(var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while(sqlDataReader.Read() == true) {
+                    var setVehicleDispatchHeadVo = new VehicleDispatchHeadVo();
+                    setVehicleDispatchHeadVo.Cell_number = _defaultValue.GetDefaultValue<int>(sqlDataReader["cell_number"]);
+                    setVehicleDispatchHeadVo.Garage_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["garage_flag"]);
+                    setVehicleDispatchHeadVo.Five_lap = _defaultValue.GetDefaultValue<bool>(sqlDataReader["five_lap"]);
+                    setVehicleDispatchHeadVo.Day_of_week = _defaultValue.GetDefaultValue<string>(sqlDataReader["day_of_week"]);
+                    setVehicleDispatchHeadVo.Set_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["set_code"]);
+                    setVehicleDispatchHeadVo.Car_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["car_code"]);
+                    setVehicleDispatchHeadVo.Number_of_people = _defaultValue.GetDefaultValue<int>(sqlDataReader["number_of_people"]);
+                    setVehicleDispatchHeadVo.Financial_year = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["financial_year"]);
+                    setVehicleDispatchHeadVo.Insert_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["insert_ymd_hms"]);
+                    setVehicleDispatchHeadVo.Update_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["update_ymd_hms"]);
+                    setVehicleDispatchHeadVo.Delete_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["delete_ymd_hms"]);
+                    setVehicleDispatchHeadVo.Delete_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["delete_flag"]);
+                    listVehicleDispatchHeadVo.Add(setVehicleDispatchHeadVo);
+                }
+            }
+            return listVehicleDispatchHeadVo;
+        }
+
+        /// <summary>
         /// InsertVehicleDispatchHead
         /// 新規年度のニュートラルレコードを挿入
         /// </summary>
@@ -75,50 +117,34 @@ namespace Dao {
             } catch {
                 throw;
             }
-
         }
 
-
         /// <summary>
-        /// SelectAllVehicleDispatchMasterVo
+        /// ResetVehicleDispatchHead
+        /// レコードの値を初期化する
         /// </summary>
-        /// <returns></returns>
-        public List<VehicleDispatchHeadVo> SelectAllVehicleDispatchHeadVo(DateTime financial_year) {
-            var listVehicleDispatchHeadVo = new List<VehicleDispatchHeadVo>();
+        /// <param name="cell_number"></param>
+        /// <param name="financial_year"></param>
+        public void ResetVehicleDispatchHead(int cell_number, DateTime financial_year) {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
-            sqlCommand.CommandText = "SELECT cell_number," +
-                                            "garage_flag," +
-                                            "five_lap," +
-                                            "day_of_week," +
-                                            "set_code," +
-                                            "car_code," +
-                                            "number_of_people," +
-                                            "financial_year," +
-                                            "insert_ymd_hms," +
-                                            "update_ymd_hms," +
-                                            "delete_ymd_hms," +
-                                            "delete_flag " +
-                                     "FROM vehicle_dispatch_head " +
-                                     "WHERE financial_year = '" + financial_year.ToString("yyyy-MM-dd") + "'";
-            using(var sqlDataReader = sqlCommand.ExecuteReader()) {
-                while(sqlDataReader.Read() == true) {
-                    var setVehicleDispatchHeadVo = new VehicleDispatchHeadVo();
-                    setVehicleDispatchHeadVo.Cell_number = _defaultValue.GetDefaultValue<int>(sqlDataReader["cell_number"]);
-                    setVehicleDispatchHeadVo.Garage_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["garage_flag"]);
-                    setVehicleDispatchHeadVo.Five_lap = _defaultValue.GetDefaultValue<bool>(sqlDataReader["five_lap"]);
-                    setVehicleDispatchHeadVo.Day_of_week = _defaultValue.GetDefaultValue<string>(sqlDataReader["day_of_week"]);
-                    setVehicleDispatchHeadVo.Set_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["set_code"]);
-                    setVehicleDispatchHeadVo.Car_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["car_code"]);
-                    setVehicleDispatchHeadVo.Number_of_people = _defaultValue.GetDefaultValue<int>(sqlDataReader["number_of_people"]);
-                    setVehicleDispatchHeadVo.Financial_year = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["financial_year"]);
-                    setVehicleDispatchHeadVo.Insert_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["insert_ymd_hms"]);
-                    setVehicleDispatchHeadVo.Update_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["update_ymd_hms"]);
-                    setVehicleDispatchHeadVo.Delete_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["delete_ymd_hms"]);
-                    setVehicleDispatchHeadVo.Delete_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["delete_flag"]);
-                    listVehicleDispatchHeadVo.Add(setVehicleDispatchHeadVo);
-                }
+            sqlCommand.CommandText = "UPDATE vehicle_dispatch_head " +
+                                     "SET garage_flag = NULL," +
+                                         "five_lap = NULL," +
+                                         "day_of_week = NULL," +
+                                         "set_code = NULL," +
+                                         "car_code = NULL," +
+                                         "number_of_people = NULL," +
+                                         "'" + financial_year.ToString("yyyy-04-01") + "'," +
+                                         "'" + DateTime.Now.Date + "'," +
+                                         "'" + new DateTime(1900, 01, 01) + "'," +
+                                         "'" + new DateTime(1900, 01, 01) + "'," +
+                                         "delete_flag = 'False' " +
+                                     "WHERE cell_number = " + cell_number + " AND operation_date = '" + financial_year.ToString("yyyy-04-01") + "'";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
             }
-            return listVehicleDispatchHeadVo;
         }
     }
 }

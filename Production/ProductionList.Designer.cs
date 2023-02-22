@@ -111,26 +111,26 @@
             this.label2 = new System.Windows.Forms.Label();
             this.ComboBoxMondayCar = new System.Windows.Forms.ComboBox();
             this.TableLayoutPanelExCenter = new ControlEx.TableLayoutPanelEx();
-            this.ContextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.配車先を設定するToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.配車先を削除するToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.PanelTop = new System.Windows.Forms.Panel();
             this.ButtonRead = new System.Windows.Forms.Button();
             this.LabelName = new System.Windows.Forms.Label();
             this.ComboBoxFinancialYear = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
             this.ButtonUpdate = new System.Windows.Forms.Button();
+            this.ContextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ToolStripMenuItemRemoveSetLabel = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.TableLayoutPanelExBase.SuspendLayout();
             this.MenuStrip1.SuspendLayout();
             this.StatusStrip1.SuspendLayout();
             this.PanelButtom.SuspendLayout();
-            this.ContextMenuStrip1.SuspendLayout();
             this.PanelTop.SuspendLayout();
+            this.ContextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // TableLayoutPanelExBase
             // 
+            this.TableLayoutPanelExBase.ButtonBorderStyleDotted = false;
             this.TableLayoutPanelExBase.ColumnCount = 1;
             this.TableLayoutPanelExBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TableLayoutPanelExBase.Controls.Add(this.MenuStrip1, 0, 0);
@@ -144,7 +144,7 @@
             this.TableLayoutPanelExBase.RowCount = 5;
             this.TableLayoutPanelExBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.TableLayoutPanelExBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 66F));
-            this.TableLayoutPanelExBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 463F));
+            this.TableLayoutPanelExBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 462F));
             this.TableLayoutPanelExBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TableLayoutPanelExBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
             this.TableLayoutPanelExBase.Size = new System.Drawing.Size(1904, 1041);
@@ -198,6 +198,7 @@
             this.StatusStrip1.Location = new System.Drawing.Point(0, 1019);
             this.StatusStrip1.Name = "StatusStrip1";
             this.StatusStrip1.Size = new System.Drawing.Size(1904, 22);
+            this.StatusStrip1.SizingGrip = false;
             this.StatusStrip1.TabIndex = 1;
             this.StatusStrip1.Text = "statusStrip1";
             // 
@@ -292,9 +293,9 @@
             this.PanelButtom.Controls.Add(this.label2);
             this.PanelButtom.Controls.Add(this.ComboBoxMondayCar);
             this.PanelButtom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelButtom.Location = new System.Drawing.Point(3, 556);
+            this.PanelButtom.Location = new System.Drawing.Point(3, 555);
             this.PanelButtom.Name = "PanelButtom";
-            this.PanelButtom.Size = new System.Drawing.Size(1898, 458);
+            this.PanelButtom.Size = new System.Drawing.Size(1898, 459);
             this.PanelButtom.TabIndex = 3;
             // 
             // LabelDayOfWeek
@@ -316,7 +317,7 @@
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(92, 20);
             this.label18.TabIndex = 133;
-            this.label18.Text = "配車人数：";
+            this.label18.Text = "配車曜日：";
             // 
             // LabelCellNumber
             // 
@@ -1126,6 +1127,7 @@
             // 
             // TableLayoutPanelExCenter
             // 
+            this.TableLayoutPanelExCenter.ButtonBorderStyleDotted = false;
             this.TableLayoutPanelExCenter.ColumnCount = 25;
             this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
             this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
@@ -1152,10 +1154,9 @@
             this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
             this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
             this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelExCenter.ContextMenuStrip = this.ContextMenuStrip1;
             this.TableLayoutPanelExCenter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableLayoutPanelExCenter.Location = new System.Drawing.Point(25, 105);
-            this.TableLayoutPanelExCenter.Margin = new System.Windows.Forms.Padding(25, 15, 25, 15);
+            this.TableLayoutPanelExCenter.Margin = new System.Windows.Forms.Padding(25, 15, 29, 15);
             this.TableLayoutPanelExCenter.Name = "TableLayoutPanelExCenter";
             this.TableLayoutPanelExCenter.RowCount = 6;
             this.TableLayoutPanelExCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 72F));
@@ -1164,29 +1165,9 @@
             this.TableLayoutPanelExCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 72F));
             this.TableLayoutPanelExCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 72F));
             this.TableLayoutPanelExCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 72F));
-            this.TableLayoutPanelExCenter.Size = new System.Drawing.Size(1854, 433);
+            this.TableLayoutPanelExCenter.Size = new System.Drawing.Size(1850, 432);
             this.TableLayoutPanelExCenter.TabIndex = 4;
-            this.TableLayoutPanelExCenter.CellPaint += new System.Windows.Forms.TableLayoutCellPaintEventHandler(this.TableLayoutPanelExCenter_CellPaint);
-            // 
-            // ContextMenuStrip1
-            // 
-            this.ContextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.配車先を設定するToolStripMenuItem,
-            this.配車先を削除するToolStripMenuItem});
-            this.ContextMenuStrip1.Name = "ContextMenuStrip1";
-            this.ContextMenuStrip1.Size = new System.Drawing.Size(163, 48);
-            // 
-            // 配車先を設定するToolStripMenuItem
-            // 
-            this.配車先を設定するToolStripMenuItem.Name = "配車先を設定するToolStripMenuItem";
-            this.配車先を設定するToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.配車先を設定するToolStripMenuItem.Text = "配車先を設定する";
-            // 
-            // 配車先を削除するToolStripMenuItem
-            // 
-            this.配車先を削除するToolStripMenuItem.Name = "配車先を削除するToolStripMenuItem";
-            this.配車先を削除するToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
-            this.配車先を削除するToolStripMenuItem.Text = "配車先を削除する";
+            this.TableLayoutPanelExCenter.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.TableLayoutPanelExCenter_MouseDoubleClick);
             // 
             // PanelTop
             // 
@@ -1230,7 +1211,7 @@
             this.ComboBoxFinancialYear.Items.AddRange(new object[] {
             "2022年4月1日",
             "2023年4月1日"});
-            this.ComboBoxFinancialYear.Location = new System.Drawing.Point(128, 19);
+            this.ComboBoxFinancialYear.Location = new System.Drawing.Point(124, 19);
             this.ComboBoxFinancialYear.Name = "ComboBoxFinancialYear";
             this.ComboBoxFinancialYear.Size = new System.Drawing.Size(140, 25);
             this.ComboBoxFinancialYear.TabIndex = 128;
@@ -1257,6 +1238,21 @@
             this.ButtonUpdate.UseVisualStyleBackColor = true;
             this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
             // 
+            // ContextMenuStrip1
+            // 
+            this.ContextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolStripMenuItemRemoveSetLabel});
+            this.ContextMenuStrip1.Name = "ContextMenuStrip1";
+            this.ContextMenuStrip1.Size = new System.Drawing.Size(163, 26);
+            this.ContextMenuStrip1.Opened += new System.EventHandler(this.ContextMenuStrip1_Opened);
+            // 
+            // ToolStripMenuItemRemoveSetLabel
+            // 
+            this.ToolStripMenuItemRemoveSetLabel.Name = "ToolStripMenuItemRemoveSetLabel";
+            this.ToolStripMenuItemRemoveSetLabel.Size = new System.Drawing.Size(162, 22);
+            this.ToolStripMenuItemRemoveSetLabel.Text = "配車先を削除する";
+            this.ToolStripMenuItemRemoveSetLabel.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            // 
             // ProductionList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1276,9 +1272,9 @@
             this.StatusStrip1.PerformLayout();
             this.PanelButtom.ResumeLayout(false);
             this.PanelButtom.PerformLayout();
-            this.ContextMenuStrip1.ResumeLayout(false);
             this.PanelTop.ResumeLayout(false);
             this.PanelTop.PerformLayout();
+            this.ContextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1380,7 +1376,6 @@
         private Button ButtonRead;
         private ToolStripMenuItem ToolStripMenuItemReset;
         private ContextMenuStrip ContextMenuStrip1;
-        private ToolStripMenuItem 配車先を設定するToolStripMenuItem;
-        private ToolStripMenuItem 配車先を削除するToolStripMenuItem;
+        private ToolStripMenuItem ToolStripMenuItemRemoveSetLabel;
     }
 }
