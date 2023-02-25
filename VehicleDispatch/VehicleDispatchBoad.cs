@@ -1339,7 +1339,7 @@ namespace VehicleDispatch {
              * vehicle_dispatch_head/vehicle_dispatch_body‚©‚çvehicle_dispatch_detail‚ğì¬‚·‚é
              */
             // Ğ“à‚Å‚Ì–{”Ô‚ğList<VehicleDispatchDetailVo>Œ^‚Åæ“¾
-            List<VehicleDispatchDetailVo> listVehicleDispatch = _vehicleDispatchDetailDao.SelectVehicleDispatch(UcDateTimeJpOperationDate.GetValue().ToString("ddd"));
+            List<VehicleDispatchDetailVo> listVehicleDispatch = _vehicleDispatchDetailDao.SelectVehicleDispatch(UcDateTimeJpOperationDate.GetValue().AddMonths(-3),UcDateTimeJpOperationDate.GetValue().ToString("ddd"));
             // VehicleDispatchDetailVo‚Ì•s‘«î•ñ‚ğ‰Á‚¦‚é
             foreach(var vehicleDispatchDetail in listVehicleDispatch.OrderBy(x => x.Cell_number)) {
                 VehicleDispatchDetailVo vehicleDispatchDetailVo = new();

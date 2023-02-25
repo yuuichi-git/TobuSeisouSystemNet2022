@@ -37,10 +37,11 @@ namespace Dao {
         /// <summary>
         /// SelectVehicleDispatch
         /// 社内での本番を取得
+        /// 2023-02-24 financial_yearを抽出条件に追加した
         /// </summary>
         /// <param name="dayOfWeek"></param>
         /// <returns></returns>
-        public List<VehicleDispatchDetailVo> SelectVehicleDispatch(string dayOfWeek) {
+        public List<VehicleDispatchDetailVo> SelectVehicleDispatch(DateTime financial_year, string dayOfWeek) {
             List<VehicleDispatchDetailVo> listVehicleDispatchDetailVo = new List<VehicleDispatchDetailVo>();
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT vehicle_dispatch_head.cell_number," +
@@ -61,12 +62,14 @@ namespace Dao {
                                             "staff_master_4.occupation AS operator_4_occupation," +
                                             "vehicle_dispatch_body_office.note " +  // vehicle_dispatch_body_officeから
                                       "FROM vehicle_dispatch_head " +
-                                      "LEFT JOIN vehicle_dispatch_body_office ON vehicle_dispatch_head.cell_number = vehicle_dispatch_body_office.cell_number " +
-                                            "AND vehicle_dispatch_body_office.day_of_week = '" + dayOfWeek + "' " +
+                                      "LEFT JOIN vehicle_dispatch_body_office ON (vehicle_dispatch_head.cell_number = vehicle_dispatch_body_office.cell_number " +
+                                            "AND vehicle_dispatch_body_office.financial_year = '" + financial_year.ToString("yyyy-04-01") + "' " +
+                                            "AND vehicle_dispatch_body_office.day_of_week = '" + dayOfWeek + "') " +
                                       "LEFT OUTER JOIN staff_master AS staff_master_1 ON vehicle_dispatch_body_office.operator_code_1 = staff_master_1.staff_code " +
                                       "LEFT OUTER JOIN staff_master AS staff_master_2 ON vehicle_dispatch_body_office.operator_code_2 = staff_master_2.staff_code " +
                                       "LEFT OUTER JOIN staff_master AS staff_master_3 ON vehicle_dispatch_body_office.operator_code_3 = staff_master_3.staff_code " +
-                                      "LEFT OUTER JOIN staff_master AS staff_master_4 ON vehicle_dispatch_body_office.operator_code_4 = staff_master_4.staff_code";
+                                      "LEFT OUTER JOIN staff_master AS staff_master_4 ON vehicle_dispatch_body_office.operator_code_4 = staff_master_4.staff_code " +
+                                      "WHERE vehicle_dispatch_head.financial_year = '" + financial_year.ToString("yyyy-04-01") + "'";
             using(var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while(sqlDataReader.Read() == true) {
                     VehicleDispatchDetailVo vehicleDispatchDetailVo = new VehicleDispatchDetailVo();

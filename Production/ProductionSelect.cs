@@ -2,6 +2,8 @@
  * 2023-02-20
  * ProductionListに新しい配車先を追加する
  */
+using Common;
+
 using Dao;
 
 using Vo;
@@ -9,11 +11,12 @@ using Vo;
 namespace Production {
     public partial class ProductionSelect : Form {
         private int _cell_number;
-        private readonly DateTime _financial_datetime;
+        private DateTime _financial_datetime;
         /*
          * Dao
          */
         private readonly SetMasterDao _setMasterDao;
+        private VehicleDispatchHeadDao _vehicleDispatchHeadDao;
         /*
          * Vo
          */
@@ -32,6 +35,7 @@ namespace Production {
              * Dao
              */
             _setMasterDao = new SetMasterDao(connectionVo);
+            _vehicleDispatchHeadDao = new VehicleDispatchHeadDao(connectionVo);
             /*
              * Vo
              */
@@ -46,8 +50,25 @@ namespace Production {
             LabelDayOfWeek.Text = "";
         }
 
+        /// <summary>
+        /// ButtonUpdate_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonUpdate_Click(object sender, EventArgs e) {
-
+            ExtendsClassSetMasterVo extendsClassSetMasterVo;
+            if(ComboBoxSetName.SelectedItem is not null) {
+                extendsClassSetMasterVo = (ExtendsClassSetMasterVo)ComboBoxSetName.SelectedItem;
+                try {
+                    _vehicleDispatchHeadDao.UpdateVehicleDispatchHead(_cell_number, _financial_datetime, extendsClassSetMasterVo.SetMasterVo);
+                } catch(Exception exception) {
+                    MessageBox.Show(exception.Message);
+                }
+            } else {
+                MessageBox.Show("配車先が選択されていません", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            this.Close();
         }
 
         /// <summary>
@@ -55,16 +76,16 @@ namespace Production {
         /// ComboBoxに値をセット
         /// </summary>
         private void InitializeComboBoxSetMaster() {
-
+            // Itemsをクリア
             ComboBoxSetName.Items.Clear();
+            // Itemをセット
             foreach(var setMasteVo in _listSetMasterVo.FindAll(x => x.Delete_flag == false).OrderBy(x => x.Set_code))
-                ComboBoxSetName.Items.Add(new ExtendsClassSetMasterVo(setMasteVo.Set_name, setMasteVo));
+                ComboBoxSetName.Items.Add(new ExtendsClassSetMasterVo(string.Concat(setMasteVo.Set_name_1, setMasteVo.Set_name_2), setMasteVo));
             ComboBoxSetName.DisplayMember = "SetName";
             // オートコンプリートモードの設定
             ComboBoxSetName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             // コンボボックスのアイテムをオートコンプリートの選択候補とする
             ComboBoxSetName.AutoCompleteSource = AutoCompleteSource.ListItems;
-
         }
 
         /// <summary>

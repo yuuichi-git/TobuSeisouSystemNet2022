@@ -120,6 +120,31 @@ namespace Dao {
         }
 
         /// <summary>
+        /// UpdateVehicleDispatchHead
+        /// 
+        /// </summary>
+        /// <param name="cell_number"></param>
+        /// <param name="financial_year"></param>
+        public void UpdateVehicleDispatchHead(int cell_number, DateTime financial_year, SetMasterVo setMasterVo) {
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE vehicle_dispatch_head " +
+                                     "SET garage_flag = '" + setMasterVo.Garage_flag + "'," +
+                                         "five_lap = '" + setMasterVo.Five_lap + "'," +
+                                         "move_flag = '" + setMasterVo.Move_flag + "'," +
+                                         "day_of_week = '" + setMasterVo.Working_days + "'," +
+                                         "set_code = " + setMasterVo.Set_code + "," +
+                                         "car_code = NULL," +
+                                         "number_of_people = " + setMasterVo.Number_of_people + "," +
+                                         "update_ymd_hms = '" + DateTime.Now.Date + "' " +
+                                     "WHERE cell_number = " + cell_number + " AND financial_year = '" + financial_year.ToString("yyyy-04-01") + "'";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
         /// ResetVehicleDispatchHead
         /// レコードの値を初期化する
         /// </summary>
@@ -130,16 +155,16 @@ namespace Dao {
             sqlCommand.CommandText = "UPDATE vehicle_dispatch_head " +
                                      "SET garage_flag = NULL," +
                                          "five_lap = NULL," +
+                                         "move_flag = NULL," +
                                          "day_of_week = NULL," +
                                          "set_code = NULL," +
                                          "car_code = NULL," +
                                          "number_of_people = NULL," +
-                                         "'" + financial_year.ToString("yyyy-04-01") + "'," +
-                                         "'" + DateTime.Now.Date + "'," +
-                                         "'" + new DateTime(1900, 01, 01) + "'," +
-                                         "'" + new DateTime(1900, 01, 01) + "'," +
+                                         "insert_ymd_hms = '" + DateTime.Now.Date + "'," +
+                                         "update_ymd_hms = '" + new DateTime(1900, 01, 01) + "'," +
+                                         "delete_ymd_hms = '" + new DateTime(1900, 01, 01) + "'," +
                                          "delete_flag = 'False' " +
-                                     "WHERE cell_number = " + cell_number + " AND operation_date = '" + financial_year.ToString("yyyy-04-01") + "'";
+                                     "WHERE cell_number = " + cell_number + " AND financial_year = '" + financial_year.ToString("yyyy-04-01") + "'";
             try {
                 sqlCommand.ExecuteNonQuery();
             } catch {
