@@ -181,7 +181,7 @@ namespace VehicleDispatchSheet {
             }
             ToolStripStatusLabelPosition.Text = "roll_call_detailを更新しました。";
 
-            EntryCellPosition? entryCellPosition;
+            EntryCellPosition entryCellPosition;
             int blockRowCount;
 
             SpreadBase.SuspendLayout();
@@ -1162,10 +1162,7 @@ namespace VehicleDispatchSheet {
                     case "バ":
                         _backColor = System.Drawing.Color.Wheat;
                         break;
-                    case "バ作":
-                        _backColor = System.Drawing.Color.LightBlue;
-                        break;
-                    case "派作":
+                    case "派":
                         _backColor = System.Drawing.Color.MistyRose;
                         break;
                     default:
@@ -1286,9 +1283,14 @@ namespace VehicleDispatchSheet {
                         garage = "";
                         break;
                 }
-
-                belongs = string.Concat(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Belongs],
-                                        dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Occupation]);
+                /*
+                 * "作"を追加するかどうか
+                 */
+                if(vehicleDispatchDetailVo.Operator_2_occupation == 11) {
+                    belongs = string.Concat(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Belongs], "作");
+                } else {
+                    belongs = string.Concat(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Belongs]);
+                }
                 switch(belongs) {
                     case "バ":
                         _backColor = System.Drawing.Color.Wheat;
@@ -1308,7 +1310,7 @@ namespace VehicleDispatchSheet {
                  */
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 11].BackColor = _backColor;
                 SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 11].CellType = new FarPoint.Win.Spread.CellType.RichTextCellType();
-                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 11].Value = GetWorkStaffName(vehicleDispatchDetailVo,
+                SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 11].Value = GetWorkStaffName(vehicleDispatchDetailVo.Operator_2_occupation,
                                                                                                              _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2));
                 /*
                  * 所属
@@ -1336,8 +1338,14 @@ namespace VehicleDispatchSheet {
              * 組がセットされていなければ何もしない
              */
             if(vehicleDispatchDetailVo.Set_code > 0 && vehicleDispatchDetailVo.Operator_code_3 > 0) {
-                belongs = string.Concat(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Belongs],
-                                        dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Occupation]);
+                /*
+                 * "作"を追加するかどうか
+                 */
+                if(vehicleDispatchDetailVo.Operator_3_occupation == 11) {
+                    belongs = string.Concat(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Belongs], "作");
+                } else {
+                    belongs = string.Concat(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Belongs]);
+                }
                 switch(belongs) {
                     case "バ":
                         _backColor = System.Drawing.Color.Wheat;
@@ -1357,7 +1365,7 @@ namespace VehicleDispatchSheet {
                  */
                 SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 11].BackColor = _backColor;
                 SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 11].CellType = new FarPoint.Win.Spread.CellType.RichTextCellType();
-                SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 11].Value = GetWorkStaffName(vehicleDispatchDetailVo,
+                SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 11].Value = GetWorkStaffName(vehicleDispatchDetailVo.Operator_3_occupation,
                                                                                                                  _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3));
                 /*
                  * 所属
@@ -1385,8 +1393,14 @@ namespace VehicleDispatchSheet {
              * 組がセットされていなければ何もしない
              */
             if(vehicleDispatchDetailVo.Set_code > 0 && vehicleDispatchDetailVo.Operator_code_4 > 0) {
-                belongs = string.Concat(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4).Belongs],
-                                        dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4).Occupation]);
+                /*
+                 * "作"を追加するかどうか
+                 */
+                if(vehicleDispatchDetailVo.Operator_4_occupation == 11) {
+                    belongs = string.Concat(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4).Belongs], "作");
+                } else {
+                    belongs = string.Concat(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4).Belongs]);
+                }
                 switch(belongs) {
                     case "バ":
                         _backColor = System.Drawing.Color.Wheat;
@@ -1406,7 +1420,7 @@ namespace VehicleDispatchSheet {
                  */
                 SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 8].BackColor = _backColor;
                 SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 8].CellType = new FarPoint.Win.Spread.CellType.RichTextCellType();
-                SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 8].Value = GetWorkStaffName(vehicleDispatchDetailVo,
+                SheetView1.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 8].Value = GetWorkStaffName(vehicleDispatchDetailVo.Operator_4_occupation,
                                                                                                                 _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4));
                 /*
                  * 所属
@@ -1426,63 +1440,92 @@ namespace VehicleDispatchSheet {
         /// ”作業員”を加えるかどうか
         /// </summary>
         /// <returns></returns>
-        private string GetWorkStaffName(VehicleDispatchDetailVo vehicleDispatchDetailVo, StaffMasterVo staffMasterVo) {
+        private string GetWorkStaffName(int occupation, StaffMasterVo staffMasterVo) {
             string rtfText = "";
             string displayName;
-            switch(staffMasterVo.Belongs) {
-                case 10: // 役員
-                case 11: // 社員
-                    rtfText = staffMasterVo.Display_name;
-                    break;
-                case 12: // アルバイト
-                case 13: // 派遣
-                case 20: // 新運転
-                case 21: // 自運労
+            /*
+             * 2023-02-26
+             * operator_occupationの値によって”作業員"を追加する処理
+             */
+            switch(occupation) {
+                // 10:運転手 11:作業員 99:その他
+                case 11:
+                    displayName = string.Concat("作業員", staffMasterVo.Display_name);
                     /*
-                     * ここで指定した配車先の作業員には”作業員”は付けないようにする処理
+                     * リッチテキスト文字列の作成
                      */
-                    switch(vehicleDispatchDetailVo.Set_code) {
-                        case 1312118: // 浄化槽１
-                        case 1312123: // 浄化槽２
-                        case 1312115: // ルート１（事業用）
-                        case 1312124: // ルート２（事業用）
-                        case 1312116: // 廃棄物１（事業用）
-                        case 1312125: // 廃棄物２（事業用）
-                        case 1312122: // 新井清掃
-                        case 1312111: // 整備本社
-                        case 1312112: // 整備三郷
-                            rtfText = string.Concat("", staffMasterVo.Display_name);
-                            break;
-                        default:
-                            /*
-                             * ここで指定した作業員には”作業員”は付けないようにする処理
-                             */
-                            switch(staffMasterVo.Staff_code) {
-                                case 20675: // 深井翔
-                                case 22093: // 佐藤貴志
-                                case 20630: // 大橋祐哉
-                                case 22038: // 髙﨑慶藏
-                                    rtfText = string.Concat("", staffMasterVo.Display_name);
-                                    break;
-                                default:
-                                    displayName = string.Concat("作業員", staffMasterVo.Display_name);
-                                    /*
-                                     * リッチテキスト文字列の作成
-                                     */
-                                    using(RichTextBox temp = new RichTextBox()) {
-                                        temp.Text = displayName;
-                                        temp.SelectionStart = 0;
-                                        temp.SelectionLength = 3;
-                                        temp.SelectionColor = System.Drawing.Color.Gray;
-                                        temp.SelectionFont = new System.Drawing.Font("Yu Gothic UI", 6);
-                                        rtfText = temp.Rtf;
-                                    }
-                                    break;
-                            }
-                            break;
+                    using(RichTextBox temp = new RichTextBox()) {
+                        temp.Text = displayName;
+                        temp.SelectionStart = 0;
+                        temp.SelectionLength = 3;
+                        temp.SelectionColor = System.Drawing.Color.Gray;
+                        temp.SelectionFont = new System.Drawing.Font("Yu Gothic UI", 6);
+                        rtfText = temp.Rtf;
                     }
                     break;
+                case 10:
+                case 99:
+                    rtfText = string.Concat("", staffMasterVo.Display_name);
+                    break;
             }
+            /*
+             * 2023-02-26
+             * コメントアウト
+             */
+            //switch(staffMasterVo.Belongs) {
+            //    case 10: // 役員
+            //    case 11: // 社員
+            //        rtfText = staffMasterVo.Display_name;
+            //        break;
+            //    case 12: // アルバイト
+            //    case 13: // 派遣
+            //    case 20: // 新運転
+            //    case 21: // 自運労
+            //        /*
+            //         * ここで指定した配車先の作業員には”作業員”は付けないようにする処理
+            //         */
+            //        switch(vehicleDispatchDetailVo.Set_code) {
+            //            case 1312118: // 浄化槽１
+            //            case 1312123: // 浄化槽２
+            //            case 1312115: // ルート１（事業用）
+            //            case 1312124: // ルート２（事業用）
+            //            case 1312116: // 廃棄物１（事業用）
+            //            case 1312125: // 廃棄物２（事業用）
+            //            case 1312122: // 新井清掃
+            //            case 1312111: // 整備本社
+            //            case 1312112: // 整備三郷
+            //                rtfText = string.Concat("", staffMasterVo.Display_name);
+            //                break;
+            //            default:
+            //                /*
+            //                 * ここで指定した作業員には”作業員”は付けないようにする処理
+            //                 */
+            //                switch(staffMasterVo.Staff_code) {
+            //                    case 20675: // 深井翔
+            //                    case 22093: // 佐藤貴志
+            //                    case 20630: // 大橋祐哉
+            //                    case 22038: // 髙﨑慶藏
+            //                        rtfText = string.Concat("", staffMasterVo.Display_name);
+            //                        break;
+            //                    default:
+            //                        displayName = string.Concat("作業員", staffMasterVo.Display_name);
+            //                        /*
+            //                         * リッチテキスト文字列の作成
+            //                         */
+            //                        using(RichTextBox temp = new RichTextBox()) {
+            //                            temp.Text = displayName;
+            //                            temp.SelectionStart = 0;
+            //                            temp.SelectionLength = 3;
+            //                            temp.SelectionColor = System.Drawing.Color.Gray;
+            //                            temp.SelectionFont = new System.Drawing.Font("Yu Gothic UI", 6);
+            //                            rtfText = temp.Rtf;
+            //                        }
+            //                        break;
+            //                }
+            //                break;
+            //        }
+            //        break;
+            //}
             return rtfText;
         }
 

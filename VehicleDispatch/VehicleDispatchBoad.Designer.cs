@@ -10,7 +10,7 @@
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing) {
-            if (disposing && (components != null)) {
+            if(disposing && (components != null)) {
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -23,1528 +23,1460 @@
         ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.components = new System.ComponentModel.Container();
-            this.TableLayoutPanelBase = new System.Windows.Forms.TableLayoutPanel();
-            this.MenuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.ToolStripMenuItemMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemVehicleDispatch = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemConvertExcel = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemPrint = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemDisplay = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemAllScreen = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemDefaultScreen = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemInitialize = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemInitializeCleanOffice = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemInitializeCompanyOffice = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
-            this.StatusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.ToolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.ToolStripStatusLabelMemory = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.ToolStripStatusLabelLastUpdate = new System.Windows.Forms.ToolStripStatusLabel();
-            this.ToolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.ToolStripStatusLabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.PanelUp = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.UcDateTimeJpOperationDate = new ControlEx.UcDateTimeJp();
-            this.FlowLayoutPanelExFree = new ControlEx.FlowLayoutPanelEx(this.components);
-            this.label1 = new System.Windows.Forms.Label();
-            this.ButtonUpdate = new System.Windows.Forms.Button();
-            this.TabControlExCenter = new ControlEx.TabControlEx();
-            this.TabPage1 = new System.Windows.Forms.TabPage();
-            this.TableLayoutPanelEx1 = new ControlEx.TableLayoutPanelEx();
-            this.TabPage2 = new System.Windows.Forms.TabPage();
-            this.TableLayoutPanelEx2 = new ControlEx.TableLayoutPanelEx();
-            this.TabControlExLeft = new ControlEx.TabControlEx();
-            this.TabPageSet = new System.Windows.Forms.TabPage();
-            this.FlowLayoutPanelExSet = new ControlEx.FlowLayoutPanelEx(this.components);
-            this.TabPageCar = new System.Windows.Forms.TabPage();
-            this.FlowLayoutPanelExCar = new ControlEx.FlowLayoutPanelEx(this.components);
-            this.TabPageFullEmployees = new System.Windows.Forms.TabPage();
-            this.FlowLayoutPanelExFullEmployees = new ControlEx.FlowLayoutPanelEx(this.components);
-            this.TabPageLongTerm = new System.Windows.Forms.TabPage();
-            this.FlowLayoutPanelExLongTerm = new ControlEx.FlowLayoutPanelEx(this.components);
-            this.TabPagePartTime = new System.Windows.Forms.TabPage();
-            this.FlowLayoutPanelExPartTime = new ControlEx.FlowLayoutPanelEx(this.components);
-            this.TabPageWindow = new System.Windows.Forms.TabPage();
-            this.FlowLayoutPanelExWindow = new ControlEx.FlowLayoutPanelEx(this.components);
-            this.TabControlExRight = new ControlEx.TabControlEx();
-            this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.TableLayoutPanelExCarBase = new ControlEx.TableLayoutPanelEx();
-            this.FlowLayoutPanelExChecking = new ControlEx.FlowLayoutPanelEx(this.components);
-            this.FlowLayoutPanelExRepair = new ControlEx.FlowLayoutPanelEx(this.components);
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.FlowLayoutPanelExVehicleInspection = new ControlEx.FlowLayoutPanelEx(this.components);
-            this.label11 = new System.Windows.Forms.Label();
-            this.tabPage9 = new System.Windows.Forms.TabPage();
-            this.TableLayoutPanelExFullTimeBase = new ControlEx.TableLayoutPanelEx();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.FlowLayoutPanelExFullSalaried = new ControlEx.FlowLayoutPanelEx(this.components);
-            this.FlowLayoutPanelExFullClose = new ControlEx.FlowLayoutPanelEx(this.components);
-            this.FlowLayoutPanelExFullDesignation = new ControlEx.FlowLayoutPanelEx(this.components);
-            this.label12 = new System.Windows.Forms.Label();
-            this.tabPage11 = new System.Windows.Forms.TabPage();
-            this.TableLayoutPanelExPartTimeBase = new ControlEx.TableLayoutPanelEx();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.FlowLayoutPanelExPartSalaried = new ControlEx.FlowLayoutPanelEx(this.components);
-            this.FlowLayoutPanelExPartClose = new ControlEx.FlowLayoutPanelEx(this.components);
-            this.label13 = new System.Windows.Forms.Label();
-            this.FlowLayoutPanelExPartDesignation = new ControlEx.FlowLayoutPanelEx(this.components);
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.TableLayoutPanelExCloseBase = new ControlEx.TableLayoutPanelEx();
-            this.FlowLayoutPanelExTelephone = new ControlEx.FlowLayoutPanelEx(this.components);
-            this.FlowLayoutPanelExWithoutNotice = new ControlEx.FlowLayoutPanelEx(this.components);
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.ContextMenuStripSetLabel = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.ToolStripMenuItemSetDetail = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolStripMenuItemSetGarageChange = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemSetGarageAdachi = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemSetGarageMisato = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemSetDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolStripMenuItemSetMemo = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolStripMenuItemOperationFlag = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemOperationFlagTrue = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemOperationFlagFalse = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemClassification = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemYOUJYOU = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemKUKEI = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemContactInformation = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemContactInformationTrue = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemContactInformationFalse = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemAddWorker = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemAddWorkerTrue = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemAddWorkerFalse = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemStandByFlag = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemStandByTrue = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemStandByFalse = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolStripMenuItemFax = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemHighWayReport = new System.Windows.Forms.ToolStripMenuItem();
-            this.ContextMenuStripCarLabel = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.ToolStripMenuItemCarDetail = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolStripMenuItemCarProxyTrue = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemCarProxyFalse = new System.Windows.Forms.ToolStripMenuItem();
-            this.ContextMenuStripStaffLabel = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.ToolStripMenuItemStaffDetail = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolStripMenuItemStaffProxyTrue = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemStaffProxyFalse = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolStripMenuItemStaffMemo = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolStripMenuItemOccupation10 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemOccupation11 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-            this.ToolStripMenuItemTelephoneMarkTrue = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemTelephoneMarkFalse = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.TableLayoutPanelBase.SuspendLayout();
-            this.MenuStrip1.SuspendLayout();
-            this.StatusStrip1.SuspendLayout();
-            this.PanelUp.SuspendLayout();
-            this.TabControlExCenter.SuspendLayout();
-            this.TabPage1.SuspendLayout();
-            this.TabPage2.SuspendLayout();
-            this.TabControlExLeft.SuspendLayout();
-            this.TabPageSet.SuspendLayout();
-            this.TabPageCar.SuspendLayout();
-            this.TabPageFullEmployees.SuspendLayout();
-            this.TabPageLongTerm.SuspendLayout();
-            this.TabPagePartTime.SuspendLayout();
-            this.TabPageWindow.SuspendLayout();
-            this.TabControlExRight.SuspendLayout();
-            this.tabPage8.SuspendLayout();
-            this.TableLayoutPanelExCarBase.SuspendLayout();
-            this.tabPage9.SuspendLayout();
-            this.TableLayoutPanelExFullTimeBase.SuspendLayout();
-            this.tabPage11.SuspendLayout();
-            this.TableLayoutPanelExPartTimeBase.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            this.TableLayoutPanelExCloseBase.SuspendLayout();
-            this.ContextMenuStripSetLabel.SuspendLayout();
-            this.ContextMenuStripCarLabel.SuspendLayout();
-            this.ContextMenuStripStaffLabel.SuspendLayout();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            TableLayoutPanelBase = new TableLayoutPanel();
+            MenuStrip1 = new MenuStrip();
+            ToolStripMenuItemMenu = new ToolStripMenuItem();
+            ToolStripMenuItemVehicleDispatch = new ToolStripMenuItem();
+            ToolStripMenuItemConvertExcel = new ToolStripMenuItem();
+            ToolStripMenuItemPrint = new ToolStripMenuItem();
+            ToolStripMenuItemExit = new ToolStripMenuItem();
+            ToolStripMenuItemDisplay = new ToolStripMenuItem();
+            ToolStripMenuItemAllScreen = new ToolStripMenuItem();
+            ToolStripMenuItemDefaultScreen = new ToolStripMenuItem();
+            ToolStripMenuItemInitialize = new ToolStripMenuItem();
+            ToolStripMenuItemInitializeCleanOffice = new ToolStripMenuItem();
+            ToolStripMenuItemInitializeCompanyOffice = new ToolStripMenuItem();
+            ToolStripMenuItemHelp = new ToolStripMenuItem();
+            StatusStrip1 = new StatusStrip();
+            ToolStripStatusLabel2 = new ToolStripStatusLabel();
+            ToolStripStatusLabelMemory = new ToolStripStatusLabel();
+            toolStripStatusLabel3 = new ToolStripStatusLabel();
+            ToolStripStatusLabelLastUpdate = new ToolStripStatusLabel();
+            ToolStripStatusLabel1 = new ToolStripStatusLabel();
+            ToolStripStatusLabelStatus = new ToolStripStatusLabel();
+            PanelUp = new Panel();
+            UcDateTimeJpOperationDate = new ControlEx.UcDateTimeJp();
+            FlowLayoutPanelExFree = new ControlEx.FlowLayoutPanelEx(components);
+            label1 = new Label();
+            ButtonUpdate = new Button();
+            TabControlExCenter = new ControlEx.TabControlEx();
+            TabPage1 = new TabPage();
+            TableLayoutPanelEx1 = new ControlEx.TableLayoutPanelEx();
+            TabPage2 = new TabPage();
+            TableLayoutPanelEx2 = new ControlEx.TableLayoutPanelEx();
+            TabControlExLeft = new ControlEx.TabControlEx();
+            TabPageSet = new TabPage();
+            FlowLayoutPanelExSet = new ControlEx.FlowLayoutPanelEx(components);
+            TabPageCar = new TabPage();
+            FlowLayoutPanelExCar = new ControlEx.FlowLayoutPanelEx(components);
+            TabPageFullEmployees = new TabPage();
+            FlowLayoutPanelExFullEmployees = new ControlEx.FlowLayoutPanelEx(components);
+            TabPageLongTerm = new TabPage();
+            FlowLayoutPanelExLongTerm = new ControlEx.FlowLayoutPanelEx(components);
+            TabPagePartTime = new TabPage();
+            FlowLayoutPanelExPartTime = new ControlEx.FlowLayoutPanelEx(components);
+            TabPageWindow = new TabPage();
+            FlowLayoutPanelExWindow = new ControlEx.FlowLayoutPanelEx(components);
+            TabControlExRight = new ControlEx.TabControlEx();
+            tabPage8 = new TabPage();
+            TableLayoutPanelExCarBase = new ControlEx.TableLayoutPanelEx();
+            FlowLayoutPanelExChecking = new ControlEx.FlowLayoutPanelEx(components);
+            FlowLayoutPanelExRepair = new ControlEx.FlowLayoutPanelEx(components);
+            label2 = new Label();
+            label3 = new Label();
+            FlowLayoutPanelExVehicleInspection = new ControlEx.FlowLayoutPanelEx(components);
+            label11 = new Label();
+            tabPage9 = new TabPage();
+            TableLayoutPanelExFullTimeBase = new ControlEx.TableLayoutPanelEx();
+            label7 = new Label();
+            label8 = new Label();
+            FlowLayoutPanelExFullSalaried = new ControlEx.FlowLayoutPanelEx(components);
+            FlowLayoutPanelExFullClose = new ControlEx.FlowLayoutPanelEx(components);
+            FlowLayoutPanelExFullDesignation = new ControlEx.FlowLayoutPanelEx(components);
+            label12 = new Label();
+            tabPage11 = new TabPage();
+            TableLayoutPanelExPartTimeBase = new ControlEx.TableLayoutPanelEx();
+            label9 = new Label();
+            label10 = new Label();
+            FlowLayoutPanelExPartSalaried = new ControlEx.FlowLayoutPanelEx(components);
+            FlowLayoutPanelExPartClose = new ControlEx.FlowLayoutPanelEx(components);
+            label13 = new Label();
+            FlowLayoutPanelExPartDesignation = new ControlEx.FlowLayoutPanelEx(components);
+            tabPage3 = new TabPage();
+            TableLayoutPanelExCloseBase = new ControlEx.TableLayoutPanelEx();
+            FlowLayoutPanelExTelephone = new ControlEx.FlowLayoutPanelEx(components);
+            FlowLayoutPanelExWithoutNotice = new ControlEx.FlowLayoutPanelEx(components);
+            label5 = new Label();
+            label6 = new Label();
+            ContextMenuStripSetLabel = new ContextMenuStrip(components);
+            ToolStripMenuItemSetDetail = new ToolStripMenuItem();
+            toolStripSeparator4 = new ToolStripSeparator();
+            ToolStripMenuItemSetGarageChange = new ToolStripMenuItem();
+            ToolStripMenuItemSetGarageAdachi = new ToolStripMenuItem();
+            ToolStripMenuItemSetGarageMisato = new ToolStripMenuItem();
+            ToolStripMenuItemSetDelete = new ToolStripMenuItem();
+            toolStripSeparator9 = new ToolStripSeparator();
+            ToolStripMenuItemSetMemo = new ToolStripMenuItem();
+            toolStripSeparator6 = new ToolStripSeparator();
+            ToolStripMenuItemOperationFlag = new ToolStripMenuItem();
+            ToolStripMenuItemOperationFlagTrue = new ToolStripMenuItem();
+            ToolStripMenuItemOperationFlagFalse = new ToolStripMenuItem();
+            ToolStripMenuItemClassification = new ToolStripMenuItem();
+            ToolStripMenuItemYOUJYOU = new ToolStripMenuItem();
+            ToolStripMenuItemKUKEI = new ToolStripMenuItem();
+            ToolStripMenuItemContactInformation = new ToolStripMenuItem();
+            ToolStripMenuItemContactInformationTrue = new ToolStripMenuItem();
+            ToolStripMenuItemContactInformationFalse = new ToolStripMenuItem();
+            ToolStripMenuItemAddWorker = new ToolStripMenuItem();
+            ToolStripMenuItemAddWorkerTrue = new ToolStripMenuItem();
+            ToolStripMenuItemAddWorkerFalse = new ToolStripMenuItem();
+            ToolStripMenuItemStandByFlag = new ToolStripMenuItem();
+            ToolStripMenuItemStandByTrue = new ToolStripMenuItem();
+            ToolStripMenuItemStandByFalse = new ToolStripMenuItem();
+            toolStripSeparator7 = new ToolStripSeparator();
+            ToolStripMenuItemFax = new ToolStripMenuItem();
+            ToolStripMenuItemHighWayReport = new ToolStripMenuItem();
+            ContextMenuStripCarLabel = new ContextMenuStrip(components);
+            ToolStripMenuItemCarDetail = new ToolStripMenuItem();
+            toolStripSeparator1 = new ToolStripSeparator();
+            ToolStripMenuItemCarProxyTrue = new ToolStripMenuItem();
+            ToolStripMenuItemCarProxyFalse = new ToolStripMenuItem();
+            ContextMenuStripStaffLabel = new ContextMenuStrip(components);
+            ToolStripMenuItemStaffDetail = new ToolStripMenuItem();
+            toolStripSeparator2 = new ToolStripSeparator();
+            ToolStripMenuItemStaffProxyTrue = new ToolStripMenuItem();
+            ToolStripMenuItemStaffProxyFalse = new ToolStripMenuItem();
+            toolStripSeparator3 = new ToolStripSeparator();
+            ToolStripMenuItemStaffMemo = new ToolStripMenuItem();
+            toolStripSeparator5 = new ToolStripSeparator();
+            ToolStripMenuItemOccupation10 = new ToolStripMenuItem();
+            ToolStripMenuItemOccupation11 = new ToolStripMenuItem();
+            toolStripSeparator8 = new ToolStripSeparator();
+            ToolStripMenuItemTelephoneMarkTrue = new ToolStripMenuItem();
+            ToolStripMenuItemTelephoneMarkFalse = new ToolStripMenuItem();
+            ToolTip1 = new ToolTip(components);
+            TableLayoutPanelBase.SuspendLayout();
+            MenuStrip1.SuspendLayout();
+            StatusStrip1.SuspendLayout();
+            PanelUp.SuspendLayout();
+            TabControlExCenter.SuspendLayout();
+            TabPage1.SuspendLayout();
+            TabPage2.SuspendLayout();
+            TabControlExLeft.SuspendLayout();
+            TabPageSet.SuspendLayout();
+            TabPageCar.SuspendLayout();
+            TabPageFullEmployees.SuspendLayout();
+            TabPageLongTerm.SuspendLayout();
+            TabPagePartTime.SuspendLayout();
+            TabPageWindow.SuspendLayout();
+            TabControlExRight.SuspendLayout();
+            tabPage8.SuspendLayout();
+            TableLayoutPanelExCarBase.SuspendLayout();
+            tabPage9.SuspendLayout();
+            TableLayoutPanelExFullTimeBase.SuspendLayout();
+            tabPage11.SuspendLayout();
+            TableLayoutPanelExPartTimeBase.SuspendLayout();
+            tabPage3.SuspendLayout();
+            TableLayoutPanelExCloseBase.SuspendLayout();
+            ContextMenuStripSetLabel.SuspendLayout();
+            ContextMenuStripCarLabel.SuspendLayout();
+            ContextMenuStripStaffLabel.SuspendLayout();
+            SuspendLayout();
             // 
             // TableLayoutPanelBase
             // 
-            this.TableLayoutPanelBase.ColumnCount = 3;
-            this.TableLayoutPanelBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 364F));
-            this.TableLayoutPanelBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanelBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 364F));
-            this.TableLayoutPanelBase.Controls.Add(this.MenuStrip1, 0, 0);
-            this.TableLayoutPanelBase.Controls.Add(this.StatusStrip1, 0, 3);
-            this.TableLayoutPanelBase.Controls.Add(this.PanelUp, 0, 1);
-            this.TableLayoutPanelBase.Controls.Add(this.TabControlExCenter, 1, 2);
-            this.TableLayoutPanelBase.Controls.Add(this.TabControlExLeft, 0, 2);
-            this.TableLayoutPanelBase.Controls.Add(this.TabControlExRight, 2, 2);
-            this.TableLayoutPanelBase.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TableLayoutPanelBase.Location = new System.Drawing.Point(0, 0);
-            this.TableLayoutPanelBase.Name = "TableLayoutPanelBase";
-            this.TableLayoutPanelBase.RowCount = 4;
-            this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 82F));
-            this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.TableLayoutPanelBase.Size = new System.Drawing.Size(1904, 1041);
-            this.TableLayoutPanelBase.TabIndex = 0;
+            TableLayoutPanelBase.ColumnCount = 3;
+            TableLayoutPanelBase.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 364F));
+            TableLayoutPanelBase.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            TableLayoutPanelBase.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 364F));
+            TableLayoutPanelBase.Controls.Add(MenuStrip1, 0, 0);
+            TableLayoutPanelBase.Controls.Add(StatusStrip1, 0, 3);
+            TableLayoutPanelBase.Controls.Add(PanelUp, 0, 1);
+            TableLayoutPanelBase.Controls.Add(TabControlExCenter, 1, 2);
+            TableLayoutPanelBase.Controls.Add(TabControlExLeft, 0, 2);
+            TableLayoutPanelBase.Controls.Add(TabControlExRight, 2, 2);
+            TableLayoutPanelBase.Dock = DockStyle.Fill;
+            TableLayoutPanelBase.Location = new Point(0, 0);
+            TableLayoutPanelBase.Name = "TableLayoutPanelBase";
+            TableLayoutPanelBase.RowCount = 4;
+            TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
+            TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 82F));
+            TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
+            TableLayoutPanelBase.Size = new Size(1904, 1041);
+            TableLayoutPanelBase.TabIndex = 0;
             // 
             // MenuStrip1
             // 
-            this.TableLayoutPanelBase.SetColumnSpan(this.MenuStrip1, 3);
-            this.MenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemMenu,
-            this.ToolStripMenuItemDisplay,
-            this.ToolStripMenuItemInitialize,
-            this.ToolStripMenuItemHelp});
-            this.MenuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.MenuStrip1.Name = "MenuStrip1";
-            this.MenuStrip1.Size = new System.Drawing.Size(1904, 24);
-            this.MenuStrip1.TabIndex = 0;
-            this.MenuStrip1.Text = "menuStrip1";
+            TableLayoutPanelBase.SetColumnSpan(MenuStrip1, 3);
+            MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemDisplay, ToolStripMenuItemInitialize, ToolStripMenuItemHelp });
+            MenuStrip1.Location = new Point(0, 0);
+            MenuStrip1.Name = "MenuStrip1";
+            MenuStrip1.Size = new Size(1904, 24);
+            MenuStrip1.TabIndex = 0;
+            MenuStrip1.Text = "menuStrip1";
             // 
             // ToolStripMenuItemMenu
             // 
-            this.ToolStripMenuItemMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemVehicleDispatch,
-            this.ToolStripMenuItemExit});
-            this.ToolStripMenuItemMenu.Name = "ToolStripMenuItemMenu";
-            this.ToolStripMenuItemMenu.Size = new System.Drawing.Size(52, 20);
-            this.ToolStripMenuItemMenu.Text = "メニュー";
-            this.ToolStripMenuItemMenu.DropDownOpening += new System.EventHandler(this.ToolStripMenuItemMenu_DropDownOpening);
+            ToolStripMenuItemMenu.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemVehicleDispatch, ToolStripMenuItemExit });
+            ToolStripMenuItemMenu.Name = "ToolStripMenuItemMenu";
+            ToolStripMenuItemMenu.Size = new Size(52, 20);
+            ToolStripMenuItemMenu.Text = "メニュー";
+            ToolStripMenuItemMenu.DropDownOpening += ToolStripMenuItemMenu_DropDownOpening;
             // 
             // ToolStripMenuItemVehicleDispatch
             // 
-            this.ToolStripMenuItemVehicleDispatch.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemConvertExcel,
-            this.ToolStripMenuItemPrint});
-            this.ToolStripMenuItemVehicleDispatch.Name = "ToolStripMenuItemVehicleDispatch";
-            this.ToolStripMenuItemVehicleDispatch.Size = new System.Drawing.Size(195, 22);
-            this.ToolStripMenuItemVehicleDispatch.Text = "配車表";
-            this.ToolStripMenuItemVehicleDispatch.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemVehicleDispatch.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemConvertExcel, ToolStripMenuItemPrint });
+            ToolStripMenuItemVehicleDispatch.Name = "ToolStripMenuItemVehicleDispatch";
+            ToolStripMenuItemVehicleDispatch.Size = new Size(195, 22);
+            ToolStripMenuItemVehicleDispatch.Text = "配車表";
+            ToolStripMenuItemVehicleDispatch.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemConvertExcel
             // 
-            this.ToolStripMenuItemConvertExcel.Enabled = false;
-            this.ToolStripMenuItemConvertExcel.Name = "ToolStripMenuItemConvertExcel";
-            this.ToolStripMenuItemConvertExcel.Size = new System.Drawing.Size(288, 22);
-            this.ToolStripMenuItemConvertExcel.Text = "当日配車へデータを書き出す(新型の配車表)";
-            this.ToolStripMenuItemConvertExcel.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemConvertExcel.Enabled = false;
+            ToolStripMenuItemConvertExcel.Name = "ToolStripMenuItemConvertExcel";
+            ToolStripMenuItemConvertExcel.Size = new Size(288, 22);
+            ToolStripMenuItemConvertExcel.Text = "当日配車へデータを書き出す(新型の配車表)";
+            ToolStripMenuItemConvertExcel.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemPrint
             // 
-            this.ToolStripMenuItemPrint.Name = "ToolStripMenuItemPrint";
-            this.ToolStripMenuItemPrint.Size = new System.Drawing.Size(288, 22);
-            this.ToolStripMenuItemPrint.Text = "表示されている配車表を印刷(B4)する";
-            this.ToolStripMenuItemPrint.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemPrint.Name = "ToolStripMenuItemPrint";
+            ToolStripMenuItemPrint.Size = new Size(288, 22);
+            ToolStripMenuItemPrint.Text = "表示されている配車表を印刷(B4)する";
+            ToolStripMenuItemPrint.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemExit
             // 
-            this.ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
-            this.ToolStripMenuItemExit.Size = new System.Drawing.Size(195, 22);
-            this.ToolStripMenuItemExit.Text = "アプリケーションを終了する";
-            this.ToolStripMenuItemExit.Click += new System.EventHandler(this.ToolStripMenuItemExit_Click);
+            ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
+            ToolStripMenuItemExit.Size = new Size(195, 22);
+            ToolStripMenuItemExit.Text = "アプリケーションを終了する";
+            ToolStripMenuItemExit.Click += ToolStripMenuItemExit_Click;
             // 
             // ToolStripMenuItemDisplay
             // 
-            this.ToolStripMenuItemDisplay.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemAllScreen,
-            this.ToolStripMenuItemDefaultScreen});
-            this.ToolStripMenuItemDisplay.Name = "ToolStripMenuItemDisplay";
-            this.ToolStripMenuItemDisplay.Size = new System.Drawing.Size(43, 20);
-            this.ToolStripMenuItemDisplay.Text = "表示";
+            ToolStripMenuItemDisplay.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemAllScreen, ToolStripMenuItemDefaultScreen });
+            ToolStripMenuItemDisplay.Name = "ToolStripMenuItemDisplay";
+            ToolStripMenuItemDisplay.Size = new Size(43, 20);
+            ToolStripMenuItemDisplay.Text = "表示";
             // 
             // ToolStripMenuItemAllScreen
             // 
-            this.ToolStripMenuItemAllScreen.Name = "ToolStripMenuItemAllScreen";
-            this.ToolStripMenuItemAllScreen.ShortcutKeyDisplayString = "Shift+D";
-            this.ToolStripMenuItemAllScreen.Size = new System.Drawing.Size(221, 22);
-            this.ToolStripMenuItemAllScreen.Tag = "ToolStripMenuItemAllScreen";
-            this.ToolStripMenuItemAllScreen.Text = "全画面表示にする";
-            this.ToolStripMenuItemAllScreen.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemAllScreen.Name = "ToolStripMenuItemAllScreen";
+            ToolStripMenuItemAllScreen.ShortcutKeyDisplayString = "Shift+D";
+            ToolStripMenuItemAllScreen.Size = new Size(221, 22);
+            ToolStripMenuItemAllScreen.Tag = "ToolStripMenuItemAllScreen";
+            ToolStripMenuItemAllScreen.Text = "全画面表示にする";
+            ToolStripMenuItemAllScreen.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemDefaultScreen
             // 
-            this.ToolStripMenuItemDefaultScreen.Name = "ToolStripMenuItemDefaultScreen";
-            this.ToolStripMenuItemDefaultScreen.ShortcutKeyDisplayString = "Shift+A";
-            this.ToolStripMenuItemDefaultScreen.Size = new System.Drawing.Size(221, 22);
-            this.ToolStripMenuItemDefaultScreen.Tag = "ToolStripMenuItemDefaultScreen";
-            this.ToolStripMenuItemDefaultScreen.Text = "通常画面表示にする";
-            this.ToolStripMenuItemDefaultScreen.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemDefaultScreen.Name = "ToolStripMenuItemDefaultScreen";
+            ToolStripMenuItemDefaultScreen.ShortcutKeyDisplayString = "Shift+A";
+            ToolStripMenuItemDefaultScreen.Size = new Size(221, 22);
+            ToolStripMenuItemDefaultScreen.Tag = "ToolStripMenuItemDefaultScreen";
+            ToolStripMenuItemDefaultScreen.Text = "通常画面表示にする";
+            ToolStripMenuItemDefaultScreen.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemInitialize
             // 
-            this.ToolStripMenuItemInitialize.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemInitializeCleanOffice,
-            this.ToolStripMenuItemInitializeCompanyOffice});
-            this.ToolStripMenuItemInitialize.Name = "ToolStripMenuItemInitialize";
-            this.ToolStripMenuItemInitialize.Size = new System.Drawing.Size(55, 20);
-            this.ToolStripMenuItemInitialize.Text = "初期化";
+            ToolStripMenuItemInitialize.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemInitializeCleanOffice, ToolStripMenuItemInitializeCompanyOffice });
+            ToolStripMenuItemInitialize.Name = "ToolStripMenuItemInitialize";
+            ToolStripMenuItemInitialize.Size = new Size(55, 20);
+            ToolStripMenuItemInitialize.Text = "初期化";
             // 
             // ToolStripMenuItemInitializeCleanOffice
             // 
-            this.ToolStripMenuItemInitializeCleanOffice.Enabled = false;
-            this.ToolStripMenuItemInitializeCleanOffice.Name = "ToolStripMenuItemInitializeCleanOffice";
-            this.ToolStripMenuItemInitializeCleanOffice.Size = new System.Drawing.Size(267, 22);
-            this.ToolStripMenuItemInitializeCleanOffice.Text = "清掃事務所への本番登録で初期化する";
-            this.ToolStripMenuItemInitializeCleanOffice.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemInitializeCleanOffice.Enabled = false;
+            ToolStripMenuItemInitializeCleanOffice.Name = "ToolStripMenuItemInitializeCleanOffice";
+            ToolStripMenuItemInitializeCleanOffice.Size = new Size(267, 22);
+            ToolStripMenuItemInitializeCleanOffice.Text = "清掃事務所への本番登録で初期化する";
+            ToolStripMenuItemInitializeCleanOffice.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemInitializeCompanyOffice
             // 
-            this.ToolStripMenuItemInitializeCompanyOffice.Name = "ToolStripMenuItemInitializeCompanyOffice";
-            this.ToolStripMenuItemInitializeCompanyOffice.Size = new System.Drawing.Size(267, 22);
-            this.ToolStripMenuItemInitializeCompanyOffice.Text = "社内での本番登録で初期化する";
-            this.ToolStripMenuItemInitializeCompanyOffice.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemInitializeCompanyOffice.Name = "ToolStripMenuItemInitializeCompanyOffice";
+            ToolStripMenuItemInitializeCompanyOffice.Size = new Size(267, 22);
+            ToolStripMenuItemInitializeCompanyOffice.Text = "社内での本番登録で初期化する";
+            ToolStripMenuItemInitializeCompanyOffice.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemHelp
             // 
-            this.ToolStripMenuItemHelp.Name = "ToolStripMenuItemHelp";
-            this.ToolStripMenuItemHelp.Size = new System.Drawing.Size(48, 20);
-            this.ToolStripMenuItemHelp.Text = "ヘルプ";
+            ToolStripMenuItemHelp.Name = "ToolStripMenuItemHelp";
+            ToolStripMenuItemHelp.Size = new Size(48, 20);
+            ToolStripMenuItemHelp.Text = "ヘルプ";
             // 
             // StatusStrip1
             // 
-            this.TableLayoutPanelBase.SetColumnSpan(this.StatusStrip1, 3);
-            this.StatusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripStatusLabel2,
-            this.ToolStripStatusLabelMemory,
-            this.toolStripStatusLabel3,
-            this.ToolStripStatusLabelLastUpdate,
-            this.ToolStripStatusLabel1,
-            this.ToolStripStatusLabelStatus});
-            this.StatusStrip1.Location = new System.Drawing.Point(0, 1019);
-            this.StatusStrip1.Name = "StatusStrip1";
-            this.StatusStrip1.Size = new System.Drawing.Size(1904, 22);
-            this.StatusStrip1.SizingGrip = false;
-            this.StatusStrip1.TabIndex = 1;
-            this.StatusStrip1.Text = "statusStrip1";
+            TableLayoutPanelBase.SetColumnSpan(StatusStrip1, 3);
+            StatusStrip1.Items.AddRange(new ToolStripItem[] { ToolStripStatusLabel2, ToolStripStatusLabelMemory, toolStripStatusLabel3, ToolStripStatusLabelLastUpdate, ToolStripStatusLabel1, ToolStripStatusLabelStatus });
+            StatusStrip1.Location = new Point(0, 1019);
+            StatusStrip1.Name = "StatusStrip1";
+            StatusStrip1.Size = new Size(1904, 22);
+            StatusStrip1.SizingGrip = false;
+            StatusStrip1.TabIndex = 1;
+            StatusStrip1.Text = "statusStrip1";
             // 
             // ToolStripStatusLabel2
             // 
-            this.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2";
-            this.ToolStripStatusLabel2.Size = new System.Drawing.Size(54, 17);
-            this.ToolStripStatusLabel2.Text = " Memory";
+            ToolStripStatusLabel2.Name = "ToolStripStatusLabel2";
+            ToolStripStatusLabel2.Size = new Size(54, 17);
+            ToolStripStatusLabel2.Text = " Memory";
             // 
             // ToolStripStatusLabelMemory
             // 
-            this.ToolStripStatusLabelMemory.Name = "ToolStripStatusLabelMemory";
-            this.ToolStripStatusLabelMemory.Size = new System.Drawing.Size(157, 17);
-            this.ToolStripStatusLabelMemory.Text = "ToolStripStatusLabelMemory";
+            ToolStripStatusLabelMemory.Name = "ToolStripStatusLabelMemory";
+            ToolStripStatusLabelMemory.Size = new Size(157, 17);
+            ToolStripStatusLabelMemory.Text = "ToolStripStatusLabelMemory";
             // 
             // toolStripStatusLabel3
             // 
-            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(105, 17);
-            this.toolStripStatusLabel3.Text = "             LastUpdate";
+            toolStripStatusLabel3.Name = "toolStripStatusLabel3";
+            toolStripStatusLabel3.Size = new Size(105, 17);
+            toolStripStatusLabel3.Text = "             LastUpdate";
             // 
             // ToolStripStatusLabelLastUpdate
             // 
-            this.ToolStripStatusLabelLastUpdate.Name = "ToolStripStatusLabelLastUpdate";
-            this.ToolStripStatusLabelLastUpdate.Size = new System.Drawing.Size(104, 17);
-            this.ToolStripStatusLabelLastUpdate.Text = "2022/12/31 0:00:00";
+            ToolStripStatusLabelLastUpdate.Name = "ToolStripStatusLabelLastUpdate";
+            ToolStripStatusLabelLastUpdate.Size = new Size(104, 17);
+            ToolStripStatusLabelLastUpdate.Text = "2022/12/31 0:00:00";
             // 
             // ToolStripStatusLabel1
             // 
-            this.ToolStripStatusLabel1.ForeColor = System.Drawing.Color.Black;
-            this.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1";
-            this.ToolStripStatusLabel1.Size = new System.Drawing.Size(78, 17);
-            this.ToolStripStatusLabel1.Text = "             Status";
+            ToolStripStatusLabel1.ForeColor = Color.Black;
+            ToolStripStatusLabel1.Name = "ToolStripStatusLabel1";
+            ToolStripStatusLabel1.Size = new Size(78, 17);
+            ToolStripStatusLabel1.Text = "             Status";
             // 
             // ToolStripStatusLabelStatus
             // 
-            this.ToolStripStatusLabelStatus.ForeColor = System.Drawing.Color.Blue;
-            this.ToolStripStatusLabelStatus.Name = "ToolStripStatusLabelStatus";
-            this.ToolStripStatusLabelStatus.Size = new System.Drawing.Size(145, 17);
-            this.ToolStripStatusLabelStatus.Text = "ToolStripStatusLabelStatus";
+            ToolStripStatusLabelStatus.ForeColor = Color.Blue;
+            ToolStripStatusLabelStatus.Name = "ToolStripStatusLabelStatus";
+            ToolStripStatusLabelStatus.Size = new Size(145, 17);
+            ToolStripStatusLabelStatus.Text = "ToolStripStatusLabelStatus";
             // 
             // PanelUp
             // 
-            this.TableLayoutPanelBase.SetColumnSpan(this.PanelUp, 3);
-            this.PanelUp.Controls.Add(this.label4);
-            this.PanelUp.Controls.Add(this.UcDateTimeJpOperationDate);
-            this.PanelUp.Controls.Add(this.FlowLayoutPanelExFree);
-            this.PanelUp.Controls.Add(this.label1);
-            this.PanelUp.Controls.Add(this.ButtonUpdate);
-            this.PanelUp.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelUp.Location = new System.Drawing.Point(3, 27);
-            this.PanelUp.Name = "PanelUp";
-            this.PanelUp.Size = new System.Drawing.Size(1898, 76);
-            this.PanelUp.TabIndex = 2;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(96, 48);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(192, 15);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "日付を変えたら”最新化”をクリック！！";
+            TableLayoutPanelBase.SetColumnSpan(PanelUp, 3);
+            PanelUp.Controls.Add(UcDateTimeJpOperationDate);
+            PanelUp.Controls.Add(FlowLayoutPanelExFree);
+            PanelUp.Controls.Add(label1);
+            PanelUp.Controls.Add(ButtonUpdate);
+            PanelUp.Dock = DockStyle.Fill;
+            PanelUp.Location = new Point(3, 27);
+            PanelUp.Name = "PanelUp";
+            PanelUp.Size = new Size(1898, 76);
+            PanelUp.TabIndex = 2;
             // 
             // UcDateTimeJpOperationDate
             // 
-            this.UcDateTimeJpOperationDate.Location = new System.Drawing.Point(100, 20);
-            this.UcDateTimeJpOperationDate.Name = "UcDateTimeJpOperationDate";
-            this.UcDateTimeJpOperationDate.Size = new System.Drawing.Size(183, 23);
-            this.UcDateTimeJpOperationDate.TabIndex = 6;
+            UcDateTimeJpOperationDate.Location = new Point(100, 28);
+            UcDateTimeJpOperationDate.Name = "UcDateTimeJpOperationDate";
+            UcDateTimeJpOperationDate.Size = new Size(183, 23);
+            UcDateTimeJpOperationDate.TabIndex = 6;
             // 
             // FlowLayoutPanelExFree
             // 
-            this.FlowLayoutPanelExFree.AllowDrop = true;
-            this.FlowLayoutPanelExFree.BackColor = System.Drawing.Color.White;
-            this.FlowLayoutPanelExFree.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FlowLayoutPanelExFree.Location = new System.Drawing.Point(356, 2);
-            this.FlowLayoutPanelExFree.Name = "FlowLayoutPanelExFree";
-            this.FlowLayoutPanelExFree.Size = new System.Drawing.Size(1186, 74);
-            this.FlowLayoutPanelExFree.TabIndex = 3;
-            this.FlowLayoutPanelExFree.Tag = "168";
-            this.FlowLayoutPanelExFree.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
-            this.FlowLayoutPanelExFree.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
+            FlowLayoutPanelExFree.AllowDrop = true;
+            FlowLayoutPanelExFree.BackColor = Color.White;
+            FlowLayoutPanelExFree.BorderStyle = BorderStyle.FixedSingle;
+            FlowLayoutPanelExFree.Location = new Point(356, 2);
+            FlowLayoutPanelExFree.Name = "FlowLayoutPanelExFree";
+            FlowLayoutPanelExFree.Size = new Size(1186, 74);
+            FlowLayoutPanelExFree.TabIndex = 3;
+            FlowLayoutPanelExFree.Tag = "168";
+            FlowLayoutPanelExFree.DragDrop += FlowLayoutPanelEx_DragDrop;
+            FlowLayoutPanelExFree.DragEnter += FlowLayoutPanelEx_DragEnter;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(44, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 15);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "配車日付";
+            label1.AutoSize = true;
+            label1.Location = new Point(44, 32);
+            label1.Name = "label1";
+            label1.Size = new Size(55, 15);
+            label1.TabIndex = 2;
+            label1.Text = "配車日付";
             // 
             // ButtonUpdate
             // 
-            this.ButtonUpdate.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ButtonUpdate.Location = new System.Drawing.Point(1672, 16);
-            this.ButtonUpdate.Name = "ButtonUpdate";
-            this.ButtonUpdate.Size = new System.Drawing.Size(180, 36);
-            this.ButtonUpdate.TabIndex = 0;
-            this.ButtonUpdate.Text = "最 新 化";
-            this.ButtonUpdate.UseVisualStyleBackColor = true;
-            this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
+            ButtonUpdate.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            ButtonUpdate.Location = new Point(1672, 16);
+            ButtonUpdate.Name = "ButtonUpdate";
+            ButtonUpdate.Size = new Size(180, 36);
+            ButtonUpdate.TabIndex = 0;
+            ButtonUpdate.Text = "最 新 化";
+            ButtonUpdate.UseVisualStyleBackColor = true;
+            ButtonUpdate.Click += ButtonUpdate_Click;
             // 
             // TabControlExCenter
             // 
-            this.TabControlExCenter.Controls.Add(this.TabPage1);
-            this.TabControlExCenter.Controls.Add(this.TabPage2);
-            this.TabControlExCenter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TabControlExCenter.Location = new System.Drawing.Point(367, 109);
-            this.TabControlExCenter.Name = "TabControlExCenter";
-            this.TabControlExCenter.SelectedIndex = 0;
-            this.TabControlExCenter.Size = new System.Drawing.Size(1170, 905);
-            this.TabControlExCenter.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.TabControlExCenter.TabIndex = 4;
+            TabControlExCenter.Controls.Add(TabPage1);
+            TabControlExCenter.Controls.Add(TabPage2);
+            TabControlExCenter.Dock = DockStyle.Fill;
+            TabControlExCenter.Location = new Point(367, 109);
+            TabControlExCenter.Name = "TabControlExCenter";
+            TabControlExCenter.SelectedIndex = 0;
+            TabControlExCenter.Size = new Size(1170, 905);
+            TabControlExCenter.SizeMode = TabSizeMode.Fixed;
+            TabControlExCenter.TabIndex = 4;
             // 
             // TabPage1
             // 
-            this.TabPage1.Controls.Add(this.TableLayoutPanelEx1);
-            this.TabPage1.Location = new System.Drawing.Point(4, 24);
-            this.TabPage1.Name = "TabPage1";
-            this.TabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPage1.Size = new System.Drawing.Size(1162, 877);
-            this.TabPage1.TabIndex = 0;
-            this.TabPage1.Text = "配車パネル１";
-            this.TabPage1.UseVisualStyleBackColor = true;
+            TabPage1.Controls.Add(TableLayoutPanelEx1);
+            TabPage1.Location = new Point(4, 24);
+            TabPage1.Name = "TabPage1";
+            TabPage1.Padding = new Padding(3);
+            TabPage1.Size = new Size(1162, 877);
+            TabPage1.TabIndex = 0;
+            TabPage1.Text = "配車パネル１";
+            TabPage1.UseVisualStyleBackColor = true;
             // 
             // TableLayoutPanelEx1
             // 
-            this.TableLayoutPanelEx1.AutoScroll = true;
-            this.TableLayoutPanelEx1.ColumnCount = 25;
-            this.TableLayoutPanelEx1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TableLayoutPanelEx1.Location = new System.Drawing.Point(3, 3);
-            this.TableLayoutPanelEx1.MaximumSize = new System.Drawing.Size(1850, 0);
-            this.TableLayoutPanelEx1.Name = "TableLayoutPanelEx1";
-            this.TableLayoutPanelEx1.RowCount = 3;
-            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 304F));
-            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 304F));
-            this.TableLayoutPanelEx1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 304F));
-            this.TableLayoutPanelEx1.Size = new System.Drawing.Size(1156, 871);
-            this.TableLayoutPanelEx1.TabIndex = 3;
+            TableLayoutPanelEx1.AutoScroll = true;
+            TableLayoutPanelEx1.ButtonBorderStyleDotted = false;
+            TableLayoutPanelEx1.ColumnCount = 25;
+            TableLayoutPanelEx1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx1.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx1.Dock = DockStyle.Fill;
+            TableLayoutPanelEx1.Location = new Point(3, 3);
+            TableLayoutPanelEx1.MaximumSize = new Size(1850, 0);
+            TableLayoutPanelEx1.Name = "TableLayoutPanelEx1";
+            TableLayoutPanelEx1.RowCount = 3;
+            TableLayoutPanelEx1.RowStyles.Add(new RowStyle(SizeType.Absolute, 304F));
+            TableLayoutPanelEx1.RowStyles.Add(new RowStyle(SizeType.Absolute, 304F));
+            TableLayoutPanelEx1.RowStyles.Add(new RowStyle(SizeType.Absolute, 304F));
+            TableLayoutPanelEx1.Size = new Size(1156, 871);
+            TableLayoutPanelEx1.TabIndex = 3;
             // 
             // TabPage2
             // 
-            this.TabPage2.Controls.Add(this.TableLayoutPanelEx2);
-            this.TabPage2.Location = new System.Drawing.Point(4, 24);
-            this.TabPage2.Name = "TabPage2";
-            this.TabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPage2.Size = new System.Drawing.Size(1162, 877);
-            this.TabPage2.TabIndex = 1;
-            this.TabPage2.Text = "配車パネル２";
-            this.TabPage2.UseVisualStyleBackColor = true;
+            TabPage2.Controls.Add(TableLayoutPanelEx2);
+            TabPage2.Location = new Point(4, 24);
+            TabPage2.Name = "TabPage2";
+            TabPage2.Padding = new Padding(3);
+            TabPage2.Size = new Size(1162, 877);
+            TabPage2.TabIndex = 1;
+            TabPage2.Text = "配車パネル２";
+            TabPage2.UseVisualStyleBackColor = true;
             // 
             // TableLayoutPanelEx2
             // 
-            this.TableLayoutPanelEx2.AllowDrop = true;
-            this.TableLayoutPanelEx2.AutoScroll = true;
-            this.TableLayoutPanelEx2.ColumnCount = 25;
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelEx2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TableLayoutPanelEx2.Location = new System.Drawing.Point(3, 3);
-            this.TableLayoutPanelEx2.MaximumSize = new System.Drawing.Size(0, 1850);
-            this.TableLayoutPanelEx2.Name = "TableLayoutPanelEx2";
-            this.TableLayoutPanelEx2.RowCount = 3;
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 304F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 304F));
-            this.TableLayoutPanelEx2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 304F));
-            this.TableLayoutPanelEx2.Size = new System.Drawing.Size(1156, 871);
-            this.TableLayoutPanelEx2.TabIndex = 4;
+            TableLayoutPanelEx2.AllowDrop = true;
+            TableLayoutPanelEx2.AutoScroll = true;
+            TableLayoutPanelEx2.ButtonBorderStyleDotted = false;
+            TableLayoutPanelEx2.ColumnCount = 25;
+            TableLayoutPanelEx2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx2.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelEx2.Dock = DockStyle.Fill;
+            TableLayoutPanelEx2.Location = new Point(3, 3);
+            TableLayoutPanelEx2.MaximumSize = new Size(0, 1850);
+            TableLayoutPanelEx2.Name = "TableLayoutPanelEx2";
+            TableLayoutPanelEx2.RowCount = 3;
+            TableLayoutPanelEx2.RowStyles.Add(new RowStyle(SizeType.Absolute, 304F));
+            TableLayoutPanelEx2.RowStyles.Add(new RowStyle(SizeType.Absolute, 304F));
+            TableLayoutPanelEx2.RowStyles.Add(new RowStyle(SizeType.Absolute, 304F));
+            TableLayoutPanelEx2.Size = new Size(1156, 871);
+            TableLayoutPanelEx2.TabIndex = 4;
             // 
             // TabControlExLeft
             // 
-            this.TabControlExLeft.Alignment = System.Windows.Forms.TabAlignment.Left;
-            this.TabControlExLeft.AllowDrop = true;
-            this.TabControlExLeft.Controls.Add(this.TabPageSet);
-            this.TabControlExLeft.Controls.Add(this.TabPageCar);
-            this.TabControlExLeft.Controls.Add(this.TabPageFullEmployees);
-            this.TabControlExLeft.Controls.Add(this.TabPageLongTerm);
-            this.TabControlExLeft.Controls.Add(this.TabPagePartTime);
-            this.TabControlExLeft.Controls.Add(this.TabPageWindow);
-            this.TabControlExLeft.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TabControlExLeft.Location = new System.Drawing.Point(3, 109);
-            this.TabControlExLeft.Multiline = true;
-            this.TabControlExLeft.Name = "TabControlExLeft";
-            this.TabControlExLeft.SelectedIndex = 0;
-            this.TabControlExLeft.Size = new System.Drawing.Size(358, 905);
-            this.TabControlExLeft.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.TabControlExLeft.TabIndex = 5;
-            this.TabControlExLeft.Click += new System.EventHandler(this.TabControlExLeft_Click);
+            TabControlExLeft.Alignment = TabAlignment.Left;
+            TabControlExLeft.AllowDrop = true;
+            TabControlExLeft.Controls.Add(TabPageSet);
+            TabControlExLeft.Controls.Add(TabPageCar);
+            TabControlExLeft.Controls.Add(TabPageFullEmployees);
+            TabControlExLeft.Controls.Add(TabPageLongTerm);
+            TabControlExLeft.Controls.Add(TabPagePartTime);
+            TabControlExLeft.Controls.Add(TabPageWindow);
+            TabControlExLeft.Dock = DockStyle.Fill;
+            TabControlExLeft.Location = new Point(3, 109);
+            TabControlExLeft.Multiline = true;
+            TabControlExLeft.Name = "TabControlExLeft";
+            TabControlExLeft.SelectedIndex = 0;
+            TabControlExLeft.Size = new Size(358, 905);
+            TabControlExLeft.SizeMode = TabSizeMode.Fixed;
+            TabControlExLeft.TabIndex = 5;
+            TabControlExLeft.Click += TabControlExLeft_Click;
             // 
             // TabPageSet
             // 
-            this.TabPageSet.Controls.Add(this.FlowLayoutPanelExSet);
-            this.TabPageSet.Location = new System.Drawing.Point(27, 4);
-            this.TabPageSet.Name = "TabPageSet";
-            this.TabPageSet.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPageSet.Size = new System.Drawing.Size(327, 897);
-            this.TabPageSet.TabIndex = 0;
-            this.TabPageSet.Text = "配車先";
-            this.TabPageSet.UseVisualStyleBackColor = true;
+            TabPageSet.Controls.Add(FlowLayoutPanelExSet);
+            TabPageSet.Location = new Point(27, 4);
+            TabPageSet.Name = "TabPageSet";
+            TabPageSet.Padding = new Padding(3);
+            TabPageSet.Size = new Size(327, 897);
+            TabPageSet.TabIndex = 0;
+            TabPageSet.Text = "配車先";
+            TabPageSet.UseVisualStyleBackColor = true;
             // 
             // FlowLayoutPanelExSet
             // 
-            this.FlowLayoutPanelExSet.AutoScroll = true;
-            this.FlowLayoutPanelExSet.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FlowLayoutPanelExSet.Location = new System.Drawing.Point(3, 3);
-            this.FlowLayoutPanelExSet.Name = "FlowLayoutPanelExSet";
-            this.FlowLayoutPanelExSet.Size = new System.Drawing.Size(321, 891);
-            this.FlowLayoutPanelExSet.TabIndex = 0;
-            this.FlowLayoutPanelExSet.Tag = "151";
+            FlowLayoutPanelExSet.AutoScroll = true;
+            FlowLayoutPanelExSet.Dock = DockStyle.Fill;
+            FlowLayoutPanelExSet.Location = new Point(3, 3);
+            FlowLayoutPanelExSet.Name = "FlowLayoutPanelExSet";
+            FlowLayoutPanelExSet.Size = new Size(321, 891);
+            FlowLayoutPanelExSet.TabIndex = 0;
+            FlowLayoutPanelExSet.Tag = "151";
             // 
             // TabPageCar
             // 
-            this.TabPageCar.Controls.Add(this.FlowLayoutPanelExCar);
-            this.TabPageCar.Location = new System.Drawing.Point(27, 4);
-            this.TabPageCar.Name = "TabPageCar";
-            this.TabPageCar.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPageCar.Size = new System.Drawing.Size(327, 897);
-            this.TabPageCar.TabIndex = 1;
-            this.TabPageCar.Text = "車両";
-            this.TabPageCar.UseVisualStyleBackColor = true;
+            TabPageCar.Controls.Add(FlowLayoutPanelExCar);
+            TabPageCar.Location = new Point(27, 4);
+            TabPageCar.Name = "TabPageCar";
+            TabPageCar.Padding = new Padding(3);
+            TabPageCar.Size = new Size(327, 897);
+            TabPageCar.TabIndex = 1;
+            TabPageCar.Text = "車両";
+            TabPageCar.UseVisualStyleBackColor = true;
             // 
             // FlowLayoutPanelExCar
             // 
-            this.FlowLayoutPanelExCar.AllowDrop = true;
-            this.FlowLayoutPanelExCar.AutoScroll = true;
-            this.FlowLayoutPanelExCar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FlowLayoutPanelExCar.Location = new System.Drawing.Point(3, 3);
-            this.FlowLayoutPanelExCar.Name = "FlowLayoutPanelExCar";
-            this.FlowLayoutPanelExCar.Size = new System.Drawing.Size(321, 891);
-            this.FlowLayoutPanelExCar.TabIndex = 0;
-            this.FlowLayoutPanelExCar.Tag = "152";
-            this.FlowLayoutPanelExCar.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
-            this.FlowLayoutPanelExCar.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
+            FlowLayoutPanelExCar.AllowDrop = true;
+            FlowLayoutPanelExCar.AutoScroll = true;
+            FlowLayoutPanelExCar.Dock = DockStyle.Fill;
+            FlowLayoutPanelExCar.Location = new Point(3, 3);
+            FlowLayoutPanelExCar.Name = "FlowLayoutPanelExCar";
+            FlowLayoutPanelExCar.Size = new Size(321, 891);
+            FlowLayoutPanelExCar.TabIndex = 0;
+            FlowLayoutPanelExCar.Tag = "152";
+            FlowLayoutPanelExCar.DragDrop += FlowLayoutPanelEx_DragDrop;
+            FlowLayoutPanelExCar.DragEnter += FlowLayoutPanelEx_DragEnter;
             // 
             // TabPageFullEmployees
             // 
-            this.TabPageFullEmployees.Controls.Add(this.FlowLayoutPanelExFullEmployees);
-            this.TabPageFullEmployees.Location = new System.Drawing.Point(27, 4);
-            this.TabPageFullEmployees.Name = "TabPageFullEmployees";
-            this.TabPageFullEmployees.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPageFullEmployees.Size = new System.Drawing.Size(327, 897);
-            this.TabPageFullEmployees.TabIndex = 2;
-            this.TabPageFullEmployees.Text = "社員";
-            this.TabPageFullEmployees.UseVisualStyleBackColor = true;
+            TabPageFullEmployees.Controls.Add(FlowLayoutPanelExFullEmployees);
+            TabPageFullEmployees.Location = new Point(27, 4);
+            TabPageFullEmployees.Name = "TabPageFullEmployees";
+            TabPageFullEmployees.Padding = new Padding(3);
+            TabPageFullEmployees.Size = new Size(327, 897);
+            TabPageFullEmployees.TabIndex = 2;
+            TabPageFullEmployees.Text = "社員";
+            TabPageFullEmployees.UseVisualStyleBackColor = true;
             // 
             // FlowLayoutPanelExFullEmployees
             // 
-            this.FlowLayoutPanelExFullEmployees.AllowDrop = true;
-            this.FlowLayoutPanelExFullEmployees.AutoScroll = true;
-            this.FlowLayoutPanelExFullEmployees.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FlowLayoutPanelExFullEmployees.Location = new System.Drawing.Point(3, 3);
-            this.FlowLayoutPanelExFullEmployees.Name = "FlowLayoutPanelExFullEmployees";
-            this.FlowLayoutPanelExFullEmployees.Size = new System.Drawing.Size(321, 891);
-            this.FlowLayoutPanelExFullEmployees.TabIndex = 0;
-            this.FlowLayoutPanelExFullEmployees.Tag = "153";
-            this.FlowLayoutPanelExFullEmployees.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
-            this.FlowLayoutPanelExFullEmployees.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
+            FlowLayoutPanelExFullEmployees.AllowDrop = true;
+            FlowLayoutPanelExFullEmployees.AutoScroll = true;
+            FlowLayoutPanelExFullEmployees.Dock = DockStyle.Fill;
+            FlowLayoutPanelExFullEmployees.Location = new Point(3, 3);
+            FlowLayoutPanelExFullEmployees.Name = "FlowLayoutPanelExFullEmployees";
+            FlowLayoutPanelExFullEmployees.Size = new Size(321, 891);
+            FlowLayoutPanelExFullEmployees.TabIndex = 0;
+            FlowLayoutPanelExFullEmployees.Tag = "153";
+            FlowLayoutPanelExFullEmployees.DragDrop += FlowLayoutPanelEx_DragDrop;
+            FlowLayoutPanelExFullEmployees.DragEnter += FlowLayoutPanelEx_DragEnter;
             // 
             // TabPageLongTerm
             // 
-            this.TabPageLongTerm.Controls.Add(this.FlowLayoutPanelExLongTerm);
-            this.TabPageLongTerm.Location = new System.Drawing.Point(27, 4);
-            this.TabPageLongTerm.Name = "TabPageLongTerm";
-            this.TabPageLongTerm.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPageLongTerm.Size = new System.Drawing.Size(327, 897);
-            this.TabPageLongTerm.TabIndex = 3;
-            this.TabPageLongTerm.Text = "組合長期";
-            this.TabPageLongTerm.UseVisualStyleBackColor = true;
+            TabPageLongTerm.Controls.Add(FlowLayoutPanelExLongTerm);
+            TabPageLongTerm.Location = new Point(27, 4);
+            TabPageLongTerm.Name = "TabPageLongTerm";
+            TabPageLongTerm.Padding = new Padding(3);
+            TabPageLongTerm.Size = new Size(327, 897);
+            TabPageLongTerm.TabIndex = 3;
+            TabPageLongTerm.Text = "組合長期";
+            TabPageLongTerm.UseVisualStyleBackColor = true;
             // 
             // FlowLayoutPanelExLongTerm
             // 
-            this.FlowLayoutPanelExLongTerm.AllowDrop = true;
-            this.FlowLayoutPanelExLongTerm.AutoScroll = true;
-            this.FlowLayoutPanelExLongTerm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FlowLayoutPanelExLongTerm.Location = new System.Drawing.Point(3, 3);
-            this.FlowLayoutPanelExLongTerm.Name = "FlowLayoutPanelExLongTerm";
-            this.FlowLayoutPanelExLongTerm.Size = new System.Drawing.Size(321, 891);
-            this.FlowLayoutPanelExLongTerm.TabIndex = 0;
-            this.FlowLayoutPanelExLongTerm.Tag = "154";
-            this.FlowLayoutPanelExLongTerm.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
-            this.FlowLayoutPanelExLongTerm.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
+            FlowLayoutPanelExLongTerm.AllowDrop = true;
+            FlowLayoutPanelExLongTerm.AutoScroll = true;
+            FlowLayoutPanelExLongTerm.Dock = DockStyle.Fill;
+            FlowLayoutPanelExLongTerm.Location = new Point(3, 3);
+            FlowLayoutPanelExLongTerm.Name = "FlowLayoutPanelExLongTerm";
+            FlowLayoutPanelExLongTerm.Size = new Size(321, 891);
+            FlowLayoutPanelExLongTerm.TabIndex = 0;
+            FlowLayoutPanelExLongTerm.Tag = "154";
+            FlowLayoutPanelExLongTerm.DragDrop += FlowLayoutPanelEx_DragDrop;
+            FlowLayoutPanelExLongTerm.DragEnter += FlowLayoutPanelEx_DragEnter;
             // 
             // TabPagePartTime
             // 
-            this.TabPagePartTime.Controls.Add(this.FlowLayoutPanelExPartTime);
-            this.TabPagePartTime.Location = new System.Drawing.Point(27, 4);
-            this.TabPagePartTime.Name = "TabPagePartTime";
-            this.TabPagePartTime.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPagePartTime.Size = new System.Drawing.Size(327, 897);
-            this.TabPagePartTime.TabIndex = 5;
-            this.TabPagePartTime.Text = "アルバイト";
-            this.TabPagePartTime.UseVisualStyleBackColor = true;
+            TabPagePartTime.Controls.Add(FlowLayoutPanelExPartTime);
+            TabPagePartTime.Location = new Point(27, 4);
+            TabPagePartTime.Name = "TabPagePartTime";
+            TabPagePartTime.Padding = new Padding(3);
+            TabPagePartTime.Size = new Size(327, 897);
+            TabPagePartTime.TabIndex = 5;
+            TabPagePartTime.Text = "アルバイト";
+            TabPagePartTime.UseVisualStyleBackColor = true;
             // 
             // FlowLayoutPanelExPartTime
             // 
-            this.FlowLayoutPanelExPartTime.AllowDrop = true;
-            this.FlowLayoutPanelExPartTime.AutoScroll = true;
-            this.FlowLayoutPanelExPartTime.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FlowLayoutPanelExPartTime.Location = new System.Drawing.Point(3, 3);
-            this.FlowLayoutPanelExPartTime.Name = "FlowLayoutPanelExPartTime";
-            this.FlowLayoutPanelExPartTime.Size = new System.Drawing.Size(321, 891);
-            this.FlowLayoutPanelExPartTime.TabIndex = 0;
-            this.FlowLayoutPanelExPartTime.Tag = "155";
-            this.FlowLayoutPanelExPartTime.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
-            this.FlowLayoutPanelExPartTime.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
+            FlowLayoutPanelExPartTime.AllowDrop = true;
+            FlowLayoutPanelExPartTime.AutoScroll = true;
+            FlowLayoutPanelExPartTime.Dock = DockStyle.Fill;
+            FlowLayoutPanelExPartTime.Location = new Point(3, 3);
+            FlowLayoutPanelExPartTime.Name = "FlowLayoutPanelExPartTime";
+            FlowLayoutPanelExPartTime.Size = new Size(321, 891);
+            FlowLayoutPanelExPartTime.TabIndex = 0;
+            FlowLayoutPanelExPartTime.Tag = "155";
+            FlowLayoutPanelExPartTime.DragDrop += FlowLayoutPanelEx_DragDrop;
+            FlowLayoutPanelExPartTime.DragEnter += FlowLayoutPanelEx_DragEnter;
             // 
             // TabPageWindow
             // 
-            this.TabPageWindow.Controls.Add(this.FlowLayoutPanelExWindow);
-            this.TabPageWindow.Location = new System.Drawing.Point(27, 4);
-            this.TabPageWindow.Name = "TabPageWindow";
-            this.TabPageWindow.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPageWindow.Size = new System.Drawing.Size(327, 897);
-            this.TabPageWindow.TabIndex = 4;
-            this.TabPageWindow.Text = "組合窓(呼ぶ人)";
-            this.TabPageWindow.UseVisualStyleBackColor = true;
+            TabPageWindow.Controls.Add(FlowLayoutPanelExWindow);
+            TabPageWindow.Location = new Point(27, 4);
+            TabPageWindow.Name = "TabPageWindow";
+            TabPageWindow.Padding = new Padding(3);
+            TabPageWindow.Size = new Size(327, 897);
+            TabPageWindow.TabIndex = 4;
+            TabPageWindow.Text = "組合窓(呼ぶ人)";
+            TabPageWindow.UseVisualStyleBackColor = true;
             // 
             // FlowLayoutPanelExWindow
             // 
-            this.FlowLayoutPanelExWindow.AllowDrop = true;
-            this.FlowLayoutPanelExWindow.AutoScroll = true;
-            this.FlowLayoutPanelExWindow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FlowLayoutPanelExWindow.Location = new System.Drawing.Point(3, 3);
-            this.FlowLayoutPanelExWindow.Name = "FlowLayoutPanelExWindow";
-            this.FlowLayoutPanelExWindow.Size = new System.Drawing.Size(321, 891);
-            this.FlowLayoutPanelExWindow.TabIndex = 0;
-            this.FlowLayoutPanelExWindow.Tag = "156";
-            this.FlowLayoutPanelExWindow.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
-            this.FlowLayoutPanelExWindow.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
+            FlowLayoutPanelExWindow.AllowDrop = true;
+            FlowLayoutPanelExWindow.AutoScroll = true;
+            FlowLayoutPanelExWindow.Dock = DockStyle.Fill;
+            FlowLayoutPanelExWindow.Location = new Point(3, 3);
+            FlowLayoutPanelExWindow.Name = "FlowLayoutPanelExWindow";
+            FlowLayoutPanelExWindow.Size = new Size(321, 891);
+            FlowLayoutPanelExWindow.TabIndex = 0;
+            FlowLayoutPanelExWindow.Tag = "156";
+            FlowLayoutPanelExWindow.DragDrop += FlowLayoutPanelEx_DragDrop;
+            FlowLayoutPanelExWindow.DragEnter += FlowLayoutPanelEx_DragEnter;
             // 
             // TabControlExRight
             // 
-            this.TabControlExRight.Alignment = System.Windows.Forms.TabAlignment.Right;
-            this.TabControlExRight.AllowDrop = true;
-            this.TabControlExRight.Controls.Add(this.tabPage8);
-            this.TabControlExRight.Controls.Add(this.tabPage9);
-            this.TabControlExRight.Controls.Add(this.tabPage11);
-            this.TabControlExRight.Controls.Add(this.tabPage3);
-            this.TabControlExRight.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TabControlExRight.Location = new System.Drawing.Point(1543, 109);
-            this.TabControlExRight.Multiline = true;
-            this.TabControlExRight.Name = "TabControlExRight";
-            this.TabControlExRight.SelectedIndex = 0;
-            this.TabControlExRight.Size = new System.Drawing.Size(358, 905);
-            this.TabControlExRight.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.TabControlExRight.TabIndex = 6;
-            this.TabControlExRight.Click += new System.EventHandler(this.TabControlExRight_Click);
+            TabControlExRight.Alignment = TabAlignment.Right;
+            TabControlExRight.AllowDrop = true;
+            TabControlExRight.Controls.Add(tabPage8);
+            TabControlExRight.Controls.Add(tabPage9);
+            TabControlExRight.Controls.Add(tabPage11);
+            TabControlExRight.Controls.Add(tabPage3);
+            TabControlExRight.Dock = DockStyle.Fill;
+            TabControlExRight.Location = new Point(1543, 109);
+            TabControlExRight.Multiline = true;
+            TabControlExRight.Name = "TabControlExRight";
+            TabControlExRight.SelectedIndex = 0;
+            TabControlExRight.Size = new Size(358, 905);
+            TabControlExRight.SizeMode = TabSizeMode.Fixed;
+            TabControlExRight.TabIndex = 6;
+            TabControlExRight.Click += TabControlExRight_Click;
             // 
             // tabPage8
             // 
-            this.tabPage8.Controls.Add(this.TableLayoutPanelExCarBase);
-            this.tabPage8.Location = new System.Drawing.Point(4, 4);
-            this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(327, 897);
-            this.tabPage8.TabIndex = 0;
-            this.tabPage8.Text = "車両";
-            this.tabPage8.UseVisualStyleBackColor = true;
+            tabPage8.Controls.Add(TableLayoutPanelExCarBase);
+            tabPage8.Location = new Point(4, 4);
+            tabPage8.Name = "tabPage8";
+            tabPage8.Padding = new Padding(3);
+            tabPage8.Size = new Size(327, 897);
+            tabPage8.TabIndex = 0;
+            tabPage8.Text = "車両";
+            tabPage8.UseVisualStyleBackColor = true;
             // 
             // TableLayoutPanelExCarBase
             // 
-            this.TableLayoutPanelExCarBase.ColumnCount = 1;
-            this.TableLayoutPanelExCarBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanelExCarBase.Controls.Add(this.FlowLayoutPanelExChecking, 0, 1);
-            this.TableLayoutPanelExCarBase.Controls.Add(this.FlowLayoutPanelExRepair, 0, 3);
-            this.TableLayoutPanelExCarBase.Controls.Add(this.label2, 0, 0);
-            this.TableLayoutPanelExCarBase.Controls.Add(this.label3, 0, 2);
-            this.TableLayoutPanelExCarBase.Controls.Add(this.FlowLayoutPanelExVehicleInspection, 0, 5);
-            this.TableLayoutPanelExCarBase.Controls.Add(this.label11, 0, 4);
-            this.TableLayoutPanelExCarBase.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TableLayoutPanelExCarBase.Location = new System.Drawing.Point(3, 3);
-            this.TableLayoutPanelExCarBase.Name = "TableLayoutPanelExCarBase";
-            this.TableLayoutPanelExCarBase.RowCount = 6;
-            this.TableLayoutPanelExCarBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.TableLayoutPanelExCarBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.TableLayoutPanelExCarBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.TableLayoutPanelExCarBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.TableLayoutPanelExCarBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.TableLayoutPanelExCarBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.TableLayoutPanelExCarBase.Size = new System.Drawing.Size(321, 891);
-            this.TableLayoutPanelExCarBase.TabIndex = 0;
+            TableLayoutPanelExCarBase.ButtonBorderStyleDotted = false;
+            TableLayoutPanelExCarBase.ColumnCount = 1;
+            TableLayoutPanelExCarBase.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            TableLayoutPanelExCarBase.Controls.Add(FlowLayoutPanelExChecking, 0, 1);
+            TableLayoutPanelExCarBase.Controls.Add(FlowLayoutPanelExRepair, 0, 3);
+            TableLayoutPanelExCarBase.Controls.Add(label2, 0, 0);
+            TableLayoutPanelExCarBase.Controls.Add(label3, 0, 2);
+            TableLayoutPanelExCarBase.Controls.Add(FlowLayoutPanelExVehicleInspection, 0, 5);
+            TableLayoutPanelExCarBase.Controls.Add(label11, 0, 4);
+            TableLayoutPanelExCarBase.Dock = DockStyle.Fill;
+            TableLayoutPanelExCarBase.Location = new Point(3, 3);
+            TableLayoutPanelExCarBase.Name = "TableLayoutPanelExCarBase";
+            TableLayoutPanelExCarBase.RowCount = 6;
+            TableLayoutPanelExCarBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            TableLayoutPanelExCarBase.RowStyles.Add(new RowStyle(SizeType.Percent, 33.33333F));
+            TableLayoutPanelExCarBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            TableLayoutPanelExCarBase.RowStyles.Add(new RowStyle(SizeType.Percent, 33.33333F));
+            TableLayoutPanelExCarBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            TableLayoutPanelExCarBase.RowStyles.Add(new RowStyle(SizeType.Percent, 33.33333F));
+            TableLayoutPanelExCarBase.Size = new Size(321, 891);
+            TableLayoutPanelExCarBase.TabIndex = 0;
             // 
             // FlowLayoutPanelExChecking
             // 
-            this.FlowLayoutPanelExChecking.AllowDrop = true;
-            this.FlowLayoutPanelExChecking.AutoScroll = true;
-            this.FlowLayoutPanelExChecking.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FlowLayoutPanelExChecking.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FlowLayoutPanelExChecking.Location = new System.Drawing.Point(3, 43);
-            this.FlowLayoutPanelExChecking.Name = "FlowLayoutPanelExChecking";
-            this.FlowLayoutPanelExChecking.Size = new System.Drawing.Size(315, 251);
-            this.FlowLayoutPanelExChecking.TabIndex = 0;
-            this.FlowLayoutPanelExChecking.Tag = "157";
-            this.FlowLayoutPanelExChecking.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
-            this.FlowLayoutPanelExChecking.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
+            FlowLayoutPanelExChecking.AllowDrop = true;
+            FlowLayoutPanelExChecking.AutoScroll = true;
+            FlowLayoutPanelExChecking.BorderStyle = BorderStyle.FixedSingle;
+            FlowLayoutPanelExChecking.Dock = DockStyle.Fill;
+            FlowLayoutPanelExChecking.Location = new Point(3, 43);
+            FlowLayoutPanelExChecking.Name = "FlowLayoutPanelExChecking";
+            FlowLayoutPanelExChecking.Size = new Size(315, 251);
+            FlowLayoutPanelExChecking.TabIndex = 0;
+            FlowLayoutPanelExChecking.Tag = "157";
+            FlowLayoutPanelExChecking.DragDrop += FlowLayoutPanelEx_DragDrop;
+            FlowLayoutPanelExChecking.DragEnter += FlowLayoutPanelEx_DragEnter;
             // 
             // FlowLayoutPanelExRepair
             // 
-            this.FlowLayoutPanelExRepair.AllowDrop = true;
-            this.FlowLayoutPanelExRepair.AutoScroll = true;
-            this.FlowLayoutPanelExRepair.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FlowLayoutPanelExRepair.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FlowLayoutPanelExRepair.Location = new System.Drawing.Point(3, 340);
-            this.FlowLayoutPanelExRepair.Name = "FlowLayoutPanelExRepair";
-            this.FlowLayoutPanelExRepair.Size = new System.Drawing.Size(315, 251);
-            this.FlowLayoutPanelExRepair.TabIndex = 1;
-            this.FlowLayoutPanelExRepair.Tag = "158";
-            this.FlowLayoutPanelExRepair.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
-            this.FlowLayoutPanelExRepair.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
+            FlowLayoutPanelExRepair.AllowDrop = true;
+            FlowLayoutPanelExRepair.AutoScroll = true;
+            FlowLayoutPanelExRepair.BorderStyle = BorderStyle.FixedSingle;
+            FlowLayoutPanelExRepair.Dock = DockStyle.Fill;
+            FlowLayoutPanelExRepair.Location = new Point(3, 340);
+            FlowLayoutPanelExRepair.Name = "FlowLayoutPanelExRepair";
+            FlowLayoutPanelExRepair.Size = new Size(315, 251);
+            FlowLayoutPanelExRepair.TabIndex = 1;
+            FlowLayoutPanelExRepair.Tag = "158";
+            FlowLayoutPanelExRepair.DragDrop += FlowLayoutPanelEx_DragDrop;
+            FlowLayoutPanelExRepair.DragEnter += FlowLayoutPanelEx_DragEnter;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(3, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(315, 40);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "点検 (checking)";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label2.AutoSize = true;
+            label2.Dock = DockStyle.Fill;
+            label2.Font = new Font("Yu Gothic UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(3, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(315, 40);
+            label2.TabIndex = 2;
+            label2.Text = "点検 (checking)";
+            label2.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(3, 297);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(315, 40);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "修理 (repair)";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label3.AutoSize = true;
+            label3.Dock = DockStyle.Fill;
+            label3.Font = new Font("Yu Gothic UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Location = new Point(3, 297);
+            label3.Name = "label3";
+            label3.Size = new Size(315, 40);
+            label3.TabIndex = 3;
+            label3.Text = "修理 (repair)";
+            label3.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // FlowLayoutPanelExVehicleInspection
             // 
-            this.FlowLayoutPanelExVehicleInspection.AllowDrop = true;
-            this.FlowLayoutPanelExVehicleInspection.AutoScroll = true;
-            this.FlowLayoutPanelExVehicleInspection.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FlowLayoutPanelExVehicleInspection.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FlowLayoutPanelExVehicleInspection.Location = new System.Drawing.Point(3, 637);
-            this.FlowLayoutPanelExVehicleInspection.Name = "FlowLayoutPanelExVehicleInspection";
-            this.FlowLayoutPanelExVehicleInspection.Size = new System.Drawing.Size(315, 251);
-            this.FlowLayoutPanelExVehicleInspection.TabIndex = 4;
-            this.FlowLayoutPanelExVehicleInspection.Tag = "159";
-            this.FlowLayoutPanelExVehicleInspection.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
-            this.FlowLayoutPanelExVehicleInspection.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
+            FlowLayoutPanelExVehicleInspection.AllowDrop = true;
+            FlowLayoutPanelExVehicleInspection.AutoScroll = true;
+            FlowLayoutPanelExVehicleInspection.BorderStyle = BorderStyle.FixedSingle;
+            FlowLayoutPanelExVehicleInspection.Dock = DockStyle.Fill;
+            FlowLayoutPanelExVehicleInspection.Location = new Point(3, 637);
+            FlowLayoutPanelExVehicleInspection.Name = "FlowLayoutPanelExVehicleInspection";
+            FlowLayoutPanelExVehicleInspection.Size = new Size(315, 251);
+            FlowLayoutPanelExVehicleInspection.TabIndex = 4;
+            FlowLayoutPanelExVehicleInspection.Tag = "159";
+            FlowLayoutPanelExVehicleInspection.DragDrop += FlowLayoutPanelEx_DragDrop;
+            FlowLayoutPanelExVehicleInspection.DragEnter += FlowLayoutPanelEx_DragEnter;
             // 
             // label11
             // 
-            this.label11.AutoSize = true;
-            this.label11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label11.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(3, 594);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(315, 40);
-            this.label11.TabIndex = 5;
-            this.label11.Text = "車検 (vehicle inspection)";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label11.AutoSize = true;
+            label11.Dock = DockStyle.Fill;
+            label11.Font = new Font("Yu Gothic UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label11.Location = new Point(3, 594);
+            label11.Name = "label11";
+            label11.Size = new Size(315, 40);
+            label11.TabIndex = 5;
+            label11.Text = "車検 (vehicle inspection)";
+            label11.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // tabPage9
             // 
-            this.tabPage9.Controls.Add(this.TableLayoutPanelExFullTimeBase);
-            this.tabPage9.Location = new System.Drawing.Point(4, 4);
-            this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage9.Size = new System.Drawing.Size(327, 897);
-            this.tabPage9.TabIndex = 1;
-            this.tabPage9.Text = "組合長期";
-            this.tabPage9.UseVisualStyleBackColor = true;
+            tabPage9.Controls.Add(TableLayoutPanelExFullTimeBase);
+            tabPage9.Location = new Point(4, 4);
+            tabPage9.Name = "tabPage9";
+            tabPage9.Padding = new Padding(3);
+            tabPage9.Size = new Size(327, 897);
+            tabPage9.TabIndex = 1;
+            tabPage9.Text = "組合長期";
+            tabPage9.UseVisualStyleBackColor = true;
             // 
             // TableLayoutPanelExFullTimeBase
             // 
-            this.TableLayoutPanelExFullTimeBase.ColumnCount = 1;
-            this.TableLayoutPanelExFullTimeBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanelExFullTimeBase.Controls.Add(this.label7, 0, 0);
-            this.TableLayoutPanelExFullTimeBase.Controls.Add(this.label8, 0, 2);
-            this.TableLayoutPanelExFullTimeBase.Controls.Add(this.FlowLayoutPanelExFullSalaried, 0, 1);
-            this.TableLayoutPanelExFullTimeBase.Controls.Add(this.FlowLayoutPanelExFullClose, 0, 3);
-            this.TableLayoutPanelExFullTimeBase.Controls.Add(this.FlowLayoutPanelExFullDesignation, 0, 5);
-            this.TableLayoutPanelExFullTimeBase.Controls.Add(this.label12, 0, 4);
-            this.TableLayoutPanelExFullTimeBase.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TableLayoutPanelExFullTimeBase.Location = new System.Drawing.Point(3, 3);
-            this.TableLayoutPanelExFullTimeBase.Name = "TableLayoutPanelExFullTimeBase";
-            this.TableLayoutPanelExFullTimeBase.RowCount = 6;
-            this.TableLayoutPanelExFullTimeBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.TableLayoutPanelExFullTimeBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.TableLayoutPanelExFullTimeBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.TableLayoutPanelExFullTimeBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.TableLayoutPanelExFullTimeBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.TableLayoutPanelExFullTimeBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.TableLayoutPanelExFullTimeBase.Size = new System.Drawing.Size(321, 891);
-            this.TableLayoutPanelExFullTimeBase.TabIndex = 0;
+            TableLayoutPanelExFullTimeBase.ButtonBorderStyleDotted = false;
+            TableLayoutPanelExFullTimeBase.ColumnCount = 1;
+            TableLayoutPanelExFullTimeBase.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            TableLayoutPanelExFullTimeBase.Controls.Add(label7, 0, 0);
+            TableLayoutPanelExFullTimeBase.Controls.Add(label8, 0, 2);
+            TableLayoutPanelExFullTimeBase.Controls.Add(FlowLayoutPanelExFullSalaried, 0, 1);
+            TableLayoutPanelExFullTimeBase.Controls.Add(FlowLayoutPanelExFullClose, 0, 3);
+            TableLayoutPanelExFullTimeBase.Controls.Add(FlowLayoutPanelExFullDesignation, 0, 5);
+            TableLayoutPanelExFullTimeBase.Controls.Add(label12, 0, 4);
+            TableLayoutPanelExFullTimeBase.Dock = DockStyle.Fill;
+            TableLayoutPanelExFullTimeBase.Location = new Point(3, 3);
+            TableLayoutPanelExFullTimeBase.Name = "TableLayoutPanelExFullTimeBase";
+            TableLayoutPanelExFullTimeBase.RowCount = 6;
+            TableLayoutPanelExFullTimeBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            TableLayoutPanelExFullTimeBase.RowStyles.Add(new RowStyle(SizeType.Percent, 33.33333F));
+            TableLayoutPanelExFullTimeBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            TableLayoutPanelExFullTimeBase.RowStyles.Add(new RowStyle(SizeType.Percent, 33.33333F));
+            TableLayoutPanelExFullTimeBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            TableLayoutPanelExFullTimeBase.RowStyles.Add(new RowStyle(SizeType.Percent, 33.33333F));
+            TableLayoutPanelExFullTimeBase.Size = new Size(321, 891);
+            TableLayoutPanelExFullTimeBase.TabIndex = 0;
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label7.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(3, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(315, 40);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "有給での休み";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label7.AutoSize = true;
+            label7.Dock = DockStyle.Fill;
+            label7.Font = new Font("Yu Gothic UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.Location = new Point(3, 0);
+            label7.Name = "label7";
+            label7.Size = new Size(315, 40);
+            label7.TabIndex = 0;
+            label7.Text = "有給での休み";
+            label7.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label8.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(3, 297);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(315, 40);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "自己都合での休み";
-            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label8.AutoSize = true;
+            label8.Dock = DockStyle.Fill;
+            label8.Font = new Font("Yu Gothic UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.Location = new Point(3, 297);
+            label8.Name = "label8";
+            label8.Size = new Size(315, 40);
+            label8.TabIndex = 1;
+            label8.Text = "自己都合での休み";
+            label8.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // FlowLayoutPanelExFullSalaried
             // 
-            this.FlowLayoutPanelExFullSalaried.AllowDrop = true;
-            this.FlowLayoutPanelExFullSalaried.AutoScroll = true;
-            this.FlowLayoutPanelExFullSalaried.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FlowLayoutPanelExFullSalaried.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FlowLayoutPanelExFullSalaried.Location = new System.Drawing.Point(3, 43);
-            this.FlowLayoutPanelExFullSalaried.Name = "FlowLayoutPanelExFullSalaried";
-            this.FlowLayoutPanelExFullSalaried.Size = new System.Drawing.Size(315, 251);
-            this.FlowLayoutPanelExFullSalaried.TabIndex = 2;
-            this.FlowLayoutPanelExFullSalaried.Tag = "160";
-            this.FlowLayoutPanelExFullSalaried.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
-            this.FlowLayoutPanelExFullSalaried.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
+            FlowLayoutPanelExFullSalaried.AllowDrop = true;
+            FlowLayoutPanelExFullSalaried.AutoScroll = true;
+            FlowLayoutPanelExFullSalaried.BorderStyle = BorderStyle.FixedSingle;
+            FlowLayoutPanelExFullSalaried.Dock = DockStyle.Fill;
+            FlowLayoutPanelExFullSalaried.Location = new Point(3, 43);
+            FlowLayoutPanelExFullSalaried.Name = "FlowLayoutPanelExFullSalaried";
+            FlowLayoutPanelExFullSalaried.Size = new Size(315, 251);
+            FlowLayoutPanelExFullSalaried.TabIndex = 2;
+            FlowLayoutPanelExFullSalaried.Tag = "160";
+            FlowLayoutPanelExFullSalaried.DragDrop += FlowLayoutPanelEx_DragDrop;
+            FlowLayoutPanelExFullSalaried.DragEnter += FlowLayoutPanelEx_DragEnter;
             // 
             // FlowLayoutPanelExFullClose
             // 
-            this.FlowLayoutPanelExFullClose.AllowDrop = true;
-            this.FlowLayoutPanelExFullClose.AutoScroll = true;
-            this.FlowLayoutPanelExFullClose.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FlowLayoutPanelExFullClose.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FlowLayoutPanelExFullClose.Location = new System.Drawing.Point(3, 340);
-            this.FlowLayoutPanelExFullClose.Name = "FlowLayoutPanelExFullClose";
-            this.FlowLayoutPanelExFullClose.Size = new System.Drawing.Size(315, 251);
-            this.FlowLayoutPanelExFullClose.TabIndex = 3;
-            this.FlowLayoutPanelExFullClose.Tag = "161";
-            this.FlowLayoutPanelExFullClose.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
-            this.FlowLayoutPanelExFullClose.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
+            FlowLayoutPanelExFullClose.AllowDrop = true;
+            FlowLayoutPanelExFullClose.AutoScroll = true;
+            FlowLayoutPanelExFullClose.BorderStyle = BorderStyle.FixedSingle;
+            FlowLayoutPanelExFullClose.Dock = DockStyle.Fill;
+            FlowLayoutPanelExFullClose.Location = new Point(3, 340);
+            FlowLayoutPanelExFullClose.Name = "FlowLayoutPanelExFullClose";
+            FlowLayoutPanelExFullClose.Size = new Size(315, 251);
+            FlowLayoutPanelExFullClose.TabIndex = 3;
+            FlowLayoutPanelExFullClose.Tag = "161";
+            FlowLayoutPanelExFullClose.DragDrop += FlowLayoutPanelEx_DragDrop;
+            FlowLayoutPanelExFullClose.DragEnter += FlowLayoutPanelEx_DragEnter;
             // 
             // FlowLayoutPanelExFullDesignation
             // 
-            this.FlowLayoutPanelExFullDesignation.AllowDrop = true;
-            this.FlowLayoutPanelExFullDesignation.AutoScroll = true;
-            this.FlowLayoutPanelExFullDesignation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FlowLayoutPanelExFullDesignation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FlowLayoutPanelExFullDesignation.Location = new System.Drawing.Point(3, 637);
-            this.FlowLayoutPanelExFullDesignation.Name = "FlowLayoutPanelExFullDesignation";
-            this.FlowLayoutPanelExFullDesignation.Size = new System.Drawing.Size(315, 251);
-            this.FlowLayoutPanelExFullDesignation.TabIndex = 4;
-            this.FlowLayoutPanelExFullDesignation.Tag = "162";
-            this.FlowLayoutPanelExFullDesignation.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
-            this.FlowLayoutPanelExFullDesignation.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
+            FlowLayoutPanelExFullDesignation.AllowDrop = true;
+            FlowLayoutPanelExFullDesignation.AutoScroll = true;
+            FlowLayoutPanelExFullDesignation.BorderStyle = BorderStyle.FixedSingle;
+            FlowLayoutPanelExFullDesignation.Dock = DockStyle.Fill;
+            FlowLayoutPanelExFullDesignation.Location = new Point(3, 637);
+            FlowLayoutPanelExFullDesignation.Name = "FlowLayoutPanelExFullDesignation";
+            FlowLayoutPanelExFullDesignation.Size = new Size(315, 251);
+            FlowLayoutPanelExFullDesignation.TabIndex = 4;
+            FlowLayoutPanelExFullDesignation.Tag = "162";
+            FlowLayoutPanelExFullDesignation.DragDrop += FlowLayoutPanelEx_DragDrop;
+            FlowLayoutPanelExFullDesignation.DragEnter += FlowLayoutPanelEx_DragEnter;
             // 
             // label12
             // 
-            this.label12.AutoSize = true;
-            this.label12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label12.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(3, 594);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(315, 40);
-            this.label12.TabIndex = 5;
-            this.label12.Text = "会社都合での休み";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label12.AutoSize = true;
+            label12.Dock = DockStyle.Fill;
+            label12.Font = new Font("Yu Gothic UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label12.Location = new Point(3, 594);
+            label12.Name = "label12";
+            label12.Size = new Size(315, 40);
+            label12.TabIndex = 5;
+            label12.Text = "会社都合での休み";
+            label12.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // tabPage11
             // 
-            this.tabPage11.Controls.Add(this.TableLayoutPanelExPartTimeBase);
-            this.tabPage11.Location = new System.Drawing.Point(4, 4);
-            this.tabPage11.Name = "tabPage11";
-            this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage11.Size = new System.Drawing.Size(327, 897);
-            this.tabPage11.TabIndex = 2;
-            this.tabPage11.Text = "アルバイト";
-            this.tabPage11.UseVisualStyleBackColor = true;
+            tabPage11.Controls.Add(TableLayoutPanelExPartTimeBase);
+            tabPage11.Location = new Point(4, 4);
+            tabPage11.Name = "tabPage11";
+            tabPage11.Padding = new Padding(3);
+            tabPage11.Size = new Size(327, 897);
+            tabPage11.TabIndex = 2;
+            tabPage11.Text = "アルバイト";
+            tabPage11.UseVisualStyleBackColor = true;
             // 
             // TableLayoutPanelExPartTimeBase
             // 
-            this.TableLayoutPanelExPartTimeBase.ColumnCount = 1;
-            this.TableLayoutPanelExPartTimeBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanelExPartTimeBase.Controls.Add(this.label9, 0, 0);
-            this.TableLayoutPanelExPartTimeBase.Controls.Add(this.label10, 0, 2);
-            this.TableLayoutPanelExPartTimeBase.Controls.Add(this.FlowLayoutPanelExPartSalaried, 0, 1);
-            this.TableLayoutPanelExPartTimeBase.Controls.Add(this.FlowLayoutPanelExPartClose, 0, 3);
-            this.TableLayoutPanelExPartTimeBase.Controls.Add(this.label13, 0, 4);
-            this.TableLayoutPanelExPartTimeBase.Controls.Add(this.FlowLayoutPanelExPartDesignation, 0, 5);
-            this.TableLayoutPanelExPartTimeBase.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TableLayoutPanelExPartTimeBase.Location = new System.Drawing.Point(3, 3);
-            this.TableLayoutPanelExPartTimeBase.Name = "TableLayoutPanelExPartTimeBase";
-            this.TableLayoutPanelExPartTimeBase.RowCount = 6;
-            this.TableLayoutPanelExPartTimeBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.TableLayoutPanelExPartTimeBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.TableLayoutPanelExPartTimeBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.TableLayoutPanelExPartTimeBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.TableLayoutPanelExPartTimeBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.TableLayoutPanelExPartTimeBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.TableLayoutPanelExPartTimeBase.Size = new System.Drawing.Size(321, 891);
-            this.TableLayoutPanelExPartTimeBase.TabIndex = 0;
+            TableLayoutPanelExPartTimeBase.ButtonBorderStyleDotted = false;
+            TableLayoutPanelExPartTimeBase.ColumnCount = 1;
+            TableLayoutPanelExPartTimeBase.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            TableLayoutPanelExPartTimeBase.Controls.Add(label9, 0, 0);
+            TableLayoutPanelExPartTimeBase.Controls.Add(label10, 0, 2);
+            TableLayoutPanelExPartTimeBase.Controls.Add(FlowLayoutPanelExPartSalaried, 0, 1);
+            TableLayoutPanelExPartTimeBase.Controls.Add(FlowLayoutPanelExPartClose, 0, 3);
+            TableLayoutPanelExPartTimeBase.Controls.Add(label13, 0, 4);
+            TableLayoutPanelExPartTimeBase.Controls.Add(FlowLayoutPanelExPartDesignation, 0, 5);
+            TableLayoutPanelExPartTimeBase.Dock = DockStyle.Fill;
+            TableLayoutPanelExPartTimeBase.Location = new Point(3, 3);
+            TableLayoutPanelExPartTimeBase.Name = "TableLayoutPanelExPartTimeBase";
+            TableLayoutPanelExPartTimeBase.RowCount = 6;
+            TableLayoutPanelExPartTimeBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            TableLayoutPanelExPartTimeBase.RowStyles.Add(new RowStyle(SizeType.Percent, 33.33333F));
+            TableLayoutPanelExPartTimeBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            TableLayoutPanelExPartTimeBase.RowStyles.Add(new RowStyle(SizeType.Percent, 33.33333F));
+            TableLayoutPanelExPartTimeBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            TableLayoutPanelExPartTimeBase.RowStyles.Add(new RowStyle(SizeType.Percent, 33.33333F));
+            TableLayoutPanelExPartTimeBase.Size = new Size(321, 891);
+            TableLayoutPanelExPartTimeBase.TabIndex = 0;
             // 
             // label9
             // 
-            this.label9.AutoSize = true;
-            this.label9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label9.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(3, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(315, 40);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "有給での休み";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label9.AutoSize = true;
+            label9.Dock = DockStyle.Fill;
+            label9.Font = new Font("Yu Gothic UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label9.Location = new Point(3, 0);
+            label9.Name = "label9";
+            label9.Size = new Size(315, 40);
+            label9.TabIndex = 0;
+            label9.Text = "有給での休み";
+            label9.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label10
             // 
-            this.label10.AutoSize = true;
-            this.label10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label10.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(3, 297);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(315, 40);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "自己都合での休み";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label10.AutoSize = true;
+            label10.Dock = DockStyle.Fill;
+            label10.Font = new Font("Yu Gothic UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.Location = new Point(3, 297);
+            label10.Name = "label10";
+            label10.Size = new Size(315, 40);
+            label10.TabIndex = 1;
+            label10.Text = "自己都合での休み";
+            label10.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // FlowLayoutPanelExPartSalaried
             // 
-            this.FlowLayoutPanelExPartSalaried.AllowDrop = true;
-            this.FlowLayoutPanelExPartSalaried.AutoScroll = true;
-            this.FlowLayoutPanelExPartSalaried.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FlowLayoutPanelExPartSalaried.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FlowLayoutPanelExPartSalaried.Location = new System.Drawing.Point(3, 43);
-            this.FlowLayoutPanelExPartSalaried.Name = "FlowLayoutPanelExPartSalaried";
-            this.FlowLayoutPanelExPartSalaried.Size = new System.Drawing.Size(315, 251);
-            this.FlowLayoutPanelExPartSalaried.TabIndex = 2;
-            this.FlowLayoutPanelExPartSalaried.Tag = "163";
-            this.FlowLayoutPanelExPartSalaried.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
-            this.FlowLayoutPanelExPartSalaried.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
+            FlowLayoutPanelExPartSalaried.AllowDrop = true;
+            FlowLayoutPanelExPartSalaried.AutoScroll = true;
+            FlowLayoutPanelExPartSalaried.BorderStyle = BorderStyle.FixedSingle;
+            FlowLayoutPanelExPartSalaried.Dock = DockStyle.Fill;
+            FlowLayoutPanelExPartSalaried.Location = new Point(3, 43);
+            FlowLayoutPanelExPartSalaried.Name = "FlowLayoutPanelExPartSalaried";
+            FlowLayoutPanelExPartSalaried.Size = new Size(315, 251);
+            FlowLayoutPanelExPartSalaried.TabIndex = 2;
+            FlowLayoutPanelExPartSalaried.Tag = "163";
+            FlowLayoutPanelExPartSalaried.DragDrop += FlowLayoutPanelEx_DragDrop;
+            FlowLayoutPanelExPartSalaried.DragEnter += FlowLayoutPanelEx_DragEnter;
             // 
             // FlowLayoutPanelExPartClose
             // 
-            this.FlowLayoutPanelExPartClose.AllowDrop = true;
-            this.FlowLayoutPanelExPartClose.AutoScroll = true;
-            this.FlowLayoutPanelExPartClose.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FlowLayoutPanelExPartClose.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FlowLayoutPanelExPartClose.Location = new System.Drawing.Point(3, 340);
-            this.FlowLayoutPanelExPartClose.Name = "FlowLayoutPanelExPartClose";
-            this.FlowLayoutPanelExPartClose.Size = new System.Drawing.Size(315, 251);
-            this.FlowLayoutPanelExPartClose.TabIndex = 3;
-            this.FlowLayoutPanelExPartClose.Tag = "164";
-            this.FlowLayoutPanelExPartClose.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
-            this.FlowLayoutPanelExPartClose.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
+            FlowLayoutPanelExPartClose.AllowDrop = true;
+            FlowLayoutPanelExPartClose.AutoScroll = true;
+            FlowLayoutPanelExPartClose.BorderStyle = BorderStyle.FixedSingle;
+            FlowLayoutPanelExPartClose.Dock = DockStyle.Fill;
+            FlowLayoutPanelExPartClose.Location = new Point(3, 340);
+            FlowLayoutPanelExPartClose.Name = "FlowLayoutPanelExPartClose";
+            FlowLayoutPanelExPartClose.Size = new Size(315, 251);
+            FlowLayoutPanelExPartClose.TabIndex = 3;
+            FlowLayoutPanelExPartClose.Tag = "164";
+            FlowLayoutPanelExPartClose.DragDrop += FlowLayoutPanelEx_DragDrop;
+            FlowLayoutPanelExPartClose.DragEnter += FlowLayoutPanelEx_DragEnter;
             // 
             // label13
             // 
-            this.label13.AutoSize = true;
-            this.label13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label13.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(3, 594);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(315, 40);
-            this.label13.TabIndex = 4;
-            this.label13.Text = "会社都合での休み";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label13.AutoSize = true;
+            label13.Dock = DockStyle.Fill;
+            label13.Font = new Font("Yu Gothic UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label13.Location = new Point(3, 594);
+            label13.Name = "label13";
+            label13.Size = new Size(315, 40);
+            label13.TabIndex = 4;
+            label13.Text = "会社都合での休み";
+            label13.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // FlowLayoutPanelExPartDesignation
             // 
-            this.FlowLayoutPanelExPartDesignation.AllowDrop = true;
-            this.FlowLayoutPanelExPartDesignation.AutoScroll = true;
-            this.FlowLayoutPanelExPartDesignation.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FlowLayoutPanelExPartDesignation.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FlowLayoutPanelExPartDesignation.Location = new System.Drawing.Point(3, 637);
-            this.FlowLayoutPanelExPartDesignation.Name = "FlowLayoutPanelExPartDesignation";
-            this.FlowLayoutPanelExPartDesignation.Size = new System.Drawing.Size(315, 251);
-            this.FlowLayoutPanelExPartDesignation.TabIndex = 5;
-            this.FlowLayoutPanelExPartDesignation.Tag = "165";
-            this.FlowLayoutPanelExPartDesignation.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
-            this.FlowLayoutPanelExPartDesignation.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
+            FlowLayoutPanelExPartDesignation.AllowDrop = true;
+            FlowLayoutPanelExPartDesignation.AutoScroll = true;
+            FlowLayoutPanelExPartDesignation.BorderStyle = BorderStyle.FixedSingle;
+            FlowLayoutPanelExPartDesignation.Dock = DockStyle.Fill;
+            FlowLayoutPanelExPartDesignation.Location = new Point(3, 637);
+            FlowLayoutPanelExPartDesignation.Name = "FlowLayoutPanelExPartDesignation";
+            FlowLayoutPanelExPartDesignation.Size = new Size(315, 251);
+            FlowLayoutPanelExPartDesignation.TabIndex = 5;
+            FlowLayoutPanelExPartDesignation.Tag = "165";
+            FlowLayoutPanelExPartDesignation.DragDrop += FlowLayoutPanelEx_DragDrop;
+            FlowLayoutPanelExPartDesignation.DragEnter += FlowLayoutPanelEx_DragEnter;
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.TableLayoutPanelExCloseBase);
-            this.tabPage3.Location = new System.Drawing.Point(4, 4);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(327, 897);
-            this.tabPage3.TabIndex = 3;
-            this.tabPage3.Text = "朝電・無断";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            tabPage3.Controls.Add(TableLayoutPanelExCloseBase);
+            tabPage3.Location = new Point(4, 4);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Padding = new Padding(3);
+            tabPage3.Size = new Size(327, 897);
+            tabPage3.TabIndex = 3;
+            tabPage3.Text = "朝電・無断";
+            tabPage3.UseVisualStyleBackColor = true;
             // 
             // TableLayoutPanelExCloseBase
             // 
-            this.TableLayoutPanelExCloseBase.ColumnCount = 1;
-            this.TableLayoutPanelExCloseBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanelExCloseBase.Controls.Add(this.FlowLayoutPanelExTelephone, 0, 1);
-            this.TableLayoutPanelExCloseBase.Controls.Add(this.FlowLayoutPanelExWithoutNotice, 0, 3);
-            this.TableLayoutPanelExCloseBase.Controls.Add(this.label5, 0, 0);
-            this.TableLayoutPanelExCloseBase.Controls.Add(this.label6, 0, 2);
-            this.TableLayoutPanelExCloseBase.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TableLayoutPanelExCloseBase.Location = new System.Drawing.Point(3, 3);
-            this.TableLayoutPanelExCloseBase.Name = "TableLayoutPanelExCloseBase";
-            this.TableLayoutPanelExCloseBase.RowCount = 4;
-            this.TableLayoutPanelExCloseBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.TableLayoutPanelExCloseBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TableLayoutPanelExCloseBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
-            this.TableLayoutPanelExCloseBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.TableLayoutPanelExCloseBase.Size = new System.Drawing.Size(321, 891);
-            this.TableLayoutPanelExCloseBase.TabIndex = 0;
+            TableLayoutPanelExCloseBase.ButtonBorderStyleDotted = false;
+            TableLayoutPanelExCloseBase.ColumnCount = 1;
+            TableLayoutPanelExCloseBase.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            TableLayoutPanelExCloseBase.Controls.Add(FlowLayoutPanelExTelephone, 0, 1);
+            TableLayoutPanelExCloseBase.Controls.Add(FlowLayoutPanelExWithoutNotice, 0, 3);
+            TableLayoutPanelExCloseBase.Controls.Add(label5, 0, 0);
+            TableLayoutPanelExCloseBase.Controls.Add(label6, 0, 2);
+            TableLayoutPanelExCloseBase.Dock = DockStyle.Fill;
+            TableLayoutPanelExCloseBase.Location = new Point(3, 3);
+            TableLayoutPanelExCloseBase.Name = "TableLayoutPanelExCloseBase";
+            TableLayoutPanelExCloseBase.RowCount = 4;
+            TableLayoutPanelExCloseBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            TableLayoutPanelExCloseBase.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            TableLayoutPanelExCloseBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            TableLayoutPanelExCloseBase.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            TableLayoutPanelExCloseBase.Size = new Size(321, 891);
+            TableLayoutPanelExCloseBase.TabIndex = 0;
             // 
             // FlowLayoutPanelExTelephone
             // 
-            this.FlowLayoutPanelExTelephone.AllowDrop = true;
-            this.FlowLayoutPanelExTelephone.AutoScroll = true;
-            this.FlowLayoutPanelExTelephone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FlowLayoutPanelExTelephone.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FlowLayoutPanelExTelephone.Location = new System.Drawing.Point(3, 43);
-            this.FlowLayoutPanelExTelephone.Name = "FlowLayoutPanelExTelephone";
-            this.FlowLayoutPanelExTelephone.Size = new System.Drawing.Size(315, 399);
-            this.FlowLayoutPanelExTelephone.TabIndex = 1;
-            this.FlowLayoutPanelExTelephone.Tag = "166";
-            this.FlowLayoutPanelExTelephone.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
-            this.FlowLayoutPanelExTelephone.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
+            FlowLayoutPanelExTelephone.AllowDrop = true;
+            FlowLayoutPanelExTelephone.AutoScroll = true;
+            FlowLayoutPanelExTelephone.BorderStyle = BorderStyle.FixedSingle;
+            FlowLayoutPanelExTelephone.Dock = DockStyle.Fill;
+            FlowLayoutPanelExTelephone.Location = new Point(3, 43);
+            FlowLayoutPanelExTelephone.Name = "FlowLayoutPanelExTelephone";
+            FlowLayoutPanelExTelephone.Size = new Size(315, 399);
+            FlowLayoutPanelExTelephone.TabIndex = 1;
+            FlowLayoutPanelExTelephone.Tag = "166";
+            FlowLayoutPanelExTelephone.DragDrop += FlowLayoutPanelEx_DragDrop;
+            FlowLayoutPanelExTelephone.DragEnter += FlowLayoutPanelEx_DragEnter;
             // 
             // FlowLayoutPanelExWithoutNotice
             // 
-            this.FlowLayoutPanelExWithoutNotice.AllowDrop = true;
-            this.FlowLayoutPanelExWithoutNotice.AutoScroll = true;
-            this.FlowLayoutPanelExWithoutNotice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.FlowLayoutPanelExWithoutNotice.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FlowLayoutPanelExWithoutNotice.Location = new System.Drawing.Point(3, 488);
-            this.FlowLayoutPanelExWithoutNotice.Name = "FlowLayoutPanelExWithoutNotice";
-            this.FlowLayoutPanelExWithoutNotice.Size = new System.Drawing.Size(315, 400);
-            this.FlowLayoutPanelExWithoutNotice.TabIndex = 2;
-            this.FlowLayoutPanelExWithoutNotice.Tag = "167";
-            this.FlowLayoutPanelExWithoutNotice.DragDrop += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragDrop);
-            this.FlowLayoutPanelExWithoutNotice.DragEnter += new System.Windows.Forms.DragEventHandler(this.FlowLayoutPanelEx_DragEnter);
+            FlowLayoutPanelExWithoutNotice.AllowDrop = true;
+            FlowLayoutPanelExWithoutNotice.AutoScroll = true;
+            FlowLayoutPanelExWithoutNotice.BorderStyle = BorderStyle.FixedSingle;
+            FlowLayoutPanelExWithoutNotice.Dock = DockStyle.Fill;
+            FlowLayoutPanelExWithoutNotice.Location = new Point(3, 488);
+            FlowLayoutPanelExWithoutNotice.Name = "FlowLayoutPanelExWithoutNotice";
+            FlowLayoutPanelExWithoutNotice.Size = new Size(315, 400);
+            FlowLayoutPanelExWithoutNotice.TabIndex = 2;
+            FlowLayoutPanelExWithoutNotice.Tag = "167";
+            FlowLayoutPanelExWithoutNotice.DragDrop += FlowLayoutPanelEx_DragDrop;
+            FlowLayoutPanelExWithoutNotice.DragEnter += FlowLayoutPanelEx_DragEnter;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label5.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(3, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(315, 40);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "朝電";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label5.AutoSize = true;
+            label5.Dock = DockStyle.Fill;
+            label5.Font = new Font("Yu Gothic UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Location = new Point(3, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(315, 40);
+            label5.TabIndex = 4;
+            label5.Text = "朝電";
+            label5.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label6.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(3, 445);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(315, 40);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "無断";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label6.AutoSize = true;
+            label6.Dock = DockStyle.Fill;
+            label6.Font = new Font("Yu Gothic UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.Location = new Point(3, 445);
+            label6.Name = "label6";
+            label6.Size = new Size(315, 40);
+            label6.TabIndex = 5;
+            label6.Text = "無断";
+            label6.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // ContextMenuStripSetLabel
             // 
-            this.ContextMenuStripSetLabel.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemSetDetail,
-            this.toolStripSeparator4,
-            this.ToolStripMenuItemSetGarageChange,
-            this.ToolStripMenuItemSetDelete,
-            this.toolStripSeparator9,
-            this.ToolStripMenuItemSetMemo,
-            this.toolStripSeparator6,
-            this.ToolStripMenuItemOperationFlag,
-            this.ToolStripMenuItemClassification,
-            this.ToolStripMenuItemContactInformation,
-            this.ToolStripMenuItemAddWorker,
-            this.ToolStripMenuItemStandByFlag,
-            this.toolStripSeparator7,
-            this.ToolStripMenuItemFax,
-            this.ToolStripMenuItemHighWayReport});
-            this.ContextMenuStripSetLabel.Name = "ContextMenuStripSetLabel";
-            this.ContextMenuStripSetLabel.Size = new System.Drawing.Size(235, 270);
-            this.ContextMenuStripSetLabel.Opened += new System.EventHandler(this.ContextMenuStrip_Opened);
+            ContextMenuStripSetLabel.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemSetDetail, toolStripSeparator4, ToolStripMenuItemSetGarageChange, ToolStripMenuItemSetDelete, toolStripSeparator9, ToolStripMenuItemSetMemo, toolStripSeparator6, ToolStripMenuItemOperationFlag, ToolStripMenuItemClassification, ToolStripMenuItemContactInformation, ToolStripMenuItemAddWorker, ToolStripMenuItemStandByFlag, toolStripSeparator7, ToolStripMenuItemFax, ToolStripMenuItemHighWayReport });
+            ContextMenuStripSetLabel.Name = "ContextMenuStripSetLabel";
+            ContextMenuStripSetLabel.Size = new Size(235, 270);
+            ContextMenuStripSetLabel.Opened += ContextMenuStrip_Opened;
             // 
             // ToolStripMenuItemSetDetail
             // 
-            this.ToolStripMenuItemSetDetail.Name = "ToolStripMenuItemSetDetail";
-            this.ToolStripMenuItemSetDetail.Size = new System.Drawing.Size(234, 22);
-            this.ToolStripMenuItemSetDetail.Text = "配車先の情報";
-            this.ToolStripMenuItemSetDetail.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemSetDetail.Name = "ToolStripMenuItemSetDetail";
+            ToolStripMenuItemSetDetail.Size = new Size(234, 22);
+            ToolStripMenuItemSetDetail.Text = "配車先の情報";
+            ToolStripMenuItemSetDetail.Click += ToolStripMenuItem_Click;
             // 
             // toolStripSeparator4
             // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(231, 6);
+            toolStripSeparator4.Name = "toolStripSeparator4";
+            toolStripSeparator4.Size = new Size(231, 6);
             // 
             // ToolStripMenuItemSetGarageChange
             // 
-            this.ToolStripMenuItemSetGarageChange.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemSetGarageAdachi,
-            this.ToolStripMenuItemSetGarageMisato});
-            this.ToolStripMenuItemSetGarageChange.Name = "ToolStripMenuItemSetGarageChange";
-            this.ToolStripMenuItemSetGarageChange.Size = new System.Drawing.Size(234, 22);
-            this.ToolStripMenuItemSetGarageChange.Text = "出庫地を変更する";
+            ToolStripMenuItemSetGarageChange.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemSetGarageAdachi, ToolStripMenuItemSetGarageMisato });
+            ToolStripMenuItemSetGarageChange.Name = "ToolStripMenuItemSetGarageChange";
+            ToolStripMenuItemSetGarageChange.Size = new Size(234, 22);
+            ToolStripMenuItemSetGarageChange.Text = "出庫地を変更する";
             // 
             // ToolStripMenuItemSetGarageAdachi
             // 
-            this.ToolStripMenuItemSetGarageAdachi.Name = "ToolStripMenuItemSetGarageAdachi";
-            this.ToolStripMenuItemSetGarageAdachi.Size = new System.Drawing.Size(139, 22);
-            this.ToolStripMenuItemSetGarageAdachi.Text = "本社より出庫";
-            this.ToolStripMenuItemSetGarageAdachi.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemSetGarageAdachi.Name = "ToolStripMenuItemSetGarageAdachi";
+            ToolStripMenuItemSetGarageAdachi.Size = new Size(139, 22);
+            ToolStripMenuItemSetGarageAdachi.Text = "本社より出庫";
+            ToolStripMenuItemSetGarageAdachi.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemSetGarageMisato
             // 
-            this.ToolStripMenuItemSetGarageMisato.Name = "ToolStripMenuItemSetGarageMisato";
-            this.ToolStripMenuItemSetGarageMisato.Size = new System.Drawing.Size(139, 22);
-            this.ToolStripMenuItemSetGarageMisato.Text = "三郷より出庫";
-            this.ToolStripMenuItemSetGarageMisato.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemSetGarageMisato.Name = "ToolStripMenuItemSetGarageMisato";
+            ToolStripMenuItemSetGarageMisato.Size = new Size(139, 22);
+            ToolStripMenuItemSetGarageMisato.Text = "三郷より出庫";
+            ToolStripMenuItemSetGarageMisato.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemSetDelete
             // 
-            this.ToolStripMenuItemSetDelete.Name = "ToolStripMenuItemSetDelete";
-            this.ToolStripMenuItemSetDelete.Size = new System.Drawing.Size(234, 22);
-            this.ToolStripMenuItemSetDelete.Text = "配車先を削除する";
-            this.ToolStripMenuItemSetDelete.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemSetDelete.Name = "ToolStripMenuItemSetDelete";
+            ToolStripMenuItemSetDelete.Size = new Size(234, 22);
+            ToolStripMenuItemSetDelete.Text = "配車先を削除する";
+            ToolStripMenuItemSetDelete.Click += ToolStripMenuItem_Click;
             // 
             // toolStripSeparator9
             // 
-            this.toolStripSeparator9.Name = "toolStripSeparator9";
-            this.toolStripSeparator9.Size = new System.Drawing.Size(231, 6);
+            toolStripSeparator9.Name = "toolStripSeparator9";
+            toolStripSeparator9.Size = new Size(231, 6);
             // 
             // ToolStripMenuItemSetMemo
             // 
-            this.ToolStripMenuItemSetMemo.Name = "ToolStripMenuItemSetMemo";
-            this.ToolStripMenuItemSetMemo.Size = new System.Drawing.Size(234, 22);
-            this.ToolStripMenuItemSetMemo.Text = "メモを作成・編集する";
-            this.ToolStripMenuItemSetMemo.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemSetMemo.Name = "ToolStripMenuItemSetMemo";
+            ToolStripMenuItemSetMemo.Size = new Size(234, 22);
+            ToolStripMenuItemSetMemo.Text = "メモを作成・編集する";
+            ToolStripMenuItemSetMemo.Click += ToolStripMenuItem_Click;
             // 
             // toolStripSeparator6
             // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(231, 6);
+            toolStripSeparator6.Name = "toolStripSeparator6";
+            toolStripSeparator6.Size = new Size(231, 6);
             // 
             // ToolStripMenuItemOperationFlag
             // 
-            this.ToolStripMenuItemOperationFlag.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemOperationFlagTrue,
-            this.ToolStripMenuItemOperationFlagFalse});
-            this.ToolStripMenuItemOperationFlag.Name = "ToolStripMenuItemOperationFlag";
-            this.ToolStripMenuItemOperationFlag.Size = new System.Drawing.Size(234, 22);
-            this.ToolStripMenuItemOperationFlag.Text = "配車の状態";
+            ToolStripMenuItemOperationFlag.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemOperationFlagTrue, ToolStripMenuItemOperationFlagFalse });
+            ToolStripMenuItemOperationFlag.Name = "ToolStripMenuItemOperationFlag";
+            ToolStripMenuItemOperationFlag.Size = new Size(234, 22);
+            ToolStripMenuItemOperationFlag.Text = "配車の状態";
             // 
             // ToolStripMenuItemOperationFlagTrue
             // 
-            this.ToolStripMenuItemOperationFlagTrue.Name = "ToolStripMenuItemOperationFlagTrue";
-            this.ToolStripMenuItemOperationFlagTrue.Size = new System.Drawing.Size(117, 22);
-            this.ToolStripMenuItemOperationFlagTrue.Text = "配車する";
-            this.ToolStripMenuItemOperationFlagTrue.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemOperationFlagTrue.Name = "ToolStripMenuItemOperationFlagTrue";
+            ToolStripMenuItemOperationFlagTrue.Size = new Size(117, 22);
+            ToolStripMenuItemOperationFlagTrue.Text = "配車する";
+            ToolStripMenuItemOperationFlagTrue.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemOperationFlagFalse
             // 
-            this.ToolStripMenuItemOperationFlagFalse.Name = "ToolStripMenuItemOperationFlagFalse";
-            this.ToolStripMenuItemOperationFlagFalse.Size = new System.Drawing.Size(117, 22);
-            this.ToolStripMenuItemOperationFlagFalse.Text = "休車する";
-            this.ToolStripMenuItemOperationFlagFalse.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemOperationFlagFalse.Name = "ToolStripMenuItemOperationFlagFalse";
+            ToolStripMenuItemOperationFlagFalse.Size = new Size(117, 22);
+            ToolStripMenuItemOperationFlagFalse.Text = "休車する";
+            ToolStripMenuItemOperationFlagFalse.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemClassification
             // 
-            this.ToolStripMenuItemClassification.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemYOUJYOU,
-            this.ToolStripMenuItemKUKEI});
-            this.ToolStripMenuItemClassification.Name = "ToolStripMenuItemClassification";
-            this.ToolStripMenuItemClassification.Size = new System.Drawing.Size(234, 22);
-            this.ToolStripMenuItemClassification.Text = "雇上・区契";
+            ToolStripMenuItemClassification.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemYOUJYOU, ToolStripMenuItemKUKEI });
+            ToolStripMenuItemClassification.Name = "ToolStripMenuItemClassification";
+            ToolStripMenuItemClassification.Size = new Size(234, 22);
+            ToolStripMenuItemClassification.Text = "雇上・区契";
             // 
             // ToolStripMenuItemYOUJYOU
             // 
-            this.ToolStripMenuItemYOUJYOU.Name = "ToolStripMenuItemYOUJYOU";
-            this.ToolStripMenuItemYOUJYOU.Size = new System.Drawing.Size(174, 22);
-            this.ToolStripMenuItemYOUJYOU.Text = "雇上契約に変更する";
-            this.ToolStripMenuItemYOUJYOU.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemYOUJYOU.Name = "ToolStripMenuItemYOUJYOU";
+            ToolStripMenuItemYOUJYOU.Size = new Size(174, 22);
+            ToolStripMenuItemYOUJYOU.Text = "雇上契約に変更する";
+            ToolStripMenuItemYOUJYOU.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemKUKEI
             // 
-            this.ToolStripMenuItemKUKEI.Name = "ToolStripMenuItemKUKEI";
-            this.ToolStripMenuItemKUKEI.Size = new System.Drawing.Size(174, 22);
-            this.ToolStripMenuItemKUKEI.Text = "区契約に変更する";
-            this.ToolStripMenuItemKUKEI.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemKUKEI.Name = "ToolStripMenuItemKUKEI";
+            ToolStripMenuItemKUKEI.Size = new Size(174, 22);
+            ToolStripMenuItemKUKEI.Text = "区契約に変更する";
+            ToolStripMenuItemKUKEI.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemContactInformation
             // 
-            this.ToolStripMenuItemContactInformation.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemContactInformationTrue,
-            this.ToolStripMenuItemContactInformationFalse});
-            this.ToolStripMenuItemContactInformation.Name = "ToolStripMenuItemContactInformation";
-            this.ToolStripMenuItemContactInformation.Size = new System.Drawing.Size(234, 22);
-            this.ToolStripMenuItemContactInformation.Text = "連絡事項";
+            ToolStripMenuItemContactInformation.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemContactInformationTrue, ToolStripMenuItemContactInformationFalse });
+            ToolStripMenuItemContactInformation.Name = "ToolStripMenuItemContactInformation";
+            ToolStripMenuItemContactInformation.Size = new Size(234, 22);
+            ToolStripMenuItemContactInformation.Text = "連絡事項";
             // 
             // ToolStripMenuItemContactInformationTrue
             // 
-            this.ToolStripMenuItemContactInformationTrue.Name = "ToolStripMenuItemContactInformationTrue";
-            this.ToolStripMenuItemContactInformationTrue.Size = new System.Drawing.Size(140, 22);
-            this.ToolStripMenuItemContactInformationTrue.Text = "連絡事項あり";
-            this.ToolStripMenuItemContactInformationTrue.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemContactInformationTrue.Name = "ToolStripMenuItemContactInformationTrue";
+            ToolStripMenuItemContactInformationTrue.Size = new Size(140, 22);
+            ToolStripMenuItemContactInformationTrue.Text = "連絡事項あり";
+            ToolStripMenuItemContactInformationTrue.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemContactInformationFalse
             // 
-            this.ToolStripMenuItemContactInformationFalse.Name = "ToolStripMenuItemContactInformationFalse";
-            this.ToolStripMenuItemContactInformationFalse.Size = new System.Drawing.Size(140, 22);
-            this.ToolStripMenuItemContactInformationFalse.Text = "連絡事項なし";
-            this.ToolStripMenuItemContactInformationFalse.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemContactInformationFalse.Name = "ToolStripMenuItemContactInformationFalse";
+            ToolStripMenuItemContactInformationFalse.Size = new Size(140, 22);
+            ToolStripMenuItemContactInformationFalse.Text = "連絡事項なし";
+            ToolStripMenuItemContactInformationFalse.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemAddWorker
             // 
-            this.ToolStripMenuItemAddWorker.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemAddWorkerTrue,
-            this.ToolStripMenuItemAddWorkerFalse});
-            this.ToolStripMenuItemAddWorker.Name = "ToolStripMenuItemAddWorker";
-            this.ToolStripMenuItemAddWorker.Size = new System.Drawing.Size(234, 22);
-            this.ToolStripMenuItemAddWorker.Text = "作業員の配置を変更する";
+            ToolStripMenuItemAddWorker.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemAddWorkerTrue, ToolStripMenuItemAddWorkerFalse });
+            ToolStripMenuItemAddWorker.Name = "ToolStripMenuItemAddWorker";
+            ToolStripMenuItemAddWorker.Size = new Size(234, 22);
+            ToolStripMenuItemAddWorker.Text = "作業員の配置を変更する";
             // 
             // ToolStripMenuItemAddWorkerTrue
             // 
-            this.ToolStripMenuItemAddWorkerTrue.Name = "ToolStripMenuItemAddWorkerTrue";
-            this.ToolStripMenuItemAddWorkerTrue.Size = new System.Drawing.Size(183, 22);
-            this.ToolStripMenuItemAddWorkerTrue.Text = "作業員付きに変更する";
-            this.ToolStripMenuItemAddWorkerTrue.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemAddWorkerTrue.Name = "ToolStripMenuItemAddWorkerTrue";
+            ToolStripMenuItemAddWorkerTrue.Size = new Size(183, 22);
+            ToolStripMenuItemAddWorkerTrue.Text = "作業員付きに変更する";
+            ToolStripMenuItemAddWorkerTrue.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemAddWorkerFalse
             // 
-            this.ToolStripMenuItemAddWorkerFalse.Name = "ToolStripMenuItemAddWorkerFalse";
-            this.ToolStripMenuItemAddWorkerFalse.Size = new System.Drawing.Size(183, 22);
-            this.ToolStripMenuItemAddWorkerFalse.Text = "作業員なしに変更する";
-            this.ToolStripMenuItemAddWorkerFalse.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemAddWorkerFalse.Name = "ToolStripMenuItemAddWorkerFalse";
+            ToolStripMenuItemAddWorkerFalse.Size = new Size(183, 22);
+            ToolStripMenuItemAddWorkerFalse.Text = "作業員なしに変更する";
+            ToolStripMenuItemAddWorkerFalse.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemStandByFlag
             // 
-            this.ToolStripMenuItemStandByFlag.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemStandByTrue,
-            this.ToolStripMenuItemStandByFalse});
-            this.ToolStripMenuItemStandByFlag.Name = "ToolStripMenuItemStandByFlag";
-            this.ToolStripMenuItemStandByFlag.Size = new System.Drawing.Size(234, 22);
-            this.ToolStripMenuItemStandByFlag.Text = "待機を変更する";
+            ToolStripMenuItemStandByFlag.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemStandByTrue, ToolStripMenuItemStandByFalse });
+            ToolStripMenuItemStandByFlag.Name = "ToolStripMenuItemStandByFlag";
+            ToolStripMenuItemStandByFlag.Size = new Size(234, 22);
+            ToolStripMenuItemStandByFlag.Text = "待機を変更する";
             // 
             // ToolStripMenuItemStandByTrue
             // 
-            this.ToolStripMenuItemStandByTrue.Name = "ToolStripMenuItemStandByTrue";
-            this.ToolStripMenuItemStandByTrue.Size = new System.Drawing.Size(117, 22);
-            this.ToolStripMenuItemStandByTrue.Text = "設定する";
-            this.ToolStripMenuItemStandByTrue.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemStandByTrue.Name = "ToolStripMenuItemStandByTrue";
+            ToolStripMenuItemStandByTrue.Size = new Size(117, 22);
+            ToolStripMenuItemStandByTrue.Text = "設定する";
+            ToolStripMenuItemStandByTrue.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemStandByFalse
             // 
-            this.ToolStripMenuItemStandByFalse.Name = "ToolStripMenuItemStandByFalse";
-            this.ToolStripMenuItemStandByFalse.Size = new System.Drawing.Size(117, 22);
-            this.ToolStripMenuItemStandByFalse.Text = "解除する";
-            this.ToolStripMenuItemStandByFalse.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemStandByFalse.Name = "ToolStripMenuItemStandByFalse";
+            ToolStripMenuItemStandByFalse.Size = new Size(117, 22);
+            ToolStripMenuItemStandByFalse.Text = "解除する";
+            ToolStripMenuItemStandByFalse.Click += ToolStripMenuItem_Click;
             // 
             // toolStripSeparator7
             // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(231, 6);
+            toolStripSeparator7.Name = "toolStripSeparator7";
+            toolStripSeparator7.Size = new Size(231, 6);
             // 
             // ToolStripMenuItemFax
             // 
-            this.ToolStripMenuItemFax.Name = "ToolStripMenuItemFax";
-            this.ToolStripMenuItemFax.Size = new System.Drawing.Size(234, 22);
-            this.ToolStripMenuItemFax.Text = "代車・代番のFaxを作成する";
-            this.ToolStripMenuItemFax.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemFax.Name = "ToolStripMenuItemFax";
+            ToolStripMenuItemFax.Size = new Size(234, 22);
+            ToolStripMenuItemFax.Text = "代車・代番のFaxを作成する";
+            ToolStripMenuItemFax.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemHighWayReport
             // 
-            this.ToolStripMenuItemHighWayReport.Name = "ToolStripMenuItemHighWayReport";
-            this.ToolStripMenuItemHighWayReport.Size = new System.Drawing.Size(234, 22);
-            this.ToolStripMenuItemHighWayReport.Text = "高速道路使用報告書を作成する";
-            this.ToolStripMenuItemHighWayReport.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemHighWayReport.Name = "ToolStripMenuItemHighWayReport";
+            ToolStripMenuItemHighWayReport.Size = new Size(234, 22);
+            ToolStripMenuItemHighWayReport.Text = "高速道路使用報告書を作成する";
+            ToolStripMenuItemHighWayReport.Click += ToolStripMenuItem_Click;
             // 
             // ContextMenuStripCarLabel
             // 
-            this.ContextMenuStripCarLabel.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemCarDetail,
-            this.toolStripSeparator1,
-            this.ToolStripMenuItemCarProxyTrue,
-            this.ToolStripMenuItemCarProxyFalse});
-            this.ContextMenuStripCarLabel.Name = "ContextMenuStripCarLabel";
-            this.ContextMenuStripCarLabel.Size = new System.Drawing.Size(175, 76);
-            this.ContextMenuStripCarLabel.Opened += new System.EventHandler(this.ContextMenuStrip_Opened);
+            ContextMenuStripCarLabel.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemCarDetail, toolStripSeparator1, ToolStripMenuItemCarProxyTrue, ToolStripMenuItemCarProxyFalse });
+            ContextMenuStripCarLabel.Name = "ContextMenuStripCarLabel";
+            ContextMenuStripCarLabel.Size = new Size(175, 76);
+            ContextMenuStripCarLabel.Opened += ContextMenuStrip_Opened;
             // 
             // ToolStripMenuItemCarDetail
             // 
-            this.ToolStripMenuItemCarDetail.Name = "ToolStripMenuItemCarDetail";
-            this.ToolStripMenuItemCarDetail.Size = new System.Drawing.Size(174, 22);
-            this.ToolStripMenuItemCarDetail.Text = "車両台帳を表示する";
-            this.ToolStripMenuItemCarDetail.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemCarDetail.Name = "ToolStripMenuItemCarDetail";
+            ToolStripMenuItemCarDetail.Size = new Size(174, 22);
+            ToolStripMenuItemCarDetail.Text = "車両台帳を表示する";
+            ToolStripMenuItemCarDetail.Click += ToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(171, 6);
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            toolStripSeparator1.Size = new Size(171, 6);
             // 
             // ToolStripMenuItemCarProxyTrue
             // 
-            this.ToolStripMenuItemCarProxyTrue.Name = "ToolStripMenuItemCarProxyTrue";
-            this.ToolStripMenuItemCarProxyTrue.Size = new System.Drawing.Size(174, 22);
-            this.ToolStripMenuItemCarProxyTrue.Text = "代車として記録する";
-            this.ToolStripMenuItemCarProxyTrue.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemCarProxyTrue.Name = "ToolStripMenuItemCarProxyTrue";
+            ToolStripMenuItemCarProxyTrue.Size = new Size(174, 22);
+            ToolStripMenuItemCarProxyTrue.Text = "代車として記録する";
+            ToolStripMenuItemCarProxyTrue.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemCarProxyFalse
             // 
-            this.ToolStripMenuItemCarProxyFalse.Name = "ToolStripMenuItemCarProxyFalse";
-            this.ToolStripMenuItemCarProxyFalse.Size = new System.Drawing.Size(174, 22);
-            this.ToolStripMenuItemCarProxyFalse.Text = "代車を解除する";
-            this.ToolStripMenuItemCarProxyFalse.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemCarProxyFalse.Name = "ToolStripMenuItemCarProxyFalse";
+            ToolStripMenuItemCarProxyFalse.Size = new Size(174, 22);
+            ToolStripMenuItemCarProxyFalse.Text = "代車を解除する";
+            ToolStripMenuItemCarProxyFalse.Click += ToolStripMenuItem_Click;
             // 
             // ContextMenuStripStaffLabel
             // 
-            this.ContextMenuStripStaffLabel.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemStaffDetail,
-            this.toolStripSeparator2,
-            this.ToolStripMenuItemStaffProxyTrue,
-            this.ToolStripMenuItemStaffProxyFalse,
-            this.toolStripSeparator3,
-            this.ToolStripMenuItemStaffMemo,
-            this.toolStripSeparator5,
-            this.ToolStripMenuItemOccupation10,
-            this.ToolStripMenuItemOccupation11,
-            this.toolStripSeparator8,
-            this.ToolStripMenuItemTelephoneMarkTrue,
-            this.ToolStripMenuItemTelephoneMarkFalse});
-            this.ContextMenuStripStaffLabel.Name = "ContextMenuStripStaffLabel";
-            this.ContextMenuStripStaffLabel.Size = new System.Drawing.Size(296, 204);
-            this.ContextMenuStripStaffLabel.Opened += new System.EventHandler(this.ContextMenuStrip_Opened);
+            ContextMenuStripStaffLabel.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemStaffDetail, toolStripSeparator2, ToolStripMenuItemStaffProxyTrue, ToolStripMenuItemStaffProxyFalse, toolStripSeparator3, ToolStripMenuItemStaffMemo, toolStripSeparator5, ToolStripMenuItemOccupation10, ToolStripMenuItemOccupation11, toolStripSeparator8, ToolStripMenuItemTelephoneMarkTrue, ToolStripMenuItemTelephoneMarkFalse });
+            ContextMenuStripStaffLabel.Name = "ContextMenuStripStaffLabel";
+            ContextMenuStripStaffLabel.Size = new Size(296, 204);
+            ContextMenuStripStaffLabel.Opened += ContextMenuStrip_Opened;
             // 
             // ToolStripMenuItemStaffDetail
             // 
-            this.ToolStripMenuItemStaffDetail.Name = "ToolStripMenuItemStaffDetail";
-            this.ToolStripMenuItemStaffDetail.Size = new System.Drawing.Size(295, 22);
-            this.ToolStripMenuItemStaffDetail.Text = "従事者台帳を表示する";
-            this.ToolStripMenuItemStaffDetail.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemStaffDetail.Name = "ToolStripMenuItemStaffDetail";
+            ToolStripMenuItemStaffDetail.Size = new Size(295, 22);
+            ToolStripMenuItemStaffDetail.Text = "従事者台帳を表示する";
+            ToolStripMenuItemStaffDetail.Click += ToolStripMenuItem_Click;
             // 
             // toolStripSeparator2
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(292, 6);
+            toolStripSeparator2.Name = "toolStripSeparator2";
+            toolStripSeparator2.Size = new Size(292, 6);
             // 
             // ToolStripMenuItemStaffProxyTrue
             // 
-            this.ToolStripMenuItemStaffProxyTrue.Name = "ToolStripMenuItemStaffProxyTrue";
-            this.ToolStripMenuItemStaffProxyTrue.Size = new System.Drawing.Size(295, 22);
-            this.ToolStripMenuItemStaffProxyTrue.Text = "代番として記録する";
-            this.ToolStripMenuItemStaffProxyTrue.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemStaffProxyTrue.Name = "ToolStripMenuItemStaffProxyTrue";
+            ToolStripMenuItemStaffProxyTrue.Size = new Size(295, 22);
+            ToolStripMenuItemStaffProxyTrue.Text = "代番として記録する";
+            ToolStripMenuItemStaffProxyTrue.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemStaffProxyFalse
             // 
-            this.ToolStripMenuItemStaffProxyFalse.Name = "ToolStripMenuItemStaffProxyFalse";
-            this.ToolStripMenuItemStaffProxyFalse.Size = new System.Drawing.Size(295, 22);
-            this.ToolStripMenuItemStaffProxyFalse.Text = "代番を解除する";
-            this.ToolStripMenuItemStaffProxyFalse.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemStaffProxyFalse.Name = "ToolStripMenuItemStaffProxyFalse";
+            ToolStripMenuItemStaffProxyFalse.Size = new Size(295, 22);
+            ToolStripMenuItemStaffProxyFalse.Text = "代番を解除する";
+            ToolStripMenuItemStaffProxyFalse.Click += ToolStripMenuItem_Click;
             // 
             // toolStripSeparator3
             // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(292, 6);
+            toolStripSeparator3.Name = "toolStripSeparator3";
+            toolStripSeparator3.Size = new Size(292, 6);
             // 
             // ToolStripMenuItemStaffMemo
             // 
-            this.ToolStripMenuItemStaffMemo.Name = "ToolStripMenuItemStaffMemo";
-            this.ToolStripMenuItemStaffMemo.Size = new System.Drawing.Size(295, 22);
-            this.ToolStripMenuItemStaffMemo.Text = "メモを作成・編集する";
-            this.ToolStripMenuItemStaffMemo.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemStaffMemo.Name = "ToolStripMenuItemStaffMemo";
+            ToolStripMenuItemStaffMemo.Size = new Size(295, 22);
+            ToolStripMenuItemStaffMemo.Text = "メモを作成・編集する";
+            ToolStripMenuItemStaffMemo.Click += ToolStripMenuItem_Click;
             // 
             // toolStripSeparator5
             // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(292, 6);
+            toolStripSeparator5.Name = "toolStripSeparator5";
+            toolStripSeparator5.Size = new Size(292, 6);
             // 
             // ToolStripMenuItemOccupation10
             // 
-            this.ToolStripMenuItemOccupation10.Name = "ToolStripMenuItemOccupation10";
-            this.ToolStripMenuItemOccupation10.Size = new System.Drawing.Size(295, 22);
-            this.ToolStripMenuItemOccupation10.Text = "運転手の料金設定にする（運賃コードによる）";
-            this.ToolStripMenuItemOccupation10.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemOccupation10.Name = "ToolStripMenuItemOccupation10";
+            ToolStripMenuItemOccupation10.Size = new Size(295, 22);
+            ToolStripMenuItemOccupation10.Text = "運転手の料金設定にする（運賃コードによる）";
+            ToolStripMenuItemOccupation10.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemOccupation11
             // 
-            this.ToolStripMenuItemOccupation11.Name = "ToolStripMenuItemOccupation11";
-            this.ToolStripMenuItemOccupation11.Size = new System.Drawing.Size(295, 22);
-            this.ToolStripMenuItemOccupation11.Text = "作業員の料金設定にする";
-            this.ToolStripMenuItemOccupation11.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemOccupation11.Name = "ToolStripMenuItemOccupation11";
+            ToolStripMenuItemOccupation11.Size = new Size(295, 22);
+            ToolStripMenuItemOccupation11.Text = "作業員の料金設定にする";
+            ToolStripMenuItemOccupation11.Click += ToolStripMenuItem_Click;
             // 
             // toolStripSeparator8
             // 
-            this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(292, 6);
+            toolStripSeparator8.Name = "toolStripSeparator8";
+            toolStripSeparator8.Size = new Size(292, 6);
             // 
             // ToolStripMenuItemTelephoneMarkTrue
             // 
-            this.ToolStripMenuItemTelephoneMarkTrue.Name = "ToolStripMenuItemTelephoneMarkTrue";
-            this.ToolStripMenuItemTelephoneMarkTrue.Size = new System.Drawing.Size(295, 22);
-            this.ToolStripMenuItemTelephoneMarkTrue.Text = "電話連絡マークを付ける";
-            this.ToolStripMenuItemTelephoneMarkTrue.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemTelephoneMarkTrue.Name = "ToolStripMenuItemTelephoneMarkTrue";
+            ToolStripMenuItemTelephoneMarkTrue.Size = new Size(295, 22);
+            ToolStripMenuItemTelephoneMarkTrue.Text = "電話連絡マークを付ける";
+            ToolStripMenuItemTelephoneMarkTrue.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemTelephoneMarkFalse
             // 
-            this.ToolStripMenuItemTelephoneMarkFalse.Name = "ToolStripMenuItemTelephoneMarkFalse";
-            this.ToolStripMenuItemTelephoneMarkFalse.Size = new System.Drawing.Size(295, 22);
-            this.ToolStripMenuItemTelephoneMarkFalse.Text = "電話連絡マークを消す";
-            this.ToolStripMenuItemTelephoneMarkFalse.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemTelephoneMarkFalse.Name = "ToolStripMenuItemTelephoneMarkFalse";
+            ToolStripMenuItemTelephoneMarkFalse.Size = new Size(295, 22);
+            ToolStripMenuItemTelephoneMarkFalse.Text = "電話連絡マークを消す";
+            ToolStripMenuItemTelephoneMarkFalse.Click += ToolStripMenuItem_Click;
             // 
             // ToolTip1
             // 
-            this.ToolTip1.AutoPopDelay = 5000;
-            this.ToolTip1.InitialDelay = 500;
-            this.ToolTip1.ReshowDelay = 0;
+            ToolTip1.AutoPopDelay = 5000;
+            ToolTip1.InitialDelay = 500;
+            ToolTip1.ReshowDelay = 0;
             // 
             // VehicleDispatchBoad
             // 
-            this.AllowDrop = true;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1904, 1041);
-            this.Controls.Add(this.TableLayoutPanelBase);
-            this.DoubleBuffered = true;
-            this.KeyPreview = true;
-            this.MainMenuStrip = this.MenuStrip1;
-            this.Name = "VehicleDispatchBoad";
-            this.Text = "VehicleDispatchBoad";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.VehicleDispatchBoad_FormClosing);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.VehicleDispatchBoad_KeyDown);
-            this.TableLayoutPanelBase.ResumeLayout(false);
-            this.TableLayoutPanelBase.PerformLayout();
-            this.MenuStrip1.ResumeLayout(false);
-            this.MenuStrip1.PerformLayout();
-            this.StatusStrip1.ResumeLayout(false);
-            this.StatusStrip1.PerformLayout();
-            this.PanelUp.ResumeLayout(false);
-            this.PanelUp.PerformLayout();
-            this.TabControlExCenter.ResumeLayout(false);
-            this.TabPage1.ResumeLayout(false);
-            this.TabPage2.ResumeLayout(false);
-            this.TabControlExLeft.ResumeLayout(false);
-            this.TabPageSet.ResumeLayout(false);
-            this.TabPageCar.ResumeLayout(false);
-            this.TabPageFullEmployees.ResumeLayout(false);
-            this.TabPageLongTerm.ResumeLayout(false);
-            this.TabPagePartTime.ResumeLayout(false);
-            this.TabPageWindow.ResumeLayout(false);
-            this.TabControlExRight.ResumeLayout(false);
-            this.tabPage8.ResumeLayout(false);
-            this.TableLayoutPanelExCarBase.ResumeLayout(false);
-            this.TableLayoutPanelExCarBase.PerformLayout();
-            this.tabPage9.ResumeLayout(false);
-            this.TableLayoutPanelExFullTimeBase.ResumeLayout(false);
-            this.TableLayoutPanelExFullTimeBase.PerformLayout();
-            this.tabPage11.ResumeLayout(false);
-            this.TableLayoutPanelExPartTimeBase.ResumeLayout(false);
-            this.TableLayoutPanelExPartTimeBase.PerformLayout();
-            this.tabPage3.ResumeLayout(false);
-            this.TableLayoutPanelExCloseBase.ResumeLayout(false);
-            this.TableLayoutPanelExCloseBase.PerformLayout();
-            this.ContextMenuStripSetLabel.ResumeLayout(false);
-            this.ContextMenuStripCarLabel.ResumeLayout(false);
-            this.ContextMenuStripStaffLabel.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+            AllowDrop = true;
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1904, 1041);
+            Controls.Add(TableLayoutPanelBase);
+            DoubleBuffered = true;
+            KeyPreview = true;
+            MainMenuStrip = MenuStrip1;
+            Name = "VehicleDispatchBoad";
+            Text = "VehicleDispatchBoad";
+            FormClosing += VehicleDispatchBoad_FormClosing;
+            KeyDown += VehicleDispatchBoad_KeyDown;
+            TableLayoutPanelBase.ResumeLayout(false);
+            TableLayoutPanelBase.PerformLayout();
+            MenuStrip1.ResumeLayout(false);
+            MenuStrip1.PerformLayout();
+            StatusStrip1.ResumeLayout(false);
+            StatusStrip1.PerformLayout();
+            PanelUp.ResumeLayout(false);
+            PanelUp.PerformLayout();
+            TabControlExCenter.ResumeLayout(false);
+            TabPage1.ResumeLayout(false);
+            TabPage2.ResumeLayout(false);
+            TabControlExLeft.ResumeLayout(false);
+            TabPageSet.ResumeLayout(false);
+            TabPageCar.ResumeLayout(false);
+            TabPageFullEmployees.ResumeLayout(false);
+            TabPageLongTerm.ResumeLayout(false);
+            TabPagePartTime.ResumeLayout(false);
+            TabPageWindow.ResumeLayout(false);
+            TabControlExRight.ResumeLayout(false);
+            tabPage8.ResumeLayout(false);
+            TableLayoutPanelExCarBase.ResumeLayout(false);
+            TableLayoutPanelExCarBase.PerformLayout();
+            tabPage9.ResumeLayout(false);
+            TableLayoutPanelExFullTimeBase.ResumeLayout(false);
+            TableLayoutPanelExFullTimeBase.PerformLayout();
+            tabPage11.ResumeLayout(false);
+            TableLayoutPanelExPartTimeBase.ResumeLayout(false);
+            TableLayoutPanelExPartTimeBase.PerformLayout();
+            tabPage3.ResumeLayout(false);
+            TableLayoutPanelExCloseBase.ResumeLayout(false);
+            TableLayoutPanelExCloseBase.PerformLayout();
+            ContextMenuStripSetLabel.ResumeLayout(false);
+            ContextMenuStripCarLabel.ResumeLayout(false);
+            ContextMenuStripStaffLabel.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion
@@ -1666,7 +1598,6 @@
         private ToolStripMenuItem ToolStripMenuItemOperationFlagTrue;
         private ToolStripMenuItem ToolStripMenuItemOperationFlagFalse;
         private ToolStripMenuItem ToolStripMenuItemHighWayReport;
-        private Label label4;
         private ToolStripMenuItem ToolStripMenuItemOccupation10;
         private ToolStripMenuItem ToolStripMenuItemOccupation11;
         private ToolStripSeparator toolStripSeparator8;

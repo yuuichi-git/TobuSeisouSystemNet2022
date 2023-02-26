@@ -10,7 +10,7 @@
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing) {
-            if (disposing && (components != null)) {
+            if(disposing && (components != null)) {
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -23,877 +23,783 @@
         ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("データベース接続");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("00　巡回指導資料");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("01　運転者台帳");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("02　運行管理規定");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("03　点呼記録簿・点呼執行要領");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("04　乗務記録(運転日報)");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("05　運行計画及び勤務割当表");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("06　乗務実績一覧表(拘束時間管理表)");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("07　運行記録計による記録");
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("08　運行指示書");
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("09　受注伝票");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("10　運行管理者・整備管理者選任届出書");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("11　運行管理者資格者証");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("12　運行管理者研修手帳");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("13　整備管理者研修手帳");
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("14　教育実施計画");
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("15　運転記録証明書又は無事故無違反証明書");
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("16　乗務員指導記録簿");
-            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("17　適性診断受診結果票");
-            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("18　適性診断受診計画表");
-            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("19　事故記録簿");
-            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("20　自動車事故報告書");
-            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("21　事業報告書・事業実績報告書");
-            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("22　役員変更届出書");
-            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("23　車両台帳・自動車検査証の写し");
-            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("24　整備管理規定等の規定類");
-            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("25　点検整備記録簿");
-            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("26　日常点検基準");
-            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("27　日常点検表");
-            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("28　定期点検基準");
-            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("29　定期点検整備実施計画表");
-            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("30　賃金台帳");
-            System.Windows.Forms.TreeNode treeNode33 = new System.Windows.Forms.TreeNode("31　健康診断書・健康診断記録簿");
-            System.Windows.Forms.TreeNode treeNode34 = new System.Windows.Forms.TreeNode("32　就業規則");
-            System.Windows.Forms.TreeNode treeNode35 = new System.Windows.Forms.TreeNode("33　３６協定");
-            System.Windows.Forms.TreeNode treeNode36 = new System.Windows.Forms.TreeNode("34　出勤簿");
-            System.Windows.Forms.TreeNode treeNode37 = new System.Windows.Forms.TreeNode("35　運輸安全マネジメント関係");
-            System.Windows.Forms.TreeNode treeNode38 = new System.Windows.Forms.TreeNode("36　労災保険加入台帳");
-            System.Windows.Forms.TreeNode treeNode39 = new System.Windows.Forms.TreeNode("37　雇用保険加入台帳");
-            System.Windows.Forms.TreeNode treeNode40 = new System.Windows.Forms.TreeNode("38　健康保険加入台帳・厚生年金加入台帳");
-            System.Windows.Forms.TreeNode treeNode41 = new System.Windows.Forms.TreeNode("陸運局監査", new System.Windows.Forms.TreeNode[] {
-            treeNode2,
-            treeNode3,
-            treeNode4,
-            treeNode5,
-            treeNode6,
-            treeNode7,
-            treeNode8,
-            treeNode9,
-            treeNode10,
-            treeNode11,
-            treeNode12,
-            treeNode13,
-            treeNode14,
-            treeNode15,
-            treeNode16,
-            treeNode17,
-            treeNode18,
-            treeNode19,
-            treeNode20,
-            treeNode21,
-            treeNode22,
-            treeNode23,
-            treeNode24,
-            treeNode25,
-            treeNode26,
-            treeNode27,
-            treeNode28,
-            treeNode29,
-            treeNode30,
-            treeNode31,
-            treeNode32,
-            treeNode33,
-            treeNode34,
-            treeNode35,
-            treeNode36,
-            treeNode37,
-            treeNode38,
-            treeNode39,
-            treeNode40});
-            System.Windows.Forms.TreeNode treeNode42 = new System.Windows.Forms.TreeNode("　　環境マネジメントマニュアル");
-            System.Windows.Forms.TreeNode treeNode43 = new System.Windows.Forms.TreeNode("１　目的");
-            System.Windows.Forms.TreeNode treeNode44 = new System.Windows.Forms.TreeNode("２　適用範囲");
-            System.Windows.Forms.TreeNode treeNode45 = new System.Windows.Forms.TreeNode("３　用語の定義");
-            System.Windows.Forms.TreeNode treeNode46 = new System.Windows.Forms.TreeNode("４.１　外部及び内部の課題");
-            System.Windows.Forms.TreeNode treeNode47 = new System.Windows.Forms.TreeNode("４.２　利害関係者のニーズ及び期待");
-            System.Windows.Forms.TreeNode treeNode48 = new System.Windows.Forms.TreeNode("４.３　環境マネジメントシステムの範囲");
-            System.Windows.Forms.TreeNode treeNode49 = new System.Windows.Forms.TreeNode("４.４　環境マネジメントシステムの概要");
-            System.Windows.Forms.TreeNode treeNode50 = new System.Windows.Forms.TreeNode("４　当社をとりまく状況の理解", new System.Windows.Forms.TreeNode[] {
-            treeNode46,
-            treeNode47,
-            treeNode48,
-            treeNode49});
-            System.Windows.Forms.TreeNode treeNode51 = new System.Windows.Forms.TreeNode("５.１　リーダーシップ及びコミットメント");
-            System.Windows.Forms.TreeNode treeNode52 = new System.Windows.Forms.TreeNode("５.２　環境方針");
-            System.Windows.Forms.TreeNode treeNode53 = new System.Windows.Forms.TreeNode("５.３　役割、責任及び権限");
-            System.Windows.Forms.TreeNode treeNode54 = new System.Windows.Forms.TreeNode("５　リーダーシップ", new System.Windows.Forms.TreeNode[] {
-            treeNode51,
-            treeNode52,
-            treeNode53});
-            System.Windows.Forms.TreeNode treeNode55 = new System.Windows.Forms.TreeNode("６.１.１　リスク及び機会の決定");
-            System.Windows.Forms.TreeNode treeNode56 = new System.Windows.Forms.TreeNode("６.１.２　環境側面");
-            System.Windows.Forms.TreeNode treeNode57 = new System.Windows.Forms.TreeNode("６.１.３　順守義務(法的及びその他の要求事項)");
-            System.Windows.Forms.TreeNode treeNode58 = new System.Windows.Forms.TreeNode("６.１.４　取組みの計画策定");
-            System.Windows.Forms.TreeNode treeNode59 = new System.Windows.Forms.TreeNode("６.１　リスク及び機会への取組み", new System.Windows.Forms.TreeNode[] {
-            treeNode55,
-            treeNode56,
-            treeNode57,
-            treeNode58});
-            System.Windows.Forms.TreeNode treeNode60 = new System.Windows.Forms.TreeNode("６.２　環境目標及びプログラム");
-            System.Windows.Forms.TreeNode treeNode61 = new System.Windows.Forms.TreeNode("６　計画", new System.Windows.Forms.TreeNode[] {
-            treeNode59,
-            treeNode60});
-            System.Windows.Forms.TreeNode treeNode62 = new System.Windows.Forms.TreeNode("７.１　資源");
-            System.Windows.Forms.TreeNode treeNode63 = new System.Windows.Forms.TreeNode("７.２.１　力量(有資格者)");
-            System.Windows.Forms.TreeNode treeNode64 = new System.Windows.Forms.TreeNode("７.２.２　教育訓練");
-            System.Windows.Forms.TreeNode treeNode65 = new System.Windows.Forms.TreeNode("７.２　力量、教育訓練", new System.Windows.Forms.TreeNode[] {
-            treeNode63,
-            treeNode64});
-            System.Windows.Forms.TreeNode treeNode66 = new System.Windows.Forms.TreeNode("７.３　認識");
-            System.Windows.Forms.TreeNode treeNode67 = new System.Windows.Forms.TreeNode("７.４　コミュニケーション");
-            System.Windows.Forms.TreeNode treeNode68 = new System.Windows.Forms.TreeNode("７.５　文章管理");
-            System.Windows.Forms.TreeNode treeNode69 = new System.Windows.Forms.TreeNode("７　支援(サポート)", new System.Windows.Forms.TreeNode[] {
-            treeNode62,
-            treeNode65,
-            treeNode66,
-            treeNode67,
-            treeNode68});
-            System.Windows.Forms.TreeNode treeNode70 = new System.Windows.Forms.TreeNode("８.１　運用の計画及び管理");
-            System.Windows.Forms.TreeNode treeNode71 = new System.Windows.Forms.TreeNode("８.２.１　緊急事態の可能性の特定");
-            System.Windows.Forms.TreeNode treeNode72 = new System.Windows.Forms.TreeNode("８.２.２　緊急事態対応手順書の作成");
-            System.Windows.Forms.TreeNode treeNode73 = new System.Windows.Forms.TreeNode("８.２.３　緊急事態対応訓練(対応手順のテスト)");
-            System.Windows.Forms.TreeNode treeNode74 = new System.Windows.Forms.TreeNode("８.２.４　手順書の見直し");
-            System.Windows.Forms.TreeNode treeNode75 = new System.Windows.Forms.TreeNode("８.２.５　取引先を含む利害関係者への情報提供");
-            System.Windows.Forms.TreeNode treeNode76 = new System.Windows.Forms.TreeNode("８.２　緊急事態への準備及び対応", new System.Windows.Forms.TreeNode[] {
-            treeNode71,
-            treeNode72,
-            treeNode73,
-            treeNode74,
-            treeNode75});
-            System.Windows.Forms.TreeNode treeNode77 = new System.Windows.Forms.TreeNode("８　運用", new System.Windows.Forms.TreeNode[] {
-            treeNode70,
-            treeNode76});
-            System.Windows.Forms.TreeNode treeNode78 = new System.Windows.Forms.TreeNode("９.１.１　取組みの項目の監視、測定");
-            System.Windows.Forms.TreeNode treeNode79 = new System.Windows.Forms.TreeNode("９.１.２　順守評価(法的及びその他の要求事項)");
-            System.Windows.Forms.TreeNode treeNode80 = new System.Windows.Forms.TreeNode("９.１　監視、測定、分析及び評価", new System.Windows.Forms.TreeNode[] {
-            treeNode78,
-            treeNode79});
-            System.Windows.Forms.TreeNode treeNode81 = new System.Windows.Forms.TreeNode("９.２　内部監査");
-            System.Windows.Forms.TreeNode treeNode82 = new System.Windows.Forms.TreeNode("９.３　経営層による見直し(マネジメントレビュー)");
-            System.Windows.Forms.TreeNode treeNode83 = new System.Windows.Forms.TreeNode("９　パフォーマンス評価", new System.Windows.Forms.TreeNode[] {
-            treeNode80,
-            treeNode81,
-            treeNode82});
-            System.Windows.Forms.TreeNode treeNode84 = new System.Windows.Forms.TreeNode("１０.１　一般");
-            System.Windows.Forms.TreeNode treeNode85 = new System.Windows.Forms.TreeNode("１０.２　不適合への対応");
-            System.Windows.Forms.TreeNode treeNode86 = new System.Windows.Forms.TreeNode("１０.３　継続的改善");
-            System.Windows.Forms.TreeNode treeNode87 = new System.Windows.Forms.TreeNode("１０改善", new System.Windows.Forms.TreeNode[] {
-            treeNode84,
-            treeNode85,
-            treeNode86});
-            System.Windows.Forms.TreeNode treeNode88 = new System.Windows.Forms.TreeNode("ISO14001", new System.Windows.Forms.TreeNode[] {
-            treeNode42,
-            treeNode43,
-            treeNode44,
-            treeNode45,
-            treeNode50,
-            treeNode54,
-            treeNode61,
-            treeNode69,
-            treeNode77,
-            treeNode83,
-            treeNode87});
-            System.Windows.Forms.TreeNode treeNode89 = new System.Windows.Forms.TreeNode("本社営業所");
-            System.Windows.Forms.TreeNode treeNode90 = new System.Windows.Forms.TreeNode("三郷車庫");
-            System.Windows.Forms.TreeNode treeNode91 = new System.Windows.Forms.TreeNode("中間処理場");
-            System.Windows.Forms.TreeNode treeNode92 = new System.Windows.Forms.TreeNode("事故受付");
-            this.TableLayoutPanelBase = new System.Windows.Forms.TableLayoutPanel();
-            this.MenuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.ToolStripMenuItemMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
-            this.StatusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.ToolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.TableLayoutPanelCenter = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.ButtonDbConnect = new System.Windows.Forms.Button();
-            this.LabelServerName = new System.Windows.Forms.Label();
-            this.LabelDbName = new System.Windows.Forms.Label();
-            this.LabelConnectStatus = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.TableLayoutPanelLeft = new System.Windows.Forms.TableLayoutPanel();
-            this.PanelLeftMiddle = new System.Windows.Forms.Panel();
-            this.TreeView1 = new System.Windows.Forms.TreeView();
-            this.PanelLeftTop = new System.Windows.Forms.Panel();
-            this.LabelIpAddress = new System.Windows.Forms.Label();
-            this.LabelPcName = new System.Windows.Forms.Label();
-            this.TableLayoutPanelBase.SuspendLayout();
-            this.MenuStrip1.SuspendLayout();
-            this.StatusStrip1.SuspendLayout();
-            this.TableLayoutPanelCenter.SuspendLayout();
-            this.TableLayoutPanelLeft.SuspendLayout();
-            this.PanelLeftMiddle.SuspendLayout();
-            this.PanelLeftTop.SuspendLayout();
-            this.SuspendLayout();
+            TreeNode treeNode1 = new TreeNode("データベース接続");
+            TreeNode treeNode2 = new TreeNode("00　巡回指導資料");
+            TreeNode treeNode3 = new TreeNode("01　運転者台帳");
+            TreeNode treeNode4 = new TreeNode("02　運行管理規定");
+            TreeNode treeNode5 = new TreeNode("03　点呼記録簿・点呼執行要領");
+            TreeNode treeNode6 = new TreeNode("04　乗務記録(運転日報)");
+            TreeNode treeNode7 = new TreeNode("05　運行計画及び勤務割当表");
+            TreeNode treeNode8 = new TreeNode("06　乗務実績一覧表(拘束時間管理表)");
+            TreeNode treeNode9 = new TreeNode("07　運行記録計による記録");
+            TreeNode treeNode10 = new TreeNode("08　運行指示書");
+            TreeNode treeNode11 = new TreeNode("09　受注伝票");
+            TreeNode treeNode12 = new TreeNode("10　運行管理者・整備管理者選任届出書");
+            TreeNode treeNode13 = new TreeNode("11　運行管理者資格者証");
+            TreeNode treeNode14 = new TreeNode("12　運行管理者研修手帳");
+            TreeNode treeNode15 = new TreeNode("13　整備管理者研修手帳");
+            TreeNode treeNode16 = new TreeNode("14　教育実施計画");
+            TreeNode treeNode17 = new TreeNode("15　運転記録証明書又は無事故無違反証明書");
+            TreeNode treeNode18 = new TreeNode("16　乗務員指導記録簿");
+            TreeNode treeNode19 = new TreeNode("17　適性診断受診結果票");
+            TreeNode treeNode20 = new TreeNode("18　適性診断受診計画表");
+            TreeNode treeNode21 = new TreeNode("19　事故記録簿");
+            TreeNode treeNode22 = new TreeNode("20　自動車事故報告書");
+            TreeNode treeNode23 = new TreeNode("21　事業報告書・事業実績報告書");
+            TreeNode treeNode24 = new TreeNode("22　役員変更届出書");
+            TreeNode treeNode25 = new TreeNode("23　車両台帳・自動車検査証の写し");
+            TreeNode treeNode26 = new TreeNode("24　整備管理規定等の規定類");
+            TreeNode treeNode27 = new TreeNode("25　点検整備記録簿");
+            TreeNode treeNode28 = new TreeNode("26　日常点検基準");
+            TreeNode treeNode29 = new TreeNode("27　日常点検表");
+            TreeNode treeNode30 = new TreeNode("28　定期点検基準");
+            TreeNode treeNode31 = new TreeNode("29　定期点検整備実施計画表");
+            TreeNode treeNode32 = new TreeNode("30　賃金台帳");
+            TreeNode treeNode33 = new TreeNode("31　健康診断書・健康診断記録簿");
+            TreeNode treeNode34 = new TreeNode("32　就業規則");
+            TreeNode treeNode35 = new TreeNode("33　３６協定");
+            TreeNode treeNode36 = new TreeNode("34　出勤簿");
+            TreeNode treeNode37 = new TreeNode("35　運輸安全マネジメント関係");
+            TreeNode treeNode38 = new TreeNode("36　労災保険加入台帳");
+            TreeNode treeNode39 = new TreeNode("37　雇用保険加入台帳");
+            TreeNode treeNode40 = new TreeNode("38　健康保険加入台帳・厚生年金加入台帳");
+            TreeNode treeNode41 = new TreeNode("陸運局監査", new TreeNode[] { treeNode2, treeNode3, treeNode4, treeNode5, treeNode6, treeNode7, treeNode8, treeNode9, treeNode10, treeNode11, treeNode12, treeNode13, treeNode14, treeNode15, treeNode16, treeNode17, treeNode18, treeNode19, treeNode20, treeNode21, treeNode22, treeNode23, treeNode24, treeNode25, treeNode26, treeNode27, treeNode28, treeNode29, treeNode30, treeNode31, treeNode32, treeNode33, treeNode34, treeNode35, treeNode36, treeNode37, treeNode38, treeNode39, treeNode40 });
+            TreeNode treeNode42 = new TreeNode("　　環境マネジメントマニュアル");
+            TreeNode treeNode43 = new TreeNode("１　目的");
+            TreeNode treeNode44 = new TreeNode("２　適用範囲");
+            TreeNode treeNode45 = new TreeNode("３　用語の定義");
+            TreeNode treeNode46 = new TreeNode("４.１　外部及び内部の課題");
+            TreeNode treeNode47 = new TreeNode("４.２　利害関係者のニーズ及び期待");
+            TreeNode treeNode48 = new TreeNode("４.３　環境マネジメントシステムの範囲");
+            TreeNode treeNode49 = new TreeNode("４.４　環境マネジメントシステムの概要");
+            TreeNode treeNode50 = new TreeNode("４　当社をとりまく状況の理解", new TreeNode[] { treeNode46, treeNode47, treeNode48, treeNode49 });
+            TreeNode treeNode51 = new TreeNode("５.１　リーダーシップ及びコミットメント");
+            TreeNode treeNode52 = new TreeNode("５.２　環境方針");
+            TreeNode treeNode53 = new TreeNode("５.３　役割、責任及び権限");
+            TreeNode treeNode54 = new TreeNode("５　リーダーシップ", new TreeNode[] { treeNode51, treeNode52, treeNode53 });
+            TreeNode treeNode55 = new TreeNode("６.１.１　リスク及び機会の決定");
+            TreeNode treeNode56 = new TreeNode("６.１.２　環境側面");
+            TreeNode treeNode57 = new TreeNode("６.１.３　順守義務(法的及びその他の要求事項)");
+            TreeNode treeNode58 = new TreeNode("６.１.４　取組みの計画策定");
+            TreeNode treeNode59 = new TreeNode("６.１　リスク及び機会への取組み", new TreeNode[] { treeNode55, treeNode56, treeNode57, treeNode58 });
+            TreeNode treeNode60 = new TreeNode("６.２　環境目標及びプログラム");
+            TreeNode treeNode61 = new TreeNode("６　計画", new TreeNode[] { treeNode59, treeNode60 });
+            TreeNode treeNode62 = new TreeNode("７.１　資源");
+            TreeNode treeNode63 = new TreeNode("７.２.１　力量(有資格者)");
+            TreeNode treeNode64 = new TreeNode("７.２.２　教育訓練");
+            TreeNode treeNode65 = new TreeNode("７.２　力量、教育訓練", new TreeNode[] { treeNode63, treeNode64 });
+            TreeNode treeNode66 = new TreeNode("７.３　認識");
+            TreeNode treeNode67 = new TreeNode("７.４　コミュニケーション");
+            TreeNode treeNode68 = new TreeNode("７.５　文章管理");
+            TreeNode treeNode69 = new TreeNode("７　支援(サポート)", new TreeNode[] { treeNode62, treeNode65, treeNode66, treeNode67, treeNode68 });
+            TreeNode treeNode70 = new TreeNode("８.１　運用の計画及び管理");
+            TreeNode treeNode71 = new TreeNode("８.２.１　緊急事態の可能性の特定");
+            TreeNode treeNode72 = new TreeNode("８.２.２　緊急事態対応手順書の作成");
+            TreeNode treeNode73 = new TreeNode("８.２.３　緊急事態対応訓練(対応手順のテスト)");
+            TreeNode treeNode74 = new TreeNode("８.２.４　手順書の見直し");
+            TreeNode treeNode75 = new TreeNode("８.２.５　取引先を含む利害関係者への情報提供");
+            TreeNode treeNode76 = new TreeNode("８.２　緊急事態への準備及び対応", new TreeNode[] { treeNode71, treeNode72, treeNode73, treeNode74, treeNode75 });
+            TreeNode treeNode77 = new TreeNode("８　運用", new TreeNode[] { treeNode70, treeNode76 });
+            TreeNode treeNode78 = new TreeNode("９.１.１　取組みの項目の監視、測定");
+            TreeNode treeNode79 = new TreeNode("９.１.２　順守評価(法的及びその他の要求事項)");
+            TreeNode treeNode80 = new TreeNode("９.１　監視、測定、分析及び評価", new TreeNode[] { treeNode78, treeNode79 });
+            TreeNode treeNode81 = new TreeNode("９.２　内部監査");
+            TreeNode treeNode82 = new TreeNode("９.３　経営層による見直し(マネジメントレビュー)");
+            TreeNode treeNode83 = new TreeNode("９　パフォーマンス評価", new TreeNode[] { treeNode80, treeNode81, treeNode82 });
+            TreeNode treeNode84 = new TreeNode("１０.１　一般");
+            TreeNode treeNode85 = new TreeNode("１０.２　不適合への対応");
+            TreeNode treeNode86 = new TreeNode("１０.３　継続的改善");
+            TreeNode treeNode87 = new TreeNode("１０改善", new TreeNode[] { treeNode84, treeNode85, treeNode86 });
+            TreeNode treeNode88 = new TreeNode("ISO14001", new TreeNode[] { treeNode42, treeNode43, treeNode44, treeNode45, treeNode50, treeNode54, treeNode61, treeNode69, treeNode77, treeNode83, treeNode87 });
+            TreeNode treeNode89 = new TreeNode("本社営業所");
+            TreeNode treeNode90 = new TreeNode("三郷車庫");
+            TreeNode treeNode91 = new TreeNode("中間処理場");
+            TreeNode treeNode92 = new TreeNode("事故受付");
+            TableLayoutPanelBase = new TableLayoutPanel();
+            MenuStrip1 = new MenuStrip();
+            ToolStripMenuItemMenu = new ToolStripMenuItem();
+            ToolStripMenuItemExit = new ToolStripMenuItem();
+            ToolStripMenuItemHelp = new ToolStripMenuItem();
+            StatusStrip1 = new StatusStrip();
+            ToolStripStatusLabel1 = new ToolStripStatusLabel();
+            TableLayoutPanelCenter = new TableLayoutPanel();
+            label1 = new Label();
+            label2 = new Label();
+            ButtonDbConnect = new Button();
+            LabelServerName = new Label();
+            LabelDbName = new Label();
+            LabelConnectStatus = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            label5 = new Label();
+            label24 = new Label();
+            label25 = new Label();
+            label23 = new Label();
+            label22 = new Label();
+            label19 = new Label();
+            label18 = new Label();
+            label7 = new Label();
+            label6 = new Label();
+            label21 = new Label();
+            label20 = new Label();
+            label17 = new Label();
+            label16 = new Label();
+            label13 = new Label();
+            label12 = new Label();
+            label15 = new Label();
+            label14 = new Label();
+            label11 = new Label();
+            label10 = new Label();
+            label9 = new Label();
+            label8 = new Label();
+            label26 = new Label();
+            label27 = new Label();
+            label29 = new Label();
+            label28 = new Label();
+            label30 = new Label();
+            label31 = new Label();
+            TableLayoutPanelLeft = new TableLayoutPanel();
+            PanelLeftMiddle = new Panel();
+            TreeView1 = new TreeView();
+            PanelLeftTop = new Panel();
+            LabelIpAddress = new Label();
+            LabelPcName = new Label();
+            PanelRight = new Panel();
+            label32 = new Label();
+            TableLayoutPanelBase.SuspendLayout();
+            MenuStrip1.SuspendLayout();
+            StatusStrip1.SuspendLayout();
+            TableLayoutPanelCenter.SuspendLayout();
+            TableLayoutPanelLeft.SuspendLayout();
+            PanelLeftMiddle.SuspendLayout();
+            PanelLeftTop.SuspendLayout();
+            PanelRight.SuspendLayout();
+            SuspendLayout();
             // 
             // TableLayoutPanelBase
             // 
-            this.TableLayoutPanelBase.ColumnCount = 3;
-            this.TableLayoutPanelBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300F));
-            this.TableLayoutPanelBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanelBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 300F));
-            this.TableLayoutPanelBase.Controls.Add(this.MenuStrip1, 0, 0);
-            this.TableLayoutPanelBase.Controls.Add(this.StatusStrip1, 0, 2);
-            this.TableLayoutPanelBase.Controls.Add(this.TableLayoutPanelCenter, 1, 1);
-            this.TableLayoutPanelBase.Controls.Add(this.TableLayoutPanelLeft, 0, 1);
-            this.TableLayoutPanelBase.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TableLayoutPanelBase.Location = new System.Drawing.Point(0, 0);
-            this.TableLayoutPanelBase.Name = "TableLayoutPanelBase";
-            this.TableLayoutPanelBase.RowCount = 3;
-            this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.TableLayoutPanelBase.Size = new System.Drawing.Size(1316, 761);
-            this.TableLayoutPanelBase.TabIndex = 0;
+            TableLayoutPanelBase.ColumnCount = 3;
+            TableLayoutPanelBase.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 300F));
+            TableLayoutPanelBase.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            TableLayoutPanelBase.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 300F));
+            TableLayoutPanelBase.Controls.Add(MenuStrip1, 0, 0);
+            TableLayoutPanelBase.Controls.Add(StatusStrip1, 0, 2);
+            TableLayoutPanelBase.Controls.Add(TableLayoutPanelCenter, 1, 1);
+            TableLayoutPanelBase.Controls.Add(TableLayoutPanelLeft, 0, 1);
+            TableLayoutPanelBase.Controls.Add(PanelRight, 2, 1);
+            TableLayoutPanelBase.Dock = DockStyle.Fill;
+            TableLayoutPanelBase.Location = new Point(0, 0);
+            TableLayoutPanelBase.Name = "TableLayoutPanelBase";
+            TableLayoutPanelBase.RowCount = 3;
+            TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
+            TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
+            TableLayoutPanelBase.Size = new Size(1316, 757);
+            TableLayoutPanelBase.TabIndex = 0;
             // 
             // MenuStrip1
             // 
-            this.TableLayoutPanelBase.SetColumnSpan(this.MenuStrip1, 3);
-            this.MenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemMenu,
-            this.ToolStripMenuItemHelp});
-            this.MenuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.MenuStrip1.Name = "MenuStrip1";
-            this.MenuStrip1.Size = new System.Drawing.Size(1316, 24);
-            this.MenuStrip1.TabIndex = 0;
-            this.MenuStrip1.Text = "menuStrip1";
+            TableLayoutPanelBase.SetColumnSpan(MenuStrip1, 3);
+            MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemHelp });
+            MenuStrip1.Location = new Point(0, 0);
+            MenuStrip1.Name = "MenuStrip1";
+            MenuStrip1.Size = new Size(1316, 24);
+            MenuStrip1.TabIndex = 0;
+            MenuStrip1.Text = "menuStrip1";
             // 
             // ToolStripMenuItemMenu
             // 
-            this.ToolStripMenuItemMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemExit});
-            this.ToolStripMenuItemMenu.Name = "ToolStripMenuItemMenu";
-            this.ToolStripMenuItemMenu.Size = new System.Drawing.Size(52, 20);
-            this.ToolStripMenuItemMenu.Text = "メニュー";
+            ToolStripMenuItemMenu.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemExit });
+            ToolStripMenuItemMenu.Name = "ToolStripMenuItemMenu";
+            ToolStripMenuItemMenu.Size = new Size(52, 20);
+            ToolStripMenuItemMenu.Text = "メニュー";
             // 
             // ToolStripMenuItemExit
             // 
-            this.ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
-            this.ToolStripMenuItemExit.Size = new System.Drawing.Size(195, 22);
-            this.ToolStripMenuItemExit.Text = "アプリケーションを終了する";
-            this.ToolStripMenuItemExit.Click += new System.EventHandler(this.ToolStripMenuItemExit_Click);
+            ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
+            ToolStripMenuItemExit.Size = new Size(195, 22);
+            ToolStripMenuItemExit.Text = "アプリケーションを終了する";
+            ToolStripMenuItemExit.Click += ToolStripMenuItemExit_Click;
             // 
             // ToolStripMenuItemHelp
             // 
-            this.ToolStripMenuItemHelp.Name = "ToolStripMenuItemHelp";
-            this.ToolStripMenuItemHelp.Size = new System.Drawing.Size(48, 20);
-            this.ToolStripMenuItemHelp.Text = "ヘルプ";
+            ToolStripMenuItemHelp.Name = "ToolStripMenuItemHelp";
+            ToolStripMenuItemHelp.Size = new Size(48, 20);
+            ToolStripMenuItemHelp.Text = "ヘルプ";
             // 
             // StatusStrip1
             // 
-            this.TableLayoutPanelBase.SetColumnSpan(this.StatusStrip1, 3);
-            this.StatusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripStatusLabel1});
-            this.StatusStrip1.Location = new System.Drawing.Point(0, 739);
-            this.StatusStrip1.Name = "StatusStrip1";
-            this.StatusStrip1.Size = new System.Drawing.Size(1316, 22);
-            this.StatusStrip1.SizingGrip = false;
-            this.StatusStrip1.TabIndex = 1;
-            this.StatusStrip1.Text = "statusStrip1";
+            TableLayoutPanelBase.SetColumnSpan(StatusStrip1, 3);
+            StatusStrip1.Items.AddRange(new ToolStripItem[] { ToolStripStatusLabel1 });
+            StatusStrip1.Location = new Point(0, 735);
+            StatusStrip1.Name = "StatusStrip1";
+            StatusStrip1.Size = new Size(1316, 22);
+            StatusStrip1.SizingGrip = false;
+            StatusStrip1.TabIndex = 1;
+            StatusStrip1.Text = "statusStrip1";
             // 
             // ToolStripStatusLabel1
             // 
-            this.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1";
-            this.ToolStripStatusLabel1.Size = new System.Drawing.Size(39, 17);
-            this.ToolStripStatusLabel1.Text = "Status";
+            ToolStripStatusLabel1.Name = "ToolStripStatusLabel1";
+            ToolStripStatusLabel1.Size = new Size(39, 17);
+            ToolStripStatusLabel1.Text = "Status";
             // 
             // TableLayoutPanelCenter
             // 
-            this.TableLayoutPanelCenter.AutoScroll = true;
-            this.TableLayoutPanelCenter.ColumnCount = 2;
-            this.TableLayoutPanelCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanelCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
-            this.TableLayoutPanelCenter.Controls.Add(this.label1, 0, 0);
-            this.TableLayoutPanelCenter.Controls.Add(this.label2, 0, 1);
-            this.TableLayoutPanelCenter.Controls.Add(this.ButtonDbConnect, 1, 1);
-            this.TableLayoutPanelCenter.Controls.Add(this.LabelServerName, 0, 2);
-            this.TableLayoutPanelCenter.Controls.Add(this.LabelDbName, 0, 3);
-            this.TableLayoutPanelCenter.Controls.Add(this.LabelConnectStatus, 0, 4);
-            this.TableLayoutPanelCenter.Controls.Add(this.label3, 0, 6);
-            this.TableLayoutPanelCenter.Controls.Add(this.label4, 0, 7);
-            this.TableLayoutPanelCenter.Controls.Add(this.label5, 0, 8);
-            this.TableLayoutPanelCenter.Controls.Add(this.label24, 0, 10);
-            this.TableLayoutPanelCenter.Controls.Add(this.label25, 0, 11);
-            this.TableLayoutPanelCenter.Controls.Add(this.label23, 0, 41);
-            this.TableLayoutPanelCenter.Controls.Add(this.label22, 0, 40);
-            this.TableLayoutPanelCenter.Controls.Add(this.label19, 0, 38);
-            this.TableLayoutPanelCenter.Controls.Add(this.label18, 0, 37);
-            this.TableLayoutPanelCenter.Controls.Add(this.label7, 0, 35);
-            this.TableLayoutPanelCenter.Controls.Add(this.label6, 0, 34);
-            this.TableLayoutPanelCenter.Controls.Add(this.label21, 0, 32);
-            this.TableLayoutPanelCenter.Controls.Add(this.label20, 0, 31);
-            this.TableLayoutPanelCenter.Controls.Add(this.label17, 0, 29);
-            this.TableLayoutPanelCenter.Controls.Add(this.label16, 0, 28);
-            this.TableLayoutPanelCenter.Controls.Add(this.label13, 0, 26);
-            this.TableLayoutPanelCenter.Controls.Add(this.label12, 0, 25);
-            this.TableLayoutPanelCenter.Controls.Add(this.label15, 0, 23);
-            this.TableLayoutPanelCenter.Controls.Add(this.label14, 0, 22);
-            this.TableLayoutPanelCenter.Controls.Add(this.label11, 0, 20);
-            this.TableLayoutPanelCenter.Controls.Add(this.label10, 0, 19);
-            this.TableLayoutPanelCenter.Controls.Add(this.label9, 0, 17);
-            this.TableLayoutPanelCenter.Controls.Add(this.label8, 0, 16);
-            this.TableLayoutPanelCenter.Controls.Add(this.label26, 0, 13);
-            this.TableLayoutPanelCenter.Controls.Add(this.label27, 0, 14);
-            this.TableLayoutPanelCenter.Controls.Add(this.label29, 0, 47);
-            this.TableLayoutPanelCenter.Controls.Add(this.label28, 0, 46);
-            this.TableLayoutPanelCenter.Controls.Add(this.label30, 0, 43);
-            this.TableLayoutPanelCenter.Controls.Add(this.label31, 0, 44);
-            this.TableLayoutPanelCenter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TableLayoutPanelCenter.Location = new System.Drawing.Point(303, 27);
-            this.TableLayoutPanelCenter.Name = "TableLayoutPanelCenter";
-            this.TableLayoutPanelCenter.RowCount = 53;
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TableLayoutPanelCenter.Size = new System.Drawing.Size(710, 707);
-            this.TableLayoutPanelCenter.TabIndex = 2;
+            TableLayoutPanelCenter.AutoScroll = true;
+            TableLayoutPanelCenter.ColumnCount = 2;
+            TableLayoutPanelCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            TableLayoutPanelCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
+            TableLayoutPanelCenter.Controls.Add(label1, 0, 0);
+            TableLayoutPanelCenter.Controls.Add(label2, 0, 1);
+            TableLayoutPanelCenter.Controls.Add(ButtonDbConnect, 1, 1);
+            TableLayoutPanelCenter.Controls.Add(LabelServerName, 0, 2);
+            TableLayoutPanelCenter.Controls.Add(LabelDbName, 0, 3);
+            TableLayoutPanelCenter.Controls.Add(LabelConnectStatus, 0, 4);
+            TableLayoutPanelCenter.Controls.Add(label3, 0, 6);
+            TableLayoutPanelCenter.Controls.Add(label4, 0, 7);
+            TableLayoutPanelCenter.Controls.Add(label5, 0, 8);
+            TableLayoutPanelCenter.Controls.Add(label24, 0, 10);
+            TableLayoutPanelCenter.Controls.Add(label25, 0, 11);
+            TableLayoutPanelCenter.Controls.Add(label13, 0, 26);
+            TableLayoutPanelCenter.Controls.Add(label12, 0, 25);
+            TableLayoutPanelCenter.Controls.Add(label15, 0, 23);
+            TableLayoutPanelCenter.Controls.Add(label14, 0, 22);
+            TableLayoutPanelCenter.Controls.Add(label11, 0, 20);
+            TableLayoutPanelCenter.Controls.Add(label10, 0, 19);
+            TableLayoutPanelCenter.Controls.Add(label9, 0, 17);
+            TableLayoutPanelCenter.Controls.Add(label8, 0, 16);
+            TableLayoutPanelCenter.Controls.Add(label26, 0, 13);
+            TableLayoutPanelCenter.Controls.Add(label27, 0, 14);
+            TableLayoutPanelCenter.Controls.Add(label20, 0, 28);
+            TableLayoutPanelCenter.Controls.Add(label21, 0, 29);
+            TableLayoutPanelCenter.Controls.Add(label6, 0, 31);
+            TableLayoutPanelCenter.Controls.Add(label7, 0, 32);
+            TableLayoutPanelCenter.Dock = DockStyle.Fill;
+            TableLayoutPanelCenter.Location = new Point(303, 27);
+            TableLayoutPanelCenter.Name = "TableLayoutPanelCenter";
+            TableLayoutPanelCenter.RowCount = 53;
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            TableLayoutPanelCenter.Size = new Size(710, 703);
+            TableLayoutPanelCenter.TabIndex = 2;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(504, 30);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "データベース接続";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label1.AutoSize = true;
+            label1.Dock = DockStyle.Fill;
+            label1.Font = new Font("Yu Gothic UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = Color.Blue;
+            label1.Location = new Point(3, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(504, 30);
+            label1.TabIndex = 1;
+            label1.Text = "データベース接続";
+            label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(3, 30);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(504, 20);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "　データベースの接続と切断及びステータスを管理";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label2.AutoSize = true;
+            label2.Dock = DockStyle.Fill;
+            label2.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(3, 30);
+            label2.Name = "label2";
+            label2.Size = new Size(504, 20);
+            label2.TabIndex = 2;
+            label2.Text = "　データベースの接続と切断及びステータスを管理";
+            label2.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // ButtonDbConnect
             // 
-            this.ButtonDbConnect.Location = new System.Drawing.Point(513, 33);
-            this.ButtonDbConnect.Name = "ButtonDbConnect";
-            this.TableLayoutPanelCenter.SetRowSpan(this.ButtonDbConnect, 2);
-            this.ButtonDbConnect.Size = new System.Drawing.Size(175, 34);
-            this.ButtonDbConnect.TabIndex = 3;
-            this.ButtonDbConnect.Text = "データベース接続";
-            this.ButtonDbConnect.UseVisualStyleBackColor = true;
-            this.ButtonDbConnect.Click += new System.EventHandler(this.ButtonDbConnect_Click);
+            ButtonDbConnect.Location = new Point(513, 33);
+            ButtonDbConnect.Name = "ButtonDbConnect";
+            TableLayoutPanelCenter.SetRowSpan(ButtonDbConnect, 2);
+            ButtonDbConnect.Size = new Size(175, 34);
+            ButtonDbConnect.TabIndex = 3;
+            ButtonDbConnect.Text = "データベース接続";
+            ButtonDbConnect.UseVisualStyleBackColor = true;
+            ButtonDbConnect.Click += ButtonDbConnect_Click;
             // 
             // LabelServerName
             // 
-            this.LabelServerName.AutoSize = true;
-            this.LabelServerName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LabelServerName.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LabelServerName.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.LabelServerName.Location = new System.Drawing.Point(3, 50);
-            this.LabelServerName.Name = "LabelServerName";
-            this.LabelServerName.Size = new System.Drawing.Size(504, 20);
-            this.LabelServerName.TabIndex = 4;
-            this.LabelServerName.Text = "　接続先サーバー：";
-            this.LabelServerName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            LabelServerName.AutoSize = true;
+            LabelServerName.Dock = DockStyle.Fill;
+            LabelServerName.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            LabelServerName.ForeColor = SystemColors.GrayText;
+            LabelServerName.Location = new Point(3, 50);
+            LabelServerName.Name = "LabelServerName";
+            LabelServerName.Size = new Size(504, 20);
+            LabelServerName.TabIndex = 4;
+            LabelServerName.Text = "　接続先サーバー：";
+            LabelServerName.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // LabelDbName
             // 
-            this.LabelDbName.AutoSize = true;
-            this.LabelDbName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LabelDbName.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LabelDbName.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.LabelDbName.Location = new System.Drawing.Point(3, 70);
-            this.LabelDbName.Name = "LabelDbName";
-            this.LabelDbName.Size = new System.Drawing.Size(504, 20);
-            this.LabelDbName.TabIndex = 5;
-            this.LabelDbName.Text = "　接続先データベース：";
-            this.LabelDbName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            LabelDbName.AutoSize = true;
+            LabelDbName.Dock = DockStyle.Fill;
+            LabelDbName.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            LabelDbName.ForeColor = SystemColors.GrayText;
+            LabelDbName.Location = new Point(3, 70);
+            LabelDbName.Name = "LabelDbName";
+            LabelDbName.Size = new Size(504, 20);
+            LabelDbName.TabIndex = 5;
+            LabelDbName.Text = "　接続先データベース：";
+            LabelDbName.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // LabelConnectStatus
             // 
-            this.LabelConnectStatus.AutoSize = true;
-            this.LabelConnectStatus.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LabelConnectStatus.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LabelConnectStatus.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.LabelConnectStatus.Location = new System.Drawing.Point(3, 90);
-            this.LabelConnectStatus.Name = "LabelConnectStatus";
-            this.LabelConnectStatus.Size = new System.Drawing.Size(504, 20);
-            this.LabelConnectStatus.TabIndex = 6;
-            this.LabelConnectStatus.Text = "　状態：";
-            this.LabelConnectStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            LabelConnectStatus.AutoSize = true;
+            LabelConnectStatus.Dock = DockStyle.Fill;
+            LabelConnectStatus.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            LabelConnectStatus.ForeColor = SystemColors.GrayText;
+            LabelConnectStatus.Location = new Point(3, 90);
+            LabelConnectStatus.Name = "LabelConnectStatus";
+            LabelConnectStatus.Size = new Size(504, 20);
+            LabelConnectStatus.TabIndex = 6;
+            LabelConnectStatus.Text = "　状態：";
+            LabelConnectStatus.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Font = new System.Drawing.Font("Yu Gothic UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(3, 130);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(504, 30);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "アプリケーション";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label3.AutoSize = true;
+            label3.Dock = DockStyle.Fill;
+            label3.Font = new Font("Yu Gothic UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Location = new Point(3, 130);
+            label3.Name = "label3";
+            label3.Size = new Size(504, 30);
+            label3.TabIndex = 7;
+            label3.Text = "アプリケーション";
+            label3.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(3, 160);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(87, 17);
-            this.label4.TabIndex = 8;
-            this.label4.Tag = "VehicleDispatch";
-            this.label4.Text = "　配車システム";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label4.Click += new System.EventHandler(this.Label_Click);
-            this.label4.MouseEnter += new System.EventHandler(this.Label_MouseEnter);
-            this.label4.MouseLeave += new System.EventHandler(this.Label_MouseLeave);
+            label4.AutoSize = true;
+            label4.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Location = new Point(3, 160);
+            label4.Name = "label4";
+            label4.Size = new Size(87, 17);
+            label4.TabIndex = 8;
+            label4.Tag = "VehicleDispatch";
+            label4.Text = "　配車システム";
+            label4.TextAlign = ContentAlignment.MiddleLeft;
+            label4.Click += Label_Click;
+            label4.MouseEnter += Label_MouseEnter;
+            label4.MouseLeave += Label_MouseLeave;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label5.Location = new System.Drawing.Point(3, 180);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(348, 17);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "　従業員・車両等のパネルをドラッグ＆ドロップ操作で配車します。";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            label5.AutoSize = true;
+            label5.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.ForeColor = SystemColors.GrayText;
+            label5.Location = new Point(3, 180);
+            label5.Name = "label5";
+            label5.Size = new Size(348, 17);
+            label5.TabIndex = 9;
+            label5.Text = "　従業員・車両等のパネルをドラッグ＆ドロップ操作で配車します。";
+            label5.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label24
             // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label24.Location = new System.Drawing.Point(3, 220);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(60, 17);
-            this.label24.TabIndex = 28;
-            this.label24.Tag = "VehicleDispatchSheetBoad";
-            this.label24.Text = "　配車表";
-            this.label24.Click += new System.EventHandler(this.Label_Click);
-            this.label24.MouseEnter += new System.EventHandler(this.Label_MouseEnter);
-            this.label24.MouseLeave += new System.EventHandler(this.Label_MouseLeave);
+            label24.AutoSize = true;
+            label24.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label24.Location = new Point(3, 220);
+            label24.Name = "label24";
+            label24.Size = new Size(60, 17);
+            label24.TabIndex = 28;
+            label24.Tag = "VehicleDispatchSheetBoad";
+            label24.Text = "　配車表";
+            label24.Click += Label_Click;
+            label24.MouseEnter += Label_MouseEnter;
+            label24.MouseLeave += Label_MouseLeave;
             // 
             // label25
             // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label25.ForeColor = System.Drawing.Color.Gray;
-            this.label25.Location = new System.Drawing.Point(3, 240);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(170, 17);
-            this.label25.TabIndex = 29;
-            this.label25.Text = "　配車表を作成、印刷します。";
+            label25.AutoSize = true;
+            label25.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label25.ForeColor = Color.Gray;
+            label25.Location = new Point(3, 240);
+            label25.Name = "label25";
+            label25.Size = new Size(170, 17);
+            label25.TabIndex = 29;
+            label25.Text = "　配車表を作成、印刷します。";
             // 
             // label23
             // 
-            this.label23.AutoSize = true;
-            this.label23.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label23.Location = new System.Drawing.Point(3, 840);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(191, 15);
-            this.label23.TabIndex = 27;
-            this.label23.Text = "　アルバイトの出勤状況を管理します。";
+            label23.AutoSize = true;
+            label23.ForeColor = SystemColors.GrayText;
+            label23.Location = new Point(8, 156);
+            label23.Name = "label23";
+            label23.Size = new Size(191, 15);
+            label23.TabIndex = 27;
+            label23.Text = "　アルバイトの出勤状況を管理します。";
             // 
             // label22
             // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label22.Location = new System.Drawing.Point(3, 820);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(188, 17);
-            this.label22.TabIndex = 26;
-            this.label22.Tag = "AccountingParttimeList";
-            this.label22.Text = "　アルバイト出勤確認表（経理）";
-            this.label22.Click += new System.EventHandler(this.Label_Click);
-            this.label22.MouseEnter += new System.EventHandler(this.Label_MouseEnter);
-            this.label22.MouseLeave += new System.EventHandler(this.Label_MouseLeave);
+            label22.AutoSize = true;
+            label22.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label22.Location = new Point(8, 136);
+            label22.Name = "label22";
+            label22.Size = new Size(188, 17);
+            label22.TabIndex = 26;
+            label22.Tag = "AccountingParttimeList";
+            label22.Text = "　アルバイト出勤確認表（経理）";
+            label22.Click += Label_Click;
+            label22.MouseEnter += Label_MouseEnter;
+            label22.MouseLeave += Label_MouseLeave;
             // 
             // label19
             // 
-            this.label19.AutoSize = true;
-            this.label19.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label19.Location = new System.Drawing.Point(3, 780);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(203, 15);
-            this.label19.TabIndex = 23;
-            this.label19.Text = "　アルバイト等の出勤日数を管理します。";
+            label19.AutoSize = true;
+            label19.ForeColor = SystemColors.GrayText;
+            label19.Location = new Point(8, 108);
+            label19.Name = "label19";
+            label19.Size = new Size(203, 15);
+            label19.TabIndex = 23;
+            label19.Text = "　アルバイト等の出勤日数を管理します。";
             // 
             // label18
             // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label18.Location = new System.Drawing.Point(3, 760);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(151, 17);
-            this.label18.TabIndex = 22;
-            this.label18.Tag = "StaffExcel";
-            this.label18.Text = "　出勤日数管理（配車）";
-            this.label18.Click += new System.EventHandler(this.Label_Click);
-            this.label18.MouseEnter += new System.EventHandler(this.Label_MouseEnter);
-            this.label18.MouseLeave += new System.EventHandler(this.Label_MouseLeave);
+            label18.AutoSize = true;
+            label18.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label18.Location = new Point(8, 88);
+            label18.Name = "label18";
+            label18.Size = new Size(151, 17);
+            label18.TabIndex = 22;
+            label18.Tag = "StaffExcel";
+            label18.Text = "　出勤日数管理（配車）";
+            label18.Click += Label_Click;
+            label18.MouseEnter += Label_MouseEnter;
+            label18.MouseLeave += Label_MouseLeave;
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label7.Location = new System.Drawing.Point(3, 720);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(239, 15);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "　本番登録の新規及び修正や削除を行います。";
+            label7.AutoSize = true;
+            label7.ForeColor = SystemColors.GrayText;
+            label7.Location = new Point(3, 660);
+            label7.Name = "label7";
+            label7.Size = new Size(239, 15);
+            label7.TabIndex = 11;
+            label7.Text = "　本番登録の新規及び修正や削除を行います。";
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(3, 700);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(154, 17);
-            this.label6.TabIndex = 10;
-            this.label6.Tag = "ProductionOfficeList";
-            this.label6.Text = "　本番変更(社内での本番)";
-            this.label6.Click += new System.EventHandler(this.Label_Click);
-            this.label6.MouseEnter += new System.EventHandler(this.Label_MouseEnter);
-            this.label6.MouseLeave += new System.EventHandler(this.Label_MouseLeave);
+            label6.AutoSize = true;
+            label6.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.Location = new Point(3, 640);
+            label6.Name = "label6";
+            label6.Size = new Size(154, 17);
+            label6.TabIndex = 10;
+            label6.Tag = "ProductionOfficeList";
+            label6.Text = "　本番変更(社内での本番)";
+            label6.Click += Label_Click;
+            label6.MouseEnter += Label_MouseEnter;
+            label6.MouseLeave += Label_MouseLeave;
             // 
             // label21
             // 
-            this.label21.AutoSize = true;
-            this.label21.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label21.Location = new System.Drawing.Point(3, 660);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(239, 15);
-            this.label21.TabIndex = 25;
-            this.label21.Text = "　本番登録の新規及び修正や削除を行います。";
+            label21.AutoSize = true;
+            label21.ForeColor = SystemColors.GrayText;
+            label21.Location = new Point(3, 600);
+            label21.Name = "label21";
+            label21.Size = new Size(239, 15);
+            label21.TabIndex = 25;
+            label21.Text = "　本番登録の新規及び修正や削除を行います。";
             // 
             // label20
             // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label20.Location = new System.Drawing.Point(3, 640);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(185, 17);
-            this.label20.TabIndex = 24;
-            this.label20.Tag = "ProductionCleanOfficeList";
-            this.label20.Text = "　本番変更(登録されている本番)";
-            this.label20.Click += new System.EventHandler(this.Label_Click);
-            this.label20.MouseEnter += new System.EventHandler(this.Label_MouseEnter);
-            this.label20.MouseLeave += new System.EventHandler(this.Label_MouseLeave);
+            label20.AutoSize = true;
+            label20.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label20.Location = new Point(3, 580);
+            label20.Name = "label20";
+            label20.Size = new Size(185, 17);
+            label20.TabIndex = 24;
+            label20.Tag = "ProductionCleanOfficeList";
+            label20.Text = "　本番変更(登録されている本番)";
+            label20.Click += Label_Click;
+            label20.MouseEnter += Label_MouseEnter;
+            label20.MouseLeave += Label_MouseLeave;
             // 
             // label17
             // 
-            this.label17.AutoSize = true;
-            this.label17.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label17.Location = new System.Drawing.Point(3, 600);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(229, 15);
-            this.label17.TabIndex = 21;
-            this.label17.Text = "　通勤手段及び保険加入情報を管理します。";
+            label17.AutoSize = true;
+            label17.ForeColor = SystemColors.GrayText;
+            label17.Location = new Point(8, 60);
+            label17.Name = "label17";
+            label17.Size = new Size(229, 15);
+            label17.TabIndex = 21;
+            label17.Text = "　通勤手段及び保険加入情報を管理します。";
             // 
             // label16
             // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(3, 580);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(158, 17);
-            this.label16.TabIndex = 20;
-            this.label16.Tag = "CommuterInsuranceList";
-            this.label16.Text = "　通勤・任意保険加入状況";
-            this.label16.Click += new System.EventHandler(this.Label_Click);
-            this.label16.MouseEnter += new System.EventHandler(this.Label_MouseEnter);
-            this.label16.MouseLeave += new System.EventHandler(this.Label_MouseLeave);
+            label16.AutoSize = true;
+            label16.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label16.Location = new Point(8, 40);
+            label16.Name = "label16";
+            label16.Size = new Size(158, 17);
+            label16.TabIndex = 20;
+            label16.Tag = "CommuterInsuranceList";
+            label16.Text = "　通勤・任意保険加入状況";
+            label16.Click += Label_Click;
+            label16.MouseEnter += Label_MouseEnter;
+            label16.MouseLeave += Label_MouseLeave;
             // 
             // label13
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label13.Location = new System.Drawing.Point(3, 540);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(296, 17);
-            this.label13.TabIndex = 17;
-            this.label13.Text = "　車両事故・作業事故等のトラブルを記録管理します。";
+            label13.AutoSize = true;
+            label13.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label13.ForeColor = SystemColors.GrayText;
+            label13.Location = new Point(3, 540);
+            label13.Name = "label13";
+            label13.Size = new Size(296, 17);
+            label13.TabIndex = 17;
+            label13.Text = "　車両事故・作業事故等のトラブルを記録管理します。";
             // 
             // label12
             // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(3, 520);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(99, 17);
-            this.label12.TabIndex = 16;
-            this.label12.Tag = "CarAccidentList";
-            this.label12.Text = "　事故記録台帳";
-            this.label12.Click += new System.EventHandler(this.Label_Click);
-            this.label12.MouseEnter += new System.EventHandler(this.Label_MouseEnter);
-            this.label12.MouseLeave += new System.EventHandler(this.Label_MouseLeave);
+            label12.AutoSize = true;
+            label12.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label12.Location = new Point(3, 520);
+            label12.Name = "label12";
+            label12.Size = new Size(99, 17);
+            label12.TabIndex = 16;
+            label12.Tag = "CarAccidentList";
+            label12.Text = "　事故記録台帳";
+            label12.Click += Label_Click;
+            label12.MouseEnter += Label_MouseEnter;
+            label12.MouseLeave += Label_MouseLeave;
             // 
             // label15
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label15.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label15.Location = new System.Drawing.Point(3, 480);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(181, 17);
-            this.label15.TabIndex = 19;
-            this.label15.Text = "　車両の登録・修正を行います。";
+            label15.AutoSize = true;
+            label15.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label15.ForeColor = SystemColors.GrayText;
+            label15.Location = new Point(3, 480);
+            label15.Name = "label15";
+            label15.Size = new Size(181, 17);
+            label15.TabIndex = 19;
+            label15.Text = "　車両の登録・修正を行います。";
             // 
             // label14
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(3, 460);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(177, 17);
-            this.label14.TabIndex = 18;
-            this.label14.Tag = "CarList";
-            this.label14.Text = "　車両台帳（陸運局対応版）";
-            this.label14.Click += new System.EventHandler(this.Label_Click);
-            this.label14.MouseEnter += new System.EventHandler(this.Label_MouseEnter);
-            this.label14.MouseLeave += new System.EventHandler(this.Label_MouseLeave);
+            label14.AutoSize = true;
+            label14.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label14.Location = new Point(3, 460);
+            label14.Name = "label14";
+            label14.Size = new Size(177, 17);
+            label14.TabIndex = 18;
+            label14.Tag = "CarList";
+            label14.Text = "　車両台帳（陸運局対応版）";
+            label14.Click += Label_Click;
+            label14.MouseEnter += Label_MouseEnter;
+            label14.MouseLeave += Label_MouseLeave;
             // 
             // label11
             // 
-            this.label11.AutoSize = true;
-            this.label11.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label11.Location = new System.Drawing.Point(3, 420);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(171, 15);
-            this.label11.TabIndex = 15;
-            this.label11.Text = "　運転免許証の管理を行います。";
+            label11.AutoSize = true;
+            label11.ForeColor = SystemColors.GrayText;
+            label11.Location = new Point(3, 420);
+            label11.Name = "label11";
+            label11.Size = new Size(171, 15);
+            label11.TabIndex = 15;
+            label11.Text = "　運転免許証の管理を行います。";
             // 
             // label10
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(3, 400);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(86, 17);
-            this.label10.TabIndex = 14;
-            this.label10.Tag = "LicenseList";
-            this.label10.Text = "　免許証台帳";
-            this.label10.Click += new System.EventHandler(this.Label_Click);
-            this.label10.MouseEnter += new System.EventHandler(this.Label_MouseEnter);
-            this.label10.MouseLeave += new System.EventHandler(this.Label_MouseLeave);
+            label10.AutoSize = true;
+            label10.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.Location = new Point(3, 400);
+            label10.Name = "label10";
+            label10.Size = new Size(86, 17);
+            label10.TabIndex = 14;
+            label10.Tag = "LicenseList";
+            label10.Text = "　免許証台帳";
+            label10.Click += Label_Click;
+            label10.MouseEnter += Label_MouseEnter;
+            label10.MouseLeave += Label_MouseLeave;
             // 
             // label9
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.label9.Location = new System.Drawing.Point(3, 360);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(177, 15);
-            this.label9.TabIndex = 13;
-            this.label9.Text = "　従事者の登録・修正を行います。";
+            label9.AutoSize = true;
+            label9.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label9.ForeColor = SystemColors.GrayText;
+            label9.Location = new Point(3, 360);
+            label9.Name = "label9";
+            label9.Size = new Size(177, 15);
+            label9.TabIndex = 13;
+            label9.Text = "　従事者の登録・修正を行います。";
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(3, 340);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(190, 17);
-            this.label8.TabIndex = 12;
-            this.label8.Tag = "StaffList";
-            this.label8.Text = "　従事者台帳（陸運局対応版）";
-            this.label8.Click += new System.EventHandler(this.Label_Click);
-            this.label8.MouseEnter += new System.EventHandler(this.Label_MouseEnter);
-            this.label8.MouseLeave += new System.EventHandler(this.Label_MouseLeave);
+            label8.AutoSize = true;
+            label8.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.Location = new Point(3, 340);
+            label8.Name = "label8";
+            label8.Size = new Size(190, 17);
+            label8.TabIndex = 12;
+            label8.Tag = "StaffList";
+            label8.Text = "　従事者台帳（陸運局対応版）";
+            label8.Click += Label_Click;
+            label8.MouseEnter += Label_MouseEnter;
+            label8.MouseLeave += Label_MouseLeave;
             // 
             // label26
             // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label26.Location = new System.Drawing.Point(3, 280);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(190, 17);
-            this.label26.TabIndex = 30;
-            this.label26.Tag = "RollCallRecordBook";
-            this.label26.Text = "　点呼記録簿（陸運局対応版）";
-            this.label26.Click += new System.EventHandler(this.Label_Click);
-            this.label26.MouseEnter += new System.EventHandler(this.Label_MouseEnter);
-            this.label26.MouseLeave += new System.EventHandler(this.Label_MouseLeave);
+            label26.AutoSize = true;
+            label26.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label26.Location = new Point(3, 280);
+            label26.Name = "label26";
+            label26.Size = new Size(190, 17);
+            label26.TabIndex = 30;
+            label26.Tag = "RollCallRecordBook";
+            label26.Text = "　点呼記録簿（陸運局対応版）";
+            label26.Click += Label_Click;
+            label26.MouseEnter += Label_MouseEnter;
+            label26.MouseLeave += Label_MouseLeave;
             // 
             // label27
             // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label27.ForeColor = System.Drawing.Color.Gray;
-            this.label27.Location = new System.Drawing.Point(3, 300);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(206, 17);
-            this.label27.TabIndex = 31;
-            this.label27.Text = "　点呼記録簿を作成、印刷をします。";
+            label27.AutoSize = true;
+            label27.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label27.ForeColor = Color.Gray;
+            label27.Location = new Point(3, 300);
+            label27.Name = "label27";
+            label27.Size = new Size(206, 17);
+            label27.TabIndex = 31;
+            label27.Text = "　点呼記録簿を作成、印刷をします。";
             // 
             // label29
             // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label29.ForeColor = System.Drawing.Color.Gray;
-            this.label29.Location = new System.Drawing.Point(3, 960);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(162, 17);
-            this.label29.TabIndex = 33;
-            this.label29.Text = "　修了書カードを登録します。";
+            label29.AutoSize = true;
+            label29.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label29.ForeColor = Color.Gray;
+            label29.Location = new Point(8, 252);
+            label29.Name = "label29";
+            label29.Size = new Size(162, 17);
+            label29.TabIndex = 33;
+            label29.Text = "　修了書カードを登録します。";
             // 
             // label28
             // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label28.Location = new System.Drawing.Point(3, 940);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(190, 17);
-            this.label28.TabIndex = 32;
-            this.label28.Tag = "ToukanpoTrainingCardDetail";
-            this.label28.Text = "　東環保研修センター修了書登録";
-            this.label28.Click += new System.EventHandler(this.Label_Click);
-            this.label28.MouseEnter += new System.EventHandler(this.Label_MouseEnter);
-            this.label28.MouseLeave += new System.EventHandler(this.Label_MouseLeave);
+            label28.AutoSize = true;
+            label28.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label28.Location = new Point(8, 232);
+            label28.Name = "label28";
+            label28.Size = new Size(190, 17);
+            label28.TabIndex = 32;
+            label28.Tag = "ToukanpoTrainingCardDetail";
+            label28.Text = "　東環保研修センター修了書登録";
+            label28.Click += Label_Click;
+            label28.MouseEnter += Label_MouseEnter;
+            label28.MouseLeave += Label_MouseLeave;
             // 
             // label30
             // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label30.Location = new System.Drawing.Point(3, 880);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(210, 17);
-            this.label30.TabIndex = 34;
-            this.label30.Tag = "WardChiyoda";
-            this.label30.Text = "　千代田区配車集計表（森重さん）";
-            this.label30.Click += new System.EventHandler(this.Label_Click);
-            this.label30.MouseEnter += new System.EventHandler(this.Label_MouseEnter);
-            this.label30.MouseLeave += new System.EventHandler(this.Label_MouseLeave);
+            label30.AutoSize = true;
+            label30.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label30.Location = new Point(8, 184);
+            label30.Name = "label30";
+            label30.Size = new Size(210, 17);
+            label30.TabIndex = 34;
+            label30.Tag = "WardChiyoda";
+            label30.Text = "　千代田区配車集計表（森重さん）";
+            label30.Click += Label_Click;
+            label30.MouseEnter += Label_MouseEnter;
+            label30.MouseLeave += Label_MouseLeave;
             // 
             // label31
             // 
-            this.label31.AutoSize = true;
-            this.label31.ForeColor = System.Drawing.Color.Gray;
-            this.label31.Location = new System.Drawing.Point(3, 900);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(242, 15);
-            this.label31.TabIndex = 35;
-            this.label31.Text = "　千代田区に配車された従事者の集計をします。";
+            label31.AutoSize = true;
+            label31.ForeColor = Color.Gray;
+            label31.Location = new Point(8, 204);
+            label31.Name = "label31";
+            label31.Size = new Size(242, 15);
+            label31.TabIndex = 35;
+            label31.Text = "　千代田区に配車された従事者の集計をします。";
             // 
             // TableLayoutPanelLeft
             // 
-            this.TableLayoutPanelLeft.ColumnCount = 1;
-            this.TableLayoutPanelLeft.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanelLeft.Controls.Add(this.PanelLeftMiddle, 0, 1);
-            this.TableLayoutPanelLeft.Controls.Add(this.PanelLeftTop, 0, 0);
-            this.TableLayoutPanelLeft.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TableLayoutPanelLeft.Location = new System.Drawing.Point(3, 27);
-            this.TableLayoutPanelLeft.Name = "TableLayoutPanelLeft";
-            this.TableLayoutPanelLeft.RowCount = 2;
-            this.TableLayoutPanelLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.TableLayoutPanelLeft.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanelLeft.Size = new System.Drawing.Size(294, 707);
-            this.TableLayoutPanelLeft.TabIndex = 3;
+            TableLayoutPanelLeft.ColumnCount = 1;
+            TableLayoutPanelLeft.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            TableLayoutPanelLeft.Controls.Add(PanelLeftMiddle, 0, 1);
+            TableLayoutPanelLeft.Controls.Add(PanelLeftTop, 0, 0);
+            TableLayoutPanelLeft.Dock = DockStyle.Fill;
+            TableLayoutPanelLeft.Location = new Point(3, 27);
+            TableLayoutPanelLeft.Name = "TableLayoutPanelLeft";
+            TableLayoutPanelLeft.RowCount = 2;
+            TableLayoutPanelLeft.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
+            TableLayoutPanelLeft.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            TableLayoutPanelLeft.Size = new Size(294, 703);
+            TableLayoutPanelLeft.TabIndex = 3;
             // 
             // PanelLeftMiddle
             // 
-            this.PanelLeftMiddle.Controls.Add(this.TreeView1);
-            this.PanelLeftMiddle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelLeftMiddle.Location = new System.Drawing.Point(3, 63);
-            this.PanelLeftMiddle.Name = "PanelLeftMiddle";
-            this.PanelLeftMiddle.Size = new System.Drawing.Size(288, 641);
-            this.PanelLeftMiddle.TabIndex = 0;
+            PanelLeftMiddle.Controls.Add(TreeView1);
+            PanelLeftMiddle.Dock = DockStyle.Fill;
+            PanelLeftMiddle.Location = new Point(3, 63);
+            PanelLeftMiddle.Name = "PanelLeftMiddle";
+            PanelLeftMiddle.Size = new Size(288, 637);
+            PanelLeftMiddle.TabIndex = 0;
             // 
             // TreeView1
             // 
-            this.TreeView1.BackColor = System.Drawing.SystemColors.Control;
-            this.TreeView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TreeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TreeView1.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TreeView1.Location = new System.Drawing.Point(0, 0);
-            this.TreeView1.Name = "TreeView1";
-            treeNode1.ForeColor = System.Drawing.Color.Gray;
+            TreeView1.BackColor = SystemColors.Control;
+            TreeView1.BorderStyle = BorderStyle.FixedSingle;
+            TreeView1.Dock = DockStyle.Fill;
+            TreeView1.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            TreeView1.Location = new Point(0, 0);
+            TreeView1.Name = "TreeView1";
+            treeNode1.ForeColor = Color.Gray;
             treeNode1.Name = "ノード5";
             treeNode1.Text = "データベース接続";
             treeNode2.Name = "Node00";
@@ -979,59 +885,59 @@
             treeNode42.Name = "NodeISO0000";
             treeNode42.Text = "　　環境マネジメントマニュアル";
             treeNode43.Name = "NodeISO0100";
-            treeNode43.NodeFont = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            treeNode43.NodeFont = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             treeNode43.Text = "１　目的";
             treeNode44.Name = "NodeISO0200";
             treeNode44.Text = "２　適用範囲";
             treeNode45.Name = "NodeISO0300";
             treeNode45.Text = "３　用語の定義";
-            treeNode46.ForeColor = System.Drawing.Color.Gray;
+            treeNode46.ForeColor = Color.Gray;
             treeNode46.Name = "NodeISO0410";
             treeNode46.Text = "４.１　外部及び内部の課題";
-            treeNode47.ForeColor = System.Drawing.Color.Gray;
+            treeNode47.ForeColor = Color.Gray;
             treeNode47.Name = "NodeISO0420";
             treeNode47.Text = "４.２　利害関係者のニーズ及び期待";
-            treeNode48.ForeColor = System.Drawing.Color.Gray;
+            treeNode48.ForeColor = Color.Gray;
             treeNode48.Name = "NodeISO0430";
             treeNode48.Text = "４.３　環境マネジメントシステムの範囲";
-            treeNode49.ForeColor = System.Drawing.Color.Gray;
+            treeNode49.ForeColor = Color.Gray;
             treeNode49.Name = "NodeISO0440";
             treeNode49.Text = "４.４　環境マネジメントシステムの概要";
-            treeNode50.ForeColor = System.Drawing.Color.Gray;
+            treeNode50.ForeColor = Color.Gray;
             treeNode50.Name = "NodeISO0400";
             treeNode50.Text = "４　当社をとりまく状況の理解";
-            treeNode51.ForeColor = System.Drawing.Color.Gray;
+            treeNode51.ForeColor = Color.Gray;
             treeNode51.Name = "NodeISO0510";
             treeNode51.Text = "５.１　リーダーシップ及びコミットメント";
-            treeNode52.ForeColor = System.Drawing.Color.Gray;
+            treeNode52.ForeColor = Color.Gray;
             treeNode52.Name = "NodeISO0520";
             treeNode52.Text = "５.２　環境方針";
-            treeNode53.ForeColor = System.Drawing.Color.Gray;
+            treeNode53.ForeColor = Color.Gray;
             treeNode53.Name = "NodeISO0530";
             treeNode53.Text = "５.３　役割、責任及び権限";
-            treeNode54.ForeColor = System.Drawing.Color.Gray;
+            treeNode54.ForeColor = Color.Gray;
             treeNode54.Name = "NodeISO0500";
             treeNode54.Text = "５　リーダーシップ";
-            treeNode55.ForeColor = System.Drawing.Color.Gray;
+            treeNode55.ForeColor = Color.Gray;
             treeNode55.Name = "NodeISO0611";
             treeNode55.Text = "６.１.１　リスク及び機会の決定";
-            treeNode56.ForeColor = System.Drawing.Color.Gray;
+            treeNode56.ForeColor = Color.Gray;
             treeNode56.Name = "NodeISO0612";
             treeNode56.Text = "６.１.２　環境側面";
-            treeNode57.ForeColor = System.Drawing.Color.Gray;
+            treeNode57.ForeColor = Color.Gray;
             treeNode57.Name = "NodeISO0613";
             treeNode57.Text = "６.１.３　順守義務(法的及びその他の要求事項)";
-            treeNode58.ForeColor = System.Drawing.Color.Gray;
+            treeNode58.ForeColor = Color.Gray;
             treeNode58.Name = "NodeISO0614";
             treeNode58.Text = "６.１.４　取組みの計画策定";
-            treeNode59.ForeColor = System.Drawing.Color.Gray;
+            treeNode59.ForeColor = Color.Gray;
             treeNode59.Name = "NodeISO0610";
             treeNode59.Text = "６.１　リスク及び機会への取組み";
             treeNode60.Name = "NodeISO0620";
             treeNode60.Text = "６.２　環境目標及びプログラム";
             treeNode61.Name = "NodeISO0600";
             treeNode61.Text = "６　計画";
-            treeNode62.ForeColor = System.Drawing.Color.Gray;
+            treeNode62.ForeColor = Color.Gray;
             treeNode62.Name = "NodeISO0710";
             treeNode62.Text = "７.１　資源";
             treeNode63.Name = "NodeISO0721";
@@ -1040,39 +946,39 @@
             treeNode64.Text = "７.２.２　教育訓練";
             treeNode65.Name = "NodeISO0720";
             treeNode65.Text = "７.２　力量、教育訓練";
-            treeNode66.ForeColor = System.Drawing.Color.Gray;
+            treeNode66.ForeColor = Color.Gray;
             treeNode66.Name = "NodeISO0730";
             treeNode66.Text = "７.３　認識";
-            treeNode67.ForeColor = System.Drawing.Color.Gray;
+            treeNode67.ForeColor = Color.Gray;
             treeNode67.Name = "NodeISO0740";
             treeNode67.Text = "７.４　コミュニケーション";
-            treeNode68.ForeColor = System.Drawing.Color.Gray;
+            treeNode68.ForeColor = Color.Gray;
             treeNode68.Name = "NodeISO0750";
             treeNode68.Text = "７.５　文章管理";
             treeNode69.Name = "NodeISO0700";
             treeNode69.Text = "７　支援(サポート)";
-            treeNode70.ForeColor = System.Drawing.Color.Gray;
+            treeNode70.ForeColor = Color.Gray;
             treeNode70.Name = "NodeISO0810";
             treeNode70.Text = "８.１　運用の計画及び管理";
-            treeNode71.ForeColor = System.Drawing.Color.Gray;
+            treeNode71.ForeColor = Color.Gray;
             treeNode71.Name = "NodeISO0821";
             treeNode71.Text = "８.２.１　緊急事態の可能性の特定";
-            treeNode72.ForeColor = System.Drawing.Color.Gray;
+            treeNode72.ForeColor = Color.Gray;
             treeNode72.Name = "NodeISO0822";
             treeNode72.Text = "８.２.２　緊急事態対応手順書の作成";
-            treeNode73.ForeColor = System.Drawing.Color.Gray;
+            treeNode73.ForeColor = Color.Gray;
             treeNode73.Name = "NodeISO0823";
             treeNode73.Text = "８.２.３　緊急事態対応訓練(対応手順のテスト)";
-            treeNode74.ForeColor = System.Drawing.Color.Gray;
+            treeNode74.ForeColor = Color.Gray;
             treeNode74.Name = "NodeISO0824";
             treeNode74.Text = "８.２.４　手順書の見直し";
-            treeNode75.ForeColor = System.Drawing.Color.Gray;
+            treeNode75.ForeColor = Color.Gray;
             treeNode75.Name = "NodeISO0825";
             treeNode75.Text = "８.２.５　取引先を含む利害関係者への情報提供";
-            treeNode76.ForeColor = System.Drawing.Color.Gray;
+            treeNode76.ForeColor = Color.Gray;
             treeNode76.Name = "NodeISO0820";
             treeNode76.Text = "８.２　緊急事態への準備及び対応";
-            treeNode77.ForeColor = System.Drawing.Color.Gray;
+            treeNode77.ForeColor = Color.Gray;
             treeNode77.Name = "NodeISO0800";
             treeNode77.Text = "８　運用";
             treeNode78.Name = "NodeISO0911";
@@ -1087,97 +993,121 @@
             treeNode82.Text = "９.３　経営層による見直し(マネジメントレビュー)";
             treeNode83.Name = "NodeISO0900";
             treeNode83.Text = "９　パフォーマンス評価";
-            treeNode84.ForeColor = System.Drawing.Color.Gray;
+            treeNode84.ForeColor = Color.Gray;
             treeNode84.Name = "NodeISO1010";
             treeNode84.Text = "１０.１　一般";
-            treeNode85.ForeColor = System.Drawing.Color.Gray;
+            treeNode85.ForeColor = Color.Gray;
             treeNode85.Name = "NodeISO1020";
             treeNode85.Text = "１０.２　不適合への対応";
-            treeNode86.ForeColor = System.Drawing.Color.Gray;
+            treeNode86.ForeColor = Color.Gray;
             treeNode86.Name = "NodeISO1030";
             treeNode86.Text = "１０.３　継続的改善";
-            treeNode87.ForeColor = System.Drawing.Color.Gray;
+            treeNode87.ForeColor = Color.Gray;
             treeNode87.Name = "NodeISO1000";
             treeNode87.Text = "１０改善";
             treeNode88.Name = "ノード11";
             treeNode88.Text = "ISO14001";
-            treeNode89.ForeColor = System.Drawing.Color.Gray;
+            treeNode89.ForeColor = Color.Gray;
             treeNode89.Name = "ノード0";
             treeNode89.Text = "本社営業所";
-            treeNode90.ForeColor = System.Drawing.Color.Gray;
+            treeNode90.ForeColor = Color.Gray;
             treeNode90.Name = "ノード1";
             treeNode90.Text = "三郷車庫";
-            treeNode91.ForeColor = System.Drawing.Color.Gray;
+            treeNode91.ForeColor = Color.Gray;
             treeNode91.Name = "NodeTreatmentPlant";
             treeNode91.Text = "中間処理場";
             treeNode92.Name = "NodeAccident";
             treeNode92.Text = "事故受付";
-            this.TreeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode41,
-            treeNode88,
-            treeNode89,
-            treeNode90,
-            treeNode91,
-            treeNode92});
-            this.TreeView1.Size = new System.Drawing.Size(288, 641);
-            this.TreeView1.TabIndex = 4;
-            this.TreeView1.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.TreeView1_NodeMouseDoubleClick);
+            TreeView1.Nodes.AddRange(new TreeNode[] { treeNode1, treeNode41, treeNode88, treeNode89, treeNode90, treeNode91, treeNode92 });
+            TreeView1.Size = new Size(288, 637);
+            TreeView1.TabIndex = 4;
+            TreeView1.NodeMouseDoubleClick += TreeView1_NodeMouseDoubleClick;
             // 
             // PanelLeftTop
             // 
-            this.PanelLeftTop.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PanelLeftTop.Controls.Add(this.LabelIpAddress);
-            this.PanelLeftTop.Controls.Add(this.LabelPcName);
-            this.PanelLeftTop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelLeftTop.Location = new System.Drawing.Point(3, 3);
-            this.PanelLeftTop.Name = "PanelLeftTop";
-            this.PanelLeftTop.Size = new System.Drawing.Size(288, 54);
-            this.PanelLeftTop.TabIndex = 1;
+            PanelLeftTop.BorderStyle = BorderStyle.FixedSingle;
+            PanelLeftTop.Controls.Add(LabelIpAddress);
+            PanelLeftTop.Controls.Add(LabelPcName);
+            PanelLeftTop.Dock = DockStyle.Fill;
+            PanelLeftTop.Location = new Point(3, 3);
+            PanelLeftTop.Name = "PanelLeftTop";
+            PanelLeftTop.Size = new Size(288, 54);
+            PanelLeftTop.TabIndex = 1;
             // 
             // LabelIpAddress
             // 
-            this.LabelIpAddress.AutoSize = true;
-            this.LabelIpAddress.Location = new System.Drawing.Point(8, 28);
-            this.LabelIpAddress.Name = "LabelIpAddress";
-            this.LabelIpAddress.Size = new System.Drawing.Size(71, 15);
-            this.LabelIpAddress.TabIndex = 1;
-            this.LabelIpAddress.Text = "IP-ADDRESS";
+            LabelIpAddress.AutoSize = true;
+            LabelIpAddress.Location = new Point(8, 28);
+            LabelIpAddress.Name = "LabelIpAddress";
+            LabelIpAddress.Size = new Size(71, 15);
+            LabelIpAddress.TabIndex = 1;
+            LabelIpAddress.Text = "IP-ADDRESS";
             // 
             // LabelPcName
             // 
-            this.LabelPcName.AutoSize = true;
-            this.LabelPcName.Location = new System.Drawing.Point(8, 8);
-            this.LabelPcName.Name = "LabelPcName";
-            this.LabelPcName.Size = new System.Drawing.Size(60, 15);
-            this.LabelPcName.TabIndex = 0;
-            this.LabelPcName.Text = "PC-NAME";
+            LabelPcName.AutoSize = true;
+            LabelPcName.Location = new Point(8, 8);
+            LabelPcName.Name = "LabelPcName";
+            LabelPcName.Size = new Size(60, 15);
+            LabelPcName.TabIndex = 0;
+            LabelPcName.Text = "PC-NAME";
+            // 
+            // PanelRight
+            // 
+            PanelRight.Controls.Add(label32);
+            PanelRight.Controls.Add(label16);
+            PanelRight.Controls.Add(label17);
+            PanelRight.Controls.Add(label19);
+            PanelRight.Controls.Add(label18);
+            PanelRight.Controls.Add(label22);
+            PanelRight.Controls.Add(label23);
+            PanelRight.Controls.Add(label30);
+            PanelRight.Controls.Add(label31);
+            PanelRight.Controls.Add(label28);
+            PanelRight.Controls.Add(label29);
+            PanelRight.Dock = DockStyle.Fill;
+            PanelRight.Location = new Point(1019, 27);
+            PanelRight.Name = "PanelRight";
+            PanelRight.Size = new Size(294, 703);
+            PanelRight.TabIndex = 4;
+            // 
+            // label32
+            // 
+            label32.AutoSize = true;
+            label32.Font = new Font("Yu Gothic UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label32.ForeColor = Color.Blue;
+            label32.Location = new Point(8, 8);
+            label32.Name = "label32";
+            label32.Size = new Size(74, 21);
+            label32.TabIndex = 36;
+            label32.Text = "事務処理";
             // 
             // StartProject
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1316, 761);
-            this.Controls.Add(this.TableLayoutPanelBase);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MaximizeBox = false;
-            this.Name = "StartProject";
-            this.Text = "StartProject";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StartProject_FormClosing);
-            this.TableLayoutPanelBase.ResumeLayout(false);
-            this.TableLayoutPanelBase.PerformLayout();
-            this.MenuStrip1.ResumeLayout(false);
-            this.MenuStrip1.PerformLayout();
-            this.StatusStrip1.ResumeLayout(false);
-            this.StatusStrip1.PerformLayout();
-            this.TableLayoutPanelCenter.ResumeLayout(false);
-            this.TableLayoutPanelCenter.PerformLayout();
-            this.TableLayoutPanelLeft.ResumeLayout(false);
-            this.PanelLeftMiddle.ResumeLayout(false);
-            this.PanelLeftTop.ResumeLayout(false);
-            this.PanelLeftTop.PerformLayout();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1316, 757);
+            Controls.Add(TableLayoutPanelBase);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            Name = "StartProject";
+            Text = "StartProject";
+            FormClosing += StartProject_FormClosing;
+            TableLayoutPanelBase.ResumeLayout(false);
+            TableLayoutPanelBase.PerformLayout();
+            MenuStrip1.ResumeLayout(false);
+            MenuStrip1.PerformLayout();
+            StatusStrip1.ResumeLayout(false);
+            StatusStrip1.PerformLayout();
+            TableLayoutPanelCenter.ResumeLayout(false);
+            TableLayoutPanelCenter.PerformLayout();
+            TableLayoutPanelLeft.ResumeLayout(false);
+            PanelLeftMiddle.ResumeLayout(false);
+            PanelLeftTop.ResumeLayout(false);
+            PanelLeftTop.PerformLayout();
+            PanelRight.ResumeLayout(false);
+            PanelRight.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion
@@ -1231,5 +1161,7 @@
         private Label LabelPcName;
         private Label label30;
         private Label label31;
+        private Panel PanelRight;
+        private Label label32;
     }
 }
