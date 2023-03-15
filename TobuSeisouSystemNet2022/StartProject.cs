@@ -147,6 +147,14 @@ namespace TobuSeisouSystemNet2022 {
                                 wardChiyoda.ShowDialog(this);
                                 break;
                             /*
+                             * WardTaitou
+                             * 台東区
+                             */
+                            case "WardTaitou":
+                                var wardTaitou = new WardTaitou(_connectionVo);
+                                wardTaitou.ShowDialog(this);
+                                break;
+                            /*
                              * ToukanpoTrainingCardDetail
                              * 東環保研修センター　修了書
                              */

@@ -1233,7 +1233,7 @@ namespace Dao {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT cell_number " +
                                      "FROM vehicle_dispatch_detail " +
-                                     "WHERE set_code = " + setCode;
+                                     "WHERE operation_date = '" + DateTime.Now.ToString("yyyy-MM-dd") + "' AND set_code = " + setCode;
             using(var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while(sqlDataReader.Read() == true)
                     cellNumber = _defaultValue.GetDefaultValue<int>(sqlDataReader["cell_number"]);

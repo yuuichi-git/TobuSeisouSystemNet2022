@@ -55,16 +55,60 @@ namespace Staff {
         /// <param name="extendsStaffMasterVo"></param>
         private void SheetViewHeadOutPut(SheetView sheetView, ExtendsStaffMasterVo extendsStaffMasterVo) {
             /*
+             * 印刷日時
+             */
+            sheetView.Cells[0, 32].Text = string.Concat(DateTime.Now.ToString("yyyy年MM月dd日　印刷"));
+            /*
+             * 初任診断
+             */
+            // ”運転手”ならForeColorを変える
+            if(extendsStaffMasterVo.Occupation == 10) {
+                if(extendsStaffMasterVo.Proper_kind_1 == "初任診断" || extendsStaffMasterVo.Proper_kind_2 == "初任診断" || extendsStaffMasterVo.Proper_kind_3 == "初任診断") {
+                    sheetView.Cells[2, 9].ForeColor = Color.Red;
+                    sheetView.Cells[2, 11].Text = "〇";
+                } else {
+                    sheetView.Cells[2, 11].Text = "✕";
+                }
+            } else {
+                sheetView.Cells[2, 9].ForeColor = Color.Gray;
+                sheetView.Cells[2, 11].Text = "";
+            }
+            /*
+             * 適齢診断
+             */
+            int age = new Date().GetStaffAge(extendsStaffMasterVo.Birth_date.Date);
+            // ”65歳以上”及び”運転手”ならForeColorを変える
+            if(age >= 65 && extendsStaffMasterVo.Occupation == 10) {
+                sheetView.Cells[3, 9].ForeColor = Color.Red;
+                if(extendsStaffMasterVo.Proper_kind_1 == "適齢診断" || extendsStaffMasterVo.Proper_kind_2 == "適齢診断" || extendsStaffMasterVo.Proper_kind_3 == "適齢診断") {
+                    sheetView.Cells[3, 11].Text = string.Concat("〇", " (満", age.ToString(), "歳)");
+                } else {
+                    sheetView.Cells[3, 11].Text = string.Concat("✕", " (満", age.ToString(), "歳)");
+                }
+            } else {
+                sheetView.Cells[3, 9].ForeColor = Color.Gray;
+                sheetView.Cells[3, 11].Text = "";
+            }
+            /*
+             * 健康診断
+             */
+            if(extendsStaffMasterVo.Medical_examination_date_1.AddYears(1) > DateTime.Now) {
+                sheetView.Cells[4, 9].ForeColor = Color.Red;
+                sheetView.Cells[4, 11].Text = string.Concat("〇 ", extendsStaffMasterVo.Medical_examination_date_1.ToString("yy/MM/dd"));
+            } else {
+                sheetView.Cells[4, 11].Text = "✕";
+            }
+            /*
              * 社員
              */
-            if (extendsStaffMasterVo.Belongs == 10 || extendsStaffMasterVo.Belongs == 11) {
+            if(extendsStaffMasterVo.Belongs == 10 || extendsStaffMasterVo.Belongs == 11) {
                 sheetView.Cells[2, 1].ForeColor = Color.Red;
                 sheetView.Cells[2, 2].ForeColor = Color.Red;
             }
             /*
              * アルバイト
              */
-            if (extendsStaffMasterVo.Belongs == 12) {
+            if(extendsStaffMasterVo.Belongs == 12) {
                 sheetView.Cells[3, 1].ForeColor = Color.Red;
                 sheetView.Cells[3, 2].ForeColor = Color.Red;
             }
@@ -78,28 +122,28 @@ namespace Staff {
             /*
              * 労共(長期)
              */
-            if ((extendsStaffMasterVo.Belongs == 20 || extendsStaffMasterVo.Belongs == 21) && extendsStaffMasterVo.Job_form == 10) {
+            if((extendsStaffMasterVo.Belongs == 20 || extendsStaffMasterVo.Belongs == 21) && extendsStaffMasterVo.Job_form == 10) {
                 sheetView.Cells[5, 1].ForeColor = Color.Red;
                 sheetView.Cells[5, 2].ForeColor = Color.Red;
             }
             /*
              * 労共(短期)
              */
-            if ((extendsStaffMasterVo.Belongs == 20 || extendsStaffMasterVo.Belongs == 21) && extendsStaffMasterVo.Job_form == 11) {
+            if((extendsStaffMasterVo.Belongs == 20 || extendsStaffMasterVo.Belongs == 21) && extendsStaffMasterVo.Job_form == 11) {
                 sheetView.Cells[6, 1].ForeColor = Color.Red;
                 sheetView.Cells[6, 2].ForeColor = Color.Red;
             }
             /*
              * 運転手
              */
-            if (extendsStaffMasterVo.Occupation == 10) {
+            if(extendsStaffMasterVo.Occupation == 10) {
                 sheetView.Cells[7, 1].ForeColor = Color.Red;
                 sheetView.Cells[7, 2].ForeColor = Color.Red;
             }
             /*
              * 作業員
              */
-            if (extendsStaffMasterVo.Occupation == 11) {
+            if(extendsStaffMasterVo.Occupation == 11) {
                 sheetView.Cells[8, 1].ForeColor = Color.Red;
                 sheetView.Cells[8, 2].ForeColor = Color.Red;
             }
@@ -122,15 +166,15 @@ namespace Staff {
             sheetView.Cells[27, 7].Text = _licenseMasterVo.License_number;//免許証番号
             sheetView.Cells[27, 17].Text = _licenseMasterVo.License_condition;//条件等
             string? kind = null;
-            if (_licenseMasterVo.Large)
+            if(_licenseMasterVo.Large)
                 kind += "(大型)";
-            if (_licenseMasterVo.Medium)
+            if(_licenseMasterVo.Medium)
                 kind += "(中型)";
-            if (_licenseMasterVo.Quasi_medium)
+            if(_licenseMasterVo.Quasi_medium)
                 kind += "(準中型)";
-            if (_licenseMasterVo.Ordinary)
+            if(_licenseMasterVo.Ordinary)
                 kind += "(普通)";
-            if (kind != null) {
+            if(kind != null) {
                 sheetView.Cells[31, 3].Text = string.Concat(kind, ":", _licenseMasterVo.Delivery_date.ToString("yyyy年MM月dd日"));//免許証の種類/取得日1
                 sheetView.Cells[31, 27].Value = _licenseMasterVo.Expiration_date.Date;//有効期限1
             }
@@ -227,8 +271,8 @@ namespace Staff {
              * 交通事故発生年月日・概要
              */
             int count = 0;
-            foreach (var carAccidentLedgerVo in _listCarAccidentLedgerVo) {
-                switch (count) {
+            foreach(var carAccidentLedgerVo in _listCarAccidentLedgerVo) {
+                switch(count) {
                     case 0:
                         sheetView.Cells[39, 1].Value = carAccidentLedgerVo.Occurrence_ymd_hms != _defaultDateTime ? carAccidentLedgerVo.Occurrence_ymd_hms.Date : null;
                         sheetView.Cells[39, 6].Value = carAccidentLedgerVo.Accident_summary;
@@ -311,6 +355,10 @@ namespace Staff {
         private void InitializeSpreadStaffRegisterHead() {
             //表面
             SpreadStaffRegisterHead.SuspendLayout();
+            SheetStaffRegisterHead.Cells[0, 32].Text = "";//印刷日時
+            SheetStaffRegisterHead.Cells[2, 11].Text = "";//初任
+            SheetStaffRegisterHead.Cells[3, 11].Text = "";//適齢
+            SheetStaffRegisterHead.Cells[4, 11].Text = "";//健診
             SheetStaffRegisterHead.Cells[10, 5].Text = "";//ふりがな
             SheetStaffRegisterHead.Cells[11, 5].Text = "";//氏名
             SheetStaffRegisterHead.Cells[11, 18].Text = "";//性別
@@ -517,7 +565,7 @@ namespace Staff {
         /// </summary>
         private int curPageNumber = 0; // 現在のページ番号
         private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e) {
-            if (curPageNumber == 0) {
+            if(curPageNumber == 0) {
                 // 印刷ページ（1ページ目）の描画を行う
                 var rectangle = new Rectangle(e.PageBounds.X, e.PageBounds.Y, e.PageBounds.Width, e.PageBounds.Height);
                 // 使用するページ数を計算

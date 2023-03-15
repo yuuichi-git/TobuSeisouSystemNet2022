@@ -9,6 +9,10 @@ namespace Dao {
         private ConnectionVo _connectionVo;
         private readonly DefaultValue _defaultValue = new();
 
+        /// <summary>
+        /// コンストラクター
+        /// </summary>
+        /// <param name="connectionVo"></param>
         public WardSpreadSheetDao(ConnectionVo connectionVo) {
             _connectionVo = connectionVo;
         }

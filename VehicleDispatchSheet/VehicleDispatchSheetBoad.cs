@@ -817,7 +817,7 @@ namespace VehicleDispatchSheet {
                 }
             }
             /*
-             * 28:☆東京會舘・マインズ・公園清掃　他【白ナンバー】 コード：1
+             * 28:☆粗大・その他廃棄物【白ナンバー】 コード：1
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
@@ -826,7 +826,7 @@ namespace VehicleDispatchSheet {
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 28) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "☆東京會舘・マインズ・公園清掃　他【白ナンバー】 コード：1";
+                        _beforeBlockName = "☆粗大・その他廃棄物【白ナンバー】 コード：1";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();

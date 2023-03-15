@@ -116,7 +116,7 @@ namespace Production {
             ToolStripStatusLabelDetail.Text = "";
 
             // 年度をセット
-            ComboBoxFinancialYear.Text = DateTime.Now.AddMonths(-3).ToString("yyyy年4月1日");
+            ComboBoxFinancialYear.Text = DateTime.Now.AddMonths(-3).ToString("yyyy年度");
         }
 
         /// <summary>
@@ -467,6 +467,8 @@ namespace Production {
             LabelSetName.Text = string.Concat(_extendsClassSetMasterVo.SetMasterVo.Set_name, "組");
             LabelNumberOfPeople.Text = _extendsClassSetMasterVo.SetMasterVo.Number_of_people.ToString("#人");
             LabelDayOfWeek.Text = _extendsClassSetMasterVo.SetMasterVo.Working_days;
+            LabelFiveLap.Text = _extendsClassSetMasterVo.SetMasterVo.Five_lap.ToString();
+            LabelMoveFlag.Text = _extendsClassSetMasterVo.SetMasterVo.Move_flag.ToString();
 
             // Bodyを表示
             foreach(var vehicleDispatchBodyVo in _listVehicleDispatchBodyVo.FindAll(x => x.Cell_number == _extendsClassSetMasterVo.Cell_number)) {
@@ -541,6 +543,8 @@ namespace Production {
             LabelSetName.Text = "";
             LabelNumberOfPeople.Text = "";
             LabelDayOfWeek.Text = "";
+            LabelFiveLap.Text = "";
+            LabelMoveFlag.Text = "";
 
             Panel1.SuspendLayout();
             foreach(var checkBox in _arrayCheckBoxWeek) {
@@ -570,10 +574,10 @@ namespace Production {
         /// <param name="e"></param>
         private void ComboBoxFinancialYear_SelectedIndexChanged(object sender, EventArgs e) {
             switch(((ComboBox)sender).Text) {
-                case "2022年4月1日":
+                case "2022年度":
                     _financialDateTime = new DateTime(2022, 04, 01);
                     break;
-                case "2023年4月1日":
+                case "2023年度":
                     _financialDateTime = new DateTime(2023, 04, 01);
                     break;
             }

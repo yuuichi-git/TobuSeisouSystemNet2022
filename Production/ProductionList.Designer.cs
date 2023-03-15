@@ -10,7 +10,7 @@
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing) {
-            if (disposing && (components != null)) {
+            if(disposing && (components != null)) {
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -23,1258 +23,1298 @@
         ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.components = new System.ComponentModel.Container();
-            this.TableLayoutPanelExBase = new ControlEx.TableLayoutPanelEx();
-            this.MenuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.メニューToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemReset = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.ヘルプToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.StatusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.ToolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.ToolStripStatusLabelDetail = new System.Windows.Forms.ToolStripStatusLabel();
-            this.PanelButtom = new System.Windows.Forms.Panel();
-            this.Panel1 = new System.Windows.Forms.Panel();
-            this.CheckBoxTuesday = new System.Windows.Forms.CheckBox();
-            this.ComboBoxMondayCar = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.ComboBoxMondayStaff1 = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.ComboBoxMondayStaff2 = new System.Windows.Forms.ComboBox();
-            this.ButtonReadCarCode = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
-            this.ComboBoxMondayStaff3 = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.ComboBoxMondayStaff4 = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.ButtonCopyMemo = new System.Windows.Forms.Button();
-            this.CheckBoxMonday = new System.Windows.Forms.CheckBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.ComboBoxTuesdayCar = new System.Windows.Forms.ComboBox();
-            this.TextBoxSundayMemo = new System.Windows.Forms.TextBox();
-            this.ComboBoxTuesdayStaff1 = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.ComboBoxTuesdayStaff2 = new System.Windows.Forms.ComboBox();
-            this.TextBoxSaturdayMemo = new System.Windows.Forms.TextBox();
-            this.ComboBoxTuesdayStaff3 = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.ComboBoxTuesdayStaff4 = new System.Windows.Forms.ComboBox();
-            this.TextBoxFridayMemo = new System.Windows.Forms.TextBox();
-            this.ComboBoxWednesdayCar = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.ComboBoxWednesdayStaff1 = new System.Windows.Forms.ComboBox();
-            this.TextBoxThursdayMemo = new System.Windows.Forms.TextBox();
-            this.ComboBoxWednesdayStaff2 = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.ComboBoxWednesdayStaff3 = new System.Windows.Forms.ComboBox();
-            this.TextBoxWednesdayMemo = new System.Windows.Forms.TextBox();
-            this.ComboBoxWednesdayStaff4 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.CheckBoxWednesday = new System.Windows.Forms.CheckBox();
-            this.TextBoxTuesdayMemo = new System.Windows.Forms.TextBox();
-            this.ComboBoxThursdayCar = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.ComboBoxThursdayStaff1 = new System.Windows.Forms.ComboBox();
-            this.TextBoxMondayMemo = new System.Windows.Forms.TextBox();
-            this.ComboBoxThursdayStaff2 = new System.Windows.Forms.ComboBox();
-            this.ButtonCopyStaff4 = new System.Windows.Forms.Button();
-            this.ComboBoxThursdayStaff3 = new System.Windows.Forms.ComboBox();
-            this.ButtonCopyStaff3 = new System.Windows.Forms.Button();
-            this.ComboBoxThursdayStaff4 = new System.Windows.Forms.ComboBox();
-            this.ButtonCopyStaff2 = new System.Windows.Forms.Button();
-            this.CheckBoxThursday = new System.Windows.Forms.CheckBox();
-            this.ButtonCopyStaff1 = new System.Windows.Forms.Button();
-            this.ComboBoxFridayCar = new System.Windows.Forms.ComboBox();
-            this.ButtonCopyCar = new System.Windows.Forms.Button();
-            this.ComboBoxFridayStaff1 = new System.Windows.Forms.ComboBox();
-            this.CheckBoxSunday = new System.Windows.Forms.CheckBox();
-            this.ComboBoxFridayStaff2 = new System.Windows.Forms.ComboBox();
-            this.ComboBoxSundayStaff4 = new System.Windows.Forms.ComboBox();
-            this.ComboBoxFridayStaff3 = new System.Windows.Forms.ComboBox();
-            this.ComboBoxSundayStaff3 = new System.Windows.Forms.ComboBox();
-            this.ComboBoxFridayStaff4 = new System.Windows.Forms.ComboBox();
-            this.ComboBoxSundayStaff2 = new System.Windows.Forms.ComboBox();
-            this.CheckBoxFriday = new System.Windows.Forms.CheckBox();
-            this.ComboBoxSundayStaff1 = new System.Windows.Forms.ComboBox();
-            this.ComboBoxSaturdayCar = new System.Windows.Forms.ComboBox();
-            this.ComboBoxSundayCar = new System.Windows.Forms.ComboBox();
-            this.ComboBoxSaturdayStaff1 = new System.Windows.Forms.ComboBox();
-            this.CheckBoxSaturday = new System.Windows.Forms.CheckBox();
-            this.ComboBoxSaturdayStaff2 = new System.Windows.Forms.ComboBox();
-            this.ComboBoxSaturdayStaff4 = new System.Windows.Forms.ComboBox();
-            this.ComboBoxSaturdayStaff3 = new System.Windows.Forms.ComboBox();
-            this.LabelDayOfWeek = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.LabelCellNumber = new System.Windows.Forms.Label();
-            this.ButtonUpdate = new System.Windows.Forms.Button();
-            this.label17 = new System.Windows.Forms.Label();
-            this.LabelNumberOfPeople = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.LabelSetName = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.TableLayoutPanelExCenter = new ControlEx.TableLayoutPanelEx();
-            this.PanelTop = new System.Windows.Forms.Panel();
-            this.LabelName = new System.Windows.Forms.Label();
-            this.ComboBoxFinancialYear = new System.Windows.Forms.ComboBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.ContextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.ToolStripMenuItemRemoveSetLabel = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.TableLayoutPanelExBase.SuspendLayout();
-            this.MenuStrip1.SuspendLayout();
-            this.StatusStrip1.SuspendLayout();
-            this.PanelButtom.SuspendLayout();
-            this.Panel1.SuspendLayout();
-            this.PanelTop.SuspendLayout();
-            this.ContextMenuStrip1.SuspendLayout();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            TableLayoutPanelExBase = new ControlEx.TableLayoutPanelEx();
+            MenuStrip1 = new MenuStrip();
+            メニューToolStripMenuItem = new ToolStripMenuItem();
+            ToolStripMenuItemReset = new ToolStripMenuItem();
+            ToolStripMenuItemExit = new ToolStripMenuItem();
+            ヘルプToolStripMenuItem = new ToolStripMenuItem();
+            StatusStrip1 = new StatusStrip();
+            ToolStripStatusLabel1 = new ToolStripStatusLabel();
+            ToolStripStatusLabelDetail = new ToolStripStatusLabel();
+            PanelButtom = new Panel();
+            LabelMoveFlag = new Label();
+            label21 = new Label();
+            LabelFiveLap = new Label();
+            label15 = new Label();
+            Panel1 = new Panel();
+            CheckBoxTuesday = new CheckBox();
+            ComboBoxMondayCar = new ComboBox();
+            label2 = new Label();
+            ComboBoxMondayStaff1 = new ComboBox();
+            label3 = new Label();
+            ComboBoxMondayStaff2 = new ComboBox();
+            ButtonReadCarCode = new Button();
+            label4 = new Label();
+            ComboBoxMondayStaff3 = new ComboBox();
+            label5 = new Label();
+            ComboBoxMondayStaff4 = new ComboBox();
+            label6 = new Label();
+            ButtonCopyMemo = new Button();
+            CheckBoxMonday = new CheckBox();
+            label12 = new Label();
+            ComboBoxTuesdayCar = new ComboBox();
+            TextBoxSundayMemo = new TextBox();
+            ComboBoxTuesdayStaff1 = new ComboBox();
+            label11 = new Label();
+            ComboBoxTuesdayStaff2 = new ComboBox();
+            TextBoxSaturdayMemo = new TextBox();
+            ComboBoxTuesdayStaff3 = new ComboBox();
+            label10 = new Label();
+            ComboBoxTuesdayStaff4 = new ComboBox();
+            TextBoxFridayMemo = new TextBox();
+            ComboBoxWednesdayCar = new ComboBox();
+            label9 = new Label();
+            ComboBoxWednesdayStaff1 = new ComboBox();
+            TextBoxThursdayMemo = new TextBox();
+            ComboBoxWednesdayStaff2 = new ComboBox();
+            label8 = new Label();
+            ComboBoxWednesdayStaff3 = new ComboBox();
+            TextBoxWednesdayMemo = new TextBox();
+            ComboBoxWednesdayStaff4 = new ComboBox();
+            label1 = new Label();
+            CheckBoxWednesday = new CheckBox();
+            TextBoxTuesdayMemo = new TextBox();
+            ComboBoxThursdayCar = new ComboBox();
+            label7 = new Label();
+            ComboBoxThursdayStaff1 = new ComboBox();
+            TextBoxMondayMemo = new TextBox();
+            ComboBoxThursdayStaff2 = new ComboBox();
+            ButtonCopyStaff4 = new Button();
+            ComboBoxThursdayStaff3 = new ComboBox();
+            ButtonCopyStaff3 = new Button();
+            ComboBoxThursdayStaff4 = new ComboBox();
+            ButtonCopyStaff2 = new Button();
+            CheckBoxThursday = new CheckBox();
+            ButtonCopyStaff1 = new Button();
+            ComboBoxFridayCar = new ComboBox();
+            ButtonCopyCar = new Button();
+            ComboBoxFridayStaff1 = new ComboBox();
+            CheckBoxSunday = new CheckBox();
+            ComboBoxFridayStaff2 = new ComboBox();
+            ComboBoxSundayStaff4 = new ComboBox();
+            ComboBoxFridayStaff3 = new ComboBox();
+            ComboBoxSundayStaff3 = new ComboBox();
+            ComboBoxFridayStaff4 = new ComboBox();
+            ComboBoxSundayStaff2 = new ComboBox();
+            CheckBoxFriday = new CheckBox();
+            ComboBoxSundayStaff1 = new ComboBox();
+            ComboBoxSaturdayCar = new ComboBox();
+            ComboBoxSundayCar = new ComboBox();
+            ComboBoxSaturdayStaff1 = new ComboBox();
+            CheckBoxSaturday = new CheckBox();
+            ComboBoxSaturdayStaff2 = new ComboBox();
+            ComboBoxSaturdayStaff4 = new ComboBox();
+            ComboBoxSaturdayStaff3 = new ComboBox();
+            LabelDayOfWeek = new Label();
+            label18 = new Label();
+            LabelCellNumber = new Label();
+            ButtonUpdate = new Button();
+            label17 = new Label();
+            LabelNumberOfPeople = new Label();
+            label16 = new Label();
+            LabelSetName = new Label();
+            label13 = new Label();
+            TableLayoutPanelExCenter = new ControlEx.TableLayoutPanelEx();
+            PanelTop = new Panel();
+            LabelName = new Label();
+            ComboBoxFinancialYear = new ComboBox();
+            label14 = new Label();
+            ContextMenuStrip1 = new ContextMenuStrip(components);
+            ToolStripMenuItemRemoveSetLabel = new ToolStripMenuItem();
+            ToolTip1 = new ToolTip(components);
+            TableLayoutPanelExBase.SuspendLayout();
+            MenuStrip1.SuspendLayout();
+            StatusStrip1.SuspendLayout();
+            PanelButtom.SuspendLayout();
+            Panel1.SuspendLayout();
+            PanelTop.SuspendLayout();
+            ContextMenuStrip1.SuspendLayout();
+            SuspendLayout();
             // 
             // TableLayoutPanelExBase
             // 
-            this.TableLayoutPanelExBase.ButtonBorderStyleDotted = false;
-            this.TableLayoutPanelExBase.ColumnCount = 1;
-            this.TableLayoutPanelExBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanelExBase.Controls.Add(this.MenuStrip1, 0, 0);
-            this.TableLayoutPanelExBase.Controls.Add(this.StatusStrip1, 0, 4);
-            this.TableLayoutPanelExBase.Controls.Add(this.PanelButtom, 0, 3);
-            this.TableLayoutPanelExBase.Controls.Add(this.TableLayoutPanelExCenter, 0, 2);
-            this.TableLayoutPanelExBase.Controls.Add(this.PanelTop, 0, 1);
-            this.TableLayoutPanelExBase.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TableLayoutPanelExBase.Location = new System.Drawing.Point(0, 0);
-            this.TableLayoutPanelExBase.Name = "TableLayoutPanelExBase";
-            this.TableLayoutPanelExBase.RowCount = 5;
-            this.TableLayoutPanelExBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.TableLayoutPanelExBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 66F));
-            this.TableLayoutPanelExBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 462F));
-            this.TableLayoutPanelExBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanelExBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.TableLayoutPanelExBase.Size = new System.Drawing.Size(1904, 1041);
-            this.TableLayoutPanelExBase.TabIndex = 0;
+            TableLayoutPanelExBase.ButtonBorderStyleDotted = false;
+            TableLayoutPanelExBase.ColumnCount = 1;
+            TableLayoutPanelExBase.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            TableLayoutPanelExBase.Controls.Add(MenuStrip1, 0, 0);
+            TableLayoutPanelExBase.Controls.Add(StatusStrip1, 0, 4);
+            TableLayoutPanelExBase.Controls.Add(PanelButtom, 0, 3);
+            TableLayoutPanelExBase.Controls.Add(TableLayoutPanelExCenter, 0, 2);
+            TableLayoutPanelExBase.Controls.Add(PanelTop, 0, 1);
+            TableLayoutPanelExBase.Dock = DockStyle.Fill;
+            TableLayoutPanelExBase.Location = new Point(0, 0);
+            TableLayoutPanelExBase.Name = "TableLayoutPanelExBase";
+            TableLayoutPanelExBase.RowCount = 5;
+            TableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
+            TableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 66F));
+            TableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 462F));
+            TableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            TableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
+            TableLayoutPanelExBase.Size = new Size(1904, 1041);
+            TableLayoutPanelExBase.TabIndex = 0;
             // 
             // MenuStrip1
             // 
-            this.MenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.メニューToolStripMenuItem,
-            this.ヘルプToolStripMenuItem});
-            this.MenuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.MenuStrip1.Name = "MenuStrip1";
-            this.MenuStrip1.Size = new System.Drawing.Size(1904, 24);
-            this.MenuStrip1.TabIndex = 0;
-            this.MenuStrip1.Text = "menuStrip1";
+            MenuStrip1.Items.AddRange(new ToolStripItem[] { メニューToolStripMenuItem, ヘルプToolStripMenuItem });
+            MenuStrip1.Location = new Point(0, 0);
+            MenuStrip1.Name = "MenuStrip1";
+            MenuStrip1.Size = new Size(1904, 24);
+            MenuStrip1.TabIndex = 0;
+            MenuStrip1.Text = "menuStrip1";
             // 
             // メニューToolStripMenuItem
             // 
-            this.メニューToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemReset,
-            this.ToolStripMenuItemExit});
-            this.メニューToolStripMenuItem.Name = "メニューToolStripMenuItem";
-            this.メニューToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.メニューToolStripMenuItem.Text = "メニュー";
+            メニューToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemReset, ToolStripMenuItemExit });
+            メニューToolStripMenuItem.Name = "メニューToolStripMenuItem";
+            メニューToolStripMenuItem.Size = new Size(52, 20);
+            メニューToolStripMenuItem.Text = "メニュー";
             // 
             // ToolStripMenuItemReset
             // 
-            this.ToolStripMenuItemReset.Name = "ToolStripMenuItemReset";
-            this.ToolStripMenuItemReset.Size = new System.Drawing.Size(350, 22);
-            this.ToolStripMenuItemReset.Text = "年度の配車を初期化する(150個の配車がリセットされます)";
-            this.ToolStripMenuItemReset.Click += new System.EventHandler(this.ToolStripMenuItemReset_Click);
+            ToolStripMenuItemReset.Name = "ToolStripMenuItemReset";
+            ToolStripMenuItemReset.Size = new Size(350, 22);
+            ToolStripMenuItemReset.Text = "年度の配車を初期化する(150個の配車がリセットされます)";
+            ToolStripMenuItemReset.Click += ToolStripMenuItemReset_Click;
             // 
             // ToolStripMenuItemExit
             // 
-            this.ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
-            this.ToolStripMenuItemExit.Size = new System.Drawing.Size(350, 22);
-            this.ToolStripMenuItemExit.Text = "アプリケーションを終了する";
-            this.ToolStripMenuItemExit.Click += new System.EventHandler(this.ToolStripMenuItemExit_Click);
+            ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
+            ToolStripMenuItemExit.Size = new Size(350, 22);
+            ToolStripMenuItemExit.Text = "アプリケーションを終了する";
+            ToolStripMenuItemExit.Click += ToolStripMenuItemExit_Click;
             // 
             // ヘルプToolStripMenuItem
             // 
-            this.ヘルプToolStripMenuItem.Name = "ヘルプToolStripMenuItem";
-            this.ヘルプToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
-            this.ヘルプToolStripMenuItem.Text = "ヘルプ";
+            ヘルプToolStripMenuItem.Name = "ヘルプToolStripMenuItem";
+            ヘルプToolStripMenuItem.Size = new Size(48, 20);
+            ヘルプToolStripMenuItem.Text = "ヘルプ";
             // 
             // StatusStrip1
             // 
-            this.StatusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripStatusLabel1,
-            this.ToolStripStatusLabelDetail});
-            this.StatusStrip1.Location = new System.Drawing.Point(0, 1019);
-            this.StatusStrip1.Name = "StatusStrip1";
-            this.StatusStrip1.Size = new System.Drawing.Size(1904, 22);
-            this.StatusStrip1.SizingGrip = false;
-            this.StatusStrip1.TabIndex = 1;
-            this.StatusStrip1.Text = "statusStrip1";
+            StatusStrip1.Items.AddRange(new ToolStripItem[] { ToolStripStatusLabel1, ToolStripStatusLabelDetail });
+            StatusStrip1.Location = new Point(0, 1019);
+            StatusStrip1.Name = "StatusStrip1";
+            StatusStrip1.Size = new Size(1904, 22);
+            StatusStrip1.SizingGrip = false;
+            StatusStrip1.TabIndex = 1;
+            StatusStrip1.Text = "statusStrip1";
             // 
             // ToolStripStatusLabel1
             // 
-            this.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1";
-            this.ToolStripStatusLabel1.Size = new System.Drawing.Size(39, 17);
-            this.ToolStripStatusLabel1.Text = "Status";
+            ToolStripStatusLabel1.Name = "ToolStripStatusLabel1";
+            ToolStripStatusLabel1.Size = new Size(39, 17);
+            ToolStripStatusLabel1.Text = "Status";
             // 
             // ToolStripStatusLabelDetail
             // 
-            this.ToolStripStatusLabelDetail.Name = "ToolStripStatusLabelDetail";
-            this.ToolStripStatusLabelDetail.Size = new System.Drawing.Size(143, 17);
-            this.ToolStripStatusLabelDetail.Text = "ToolStripStatusLabelDetail";
+            ToolStripStatusLabelDetail.Name = "ToolStripStatusLabelDetail";
+            ToolStripStatusLabelDetail.Size = new Size(143, 17);
+            ToolStripStatusLabelDetail.Text = "ToolStripStatusLabelDetail";
             // 
             // PanelButtom
             // 
-            this.PanelButtom.Controls.Add(this.Panel1);
-            this.PanelButtom.Controls.Add(this.LabelDayOfWeek);
-            this.PanelButtom.Controls.Add(this.label18);
-            this.PanelButtom.Controls.Add(this.LabelCellNumber);
-            this.PanelButtom.Controls.Add(this.ButtonUpdate);
-            this.PanelButtom.Controls.Add(this.label17);
-            this.PanelButtom.Controls.Add(this.LabelNumberOfPeople);
-            this.PanelButtom.Controls.Add(this.label16);
-            this.PanelButtom.Controls.Add(this.LabelSetName);
-            this.PanelButtom.Controls.Add(this.label13);
-            this.PanelButtom.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelButtom.Location = new System.Drawing.Point(3, 555);
-            this.PanelButtom.Name = "PanelButtom";
-            this.PanelButtom.Size = new System.Drawing.Size(1898, 459);
-            this.PanelButtom.TabIndex = 3;
+            PanelButtom.Controls.Add(LabelMoveFlag);
+            PanelButtom.Controls.Add(label21);
+            PanelButtom.Controls.Add(LabelFiveLap);
+            PanelButtom.Controls.Add(label15);
+            PanelButtom.Controls.Add(Panel1);
+            PanelButtom.Controls.Add(LabelDayOfWeek);
+            PanelButtom.Controls.Add(label18);
+            PanelButtom.Controls.Add(LabelCellNumber);
+            PanelButtom.Controls.Add(ButtonUpdate);
+            PanelButtom.Controls.Add(label17);
+            PanelButtom.Controls.Add(LabelNumberOfPeople);
+            PanelButtom.Controls.Add(label16);
+            PanelButtom.Controls.Add(LabelSetName);
+            PanelButtom.Controls.Add(label13);
+            PanelButtom.Dock = DockStyle.Fill;
+            PanelButtom.Location = new Point(3, 555);
+            PanelButtom.Name = "PanelButtom";
+            PanelButtom.Size = new Size(1898, 459);
+            PanelButtom.TabIndex = 3;
+            // 
+            // LabelMoveFlag
+            // 
+            LabelMoveFlag.BorderStyle = BorderStyle.Fixed3D;
+            LabelMoveFlag.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            LabelMoveFlag.Location = new Point(204, 196);
+            LabelMoveFlag.Name = "LabelMoveFlag";
+            LabelMoveFlag.Size = new Size(112, 24);
+            LabelMoveFlag.TabIndex = 139;
+            LabelMoveFlag.Text = "true";
+            LabelMoveFlag.TextAlign = ContentAlignment.MiddleCenter;
+            ToolTip1.SetToolTip(LabelMoveFlag, "setMasterVo.Working_days");
+            // 
+            // label21
+            // 
+            label21.Font = new Font("Yu Gothic UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label21.Location = new Point(112, 200);
+            label21.Name = "label21";
+            label21.Size = new Size(92, 20);
+            label21.TabIndex = 138;
+            label21.Text = "移動可否：";
+            // 
+            // LabelFiveLap
+            // 
+            LabelFiveLap.BorderStyle = BorderStyle.Fixed3D;
+            LabelFiveLap.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            LabelFiveLap.Location = new Point(204, 164);
+            LabelFiveLap.Name = "LabelFiveLap";
+            LabelFiveLap.Size = new Size(112, 24);
+            LabelFiveLap.TabIndex = 137;
+            LabelFiveLap.Text = "true";
+            LabelFiveLap.TextAlign = ContentAlignment.MiddleCenter;
+            ToolTip1.SetToolTip(LabelFiveLap, "setMasterVo.Working_days");
+            // 
+            // label15
+            // 
+            label15.Font = new Font("Yu Gothic UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label15.Location = new Point(112, 168);
+            label15.Name = "label15";
+            label15.Size = new Size(92, 20);
+            label15.TabIndex = 136;
+            label15.Text = "五週稼働：";
             // 
             // Panel1
             // 
-            this.Panel1.Controls.Add(this.CheckBoxTuesday);
-            this.Panel1.Controls.Add(this.ComboBoxMondayCar);
-            this.Panel1.Controls.Add(this.label2);
-            this.Panel1.Controls.Add(this.ComboBoxMondayStaff1);
-            this.Panel1.Controls.Add(this.label3);
-            this.Panel1.Controls.Add(this.ComboBoxMondayStaff2);
-            this.Panel1.Controls.Add(this.ButtonReadCarCode);
-            this.Panel1.Controls.Add(this.label4);
-            this.Panel1.Controls.Add(this.ComboBoxMondayStaff3);
-            this.Panel1.Controls.Add(this.label5);
-            this.Panel1.Controls.Add(this.ComboBoxMondayStaff4);
-            this.Panel1.Controls.Add(this.label6);
-            this.Panel1.Controls.Add(this.ButtonCopyMemo);
-            this.Panel1.Controls.Add(this.CheckBoxMonday);
-            this.Panel1.Controls.Add(this.label12);
-            this.Panel1.Controls.Add(this.ComboBoxTuesdayCar);
-            this.Panel1.Controls.Add(this.TextBoxSundayMemo);
-            this.Panel1.Controls.Add(this.ComboBoxTuesdayStaff1);
-            this.Panel1.Controls.Add(this.label11);
-            this.Panel1.Controls.Add(this.ComboBoxTuesdayStaff2);
-            this.Panel1.Controls.Add(this.TextBoxSaturdayMemo);
-            this.Panel1.Controls.Add(this.ComboBoxTuesdayStaff3);
-            this.Panel1.Controls.Add(this.label10);
-            this.Panel1.Controls.Add(this.ComboBoxTuesdayStaff4);
-            this.Panel1.Controls.Add(this.TextBoxFridayMemo);
-            this.Panel1.Controls.Add(this.ComboBoxWednesdayCar);
-            this.Panel1.Controls.Add(this.label9);
-            this.Panel1.Controls.Add(this.ComboBoxWednesdayStaff1);
-            this.Panel1.Controls.Add(this.TextBoxThursdayMemo);
-            this.Panel1.Controls.Add(this.ComboBoxWednesdayStaff2);
-            this.Panel1.Controls.Add(this.label8);
-            this.Panel1.Controls.Add(this.ComboBoxWednesdayStaff3);
-            this.Panel1.Controls.Add(this.TextBoxWednesdayMemo);
-            this.Panel1.Controls.Add(this.ComboBoxWednesdayStaff4);
-            this.Panel1.Controls.Add(this.label1);
-            this.Panel1.Controls.Add(this.CheckBoxWednesday);
-            this.Panel1.Controls.Add(this.TextBoxTuesdayMemo);
-            this.Panel1.Controls.Add(this.ComboBoxThursdayCar);
-            this.Panel1.Controls.Add(this.label7);
-            this.Panel1.Controls.Add(this.ComboBoxThursdayStaff1);
-            this.Panel1.Controls.Add(this.TextBoxMondayMemo);
-            this.Panel1.Controls.Add(this.ComboBoxThursdayStaff2);
-            this.Panel1.Controls.Add(this.ButtonCopyStaff4);
-            this.Panel1.Controls.Add(this.ComboBoxThursdayStaff3);
-            this.Panel1.Controls.Add(this.ButtonCopyStaff3);
-            this.Panel1.Controls.Add(this.ComboBoxThursdayStaff4);
-            this.Panel1.Controls.Add(this.ButtonCopyStaff2);
-            this.Panel1.Controls.Add(this.CheckBoxThursday);
-            this.Panel1.Controls.Add(this.ButtonCopyStaff1);
-            this.Panel1.Controls.Add(this.ComboBoxFridayCar);
-            this.Panel1.Controls.Add(this.ButtonCopyCar);
-            this.Panel1.Controls.Add(this.ComboBoxFridayStaff1);
-            this.Panel1.Controls.Add(this.CheckBoxSunday);
-            this.Panel1.Controls.Add(this.ComboBoxFridayStaff2);
-            this.Panel1.Controls.Add(this.ComboBoxSundayStaff4);
-            this.Panel1.Controls.Add(this.ComboBoxFridayStaff3);
-            this.Panel1.Controls.Add(this.ComboBoxSundayStaff3);
-            this.Panel1.Controls.Add(this.ComboBoxFridayStaff4);
-            this.Panel1.Controls.Add(this.ComboBoxSundayStaff2);
-            this.Panel1.Controls.Add(this.CheckBoxFriday);
-            this.Panel1.Controls.Add(this.ComboBoxSundayStaff1);
-            this.Panel1.Controls.Add(this.ComboBoxSaturdayCar);
-            this.Panel1.Controls.Add(this.ComboBoxSundayCar);
-            this.Panel1.Controls.Add(this.ComboBoxSaturdayStaff1);
-            this.Panel1.Controls.Add(this.CheckBoxSaturday);
-            this.Panel1.Controls.Add(this.ComboBoxSaturdayStaff2);
-            this.Panel1.Controls.Add(this.ComboBoxSaturdayStaff4);
-            this.Panel1.Controls.Add(this.ComboBoxSaturdayStaff3);
-            this.Panel1.Location = new System.Drawing.Point(440, 8);
-            this.Panel1.Name = "Panel1";
-            this.Panel1.Size = new System.Drawing.Size(1021, 441);
-            this.Panel1.TabIndex = 135;
+            Panel1.Controls.Add(CheckBoxTuesday);
+            Panel1.Controls.Add(ComboBoxMondayCar);
+            Panel1.Controls.Add(label2);
+            Panel1.Controls.Add(ComboBoxMondayStaff1);
+            Panel1.Controls.Add(label3);
+            Panel1.Controls.Add(ComboBoxMondayStaff2);
+            Panel1.Controls.Add(ButtonReadCarCode);
+            Panel1.Controls.Add(label4);
+            Panel1.Controls.Add(ComboBoxMondayStaff3);
+            Panel1.Controls.Add(label5);
+            Panel1.Controls.Add(ComboBoxMondayStaff4);
+            Panel1.Controls.Add(label6);
+            Panel1.Controls.Add(ButtonCopyMemo);
+            Panel1.Controls.Add(CheckBoxMonday);
+            Panel1.Controls.Add(label12);
+            Panel1.Controls.Add(ComboBoxTuesdayCar);
+            Panel1.Controls.Add(TextBoxSundayMemo);
+            Panel1.Controls.Add(ComboBoxTuesdayStaff1);
+            Panel1.Controls.Add(label11);
+            Panel1.Controls.Add(ComboBoxTuesdayStaff2);
+            Panel1.Controls.Add(TextBoxSaturdayMemo);
+            Panel1.Controls.Add(ComboBoxTuesdayStaff3);
+            Panel1.Controls.Add(label10);
+            Panel1.Controls.Add(ComboBoxTuesdayStaff4);
+            Panel1.Controls.Add(TextBoxFridayMemo);
+            Panel1.Controls.Add(ComboBoxWednesdayCar);
+            Panel1.Controls.Add(label9);
+            Panel1.Controls.Add(ComboBoxWednesdayStaff1);
+            Panel1.Controls.Add(TextBoxThursdayMemo);
+            Panel1.Controls.Add(ComboBoxWednesdayStaff2);
+            Panel1.Controls.Add(label8);
+            Panel1.Controls.Add(ComboBoxWednesdayStaff3);
+            Panel1.Controls.Add(TextBoxWednesdayMemo);
+            Panel1.Controls.Add(ComboBoxWednesdayStaff4);
+            Panel1.Controls.Add(label1);
+            Panel1.Controls.Add(CheckBoxWednesday);
+            Panel1.Controls.Add(TextBoxTuesdayMemo);
+            Panel1.Controls.Add(ComboBoxThursdayCar);
+            Panel1.Controls.Add(label7);
+            Panel1.Controls.Add(ComboBoxThursdayStaff1);
+            Panel1.Controls.Add(TextBoxMondayMemo);
+            Panel1.Controls.Add(ComboBoxThursdayStaff2);
+            Panel1.Controls.Add(ButtonCopyStaff4);
+            Panel1.Controls.Add(ComboBoxThursdayStaff3);
+            Panel1.Controls.Add(ButtonCopyStaff3);
+            Panel1.Controls.Add(ComboBoxThursdayStaff4);
+            Panel1.Controls.Add(ButtonCopyStaff2);
+            Panel1.Controls.Add(CheckBoxThursday);
+            Panel1.Controls.Add(ButtonCopyStaff1);
+            Panel1.Controls.Add(ComboBoxFridayCar);
+            Panel1.Controls.Add(ButtonCopyCar);
+            Panel1.Controls.Add(ComboBoxFridayStaff1);
+            Panel1.Controls.Add(CheckBoxSunday);
+            Panel1.Controls.Add(ComboBoxFridayStaff2);
+            Panel1.Controls.Add(ComboBoxSundayStaff4);
+            Panel1.Controls.Add(ComboBoxFridayStaff3);
+            Panel1.Controls.Add(ComboBoxSundayStaff3);
+            Panel1.Controls.Add(ComboBoxFridayStaff4);
+            Panel1.Controls.Add(ComboBoxSundayStaff2);
+            Panel1.Controls.Add(CheckBoxFriday);
+            Panel1.Controls.Add(ComboBoxSundayStaff1);
+            Panel1.Controls.Add(ComboBoxSaturdayCar);
+            Panel1.Controls.Add(ComboBoxSundayCar);
+            Panel1.Controls.Add(ComboBoxSaturdayStaff1);
+            Panel1.Controls.Add(CheckBoxSaturday);
+            Panel1.Controls.Add(ComboBoxSaturdayStaff2);
+            Panel1.Controls.Add(ComboBoxSaturdayStaff4);
+            Panel1.Controls.Add(ComboBoxSaturdayStaff3);
+            Panel1.Location = new Point(440, 4);
+            Panel1.Name = "Panel1";
+            Panel1.Size = new Size(1021, 424);
+            Panel1.TabIndex = 135;
             // 
             // CheckBoxTuesday
             // 
-            this.CheckBoxTuesday.AutoSize = true;
-            this.CheckBoxTuesday.Checked = true;
-            this.CheckBoxTuesday.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxTuesday.Location = new System.Drawing.Point(28, 104);
-            this.CheckBoxTuesday.Name = "CheckBoxTuesday";
-            this.CheckBoxTuesday.Size = new System.Drawing.Size(62, 19);
-            this.CheckBoxTuesday.TabIndex = 74;
-            this.CheckBoxTuesday.Tag = "1";
-            this.CheckBoxTuesday.Text = "火曜日";
-            this.CheckBoxTuesday.UseVisualStyleBackColor = true;
+            CheckBoxTuesday.AutoSize = true;
+            CheckBoxTuesday.Checked = true;
+            CheckBoxTuesday.CheckState = CheckState.Checked;
+            CheckBoxTuesday.Location = new Point(28, 88);
+            CheckBoxTuesday.Name = "CheckBoxTuesday";
+            CheckBoxTuesday.Size = new Size(62, 19);
+            CheckBoxTuesday.TabIndex = 74;
+            CheckBoxTuesday.Tag = "1";
+            CheckBoxTuesday.Text = "火曜日";
+            CheckBoxTuesday.UseVisualStyleBackColor = true;
             // 
             // ComboBoxMondayCar
             // 
-            this.ComboBoxMondayCar.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxMondayCar.FormattingEnabled = true;
-            this.ComboBoxMondayCar.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxMondayCar.Location = new System.Drawing.Point(96, 44);
-            this.ComboBoxMondayCar.Name = "ComboBoxMondayCar";
-            this.ComboBoxMondayCar.Size = new System.Drawing.Size(156, 23);
-            this.ComboBoxMondayCar.TabIndex = 58;
-            this.ComboBoxMondayCar.Text = "足立800あ8888(888)";
+            ComboBoxMondayCar.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxMondayCar.FormattingEnabled = true;
+            ComboBoxMondayCar.ImeMode = ImeMode.Hiragana;
+            ComboBoxMondayCar.Location = new Point(96, 28);
+            ComboBoxMondayCar.Name = "ComboBoxMondayCar";
+            ComboBoxMondayCar.Size = new Size(156, 23);
+            ComboBoxMondayCar.TabIndex = 58;
+            ComboBoxMondayCar.Text = "足立800あ8888(888)";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(96, 24);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 15);
-            this.label2.TabIndex = 59;
-            this.label2.Text = "車両番号";
+            label2.AutoSize = true;
+            label2.Location = new Point(96, 8);
+            label2.Name = "label2";
+            label2.Size = new Size(55, 15);
+            label2.TabIndex = 59;
+            label2.Text = "車両番号";
             // 
             // ComboBoxMondayStaff1
             // 
-            this.ComboBoxMondayStaff1.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxMondayStaff1.FormattingEnabled = true;
-            this.ComboBoxMondayStaff1.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxMondayStaff1.Location = new System.Drawing.Point(292, 44);
-            this.ComboBoxMondayStaff1.Name = "ComboBoxMondayStaff1";
-            this.ComboBoxMondayStaff1.Size = new System.Drawing.Size(136, 23);
-            this.ComboBoxMondayStaff1.TabIndex = 60;
-            this.ComboBoxMondayStaff1.Text = "辻祐一";
+            ComboBoxMondayStaff1.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxMondayStaff1.FormattingEnabled = true;
+            ComboBoxMondayStaff1.ImeMode = ImeMode.Hiragana;
+            ComboBoxMondayStaff1.Location = new Point(292, 28);
+            ComboBoxMondayStaff1.Name = "ComboBoxMondayStaff1";
+            ComboBoxMondayStaff1.Size = new Size(136, 23);
+            ComboBoxMondayStaff1.TabIndex = 60;
+            ComboBoxMondayStaff1.Text = "辻祐一";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(292, 24);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(43, 15);
-            this.label3.TabIndex = 61;
-            this.label3.Text = "運転手";
+            label3.AutoSize = true;
+            label3.Location = new Point(292, 8);
+            label3.Name = "label3";
+            label3.Size = new Size(43, 15);
+            label3.TabIndex = 61;
+            label3.Text = "運転手";
             // 
             // ComboBoxMondayStaff2
             // 
-            this.ComboBoxMondayStaff2.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxMondayStaff2.FormattingEnabled = true;
-            this.ComboBoxMondayStaff2.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxMondayStaff2.Location = new System.Drawing.Point(468, 44);
-            this.ComboBoxMondayStaff2.Name = "ComboBoxMondayStaff2";
-            this.ComboBoxMondayStaff2.Size = new System.Drawing.Size(136, 23);
-            this.ComboBoxMondayStaff2.TabIndex = 62;
-            this.ComboBoxMondayStaff2.Text = "辻祐一";
+            ComboBoxMondayStaff2.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxMondayStaff2.FormattingEnabled = true;
+            ComboBoxMondayStaff2.ImeMode = ImeMode.Hiragana;
+            ComboBoxMondayStaff2.Location = new Point(468, 28);
+            ComboBoxMondayStaff2.Name = "ComboBoxMondayStaff2";
+            ComboBoxMondayStaff2.Size = new Size(136, 23);
+            ComboBoxMondayStaff2.TabIndex = 62;
+            ComboBoxMondayStaff2.Text = "辻祐一";
             // 
             // ButtonReadCarCode
             // 
-            this.ButtonReadCarCode.Font = new System.Drawing.Font("Yu Gothic UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ButtonReadCarCode.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.ButtonReadCarCode.Location = new System.Drawing.Point(152, 21);
-            this.ButtonReadCarCode.Name = "ButtonReadCarCode";
-            this.ButtonReadCarCode.Size = new System.Drawing.Size(100, 20);
-            this.ButtonReadCarCode.TabIndex = 130;
-            this.ButtonReadCarCode.Tag = "";
-            this.ButtonReadCarCode.Text = "Read Car Code";
-            this.ToolTip1.SetToolTip(this.ButtonReadCarCode, "vehicle_dispatch_headに記録されているcar_codeを使用");
-            this.ButtonReadCarCode.UseVisualStyleBackColor = true;
-            this.ButtonReadCarCode.Click += new System.EventHandler(this.ButtonMasterCarCode_Click);
+            ButtonReadCarCode.Font = new Font("Yu Gothic UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point);
+            ButtonReadCarCode.ImageAlign = ContentAlignment.BottomCenter;
+            ButtonReadCarCode.Location = new Point(152, 5);
+            ButtonReadCarCode.Name = "ButtonReadCarCode";
+            ButtonReadCarCode.Size = new Size(100, 20);
+            ButtonReadCarCode.TabIndex = 130;
+            ButtonReadCarCode.Tag = "";
+            ButtonReadCarCode.Text = "Read Car Code";
+            ToolTip1.SetToolTip(ButtonReadCarCode, "vehicle_dispatch_headに記録されているcar_codeを使用");
+            ButtonReadCarCode.UseVisualStyleBackColor = true;
+            ButtonReadCarCode.Click += ButtonMasterCarCode_Click;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(468, 24);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 15);
-            this.label4.TabIndex = 63;
-            this.label4.Text = "作業員１";
+            label4.AutoSize = true;
+            label4.Location = new Point(468, 8);
+            label4.Name = "label4";
+            label4.Size = new Size(55, 15);
+            label4.TabIndex = 63;
+            label4.Text = "作業員１";
             // 
             // ComboBoxMondayStaff3
             // 
-            this.ComboBoxMondayStaff3.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxMondayStaff3.FormattingEnabled = true;
-            this.ComboBoxMondayStaff3.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxMondayStaff3.Location = new System.Drawing.Point(644, 44);
-            this.ComboBoxMondayStaff3.Name = "ComboBoxMondayStaff3";
-            this.ComboBoxMondayStaff3.Size = new System.Drawing.Size(136, 23);
-            this.ComboBoxMondayStaff3.TabIndex = 64;
-            this.ComboBoxMondayStaff3.Text = "辻祐一";
+            ComboBoxMondayStaff3.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxMondayStaff3.FormattingEnabled = true;
+            ComboBoxMondayStaff3.ImeMode = ImeMode.Hiragana;
+            ComboBoxMondayStaff3.Location = new Point(644, 28);
+            ComboBoxMondayStaff3.Name = "ComboBoxMondayStaff3";
+            ComboBoxMondayStaff3.Size = new Size(136, 23);
+            ComboBoxMondayStaff3.TabIndex = 64;
+            ComboBoxMondayStaff3.Text = "辻祐一";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(644, 24);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 15);
-            this.label5.TabIndex = 65;
-            this.label5.Text = "作業員２";
+            label5.AutoSize = true;
+            label5.Location = new Point(644, 8);
+            label5.Name = "label5";
+            label5.Size = new Size(55, 15);
+            label5.TabIndex = 65;
+            label5.Text = "作業員２";
             // 
             // ComboBoxMondayStaff4
             // 
-            this.ComboBoxMondayStaff4.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxMondayStaff4.FormattingEnabled = true;
-            this.ComboBoxMondayStaff4.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxMondayStaff4.Location = new System.Drawing.Point(820, 44);
-            this.ComboBoxMondayStaff4.Name = "ComboBoxMondayStaff4";
-            this.ComboBoxMondayStaff4.Size = new System.Drawing.Size(136, 23);
-            this.ComboBoxMondayStaff4.TabIndex = 66;
-            this.ComboBoxMondayStaff4.Text = "辻祐一";
+            ComboBoxMondayStaff4.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxMondayStaff4.FormattingEnabled = true;
+            ComboBoxMondayStaff4.ImeMode = ImeMode.Hiragana;
+            ComboBoxMondayStaff4.Location = new Point(820, 28);
+            ComboBoxMondayStaff4.Name = "ComboBoxMondayStaff4";
+            ComboBoxMondayStaff4.Size = new Size(136, 23);
+            ComboBoxMondayStaff4.TabIndex = 66;
+            ComboBoxMondayStaff4.Text = "辻祐一";
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(820, 24);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(55, 15);
-            this.label6.TabIndex = 67;
-            this.label6.Text = "作業員３";
+            label6.AutoSize = true;
+            label6.Location = new Point(820, 8);
+            label6.Name = "label6";
+            label6.Size = new Size(55, 15);
+            label6.TabIndex = 67;
+            label6.Text = "作業員３";
             // 
             // ButtonCopyMemo
             // 
-            this.ButtonCopyMemo.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ButtonCopyMemo.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.ButtonCopyMemo.Location = new System.Drawing.Point(952, 72);
-            this.ButtonCopyMemo.Name = "ButtonCopyMemo";
-            this.ButtonCopyMemo.Size = new System.Drawing.Size(28, 23);
-            this.ButtonCopyMemo.TabIndex = 125;
-            this.ButtonCopyMemo.Tag = "ComboBoxMondayStaff4";
-            this.ButtonCopyMemo.Text = "↓";
-            this.ButtonCopyMemo.UseVisualStyleBackColor = true;
-            this.ButtonCopyMemo.Click += new System.EventHandler(this.ValueCopy);
+            ButtonCopyMemo.Font = new Font("メイリオ", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            ButtonCopyMemo.ImageAlign = ContentAlignment.BottomCenter;
+            ButtonCopyMemo.Location = new Point(952, 56);
+            ButtonCopyMemo.Name = "ButtonCopyMemo";
+            ButtonCopyMemo.Size = new Size(28, 23);
+            ButtonCopyMemo.TabIndex = 125;
+            ButtonCopyMemo.Tag = "ComboBoxMondayStaff4";
+            ButtonCopyMemo.Text = "↓";
+            ButtonCopyMemo.UseVisualStyleBackColor = true;
+            ButtonCopyMemo.Click += ValueCopy;
             // 
             // CheckBoxMonday
             // 
-            this.CheckBoxMonday.AutoSize = true;
-            this.CheckBoxMonday.Checked = true;
-            this.CheckBoxMonday.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxMonday.Location = new System.Drawing.Point(28, 48);
-            this.CheckBoxMonday.Name = "CheckBoxMonday";
-            this.CheckBoxMonday.Size = new System.Drawing.Size(62, 19);
-            this.CheckBoxMonday.TabIndex = 68;
-            this.CheckBoxMonday.Tag = "0";
-            this.CheckBoxMonday.Text = "月曜日";
-            this.CheckBoxMonday.UseVisualStyleBackColor = true;
+            CheckBoxMonday.AutoSize = true;
+            CheckBoxMonday.Checked = true;
+            CheckBoxMonday.CheckState = CheckState.Checked;
+            CheckBoxMonday.Location = new Point(28, 32);
+            CheckBoxMonday.Name = "CheckBoxMonday";
+            CheckBoxMonday.Size = new Size(62, 19);
+            CheckBoxMonday.TabIndex = 68;
+            CheckBoxMonday.Tag = "0";
+            CheckBoxMonday.Text = "月曜日";
+            CheckBoxMonday.UseVisualStyleBackColor = true;
             // 
             // label12
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(68, 412);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(60, 15);
-            this.label12.TabIndex = 124;
-            this.label12.Text = "日曜日メモ";
+            label12.AutoSize = true;
+            label12.Location = new Point(68, 396);
+            label12.Name = "label12";
+            label12.Size = new Size(60, 15);
+            label12.TabIndex = 124;
+            label12.Text = "日曜日メモ";
             // 
             // ComboBoxTuesdayCar
             // 
-            this.ComboBoxTuesdayCar.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxTuesdayCar.FormattingEnabled = true;
-            this.ComboBoxTuesdayCar.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxTuesdayCar.Location = new System.Drawing.Point(96, 100);
-            this.ComboBoxTuesdayCar.Name = "ComboBoxTuesdayCar";
-            this.ComboBoxTuesdayCar.Size = new System.Drawing.Size(156, 23);
-            this.ComboBoxTuesdayCar.TabIndex = 69;
-            this.ComboBoxTuesdayCar.Text = "足立800あ8888(888)";
+            ComboBoxTuesdayCar.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxTuesdayCar.FormattingEnabled = true;
+            ComboBoxTuesdayCar.ImeMode = ImeMode.Hiragana;
+            ComboBoxTuesdayCar.Location = new Point(96, 84);
+            ComboBoxTuesdayCar.Name = "ComboBoxTuesdayCar";
+            ComboBoxTuesdayCar.Size = new Size(156, 23);
+            ComboBoxTuesdayCar.TabIndex = 69;
+            ComboBoxTuesdayCar.Text = "足立800あ8888(888)";
             // 
             // TextBoxSundayMemo
             // 
-            this.TextBoxSundayMemo.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TextBoxSundayMemo.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxSundayMemo.Location = new System.Drawing.Point(132, 408);
-            this.TextBoxSundayMemo.Name = "TextBoxSundayMemo";
-            this.TextBoxSundayMemo.Size = new System.Drawing.Size(816, 23);
-            this.TextBoxSundayMemo.TabIndex = 123;
-            this.TextBoxSundayMemo.Text = "あいうえお\r\nかきくけこ";
+            TextBoxSundayMemo.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            TextBoxSundayMemo.ImeMode = ImeMode.Hiragana;
+            TextBoxSundayMemo.Location = new Point(132, 392);
+            TextBoxSundayMemo.Name = "TextBoxSundayMemo";
+            TextBoxSundayMemo.Size = new Size(816, 23);
+            TextBoxSundayMemo.TabIndex = 123;
+            TextBoxSundayMemo.Text = "あいうえお\r\nかきくけこ";
             // 
             // ComboBoxTuesdayStaff1
             // 
-            this.ComboBoxTuesdayStaff1.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxTuesdayStaff1.FormattingEnabled = true;
-            this.ComboBoxTuesdayStaff1.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxTuesdayStaff1.Location = new System.Drawing.Point(292, 100);
-            this.ComboBoxTuesdayStaff1.Name = "ComboBoxTuesdayStaff1";
-            this.ComboBoxTuesdayStaff1.Size = new System.Drawing.Size(136, 23);
-            this.ComboBoxTuesdayStaff1.TabIndex = 70;
-            this.ComboBoxTuesdayStaff1.Text = "辻祐一";
+            ComboBoxTuesdayStaff1.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxTuesdayStaff1.FormattingEnabled = true;
+            ComboBoxTuesdayStaff1.ImeMode = ImeMode.Hiragana;
+            ComboBoxTuesdayStaff1.Location = new Point(292, 84);
+            ComboBoxTuesdayStaff1.Name = "ComboBoxTuesdayStaff1";
+            ComboBoxTuesdayStaff1.Size = new Size(136, 23);
+            ComboBoxTuesdayStaff1.TabIndex = 70;
+            ComboBoxTuesdayStaff1.Text = "辻祐一";
             // 
             // label11
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(68, 356);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(60, 15);
-            this.label11.TabIndex = 122;
-            this.label11.Text = "土曜日メモ";
+            label11.AutoSize = true;
+            label11.Location = new Point(68, 340);
+            label11.Name = "label11";
+            label11.Size = new Size(60, 15);
+            label11.TabIndex = 122;
+            label11.Text = "土曜日メモ";
             // 
             // ComboBoxTuesdayStaff2
             // 
-            this.ComboBoxTuesdayStaff2.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxTuesdayStaff2.FormattingEnabled = true;
-            this.ComboBoxTuesdayStaff2.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxTuesdayStaff2.Location = new System.Drawing.Point(468, 100);
-            this.ComboBoxTuesdayStaff2.Name = "ComboBoxTuesdayStaff2";
-            this.ComboBoxTuesdayStaff2.Size = new System.Drawing.Size(136, 23);
-            this.ComboBoxTuesdayStaff2.TabIndex = 71;
-            this.ComboBoxTuesdayStaff2.Text = "辻祐一";
+            ComboBoxTuesdayStaff2.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxTuesdayStaff2.FormattingEnabled = true;
+            ComboBoxTuesdayStaff2.ImeMode = ImeMode.Hiragana;
+            ComboBoxTuesdayStaff2.Location = new Point(468, 84);
+            ComboBoxTuesdayStaff2.Name = "ComboBoxTuesdayStaff2";
+            ComboBoxTuesdayStaff2.Size = new Size(136, 23);
+            ComboBoxTuesdayStaff2.TabIndex = 71;
+            ComboBoxTuesdayStaff2.Text = "辻祐一";
             // 
             // TextBoxSaturdayMemo
             // 
-            this.TextBoxSaturdayMemo.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TextBoxSaturdayMemo.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxSaturdayMemo.Location = new System.Drawing.Point(132, 352);
-            this.TextBoxSaturdayMemo.Name = "TextBoxSaturdayMemo";
-            this.TextBoxSaturdayMemo.Size = new System.Drawing.Size(816, 23);
-            this.TextBoxSaturdayMemo.TabIndex = 121;
-            this.TextBoxSaturdayMemo.Text = "あいうえお\r\nかきくけこ";
+            TextBoxSaturdayMemo.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            TextBoxSaturdayMemo.ImeMode = ImeMode.Hiragana;
+            TextBoxSaturdayMemo.Location = new Point(132, 336);
+            TextBoxSaturdayMemo.Name = "TextBoxSaturdayMemo";
+            TextBoxSaturdayMemo.Size = new Size(816, 23);
+            TextBoxSaturdayMemo.TabIndex = 121;
+            TextBoxSaturdayMemo.Text = "あいうえお\r\nかきくけこ";
             // 
             // ComboBoxTuesdayStaff3
             // 
-            this.ComboBoxTuesdayStaff3.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxTuesdayStaff3.FormattingEnabled = true;
-            this.ComboBoxTuesdayStaff3.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxTuesdayStaff3.Location = new System.Drawing.Point(644, 100);
-            this.ComboBoxTuesdayStaff3.Name = "ComboBoxTuesdayStaff3";
-            this.ComboBoxTuesdayStaff3.Size = new System.Drawing.Size(136, 23);
-            this.ComboBoxTuesdayStaff3.TabIndex = 72;
-            this.ComboBoxTuesdayStaff3.Text = "辻祐一";
+            ComboBoxTuesdayStaff3.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxTuesdayStaff3.FormattingEnabled = true;
+            ComboBoxTuesdayStaff3.ImeMode = ImeMode.Hiragana;
+            ComboBoxTuesdayStaff3.Location = new Point(644, 84);
+            ComboBoxTuesdayStaff3.Name = "ComboBoxTuesdayStaff3";
+            ComboBoxTuesdayStaff3.Size = new Size(136, 23);
+            ComboBoxTuesdayStaff3.TabIndex = 72;
+            ComboBoxTuesdayStaff3.Text = "辻祐一";
             // 
             // label10
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(68, 300);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(60, 15);
-            this.label10.TabIndex = 120;
-            this.label10.Text = "金曜日メモ";
+            label10.AutoSize = true;
+            label10.Location = new Point(68, 284);
+            label10.Name = "label10";
+            label10.Size = new Size(60, 15);
+            label10.TabIndex = 120;
+            label10.Text = "金曜日メモ";
             // 
             // ComboBoxTuesdayStaff4
             // 
-            this.ComboBoxTuesdayStaff4.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxTuesdayStaff4.FormattingEnabled = true;
-            this.ComboBoxTuesdayStaff4.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxTuesdayStaff4.Location = new System.Drawing.Point(820, 100);
-            this.ComboBoxTuesdayStaff4.Name = "ComboBoxTuesdayStaff4";
-            this.ComboBoxTuesdayStaff4.Size = new System.Drawing.Size(136, 23);
-            this.ComboBoxTuesdayStaff4.TabIndex = 73;
-            this.ComboBoxTuesdayStaff4.Text = "辻祐一";
+            ComboBoxTuesdayStaff4.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxTuesdayStaff4.FormattingEnabled = true;
+            ComboBoxTuesdayStaff4.ImeMode = ImeMode.Hiragana;
+            ComboBoxTuesdayStaff4.Location = new Point(820, 84);
+            ComboBoxTuesdayStaff4.Name = "ComboBoxTuesdayStaff4";
+            ComboBoxTuesdayStaff4.Size = new Size(136, 23);
+            ComboBoxTuesdayStaff4.TabIndex = 73;
+            ComboBoxTuesdayStaff4.Text = "辻祐一";
             // 
             // TextBoxFridayMemo
             // 
-            this.TextBoxFridayMemo.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TextBoxFridayMemo.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxFridayMemo.Location = new System.Drawing.Point(132, 296);
-            this.TextBoxFridayMemo.Name = "TextBoxFridayMemo";
-            this.TextBoxFridayMemo.Size = new System.Drawing.Size(816, 23);
-            this.TextBoxFridayMemo.TabIndex = 119;
-            this.TextBoxFridayMemo.Text = "あいうえお\r\nかきくけこ";
+            TextBoxFridayMemo.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            TextBoxFridayMemo.ImeMode = ImeMode.Hiragana;
+            TextBoxFridayMemo.Location = new Point(132, 280);
+            TextBoxFridayMemo.Name = "TextBoxFridayMemo";
+            TextBoxFridayMemo.Size = new Size(816, 23);
+            TextBoxFridayMemo.TabIndex = 119;
+            TextBoxFridayMemo.Text = "あいうえお\r\nかきくけこ";
             // 
             // ComboBoxWednesdayCar
             // 
-            this.ComboBoxWednesdayCar.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxWednesdayCar.FormattingEnabled = true;
-            this.ComboBoxWednesdayCar.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxWednesdayCar.Location = new System.Drawing.Point(96, 156);
-            this.ComboBoxWednesdayCar.Name = "ComboBoxWednesdayCar";
-            this.ComboBoxWednesdayCar.Size = new System.Drawing.Size(156, 23);
-            this.ComboBoxWednesdayCar.TabIndex = 75;
-            this.ComboBoxWednesdayCar.Text = "足立800あ8888(888)";
+            ComboBoxWednesdayCar.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxWednesdayCar.FormattingEnabled = true;
+            ComboBoxWednesdayCar.ImeMode = ImeMode.Hiragana;
+            ComboBoxWednesdayCar.Location = new Point(96, 140);
+            ComboBoxWednesdayCar.Name = "ComboBoxWednesdayCar";
+            ComboBoxWednesdayCar.Size = new Size(156, 23);
+            ComboBoxWednesdayCar.TabIndex = 75;
+            ComboBoxWednesdayCar.Text = "足立800あ8888(888)";
             // 
             // label9
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(68, 244);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(60, 15);
-            this.label9.TabIndex = 118;
-            this.label9.Text = "木曜日メモ";
+            label9.AutoSize = true;
+            label9.Location = new Point(68, 228);
+            label9.Name = "label9";
+            label9.Size = new Size(60, 15);
+            label9.TabIndex = 118;
+            label9.Text = "木曜日メモ";
             // 
             // ComboBoxWednesdayStaff1
             // 
-            this.ComboBoxWednesdayStaff1.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxWednesdayStaff1.FormattingEnabled = true;
-            this.ComboBoxWednesdayStaff1.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxWednesdayStaff1.Location = new System.Drawing.Point(292, 156);
-            this.ComboBoxWednesdayStaff1.Name = "ComboBoxWednesdayStaff1";
-            this.ComboBoxWednesdayStaff1.Size = new System.Drawing.Size(136, 23);
-            this.ComboBoxWednesdayStaff1.TabIndex = 76;
-            this.ComboBoxWednesdayStaff1.Text = "辻祐一";
+            ComboBoxWednesdayStaff1.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxWednesdayStaff1.FormattingEnabled = true;
+            ComboBoxWednesdayStaff1.ImeMode = ImeMode.Hiragana;
+            ComboBoxWednesdayStaff1.Location = new Point(292, 140);
+            ComboBoxWednesdayStaff1.Name = "ComboBoxWednesdayStaff1";
+            ComboBoxWednesdayStaff1.Size = new Size(136, 23);
+            ComboBoxWednesdayStaff1.TabIndex = 76;
+            ComboBoxWednesdayStaff1.Text = "辻祐一";
             // 
             // TextBoxThursdayMemo
             // 
-            this.TextBoxThursdayMemo.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TextBoxThursdayMemo.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxThursdayMemo.Location = new System.Drawing.Point(132, 240);
-            this.TextBoxThursdayMemo.Name = "TextBoxThursdayMemo";
-            this.TextBoxThursdayMemo.Size = new System.Drawing.Size(816, 23);
-            this.TextBoxThursdayMemo.TabIndex = 117;
-            this.TextBoxThursdayMemo.Text = "あいうえお\r\nかきくけこ";
+            TextBoxThursdayMemo.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            TextBoxThursdayMemo.ImeMode = ImeMode.Hiragana;
+            TextBoxThursdayMemo.Location = new Point(132, 224);
+            TextBoxThursdayMemo.Name = "TextBoxThursdayMemo";
+            TextBoxThursdayMemo.Size = new Size(816, 23);
+            TextBoxThursdayMemo.TabIndex = 117;
+            TextBoxThursdayMemo.Text = "あいうえお\r\nかきくけこ";
             // 
             // ComboBoxWednesdayStaff2
             // 
-            this.ComboBoxWednesdayStaff2.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxWednesdayStaff2.FormattingEnabled = true;
-            this.ComboBoxWednesdayStaff2.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxWednesdayStaff2.Location = new System.Drawing.Point(468, 156);
-            this.ComboBoxWednesdayStaff2.Name = "ComboBoxWednesdayStaff2";
-            this.ComboBoxWednesdayStaff2.Size = new System.Drawing.Size(136, 23);
-            this.ComboBoxWednesdayStaff2.TabIndex = 77;
-            this.ComboBoxWednesdayStaff2.Text = "辻祐一";
+            ComboBoxWednesdayStaff2.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxWednesdayStaff2.FormattingEnabled = true;
+            ComboBoxWednesdayStaff2.ImeMode = ImeMode.Hiragana;
+            ComboBoxWednesdayStaff2.Location = new Point(468, 140);
+            ComboBoxWednesdayStaff2.Name = "ComboBoxWednesdayStaff2";
+            ComboBoxWednesdayStaff2.Size = new Size(136, 23);
+            ComboBoxWednesdayStaff2.TabIndex = 77;
+            ComboBoxWednesdayStaff2.Text = "辻祐一";
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(68, 188);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(60, 15);
-            this.label8.TabIndex = 116;
-            this.label8.Text = "水曜日メモ";
+            label8.AutoSize = true;
+            label8.Location = new Point(68, 172);
+            label8.Name = "label8";
+            label8.Size = new Size(60, 15);
+            label8.TabIndex = 116;
+            label8.Text = "水曜日メモ";
             // 
             // ComboBoxWednesdayStaff3
             // 
-            this.ComboBoxWednesdayStaff3.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxWednesdayStaff3.FormattingEnabled = true;
-            this.ComboBoxWednesdayStaff3.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxWednesdayStaff3.Location = new System.Drawing.Point(644, 156);
-            this.ComboBoxWednesdayStaff3.Name = "ComboBoxWednesdayStaff3";
-            this.ComboBoxWednesdayStaff3.Size = new System.Drawing.Size(136, 23);
-            this.ComboBoxWednesdayStaff3.TabIndex = 78;
-            this.ComboBoxWednesdayStaff3.Text = "辻祐一";
+            ComboBoxWednesdayStaff3.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxWednesdayStaff3.FormattingEnabled = true;
+            ComboBoxWednesdayStaff3.ImeMode = ImeMode.Hiragana;
+            ComboBoxWednesdayStaff3.Location = new Point(644, 140);
+            ComboBoxWednesdayStaff3.Name = "ComboBoxWednesdayStaff3";
+            ComboBoxWednesdayStaff3.Size = new Size(136, 23);
+            ComboBoxWednesdayStaff3.TabIndex = 78;
+            ComboBoxWednesdayStaff3.Text = "辻祐一";
             // 
             // TextBoxWednesdayMemo
             // 
-            this.TextBoxWednesdayMemo.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TextBoxWednesdayMemo.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxWednesdayMemo.Location = new System.Drawing.Point(132, 184);
-            this.TextBoxWednesdayMemo.Name = "TextBoxWednesdayMemo";
-            this.TextBoxWednesdayMemo.Size = new System.Drawing.Size(816, 23);
-            this.TextBoxWednesdayMemo.TabIndex = 115;
-            this.TextBoxWednesdayMemo.Text = "あいうえお\r\nかきくけこ";
+            TextBoxWednesdayMemo.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            TextBoxWednesdayMemo.ImeMode = ImeMode.Hiragana;
+            TextBoxWednesdayMemo.Location = new Point(132, 168);
+            TextBoxWednesdayMemo.Name = "TextBoxWednesdayMemo";
+            TextBoxWednesdayMemo.Size = new Size(816, 23);
+            TextBoxWednesdayMemo.TabIndex = 115;
+            TextBoxWednesdayMemo.Text = "あいうえお\r\nかきくけこ";
             // 
             // ComboBoxWednesdayStaff4
             // 
-            this.ComboBoxWednesdayStaff4.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxWednesdayStaff4.FormattingEnabled = true;
-            this.ComboBoxWednesdayStaff4.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxWednesdayStaff4.Location = new System.Drawing.Point(820, 156);
-            this.ComboBoxWednesdayStaff4.Name = "ComboBoxWednesdayStaff4";
-            this.ComboBoxWednesdayStaff4.Size = new System.Drawing.Size(136, 23);
-            this.ComboBoxWednesdayStaff4.TabIndex = 79;
-            this.ComboBoxWednesdayStaff4.Text = "辻祐一";
+            ComboBoxWednesdayStaff4.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxWednesdayStaff4.FormattingEnabled = true;
+            ComboBoxWednesdayStaff4.ImeMode = ImeMode.Hiragana;
+            ComboBoxWednesdayStaff4.Location = new Point(820, 140);
+            ComboBoxWednesdayStaff4.Name = "ComboBoxWednesdayStaff4";
+            ComboBoxWednesdayStaff4.Size = new Size(136, 23);
+            ComboBoxWednesdayStaff4.TabIndex = 79;
+            ComboBoxWednesdayStaff4.Text = "辻祐一";
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(68, 132);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(60, 15);
-            this.label1.TabIndex = 114;
-            this.label1.Text = "火曜日メモ";
+            label1.AutoSize = true;
+            label1.Location = new Point(68, 116);
+            label1.Name = "label1";
+            label1.Size = new Size(60, 15);
+            label1.TabIndex = 114;
+            label1.Text = "火曜日メモ";
             // 
             // CheckBoxWednesday
             // 
-            this.CheckBoxWednesday.AutoSize = true;
-            this.CheckBoxWednesday.Checked = true;
-            this.CheckBoxWednesday.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxWednesday.Location = new System.Drawing.Point(28, 160);
-            this.CheckBoxWednesday.Name = "CheckBoxWednesday";
-            this.CheckBoxWednesday.Size = new System.Drawing.Size(62, 19);
-            this.CheckBoxWednesday.TabIndex = 80;
-            this.CheckBoxWednesday.Tag = "2";
-            this.CheckBoxWednesday.Text = "水曜日";
-            this.CheckBoxWednesday.UseVisualStyleBackColor = true;
+            CheckBoxWednesday.AutoSize = true;
+            CheckBoxWednesday.Checked = true;
+            CheckBoxWednesday.CheckState = CheckState.Checked;
+            CheckBoxWednesday.Location = new Point(28, 144);
+            CheckBoxWednesday.Name = "CheckBoxWednesday";
+            CheckBoxWednesday.Size = new Size(62, 19);
+            CheckBoxWednesday.TabIndex = 80;
+            CheckBoxWednesday.Tag = "2";
+            CheckBoxWednesday.Text = "水曜日";
+            CheckBoxWednesday.UseVisualStyleBackColor = true;
             // 
             // TextBoxTuesdayMemo
             // 
-            this.TextBoxTuesdayMemo.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TextBoxTuesdayMemo.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxTuesdayMemo.Location = new System.Drawing.Point(132, 128);
-            this.TextBoxTuesdayMemo.Name = "TextBoxTuesdayMemo";
-            this.TextBoxTuesdayMemo.Size = new System.Drawing.Size(816, 23);
-            this.TextBoxTuesdayMemo.TabIndex = 113;
-            this.TextBoxTuesdayMemo.Text = "あいうえお\r\nかきくけこ";
+            TextBoxTuesdayMemo.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            TextBoxTuesdayMemo.ImeMode = ImeMode.Hiragana;
+            TextBoxTuesdayMemo.Location = new Point(132, 112);
+            TextBoxTuesdayMemo.Name = "TextBoxTuesdayMemo";
+            TextBoxTuesdayMemo.Size = new Size(816, 23);
+            TextBoxTuesdayMemo.TabIndex = 113;
+            TextBoxTuesdayMemo.Text = "あいうえお\r\nかきくけこ";
             // 
             // ComboBoxThursdayCar
             // 
-            this.ComboBoxThursdayCar.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxThursdayCar.FormattingEnabled = true;
-            this.ComboBoxThursdayCar.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxThursdayCar.Location = new System.Drawing.Point(96, 212);
-            this.ComboBoxThursdayCar.Name = "ComboBoxThursdayCar";
-            this.ComboBoxThursdayCar.Size = new System.Drawing.Size(156, 23);
-            this.ComboBoxThursdayCar.TabIndex = 81;
-            this.ComboBoxThursdayCar.Text = "足立800あ8888(888)";
+            ComboBoxThursdayCar.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxThursdayCar.FormattingEnabled = true;
+            ComboBoxThursdayCar.ImeMode = ImeMode.Hiragana;
+            ComboBoxThursdayCar.Location = new Point(96, 196);
+            ComboBoxThursdayCar.Name = "ComboBoxThursdayCar";
+            ComboBoxThursdayCar.Size = new Size(156, 23);
+            ComboBoxThursdayCar.TabIndex = 81;
+            ComboBoxThursdayCar.Text = "足立800あ8888(888)";
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(68, 76);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(60, 15);
-            this.label7.TabIndex = 112;
-            this.label7.Text = "月曜日メモ";
+            label7.AutoSize = true;
+            label7.Location = new Point(68, 60);
+            label7.Name = "label7";
+            label7.Size = new Size(60, 15);
+            label7.TabIndex = 112;
+            label7.Text = "月曜日メモ";
             // 
             // ComboBoxThursdayStaff1
             // 
-            this.ComboBoxThursdayStaff1.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxThursdayStaff1.FormattingEnabled = true;
-            this.ComboBoxThursdayStaff1.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxThursdayStaff1.Location = new System.Drawing.Point(292, 212);
-            this.ComboBoxThursdayStaff1.Name = "ComboBoxThursdayStaff1";
-            this.ComboBoxThursdayStaff1.Size = new System.Drawing.Size(136, 23);
-            this.ComboBoxThursdayStaff1.TabIndex = 82;
-            this.ComboBoxThursdayStaff1.Text = "辻祐一";
+            ComboBoxThursdayStaff1.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxThursdayStaff1.FormattingEnabled = true;
+            ComboBoxThursdayStaff1.ImeMode = ImeMode.Hiragana;
+            ComboBoxThursdayStaff1.Location = new Point(292, 196);
+            ComboBoxThursdayStaff1.Name = "ComboBoxThursdayStaff1";
+            ComboBoxThursdayStaff1.Size = new Size(136, 23);
+            ComboBoxThursdayStaff1.TabIndex = 82;
+            ComboBoxThursdayStaff1.Text = "辻祐一";
             // 
             // TextBoxMondayMemo
             // 
-            this.TextBoxMondayMemo.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TextBoxMondayMemo.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.TextBoxMondayMemo.Location = new System.Drawing.Point(132, 72);
-            this.TextBoxMondayMemo.Name = "TextBoxMondayMemo";
-            this.TextBoxMondayMemo.Size = new System.Drawing.Size(816, 23);
-            this.TextBoxMondayMemo.TabIndex = 110;
-            this.TextBoxMondayMemo.Text = "あいうえお\r\nかきくけこ";
+            TextBoxMondayMemo.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            TextBoxMondayMemo.ImeMode = ImeMode.Hiragana;
+            TextBoxMondayMemo.Location = new Point(132, 56);
+            TextBoxMondayMemo.Name = "TextBoxMondayMemo";
+            TextBoxMondayMemo.Size = new Size(816, 23);
+            TextBoxMondayMemo.TabIndex = 110;
+            TextBoxMondayMemo.Text = "あいうえお\r\nかきくけこ";
             // 
             // ComboBoxThursdayStaff2
             // 
-            this.ComboBoxThursdayStaff2.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxThursdayStaff2.FormattingEnabled = true;
-            this.ComboBoxThursdayStaff2.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxThursdayStaff2.Location = new System.Drawing.Point(468, 212);
-            this.ComboBoxThursdayStaff2.Name = "ComboBoxThursdayStaff2";
-            this.ComboBoxThursdayStaff2.Size = new System.Drawing.Size(136, 23);
-            this.ComboBoxThursdayStaff2.TabIndex = 83;
-            this.ComboBoxThursdayStaff2.Text = "辻祐一";
+            ComboBoxThursdayStaff2.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxThursdayStaff2.FormattingEnabled = true;
+            ComboBoxThursdayStaff2.ImeMode = ImeMode.Hiragana;
+            ComboBoxThursdayStaff2.Location = new Point(468, 196);
+            ComboBoxThursdayStaff2.Name = "ComboBoxThursdayStaff2";
+            ComboBoxThursdayStaff2.Size = new Size(136, 23);
+            ComboBoxThursdayStaff2.TabIndex = 83;
+            ComboBoxThursdayStaff2.Text = "辻祐一";
             // 
             // ButtonCopyStaff4
             // 
-            this.ButtonCopyStaff4.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ButtonCopyStaff4.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.ButtonCopyStaff4.Location = new System.Drawing.Point(960, 44);
-            this.ButtonCopyStaff4.Name = "ButtonCopyStaff4";
-            this.ButtonCopyStaff4.Size = new System.Drawing.Size(28, 23);
-            this.ButtonCopyStaff4.TabIndex = 109;
-            this.ButtonCopyStaff4.Tag = "ComboBoxMondayStaff4";
-            this.ButtonCopyStaff4.Text = "↓";
-            this.ButtonCopyStaff4.UseVisualStyleBackColor = true;
-            this.ButtonCopyStaff4.Click += new System.EventHandler(this.ValueCopy);
+            ButtonCopyStaff4.Font = new Font("メイリオ", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            ButtonCopyStaff4.ImageAlign = ContentAlignment.BottomCenter;
+            ButtonCopyStaff4.Location = new Point(960, 28);
+            ButtonCopyStaff4.Name = "ButtonCopyStaff4";
+            ButtonCopyStaff4.Size = new Size(28, 23);
+            ButtonCopyStaff4.TabIndex = 109;
+            ButtonCopyStaff4.Tag = "ComboBoxMondayStaff4";
+            ButtonCopyStaff4.Text = "↓";
+            ButtonCopyStaff4.UseVisualStyleBackColor = true;
+            ButtonCopyStaff4.Click += ValueCopy;
             // 
             // ComboBoxThursdayStaff3
             // 
-            this.ComboBoxThursdayStaff3.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxThursdayStaff3.FormattingEnabled = true;
-            this.ComboBoxThursdayStaff3.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxThursdayStaff3.Location = new System.Drawing.Point(644, 212);
-            this.ComboBoxThursdayStaff3.Name = "ComboBoxThursdayStaff3";
-            this.ComboBoxThursdayStaff3.Size = new System.Drawing.Size(136, 23);
-            this.ComboBoxThursdayStaff3.TabIndex = 84;
-            this.ComboBoxThursdayStaff3.Text = "辻祐一";
+            ComboBoxThursdayStaff3.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxThursdayStaff3.FormattingEnabled = true;
+            ComboBoxThursdayStaff3.ImeMode = ImeMode.Hiragana;
+            ComboBoxThursdayStaff3.Location = new Point(644, 196);
+            ComboBoxThursdayStaff3.Name = "ComboBoxThursdayStaff3";
+            ComboBoxThursdayStaff3.Size = new Size(136, 23);
+            ComboBoxThursdayStaff3.TabIndex = 84;
+            ComboBoxThursdayStaff3.Text = "辻祐一";
             // 
             // ButtonCopyStaff3
             // 
-            this.ButtonCopyStaff3.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ButtonCopyStaff3.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.ButtonCopyStaff3.Location = new System.Drawing.Point(784, 44);
-            this.ButtonCopyStaff3.Name = "ButtonCopyStaff3";
-            this.ButtonCopyStaff3.Size = new System.Drawing.Size(28, 23);
-            this.ButtonCopyStaff3.TabIndex = 108;
-            this.ButtonCopyStaff3.Tag = "ComboBoxMondayStaff3";
-            this.ButtonCopyStaff3.Text = "↓";
-            this.ButtonCopyStaff3.UseVisualStyleBackColor = true;
-            this.ButtonCopyStaff3.Click += new System.EventHandler(this.ValueCopy);
+            ButtonCopyStaff3.Font = new Font("メイリオ", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            ButtonCopyStaff3.ImageAlign = ContentAlignment.BottomCenter;
+            ButtonCopyStaff3.Location = new Point(784, 28);
+            ButtonCopyStaff3.Name = "ButtonCopyStaff3";
+            ButtonCopyStaff3.Size = new Size(28, 23);
+            ButtonCopyStaff3.TabIndex = 108;
+            ButtonCopyStaff3.Tag = "ComboBoxMondayStaff3";
+            ButtonCopyStaff3.Text = "↓";
+            ButtonCopyStaff3.UseVisualStyleBackColor = true;
+            ButtonCopyStaff3.Click += ValueCopy;
             // 
             // ComboBoxThursdayStaff4
             // 
-            this.ComboBoxThursdayStaff4.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxThursdayStaff4.FormattingEnabled = true;
-            this.ComboBoxThursdayStaff4.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxThursdayStaff4.Location = new System.Drawing.Point(820, 212);
-            this.ComboBoxThursdayStaff4.Name = "ComboBoxThursdayStaff4";
-            this.ComboBoxThursdayStaff4.Size = new System.Drawing.Size(136, 23);
-            this.ComboBoxThursdayStaff4.TabIndex = 85;
-            this.ComboBoxThursdayStaff4.Text = "辻祐一";
+            ComboBoxThursdayStaff4.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxThursdayStaff4.FormattingEnabled = true;
+            ComboBoxThursdayStaff4.ImeMode = ImeMode.Hiragana;
+            ComboBoxThursdayStaff4.Location = new Point(820, 196);
+            ComboBoxThursdayStaff4.Name = "ComboBoxThursdayStaff4";
+            ComboBoxThursdayStaff4.Size = new Size(136, 23);
+            ComboBoxThursdayStaff4.TabIndex = 85;
+            ComboBoxThursdayStaff4.Text = "辻祐一";
             // 
             // ButtonCopyStaff2
             // 
-            this.ButtonCopyStaff2.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ButtonCopyStaff2.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.ButtonCopyStaff2.Location = new System.Drawing.Point(608, 44);
-            this.ButtonCopyStaff2.Name = "ButtonCopyStaff2";
-            this.ButtonCopyStaff2.Size = new System.Drawing.Size(28, 23);
-            this.ButtonCopyStaff2.TabIndex = 107;
-            this.ButtonCopyStaff2.Tag = "ComboBoxMondayStaff2";
-            this.ButtonCopyStaff2.Text = "↓";
-            this.ButtonCopyStaff2.UseVisualStyleBackColor = true;
-            this.ButtonCopyStaff2.Click += new System.EventHandler(this.ValueCopy);
+            ButtonCopyStaff2.Font = new Font("メイリオ", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            ButtonCopyStaff2.ImageAlign = ContentAlignment.BottomCenter;
+            ButtonCopyStaff2.Location = new Point(608, 28);
+            ButtonCopyStaff2.Name = "ButtonCopyStaff2";
+            ButtonCopyStaff2.Size = new Size(28, 23);
+            ButtonCopyStaff2.TabIndex = 107;
+            ButtonCopyStaff2.Tag = "ComboBoxMondayStaff2";
+            ButtonCopyStaff2.Text = "↓";
+            ButtonCopyStaff2.UseVisualStyleBackColor = true;
+            ButtonCopyStaff2.Click += ValueCopy;
             // 
             // CheckBoxThursday
             // 
-            this.CheckBoxThursday.AutoSize = true;
-            this.CheckBoxThursday.Checked = true;
-            this.CheckBoxThursday.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxThursday.Location = new System.Drawing.Point(28, 216);
-            this.CheckBoxThursday.Name = "CheckBoxThursday";
-            this.CheckBoxThursday.Size = new System.Drawing.Size(62, 19);
-            this.CheckBoxThursday.TabIndex = 86;
-            this.CheckBoxThursday.Tag = "3";
-            this.CheckBoxThursday.Text = "木曜日";
-            this.CheckBoxThursday.UseVisualStyleBackColor = true;
+            CheckBoxThursday.AutoSize = true;
+            CheckBoxThursday.Checked = true;
+            CheckBoxThursday.CheckState = CheckState.Checked;
+            CheckBoxThursday.Location = new Point(28, 200);
+            CheckBoxThursday.Name = "CheckBoxThursday";
+            CheckBoxThursday.Size = new Size(62, 19);
+            CheckBoxThursday.TabIndex = 86;
+            CheckBoxThursday.Tag = "3";
+            CheckBoxThursday.Text = "木曜日";
+            CheckBoxThursday.UseVisualStyleBackColor = true;
             // 
             // ButtonCopyStaff1
             // 
-            this.ButtonCopyStaff1.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ButtonCopyStaff1.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.ButtonCopyStaff1.Location = new System.Drawing.Point(432, 44);
-            this.ButtonCopyStaff1.Name = "ButtonCopyStaff1";
-            this.ButtonCopyStaff1.Size = new System.Drawing.Size(28, 23);
-            this.ButtonCopyStaff1.TabIndex = 106;
-            this.ButtonCopyStaff1.Tag = "ComboBoxMondayStaff1";
-            this.ButtonCopyStaff1.Text = "↓";
-            this.ButtonCopyStaff1.UseVisualStyleBackColor = true;
-            this.ButtonCopyStaff1.Click += new System.EventHandler(this.ValueCopy);
+            ButtonCopyStaff1.Font = new Font("メイリオ", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            ButtonCopyStaff1.ImageAlign = ContentAlignment.BottomCenter;
+            ButtonCopyStaff1.Location = new Point(432, 28);
+            ButtonCopyStaff1.Name = "ButtonCopyStaff1";
+            ButtonCopyStaff1.Size = new Size(28, 23);
+            ButtonCopyStaff1.TabIndex = 106;
+            ButtonCopyStaff1.Tag = "ComboBoxMondayStaff1";
+            ButtonCopyStaff1.Text = "↓";
+            ButtonCopyStaff1.UseVisualStyleBackColor = true;
+            ButtonCopyStaff1.Click += ValueCopy;
             // 
             // ComboBoxFridayCar
             // 
-            this.ComboBoxFridayCar.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxFridayCar.FormattingEnabled = true;
-            this.ComboBoxFridayCar.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxFridayCar.Location = new System.Drawing.Point(96, 268);
-            this.ComboBoxFridayCar.Name = "ComboBoxFridayCar";
-            this.ComboBoxFridayCar.Size = new System.Drawing.Size(156, 23);
-            this.ComboBoxFridayCar.TabIndex = 87;
-            this.ComboBoxFridayCar.Text = "足立800あ8888(888)";
+            ComboBoxFridayCar.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxFridayCar.FormattingEnabled = true;
+            ComboBoxFridayCar.ImeMode = ImeMode.Hiragana;
+            ComboBoxFridayCar.Location = new Point(96, 252);
+            ComboBoxFridayCar.Name = "ComboBoxFridayCar";
+            ComboBoxFridayCar.Size = new Size(156, 23);
+            ComboBoxFridayCar.TabIndex = 87;
+            ComboBoxFridayCar.Text = "足立800あ8888(888)";
             // 
             // ButtonCopyCar
             // 
-            this.ButtonCopyCar.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.ButtonCopyCar.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.ButtonCopyCar.Location = new System.Drawing.Point(256, 44);
-            this.ButtonCopyCar.Name = "ButtonCopyCar";
-            this.ButtonCopyCar.Size = new System.Drawing.Size(28, 23);
-            this.ButtonCopyCar.TabIndex = 105;
-            this.ButtonCopyCar.Tag = "ComboBoxMondayCar";
-            this.ButtonCopyCar.Text = "↓";
-            this.ButtonCopyCar.UseVisualStyleBackColor = true;
-            this.ButtonCopyCar.Click += new System.EventHandler(this.ValueCopy);
+            ButtonCopyCar.Font = new Font("メイリオ", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            ButtonCopyCar.ImageAlign = ContentAlignment.BottomCenter;
+            ButtonCopyCar.Location = new Point(256, 28);
+            ButtonCopyCar.Name = "ButtonCopyCar";
+            ButtonCopyCar.Size = new Size(28, 23);
+            ButtonCopyCar.TabIndex = 105;
+            ButtonCopyCar.Tag = "ComboBoxMondayCar";
+            ButtonCopyCar.Text = "↓";
+            ButtonCopyCar.UseVisualStyleBackColor = true;
+            ButtonCopyCar.Click += ValueCopy;
             // 
             // ComboBoxFridayStaff1
             // 
-            this.ComboBoxFridayStaff1.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxFridayStaff1.FormattingEnabled = true;
-            this.ComboBoxFridayStaff1.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxFridayStaff1.Location = new System.Drawing.Point(292, 268);
-            this.ComboBoxFridayStaff1.Name = "ComboBoxFridayStaff1";
-            this.ComboBoxFridayStaff1.Size = new System.Drawing.Size(136, 23);
-            this.ComboBoxFridayStaff1.TabIndex = 88;
-            this.ComboBoxFridayStaff1.Text = "辻祐一";
+            ComboBoxFridayStaff1.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxFridayStaff1.FormattingEnabled = true;
+            ComboBoxFridayStaff1.ImeMode = ImeMode.Hiragana;
+            ComboBoxFridayStaff1.Location = new Point(292, 252);
+            ComboBoxFridayStaff1.Name = "ComboBoxFridayStaff1";
+            ComboBoxFridayStaff1.Size = new Size(136, 23);
+            ComboBoxFridayStaff1.TabIndex = 88;
+            ComboBoxFridayStaff1.Text = "辻祐一";
             // 
             // CheckBoxSunday
             // 
-            this.CheckBoxSunday.AutoSize = true;
-            this.CheckBoxSunday.Checked = true;
-            this.CheckBoxSunday.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxSunday.Location = new System.Drawing.Point(28, 384);
-            this.CheckBoxSunday.Name = "CheckBoxSunday";
-            this.CheckBoxSunday.Size = new System.Drawing.Size(62, 19);
-            this.CheckBoxSunday.TabIndex = 104;
-            this.CheckBoxSunday.Tag = "6";
-            this.CheckBoxSunday.Text = "日曜日";
-            this.CheckBoxSunday.UseVisualStyleBackColor = true;
+            CheckBoxSunday.AutoSize = true;
+            CheckBoxSunday.Checked = true;
+            CheckBoxSunday.CheckState = CheckState.Checked;
+            CheckBoxSunday.Location = new Point(28, 368);
+            CheckBoxSunday.Name = "CheckBoxSunday";
+            CheckBoxSunday.Size = new Size(62, 19);
+            CheckBoxSunday.TabIndex = 104;
+            CheckBoxSunday.Tag = "6";
+            CheckBoxSunday.Text = "日曜日";
+            CheckBoxSunday.UseVisualStyleBackColor = true;
             // 
             // ComboBoxFridayStaff2
             // 
-            this.ComboBoxFridayStaff2.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxFridayStaff2.FormattingEnabled = true;
-            this.ComboBoxFridayStaff2.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxFridayStaff2.Location = new System.Drawing.Point(468, 268);
-            this.ComboBoxFridayStaff2.Name = "ComboBoxFridayStaff2";
-            this.ComboBoxFridayStaff2.Size = new System.Drawing.Size(136, 23);
-            this.ComboBoxFridayStaff2.TabIndex = 89;
-            this.ComboBoxFridayStaff2.Text = "辻祐一";
+            ComboBoxFridayStaff2.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxFridayStaff2.FormattingEnabled = true;
+            ComboBoxFridayStaff2.ImeMode = ImeMode.Hiragana;
+            ComboBoxFridayStaff2.Location = new Point(468, 252);
+            ComboBoxFridayStaff2.Name = "ComboBoxFridayStaff2";
+            ComboBoxFridayStaff2.Size = new Size(136, 23);
+            ComboBoxFridayStaff2.TabIndex = 89;
+            ComboBoxFridayStaff2.Text = "辻祐一";
             // 
             // ComboBoxSundayStaff4
             // 
-            this.ComboBoxSundayStaff4.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxSundayStaff4.FormattingEnabled = true;
-            this.ComboBoxSundayStaff4.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxSundayStaff4.Location = new System.Drawing.Point(820, 380);
-            this.ComboBoxSundayStaff4.Name = "ComboBoxSundayStaff4";
-            this.ComboBoxSundayStaff4.Size = new System.Drawing.Size(136, 23);
-            this.ComboBoxSundayStaff4.TabIndex = 103;
-            this.ComboBoxSundayStaff4.Text = "辻祐一";
+            ComboBoxSundayStaff4.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxSundayStaff4.FormattingEnabled = true;
+            ComboBoxSundayStaff4.ImeMode = ImeMode.Hiragana;
+            ComboBoxSundayStaff4.Location = new Point(820, 364);
+            ComboBoxSundayStaff4.Name = "ComboBoxSundayStaff4";
+            ComboBoxSundayStaff4.Size = new Size(136, 23);
+            ComboBoxSundayStaff4.TabIndex = 103;
+            ComboBoxSundayStaff4.Text = "辻祐一";
             // 
             // ComboBoxFridayStaff3
             // 
-            this.ComboBoxFridayStaff3.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxFridayStaff3.FormattingEnabled = true;
-            this.ComboBoxFridayStaff3.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxFridayStaff3.Location = new System.Drawing.Point(644, 268);
-            this.ComboBoxFridayStaff3.Name = "ComboBoxFridayStaff3";
-            this.ComboBoxFridayStaff3.Size = new System.Drawing.Size(136, 23);
-            this.ComboBoxFridayStaff3.TabIndex = 90;
-            this.ComboBoxFridayStaff3.Text = "辻祐一";
+            ComboBoxFridayStaff3.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxFridayStaff3.FormattingEnabled = true;
+            ComboBoxFridayStaff3.ImeMode = ImeMode.Hiragana;
+            ComboBoxFridayStaff3.Location = new Point(644, 252);
+            ComboBoxFridayStaff3.Name = "ComboBoxFridayStaff3";
+            ComboBoxFridayStaff3.Size = new Size(136, 23);
+            ComboBoxFridayStaff3.TabIndex = 90;
+            ComboBoxFridayStaff3.Text = "辻祐一";
             // 
             // ComboBoxSundayStaff3
             // 
-            this.ComboBoxSundayStaff3.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxSundayStaff3.FormattingEnabled = true;
-            this.ComboBoxSundayStaff3.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxSundayStaff3.Location = new System.Drawing.Point(644, 380);
-            this.ComboBoxSundayStaff3.Name = "ComboBoxSundayStaff3";
-            this.ComboBoxSundayStaff3.Size = new System.Drawing.Size(136, 23);
-            this.ComboBoxSundayStaff3.TabIndex = 102;
-            this.ComboBoxSundayStaff3.Text = "辻祐一";
+            ComboBoxSundayStaff3.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxSundayStaff3.FormattingEnabled = true;
+            ComboBoxSundayStaff3.ImeMode = ImeMode.Hiragana;
+            ComboBoxSundayStaff3.Location = new Point(644, 364);
+            ComboBoxSundayStaff3.Name = "ComboBoxSundayStaff3";
+            ComboBoxSundayStaff3.Size = new Size(136, 23);
+            ComboBoxSundayStaff3.TabIndex = 102;
+            ComboBoxSundayStaff3.Text = "辻祐一";
             // 
             // ComboBoxFridayStaff4
             // 
-            this.ComboBoxFridayStaff4.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxFridayStaff4.FormattingEnabled = true;
-            this.ComboBoxFridayStaff4.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxFridayStaff4.Location = new System.Drawing.Point(820, 268);
-            this.ComboBoxFridayStaff4.Name = "ComboBoxFridayStaff4";
-            this.ComboBoxFridayStaff4.Size = new System.Drawing.Size(136, 23);
-            this.ComboBoxFridayStaff4.TabIndex = 91;
-            this.ComboBoxFridayStaff4.Text = "辻祐一";
+            ComboBoxFridayStaff4.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxFridayStaff4.FormattingEnabled = true;
+            ComboBoxFridayStaff4.ImeMode = ImeMode.Hiragana;
+            ComboBoxFridayStaff4.Location = new Point(820, 252);
+            ComboBoxFridayStaff4.Name = "ComboBoxFridayStaff4";
+            ComboBoxFridayStaff4.Size = new Size(136, 23);
+            ComboBoxFridayStaff4.TabIndex = 91;
+            ComboBoxFridayStaff4.Text = "辻祐一";
             // 
             // ComboBoxSundayStaff2
             // 
-            this.ComboBoxSundayStaff2.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxSundayStaff2.FormattingEnabled = true;
-            this.ComboBoxSundayStaff2.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxSundayStaff2.Location = new System.Drawing.Point(468, 380);
-            this.ComboBoxSundayStaff2.Name = "ComboBoxSundayStaff2";
-            this.ComboBoxSundayStaff2.Size = new System.Drawing.Size(136, 23);
-            this.ComboBoxSundayStaff2.TabIndex = 101;
-            this.ComboBoxSundayStaff2.Text = "辻祐一";
+            ComboBoxSundayStaff2.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxSundayStaff2.FormattingEnabled = true;
+            ComboBoxSundayStaff2.ImeMode = ImeMode.Hiragana;
+            ComboBoxSundayStaff2.Location = new Point(468, 364);
+            ComboBoxSundayStaff2.Name = "ComboBoxSundayStaff2";
+            ComboBoxSundayStaff2.Size = new Size(136, 23);
+            ComboBoxSundayStaff2.TabIndex = 101;
+            ComboBoxSundayStaff2.Text = "辻祐一";
             // 
             // CheckBoxFriday
             // 
-            this.CheckBoxFriday.AutoSize = true;
-            this.CheckBoxFriday.Checked = true;
-            this.CheckBoxFriday.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxFriday.Location = new System.Drawing.Point(28, 272);
-            this.CheckBoxFriday.Name = "CheckBoxFriday";
-            this.CheckBoxFriday.Size = new System.Drawing.Size(62, 19);
-            this.CheckBoxFriday.TabIndex = 92;
-            this.CheckBoxFriday.Tag = "4";
-            this.CheckBoxFriday.Text = "金曜日";
-            this.CheckBoxFriday.UseVisualStyleBackColor = true;
+            CheckBoxFriday.AutoSize = true;
+            CheckBoxFriday.Checked = true;
+            CheckBoxFriday.CheckState = CheckState.Checked;
+            CheckBoxFriday.Location = new Point(28, 256);
+            CheckBoxFriday.Name = "CheckBoxFriday";
+            CheckBoxFriday.Size = new Size(62, 19);
+            CheckBoxFriday.TabIndex = 92;
+            CheckBoxFriday.Tag = "4";
+            CheckBoxFriday.Text = "金曜日";
+            CheckBoxFriday.UseVisualStyleBackColor = true;
             // 
             // ComboBoxSundayStaff1
             // 
-            this.ComboBoxSundayStaff1.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxSundayStaff1.FormattingEnabled = true;
-            this.ComboBoxSundayStaff1.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxSundayStaff1.Location = new System.Drawing.Point(292, 380);
-            this.ComboBoxSundayStaff1.Name = "ComboBoxSundayStaff1";
-            this.ComboBoxSundayStaff1.Size = new System.Drawing.Size(136, 23);
-            this.ComboBoxSundayStaff1.TabIndex = 100;
-            this.ComboBoxSundayStaff1.Text = "辻祐一";
+            ComboBoxSundayStaff1.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxSundayStaff1.FormattingEnabled = true;
+            ComboBoxSundayStaff1.ImeMode = ImeMode.Hiragana;
+            ComboBoxSundayStaff1.Location = new Point(292, 364);
+            ComboBoxSundayStaff1.Name = "ComboBoxSundayStaff1";
+            ComboBoxSundayStaff1.Size = new Size(136, 23);
+            ComboBoxSundayStaff1.TabIndex = 100;
+            ComboBoxSundayStaff1.Text = "辻祐一";
             // 
             // ComboBoxSaturdayCar
             // 
-            this.ComboBoxSaturdayCar.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxSaturdayCar.FormattingEnabled = true;
-            this.ComboBoxSaturdayCar.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxSaturdayCar.Location = new System.Drawing.Point(96, 324);
-            this.ComboBoxSaturdayCar.Name = "ComboBoxSaturdayCar";
-            this.ComboBoxSaturdayCar.Size = new System.Drawing.Size(156, 23);
-            this.ComboBoxSaturdayCar.TabIndex = 93;
-            this.ComboBoxSaturdayCar.Text = "足立800あ8888(888)";
+            ComboBoxSaturdayCar.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxSaturdayCar.FormattingEnabled = true;
+            ComboBoxSaturdayCar.ImeMode = ImeMode.Hiragana;
+            ComboBoxSaturdayCar.Location = new Point(96, 308);
+            ComboBoxSaturdayCar.Name = "ComboBoxSaturdayCar";
+            ComboBoxSaturdayCar.Size = new Size(156, 23);
+            ComboBoxSaturdayCar.TabIndex = 93;
+            ComboBoxSaturdayCar.Text = "足立800あ8888(888)";
             // 
             // ComboBoxSundayCar
             // 
-            this.ComboBoxSundayCar.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxSundayCar.FormattingEnabled = true;
-            this.ComboBoxSundayCar.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxSundayCar.Location = new System.Drawing.Point(96, 380);
-            this.ComboBoxSundayCar.Name = "ComboBoxSundayCar";
-            this.ComboBoxSundayCar.Size = new System.Drawing.Size(156, 23);
-            this.ComboBoxSundayCar.TabIndex = 99;
-            this.ComboBoxSundayCar.Text = "足立800あ8888(888)";
+            ComboBoxSundayCar.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxSundayCar.FormattingEnabled = true;
+            ComboBoxSundayCar.ImeMode = ImeMode.Hiragana;
+            ComboBoxSundayCar.Location = new Point(96, 364);
+            ComboBoxSundayCar.Name = "ComboBoxSundayCar";
+            ComboBoxSundayCar.Size = new Size(156, 23);
+            ComboBoxSundayCar.TabIndex = 99;
+            ComboBoxSundayCar.Text = "足立800あ8888(888)";
             // 
             // ComboBoxSaturdayStaff1
             // 
-            this.ComboBoxSaturdayStaff1.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxSaturdayStaff1.FormattingEnabled = true;
-            this.ComboBoxSaturdayStaff1.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxSaturdayStaff1.Location = new System.Drawing.Point(292, 324);
-            this.ComboBoxSaturdayStaff1.Name = "ComboBoxSaturdayStaff1";
-            this.ComboBoxSaturdayStaff1.Size = new System.Drawing.Size(136, 23);
-            this.ComboBoxSaturdayStaff1.TabIndex = 94;
-            this.ComboBoxSaturdayStaff1.Text = "辻祐一";
+            ComboBoxSaturdayStaff1.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxSaturdayStaff1.FormattingEnabled = true;
+            ComboBoxSaturdayStaff1.ImeMode = ImeMode.Hiragana;
+            ComboBoxSaturdayStaff1.Location = new Point(292, 308);
+            ComboBoxSaturdayStaff1.Name = "ComboBoxSaturdayStaff1";
+            ComboBoxSaturdayStaff1.Size = new Size(136, 23);
+            ComboBoxSaturdayStaff1.TabIndex = 94;
+            ComboBoxSaturdayStaff1.Text = "辻祐一";
             // 
             // CheckBoxSaturday
             // 
-            this.CheckBoxSaturday.AutoSize = true;
-            this.CheckBoxSaturday.Checked = true;
-            this.CheckBoxSaturday.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxSaturday.Location = new System.Drawing.Point(28, 328);
-            this.CheckBoxSaturday.Name = "CheckBoxSaturday";
-            this.CheckBoxSaturday.Size = new System.Drawing.Size(62, 19);
-            this.CheckBoxSaturday.TabIndex = 98;
-            this.CheckBoxSaturday.Tag = "5";
-            this.CheckBoxSaturday.Text = "土曜日";
-            this.CheckBoxSaturday.UseVisualStyleBackColor = true;
+            CheckBoxSaturday.AutoSize = true;
+            CheckBoxSaturday.Checked = true;
+            CheckBoxSaturday.CheckState = CheckState.Checked;
+            CheckBoxSaturday.Location = new Point(28, 312);
+            CheckBoxSaturday.Name = "CheckBoxSaturday";
+            CheckBoxSaturday.Size = new Size(62, 19);
+            CheckBoxSaturday.TabIndex = 98;
+            CheckBoxSaturday.Tag = "5";
+            CheckBoxSaturday.Text = "土曜日";
+            CheckBoxSaturday.UseVisualStyleBackColor = true;
             // 
             // ComboBoxSaturdayStaff2
             // 
-            this.ComboBoxSaturdayStaff2.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxSaturdayStaff2.FormattingEnabled = true;
-            this.ComboBoxSaturdayStaff2.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxSaturdayStaff2.Location = new System.Drawing.Point(468, 324);
-            this.ComboBoxSaturdayStaff2.Name = "ComboBoxSaturdayStaff2";
-            this.ComboBoxSaturdayStaff2.Size = new System.Drawing.Size(136, 23);
-            this.ComboBoxSaturdayStaff2.TabIndex = 95;
-            this.ComboBoxSaturdayStaff2.Text = "辻祐一";
+            ComboBoxSaturdayStaff2.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxSaturdayStaff2.FormattingEnabled = true;
+            ComboBoxSaturdayStaff2.ImeMode = ImeMode.Hiragana;
+            ComboBoxSaturdayStaff2.Location = new Point(468, 308);
+            ComboBoxSaturdayStaff2.Name = "ComboBoxSaturdayStaff2";
+            ComboBoxSaturdayStaff2.Size = new Size(136, 23);
+            ComboBoxSaturdayStaff2.TabIndex = 95;
+            ComboBoxSaturdayStaff2.Text = "辻祐一";
             // 
             // ComboBoxSaturdayStaff4
             // 
-            this.ComboBoxSaturdayStaff4.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxSaturdayStaff4.FormattingEnabled = true;
-            this.ComboBoxSaturdayStaff4.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxSaturdayStaff4.Location = new System.Drawing.Point(820, 324);
-            this.ComboBoxSaturdayStaff4.Name = "ComboBoxSaturdayStaff4";
-            this.ComboBoxSaturdayStaff4.Size = new System.Drawing.Size(136, 23);
-            this.ComboBoxSaturdayStaff4.TabIndex = 97;
-            this.ComboBoxSaturdayStaff4.Text = "辻祐一";
+            ComboBoxSaturdayStaff4.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxSaturdayStaff4.FormattingEnabled = true;
+            ComboBoxSaturdayStaff4.ImeMode = ImeMode.Hiragana;
+            ComboBoxSaturdayStaff4.Location = new Point(820, 308);
+            ComboBoxSaturdayStaff4.Name = "ComboBoxSaturdayStaff4";
+            ComboBoxSaturdayStaff4.Size = new Size(136, 23);
+            ComboBoxSaturdayStaff4.TabIndex = 97;
+            ComboBoxSaturdayStaff4.Text = "辻祐一";
             // 
             // ComboBoxSaturdayStaff3
             // 
-            this.ComboBoxSaturdayStaff3.Font = new System.Drawing.Font("Yu Gothic UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxSaturdayStaff3.FormattingEnabled = true;
-            this.ComboBoxSaturdayStaff3.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
-            this.ComboBoxSaturdayStaff3.Location = new System.Drawing.Point(644, 324);
-            this.ComboBoxSaturdayStaff3.Name = "ComboBoxSaturdayStaff3";
-            this.ComboBoxSaturdayStaff3.Size = new System.Drawing.Size(136, 23);
-            this.ComboBoxSaturdayStaff3.TabIndex = 96;
-            this.ComboBoxSaturdayStaff3.Text = "辻祐一";
+            ComboBoxSaturdayStaff3.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxSaturdayStaff3.FormattingEnabled = true;
+            ComboBoxSaturdayStaff3.ImeMode = ImeMode.Hiragana;
+            ComboBoxSaturdayStaff3.Location = new Point(644, 308);
+            ComboBoxSaturdayStaff3.Name = "ComboBoxSaturdayStaff3";
+            ComboBoxSaturdayStaff3.Size = new Size(136, 23);
+            ComboBoxSaturdayStaff3.TabIndex = 96;
+            ComboBoxSaturdayStaff3.Text = "辻祐一";
             // 
             // LabelDayOfWeek
             // 
-            this.LabelDayOfWeek.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.LabelDayOfWeek.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LabelDayOfWeek.Location = new System.Drawing.Point(204, 132);
-            this.LabelDayOfWeek.Name = "LabelDayOfWeek";
-            this.LabelDayOfWeek.Size = new System.Drawing.Size(112, 24);
-            this.LabelDayOfWeek.TabIndex = 134;
-            this.LabelDayOfWeek.Text = "月火水木金土日 ";
-            this.LabelDayOfWeek.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.ToolTip1.SetToolTip(this.LabelDayOfWeek, "setMasterVo.Working_days");
+            LabelDayOfWeek.BorderStyle = BorderStyle.Fixed3D;
+            LabelDayOfWeek.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            LabelDayOfWeek.Location = new Point(204, 132);
+            LabelDayOfWeek.Name = "LabelDayOfWeek";
+            LabelDayOfWeek.Size = new Size(112, 24);
+            LabelDayOfWeek.TabIndex = 134;
+            LabelDayOfWeek.Text = "月火水木金土日 ";
+            LabelDayOfWeek.TextAlign = ContentAlignment.MiddleRight;
+            ToolTip1.SetToolTip(LabelDayOfWeek, "setMasterVo.Working_days");
             // 
             // label18
             // 
-            this.label18.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label18.Location = new System.Drawing.Point(112, 135);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(92, 20);
-            this.label18.TabIndex = 133;
-            this.label18.Text = "配車曜日：";
+            label18.Font = new Font("Yu Gothic UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label18.Location = new Point(112, 135);
+            label18.Name = "label18";
+            label18.Size = new Size(92, 20);
+            label18.TabIndex = 133;
+            label18.Text = "配車曜日：";
             // 
             // LabelCellNumber
             // 
-            this.LabelCellNumber.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.LabelCellNumber.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LabelCellNumber.Location = new System.Drawing.Point(204, 36);
-            this.LabelCellNumber.Name = "LabelCellNumber";
-            this.LabelCellNumber.Size = new System.Drawing.Size(112, 24);
-            this.LabelCellNumber.TabIndex = 132;
-            this.LabelCellNumber.Text = "88";
-            this.LabelCellNumber.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            LabelCellNumber.BorderStyle = BorderStyle.Fixed3D;
+            LabelCellNumber.Font = new Font("Yu Gothic UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            LabelCellNumber.Location = new Point(204, 36);
+            LabelCellNumber.Name = "LabelCellNumber";
+            LabelCellNumber.Size = new Size(112, 24);
+            LabelCellNumber.TabIndex = 132;
+            LabelCellNumber.Text = "88";
+            LabelCellNumber.TextAlign = ContentAlignment.MiddleRight;
             // 
             // ButtonUpdate
             // 
-            this.ButtonUpdate.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ButtonUpdate.Location = new System.Drawing.Point(1568, 40);
-            this.ButtonUpdate.Name = "ButtonUpdate";
-            this.ButtonUpdate.Size = new System.Drawing.Size(164, 36);
-            this.ButtonUpdate.TabIndex = 0;
-            this.ButtonUpdate.Text = "詳細情報を更新";
-            this.ButtonUpdate.UseVisualStyleBackColor = true;
-            this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
+            ButtonUpdate.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            ButtonUpdate.Location = new Point(1568, 40);
+            ButtonUpdate.Name = "ButtonUpdate";
+            ButtonUpdate.Size = new Size(164, 36);
+            ButtonUpdate.TabIndex = 0;
+            ButtonUpdate.Text = "詳細情報を更新";
+            ButtonUpdate.UseVisualStyleBackColor = true;
+            ButtonUpdate.Click += ButtonUpdate_Click;
             // 
             // label17
             // 
-            this.label17.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label17.Location = new System.Drawing.Point(112, 39);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(92, 20);
-            this.label17.TabIndex = 131;
-            this.label17.Text = "配車番号：";
+            label17.Font = new Font("Yu Gothic UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label17.Location = new Point(112, 39);
+            label17.Name = "label17";
+            label17.Size = new Size(92, 20);
+            label17.TabIndex = 131;
+            label17.Text = "配車番号：";
             // 
             // LabelNumberOfPeople
             // 
-            this.LabelNumberOfPeople.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.LabelNumberOfPeople.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LabelNumberOfPeople.Location = new System.Drawing.Point(204, 100);
-            this.LabelNumberOfPeople.Name = "LabelNumberOfPeople";
-            this.LabelNumberOfPeople.Size = new System.Drawing.Size(112, 24);
-            this.LabelNumberOfPeople.TabIndex = 129;
-            this.LabelNumberOfPeople.Text = "4人";
-            this.LabelNumberOfPeople.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            LabelNumberOfPeople.BorderStyle = BorderStyle.Fixed3D;
+            LabelNumberOfPeople.Font = new Font("Yu Gothic UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            LabelNumberOfPeople.Location = new Point(204, 100);
+            LabelNumberOfPeople.Name = "LabelNumberOfPeople";
+            LabelNumberOfPeople.Size = new Size(112, 24);
+            LabelNumberOfPeople.TabIndex = 129;
+            LabelNumberOfPeople.Text = "4人";
+            LabelNumberOfPeople.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label16
             // 
-            this.label16.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(112, 103);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(92, 20);
-            this.label16.TabIndex = 128;
-            this.label16.Text = "配車人数：";
+            label16.Font = new Font("Yu Gothic UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label16.Location = new Point(112, 103);
+            label16.Name = "label16";
+            label16.Size = new Size(92, 20);
+            label16.TabIndex = 128;
+            label16.Text = "配車人数：";
             // 
             // LabelSetName
             // 
-            this.LabelSetName.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.LabelSetName.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LabelSetName.Location = new System.Drawing.Point(204, 68);
-            this.LabelSetName.Name = "LabelSetName";
-            this.LabelSetName.Size = new System.Drawing.Size(112, 24);
-            this.LabelSetName.TabIndex = 127;
-            this.LabelSetName.Text = "歌舞伎1-81";
-            this.LabelSetName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            LabelSetName.BorderStyle = BorderStyle.Fixed3D;
+            LabelSetName.Font = new Font("Yu Gothic UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            LabelSetName.Location = new Point(204, 68);
+            LabelSetName.Name = "LabelSetName";
+            LabelSetName.Size = new Size(112, 24);
+            LabelSetName.TabIndex = 127;
+            LabelSetName.Text = "歌舞伎1-81";
+            LabelSetName.TextAlign = ContentAlignment.MiddleRight;
             // 
             // label13
             // 
-            this.label13.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(112, 71);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(92, 20);
-            this.label13.TabIndex = 126;
-            this.label13.Text = "配  車  先：";
+            label13.Font = new Font("Yu Gothic UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label13.Location = new Point(112, 71);
+            label13.Name = "label13";
+            label13.Size = new Size(92, 20);
+            label13.TabIndex = 126;
+            label13.Text = "配  車  先：";
             // 
             // TableLayoutPanelExCenter
             // 
-            this.TableLayoutPanelExCenter.ButtonBorderStyleDotted = false;
-            this.TableLayoutPanelExCenter.ColumnCount = 25;
-            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelExCenter.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 74F));
-            this.TableLayoutPanelExCenter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TableLayoutPanelExCenter.Location = new System.Drawing.Point(25, 105);
-            this.TableLayoutPanelExCenter.Margin = new System.Windows.Forms.Padding(25, 15, 29, 15);
-            this.TableLayoutPanelExCenter.Name = "TableLayoutPanelExCenter";
-            this.TableLayoutPanelExCenter.RowCount = 6;
-            this.TableLayoutPanelExCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 72F));
-            this.TableLayoutPanelExCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 72F));
-            this.TableLayoutPanelExCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 72F));
-            this.TableLayoutPanelExCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 72F));
-            this.TableLayoutPanelExCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 72F));
-            this.TableLayoutPanelExCenter.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 72F));
-            this.TableLayoutPanelExCenter.Size = new System.Drawing.Size(1850, 432);
-            this.TableLayoutPanelExCenter.TabIndex = 4;
-            this.TableLayoutPanelExCenter.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.TableLayoutPanelExCenter_MouseDoubleClick);
+            TableLayoutPanelExCenter.ButtonBorderStyleDotted = false;
+            TableLayoutPanelExCenter.ColumnCount = 25;
+            TableLayoutPanelExCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelExCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelExCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelExCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelExCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelExCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelExCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelExCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelExCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelExCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelExCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelExCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelExCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelExCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelExCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelExCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelExCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelExCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelExCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelExCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelExCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelExCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelExCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelExCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelExCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
+            TableLayoutPanelExCenter.Dock = DockStyle.Fill;
+            TableLayoutPanelExCenter.Location = new Point(25, 105);
+            TableLayoutPanelExCenter.Margin = new Padding(25, 15, 29, 15);
+            TableLayoutPanelExCenter.Name = "TableLayoutPanelExCenter";
+            TableLayoutPanelExCenter.RowCount = 6;
+            TableLayoutPanelExCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 72F));
+            TableLayoutPanelExCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 72F));
+            TableLayoutPanelExCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 72F));
+            TableLayoutPanelExCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 72F));
+            TableLayoutPanelExCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 72F));
+            TableLayoutPanelExCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 72F));
+            TableLayoutPanelExCenter.Size = new Size(1850, 432);
+            TableLayoutPanelExCenter.TabIndex = 4;
+            TableLayoutPanelExCenter.MouseDoubleClick += TableLayoutPanelExCenter_MouseDoubleClick;
             // 
             // PanelTop
             // 
-            this.PanelTop.Controls.Add(this.LabelName);
-            this.PanelTop.Controls.Add(this.ComboBoxFinancialYear);
-            this.PanelTop.Controls.Add(this.label14);
-            this.PanelTop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelTop.Location = new System.Drawing.Point(3, 27);
-            this.PanelTop.Name = "PanelTop";
-            this.PanelTop.Size = new System.Drawing.Size(1898, 60);
-            this.PanelTop.TabIndex = 5;
+            PanelTop.Controls.Add(LabelName);
+            PanelTop.Controls.Add(ComboBoxFinancialYear);
+            PanelTop.Controls.Add(label14);
+            PanelTop.Dock = DockStyle.Fill;
+            PanelTop.Location = new Point(3, 27);
+            PanelTop.Name = "PanelTop";
+            PanelTop.Size = new Size(1898, 60);
+            PanelTop.TabIndex = 5;
             // 
             // LabelName
             // 
-            this.LabelName.Font = new System.Drawing.Font("Yu Gothic UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LabelName.Location = new System.Drawing.Point(720, 12);
-            this.LabelName.Name = "LabelName";
-            this.LabelName.Size = new System.Drawing.Size(468, 32);
-            this.LabelName.TabIndex = 129;
-            this.LabelName.Text = "社内で使用している本番登録";
-            this.LabelName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            LabelName.Font = new Font("Yu Gothic UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point);
+            LabelName.Location = new Point(720, 12);
+            LabelName.Name = "LabelName";
+            LabelName.Size = new Size(468, 32);
+            LabelName.TabIndex = 129;
+            LabelName.Text = "社内で使用している本番登録";
+            LabelName.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // ComboBoxFinancialYear
             // 
-            this.ComboBoxFinancialYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboBoxFinancialYear.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ComboBoxFinancialYear.FormattingEnabled = true;
-            this.ComboBoxFinancialYear.Items.AddRange(new object[] {
-            "2022年4月1日",
-            "2023年4月1日"});
-            this.ComboBoxFinancialYear.Location = new System.Drawing.Point(124, 19);
-            this.ComboBoxFinancialYear.Name = "ComboBoxFinancialYear";
-            this.ComboBoxFinancialYear.Size = new System.Drawing.Size(140, 25);
-            this.ComboBoxFinancialYear.TabIndex = 128;
-            this.ComboBoxFinancialYear.SelectedIndexChanged += new System.EventHandler(this.ComboBoxFinancialYear_SelectedIndexChanged);
+            ComboBoxFinancialYear.DropDownStyle = ComboBoxStyle.DropDownList;
+            ComboBoxFinancialYear.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            ComboBoxFinancialYear.FormattingEnabled = true;
+            ComboBoxFinancialYear.Items.AddRange(new object[] { "2022年度", "2023年度" });
+            ComboBoxFinancialYear.Location = new Point(124, 19);
+            ComboBoxFinancialYear.Name = "ComboBoxFinancialYear";
+            ComboBoxFinancialYear.Size = new Size(140, 25);
+            ComboBoxFinancialYear.TabIndex = 128;
+            ComboBoxFinancialYear.SelectedIndexChanged += ComboBoxFinancialYear_SelectedIndexChanged;
             // 
             // label14
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(40, 20);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(84, 20);
-            this.label14.TabIndex = 127;
-            this.label14.Text = "配車年度：";
+            label14.AutoSize = true;
+            label14.Font = new Font("Yu Gothic UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label14.Location = new Point(40, 20);
+            label14.Name = "label14";
+            label14.Size = new Size(84, 20);
+            label14.TabIndex = 127;
+            label14.Text = "配車年度：";
             // 
             // ContextMenuStrip1
             // 
-            this.ContextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemRemoveSetLabel});
-            this.ContextMenuStrip1.Name = "ContextMenuStrip1";
-            this.ContextMenuStrip1.Size = new System.Drawing.Size(163, 26);
-            this.ContextMenuStrip1.Opened += new System.EventHandler(this.ContextMenuStrip1_Opened);
+            ContextMenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemRemoveSetLabel });
+            ContextMenuStrip1.Name = "ContextMenuStrip1";
+            ContextMenuStrip1.Size = new Size(163, 26);
+            ContextMenuStrip1.Opened += ContextMenuStrip1_Opened;
             // 
             // ToolStripMenuItemRemoveSetLabel
             // 
-            this.ToolStripMenuItemRemoveSetLabel.Name = "ToolStripMenuItemRemoveSetLabel";
-            this.ToolStripMenuItemRemoveSetLabel.Size = new System.Drawing.Size(162, 22);
-            this.ToolStripMenuItemRemoveSetLabel.Text = "配車先を削除する";
-            this.ToolStripMenuItemRemoveSetLabel.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemRemoveSetLabel.Name = "ToolStripMenuItemRemoveSetLabel";
+            ToolStripMenuItemRemoveSetLabel.Size = new Size(162, 22);
+            ToolStripMenuItemRemoveSetLabel.Text = "配車先を削除する";
+            ToolStripMenuItemRemoveSetLabel.Click += ToolStripMenuItem_Click;
             // 
             // ProductionList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1904, 1041);
-            this.Controls.Add(this.TableLayoutPanelExBase);
-            this.DoubleBuffered = true;
-            this.MainMenuStrip = this.MenuStrip1;
-            this.Name = "ProductionList";
-            this.Text = "ProductionList";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ProductionList_FormClosing);
-            this.TableLayoutPanelExBase.ResumeLayout(false);
-            this.TableLayoutPanelExBase.PerformLayout();
-            this.MenuStrip1.ResumeLayout(false);
-            this.MenuStrip1.PerformLayout();
-            this.StatusStrip1.ResumeLayout(false);
-            this.StatusStrip1.PerformLayout();
-            this.PanelButtom.ResumeLayout(false);
-            this.Panel1.ResumeLayout(false);
-            this.Panel1.PerformLayout();
-            this.PanelTop.ResumeLayout(false);
-            this.PanelTop.PerformLayout();
-            this.ContextMenuStrip1.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1904, 1041);
+            Controls.Add(TableLayoutPanelExBase);
+            DoubleBuffered = true;
+            MainMenuStrip = MenuStrip1;
+            Name = "ProductionList";
+            Text = "ProductionList";
+            FormClosing += ProductionList_FormClosing;
+            TableLayoutPanelExBase.ResumeLayout(false);
+            TableLayoutPanelExBase.PerformLayout();
+            MenuStrip1.ResumeLayout(false);
+            MenuStrip1.PerformLayout();
+            StatusStrip1.ResumeLayout(false);
+            StatusStrip1.PerformLayout();
+            PanelButtom.ResumeLayout(false);
+            Panel1.ResumeLayout(false);
+            Panel1.PerformLayout();
+            PanelTop.ResumeLayout(false);
+            PanelTop.PerformLayout();
+            ContextMenuStrip1.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion
@@ -1375,5 +1415,9 @@
         private ContextMenuStrip ContextMenuStrip1;
         private ToolStripMenuItem ToolStripMenuItemRemoveSetLabel;
         private Panel Panel1;
+        private Label LabelMoveFlag;
+        private Label label21;
+        private Label LabelFiveLap;
+        private Label label15;
     }
 }
