@@ -5,7 +5,7 @@ using Common;
 using Vo;
 
 namespace Dao {
-    public class WardSpreadSheetDao {
+    public class WardChiyodaDao {
         private ConnectionVo _connectionVo;
         private readonly DefaultValue _defaultValue = new();
 
@@ -13,7 +13,7 @@ namespace Dao {
         /// コンストラクター
         /// </summary>
         /// <param name="connectionVo"></param>
-        public WardSpreadSheetDao(ConnectionVo connectionVo) {
+        public WardChiyodaDao(ConnectionVo connectionVo) {
             _connectionVo = connectionVo;
         }
         /// <summary>

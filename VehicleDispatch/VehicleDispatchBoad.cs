@@ -1971,7 +1971,7 @@ namespace VehicleDispatch {
             _lastOperateDateTime = DateTime.Now;
         }
 
-        private void SetControlEx_DragEnter(object sender, DragEventArgs e) {
+        private void SetControlEx_DragEnter(object? sender, DragEventArgs e) {
             e.Effect = DragDropEffects.Move;
         }
 

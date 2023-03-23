@@ -35,10 +35,8 @@
             ToolStripStatusLabel1 = new ToolStripStatusLabel();
             ToolStripStatusLabelStatus = new ToolStripStatusLabel();
             PanelUp = new Panel();
+            ComboBoxFiscalYear = new ComboBox();
             ButtonUpdate = new Button();
-            DateTimePicker2 = new DateTimePicker();
-            DateTimePicker1 = new DateTimePicker();
-            label2 = new Label();
             label1 = new Label();
             SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("TableLayoutPanelBase.Controls"));
             SheetViewList = SpreadList.GetSheet(0);
@@ -135,16 +133,24 @@
             // 
             // PanelUp
             // 
+            PanelUp.Controls.Add(ComboBoxFiscalYear);
             PanelUp.Controls.Add(ButtonUpdate);
-            PanelUp.Controls.Add(DateTimePicker2);
-            PanelUp.Controls.Add(DateTimePicker1);
-            PanelUp.Controls.Add(label2);
             PanelUp.Controls.Add(label1);
             PanelUp.Dock = DockStyle.Fill;
             PanelUp.Location = new System.Drawing.Point(3, 27);
             PanelUp.Name = "PanelUp";
             PanelUp.Size = new Size(851, 54);
             PanelUp.TabIndex = 2;
+            // 
+            // ComboBoxFiscalYear
+            // 
+            ComboBoxFiscalYear.DropDownStyle = ComboBoxStyle.DropDownList;
+            ComboBoxFiscalYear.FormattingEnabled = true;
+            ComboBoxFiscalYear.Items.AddRange(new object[] { "２０２２年度", "２０２３年度" });
+            ComboBoxFiscalYear.Location = new System.Drawing.Point(88, 16);
+            ComboBoxFiscalYear.Name = "ComboBoxFiscalYear";
+            ComboBoxFiscalYear.Size = new Size(104, 23);
+            ComboBoxFiscalYear.TabIndex = 15;
             // 
             // ButtonUpdate
             // 
@@ -156,33 +162,7 @@
             ButtonUpdate.TabIndex = 14;
             ButtonUpdate.Text = "最 新 化";
             ButtonUpdate.UseVisualStyleBackColor = true;
-            // 
-            // DateTimePicker2
-            // 
-            DateTimePicker2.CustomFormat = "yyyy年MM月dd日(dddd)";
-            DateTimePicker2.Format = DateTimePickerFormat.Custom;
-            DateTimePicker2.Location = new System.Drawing.Point(288, 16);
-            DateTimePicker2.Name = "DateTimePicker2";
-            DateTimePicker2.Size = new Size(168, 23);
-            DateTimePicker2.TabIndex = 13;
-            // 
-            // DateTimePicker1
-            // 
-            DateTimePicker1.CustomFormat = "yyyy年MM月dd日(dddd)";
-            DateTimePicker1.Format = DateTimePickerFormat.Custom;
-            DateTimePicker1.Location = new System.Drawing.Point(92, 16);
-            DateTimePicker1.Name = "DateTimePicker1";
-            DateTimePicker1.Size = new Size(168, 23);
-            DateTimePicker1.TabIndex = 12;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(264, 20);
-            label2.Name = "label2";
-            label2.Size = new Size(19, 15);
-            label2.TabIndex = 11;
-            label2.Text = "～";
+            ButtonUpdate.Click += ButtonUpdate_Click;
             // 
             // label1
             // 
@@ -191,7 +171,7 @@
             label1.Name = "label1";
             label1.Size = new Size(55, 15);
             label1.TabIndex = 10;
-            label1.Text = "配車日付";
+            label1.Text = "配車年度";
             // 
             // SpreadList
             // 
@@ -240,13 +220,11 @@
         private ToolStripMenuItem ToolStripMenuItemExit;
         private Panel PanelUp;
         private FarPoint.Win.Spread.FpSpread SpreadList;
-        private DateTimePicker DateTimePicker2;
-        private DateTimePicker DateTimePicker1;
-        private Label label2;
         private Label label1;
         private Button ButtonUpdate;
-        private FarPoint.Win.Spread.SheetView SheetViewList;
         private ToolStripMenuItem ToolStripMenuItemPrint;
         private ToolStripMenuItem ToolStripMenuItemExport;
+        private ComboBox ComboBoxFiscalYear;
+        private FarPoint.Win.Spread.SheetView SheetViewList;
     }
 }

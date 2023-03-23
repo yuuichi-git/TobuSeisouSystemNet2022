@@ -12,7 +12,7 @@ namespace WardSpreadsheet {
         /*
          * Dao
          */
-        private WardSpreadSheetDao _wardSpreadSheetDao;
+        private WardChiyodaDao _wardSpreadSheetDao;
         /*
          * Vo
          */
@@ -28,7 +28,7 @@ namespace WardSpreadsheet {
             /*
              * Dao
              */
-            _wardSpreadSheetDao = new WardSpreadSheetDao(connectionVo);
+            _wardSpreadSheetDao = new WardChiyodaDao(connectionVo);
             /*
              * Vo
              */
