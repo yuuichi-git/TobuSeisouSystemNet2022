@@ -157,9 +157,12 @@ namespace VehicleDispatch {
             _arrayTableLayoutPanelEx[1].SuspendLayout();
             /*
              * DeepCopy
+             * 2023-03-22 なんとなくDeepCopy周りでのエラーな気がしたので改良してみた。
              */
-            _listDeepCopySetMasterVo = new CopyUtility().DeepCopy(_listSetMasterVo.FindAll(x => x.Delete_flag == false));
-            _listDeepCopyCarMasterVo = new CopyUtility().DeepCopy(_listCarMasterVo.FindAll(x => x.Delete_flag == false));
+            //_listDeepCopySetMasterVo = new CopyUtility().DeepCopy(_listSetMasterVo.FindAll(x => x.Delete_flag == false));
+            //_listDeepCopyCarMasterVo = new CopyUtility().DeepCopy(_listCarMasterVo.FindAll(x => x.Delete_flag == false));
+            _listDeepCopySetMasterVo = new CopyUtility().DeepCopy(_listSetMasterVo);
+            _listDeepCopyCarMasterVo = new CopyUtility().DeepCopy(_listCarMasterVo);
             _listDeepCopyStaffMasterVo = new CopyUtility().DeepCopy(_listStaffMasterVo.FindAll(x => x.Vehicle_dispatch_target == true && x.Delete_flag == false));
             /*
              * TabControlExLeftをクリア

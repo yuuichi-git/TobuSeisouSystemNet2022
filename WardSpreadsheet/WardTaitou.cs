@@ -155,8 +155,6 @@ namespace WardSpreadsheet {
         /// <param name="setCode"></param>
         private void OutputSheetView(int year, int month, int setCode) {
             List<WardTaitouVo> listWardTaitouVo = _wardTaitouDao.SelectStaffsVehicleDispatchDetail(year, month, setCode);
-            // 3人目の数
-            int staffCount;
             /*
              * 稼働日数を取得
              */
@@ -173,7 +171,7 @@ namespace WardSpreadsheet {
              */
             for(int i = 0; i < 6; i++) {
                 if(listWardTaitouVo.Find(x => x.Day_of_week == _dictionaryDayOfWeek[i]) is not null) { // 組によって値が存在しない曜日があるためNullチェックを入れる
-                    staffCount = listWardTaitouVo.Find(x => x.Day_of_week == _dictionaryDayOfWeek[i]).Operator_code_3;
+                    int staffCount = listWardTaitouVo.Find(x => x.Day_of_week == _dictionaryDayOfWeek[i]).Operator_code_3;
                     SheetViewList.Cells[_dictionaryPoint[_dictionaryMonth[month]].Row + _dictionaryGroup[setCode], _dictionaryPoint[_dictionaryMonth[month]].Column + 2 + i].Value = staffCount;
                 }
             }

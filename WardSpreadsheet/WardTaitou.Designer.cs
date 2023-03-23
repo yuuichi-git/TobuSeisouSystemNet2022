@@ -86,21 +86,21 @@
             // ToolStripMenuItemPrint
             // 
             ToolStripMenuItemPrint.Name = "ToolStripMenuItemPrint";
-            ToolStripMenuItemPrint.Size = new Size(195, 22);
+            ToolStripMenuItemPrint.Size = new Size(207, 22);
             ToolStripMenuItemPrint.Text = "印刷する";
             ToolStripMenuItemPrint.Click += ToolStripMenuItemPrint_Click;
             // 
             // ToolStripMenuItemExport
             // 
             ToolStripMenuItemExport.Name = "ToolStripMenuItemExport";
-            ToolStripMenuItemExport.Size = new Size(195, 22);
-            ToolStripMenuItemExport.Text = "エクスポートする";
+            ToolStripMenuItemExport.Size = new Size(207, 22);
+            ToolStripMenuItemExport.Text = "Excel形式でエクスポートする";
             ToolStripMenuItemExport.Click += ToolStripMenuItemExport_Click;
             // 
             // ToolStripMenuItemExit
             // 
             ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
-            ToolStripMenuItemExit.Size = new Size(195, 22);
+            ToolStripMenuItemExit.Size = new Size(207, 22);
             ToolStripMenuItemExit.Text = "アプリケーションを終了する";
             ToolStripMenuItemExit.Click += ToolStripMenuItemExit_Click;
             // 
