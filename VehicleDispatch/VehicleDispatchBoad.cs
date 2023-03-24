@@ -23,8 +23,8 @@ using Vo;
 
 namespace VehicleDispatch {
     public partial class VehicleDispatchBoad : Form {
-        private InitializeForm _initializeForm = new();
-        private TableLayoutPanelEx[] _arrayTableLayoutPanelEx = new TableLayoutPanelEx[2];
+        private readonly InitializeForm _initializeForm = new();
+        private readonly TableLayoutPanelEx[] _arrayTableLayoutPanelEx = new TableLayoutPanelEx[2];
         /*
          * Dao
          */
@@ -1271,7 +1271,11 @@ namespace VehicleDispatch {
                 // メモを作成・編集
                 case "ToolStripMenuItemStaffMemo":
                     try {
-                        StaffMemo staffMemo = new StaffMemo(_connectionVo, UcDateTimeJpOperationDate.GetValue(), EvacuationSetControlEx, EvacuationFlowLayoutPanelEx, EvacuationStaffLabelEx);
+                        StaffMemo staffMemo = new StaffMemo(_connectionVo, 
+                                                            UcDateTimeJpOperationDate.GetValue(),
+                                                            EvacuationSetControlEx,
+                                                            EvacuationFlowLayoutPanelEx,
+                                                            EvacuationStaffLabelEx);
                         staffMemo.ShowDialog(this);
                     } catch(Exception exception) {
                         MessageBox.Show(exception.Message);
@@ -1448,11 +1452,13 @@ namespace VehicleDispatch {
                                 if(CheckSetControlEx(dragItem)) {
                                     try {
                                         _vehicleDispatchDetailDao.CopySetLabel(UcDateTimeJpOperationDate.GetValue(),
-                                                                              (int)((SetControlEx)dragItem.Parent).Tag,
-                                                                              (int)setControlEx.Tag);
+                                                                               (int)((SetControlEx)dragItem.Parent).Tag,
+                                                                               (int)setControlEx.Tag);
                                         _vehicleDispatchDetailDao.ResetSetLabel(UcDateTimeJpOperationDate.GetValue(),
-                                                                               (int)((SetControlEx)dragItem.Parent).Tag);
-                                        setControlEx.Controls.Add(dragItem, 0, 0);
+                                                                                (int)((SetControlEx)dragItem.Parent).Tag);
+                                        setControlEx.Controls.Add(dragItem,
+                                                                  0,
+                                                                  0);
                                     } catch(Exception exception) {
                                         MessageBox.Show(exception.Message);
                                     }
@@ -1479,9 +1485,11 @@ namespace VehicleDispatch {
                                 newDropItem.DoubleClick += new EventHandler(SetLabelEx_DoubleClick);
                                 newDropItem.MouseMove += new MouseEventHandler(SetLabelEx_MouseMove);
                                 _vehicleDispatchDetailDao.CreateSetLabel(UcDateTimeJpOperationDate.GetValue(),
-                                                                        (int)setControlEx.Tag,
-                                                                        (SetMasterVo)dragItem.Tag);
-                                setControlEx.Controls.Add(newDropItem, 0, 0);
+                                                                         (int)setControlEx.Tag,
+                                                                         (SetMasterVo)dragItem.Tag);
+                                setControlEx.Controls.Add(newDropItem,
+                                                          0,
+                                                          0);
                             } else {
                                 ToolStripStatusLabelStatus.Text = string.Concat("配車先が設定されています。(", ((SetMasterVo)dragItem.Tag).Set_name, ") はここへは移動できません");
                             }
@@ -1512,7 +1520,9 @@ namespace VehicleDispatch {
                                                                        Convert.ToInt32(setControlEx.Tag));
                                 _vehicleDispatchDetailDao.ResetCarLabel(UcDateTimeJpOperationDate.GetValue(),
                                                                         Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag));
-                                setControlEx.Controls.Add(dragItem, 0, 1);
+                                setControlEx.Controls.Add(dragItem,
+                                                          0,
+                                                          1);
                             } catch(Exception exception) {
                                 MessageBox.Show(exception.Message);
                             }
@@ -1527,7 +1537,9 @@ namespace VehicleDispatch {
                                 _vehicleDispatchDetailDao.CreateCarLabel(UcDateTimeJpOperationDate.GetValue(),
                                                                          Convert.ToInt32(setControlEx.Tag),
                                                                          (CarMasterVo)dragItem.Tag);
-                                setControlEx.Controls.Add(dragItem, 0, 1);
+                                setControlEx.Controls.Add(dragItem,
+                                                          0,
+                                                          1);
                             } catch(Exception exception) {
                                 MessageBox.Show(exception.Message);
                             }
@@ -1548,7 +1560,9 @@ namespace VehicleDispatch {
                                 _vehicleDispatchDetailCarDao.DeleteCar(UcDateTimeJpOperationDate.GetValue(),
                                                                        Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
                                                                        ((CarMasterVo)dragItem.Tag).Car_code);
-                                setControlEx.Controls.Add(dragItem, 0, 1);
+                                setControlEx.Controls.Add(dragItem,
+                                                          0,
+                                                          1);
                             } catch(Exception exception) {
                                 MessageBox.Show(exception.Message);
                             }
@@ -1561,13 +1575,15 @@ namespace VehicleDispatch {
                             try {
                                 // vehicle_dispatch_detailをUPDATE
                                 _vehicleDispatchDetailDao.CreateCarLabel(UcDateTimeJpOperationDate.GetValue(),
-                                                                 Convert.ToInt32(setControlEx.Tag),
-                                                                 (CarMasterVo)dragItem.Tag);
+                                                                         Convert.ToInt32(setControlEx.Tag),
+                                                                         (CarMasterVo)dragItem.Tag);
                                 // vehicle_dispatch_detail_carからDELETE
                                 _vehicleDispatchDetailCarDao.DeleteCar(UcDateTimeJpOperationDate.GetValue(),
                                                                        Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
                                                                        ((CarMasterVo)dragItem.Tag).Car_code);
-                                setControlEx.Controls.Add(dragItem, 0, 1);
+                                setControlEx.Controls.Add(dragItem,
+                                                          0,
+                                                          1);
                             } catch(Exception exception) {
                                 MessageBox.Show(exception.Message);
                             }
@@ -1604,7 +1620,9 @@ namespace VehicleDispatch {
                                         _vehicleDispatchDetailDao.ResetStaffLabel(UcDateTimeJpOperationDate.GetValue(),
                                                                                   (int)((SetControlEx)dragItem.Parent).Tag,
                                                                                   ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
-                                        setControlEx.Controls.Add(dragItem, 0, 2);
+                                        setControlEx.Controls.Add(dragItem,
+                                                                  0,
+                                                                  2);
                                         ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
                                     } catch(Exception exception) {
                                         MessageBox.Show(exception.Message);
@@ -1617,13 +1635,15 @@ namespace VehicleDispatch {
                                 if(setControlEx.GetControlFromPosition(0, 3) == null) {
                                     try {
                                         _vehicleDispatchDetailDao.MoveStaffLabel(UcDateTimeJpOperationDate.GetValue(),
-                                                                           (int)((SetControlEx)dragItem.Parent).Tag,
-                                                                           ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row,
-                                                                           (int)setControlEx.Tag, 3);
+                                                                                 (int)((SetControlEx)dragItem.Parent).Tag,
+                                                                                 ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row,
+                                                                                 (int)setControlEx.Tag, 3);
                                         _vehicleDispatchDetailDao.ResetStaffLabel(UcDateTimeJpOperationDate.GetValue(),
-                                                                             (int)((SetControlEx)dragItem.Parent).Tag,
-                                                                             ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
-                                        setControlEx.Controls.Add(dragItem, 0, 3);
+                                                                                  (int)((SetControlEx)dragItem.Parent).Tag,
+                                                                                  ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
+                                        setControlEx.Controls.Add(dragItem,
+                                                                  0,
+                                                                  3);
                                         ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
                                     } catch(Exception exception) {
                                         MessageBox.Show(exception.Message);
@@ -1636,13 +1656,15 @@ namespace VehicleDispatch {
                                 if(setControlEx.GetControlFromPosition(0, 4) == null) {
                                     try {
                                         _vehicleDispatchDetailDao.MoveStaffLabel(UcDateTimeJpOperationDate.GetValue(),
-                                                                            (int)((SetControlEx)dragItem.Parent).Tag,
-                                                                            ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row,
-                                                                            (int)setControlEx.Tag, 4);
+                                                                                 (int)((SetControlEx)dragItem.Parent).Tag,
+                                                                                 ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row,
+                                                                                 (int)setControlEx.Tag, 4);
                                         _vehicleDispatchDetailDao.ResetStaffLabel(UcDateTimeJpOperationDate.GetValue(),
-                                                                             (int)((SetControlEx)dragItem.Parent).Tag,
-                                                                             ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
-                                        setControlEx.Controls.Add(dragItem, 0, 4);
+                                                                                  (int)((SetControlEx)dragItem.Parent).Tag,
+                                                                                  ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
+                                        setControlEx.Controls.Add(dragItem,
+                                                                  0,
+                                                                  4);
                                         ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
                                     } catch(Exception exception) {
                                         MessageBox.Show(exception.Message);
@@ -1655,13 +1677,15 @@ namespace VehicleDispatch {
                                 if(setControlEx.GetControlFromPosition(0, 5) == null) {
                                     try {
                                         _vehicleDispatchDetailDao.MoveStaffLabel(UcDateTimeJpOperationDate.GetValue(),
-                                                                           (int)((SetControlEx)dragItem.Parent).Tag,
-                                                                           ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row,
-                                                                           (int)setControlEx.Tag, 5);
+                                                                                 (int)((SetControlEx)dragItem.Parent).Tag,
+                                                                                 ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row,
+                                                                                 (int)setControlEx.Tag, 5);
                                         _vehicleDispatchDetailDao.ResetStaffLabel(UcDateTimeJpOperationDate.GetValue(),
-                                                                             (int)((SetControlEx)dragItem.Parent).Tag,
-                                                                             ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
-                                        setControlEx.Controls.Add(dragItem, 0, 5);
+                                                                                  (int)((SetControlEx)dragItem.Parent).Tag,
+                                                                                  ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
+                                        setControlEx.Controls.Add(dragItem,
+                                                                  0,
+                                                                  5);
                                         ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
                                     } catch(Exception exception) {
                                         MessageBox.Show(exception.Message);
@@ -1689,10 +1713,12 @@ namespace VehicleDispatch {
                                     try {
                                         // VehicleDispatchDetailをUPDATE
                                         _vehicleDispatchDetailDao.MoveStaffLabel(UcDateTimeJpOperationDate.GetValue(),
-                                                                           Convert.ToInt32(setControlEx.Tag),
-                                                                           1,
-                                                                           (StaffMasterVo)dragItem.Tag);
-                                        setControlEx.Controls.Add(dragItem, 0, 2);
+                                                                                 Convert.ToInt32(setControlEx.Tag),
+                                                                                 1,
+                                                                                 (StaffMasterVo)dragItem.Tag);
+                                        setControlEx.Controls.Add(dragItem,
+                                                                  0,
+                                                                  2);
                                         ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
                                     } catch(Exception exception) {
                                         MessageBox.Show(exception.Message);
@@ -1707,10 +1733,12 @@ namespace VehicleDispatch {
                                     try {
                                         // VehicleDispatchDetailをUPDATE
                                         _vehicleDispatchDetailDao.MoveStaffLabel(UcDateTimeJpOperationDate.GetValue(),
-                                                                           Convert.ToInt32(setControlEx.Tag),
-                                                                           2,
-                                                                           (StaffMasterVo)dragItem.Tag);
-                                        setControlEx.Controls.Add(dragItem, 0, 3);
+                                                                                 Convert.ToInt32(setControlEx.Tag),
+                                                                                 2,
+                                                                                 (StaffMasterVo)dragItem.Tag);
+                                        setControlEx.Controls.Add(dragItem,
+                                                                  0,
+                                                                  3);
                                         ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
                                     } catch(Exception exception) {
                                         MessageBox.Show(exception.Message);
@@ -1724,10 +1752,12 @@ namespace VehicleDispatch {
                                     try {
                                         // VehicleDispatchDetailをUPDATE
                                         _vehicleDispatchDetailDao.MoveStaffLabel(UcDateTimeJpOperationDate.GetValue(),
-                                                                           Convert.ToInt32(setControlEx.Tag),
-                                                                           3,
-                                                                           (StaffMasterVo)dragItem.Tag);
-                                        setControlEx.Controls.Add(dragItem, 0, 4);
+                                                                                 Convert.ToInt32(setControlEx.Tag),
+                                                                                 3,
+                                                                                 (StaffMasterVo)dragItem.Tag);
+                                        setControlEx.Controls.Add(dragItem,
+                                                                  0,
+                                                                  4);
                                         ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
                                     } catch(Exception exception) {
                                         MessageBox.Show(exception.Message);
@@ -1741,10 +1771,12 @@ namespace VehicleDispatch {
                                     try {
                                         // VehicleDispatchDetailをUPDATE
                                         _vehicleDispatchDetailDao.MoveStaffLabel(UcDateTimeJpOperationDate.GetValue(),
-                                                                           Convert.ToInt32(setControlEx.Tag),
-                                                                           4,
-                                                                           (StaffMasterVo)dragItem.Tag);
-                                        setControlEx.Controls.Add(dragItem, 0, 5);
+                                                                                 Convert.ToInt32(setControlEx.Tag),
+                                                                                 4,
+                                                                                 (StaffMasterVo)dragItem.Tag);
+                                        setControlEx.Controls.Add(dragItem,
+                                                                  0,
+                                                                  5);
                                         ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
                                     } catch(Exception exception) {
                                         MessageBox.Show(exception.Message);
@@ -1776,16 +1808,18 @@ namespace VehicleDispatch {
                                     try {
                                         // VehicleDispatchDetailにUPDATE
                                         _vehicleDispatchDetailDao.MoveStaffLabel(UcDateTimeJpOperationDate.GetValue(),
-                                                                           Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                           Convert.ToInt32(setControlEx.Tag),
-                                                                           1,
-                                                                           (StaffMasterVo)dragItem.Tag);
+                                                                                 Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                                 Convert.ToInt32(setControlEx.Tag),
+                                                                                 1,
+                                                                                 (StaffMasterVo)dragItem.Tag);
                                         // VehicleDispatchDetailStaffからDELETE
                                         _vehicleDispatchDetailStaffDao.DeleteStaff(UcDateTimeJpOperationDate.GetValue(),
                                                                                    Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
                                                                                    ((StaffMasterVo)dragItem.Tag).Staff_code);
                                         // dragItemを移動
-                                        setControlEx.Controls.Add(dragItem, 0, 2);
+                                        setControlEx.Controls.Add(dragItem,
+                                                                  0,
+                                                                  2);
                                         ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
                                     } catch(Exception exception) {
                                         MessageBox.Show(exception.Message);
@@ -1799,16 +1833,18 @@ namespace VehicleDispatch {
                                     try {
                                         // VehicleDispatchDetailにUPDATE
                                         _vehicleDispatchDetailDao.MoveStaffLabel(UcDateTimeJpOperationDate.GetValue(),
-                                                                           Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                           Convert.ToInt32(setControlEx.Tag),
-                                                                           2,
-                                                                           (StaffMasterVo)dragItem.Tag);
+                                                                                 Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                                 Convert.ToInt32(setControlEx.Tag),
+                                                                                 2,
+                                                                                 (StaffMasterVo)dragItem.Tag);
                                         // VehicleDispatchDetailStaffからDELETE
                                         _vehicleDispatchDetailStaffDao.DeleteStaff(UcDateTimeJpOperationDate.GetValue(),
                                                                                    Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
                                                                                    ((StaffMasterVo)dragItem.Tag).Staff_code);
                                         // dragItemを移動
-                                        setControlEx.Controls.Add(dragItem, 0, 3);
+                                        setControlEx.Controls.Add(dragItem,
+                                                                  0,
+                                                                  3);
                                         ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
                                     } catch(Exception exception) {
                                         MessageBox.Show(exception.Message);
@@ -1821,17 +1857,19 @@ namespace VehicleDispatch {
                                 if(setControlEx.GetControlFromPosition(0, 4) == null) {
                                     try {
                                         // VehicleDispatchDetailにUPDATE
-                                        _vehicleDispatchDetailDao.MoveStaffLabel(UcDateTimeJpOperationDate.GetValue(),
-                                                                           Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                           Convert.ToInt32(setControlEx.Tag),
-                                                                           3,
-                                                                           (StaffMasterVo)dragItem.Tag);
+                                        _vehicleDispatchDetailDao.MoveStaffLabel(operationDate: UcDateTimeJpOperationDate.GetValue(),
+                                                                                 Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                                 Convert.ToInt32(setControlEx.Tag),
+                                                                                 3,
+                                                                                 (StaffMasterVo)dragItem.Tag);
                                         // VehicleDispatchDetailStaffからDELETE
                                         _vehicleDispatchDetailStaffDao.DeleteStaff(UcDateTimeJpOperationDate.GetValue(),
                                                                                    Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
                                                                                    ((StaffMasterVo)dragItem.Tag).Staff_code);
                                         // dragItemを移動
-                                        setControlEx.Controls.Add(dragItem, 0, 4);
+                                        setControlEx.Controls.Add(dragItem,
+                                                                  0,
+                                                                  4);
                                         ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
                                     } catch(Exception exception) {
                                         MessageBox.Show(exception.Message);
@@ -1845,10 +1883,10 @@ namespace VehicleDispatch {
                                     try {
                                         // VehicleDispatchDetailにUPDATE
                                         _vehicleDispatchDetailDao.MoveStaffLabel(UcDateTimeJpOperationDate.GetValue(),
-                                                                           Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
-                                                                           Convert.ToInt32(setControlEx.Tag),
-                                                                           4,
-                                                                           (StaffMasterVo)dragItem.Tag);
+                                                                                 Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
+                                                                                 Convert.ToInt32(setControlEx.Tag),
+                                                                                 4,
+                                                                                 (StaffMasterVo)dragItem.Tag);
                                         // VehicleDispatchDetailStaffからDELETE
                                         _vehicleDispatchDetailStaffDao.DeleteStaff(UcDateTimeJpOperationDate.GetValue(),
                                                                                    Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
@@ -2105,7 +2143,7 @@ namespace VehicleDispatch {
                                                                            Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
                                                                            Convert.ToInt32(((FlowLayoutPanelEx)sender).Tag));
                                     _vehicleDispatchDetailDao.ResetCarLabel(UcDateTimeJpOperationDate.GetValue(),
-                                                                       Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag));
+                                                                            Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag));
                                 } catch(Exception exception) {
                                     MessageBox.Show(exception.Message);
                                 }
@@ -2181,8 +2219,8 @@ namespace VehicleDispatch {
                             case "FlowLayoutPanelExWindow":
                                 try {
                                     _vehicleDispatchDetailDao.ResetStaffLabel(UcDateTimeJpOperationDate.GetValue(),
-                                                                         Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
-                                                                         ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
+                                                                              Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
+                                                                              ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
                                     dragItem.SetNoteFlag(false);
                                 } catch(Exception exception) {
                                     MessageBox.Show(exception.Message);
@@ -2206,8 +2244,8 @@ namespace VehicleDispatch {
                                                                                ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row,
                                                                                Convert.ToInt32(((FlowLayoutPanelEx)sender).Tag));
                                     _vehicleDispatchDetailDao.ResetStaffLabel(UcDateTimeJpOperationDate.GetValue(),
-                                                                         Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
-                                                                         ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
+                                                                              Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
+                                                                              ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
                                 } catch(Exception exception) {
                                     MessageBox.Show(exception.Message);
                                 }
