@@ -13,6 +13,11 @@ namespace CarRegister {
         private InitializeForm _initializeForm = new();
         private readonly ConnectionVo _connectionVo;
 
+        /// <summary>
+        /// コンストラクター
+        /// </summary>
+        /// <param name="connectionVo"></param>
+        /// <param name="carCode"></param>
         public CarPaper(ConnectionVo connectionVo, int carCode) {
             InitializeComponent();
             _connectionVo = connectionVo;
@@ -21,6 +26,9 @@ namespace CarRegister {
             SpreadOutput(SheetViewCar, new CarMasterDao(_connectionVo).SelectOneCarMaster(carCode));
         }
 
+        /// <summary>
+        /// InitializeForm
+        /// </summary>
         private void InitializeForm() {
             // Formの表示サイズを初期化
             _initializeForm.CarPaper(this);

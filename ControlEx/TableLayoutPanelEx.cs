@@ -1,6 +1,4 @@
-﻿using System.Windows.Forms;
-
-namespace ControlEx {
+﻿namespace ControlEx {
     public partial class TableLayoutPanelEx : TableLayoutPanel {
         /// <summary>
         /// BorderStyle 
@@ -32,7 +30,10 @@ namespace ControlEx {
              */
             Rectangle rectangle = e.CellBounds;
             rectangle.Inflate(-1, -1); // 枠のサイズを小さくする
-            ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, _buttonBorderStyleDotted ? ButtonBorderStyle.Dotted : ButtonBorderStyle.None);
+            ControlPaint.DrawBorder(e.Graphics,
+                                    rectangle,
+                                    Color.Gray,
+                                    _buttonBorderStyleDotted ? ButtonBorderStyle.Dotted : ButtonBorderStyle.None);
             /*
              * 内部Controlを削除
              */

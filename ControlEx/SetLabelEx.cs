@@ -47,7 +47,7 @@ namespace ControlEx {
 
         private readonly SolidBrush _brushColorBlack = new SolidBrush(Color.Black);
 
-        private  SolidBrush _drowBrushFill = new SolidBrush(Color.White);
+        private SolidBrush _drowBrushFill = new SolidBrush(Color.White);
 
         /// <summary>
         /// コンストラクタ(オーバーロード)
@@ -217,7 +217,11 @@ namespace ControlEx {
             var stringFormat = new StringFormat();
             stringFormat.LineAlignment = StringAlignment.Center;
             stringFormat.Alignment = StringAlignment.Center;
-            e.Graphics.DrawString(string.Concat(_setMasterVo.Set_name_1, "\r\n", _setMasterVo.Set_name_2), _setLabelDrawFont, _brushColorBlack, new Rectangle(0, 0, 68, 66), stringFormat);
+            e.Graphics.DrawString(string.Concat(_setMasterVo.Set_name_1, "\r\n", _setMasterVo.Set_name_2),
+                                                  _setLabelDrawFont,
+                                                  _brushColorBlack,
+                                                  new Rectangle(0, 0, 68, 66),
+                                                  stringFormat);
             /*
              * 文字(TEL/FAX)を描画
              */

@@ -38,7 +38,7 @@ namespace ControlEx {
         /*
          * 透かし文字用
          */
-        private StringFormat? stringFormat = null;
+        private StringFormat stringFormat;
 
         /// <summary>
         /// コンストラクター
@@ -63,6 +63,12 @@ namespace ControlEx {
             this.Margin = new Padding(0);
             this.Name = "SetControlEx";
             /*
+             * 透かし文字用のフォーマット
+             */
+            stringFormat = new StringFormat();
+            stringFormat.LineAlignment = StringAlignment.Center;
+            stringFormat.Alignment = StringAlignment.Center;
+            /*
              * SetControlExのイベントを登録
              */
             this.CellPaint += new TableLayoutCellPaintEventHandler(this.SetControlEx_CellPaint);
@@ -74,7 +80,7 @@ namespace ControlEx {
         /*
          * SetControlExを囲うPointと半透明色を設定する
          */
-        Point[] _points = {new Point(1,  0),new Point(73, 0),new Point(73,  303),new Point(1, 303)};
+        Point[] _points = {new Point(1,  0), new Point(73, 0), new Point(73,  303), new Point(1, 303)};
         SolidBrush _solidBrush = new(Color.FromArgb(15, Color.LimeGreen));
         /// <summary>
         /// SetControlEx_CellPaint
@@ -83,13 +89,12 @@ namespace ControlEx {
         /// <param name="e"></param>
         private void SetControlEx_CellPaint(object? sender, TableLayoutCellPaintEventArgs e) {
             /*
-             * SetControlEx全体にBorderを掛ける
              * 連絡事項ありの印
              */
             if(_setContactInformation)
                 this.CreateGraphics().FillPolygon(_solidBrush, _points);
             /*
-             * 表示
+             * SetControlEx全体にBorderを掛ける
              */
             if(SetFlag) {
                 Rectangle rectangle = e.CellBounds;
@@ -150,9 +155,6 @@ namespace ControlEx {
                     case 84:
                     case 85:
                     case 86:
-                        stringFormat = new StringFormat();
-                        stringFormat.LineAlignment = StringAlignment.Center;
-                        stringFormat.Alignment = StringAlignment.Center;
                         e.Graphics.DrawString("大型", _drawFont, _drawBrushFont, rectangleFill, stringFormat);
                         break;
                     /*
@@ -182,10 +184,7 @@ namespace ControlEx {
                     case 122:
                     case 123:
                     case 124:
-                        stringFormat = new StringFormat();
-                        stringFormat.LineAlignment = StringAlignment.Center;
-                        stringFormat.Alignment = StringAlignment.Center;
-                        e.Graphics.DrawString("臨時", _drawFont, _drawBrushFont, rectangleFill, stringFormat);
+                        e.Graphics.DrawString("臨時他", _drawFont, _drawBrushFont, rectangleFill, stringFormat);
                         break;
                 }
             }
@@ -197,18 +196,25 @@ namespace ControlEx {
         /// </summary>
         /// <param name="setMasterVo"></param>
         public void CreateLabel(SetMasterVo setMasterVo, VehicleDispatchDetailVo vehicleDispatchDetailVo, ContextMenuStrip contextMenuStrip) {
-            SetLabelEx labelEx = new SetLabelEx(setMasterVo, vehicleDispatchDetailVo).CreateLabel();
-            /*
-             * プロパティを設定
-             */
-            labelEx.ContextMenuStrip = contextMenuStrip;
-            /*
-             * イベントを設定
-             */
-            labelEx.Click += new EventHandler(SetLabelEx_Click);
-            labelEx.DoubleClick += new EventHandler(SetLabelEx_DoubleClick);
-            labelEx.MouseMove += new MouseEventHandler(SetLabelEx_MouseMove);
-            this.Controls.Add(labelEx, 0, 0);
+            try {
+                SetLabelEx labelEx = new SetLabelEx(setMasterVo,
+                                                    vehicleDispatchDetailVo).CreateLabel();
+                /*
+                 * ContextMenuStrip
+                 */
+                labelEx.ContextMenuStrip = contextMenuStrip;
+                /*
+                 * Event
+                 */
+                labelEx.Click += new EventHandler(SetLabelEx_Click);
+                labelEx.DoubleClick += new EventHandler(SetLabelEx_DoubleClick);
+                labelEx.MouseMove += new MouseEventHandler(SetLabelEx_MouseMove);
+                this.Controls.Add(labelEx,
+                                  0,
+                                  0);
+            } catch(Exception exception) {
+                MessageBox.Show(exception.Message);
+            }
         }
 
         /// <summary>
@@ -217,17 +223,24 @@ namespace ControlEx {
         /// </summary>
         /// <param name="carMasterVo"></param>
         public void CreateLabel(VehicleDispatchDetailVo vehicleDispatchDetailVo, CarMasterVo carMasterVo, ContextMenuStrip contextMenuStrip) {
-            CarLabelEx labelEx = new CarLabelEx(vehicleDispatchDetailVo, carMasterVo).CreateLabel();
-            /*
-             * プロパティを設定
-             */
-            labelEx.ContextMenuStrip = contextMenuStrip;
-            /*
-             * イベントを設定
-             */
-            labelEx.Click += new EventHandler(CarLabelEx_Click);
-            labelEx.MouseMove += new MouseEventHandler(CarLabelEx_MouseMove);
-            this.Controls.Add(labelEx, 0, 1);
+            try {
+                CarLabelEx labelEx = new CarLabelEx(vehicleDispatchDetailVo,
+                                                    carMasterVo).CreateLabel();
+                /*
+                 * ContextMenuStrip
+                 */
+                labelEx.ContextMenuStrip = contextMenuStrip;
+                /*
+                 * Event
+                 */
+                labelEx.Click += new EventHandler(CarLabelEx_Click);
+                labelEx.MouseMove += new MouseEventHandler(CarLabelEx_MouseMove);
+                this.Controls.Add(labelEx,
+                                  0,
+                                  1);
+            } catch(Exception exception) {
+                MessageBox.Show(exception.Message);
+            }
         }
 
         /// <summary>
@@ -243,17 +256,28 @@ namespace ControlEx {
         /// <param name="noteFlag"></param>
         /// <param name="contextMenuStrip"></param>
         public void CreateLabel(int number, StaffMasterVo staffMasterVo, bool proxyFlag, bool tenkoModeFlag, bool rollCallFlag, bool noteFlag, int occupation, ContextMenuStrip contextMenuStrip) {
-            StaffLabelEx labelEx = new StaffLabelEx(staffMasterVo, proxyFlag, tenkoModeFlag, rollCallFlag, noteFlag, occupation).CreateLabel();
-            /*
-             * プロパティを設定
-             */
-            labelEx.ContextMenuStrip = contextMenuStrip;
-            /*
-             * イベントを設定
-             */
-            labelEx.Click += new EventHandler(StaffLabelEx_Click);
-            labelEx.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
-            this.Controls.Add(labelEx, 0, number + 2);
+            try {
+                StaffLabelEx labelEx = new StaffLabelEx(staffMasterVo,
+                                                        proxyFlag,
+                                                        tenkoModeFlag,
+                                                        rollCallFlag,
+                                                        noteFlag,
+                                                        occupation).CreateLabel();
+                /*
+                 * ContextMenuStrip
+                 */
+                labelEx.ContextMenuStrip = contextMenuStrip;
+                /*
+                 * Event
+                 */
+                labelEx.Click += new EventHandler(StaffLabelEx_Click);
+                labelEx.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
+                this.Controls.Add(labelEx,
+                                  0,
+                                  number + 2);
+            } catch(Exception exception) {
+                MessageBox.Show(exception.Message);
+            }
         }
 
         /*
