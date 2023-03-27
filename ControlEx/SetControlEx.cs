@@ -47,6 +47,9 @@ namespace ControlEx {
             _cellNumber = cellNumber;
             InitializeComponent();
 
+            /*
+             * SetControlExのセルを定義する
+             */
             this.ColumnCount = 1;
             this.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 74F));
             this.RowCount = 6;

@@ -38,12 +38,12 @@ namespace VehicleDispatch {
          * Vo
          */
         private ConnectionVo _connectionVo;
-        private List<SetMasterVo> _listSetMasterVo;
+        private readonly List<SetMasterVo> _listSetMasterVo;
         private List<SetMasterVo> _listDeepCopySetMasterVo;
-        private List<CarMasterVo> _listCarMasterVo;
+        private readonly List<CarMasterVo> _listCarMasterVo;
         private List<CarMasterVo> _listDeepCopyCarMasterVo;
         private List<VehicleDispatchDetailCarVo> _listVehicleDispatchDetailCarVo;
-        private List<StaffMasterVo> _listStaffMasterVo;
+        private readonly List<StaffMasterVo> _listStaffMasterVo;
         private List<StaffMasterVo> _listDeepCopyStaffMasterVo;
         private List<VehicleDispatchDetailStaffVo> _listVehicleDispatchDetailStaffVo;
         /*
