@@ -204,7 +204,7 @@ namespace VehicleDispatch {
                 tabNumber = i / 75;
                 column = i % 25;
                 row = i / 25 % 3;
-                VehicleDispatchDetailVo vehicleDispatchDetailVo = listVehicleDispatchDetailVo.Find(x => x.Cell_number == i + 1);
+                VehicleDispatchDetailVo? vehicleDispatchDetailVo = listVehicleDispatchDetailVo.Find(x => x.Cell_number == i + 1);
                 var setControlEx = new SetControlEx(i);
                 setControlEx.AllowDrop = true;
                 setControlEx.Tag = i;
@@ -219,82 +219,132 @@ namespace VehicleDispatch {
                     setControlEx.ContactInformationFlag = vehicleDispatchDetailVo.Contact_infomation_flag;
                     setControlEx.ClassificationFlag = vehicleDispatchDetailVo.Classification_flag;
                     setControlEx.LastRollCallFlag = vehicleDispatchDetailVo.Last_roll_call_flag;
-                    setControlEx.CreateLabel(_listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code),
-                                             vehicleDispatchDetailVo,
-                                             ContextMenuStripSetLabel);
+                    /*
+                     * 2023-03-28 Findに対するNullチェックを入れる
+                     */
+                    SetMasterVo? setMasterVo = _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code);
+                    if(setMasterVo is not null) {
+                        setControlEx.CreateLabel(setMasterVo,
+                                                 vehicleDispatchDetailVo,
+                                                 ContextMenuStripSetLabel);
+                    } else {
+                        MessageBox.Show(string.Concat("cell_number = ", i.ToString(), " でNullを検出しました。(SetLabel)"));
+                    }
                 }
                 /*
                  * CarLabel
                  */
                 if(vehicleDispatchDetailVo != null && vehicleDispatchDetailVo.Car_code != 0) {
-                    setControlEx.CreateLabel(vehicleDispatchDetailVo,
-                                             _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code),
-                                             ContextMenuStripCarLabel);
-                    _listDeepCopyCarMasterVo?.RemoveAll(x => x.Car_code == vehicleDispatchDetailVo.Car_code);
+                    /*
+                     * 2023-03-28 Findに対するNullチェックを入れる
+                     */
+                    CarMasterVo? carMasterVo = _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code);
+                    if(carMasterVo is not null) {
+                        setControlEx.CreateLabel(vehicleDispatchDetailVo,
+                                                 carMasterVo,
+                                                 ContextMenuStripCarLabel);
+                        _listDeepCopyCarMasterVo?.RemoveAll(x => x.Car_code == vehicleDispatchDetailVo.Car_code);
+                    } else {
+                        MessageBox.Show(string.Concat("cell_number = ", i.ToString(), " でNullを検出しました。(CarLabel)"));
+                    }
+
                 }
                 /*
                  * StaffLabel1
                  */
                 if(vehicleDispatchDetailVo != null && vehicleDispatchDetailVo.Operator_code_1 != 0) {
-                    setControlEx.CreateLabel(0,
-                                             _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1),
-                                             vehicleDispatchDetailVo.Operator_1_proxy_flag,
-                                             tenkoModeFlag,
-                                             vehicleDispatchDetailVo.Operator_1_roll_call_flag,
-                                             vehicleDispatchDetailVo.Operator_1_note.Length > 0 ? true : false,
-                                             vehicleDispatchDetailVo.Operator_1_occupation,
-                                             ContextMenuStripStaffLabel);
-                    _listDeepCopyStaffMasterVo?.RemoveAll(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1);
-                    // ToolTip
-                    ToolTip1.SetToolTip(setControlEx.GetControlFromPosition(0, 2), vehicleDispatchDetailVo.Operator_1_note);
+                    /*
+                     * 2023-03-28 Findに対するNullチェックを入れる
+                     */
+                    StaffMasterVo? staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1);
+                    if(staffMasterVo is not null) {
+                        setControlEx.CreateLabel(0,
+                                                 staffMasterVo,
+                                                 vehicleDispatchDetailVo.Operator_1_proxy_flag,
+                                                 tenkoModeFlag,
+                                                 vehicleDispatchDetailVo.Operator_1_roll_call_flag,
+                                                 vehicleDispatchDetailVo.Operator_1_note.Length > 0 ? true : false,
+                                                 vehicleDispatchDetailVo.Operator_1_occupation,
+                                                 ContextMenuStripStaffLabel);
+                        _listDeepCopyStaffMasterVo?.RemoveAll(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1);
+                        // ToolTip
+                        ToolTip1.SetToolTip(setControlEx.GetControlFromPosition(0, 2), vehicleDispatchDetailVo.Operator_1_note);
+                    } else {
+                        MessageBox.Show(string.Concat("cell_number = ", i.ToString(), " でNullを検出しました。(StaffLabel1)"));
+                    }
                 }
                 /*
                  * StaffLabel2
                  */
                 if(vehicleDispatchDetailVo != null && vehicleDispatchDetailVo.Operator_code_2 != 0) {
-                    setControlEx.CreateLabel(1,
-                                             _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2),
-                                             vehicleDispatchDetailVo.Operator_2_proxy_flag,
-                                             tenkoModeFlag,
-                                             vehicleDispatchDetailVo.Operator_2_roll_call_flag,
-                                             vehicleDispatchDetailVo.Operator_2_note.Length > 0 ? true : false,
-                                             vehicleDispatchDetailVo.Operator_2_occupation,
-                                             ContextMenuStripStaffLabel);
-                    _listDeepCopyStaffMasterVo?.RemoveAll(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2);
-                    // ToolTip
-                    ToolTip1.SetToolTip(setControlEx.GetControlFromPosition(0, 3), vehicleDispatchDetailVo.Operator_2_note);
+                    /*
+                     * 2023-03-28 Findに対するNullチェックを入れる
+                     */
+                    StaffMasterVo? staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2);
+                    if(staffMasterVo is not null) {
+                        setControlEx.CreateLabel(1,
+                                                 staffMasterVo,
+                                                 vehicleDispatchDetailVo.Operator_2_proxy_flag,
+                                                 tenkoModeFlag,
+                                                 vehicleDispatchDetailVo.Operator_2_roll_call_flag,
+                                                 vehicleDispatchDetailVo.Operator_2_note.Length > 0 ? true : false,
+                                                 vehicleDispatchDetailVo.Operator_2_occupation,
+                                                 ContextMenuStripStaffLabel);
+                        _listDeepCopyStaffMasterVo?.RemoveAll(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2);
+                        // ToolTip
+                        ToolTip1.SetToolTip(setControlEx.GetControlFromPosition(0, 3), vehicleDispatchDetailVo.Operator_2_note);
+                    } else {
+                        MessageBox.Show(string.Concat("cell_number = ", i.ToString(), " でNullを検出しました。(StaffLabel2)"));
+                    }
+
                 }
                 /*
                  * StaffLabel3
                  */
                 if(vehicleDispatchDetailVo != null && vehicleDispatchDetailVo.Operator_code_3 != 0) {
-                    setControlEx.CreateLabel(2,
-                                             _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3),
-                                             vehicleDispatchDetailVo.Operator_3_proxy_flag,
-                                             tenkoModeFlag,
-                                             vehicleDispatchDetailVo.Operator_3_roll_call_flag,
-                                             vehicleDispatchDetailVo.Operator_3_note.Length > 0 ? true : false,
-                                             vehicleDispatchDetailVo.Operator_3_occupation,
-                                             ContextMenuStripStaffLabel);
-                    _listDeepCopyStaffMasterVo?.RemoveAll(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3);
-                    // ToolTip
-                    ToolTip1.SetToolTip(setControlEx.GetControlFromPosition(0, 4), vehicleDispatchDetailVo.Operator_3_note);
+                    /*
+                     * 2023-03-28 Findに対するNullチェックを入れる
+                     */
+                    StaffMasterVo? staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3);
+                    if(staffMasterVo is not null) {
+                        setControlEx.CreateLabel(2,
+                                                 staffMasterVo,
+                                                 vehicleDispatchDetailVo.Operator_3_proxy_flag,
+                                                 tenkoModeFlag,
+                                                 vehicleDispatchDetailVo.Operator_3_roll_call_flag,
+                                                 vehicleDispatchDetailVo.Operator_3_note.Length > 0 ? true : false,
+                                                 vehicleDispatchDetailVo.Operator_3_occupation,
+                                                 ContextMenuStripStaffLabel);
+                        _listDeepCopyStaffMasterVo?.RemoveAll(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3);
+                        // ToolTip
+                        ToolTip1.SetToolTip(setControlEx.GetControlFromPosition(0, 4), vehicleDispatchDetailVo.Operator_3_note);
+                    } else {
+                        MessageBox.Show(string.Concat("cell_number = ", i.ToString(), " でNullを検出しました。(StaffLabel3)"));
+                    }
                 }
                 /*
                  * StaffLabel4
                  */
                 if(vehicleDispatchDetailVo != null && vehicleDispatchDetailVo.Operator_code_4 != 0) {
-                    setControlEx.CreateLabel(3,
-                                             _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4),
-                                             vehicleDispatchDetailVo.Operator_4_proxy_flag,
-                                             tenkoModeFlag,
-                                             vehicleDispatchDetailVo.Operator_4_roll_call_flag,
-                                             vehicleDispatchDetailVo.Operator_4_note.Length > 0 ? true : false,
-                                             vehicleDispatchDetailVo.Operator_4_occupation,
-                                             ContextMenuStripStaffLabel);
-                    _listDeepCopyStaffMasterVo?.RemoveAll(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4);
-                    // ToolTip
-                    ToolTip1.SetToolTip(setControlEx.GetControlFromPosition(0, 5), vehicleDispatchDetailVo.Operator_4_note);
+                    /*
+                     * 2023-03-28 Findに対するNullチェックを入れる
+                     */
+                    StaffMasterVo? staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4);
+                    if(staffMasterVo is not null) {
+                        setControlEx.CreateLabel(3,
+                                                 staffMasterVo,
+                                                 vehicleDispatchDetailVo.Operator_4_proxy_flag,
+                                                 tenkoModeFlag,
+                                                 vehicleDispatchDetailVo.Operator_4_roll_call_flag,
+                                                 vehicleDispatchDetailVo.Operator_4_note.Length > 0 ? true : false,
+                                                 vehicleDispatchDetailVo.Operator_4_occupation,
+                                                 ContextMenuStripStaffLabel);
+                        _listDeepCopyStaffMasterVo?.RemoveAll(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4);
+                        // ToolTip
+                        ToolTip1.SetToolTip(setControlEx.GetControlFromPosition(0, 5), vehicleDispatchDetailVo.Operator_4_note);
+                    } else {
+                        MessageBox.Show(string.Concat("cell_number = ", i.ToString(), " でNullを検出しました。(StaffLabel4)"));
+                    }
                 }
 
                 setControlEx.Event_SetControlEx_Click += new EventHandler(this.SetControlEx_Click);
@@ -335,206 +385,294 @@ namespace VehicleDispatch {
                         break;
                     case 157: // FlowLayoutPanelExChecking
                         foreach(VehicleDispatchDetailCarVo vehicleDispatchDetailCarVo in _listVehicleDispatchDetailCarVo.FindAll(x => x.Cell_number == 157)) {
-                            // Controlを作成
-                            CarLabelEx carLabelEx = new CarLabelEx(_listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailCarVo.Car_code)).CreateLabel();
-                            // プロパティを設定
-                            carLabelEx.ContextMenuStrip = ContextMenuStripCarLabel;
                             /*
-                             * イベントを設定
+                             * 2023-03-28 Findに対するNullチェックを入れる
                              */
-                            carLabelEx.Click += new EventHandler(CarLabelEx_Click);
-                            carLabelEx.MouseMove += new MouseEventHandler(CarLabelEx_MouseMove);
-                            // DeepCopyから削除
-                            _listDeepCopyCarMasterVo.RemoveAll(x => x.Car_code == vehicleDispatchDetailCarVo.Car_code);
-                            // Controlを追加
-                            FlowLayoutPanelExChecking.Controls.Add(carLabelEx);
+                            CarMasterVo? carMasterVo = _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailCarVo.Car_code);
+                            if(carMasterVo != null) {
+                                // Controlを作成
+                                CarLabelEx carLabelEx = new CarLabelEx(carMasterVo).CreateLabel();
+                                // プロパティを設定
+                                carLabelEx.ContextMenuStrip = ContextMenuStripCarLabel;
+                                /*
+                                 * イベントを設定
+                                 */
+                                carLabelEx.Click += new EventHandler(CarLabelEx_Click);
+                                carLabelEx.MouseMove += new MouseEventHandler(CarLabelEx_MouseMove);
+                                // DeepCopyから削除
+                                _listDeepCopyCarMasterVo.RemoveAll(x => x.Car_code == vehicleDispatchDetailCarVo.Car_code);
+                                // Controlを追加
+                                FlowLayoutPanelExChecking.Controls.Add(carLabelEx);
+                            } else {
+                                MessageBox.Show(string.Concat("cell_number = ", i.ToString(), " でNullを検出しました。(CarLabel)"));
+                            }
                         }
                         break;
                     case 158: // FlowLayoutPanelExRepair
                         foreach(VehicleDispatchDetailCarVo vehicleDispatchDetailCarVo in _listVehicleDispatchDetailCarVo.FindAll(x => x.Cell_number == 158)) {
-                            // Controlを作成
-                            CarLabelEx carLabelEx = new CarLabelEx(_listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailCarVo.Car_code)).CreateLabel();
-                            // プロパティを設定
-                            carLabelEx.ContextMenuStrip = ContextMenuStripCarLabel;
                             /*
-                             * イベントを設定
+                             * 2023-03-28 Findに対するNullチェックを入れる
                              */
-                            carLabelEx.Click += new EventHandler(CarLabelEx_Click);
-                            carLabelEx.MouseMove += new MouseEventHandler(CarLabelEx_MouseMove);
-                            // DeepCopyから削除
-                            _listDeepCopyCarMasterVo.RemoveAll(x => x.Car_code == vehicleDispatchDetailCarVo.Car_code);
-                            // Controlを追加
-                            FlowLayoutPanelExRepair.Controls.Add(carLabelEx);
+                            CarMasterVo? carMasterVo = _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailCarVo.Car_code);
+                            if(carMasterVo != null) {
+                                // Controlを作成
+                                CarLabelEx carLabelEx = new CarLabelEx(carMasterVo).CreateLabel();
+                                // プロパティを設定
+                                carLabelEx.ContextMenuStrip = ContextMenuStripCarLabel;
+                                /*
+                                 * イベントを設定
+                                 */
+                                carLabelEx.Click += new EventHandler(CarLabelEx_Click);
+                                carLabelEx.MouseMove += new MouseEventHandler(CarLabelEx_MouseMove);
+                                // DeepCopyから削除
+                                _listDeepCopyCarMasterVo.RemoveAll(x => x.Car_code == vehicleDispatchDetailCarVo.Car_code);
+                                // Controlを追加
+                                FlowLayoutPanelExRepair.Controls.Add(carLabelEx);
+                            } else {
+                                MessageBox.Show(string.Concat("cell_number = ", i.ToString(), " でNullを検出しました。(CarLabel)"));
+                            }
                         }
                         break;
                     case 159: // FlowLayoutPanelExVehicleInspection
                         foreach(VehicleDispatchDetailCarVo vehicleDispatchDetailCarVo in _listVehicleDispatchDetailCarVo.FindAll(x => x.Cell_number == 159)) {
-                            // Controlを作成
-                            CarLabelEx carLabelEx = new CarLabelEx(_listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailCarVo.Car_code)).CreateLabel();
-                            // プロパティを設定
-                            carLabelEx.ContextMenuStrip = ContextMenuStripCarLabel;
                             /*
-                             * イベントを設定
+                             * 2023-03-28 Findに対するNullチェックを入れる
                              */
-                            carLabelEx.Click += new EventHandler(CarLabelEx_Click);
-                            carLabelEx.MouseMove += new MouseEventHandler(CarLabelEx_MouseMove);
-                            // DeepCopyから削除
-                            _listDeepCopyCarMasterVo.RemoveAll(x => x.Car_code == vehicleDispatchDetailCarVo.Car_code);
-                            // Controlを追加
-                            FlowLayoutPanelExVehicleInspection.Controls.Add(carLabelEx);
+                            CarMasterVo? carMasterVo = _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailCarVo.Car_code);
+                            if(carMasterVo != null) {
+                                // Controlを作成
+                                CarLabelEx carLabelEx = new CarLabelEx(carMasterVo).CreateLabel();
+                                // プロパティを設定
+                                carLabelEx.ContextMenuStrip = ContextMenuStripCarLabel;
+                                /*
+                                 * イベントを設定
+                                 */
+                                carLabelEx.Click += new EventHandler(CarLabelEx_Click);
+                                carLabelEx.MouseMove += new MouseEventHandler(CarLabelEx_MouseMove);
+                                // DeepCopyから削除
+                                _listDeepCopyCarMasterVo.RemoveAll(x => x.Car_code == vehicleDispatchDetailCarVo.Car_code);
+                                // Controlを追加
+                                FlowLayoutPanelExVehicleInspection.Controls.Add(carLabelEx);
+                            } else {
+                                MessageBox.Show(string.Concat("cell_number = ", i.ToString(), " でNullを検出しました。(CarLabel)"));
+                            }
                         }
                         break;
                     case 160: // FlowLayoutPanelExFullSalaried(組合長期)
                         foreach(VehicleDispatchDetailStaffVo vehicleDispatchDetailStaffVo in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 160)) {
-                            // Controlを作成
-                            StaffLabelEx staffLabelEx = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code),
-                                                                         vehicleDispatchDetailStaffVo.Operator_note.Length > 0 ? true : false).CreateLabel();
-
-                            // プロパティを設定
-                            staffLabelEx.ContextMenuStrip = ContextMenuStripStaffLabel;
-                            ToolTip1.SetToolTip(staffLabelEx, vehicleDispatchDetailStaffVo.Operator_note);
                             /*
-                             * イベントを設定
+                             * 2023-03-28 Findに対するNullチェックを入れる
                              */
-                            staffLabelEx.Click += new EventHandler(StaffLabelEx_Click);
-                            staffLabelEx.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
-                            // DeepCopyから削除
-                            _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
-                            // Controlを追加
-                            FlowLayoutPanelExFullSalaried.Controls.Add(staffLabelEx);
+                            StaffMasterVo? staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
+                            if(staffMasterVo != null) {
+                                // Controlを作成
+                                StaffLabelEx staffLabelEx = new StaffLabelEx(staffMasterVo,
+                                                                             vehicleDispatchDetailStaffVo.Operator_note.Length > 0 ? true : false).CreateLabel();
+
+                                // プロパティを設定
+                                staffLabelEx.ContextMenuStrip = ContextMenuStripStaffLabel;
+                                ToolTip1.SetToolTip(staffLabelEx, vehicleDispatchDetailStaffVo.Operator_note);
+                                /*
+                                 * イベントを設定
+                                 */
+                                staffLabelEx.Click += new EventHandler(StaffLabelEx_Click);
+                                staffLabelEx.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
+                                // DeepCopyから削除
+                                _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
+                                // Controlを追加
+                                FlowLayoutPanelExFullSalaried.Controls.Add(staffLabelEx);
+                            } else {
+                                MessageBox.Show(string.Concat("cell_number = ", i.ToString(), " でNullを検出しました。(StaffLabel)"));
+                            }
                         }
                         break;
                     case 161: // FlowLayoutPanelExFullClose(組合長期)
                         foreach(VehicleDispatchDetailStaffVo vehicleDispatchDetailStaffVo in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 161)) {
-                            // Controlを作成
-                            StaffLabelEx staffLabelEx = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code),
-                                                                         vehicleDispatchDetailStaffVo.Operator_note.Length > 0 ? true : false).CreateLabel();
-                            // プロパティを設定
-                            staffLabelEx.ContextMenuStrip = ContextMenuStripStaffLabel;
-                            ToolTip1.SetToolTip(staffLabelEx, vehicleDispatchDetailStaffVo.Operator_note);
                             /*
-                             * イベントを設定
+                             * 2023-03-28 Findに対するNullチェックを入れる
                              */
-                            staffLabelEx.Click += new EventHandler(StaffLabelEx_Click);
-                            staffLabelEx.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
-                            // DeepCopyから削除
-                            _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
-                            // Controlを追加
-                            FlowLayoutPanelExFullClose.Controls.Add(staffLabelEx);
+                            StaffMasterVo? staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
+                            if(staffMasterVo is not null) {
+                                // Controlを作成
+                                StaffLabelEx staffLabelEx = new StaffLabelEx(staffMasterVo,
+                                                                             vehicleDispatchDetailStaffVo.Operator_note.Length > 0 ? true : false).CreateLabel();
+                                // プロパティを設定
+                                staffLabelEx.ContextMenuStrip = ContextMenuStripStaffLabel;
+                                ToolTip1.SetToolTip(staffLabelEx, vehicleDispatchDetailStaffVo.Operator_note);
+                                /*
+                                 * イベントを設定
+                                 */
+                                staffLabelEx.Click += new EventHandler(StaffLabelEx_Click);
+                                staffLabelEx.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
+                                // DeepCopyから削除
+                                _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
+                                // Controlを追加
+                                FlowLayoutPanelExFullClose.Controls.Add(staffLabelEx);
+                            } else {
+                                MessageBox.Show(string.Concat("cell_number = ", i.ToString(), " でNullを検出しました。(StaffLabel)"));
+                            }
                         }
                         break;
                     case 162: // FlowLayoutPanelExFullDesignation(組合長期)
                         foreach(VehicleDispatchDetailStaffVo vehicleDispatchDetailStaffVo in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 162)) {
-                            // Controlを作成
-                            StaffLabelEx staffLabelEx = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code),
-                                                                         vehicleDispatchDetailStaffVo.Operator_note.Length > 0 ? true : false).CreateLabel();
-                            // プロパティを設定
-                            staffLabelEx.ContextMenuStrip = ContextMenuStripStaffLabel;
-                            ToolTip1.SetToolTip(staffLabelEx, vehicleDispatchDetailStaffVo.Operator_note);
                             /*
-                             * イベントを設定
+                             * 2023-03-28 Findに対するNullチェックを入れる
                              */
-                            staffLabelEx.Click += new EventHandler(StaffLabelEx_Click);
-                            staffLabelEx.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
-                            // DeepCopyから削除
-                            _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
-                            // Controlを追加
-                            FlowLayoutPanelExFullDesignation.Controls.Add(staffLabelEx);
+                            StaffMasterVo? staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
+                            if(staffMasterVo is not null) {
+                                // Controlを作成
+                                StaffLabelEx staffLabelEx = new StaffLabelEx(staffMasterVo,
+                                                                             vehicleDispatchDetailStaffVo.Operator_note.Length > 0 ? true : false).CreateLabel();
+                                // プロパティを設定
+                                staffLabelEx.ContextMenuStrip = ContextMenuStripStaffLabel;
+                                ToolTip1.SetToolTip(staffLabelEx, vehicleDispatchDetailStaffVo.Operator_note);
+                                /*
+                                 * イベントを設定
+                                 */
+                                staffLabelEx.Click += new EventHandler(StaffLabelEx_Click);
+                                staffLabelEx.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
+                                // DeepCopyから削除
+                                _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
+                                // Controlを追加
+                                FlowLayoutPanelExFullDesignation.Controls.Add(staffLabelEx);
+                            } else {
+                                MessageBox.Show(string.Concat("cell_number = ", i.ToString(), " でNullを検出しました。(StaffLabel)"));
+                            }
                         }
                         break;
                     case 163: // FlowLayoutPanelExPartSalaried(アルバイト)
                         foreach(VehicleDispatchDetailStaffVo vehicleDispatchDetailStaffVo in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 163)) {
-                            // Controlを作成
-                            StaffLabelEx staffLabelEx = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code),
-                                                                         vehicleDispatchDetailStaffVo.Operator_note.Length > 0 ? true : false).CreateLabel();
-                            // プロパティを設定
-                            staffLabelEx.ContextMenuStrip = ContextMenuStripStaffLabel;
-                            ToolTip1.SetToolTip(staffLabelEx, vehicleDispatchDetailStaffVo.Operator_note);
                             /*
-                             * イベントを設定
+                             * 2023-03-28 Findに対するNullチェックを入れる
                              */
-                            staffLabelEx.Click += new EventHandler(StaffLabelEx_Click);
-                            staffLabelEx.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
-                            // DeepCopyから削除
-                            _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
-                            // Controlを追加
-                            FlowLayoutPanelExPartSalaried.Controls.Add(staffLabelEx);
+                            StaffMasterVo? staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
+                            if(staffMasterVo is not null) {
+                                // Controlを作成
+                                StaffLabelEx staffLabelEx = new StaffLabelEx(staffMasterVo,
+                                                                             vehicleDispatchDetailStaffVo.Operator_note.Length > 0 ? true : false).CreateLabel();
+                                // プロパティを設定
+                                staffLabelEx.ContextMenuStrip = ContextMenuStripStaffLabel;
+                                ToolTip1.SetToolTip(staffLabelEx, vehicleDispatchDetailStaffVo.Operator_note);
+                                /*
+                                 * イベントを設定
+                                 */
+                                staffLabelEx.Click += new EventHandler(StaffLabelEx_Click);
+                                staffLabelEx.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
+                                // DeepCopyから削除
+                                _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
+                                // Controlを追加
+                                FlowLayoutPanelExPartSalaried.Controls.Add(staffLabelEx);
+                            } else {
+                                MessageBox.Show(string.Concat("cell_number = ", i.ToString(), " でNullを検出しました。(StaffLabel)"));
+                            }
                         }
                         break;
                     case 164: // FlowLayoutPanelExPartClose(アルバイト)
                         foreach(VehicleDispatchDetailStaffVo vehicleDispatchDetailStaffVo in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 164)) {
-                            // Controlを作成
-                            StaffLabelEx staffLabelEx = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code),
-                                                                         vehicleDispatchDetailStaffVo.Operator_note.Length > 0 ? true : false).CreateLabel();
-                            // プロパティを設定
-                            staffLabelEx.ContextMenuStrip = ContextMenuStripStaffLabel;
-                            ToolTip1.SetToolTip(staffLabelEx, vehicleDispatchDetailStaffVo.Operator_note);
                             /*
-                             * イベントを設定
+                             * 2023-03-28 Findに対するNullチェックを入れる
                              */
-                            staffLabelEx.Click += new EventHandler(StaffLabelEx_Click);
-                            staffLabelEx.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
-                            // DeepCopyから削除
-                            _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
-                            // Controlを追加
-                            FlowLayoutPanelExPartClose.Controls.Add(staffLabelEx);
+                            StaffMasterVo? staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
+                            if(staffMasterVo is not null) {
+                                // Controlを作成
+                                StaffLabelEx staffLabelEx = new StaffLabelEx(staffMasterVo,
+                                                                             vehicleDispatchDetailStaffVo.Operator_note.Length > 0 ? true : false).CreateLabel();
+                                // プロパティを設定
+                                staffLabelEx.ContextMenuStrip = ContextMenuStripStaffLabel;
+                                ToolTip1.SetToolTip(staffLabelEx, vehicleDispatchDetailStaffVo.Operator_note);
+                                /*
+                                 * イベントを設定
+                                 */
+                                staffLabelEx.Click += new EventHandler(StaffLabelEx_Click);
+                                staffLabelEx.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
+                                // DeepCopyから削除
+                                _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
+                                // Controlを追加
+                                FlowLayoutPanelExPartClose.Controls.Add(staffLabelEx);
+                            } else {
+                                MessageBox.Show(string.Concat("cell_number = ", i.ToString(), " でNullを検出しました。(StaffLabel)"));
+                            }
                         }
                         break;
                     case 165: // FlowLayoutPanelExPartDesignation(アルバイト)
                         foreach(VehicleDispatchDetailStaffVo vehicleDispatchDetailStaffVo in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 165)) {
-                            // Controlを作成
-                            StaffLabelEx staffLabelEx = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code),
-                                                                         vehicleDispatchDetailStaffVo.Operator_note.Length > 0 ? true : false).CreateLabel();
-                            // プロパティを設定
-                            staffLabelEx.ContextMenuStrip = ContextMenuStripStaffLabel;
-                            ToolTip1.SetToolTip(staffLabelEx, vehicleDispatchDetailStaffVo.Operator_note);
                             /*
-                             * イベントを設定
+                             * 2023-03-28 Findに対するNullチェックを入れる
                              */
-                            staffLabelEx.Click += new EventHandler(StaffLabelEx_Click);
-                            staffLabelEx.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
-                            // DeepCopyから削除
-                            _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
-                            // Controlを追加
-                            FlowLayoutPanelExPartDesignation.Controls.Add(staffLabelEx);
+                            StaffMasterVo? staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
+                            if(staffMasterVo is not null) {
+                                // Controlを作成
+                                StaffLabelEx staffLabelEx = new StaffLabelEx(staffMasterVo,
+                                                                             vehicleDispatchDetailStaffVo.Operator_note.Length > 0 ? true : false).CreateLabel();
+                                // プロパティを設定
+                                staffLabelEx.ContextMenuStrip = ContextMenuStripStaffLabel;
+                                ToolTip1.SetToolTip(staffLabelEx, vehicleDispatchDetailStaffVo.Operator_note);
+                                /*
+                                 * イベントを設定
+                                 */
+                                staffLabelEx.Click += new EventHandler(StaffLabelEx_Click);
+                                staffLabelEx.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
+                                // DeepCopyから削除
+                                _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
+                                // Controlを追加
+                                FlowLayoutPanelExPartDesignation.Controls.Add(staffLabelEx);
+                            } else {
+                                MessageBox.Show(string.Concat("cell_number = ", i.ToString(), " でNullを検出しました。(StaffLabel)"));
+                            }
                         }
                         break;
                     case 166: // FlowLayoutPanelExTelephone
                         foreach(VehicleDispatchDetailStaffVo vehicleDispatchDetailStaffVo in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 166)) {
-                            // Controlを作成
-                            StaffLabelEx staffLabelEx = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code),
-                                                                         vehicleDispatchDetailStaffVo.Operator_note.Length > 0 ? true : false).CreateLabel();
-                            // プロパティを設定
-                            staffLabelEx.ContextMenuStrip = ContextMenuStripStaffLabel;
-                            ToolTip1.SetToolTip(staffLabelEx, vehicleDispatchDetailStaffVo.Operator_note);
                             /*
-                             * イベントを設定
+                             * 2023-03-28 Findに対するNullチェックを入れる
                              */
-                            staffLabelEx.Click += new EventHandler(StaffLabelEx_Click);
-                            staffLabelEx.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
-                            // DeepCopyから削除
-                            _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
-                            // Controlを追加
-                            FlowLayoutPanelExTelephone.Controls.Add(staffLabelEx);
+                            StaffMasterVo? staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
+                            if(staffMasterVo is not null) {
+                                // Controlを作成
+                                StaffLabelEx staffLabelEx = new StaffLabelEx(staffMasterVo,
+                                                                             vehicleDispatchDetailStaffVo.Operator_note.Length > 0 ? true : false).CreateLabel();
+                                // プロパティを設定
+                                staffLabelEx.ContextMenuStrip = ContextMenuStripStaffLabel;
+                                ToolTip1.SetToolTip(staffLabelEx, vehicleDispatchDetailStaffVo.Operator_note);
+                                /*
+                                 * イベントを設定
+                                 */
+                                staffLabelEx.Click += new EventHandler(StaffLabelEx_Click);
+                                staffLabelEx.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
+                                // DeepCopyから削除
+                                _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
+                                // Controlを追加
+                                FlowLayoutPanelExTelephone.Controls.Add(staffLabelEx);
+                            } else {
+                                MessageBox.Show(string.Concat("cell_number = ", i.ToString(), " でNullを検出しました。(StaffLabel)"));
+                            }
                         }
                         break;
                     case 167: // FlowLayoutPanelExWithoutNotice
                         foreach(VehicleDispatchDetailStaffVo vehicleDispatchDetailStaffVo in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 167)) {
-                            // Controlを作成
-                            StaffLabelEx staffLabelEx = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code),
-                                                                         vehicleDispatchDetailStaffVo.Operator_note.Length > 0 ? true : false).CreateLabel();
-                            // プロパティを設定
-                            staffLabelEx.ContextMenuStrip = ContextMenuStripStaffLabel;
-                            ToolTip1.SetToolTip(staffLabelEx, vehicleDispatchDetailStaffVo.Operator_note);
                             /*
-                             * イベントを設定
+                             * 2023-03-28 Findに対するNullチェックを入れる
                              */
-                            staffLabelEx.Click += new EventHandler(StaffLabelEx_Click);
-                            staffLabelEx.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
-                            // DeepCopyから削除
-                            _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
-                            // Controlを追加
-                            FlowLayoutPanelExWithoutNotice.Controls.Add(staffLabelEx);
+                            StaffMasterVo? staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
+                            if(staffMasterVo is not null) {
+                                // Controlを作成
+                                StaffLabelEx staffLabelEx = new StaffLabelEx(staffMasterVo,
+                                                                             vehicleDispatchDetailStaffVo.Operator_note.Length > 0 ? true : false).CreateLabel();
+                                // プロパティを設定
+                                staffLabelEx.ContextMenuStrip = ContextMenuStripStaffLabel;
+                                ToolTip1.SetToolTip(staffLabelEx, vehicleDispatchDetailStaffVo.Operator_note);
+                                /*
+                                 * イベントを設定
+                                 */
+                                staffLabelEx.Click += new EventHandler(StaffLabelEx_Click);
+                                staffLabelEx.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
+                                // DeepCopyから削除
+                                _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
+                                // Controlを追加
+                                FlowLayoutPanelExWithoutNotice.Controls.Add(staffLabelEx);
+                            } else {
+                                MessageBox.Show(string.Concat("cell_number = ", i.ToString(), " でNullを検出しました。(StaffLabel)"));
+                            }
                         }
                         break;
                     case 168: // FlowLayoutPanelExFree
@@ -542,39 +680,55 @@ namespace VehicleDispatch {
                          * CarLabelExを作成
                          */
                         foreach(VehicleDispatchDetailCarVo vehicleDispatchDetailCarVo in _listVehicleDispatchDetailCarVo.FindAll(x => x.Cell_number == 168).OrderBy(x => x.Insert_ymd_hms)) {
-                            // Controlを作成
-                            CarLabelEx carLabelEx = new CarLabelEx(_listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailCarVo.Car_code)).CreateLabel();
-                            // プロパティを設定
-                            carLabelEx.ContextMenuStrip = ContextMenuStripCarLabel;
                             /*
-                             * イベントを設定
+                             * 2023-03-28 Findに対するNullチェックを入れる
                              */
-                            carLabelEx.Click += new EventHandler(CarLabelEx_Click);
-                            carLabelEx.MouseMove += new MouseEventHandler(CarLabelEx_MouseMove);
-                            // DeepCopyから削除
-                            _listDeepCopyCarMasterVo.RemoveAll(x => x.Car_code == vehicleDispatchDetailCarVo.Car_code);
-                            // Controlを追加
-                            FlowLayoutPanelExFree.Controls.Add(carLabelEx);
+                            CarMasterVo? carMasterVo = _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailCarVo.Car_code);
+                            if(carMasterVo is not null) {
+                                // Controlを作成
+                                CarLabelEx carLabelEx = new CarLabelEx(carMasterVo).CreateLabel();
+                                // プロパティを設定
+                                carLabelEx.ContextMenuStrip = ContextMenuStripCarLabel;
+                                /*
+                                 * イベントを設定
+                                 */
+                                carLabelEx.Click += new EventHandler(CarLabelEx_Click);
+                                carLabelEx.MouseMove += new MouseEventHandler(CarLabelEx_MouseMove);
+                                // DeepCopyから削除
+                                _listDeepCopyCarMasterVo.RemoveAll(x => x.Car_code == vehicleDispatchDetailCarVo.Car_code);
+                                // Controlを追加
+                                FlowLayoutPanelExFree.Controls.Add(carLabelEx);
+                            } else {
+                                MessageBox.Show(string.Concat("cell_number = ", i.ToString(), " でNullを検出しました。(CarLabel)"));
+                            }
                         }
                         /*
                          * StaffLabelExを作成
                          */
                         foreach(VehicleDispatchDetailStaffVo vehicleDispatchDetailStaffVo in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 168)) {
-                            // Controlを作成
-                            StaffLabelEx staffLabelEx = new StaffLabelEx(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code),
-                                                                         vehicleDispatchDetailStaffVo.Operator_note.Length > 0 ? true : false).CreateLabel();
-                            // プロパティを設定
-                            staffLabelEx.ContextMenuStrip = ContextMenuStripStaffLabel;
-                            ToolTip1.SetToolTip(staffLabelEx, vehicleDispatchDetailStaffVo.Operator_note);
                             /*
-                             * イベントを設定
+                             * 2023-03-28 Findに対するNullチェックを入れる
                              */
-                            staffLabelEx.Click += new EventHandler(StaffLabelEx_Click);
-                            staffLabelEx.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
-                            // DeepCopyから削除
-                            _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
-                            // Controlを追加
-                            FlowLayoutPanelExFree.Controls.Add(staffLabelEx);
+                            StaffMasterVo? staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
+                            if(staffMasterVo is not null) {
+                                // Controlを作成
+                                StaffLabelEx staffLabelEx = new StaffLabelEx(staffMasterVo,
+                                                                             vehicleDispatchDetailStaffVo.Operator_note.Length > 0 ? true : false).CreateLabel();
+                                // プロパティを設定
+                                staffLabelEx.ContextMenuStrip = ContextMenuStripStaffLabel;
+                                ToolTip1.SetToolTip(staffLabelEx, vehicleDispatchDetailStaffVo.Operator_note);
+                                /*
+                                 * イベントを設定
+                                 */
+                                staffLabelEx.Click += new EventHandler(StaffLabelEx_Click);
+                                staffLabelEx.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
+                                // DeepCopyから削除
+                                _listDeepCopyStaffMasterVo.RemoveAll(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
+                                // Controlを追加
+                                FlowLayoutPanelExFree.Controls.Add(staffLabelEx);
+                            } else {
+                                MessageBox.Show(string.Concat("cell_number = ", i.ToString(), " でNullを検出しました。(StaffLabel)"));
+                            }
                         }
                         break;
                 }

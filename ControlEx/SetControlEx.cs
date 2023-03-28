@@ -215,8 +215,8 @@ namespace ControlEx {
                 this.Controls.Add(labelEx,
                                   0,
                                   0);
-            } catch(Exception exception) {
-                MessageBox.Show(exception.Message);
+            } catch {
+                throw;
             }
         }
 
@@ -241,8 +241,8 @@ namespace ControlEx {
                 this.Controls.Add(labelEx,
                                   0,
                                   1);
-            } catch(Exception exception) {
-                MessageBox.Show(exception.Message);
+            } catch {
+                throw;
             }
         }
 
@@ -278,8 +278,8 @@ namespace ControlEx {
                 this.Controls.Add(labelEx,
                                   0,
                                   number + 2);
-            } catch(Exception exception) {
-                MessageBox.Show(exception.Message);
+            } catch {
+                throw;
             }
         }
 

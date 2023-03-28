@@ -200,6 +200,7 @@ namespace VehicleDispatchSheet {
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
                 /*
                  * 運賃対象のレコード以外はBreakする
+                 * 
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 10) {
                     if(blockRowCount == 0) {

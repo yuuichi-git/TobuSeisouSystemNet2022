@@ -11,7 +11,7 @@ using Vo;
 
 namespace Production {
     public partial class ProductionList : Form {
-        private InitializeForm _initializeForm = new();
+        private readonly InitializeForm _initializeForm = new();
         /// <summary>
         /// 対象年度を格納(ComboBoxFinancialYearのデータ)
         /// </summary>        
@@ -19,7 +19,7 @@ namespace Production {
         /// <summary>
         /// どのモードで開くかのFlagを退避
         /// </summary>        
-        private string _flagName = "";
+        private readonly string _flagName = "";
         /*
          * Dao
          */
