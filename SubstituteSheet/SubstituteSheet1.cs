@@ -8,8 +8,8 @@ using FarPoint.Win.Spread;
 
 using Vo;
 
-namespace Substitute {
-    public partial class SubstitutePaper : Form {
+namespace SubstituteSheet {
+    public partial class SubstituteSheet1 : Form {
         private readonly ConnectionVo _connectionVo;
         private readonly InitializeForm _initializeForm = new();
         /*
@@ -66,11 +66,7 @@ namespace Substitute {
         /// <summary>
         /// ÉRÉìÉXÉgÉâÉNÉ^Å[
         /// </summary>
-        /// <param name="connectionVo"></param>
-        /// <param name="cellNumber"></param>
-        /// <param name="setCode"></param>
-        public SubstitutePaper(ConnectionVo connectionVo, int cellNumber, int setCode) {
-            _connectionVo = connectionVo;
+        public SubstituteSheet1(ConnectionVo connectionVo, DateTime operationDate, int cellNumber, int setCode) {
             /*
              * Dao
              */
@@ -80,15 +76,15 @@ namespace Substitute {
             /*
              * Vo
              */
-            _vehicleDispatchDetailVo = _vehicleDispatchDetailDao.SelectOneVehicleDispatchDetail(DateTime.Now.Date, cellNumber + 1);
-
+            _connectionVo = connectionVo;
+            _vehicleDispatchDetailVo = _vehicleDispatchDetailDao.SelectOneVehicleDispatchDetail(operationDate.Date, cellNumber + 1);
             /*
              * ÉRÉìÉgÉçÅ[Éãèâä˙âª
              */
             InitializeComponent();
             _initializeForm.SubstitutePaper(this);
             // ÉVÅ[ÉgÉ^ÉuÇîÒï\é¶
-            SpreadPaper.TabStripPolicy = TabStripPolicy.Never;
+            SpreadList.TabStripPolicy = TabStripPolicy.Never;
             /*
              * îzé‘êÊÇì«çûÇﬁ
              */
@@ -125,6 +121,7 @@ namespace Substitute {
                     _cleanOfficeFax = string.Concat("äãè¸ãÊê¥ë|éññ±èäÅiêVèhï™é∫Åj", "\r\n", " ÇeÇ`Çw ÇOÇRÅ|ÇRÇUÇOÇWÅ|ÇRÇRÇXÇV");
                     break;
                 case 1312203: // è¨ä‚ÇS
+                case 1312208: // è¨ä‚ÇT
                     _cleanOfficeName = "Å@è¨ä‚ê¥ë|éññ±èäÅ@å‰íÜ";
                     _cleanOfficeFax = string.Concat("è¨ä‚ê¥ë|éññ±èä", "\r\n", " ÇeÇ`Çw ÇOÇRÅ|ÇRÇUÇVÇRÅ|ÇQÇTÇRÇT");
                     break;
@@ -134,9 +131,6 @@ namespace Substitute {
             PutSheetViewPaper();
         }
 
-        /// <summary>
-        /// ÉGÉìÉgÉäÅ[É|ÉCÉìÉg
-        /// </summary>
         public static void Main() {
         }
 
@@ -147,9 +141,9 @@ namespace Substitute {
             // ì˙ït
             CultureInfo cultureInfo = new CultureInfo("ja-JP", true);
             cultureInfo.DateTimeFormat.Calendar = new JapaneseCalendar();
-            SheetViewPaper.Cells["G3"].Text = DateTime.Now.ToString("gg yîNMåédì˙", cultureInfo);
+            SheetView1.Cells["G3"].Text = DateTime.Now.ToString("gg yîNMåédì˙", cultureInfo);
             // à∂êÊ
-            SheetViewPaper.Cells["B6"].Text = _cleanOfficeName;
+            SheetView1.Cells["B6"].Text = _cleanOfficeName;
             /*
              * ë„é‘
              */
@@ -160,12 +154,12 @@ namespace Substitute {
             // áBë„é‘ÇÃèàóù
             if(_vehicleDispatchDetailVo.Car_code != 0 && carCodeCleanOffice != _vehicleDispatchDetailVo.Car_code) {
                 // ïœçXëO ëgêî é‘óºÉiÉìÉoÅ[ ÉhÉAî‘çÜ
-                SheetViewPaper.Cells["B29"].Text = _setMasterVo.Set_name_2;
-                SheetViewPaper.Cells["C29"].Text = _listCarMasterVo.Find(x => x.Car_code == carCodeCleanOffice).Registration_number;
-                SheetViewPaper.Cells["F29"].Text = _listCarMasterVo.Find(x => x.Car_code == carCodeCleanOffice).Door_number.ToString();
+                SheetView1.Cells["B29"].Text = _setMasterVo.Set_name_2;
+                SheetView1.Cells["C29"].Text = _listCarMasterVo.Find(x => x.Car_code == carCodeCleanOffice).Registration_number;
+                SheetView1.Cells["F29"].Text = _listCarMasterVo.Find(x => x.Car_code == carCodeCleanOffice).Door_number.ToString();
                 // ïœçXå„ é‘óºÉiÉìÉoÅ[ ÉhÉAî‘çÜ
-                SheetViewPaper.Cells["H29"].Text = _listCarMasterVo.Find(x => x.Car_code == _vehicleDispatchDetailVo.Car_code).Registration_number;
-                SheetViewPaper.Cells["L29"].Text = _listCarMasterVo.Find(x => x.Car_code == _vehicleDispatchDetailVo.Car_code).Door_number.ToString();
+                SheetView1.Cells["H29"].Text = _listCarMasterVo.Find(x => x.Car_code == _vehicleDispatchDetailVo.Car_code).Registration_number;
+                SheetView1.Cells["L29"].Text = _listCarMasterVo.Find(x => x.Car_code == _vehicleDispatchDetailVo.Car_code).Door_number.ToString();
             }
             /*
              * ë„î‘
@@ -236,7 +230,7 @@ namespace Substitute {
                 }
             }
             // FAXî‘çÜëº
-            SheetViewPaper.Cells["H51"].Text = _cleanOfficeFax;
+            SheetView1.Cells["H51"].Text = _cleanOfficeFax;
         }
 
         /// <summary>
@@ -249,56 +243,56 @@ namespace Substitute {
         /// <param name="afterDisplayName"></param>
         /// <param name="telephoneNumber"></param>
         private void PutStaff(int rowNumber, string setName, string occupation, string beforeDisplayName, string afterDisplayName, string telephoneNumber) {
-            SheetViewPaper.Cells[cellSetName[rowNumber]].Text = string.Concat(setName, "ëg");
-            SheetViewPaper.Cells[cellOccupation[rowNumber]].Text = occupation;
-            SheetViewPaper.Cells[cellBeforeStaffDisplayName[rowNumber]].Text = beforeDisplayName;
-            SheetViewPaper.Cells[cellAfterDisplayName[rowNumber]].Text = afterDisplayName;
-            SheetViewPaper.Cells[cellTelephoneNumber[rowNumber]].Text = telephoneNumber;
+            SheetView1.Cells[cellSetName[rowNumber]].Text = string.Concat(setName, "ëg");
+            SheetView1.Cells[cellOccupation[rowNumber]].Text = occupation;
+            SheetView1.Cells[cellBeforeStaffDisplayName[rowNumber]].Text = beforeDisplayName;
+            SheetView1.Cells[cellAfterDisplayName[rowNumber]].Text = afterDisplayName;
+            SheetView1.Cells[cellTelephoneNumber[rowNumber]].Text = telephoneNumber;
         }
 
         private void InitializeSheetViewPaper() {
             // çÏê¨ì˙ït
-            SheetViewPaper.Cells["G3"].ResetValue();
+            SheetView1.Cells["G3"].ResetValue();
             // ëóÇËêÊ
-            SheetViewPaper.Cells["B6"].ResetValue();
+            SheetView1.Cells["B6"].ResetValue();
             /*
              * ë„é‘
              */
             // ÇPçsñ⁄
-            SheetViewPaper.Cells["B29"].ResetValue();
-            SheetViewPaper.Cells["C29"].ResetValue();
-            SheetViewPaper.Cells["F29"].ResetValue();
-            SheetViewPaper.Cells["H29"].ResetValue();
-            SheetViewPaper.Cells["L29"].ResetValue();
+            SheetView1.Cells["B29"].ResetValue();
+            SheetView1.Cells["C29"].ResetValue();
+            SheetView1.Cells["F29"].ResetValue();
+            SheetView1.Cells["H29"].ResetValue();
+            SheetView1.Cells["L29"].ResetValue();
             // ÇQçsñ⁄
-            SheetViewPaper.Cells["B31"].ResetValue();
-            SheetViewPaper.Cells["C31"].ResetValue();
-            SheetViewPaper.Cells["F31"].ResetValue();
-            SheetViewPaper.Cells["H31"].ResetValue();
-            SheetViewPaper.Cells["L31"].ResetValue();
+            SheetView1.Cells["B31"].ResetValue();
+            SheetView1.Cells["C31"].ResetValue();
+            SheetView1.Cells["F31"].ResetValue();
+            SheetView1.Cells["H31"].ResetValue();
+            SheetView1.Cells["L31"].ResetValue();
             /*
              * ë„î‘
              */
             // ÇPçsñ⁄
-            SheetViewPaper.Cells["B38"].ResetValue(); // ëg
-            SheetViewPaper.Cells["B40"].ResetValue(); // â^ì]éËÅEêEàı
-            SheetViewPaper.Cells["D38"].ResetValue(); // ñ{î‘éÅñº
-            SheetViewPaper.Cells["I38"].ResetValue(); // ë„î‘éÅñº
-            SheetViewPaper.Cells["I40"].ResetValue(); // ë„î‘ågë—î‘çÜ
-                                                      // ÇQçsñ⁄
-            SheetViewPaper.Cells["B42"].ResetValue(); // ëg
-            SheetViewPaper.Cells["B44"].ResetValue(); // â^ì]éËÅEêEàı
-            SheetViewPaper.Cells["D42"].ResetValue(); // ñ{î‘éÅñº
-            SheetViewPaper.Cells["I42"].ResetValue(); // ë„î‘éÅñº
-            SheetViewPaper.Cells["I44"].ResetValue(); // ë„î‘ågë—î‘çÜ
-                                                      // ÇRçsñ⁄
-            SheetViewPaper.Cells["B46"].ResetValue(); // ëg
-            SheetViewPaper.Cells["B48"].ResetValue(); // â^ì]éËÅEêEàı
-            SheetViewPaper.Cells["D46"].ResetValue(); // ñ{î‘éÅñº
-            SheetViewPaper.Cells["I46"].ResetValue(); // ë„î‘éÅñº
-            SheetViewPaper.Cells["I48"].ResetValue(); // ë„î‘ågë—î‘çÜ
-                                                      // ëóÇËêÊ
-            SheetViewPaper.Cells["H51"].ResetValue();
+            SheetView1.Cells["B38"].ResetValue(); // ëg
+            SheetView1.Cells["B40"].ResetValue(); // â^ì]éËÅEêEàı
+            SheetView1.Cells["D38"].ResetValue(); // ñ{î‘éÅñº
+            SheetView1.Cells["I38"].ResetValue(); // ë„î‘éÅñº
+            SheetView1.Cells["I40"].ResetValue(); // ë„î‘ågë—î‘çÜ
+                                                  // ÇQçsñ⁄
+            SheetView1.Cells["B42"].ResetValue(); // ëg
+            SheetView1.Cells["B44"].ResetValue(); // â^ì]éËÅEêEàı
+            SheetView1.Cells["D42"].ResetValue(); // ñ{î‘éÅñº
+            SheetView1.Cells["I42"].ResetValue(); // ë„î‘éÅñº
+            SheetView1.Cells["I44"].ResetValue(); // ë„î‘ågë—î‘çÜ
+                                                  // ÇRçsñ⁄
+            SheetView1.Cells["B46"].ResetValue(); // ëg
+            SheetView1.Cells["B48"].ResetValue(); // â^ì]éËÅEêEàı
+            SheetView1.Cells["D46"].ResetValue(); // ñ{î‘éÅñº
+            SheetView1.Cells["I46"].ResetValue(); // ë„î‘éÅñº
+            SheetView1.Cells["I48"].ResetValue(); // ë„î‘ågë—î‘çÜ
+                                                  // ëóÇËêÊ
+            SheetView1.Cells["H51"].ResetValue();
         }
 
         /// <summary>
@@ -307,17 +301,7 @@ namespace Substitute {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ButtonPrint_Click(object sender, EventArgs e) {
-            SpreadPaper.PrintSheet(SheetViewPaper);
-        }
-
-        /// <summary>
-        /// ToolStripMenuItemExit_Click
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ToolStripMenuItemExit_Click(object sender, EventArgs e) {
-            Close();
-            Dispose();
+            SpreadList.PrintSheet(SheetView1);
         }
     }
 }

@@ -10,7 +10,7 @@
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing) {
-            if (disposing && (components != null)) {
+            if(disposing && (components != null)) {
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -23,673 +23,656 @@
         ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.components = new System.ComponentModel.Container();
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StaffList));
-            this.TableLayoutPanelExBase = new ControlEx.TableLayoutPanelEx();
-            this.MenuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.ToolStripMenuItemMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemExport = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemExport1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemExport2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.編集ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemNewStaff = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
-            this.PanelUp = new System.Windows.Forms.Panel();
-            this.CheckBoxRetired = new System.Windows.Forms.CheckBox();
-            this.ComboBoxAccidentYear = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.GroupBox3 = new System.Windows.Forms.GroupBox();
-            this.CheckBoxNone2 = new System.Windows.Forms.CheckBox();
-            this.CheckBoxWorkStaff = new System.Windows.Forms.CheckBox();
-            this.CheckBoxDriver = new System.Windows.Forms.CheckBox();
-            this.GroupBox2 = new System.Windows.Forms.GroupBox();
-            this.CheckBoxNone1 = new System.Windows.Forms.CheckBox();
-            this.CheckBoxPartTimeJob2 = new System.Windows.Forms.CheckBox();
-            this.CheckBoxNoteBook = new System.Windows.Forms.CheckBox();
-            this.CheckBoxFullTimeJob = new System.Windows.Forms.CheckBox();
-            this.GroupBox1 = new System.Windows.Forms.GroupBox();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.CheckBoxJiunrou = new System.Windows.Forms.CheckBox();
-            this.CheckBoxSinunten = new System.Windows.Forms.CheckBox();
-            this.CheckBoxPartTimeJob1 = new System.Windows.Forms.CheckBox();
-            this.CheckBoxCompanyEmployee = new System.Windows.Forms.CheckBox();
-            this.CheckBoxOfficer = new System.Windows.Forms.CheckBox();
-            this.ButtonUpdate = new System.Windows.Forms.Button();
-            this.StatusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.ToolStripStatusLabelDetail = new System.Windows.Forms.ToolStripStatusLabel();
-            this.SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, ((object)(resources.GetObject("TableLayoutPanelExBase.Controls"))));
-            this.ContextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.ToolStripMenuItemLicense = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemToukanpo = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemMap = new System.Windows.Forms.ToolStripMenuItem();
-            this.SheetViewList = this.SpreadList.GetSheet(0);
-            this.SheetViewList2 = this.SpreadList.GetSheet(1);
-            this.TabControlExStaff = new ControlEx.TabControlEx();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.tabPage9 = new System.Windows.Forms.TabPage();
-            this.tabPage10 = new System.Windows.Forms.TabPage();
-            this.tabPage11 = new System.Windows.Forms.TabPage();
-            this.TableLayoutPanelExBase.SuspendLayout();
-            this.MenuStrip1.SuspendLayout();
-            this.PanelUp.SuspendLayout();
-            this.GroupBox3.SuspendLayout();
-            this.GroupBox2.SuspendLayout();
-            this.GroupBox1.SuspendLayout();
-            this.StatusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SpreadList)).BeginInit();
-            this.ContextMenuStrip1.SuspendLayout();
-            this.TabControlExStaff.SuspendLayout();
-            this.SuspendLayout();
+            TableLayoutPanelExBase = new ControlEx.TableLayoutPanelEx();
+            MenuStrip1 = new MenuStrip();
+            ToolStripMenuItemMenu = new ToolStripMenuItem();
+            ToolStripMenuItemExport = new ToolStripMenuItem();
+            ToolStripMenuItemExport1 = new ToolStripMenuItem();
+            ToolStripMenuItemExport2 = new ToolStripMenuItem();
+            ToolStripMenuItemExit = new ToolStripMenuItem();
+            編集ToolStripMenuItem = new ToolStripMenuItem();
+            ToolStripMenuItemNewStaff = new ToolStripMenuItem();
+            ToolStripMenuItemHelp = new ToolStripMenuItem();
+            PanelUp = new Panel();
+            CheckBoxRetired = new CheckBox();
+            ComboBoxAccidentYear = new ComboBox();
+            label1 = new Label();
+            GroupBox3 = new GroupBox();
+            CheckBoxNone2 = new CheckBox();
+            CheckBoxWorkStaff = new CheckBox();
+            CheckBoxDriver = new CheckBox();
+            GroupBox2 = new GroupBox();
+            CheckBoxNone1 = new CheckBox();
+            CheckBoxPartTimeJob2 = new CheckBox();
+            CheckBoxNoteBook = new CheckBox();
+            CheckBoxFullTimeJob = new CheckBox();
+            GroupBox1 = new GroupBox();
+            checkBox1 = new CheckBox();
+            CheckBoxJiunrou = new CheckBox();
+            CheckBoxSinunten = new CheckBox();
+            CheckBoxPartTimeJob1 = new CheckBox();
+            CheckBoxCompanyEmployee = new CheckBox();
+            CheckBoxOfficer = new CheckBox();
+            ButtonUpdate = new Button();
+            StatusStrip1 = new StatusStrip();
+            toolStripStatusLabel1 = new ToolStripStatusLabel();
+            ToolStripStatusLabelDetail = new ToolStripStatusLabel();
+            SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("TableLayoutPanelExBase.Controls"));
+            ContextMenuStrip1 = new ContextMenuStrip(components);
+            ToolStripMenuItemLicense = new ToolStripMenuItem();
+            ToolStripMenuItemToukanpo = new ToolStripMenuItem();
+            ToolStripMenuItemMap = new ToolStripMenuItem();
+            TabControlExStaff = new ControlEx.TabControlEx();
+            tabPage1 = new TabPage();
+            tabPage2 = new TabPage();
+            tabPage3 = new TabPage();
+            tabPage4 = new TabPage();
+            tabPage5 = new TabPage();
+            tabPage6 = new TabPage();
+            tabPage7 = new TabPage();
+            tabPage8 = new TabPage();
+            tabPage9 = new TabPage();
+            tabPage10 = new TabPage();
+            tabPage11 = new TabPage();
+            SheetViewList = SpreadList.GetSheet(0);
+            SheetViewList2 = SpreadList.GetSheet(1);
+            TableLayoutPanelExBase.SuspendLayout();
+            MenuStrip1.SuspendLayout();
+            PanelUp.SuspendLayout();
+            GroupBox3.SuspendLayout();
+            GroupBox2.SuspendLayout();
+            GroupBox1.SuspendLayout();
+            StatusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)SpreadList).BeginInit();
+            ContextMenuStrip1.SuspendLayout();
+            TabControlExStaff.SuspendLayout();
+            SuspendLayout();
             // 
             // TableLayoutPanelExBase
             // 
-            this.TableLayoutPanelExBase.ColumnCount = 1;
-            this.TableLayoutPanelExBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanelExBase.Controls.Add(this.MenuStrip1, 0, 0);
-            this.TableLayoutPanelExBase.Controls.Add(this.PanelUp, 0, 1);
-            this.TableLayoutPanelExBase.Controls.Add(this.StatusStrip1, 0, 4);
-            this.TableLayoutPanelExBase.Controls.Add(this.SpreadList, 0, 3);
-            this.TableLayoutPanelExBase.Controls.Add(this.TabControlExStaff, 0, 2);
-            this.TableLayoutPanelExBase.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TableLayoutPanelExBase.Location = new System.Drawing.Point(0, 0);
-            this.TableLayoutPanelExBase.Name = "TableLayoutPanelExBase";
-            this.TableLayoutPanelExBase.RowCount = 5;
-            this.TableLayoutPanelExBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.TableLayoutPanelExBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.TableLayoutPanelExBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.TableLayoutPanelExBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanelExBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.TableLayoutPanelExBase.Size = new System.Drawing.Size(1904, 1041);
-            this.TableLayoutPanelExBase.TabIndex = 0;
+            TableLayoutPanelExBase.ButtonBorderStyleDotted = false;
+            TableLayoutPanelExBase.ColumnCount = 1;
+            TableLayoutPanelExBase.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            TableLayoutPanelExBase.Controls.Add(MenuStrip1, 0, 0);
+            TableLayoutPanelExBase.Controls.Add(PanelUp, 0, 1);
+            TableLayoutPanelExBase.Controls.Add(StatusStrip1, 0, 4);
+            TableLayoutPanelExBase.Controls.Add(SpreadList, 0, 3);
+            TableLayoutPanelExBase.Controls.Add(TabControlExStaff, 0, 2);
+            TableLayoutPanelExBase.Dock = DockStyle.Fill;
+            TableLayoutPanelExBase.Location = new Point(0, 0);
+            TableLayoutPanelExBase.Name = "TableLayoutPanelExBase";
+            TableLayoutPanelExBase.RowCount = 5;
+            TableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
+            TableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
+            TableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 28F));
+            TableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            TableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
+            TableLayoutPanelExBase.Size = new Size(1904, 1041);
+            TableLayoutPanelExBase.TabIndex = 0;
             // 
             // MenuStrip1
             // 
-            this.MenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemMenu,
-            this.編集ToolStripMenuItem,
-            this.ToolStripMenuItemHelp});
-            this.MenuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.MenuStrip1.Name = "MenuStrip1";
-            this.MenuStrip1.Size = new System.Drawing.Size(1904, 24);
-            this.MenuStrip1.TabIndex = 1;
-            this.MenuStrip1.Text = "menuStrip1";
+            MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, 編集ToolStripMenuItem, ToolStripMenuItemHelp });
+            MenuStrip1.Location = new Point(0, 0);
+            MenuStrip1.Name = "MenuStrip1";
+            MenuStrip1.Size = new Size(1904, 24);
+            MenuStrip1.TabIndex = 1;
+            MenuStrip1.Text = "menuStrip1";
             // 
             // ToolStripMenuItemMenu
             // 
-            this.ToolStripMenuItemMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemExport,
-            this.ToolStripMenuItemExit});
-            this.ToolStripMenuItemMenu.Name = "ToolStripMenuItemMenu";
-            this.ToolStripMenuItemMenu.Size = new System.Drawing.Size(52, 20);
-            this.ToolStripMenuItemMenu.Text = "メニュー";
+            ToolStripMenuItemMenu.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemExport, ToolStripMenuItemExit });
+            ToolStripMenuItemMenu.Name = "ToolStripMenuItemMenu";
+            ToolStripMenuItemMenu.Size = new Size(52, 20);
+            ToolStripMenuItemMenu.Text = "メニュー";
             // 
             // ToolStripMenuItemExport
             // 
-            this.ToolStripMenuItemExport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemExport1,
-            this.ToolStripMenuItemExport2});
-            this.ToolStripMenuItemExport.Name = "ToolStripMenuItemExport";
-            this.ToolStripMenuItemExport.Size = new System.Drawing.Size(195, 22);
-            this.ToolStripMenuItemExport.Text = "Excel形式でエクスポート";
+            ToolStripMenuItemExport.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemExport1, ToolStripMenuItemExport2 });
+            ToolStripMenuItemExport.Name = "ToolStripMenuItemExport";
+            ToolStripMenuItemExport.Size = new Size(195, 22);
+            ToolStripMenuItemExport.Text = "Excel形式でエクスポート";
             // 
             // ToolStripMenuItemExport1
             // 
-            this.ToolStripMenuItemExport1.Name = "ToolStripMenuItemExport1";
-            this.ToolStripMenuItemExport1.Size = new System.Drawing.Size(240, 22);
-            this.ToolStripMenuItemExport1.Text = "従事者リストをエクスポートする";
-            this.ToolStripMenuItemExport1.Click += new System.EventHandler(this.ToolStripMenuItemExport1_Click);
+            ToolStripMenuItemExport1.Name = "ToolStripMenuItemExport1";
+            ToolStripMenuItemExport1.Size = new Size(240, 22);
+            ToolStripMenuItemExport1.Text = "従事者リストをエクスポートする";
+            ToolStripMenuItemExport1.Click += ToolStripMenuItemExport1_Click;
             // 
             // ToolStripMenuItemExport2
             // 
-            this.ToolStripMenuItemExport2.Name = "ToolStripMenuItemExport2";
-            this.ToolStripMenuItemExport2.Size = new System.Drawing.Size(240, 22);
-            this.ToolStripMenuItemExport2.Text = "健康診断用リストをエクスポートする";
-            this.ToolStripMenuItemExport2.Click += new System.EventHandler(this.ToolStripMenuItemExport2_Click);
+            ToolStripMenuItemExport2.Name = "ToolStripMenuItemExport2";
+            ToolStripMenuItemExport2.Size = new Size(240, 22);
+            ToolStripMenuItemExport2.Text = "健康診断用リストをエクスポートする";
+            ToolStripMenuItemExport2.Click += ToolStripMenuItemExport2_Click;
             // 
             // ToolStripMenuItemExit
             // 
-            this.ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
-            this.ToolStripMenuItemExit.Size = new System.Drawing.Size(195, 22);
-            this.ToolStripMenuItemExit.Text = "アプリケーションを終了する";
-            this.ToolStripMenuItemExit.Click += new System.EventHandler(this.ToolStripMenuItemExit_Click);
+            ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
+            ToolStripMenuItemExit.Size = new Size(195, 22);
+            ToolStripMenuItemExit.Text = "アプリケーションを終了する";
+            ToolStripMenuItemExit.Click += ToolStripMenuItemExit_Click;
             // 
             // 編集ToolStripMenuItem
             // 
-            this.編集ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemNewStaff});
-            this.編集ToolStripMenuItem.Name = "編集ToolStripMenuItem";
-            this.編集ToolStripMenuItem.Size = new System.Drawing.Size(43, 20);
-            this.編集ToolStripMenuItem.Text = "編集";
+            編集ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemNewStaff });
+            編集ToolStripMenuItem.Name = "編集ToolStripMenuItem";
+            編集ToolStripMenuItem.Size = new Size(43, 20);
+            編集ToolStripMenuItem.Text = "編集";
             // 
             // ToolStripMenuItemNewStaff
             // 
-            this.ToolStripMenuItemNewStaff.Name = "ToolStripMenuItemNewStaff";
-            this.ToolStripMenuItemNewStaff.Size = new System.Drawing.Size(186, 22);
-            this.ToolStripMenuItemNewStaff.Text = "新規従事者を登録する";
-            this.ToolStripMenuItemNewStaff.Click += new System.EventHandler(this.ToolStripMenuItemNewStaff_Click);
+            ToolStripMenuItemNewStaff.Name = "ToolStripMenuItemNewStaff";
+            ToolStripMenuItemNewStaff.Size = new Size(186, 22);
+            ToolStripMenuItemNewStaff.Text = "新規従事者を登録する";
+            ToolStripMenuItemNewStaff.Click += ToolStripMenuItemNewStaff_Click;
             // 
             // ToolStripMenuItemHelp
             // 
-            this.ToolStripMenuItemHelp.Name = "ToolStripMenuItemHelp";
-            this.ToolStripMenuItemHelp.Size = new System.Drawing.Size(48, 20);
-            this.ToolStripMenuItemHelp.Text = "ヘルプ";
+            ToolStripMenuItemHelp.Name = "ToolStripMenuItemHelp";
+            ToolStripMenuItemHelp.Size = new Size(48, 20);
+            ToolStripMenuItemHelp.Text = "ヘルプ";
             // 
             // PanelUp
             // 
-            this.PanelUp.Controls.Add(this.CheckBoxRetired);
-            this.PanelUp.Controls.Add(this.ComboBoxAccidentYear);
-            this.PanelUp.Controls.Add(this.label1);
-            this.PanelUp.Controls.Add(this.GroupBox3);
-            this.PanelUp.Controls.Add(this.GroupBox2);
-            this.PanelUp.Controls.Add(this.GroupBox1);
-            this.PanelUp.Controls.Add(this.ButtonUpdate);
-            this.PanelUp.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelUp.Location = new System.Drawing.Point(3, 27);
-            this.PanelUp.Name = "PanelUp";
-            this.PanelUp.Size = new System.Drawing.Size(1898, 54);
-            this.PanelUp.TabIndex = 3;
+            PanelUp.Controls.Add(CheckBoxRetired);
+            PanelUp.Controls.Add(ComboBoxAccidentYear);
+            PanelUp.Controls.Add(label1);
+            PanelUp.Controls.Add(GroupBox3);
+            PanelUp.Controls.Add(GroupBox2);
+            PanelUp.Controls.Add(GroupBox1);
+            PanelUp.Controls.Add(ButtonUpdate);
+            PanelUp.Dock = DockStyle.Fill;
+            PanelUp.Location = new Point(3, 27);
+            PanelUp.Name = "PanelUp";
+            PanelUp.Size = new Size(1898, 54);
+            PanelUp.TabIndex = 3;
             // 
             // CheckBoxRetired
             // 
-            this.CheckBoxRetired.AutoSize = true;
-            this.CheckBoxRetired.Location = new System.Drawing.Point(1104, 20);
-            this.CheckBoxRetired.Name = "CheckBoxRetired";
-            this.CheckBoxRetired.Size = new System.Drawing.Size(114, 19);
-            this.CheckBoxRetired.TabIndex = 3;
-            this.CheckBoxRetired.Text = "退職者も表示する";
-            this.CheckBoxRetired.UseVisualStyleBackColor = true;
+            CheckBoxRetired.AutoSize = true;
+            CheckBoxRetired.Location = new Point(1104, 20);
+            CheckBoxRetired.Name = "CheckBoxRetired";
+            CheckBoxRetired.Size = new Size(114, 19);
+            CheckBoxRetired.TabIndex = 3;
+            CheckBoxRetired.Text = "退職者も表示する";
+            CheckBoxRetired.UseVisualStyleBackColor = true;
             // 
             // ComboBoxAccidentYear
             // 
-            this.ComboBoxAccidentYear.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboBoxAccidentYear.Enabled = false;
-            this.ComboBoxAccidentYear.FormattingEnabled = true;
-            this.ComboBoxAccidentYear.Items.AddRange(new object[] {
-            "2020年度",
-            "2021年度",
-            "2022年度",
-            "2023年度"});
-            this.ComboBoxAccidentYear.Location = new System.Drawing.Point(1008, 16);
-            this.ComboBoxAccidentYear.Name = "ComboBoxAccidentYear";
-            this.ComboBoxAccidentYear.Size = new System.Drawing.Size(84, 23);
-            this.ComboBoxAccidentYear.TabIndex = 8;
+            ComboBoxAccidentYear.DropDownStyle = ComboBoxStyle.DropDownList;
+            ComboBoxAccidentYear.Enabled = false;
+            ComboBoxAccidentYear.FormattingEnabled = true;
+            ComboBoxAccidentYear.Items.AddRange(new object[] { "2020年度", "2021年度", "2022年度", "2023年度" });
+            ComboBoxAccidentYear.Location = new Point(1008, 16);
+            ComboBoxAccidentYear.Name = "ComboBoxAccidentYear";
+            ComboBoxAccidentYear.Size = new Size(84, 23);
+            ComboBoxAccidentYear.TabIndex = 8;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(904, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(103, 15);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "事故件数集計年度";
+            label1.AutoSize = true;
+            label1.Location = new Point(904, 20);
+            label1.Name = "label1";
+            label1.Size = new Size(103, 15);
+            label1.TabIndex = 7;
+            label1.Text = "事故件数集計年度";
             // 
             // GroupBox3
             // 
-            this.GroupBox3.Controls.Add(this.CheckBoxNone2);
-            this.GroupBox3.Controls.Add(this.CheckBoxWorkStaff);
-            this.GroupBox3.Controls.Add(this.CheckBoxDriver);
-            this.GroupBox3.Location = new System.Drawing.Point(668, 4);
-            this.GroupBox3.Name = "GroupBox3";
-            this.GroupBox3.Size = new System.Drawing.Size(208, 44);
-            this.GroupBox3.TabIndex = 6;
-            this.GroupBox3.TabStop = false;
-            this.GroupBox3.Text = "職種(第三条件)";
+            GroupBox3.Controls.Add(CheckBoxNone2);
+            GroupBox3.Controls.Add(CheckBoxWorkStaff);
+            GroupBox3.Controls.Add(CheckBoxDriver);
+            GroupBox3.Location = new Point(668, 4);
+            GroupBox3.Name = "GroupBox3";
+            GroupBox3.Size = new Size(208, 44);
+            GroupBox3.TabIndex = 6;
+            GroupBox3.TabStop = false;
+            GroupBox3.Text = "職種(第三条件)";
             // 
             // CheckBoxNone2
             // 
-            this.CheckBoxNone2.AutoSize = true;
-            this.CheckBoxNone2.Checked = true;
-            this.CheckBoxNone2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxNone2.Location = new System.Drawing.Point(136, 16);
-            this.CheckBoxNone2.Name = "CheckBoxNone2";
-            this.CheckBoxNone2.Size = new System.Drawing.Size(68, 19);
-            this.CheckBoxNone2.TabIndex = 2;
-            this.CheckBoxNone2.Tag = "99";
-            this.CheckBoxNone2.Text = "指定なし";
-            this.CheckBoxNone2.UseVisualStyleBackColor = true;
+            CheckBoxNone2.AutoSize = true;
+            CheckBoxNone2.Checked = true;
+            CheckBoxNone2.CheckState = CheckState.Checked;
+            CheckBoxNone2.Location = new Point(136, 16);
+            CheckBoxNone2.Name = "CheckBoxNone2";
+            CheckBoxNone2.Size = new Size(68, 19);
+            CheckBoxNone2.TabIndex = 2;
+            CheckBoxNone2.Tag = "99";
+            CheckBoxNone2.Text = "指定なし";
+            CheckBoxNone2.UseVisualStyleBackColor = true;
             // 
             // CheckBoxWorkStaff
             // 
-            this.CheckBoxWorkStaff.AutoSize = true;
-            this.CheckBoxWorkStaff.Checked = true;
-            this.CheckBoxWorkStaff.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxWorkStaff.Location = new System.Drawing.Point(72, 16);
-            this.CheckBoxWorkStaff.Name = "CheckBoxWorkStaff";
-            this.CheckBoxWorkStaff.Size = new System.Drawing.Size(62, 19);
-            this.CheckBoxWorkStaff.TabIndex = 1;
-            this.CheckBoxWorkStaff.Tag = "11";
-            this.CheckBoxWorkStaff.Text = "作業員";
-            this.CheckBoxWorkStaff.UseVisualStyleBackColor = true;
+            CheckBoxWorkStaff.AutoSize = true;
+            CheckBoxWorkStaff.Checked = true;
+            CheckBoxWorkStaff.CheckState = CheckState.Checked;
+            CheckBoxWorkStaff.Location = new Point(72, 16);
+            CheckBoxWorkStaff.Name = "CheckBoxWorkStaff";
+            CheckBoxWorkStaff.Size = new Size(62, 19);
+            CheckBoxWorkStaff.TabIndex = 1;
+            CheckBoxWorkStaff.Tag = "11";
+            CheckBoxWorkStaff.Text = "作業員";
+            CheckBoxWorkStaff.UseVisualStyleBackColor = true;
             // 
             // CheckBoxDriver
             // 
-            this.CheckBoxDriver.AutoSize = true;
-            this.CheckBoxDriver.Checked = true;
-            this.CheckBoxDriver.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxDriver.Location = new System.Drawing.Point(8, 16);
-            this.CheckBoxDriver.Name = "CheckBoxDriver";
-            this.CheckBoxDriver.Size = new System.Drawing.Size(62, 19);
-            this.CheckBoxDriver.TabIndex = 0;
-            this.CheckBoxDriver.Tag = "10";
-            this.CheckBoxDriver.Text = "運転手";
-            this.CheckBoxDriver.UseVisualStyleBackColor = true;
+            CheckBoxDriver.AutoSize = true;
+            CheckBoxDriver.Checked = true;
+            CheckBoxDriver.CheckState = CheckState.Checked;
+            CheckBoxDriver.Location = new Point(8, 16);
+            CheckBoxDriver.Name = "CheckBoxDriver";
+            CheckBoxDriver.Size = new Size(62, 19);
+            CheckBoxDriver.TabIndex = 0;
+            CheckBoxDriver.Tag = "10";
+            CheckBoxDriver.Text = "運転手";
+            CheckBoxDriver.UseVisualStyleBackColor = true;
             // 
             // GroupBox2
             // 
-            this.GroupBox2.Controls.Add(this.CheckBoxNone1);
-            this.GroupBox2.Controls.Add(this.CheckBoxPartTimeJob2);
-            this.GroupBox2.Controls.Add(this.CheckBoxNoteBook);
-            this.GroupBox2.Controls.Add(this.CheckBoxFullTimeJob);
-            this.GroupBox2.Location = new System.Drawing.Point(396, 4);
-            this.GroupBox2.Name = "GroupBox2";
-            this.GroupBox2.Size = new System.Drawing.Size(256, 44);
-            this.GroupBox2.TabIndex = 5;
-            this.GroupBox2.TabStop = false;
-            this.GroupBox2.Text = "雇用形態(第二条件)";
+            GroupBox2.Controls.Add(CheckBoxNone1);
+            GroupBox2.Controls.Add(CheckBoxPartTimeJob2);
+            GroupBox2.Controls.Add(CheckBoxNoteBook);
+            GroupBox2.Controls.Add(CheckBoxFullTimeJob);
+            GroupBox2.Location = new Point(396, 4);
+            GroupBox2.Name = "GroupBox2";
+            GroupBox2.Size = new Size(256, 44);
+            GroupBox2.TabIndex = 5;
+            GroupBox2.TabStop = false;
+            GroupBox2.Text = "雇用形態(第二条件)";
             // 
             // CheckBoxNone1
             // 
-            this.CheckBoxNone1.AutoSize = true;
-            this.CheckBoxNone1.Checked = true;
-            this.CheckBoxNone1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxNone1.Location = new System.Drawing.Point(184, 16);
-            this.CheckBoxNone1.Name = "CheckBoxNone1";
-            this.CheckBoxNone1.Size = new System.Drawing.Size(68, 19);
-            this.CheckBoxNone1.TabIndex = 3;
-            this.CheckBoxNone1.Tag = "99";
-            this.CheckBoxNone1.Text = "指定なし";
-            this.CheckBoxNone1.UseVisualStyleBackColor = true;
+            CheckBoxNone1.AutoSize = true;
+            CheckBoxNone1.Checked = true;
+            CheckBoxNone1.CheckState = CheckState.Checked;
+            CheckBoxNone1.Location = new Point(184, 16);
+            CheckBoxNone1.Name = "CheckBoxNone1";
+            CheckBoxNone1.Size = new Size(68, 19);
+            CheckBoxNone1.TabIndex = 3;
+            CheckBoxNone1.Tag = "99";
+            CheckBoxNone1.Text = "指定なし";
+            CheckBoxNone1.UseVisualStyleBackColor = true;
             // 
             // CheckBoxPartTimeJob2
             // 
-            this.CheckBoxPartTimeJob2.AutoSize = true;
-            this.CheckBoxPartTimeJob2.Checked = true;
-            this.CheckBoxPartTimeJob2.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxPartTimeJob2.Location = new System.Drawing.Point(112, 16);
-            this.CheckBoxPartTimeJob2.Name = "CheckBoxPartTimeJob2";
-            this.CheckBoxPartTimeJob2.Size = new System.Drawing.Size(72, 19);
-            this.CheckBoxPartTimeJob2.TabIndex = 2;
-            this.CheckBoxPartTimeJob2.Tag = "12";
-            this.CheckBoxPartTimeJob2.Text = "アルバイト";
-            this.CheckBoxPartTimeJob2.UseVisualStyleBackColor = true;
+            CheckBoxPartTimeJob2.AutoSize = true;
+            CheckBoxPartTimeJob2.Checked = true;
+            CheckBoxPartTimeJob2.CheckState = CheckState.Checked;
+            CheckBoxPartTimeJob2.Location = new Point(112, 16);
+            CheckBoxPartTimeJob2.Name = "CheckBoxPartTimeJob2";
+            CheckBoxPartTimeJob2.Size = new Size(72, 19);
+            CheckBoxPartTimeJob2.TabIndex = 2;
+            CheckBoxPartTimeJob2.Tag = "12";
+            CheckBoxPartTimeJob2.Text = "アルバイト";
+            CheckBoxPartTimeJob2.UseVisualStyleBackColor = true;
             // 
             // CheckBoxNoteBook
             // 
-            this.CheckBoxNoteBook.AutoSize = true;
-            this.CheckBoxNoteBook.Checked = true;
-            this.CheckBoxNoteBook.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxNoteBook.Location = new System.Drawing.Point(60, 16);
-            this.CheckBoxNoteBook.Name = "CheckBoxNoteBook";
-            this.CheckBoxNoteBook.Size = new System.Drawing.Size(50, 19);
-            this.CheckBoxNoteBook.TabIndex = 1;
-            this.CheckBoxNoteBook.Tag = "11";
-            this.CheckBoxNoteBook.Text = "手帳";
-            this.CheckBoxNoteBook.UseVisualStyleBackColor = true;
+            CheckBoxNoteBook.AutoSize = true;
+            CheckBoxNoteBook.Checked = true;
+            CheckBoxNoteBook.CheckState = CheckState.Checked;
+            CheckBoxNoteBook.Location = new Point(60, 16);
+            CheckBoxNoteBook.Name = "CheckBoxNoteBook";
+            CheckBoxNoteBook.Size = new Size(50, 19);
+            CheckBoxNoteBook.TabIndex = 1;
+            CheckBoxNoteBook.Tag = "11";
+            CheckBoxNoteBook.Text = "手帳";
+            CheckBoxNoteBook.UseVisualStyleBackColor = true;
             // 
             // CheckBoxFullTimeJob
             // 
-            this.CheckBoxFullTimeJob.AutoSize = true;
-            this.CheckBoxFullTimeJob.Checked = true;
-            this.CheckBoxFullTimeJob.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxFullTimeJob.Location = new System.Drawing.Point(8, 16);
-            this.CheckBoxFullTimeJob.Name = "CheckBoxFullTimeJob";
-            this.CheckBoxFullTimeJob.Size = new System.Drawing.Size(50, 19);
-            this.CheckBoxFullTimeJob.TabIndex = 0;
-            this.CheckBoxFullTimeJob.Tag = "10";
-            this.CheckBoxFullTimeJob.Text = "長期";
-            this.CheckBoxFullTimeJob.UseVisualStyleBackColor = true;
+            CheckBoxFullTimeJob.AutoSize = true;
+            CheckBoxFullTimeJob.Checked = true;
+            CheckBoxFullTimeJob.CheckState = CheckState.Checked;
+            CheckBoxFullTimeJob.Location = new Point(8, 16);
+            CheckBoxFullTimeJob.Name = "CheckBoxFullTimeJob";
+            CheckBoxFullTimeJob.Size = new Size(50, 19);
+            CheckBoxFullTimeJob.TabIndex = 0;
+            CheckBoxFullTimeJob.Tag = "10";
+            CheckBoxFullTimeJob.Text = "長期";
+            CheckBoxFullTimeJob.UseVisualStyleBackColor = true;
             // 
             // GroupBox1
             // 
-            this.GroupBox1.Controls.Add(this.checkBox1);
-            this.GroupBox1.Controls.Add(this.CheckBoxJiunrou);
-            this.GroupBox1.Controls.Add(this.CheckBoxSinunten);
-            this.GroupBox1.Controls.Add(this.CheckBoxPartTimeJob1);
-            this.GroupBox1.Controls.Add(this.CheckBoxCompanyEmployee);
-            this.GroupBox1.Controls.Add(this.CheckBoxOfficer);
-            this.GroupBox1.Location = new System.Drawing.Point(16, 4);
-            this.GroupBox1.Name = "GroupBox1";
-            this.GroupBox1.Size = new System.Drawing.Size(368, 44);
-            this.GroupBox1.TabIndex = 1;
-            this.GroupBox1.TabStop = false;
-            this.GroupBox1.Text = "役職又は所属(第一条件)";
+            GroupBox1.Controls.Add(checkBox1);
+            GroupBox1.Controls.Add(CheckBoxJiunrou);
+            GroupBox1.Controls.Add(CheckBoxSinunten);
+            GroupBox1.Controls.Add(CheckBoxPartTimeJob1);
+            GroupBox1.Controls.Add(CheckBoxCompanyEmployee);
+            GroupBox1.Controls.Add(CheckBoxOfficer);
+            GroupBox1.Location = new Point(16, 4);
+            GroupBox1.Name = "GroupBox1";
+            GroupBox1.Size = new Size(368, 44);
+            GroupBox1.TabIndex = 1;
+            GroupBox1.TabStop = false;
+            GroupBox1.Text = "役職又は所属(第一条件)";
             // 
             // checkBox1
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Checked = true;
-            this.checkBox1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBox1.Location = new System.Drawing.Point(184, 16);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(50, 19);
-            this.checkBox1.TabIndex = 5;
-            this.checkBox1.Tag = "13";
-            this.checkBox1.Text = "派遣";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            checkBox1.AutoSize = true;
+            checkBox1.Checked = true;
+            checkBox1.CheckState = CheckState.Checked;
+            checkBox1.Location = new Point(184, 16);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(50, 19);
+            checkBox1.TabIndex = 5;
+            checkBox1.Tag = "13";
+            checkBox1.Text = "派遣";
+            checkBox1.UseVisualStyleBackColor = true;
             // 
             // CheckBoxJiunrou
             // 
-            this.CheckBoxJiunrou.AutoSize = true;
-            this.CheckBoxJiunrou.Checked = true;
-            this.CheckBoxJiunrou.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxJiunrou.Location = new System.Drawing.Point(300, 16);
-            this.CheckBoxJiunrou.Name = "CheckBoxJiunrou";
-            this.CheckBoxJiunrou.Size = new System.Drawing.Size(62, 19);
-            this.CheckBoxJiunrou.TabIndex = 4;
-            this.CheckBoxJiunrou.Tag = "21";
-            this.CheckBoxJiunrou.Text = "自運労";
-            this.CheckBoxJiunrou.UseVisualStyleBackColor = true;
+            CheckBoxJiunrou.AutoSize = true;
+            CheckBoxJiunrou.Checked = true;
+            CheckBoxJiunrou.CheckState = CheckState.Checked;
+            CheckBoxJiunrou.Location = new Point(300, 16);
+            CheckBoxJiunrou.Name = "CheckBoxJiunrou";
+            CheckBoxJiunrou.Size = new Size(62, 19);
+            CheckBoxJiunrou.TabIndex = 4;
+            CheckBoxJiunrou.Tag = "21";
+            CheckBoxJiunrou.Text = "自運労";
+            CheckBoxJiunrou.UseVisualStyleBackColor = true;
             // 
             // CheckBoxSinunten
             // 
-            this.CheckBoxSinunten.AutoSize = true;
-            this.CheckBoxSinunten.Checked = true;
-            this.CheckBoxSinunten.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxSinunten.Location = new System.Drawing.Point(236, 16);
-            this.CheckBoxSinunten.Name = "CheckBoxSinunten";
-            this.CheckBoxSinunten.Size = new System.Drawing.Size(62, 19);
-            this.CheckBoxSinunten.TabIndex = 3;
-            this.CheckBoxSinunten.Tag = "20";
-            this.CheckBoxSinunten.Text = "新運転";
-            this.CheckBoxSinunten.UseVisualStyleBackColor = true;
+            CheckBoxSinunten.AutoSize = true;
+            CheckBoxSinunten.Checked = true;
+            CheckBoxSinunten.CheckState = CheckState.Checked;
+            CheckBoxSinunten.Location = new Point(236, 16);
+            CheckBoxSinunten.Name = "CheckBoxSinunten";
+            CheckBoxSinunten.Size = new Size(62, 19);
+            CheckBoxSinunten.TabIndex = 3;
+            CheckBoxSinunten.Tag = "20";
+            CheckBoxSinunten.Text = "新運転";
+            CheckBoxSinunten.UseVisualStyleBackColor = true;
             // 
             // CheckBoxPartTimeJob1
             // 
-            this.CheckBoxPartTimeJob1.AutoSize = true;
-            this.CheckBoxPartTimeJob1.Checked = true;
-            this.CheckBoxPartTimeJob1.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxPartTimeJob1.Location = new System.Drawing.Point(112, 16);
-            this.CheckBoxPartTimeJob1.Name = "CheckBoxPartTimeJob1";
-            this.CheckBoxPartTimeJob1.Size = new System.Drawing.Size(72, 19);
-            this.CheckBoxPartTimeJob1.TabIndex = 2;
-            this.CheckBoxPartTimeJob1.Tag = "12";
-            this.CheckBoxPartTimeJob1.Text = "アルバイト";
-            this.CheckBoxPartTimeJob1.UseVisualStyleBackColor = true;
+            CheckBoxPartTimeJob1.AutoSize = true;
+            CheckBoxPartTimeJob1.Checked = true;
+            CheckBoxPartTimeJob1.CheckState = CheckState.Checked;
+            CheckBoxPartTimeJob1.Location = new Point(112, 16);
+            CheckBoxPartTimeJob1.Name = "CheckBoxPartTimeJob1";
+            CheckBoxPartTimeJob1.Size = new Size(72, 19);
+            CheckBoxPartTimeJob1.TabIndex = 2;
+            CheckBoxPartTimeJob1.Tag = "12";
+            CheckBoxPartTimeJob1.Text = "アルバイト";
+            CheckBoxPartTimeJob1.UseVisualStyleBackColor = true;
             // 
             // CheckBoxCompanyEmployee
             // 
-            this.CheckBoxCompanyEmployee.AutoSize = true;
-            this.CheckBoxCompanyEmployee.Checked = true;
-            this.CheckBoxCompanyEmployee.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxCompanyEmployee.Location = new System.Drawing.Point(60, 16);
-            this.CheckBoxCompanyEmployee.Name = "CheckBoxCompanyEmployee";
-            this.CheckBoxCompanyEmployee.Size = new System.Drawing.Size(50, 19);
-            this.CheckBoxCompanyEmployee.TabIndex = 1;
-            this.CheckBoxCompanyEmployee.Tag = "11";
-            this.CheckBoxCompanyEmployee.Text = "社員";
-            this.CheckBoxCompanyEmployee.UseVisualStyleBackColor = true;
+            CheckBoxCompanyEmployee.AutoSize = true;
+            CheckBoxCompanyEmployee.Checked = true;
+            CheckBoxCompanyEmployee.CheckState = CheckState.Checked;
+            CheckBoxCompanyEmployee.Location = new Point(60, 16);
+            CheckBoxCompanyEmployee.Name = "CheckBoxCompanyEmployee";
+            CheckBoxCompanyEmployee.Size = new Size(50, 19);
+            CheckBoxCompanyEmployee.TabIndex = 1;
+            CheckBoxCompanyEmployee.Tag = "11";
+            CheckBoxCompanyEmployee.Text = "社員";
+            CheckBoxCompanyEmployee.UseVisualStyleBackColor = true;
             // 
             // CheckBoxOfficer
             // 
-            this.CheckBoxOfficer.AutoSize = true;
-            this.CheckBoxOfficer.Checked = true;
-            this.CheckBoxOfficer.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.CheckBoxOfficer.Location = new System.Drawing.Point(8, 16);
-            this.CheckBoxOfficer.Name = "CheckBoxOfficer";
-            this.CheckBoxOfficer.Size = new System.Drawing.Size(50, 19);
-            this.CheckBoxOfficer.TabIndex = 0;
-            this.CheckBoxOfficer.Tag = "10";
-            this.CheckBoxOfficer.Text = "役員";
-            this.CheckBoxOfficer.UseVisualStyleBackColor = true;
+            CheckBoxOfficer.AutoSize = true;
+            CheckBoxOfficer.Checked = true;
+            CheckBoxOfficer.CheckState = CheckState.Checked;
+            CheckBoxOfficer.Location = new Point(8, 16);
+            CheckBoxOfficer.Name = "CheckBoxOfficer";
+            CheckBoxOfficer.Size = new Size(50, 19);
+            CheckBoxOfficer.TabIndex = 0;
+            CheckBoxOfficer.Tag = "10";
+            CheckBoxOfficer.Text = "役員";
+            CheckBoxOfficer.UseVisualStyleBackColor = true;
             // 
             // ButtonUpdate
             // 
-            this.ButtonUpdate.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ButtonUpdate.Location = new System.Drawing.Point(1672, 8);
-            this.ButtonUpdate.Name = "ButtonUpdate";
-            this.ButtonUpdate.Size = new System.Drawing.Size(180, 36);
-            this.ButtonUpdate.TabIndex = 0;
-            this.ButtonUpdate.Text = "最 新 化";
-            this.ButtonUpdate.UseVisualStyleBackColor = true;
-            this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
+            ButtonUpdate.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            ButtonUpdate.Location = new Point(1672, 8);
+            ButtonUpdate.Name = "ButtonUpdate";
+            ButtonUpdate.Size = new Size(180, 36);
+            ButtonUpdate.TabIndex = 0;
+            ButtonUpdate.Text = "最 新 化";
+            ButtonUpdate.UseVisualStyleBackColor = true;
+            ButtonUpdate.Click += ButtonUpdate_Click;
             // 
             // StatusStrip1
             // 
-            this.StatusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.ToolStripStatusLabelDetail});
-            this.StatusStrip1.Location = new System.Drawing.Point(0, 1019);
-            this.StatusStrip1.Name = "StatusStrip1";
-            this.StatusStrip1.Size = new System.Drawing.Size(1904, 22);
-            this.StatusStrip1.TabIndex = 4;
-            this.StatusStrip1.Text = "statusStrip1";
+            StatusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, ToolStripStatusLabelDetail });
+            StatusStrip1.Location = new Point(0, 1019);
+            StatusStrip1.Name = "StatusStrip1";
+            StatusStrip1.Size = new Size(1904, 22);
+            StatusStrip1.TabIndex = 4;
+            StatusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(39, 17);
-            this.toolStripStatusLabel1.Text = "Status";
+            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            toolStripStatusLabel1.Size = new Size(39, 17);
+            toolStripStatusLabel1.Text = "Status";
             // 
             // ToolStripStatusLabelDetail
             // 
-            this.ToolStripStatusLabelDetail.Name = "ToolStripStatusLabelDetail";
-            this.ToolStripStatusLabelDetail.Size = new System.Drawing.Size(143, 17);
-            this.ToolStripStatusLabelDetail.Text = "ToolStripStatusLabelDetail";
+            ToolStripStatusLabelDetail.Name = "ToolStripStatusLabelDetail";
+            ToolStripStatusLabelDetail.Size = new Size(143, 17);
+            ToolStripStatusLabelDetail.Text = "ToolStripStatusLabelDetail";
             // 
             // SpreadList
             // 
-            this.SpreadList.AccessibleDescription = "SpreadList, 健康診断用リスト, Row 0, Column 0";
-            this.SpreadList.ContextMenuStrip = this.ContextMenuStrip1;
-            this.SpreadList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SpreadList.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.SpreadList.Location = new System.Drawing.Point(3, 115);
-            this.SpreadList.Name = "SpreadList";
-            this.SpreadList.Size = new System.Drawing.Size(1898, 899);
-            this.SpreadList.TabIndex = 5;
-            this.SpreadList.CellDoubleClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SpreadList_CellDoubleClick);
+            SpreadList.AccessibleDescription = "SpreadList, 従事者リスト, Row 0, Column 0";
+            SpreadList.ContextMenuStrip = ContextMenuStrip1;
+            SpreadList.Dock = DockStyle.Fill;
+            SpreadList.Font = new Font("ＭＳ Ｐゴシック", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            SpreadList.Location = new Point(3, 115);
+            SpreadList.Name = "SpreadList";
+            SpreadList.Size = new Size(1898, 899);
+            SpreadList.TabIndex = 5;
+            SpreadList.CellDoubleClick += SpreadList_CellDoubleClick;
             // 
             // ContextMenuStrip1
             // 
-            this.ContextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemLicense,
-            this.ToolStripMenuItemToukanpo,
-            this.ToolStripMenuItemMap});
-            this.ContextMenuStrip1.Name = "contextMenuStrip1";
-            this.ContextMenuStrip1.Size = new System.Drawing.Size(199, 70);
-            this.ContextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuStrip1_Opening);
+            ContextMenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemLicense, ToolStripMenuItemToukanpo, ToolStripMenuItemMap });
+            ContextMenuStrip1.Name = "contextMenuStrip1";
+            ContextMenuStrip1.Size = new Size(199, 70);
+            ContextMenuStrip1.Opening += ContextMenuStrip1_Opening;
             // 
             // ToolStripMenuItemLicense
             // 
-            this.ToolStripMenuItemLicense.Name = "ToolStripMenuItemLicense";
-            this.ToolStripMenuItemLicense.Size = new System.Drawing.Size(198, 22);
-            this.ToolStripMenuItemLicense.Text = "免許証を表示する";
-            this.ToolStripMenuItemLicense.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemLicense.Name = "ToolStripMenuItemLicense";
+            ToolStripMenuItemLicense.Size = new Size(198, 22);
+            ToolStripMenuItemLicense.Text = "免許証を表示する";
+            ToolStripMenuItemLicense.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemToukanpo
             // 
-            this.ToolStripMenuItemToukanpo.Name = "ToolStripMenuItemToukanpo";
-            this.ToolStripMenuItemToukanpo.Size = new System.Drawing.Size(198, 22);
-            this.ToolStripMenuItemToukanpo.Text = "東環保修了証を表示する";
-            this.ToolStripMenuItemToukanpo.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemToukanpo.Name = "ToolStripMenuItemToukanpo";
+            ToolStripMenuItemToukanpo.Size = new Size(198, 22);
+            ToolStripMenuItemToukanpo.Text = "東環保修了証を表示する";
+            ToolStripMenuItemToukanpo.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemMap
             // 
-            this.ToolStripMenuItemMap.Name = "ToolStripMenuItemMap";
-            this.ToolStripMenuItemMap.Size = new System.Drawing.Size(198, 22);
-            this.ToolStripMenuItemMap.Text = "地図を表示する";
-            this.ToolStripMenuItemMap.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemMap.Name = "ToolStripMenuItemMap";
+            ToolStripMenuItemMap.Size = new Size(198, 22);
+            ToolStripMenuItemMap.Text = "地図を表示する";
+            ToolStripMenuItemMap.Click += ToolStripMenuItem_Click;
             // 
             // TabControlExStaff
             // 
-            this.TabControlExStaff.Controls.Add(this.tabPage1);
-            this.TabControlExStaff.Controls.Add(this.tabPage2);
-            this.TabControlExStaff.Controls.Add(this.tabPage3);
-            this.TabControlExStaff.Controls.Add(this.tabPage4);
-            this.TabControlExStaff.Controls.Add(this.tabPage5);
-            this.TabControlExStaff.Controls.Add(this.tabPage6);
-            this.TabControlExStaff.Controls.Add(this.tabPage7);
-            this.TabControlExStaff.Controls.Add(this.tabPage8);
-            this.TabControlExStaff.Controls.Add(this.tabPage9);
-            this.TabControlExStaff.Controls.Add(this.tabPage10);
-            this.TabControlExStaff.Controls.Add(this.tabPage11);
-            this.TabControlExStaff.Location = new System.Drawing.Point(10, 84);
-            this.TabControlExStaff.Margin = new System.Windows.Forms.Padding(10, 0, 10, 0);
-            this.TabControlExStaff.Name = "TabControlExStaff";
-            this.TabControlExStaff.SelectedIndex = 0;
-            this.TabControlExStaff.Size = new System.Drawing.Size(1884, 28);
-            this.TabControlExStaff.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.TabControlExStaff.TabIndex = 6;
-            this.TabControlExStaff.Click += new System.EventHandler(this.TabControlEx1_Click);
+            TabControlExStaff.Controls.Add(tabPage1);
+            TabControlExStaff.Controls.Add(tabPage2);
+            TabControlExStaff.Controls.Add(tabPage3);
+            TabControlExStaff.Controls.Add(tabPage4);
+            TabControlExStaff.Controls.Add(tabPage5);
+            TabControlExStaff.Controls.Add(tabPage6);
+            TabControlExStaff.Controls.Add(tabPage7);
+            TabControlExStaff.Controls.Add(tabPage8);
+            TabControlExStaff.Controls.Add(tabPage9);
+            TabControlExStaff.Controls.Add(tabPage10);
+            TabControlExStaff.Controls.Add(tabPage11);
+            TabControlExStaff.Location = new Point(10, 84);
+            TabControlExStaff.Margin = new Padding(10, 0, 10, 0);
+            TabControlExStaff.Name = "TabControlExStaff";
+            TabControlExStaff.SelectedIndex = 0;
+            TabControlExStaff.Size = new Size(1884, 28);
+            TabControlExStaff.SizeMode = TabSizeMode.Fixed;
+            TabControlExStaff.TabIndex = 6;
+            TabControlExStaff.Click += TabControlEx1_Click;
             // 
             // tabPage1
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 24);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1876, 0);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "全て";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(1876, 0);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "全て";
+            tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1876, 0);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Tag = "ア";
-            this.tabPage2.Text = "あ行";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(1876, 0);
+            tabPage2.TabIndex = 1;
+            tabPage2.Tag = "ア";
+            tabPage2.Text = "あ行";
+            tabPage2.UseVisualStyleBackColor = true;
             // 
             // tabPage3
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 24);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1876, 0);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Tag = "カ";
-            this.tabPage3.Text = "か行";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            tabPage3.Location = new Point(4, 24);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Padding = new Padding(3);
+            tabPage3.Size = new Size(1876, 0);
+            tabPage3.TabIndex = 2;
+            tabPage3.Tag = "カ";
+            tabPage3.Text = "か行";
+            tabPage3.UseVisualStyleBackColor = true;
             // 
             // tabPage4
             // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 24);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(1876, 0);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Tag = "サ";
-            this.tabPage4.Text = "さ行";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            tabPage4.Location = new Point(4, 24);
+            tabPage4.Name = "tabPage4";
+            tabPage4.Padding = new Padding(3);
+            tabPage4.Size = new Size(1876, 0);
+            tabPage4.TabIndex = 3;
+            tabPage4.Tag = "サ";
+            tabPage4.Text = "さ行";
+            tabPage4.UseVisualStyleBackColor = true;
             // 
             // tabPage5
             // 
-            this.tabPage5.Location = new System.Drawing.Point(4, 24);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(1876, 0);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Tag = "タ";
-            this.tabPage5.Text = "た行";
-            this.tabPage5.UseVisualStyleBackColor = true;
+            tabPage5.Location = new Point(4, 24);
+            tabPage5.Name = "tabPage5";
+            tabPage5.Padding = new Padding(3);
+            tabPage5.Size = new Size(1876, 0);
+            tabPage5.TabIndex = 4;
+            tabPage5.Tag = "タ";
+            tabPage5.Text = "た行";
+            tabPage5.UseVisualStyleBackColor = true;
             // 
             // tabPage6
             // 
-            this.tabPage6.Location = new System.Drawing.Point(4, 24);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(1876, 0);
-            this.tabPage6.TabIndex = 5;
-            this.tabPage6.Tag = "ナ";
-            this.tabPage6.Text = "な行";
-            this.tabPage6.UseVisualStyleBackColor = true;
+            tabPage6.Location = new Point(4, 24);
+            tabPage6.Name = "tabPage6";
+            tabPage6.Padding = new Padding(3);
+            tabPage6.Size = new Size(1876, 0);
+            tabPage6.TabIndex = 5;
+            tabPage6.Tag = "ナ";
+            tabPage6.Text = "な行";
+            tabPage6.UseVisualStyleBackColor = true;
             // 
             // tabPage7
             // 
-            this.tabPage7.Location = new System.Drawing.Point(4, 24);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(1876, 0);
-            this.tabPage7.TabIndex = 6;
-            this.tabPage7.Tag = "ハ";
-            this.tabPage7.Text = "は行";
-            this.tabPage7.UseVisualStyleBackColor = true;
+            tabPage7.Location = new Point(4, 24);
+            tabPage7.Name = "tabPage7";
+            tabPage7.Padding = new Padding(3);
+            tabPage7.Size = new Size(1876, 0);
+            tabPage7.TabIndex = 6;
+            tabPage7.Tag = "ハ";
+            tabPage7.Text = "は行";
+            tabPage7.UseVisualStyleBackColor = true;
             // 
             // tabPage8
             // 
-            this.tabPage8.Location = new System.Drawing.Point(4, 24);
-            this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(1876, 0);
-            this.tabPage8.TabIndex = 7;
-            this.tabPage8.Tag = "マ";
-            this.tabPage8.Text = "ま行";
-            this.tabPage8.UseVisualStyleBackColor = true;
+            tabPage8.Location = new Point(4, 24);
+            tabPage8.Name = "tabPage8";
+            tabPage8.Padding = new Padding(3);
+            tabPage8.Size = new Size(1876, 0);
+            tabPage8.TabIndex = 7;
+            tabPage8.Tag = "マ";
+            tabPage8.Text = "ま行";
+            tabPage8.UseVisualStyleBackColor = true;
             // 
             // tabPage9
             // 
-            this.tabPage9.Location = new System.Drawing.Point(4, 24);
-            this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage9.Size = new System.Drawing.Size(1876, 0);
-            this.tabPage9.TabIndex = 8;
-            this.tabPage9.Tag = "ヤ";
-            this.tabPage9.Text = "や行";
-            this.tabPage9.UseVisualStyleBackColor = true;
+            tabPage9.Location = new Point(4, 24);
+            tabPage9.Name = "tabPage9";
+            tabPage9.Padding = new Padding(3);
+            tabPage9.Size = new Size(1876, 0);
+            tabPage9.TabIndex = 8;
+            tabPage9.Tag = "ヤ";
+            tabPage9.Text = "や行";
+            tabPage9.UseVisualStyleBackColor = true;
             // 
             // tabPage10
             // 
-            this.tabPage10.Location = new System.Drawing.Point(4, 24);
-            this.tabPage10.Name = "tabPage10";
-            this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage10.Size = new System.Drawing.Size(1876, 0);
-            this.tabPage10.TabIndex = 9;
-            this.tabPage10.Tag = "ラ";
-            this.tabPage10.Text = "ら行";
-            this.tabPage10.UseVisualStyleBackColor = true;
+            tabPage10.Location = new Point(4, 24);
+            tabPage10.Name = "tabPage10";
+            tabPage10.Padding = new Padding(3);
+            tabPage10.Size = new Size(1876, 0);
+            tabPage10.TabIndex = 9;
+            tabPage10.Tag = "ラ";
+            tabPage10.Text = "ら行";
+            tabPage10.UseVisualStyleBackColor = true;
             // 
             // tabPage11
             // 
-            this.tabPage11.Location = new System.Drawing.Point(4, 24);
-            this.tabPage11.Name = "tabPage11";
-            this.tabPage11.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage11.Size = new System.Drawing.Size(1876, 0);
-            this.tabPage11.TabIndex = 10;
-            this.tabPage11.Tag = "ワ";
-            this.tabPage11.Text = "わ行";
-            this.tabPage11.UseVisualStyleBackColor = true;
+            tabPage11.Location = new Point(4, 24);
+            tabPage11.Name = "tabPage11";
+            tabPage11.Padding = new Padding(3);
+            tabPage11.Size = new Size(1876, 0);
+            tabPage11.TabIndex = 10;
+            tabPage11.Tag = "ワ";
+            tabPage11.Text = "わ行";
+            tabPage11.UseVisualStyleBackColor = true;
             // 
             // StaffList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1904, 1041);
-            this.Controls.Add(this.TableLayoutPanelExBase);
-            this.DoubleBuffered = true;
-            this.MainMenuStrip = this.MenuStrip1;
-            this.Name = "StaffList";
-            this.Text = "StaffList";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.StaffList_FormClosing);
-            this.TableLayoutPanelExBase.ResumeLayout(false);
-            this.TableLayoutPanelExBase.PerformLayout();
-            this.MenuStrip1.ResumeLayout(false);
-            this.MenuStrip1.PerformLayout();
-            this.PanelUp.ResumeLayout(false);
-            this.PanelUp.PerformLayout();
-            this.GroupBox3.ResumeLayout(false);
-            this.GroupBox3.PerformLayout();
-            this.GroupBox2.ResumeLayout(false);
-            this.GroupBox2.PerformLayout();
-            this.GroupBox1.ResumeLayout(false);
-            this.GroupBox1.PerformLayout();
-            this.StatusStrip1.ResumeLayout(false);
-            this.StatusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SpreadList)).EndInit();
-            this.ContextMenuStrip1.ResumeLayout(false);
-            this.TabControlExStaff.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1904, 1041);
+            Controls.Add(TableLayoutPanelExBase);
+            DoubleBuffered = true;
+            MainMenuStrip = MenuStrip1;
+            Name = "StaffList";
+            Text = "StaffList";
+            FormClosing += StaffList_FormClosing;
+            TableLayoutPanelExBase.ResumeLayout(false);
+            TableLayoutPanelExBase.PerformLayout();
+            MenuStrip1.ResumeLayout(false);
+            MenuStrip1.PerformLayout();
+            PanelUp.ResumeLayout(false);
+            PanelUp.PerformLayout();
+            GroupBox3.ResumeLayout(false);
+            GroupBox3.PerformLayout();
+            GroupBox2.ResumeLayout(false);
+            GroupBox2.PerformLayout();
+            GroupBox1.ResumeLayout(false);
+            GroupBox1.PerformLayout();
+            StatusStrip1.ResumeLayout(false);
+            StatusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)SpreadList).EndInit();
+            ContextMenuStrip1.ResumeLayout(false);
+            TabControlExStaff.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion
@@ -742,10 +725,10 @@
         private ToolStripMenuItem ToolStripMenuItemToukanpo;
         private ToolStripMenuItem ToolStripMenuItemMap;
         private CheckBox checkBox1;
-        private FarPoint.Win.Spread.SheetView SheetViewList;
-        private FarPoint.Win.Spread.SheetView SheetViewList2;
         private ToolStripMenuItem ToolStripMenuItemExport;
         private ToolStripMenuItem ToolStripMenuItemExport1;
         private ToolStripMenuItem ToolStripMenuItemExport2;
+        private FarPoint.Win.Spread.SheetView SheetViewList;
+        private FarPoint.Win.Spread.SheetView SheetViewList2;
     }
 }

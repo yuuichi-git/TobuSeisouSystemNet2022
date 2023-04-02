@@ -124,7 +124,7 @@ namespace Car {
         /// </summary>
         private void SheetViewListOutPut() {
             // 削除済のレコードも表示
-            if (CheckBoxDeleteFlag.Checked) {
+            if(CheckBoxDeleteFlag.Checked) {
                 _listFindAllCarMasterVo = _listCarMasterVo;
             } else {
                 _listFindAllCarMasterVo = _listCarMasterVo.FindAll(x => x.Delete_flag == false);
@@ -136,11 +136,11 @@ namespace Car {
             // 先頭行（列）インデックスを取得
             spreadListTopRow = SpreadList.GetViewportTopRow(0);
             // Rowを削除する
-            if (SheetViewList.Rows.Count > 0)
+            if(SheetViewList.Rows.Count > 0)
                 SheetViewList.RemoveRows(0, SheetViewList.Rows.Count);
 
             int i = 0;
-            foreach (var carMasterVo in _linqCarMasterVo) {
+            foreach(var carMasterVo in _linqCarMasterVo) {
                 SheetViewList.Rows.Add(i, 1);
                 SheetViewList.RowHeader.Columns[0].Label = (i + 1).ToString(); // Rowヘッダ
                 SheetViewList.Rows[i].Height = 22; // Rowの高さ
@@ -183,10 +183,10 @@ namespace Car {
         /// <param name="e"></param>
         private void SpreadList_CellDoubleClick(object sender, CellClickEventArgs e) {
             // ヘッダーのDoubleClickを回避
-            if (e.Row < 0)
+            if(e.Row < 0)
                 return;
             // Shiftが押された場合
-            if ((ModifierKeys & Keys.Shift) == Keys.Shift) {
+            if((ModifierKeys & Keys.Shift) == Keys.Shift) {
                 var carPaper = new CarPaper(_connectionVo, (int)SheetViewList.Cells[e.Row, colCarCode].Value);
                 carPaper.ShowDialog();
                 return;
@@ -227,7 +227,7 @@ namespace Car {
             /*
              * SheetViewにRowが無い場合や、Rowが選択されていない場合はReturnする
              */
-            if (SheetViewList.RowCount < 1 || !SheetViewList.IsBlockSelected) {
+            if(SheetViewList.RowCount < 1 || !SheetViewList.IsBlockSelected) {
                 e.Cancel = true;
                 return;
             }
@@ -236,7 +236,7 @@ namespace Car {
             var cellRange = spreadList.ActiveSheet.GetSelections();
 
             // 削除メニューを表示・非表示
-            if (cellRange[0].RowCount == 1) {
+            if(cellRange[0].RowCount == 1) {
                 ContextMenuStrip1.Enabled = true;
             } else {
                 ContextMenuStrip1.Enabled = false;
@@ -249,7 +249,7 @@ namespace Car {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ToolStripMenuItem_Click(object sender, EventArgs e) {
-            switch (((ToolStripMenuItem)sender).Name) {
+            switch(((ToolStripMenuItem)sender).Name) {
                 case "ToolStripMenuItemInsertNewCar":
                     var carDetail = new CarDetail(_connectionVo);
                     carDetail.ShowDialog();
@@ -257,7 +257,7 @@ namespace Car {
                 // 選択されているレコードを削除する
                 case "ToolStripMenuItemDelete":
                     var dialogResult = MessageBox.Show(MessageText.Message801, MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                    switch (dialogResult) {
+                    switch(dialogResult) {
                         case DialogResult.OK:
                             var carCode = (int)SheetViewList.Cells[SheetViewList.ActiveRowIndex, colCarCode].Value;
                             new CarMasterDao(_connectionVo).UpdateOneCarMaster(carCode);
@@ -285,7 +285,7 @@ namespace Car {
         /// <param name="e"></param>
         private void CarList_FormClosing(object sender, FormClosingEventArgs e) {
             var dialogResult = MessageBox.Show(MessageText.Message102, MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            switch (dialogResult) {
+            switch(dialogResult) {
                 case DialogResult.OK:
                     e.Cancel = false;
                     Dispose();

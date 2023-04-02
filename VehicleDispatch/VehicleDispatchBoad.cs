@@ -17,7 +17,7 @@ using RollCall;
 
 using Staff;
 
-using Substitute;
+using SubstituteSheet;
 
 using VehicleDispatchConvert;
 
@@ -955,7 +955,8 @@ namespace VehicleDispatch {
                         // ‘Ò‹@
                         ToolStripMenuItemStandByFlag.Enabled = true;
                         // ‘ãÔE‘ã”Ô‚ÌFAX‚ğì¬‚·‚é
-                        ToolStripMenuItemFax.Enabled = (setMasterVo.Contact_method == 11 && UcDateTimeJpOperationDate.GetValue().Date == DateTime.Now.Date && EvacuationSetControlEx.OperationFlag) ? true : false;
+                        //ToolStripMenuItemFax.Enabled = (setMasterVo.Contact_method == 11 && UcDateTimeJpOperationDate.GetValue().Date == DateTime.Now.Date && EvacuationSetControlEx.OperationFlag) ? true : false;
+                        ToolStripMenuItemFax.Enabled = (setMasterVo.Contact_method == 11) ? true : false;
                         // ‚‘¬“¹˜Hg—p•ñ‘
                         ToolStripMenuItemHighWayReport.Enabled = EvacuationSetLabelEx.OperationFlag;
                     }
@@ -1320,24 +1321,25 @@ namespace VehicleDispatch {
                         case 1310101: // ç‘ã“c‚Q
                         case 1310102: // ç‘ã“c‚U
                         case 1310103: // ç‘ã“c†‚P
-                            new SubstitutePaper(_connectionVo, (int)EvacuationSetControlEx.Tag, setMasterVo.Set_code).ShowDialog(this);
+                            new SubstituteSheet1(_connectionVo, UcDateTimeJpOperationDate.GetValue(), (int)EvacuationSetControlEx.Tag, setMasterVo.Set_code).Show(this);
                             break;
                         case 1310201: // ’†‰›ƒyƒbƒg‚V
                         case 1310202: // ’†‰›ƒyƒbƒg‚W
-                            new SubstitutePaper(_connectionVo, (int)EvacuationSetControlEx.Tag, setMasterVo.Set_code).ShowDialog(this);
+                            new SubstituteSheet1(_connectionVo, UcDateTimeJpOperationDate.GetValue(), (int)EvacuationSetControlEx.Tag, setMasterVo.Set_code).Show(this);
                             break;
                         case 1312101: // ‘«—§‚P‚W
                         case 1312102: // ‘«—§‚Q‚R
                         case 1312103: // ‘«—§‚Q‚S
                         case 1312104: // ‘«—§‚R‚W
                         case 1312105: // ‘«—§•s”R‚S
-                            new SubstitutePaper(_connectionVo, (int)EvacuationSetControlEx.Tag, setMasterVo.Set_code).ShowDialog(this);
+                            new SubstituteSheet1(_connectionVo, UcDateTimeJpOperationDate.GetValue(), (int)EvacuationSetControlEx.Tag, setMasterVo.Set_code).Show(this);
                             break;
                         case 1312204: // Š‹ü‚P‚P
                         case 1312201: // Š‹ü‚R‚R
                         case 1312202: // Š‹ü‚T‚T
                         case 1312203: // ¬Šâ‚S
-                            new SubstitutePaper(_connectionVo, (int)EvacuationSetControlEx.Tag, setMasterVo.Set_code).ShowDialog(this);
+                        case 1312208: // ¬Šâ‚T
+                            new SubstituteSheet1(_connectionVo, UcDateTimeJpOperationDate.GetValue(), (int)EvacuationSetControlEx.Tag, setMasterVo.Set_code).Show(this);
                             break;
                         default:
                             MessageBox.Show("‘ãÔ‘ã”Ô‚ÌFAX‚ğì¬‰æ–Ê‚Íì¬’†‚Å‚·B’ñˆÄ‚ğó•t‚Ä‚¢‚Ü‚·B", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -1717,8 +1719,8 @@ namespace VehicleDispatch {
                             try {
                                 // vehicle_dispatch_detail‚ğUPDATE
                                 _vehicleDispatchDetailDao.CreateCarLabel(UcDateTimeJpOperationDate.GetValue(),
-                                                                 Convert.ToInt32(setControlEx.Tag),
-                                                                 (CarMasterVo)dragItem.Tag);
+                                                                         Convert.ToInt32(setControlEx.Tag),
+                                                                         (CarMasterVo)dragItem.Tag);
                                 // vehicle_dispatch_detail_car‚©‚çDELETE
                                 _vehicleDispatchDetailCarDao.DeleteCar(UcDateTimeJpOperationDate.GetValue(),
                                                                        Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),

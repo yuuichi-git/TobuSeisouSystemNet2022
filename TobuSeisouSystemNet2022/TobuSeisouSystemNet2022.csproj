@@ -12,10 +12,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="GrapeCity.Spread.WinForms.ja" Version="15.1.0" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Accounting\Accounting.csproj" />
     <ProjectReference Include="..\CarAccident\CarAccident.csproj" />
     <ProjectReference Include="..\Car\Car.csproj" />

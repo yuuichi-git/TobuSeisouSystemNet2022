@@ -100,11 +100,11 @@ namespace CarAccident {
             // 先頭行（列）インデックスを取得
             spreadListTopRow = SpreadList.GetViewportTopRow(0);
             // Rowを削除する
-            if (SheetViewList.Rows.Count > 0)
+            if(SheetViewList.Rows.Count > 0)
                 SheetViewList.RemoveRows(0, SheetViewList.Rows.Count);
 
             int i = 0;
-            foreach (var carAccidentMasterVo in _listCarAccidentMasterVo) {
+            foreach(var carAccidentMasterVo in _listCarAccidentMasterVo) {
                 SheetViewList.Rows.Add(i, 1);
                 SheetViewList.RowHeader.Columns[0].Label = (i + 1).ToString(); // Rowヘッダ
                 SheetViewList.Rows[i].Height = 22; // Rowの高さ
@@ -158,7 +158,7 @@ namespace CarAccident {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ToolStripMenuItem_Click(object sender, EventArgs e) {
-            switch (((ToolStripMenuItem)sender).Name) {
+            switch(((ToolStripMenuItem)sender).Name) {
                 // Excel形式でエクスポートする
                 case "ToolStripMenuItemExportExcel":
                     //xlsx形式ファイルをエクスポートします
@@ -175,13 +175,13 @@ namespace CarAccident {
         }
 
         private void DateTimePickerOccurrenceDate1_ValueChanged(object sender, EventArgs e) {
-            if (((DateTimePicker)sender).Value > DateTimePickerOccurrenceDate2.Value) {
+            if(((DateTimePicker)sender).Value > DateTimePickerOccurrenceDate2.Value) {
                 DateTimePickerOccurrenceDate2.Value = DateTimePickerOccurrenceDate1.Value;
             }
         }
 
         private void DateTimePickerOccurrenceDate2_ValueChanged(object sender, EventArgs e) {
-            if (((DateTimePicker)sender).Value < DateTimePickerOccurrenceDate1.Value) {
+            if(((DateTimePicker)sender).Value < DateTimePickerOccurrenceDate1.Value) {
                 DateTimePickerOccurrenceDate1.Value = DateTimePickerOccurrenceDate2.Value;
             }
         }
@@ -193,7 +193,7 @@ namespace CarAccident {
         /// <param name="e"></param>
         private void SpreadList_CellDoubleClick(object sender, CellClickEventArgs e) {
             // ヘッダーのDoubleClickを回避
-            if (e.Row < 0)
+            if(e.Row < 0)
                 return;
             var carAccidentDetail = new CarAccidentDetail(_connectionVo, ((CarAccidentMasterVo)SheetViewList.Rows[e.Row].Tag).Insert_ymd_hms);
             carAccidentDetail.ShowDialog();
@@ -215,7 +215,7 @@ namespace CarAccident {
         /// <param name="e"></param>
         private void CarAccidentList_FormClosing(object sender, FormClosingEventArgs e) {
             var dialogResult = MessageBox.Show(MessageText.Message102, MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            switch (dialogResult) {
+            switch(dialogResult) {
                 case DialogResult.OK:
                     e.Cancel = false;
                     Dispose();

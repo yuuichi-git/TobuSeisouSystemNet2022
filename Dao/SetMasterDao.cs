@@ -18,27 +18,29 @@ namespace Dao {
         public SetMasterVo SelectOneSetMaster(int setCode) {
             var setMasterVo = new SetMasterVo();
             var sqlCommand = _connectionVo.Connection.CreateCommand();
-            sqlCommand.CommandText = "SELECT word_code," +
-                                            "set_code," +
-                                            "set_name," +
-                                            "set_name_1," +
-                                            "set_name_2," +
-                                            "fare_code," +
-                                            "garage_flag," +
-                                            "classification_code," +
-                                            "classification_name," + // 外部結合で取得
-                                            "contact_method," +
-                                            "contact_name," + // 外部結合で取得
-                                            "number_of_people," +
-                                            "working_days," +
-                                            "five_lap," +
-                                            "move_flag," +
-                                            "remarks," +
-                                            "insert_ymd_hms," +
-                                            "update_ymd_hms," +
-                                            "delete_ymd_hms," +
-                                            "delete_flag " +
-                                     "FROM view_set_master " +
+            sqlCommand.CommandText = "SELECT set_master.word_code," +
+                                            "set_master.set_code," +
+                                            "set_master.set_name," +
+                                            "set_master.set_name_1," +
+                                            "set_master.set_name_2," +
+                                            "set_master.fare_code," +
+                                            "set_master.garage_flag," +
+                                            "set_master.classification_code," +
+                                            "classification_master.name AS classification_name," + // 外部結合で取得
+                                            "set_master.contact_method," +
+                                            "contact_master.name AS contact_name," + // 外部結合で取得
+                                            "set_master.number_of_people," +
+                                            "set_master.working_days," +
+                                            "set_master.five_lap," +
+                                            "set_master.move_flag," +
+                                            "set_master.remarks," +
+                                            "set_master.insert_ymd_hms," +
+                                            "set_master.update_ymd_hms," +
+                                            "set_master.delete_ymd_hms," +
+                                            "set_master.delete_flag " +
+                                     "FROM set_master " +
+                                     "LEFT OUTER JOIN classification_master ON set_master.classification_code = classification_master.code " +
+                                     "LEFT OUTER JOIN contact_master ON set_master.contact_method = contact_master.code " +
                                      "WHERE set_code = " + setCode;
             using(var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while(sqlDataReader.Read() == true) {
