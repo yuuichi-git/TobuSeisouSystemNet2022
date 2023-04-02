@@ -62,7 +62,7 @@
             TableLayoutPanelEx1.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
             TableLayoutPanelEx1.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             TableLayoutPanelEx1.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
-            TableLayoutPanelEx1.Size = new Size(821, 759);
+            TableLayoutPanelEx1.Size = new Size(821, 1041);
             TableLayoutPanelEx1.TabIndex = 0;
             // 
             // MenuStrip1
@@ -102,9 +102,10 @@
             // StatusStrip1
             // 
             StatusStrip1.Items.AddRange(new ToolStripItem[] { ToolStripStatusLabel1, ToolStripStatusLabel2 });
-            StatusStrip1.Location = new Point(0, 737);
+            StatusStrip1.Location = new Point(0, 1019);
             StatusStrip1.Name = "StatusStrip1";
             StatusStrip1.Size = new Size(821, 22);
+            StatusStrip1.SizingGrip = false;
             StatusStrip1.TabIndex = 1;
             StatusStrip1.Text = "statusStrip1";
             // 
@@ -147,14 +148,14 @@
             SpreadList.Font = new Font("ＭＳ Ｐゴシック", 11F, FontStyle.Regular, GraphicsUnit.Point);
             SpreadList.Location = new Point(3, 87);
             SpreadList.Name = "SpreadList";
-            SpreadList.Size = new Size(815, 645);
+            SpreadList.Size = new Size(815, 927);
             SpreadList.TabIndex = 3;
             // 
             // SubstituteSheet1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(821, 759);
+            ClientSize = new Size(821, 1041);
             Controls.Add(TableLayoutPanelEx1);
             MainMenuStrip = MenuStrip1;
             MaximizeBox = false;

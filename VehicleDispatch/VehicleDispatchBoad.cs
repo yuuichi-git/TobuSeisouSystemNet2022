@@ -1337,9 +1337,11 @@ namespace VehicleDispatch {
                         case 1312204: // Š‹ü‚P‚P
                         case 1312201: // Š‹ü‚R‚R
                         case 1312202: // Š‹ü‚T‚T
+                            new SubstituteSheet1(_connectionVo, UcDateTimeJpOperationDate.GetValue(), (int)EvacuationSetControlEx.Tag, setMasterVo.Set_code).Show(this);
+                            break;
                         case 1312203: // ¬Šâ‚S
                         case 1312208: // ¬Šâ‚T
-                            new SubstituteSheet1(_connectionVo, UcDateTimeJpOperationDate.GetValue(), (int)EvacuationSetControlEx.Tag, setMasterVo.Set_code).Show(this);
+
                             break;
                         default:
                             MessageBox.Show("‘ãÔ‘ã”Ô‚ÌFAX‚ğì¬‰æ–Ê‚Íì¬’†‚Å‚·B’ñˆÄ‚ğó•t‚Ä‚¢‚Ü‚·B", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
