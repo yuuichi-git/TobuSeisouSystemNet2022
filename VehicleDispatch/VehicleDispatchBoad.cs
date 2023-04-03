@@ -955,8 +955,8 @@ namespace VehicleDispatch {
                         // 待機
                         ToolStripMenuItemStandByFlag.Enabled = true;
                         // 代車・代番のFAXを作成する
-                        //ToolStripMenuItemFax.Enabled = (setMasterVo.Contact_method == 11 && UcDateTimeJpOperationDate.GetValue().Date == DateTime.Now.Date && EvacuationSetControlEx.OperationFlag) ? true : false;
-                        ToolStripMenuItemFax.Enabled = (setMasterVo.Contact_method == 11) ? true : false;
+                        ToolStripMenuItemFax.Enabled = (setMasterVo.Contact_method == 11 && UcDateTimeJpOperationDate.GetValue().Date == DateTime.Now.Date && EvacuationSetControlEx.OperationFlag) ? true : false;
+                        //ToolStripMenuItemFax.Enabled = (setMasterVo.Contact_method == 11) ? true : false;
                         // 高速道路使用報告書
                         ToolStripMenuItemHighWayReport.Enabled = EvacuationSetLabelEx.OperationFlag;
                     }
@@ -1341,7 +1341,11 @@ namespace VehicleDispatch {
                             break;
                         case 1312203: // 小岩４
                         case 1312208: // 小岩５
-
+                            new SubstituteSheet1(_connectionVo, UcDateTimeJpOperationDate.GetValue(), (int)EvacuationSetControlEx.Tag, setMasterVo.Set_code).Show(this);
+                            break;
+                        case 1312011: // 桜台2-1_
+                        case 1312012: // 桜台2-2_
+                            new SubstituteSheet2(_connectionVo, UcDateTimeJpOperationDate.GetValue(), (int)EvacuationSetControlEx.Tag, setMasterVo.Set_code).Show(this);
                             break;
                         default:
                             MessageBox.Show("代車代番のFAXを作成画面は作成中です。提案を受付ています。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);

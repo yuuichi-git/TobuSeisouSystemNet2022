@@ -27,7 +27,6 @@
             TableLayoutPanelEx1 = new ControlEx.TableLayoutPanelEx();
             MenuStrip1 = new MenuStrip();
             ToolStripMenuItemMenu = new ToolStripMenuItem();
-            ToolStripMenuItemPrint = new ToolStripMenuItem();
             ToolStripMenuItemExit = new ToolStripMenuItem();
             ToolStripMenuItemHelp = new ToolStripMenuItem();
             StatusStrip1 = new StatusStrip();
@@ -76,22 +75,17 @@
             // 
             // ToolStripMenuItemMenu
             // 
-            ToolStripMenuItemMenu.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemPrint, ToolStripMenuItemExit });
+            ToolStripMenuItemMenu.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemExit });
             ToolStripMenuItemMenu.Name = "ToolStripMenuItemMenu";
             ToolStripMenuItemMenu.Size = new Size(52, 20);
             ToolStripMenuItemMenu.Text = "メニュー";
-            // 
-            // ToolStripMenuItemPrint
-            // 
-            ToolStripMenuItemPrint.Name = "ToolStripMenuItemPrint";
-            ToolStripMenuItemPrint.Size = new Size(195, 22);
-            ToolStripMenuItemPrint.Text = "代番連絡票を印刷する";
             // 
             // ToolStripMenuItemExit
             // 
             ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
             ToolStripMenuItemExit.Size = new Size(195, 22);
             ToolStripMenuItemExit.Text = "アプリケーションを終了する";
+            ToolStripMenuItemExit.Click += ToolStripMenuItemExit_Click;
             // 
             // ToolStripMenuItemHelp
             // 
@@ -163,6 +157,7 @@
             Name = "SubstituteSheet1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SubstituteSheet1";
+            FormClosing += SubstituteSheet1_FormClosing;
             TableLayoutPanelEx1.ResumeLayout(false);
             TableLayoutPanelEx1.PerformLayout();
             MenuStrip1.ResumeLayout(false);
@@ -186,7 +181,6 @@
         private Panel PanelTop;
         private FarPoint.Win.Spread.FpSpread SpreadList;
         private Button ButtonPrint;
-        private ToolStripMenuItem ToolStripMenuItemPrint;
         private ToolStripMenuItem ToolStripMenuItemExit;
         private FarPoint.Win.Spread.SheetView SheetView1;
     }

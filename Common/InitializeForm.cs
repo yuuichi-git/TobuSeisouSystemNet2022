@@ -209,11 +209,24 @@ namespace Common {
         }
 
         /// <summary>
-        /// SubstitutePaper
+        /// SubstituteSheet1
         /// </summary>
         /// <param name="form"></param>
         /// <returns></returns>
-        public Form SubstitutePaper(Form form) {
+        public Form SubstituteSheet1(Form form) {
+            form.KeyPreview = true;
+            form.MaximumSize = new Size(833, 1080);
+            form.MinimumSize = new Size(833, 1048);
+            GetWorkingArea(form);
+            return form;
+        }
+
+        /// <summary>
+        /// SubstituteSheet2
+        /// </summary>
+        /// <param name="form"></param>
+        /// <returns></returns>
+        public Form SubstituteSheet2(Form form) {
             form.KeyPreview = true;
             form.MaximumSize = new Size(833, 1080);
             form.MinimumSize = new Size(833, 1048);

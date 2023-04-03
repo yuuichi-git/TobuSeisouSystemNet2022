@@ -82,7 +82,7 @@ namespace SubstituteSheet {
              * コントロール初期化
              */
             InitializeComponent();
-            _initializeForm.SubstitutePaper(this);
+            _initializeForm.SubstituteSheet1(this);
             // シートタブを非表示
             SpreadList.TabStripPolicy = TabStripPolicy.Never;
             /*
@@ -302,6 +302,14 @@ namespace SubstituteSheet {
         /// <param name="e"></param>
         private void ButtonPrint_Click(object sender, EventArgs e) {
             SpreadList.PrintSheet(SheetView1);
+        }
+
+        private void ToolStripMenuItemExit_Click(object sender, EventArgs e) {
+
+        }
+
+        private void SubstituteSheet1_FormClosing(object sender, FormClosingEventArgs e) {
+
         }
     }
 }
