@@ -143,7 +143,7 @@ namespace Certification {
                  * ”N—î
                  */
                 sheetView.Cells[2, columnNumber].Font = new Font("Yu Gothic UI", 9);
-                sheetView.Cells[2, columnNumber].Value = new Date().GetStaffAge(staffMasterVo.Birth_date.Date); 
+                sheetView.Cells[2, columnNumber].Value = new Date().GetStaffAge(staffMasterVo.Birth_date.Date);
 
                 columnNumber++;
                 recordNumber++;

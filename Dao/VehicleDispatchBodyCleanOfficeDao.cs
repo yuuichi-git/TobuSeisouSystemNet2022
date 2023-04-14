@@ -190,7 +190,7 @@ namespace Dao {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT operator_code_1 " +
                                      "FROM vehicle_dispatch_body_clean_office " +
-                                     "WHERE cell_number = '" + cellNumber + "' AND financial_year = '" + DateTime.Now.AddMonths(-3).ToString("yyyy-04-01") + "'";
+                                     "WHERE cell_number = " + cellNumber + " AND financial_year = '" + DateTime.Now.AddMonths(-3).ToString("yyyy-04-01") + "'";
             using(var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while(sqlDataReader.Read() == true)
                     operatorCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["operator_code_1"]);

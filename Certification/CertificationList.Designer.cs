@@ -24,299 +24,293 @@
         /// </summary>
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CertificationList));
-            this.TableLayoutPanelBase = new System.Windows.Forms.TableLayoutPanel();
-            this.StatusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.ToolStripStatusLabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, ((object)(resources.GetObject("TableLayoutPanelBase.Controls"))));
-            this.MenuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.ToolStripMenuItemMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
-            this.PanelTop = new System.Windows.Forms.Panel();
-            this.ButtonUpdate = new System.Windows.Forms.Button();
-            this.TabControlStaff = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
-            this.tabPage8 = new System.Windows.Forms.TabPage();
-            this.tabPage9 = new System.Windows.Forms.TabPage();
-            this.tabPage10 = new System.Windows.Forms.TabPage();
-            this.tabPage11 = new System.Windows.Forms.TabPage();
-            this.SheetViewList = this.SpreadList.GetSheet(0);
-            this.TableLayoutPanelBase.SuspendLayout();
-            this.StatusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SpreadList)).BeginInit();
-            this.MenuStrip1.SuspendLayout();
-            this.PanelTop.SuspendLayout();
-            this.TabControlStaff.SuspendLayout();
-            this.SuspendLayout();
+            TableLayoutPanelBase = new TableLayoutPanel();
+            StatusStrip1 = new StatusStrip();
+            toolStripStatusLabel1 = new ToolStripStatusLabel();
+            ToolStripStatusLabelStatus = new ToolStripStatusLabel();
+            SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("TableLayoutPanelBase.Controls"));
+            SheetViewList = SpreadList.GetSheet(0);
+            MenuStrip1 = new MenuStrip();
+            ToolStripMenuItemMenu = new ToolStripMenuItem();
+            ToolStripMenuItemExit = new ToolStripMenuItem();
+            ToolStripMenuItemHelp = new ToolStripMenuItem();
+            PanelTop = new Panel();
+            ButtonUpdate = new Button();
+            TabControlStaff = new TabControl();
+            tabPage1 = new TabPage();
+            tabPage2 = new TabPage();
+            tabPage3 = new TabPage();
+            tabPage4 = new TabPage();
+            tabPage5 = new TabPage();
+            tabPage6 = new TabPage();
+            tabPage7 = new TabPage();
+            tabPage8 = new TabPage();
+            tabPage9 = new TabPage();
+            tabPage10 = new TabPage();
+            tabPage11 = new TabPage();
+            TableLayoutPanelBase.SuspendLayout();
+            StatusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)SpreadList).BeginInit();
+            MenuStrip1.SuspendLayout();
+            PanelTop.SuspendLayout();
+            TabControlStaff.SuspendLayout();
+            SuspendLayout();
             // 
             // TableLayoutPanelBase
             // 
-            this.TableLayoutPanelBase.ColumnCount = 1;
-            this.TableLayoutPanelBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanelBase.Controls.Add(this.StatusStrip1, 0, 3);
-            this.TableLayoutPanelBase.Controls.Add(this.SpreadList, 0, 2);
-            this.TableLayoutPanelBase.Controls.Add(this.MenuStrip1, 0, 0);
-            this.TableLayoutPanelBase.Controls.Add(this.PanelTop, 0, 1);
-            this.TableLayoutPanelBase.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TableLayoutPanelBase.Location = new System.Drawing.Point(0, 0);
-            this.TableLayoutPanelBase.Name = "TableLayoutPanelBase";
-            this.TableLayoutPanelBase.RowCount = 4;
-            this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 60F));
-            this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.TableLayoutPanelBase.Size = new System.Drawing.Size(1904, 1041);
-            this.TableLayoutPanelBase.TabIndex = 0;
+            TableLayoutPanelBase.ColumnCount = 1;
+            TableLayoutPanelBase.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            TableLayoutPanelBase.Controls.Add(StatusStrip1, 0, 3);
+            TableLayoutPanelBase.Controls.Add(SpreadList, 0, 2);
+            TableLayoutPanelBase.Controls.Add(MenuStrip1, 0, 0);
+            TableLayoutPanelBase.Controls.Add(PanelTop, 0, 1);
+            TableLayoutPanelBase.Dock = DockStyle.Fill;
+            TableLayoutPanelBase.Location = new Point(0, 0);
+            TableLayoutPanelBase.Name = "TableLayoutPanelBase";
+            TableLayoutPanelBase.RowCount = 4;
+            TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
+            TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
+            TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
+            TableLayoutPanelBase.Size = new Size(1904, 1041);
+            TableLayoutPanelBase.TabIndex = 0;
             // 
             // StatusStrip1
             // 
-            this.StatusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.ToolStripStatusLabelStatus});
-            this.StatusStrip1.Location = new System.Drawing.Point(0, 1019);
-            this.StatusStrip1.Name = "StatusStrip1";
-            this.StatusStrip1.Size = new System.Drawing.Size(1904, 22);
-            this.StatusStrip1.TabIndex = 2;
-            this.StatusStrip1.Text = "statusStrip1";
+            StatusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, ToolStripStatusLabelStatus });
+            StatusStrip1.Location = new Point(0, 1019);
+            StatusStrip1.Name = "StatusStrip1";
+            StatusStrip1.Size = new Size(1904, 22);
+            StatusStrip1.TabIndex = 2;
+            StatusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(39, 17);
-            this.toolStripStatusLabel1.Text = "Status";
+            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            toolStripStatusLabel1.Size = new Size(39, 17);
+            toolStripStatusLabel1.Text = "Status";
             // 
             // ToolStripStatusLabelStatus
             // 
-            this.ToolStripStatusLabelStatus.Name = "ToolStripStatusLabelStatus";
-            this.ToolStripStatusLabelStatus.Size = new System.Drawing.Size(145, 17);
-            this.ToolStripStatusLabelStatus.Text = "ToolStripStatusLabelStatus";
+            ToolStripStatusLabelStatus.Name = "ToolStripStatusLabelStatus";
+            ToolStripStatusLabelStatus.Size = new Size(145, 17);
+            ToolStripStatusLabelStatus.Text = "ToolStripStatusLabelStatus";
             // 
             // SpreadList
             // 
-            this.SpreadList.AccessibleDescription = "SpreadList, Sheet1, Row 0, Column 0";
-            this.SpreadList.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SpreadList.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.SpreadList.Location = new System.Drawing.Point(3, 87);
-            this.SpreadList.Name = "SpreadList";
-            this.SpreadList.Size = new System.Drawing.Size(1898, 927);
-            this.SpreadList.TabIndex = 0;
-            this.SpreadList.CellClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SpreadList_CellClick);
-            this.SpreadList.CellDoubleClick += new FarPoint.Win.Spread.CellClickEventHandler(this.SpreadList_CellDoubleClick);
+            SpreadList.AccessibleDescription = "SpreadList, Sheet1, Row 0, Column 0";
+            SpreadList.Dock = DockStyle.Fill;
+            SpreadList.Font = new Font("ＭＳ Ｐゴシック", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            SpreadList.Location = new Point(3, 87);
+            SpreadList.Name = "SpreadList";
+            SpreadList.Size = new Size(1898, 927);
+            SpreadList.TabIndex = 0;
+            SpreadList.CellClick += SpreadList_CellClick;
+            SpreadList.CellDoubleClick += SpreadList_CellDoubleClick;
             // 
             // MenuStrip1
             // 
-            this.MenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemMenu,
-            this.ToolStripMenuItemHelp});
-            this.MenuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.MenuStrip1.Name = "MenuStrip1";
-            this.MenuStrip1.Size = new System.Drawing.Size(1904, 24);
-            this.MenuStrip1.TabIndex = 1;
-            this.MenuStrip1.Text = "menuStrip1";
+            MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemHelp });
+            MenuStrip1.Location = new Point(0, 0);
+            MenuStrip1.Name = "MenuStrip1";
+            MenuStrip1.Size = new Size(1904, 24);
+            MenuStrip1.TabIndex = 1;
+            MenuStrip1.Text = "menuStrip1";
             // 
             // ToolStripMenuItemMenu
             // 
-            this.ToolStripMenuItemMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemExit});
-            this.ToolStripMenuItemMenu.Name = "ToolStripMenuItemMenu";
-            this.ToolStripMenuItemMenu.Size = new System.Drawing.Size(52, 20);
-            this.ToolStripMenuItemMenu.Text = "メニュー";
+            ToolStripMenuItemMenu.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemExit });
+            ToolStripMenuItemMenu.Name = "ToolStripMenuItemMenu";
+            ToolStripMenuItemMenu.Size = new Size(52, 20);
+            ToolStripMenuItemMenu.Text = "メニュー";
             // 
             // ToolStripMenuItemExit
             // 
-            this.ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
-            this.ToolStripMenuItemExit.Size = new System.Drawing.Size(195, 22);
-            this.ToolStripMenuItemExit.Text = "アプリケーションを終了する";
-            this.ToolStripMenuItemExit.Click += new System.EventHandler(this.ToolStripMenuItemExit_Click);
+            ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
+            ToolStripMenuItemExit.Size = new Size(195, 22);
+            ToolStripMenuItemExit.Text = "アプリケーションを終了する";
+            ToolStripMenuItemExit.Click += ToolStripMenuItemExit_Click;
             // 
             // ToolStripMenuItemHelp
             // 
-            this.ToolStripMenuItemHelp.Name = "ToolStripMenuItemHelp";
-            this.ToolStripMenuItemHelp.Size = new System.Drawing.Size(48, 20);
-            this.ToolStripMenuItemHelp.Text = "ヘルプ";
+            ToolStripMenuItemHelp.Name = "ToolStripMenuItemHelp";
+            ToolStripMenuItemHelp.Size = new Size(48, 20);
+            ToolStripMenuItemHelp.Text = "ヘルプ";
             // 
             // PanelTop
             // 
-            this.PanelTop.Controls.Add(this.ButtonUpdate);
-            this.PanelTop.Controls.Add(this.TabControlStaff);
-            this.PanelTop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelTop.Location = new System.Drawing.Point(3, 27);
-            this.PanelTop.Name = "PanelTop";
-            this.PanelTop.Size = new System.Drawing.Size(1898, 54);
-            this.PanelTop.TabIndex = 3;
+            PanelTop.Controls.Add(ButtonUpdate);
+            PanelTop.Controls.Add(TabControlStaff);
+            PanelTop.Dock = DockStyle.Fill;
+            PanelTop.Location = new Point(3, 27);
+            PanelTop.Name = "PanelTop";
+            PanelTop.Size = new Size(1898, 54);
+            PanelTop.TabIndex = 3;
             // 
             // ButtonUpdate
             // 
-            this.ButtonUpdate.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ButtonUpdate.Location = new System.Drawing.Point(1672, 8);
-            this.ButtonUpdate.Name = "ButtonUpdate";
-            this.ButtonUpdate.Size = new System.Drawing.Size(180, 36);
-            this.ButtonUpdate.TabIndex = 7;
-            this.ButtonUpdate.Text = "最 新 化";
-            this.ButtonUpdate.UseVisualStyleBackColor = true;
-            this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
+            ButtonUpdate.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            ButtonUpdate.Location = new Point(1672, 8);
+            ButtonUpdate.Name = "ButtonUpdate";
+            ButtonUpdate.Size = new Size(180, 36);
+            ButtonUpdate.TabIndex = 7;
+            ButtonUpdate.Text = "最 新 化";
+            ButtonUpdate.UseVisualStyleBackColor = true;
+            ButtonUpdate.Click += ButtonUpdate_Click;
             // 
             // TabControlStaff
             // 
-            this.TabControlStaff.Controls.Add(this.tabPage1);
-            this.TabControlStaff.Controls.Add(this.tabPage2);
-            this.TabControlStaff.Controls.Add(this.tabPage3);
-            this.TabControlStaff.Controls.Add(this.tabPage4);
-            this.TabControlStaff.Controls.Add(this.tabPage5);
-            this.TabControlStaff.Controls.Add(this.tabPage6);
-            this.TabControlStaff.Controls.Add(this.tabPage7);
-            this.TabControlStaff.Controls.Add(this.tabPage8);
-            this.TabControlStaff.Controls.Add(this.tabPage9);
-            this.TabControlStaff.Controls.Add(this.tabPage10);
-            this.TabControlStaff.Controls.Add(this.tabPage11);
-            this.TabControlStaff.Location = new System.Drawing.Point(3, 28);
-            this.TabControlStaff.Name = "TabControlStaff";
-            this.TabControlStaff.SelectedIndex = 0;
-            this.TabControlStaff.Size = new System.Drawing.Size(1892, 28);
-            this.TabControlStaff.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
-            this.TabControlStaff.TabIndex = 6;
-            this.TabControlStaff.Click += new System.EventHandler(this.TabControlStaff_Click);
+            TabControlStaff.Controls.Add(tabPage1);
+            TabControlStaff.Controls.Add(tabPage2);
+            TabControlStaff.Controls.Add(tabPage3);
+            TabControlStaff.Controls.Add(tabPage4);
+            TabControlStaff.Controls.Add(tabPage5);
+            TabControlStaff.Controls.Add(tabPage6);
+            TabControlStaff.Controls.Add(tabPage7);
+            TabControlStaff.Controls.Add(tabPage8);
+            TabControlStaff.Controls.Add(tabPage9);
+            TabControlStaff.Controls.Add(tabPage10);
+            TabControlStaff.Controls.Add(tabPage11);
+            TabControlStaff.Location = new Point(3, 28);
+            TabControlStaff.Name = "TabControlStaff";
+            TabControlStaff.SelectedIndex = 0;
+            TabControlStaff.Size = new Size(1892, 28);
+            TabControlStaff.SizeMode = TabSizeMode.Fixed;
+            TabControlStaff.TabIndex = 6;
+            TabControlStaff.Click += TabControlStaff_Click;
             // 
             // tabPage1
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 24);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1884, 0);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Tag = "全従業員";
-            this.tabPage1.Text = "全従業員";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(1884, 0);
+            tabPage1.TabIndex = 0;
+            tabPage1.Tag = "全従業員";
+            tabPage1.Text = "全従業員";
+            tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1884, 0);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Tag = "ア";
-            this.tabPage2.Text = "あ行";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(1884, 0);
+            tabPage2.TabIndex = 1;
+            tabPage2.Tag = "ア";
+            tabPage2.Text = "あ行";
+            tabPage2.UseVisualStyleBackColor = true;
             // 
             // tabPage3
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 24);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1884, 0);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Tag = "カ";
-            this.tabPage3.Text = "か行";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            tabPage3.Location = new Point(4, 24);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Size = new Size(1884, 0);
+            tabPage3.TabIndex = 2;
+            tabPage3.Tag = "カ";
+            tabPage3.Text = "か行";
+            tabPage3.UseVisualStyleBackColor = true;
             // 
             // tabPage4
             // 
-            this.tabPage4.Location = new System.Drawing.Point(4, 24);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(1884, 0);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Tag = "サ";
-            this.tabPage4.Text = "さ行";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            tabPage4.Location = new Point(4, 24);
+            tabPage4.Name = "tabPage4";
+            tabPage4.Size = new Size(1884, 0);
+            tabPage4.TabIndex = 3;
+            tabPage4.Tag = "サ";
+            tabPage4.Text = "さ行";
+            tabPage4.UseVisualStyleBackColor = true;
             // 
             // tabPage5
             // 
-            this.tabPage5.Location = new System.Drawing.Point(4, 24);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Size = new System.Drawing.Size(1884, 0);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Tag = "タ";
-            this.tabPage5.Text = "た行";
-            this.tabPage5.UseVisualStyleBackColor = true;
+            tabPage5.Location = new Point(4, 24);
+            tabPage5.Name = "tabPage5";
+            tabPage5.Size = new Size(1884, 0);
+            tabPage5.TabIndex = 4;
+            tabPage5.Tag = "タ";
+            tabPage5.Text = "た行";
+            tabPage5.UseVisualStyleBackColor = true;
             // 
             // tabPage6
             // 
-            this.tabPage6.Location = new System.Drawing.Point(4, 24);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Size = new System.Drawing.Size(1884, 0);
-            this.tabPage6.TabIndex = 5;
-            this.tabPage6.Tag = "ナ";
-            this.tabPage6.Text = "な行";
-            this.tabPage6.UseVisualStyleBackColor = true;
+            tabPage6.Location = new Point(4, 24);
+            tabPage6.Name = "tabPage6";
+            tabPage6.Size = new Size(1884, 0);
+            tabPage6.TabIndex = 5;
+            tabPage6.Tag = "ナ";
+            tabPage6.Text = "な行";
+            tabPage6.UseVisualStyleBackColor = true;
             // 
             // tabPage7
             // 
-            this.tabPage7.Location = new System.Drawing.Point(4, 24);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Size = new System.Drawing.Size(1884, 0);
-            this.tabPage7.TabIndex = 6;
-            this.tabPage7.Tag = "ハ";
-            this.tabPage7.Text = "は行";
-            this.tabPage7.UseVisualStyleBackColor = true;
+            tabPage7.Location = new Point(4, 24);
+            tabPage7.Name = "tabPage7";
+            tabPage7.Size = new Size(1884, 0);
+            tabPage7.TabIndex = 6;
+            tabPage7.Tag = "ハ";
+            tabPage7.Text = "は行";
+            tabPage7.UseVisualStyleBackColor = true;
             // 
             // tabPage8
             // 
-            this.tabPage8.Location = new System.Drawing.Point(4, 24);
-            this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Size = new System.Drawing.Size(1884, 0);
-            this.tabPage8.TabIndex = 7;
-            this.tabPage8.Tag = "マ";
-            this.tabPage8.Text = "ま行";
-            this.tabPage8.UseVisualStyleBackColor = true;
+            tabPage8.Location = new Point(4, 24);
+            tabPage8.Name = "tabPage8";
+            tabPage8.Size = new Size(1884, 0);
+            tabPage8.TabIndex = 7;
+            tabPage8.Tag = "マ";
+            tabPage8.Text = "ま行";
+            tabPage8.UseVisualStyleBackColor = true;
             // 
             // tabPage9
             // 
-            this.tabPage9.Location = new System.Drawing.Point(4, 24);
-            this.tabPage9.Name = "tabPage9";
-            this.tabPage9.Size = new System.Drawing.Size(1884, 0);
-            this.tabPage9.TabIndex = 8;
-            this.tabPage9.Tag = "ヤ";
-            this.tabPage9.Text = "や行";
-            this.tabPage9.UseVisualStyleBackColor = true;
+            tabPage9.Location = new Point(4, 24);
+            tabPage9.Name = "tabPage9";
+            tabPage9.Size = new Size(1884, 0);
+            tabPage9.TabIndex = 8;
+            tabPage9.Tag = "ヤ";
+            tabPage9.Text = "や行";
+            tabPage9.UseVisualStyleBackColor = true;
             // 
             // tabPage10
             // 
-            this.tabPage10.Location = new System.Drawing.Point(4, 24);
-            this.tabPage10.Name = "tabPage10";
-            this.tabPage10.Size = new System.Drawing.Size(1884, 0);
-            this.tabPage10.TabIndex = 9;
-            this.tabPage10.Tag = "ラ";
-            this.tabPage10.Text = "ら行";
-            this.tabPage10.UseVisualStyleBackColor = true;
+            tabPage10.Location = new Point(4, 24);
+            tabPage10.Name = "tabPage10";
+            tabPage10.Size = new Size(1884, 0);
+            tabPage10.TabIndex = 9;
+            tabPage10.Tag = "ラ";
+            tabPage10.Text = "ら行";
+            tabPage10.UseVisualStyleBackColor = true;
             // 
             // tabPage11
             // 
-            this.tabPage11.Location = new System.Drawing.Point(4, 24);
-            this.tabPage11.Name = "tabPage11";
-            this.tabPage11.Size = new System.Drawing.Size(1884, 0);
-            this.tabPage11.TabIndex = 10;
-            this.tabPage11.Tag = "ワ";
-            this.tabPage11.Text = "わ行";
-            this.tabPage11.UseVisualStyleBackColor = true;
+            tabPage11.Location = new Point(4, 24);
+            tabPage11.Name = "tabPage11";
+            tabPage11.Size = new Size(1884, 0);
+            tabPage11.TabIndex = 10;
+            tabPage11.Tag = "ワ";
+            tabPage11.Text = "わ行";
+            tabPage11.UseVisualStyleBackColor = true;
             // 
             // CertificationList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1904, 1041);
-            this.Controls.Add(this.TableLayoutPanelBase);
-            this.MainMenuStrip = this.MenuStrip1;
-            this.Name = "CertificationList";
-            this.Text = "CertificationList";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CertificationList_FormClosing);
-            this.TableLayoutPanelBase.ResumeLayout(false);
-            this.TableLayoutPanelBase.PerformLayout();
-            this.StatusStrip1.ResumeLayout(false);
-            this.StatusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SpreadList)).EndInit();
-            this.MenuStrip1.ResumeLayout(false);
-            this.MenuStrip1.PerformLayout();
-            this.PanelTop.ResumeLayout(false);
-            this.TabControlStaff.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1904, 1041);
+            Controls.Add(TableLayoutPanelBase);
+            MainMenuStrip = MenuStrip1;
+            Name = "CertificationList";
+            Text = "CertificationList";
+            FormClosing += CertificationList_FormClosing;
+            TableLayoutPanelBase.ResumeLayout(false);
+            TableLayoutPanelBase.PerformLayout();
+            StatusStrip1.ResumeLayout(false);
+            StatusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)SpreadList).EndInit();
+            MenuStrip1.ResumeLayout(false);
+            MenuStrip1.PerformLayout();
+            PanelTop.ResumeLayout(false);
+            TabControlStaff.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion

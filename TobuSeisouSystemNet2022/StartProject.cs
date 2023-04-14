@@ -37,11 +37,14 @@ using WardSpreadsheet;
 
 namespace TobuSeisouSystemNet2022 {
     public partial class StartProject : Form {
-        /// <summary>
-        /// ConnectionVo
-        /// </summary>
+        /*
+         * Vo
+         */
         private readonly ConnectionVo _connectionVo = new();
 
+        /// <summary>
+        /// コンストラクター
+        /// </summary>
         public StartProject() {
             InitializeComponent();
             new InitializeForm().StartProject(this);
@@ -50,7 +53,7 @@ namespace TobuSeisouSystemNet2022 {
         }
 
         /// <summary>
-        /// データベース接続
+        /// ButtonDbConnect_Click
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -66,6 +69,11 @@ namespace TobuSeisouSystemNet2022 {
             }
         }
 
+        /// <summary>
+        /// Label_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Label_Click(object sender, EventArgs e) {
             if(_connectionVo.Connection != null) {
                 switch(_connectionVo.Connection.State) {
@@ -381,6 +389,9 @@ namespace TobuSeisouSystemNet2022 {
                     case "NodeISO0740": // コミュニケーション
                         break;
                     case "NodeISO0750": // 文章管理
+                        break;
+                    case "NodeISO0751": // 文章体系・文章の作成・承認
+                        files.OpenFolder(@"\\192.168.1.21\iso14001\ISO事務局\① ISO\⑦支援(サポート)\⑦-5 文書管理\7-5-1 文章体系・文章の作成・承認");
                         break;
                     case "NodeISO0800": // 運用
                         break;

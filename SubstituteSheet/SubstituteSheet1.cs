@@ -25,7 +25,6 @@ namespace SubstituteSheet {
         private readonly List<CarMasterVo> _listCarMasterVo;
         private readonly List<StaffMasterVo> _listStaffMasterVo;
         private readonly VehicleDispatchDetailVo _vehicleDispatchDetailVo;
-        private readonly VehicleDispatchBodyVo _vehicleDispatchBodyCleanOfficeVo;
         /*
          * ‘ã”Ô‚Ì“d˜b”Ô†
          */
@@ -43,8 +42,8 @@ namespace SubstituteSheet {
                                                                                           { 1312103, "090-5560-0677" }, // ‘«—§‚Q‚S
                                                                                           { 1312104, "090-5560-0700" }, // ‘«—§‚R‚W
                                                                                           { 1312204, "090-9817-8129" }, // Š‹ü‚P‚P
-                                                                                          { 1312201, "080-3493-3728" }, // Š‹ü‚R‚R
-                                                                                          { 1312202, "080-2202-7269" } }; // Š‹ü‚T‚T
+                                                                                          { 1312209, "080-3493-3728" }, // Š‹ü‚R‚Q
+                                                                                          { 1312210, "080-2202-7269" } }; // Š‹ü‚T‚S
         /*
          * ‘ã”Ô‚ÌƒZƒ‹ˆÊ’u‚Ì•R‚Ã‚¯
          */
@@ -115,8 +114,8 @@ namespace SubstituteSheet {
                     _cleanOfficeFax = string.Concat("‘«—§´‘|––±Š", "\r\n", " ‚e‚`‚w ‚O‚R|‚R‚W‚T‚V|‚T‚V‚S‚R");
                     break;
                 case 1312204: // Š‹ü‚P‚P
-                case 1312201: // Š‹ü‚R‚R
-                case 1312202: // Š‹ü‚T‚T
+                case 1312209: // Š‹ü‚R‚Q
+                case 1312210: // Š‹ü‚T‚S
                     _cleanOfficeName = "@Š‹ü‹æ´‘|––±Š@Œä’†";
                     _cleanOfficeFax = string.Concat("Š‹ü‹æ´‘|––±ŠiVh•ªºj", "\r\n", " ‚e‚`‚w ‚O‚R|‚R‚U‚O‚W|‚R‚R‚X‚V");
                     break;
@@ -131,6 +130,9 @@ namespace SubstituteSheet {
             PutSheetViewPaper();
         }
 
+        /// <summary>
+        /// ƒGƒ“ƒgƒŠ[ƒ|ƒCƒ“ƒg
+        /// </summary>
         public static void Main() {
         }
 
@@ -168,6 +170,7 @@ namespace SubstituteSheet {
             switch(_vehicleDispatchDetailVo.Set_code) {
                 case 1312105: // ‘«—§•s”R‚S
                 case 1312203: // ¬Šâ‚S
+                case 1312208: // ¬Šâ‚T
                     telephoneNumber = _listStaffMasterVo.Find(x => x.Staff_code == _vehicleDispatchDetailVo.Operator_code_1).Telephone_number;
                     break;
                 default:

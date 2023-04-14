@@ -18,7 +18,6 @@ namespace SubstituteSheet {
          */
         private VehicleDispatchDetailDao _vehicleDispatchDetailDao;
         private VehicleDispatchBodyCleanOfficeDao _vehicleDispatchBodyCleanOfficeDao;
-        private VehicleDispatchBodyOfficeDao _vehicleDispatchBodyOfficeDao;
         /*
          * Vo
          */
@@ -26,7 +25,6 @@ namespace SubstituteSheet {
         private readonly List<CarMasterVo> _listCarMasterVo;
         private readonly List<StaffMasterVo> _listStaffMasterVo;
         private readonly VehicleDispatchDetailVo _vehicleDispatchDetailVo;
-        private readonly VehicleDispatchBodyVo _vehicleDispatchBodyCleanOfficeVo;
 
         /// <summary>
         /// SubstituteSheet2
@@ -42,7 +40,6 @@ namespace SubstituteSheet {
              */
             _vehicleDispatchDetailDao = new VehicleDispatchDetailDao(connectionVo);
             _vehicleDispatchBodyCleanOfficeDao = new VehicleDispatchBodyCleanOfficeDao(connectionVo);
-            _vehicleDispatchBodyOfficeDao = new VehicleDispatchBodyOfficeDao(connectionVo);
             /*
              * Vo
              */
@@ -72,9 +69,10 @@ namespace SubstituteSheet {
         private void PutSheetViewPaper() {
             // 日付
             CultureInfo cultureInfo = new CultureInfo("ja-JP", true);
+            // 和暦を設定
             cultureInfo.DateTimeFormat.Calendar = new JapaneseCalendar();
+            // 作成日
             SheetView1.Cells["J3"].Text = DateTime.Now.ToString("gg y年M月d日", cultureInfo);
-
             // まずは配車先が格納されているCellNumberを取得する
             int cellNumber = _vehicleDispatchDetailDao.GetCellNumber(_vehicleDispatchDetailVo.Set_code);
             /*
@@ -86,9 +84,9 @@ namespace SubstituteSheet {
              * ２
              * 運転手代番の判定
              */
-            int operatorCode1_CleanOffice = _vehicleDispatchBodyCleanOfficeDao.GetOperatorCode1(cellNumber);
+            int operatorCode1CleanOffice = _vehicleDispatchBodyCleanOfficeDao.GetOperatorCode1(cellNumber);
             // 運転手代番だった場合の処理
-            if(_vehicleDispatchDetailVo.Operator_code_1 != 0 && operatorCode1_CleanOffice != _vehicleDispatchDetailVo.Operator_code_1) {
+            if(_vehicleDispatchDetailVo.Operator_code_1 != 0 && operatorCode1CleanOffice != _vehicleDispatchDetailVo.Operator_code_1) {
                 // 運転手名
                 SheetView1.Cells["D21"].Text = _listStaffMasterVo.Find(x => x.Staff_code == _vehicleDispatchDetailVo.Operator_code_1).Display_name;
                 // 携帯番号 とりあえず車載携帯がくるまでは個人携帯で登録
@@ -103,9 +101,21 @@ namespace SubstituteSheet {
              */
 
 
-            // ４
-
-
+            /*
+             * ４
+             * 清掃事務所に登録されている本番車両を取得する
+             * 代車の処理
+             */
+            int carCodeCleanOffice = _vehicleDispatchBodyCleanOfficeDao.GetCarCode(cellNumber);
+            // 代車の処理
+            if(_vehicleDispatchDetailVo.Car_code != 0 && carCodeCleanOffice != _vehicleDispatchDetailVo.Car_code) {
+                SheetView1.Cells["G45"].Text = string.Concat(_listCarMasterVo.Find(x => x.Car_code == _vehicleDispatchDetailVo.Car_code).Registration_number,
+                                                                " (" ,
+                                                                _listCarMasterVo.Find(x => x.Car_code == _vehicleDispatchDetailVo.Car_code).Door_number,
+                                                                ")");
+                SheetView1.Cells["D49"].Text = DateTime.Now.ToString("gg y年M月d日", cultureInfo);
+                SheetView1.Cells["I49"].Text = string.Concat(DateTime.Now.ToString("gg y年M月d日", cultureInfo), " 迄");
+            }
         }
 
         /// <summary>
@@ -142,8 +152,6 @@ namespace SubstituteSheet {
             SheetView1.Cells["I49"].ResetValue();
 
         }
-
-
 
         /// <summary>
         /// ButtonPrint_Click
