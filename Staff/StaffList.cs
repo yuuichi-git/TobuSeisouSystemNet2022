@@ -522,7 +522,72 @@ namespace Staff {
         /// 運転者リスト
         /// </summary>
         public void SheetViewList3OutPut() {
+            // Spread 非活性化
+            SpreadList.SuspendLayout();
+            // 先頭行（列）インデックスを取得
+            spreadListTopRow = SpreadList.GetViewportTopRow(0);
+            // Rowを削除する
+            if(SheetViewList3.Rows.Count > 0)
+                SheetViewList3.RemoveRows(0, SheetViewList3.Rows.Count);
 
+            _listFindAllStaffMasterVo = TabControlExStaff.SelectedTab.Tag switch {
+                "ア" => _listExtendsStaffMasterVo?.FindAll(x => x.Name_kana.StartsWith("ア") || x.Name_kana.StartsWith("イ") || x.Name_kana.StartsWith("ウ") || x.Name_kana.StartsWith("エ") || x.Name_kana.StartsWith("オ")),
+                "カ" => _listExtendsStaffMasterVo?.FindAll(x => x.Name_kana.StartsWith("カ") || x.Name_kana.StartsWith("ガ") || x.Name_kana.StartsWith("キ") || x.Name_kana.StartsWith("ギ") || x.Name_kana.StartsWith("ク") || x.Name_kana.StartsWith("グ") || x.Name_kana.StartsWith("ケ") || x.Name_kana.StartsWith("コ") || x.Name_kana.StartsWith("ゴ")),
+                "サ" => _listExtendsStaffMasterVo?.FindAll(x => x.Name_kana.StartsWith("サ") || x.Name_kana.StartsWith("シ") || x.Name_kana.StartsWith("ス") || x.Name_kana.StartsWith("セ") || x.Name_kana.StartsWith("ソ")),
+                "タ" => _listExtendsStaffMasterVo?.FindAll(x => x.Name_kana.StartsWith("タ") || x.Name_kana.StartsWith("ダ") || x.Name_kana.StartsWith("チ") || x.Name_kana.StartsWith("ツ") || x.Name_kana.StartsWith("テ") || x.Name_kana.StartsWith("デ") || x.Name_kana.StartsWith("ト") || x.Name_kana.StartsWith("ド")),
+                "ナ" => _listExtendsStaffMasterVo?.FindAll(x => x.Name_kana.StartsWith("ナ") || x.Name_kana.StartsWith("ニ") || x.Name_kana.StartsWith("ヌ") || x.Name_kana.StartsWith("ネ") || x.Name_kana.StartsWith("ノ")),
+                "ハ" => _listExtendsStaffMasterVo?.FindAll(x => x.Name_kana.StartsWith("ハ") || x.Name_kana.StartsWith("パ") || x.Name_kana.StartsWith("ヒ") || x.Name_kana.StartsWith("ビ") || x.Name_kana.StartsWith("フ") || x.Name_kana.StartsWith("ブ") || x.Name_kana.StartsWith("ヘ") || x.Name_kana.StartsWith("ベ") || x.Name_kana.StartsWith("ホ")),
+                "マ" => _listExtendsStaffMasterVo?.FindAll(x => x.Name_kana.StartsWith("マ") || x.Name_kana.StartsWith("ミ") || x.Name_kana.StartsWith("ム") || x.Name_kana.StartsWith("メ") || x.Name_kana.StartsWith("モ")),
+                "ヤ" => _listExtendsStaffMasterVo?.FindAll(x => x.Name_kana.StartsWith("ヤ") || x.Name_kana.StartsWith("ユ") || x.Name_kana.StartsWith("ヨ")),
+                "ラ" => _listExtendsStaffMasterVo?.FindAll(x => x.Name_kana.StartsWith("ラ") || x.Name_kana.StartsWith("リ") || x.Name_kana.StartsWith("ル") || x.Name_kana.StartsWith("レ") || x.Name_kana.StartsWith("ロ")),
+                "ワ" => _listExtendsStaffMasterVo?.FindAll(x => x.Name_kana.StartsWith("ワ") || x.Name_kana.StartsWith("ヲ") || x.Name_kana.StartsWith("ン")),
+                _ => _listExtendsStaffMasterVo,
+            };
+
+            // 退職者
+            if(!CheckBoxRetired.Checked)
+                _listFindAllStaffMasterVo = _listFindAllStaffMasterVo?.FindAll(x => x.Retirement_flag != true);
+            // ソート
+            _linqExtendsStaffMasterVo = _listFindAllStaffMasterVo?.OrderBy(x => x.Belongs).ThenBy(x => x.Code).ThenBy(x => x.Name_kana);
+
+            int i = 0;
+            if(_linqExtendsStaffMasterVo is not null)
+                foreach(var extendsStaffMasterVo in _linqExtendsStaffMasterVo) {
+                    // 所属
+                    var _belongs = extendsStaffMasterVo.Belongs;
+                    // 種別
+                    var _occupation = extendsStaffMasterVo.Occupation;
+                    // 氏名
+                    var _name = extendsStaffMasterVo.Name;
+                    // カナ
+                    var _name_kana = extendsStaffMasterVo.Name_kana;
+                    // 年齢
+                    string _age = "";
+                    if(extendsStaffMasterVo is not null && extendsStaffMasterVo.Birth_date != _defaultDateTime) {
+                        // 年齢
+                        _age = string.Concat(new Date().GetStaffAge(extendsStaffMasterVo.Birth_date.Date), "歳");
+                    }
+
+                    SheetViewList3.Rows.Add(i, 1);
+                    SheetViewList3.RowHeader.Columns[0].Label = (i + 1).ToString(); // Rowヘッダ
+                    SheetViewList3.Rows[i].ForeColor = extendsStaffMasterVo is not null && extendsStaffMasterVo.Retirement_flag ? Color.Red : Color.Black; // 退職済のレコードのForeColorをセット
+                    SheetViewList3.Rows[i].Height = 22; // Rowの高さ
+                    SheetViewList3.Rows[i].Resizable = false; // RowのResizableを禁止
+
+                    SheetViewList3.Cells[i, 0].Value = i + 1;
+                    SheetViewList3.Cells[i, 1].Value = dictionaryBelongs[_belongs];
+                    SheetViewList3.Cells[i, 2].Value = dictionaryOccupation[_occupation] == "運転手" ? "運転手" : "";
+                    SheetViewList3.Cells[i, 3].Text = _name;
+                    SheetViewList3.Cells[i, 4].Text = _name_kana;
+                    SheetViewList3.Cells[i, 5].Value = _age;
+                    i++;
+                }
+
+            // 先頭行（列）インデックスをセット
+            SpreadList.SetViewportTopRow(0, spreadListTopRow);
+            // Spread 活性化
+            SpreadList.ResumeLayout();
+            ToolStripStatusLabelDetail.Text = string.Concat(" ", i, " 件");
         }
 
         /// <summary>
@@ -683,8 +748,10 @@ namespace Staff {
                 case "健康診断用リスト":
                     ContextMenuStrip1.Enabled = false;
                     break;
+                case "運転者リスト":
+                    ContextMenuStrip1.Enabled = false;
+                    break;
             }
-
         }
 
         /// <summary>
@@ -724,21 +791,9 @@ namespace Staff {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ToolStripMenuItemExport1_Click(object sender, EventArgs e) {
+        private void ToolStripMenuItemExport_Click(object sender, EventArgs e) {
             //xlsx形式ファイルをエクスポートします
-            string fileName = string.Concat("従事者リスト", DateTime.Now.ToString("MM月dd日"), "作成");
-            SpreadList.SaveExcel(new Directry().GetExcelDesktopPassXlsx(fileName), ExcelSaveFlags.UseOOXMLFormat | ExcelSaveFlags.Exchangeable);
-            MessageBox.Show("デスクトップへエクスポートしました", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        /// <summary>
-        /// ToolStripMenuItemExport2_Click
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ToolStripMenuItemExport2_Click(object sender, EventArgs e) {
-            //xlsx形式ファイルをエクスポートします
-            string fileName = string.Concat("健康保険受診リスト", DateTime.Now.ToString("MM月dd日"), "作成");
+            string fileName = string.Concat("StaffList", DateTime.Now.ToString("MM月dd日"), "作成");
             SpreadList.SaveExcel(new Directry().GetExcelDesktopPassXlsx(fileName), ExcelSaveFlags.UseOOXMLFormat | ExcelSaveFlags.Exchangeable);
             MessageBox.Show("デスクトップへエクスポートしました", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }

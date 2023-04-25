@@ -28,7 +28,7 @@
             StatusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             ToolStripStatusLabelStatus = new ToolStripStatusLabel();
-            SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("resource1"));
+            SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("TableLayoutPanelBase.Controls"));
             SheetViewList1 = SpreadList.GetSheet(0);
             SheetViewList2 = SpreadList.GetSheet(1);
             MenuStrip1 = new MenuStrip();
@@ -143,7 +143,7 @@
             MonthPicker1.CustomFormat = "yyyy年MM月";
             MonthPicker1.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             MonthPicker1.Format = DateTimePickerFormat.Custom;
-            MonthPicker1.Location = new Point(92, 15);
+            MonthPicker1.Location = new Point(96, 15);
             MonthPicker1.Name = "MonthPicker1";
             MonthPicker1.Size = new Size(128, 25);
             MonthPicker1.TabIndex = 5;

@@ -30,7 +30,6 @@
             ToolStripMenuItemMenu = new ToolStripMenuItem();
             ToolStripMenuItemExport = new ToolStripMenuItem();
             ToolStripMenuItemExport1 = new ToolStripMenuItem();
-            ToolStripMenuItemExport2 = new ToolStripMenuItem();
             ToolStripMenuItemExit = new ToolStripMenuItem();
             編集ToolStripMenuItem = new ToolStripMenuItem();
             ToolStripMenuItemNewStaff = new ToolStripMenuItem();
@@ -131,7 +130,7 @@
             // 
             // ToolStripMenuItemExport
             // 
-            ToolStripMenuItemExport.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemExport1, ToolStripMenuItemExport2 });
+            ToolStripMenuItemExport.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemExport1 });
             ToolStripMenuItemExport.Name = "ToolStripMenuItemExport";
             ToolStripMenuItemExport.Size = new Size(195, 22);
             ToolStripMenuItemExport.Text = "Excel形式でエクスポート";
@@ -139,16 +138,9 @@
             // ToolStripMenuItemExport1
             // 
             ToolStripMenuItemExport1.Name = "ToolStripMenuItemExport1";
-            ToolStripMenuItemExport1.Size = new Size(240, 22);
-            ToolStripMenuItemExport1.Text = "従事者リストをエクスポートする";
-            ToolStripMenuItemExport1.Click += ToolStripMenuItemExport1_Click;
-            // 
-            // ToolStripMenuItemExport2
-            // 
-            ToolStripMenuItemExport2.Name = "ToolStripMenuItemExport2";
-            ToolStripMenuItemExport2.Size = new Size(240, 22);
-            ToolStripMenuItemExport2.Text = "健康診断用リストをエクスポートする";
-            ToolStripMenuItemExport2.Click += ToolStripMenuItemExport2_Click;
+            ToolStripMenuItemExport1.Size = new Size(212, 22);
+            ToolStripMenuItemExport1.Text = "全てのシートをエクスポートする";
+            ToolStripMenuItemExport1.Click += ToolStripMenuItemExport_Click;
             // 
             // ToolStripMenuItemExit
             // 
@@ -728,7 +720,6 @@
         private CheckBox checkBox1;
         private ToolStripMenuItem ToolStripMenuItemExport;
         private ToolStripMenuItem ToolStripMenuItemExport1;
-        private ToolStripMenuItem ToolStripMenuItemExport2;
         private FarPoint.Win.Spread.SheetView SheetViewList;
         private FarPoint.Win.Spread.SheetView SheetViewList2;
         private FarPoint.Win.Spread.SheetView SheetViewList3;

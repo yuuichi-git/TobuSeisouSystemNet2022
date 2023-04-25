@@ -196,10 +196,10 @@ namespace StaffDetail {
                         // ŒŸõ—p‚Ì“ú•t‚ðì¬
                         DateTime operationDate = new DateTime(targetDate.Year, targetDate.Month, column + 1);
                         var vehicleDispatchDetailVo = _listVehicleDispatchDetailVo.Find(x => (x.Operator_code_1 == operationCode ||
-                                                                                              x.Operator_code_2 == operationCode ||
-                                                                                              x.Operator_code_3 == operationCode ||
-                                                                                              x.Operator_code_4 == operationCode) &&
-                                                                                              x.Operation_date == operationDate);
+                                                                                                   x.Operator_code_2 == operationCode ||
+                                                                                                   x.Operator_code_3 == operationCode ||
+                                                                                                   x.Operator_code_4 == operationCode) &&
+                                                                                                   x.Operation_date == operationDate);
                         if(vehicleDispatchDetailVo != null) {
                             string setName = vehicleDispatchDetailVo.Set_code != 0 ? _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name : "–¢“o˜^";
                             SheetViewList1.Cells[row, column + 3].Font = new Font("Yu Gothic UI", 9);
@@ -227,10 +227,10 @@ namespace StaffDetail {
                         // ŒŸõ—p‚Ì“ú•t‚ðì¬
                         DateTime operationDate = new DateTime(targetDate.Year, targetDate.Month, column + 1);
                         var vehicleDispatchDetailVo = _listVehicleDispatchDetailVo.Find(x => (x.Operator_code_1 == operationCode ||
-                                                                                              x.Operator_code_2 == operationCode ||
-                                                                                              x.Operator_code_3 == operationCode ||
-                                                                                              x.Operator_code_4 == operationCode) &&
-                                                                                              x.Operation_date == operationDate);
+                                                                                                   x.Operator_code_2 == operationCode ||
+                                                                                                   x.Operator_code_3 == operationCode ||
+                                                                                                   x.Operator_code_4 == operationCode) &&
+                                                                                                   x.Operation_date == operationDate);
                         if(vehicleDispatchDetailVo != null) {
                             string setName = vehicleDispatchDetailVo.Set_code != 0 ? _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name : "–¢“o˜^";
                             SheetViewList2.Cells[row, column + 3].Font = new Font("Yu Gothic UI", 9);

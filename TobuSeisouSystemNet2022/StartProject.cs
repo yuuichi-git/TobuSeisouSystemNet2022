@@ -170,6 +170,14 @@ namespace TobuSeisouSystemNet2022 {
                                 var toukanpoTrainingCardDetail = new ToukanpoTrainingCardDetail(_connectionVo);
                                 toukanpoTrainingCardDetail.Show(this);
                                 break;
+                            /*
+                             * ToukanpoSpeedSurvey
+                             * 交通事故防止強化月間 速度超過実態調査表
+                             */
+                            case "ToukanpoSpeedSurvey":
+                                var toukanpoSpeedSurvey = new ToukanpoSpeedSurvey(_connectionVo);
+                                toukanpoSpeedSurvey.Show(this);
+                                break;
                         }
                         break;
                     case ConnectionState.Connecting: //接続オブジェクトがデータ ソースに接続しています。

@@ -160,6 +160,8 @@
             LabelIpAddress = new Label();
             LabelPcName = new Label();
             PanelRight = new Panel();
+            label35 = new Label();
+            label36 = new Label();
             label33 = new Label();
             label34 = new Label();
             label32 = new Label();
@@ -201,7 +203,7 @@
             TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
             TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
-            TableLayoutPanelBase.Size = new Size(1316, 757);
+            TableLayoutPanelBase.Size = new Size(1316, 767);
             TableLayoutPanelBase.TabIndex = 0;
             // 
             // MenuStrip1
@@ -238,7 +240,7 @@
             // 
             TableLayoutPanelBase.SetColumnSpan(StatusStrip1, 3);
             StatusStrip1.Items.AddRange(new ToolStripItem[] { ToolStripStatusLabel1 });
-            StatusStrip1.Location = new Point(0, 735);
+            StatusStrip1.Location = new Point(0, 745);
             StatusStrip1.Name = "StatusStrip1";
             StatusStrip1.Size = new Size(1316, 22);
             StatusStrip1.SizingGrip = false;
@@ -339,7 +341,7 @@
             TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.Size = new Size(710, 703);
+            TableLayoutPanelCenter.Size = new Size(710, 713);
             TableLayoutPanelCenter.TabIndex = 2;
             // 
             // label1
@@ -665,7 +667,7 @@
             TableLayoutPanelLeft.RowCount = 2;
             TableLayoutPanelLeft.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
             TableLayoutPanelLeft.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            TableLayoutPanelLeft.Size = new Size(294, 703);
+            TableLayoutPanelLeft.Size = new Size(294, 713);
             TableLayoutPanelLeft.TabIndex = 3;
             // 
             // PanelLeftMiddle
@@ -674,7 +676,7 @@
             PanelLeftMiddle.Dock = DockStyle.Fill;
             PanelLeftMiddle.Location = new Point(3, 63);
             PanelLeftMiddle.Name = "PanelLeftMiddle";
-            PanelLeftMiddle.Size = new Size(288, 637);
+            PanelLeftMiddle.Size = new Size(288, 647);
             PanelLeftMiddle.TabIndex = 0;
             // 
             // TreeView1
@@ -919,7 +921,7 @@
             treeNode97.Name = "NodeAccident";
             treeNode97.Text = "事故受付";
             TreeView1.Nodes.AddRange(new TreeNode[] { treeNode1, treeNode41, treeNode93, treeNode94, treeNode95, treeNode96, treeNode97 });
-            TreeView1.Size = new Size(288, 637);
+            TreeView1.Size = new Size(288, 647);
             TreeView1.TabIndex = 4;
             TreeView1.NodeMouseDoubleClick += TreeView1_NodeMouseDoubleClick;
             // 
@@ -954,6 +956,8 @@
             // 
             // PanelRight
             // 
+            PanelRight.Controls.Add(label35);
+            PanelRight.Controls.Add(label36);
             PanelRight.Controls.Add(label33);
             PanelRight.Controls.Add(label34);
             PanelRight.Controls.Add(label32);
@@ -970,8 +974,33 @@
             PanelRight.Dock = DockStyle.Fill;
             PanelRight.Location = new Point(1019, 27);
             PanelRight.Name = "PanelRight";
-            PanelRight.Size = new Size(294, 703);
+            PanelRight.Size = new Size(294, 713);
             PanelRight.TabIndex = 4;
+            // 
+            // label35
+            // 
+            label35.AutoSize = true;
+            label35.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label35.Location = new Point(9, 330);
+            label35.Name = "label35";
+            label35.Size = new Size(185, 17);
+            label35.TabIndex = 39;
+            label35.Tag = "ToukanpoSpeedSurvey";
+            label35.Text = "　東環保(速度超過実態調査表)";
+            label35.Click += Label_Click;
+            label35.MouseEnter += Label_MouseEnter;
+            label35.MouseLeave += Label_MouseLeave;
+            // 
+            // label36
+            // 
+            label36.AutoSize = true;
+            label36.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label36.ForeColor = Color.Gray;
+            label36.Location = new Point(9, 350);
+            label36.Name = "label36";
+            label36.Size = new Size(210, 17);
+            label36.TabIndex = 40;
+            label36.Text = "　交通事故防止強化月間の提出物。";
             // 
             // label33
             // 
@@ -1133,7 +1162,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1316, 757);
+            ClientSize = new Size(1316, 767);
             Controls.Add(TableLayoutPanelBase);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
@@ -1212,5 +1241,7 @@
         private Label label32;
         private Label label33;
         private Label label34;
+        private Label label35;
+        private Label label36;
     }
 }
