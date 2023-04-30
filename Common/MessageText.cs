@@ -15,6 +15,8 @@
          */
         public const string Message301 = "対象日の配車データが存在します。初期化すると配車データが削除されます。よろしいですか？";
         public const string Message302 = "対象日の配車データが存在しません。本番登録の初期化をしてください。";
+        public const string Message303 = "配車データが更新されています。画面を最新化して下さい。";
+        public const string Message304 = "Drag元(FlowLayoutPanelEx)の配車データが更新されています。画面を最新化して下さい。";
         /*
          * 
          */

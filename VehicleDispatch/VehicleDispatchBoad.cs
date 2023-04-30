@@ -1592,19 +1592,111 @@ namespace VehicleDispatch {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void SetControlEx_DragDrop(object? sender, DragEventArgs e) {
+        private void SetControlEx_DragDrop(object sender, DragEventArgs e) {
+            SetControlEx setControlEx = (SetControlEx)sender;
+            /*
+             * 2023-04-29
+             * ここで画面とDBのデータの同一性をチェックして、更新可能か調べる
+             */
+            if(e.Data is not null && e.Data.GetDataPresent(typeof(SetLabelEx))) {
+                SetLabelEx dragItem = (SetLabelEx)e.Data.GetData(typeof(SetLabelEx));
+                int dragCellNumber = Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag);
+                int dropCellNumber = Convert.ToInt32(setControlEx.Tag);
+
+
+                goto JMP1;
+            }
+            if(e.Data is not null && e.Data.GetDataPresent(typeof(CarLabelEx))) {
+                CarLabelEx dragItem = (CarLabelEx)e.Data.GetData(typeof(CarLabelEx));
+                int dragCellNumber = Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag);
+                int dropCellNumber = Convert.ToInt32(setControlEx.Tag);
+
+
+                goto JMP1;
+            }
+            if(setControlEx is not null && e.Data is not null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+                /*
+                 * 画面座標(X, Y)を、setControlEx上のクライアント座標に変換する
+                 */
+                Point point = setControlEx.PointToClient(new Point(e.X, e.Y));
+                int staffCellNumber = 0;
+                switch(point.Y) {
+                    // SetLabelかCarLabel
+                    case int i when i <= 140:
+                        return; // SetLabelかCarLabelの位置でDropされた場合はReturnする
+                    // 運転手
+                    case int i when i <= 180:
+                        staffCellNumber = 1;
+                        break;
+                    // 作業員１
+                    case int i when i <= 220:
+                        staffCellNumber = 2;
+                        break;
+                    // 作業員２
+                    case int i when i <= 260:
+                        staffCellNumber = 3;
+                        break;
+                    // 作業員３
+                    case int i when i <= 300:
+                        staffCellNumber = 4;
+                        break;
+                }
+
+                StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
+                int dragCellNumber = 0;
+                int dragStaffCellNumber = 0;
+                int dragStaffCode = 0;
+                int dropCellNumber = Convert.ToInt32(setControlEx.Tag);
+                int dropStaffCode = 0;
+                switch(dragItem.Parent) {
+                    case SetControlEx:
+                        // Drag元のCellNumberを取得
+                        dragCellNumber = Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag);
+                        // Drag元のStaffLabelの位置を取得
+                        dragStaffCellNumber = ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row - 1;
+                        // Drag元のStaffCodeを取得
+                        dragStaffCode = _vehicleDispatchDetailDao.GetStaffCodeTableLayoutPanelEx(UcDateTimeJpOperationDate.GetValue(), dragCellNumber, dragStaffCellNumber);
+                        // Drop先のStaffCodeを取得
+                        dropStaffCode = _vehicleDispatchDetailDao.GetStaffCodeTableLayoutPanelEx(UcDateTimeJpOperationDate.GetValue(), dropCellNumber, staffCellNumber);
+                        /*
+                         * ①Drag側を調査（画面上のStaffCodeとDB上のStaffCodeが同一かどうか？）
+                         * ②Drop側を調査（DB上のStaffCodeが０かどうか？）
+                         */
+                        if(dragStaffCode != ((StaffMasterVo)dragItem.Tag).Staff_code || dropStaffCode != 0) {
+                            MessageBox.Show(MessageText.Message303, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                        break;
+                    case FlowLayoutPanelEx:
+                        // Drag元のCellNumberを取得
+                        dragCellNumber = Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag);
+                        // Drag元のStaffCodeを取得
+                        bool dragStaffExist = _vehicleDispatchDetailDao.GetStaffFlowLayoutPanelEx(UcDateTimeJpOperationDate.GetValue(), ((StaffMasterVo)dragItem.Tag).Staff_code);
+                        // Drop先のStaffCodeを取得
+                        dropStaffCode = _vehicleDispatchDetailDao.GetStaffCodeTableLayoutPanelEx(UcDateTimeJpOperationDate.GetValue(), dropCellNumber, staffCellNumber);
+                        /*
+                         * ①Drop側を調査（DB上のStaffCodeが０かどうか？）
+                         */
+                        if(dragStaffExist) {
+                            MessageBox.Show(MessageText.Message303, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                        break;
+                }
+                goto JMP1;
+            }
+
+        /*
+         * 更新できる状態の場合の処理はここから
+         */
+        JMP1:
+
             // Dropを受け入れない
             e.Effect = DragDropEffects.None;
-            SetControlEx? setControlEx = null;
-            if(sender != null) {
-                setControlEx = (SetControlEx)sender;
-            } else {
-                MessageBox.Show("SetControlEx_DragDrop : senderがNullです");
-            }
             /*
              * SetLabelEx
              */
-            if(e.Data != null && e.Data.GetDataPresent(typeof(SetLabelEx))) {
+            if(e.Data is not null && e.Data.GetDataPresent(typeof(SetLabelEx))) {
                 SetLabelEx dragItem = (SetLabelEx)e.Data.GetData(typeof(SetLabelEx));
                 if(((SetMasterVo)dragItem.Tag).Move_flag) {
                     /*
@@ -1616,15 +1708,15 @@ namespace VehicleDispatch {
                             /*
                              * SetControlExからのDrop
                              */
-                            if(setControlEx != null && setControlEx.GetControlFromPosition(0, 0) == null) {
+                            if(setControlEx is not null && setControlEx.GetControlFromPosition(0, 0) == null) {
                                 /*
                                  * 移動許可を調査する
                                  */
                                 if(CheckSetControlEx(dragItem)) {
                                     try {
                                         _vehicleDispatchDetailDao.CopySetLabel(UcDateTimeJpOperationDate.GetValue(),
-                                                                               (int)((SetControlEx)dragItem.Parent).Tag,
-                                                                               (int)setControlEx.Tag);
+                                                                               Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
+                                                                               Convert.ToInt32(setControlEx.Tag));
                                         _vehicleDispatchDetailDao.ResetSetLabel(UcDateTimeJpOperationDate.GetValue(),
                                                                                 (int)((SetControlEx)dragItem.Parent).Tag);
                                         setControlEx.Controls.Add(dragItem,
@@ -1641,7 +1733,7 @@ namespace VehicleDispatch {
                             }
                             break;
                         case "FlowLayoutPanelExSet":
-                            if(setControlEx != null && setControlEx.GetControlFromPosition(0, 0) == null) {
+                            if(setControlEx is not null && setControlEx.GetControlFromPosition(0, 0) == null) {
                                 /*
                                  * Tab(配車先)からのDrop
                                  */
@@ -1656,7 +1748,7 @@ namespace VehicleDispatch {
                                 newDropItem.DoubleClick += new EventHandler(SetLabelEx_DoubleClick);
                                 newDropItem.MouseMove += new MouseEventHandler(SetLabelEx_MouseMove);
                                 _vehicleDispatchDetailDao.CreateSetLabel(UcDateTimeJpOperationDate.GetValue(),
-                                                                         (int)setControlEx.Tag,
+                                                                         Convert.ToInt32(setControlEx.Tag),
                                                                          (SetMasterVo)dragItem.Tag);
                                 setControlEx.Controls.Add(newDropItem,
                                                           0,
@@ -1680,11 +1772,11 @@ namespace VehicleDispatch {
             /*
              * CarLabelEx
              */
-            if(e.Data != null && e.Data.GetDataPresent(typeof(CarLabelEx))) {
+            if(e.Data is not null && e.Data.GetDataPresent(typeof(CarLabelEx))) {
                 CarLabelEx dragItem = (CarLabelEx)e.Data.GetData(typeof(CarLabelEx));
                 switch(dragItem.Parent.Name) {
                     case "SetControlEx":
-                        if(setControlEx != null && setControlEx.GetControlFromPosition(0, 1) == null) {
+                        if(setControlEx is not null && setControlEx.GetControlFromPosition(0, 1) == null) {
                             try {
                                 _vehicleDispatchDetailDao.MoveCarLabel(UcDateTimeJpOperationDate.GetValue(),
                                                                        Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
@@ -1702,7 +1794,7 @@ namespace VehicleDispatch {
                         }
                         break;
                     case "FlowLayoutPanelExCar":
-                        if(setControlEx != null && setControlEx.GetControlFromPosition(0, 1) == null) {
+                        if(setControlEx is not null && setControlEx.GetControlFromPosition(0, 1) == null) {
                             try {
                                 // vehicle_dispatch_detailをUPDATE
                                 _vehicleDispatchDetailDao.CreateCarLabel(UcDateTimeJpOperationDate.GetValue(),
@@ -1721,7 +1813,7 @@ namespace VehicleDispatch {
                     case "FlowLayoutPanelExChecking":
                     case "FlowLayoutPanelExRepair":
                     case "FlowLayoutPanelExVehicleInspection":
-                        if(setControlEx != null && setControlEx.GetControlFromPosition(0, 1) == null) {
+                        if(setControlEx is not null && setControlEx.GetControlFromPosition(0, 1) == null) {
                             try {
                                 // vehicle_dispatch_detailをUPDATE
                                 _vehicleDispatchDetailDao.CreateCarLabel(UcDateTimeJpOperationDate.GetValue(),
@@ -1742,7 +1834,7 @@ namespace VehicleDispatch {
                         }
                         break;
                     case "FlowLayoutPanelExFree":
-                        if(setControlEx != null && setControlEx.GetControlFromPosition(0, 1) == null) {
+                        if(setControlEx is not null && setControlEx.GetControlFromPosition(0, 1) == null) {
                             try {
                                 // vehicle_dispatch_detailをUPDATE
                                 _vehicleDispatchDetailDao.CreateCarLabel(UcDateTimeJpOperationDate.GetValue(),
@@ -1767,7 +1859,7 @@ namespace VehicleDispatch {
             /*
              * StaffLabelEx
              */
-            if(setControlEx != null && e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+            if(setControlEx is not null && e.Data is not null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
                 StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
                 //画面座標(X, Y)を、setControlEx上のクライアント座標に変換する
                 Point point = setControlEx.PointToClient(new Point(e.X, e.Y));
@@ -1785,9 +1877,9 @@ namespace VehicleDispatch {
                                 if(setControlEx.GetControlFromPosition(0, 2) == null) {
                                     try {
                                         _vehicleDispatchDetailDao.MoveStaffLabel(UcDateTimeJpOperationDate.GetValue(),
-                                                                                 (int)((SetControlEx)dragItem.Parent).Tag,
+                                                                                 Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
                                                                                  ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row,
-                                                                                 (int)setControlEx.Tag, 2);
+                                                                                 Convert.ToInt32(setControlEx.Tag), 2);
                                         _vehicleDispatchDetailDao.ResetStaffLabel(UcDateTimeJpOperationDate.GetValue(),
                                                                                   (int)((SetControlEx)dragItem.Parent).Tag,
                                                                                   ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
@@ -1806,9 +1898,9 @@ namespace VehicleDispatch {
                                 if(setControlEx.GetControlFromPosition(0, 3) == null) {
                                     try {
                                         _vehicleDispatchDetailDao.MoveStaffLabel(UcDateTimeJpOperationDate.GetValue(),
-                                                                                 (int)((SetControlEx)dragItem.Parent).Tag,
+                                                                                 Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
                                                                                  ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row,
-                                                                                 (int)setControlEx.Tag, 3);
+                                                                                 Convert.ToInt32(setControlEx.Tag), 3);
                                         _vehicleDispatchDetailDao.ResetStaffLabel(UcDateTimeJpOperationDate.GetValue(),
                                                                                   (int)((SetControlEx)dragItem.Parent).Tag,
                                                                                   ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
@@ -1827,9 +1919,9 @@ namespace VehicleDispatch {
                                 if(setControlEx.GetControlFromPosition(0, 4) == null) {
                                     try {
                                         _vehicleDispatchDetailDao.MoveStaffLabel(UcDateTimeJpOperationDate.GetValue(),
-                                                                                 (int)((SetControlEx)dragItem.Parent).Tag,
+                                                                                 Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
                                                                                  ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row,
-                                                                                 (int)setControlEx.Tag, 4);
+                                                                                 Convert.ToInt32(setControlEx.Tag), 4);
                                         _vehicleDispatchDetailDao.ResetStaffLabel(UcDateTimeJpOperationDate.GetValue(),
                                                                                   (int)((SetControlEx)dragItem.Parent).Tag,
                                                                                   ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
@@ -1848,9 +1940,9 @@ namespace VehicleDispatch {
                                 if(setControlEx.GetControlFromPosition(0, 5) == null) {
                                     try {
                                         _vehicleDispatchDetailDao.MoveStaffLabel(UcDateTimeJpOperationDate.GetValue(),
-                                                                                 (int)((SetControlEx)dragItem.Parent).Tag,
+                                                                                 Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
                                                                                  ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row,
-                                                                                 (int)setControlEx.Tag, 5);
+                                                                                 Convert.ToInt32(setControlEx.Tag), 5);
                                         _vehicleDispatchDetailDao.ResetStaffLabel(UcDateTimeJpOperationDate.GetValue(),
                                                                                   (int)((SetControlEx)dragItem.Parent).Tag,
                                                                                   ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
@@ -2192,6 +2284,11 @@ namespace VehicleDispatch {
         //    MessageBox.Show("SetLabelEx_Click");
         //}
 
+        /// <summary>
+        /// SetLabelEx_DoubleClick
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SetLabelEx_DoubleClick(object? sender, EventArgs e) {
             if(sender is not null) {
                 // SetControlExを退避
@@ -2206,8 +2303,13 @@ namespace VehicleDispatch {
             }
         }
 
+        /// <summary>
+        /// SetLabelEx_MouseMove
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SetLabelEx_MouseMove(object? sender, MouseEventArgs e) {
-            if(sender != null && e.Button == MouseButtons.Left)
+            if(sender is not null && e.Button == MouseButtons.Left)
                 ((SetLabelEx)sender).DoDragDrop(sender, DragDropEffects.Move);
         }
 
@@ -2215,8 +2317,13 @@ namespace VehicleDispatch {
             //MessageBox.Show("CarLabelEx_Click");
         }
 
+        /// <summary>
+        /// CarLabelEx_MouseMove
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void CarLabelEx_MouseMove(object? sender, MouseEventArgs e) {
-            if(sender != null && e.Button == MouseButtons.Left)
+            if(sender is not null && e.Button == MouseButtons.Left)
                 ((CarLabelEx)sender).DoDragDrop(sender, DragDropEffects.Move);
         }
 
@@ -2262,7 +2369,7 @@ namespace VehicleDispatch {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void StaffLabelEx_MouseMove(object? sender, MouseEventArgs e) {
-            if(sender != null && e.Button == MouseButtons.Left)
+            if(sender is not null && e.Button == MouseButtons.Left)
                 ((StaffLabelEx)sender).DoDragDrop(sender, DragDropEffects.Move);
         }
 
@@ -2272,12 +2379,17 @@ namespace VehicleDispatch {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void FlowLayoutPanelEx_DragDrop(object sender, DragEventArgs e) {
+            /*
+             * ここで画面とDBのデータの同一性をチェックして、更新可能か調べる
+             */
+
+
             // Dropを受け入れない
             e.Effect = DragDropEffects.None;
             /*
              * DragアイテムがSetLabelExの場合
              */
-            if(e.Data != null && e.Data.GetDataPresent(typeof(SetLabelEx))) {
+            if(e.Data is not null && e.Data.GetDataPresent(typeof(SetLabelEx))) {
                 SetLabelEx dragItem = (SetLabelEx)e.Data.GetData(typeof(SetLabelEx));
                 switch(dragItem.Parent.Name) {
                     case "SetControlEx":
@@ -2289,7 +2401,7 @@ namespace VehicleDispatch {
             /*
              * DragアイテムがCarLabelExの場合
              */
-            if(e.Data != null && e.Data.GetDataPresent(typeof(CarLabelEx))) {
+            if(e.Data is not null && e.Data.GetDataPresent(typeof(CarLabelEx))) {
                 CarLabelEx dragItem = (CarLabelEx)e.Data.GetData(typeof(CarLabelEx));
                 switch(dragItem.Parent.Name) {
                     case "SetControlEx":
@@ -2297,7 +2409,7 @@ namespace VehicleDispatch {
                             case "FlowLayoutPanelExCar":
                                 try {
                                     _vehicleDispatchDetailDao.ResetCarLabel(UcDateTimeJpOperationDate.GetValue(),
-                                                                       Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag));
+                                                                            Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag));
                                 } catch(Exception exception) {
                                     MessageBox.Show(exception.Message);
                                 }
@@ -2379,7 +2491,7 @@ namespace VehicleDispatch {
             /*
              * DragアイテムがStaffLabelExの場合
              */
-            if(e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+            if(e.Data is not null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
                 StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
                 switch(dragItem.Parent.Name) {
                     case "SetControlEx":
@@ -2521,14 +2633,17 @@ namespace VehicleDispatch {
             // None  :いかなるデータもドロップ先が受け付けようとしない状態
             switch(((FlowLayoutPanelEx)sender).Name) {
                 case "SetControlEx":
-                    if(e.Data != null && e.Data.GetDataPresent(typeof(SetLabelEx))) {
+                    /*
+                     * SetLabelExはSetControlEx上にしかDropすることないよね
+                     */
+                    if(e.Data is not null && e.Data.GetDataPresent(typeof(SetLabelEx))) {
                         e.Effect = DragDropEffects.Move;
                     } else {
                         e.Effect = DragDropEffects.None;
                     }
                     break;
                 case "FlowLayoutPanelExFullEmployees":
-                    if(e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+                    if(e.Data is not null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
                         StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
                         if(((StaffMasterVo)dragItem.Tag).Belongs == 10 || ((StaffMasterVo)dragItem.Tag).Belongs == 11)
                             e.Effect = DragDropEffects.Move;
@@ -2537,7 +2652,7 @@ namespace VehicleDispatch {
                     }
                     break;
                 case "FlowLayoutPanelExLongTerm":
-                    if(e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+                    if(e.Data is not null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
                         StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
                         if((((StaffMasterVo)dragItem.Tag).Belongs == 20 || ((StaffMasterVo)dragItem.Tag).Belongs == 21) && ((StaffMasterVo)dragItem.Tag).Job_form == 10)
                             e.Effect = DragDropEffects.Move;
@@ -2546,7 +2661,7 @@ namespace VehicleDispatch {
                     }
                     break;
                 case "FlowLayoutPanelExPartTime":
-                    if(e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+                    if(e.Data is not null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
                         StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
                         if(((StaffMasterVo)dragItem.Tag).Belongs == 12 || ((StaffMasterVo)dragItem.Tag).Job_form == 12)
                             e.Effect = DragDropEffects.Move;
@@ -2555,7 +2670,7 @@ namespace VehicleDispatch {
                     }
                     break;
                 case "FlowLayoutPanelExWindow":
-                    if(e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+                    if(e.Data is not null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
                         StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
                         if((((StaffMasterVo)dragItem.Tag).Belongs == 20 || ((StaffMasterVo)dragItem.Tag).Belongs == 21) && ((StaffMasterVo)dragItem.Tag).Job_form == 11)
                             e.Effect = DragDropEffects.Move;
@@ -2567,7 +2682,7 @@ namespace VehicleDispatch {
                 case "FlowLayoutPanelExChecking":
                 case "FlowLayoutPanelExRepair":
                 case "FlowLayoutPanelExVehicleInspection":
-                    if(e.Data != null && e.Data.GetDataPresent(typeof(CarLabelEx))) {
+                    if(e.Data is not null && e.Data.GetDataPresent(typeof(CarLabelEx))) {
                         e.Effect = DragDropEffects.Move;
                     } else {
                         e.Effect = DragDropEffects.None;
@@ -2576,7 +2691,7 @@ namespace VehicleDispatch {
                 case "FlowLayoutPanelExFullSalaried":
                 case "FlowLayoutPanelExFullClose":
                 case "FlowLayoutPanelExFullDesignation":
-                    if(e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+                    if(e.Data is not null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
                         StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
                         if(((StaffMasterVo)dragItem.Tag).Belongs == 20 || ((StaffMasterVo)dragItem.Tag).Belongs == 21)
                             e.Effect = DragDropEffects.Move;
@@ -2587,7 +2702,7 @@ namespace VehicleDispatch {
                 case "FlowLayoutPanelExPartSalaried":
                 case "FlowLayoutPanelExPartClose":
                 case "FlowLayoutPanelExPartDesignation":
-                    if(e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+                    if(e.Data is not null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
                         StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
                         if(((StaffMasterVo)dragItem.Tag).Belongs == 12)
                             e.Effect = DragDropEffects.Move;
@@ -2597,14 +2712,14 @@ namespace VehicleDispatch {
                     break;
                 case "FlowLayoutPanelExTelephone":
                 case "FlowLayoutPanelExWithoutNotice":
-                    if(e.Data != null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+                    if(e.Data is not null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
                         e.Effect = DragDropEffects.Move;
                     } else {
                         e.Effect = DragDropEffects.None;
                     }
                     break;
                 case "FlowLayoutPanelExFree":
-                    if(e.Data != null && (e.Data.GetDataPresent(typeof(CarLabelEx)) || e.Data.GetDataPresent(typeof(StaffLabelEx)))) {
+                    if(e.Data is not null && (e.Data.GetDataPresent(typeof(CarLabelEx)) || e.Data.GetDataPresent(typeof(StaffLabelEx)))) {
                         e.Effect = DragDropEffects.Move;
                     } else {
                         e.Effect = DragDropEffects.None;

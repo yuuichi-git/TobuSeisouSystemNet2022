@@ -1241,8 +1241,6 @@ namespace Dao {
             return cellNumber;
         }
 
-
-
         /// <summary>
         /// GetOperatorNote
         /// </summary>
@@ -1405,6 +1403,69 @@ namespace Dao {
             } catch {
                 throw;
             }
+        }
+
+        /// <summary>
+        /// GetStaffCode
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="cellNumber">SetControlEx.Tagから取得している。０から１４９まで</param>
+        /// <param name="staffCellNumber">1:運転手 2:作業員１ 3:作業員２ 4:作業員３</param>
+        /// <returns></returns>
+        public int GetStaffCodeTableLayoutPanelEx(DateTime operationDate, int cellNumber, int staffCellNumber) {
+            string sqlOperatorCode = string.Empty;
+            string sqlTableName = string.Empty;
+            switch(cellNumber) {
+                case int i when i <= 149: // CellNumber 1～150
+                    switch(staffCellNumber) {
+                        case 1: // 運転手
+                            sqlOperatorCode = "operator_code_1";
+                            sqlTableName = "vehicle_dispatch_detail";
+                            break;
+                        case 2: // 作業員１
+                            sqlOperatorCode = "operator_code_2";
+                            sqlTableName = "vehicle_dispatch_detail";
+                            break;
+                        case 3: // 作業員２
+                            sqlOperatorCode = "operator_code_3";
+                            sqlTableName = "vehicle_dispatch_detail";
+                            break;
+                        case 4: // 作業員３
+                            sqlOperatorCode = "operator_code_4";
+                            sqlTableName = "vehicle_dispatch_detail";
+                            break;
+                    }
+                    break;
+                case int i when i <= 167: // CellNumber 150～168
+                    sqlOperatorCode = "operator_code";
+                    sqlTableName = "vehicle_dispatch_detail_staff";
+                    break;
+            }
+
+            cellNumber++;
+
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT " + sqlOperatorCode + " " +
+                                     "FROM " + sqlTableName + " " +
+                                     "WHERE operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "' " +
+                                       "AND cell_number = " + cellNumber;
+            return (int)sqlCommand.ExecuteScalar();
+        }
+
+        /// <summary>
+        /// GetStaffExist
+        /// FlowLayoutPanelEx上にStaffLabelが存在するかを確認する
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="staffCode"></param>
+        /// <returns>true:レコードあり false:レコードなし</returns>
+        public bool GetStaffFlowLayoutPanelEx(DateTime operationDate, int staffCode) {
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT COUNT(operator_code) " +
+                                     "FROM vehicle_dispatch_detail_staff " +
+                                     "WHERE operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "' " +
+                                       "AND operator_code = " + staffCode;
+            return (int)sqlCommand.ExecuteScalar() > 0 ? true : false;
         }
     }
 }
