@@ -1668,19 +1668,7 @@ namespace VehicleDispatch {
                         }
                         break;
                     case FlowLayoutPanelEx:
-                        // DragŒ³‚ÌCellNumber‚ğæ“¾
-                        dragCellNumber = Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag);
-                        // DragŒ³‚ÌStaffCode‚ğæ“¾
-                        bool dragStaffExist = _vehicleDispatchDetailDao.GetStaffFlowLayoutPanelEx(UcDateTimeJpOperationDate.GetValue(), ((StaffMasterVo)dragItem.Tag).Staff_code);
-                        // Dropæ‚ÌStaffCode‚ğæ“¾
-                        dropStaffCode = _vehicleDispatchDetailDao.GetStaffCodeTableLayoutPanelEx(UcDateTimeJpOperationDate.GetValue(), dropCellNumber, staffCellNumber);
-                        /*
-                         * ‡@Drop‘¤‚ğ’²¸iDBã‚ÌStaffCode‚ª‚O‚©‚Ç‚¤‚©Hj
-                         */
-                        if(dragStaffExist) {
-                            MessageBox.Show(MessageText.Message303, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            return;
-                        }
+
                         break;
                 }
                 goto JMP1;
