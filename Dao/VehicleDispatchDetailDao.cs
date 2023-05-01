@@ -1447,23 +1447,24 @@ namespace Dao {
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT " + sqlOperatorCode + " " +
                                      "FROM " + sqlTableName + " " +
-                                     "WHERE operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "' " +
-                                       "AND cell_number = " + cellNumber;
+                                     "WHERE cell_number = " + cellNumber + " " +
+                                       "AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
             return (int)sqlCommand.ExecuteScalar();
         }
 
         /// <summary>
-        /// GetStaffExist
+        /// GetStaffExistFlowLayoutPanelEx
         /// FlowLayoutPanelEx上にStaffLabelが存在するかを確認する
         /// </summary>
         /// <param name="operationDate"></param>
         /// <param name="staffCode"></param>
         /// <returns>true:レコードあり false:レコードなし</returns>
-        public bool GetStaffFlowLayoutPanelEx(DateTime operationDate, int staffCode) {
+        public bool GetStaffExistFlowLayoutPanelEx(DateTime operationDate, int cellNumber, int staffCode) {
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT COUNT(operator_code) " +
                                      "FROM vehicle_dispatch_detail_staff " +
-                                     "WHERE operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "' " +
+                                     "WHERE cell_number = " + cellNumber + " " +
+                                       "AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "' " +
                                        "AND operator_code = " + staffCode;
             return (int)sqlCommand.ExecuteScalar() > 0 ? true : false;
         }

@@ -1291,6 +1291,14 @@ namespace VehicleDispatch {
                         MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     }
                     break;
+                // 早番
+                case "ToolStripMenuItemFirstShift":
+
+                    break;
+                // 遅番
+                case "ToolStripMenuItemLateShift":
+
+                    break;
                 // 待機を設定
                 case "ToolStripMenuItemStandByTrue":
                     try {
@@ -1301,7 +1309,6 @@ namespace VehicleDispatch {
                     } catch(Exception exception) {
                         MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     }
-
                     break;
                 // 待機を解除
                 case "ToolStripMenuItemStandByFalse":
@@ -1601,18 +1608,26 @@ namespace VehicleDispatch {
              */
             if(e.Data is not null && e.Data.GetDataPresent(typeof(SetLabelEx))) {
                 SetLabelEx dragItem = (SetLabelEx)e.Data.GetData(typeof(SetLabelEx));
-                int dragCellNumber = Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag);
-                int dropCellNumber = Convert.ToInt32(setControlEx.Tag);
+                switch(dragItem.Parent) {
+                    case SetControlEx:
 
+                        break;
+                    case FlowLayoutPanelEx:
 
+                        break;
+                }
                 goto JMP1;
             }
             if(e.Data is not null && e.Data.GetDataPresent(typeof(CarLabelEx))) {
                 CarLabelEx dragItem = (CarLabelEx)e.Data.GetData(typeof(CarLabelEx));
-                int dragCellNumber = Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag);
-                int dropCellNumber = Convert.ToInt32(setControlEx.Tag);
+                switch(dragItem.Parent) {
+                    case SetControlEx:
 
+                        break;
+                    case FlowLayoutPanelEx:
 
+                        break;
+                }
                 goto JMP1;
             }
             if(e.Data is not null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
@@ -1643,12 +1658,12 @@ namespace VehicleDispatch {
                         break;
                 }
 
-                StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
                 int dragCellNumber = 0;
                 int dragStaffCellNumber = 0;
                 int dbDragStaffCode = 0;
                 int dropCellNumber = Convert.ToInt32(setControlEx.Tag);
                 int dbDropStaffCode = 0;
+                StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
                 switch(dragItem.Parent) {
                     case SetControlEx:
                         // Drag元のCellNumberを取得
@@ -1680,8 +1695,38 @@ namespace VehicleDispatch {
                          * 166-167(朝電・無断)
                          * 168(CarLabelとStaffLabelが混在している)
                          */
+                        // Drag元のDB上のStaffCodeの有無を保持
+                        bool dbDragStaffExist = false;
                         dragCellNumber = Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag);
+                        /*
+                         * Dragされた親Controlによって処理を返る
+                         */
+                        switch(dragCellNumber) {
+                            case int i when i >= 151 && i <= 156: // 左側のTab(DB上で管理されていないLabel)
 
+                                break;
+                            case int i when i >= 157 && i <= 159: // 車両
+
+                                break;
+                            case int i when i >= 160 && i <= 168: // 組合長期・アルバイト・朝電/無断
+                                // Drag元のDB上のStaffCodeの有無を取得
+                                dbDragStaffExist = _vehicleDispatchDetailDao.GetStaffExistFlowLayoutPanelEx(UcDateTimeJpOperationDate.GetValue(), dragCellNumber, ((StaffMasterVo)dragItem.Tag).Staff_code);
+                                // Drop先のDB上のStaffCodeを取得
+                                dbDropStaffCode = _vehicleDispatchDetailDao.GetStaffCodeTableLayoutPanelEx(UcDateTimeJpOperationDate.GetValue(), dropCellNumber, staffCellNumber);
+                                /*
+                                 * ①Drag側を調査（DB上にDrag元のLabelが存在しているか？）
+                                 * ②Drop側を調査（DB上のStaffCodeが０かどうか？）
+                                 */
+                                if(!dbDragStaffExist) {
+                                    MessageBox.Show(MessageText.Message303, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                                    return;
+                                }
+                                if(dbDropStaffCode != 0) {
+                                    MessageBox.Show(MessageText.Message304, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                                    return;
+                                }
+                                break;
+                        }
                         break;
                 }
                 goto JMP1;
@@ -2276,7 +2321,12 @@ namespace VehicleDispatch {
             _lastOperateDateTime = DateTime.Now;
         }
 
-        private void SetControlEx_DragEnter(object? sender, DragEventArgs e) {
+        /// <summary>
+        /// SetControlEx_DragEnter
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SetControlEx_DragEnter(object sender, DragEventArgs e) {
             e.Effect = DragDropEffects.Move;
         }
 

@@ -121,6 +121,9 @@
             ToolStripMenuItemAddWorker = new ToolStripMenuItem();
             ToolStripMenuItemAddWorkerTrue = new ToolStripMenuItem();
             ToolStripMenuItemAddWorkerFalse = new ToolStripMenuItem();
+            ToolStripMenuItemShift = new ToolStripMenuItem();
+            ToolStripMenuItemFirstShift = new ToolStripMenuItem();
+            ToolStripMenuItemLateShift = new ToolStripMenuItem();
             ToolStripMenuItemStandByFlag = new ToolStripMenuItem();
             ToolStripMenuItemStandByTrue = new ToolStripMenuItem();
             ToolStripMenuItemStandByFalse = new ToolStripMenuItem();
@@ -1120,9 +1123,9 @@
             // 
             // ContextMenuStripSetLabel
             // 
-            ContextMenuStripSetLabel.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemSetDetail, toolStripSeparator4, ToolStripMenuItemSetGarageChange, ToolStripMenuItemSetDelete, toolStripSeparator9, ToolStripMenuItemSetMemo, toolStripSeparator6, ToolStripMenuItemOperationFlag, ToolStripMenuItemClassification, ToolStripMenuItemContactInformation, ToolStripMenuItemAddWorker, ToolStripMenuItemStandByFlag, toolStripSeparator7, ToolStripMenuItemFax, ToolStripMenuItemHighWayReport });
+            ContextMenuStripSetLabel.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemSetDetail, toolStripSeparator4, ToolStripMenuItemSetGarageChange, ToolStripMenuItemSetDelete, toolStripSeparator9, ToolStripMenuItemSetMemo, toolStripSeparator6, ToolStripMenuItemOperationFlag, ToolStripMenuItemClassification, ToolStripMenuItemContactInformation, ToolStripMenuItemAddWorker, ToolStripMenuItemShift, ToolStripMenuItemStandByFlag, toolStripSeparator7, ToolStripMenuItemFax, ToolStripMenuItemHighWayReport });
             ContextMenuStripSetLabel.Name = "ContextMenuStripSetLabel";
-            ContextMenuStripSetLabel.Size = new Size(235, 270);
+            ContextMenuStripSetLabel.Size = new Size(235, 292);
             ContextMenuStripSetLabel.Opened += ContextMenuStrip_Opened;
             // 
             // ToolStripMenuItemSetDetail
@@ -1265,6 +1268,26 @@
             ToolStripMenuItemAddWorkerFalse.Size = new Size(183, 22);
             ToolStripMenuItemAddWorkerFalse.Text = "作業員なしに変更する";
             ToolStripMenuItemAddWorkerFalse.Click += ToolStripMenuItem_Click;
+            // 
+            // ToolStripMenuItemShift
+            // 
+            ToolStripMenuItemShift.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemFirstShift, ToolStripMenuItemLateShift });
+            ToolStripMenuItemShift.Enabled = false;
+            ToolStripMenuItemShift.Name = "ToolStripMenuItemShift";
+            ToolStripMenuItemShift.Size = new Size(234, 22);
+            ToolStripMenuItemShift.Text = "早番・遅番";
+            // 
+            // ToolStripMenuItemFirstShift
+            // 
+            ToolStripMenuItemFirstShift.Name = "ToolStripMenuItemFirstShift";
+            ToolStripMenuItemFirstShift.Size = new Size(180, 22);
+            ToolStripMenuItemFirstShift.Text = "早番に設定";
+            // 
+            // ToolStripMenuItemLateShift
+            // 
+            ToolStripMenuItemLateShift.Name = "ToolStripMenuItemLateShift";
+            ToolStripMenuItemLateShift.Size = new Size(180, 22);
+            ToolStripMenuItemLateShift.Text = "遅番に設定";
             // 
             // ToolStripMenuItemStandByFlag
             // 
@@ -1603,5 +1626,8 @@
         private ToolStripSeparator toolStripSeparator8;
         private ToolStripSeparator toolStripSeparator9;
         private ToolStripMenuItem ToolStripMenuItemSetMemo;
+        private ToolStripMenuItem ToolStripMenuItemShift;
+        private ToolStripMenuItem ToolStripMenuItemFirstShift;
+        private ToolStripMenuItem ToolStripMenuItemLateShift;
     }
 }

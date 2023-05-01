@@ -15,8 +15,8 @@
          */
         public const string Message301 = "対象日の配車データが存在します。初期化すると配車データが削除されます。よろしいですか？";
         public const string Message302 = "対象日の配車データが存在しません。本番登録の初期化をしてください。";
-        public const string Message303 = "Dragを試みたLabelはDB上の同じ位置には存在しません。最新化をしてDBと画面の同期をして下さい。";
-        public const string Message304 = "Dropを試みたLabelはDB上の同じ位置に既に他のLabelが存在します。最新化をしてDBと画面の同期をして下さい。";
+        public const string Message303 = "DB上ではこのLabelは既に移動されています。最新化をしてDBと画面の同期をして下さい。";
+        public const string Message304 = "DB上ではこの位置には既に他のLabelが存在します。最新化をしてDBと画面の同期をして下さい。";
         /*
          * 
          */
