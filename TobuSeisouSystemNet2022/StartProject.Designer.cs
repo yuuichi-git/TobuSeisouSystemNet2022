@@ -124,11 +124,12 @@
             MenuStrip1 = new MenuStrip();
             ToolStripMenuItemMenu = new ToolStripMenuItem();
             ToolStripMenuItemExit = new ToolStripMenuItem();
+            ToolStripMenuItemDataBase = new ToolStripMenuItem();
+            ToolStripMenuItemLocalDataBase = new ToolStripMenuItem();
             ToolStripMenuItemHelp = new ToolStripMenuItem();
             StatusStrip1 = new StatusStrip();
             ToolStripStatusLabel1 = new ToolStripStatusLabel();
             TableLayoutPanelCenter = new TableLayoutPanel();
-            label1 = new Label();
             label2 = new Label();
             ButtonDbConnect = new Button();
             LabelServerName = new Label();
@@ -153,6 +154,7 @@
             label21 = new Label();
             label6 = new Label();
             label7 = new Label();
+            label1 = new Label();
             TableLayoutPanelLeft = new TableLayoutPanel();
             PanelLeftMiddle = new Panel();
             TreeView1 = new TreeView();
@@ -209,7 +211,7 @@
             // MenuStrip1
             // 
             TableLayoutPanelBase.SetColumnSpan(MenuStrip1, 3);
-            MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemHelp });
+            MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemDataBase, ToolStripMenuItemHelp });
             MenuStrip1.Location = new Point(0, 0);
             MenuStrip1.Name = "MenuStrip1";
             MenuStrip1.Size = new Size(1316, 24);
@@ -229,6 +231,20 @@
             ToolStripMenuItemExit.Size = new Size(195, 22);
             ToolStripMenuItemExit.Text = "アプリケーションを終了する";
             ToolStripMenuItemExit.Click += ToolStripMenuItemExit_Click;
+            // 
+            // ToolStripMenuItemDataBase
+            // 
+            ToolStripMenuItemDataBase.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemLocalDataBase });
+            ToolStripMenuItemDataBase.Name = "ToolStripMenuItemDataBase";
+            ToolStripMenuItemDataBase.Size = new Size(72, 20);
+            ToolStripMenuItemDataBase.Text = "データベース";
+            // 
+            // ToolStripMenuItemLocalDataBase
+            // 
+            ToolStripMenuItemLocalDataBase.CheckOnClick = true;
+            ToolStripMenuItemLocalDataBase.Name = "ToolStripMenuItemLocalDataBase";
+            ToolStripMenuItemLocalDataBase.Size = new Size(261, 22);
+            ToolStripMenuItemLocalDataBase.Text = "ローカルデータベースへ強制的に接続する";
             // 
             // ToolStripMenuItemHelp
             // 
@@ -259,7 +275,6 @@
             TableLayoutPanelCenter.ColumnCount = 2;
             TableLayoutPanelCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             TableLayoutPanelCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
-            TableLayoutPanelCenter.Controls.Add(label1, 0, 0);
             TableLayoutPanelCenter.Controls.Add(label2, 0, 1);
             TableLayoutPanelCenter.Controls.Add(ButtonDbConnect, 1, 1);
             TableLayoutPanelCenter.Controls.Add(LabelServerName, 0, 2);
@@ -284,6 +299,7 @@
             TableLayoutPanelCenter.Controls.Add(label21, 0, 29);
             TableLayoutPanelCenter.Controls.Add(label6, 0, 31);
             TableLayoutPanelCenter.Controls.Add(label7, 0, 32);
+            TableLayoutPanelCenter.Controls.Add(label1, 0, 0);
             TableLayoutPanelCenter.Dock = DockStyle.Fill;
             TableLayoutPanelCenter.Location = new Point(303, 27);
             TableLayoutPanelCenter.Name = "TableLayoutPanelCenter";
@@ -343,19 +359,6 @@
             TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             TableLayoutPanelCenter.Size = new Size(710, 713);
             TableLayoutPanelCenter.TabIndex = 2;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Dock = DockStyle.Fill;
-            label1.Font = new Font("Yu Gothic UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.ForeColor = Color.Blue;
-            label1.Location = new Point(3, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(504, 30);
-            label1.TabIndex = 1;
-            label1.Text = "データベース接続";
-            label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // label2
             // 
@@ -654,6 +657,19 @@
             label7.Size = new Size(239, 15);
             label7.TabIndex = 11;
             label7.Text = "　本番登録の新規及び修正や削除を行います。";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Dock = DockStyle.Fill;
+            label1.Font = new Font("Yu Gothic UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = Color.Blue;
+            label1.Location = new Point(3, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(504, 30);
+            label1.TabIndex = 32;
+            label1.Text = "データベース接続";
+            label1.TextAlign = ContentAlignment.MiddleLeft;
             // 
             // TableLayoutPanelLeft
             // 
@@ -1195,7 +1211,6 @@
         private StatusStrip StatusStrip1;
         private ToolStripStatusLabel ToolStripStatusLabel1;
         private TableLayoutPanel TableLayoutPanelCenter;
-        private Label label1;
         private Label label2;
         private Button ButtonDbConnect;
         private Label LabelServerName;
@@ -1243,5 +1258,8 @@
         private Label label34;
         private Label label35;
         private Label label36;
+        private ToolStripMenuItem ToolStripMenuItemDataBase;
+        private ToolStripMenuItem ToolStripMenuItemLocalDataBase;
+        private Label label1;
     }
 }

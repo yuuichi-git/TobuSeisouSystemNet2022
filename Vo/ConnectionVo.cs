@@ -25,13 +25,17 @@ namespace Vo {
         }
 
         /// <summary>
-        /// Dbへ接続
+        /// Connect
         /// </summary>
-        /// <returns></returns>
-        public void Connect() {
-            switch (Environment.MachineName) {
+        /// <param name="localDb">強制的にLocalDBへ接続するかどうかのフラグ</param>
+        public void Connect(bool localDb) {
+            switch(Environment.MachineName) {
                 case "LAPTOP-LI7NSQIT":
-                    _serverName = new PingResponse().GetPingResponse("192.168.1.21") ? @"TOBUSERVER\SQLEXPRESS" : "(Local)";
+                    if(!localDb) { // 自動選択
+                        _serverName = new PingResponse().GetPingResponse("192.168.1.21") ? @"TOBUSERVER\SQLEXPRESS" : "(Local)";
+                    } else { // LocalDBを選択
+                        _serverName = "(Local)";
+                    }
                     break;
                 default:
                     _serverName = @"TOBUSERVER\SQLEXPRESS"; // 本番サーバーアドレス
@@ -46,12 +50,13 @@ namespace Vo {
             try {
                 sqlConnection.Open();
                 Connection = sqlConnection;
-            } catch (Exception) {
+            } catch {
                 throw;
             }
         }
 
         /// <summary>
+        /// DisConnect
         /// Dbを切断
         /// </summary>
         /// <returns></returns>
@@ -59,7 +64,7 @@ namespace Vo {
             try {
                 Connection.Close();
                 Connection.Dispose();
-            } catch (Exception) {
+            } catch(Exception) {
                 throw;
             }
         }

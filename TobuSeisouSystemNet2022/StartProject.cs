@@ -54,12 +54,17 @@ namespace TobuSeisouSystemNet2022 {
 
         /// <summary>
         /// ButtonDbConnect_Click
+        /// "Shift"押下＋クリックで、強制的にLocalDBへ接続させる（テスト環境用）
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ButtonDbConnect_Click(object sender, EventArgs e) {
             try {
-                _connectionVo.Connect();
+               // 接続を試みる
+                _connectionVo.Connect(ToolStripMenuItemLocalDataBase.Checked);
+                // ToolStripMenuItemDataBaseを無効にする
+                ToolStripMenuItemDataBase.Enabled = false;
+                // データベース接続ボタンを無効にする
                 ((Button)sender).Enabled = false;
                 LabelServerName.Text = string.Concat("　接続先サーバー：", _connectionVo.Connection.DataSource);
                 LabelDbName.Text = string.Concat("　接続先データベース：", _connectionVo.Connection.Database);
