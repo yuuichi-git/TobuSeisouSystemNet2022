@@ -9,6 +9,7 @@ namespace ControlEx {
         private bool _classificationFlag = default;
         private int _productionNumberOfPeople = default;
         private bool _lastRollCallFlag = default;
+        private int _shiftCode = default;
 
         /// <summary>
         /// SetControlExのContactInformation(Border)を描画
@@ -200,8 +201,7 @@ namespace ControlEx {
         /// <param name="setMasterVo"></param>
         public void CreateLabel(SetMasterVo setMasterVo, VehicleDispatchDetailVo vehicleDispatchDetailVo, ContextMenuStrip contextMenuStrip) {
             try {
-                SetLabelEx labelEx = new SetLabelEx(setMasterVo,
-                                                    vehicleDispatchDetailVo).CreateLabel();
+                SetLabelEx labelEx = new SetLabelEx(setMasterVo, vehicleDispatchDetailVo).CreateLabel();
                 /*
                  * ContextMenuStrip
                  */
@@ -212,9 +212,7 @@ namespace ControlEx {
                 labelEx.Click += new EventHandler(SetLabelEx_Click);
                 labelEx.DoubleClick += new EventHandler(SetLabelEx_DoubleClick);
                 labelEx.MouseMove += new MouseEventHandler(SetLabelEx_MouseMove);
-                this.Controls.Add(labelEx,
-                                  0,
-                                  0);
+                this.Controls.Add(labelEx, 0, 0);
             } catch {
                 throw;
             }
@@ -227,8 +225,7 @@ namespace ControlEx {
         /// <param name="carMasterVo"></param>
         public void CreateLabel(VehicleDispatchDetailVo vehicleDispatchDetailVo, CarMasterVo carMasterVo, ContextMenuStrip contextMenuStrip) {
             try {
-                CarLabelEx labelEx = new CarLabelEx(vehicleDispatchDetailVo,
-                                                    carMasterVo).CreateLabel();
+                CarLabelEx labelEx = new CarLabelEx(vehicleDispatchDetailVo, carMasterVo).CreateLabel();
                 /*
                  * ContextMenuStrip
                  */
@@ -238,9 +235,7 @@ namespace ControlEx {
                  */
                 labelEx.Click += new EventHandler(CarLabelEx_Click);
                 labelEx.MouseMove += new MouseEventHandler(CarLabelEx_MouseMove);
-                this.Controls.Add(labelEx,
-                                  0,
-                                  1);
+                this.Controls.Add(labelEx, 0, 1);
             } catch {
                 throw;
             }
@@ -275,9 +270,7 @@ namespace ControlEx {
                  */
                 labelEx.Click += new EventHandler(StaffLabelEx_Click);
                 labelEx.MouseMove += new MouseEventHandler(StaffLabelEx_MouseMove);
-                this.Controls.Add(labelEx,
-                                  0,
-                                  number + 2);
+                this.Controls.Add(labelEx, 0, number + 2);
             } catch {
                 throw;
             }
@@ -376,13 +369,21 @@ namespace ControlEx {
             get => _lastRollCallFlag;
             set => _lastRollCallFlag = value;
         }
+        /// <summary>
+        /// 番手コード
+        /// 0:指定なし 1:早番 2:遅番
+        /// </summary>
+        public int ShiftCode {
+            get => _shiftCode;
+            set => _shiftCode = value;
+        }
 
         /*
          * 公開メソッド
          */
         /// <summary>
-        /// SetBorder
-        /// true:表示 false:非表示
+        /// SetContactInformationFlag
+        /// true:連絡事項あり false:連絡事項なし
         /// </summary>
         /// <param name="contactInformationFlag"></param>
         public void SetContactInformationFlag(bool contactInformationFlag) {

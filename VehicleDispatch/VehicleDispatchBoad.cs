@@ -219,6 +219,7 @@ namespace VehicleDispatch {
                     setControlEx.ContactInformationFlag = vehicleDispatchDetailVo.Contact_infomation_flag;
                     setControlEx.ClassificationFlag = vehicleDispatchDetailVo.Classification_flag;
                     setControlEx.LastRollCallFlag = vehicleDispatchDetailVo.Last_roll_call_flag;
+                    setControlEx.ShiftCode = vehicleDispatchDetailVo.Shift_code;
                     /*
                      * 2023-03-28 Findに対するNullチェックを入れる
                      */
@@ -1291,13 +1292,38 @@ namespace VehicleDispatch {
                         MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     }
                     break;
-                // 早番
-                case "ToolStripMenuItemFirstShift":
-
+                // 番手なし
+                case "ToolStripMenuItemNoneShift":
+                    try {
+                        _vehicleDispatchDetailDao.UpdateShiftCode(UcDateTimeJpOperationDate.GetValue(),
+                                                                  (int)EvacuationSetControlEx.Tag,
+                                                                  0);
+                        EvacuationSetLabelEx.SetShiftCode(0);
+                    } catch(Exception exception) {
+                        MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    }
                     break;
-                // 遅番
+                // 番手早番
+                case "ToolStripMenuItemFirstShift":
+                    try {
+                        _vehicleDispatchDetailDao.UpdateShiftCode(UcDateTimeJpOperationDate.GetValue(),
+                                                                  (int)EvacuationSetControlEx.Tag,
+                                                                  1);
+                        EvacuationSetLabelEx.SetShiftCode(1);
+                    } catch(Exception exception) {
+                        MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    }
+                    break;
+                // 番手遅番
                 case "ToolStripMenuItemLateShift":
-
+                    try {
+                        _vehicleDispatchDetailDao.UpdateShiftCode(UcDateTimeJpOperationDate.GetValue(),
+                                                                  (int)EvacuationSetControlEx.Tag,
+                                                                  2);
+                        EvacuationSetLabelEx.SetShiftCode(2);
+                    } catch(Exception exception) {
+                        MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    }
                     break;
                 // 待機を設定
                 case "ToolStripMenuItemStandByTrue":

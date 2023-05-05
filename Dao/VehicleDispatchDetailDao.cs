@@ -111,6 +111,7 @@ namespace Dao {
                                             "vehicle_dispatch_detail.garage_flag," +
                                             "vehicle_dispatch_detail.five_lap," +
                                             "vehicle_dispatch_detail.day_of_week," +
+                                            "vehicle_dispatch_detail.shift_code," +
                                             "vehicle_dispatch_detail.stand_by_flag," +
                                             "vehicle_dispatch_detail.classification_flag," +
                                             "vehicle_dispatch_detail.add_worker_flag," +
@@ -171,6 +172,7 @@ namespace Dao {
                     vehicleDispatchDetailVo.Garage_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["garage_flag"]);
                     vehicleDispatchDetailVo.Five_lap = _defaultValue.GetDefaultValue<bool>(sqlDataReader["five_lap"]);
                     vehicleDispatchDetailVo.Day_of_week = _defaultValue.GetDefaultValue<string>(sqlDataReader["day_of_week"]);
+                    vehicleDispatchDetailVo.Shift_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["shift_code"]);
                     vehicleDispatchDetailVo.Stand_by_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["stand_by_flag"]);
                     vehicleDispatchDetailVo.Classification_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["classification_flag"]);
                     vehicleDispatchDetailVo.Add_worker_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["add_worker_flag"]);
@@ -236,6 +238,7 @@ namespace Dao {
                                             "vehicle_dispatch_detail.garage_flag," +
                                             "vehicle_dispatch_detail.five_lap," +
                                             "vehicle_dispatch_detail.day_of_week," +
+                                            "vehicle_dispatch_detail.shift_code," +
                                             "vehicle_dispatch_detail.stand_by_flag," +
                                             "vehicle_dispatch_detail.classification_flag," +
                                             "vehicle_dispatch_detail.add_worker_flag," +
@@ -297,6 +300,7 @@ namespace Dao {
                     vehicleDispatchDetailVo.Garage_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["garage_flag"]);
                     vehicleDispatchDetailVo.Five_lap = _defaultValue.GetDefaultValue<bool>(sqlDataReader["five_lap"]);
                     vehicleDispatchDetailVo.Day_of_week = _defaultValue.GetDefaultValue<string>(sqlDataReader["day_of_week"]);
+                    vehicleDispatchDetailVo.Shift_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["shift_code"]);
                     vehicleDispatchDetailVo.Stand_by_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["stand_by_flag"]);
                     vehicleDispatchDetailVo.Classification_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["classification_flag"]);
                     vehicleDispatchDetailVo.Add_worker_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["add_worker_flag"]);
@@ -364,6 +368,7 @@ namespace Dao {
                              "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Five_lap) + "'," +
                              "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Move_flag) + "'," +
                              "'" + _defaultValue.GetDefaultValue<string>(vehicleDispatchDetailVo.Day_of_week) + "'," +
+                             "'" + _defaultValue.GetDefaultValue<int>(vehicleDispatchDetailVo.Shift_code) + "'," +
                              "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Stand_by_flag) + "'," +
                              "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Classification_flag) + "'," +
                              "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Add_worker_flag) + "'," +
@@ -422,6 +427,7 @@ namespace Dao {
                                                                          "five_lap," +
                                                                          "move_flag," +
                                                                          "day_of_week," +
+                                                                         "shift_code," +
                                                                          "stand_by_flag," +
                                                                          "classification_flag," +
                                                                          "add_worker_flag," +
@@ -514,6 +520,7 @@ namespace Dao {
                                          "five_lap = (SELECT five_lap FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
                                          "move_flag = (SELECT move_flag FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
                                          "day_of_week = (SELECT day_of_week FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
+                                         "shift_code = (SELECT shift_code FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
                                          "stand_by_flag = (SELECT stand_by_flag FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
                                          "classification_flag = (SELECT classification_flag FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
                                          "add_worker_flag = (SELECT add_worker_flag FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
@@ -555,6 +562,7 @@ namespace Dao {
                                          "five_lap = '" + setMasterVo.Five_lap + "'," +
                                          "move_flag = '" + setMasterVo.Move_flag + "'," +
                                          "day_of_week = '" + operationDate.ToString("ddd") + "'," +
+                                         "shift_code = 1," +
                                          "set_code = '" + setMasterVo.Set_code + "'," +
                                          "set_note = '" + setMasterVo.Remarks + "'," +
                                          "last_roll_call_flag = 'False'," +
@@ -593,6 +601,7 @@ namespace Dao {
                                          "move_flag = 'False'," +
                                          "day_of_week = ''," +
                                          "stand_by_flag = 'False'," +
+                                         "shift_code = 0," +
                                          "classification_flag = 'False'," +
                                          "add_worker_flag = 'False'," +
                                          "set_code = 0," +
@@ -1027,6 +1036,32 @@ namespace Dao {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "UPDATE vehicle_dispatch_detail " +
                                      "SET stand_by_flag = '" + standByFlag + "'," +
+                                         "update_pc_name = '" + Environment.MachineName + "'," +
+                                         "update_ymd_hms = '" + DateTime.Now + "' " +
+                                     "WHERE cell_number = " + dropCellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                return sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// UpdateShiftCode
+        /// 番手コードを設定する
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="dropCellNumber"></param>
+        /// <param name="shiftCode"></param>
+        /// <returns></returns>
+        public int UpdateShiftCode(DateTime operationDate, int dropCellNumber, int shiftCode) {
+            /*
+             * Tagがゼロから始まっているので１をプラスする
+             */
+            dropCellNumber++;
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE vehicle_dispatch_detail " +
+                                     "SET shift_code = " + shiftCode + "," +
                                          "update_pc_name = '" + Environment.MachineName + "'," +
                                          "update_ymd_hms = '" + DateTime.Now + "' " +
                                      "WHERE cell_number = " + dropCellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";

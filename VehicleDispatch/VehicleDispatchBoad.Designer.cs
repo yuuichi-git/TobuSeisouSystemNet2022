@@ -122,6 +122,7 @@
             ToolStripMenuItemAddWorkerTrue = new ToolStripMenuItem();
             ToolStripMenuItemAddWorkerFalse = new ToolStripMenuItem();
             ToolStripMenuItemShift = new ToolStripMenuItem();
+            ToolStripMenuItemNoneShift = new ToolStripMenuItem();
             ToolStripMenuItemFirstShift = new ToolStripMenuItem();
             ToolStripMenuItemLateShift = new ToolStripMenuItem();
             ToolStripMenuItemStandByFlag = new ToolStripMenuItem();
@@ -1271,23 +1272,31 @@
             // 
             // ToolStripMenuItemShift
             // 
-            ToolStripMenuItemShift.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemFirstShift, ToolStripMenuItemLateShift });
-            ToolStripMenuItemShift.Enabled = false;
+            ToolStripMenuItemShift.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemNoneShift, ToolStripMenuItemFirstShift, ToolStripMenuItemLateShift });
             ToolStripMenuItemShift.Name = "ToolStripMenuItemShift";
             ToolStripMenuItemShift.Size = new Size(234, 22);
             ToolStripMenuItemShift.Text = "早番・遅番";
             // 
+            // ToolStripMenuItemNoneShift
+            // 
+            ToolStripMenuItemNoneShift.Name = "ToolStripMenuItemNoneShift";
+            ToolStripMenuItemNoneShift.Size = new Size(150, 22);
+            ToolStripMenuItemNoneShift.Text = "設定を解除する";
+            ToolStripMenuItemNoneShift.Click += ToolStripMenuItem_Click;
+            // 
             // ToolStripMenuItemFirstShift
             // 
             ToolStripMenuItemFirstShift.Name = "ToolStripMenuItemFirstShift";
-            ToolStripMenuItemFirstShift.Size = new Size(180, 22);
+            ToolStripMenuItemFirstShift.Size = new Size(150, 22);
             ToolStripMenuItemFirstShift.Text = "早番に設定";
+            ToolStripMenuItemFirstShift.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemLateShift
             // 
             ToolStripMenuItemLateShift.Name = "ToolStripMenuItemLateShift";
-            ToolStripMenuItemLateShift.Size = new Size(180, 22);
+            ToolStripMenuItemLateShift.Size = new Size(150, 22);
             ToolStripMenuItemLateShift.Text = "遅番に設定";
+            ToolStripMenuItemLateShift.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemStandByFlag
             // 
@@ -1299,15 +1308,15 @@
             // ToolStripMenuItemStandByTrue
             // 
             ToolStripMenuItemStandByTrue.Name = "ToolStripMenuItemStandByTrue";
-            ToolStripMenuItemStandByTrue.Size = new Size(117, 22);
-            ToolStripMenuItemStandByTrue.Text = "設定する";
+            ToolStripMenuItemStandByTrue.Size = new Size(180, 22);
+            ToolStripMenuItemStandByTrue.Text = "待機を設定する";
             ToolStripMenuItemStandByTrue.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemStandByFalse
             // 
             ToolStripMenuItemStandByFalse.Name = "ToolStripMenuItemStandByFalse";
-            ToolStripMenuItemStandByFalse.Size = new Size(117, 22);
-            ToolStripMenuItemStandByFalse.Text = "解除する";
+            ToolStripMenuItemStandByFalse.Size = new Size(180, 22);
+            ToolStripMenuItemStandByFalse.Text = "設定を解除する";
             ToolStripMenuItemStandByFalse.Click += ToolStripMenuItem_Click;
             // 
             // toolStripSeparator7
@@ -1629,5 +1638,6 @@
         private ToolStripMenuItem ToolStripMenuItemShift;
         private ToolStripMenuItem ToolStripMenuItemFirstShift;
         private ToolStripMenuItem ToolStripMenuItemLateShift;
+        private ToolStripMenuItem ToolStripMenuItemNoneShift;
     }
 }

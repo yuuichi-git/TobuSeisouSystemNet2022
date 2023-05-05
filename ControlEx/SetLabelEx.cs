@@ -19,6 +19,13 @@ namespace ControlEx {
          * true:メモあり false:メモなし
          */
         private bool _memoFlag = false;
+        /*
+         * 番手コード
+         * 0:指定なし 1:早番 2:遅番
+         */
+        private int _shiftCode = 0;
+        private readonly Font _drawFontShiftCode = new Font("Yu Gothic UI", 11, FontStyle.Regular, GraphicsUnit.Pixel);
+        private readonly SolidBrush _brushColorShiftCode = new SolidBrush(Color.Red);
 
         private Color _setLabelBorderColor = new();
         private readonly Font _setLabelDrawFont = new Font("Yu Gothic UI", 13, FontStyle.Regular, GraphicsUnit.Pixel);
@@ -38,12 +45,12 @@ namespace ControlEx {
         private readonly Font _drawFontAddWorkerFlag = new Font("Yu Gothic UI", 10, FontStyle.Regular, GraphicsUnit.Pixel);
         private readonly SolidBrush _brushColorAddWorkerFlag = new SolidBrush(Color.Blue);
         /*
-        * StandByFlag
-        * 待機
-        */
+         * StandByFlag
+         * 待機
+         */
         private bool _standByFlag;
-        private readonly Font _drawFontStandByFlag = new Font("Yu Gothic UI", 10, FontStyle.Regular, GraphicsUnit.Pixel);
-        private readonly SolidBrush _brushColorStandByFlag = new SolidBrush(Color.Blue);
+        private readonly Font _drawFontStandByFlag = new Font("Yu Gothic UI", 11, FontStyle.Regular, GraphicsUnit.Pixel);
+        private readonly SolidBrush _brushColorStandByFlag = new SolidBrush(Color.Red);
 
         private readonly SolidBrush _brushColorBlack = new SolidBrush(Color.Black);
 
@@ -167,6 +174,10 @@ namespace ControlEx {
              */
             _addWorkerFlag = vehicleDispatchDetailVo.Add_worker_flag;
             /*
+             * 番手コード
+             */
+            _shiftCode = vehicleDispatchDetailVo.Shift_code;
+            /*
              * Stand_By_Flag
              */
             _standByFlag = vehicleDispatchDetailVo.Stand_by_flag;
@@ -250,6 +261,19 @@ namespace ControlEx {
                 e.Graphics.DrawString("待機", _drawFontStandByFlag, _brushColorStandByFlag, new Point(40, 50));
             }
             /*
+             * 
+             */
+            switch(_shiftCode) {
+                case 0:
+                    break;
+                case 1:
+                    e.Graphics.DrawString("早番", _drawFontShiftCode, _brushColorShiftCode, new Point(4, 50));
+                    break;
+                case 2:
+                    e.Graphics.DrawString("遅番", _drawFontShiftCode, _brushColorShiftCode, new Point(4, 50));
+                    break;
+            }
+            /*
              * 帰庫点呼の印を描画
              */
             if(_lastRollCallFlag) {
@@ -290,7 +314,6 @@ namespace ControlEx {
             get => _operationFlag;
             set => _operationFlag = value;
         }
-
         /// <summary>
         /// SetGarageFlag
         /// 本社・三郷で色を変える
@@ -362,6 +385,15 @@ namespace ControlEx {
         /// <param name="memoFlag"></param>
         public void SetMemoFlag(bool memoFlag) {
             _memoFlag = memoFlag;
+            this.Refresh();
+        }
+        /// <summary>
+        /// ShiftCode
+        /// 番手コード
+        /// 0:指定なし 1:早番 2:遅番
+        /// </summary>
+        public void SetShiftCode(int shiftCode) {
+            _shiftCode = shiftCode;
             this.Refresh();
         }
     }

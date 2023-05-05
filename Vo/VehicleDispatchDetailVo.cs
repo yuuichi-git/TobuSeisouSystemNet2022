@@ -3,6 +3,8 @@
  * 帰庫点呼関連
  * 2023-02-10 
  * 職種コードを追加(occupation)
+ * 2023-05-04
+ * 早番遅番コード
  */
 namespace Vo {
     public class VehicleDispatchDetailVo {
@@ -13,6 +15,7 @@ namespace Vo {
         private bool _five_lap;
         private bool _move_flag;
         private string _day_of_week = "";
+        private int _shift_code = 0;
         private bool _stand_by_flag;
         private bool _classification_flag;
         private bool _add_worker_flag;
@@ -115,6 +118,14 @@ namespace Vo {
         public string Day_of_week {
             get => _day_of_week;
             set => _day_of_week = value;
+        }
+        /// <summary>
+        /// 番手コード
+        /// 0:指定なし 1:早番 2:遅番
+        /// </summary>
+        public int Shift_code {
+            get => _shift_code;
+            set => _shift_code = value;
         }
         /// <summary>
         /// 待機フラグ(北粗大・台東資源)
