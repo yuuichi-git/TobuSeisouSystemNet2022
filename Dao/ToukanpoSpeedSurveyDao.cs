@@ -19,6 +19,7 @@ namespace Dao {
         /// <summary>
         /// GetEmploymentCount
         /// 雇上の件数を取得
+        /// 2023-05-06 fare_code = 21を追加。雇上大Gのclassification_codeが20(清掃工場)のため、運賃コードでSelectする
         /// </summary>
         /// <param name="operationDate"></param>
         /// <returns></returns>
@@ -30,7 +31,8 @@ namespace Dao {
                                      "LEFT OUTER JOIN set_master ON vehicle_dispatch_detail.set_code = set_master.set_code " +
                                      "WHERE operation_date = '" + operationDate + "' " + // 配車日
                                        "AND vehicle_dispatch_detail.operation_flag = 'true' " + // 稼働フラグ
-                                       "AND set_master.classification_code IN (10,12)"; // 雇上・臨時 ※基本臨時は雇上
+                                       "AND (set_master.classification_code IN (10,12) " + // 雇上・臨時 ※基本臨時は雇上
+                                       "OR set_master.fare_code = 21)"; // 運賃コード
             if(sqlCommand.ExecuteScalar() != null)
                 count = (int)sqlCommand.ExecuteScalar();
             return count;
