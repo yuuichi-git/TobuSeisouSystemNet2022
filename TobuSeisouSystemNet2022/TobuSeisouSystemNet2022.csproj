@@ -21,6 +21,7 @@
     <ProjectReference Include="..\Production\Production.csproj" />
     <ProjectReference Include="..\StaffDetail\StaffDetail.csproj" />
     <ProjectReference Include="..\Staff\Staff.csproj" />
+    <ProjectReference Include="..\ToukaiDenshi\ToukaiDenshi.csproj" />
     <ProjectReference Include="..\VehicleDispatchSheet\VehicleDispatchSheet.csproj" />
     <ProjectReference Include="..\VehicleDispatch\VehicleDispatch.csproj" />
     <ProjectReference Include="..\Vo\Vo.csproj" />

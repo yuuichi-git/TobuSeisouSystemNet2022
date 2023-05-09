@@ -25,6 +25,8 @@ using Staff;
 
 using StaffDetail;
 
+using ToukaiDenshi;
+
 using Toukanpo;
 
 using VehicleDispatch;
@@ -60,7 +62,7 @@ namespace TobuSeisouSystemNet2022 {
         /// <param name="e"></param>
         private void ButtonDbConnect_Click(object sender, EventArgs e) {
             try {
-               // 接続を試みる
+                // 接続を試みる
                 _connectionVo.Connect(ToolStripMenuItemLocalDataBase.Checked);
                 // ToolStripMenuItemDataBaseを無効にする
                 ToolStripMenuItemDataBase.Enabled = false;
@@ -450,6 +452,13 @@ namespace TobuSeisouSystemNet2022 {
                         break;
                     case "NodeAccident": // 事故受付
                         files.OpenFolder(@"\\192.168.1.21\iso14001\ISO事務局\② 事故受付");
+                        break;
+                    /*
+                     * 東海電子
+                     */
+                    case "NodeTokaiDenshi01": // 免許証マスターファイルを作成する
+                        ToukaiDenshiMaster toukaiDenshiMaster = new ToukaiDenshiMaster(_connectionVo);
+                        toukaiDenshiMaster.Show(this);
                         break;
                     default:
                         break;

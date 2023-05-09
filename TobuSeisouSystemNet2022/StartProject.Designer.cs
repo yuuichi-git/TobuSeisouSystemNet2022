@@ -120,6 +120,8 @@
             TreeNode treeNode95 = new TreeNode("三郷車庫");
             TreeNode treeNode96 = new TreeNode("中間処理場");
             TreeNode treeNode97 = new TreeNode("事故受付");
+            TreeNode treeNode98 = new TreeNode("免許証マスターファイルを作成する");
+            TreeNode treeNode99 = new TreeNode("東海電子(アルコールチェック)", new TreeNode[] { treeNode98 });
             TableLayoutPanelBase = new TableLayoutPanel();
             MenuStrip1 = new MenuStrip();
             ToolStripMenuItemMenu = new ToolStripMenuItem();
@@ -936,7 +938,11 @@
             treeNode96.Text = "中間処理場";
             treeNode97.Name = "NodeAccident";
             treeNode97.Text = "事故受付";
-            TreeView1.Nodes.AddRange(new TreeNode[] { treeNode1, treeNode41, treeNode93, treeNode94, treeNode95, treeNode96, treeNode97 });
+            treeNode98.Name = "NodeTokaiDenshi01";
+            treeNode98.Text = "免許証マスターファイルを作成する";
+            treeNode99.Name = "NodeTokai";
+            treeNode99.Text = "東海電子(アルコールチェック)";
+            TreeView1.Nodes.AddRange(new TreeNode[] { treeNode1, treeNode41, treeNode93, treeNode94, treeNode95, treeNode96, treeNode97, treeNode99 });
             TreeView1.Size = new Size(288, 647);
             TreeView1.TabIndex = 4;
             TreeView1.NodeMouseDoubleClick += TreeView1_NodeMouseDoubleClick;

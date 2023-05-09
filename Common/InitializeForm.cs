@@ -274,6 +274,19 @@ namespace Common {
         }
 
         /// <summary>
+        /// ToukaiDenshiMaster
+        /// </summary>
+        /// <param name="form"></param>
+        /// <returns></returns>
+        public Form ToukaiDenshiMaster(Form form) {
+            form.KeyPreview = true;
+            form.MaximumSize = new Size(1920, 1080);
+            form.MinimumSize = new Size(1920, 1048);
+            GetWorkingArea(form);
+            return form;
+        }
+
+        /// <summary>
         /// アプリケーションが開かれる画面のワークエリアを返す
         /// FHDでの最小サイズ(1920*1048)
         /// </summary>
