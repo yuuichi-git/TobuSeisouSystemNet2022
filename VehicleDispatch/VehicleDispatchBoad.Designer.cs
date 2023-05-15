@@ -46,7 +46,6 @@
             ToolStripStatusLabel1 = new ToolStripStatusLabel();
             ToolStripStatusLabelStatus = new ToolStripStatusLabel();
             PanelUp = new Panel();
-            UcDateTimeJpOperationDate = new ControlEx.UcDateTimeJp();
             FlowLayoutPanelExFree = new ControlEx.FlowLayoutPanelEx(components);
             label1 = new Label();
             ButtonUpdate = new Button();
@@ -150,6 +149,7 @@
             ToolStripMenuItemTelephoneMarkTrue = new ToolStripMenuItem();
             ToolStripMenuItemTelephoneMarkFalse = new ToolStripMenuItem();
             ToolTip1 = new ToolTip(components);
+            UcDateTimeJpOperationDate = new ControlEx.DateTimePickerJpEx();
             TableLayoutPanelBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -363,13 +363,6 @@
             PanelUp.Name = "PanelUp";
             PanelUp.Size = new Size(1898, 76);
             PanelUp.TabIndex = 2;
-            // 
-            // UcDateTimeJpOperationDate
-            // 
-            UcDateTimeJpOperationDate.Location = new Point(100, 28);
-            UcDateTimeJpOperationDate.Name = "UcDateTimeJpOperationDate";
-            UcDateTimeJpOperationDate.Size = new Size(183, 23);
-            UcDateTimeJpOperationDate.TabIndex = 6;
             // 
             // FlowLayoutPanelExFree
             // 
@@ -1308,14 +1301,14 @@
             // ToolStripMenuItemStandByTrue
             // 
             ToolStripMenuItemStandByTrue.Name = "ToolStripMenuItemStandByTrue";
-            ToolStripMenuItemStandByTrue.Size = new Size(180, 22);
+            ToolStripMenuItemStandByTrue.Size = new Size(150, 22);
             ToolStripMenuItemStandByTrue.Text = "待機を設定する";
             ToolStripMenuItemStandByTrue.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemStandByFalse
             // 
             ToolStripMenuItemStandByFalse.Name = "ToolStripMenuItemStandByFalse";
-            ToolStripMenuItemStandByFalse.Size = new Size(180, 22);
+            ToolStripMenuItemStandByFalse.Size = new Size(150, 22);
             ToolStripMenuItemStandByFalse.Text = "設定を解除する";
             ToolStripMenuItemStandByFalse.Click += ToolStripMenuItem_Click;
             // 
@@ -1459,6 +1452,15 @@
             ToolTip1.AutoPopDelay = 5000;
             ToolTip1.InitialDelay = 500;
             ToolTip1.ReshowDelay = 0;
+            // 
+            // UcDateTimeJpOperationDate
+            // 
+            UcDateTimeJpOperationDate.CustomFormat = " ";
+            UcDateTimeJpOperationDate.Format = DateTimePickerFormat.Custom;
+            UcDateTimeJpOperationDate.Location = new Point(100, 28);
+            UcDateTimeJpOperationDate.Name = "UcDateTimeJpOperationDate";
+            UcDateTimeJpOperationDate.Size = new Size(184, 23);
+            UcDateTimeJpOperationDate.TabIndex = 7;
             // 
             // VehicleDispatchBoad
             // 
@@ -1609,7 +1611,6 @@
         private ToolStripSeparator toolStripSeparator5;
         private ToolStripMenuItem ToolStripMenuItemTelephoneMarkTrue;
         private ToolStripMenuItem ToolStripMenuItemTelephoneMarkFalse;
-        private ControlEx.UcDateTimeJp UcDateTimeJpOperationDate;
         private ToolStripMenuItem ToolStripMenuItemStandByFlag;
         private ToolStripMenuItem ToolStripMenuItemStandByTrue;
         private ToolStripMenuItem ToolStripMenuItemStandByFalse;
@@ -1639,5 +1640,6 @@
         private ToolStripMenuItem ToolStripMenuItemFirstShift;
         private ToolStripMenuItem ToolStripMenuItemLateShift;
         private ToolStripMenuItem ToolStripMenuItemNoneShift;
+        private ControlEx.DateTimePickerJpEx UcDateTimeJpOperationDate;
     }
 }
