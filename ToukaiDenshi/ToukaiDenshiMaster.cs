@@ -103,9 +103,13 @@ namespace ToukaiDenshi {
                 SheetViewList.RemoveRows(0, SheetViewList.Rows.Count);
 
             int i = 0;
-            if(_listLicenseMasterVo is not null)
+            if(_listLicenseMasterVo is not null) {
                 foreach(var licenseMasterVo in _listLicenseMasterVo) {
-
+                    /*
+                     * 245番は予備で使用するので空けておく処理
+                     */
+                    if(i + 1 == 245)
+                        i++;
                     SheetViewList.Rows.Add(i, 1);
                     SheetViewList.RowHeader.Columns[0].Label = (i + 1).ToString(); // Rowヘッダ
                     SheetViewList.Rows[i].Height = 22; // Rowの高さ
@@ -121,6 +125,40 @@ namespace ToukaiDenshi {
                     SheetViewList.Cells[i, colNameKana].Text = licenseMasterVo.Name_kana;
                     i++;
                 }
+            }
+            /*
+             * 254番の予備を追加する
+             */
+            SheetViewList.Rows.Add(i, 1);
+            SheetViewList.RowHeader.Columns[0].Label = (i + 1).ToString(); // Rowヘッダ
+            SheetViewList.Rows[i].Height = 22; // Rowの高さ
+            SheetViewList.Rows[i].Resizable = false; // RowのResizableを禁止
+            SheetViewList.Cells[i, colId].Text = "245";
+            SheetViewList.Cells[i, colName].Text = "予備";
+            SheetViewList.Cells[i, colLicenseNumber].Text = "";
+            SheetViewList.Cells[i, colLicenseExpirationDate].Text = DateTime.Now.AddYears(2).ToString("yyyy/MM/dd");
+            SheetViewList.Cells[i, colIssuanceDate].Text = DateTime.Now.AddYears(-1).ToString("yyyy/MM/dd");
+            SheetViewList.Cells[i, colLicenseType].Text = "";
+            SheetViewList.Cells[i, colPin].Text = "無";
+            SheetViewList.Cells[i, colPicture].Text = "無";
+            SheetViewList.Cells[i, colNameKana].Text = "ヨビ";
+
+            /*
+             * 9999番の予備(点検用)を追加する
+             */
+            SheetViewList.Rows.Add(i, 1);
+            SheetViewList.RowHeader.Columns[0].Label = (i + 1).ToString(); // Rowヘッダ
+            SheetViewList.Rows[i].Height = 22; // Rowの高さ
+            SheetViewList.Rows[i].Resizable = false; // RowのResizableを禁止
+            SheetViewList.Cells[i, colId].Text = "9999";
+            SheetViewList.Cells[i, colName].Text = "点検用";
+            SheetViewList.Cells[i, colLicenseNumber].Text = "";
+            SheetViewList.Cells[i, colLicenseExpirationDate].Text = DateTime.Now.AddYears(2).ToString("yyyy/MM/dd");
+            SheetViewList.Cells[i, colIssuanceDate].Text = DateTime.Now.AddYears(-1).ToString("yyyy/MM/dd");
+            SheetViewList.Cells[i, colLicenseType].Text = "";
+            SheetViewList.Cells[i, colPin].Text = "無";
+            SheetViewList.Cells[i, colPicture].Text = "無";
+            SheetViewList.Cells[i, colNameKana].Text = "テンケンヨウ";
 
             // 先頭行（列）インデックスをセット
             SpreadList.SetViewportTopRow(0, spreadListTopRow);

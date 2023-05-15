@@ -58,7 +58,7 @@ namespace License {
         /// <param name="e"></param>
         private void ButtonUpdate_Click(object sender, EventArgs e) {
             var dialogResult = MessageBox.Show(MessageText.Message601, MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            switch (dialogResult) {
+            switch(dialogResult) {
                 case DialogResult.OK:
                     /*
                      * StaffMasterVoに値をセット
@@ -67,7 +67,7 @@ namespace License {
                     /*
                      * DBを変更(DBにstaff_codeが存在すればUPDATE、無ければINSERT)
                      */
-                    if (_licenseMasterDao.CheckLicenseMaster(licenseMasterVo.Staff_code)) {
+                    if(_licenseMasterDao.CheckLicenseMaster(licenseMasterVo.Staff_code)) {
                         _licenseMasterDao.UpdateOneLicenseLedger(licenseMasterVo);
                     } else {
                         _licenseMasterDao.InsertOneLicenseMaster(licenseMasterVo);
@@ -91,8 +91,8 @@ namespace License {
             licenseMasterVo.Name = TextBoxName.Text; // 氏名
             licenseMasterVo.Birth_date = DateBirthDate.GetValue(); // 生年月日
             licenseMasterVo.Current_address = TextBoxCurrentAddress.Text; // 住所
-            licenseMasterVo.Delivery_date = DateDeliveryDate.GetValue(); // 交付
-            licenseMasterVo.Expiration_date = DateExpirationDate.GetValue(); // 有効期限
+            licenseMasterVo.Delivery_date = DateTimePickerJpEx1.Value; // 交付
+            licenseMasterVo.Expiration_date = DateExpirationDate.Value; // 有効期限
             licenseMasterVo.License_condition = ComboBoxLicenseCondition.Text; // 条件等
             licenseMasterVo.License_number = TextBoxLicenseNumber.Text; // 番号
             licenseMasterVo.Get_date_1 = DateTimePickerGetDate1.GetValue(); // 二・小・原
@@ -127,8 +127,8 @@ namespace License {
             TextBoxName.Text = licenseMasterVo.Name; // 氏名
             DateBirthDate.SetValue(licenseMasterVo.Birth_date.Date); // 生年月日
             TextBoxCurrentAddress.Text = licenseMasterVo.Current_address; // 住所
-            DateDeliveryDate.SetValue(licenseMasterVo.Delivery_date.Date); // 交付
-            DateExpirationDate.SetValue(licenseMasterVo.Expiration_date.Date); // 有効期限
+            DateTimePickerJpEx1.Value = licenseMasterVo.Delivery_date.Date; // 交付
+            DateExpirationDate.Value = licenseMasterVo.Expiration_date.Date; // 有効期限
             ComboBoxLicenseCondition.Text = licenseMasterVo.License_condition; // 条件等
             TextBoxLicenseNumber.Text = licenseMasterVo.License_number; // 番号
             DateTimePickerGetDate1.SetValue(licenseMasterVo.Get_date_1.Date); // 二・小・原
@@ -148,11 +148,11 @@ namespace License {
             CheckBoxOrdinaryTwo.Checked = licenseMasterVo.Ordinary_two; //
             CheckBoxBigSpecialTwo.Checked = licenseMasterVo.Big_special_two; //
             CheckBoxTraction.Checked = licenseMasterVo.Traction; //
-            if (licenseMasterVo.Picture_head.Length != 0) {
+            if(licenseMasterVo.Picture_head.Length != 0) {
                 var imageConv = new ImageConverter();
                 PictureBoxHead.Image = (Image?)imageConv.ConvertFrom(licenseMasterVo.Picture_head); //写真表
             }
-            if (licenseMasterVo.Picture_tail.Length != 0) {
+            if(licenseMasterVo.Picture_tail.Length != 0) {
                 var imageConv = new ImageConverter();
                 PictureBoxTail.Image = (Image?)imageConv.ConvertFrom(licenseMasterVo.Picture_tail); //写真裏
             }
@@ -161,7 +161,7 @@ namespace License {
         private void InitializeComboBoxSelectName() {
             ComboBoxSelectName.Items.Clear();
             var listComboBoxSelectNameVo = new List<ComboBoxSelectNameVo>();
-            foreach (var staffLedgerVo in _listStaffMasterVo)
+            foreach(var staffLedgerVo in _listStaffMasterVo)
                 ComboBoxSelectName.Items.Add(new ComboBoxSelectNameVo(staffLedgerVo.Name, staffLedgerVo));
             ComboBoxSelectName.DisplayMember = "Name";
             // ここでイベント追加しないと初期化で発火しちゃうよ
@@ -181,11 +181,11 @@ namespace License {
                 _staffMasterVo = staffMasterVo;
             }
 
-            public string Name {
+            public string? Name {
                 get => _name;
                 set => _name = value;
             }
-            public StaffMasterVo StaffMasterVo {
+            public StaffMasterVo? StaffMasterVo {
                 get => _staffMasterVo;
                 set => _staffMasterVo = value;
             }
@@ -196,7 +196,7 @@ namespace License {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ComboBoxSelectName_SelectedIndexChanged(object? sender, EventArgs e) {
+        private void ComboBoxSelectName_SelectedIndexChanged(object sender, EventArgs e) {
             var staffMasterVo = ((ComboBoxSelectNameVo)((ComboBox)sender).SelectedItem).StaffMasterVo;
             // StaffLedgerVoの値をControlにセットする
             TextBoxStaffCode.Text = staffMasterVo.Staff_code.ToString();
@@ -215,8 +215,8 @@ namespace License {
             TextBoxName.Text = ""; // 氏名
             DateBirthDate.SetBlank(); // 生年月日
             TextBoxCurrentAddress.Text = ""; // 住所
-            DateDeliveryDate.SetBlank(); // 交付
-            DateExpirationDate.SetBlank(); // 有効期限
+            //DateTimePickerJpEx1.Value =  // 交付
+            //DateExpirationDate.Value = ; // 有効期限
             ComboBoxLicenseCondition.Text = ""; // 条件等
             TextBoxLicenseNumber.Text = ""; // 番号
             DateTimePickerGetDate1.SetBlank(); // 二・小・原
@@ -241,24 +241,6 @@ namespace License {
         }
 
         /// <summary>
-        /// SetDateTimePicker
-        /// </summary>
-        /// <param name="dateTimePicker"></param>
-        /// <param name="datetime"></param>
-        private void SetDateTimePicker(DateTimePicker dateTimePicker, DateTime? datetime) {
-            if (datetime == null || datetime == _defaultDateTime) {
-                // DateTimePickerFormat.Custom　にして、CostomFormatは半角の空白を入れておくと、日時が非表示になる。
-                dateTimePicker.Format = DateTimePickerFormat.Custom;
-                dateTimePicker.CustomFormat = " ";
-            } else {
-                // フォーマットを元に戻して、値をセットする。
-                dateTimePicker.Format = DateTimePickerFormat.Custom;
-                dateTimePicker.CustomFormat = "yyyy年MM月dd日(ddd)";
-                dateTimePicker.Value = (DateTime)datetime;
-            }
-        }
-
-        /// <summary>
         /// 写真選択(表裏共通)
         /// </summary>
         /// <param name="sender"></param>
@@ -270,8 +252,8 @@ namespace License {
             openFileDialog.Filter = "画像ファイル(*.gif,*.GIF,*.jpg,*.JPG,*.tif,*.TIF,*.png,*.PNG)|*.gif;*.GIF;*.jpg;*.JPG;*.tif;*.TIF;*.png;*.PNG;";
             openFileDialog.FilterIndex = 1;
             openFileDialog.RestoreDirectory = true; // ダイアログボックスを閉じる前に現在のディレクトリを復元するようにする
-            if (openFileDialog.ShowDialog() == DialogResult.OK) {
-                switch ((string)((Button)sender).Tag) {
+            if(openFileDialog.ShowDialog() == DialogResult.OK) {
+                switch((string)((Button)sender).Tag) {
                     case "PictureBoxHead":
                         PictureBoxHead.ImageLocation = openFileDialog.FileName; // Passをセットする
                         break;
@@ -291,7 +273,7 @@ namespace License {
         private void ButtonClipPicture_Click(object sender, EventArgs e) {
             // クリップボードを転送
             // なんか型のチェックはいらなさそう・・・エラーが出ないし・・・
-            switch ((string)((Button)sender).Tag) {
+            switch((string)((Button)sender).Tag) {
                 case "PictureBoxHead":
                     PictureBoxHead.Image = (Bitmap)Clipboard.GetDataObject().GetData(DataFormats.Bitmap);
                     break;
@@ -307,7 +289,7 @@ namespace License {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ButtonDeletePicture_Click(object sender, EventArgs e) {
-            switch ((string)((Button)sender).Tag) {
+            switch((string)((Button)sender).Tag) {
                 case "PictureBoxHead":
                     PictureBoxHead.Image = null;
                     break;
@@ -324,7 +306,7 @@ namespace License {
         /// <param name="e"></param>
         private void ContextMenuStrip1_Opening(object sender, System.ComponentModel.CancelEventArgs e) {
             var pictureBox = (PictureBox)((ContextMenuStrip)sender).SourceControl;
-            if (pictureBox.Image != null) {
+            if(pictureBox.Image != null) {
                 ((ContextMenuStrip)sender).Enabled = true;
             } else {
                 ((ContextMenuStrip)sender).Enabled = false;

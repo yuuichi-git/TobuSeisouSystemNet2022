@@ -16,7 +16,7 @@ namespace ControlEx {
             this.Format = DateTimePickerFormat.Custom;
             this.CustomFormat = _customFormat;
             /*
-             * SetControlExのイベントを登録
+             * イベントを登録
              */
             this.KeyPress += new KeyPressEventHandler(this.DateTimePickerEx_KeyPress);
         }

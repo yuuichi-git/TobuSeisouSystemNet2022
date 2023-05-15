@@ -4,5 +4,7 @@
             InitializeComponent();
         }
 
+        public static void Main() {
+        }
     }
 }

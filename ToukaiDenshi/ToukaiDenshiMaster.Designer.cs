@@ -37,6 +37,7 @@
             ButtonUpdate = new Button();
             SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("TableLayoutPanelBase.Controls"));
             SheetViewList = SpreadList.GetSheet(0);
+            label1 = new Label();
             TableLayoutPanelBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -123,6 +124,7 @@
             // 
             // PanelTop
             // 
+            PanelTop.Controls.Add(label1);
             PanelTop.Controls.Add(ButtonUpdate);
             PanelTop.Dock = DockStyle.Fill;
             PanelTop.Location = new Point(3, 27);
@@ -151,6 +153,16 @@
             SpreadList.Size = new Size(1898, 927);
             SpreadList.TabIndex = 4;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Yu Gothic UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(24, 16);
+            label1.Name = "label1";
+            label1.Size = new Size(470, 21);
+            label1.TabIndex = 2;
+            label1.Text = "免許証台帳に登録されていて、退職していない従業員が登録の対象です ";
+            // 
             // ToukaiDenshiMaster
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -169,6 +181,7 @@
             StatusStrip1.ResumeLayout(false);
             StatusStrip1.PerformLayout();
             PanelTop.ResumeLayout(false);
+            PanelTop.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)SpreadList).EndInit();
             ResumeLayout(false);
         }
@@ -188,5 +201,6 @@
         private ToolStripMenuItem ToolStripMenuItemExit;
         private FarPoint.Win.Spread.SheetView SheetViewList;
         private ToolStripMenuItem ToolStripMenuItemCsvExport;
+        private Label label1;
     }
 }
