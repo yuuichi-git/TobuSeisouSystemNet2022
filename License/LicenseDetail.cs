@@ -95,9 +95,9 @@ namespace License {
             licenseMasterVo.Expiration_date = DateExpirationDate.Value; // 有効期限
             licenseMasterVo.License_condition = ComboBoxLicenseCondition.Text; // 条件等
             licenseMasterVo.License_number = TextBoxLicenseNumber.Text; // 番号
-            licenseMasterVo.Get_date_1 = DateTimePickerGetDate1.GetValue(); // 二・小・原
-            licenseMasterVo.Get_date_2 = DateTimePickerGetDate2.GetValue(); // 他
-            licenseMasterVo.Get_date_3 = DateTimePickerGetDate3.GetValue(); // 二種
+            licenseMasterVo.Get_date_1 = DateTimePickerGetDate1.Value; // 二・小・原
+            licenseMasterVo.Get_date_2 = DateTimePickerGetDate2.Value; // 他
+            licenseMasterVo.Get_date_3 = DateTimePickerGetDate3.Value; // 二種
             licenseMasterVo.Large = CheckBoxLarge.Checked; //
             licenseMasterVo.Medium = CheckBoxMedium.Checked; //
             licenseMasterVo.Quasi_medium = CheckBoxQuasiMedium.Checked; //
@@ -131,9 +131,9 @@ namespace License {
             DateExpirationDate.Value = licenseMasterVo.Expiration_date.Date; // 有効期限
             ComboBoxLicenseCondition.Text = licenseMasterVo.License_condition; // 条件等
             TextBoxLicenseNumber.Text = licenseMasterVo.License_number; // 番号
-            DateTimePickerGetDate1.SetValue(licenseMasterVo.Get_date_1.Date); // 二・小・原
-            DateTimePickerGetDate2.SetValue(licenseMasterVo.Get_date_2.Date); // 他
-            DateTimePickerGetDate3.SetValue(licenseMasterVo.Get_date_3.Date); // 二種
+            DateTimePickerGetDate1.PutValue(licenseMasterVo.Get_date_1.Date); // 二・小・原
+            DateTimePickerGetDate2.PutValue(licenseMasterVo.Get_date_2.Date); // 他
+            DateTimePickerGetDate3.PutValue(licenseMasterVo.Get_date_3.Date); // 二種
             CheckBoxLarge.Checked = licenseMasterVo.Large; //
             CheckBoxMedium.Checked = licenseMasterVo.Medium; //
             CheckBoxQuasiMedium.Checked = licenseMasterVo.Quasi_medium; //
@@ -158,6 +158,9 @@ namespace License {
             }
         }
 
+        /// <summary>
+        /// InitializeComboBoxSelectName
+        /// </summary>
         private void InitializeComboBoxSelectName() {
             ComboBoxSelectName.Items.Clear();
             var listComboBoxSelectNameVo = new List<ComboBoxSelectNameVo>();
@@ -196,7 +199,7 @@ namespace License {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ComboBoxSelectName_SelectedIndexChanged(object sender, EventArgs e) {
+        private void ComboBoxSelectName_SelectedIndexChanged(object? sender, EventArgs e) {
             var staffMasterVo = ((ComboBoxSelectNameVo)((ComboBox)sender).SelectedItem).StaffMasterVo;
             // StaffLedgerVoの値をControlにセットする
             TextBoxStaffCode.Text = staffMasterVo.Staff_code.ToString();
@@ -219,9 +222,9 @@ namespace License {
             //DateExpirationDate.Value = ; // 有効期限
             ComboBoxLicenseCondition.Text = ""; // 条件等
             TextBoxLicenseNumber.Text = ""; // 番号
-            DateTimePickerGetDate1.SetBlank(); // 二・小・原
-            DateTimePickerGetDate2.SetBlank(); // 他
-            DateTimePickerGetDate3.SetBlank(); // 二種
+            //DateTimePickerGetDate1.= ; // 二・小・原
+            //DateTimePickerGetDate2.= ; // 他
+            //DateTimePickerGetDate3.= ; // 二種
             CheckBoxLarge.Checked = false; //
             CheckBoxMedium.Checked = false; //
             CheckBoxQuasiMedium.Checked = false; //

@@ -40,10 +40,8 @@
             label8 = new Label();
             ButtonUpdate = new Button();
             PanelLeft = new Panel();
+            DateExpirationDate = new ControlEx.DateTimePickerJpEx();
             DateTimePickerJpEx1 = new ControlEx.DateTimePickerJpEx();
-            DateTimePickerGetDate3 = new ControlEx.UcDateTimeJp();
-            DateTimePickerGetDate2 = new ControlEx.UcDateTimeJp();
-            DateTimePickerGetDate1 = new ControlEx.UcDateTimeJp();
             DateBirthDate = new ControlEx.UcDateTimeJp();
             label6 = new Label();
             TextBoxStaffCode = new TextBox();
@@ -89,7 +87,9 @@
             ContextMenuStrip1 = new ContextMenuStrip(components);
             ToolStripMenuItemPrint = new ToolStripMenuItem();
             PictureBoxHead = new PictureBox();
-            DateExpirationDate = new ControlEx.DateTimePickerJpEx();
+            DateTimePickerGetDate1 = new ControlEx.DateTimePickerJpEx();
+            DateTimePickerGetDate2 = new ControlEx.DateTimePickerJpEx();
+            DateTimePickerGetDate3 = new ControlEx.DateTimePickerJpEx();
             TableLayoutPanelBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -248,11 +248,11 @@
             // 
             // PanelLeft
             // 
-            PanelLeft.Controls.Add(DateExpirationDate);
-            PanelLeft.Controls.Add(DateTimePickerJpEx1);
             PanelLeft.Controls.Add(DateTimePickerGetDate3);
             PanelLeft.Controls.Add(DateTimePickerGetDate2);
             PanelLeft.Controls.Add(DateTimePickerGetDate1);
+            PanelLeft.Controls.Add(DateExpirationDate);
+            PanelLeft.Controls.Add(DateTimePickerJpEx1);
             PanelLeft.Controls.Add(DateBirthDate);
             PanelLeft.Controls.Add(label6);
             PanelLeft.Controls.Add(TextBoxStaffCode);
@@ -279,6 +279,15 @@
             PanelLeft.Size = new Size(599, 666);
             PanelLeft.TabIndex = 3;
             // 
+            // DateExpirationDate
+            // 
+            DateExpirationDate.CustomFormat = " ";
+            DateExpirationDate.Format = DateTimePickerFormat.Custom;
+            DateExpirationDate.Location = new Point(76, 180);
+            DateExpirationDate.Name = "DateExpirationDate";
+            DateExpirationDate.Size = new Size(184, 23);
+            DateExpirationDate.TabIndex = 110;
+            // 
             // DateTimePickerJpEx1
             // 
             DateTimePickerJpEx1.CustomFormat = " ";
@@ -287,27 +296,6 @@
             DateTimePickerJpEx1.Name = "DateTimePickerJpEx1";
             DateTimePickerJpEx1.Size = new Size(184, 23);
             DateTimePickerJpEx1.TabIndex = 109;
-            // 
-            // DateTimePickerGetDate3
-            // 
-            DateTimePickerGetDate3.Location = new Point(76, 320);
-            DateTimePickerGetDate3.Name = "DateTimePickerGetDate3";
-            DateTimePickerGetDate3.Size = new Size(183, 23);
-            DateTimePickerGetDate3.TabIndex = 108;
-            // 
-            // DateTimePickerGetDate2
-            // 
-            DateTimePickerGetDate2.Location = new Point(76, 292);
-            DateTimePickerGetDate2.Name = "DateTimePickerGetDate2";
-            DateTimePickerGetDate2.Size = new Size(183, 23);
-            DateTimePickerGetDate2.TabIndex = 107;
-            // 
-            // DateTimePickerGetDate1
-            // 
-            DateTimePickerGetDate1.Location = new Point(76, 264);
-            DateTimePickerGetDate1.Name = "DateTimePickerGetDate1";
-            DateTimePickerGetDate1.Size = new Size(183, 23);
-            DateTimePickerGetDate1.TabIndex = 106;
             // 
             // DateBirthDate
             // 
@@ -768,14 +756,32 @@
             PictureBoxHead.TabIndex = 0;
             PictureBoxHead.TabStop = false;
             // 
-            // DateExpirationDate
+            // DateTimePickerGetDate1
             // 
-            DateExpirationDate.CustomFormat = " ";
-            DateExpirationDate.Format = DateTimePickerFormat.Custom;
-            DateExpirationDate.Location = new Point(76, 180);
-            DateExpirationDate.Name = "DateExpirationDate";
-            DateExpirationDate.Size = new Size(184, 23);
-            DateExpirationDate.TabIndex = 110;
+            DateTimePickerGetDate1.CustomFormat = " ";
+            DateTimePickerGetDate1.Format = DateTimePickerFormat.Custom;
+            DateTimePickerGetDate1.Location = new Point(76, 264);
+            DateTimePickerGetDate1.Name = "DateTimePickerGetDate1";
+            DateTimePickerGetDate1.Size = new Size(184, 23);
+            DateTimePickerGetDate1.TabIndex = 111;
+            // 
+            // DateTimePickerGetDate2
+            // 
+            DateTimePickerGetDate2.CustomFormat = " ";
+            DateTimePickerGetDate2.Format = DateTimePickerFormat.Custom;
+            DateTimePickerGetDate2.Location = new Point(76, 292);
+            DateTimePickerGetDate2.Name = "DateTimePickerGetDate2";
+            DateTimePickerGetDate2.Size = new Size(184, 23);
+            DateTimePickerGetDate2.TabIndex = 112;
+            // 
+            // DateTimePickerGetDate3
+            // 
+            DateTimePickerGetDate3.CustomFormat = " ";
+            DateTimePickerGetDate3.Format = DateTimePickerFormat.Custom;
+            DateTimePickerGetDate3.Location = new Point(76, 320);
+            DateTimePickerGetDate3.Name = "DateTimePickerGetDate3";
+            DateTimePickerGetDate3.Size = new Size(184, 23);
+            DateTimePickerGetDate3.TabIndex = 113;
             // 
             // LicenseDetail
             // 
@@ -872,11 +878,11 @@
         private ContextMenuStrip ContextMenuStrip1;
         private ToolStripMenuItem ToolStripMenuItemPrint;
         private ControlEx.UcDateTimeJp DateBirthDate;
-        private ControlEx.UcDateTimeJp DateTimePickerGetDate3;
-        private ControlEx.UcDateTimeJp DateTimePickerGetDate2;
-        private ControlEx.UcDateTimeJp DateTimePickerGetDate1;
         private ControlEx.DateTimePickerEx DateTimePickerJpExDeliveryDate;
         private ControlEx.DateTimePickerJpEx DateTimePickerJpEx1;
         private ControlEx.DateTimePickerJpEx DateExpirationDate;
+        private ControlEx.DateTimePickerJpEx DateTimePickerGetDate3;
+        private ControlEx.DateTimePickerJpEx DateTimePickerGetDate2;
+        private ControlEx.DateTimePickerJpEx DateTimePickerGetDate1;
     }
 }
