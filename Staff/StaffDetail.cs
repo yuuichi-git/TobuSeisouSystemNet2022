@@ -458,8 +458,8 @@ namespace Staff {
             staffMasterVo.Name_kana = TextBoxNameKana.Text; // フリガナ
             staffMasterVo.Name = TextBoxName.Text; // 氏名
             staffMasterVo.Display_name = TextBoxDisplayName.Text; // 略称名
-            staffMasterVo.Birth_date = DateBirthDate.GetText().Length > 0 ? DateBirthDate.GetValue() : _defaultDateTime; // 生年月日
-            staffMasterVo.Employment_date = DateEmploymentDate.GetText().Length > 0 ? DateEmploymentDate.GetValue() : _defaultDateTime; // 雇用年月日
+            staffMasterVo.Birth_date = DateBirthDate.Text.Length > 0 ? DateBirthDate.Value : _defaultDateTime; // 生年月日
+            staffMasterVo.Employment_date = DateEmploymentDate.Text.Length > 0 ? DateEmploymentDate.Value : _defaultDateTime; // 雇用年月日
             staffMasterVo.Gender = ComboBoxGender.Text; // 性別
             staffMasterVo.Blood_type = ComboBoxBloodType.Text; // 血液型
             staffMasterVo.Current_address = TextBoxCurrentAddress.Text; // 現住所
@@ -470,8 +470,8 @@ namespace Staff {
             /*
              * 運転に関する情報
              */
-            staffMasterVo.Selection_date = DateSelectionDate.GetText().Length > 0 ? DateSelectionDate.GetValue() : _defaultDateTime; // 運転者に選任された日
-            staffMasterVo.Not_selection_date = DateNotSelectionDate.GetText().Length > 0 ? DateNotSelectionDate.GetValue() : _defaultDateTime; // 運転者でなくなった日
+            staffMasterVo.Selection_date = DateSelectionDate.Text.Length > 0 ? DateSelectionDate.Value : _defaultDateTime; // 運転者に選任された日
+            staffMasterVo.Not_selection_date = DateNotSelectionDate.Text.Length > 0 ? DateNotSelectionDate.Value : _defaultDateTime; // 運転者でなくなった日
             staffMasterVo.Not_selection_reason = TextBoxNotSelectionReason.Text; // 理由
             staffMasterVo.License_number = TextBoxLicenseNumber.Text; // 免許証番号
             /*

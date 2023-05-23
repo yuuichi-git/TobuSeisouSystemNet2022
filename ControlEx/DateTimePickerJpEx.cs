@@ -60,12 +60,29 @@ namespace ControlEx {
         }
 
         /// <summary>
+        /// GetValue
+        /// </summary>
+        /// <returns></returns>
+        public DateTime GetValue() {
+            return this.Value;
+        }
+
+        /// <summary>
+        /// SetBlank
+        /// </summary>
+        public void SetBlank() {
+            this.Value = new DateTime(1900, 01, 01, 0, 00, 00);
+            this.CustomFormat = string.Concat(" ");
+            this.Refresh();
+        }
+
+        /// <summary>
         /// PutValue
         /// Value値を設定する
         /// 1900-01-01の場合はブランクを表示する
         /// </summary>
         /// <param name="dateTime"></param>
-        public void PutValue(DateTime dateTime) {
+        public void SetValue(DateTime dateTime) {
             if(dateTime.Date != new DateTime(1900, 01, 01) || this.CustomFormat != " ") {
                 this.Value = dateTime;
                 this.CustomFormat = string.Concat(" ", dateTime.ToString("ggyy", Japanese) + "年MM月dd日(dddd)");
@@ -75,7 +92,6 @@ namespace ControlEx {
                 this.CustomFormat = string.Concat(" ");
                 this.Refresh();
             }
-
         }
     }
 }

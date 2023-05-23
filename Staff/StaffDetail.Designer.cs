@@ -94,18 +94,18 @@
             label44 = new Label();
             groupBox8 = new GroupBox();
             groupBox5 = new GroupBox();
-            DateLicenseTypeExpirationDate5 = new ControlEx.UcDateTimeJp();
-            DateLicenseTypeExpirationDate4 = new ControlEx.UcDateTimeJp();
-            DateLicenseTypeExpirationDate3 = new ControlEx.UcDateTimeJp();
-            DateLicenseTypeExpirationDate2 = new ControlEx.UcDateTimeJp();
-            DateLicenseTypeExpirationDate1 = new ControlEx.UcDateTimeJp();
-            DateLicenseTypeDate5 = new ControlEx.UcDateTimeJp();
-            DateLicenseTypeDate4 = new ControlEx.UcDateTimeJp();
-            DateLicenseTypeDate3 = new ControlEx.UcDateTimeJp();
-            DateLicenseTypeDate2 = new ControlEx.UcDateTimeJp();
-            DateLicenseTypeDate1 = new ControlEx.UcDateTimeJp();
-            DateNotSelectionDate = new ControlEx.UcDateTimeJp();
-            DateSelectionDate = new ControlEx.UcDateTimeJp();
+            DateLicenseTypeExpirationDate5 = new ControlEx.DateTimePickerJpEx();
+            DateLicenseTypeDate5 = new ControlEx.DateTimePickerJpEx();
+            DateLicenseTypeExpirationDate4 = new ControlEx.DateTimePickerJpEx();
+            DateLicenseTypeDate4 = new ControlEx.DateTimePickerJpEx();
+            DateLicenseTypeExpirationDate3 = new ControlEx.DateTimePickerJpEx();
+            DateLicenseTypeDate3 = new ControlEx.DateTimePickerJpEx();
+            DateLicenseTypeExpirationDate2 = new ControlEx.DateTimePickerJpEx();
+            DateLicenseTypeDate2 = new ControlEx.DateTimePickerJpEx();
+            DateLicenseTypeExpirationDate1 = new ControlEx.DateTimePickerJpEx();
+            DateLicenseTypeDate1 = new ControlEx.DateTimePickerJpEx();
+            DateNotSelectionDate = new ControlEx.DateTimePickerJpEx();
+            DateSelectionDate = new ControlEx.DateTimePickerJpEx();
             ComboBoxLicenseCondition = new ComboBox();
             label27 = new Label();
             label26 = new Label();
@@ -128,8 +128,8 @@
             label16 = new Label();
             label15 = new Label();
             groupBox4 = new GroupBox();
-            DateEmploymentDate = new ControlEx.UcDateTimeJp();
-            DateBirthDate = new ControlEx.UcDateTimeJp();
+            DateEmploymentDate = new ControlEx.DateTimePickerJpEx();
+            DateBirthDate = new ControlEx.DateTimePickerJpEx();
             TextBoxRemarks = new TextBox();
             ButtonDeletePicture = new Button();
             ButtonClipPicture = new Button();
@@ -1035,14 +1035,14 @@
             // groupBox5
             // 
             groupBox5.Controls.Add(DateLicenseTypeExpirationDate5);
-            groupBox5.Controls.Add(DateLicenseTypeExpirationDate4);
-            groupBox5.Controls.Add(DateLicenseTypeExpirationDate3);
-            groupBox5.Controls.Add(DateLicenseTypeExpirationDate2);
-            groupBox5.Controls.Add(DateLicenseTypeExpirationDate1);
             groupBox5.Controls.Add(DateLicenseTypeDate5);
+            groupBox5.Controls.Add(DateLicenseTypeExpirationDate4);
             groupBox5.Controls.Add(DateLicenseTypeDate4);
+            groupBox5.Controls.Add(DateLicenseTypeExpirationDate3);
             groupBox5.Controls.Add(DateLicenseTypeDate3);
+            groupBox5.Controls.Add(DateLicenseTypeExpirationDate2);
             groupBox5.Controls.Add(DateLicenseTypeDate2);
+            groupBox5.Controls.Add(DateLicenseTypeExpirationDate1);
             groupBox5.Controls.Add(DateLicenseTypeDate1);
             groupBox5.Controls.Add(DateNotSelectionDate);
             groupBox5.Controls.Add(DateSelectionDate);
@@ -1076,95 +1076,119 @@
             // 
             // DateLicenseTypeExpirationDate5
             // 
+            DateLicenseTypeExpirationDate5.CustomFormat = " ";
             DateLicenseTypeExpirationDate5.Enabled = false;
+            DateLicenseTypeExpirationDate5.Format = DateTimePickerFormat.Custom;
             DateLicenseTypeExpirationDate5.Location = new Point(432, 244);
             DateLicenseTypeExpirationDate5.Name = "DateLicenseTypeExpirationDate5";
-            DateLicenseTypeExpirationDate5.Size = new Size(183, 23);
-            DateLicenseTypeExpirationDate5.TabIndex = 101;
-            // 
-            // DateLicenseTypeExpirationDate4
-            // 
-            DateLicenseTypeExpirationDate4.Enabled = false;
-            DateLicenseTypeExpirationDate4.Location = new Point(432, 216);
-            DateLicenseTypeExpirationDate4.Name = "DateLicenseTypeExpirationDate4";
-            DateLicenseTypeExpirationDate4.Size = new Size(183, 23);
-            DateLicenseTypeExpirationDate4.TabIndex = 100;
-            // 
-            // DateLicenseTypeExpirationDate3
-            // 
-            DateLicenseTypeExpirationDate3.Enabled = false;
-            DateLicenseTypeExpirationDate3.Location = new Point(432, 188);
-            DateLicenseTypeExpirationDate3.Name = "DateLicenseTypeExpirationDate3";
-            DateLicenseTypeExpirationDate3.Size = new Size(183, 23);
-            DateLicenseTypeExpirationDate3.TabIndex = 99;
-            // 
-            // DateLicenseTypeExpirationDate2
-            // 
-            DateLicenseTypeExpirationDate2.Enabled = false;
-            DateLicenseTypeExpirationDate2.Location = new Point(432, 160);
-            DateLicenseTypeExpirationDate2.Name = "DateLicenseTypeExpirationDate2";
-            DateLicenseTypeExpirationDate2.Size = new Size(183, 23);
-            DateLicenseTypeExpirationDate2.TabIndex = 98;
-            // 
-            // DateLicenseTypeExpirationDate1
-            // 
-            DateLicenseTypeExpirationDate1.Location = new Point(432, 132);
-            DateLicenseTypeExpirationDate1.Name = "DateLicenseTypeExpirationDate1";
-            DateLicenseTypeExpirationDate1.Size = new Size(183, 23);
-            DateLicenseTypeExpirationDate1.TabIndex = 97;
+            DateLicenseTypeExpirationDate5.Size = new Size(180, 23);
+            DateLicenseTypeExpirationDate5.TabIndex = 112;
             // 
             // DateLicenseTypeDate5
             // 
+            DateLicenseTypeDate5.CustomFormat = " ";
             DateLicenseTypeDate5.Enabled = false;
+            DateLicenseTypeDate5.Format = DateTimePickerFormat.Custom;
             DateLicenseTypeDate5.Location = new Point(240, 244);
             DateLicenseTypeDate5.Name = "DateLicenseTypeDate5";
-            DateLicenseTypeDate5.Size = new Size(183, 23);
-            DateLicenseTypeDate5.TabIndex = 96;
+            DateLicenseTypeDate5.Size = new Size(180, 23);
+            DateLicenseTypeDate5.TabIndex = 111;
+            // 
+            // DateLicenseTypeExpirationDate4
+            // 
+            DateLicenseTypeExpirationDate4.CustomFormat = " ";
+            DateLicenseTypeExpirationDate4.Enabled = false;
+            DateLicenseTypeExpirationDate4.Format = DateTimePickerFormat.Custom;
+            DateLicenseTypeExpirationDate4.Location = new Point(432, 216);
+            DateLicenseTypeExpirationDate4.Name = "DateLicenseTypeExpirationDate4";
+            DateLicenseTypeExpirationDate4.Size = new Size(180, 23);
+            DateLicenseTypeExpirationDate4.TabIndex = 110;
             // 
             // DateLicenseTypeDate4
             // 
+            DateLicenseTypeDate4.CustomFormat = " ";
             DateLicenseTypeDate4.Enabled = false;
+            DateLicenseTypeDate4.Format = DateTimePickerFormat.Custom;
             DateLicenseTypeDate4.Location = new Point(240, 216);
             DateLicenseTypeDate4.Name = "DateLicenseTypeDate4";
-            DateLicenseTypeDate4.Size = new Size(183, 23);
-            DateLicenseTypeDate4.TabIndex = 95;
+            DateLicenseTypeDate4.Size = new Size(180, 23);
+            DateLicenseTypeDate4.TabIndex = 109;
+            // 
+            // DateLicenseTypeExpirationDate3
+            // 
+            DateLicenseTypeExpirationDate3.CustomFormat = " ";
+            DateLicenseTypeExpirationDate3.Enabled = false;
+            DateLicenseTypeExpirationDate3.Format = DateTimePickerFormat.Custom;
+            DateLicenseTypeExpirationDate3.Location = new Point(432, 188);
+            DateLicenseTypeExpirationDate3.Name = "DateLicenseTypeExpirationDate3";
+            DateLicenseTypeExpirationDate3.Size = new Size(180, 23);
+            DateLicenseTypeExpirationDate3.TabIndex = 108;
             // 
             // DateLicenseTypeDate3
             // 
+            DateLicenseTypeDate3.CustomFormat = " ";
             DateLicenseTypeDate3.Enabled = false;
+            DateLicenseTypeDate3.Format = DateTimePickerFormat.Custom;
             DateLicenseTypeDate3.Location = new Point(240, 188);
             DateLicenseTypeDate3.Name = "DateLicenseTypeDate3";
-            DateLicenseTypeDate3.Size = new Size(183, 23);
-            DateLicenseTypeDate3.TabIndex = 94;
+            DateLicenseTypeDate3.Size = new Size(180, 23);
+            DateLicenseTypeDate3.TabIndex = 107;
+            // 
+            // DateLicenseTypeExpirationDate2
+            // 
+            DateLicenseTypeExpirationDate2.CustomFormat = " ";
+            DateLicenseTypeExpirationDate2.Enabled = false;
+            DateLicenseTypeExpirationDate2.Format = DateTimePickerFormat.Custom;
+            DateLicenseTypeExpirationDate2.Location = new Point(432, 160);
+            DateLicenseTypeExpirationDate2.Name = "DateLicenseTypeExpirationDate2";
+            DateLicenseTypeExpirationDate2.Size = new Size(180, 23);
+            DateLicenseTypeExpirationDate2.TabIndex = 106;
             // 
             // DateLicenseTypeDate2
             // 
+            DateLicenseTypeDate2.CustomFormat = " ";
             DateLicenseTypeDate2.Enabled = false;
+            DateLicenseTypeDate2.Format = DateTimePickerFormat.Custom;
             DateLicenseTypeDate2.Location = new Point(240, 160);
             DateLicenseTypeDate2.Name = "DateLicenseTypeDate2";
-            DateLicenseTypeDate2.Size = new Size(183, 23);
-            DateLicenseTypeDate2.TabIndex = 93;
+            DateLicenseTypeDate2.Size = new Size(180, 23);
+            DateLicenseTypeDate2.TabIndex = 105;
+            // 
+            // DateLicenseTypeExpirationDate1
+            // 
+            DateLicenseTypeExpirationDate1.CustomFormat = " ";
+            DateLicenseTypeExpirationDate1.Format = DateTimePickerFormat.Custom;
+            DateLicenseTypeExpirationDate1.Location = new Point(432, 132);
+            DateLicenseTypeExpirationDate1.Name = "DateLicenseTypeExpirationDate1";
+            DateLicenseTypeExpirationDate1.Size = new Size(180, 23);
+            DateLicenseTypeExpirationDate1.TabIndex = 104;
             // 
             // DateLicenseTypeDate1
             // 
+            DateLicenseTypeDate1.CustomFormat = " ";
+            DateLicenseTypeDate1.Format = DateTimePickerFormat.Custom;
             DateLicenseTypeDate1.Location = new Point(240, 132);
             DateLicenseTypeDate1.Name = "DateLicenseTypeDate1";
-            DateLicenseTypeDate1.Size = new Size(183, 23);
-            DateLicenseTypeDate1.TabIndex = 92;
+            DateLicenseTypeDate1.Size = new Size(180, 23);
+            DateLicenseTypeDate1.TabIndex = 103;
             // 
             // DateNotSelectionDate
             // 
+            DateNotSelectionDate.CustomFormat = " ";
+            DateNotSelectionDate.Format = DateTimePickerFormat.Custom;
             DateNotSelectionDate.Location = new Point(136, 52);
             DateNotSelectionDate.Name = "DateNotSelectionDate";
-            DateNotSelectionDate.Size = new Size(183, 23);
-            DateNotSelectionDate.TabIndex = 91;
+            DateNotSelectionDate.Size = new Size(180, 23);
+            DateNotSelectionDate.TabIndex = 102;
             // 
             // DateSelectionDate
             // 
+            DateSelectionDate.CustomFormat = " ";
+            DateSelectionDate.Format = DateTimePickerFormat.Custom;
             DateSelectionDate.Location = new Point(136, 24);
             DateSelectionDate.Name = "DateSelectionDate";
-            DateSelectionDate.Size = new Size(183, 23);
-            DateSelectionDate.TabIndex = 32;
+            DateSelectionDate.Size = new Size(180, 23);
+            DateSelectionDate.TabIndex = 33;
             // 
             // ComboBoxLicenseCondition
             // 
@@ -1397,17 +1421,21 @@
             // 
             // DateEmploymentDate
             // 
-            DateEmploymentDate.Location = new Point(312, 80);
+            DateEmploymentDate.CustomFormat = " ";
+            DateEmploymentDate.Format = DateTimePickerFormat.Custom;
+            DateEmploymentDate.Location = new Point(316, 80);
             DateEmploymentDate.Name = "DateEmploymentDate";
-            DateEmploymentDate.Size = new Size(183, 23);
-            DateEmploymentDate.TabIndex = 31;
+            DateEmploymentDate.Size = new Size(180, 23);
+            DateEmploymentDate.TabIndex = 32;
             // 
             // DateBirthDate
             // 
-            DateBirthDate.Location = new Point(56, 80);
+            DateBirthDate.CustomFormat = " ";
+            DateBirthDate.Format = DateTimePickerFormat.Custom;
+            DateBirthDate.Location = new Point(64, 80);
             DateBirthDate.Name = "DateBirthDate";
-            DateBirthDate.Size = new Size(183, 23);
-            DateBirthDate.TabIndex = 5;
+            DateBirthDate.Size = new Size(180, 23);
+            DateBirthDate.TabIndex = 9;
             // 
             // TextBoxRemarks
             // 
@@ -1561,7 +1589,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(244, 84);
+            label8.Location = new Point(248, 84);
             label8.Name = "label8";
             label8.Size = new Size(67, 15);
             label8.TabIndex = 14;
@@ -3765,20 +3793,6 @@
         private RadioButton RadioButtonPart1;
         private RadioButton RadioButtonStaff;
         private RadioButton RadioButtonNone1;
-        private ControlEx.UcDateTimeJp DateBirthDate;
-        private ControlEx.UcDateTimeJp DateEmploymentDate;
-        private ControlEx.UcDateTimeJp DateSelectionDate;
-        private ControlEx.UcDateTimeJp DateNotSelectionDate;
-        private ControlEx.UcDateTimeJp DateLicenseTypeExpirationDate5;
-        private ControlEx.UcDateTimeJp DateLicenseTypeExpirationDate4;
-        private ControlEx.UcDateTimeJp DateLicenseTypeExpirationDate3;
-        private ControlEx.UcDateTimeJp DateLicenseTypeExpirationDate2;
-        private ControlEx.UcDateTimeJp DateLicenseTypeExpirationDate1;
-        private ControlEx.UcDateTimeJp DateLicenseTypeDate5;
-        private ControlEx.UcDateTimeJp DateLicenseTypeDate4;
-        private ControlEx.UcDateTimeJp DateLicenseTypeDate3;
-        private ControlEx.UcDateTimeJp DateLicenseTypeDate2;
-        private ControlEx.UcDateTimeJp DateLicenseTypeDate1;
         private ControlEx.UcDateTimeJp DateHistoryDate6;
         private ControlEx.UcDateTimeJp DateHistoryDate5;
         private ControlEx.UcDateTimeJp DateHistoryDate4;
@@ -3821,5 +3835,19 @@
         private ControlEx.UcDateTimeJp DatePunishmentDate2;
         private ControlEx.UcDateTimeJp DatePunishmentDate1;
         private RadioButton RadioButtonDispatch;
+        private ControlEx.DateTimePickerJpEx DateBirthDate;
+        private ControlEx.DateTimePickerJpEx DateEmploymentDate;
+        private ControlEx.DateTimePickerJpEx DateNotSelectionDate;
+        private ControlEx.DateTimePickerJpEx DateSelectionDate;
+        private ControlEx.DateTimePickerJpEx DateLicenseTypeDate1;
+        private ControlEx.DateTimePickerJpEx DateLicenseTypeExpirationDate1;
+        private ControlEx.DateTimePickerJpEx DateLicenseTypeExpirationDate2;
+        private ControlEx.DateTimePickerJpEx DateLicenseTypeDate2;
+        private ControlEx.DateTimePickerJpEx DateLicenseTypeExpirationDate5;
+        private ControlEx.DateTimePickerJpEx DateLicenseTypeDate5;
+        private ControlEx.DateTimePickerJpEx DateLicenseTypeExpirationDate4;
+        private ControlEx.DateTimePickerJpEx DateLicenseTypeDate4;
+        private ControlEx.DateTimePickerJpEx DateLicenseTypeExpirationDate3;
+        private ControlEx.DateTimePickerJpEx DateLicenseTypeDate3;
     }
 }

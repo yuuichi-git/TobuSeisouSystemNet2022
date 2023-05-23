@@ -199,7 +199,7 @@
             ComboBoxAccidentYear.DropDownStyle = ComboBoxStyle.DropDownList;
             ComboBoxAccidentYear.Enabled = false;
             ComboBoxAccidentYear.FormattingEnabled = true;
-            ComboBoxAccidentYear.Items.AddRange(new object[] { "2020年度", "2021年度", "2022年度", "2023年度" });
+            ComboBoxAccidentYear.Items.AddRange(new object[] { "全て", "2020年度", "2021年度", "2022年度", "2023年度" });
             ComboBoxAccidentYear.Location = new Point(1008, 16);
             ComboBoxAccidentYear.Name = "ComboBoxAccidentYear";
             ComboBoxAccidentYear.Size = new Size(84, 23);

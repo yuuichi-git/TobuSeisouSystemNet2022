@@ -24,507 +24,428 @@
         /// </summary>
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VehicleDispatchSheetBoad));
-            this.TableLayoutPanelExBase = new ControlEx.TableLayoutPanelEx();
-            this.StatusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.ToolStripStatusLabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.ToolStripStatusLabelPosition = new System.Windows.Forms.ToolStripStatusLabel();
-            this.SpreadBase = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, ((object)(resources.GetObject("TableLayoutPanelExBase.Controls"))));
-            this.MenuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.ToolStripMenuItemMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.配車表ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemPrint = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemExport = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
-            this.PanelUp = new System.Windows.Forms.Panel();
-            this.CheckBox1 = new System.Windows.Forms.CheckBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.ComboBoxInstruction2 = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.ComboBoxInstruction1 = new System.Windows.Forms.ComboBox();
-            this.ComboBoxWEATHER = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.GroupBox1 = new System.Windows.Forms.GroupBox();
-            this.ComboBox4 = new System.Windows.Forms.ComboBox();
-            this.ComboBox3 = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.ComboBox2 = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.ComboBox1 = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.ComboBoxMISATO = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.UcDateTimeJpOperationDate = new ControlEx.UcDateTimeJp();
-            this.label1 = new System.Windows.Forms.Label();
-            this.ButtonUpdate = new System.Windows.Forms.Button();
-            this.SheetView1 = this.SpreadBase.GetSheet(0);
-            this.TableLayoutPanelExBase.SuspendLayout();
-            this.StatusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SpreadBase)).BeginInit();
-            this.MenuStrip1.SuspendLayout();
-            this.PanelUp.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.GroupBox1.SuspendLayout();
-            this.SuspendLayout();
+            TableLayoutPanelExBase = new ControlEx.TableLayoutPanelEx();
+            StatusStrip1 = new StatusStrip();
+            toolStripStatusLabel1 = new ToolStripStatusLabel();
+            ToolStripStatusLabelStatus = new ToolStripStatusLabel();
+            toolStripStatusLabel2 = new ToolStripStatusLabel();
+            ToolStripStatusLabelPosition = new ToolStripStatusLabel();
+            SpreadBase = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("TableLayoutPanelExBase.Controls"));
+            SheetView1 = SpreadBase.GetSheet(0);
+            MenuStrip1 = new MenuStrip();
+            ToolStripMenuItemMenu = new ToolStripMenuItem();
+            配車表ToolStripMenuItem = new ToolStripMenuItem();
+            ToolStripMenuItemPrint = new ToolStripMenuItem();
+            ToolStripMenuItemExport = new ToolStripMenuItem();
+            ToolStripMenuItemExit = new ToolStripMenuItem();
+            ToolStripMenuItemHelp = new ToolStripMenuItem();
+            PanelUp = new Panel();
+            CheckBox1 = new CheckBox();
+            groupBox2 = new GroupBox();
+            label9 = new Label();
+            ComboBoxInstruction2 = new ComboBox();
+            label8 = new Label();
+            ComboBoxInstruction1 = new ComboBox();
+            ComboBoxWEATHER = new ComboBox();
+            label5 = new Label();
+            GroupBox1 = new GroupBox();
+            ComboBox4 = new ComboBox();
+            ComboBox3 = new ComboBox();
+            label6 = new Label();
+            label7 = new Label();
+            ComboBox2 = new ComboBox();
+            label4 = new Label();
+            ComboBox1 = new ComboBox();
+            label3 = new Label();
+            ComboBoxMISATO = new ComboBox();
+            label2 = new Label();
+            UcDateTimeJpOperationDate = new ControlEx.UcDateTimeJp();
+            label1 = new Label();
+            ButtonUpdate = new Button();
+            TableLayoutPanelExBase.SuspendLayout();
+            StatusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)SpreadBase).BeginInit();
+            MenuStrip1.SuspendLayout();
+            PanelUp.SuspendLayout();
+            groupBox2.SuspendLayout();
+            GroupBox1.SuspendLayout();
+            SuspendLayout();
             // 
             // TableLayoutPanelExBase
             // 
-            this.TableLayoutPanelExBase.ColumnCount = 1;
-            this.TableLayoutPanelExBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanelExBase.Controls.Add(this.StatusStrip1, 0, 3);
-            this.TableLayoutPanelExBase.Controls.Add(this.SpreadBase, 0, 2);
-            this.TableLayoutPanelExBase.Controls.Add(this.MenuStrip1, 0, 0);
-            this.TableLayoutPanelExBase.Controls.Add(this.PanelUp, 0, 1);
-            this.TableLayoutPanelExBase.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TableLayoutPanelExBase.Location = new System.Drawing.Point(0, 0);
-            this.TableLayoutPanelExBase.Name = "TableLayoutPanelExBase";
-            this.TableLayoutPanelExBase.RowCount = 4;
-            this.TableLayoutPanelExBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.TableLayoutPanelExBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.TableLayoutPanelExBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanelExBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.TableLayoutPanelExBase.Size = new System.Drawing.Size(1904, 1041);
-            this.TableLayoutPanelExBase.TabIndex = 0;
+            TableLayoutPanelExBase.ButtonBorderStyleDotted = false;
+            TableLayoutPanelExBase.ColumnCount = 1;
+            TableLayoutPanelExBase.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            TableLayoutPanelExBase.Controls.Add(StatusStrip1, 0, 3);
+            TableLayoutPanelExBase.Controls.Add(SpreadBase, 0, 2);
+            TableLayoutPanelExBase.Controls.Add(MenuStrip1, 0, 0);
+            TableLayoutPanelExBase.Controls.Add(PanelUp, 0, 1);
+            TableLayoutPanelExBase.Dock = DockStyle.Fill;
+            TableLayoutPanelExBase.Location = new Point(0, 0);
+            TableLayoutPanelExBase.Name = "TableLayoutPanelExBase";
+            TableLayoutPanelExBase.RowCount = 4;
+            TableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
+            TableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 150F));
+            TableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            TableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
+            TableLayoutPanelExBase.Size = new Size(1904, 1041);
+            TableLayoutPanelExBase.TabIndex = 0;
             // 
             // StatusStrip1
             // 
-            this.StatusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.ToolStripStatusLabelStatus,
-            this.toolStripStatusLabel2,
-            this.ToolStripStatusLabelPosition});
-            this.StatusStrip1.Location = new System.Drawing.Point(0, 1019);
-            this.StatusStrip1.Name = "StatusStrip1";
-            this.StatusStrip1.Size = new System.Drawing.Size(1904, 22);
-            this.StatusStrip1.TabIndex = 2;
-            this.StatusStrip1.Text = "statusStrip1";
+            StatusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, ToolStripStatusLabelStatus, toolStripStatusLabel2, ToolStripStatusLabelPosition });
+            StatusStrip1.Location = new Point(0, 1019);
+            StatusStrip1.Name = "StatusStrip1";
+            StatusStrip1.Size = new Size(1904, 22);
+            StatusStrip1.TabIndex = 2;
+            StatusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(39, 17);
-            this.toolStripStatusLabel1.Text = "Status";
+            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            toolStripStatusLabel1.Size = new Size(39, 17);
+            toolStripStatusLabel1.Text = "Status";
             // 
             // ToolStripStatusLabelStatus
             // 
-            this.ToolStripStatusLabelStatus.Name = "ToolStripStatusLabelStatus";
-            this.ToolStripStatusLabelStatus.Size = new System.Drawing.Size(145, 17);
-            this.ToolStripStatusLabelStatus.Text = "ToolStripStatusLabelStatus";
+            ToolStripStatusLabelStatus.Name = "ToolStripStatusLabelStatus";
+            ToolStripStatusLabelStatus.Size = new Size(145, 17);
+            ToolStripStatusLabelStatus.Text = "ToolStripStatusLabelStatus";
             // 
             // toolStripStatusLabel2
             // 
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(62, 17);
-            this.toolStripStatusLabel2.Text = "　Position";
+            toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            toolStripStatusLabel2.Size = new Size(62, 17);
+            toolStripStatusLabel2.Text = "　Position";
             // 
             // ToolStripStatusLabelPosition
             // 
-            this.ToolStripStatusLabelPosition.Name = "ToolStripStatusLabelPosition";
-            this.ToolStripStatusLabelPosition.Size = new System.Drawing.Size(156, 17);
-            this.ToolStripStatusLabelPosition.Text = "ToolStripStatusLabelPosition";
+            ToolStripStatusLabelPosition.Name = "ToolStripStatusLabelPosition";
+            ToolStripStatusLabelPosition.Size = new Size(156, 17);
+            ToolStripStatusLabelPosition.Text = "ToolStripStatusLabelPosition";
             // 
             // SpreadBase
             // 
-            this.SpreadBase.AccessibleDescription = "SpreadBase, 配車表, Row 0, Column 0";
-            this.SpreadBase.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.SpreadBase.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.SpreadBase.Location = new System.Drawing.Point(3, 177);
-            this.SpreadBase.Name = "SpreadBase";
-            this.SpreadBase.Size = new System.Drawing.Size(1898, 837);
-            this.SpreadBase.TabIndex = 0;
+            SpreadBase.AccessibleDescription = "SpreadBase, 配車表, Row 0, Column 0";
+            SpreadBase.Dock = DockStyle.Fill;
+            SpreadBase.Font = new Font("ＭＳ Ｐゴシック", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            SpreadBase.Location = new Point(3, 177);
+            SpreadBase.Name = "SpreadBase";
+            SpreadBase.Size = new Size(1898, 837);
+            SpreadBase.TabIndex = 0;
             // 
             // MenuStrip1
             // 
-            this.MenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemMenu,
-            this.ToolStripMenuItemHelp});
-            this.MenuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.MenuStrip1.Name = "MenuStrip1";
-            this.MenuStrip1.Size = new System.Drawing.Size(1904, 24);
-            this.MenuStrip1.TabIndex = 1;
-            this.MenuStrip1.Text = "menuStrip1";
+            MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemHelp });
+            MenuStrip1.Location = new Point(0, 0);
+            MenuStrip1.Name = "MenuStrip1";
+            MenuStrip1.Size = new Size(1904, 24);
+            MenuStrip1.TabIndex = 1;
+            MenuStrip1.Text = "menuStrip1";
             // 
             // ToolStripMenuItemMenu
             // 
-            this.ToolStripMenuItemMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.配車表ToolStripMenuItem,
-            this.ToolStripMenuItemExit});
-            this.ToolStripMenuItemMenu.Name = "ToolStripMenuItemMenu";
-            this.ToolStripMenuItemMenu.Size = new System.Drawing.Size(52, 20);
-            this.ToolStripMenuItemMenu.Text = "メニュー";
+            ToolStripMenuItemMenu.DropDownItems.AddRange(new ToolStripItem[] { 配車表ToolStripMenuItem, ToolStripMenuItemExit });
+            ToolStripMenuItemMenu.Name = "ToolStripMenuItemMenu";
+            ToolStripMenuItemMenu.Size = new Size(52, 20);
+            ToolStripMenuItemMenu.Text = "メニュー";
             // 
             // 配車表ToolStripMenuItem
             // 
-            this.配車表ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemPrint,
-            this.ToolStripMenuItemExport});
-            this.配車表ToolStripMenuItem.Name = "配車表ToolStripMenuItem";
-            this.配車表ToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
-            this.配車表ToolStripMenuItem.Text = "配車表";
+            配車表ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemPrint, ToolStripMenuItemExport });
+            配車表ToolStripMenuItem.Name = "配車表ToolStripMenuItem";
+            配車表ToolStripMenuItem.Size = new Size(195, 22);
+            配車表ToolStripMenuItem.Text = "配車表";
             // 
             // ToolStripMenuItemPrint
             // 
-            this.ToolStripMenuItemPrint.Name = "ToolStripMenuItemPrint";
-            this.ToolStripMenuItemPrint.Size = new System.Drawing.Size(238, 22);
-            this.ToolStripMenuItemPrint.Text = "印刷する (B4横)";
-            this.ToolStripMenuItemPrint.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemPrint.Name = "ToolStripMenuItemPrint";
+            ToolStripMenuItemPrint.Size = new Size(238, 22);
+            ToolStripMenuItemPrint.Text = "印刷する (B4横)";
+            ToolStripMenuItemPrint.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemExport
             // 
-            this.ToolStripMenuItemExport.Name = "ToolStripMenuItemExport";
-            this.ToolStripMenuItemExport.Size = new System.Drawing.Size(238, 22);
-            this.ToolStripMenuItemExport.Text = "Excel (.xls) 形式でエクスポートする";
-            this.ToolStripMenuItemExport.Click += new System.EventHandler(this.ToolStripMenuItem_Click);
+            ToolStripMenuItemExport.Name = "ToolStripMenuItemExport";
+            ToolStripMenuItemExport.Size = new Size(238, 22);
+            ToolStripMenuItemExport.Text = "Excel (.xls) 形式でエクスポートする";
+            ToolStripMenuItemExport.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemExit
             // 
-            this.ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
-            this.ToolStripMenuItemExit.Size = new System.Drawing.Size(195, 22);
-            this.ToolStripMenuItemExit.Text = "アプリケーションを終了する";
-            this.ToolStripMenuItemExit.Click += new System.EventHandler(this.ToolStripMenuItemExit_Click);
+            ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
+            ToolStripMenuItemExit.Size = new Size(195, 22);
+            ToolStripMenuItemExit.Text = "アプリケーションを終了する";
+            ToolStripMenuItemExit.Click += ToolStripMenuItemExit_Click;
             // 
             // ToolStripMenuItemHelp
             // 
-            this.ToolStripMenuItemHelp.Name = "ToolStripMenuItemHelp";
-            this.ToolStripMenuItemHelp.Size = new System.Drawing.Size(48, 20);
-            this.ToolStripMenuItemHelp.Text = "ヘルプ";
+            ToolStripMenuItemHelp.Name = "ToolStripMenuItemHelp";
+            ToolStripMenuItemHelp.Size = new Size(48, 20);
+            ToolStripMenuItemHelp.Text = "ヘルプ";
             // 
             // PanelUp
             // 
-            this.PanelUp.Controls.Add(this.CheckBox1);
-            this.PanelUp.Controls.Add(this.groupBox2);
-            this.PanelUp.Controls.Add(this.ComboBoxWEATHER);
-            this.PanelUp.Controls.Add(this.label5);
-            this.PanelUp.Controls.Add(this.GroupBox1);
-            this.PanelUp.Controls.Add(this.UcDateTimeJpOperationDate);
-            this.PanelUp.Controls.Add(this.label1);
-            this.PanelUp.Controls.Add(this.ButtonUpdate);
-            this.PanelUp.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelUp.Location = new System.Drawing.Point(3, 27);
-            this.PanelUp.Name = "PanelUp";
-            this.PanelUp.Size = new System.Drawing.Size(1898, 144);
-            this.PanelUp.TabIndex = 3;
+            PanelUp.Controls.Add(CheckBox1);
+            PanelUp.Controls.Add(groupBox2);
+            PanelUp.Controls.Add(ComboBoxWEATHER);
+            PanelUp.Controls.Add(label5);
+            PanelUp.Controls.Add(GroupBox1);
+            PanelUp.Controls.Add(UcDateTimeJpOperationDate);
+            PanelUp.Controls.Add(label1);
+            PanelUp.Controls.Add(ButtonUpdate);
+            PanelUp.Dock = DockStyle.Fill;
+            PanelUp.Location = new Point(3, 27);
+            PanelUp.Name = "PanelUp";
+            PanelUp.Size = new Size(1898, 144);
+            PanelUp.TabIndex = 3;
             // 
             // CheckBox1
             // 
-            this.CheckBox1.AutoSize = true;
-            this.CheckBox1.Location = new System.Drawing.Point(1508, 64);
-            this.CheckBox1.Name = "CheckBox1";
-            this.CheckBox1.Size = new System.Drawing.Size(150, 19);
-            this.CheckBox1.TabIndex = 19;
-            this.CheckBox1.Text = "記録済の項目を読み込む";
-            this.CheckBox1.UseVisualStyleBackColor = true;
-            this.CheckBox1.CheckedChanged += new System.EventHandler(this.CheckBox1_CheckedChanged);
+            CheckBox1.AutoSize = true;
+            CheckBox1.Location = new Point(1508, 64);
+            CheckBox1.Name = "CheckBox1";
+            CheckBox1.Size = new Size(150, 19);
+            CheckBox1.TabIndex = 19;
+            CheckBox1.Text = "記録済の項目を読み込む";
+            CheckBox1.UseVisualStyleBackColor = true;
+            CheckBox1.CheckedChanged += CheckBox1_CheckedChanged;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label9);
-            this.groupBox2.Controls.Add(this.ComboBoxInstruction2);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.ComboBoxInstruction1);
-            this.groupBox2.Location = new System.Drawing.Point(348, 52);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1052, 84);
-            this.groupBox2.TabIndex = 18;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "指示事項(必須)";
+            groupBox2.Controls.Add(label9);
+            groupBox2.Controls.Add(ComboBoxInstruction2);
+            groupBox2.Controls.Add(label8);
+            groupBox2.Controls.Add(ComboBoxInstruction1);
+            groupBox2.Location = new Point(348, 52);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(1052, 84);
+            groupBox2.TabIndex = 18;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "指示事項(必須)";
             // 
             // label9
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(8, 52);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(62, 15);
-            this.label9.TabIndex = 21;
-            this.label9.Text = "その他事項";
+            label9.AutoSize = true;
+            label9.Location = new Point(8, 52);
+            label9.Name = "label9";
+            label9.Size = new Size(62, 15);
+            label9.TabIndex = 21;
+            label9.Text = "その他事項";
             // 
             // ComboBoxInstruction2
             // 
-            this.ComboBoxInstruction2.FormattingEnabled = true;
-            this.ComboBoxInstruction2.Items.AddRange(new object[] {
-            "事故を起こした時、あなたはどうしますか？　事故を起こす前にやっておく事があるのではないですか？"});
-            this.ComboBoxInstruction2.Location = new System.Drawing.Point(76, 48);
-            this.ComboBoxInstruction2.Name = "ComboBoxInstruction2";
-            this.ComboBoxInstruction2.Size = new System.Drawing.Size(956, 23);
-            this.ComboBoxInstruction2.TabIndex = 20;
+            ComboBoxInstruction2.FormattingEnabled = true;
+            ComboBoxInstruction2.Items.AddRange(new object[] { "事故を起こした時、あなたはどうしますか？　事故を起こす前にやっておく事があるのではないですか？" });
+            ComboBoxInstruction2.Location = new Point(76, 48);
+            ComboBoxInstruction2.Name = "ComboBoxInstruction2";
+            ComboBoxInstruction2.Size = new Size(956, 23);
+            ComboBoxInstruction2.TabIndex = 20;
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(16, 24);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(55, 15);
-            this.label8.TabIndex = 19;
-            this.label8.Text = "指示事項";
+            label8.AutoSize = true;
+            label8.Location = new Point(16, 24);
+            label8.Name = "label8";
+            label8.Size = new Size(55, 15);
+            label8.TabIndex = 19;
+            label8.Text = "指示事項";
             // 
             // ComboBoxInstruction1
             // 
-            this.ComboBoxInstruction1.FormattingEnabled = true;
-            this.ComboBoxInstruction1.Items.AddRange(new object[] {
-            "法定速度遵守  ",
-            "車間距離の保持",
-            "追い越し注意  ",
-            "行違い注意    ",
-            "スリップ注意  ",
-            "路肩注意      ",
-            "優先交通権の確認 ",
-            "踏切注意         ",
-            "発進時の前後左右の確認 ",
-            "信号注意       ",
-            "カーブ・交差点注意 ",
-            "通行区分厳守   ",
-            "横断歩道注意   ",
-            "歩行者・自転車に注意 ",
-            "連続運転・無理な運行の禁止 ",
-            "運転中の携帯電話使用厳禁  ",
-            "シートベルトの着用 ",
-            "積載状況の確認と記録 ",
-            "確実な積み付け ",
-            "雨天・霧発生時のライト点灯",
-            "老人と子供に注意",
-            "適時適切な休憩・休息",
-            "適時適切な報告の実施",
-            "危険予知の励行",
-            "事故予測の励行",
-            "問題意識の保持",
-            "「思いやり」「譲り合い」の励行",
-            "「だろう」運転禁止",
-            "「かもしれない」運転の励行",
-            "「ながら」運転の禁止"});
-            this.ComboBoxInstruction1.Location = new System.Drawing.Point(76, 20);
-            this.ComboBoxInstruction1.Name = "ComboBoxInstruction1";
-            this.ComboBoxInstruction1.Size = new System.Drawing.Size(956, 23);
-            this.ComboBoxInstruction1.TabIndex = 0;
+            ComboBoxInstruction1.FormattingEnabled = true;
+            ComboBoxInstruction1.Items.AddRange(new object[] { "法定速度遵守  ", "車間距離の保持", "追い越し注意  ", "行違い注意    ", "スリップ注意  ", "路肩注意      ", "優先交通権の確認 ", "踏切注意         ", "発進時の前後左右の確認 ", "信号注意       ", "カーブ・交差点注意 ", "通行区分厳守   ", "横断歩道注意   ", "歩行者・自転車に注意 ", "連続運転・無理な運行の禁止 ", "運転中の携帯電話使用厳禁  ", "シートベルトの着用 ", "積載状況の確認と記録 ", "確実な積み付け ", "雨天・霧発生時のライト点灯", "老人と子供に注意", "適時適切な休憩・休息", "適時適切な報告の実施", "危険予知の励行", "事故予測の励行", "問題意識の保持", "「思いやり」「譲り合い」の励行", "「だろう」運転禁止", "「かもしれない」運転の励行", "「ながら」運転の禁止" });
+            ComboBoxInstruction1.Location = new Point(76, 20);
+            ComboBoxInstruction1.Name = "ComboBoxInstruction1";
+            ComboBoxInstruction1.Size = new Size(956, 23);
+            ComboBoxInstruction1.TabIndex = 0;
             // 
             // ComboBoxWEATHER
             // 
-            this.ComboBoxWEATHER.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboBoxWEATHER.FormattingEnabled = true;
-            this.ComboBoxWEATHER.Items.AddRange(new object[] {
-            "",
-            "晴れ",
-            "曇り",
-            "小雨",
-            "雨",
-            "雪"});
-            this.ComboBoxWEATHER.Location = new System.Drawing.Point(1304, 18);
-            this.ComboBoxWEATHER.Name = "ComboBoxWEATHER";
-            this.ComboBoxWEATHER.Size = new System.Drawing.Size(80, 23);
-            this.ComboBoxWEATHER.TabIndex = 16;
+            ComboBoxWEATHER.DropDownStyle = ComboBoxStyle.DropDownList;
+            ComboBoxWEATHER.FormattingEnabled = true;
+            ComboBoxWEATHER.Items.AddRange(new object[] { "", "晴れ", "曇り", "小雨", "雨", "雪" });
+            ComboBoxWEATHER.Location = new Point(1304, 18);
+            ComboBoxWEATHER.Name = "ComboBoxWEATHER";
+            ComboBoxWEATHER.Size = new Size(80, 23);
+            ComboBoxWEATHER.TabIndex = 16;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1268, 22);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(31, 15);
-            this.label5.TabIndex = 17;
-            this.label5.Text = "天候";
+            label5.AutoSize = true;
+            label5.Location = new Point(1268, 22);
+            label5.Name = "label5";
+            label5.Size = new Size(31, 15);
+            label5.TabIndex = 17;
+            label5.Text = "天候";
             // 
             // GroupBox1
             // 
-            this.GroupBox1.Controls.Add(this.ComboBox4);
-            this.GroupBox1.Controls.Add(this.ComboBox3);
-            this.GroupBox1.Controls.Add(this.label6);
-            this.GroupBox1.Controls.Add(this.label7);
-            this.GroupBox1.Controls.Add(this.ComboBox2);
-            this.GroupBox1.Controls.Add(this.label4);
-            this.GroupBox1.Controls.Add(this.ComboBox1);
-            this.GroupBox1.Controls.Add(this.label3);
-            this.GroupBox1.Controls.Add(this.ComboBoxMISATO);
-            this.GroupBox1.Controls.Add(this.label2);
-            this.GroupBox1.Location = new System.Drawing.Point(348, 4);
-            this.GroupBox1.Name = "GroupBox1";
-            this.GroupBox1.Size = new System.Drawing.Size(900, 44);
-            this.GroupBox1.TabIndex = 15;
-            this.GroupBox1.TabStop = false;
-            this.GroupBox1.Text = "点呼執行者";
+            GroupBox1.Controls.Add(ComboBox4);
+            GroupBox1.Controls.Add(ComboBox3);
+            GroupBox1.Controls.Add(label6);
+            GroupBox1.Controls.Add(label7);
+            GroupBox1.Controls.Add(ComboBox2);
+            GroupBox1.Controls.Add(label4);
+            GroupBox1.Controls.Add(ComboBox1);
+            GroupBox1.Controls.Add(label3);
+            GroupBox1.Controls.Add(ComboBoxMISATO);
+            GroupBox1.Controls.Add(label2);
+            GroupBox1.Location = new Point(348, 4);
+            GroupBox1.Name = "GroupBox1";
+            GroupBox1.Size = new Size(900, 44);
+            GroupBox1.TabIndex = 15;
+            GroupBox1.TabStop = false;
+            GroupBox1.Text = "点呼執行者";
             // 
             // ComboBox4
             // 
-            this.ComboBox4.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboBox4.FormattingEnabled = true;
-            this.ComboBox4.Items.AddRange(new object[] {
-            "",
-            "新井",
-            "波潟",
-            "五十嵐",
-            "川名",
-            "石原",
-            "辻",
-            "今村"});
-            this.ComboBox4.Location = new System.Drawing.Point(612, 14);
-            this.ComboBox4.Name = "ComboBox4";
-            this.ComboBox4.Size = new System.Drawing.Size(104, 23);
-            this.ComboBox4.TabIndex = 16;
+            ComboBox4.DropDownStyle = ComboBoxStyle.DropDownList;
+            ComboBox4.FormattingEnabled = true;
+            ComboBox4.Items.AddRange(new object[] { "", "新井", "波潟", "五十嵐", "川名", "石原", "今村", "辻" });
+            ComboBox4.Location = new Point(612, 14);
+            ComboBox4.Name = "ComboBox4";
+            ComboBox4.Size = new Size(104, 23);
+            ComboBox4.TabIndex = 16;
             // 
             // ComboBox3
             // 
-            this.ComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboBox3.FormattingEnabled = true;
-            this.ComboBox3.Items.AddRange(new object[] {
-            "",
-            "新井",
-            "波潟",
-            "五十嵐",
-            "川名",
-            "石原",
-            "辻",
-            "今村"});
-            this.ComboBox3.Location = new System.Drawing.Point(436, 14);
-            this.ComboBox3.Name = "ComboBox3";
-            this.ComboBox3.Size = new System.Drawing.Size(104, 23);
-            this.ComboBox3.TabIndex = 15;
+            ComboBox3.DropDownStyle = ComboBoxStyle.DropDownList;
+            ComboBox3.FormattingEnabled = true;
+            ComboBox3.Items.AddRange(new object[] { "", "新井", "波潟", "五十嵐", "川名", "石原", "今村", "辻" });
+            ComboBox3.Location = new Point(436, 14);
+            ComboBox3.Name = "ComboBox3";
+            ComboBox3.Size = new Size(104, 23);
+            ComboBox3.TabIndex = 15;
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(548, 18);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(63, 15);
-            this.label6.TabIndex = 18;
-            this.label6.Text = "本社(帰２)";
+            label6.AutoSize = true;
+            label6.Location = new Point(548, 18);
+            label6.Name = "label6";
+            label6.Size = new Size(63, 15);
+            label6.TabIndex = 18;
+            label6.Text = "本社(帰２)";
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(372, 18);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(63, 15);
-            this.label7.TabIndex = 17;
-            this.label7.Text = "本社(帰１)";
+            label7.AutoSize = true;
+            label7.Location = new Point(372, 18);
+            label7.Name = "label7";
+            label7.Size = new Size(63, 15);
+            label7.TabIndex = 17;
+            label7.Text = "本社(帰１)";
             // 
             // ComboBox2
             // 
-            this.ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboBox2.FormattingEnabled = true;
-            this.ComboBox2.Items.AddRange(new object[] {
-            "",
-            "新井",
-            "波潟",
-            "川名",
-            "石原",
-            "辻"});
-            this.ComboBox2.Location = new System.Drawing.Point(260, 14);
-            this.ComboBox2.Name = "ComboBox2";
-            this.ComboBox2.Size = new System.Drawing.Size(104, 23);
-            this.ComboBox2.TabIndex = 10;
+            ComboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
+            ComboBox2.FormattingEnabled = true;
+            ComboBox2.Items.AddRange(new object[] { "", "新井", "波潟", "川名", "石原", "今村", "辻" });
+            ComboBox2.Location = new Point(260, 14);
+            ComboBox2.Name = "ComboBox2";
+            ComboBox2.Size = new Size(104, 23);
+            ComboBox2.TabIndex = 10;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(732, 18);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(31, 15);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "三郷";
+            label4.AutoSize = true;
+            label4.Location = new Point(732, 18);
+            label4.Name = "label4";
+            label4.Size = new Size(31, 15);
+            label4.TabIndex = 14;
+            label4.Text = "三郷";
             // 
             // ComboBox1
             // 
-            this.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboBox1.FormattingEnabled = true;
-            this.ComboBox1.Items.AddRange(new object[] {
-            "",
-            "新井",
-            "波潟",
-            "川名",
-            "石原",
-            "辻"});
-            this.ComboBox1.Location = new System.Drawing.Point(84, 14);
-            this.ComboBox1.Name = "ComboBox1";
-            this.ComboBox1.Size = new System.Drawing.Size(104, 23);
-            this.ComboBox1.TabIndex = 9;
+            ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            ComboBox1.FormattingEnabled = true;
+            ComboBox1.Items.AddRange(new object[] { "", "新井", "波潟", "川名", "石原", "今村", "辻" });
+            ComboBox1.Location = new Point(84, 14);
+            ComboBox1.Name = "ComboBox1";
+            ComboBox1.Size = new Size(104, 23);
+            ComboBox1.TabIndex = 9;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(196, 18);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 15);
-            this.label3.TabIndex = 13;
-            this.label3.Text = "本社(出２)";
+            label3.AutoSize = true;
+            label3.Location = new Point(196, 18);
+            label3.Name = "label3";
+            label3.Size = new Size(63, 15);
+            label3.TabIndex = 13;
+            label3.Text = "本社(出２)";
             // 
             // ComboBoxMISATO
             // 
-            this.ComboBoxMISATO.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboBoxMISATO.FormattingEnabled = true;
-            this.ComboBoxMISATO.Items.AddRange(new object[] {
-            "",
-            "川名",
-            "酒井",
-            "青木"});
-            this.ComboBoxMISATO.Location = new System.Drawing.Point(764, 14);
-            this.ComboBoxMISATO.Name = "ComboBoxMISATO";
-            this.ComboBoxMISATO.Size = new System.Drawing.Size(104, 23);
-            this.ComboBoxMISATO.TabIndex = 11;
+            ComboBoxMISATO.DropDownStyle = ComboBoxStyle.DropDownList;
+            ComboBoxMISATO.FormattingEnabled = true;
+            ComboBoxMISATO.Items.AddRange(new object[] { "", "波潟", "川名", "酒井", "青木" });
+            ComboBoxMISATO.Location = new Point(764, 14);
+            ComboBoxMISATO.Name = "ComboBoxMISATO";
+            ComboBoxMISATO.Size = new Size(104, 23);
+            ComboBoxMISATO.TabIndex = 11;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 18);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 15);
-            this.label2.TabIndex = 12;
-            this.label2.Text = "本社(出１)";
+            label2.AutoSize = true;
+            label2.Location = new Point(20, 18);
+            label2.Name = "label2";
+            label2.Size = new Size(63, 15);
+            label2.TabIndex = 12;
+            label2.Text = "本社(出１)";
             // 
             // UcDateTimeJpOperationDate
             // 
-            this.UcDateTimeJpOperationDate.Location = new System.Drawing.Point(96, 56);
-            this.UcDateTimeJpOperationDate.Name = "UcDateTimeJpOperationDate";
-            this.UcDateTimeJpOperationDate.Size = new System.Drawing.Size(183, 23);
-            this.UcDateTimeJpOperationDate.TabIndex = 8;
+            UcDateTimeJpOperationDate.Location = new Point(96, 56);
+            UcDateTimeJpOperationDate.Name = "UcDateTimeJpOperationDate";
+            UcDateTimeJpOperationDate.Size = new Size(183, 23);
+            UcDateTimeJpOperationDate.TabIndex = 8;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 60);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 15);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "配車日付";
+            label1.AutoSize = true;
+            label1.Location = new Point(40, 60);
+            label1.Name = "label1";
+            label1.Size = new Size(55, 15);
+            label1.TabIndex = 7;
+            label1.Text = "配車日付";
             // 
             // ButtonUpdate
             // 
-            this.ButtonUpdate.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ButtonUpdate.Location = new System.Drawing.Point(1672, 52);
-            this.ButtonUpdate.Name = "ButtonUpdate";
-            this.ButtonUpdate.Size = new System.Drawing.Size(180, 36);
-            this.ButtonUpdate.TabIndex = 1;
-            this.ButtonUpdate.Text = "最 新 化";
-            this.ButtonUpdate.UseVisualStyleBackColor = true;
-            this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
+            ButtonUpdate.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            ButtonUpdate.Location = new Point(1672, 52);
+            ButtonUpdate.Name = "ButtonUpdate";
+            ButtonUpdate.Size = new Size(180, 36);
+            ButtonUpdate.TabIndex = 1;
+            ButtonUpdate.Text = "最 新 化";
+            ButtonUpdate.UseVisualStyleBackColor = true;
+            ButtonUpdate.Click += ButtonUpdate_Click;
             // 
             // VehicleDispatchSheetBoad
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1904, 1041);
-            this.Controls.Add(this.TableLayoutPanelExBase);
-            this.MainMenuStrip = this.MenuStrip1;
-            this.MaximumSize = new System.Drawing.Size(1920, 1080);
-            this.Name = "VehicleDispatchSheetBoad";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "VehicleDispatchSheetBoad";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.VehicleDispatchSheetBoad_FormClosing);
-            this.TableLayoutPanelExBase.ResumeLayout(false);
-            this.TableLayoutPanelExBase.PerformLayout();
-            this.StatusStrip1.ResumeLayout(false);
-            this.StatusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SpreadBase)).EndInit();
-            this.MenuStrip1.ResumeLayout(false);
-            this.MenuStrip1.PerformLayout();
-            this.PanelUp.ResumeLayout(false);
-            this.PanelUp.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.GroupBox1.ResumeLayout(false);
-            this.GroupBox1.PerformLayout();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1904, 1041);
+            Controls.Add(TableLayoutPanelExBase);
+            MainMenuStrip = MenuStrip1;
+            MaximumSize = new Size(1920, 1080);
+            Name = "VehicleDispatchSheetBoad";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "VehicleDispatchSheetBoad";
+            FormClosing += VehicleDispatchSheetBoad_FormClosing;
+            TableLayoutPanelExBase.ResumeLayout(false);
+            TableLayoutPanelExBase.PerformLayout();
+            StatusStrip1.ResumeLayout(false);
+            StatusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)SpreadBase).EndInit();
+            MenuStrip1.ResumeLayout(false);
+            MenuStrip1.PerformLayout();
+            PanelUp.ResumeLayout(false);
+            PanelUp.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            GroupBox1.ResumeLayout(false);
+            GroupBox1.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion
