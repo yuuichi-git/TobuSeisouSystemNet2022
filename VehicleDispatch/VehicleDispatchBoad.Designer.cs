@@ -46,6 +46,7 @@
             ToolStripStatusLabel1 = new ToolStripStatusLabel();
             ToolStripStatusLabelStatus = new ToolStripStatusLabel();
             PanelUp = new Panel();
+            DateTimePickerJpExOperationDate = new ControlEx.DateTimePickerJpEx();
             FlowLayoutPanelExFree = new ControlEx.FlowLayoutPanelEx(components);
             label1 = new Label();
             ButtonUpdate = new Button();
@@ -149,7 +150,6 @@
             ToolStripMenuItemTelephoneMarkTrue = new ToolStripMenuItem();
             ToolStripMenuItemTelephoneMarkFalse = new ToolStripMenuItem();
             ToolTip1 = new ToolTip(components);
-            UcDateTimeJpOperationDate = new ControlEx.DateTimePickerJpEx();
             TableLayoutPanelBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -354,7 +354,7 @@
             // PanelUp
             // 
             TableLayoutPanelBase.SetColumnSpan(PanelUp, 3);
-            PanelUp.Controls.Add(UcDateTimeJpOperationDate);
+            PanelUp.Controls.Add(DateTimePickerJpExOperationDate);
             PanelUp.Controls.Add(FlowLayoutPanelExFree);
             PanelUp.Controls.Add(label1);
             PanelUp.Controls.Add(ButtonUpdate);
@@ -363,6 +363,15 @@
             PanelUp.Name = "PanelUp";
             PanelUp.Size = new Size(1898, 76);
             PanelUp.TabIndex = 2;
+            // 
+            // DateTimePickerJpExOperationDate
+            // 
+            DateTimePickerJpExOperationDate.CustomFormat = " ";
+            DateTimePickerJpExOperationDate.Format = DateTimePickerFormat.Custom;
+            DateTimePickerJpExOperationDate.Location = new Point(100, 28);
+            DateTimePickerJpExOperationDate.Name = "DateTimePickerJpExOperationDate";
+            DateTimePickerJpExOperationDate.Size = new Size(184, 23);
+            DateTimePickerJpExOperationDate.TabIndex = 7;
             // 
             // FlowLayoutPanelExFree
             // 
@@ -402,6 +411,7 @@
             TabControlExCenter.Controls.Add(TabPage1);
             TabControlExCenter.Controls.Add(TabPage2);
             TabControlExCenter.Dock = DockStyle.Fill;
+            TabControlExCenter.HotTrack = true;
             TabControlExCenter.Location = new Point(367, 109);
             TabControlExCenter.Name = "TabControlExCenter";
             TabControlExCenter.SelectedIndex = 0;
@@ -525,6 +535,7 @@
             TabControlExLeft.Controls.Add(TabPagePartTime);
             TabControlExLeft.Controls.Add(TabPageWindow);
             TabControlExLeft.Dock = DockStyle.Fill;
+            TabControlExLeft.HotTrack = true;
             TabControlExLeft.Location = new Point(3, 109);
             TabControlExLeft.Multiline = true;
             TabControlExLeft.Name = "TabControlExLeft";
@@ -684,6 +695,7 @@
             TabControlExRight.Controls.Add(tabPage11);
             TabControlExRight.Controls.Add(tabPage3);
             TabControlExRight.Dock = DockStyle.Fill;
+            TabControlExRight.HotTrack = true;
             TabControlExRight.Location = new Point(1543, 109);
             TabControlExRight.Multiline = true;
             TabControlExRight.Name = "TabControlExRight";
@@ -1453,15 +1465,6 @@
             ToolTip1.InitialDelay = 500;
             ToolTip1.ReshowDelay = 0;
             // 
-            // UcDateTimeJpOperationDate
-            // 
-            UcDateTimeJpOperationDate.CustomFormat = " ";
-            UcDateTimeJpOperationDate.Format = DateTimePickerFormat.Custom;
-            UcDateTimeJpOperationDate.Location = new Point(100, 28);
-            UcDateTimeJpOperationDate.Name = "UcDateTimeJpOperationDate";
-            UcDateTimeJpOperationDate.Size = new Size(184, 23);
-            UcDateTimeJpOperationDate.TabIndex = 7;
-            // 
             // VehicleDispatchBoad
             // 
             AllowDrop = true;
@@ -1640,6 +1643,6 @@
         private ToolStripMenuItem ToolStripMenuItemFirstShift;
         private ToolStripMenuItem ToolStripMenuItemLateShift;
         private ToolStripMenuItem ToolStripMenuItemNoneShift;
-        private ControlEx.DateTimePickerJpEx UcDateTimeJpOperationDate;
+        private ControlEx.DateTimePickerJpEx DateTimePickerJpExOperationDate;
     }
 }

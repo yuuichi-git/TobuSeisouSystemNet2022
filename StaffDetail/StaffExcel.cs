@@ -71,7 +71,6 @@ namespace StaffDetail {
                     SetData2();
                     break;
             }
-
         }
 
         /// <summary>

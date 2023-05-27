@@ -62,12 +62,12 @@
             label39 = new Label();
             groupBox10 = new GroupBox();
             groupBox7 = new GroupBox();
-            DateHistoryDate6 = new ControlEx.UcDateTimeJp();
-            DateHistoryDate5 = new ControlEx.UcDateTimeJp();
-            DateHistoryDate4 = new ControlEx.UcDateTimeJp();
-            DateHistoryDate3 = new ControlEx.UcDateTimeJp();
-            DateHistoryDate2 = new ControlEx.UcDateTimeJp();
-            DateHistoryDate1 = new ControlEx.UcDateTimeJp();
+            DateHistoryDate6 = new ControlEx.DateTimePickerJpEx();
+            DateHistoryDate5 = new ControlEx.DateTimePickerJpEx();
+            DateHistoryDate4 = new ControlEx.DateTimePickerJpEx();
+            DateHistoryDate3 = new ControlEx.DateTimePickerJpEx();
+            DateHistoryDate2 = new ControlEx.DateTimePickerJpEx();
+            DateHistoryDate1 = new ControlEx.DateTimePickerJpEx();
             label35 = new Label();
             label30 = new Label();
             label31 = new Label();
@@ -83,8 +83,8 @@
             TextBoxHistoryNote1 = new TextBox();
             label28 = new Label();
             groupBox6 = new GroupBox();
-            DateDeathDate = new ControlEx.UcDateTimeJp();
-            DateRetirementDate = new ControlEx.UcDateTimeJp();
+            DateDeathDate = new ControlEx.DateTimePickerJpEx();
+            DateRetirementDate = new ControlEx.DateTimePickerJpEx();
             TextBoxDeathNote = new TextBox();
             label47 = new Label();
             label46 = new Label();
@@ -184,9 +184,9 @@
             ComboBoxBelongs = new ComboBox();
             PanelRight = new Panel();
             groupBox18 = new GroupBox();
-            DateProperDate3 = new ControlEx.UcDateTimeJp();
-            DateProperDate2 = new ControlEx.UcDateTimeJp();
-            DateProperDate1 = new ControlEx.UcDateTimeJp();
+            DateProperDate3 = new ControlEx.DateTimePickerJpEx();
+            DateProperDate2 = new ControlEx.DateTimePickerJpEx();
+            DateProperDate1 = new ControlEx.DateTimePickerJpEx();
             label102 = new Label();
             TextBoxProperNote3 = new TextBox();
             TextBoxProperNote2 = new TextBox();
@@ -200,12 +200,12 @@
             label100 = new Label();
             label101 = new Label();
             groupBox17 = new GroupBox();
-            DateEducateDate6 = new ControlEx.UcDateTimeJp();
-            DateEducateDate5 = new ControlEx.UcDateTimeJp();
-            DateEducateDate4 = new ControlEx.UcDateTimeJp();
-            DateEducateDate3 = new ControlEx.UcDateTimeJp();
-            DateEducateDate2 = new ControlEx.UcDateTimeJp();
-            DateEducateDate1 = new ControlEx.UcDateTimeJp();
+            DateEducateDate6 = new ControlEx.DateTimePickerJpEx();
+            DateEducateDate5 = new ControlEx.DateTimePickerJpEx();
+            DateEducateDate4 = new ControlEx.DateTimePickerJpEx();
+            DateEducateDate3 = new ControlEx.DateTimePickerJpEx();
+            DateEducateDate2 = new ControlEx.DateTimePickerJpEx();
+            DateEducateDate1 = new ControlEx.DateTimePickerJpEx();
             label96 = new Label();
             label95 = new Label();
             label94 = new Label();
@@ -228,12 +228,12 @@
             TextBoxEducateName1 = new TextBox();
             label89 = new Label();
             groupBox16 = new GroupBox();
-            DateCarViolateDate6 = new ControlEx.UcDateTimeJp();
-            DateCarViolateDate5 = new ControlEx.UcDateTimeJp();
-            DateCarViolateDate4 = new ControlEx.UcDateTimeJp();
-            DateCarViolateDate3 = new ControlEx.UcDateTimeJp();
-            DateCarViolateDate2 = new ControlEx.UcDateTimeJp();
-            DateCarViolateDate1 = new ControlEx.UcDateTimeJp();
+            DateCarViolateDate6 = new ControlEx.DateTimePickerJpEx();
+            DateCarViolateDate5 = new ControlEx.DateTimePickerJpEx();
+            DateCarViolateDate4 = new ControlEx.DateTimePickerJpEx();
+            DateCarViolateDate3 = new ControlEx.DateTimePickerJpEx();
+            DateCarViolateDate2 = new ControlEx.DateTimePickerJpEx();
+            DateCarViolateDate1 = new ControlEx.DateTimePickerJpEx();
             TextBoxCarViolatePlace6 = new TextBox();
             TextBoxCarViolatePlace5 = new TextBox();
             TextBoxCarViolatePlace4 = new TextBox();
@@ -258,10 +258,10 @@
             groupBox15 = new GroupBox();
             label72 = new Label();
             groupBox14 = new GroupBox();
-            DatePunishmentDate4 = new ControlEx.UcDateTimeJp();
-            DatePunishmentDate3 = new ControlEx.UcDateTimeJp();
-            DatePunishmentDate2 = new ControlEx.UcDateTimeJp();
-            DatePunishmentDate1 = new ControlEx.UcDateTimeJp();
+            DatePunishmentDate4 = new ControlEx.DateTimePickerJpEx();
+            DatePunishmentDate3 = new ControlEx.DateTimePickerJpEx();
+            DatePunishmentDate2 = new ControlEx.DateTimePickerJpEx();
+            DatePunishmentDate1 = new ControlEx.DateTimePickerJpEx();
             label103 = new Label();
             label104 = new Label();
             label105 = new Label();
@@ -273,10 +273,10 @@
             TextBoxPunishmentNote1 = new TextBox();
             label108 = new Label();
             groupBox13 = new GroupBox();
-            DateMedicalExaminationDate4 = new ControlEx.UcDateTimeJp();
-            DateMedicalExaminationDate3 = new ControlEx.UcDateTimeJp();
-            DateMedicalExaminationDate2 = new ControlEx.UcDateTimeJp();
-            DateMedicalExaminationDate1 = new ControlEx.UcDateTimeJp();
+            DateMedicalExaminationDate4 = new ControlEx.DateTimePickerJpEx();
+            DateMedicalExaminationDate3 = new ControlEx.DateTimePickerJpEx();
+            DateMedicalExaminationDate2 = new ControlEx.DateTimePickerJpEx();
+            DateMedicalExaminationDate1 = new ControlEx.DateTimePickerJpEx();
             button3 = new Button();
             button2 = new Button();
             button1 = new Button();
@@ -293,10 +293,10 @@
             label69 = new Label();
             label70 = new Label();
             groupBox12 = new GroupBox();
-            DateWorkerAccidentInsuranceDate = new ControlEx.UcDateTimeJp();
-            DateEmploymentInsuranceDate = new ControlEx.UcDateTimeJp();
-            DateWelfarePensionDate = new ControlEx.UcDateTimeJp();
-            DateHealthInsuranceDate = new ControlEx.UcDateTimeJp();
+            DateWorkerAccidentInsuranceDate = new ControlEx.DateTimePickerJpEx();
+            DateEmploymentInsuranceDate = new ControlEx.DateTimePickerJpEx();
+            DateWelfarePensionDate = new ControlEx.DateTimePickerJpEx();
+            DateHealthInsuranceDate = new ControlEx.DateTimePickerJpEx();
             ComboBoxHealthInsuranceNumber = new ComboBox();
             TextBoxWorkerAccidentInsuranceNumber = new TextBox();
             TextBoxEmploymentInsuranceNumber = new TextBox();
@@ -313,12 +313,12 @@
             label67 = new Label();
             TextBoxHealthInsuranceNote = new TextBox();
             groupBox11 = new GroupBox();
-            DateFamilyBirthDate6 = new ControlEx.UcDateTimeJp();
-            DateFamilyBirthDate5 = new ControlEx.UcDateTimeJp();
-            DateFamilyBirthDate4 = new ControlEx.UcDateTimeJp();
-            DateFamilyBirthDate3 = new ControlEx.UcDateTimeJp();
-            DateFamilyBirthDate2 = new ControlEx.UcDateTimeJp();
-            DateFamilyBirthDate1 = new ControlEx.UcDateTimeJp();
+            DateFamilyBirthDate6 = new ControlEx.DateTimePickerJpEx();
+            DateFamilyBirthDate5 = new ControlEx.DateTimePickerJpEx();
+            DateFamilyBirthDate4 = new ControlEx.DateTimePickerJpEx();
+            DateFamilyBirthDate3 = new ControlEx.DateTimePickerJpEx();
+            DateFamilyBirthDate2 = new ControlEx.DateTimePickerJpEx();
+            DateFamilyBirthDate1 = new ControlEx.DateTimePickerJpEx();
             TextBoxUrgentTelephoneMethod = new TextBox();
             TextBoxUrgentTelephoneNumber = new TextBox();
             label57 = new Label();
@@ -766,45 +766,57 @@
             // 
             // DateHistoryDate6
             // 
+            DateHistoryDate6.CustomFormat = " ";
+            DateHistoryDate6.Format = DateTimePickerFormat.Custom;
             DateHistoryDate6.Location = new Point(40, 188);
             DateHistoryDate6.Name = "DateHistoryDate6";
-            DateHistoryDate6.Size = new Size(183, 23);
-            DateHistoryDate6.TabIndex = 107;
+            DateHistoryDate6.Size = new Size(180, 23);
+            DateHistoryDate6.TabIndex = 117;
             // 
             // DateHistoryDate5
             // 
+            DateHistoryDate5.CustomFormat = " ";
+            DateHistoryDate5.Format = DateTimePickerFormat.Custom;
             DateHistoryDate5.Location = new Point(40, 160);
             DateHistoryDate5.Name = "DateHistoryDate5";
-            DateHistoryDate5.Size = new Size(183, 23);
-            DateHistoryDate5.TabIndex = 106;
+            DateHistoryDate5.Size = new Size(180, 23);
+            DateHistoryDate5.TabIndex = 116;
             // 
             // DateHistoryDate4
             // 
+            DateHistoryDate4.CustomFormat = " ";
+            DateHistoryDate4.Format = DateTimePickerFormat.Custom;
             DateHistoryDate4.Location = new Point(40, 132);
             DateHistoryDate4.Name = "DateHistoryDate4";
-            DateHistoryDate4.Size = new Size(183, 23);
-            DateHistoryDate4.TabIndex = 105;
+            DateHistoryDate4.Size = new Size(180, 23);
+            DateHistoryDate4.TabIndex = 115;
             // 
             // DateHistoryDate3
             // 
+            DateHistoryDate3.CustomFormat = " ";
+            DateHistoryDate3.Format = DateTimePickerFormat.Custom;
             DateHistoryDate3.Location = new Point(40, 104);
             DateHistoryDate3.Name = "DateHistoryDate3";
-            DateHistoryDate3.Size = new Size(183, 23);
-            DateHistoryDate3.TabIndex = 104;
+            DateHistoryDate3.Size = new Size(180, 23);
+            DateHistoryDate3.TabIndex = 114;
             // 
             // DateHistoryDate2
             // 
+            DateHistoryDate2.CustomFormat = " ";
+            DateHistoryDate2.Format = DateTimePickerFormat.Custom;
             DateHistoryDate2.Location = new Point(40, 76);
             DateHistoryDate2.Name = "DateHistoryDate2";
-            DateHistoryDate2.Size = new Size(183, 23);
-            DateHistoryDate2.TabIndex = 103;
+            DateHistoryDate2.Size = new Size(180, 23);
+            DateHistoryDate2.TabIndex = 113;
             // 
             // DateHistoryDate1
             // 
+            DateHistoryDate1.CustomFormat = " ";
+            DateHistoryDate1.Format = DateTimePickerFormat.Custom;
             DateHistoryDate1.Location = new Point(40, 48);
             DateHistoryDate1.Name = "DateHistoryDate1";
-            DateHistoryDate1.Size = new Size(183, 23);
-            DateHistoryDate1.TabIndex = 102;
+            DateHistoryDate1.Size = new Size(180, 23);
+            DateHistoryDate1.TabIndex = 113;
             // 
             // label35
             // 
@@ -947,17 +959,21 @@
             // 
             // DateDeathDate
             // 
+            DateDeathDate.CustomFormat = " ";
+            DateDeathDate.Format = DateTimePickerFormat.Custom;
             DateDeathDate.Location = new Point(204, 84);
             DateDeathDate.Name = "DateDeathDate";
-            DateDeathDate.Size = new Size(183, 23);
-            DateDeathDate.TabIndex = 109;
+            DateDeathDate.Size = new Size(180, 23);
+            DateDeathDate.TabIndex = 119;
             // 
             // DateRetirementDate
             // 
+            DateRetirementDate.CustomFormat = " ";
+            DateRetirementDate.Format = DateTimePickerFormat.Custom;
             DateRetirementDate.Location = new Point(224, 28);
             DateRetirementDate.Name = "DateRetirementDate";
-            DateRetirementDate.Size = new Size(183, 23);
-            DateRetirementDate.TabIndex = 108;
+            DateRetirementDate.Size = new Size(180, 23);
+            DateRetirementDate.TabIndex = 118;
             // 
             // TextBoxDeathNote
             // 
@@ -1999,24 +2015,30 @@
             // 
             // DateProperDate3
             // 
+            DateProperDate3.CustomFormat = " ";
+            DateProperDate3.Format = DateTimePickerFormat.Custom;
             DateProperDate3.Location = new Point(252, 104);
             DateProperDate3.Name = "DateProperDate3";
-            DateProperDate3.Size = new Size(183, 23);
-            DateProperDate3.TabIndex = 138;
+            DateProperDate3.Size = new Size(180, 23);
+            DateProperDate3.TabIndex = 143;
             // 
             // DateProperDate2
             // 
+            DateProperDate2.CustomFormat = " ";
+            DateProperDate2.Format = DateTimePickerFormat.Custom;
             DateProperDate2.Location = new Point(252, 76);
             DateProperDate2.Name = "DateProperDate2";
-            DateProperDate2.Size = new Size(183, 23);
-            DateProperDate2.TabIndex = 137;
+            DateProperDate2.Size = new Size(180, 23);
+            DateProperDate2.TabIndex = 142;
             // 
             // DateProperDate1
             // 
+            DateProperDate1.CustomFormat = " ";
+            DateProperDate1.Format = DateTimePickerFormat.Custom;
             DateProperDate1.Location = new Point(252, 48);
             DateProperDate1.Name = "DateProperDate1";
-            DateProperDate1.Size = new Size(183, 23);
-            DateProperDate1.TabIndex = 136;
+            DateProperDate1.Size = new Size(180, 23);
+            DateProperDate1.TabIndex = 141;
             // 
             // label102
             // 
@@ -2164,45 +2186,57 @@
             // 
             // DateEducateDate6
             // 
+            DateEducateDate6.CustomFormat = " ";
+            DateEducateDate6.Format = DateTimePickerFormat.Custom;
             DateEducateDate6.Location = new Point(40, 188);
             DateEducateDate6.Name = "DateEducateDate6";
-            DateEducateDate6.Size = new Size(183, 23);
-            DateEducateDate6.TabIndex = 135;
+            DateEducateDate6.Size = new Size(180, 23);
+            DateEducateDate6.TabIndex = 140;
             // 
             // DateEducateDate5
             // 
+            DateEducateDate5.CustomFormat = " ";
+            DateEducateDate5.Format = DateTimePickerFormat.Custom;
             DateEducateDate5.Location = new Point(40, 160);
             DateEducateDate5.Name = "DateEducateDate5";
-            DateEducateDate5.Size = new Size(183, 23);
-            DateEducateDate5.TabIndex = 134;
+            DateEducateDate5.Size = new Size(180, 23);
+            DateEducateDate5.TabIndex = 139;
             // 
             // DateEducateDate4
             // 
+            DateEducateDate4.CustomFormat = " ";
+            DateEducateDate4.Format = DateTimePickerFormat.Custom;
             DateEducateDate4.Location = new Point(40, 132);
             DateEducateDate4.Name = "DateEducateDate4";
-            DateEducateDate4.Size = new Size(183, 23);
-            DateEducateDate4.TabIndex = 133;
+            DateEducateDate4.Size = new Size(180, 23);
+            DateEducateDate4.TabIndex = 138;
             // 
             // DateEducateDate3
             // 
+            DateEducateDate3.CustomFormat = " ";
+            DateEducateDate3.Format = DateTimePickerFormat.Custom;
             DateEducateDate3.Location = new Point(40, 104);
             DateEducateDate3.Name = "DateEducateDate3";
-            DateEducateDate3.Size = new Size(183, 23);
-            DateEducateDate3.TabIndex = 132;
+            DateEducateDate3.Size = new Size(180, 23);
+            DateEducateDate3.TabIndex = 137;
             // 
             // DateEducateDate2
             // 
+            DateEducateDate2.CustomFormat = " ";
+            DateEducateDate2.Format = DateTimePickerFormat.Custom;
             DateEducateDate2.Location = new Point(40, 76);
             DateEducateDate2.Name = "DateEducateDate2";
-            DateEducateDate2.Size = new Size(183, 23);
-            DateEducateDate2.TabIndex = 131;
+            DateEducateDate2.Size = new Size(180, 23);
+            DateEducateDate2.TabIndex = 136;
             // 
             // DateEducateDate1
             // 
+            DateEducateDate1.CustomFormat = " ";
+            DateEducateDate1.Format = DateTimePickerFormat.Custom;
             DateEducateDate1.Location = new Point(40, 48);
             DateEducateDate1.Name = "DateEducateDate1";
-            DateEducateDate1.Size = new Size(183, 23);
-            DateEducateDate1.TabIndex = 130;
+            DateEducateDate1.Size = new Size(180, 23);
+            DateEducateDate1.TabIndex = 119;
             // 
             // label96
             // 
@@ -2425,45 +2459,57 @@
             // 
             // DateCarViolateDate6
             // 
+            DateCarViolateDate6.CustomFormat = " ";
+            DateCarViolateDate6.Format = DateTimePickerFormat.Custom;
             DateCarViolateDate6.Location = new Point(40, 188);
             DateCarViolateDate6.Name = "DateCarViolateDate6";
-            DateCarViolateDate6.Size = new Size(183, 23);
-            DateCarViolateDate6.TabIndex = 129;
+            DateCarViolateDate6.Size = new Size(180, 23);
+            DateCarViolateDate6.TabIndex = 118;
             // 
             // DateCarViolateDate5
             // 
+            DateCarViolateDate5.CustomFormat = " ";
+            DateCarViolateDate5.Format = DateTimePickerFormat.Custom;
             DateCarViolateDate5.Location = new Point(40, 160);
             DateCarViolateDate5.Name = "DateCarViolateDate5";
-            DateCarViolateDate5.Size = new Size(183, 23);
-            DateCarViolateDate5.TabIndex = 128;
+            DateCarViolateDate5.Size = new Size(180, 23);
+            DateCarViolateDate5.TabIndex = 117;
             // 
             // DateCarViolateDate4
             // 
+            DateCarViolateDate4.CustomFormat = " ";
+            DateCarViolateDate4.Format = DateTimePickerFormat.Custom;
             DateCarViolateDate4.Location = new Point(40, 132);
             DateCarViolateDate4.Name = "DateCarViolateDate4";
-            DateCarViolateDate4.Size = new Size(183, 23);
-            DateCarViolateDate4.TabIndex = 127;
+            DateCarViolateDate4.Size = new Size(180, 23);
+            DateCarViolateDate4.TabIndex = 116;
             // 
             // DateCarViolateDate3
             // 
+            DateCarViolateDate3.CustomFormat = " ";
+            DateCarViolateDate3.Format = DateTimePickerFormat.Custom;
             DateCarViolateDate3.Location = new Point(40, 104);
             DateCarViolateDate3.Name = "DateCarViolateDate3";
-            DateCarViolateDate3.Size = new Size(183, 23);
-            DateCarViolateDate3.TabIndex = 126;
+            DateCarViolateDate3.Size = new Size(180, 23);
+            DateCarViolateDate3.TabIndex = 115;
             // 
             // DateCarViolateDate2
             // 
+            DateCarViolateDate2.CustomFormat = " ";
+            DateCarViolateDate2.Format = DateTimePickerFormat.Custom;
             DateCarViolateDate2.Location = new Point(40, 76);
             DateCarViolateDate2.Name = "DateCarViolateDate2";
-            DateCarViolateDate2.Size = new Size(183, 23);
-            DateCarViolateDate2.TabIndex = 125;
+            DateCarViolateDate2.Size = new Size(180, 23);
+            DateCarViolateDate2.TabIndex = 114;
             // 
             // DateCarViolateDate1
             // 
-            DateCarViolateDate1.Location = new Point(40, 48);
+            DateCarViolateDate1.CustomFormat = " ";
+            DateCarViolateDate1.Format = DateTimePickerFormat.Custom;
+            DateCarViolateDate1.Location = new Point(40, 49);
             DateCarViolateDate1.Name = "DateCarViolateDate1";
-            DateCarViolateDate1.Size = new Size(183, 23);
-            DateCarViolateDate1.TabIndex = 124;
+            DateCarViolateDate1.Size = new Size(180, 23);
+            DateCarViolateDate1.TabIndex = 113;
             // 
             // TextBoxCarViolatePlace6
             // 
@@ -2688,31 +2734,39 @@
             // 
             // DatePunishmentDate4
             // 
+            DatePunishmentDate4.CustomFormat = " ";
+            DatePunishmentDate4.Format = DateTimePickerFormat.Custom;
             DatePunishmentDate4.Location = new Point(40, 132);
             DatePunishmentDate4.Name = "DatePunishmentDate4";
-            DatePunishmentDate4.Size = new Size(183, 23);
-            DatePunishmentDate4.TabIndex = 142;
+            DatePunishmentDate4.Size = new Size(180, 23);
+            DatePunishmentDate4.TabIndex = 147;
             // 
             // DatePunishmentDate3
             // 
+            DatePunishmentDate3.CustomFormat = " ";
+            DatePunishmentDate3.Format = DateTimePickerFormat.Custom;
             DatePunishmentDate3.Location = new Point(40, 104);
             DatePunishmentDate3.Name = "DatePunishmentDate3";
-            DatePunishmentDate3.Size = new Size(183, 23);
-            DatePunishmentDate3.TabIndex = 141;
+            DatePunishmentDate3.Size = new Size(180, 23);
+            DatePunishmentDate3.TabIndex = 146;
             // 
             // DatePunishmentDate2
             // 
+            DatePunishmentDate2.CustomFormat = " ";
+            DatePunishmentDate2.Format = DateTimePickerFormat.Custom;
             DatePunishmentDate2.Location = new Point(40, 76);
             DatePunishmentDate2.Name = "DatePunishmentDate2";
-            DatePunishmentDate2.Size = new Size(183, 23);
-            DatePunishmentDate2.TabIndex = 140;
+            DatePunishmentDate2.Size = new Size(180, 23);
+            DatePunishmentDate2.TabIndex = 145;
             // 
             // DatePunishmentDate1
             // 
+            DatePunishmentDate1.CustomFormat = " ";
+            DatePunishmentDate1.Format = DateTimePickerFormat.Custom;
             DatePunishmentDate1.Location = new Point(40, 48);
             DatePunishmentDate1.Name = "DatePunishmentDate1";
-            DatePunishmentDate1.Size = new Size(183, 23);
-            DatePunishmentDate1.TabIndex = 139;
+            DatePunishmentDate1.Size = new Size(180, 23);
+            DatePunishmentDate1.TabIndex = 144;
             // 
             // label103
             // 
@@ -2830,31 +2884,39 @@
             // 
             // DateMedicalExaminationDate4
             // 
+            DateMedicalExaminationDate4.CustomFormat = " ";
+            DateMedicalExaminationDate4.Format = DateTimePickerFormat.Custom;
             DateMedicalExaminationDate4.Location = new Point(44, 132);
             DateMedicalExaminationDate4.Name = "DateMedicalExaminationDate4";
-            DateMedicalExaminationDate4.Size = new Size(183, 23);
-            DateMedicalExaminationDate4.TabIndex = 123;
+            DateMedicalExaminationDate4.Size = new Size(180, 23);
+            DateMedicalExaminationDate4.TabIndex = 128;
             // 
             // DateMedicalExaminationDate3
             // 
+            DateMedicalExaminationDate3.CustomFormat = " ";
+            DateMedicalExaminationDate3.Format = DateTimePickerFormat.Custom;
             DateMedicalExaminationDate3.Location = new Point(44, 104);
             DateMedicalExaminationDate3.Name = "DateMedicalExaminationDate3";
-            DateMedicalExaminationDate3.Size = new Size(183, 23);
-            DateMedicalExaminationDate3.TabIndex = 122;
+            DateMedicalExaminationDate3.Size = new Size(180, 23);
+            DateMedicalExaminationDate3.TabIndex = 127;
             // 
             // DateMedicalExaminationDate2
             // 
+            DateMedicalExaminationDate2.CustomFormat = " ";
+            DateMedicalExaminationDate2.Format = DateTimePickerFormat.Custom;
             DateMedicalExaminationDate2.Location = new Point(44, 76);
             DateMedicalExaminationDate2.Name = "DateMedicalExaminationDate2";
-            DateMedicalExaminationDate2.Size = new Size(183, 23);
-            DateMedicalExaminationDate2.TabIndex = 121;
+            DateMedicalExaminationDate2.Size = new Size(180, 23);
+            DateMedicalExaminationDate2.TabIndex = 126;
             // 
             // DateMedicalExaminationDate1
             // 
+            DateMedicalExaminationDate1.CustomFormat = " ";
+            DateMedicalExaminationDate1.Format = DateTimePickerFormat.Custom;
             DateMedicalExaminationDate1.Location = new Point(44, 48);
             DateMedicalExaminationDate1.Name = "DateMedicalExaminationDate1";
-            DateMedicalExaminationDate1.Size = new Size(183, 23);
-            DateMedicalExaminationDate1.TabIndex = 120;
+            DateMedicalExaminationDate1.Size = new Size(180, 23);
+            DateMedicalExaminationDate1.TabIndex = 125;
             // 
             // button3
             // 
@@ -3025,31 +3087,39 @@
             // 
             // DateWorkerAccidentInsuranceDate
             // 
+            DateWorkerAccidentInsuranceDate.CustomFormat = " ";
+            DateWorkerAccidentInsuranceDate.Format = DateTimePickerFormat.Custom;
             DateWorkerAccidentInsuranceDate.Location = new Point(100, 132);
             DateWorkerAccidentInsuranceDate.Name = "DateWorkerAccidentInsuranceDate";
-            DateWorkerAccidentInsuranceDate.Size = new Size(183, 23);
-            DateWorkerAccidentInsuranceDate.TabIndex = 119;
+            DateWorkerAccidentInsuranceDate.Size = new Size(180, 23);
+            DateWorkerAccidentInsuranceDate.TabIndex = 124;
             // 
             // DateEmploymentInsuranceDate
             // 
+            DateEmploymentInsuranceDate.CustomFormat = " ";
+            DateEmploymentInsuranceDate.Format = DateTimePickerFormat.Custom;
             DateEmploymentInsuranceDate.Location = new Point(100, 104);
             DateEmploymentInsuranceDate.Name = "DateEmploymentInsuranceDate";
-            DateEmploymentInsuranceDate.Size = new Size(183, 23);
-            DateEmploymentInsuranceDate.TabIndex = 118;
+            DateEmploymentInsuranceDate.Size = new Size(180, 23);
+            DateEmploymentInsuranceDate.TabIndex = 123;
             // 
             // DateWelfarePensionDate
             // 
+            DateWelfarePensionDate.CustomFormat = " ";
+            DateWelfarePensionDate.Format = DateTimePickerFormat.Custom;
             DateWelfarePensionDate.Location = new Point(100, 76);
             DateWelfarePensionDate.Name = "DateWelfarePensionDate";
-            DateWelfarePensionDate.Size = new Size(183, 23);
-            DateWelfarePensionDate.TabIndex = 117;
+            DateWelfarePensionDate.Size = new Size(180, 23);
+            DateWelfarePensionDate.TabIndex = 122;
             // 
             // DateHealthInsuranceDate
             // 
+            DateHealthInsuranceDate.CustomFormat = " ";
+            DateHealthInsuranceDate.Format = DateTimePickerFormat.Custom;
             DateHealthInsuranceDate.Location = new Point(100, 48);
             DateHealthInsuranceDate.Name = "DateHealthInsuranceDate";
-            DateHealthInsuranceDate.Size = new Size(183, 23);
-            DateHealthInsuranceDate.TabIndex = 116;
+            DateHealthInsuranceDate.Size = new Size(180, 23);
+            DateHealthInsuranceDate.TabIndex = 121;
             // 
             // ComboBoxHealthInsuranceNumber
             // 
@@ -3222,45 +3292,57 @@
             // 
             // DateFamilyBirthDate6
             // 
+            DateFamilyBirthDate6.CustomFormat = " ";
+            DateFamilyBirthDate6.Format = DateTimePickerFormat.Custom;
             DateFamilyBirthDate6.Location = new Point(312, 188);
             DateFamilyBirthDate6.Name = "DateFamilyBirthDate6";
-            DateFamilyBirthDate6.Size = new Size(183, 23);
-            DateFamilyBirthDate6.TabIndex = 115;
+            DateFamilyBirthDate6.Size = new Size(180, 23);
+            DateFamilyBirthDate6.TabIndex = 120;
             // 
             // DateFamilyBirthDate5
             // 
+            DateFamilyBirthDate5.CustomFormat = " ";
+            DateFamilyBirthDate5.Format = DateTimePickerFormat.Custom;
             DateFamilyBirthDate5.Location = new Point(312, 160);
             DateFamilyBirthDate5.Name = "DateFamilyBirthDate5";
-            DateFamilyBirthDate5.Size = new Size(183, 23);
-            DateFamilyBirthDate5.TabIndex = 114;
+            DateFamilyBirthDate5.Size = new Size(180, 23);
+            DateFamilyBirthDate5.TabIndex = 119;
             // 
             // DateFamilyBirthDate4
             // 
+            DateFamilyBirthDate4.CustomFormat = " ";
+            DateFamilyBirthDate4.Format = DateTimePickerFormat.Custom;
             DateFamilyBirthDate4.Location = new Point(312, 132);
             DateFamilyBirthDate4.Name = "DateFamilyBirthDate4";
-            DateFamilyBirthDate4.Size = new Size(183, 23);
-            DateFamilyBirthDate4.TabIndex = 113;
+            DateFamilyBirthDate4.Size = new Size(180, 23);
+            DateFamilyBirthDate4.TabIndex = 118;
             // 
             // DateFamilyBirthDate3
             // 
+            DateFamilyBirthDate3.CustomFormat = " ";
+            DateFamilyBirthDate3.Format = DateTimePickerFormat.Custom;
             DateFamilyBirthDate3.Location = new Point(312, 104);
             DateFamilyBirthDate3.Name = "DateFamilyBirthDate3";
-            DateFamilyBirthDate3.Size = new Size(183, 23);
-            DateFamilyBirthDate3.TabIndex = 112;
+            DateFamilyBirthDate3.Size = new Size(180, 23);
+            DateFamilyBirthDate3.TabIndex = 117;
             // 
             // DateFamilyBirthDate2
             // 
+            DateFamilyBirthDate2.CustomFormat = " ";
+            DateFamilyBirthDate2.Format = DateTimePickerFormat.Custom;
             DateFamilyBirthDate2.Location = new Point(312, 76);
             DateFamilyBirthDate2.Name = "DateFamilyBirthDate2";
-            DateFamilyBirthDate2.Size = new Size(183, 23);
-            DateFamilyBirthDate2.TabIndex = 111;
+            DateFamilyBirthDate2.Size = new Size(180, 23);
+            DateFamilyBirthDate2.TabIndex = 116;
             // 
             // DateFamilyBirthDate1
             // 
+            DateFamilyBirthDate1.CustomFormat = " ";
+            DateFamilyBirthDate1.Format = DateTimePickerFormat.Custom;
             DateFamilyBirthDate1.Location = new Point(312, 48);
             DateFamilyBirthDate1.Name = "DateFamilyBirthDate1";
-            DateFamilyBirthDate1.Size = new Size(183, 23);
-            DateFamilyBirthDate1.TabIndex = 110;
+            DateFamilyBirthDate1.Size = new Size(180, 23);
+            DateFamilyBirthDate1.TabIndex = 113;
             // 
             // TextBoxUrgentTelephoneMethod
             // 
@@ -3793,47 +3875,6 @@
         private RadioButton RadioButtonPart1;
         private RadioButton RadioButtonStaff;
         private RadioButton RadioButtonNone1;
-        private ControlEx.UcDateTimeJp DateHistoryDate6;
-        private ControlEx.UcDateTimeJp DateHistoryDate5;
-        private ControlEx.UcDateTimeJp DateHistoryDate4;
-        private ControlEx.UcDateTimeJp DateHistoryDate3;
-        private ControlEx.UcDateTimeJp DateHistoryDate2;
-        private ControlEx.UcDateTimeJp DateHistoryDate1;
-        private ControlEx.UcDateTimeJp DateDeathDate;
-        private ControlEx.UcDateTimeJp DateRetirementDate;
-        private ControlEx.UcDateTimeJp DateHealthInsuranceDate;
-        private ControlEx.UcDateTimeJp DateFamilyBirthDate6;
-        private ControlEx.UcDateTimeJp DateFamilyBirthDate5;
-        private ControlEx.UcDateTimeJp DateFamilyBirthDate4;
-        private ControlEx.UcDateTimeJp DateFamilyBirthDate3;
-        private ControlEx.UcDateTimeJp DateFamilyBirthDate2;
-        private ControlEx.UcDateTimeJp DateFamilyBirthDate1;
-        private ControlEx.UcDateTimeJp DateWorkerAccidentInsuranceDate;
-        private ControlEx.UcDateTimeJp DateEmploymentInsuranceDate;
-        private ControlEx.UcDateTimeJp DateWelfarePensionDate;
-        private ControlEx.UcDateTimeJp DateMedicalExaminationDate4;
-        private ControlEx.UcDateTimeJp DateMedicalExaminationDate3;
-        private ControlEx.UcDateTimeJp DateMedicalExaminationDate2;
-        private ControlEx.UcDateTimeJp DateMedicalExaminationDate1;
-        private ControlEx.UcDateTimeJp DateCarViolateDate6;
-        private ControlEx.UcDateTimeJp DateCarViolateDate5;
-        private ControlEx.UcDateTimeJp DateCarViolateDate4;
-        private ControlEx.UcDateTimeJp DateCarViolateDate3;
-        private ControlEx.UcDateTimeJp DateCarViolateDate2;
-        private ControlEx.UcDateTimeJp DateCarViolateDate1;
-        private ControlEx.UcDateTimeJp DateProperDate3;
-        private ControlEx.UcDateTimeJp DateProperDate2;
-        private ControlEx.UcDateTimeJp DateProperDate1;
-        private ControlEx.UcDateTimeJp DateEducateDate6;
-        private ControlEx.UcDateTimeJp DateEducateDate5;
-        private ControlEx.UcDateTimeJp DateEducateDate4;
-        private ControlEx.UcDateTimeJp DateEducateDate3;
-        private ControlEx.UcDateTimeJp DateEducateDate2;
-        private ControlEx.UcDateTimeJp DateEducateDate1;
-        private ControlEx.UcDateTimeJp DatePunishmentDate4;
-        private ControlEx.UcDateTimeJp DatePunishmentDate3;
-        private ControlEx.UcDateTimeJp DatePunishmentDate2;
-        private ControlEx.UcDateTimeJp DatePunishmentDate1;
         private RadioButton RadioButtonDispatch;
         private ControlEx.DateTimePickerJpEx DateBirthDate;
         private ControlEx.DateTimePickerJpEx DateEmploymentDate;
@@ -3849,5 +3890,46 @@
         private ControlEx.DateTimePickerJpEx DateLicenseTypeDate4;
         private ControlEx.DateTimePickerJpEx DateLicenseTypeExpirationDate3;
         private ControlEx.DateTimePickerJpEx DateLicenseTypeDate3;
+        private ControlEx.DateTimePickerJpEx DateHistoryDate3;
+        private ControlEx.DateTimePickerJpEx DateHistoryDate2;
+        private ControlEx.DateTimePickerJpEx DateHistoryDate1;
+        private ControlEx.DateTimePickerJpEx DateHistoryDate6;
+        private ControlEx.DateTimePickerJpEx DateHistoryDate5;
+        private ControlEx.DateTimePickerJpEx DateHistoryDate4;
+        private ControlEx.DateTimePickerJpEx DateDeathDate;
+        private ControlEx.DateTimePickerJpEx DateRetirementDate;
+        private ControlEx.DateTimePickerJpEx DateFamilyBirthDate3;
+        private ControlEx.DateTimePickerJpEx DateFamilyBirthDate2;
+        private ControlEx.DateTimePickerJpEx DateFamilyBirthDate1;
+        private ControlEx.DateTimePickerJpEx DateFamilyBirthDate6;
+        private ControlEx.DateTimePickerJpEx DateFamilyBirthDate5;
+        private ControlEx.DateTimePickerJpEx DateFamilyBirthDate4;
+        private ControlEx.DateTimePickerJpEx DateWorkerAccidentInsuranceDate;
+        private ControlEx.DateTimePickerJpEx DateEmploymentInsuranceDate;
+        private ControlEx.DateTimePickerJpEx DateWelfarePensionDate;
+        private ControlEx.DateTimePickerJpEx DateHealthInsuranceDate;
+        private ControlEx.DateTimePickerJpEx DateMedicalExaminationDate4;
+        private ControlEx.DateTimePickerJpEx DateMedicalExaminationDate3;
+        private ControlEx.DateTimePickerJpEx DateMedicalExaminationDate2;
+        private ControlEx.DateTimePickerJpEx DateMedicalExaminationDate1;
+        private ControlEx.DateTimePickerJpEx DateCarViolateDate1;
+        private ControlEx.DateTimePickerJpEx DateCarViolateDate6;
+        private ControlEx.DateTimePickerJpEx DateCarViolateDate5;
+        private ControlEx.DateTimePickerJpEx DateCarViolateDate4;
+        private ControlEx.DateTimePickerJpEx DateCarViolateDate3;
+        private ControlEx.DateTimePickerJpEx DateCarViolateDate2;
+        private ControlEx.DateTimePickerJpEx DateEducateDate6;
+        private ControlEx.DateTimePickerJpEx DateEducateDate5;
+        private ControlEx.DateTimePickerJpEx DateEducateDate4;
+        private ControlEx.DateTimePickerJpEx DateEducateDate3;
+        private ControlEx.DateTimePickerJpEx DateEducateDate2;
+        private ControlEx.DateTimePickerJpEx DateEducateDate1;
+        private ControlEx.DateTimePickerJpEx DateProperDate3;
+        private ControlEx.DateTimePickerJpEx DateProperDate2;
+        private ControlEx.DateTimePickerJpEx DateProperDate1;
+        private ControlEx.DateTimePickerJpEx DatePunishmentDate1;
+        private ControlEx.DateTimePickerJpEx DatePunishmentDate2;
+        private ControlEx.DateTimePickerJpEx DatePunishmentDate3;
+        private ControlEx.DateTimePickerJpEx DatePunishmentDate4;
     }
 }

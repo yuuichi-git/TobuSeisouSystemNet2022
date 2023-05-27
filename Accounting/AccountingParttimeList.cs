@@ -10,7 +10,7 @@ namespace Accounting {
     public partial class AccountingParttimeList : Form {
         private ConnectionVo _connectionVo;
         private readonly InitializeForm _initializeForm = new();
-        private string _operationName;
+        private string _operationName = "";
 
         /*
          * Vo
