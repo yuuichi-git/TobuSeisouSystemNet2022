@@ -100,8 +100,7 @@ namespace VehicleDispatchSheet {
             /*
              * 日付を初期化
              */
-            UcDateTimeJpOperationDate.SetValue(DateTime.Now);
-            UcDateTimeJpOperationDate.SetReadOnly(true);
+            DateTimePickerJpExOperationDate.SetValue(DateTime.Now);
 
             ToolStripStatusLabelStatus.Text = string.Empty;
             ToolStripStatusLabelPosition.Text = string.Empty;
@@ -148,12 +147,12 @@ namespace VehicleDispatchSheet {
             /*
              * roll_call_detailを記録する
              */
-            if(_rollCallDetailDao.CheckRollCallDetail(UcDateTimeJpOperationDate.GetValue()) > 0) {
+            if(_rollCallDetailDao.CheckRollCallDetail(DateTimePickerJpExOperationDate.GetValue()) > 0) {
                 /*
                  * 更新登録(UPDATE)
                  */
                 _rollCallDetailVo = new RollCallDetailVo();
-                _rollCallDetailVo.Operation_date = UcDateTimeJpOperationDate.GetValue().Date;
+                _rollCallDetailVo.Operation_date = DateTimePickerJpExOperationDate.GetValue().Date;
                 _rollCallDetailVo.Roll_call_name_1 = ComboBox1.Text;
                 _rollCallDetailVo.Roll_call_name_2 = ComboBox2.Text;
                 _rollCallDetailVo.Roll_call_name_3 = ComboBox3.Text;
@@ -168,7 +167,7 @@ namespace VehicleDispatchSheet {
                  * 新規登録(INSERT)
                  */
                 _rollCallDetailVo = new RollCallDetailVo();
-                _rollCallDetailVo.Operation_date = UcDateTimeJpOperationDate.GetValue().Date;
+                _rollCallDetailVo.Operation_date = DateTimePickerJpExOperationDate.GetValue().Date;
                 _rollCallDetailVo.Roll_call_name_1 = ComboBox1.Text;
                 _rollCallDetailVo.Roll_call_name_2 = ComboBox2.Text;
                 _rollCallDetailVo.Roll_call_name_3 = ComboBox3.Text;
@@ -188,7 +187,7 @@ namespace VehicleDispatchSheet {
             /*
              * 配車日時
              */
-            SheetView1.Cells[0, 0].Text = UcDateTimeJpOperationDate.GetText();
+            SheetView1.Cells[0, 0].Text = DateTimePickerJpExOperationDate.GetValueJp();
             /*
              * 天候
              */
@@ -197,7 +196,7 @@ namespace VehicleDispatchSheet {
              * 10:☆庸上　小特　コード：1
              */
             blockRowCount = 0;
-            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(DateTimePickerJpExOperationDate.GetValue())) {
                 /*
                  * 運賃対象のレコード以外はBreakする
                  * 
@@ -232,7 +231,7 @@ namespace VehicleDispatchSheet {
              * 11:☆庸上　小プレ　コード：1
              */
             blockRowCount = 0;
-            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(DateTimePickerJpExOperationDate.GetValue())) {
                 /*
                  * 運賃対象のレコード以外はBreakする
                  */
@@ -266,7 +265,7 @@ namespace VehicleDispatchSheet {
              * 12:☆庸上　新大特　コード：2
              */
             blockRowCount = 0;
-            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(DateTimePickerJpExOperationDate.GetValue())) {
                 /*
                  * 運賃対象のレコード以外はBreakする
                  */
@@ -300,7 +299,7 @@ namespace VehicleDispatchSheet {
              * 13:☆庸上　軽小ダンプ　コード：51
              */
             blockRowCount = 0;
-            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(DateTimePickerJpExOperationDate.GetValue())) {
                 /*
                  * 運賃対象のレコード以外はBreakする
                  */
@@ -334,7 +333,7 @@ namespace VehicleDispatchSheet {
              * 14:☆庸上　軽小型貨物　コード：11
              */
             blockRowCount = 0;
-            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(DateTimePickerJpExOperationDate.GetValue())) {
                 /*
                  * 運賃対象のレコード以外はBreakする
                  */
@@ -368,7 +367,7 @@ namespace VehicleDispatchSheet {
              * 15:☆区契　軽小型貨物　コード：11
              */
             blockRowCount = 0;
-            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(DateTimePickerJpExOperationDate.GetValue())) {
                 /*
                  * 運賃対象のレコード以外はBreakする
                  */
@@ -402,7 +401,7 @@ namespace VehicleDispatchSheet {
              * 16:☆区契　小プレ　コード：1
              */
             blockRowCount = 0;
-            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(DateTimePickerJpExOperationDate.GetValue())) {
                 /*
                  * 運賃対象のレコード以外はBreakする
                  */
@@ -436,7 +435,7 @@ namespace VehicleDispatchSheet {
              * 17:☆区契　小プレ コード：23
              */
             blockRowCount = 0;
-            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(DateTimePickerJpExOperationDate.GetValue())) {
                 /*
                  * 運賃対象のレコード以外はBreakする
                  */
@@ -470,7 +469,7 @@ namespace VehicleDispatchSheet {
              * 18:☆区契　小プレ　コード：8
              */
             blockRowCount = 0;
-            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(DateTimePickerJpExOperationDate.GetValue())) {
                 /*
                  * 運賃対象のレコード以外はBreakする
                  */
@@ -504,7 +503,7 @@ namespace VehicleDispatchSheet {
              * 19:☆区契　平ボディ　コード：15
              */
             blockRowCount = 0;
-            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(DateTimePickerJpExOperationDate.GetValue())) {
                 /*
                  * 運賃対象のレコード以外はBreakする
                  */
@@ -538,7 +537,7 @@ namespace VehicleDispatchSheet {
              * 20:☆区契　小Ｇ　コード：1
              */
             blockRowCount = 0;
-            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(DateTimePickerJpExOperationDate.GetValue())) {
                 /*
                  * 運賃対象のレコード以外はBreakする
                  */
@@ -572,7 +571,7 @@ namespace VehicleDispatchSheet {
              * 21:☆庸上　大Ｇ　コード：5
              */
             blockRowCount = 0;
-            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(DateTimePickerJpExOperationDate.GetValue())) {
                 /*
                  * 運賃対象のレコード以外はBreakする
                  */
@@ -606,7 +605,7 @@ namespace VehicleDispatchSheet {
              * 22:☆臨時　小プレ等　コード：1
              */
             blockRowCount = 0;
-            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(DateTimePickerJpExOperationDate.GetValue())) {
                 /*
                  * 運賃対象のレコード以外はBreakする
                  */
@@ -644,7 +643,7 @@ namespace VehicleDispatchSheet {
              * 23:☆臨時　雇上　新大特　コード：2
              */
             blockRowCount = 0;
-            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(DateTimePickerJpExOperationDate.GetValue())) {
                 /*
                  * 運賃対象のレコード以外はBreakする
                  */
@@ -680,7 +679,7 @@ namespace VehicleDispatchSheet {
              * 24:☆臨時　雇上/区契　軽小貨/軽ダ　コード：11
              */
             blockRowCount = 0;
-            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(DateTimePickerJpExOperationDate.GetValue())) {
                 /*
                  * 運賃対象のレコード以外はBreakする
                  */
@@ -717,7 +716,7 @@ namespace VehicleDispatchSheet {
              * 25:☆臨時　区契　平ボディ　コード：15　
              */
             blockRowCount = 0;
-            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(DateTimePickerJpExOperationDate.GetValue())) {
                 /*
                  * 運賃対象のレコード以外はBreakする
                  */
@@ -753,7 +752,7 @@ namespace VehicleDispatchSheet {
              * 26:☆一廃・産廃【白ナンバー】 コード：12
              */
             blockRowCount = 0;
-            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(DateTimePickerJpExOperationDate.GetValue())) {
                 /*
                  * 運賃対象のレコード以外はBreakする
                  */
@@ -787,7 +786,7 @@ namespace VehicleDispatchSheet {
              * 27:☆一廃・産廃【営業ナンバー】 コード：12
              */
             blockRowCount = 0;
-            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(DateTimePickerJpExOperationDate.GetValue())) {
                 /*
                  * 運賃対象のレコード以外はBreakする
                  */
@@ -821,7 +820,7 @@ namespace VehicleDispatchSheet {
              * 28:☆粗大・その他廃棄物【白ナンバー】 コード：1
              */
             blockRowCount = 0;
-            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(DateTimePickerJpExOperationDate.GetValue())) {
                 /*
                  * 運賃対象のレコード以外はBreakする
                  */
@@ -855,7 +854,7 @@ namespace VehicleDispatchSheet {
              * 29:☆廃家電　他【営業ナンバー】 コード：1
              */
             blockRowCount = 0;
-            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(DateTimePickerJpExOperationDate.GetValue())) {
                 /*
                  * 運賃対象のレコード以外はBreakする
                  */
@@ -889,7 +888,7 @@ namespace VehicleDispatchSheet {
              * 30:☆浄化槽 コード：1
              */
             blockRowCount = 0;
-            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(DateTimePickerJpExOperationDate.GetValue())) {
                 /*
                  * 運賃対象のレコード以外はBreakする
                  */
@@ -923,7 +922,7 @@ namespace VehicleDispatchSheet {
              * 31:予備者・社員
              */
             blockRowCount = 0;
-            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(DateTimePickerJpExOperationDate.GetValue())) {
                 /*
                  * 運賃対象のレコード以外はBreakする
                  */
@@ -957,7 +956,7 @@ namespace VehicleDispatchSheet {
              * 32:☆整備 コード：1
              */
             blockRowCount = 0;
-            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue())) {
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(DateTimePickerJpExOperationDate.GetValue())) {
                 /*
                  * 運賃対象のレコード以外はBreakする
                  */
@@ -1095,7 +1094,7 @@ namespace VehicleDispatchSheet {
                     case 1311706: // 北区軽粗大・資源
                         SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 1].Font = new System.Drawing.Font("Yu Gothic UI", 9);
                         SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 1].ForeColor = vehicleDispatchDetailVo.Operation_flag ? System.Drawing.Color.Black : System.Drawing.Color.Red;
-                        if(UcDateTimeJpOperationDate.GetValue().DayOfWeek != DayOfWeek.Friday) {
+                        if(DateTimePickerJpExOperationDate.GetValue().DayOfWeek != DayOfWeek.Friday) {
                             SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 1].Text = setName2;
                         } else {
                             SheetView1.Cells[entryCellPosition.Row, entryCellPosition.Col + 1].BackColor = System.Drawing.Color.Yellow;
@@ -1559,7 +1558,7 @@ namespace VehicleDispatchSheet {
                 /*
                  * RollCallDetailが存在すれば転記する
                  */
-                _rollCallDetailVo = _rollCallDetailDao.SelectOneRollCallDetail(UcDateTimeJpOperationDate.GetValue());
+                _rollCallDetailVo = _rollCallDetailDao.SelectOneRollCallDetail(DateTimePickerJpExOperationDate.GetValue());
                 if(_rollCallDetailVo != null) {
                     ComboBox1.Text = _rollCallDetailVo.Roll_call_name_1;
                     ComboBox2.Text = _rollCallDetailVo.Roll_call_name_2;

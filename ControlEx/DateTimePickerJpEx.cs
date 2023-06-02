@@ -1,7 +1,9 @@
 ﻿/*
  * 2023-05-12
  */
+using System;
 using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace ControlEx {
     public partial class DateTimePickerJpEx : DateTimePicker {
@@ -65,6 +67,14 @@ namespace ControlEx {
         /// <returns></returns>
         public DateTime GetValue() {
             return this.Value;
+        }
+
+        /// <summary>
+        /// GetValueJp
+        /// </summary>
+        /// <returns></returns>
+        public string GetValueJp() {
+            return string.Concat( this.Value.ToString("ggy年M月d日(dddd)", Japanese));
         }
 
         /// <summary>

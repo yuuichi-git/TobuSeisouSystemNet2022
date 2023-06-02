@@ -31,7 +31,6 @@
             toolStripStatusLabel2 = new ToolStripStatusLabel();
             ToolStripStatusLabelPosition = new ToolStripStatusLabel();
             SpreadBase = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("TableLayoutPanelExBase.Controls"));
-            SheetView1 = SpreadBase.GetSheet(0);
             MenuStrip1 = new MenuStrip();
             ToolStripMenuItemMenu = new ToolStripMenuItem();
             配車表ToolStripMenuItem = new ToolStripMenuItem();
@@ -40,6 +39,7 @@
             ToolStripMenuItemExit = new ToolStripMenuItem();
             ToolStripMenuItemHelp = new ToolStripMenuItem();
             PanelUp = new Panel();
+            DateTimePickerJpExOperationDate = new ControlEx.DateTimePickerJpEx();
             CheckBox1 = new CheckBox();
             groupBox2 = new GroupBox();
             label9 = new Label();
@@ -59,9 +59,9 @@
             label3 = new Label();
             ComboBoxMISATO = new ComboBox();
             label2 = new Label();
-            UcDateTimeJpOperationDate = new ControlEx.UcDateTimeJp();
             label1 = new Label();
             ButtonUpdate = new Button();
+            SheetView1 = SpreadBase.GetSheet(0);
             TableLayoutPanelExBase.SuspendLayout();
             StatusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)SpreadBase).BeginInit();
@@ -186,12 +186,12 @@
             // 
             // PanelUp
             // 
+            PanelUp.Controls.Add(DateTimePickerJpExOperationDate);
             PanelUp.Controls.Add(CheckBox1);
             PanelUp.Controls.Add(groupBox2);
             PanelUp.Controls.Add(ComboBoxWEATHER);
             PanelUp.Controls.Add(label5);
             PanelUp.Controls.Add(GroupBox1);
-            PanelUp.Controls.Add(UcDateTimeJpOperationDate);
             PanelUp.Controls.Add(label1);
             PanelUp.Controls.Add(ButtonUpdate);
             PanelUp.Dock = DockStyle.Fill;
@@ -199,6 +199,15 @@
             PanelUp.Name = "PanelUp";
             PanelUp.Size = new Size(1898, 144);
             PanelUp.TabIndex = 3;
+            // 
+            // DateTimePickerJpExOperationDate
+            // 
+            DateTimePickerJpExOperationDate.CustomFormat = " ";
+            DateTimePickerJpExOperationDate.Format = DateTimePickerFormat.Custom;
+            DateTimePickerJpExOperationDate.Location = new Point(100, 56);
+            DateTimePickerJpExOperationDate.Name = "DateTimePickerJpExOperationDate";
+            DateTimePickerJpExOperationDate.Size = new Size(184, 23);
+            DateTimePickerJpExOperationDate.TabIndex = 20;
             // 
             // CheckBox1
             // 
@@ -393,13 +402,6 @@
             label2.TabIndex = 12;
             label2.Text = "本社(出１)";
             // 
-            // UcDateTimeJpOperationDate
-            // 
-            UcDateTimeJpOperationDate.Location = new Point(96, 56);
-            UcDateTimeJpOperationDate.Name = "UcDateTimeJpOperationDate";
-            UcDateTimeJpOperationDate.Size = new Size(183, 23);
-            UcDateTimeJpOperationDate.TabIndex = 8;
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -463,7 +465,6 @@
         private Button ButtonUpdate;
         private ToolStripStatusLabel toolStripStatusLabel2;
         private ToolStripStatusLabel ToolStripStatusLabelPosition;
-        private ControlEx.UcDateTimeJp UcDateTimeJpOperationDate;
         private Label label1;
         private Label label4;
         private Label label3;
@@ -487,6 +488,7 @@
         private Label label8;
         private ComboBox ComboBoxInstruction1;
         private CheckBox CheckBox1;
+        private ControlEx.DateTimePickerJpEx DateTimePickerJpExOperationDate;
         private FarPoint.Win.Spread.SheetView SheetView1;
     }
 }
