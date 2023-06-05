@@ -3,5 +3,10 @@ namespace Supply {
         public SupplyOutList() {
             InitializeComponent();
         }
+
+        public static void Main() {
+        }
+
+
     }
 }

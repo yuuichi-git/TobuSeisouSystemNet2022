@@ -51,6 +51,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Yazaki", "Yazaki\Yazaki.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToukaiDenshi", "ToukaiDenshi\ToukaiDenshi.csproj", "{D6899F77-D2AE-409F-84FA-80D32B523171}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Supply", "Supply\Supply.csproj", "{C0954E20-1A93-42D6-B4D4-19B1B809A066}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -251,6 +253,14 @@ Global
 		{D6899F77-D2AE-409F-84FA-80D32B523171}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D6899F77-D2AE-409F-84FA-80D32B523171}.Release|x64.ActiveCfg = Release|Any CPU
 		{D6899F77-D2AE-409F-84FA-80D32B523171}.Release|x64.Build.0 = Release|Any CPU
+		{C0954E20-1A93-42D6-B4D4-19B1B809A066}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0954E20-1A93-42D6-B4D4-19B1B809A066}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0954E20-1A93-42D6-B4D4-19B1B809A066}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C0954E20-1A93-42D6-B4D4-19B1B809A066}.Debug|x64.Build.0 = Debug|Any CPU
+		{C0954E20-1A93-42D6-B4D4-19B1B809A066}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0954E20-1A93-42D6-B4D4-19B1B809A066}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0954E20-1A93-42D6-B4D4-19B1B809A066}.Release|x64.ActiveCfg = Release|Any CPU
+		{C0954E20-1A93-42D6-B4D4-19B1B809A066}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

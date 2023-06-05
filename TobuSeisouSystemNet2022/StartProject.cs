@@ -25,6 +25,8 @@ using Staff;
 
 using StaffDetail;
 
+using Supply;
+
 using ToukaiDenshi;
 
 using Toukanpo;
@@ -185,12 +187,11 @@ namespace TobuSeisouSystemNet2022 {
                                 toukanpoSpeedSurvey.Show(this);
                                 break;
                             /*
-                             * WorkwearList
+                             * SupplyOutList
                              * 作業服等支給管理
                              */
-                            case "WorkwearList":
-                                EquipmentList workwearList = new EquipmentList(_connectionVo);
-                                workwearList.Show(this);
+                            case "SupplyOutList":
+                                MessageBox.Show("作成中です。もうしばらくお待ちください。");
                                 break;
                         }
                         break;

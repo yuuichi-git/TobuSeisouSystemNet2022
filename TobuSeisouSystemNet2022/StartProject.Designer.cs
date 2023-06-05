@@ -1011,7 +1011,7 @@
             label37.Name = "label37";
             label37.Size = new Size(125, 17);
             label37.TabIndex = 41;
-            label37.Tag = "WorkwearList";
+            label37.Tag = "SupplyOutList";
             label37.Text = "　作業服等支給管理";
             label37.Click += Label_Click;
             label37.MouseEnter += Label_MouseEnter;

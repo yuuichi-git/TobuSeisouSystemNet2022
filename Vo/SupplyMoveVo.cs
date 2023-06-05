@@ -2,7 +2,7 @@
  * 2023-06-05
  */
 namespace Vo {
-    public class EquipmentMoveVo {
+    public class SupplyMoveVo {
         private int _staff_code;
         private DateTime _move_date;
         private int _equipment_code;
