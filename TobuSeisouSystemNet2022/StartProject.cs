@@ -56,7 +56,6 @@ namespace TobuSeisouSystemNet2022 {
 
         /// <summary>
         /// ButtonDbConnect_Click
-        /// "Shift"押下＋クリックで、強制的にLocalDBへ接続させる（テスト環境用）
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -184,6 +183,14 @@ namespace TobuSeisouSystemNet2022 {
                             case "ToukanpoSpeedSurvey":
                                 var toukanpoSpeedSurvey = new ToukanpoSpeedSurvey(_connectionVo);
                                 toukanpoSpeedSurvey.Show(this);
+                                break;
+                            /*
+                             * WorkwearList
+                             * 作業服等支給管理
+                             */
+                            case "WorkwearList":
+                                EquipmentList workwearList = new EquipmentList(_connectionVo);
+                                workwearList.Show(this);
                                 break;
                         }
                         break;

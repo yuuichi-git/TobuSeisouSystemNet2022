@@ -90,8 +90,6 @@ namespace VehicleDispatch {
         /// コンストラクター
         /// </summary>
         public VehicleDispatchBoad(ConnectionVo connectionVo) {
-            EvacuationSetControlEx = null;
-
             /*
              * コントロール初期化
              */
@@ -2865,6 +2863,15 @@ namespace VehicleDispatch {
             stringFormat.LineAlignment = StringAlignment.Center;
             stringFormat.Alignment = StringAlignment.Center;
             e.Graphics?.DrawString(DateTimePickerJpExOperationDate.GetValue().ToString("ggyy年MM月dd日(dddd)", Japanese), drawFont, new SolidBrush(Color.Black), rectangleFill, stringFormat);
+        }
+
+        /// <summary>
+        /// ToolStripMenuItemEquipment_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItemEquipment_Click(object sender, EventArgs e) {
+            MessageBox.Show("作成中です。もうしばらくお待ちください。");
         }
 
         /// <summary>

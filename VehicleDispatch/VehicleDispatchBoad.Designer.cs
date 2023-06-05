@@ -149,6 +149,12 @@
             toolStripSeparator8 = new ToolStripSeparator();
             ToolStripMenuItemTelephoneMarkTrue = new ToolStripMenuItem();
             ToolStripMenuItemTelephoneMarkFalse = new ToolStripMenuItem();
+            toolStripSeparator10 = new ToolStripSeparator();
+            備品を支給するToolStripMenuItem = new ToolStripMenuItem();
+            ToolStripMenuItemEquipment1 = new ToolStripMenuItem();
+            ToolStripMenuItemEquipment2 = new ToolStripMenuItem();
+            ToolStripMenuItemEquipment3 = new ToolStripMenuItem();
+            ToolStripMenuItemEquipment4 = new ToolStripMenuItem();
             ToolTip1 = new ToolTip(components);
             TableLayoutPanelBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
@@ -1378,9 +1384,9 @@
             // 
             // ContextMenuStripStaffLabel
             // 
-            ContextMenuStripStaffLabel.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemStaffDetail, toolStripSeparator2, ToolStripMenuItemStaffProxyTrue, ToolStripMenuItemStaffProxyFalse, toolStripSeparator3, ToolStripMenuItemStaffMemo, toolStripSeparator5, ToolStripMenuItemOccupation10, ToolStripMenuItemOccupation11, toolStripSeparator8, ToolStripMenuItemTelephoneMarkTrue, ToolStripMenuItemTelephoneMarkFalse });
+            ContextMenuStripStaffLabel.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemStaffDetail, toolStripSeparator2, ToolStripMenuItemStaffProxyTrue, ToolStripMenuItemStaffProxyFalse, toolStripSeparator3, ToolStripMenuItemStaffMemo, toolStripSeparator5, ToolStripMenuItemOccupation10, ToolStripMenuItemOccupation11, toolStripSeparator8, ToolStripMenuItemTelephoneMarkTrue, ToolStripMenuItemTelephoneMarkFalse, toolStripSeparator10, 備品を支給するToolStripMenuItem });
             ContextMenuStripStaffLabel.Name = "ContextMenuStripStaffLabel";
-            ContextMenuStripStaffLabel.Size = new Size(296, 204);
+            ContextMenuStripStaffLabel.Size = new Size(296, 232);
             ContextMenuStripStaffLabel.Opened += ContextMenuStrip_Opened;
             // 
             // ToolStripMenuItemStaffDetail
@@ -1458,6 +1464,46 @@
             ToolStripMenuItemTelephoneMarkFalse.Size = new Size(295, 22);
             ToolStripMenuItemTelephoneMarkFalse.Text = "電話連絡マークを消す";
             ToolStripMenuItemTelephoneMarkFalse.Click += ToolStripMenuItem_Click;
+            // 
+            // toolStripSeparator10
+            // 
+            toolStripSeparator10.Name = "toolStripSeparator10";
+            toolStripSeparator10.Size = new Size(292, 6);
+            // 
+            // 備品を支給するToolStripMenuItem
+            // 
+            備品を支給するToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemEquipment1, ToolStripMenuItemEquipment2, ToolStripMenuItemEquipment3, ToolStripMenuItemEquipment4 });
+            備品を支給するToolStripMenuItem.Name = "備品を支給するToolStripMenuItem";
+            備品を支給するToolStripMenuItem.Size = new Size(295, 22);
+            備品を支給するToolStripMenuItem.Text = "備品を支給する";
+            // 
+            // ToolStripMenuItemEquipment1
+            // 
+            ToolStripMenuItemEquipment1.Name = "ToolStripMenuItemEquipment1";
+            ToolStripMenuItemEquipment1.Size = new Size(180, 22);
+            ToolStripMenuItemEquipment1.Text = "事務での備品";
+            ToolStripMenuItemEquipment1.Click += ToolStripMenuItemEquipment_Click;
+            // 
+            // ToolStripMenuItemEquipment2
+            // 
+            ToolStripMenuItemEquipment2.Name = "ToolStripMenuItemEquipment2";
+            ToolStripMenuItemEquipment2.Size = new Size(180, 22);
+            ToolStripMenuItemEquipment2.Text = "雇上での備品";
+            ToolStripMenuItemEquipment2.Click += ToolStripMenuItemEquipment_Click;
+            // 
+            // ToolStripMenuItemEquipment3
+            // 
+            ToolStripMenuItemEquipment3.Name = "ToolStripMenuItemEquipment3";
+            ToolStripMenuItemEquipment3.Size = new Size(180, 22);
+            ToolStripMenuItemEquipment3.Text = "産廃での備品";
+            ToolStripMenuItemEquipment3.Click += ToolStripMenuItemEquipment_Click;
+            // 
+            // ToolStripMenuItemEquipment4
+            // 
+            ToolStripMenuItemEquipment4.Name = "ToolStripMenuItemEquipment4";
+            ToolStripMenuItemEquipment4.Size = new Size(180, 22);
+            ToolStripMenuItemEquipment4.Text = "水物での備品";
+            ToolStripMenuItemEquipment4.Click += ToolStripMenuItemEquipment_Click;
             // 
             // ToolTip1
             // 
@@ -1644,5 +1690,11 @@
         private ToolStripMenuItem ToolStripMenuItemLateShift;
         private ToolStripMenuItem ToolStripMenuItemNoneShift;
         private ControlEx.DateTimePickerJpEx DateTimePickerJpExOperationDate;
+        private ToolStripSeparator toolStripSeparator10;
+        private ToolStripMenuItem 備品を支給するToolStripMenuItem;
+        private ToolStripMenuItem ToolStripMenuItemEquipment1;
+        private ToolStripMenuItem ToolStripMenuItemEquipment2;
+        private ToolStripMenuItem ToolStripMenuItemEquipment3;
+        private ToolStripMenuItem ToolStripMenuItemEquipment4;
     }
 }

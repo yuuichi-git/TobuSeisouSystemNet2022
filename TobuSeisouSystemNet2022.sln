@@ -47,9 +47,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WardSpreadsheet", "WardSpre
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SubstituteSheet", "SubstituteSheet\SubstituteSheet.csproj", "{D6286D52-1F78-4BF9-8603-A48572AF3ED1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yazaki", "Yazaki\Yazaki.csproj", "{CB433808-AAC0-4910-95AF-A57A0379973B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Yazaki", "Yazaki\Yazaki.csproj", "{CB433808-AAC0-4910-95AF-A57A0379973B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToukaiDenshi", "ToukaiDenshi\ToukaiDenshi.csproj", "{D6899F77-D2AE-409F-84FA-80D32B523171}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToukaiDenshi", "ToukaiDenshi\ToukaiDenshi.csproj", "{D6899F77-D2AE-409F-84FA-80D32B523171}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

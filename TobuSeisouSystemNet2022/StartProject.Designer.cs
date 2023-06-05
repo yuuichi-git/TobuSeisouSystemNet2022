@@ -164,6 +164,8 @@
             LabelIpAddress = new Label();
             LabelPcName = new Label();
             PanelRight = new Panel();
+            label37 = new Label();
+            label38 = new Label();
             label35 = new Label();
             label36 = new Label();
             label33 = new Label();
@@ -978,6 +980,8 @@
             // 
             // PanelRight
             // 
+            PanelRight.Controls.Add(label37);
+            PanelRight.Controls.Add(label38);
             PanelRight.Controls.Add(label35);
             PanelRight.Controls.Add(label36);
             PanelRight.Controls.Add(label33);
@@ -998,6 +1002,31 @@
             PanelRight.Name = "PanelRight";
             PanelRight.Size = new Size(294, 713);
             PanelRight.TabIndex = 4;
+            // 
+            // label37
+            // 
+            label37.AutoSize = true;
+            label37.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label37.Location = new Point(8, 380);
+            label37.Name = "label37";
+            label37.Size = new Size(125, 17);
+            label37.TabIndex = 41;
+            label37.Tag = "WorkwearList";
+            label37.Text = "　作業服等支給管理";
+            label37.Click += Label_Click;
+            label37.MouseEnter += Label_MouseEnter;
+            label37.MouseLeave += Label_MouseLeave;
+            // 
+            // label38
+            // 
+            label38.AutoSize = true;
+            label38.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label38.ForeColor = Color.Gray;
+            label38.Location = new Point(8, 400);
+            label38.Name = "label38";
+            label38.Size = new Size(209, 17);
+            label38.TabIndex = 42;
+            label38.Text = "　備品の支給量や在庫を管理します。";
             // 
             // label35
             // 
@@ -1267,5 +1296,7 @@
         private ToolStripMenuItem ToolStripMenuItemDataBase;
         private ToolStripMenuItem ToolStripMenuItemLocalDataBase;
         private Label label1;
+        private Label label37;
+        private Label label38;
     }
 }
