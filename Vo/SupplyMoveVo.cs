@@ -5,8 +5,8 @@ namespace Vo {
     public class SupplyMoveVo {
         private int _staff_code;
         private DateTime _move_date;
-        private int _equipment_code;
-        private int _equipment_number;
+        private int _supply_code;
+        private int _supply_number;
         private bool _move_flag;
         private string _insert_pc_name = string.Empty;
         private DateTime _insert_ymd_hms;
@@ -35,17 +35,17 @@ namespace Vo {
         /// <summary>
         /// 備品コード
         /// </summary>
-        public int Equipment_code {
-            get => _equipment_code;
-            set => _equipment_code = value;
+        public int Supply_code {
+            get => _supply_code;
+            set => _supply_code = value;
         }
 
         /// <summary>
         /// 備品入出庫数
         /// </summary>
-        public int Equipment_number {
-            get => _equipment_number;
-            set => _equipment_number = value;
+        public int Supply_number {
+            get => _supply_number;
+            set => _supply_number = value;
         }
 
         /// <summary>

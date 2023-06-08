@@ -19,6 +19,8 @@ using Staff;
 
 using SubstituteSheet;
 
+using Supply;
+
 using VehicleDispatchConvert;
 
 using Vo;
@@ -2871,7 +2873,9 @@ namespace VehicleDispatch {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ToolStripMenuItemEquipment_Click(object sender, EventArgs e) {
-            MessageBox.Show("çÏê¨íÜÇ≈Ç∑ÅBÇ‡Ç§ÇµÇŒÇÁÇ≠Ç®ë“ÇøÇ≠ÇæÇ≥Ç¢ÅB");
+            string affiliation = ((ToolStripMenuItem)sender).Text;
+            SupplyOut supplyOut = new SupplyOut(_connectionVo,affiliation);
+            supplyOut.Show(this);
         }
 
         /// <summary>

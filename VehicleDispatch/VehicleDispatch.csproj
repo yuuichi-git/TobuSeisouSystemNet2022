@@ -28,6 +28,7 @@
     <ProjectReference Include="..\RollCall\RollCall.csproj" />
     <ProjectReference Include="..\Staff\Staff.csproj" />
     <ProjectReference Include="..\SubstituteSheet\SubstituteSheet.csproj" />
+    <ProjectReference Include="..\Supply\Supply.csproj" />
     <ProjectReference Include="..\VehicleDispatchConvert\VehicleDispatchConvert.csproj" />
     <ProjectReference Include="..\Vo\Vo.csproj" />
   </ItemGroup>
