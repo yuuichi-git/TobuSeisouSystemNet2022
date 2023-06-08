@@ -150,7 +150,7 @@
             ToolStripMenuItemTelephoneMarkTrue = new ToolStripMenuItem();
             ToolStripMenuItemTelephoneMarkFalse = new ToolStripMenuItem();
             toolStripSeparator10 = new ToolStripSeparator();
-            備品を支給するToolStripMenuItem = new ToolStripMenuItem();
+            ToolStripMenuItemAffiliation = new ToolStripMenuItem();
             ToolStripMenuItemEquipment1 = new ToolStripMenuItem();
             ToolStripMenuItemEquipment2 = new ToolStripMenuItem();
             ToolStripMenuItemEquipment3 = new ToolStripMenuItem();
@@ -1384,7 +1384,7 @@
             // 
             // ContextMenuStripStaffLabel
             // 
-            ContextMenuStripStaffLabel.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemStaffDetail, toolStripSeparator2, ToolStripMenuItemStaffProxyTrue, ToolStripMenuItemStaffProxyFalse, toolStripSeparator3, ToolStripMenuItemStaffMemo, toolStripSeparator5, ToolStripMenuItemOccupation10, ToolStripMenuItemOccupation11, toolStripSeparator8, ToolStripMenuItemTelephoneMarkTrue, ToolStripMenuItemTelephoneMarkFalse, toolStripSeparator10, 備品を支給するToolStripMenuItem });
+            ContextMenuStripStaffLabel.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemStaffDetail, toolStripSeparator2, ToolStripMenuItemStaffProxyTrue, ToolStripMenuItemStaffProxyFalse, toolStripSeparator3, ToolStripMenuItemStaffMemo, toolStripSeparator5, ToolStripMenuItemOccupation10, ToolStripMenuItemOccupation11, toolStripSeparator8, ToolStripMenuItemTelephoneMarkTrue, ToolStripMenuItemTelephoneMarkFalse, toolStripSeparator10, ToolStripMenuItemAffiliation });
             ContextMenuStripStaffLabel.Name = "ContextMenuStripStaffLabel";
             ContextMenuStripStaffLabel.Size = new Size(296, 232);
             ContextMenuStripStaffLabel.Opened += ContextMenuStrip_Opened;
@@ -1470,12 +1470,13 @@
             toolStripSeparator10.Name = "toolStripSeparator10";
             toolStripSeparator10.Size = new Size(292, 6);
             // 
-            // 備品を支給するToolStripMenuItem
+            // ToolStripMenuItemAffiliation
             // 
-            備品を支給するToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemEquipment1, ToolStripMenuItemEquipment2, ToolStripMenuItemEquipment3, ToolStripMenuItemEquipment4 });
-            備品を支給するToolStripMenuItem.Name = "備品を支給するToolStripMenuItem";
-            備品を支給するToolStripMenuItem.Size = new Size(295, 22);
-            備品を支給するToolStripMenuItem.Text = "備品を支給する";
+            ToolStripMenuItemAffiliation.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemEquipment1, ToolStripMenuItemEquipment2, ToolStripMenuItemEquipment3, ToolStripMenuItemEquipment4 });
+            ToolStripMenuItemAffiliation.Name = "ToolStripMenuItemAffiliation";
+            ToolStripMenuItemAffiliation.Size = new Size(295, 22);
+            ToolStripMenuItemAffiliation.Text = "備品を支給する";
+            ToolStripMenuItemAffiliation.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemEquipment1
             // 
@@ -1691,7 +1692,7 @@
         private ToolStripMenuItem ToolStripMenuItemNoneShift;
         private ControlEx.DateTimePickerJpEx DateTimePickerJpExOperationDate;
         private ToolStripSeparator toolStripSeparator10;
-        private ToolStripMenuItem 備品を支給するToolStripMenuItem;
+        private ToolStripMenuItem ToolStripMenuItemAffiliation;
         private ToolStripMenuItem ToolStripMenuItemEquipment1;
         private ToolStripMenuItem ToolStripMenuItemEquipment2;
         private ToolStripMenuItem ToolStripMenuItemEquipment3;

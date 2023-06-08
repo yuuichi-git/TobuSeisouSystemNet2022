@@ -3,6 +3,8 @@
  */
 namespace Vo {
     public class SupplyMoveVo {
+        private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01, 00, 00, 00, 000);
+
         private int _staff_code;
         private DateTime _move_date;
         private int _supply_code;
@@ -15,6 +17,24 @@ namespace Vo {
         private string _delete_pc_name = string.Empty;
         private DateTime _delete_ymd_hms;
         private bool _delete_flag;
+
+        /// <summary>
+        /// コンストラクター
+        /// </summary>
+        public SupplyMoveVo() {
+            _staff_code = 0;
+            _move_date = _defaultDateTime;
+            _supply_code = 0;
+            _supply_number = 0;
+            _move_flag = false;
+            _insert_pc_name = string.Empty;
+            _insert_ymd_hms = _defaultDateTime;
+            _update_pc_name = string.Empty;
+            _update_ymd_hms = _defaultDateTime;
+            _delete_pc_name = string.Empty;
+            _delete_ymd_hms = _defaultDateTime;
+            _delete_flag = false;
+        }
 
         /// <summary>
         /// 従事者コード

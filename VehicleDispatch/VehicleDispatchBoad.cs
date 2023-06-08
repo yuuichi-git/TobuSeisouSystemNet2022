@@ -2874,7 +2874,8 @@ namespace VehicleDispatch {
         /// <param name="e"></param>
         private void ToolStripMenuItemEquipment_Click(object sender, EventArgs e) {
             string affiliation = ((ToolStripMenuItem)sender).Text;
-            SupplyOut supplyOut = new SupplyOut(_connectionVo,affiliation);
+            int staffCode = ((StaffMasterVo)EvacuationStaffLabelEx.Tag).Staff_code;
+            SupplyOut supplyOut = new SupplyOut(_connectionVo,affiliation,staffCode);
             supplyOut.Show(this);
         }
 

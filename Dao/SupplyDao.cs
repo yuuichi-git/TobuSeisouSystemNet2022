@@ -53,7 +53,7 @@ namespace Dao {
                                             "'" + supplyMoveVo.Update_ymd_hms + "'," +
                                             "'" + supplyMoveVo.Delete_pc_name + "'," +
                                             "'" + supplyMoveVo.Delete_ymd_hms + "'," +
-                                            "'" + supplyMoveVo.Delete_flag + "'," +
+                                            "'" + supplyMoveVo.Delete_flag + "'" +
                                             ");";
             try {
                 sqlCommand.ExecuteNonQuery();
