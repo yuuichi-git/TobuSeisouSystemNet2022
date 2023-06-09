@@ -10,6 +10,7 @@ namespace Vo {
         private int _supply_code;
         private int _supply_number;
         private bool _move_flag;
+        private string _memo = string.Empty;
         private string _insert_pc_name = string.Empty;
         private DateTime _insert_ymd_hms;
         private string _update_pc_name = string.Empty;
@@ -75,6 +76,14 @@ namespace Vo {
         public bool Move_flag {
             get => _move_flag;
             set => _move_flag = value;
+        }
+
+        /// <summary>
+        /// メモ
+        /// </summary>
+        public string Memo {
+            get => _memo;
+            set => _memo = value;
         }
 
         /// <summary>

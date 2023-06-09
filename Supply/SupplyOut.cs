@@ -10,10 +10,10 @@ namespace Supply {
         private int _staffCode;
         private string _affiliationValue;
         private readonly Panel[] _panels = new Panel[5];
-        private readonly Dictionary<string, int> _dictionaryAffiliationValue = new Dictionary<string, int> { { "事務での備品", 1000 },
-                                                                                                             { "雇上での備品", 2000 },
-                                                                                                             { "産廃での備品", 3000 },
-                                                                                                             { "水物での備品", 4000 } };
+        private readonly Dictionary<string, int> _dictionaryAffiliationValue = new Dictionary<string, int> { { "事務での備品", 10000 },
+                                                                                                             { "雇上での備品", 20000 },
+                                                                                                             { "産廃での備品", 30000 },
+                                                                                                             { "水物での備品", 40000 } };
         /*
          * Dao
          */
@@ -23,54 +23,72 @@ namespace Supply {
          */
         private readonly ConnectionVo _connectionVo;
         private SupplyMoveVo _supplyMoveVo;
+
         /*
-         * 作業着　上
+         * １・冬ブルゾン
          */
-        private bool _workwearUpFlag = false;
-        private int _workwearUpCode = 0;
+        private bool _winterBlousonFlag = false;
+        private int _winterBlousonCode = 0;
         /*
-         * 作業着　下
+         * ２・冬カーゴパンツ
          */
-        private bool _workwearDownFlag = false;
-        private int _workwearDownCode = 0;
+        private bool _winterCargoFlag = false;
+        private int _winterCargoCode = 0;
+        /*
+         * ３・防寒衣
+         */
+        private bool _coldProtectionFlag = false;
+        private int _coldProtectionCode = 0;
+        /*
+         * ４・熱中対策用ポケット付シャツ
+         */
+        private bool _summerShirtFlag = false;
+        private int _summerShirtCode = 0;
+        /*
+         * ５・夏カーゴパンツ
+         */
+        private bool _summerCargoFlag = false;
+        private int _summerCargoCode = 0;
+        /*
+         * ９・帽子
+         */
+        private bool _hatFlag = false;
+        private int _hatCode = 0;
         /*
          * ヘルメット
          */
         private bool _helmetFlag = false;
         private int _helmetCode = 0;
         /*
-         * 帽子
-         */
-        private bool _hatFlag = false;
-        private int _hatCode = 0;
-        /*
          * 安全靴
          */
         private bool _safetyShoseFlag = false;
         private int _safetyShoseCode = 0;
-        private readonly Dictionary<string, int> _dictionarySafetyShoseCode = new Dictionary<string, int> { { "24.0", 501 },
-                                                                                                            { "24.5", 502 },
-                                                                                                            { "25.0", 503 },
-                                                                                                            { "25.5", 504 },
-                                                                                                            { "26.0", 505 },
-                                                                                                            { "26.5", 506 },
-                                                                                                            { "27.0", 507 },
-                                                                                                            { "27.5", 508 },
-                                                                                                            { "28.0", 509 } };
+        private readonly Dictionary<string, int> _dictionarySafetyShoseCode = new Dictionary<string, int> { { "23.5", 2101 },
+                                                                                                            { "24.0", 2102 },
+                                                                                                            { "24.5", 2103 },
+                                                                                                            { "25.0", 2104 },
+                                                                                                            { "25.5", 2105 },
+                                                                                                            { "26.0", 2106 },
+                                                                                                            { "26.5", 2107 },
+                                                                                                            { "27.0", 2108 },
+                                                                                                            { "27.5", 2109 },
+                                                                                                            { "28.0", 2110 } };
         /*
          * 長靴
          */
         private bool _longShoseFlag = false;
         private int _longShoseCode = 0;
-        private readonly Dictionary<string, int> _dictionaryLongShoseCode = new Dictionary<string, int> { { "24.0", 601 },
-                                                                                                          { "24.5", 602 },
-                                                                                                          { "25.0", 603 },
-                                                                                                          { "25.5", 604 },
-                                                                                                          { "26.0", 605 },
-                                                                                                          { "26.5", 606 },
-                                                                                                          { "27.0", 607 },
-                                                                                                          { "27.5", 608 },
-                                                                                                          { "28.0", 609 } };
+        private readonly Dictionary<string, int> _dictionaryLongShoseCode = new Dictionary<string, int> { { "23.5", 2201 },
+                                                                                                          { "24.0", 2202 },
+                                                                                                          { "24.5", 2203 },
+                                                                                                          { "25.0", 2204 },
+                                                                                                          { "25.5", 2205 },
+                                                                                                          { "26.0", 2206 },
+                                                                                                          { "26.5", 2207 },
+                                                                                                          { "27.0", 2208 },
+                                                                                                          { "27.5", 2209 },
+                                                                                                          { "28.0", 2210 } };
         /*
          * 手袋
          */
@@ -97,7 +115,7 @@ namespace Supply {
              * Control初期化
              */
             InitializeComponent();
-            _panels = new Panel[] { PanelWorkwearUp, PanelWorkwearDown, PanelHelmet, PanelHat, PanelGlove };
+            _panels = new Panel[] { PanelWinterBlouson, PanelWinterCargo, PanelColdProtection, PanelSummerShirt, PanelSummerCargo, PanelHat, PanelHelmet, PanelGlove };
             LabelAffiliation.Text = _affiliationValue;
             // RadioButtonのチェック状態を設定
             InitializeRadioButton();
@@ -109,44 +127,143 @@ namespace Supply {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ButtonUpdate_Click(object sender, EventArgs e) {
-            /*
-             * 値をVoへ代入する
-             */
-            // 作業着　上
-            foreach(RadioButton radioButton in PanelWorkwearUp.Controls) {
+            // １・冬ブルゾン
+            foreach(RadioButton radioButton in PanelWinterBlouson.Controls) {
                 if(radioButton.Checked) {
-                    _workwearUpFlag = true;
-                    _workwearUpCode = int.Parse((string)radioButton.Tag) + _dictionaryAffiliationValue[_affiliationValue];
+                    _winterBlousonFlag = true;
+                    _winterBlousonCode = int.Parse((string)radioButton.Tag) + _dictionaryAffiliationValue[_affiliationValue];
                 }
             }
-            if(_workwearUpFlag) {
+            if(_winterBlousonFlag) {
                 _supplyMoveVo = new SupplyMoveVo();
                 _supplyMoveVo.Staff_code = _staffCode;
                 _supplyMoveVo.Move_date = DateTime.Now.Date;
-                _supplyMoveVo.Supply_code = _workwearUpCode;
+                _supplyMoveVo.Supply_code = _winterBlousonCode;
                 _supplyMoveVo.Supply_number = 1;
                 _supplyMoveVo.Move_flag = false; // true:入庫 false:出庫
+                _supplyMoveVo.Memo = TextBoxMemo.Text;
                 _supplyMoveVo.Insert_pc_name = Environment.MachineName;
                 _supplyMoveVo.Insert_ymd_hms = DateTime.Now;
-                _supplyDao.InsertOneSupplyMove(_supplyMoveVo);
-            }
-            // 作業着　下
-            foreach(RadioButton radioButton in PanelWorkwearDown.Controls) {
-                if(radioButton.Checked) {
-                    _workwearDownFlag = true;
-                    _workwearDownCode = int.Parse((string)radioButton.Tag) + _dictionaryAffiliationValue[_affiliationValue];
+                try {
+                    _supplyDao.InsertOneSupplyMove(_supplyMoveVo);
+                } catch(Exception exception) {
+                    MessageBox.Show(exception.Message);
                 }
             }
-            if(_workwearDownFlag) {
+            // ２・冬カーゴパンツ
+            foreach(RadioButton radioButton in PanelWinterCargo.Controls) {
+                if(radioButton.Checked) {
+                    _winterCargoFlag = true;
+                    _winterCargoCode = int.Parse((string)radioButton.Tag) + _dictionaryAffiliationValue[_affiliationValue];
+                }
+            }
+            if(_winterCargoFlag) {
                 _supplyMoveVo = new SupplyMoveVo();
                 _supplyMoveVo.Staff_code = _staffCode;
                 _supplyMoveVo.Move_date = DateTime.Now.Date;
-                _supplyMoveVo.Supply_code = _workwearDownCode;
+                _supplyMoveVo.Supply_code = _winterCargoCode;
                 _supplyMoveVo.Supply_number = 1;
                 _supplyMoveVo.Move_flag = false; // true:入庫 false:出庫
+                _supplyMoveVo.Memo = TextBoxMemo.Text;
                 _supplyMoveVo.Insert_pc_name = Environment.MachineName;
                 _supplyMoveVo.Insert_ymd_hms = DateTime.Now;
-                _supplyDao.InsertOneSupplyMove(_supplyMoveVo);
+                try {
+                    _supplyDao.InsertOneSupplyMove(_supplyMoveVo);
+                } catch(Exception exception) {
+                    MessageBox.Show(exception.Message);
+                }
+            }
+            // ３・防寒衣
+            foreach(RadioButton radioButton in PanelColdProtection.Controls) {
+                if(radioButton.Checked) {
+                    _coldProtectionFlag = true;
+                    _coldProtectionCode = int.Parse((string)radioButton.Tag) + _dictionaryAffiliationValue[_affiliationValue];
+                }
+            }
+            if(_coldProtectionFlag) {
+                _supplyMoveVo = new SupplyMoveVo();
+                _supplyMoveVo.Staff_code = _staffCode;
+                _supplyMoveVo.Move_date = DateTime.Now.Date;
+                _supplyMoveVo.Supply_code = _coldProtectionCode;
+                _supplyMoveVo.Supply_number = 1;
+                _supplyMoveVo.Move_flag = false; // true:入庫 false:出庫
+                _supplyMoveVo.Memo = TextBoxMemo.Text;
+                _supplyMoveVo.Insert_pc_name = Environment.MachineName;
+                _supplyMoveVo.Insert_ymd_hms = DateTime.Now;
+                try {
+                    _supplyDao.InsertOneSupplyMove(_supplyMoveVo);
+                } catch(Exception exception) {
+                    MessageBox.Show(exception.Message);
+                }
+            }
+            // ４・熱中対策用ポケット付シャツ
+            foreach(RadioButton radioButton in PanelSummerShirt.Controls) {
+                if(radioButton.Checked) {
+                    _summerShirtFlag = true;
+                    _summerShirtCode = int.Parse((string)radioButton.Tag) + _dictionaryAffiliationValue[_affiliationValue];
+                }
+            }
+            if(_summerShirtFlag) {
+                _supplyMoveVo = new SupplyMoveVo();
+                _supplyMoveVo.Staff_code = _staffCode;
+                _supplyMoveVo.Move_date = DateTime.Now.Date;
+                _supplyMoveVo.Supply_code = _summerShirtCode;
+                _supplyMoveVo.Supply_number = 1;
+                _supplyMoveVo.Move_flag = false; // true:入庫 false:出庫
+                _supplyMoveVo.Memo = TextBoxMemo.Text;
+                _supplyMoveVo.Insert_pc_name = Environment.MachineName;
+                _supplyMoveVo.Insert_ymd_hms = DateTime.Now;
+                try {
+                    _supplyDao.InsertOneSupplyMove(_supplyMoveVo);
+                } catch(Exception exception) {
+                    MessageBox.Show(exception.Message);
+                }
+            }
+            // ５・夏カーゴパンツ
+            foreach(RadioButton radioButton in PanelSummerCargo.Controls) {
+                if(radioButton.Checked) {
+                    _summerCargoFlag = true;
+                    _summerCargoCode = int.Parse((string)radioButton.Tag) + _dictionaryAffiliationValue[_affiliationValue];
+                }
+            }
+            if(_summerCargoFlag) {
+                _supplyMoveVo = new SupplyMoveVo();
+                _supplyMoveVo.Staff_code = _staffCode;
+                _supplyMoveVo.Move_date = DateTime.Now.Date;
+                _supplyMoveVo.Supply_code = _summerCargoCode;
+                _supplyMoveVo.Supply_number = 1;
+                _supplyMoveVo.Move_flag = false; // true:入庫 false:出庫
+                _supplyMoveVo.Memo = TextBoxMemo.Text;
+                _supplyMoveVo.Insert_pc_name = Environment.MachineName;
+                _supplyMoveVo.Insert_ymd_hms = DateTime.Now;
+                try {
+                    _supplyDao.InsertOneSupplyMove(_supplyMoveVo);
+                } catch(Exception exception) {
+                    MessageBox.Show(exception.Message);
+                }
+            }
+            // ９・帽子
+            foreach(RadioButton radioButton in PanelHat.Controls) {
+                if(radioButton.Checked) {
+                    _hatFlag = true;
+                    _hatCode = int.Parse((string)radioButton.Tag) + _dictionaryAffiliationValue[_affiliationValue];
+                }
+            }
+            if(_hatFlag) {
+                _supplyMoveVo = new SupplyMoveVo();
+                _supplyMoveVo.Staff_code = _staffCode;
+                _supplyMoveVo.Move_date = DateTime.Now.Date;
+                _supplyMoveVo.Supply_code = _hatCode;
+                _supplyMoveVo.Supply_number = 1;
+                _supplyMoveVo.Move_flag = false; // true:入庫 false:出庫
+                _supplyMoveVo.Memo = TextBoxMemo.Text;
+                _supplyMoveVo.Insert_pc_name = Environment.MachineName;
+                _supplyMoveVo.Insert_ymd_hms = DateTime.Now;
+                try {
+                    _supplyDao.InsertOneSupplyMove(_supplyMoveVo);
+                } catch(Exception exception) {
+                    MessageBox.Show(exception.Message);
+                }
             }
             // ヘルメット
             foreach(RadioButton radioButton in PanelHelmet.Controls) {
@@ -162,32 +279,19 @@ namespace Supply {
                 _supplyMoveVo.Supply_code = _helmetCode;
                 _supplyMoveVo.Supply_number = 1;
                 _supplyMoveVo.Move_flag = false; // true:入庫 false:出庫
+                _supplyMoveVo.Memo = TextBoxMemo.Text;
                 _supplyMoveVo.Insert_pc_name = Environment.MachineName;
                 _supplyMoveVo.Insert_ymd_hms = DateTime.Now;
-                _supplyDao.InsertOneSupplyMove(_supplyMoveVo);
-            }
-            // 帽子
-            foreach(RadioButton radioButton in PanelHat.Controls) {
-                if(radioButton.Checked) {
-                    _hatFlag = true;
-                    _hatCode = int.Parse((string)radioButton.Tag) + _dictionaryAffiliationValue[_affiliationValue];
+                try {
+                    _supplyDao.InsertOneSupplyMove(_supplyMoveVo);
+                } catch(Exception exception) {
+                    MessageBox.Show(exception.Message);
                 }
-            }
-            if(_hatFlag) {
-                _supplyMoveVo = new SupplyMoveVo();
-                _supplyMoveVo.Staff_code = _staffCode;
-                _supplyMoveVo.Move_date = DateTime.Now.Date;
-                _supplyMoveVo.Supply_code = _hatCode;
-                _supplyMoveVo.Supply_number = 1;
-                _supplyMoveVo.Move_flag = false; // true:入庫 false:出庫
-                _supplyMoveVo.Insert_pc_name = Environment.MachineName;
-                _supplyMoveVo.Insert_ymd_hms = DateTime.Now;
-                _supplyDao.InsertOneSupplyMove(_supplyMoveVo);
             }
             // 安全靴
             if(ComboBoxSafetyShose.Text.Length > 0) {
                 _safetyShoseFlag = true;
-                _safetyShoseCode = _dictionarySafetyShoseCode[ComboBoxSafetyShose.Text];
+                _safetyShoseCode = _dictionarySafetyShoseCode[ComboBoxSafetyShose.Text] + _dictionaryAffiliationValue[_affiliationValue];
             }
             if(_safetyShoseFlag) {
                 _supplyMoveVo = new SupplyMoveVo();
@@ -196,14 +300,19 @@ namespace Supply {
                 _supplyMoveVo.Supply_code = _safetyShoseCode;
                 _supplyMoveVo.Supply_number = 1;
                 _supplyMoveVo.Move_flag = false; // true:入庫 false:出庫
+                _supplyMoveVo.Memo = TextBoxMemo.Text;
                 _supplyMoveVo.Insert_pc_name = Environment.MachineName;
                 _supplyMoveVo.Insert_ymd_hms = DateTime.Now;
-                _supplyDao.InsertOneSupplyMove(_supplyMoveVo);
+                try {
+                    _supplyDao.InsertOneSupplyMove(_supplyMoveVo);
+                } catch(Exception exception) {
+                    MessageBox.Show(exception.Message);
+                }
             }
             // 長靴
             if(ComboBoxLongShose.Text.Length > 0) {
                 _longShoseFlag = true;
-                _longShoseCode = _dictionaryLongShoseCode[ComboBoxLongShose.Text];
+                _longShoseCode = _dictionaryLongShoseCode[ComboBoxLongShose.Text] + _dictionaryAffiliationValue[_affiliationValue];
             }
             if(_longShoseFlag) {
                 _supplyMoveVo = new SupplyMoveVo();
@@ -212,9 +321,14 @@ namespace Supply {
                 _supplyMoveVo.Supply_code = _longShoseCode;
                 _supplyMoveVo.Supply_number = 1;
                 _supplyMoveVo.Move_flag = false; // true:入庫 false:出庫
+                _supplyMoveVo.Memo = TextBoxMemo.Text;
                 _supplyMoveVo.Insert_pc_name = Environment.MachineName;
                 _supplyMoveVo.Insert_ymd_hms = DateTime.Now;
-                _supplyDao.InsertOneSupplyMove(_supplyMoveVo);
+                try {
+                    _supplyDao.InsertOneSupplyMove(_supplyMoveVo);
+                } catch(Exception exception) {
+                    MessageBox.Show(exception.Message);
+                }
             }
             // 手袋
             foreach(RadioButton radioButton in PanelGlove.Controls) {
@@ -230,9 +344,14 @@ namespace Supply {
                 _supplyMoveVo.Supply_code = _gloveCode;
                 _supplyMoveVo.Supply_number = 1;
                 _supplyMoveVo.Move_flag = false; // true:入庫 false:出庫
+                _supplyMoveVo.Memo = TextBoxMemo.Text;
                 _supplyMoveVo.Insert_pc_name = Environment.MachineName;
                 _supplyMoveVo.Insert_ymd_hms = DateTime.Now;
-                _supplyDao.InsertOneSupplyMove(_supplyMoveVo);
+                try {
+                    _supplyDao.InsertOneSupplyMove(_supplyMoveVo);
+                } catch(Exception exception) {
+                    MessageBox.Show(exception.Message);
+                }
             }
             this.Close();
         }

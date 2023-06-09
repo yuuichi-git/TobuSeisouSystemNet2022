@@ -35,6 +35,7 @@ namespace Dao {
                                                              "supply_code," +
                                                              "supply_number," +
                                                              "move_flag," +
+                                                             "memo," +
                                                              "insert_pc_name," +
                                                              "insert_ymd_hms," +
                                                              "update_pc_name," +
@@ -47,6 +48,7 @@ namespace Dao {
                                              "" + supplyMoveVo.Supply_code + "," +
                                              "" + supplyMoveVo.Supply_number + "," +
                                             "'" + supplyMoveVo.Move_flag + "'," +
+                                            "'" + supplyMoveVo.Memo + "'," +
                                             "'" + supplyMoveVo.Insert_pc_name + "'," +
                                             "'" + supplyMoveVo.Insert_ymd_hms + "'," +
                                             "'" + supplyMoveVo.Update_pc_name + "'," +
@@ -60,7 +62,6 @@ namespace Dao {
             } catch {
                 throw;
             }
-
         }
     }
 }
