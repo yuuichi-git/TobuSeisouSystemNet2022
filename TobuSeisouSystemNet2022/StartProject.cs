@@ -187,11 +187,12 @@ namespace TobuSeisouSystemNet2022 {
                                 toukanpoSpeedSurvey.Show(this);
                                 break;
                             /*
-                             * SupplyOutList
-                             * 作業服等支給管理
+                             * SupplyList
+                             * 作業服等支給管理   
                              */
-                            case "SupplyOutList":
-                                MessageBox.Show("作成中です。もうしばらくお待ちください。");
+                            case "SupplyList":
+                                var supplyList = new SupplyList(_connectionVo);
+                                supplyList.Show(this);
                                 break;
                         }
                         break;
