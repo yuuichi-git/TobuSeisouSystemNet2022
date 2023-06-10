@@ -1009,10 +1009,10 @@
             label37.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label37.Location = new Point(8, 380);
             label37.Name = "label37";
-            label37.Size = new Size(125, 17);
+            label37.Size = new Size(138, 17);
             label37.TabIndex = 41;
             label37.Tag = "SupplyList";
-            label37.Text = "　作業服等支給管理";
+            label37.Text = "　作業服等在庫管理表";
             label37.Click += Label_Click;
             label37.MouseEnter += Label_MouseEnter;
             label37.MouseLeave += Label_MouseLeave;

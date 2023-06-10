@@ -126,12 +126,6 @@ namespace Supply {
             ToolStripStatusLabelDetail.Text = string.Concat(" ", i, " åè");
         }
 
-
-
-        private void SheetViewListOutPut() {
-
-        }
-
         /// <summary>
         /// InitializeSheetViewList
         /// </summary>
