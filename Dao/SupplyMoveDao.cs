@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 using Vo;
 
 namespace Dao {
-    public class SupplyDao {
+    public class SupplyMoveDao {
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01, 00, 00, 00, 000);
         /*
          * Vo
@@ -17,7 +17,7 @@ namespace Dao {
         /// コンストラクター
         /// </summary>
         /// <param name="connectionVo"></param>
-        public SupplyDao(ConnectionVo connectionVo) {
+        public SupplyMoveDao(ConnectionVo connectionVo) {
             /*
              * Vo
              */

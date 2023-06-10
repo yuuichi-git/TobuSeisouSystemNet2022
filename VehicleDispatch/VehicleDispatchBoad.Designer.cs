@@ -403,6 +403,7 @@
             // 
             // ButtonUpdate
             // 
+            ButtonUpdate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             ButtonUpdate.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             ButtonUpdate.Location = new Point(1672, 16);
             ButtonUpdate.Name = "ButtonUpdate";
@@ -1481,28 +1482,28 @@
             // ToolStripMenuItemEquipment1
             // 
             ToolStripMenuItemEquipment1.Name = "ToolStripMenuItemEquipment1";
-            ToolStripMenuItemEquipment1.Size = new Size(180, 22);
+            ToolStripMenuItemEquipment1.Size = new Size(142, 22);
             ToolStripMenuItemEquipment1.Text = "事務での備品";
             ToolStripMenuItemEquipment1.Click += ToolStripMenuItemEquipment_Click;
             // 
             // ToolStripMenuItemEquipment2
             // 
             ToolStripMenuItemEquipment2.Name = "ToolStripMenuItemEquipment2";
-            ToolStripMenuItemEquipment2.Size = new Size(180, 22);
+            ToolStripMenuItemEquipment2.Size = new Size(142, 22);
             ToolStripMenuItemEquipment2.Text = "雇上での備品";
             ToolStripMenuItemEquipment2.Click += ToolStripMenuItemEquipment_Click;
             // 
             // ToolStripMenuItemEquipment3
             // 
             ToolStripMenuItemEquipment3.Name = "ToolStripMenuItemEquipment3";
-            ToolStripMenuItemEquipment3.Size = new Size(180, 22);
+            ToolStripMenuItemEquipment3.Size = new Size(142, 22);
             ToolStripMenuItemEquipment3.Text = "産廃での備品";
             ToolStripMenuItemEquipment3.Click += ToolStripMenuItemEquipment_Click;
             // 
             // ToolStripMenuItemEquipment4
             // 
             ToolStripMenuItemEquipment4.Name = "ToolStripMenuItemEquipment4";
-            ToolStripMenuItemEquipment4.Size = new Size(180, 22);
+            ToolStripMenuItemEquipment4.Size = new Size(142, 22);
             ToolStripMenuItemEquipment4.Text = "水物での備品";
             ToolStripMenuItemEquipment4.Click += ToolStripMenuItemEquipment_Click;
             // 

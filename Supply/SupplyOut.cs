@@ -17,7 +17,7 @@ namespace Supply {
         /*
          * Dao
          */
-        private readonly SupplyDao _supplyDao;
+        private readonly SupplyMoveDao _supplyDao;
         /*
          * Vo
          */
@@ -106,7 +106,7 @@ namespace Supply {
             /*
              * Dao
              */
-            _supplyDao = new SupplyDao(connectionVo);
+            _supplyDao = new SupplyMoveDao(connectionVo);
             /*
              * Vo
              */

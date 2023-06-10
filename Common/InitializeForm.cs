@@ -94,6 +94,19 @@ namespace Common {
         }
 
         /// <summary>
+        /// SupplyList
+        /// </summary>
+        /// <param name="form"></param>
+        /// <returns></returns>
+        public Form SupplyList(Form form) {
+            form.KeyPreview = true;
+            form.MaximumSize = new Size(1240, 1080);
+            form.MinimumSize = new Size(1240, 1048);
+            GetWorkingArea(form);
+            return form;
+        }
+
+        /// <summary>
         /// StaffDetail
         /// </summary>
         /// <param name="form"></param>

@@ -55,6 +55,33 @@
         public string GetDateTimeNow() {
             return DateTime.Now.ToString("yyyy年MM月dd日(ddd)　HH時mm分ss秒");
         }
+
+        /// <summary>
+        /// 月初日を返す
+        /// </summary>
+        /// <param name="dateTime"></param>
+        /// <returns></returns>
+        public DateTime GetBeginOfMonth(DateTime dateTime) {
+            return dateTime.AddDays((dateTime.Day - 1) * -1);
+        }
+
+        /// <summary>
+        /// 該当年月の日数を返す
+        /// </summary>
+        /// <param name="dateTime"></param>
+        /// <returns></returns>
+        public DateTime GetEndOfMonth(DateTime dateTime) {
+            return new DateTime(dateTime.Year, dateTime.Month, GetDaysInMonth(dateTime));
+        }
+
+        /// <summary>
+        /// 該当年月の日数を返す
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <returns></returns>
+        public int GetDaysInMonth(DateTime dateTime) {
+            return DateTime.DaysInMonth(dateTime.Year, dateTime.Month);
+        }
     }
 }
 
