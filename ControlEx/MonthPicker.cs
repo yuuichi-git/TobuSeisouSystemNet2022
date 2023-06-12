@@ -2,9 +2,9 @@
 
 namespace ControlEx {
     public partial class MonthPicker : DateTimePicker {
-        protected override void WndProc(ref Message m) {
-            if(m.Msg == WM_NOFITY) {
-                var nmhdr = (NMHDR)Marshal.PtrToStructure(m.LParam, typeof(NMHDR));
+        protected override void WndProc(ref Message message) {
+            if(message.Msg == WM_NOFITY) {
+                var nmhdr = (NMHDR)Marshal.PtrToStructure(message.LParam, typeof(NMHDR));
                 switch(nmhdr.code) {
                     case -950: {
                             var cal = SendMessage(Handle, DTM_GETMONTHCAL, IntPtr.Zero, IntPtr.Zero);
@@ -12,7 +12,7 @@ namespace ControlEx {
                             break;
                         }
                     case MCN_VIEWCHANGE: {
-                            var nmviewchange = (NMVIEWCHANGE)Marshal.PtrToStructure(m.LParam, typeof(NMVIEWCHANGE));
+                            var nmviewchange = (NMVIEWCHANGE)Marshal.PtrToStructure(message.LParam, typeof(NMVIEWCHANGE));
                             if(nmviewchange.dwOldView == 1 && nmviewchange.dwNewView == 0) {
                                 SendMessage(Handle, DTM_CLOSEMONTHCAL, IntPtr.Zero, IntPtr.Zero);
                             }
@@ -21,7 +21,7 @@ namespace ControlEx {
                         }
                 }
             }
-            base.WndProc(ref m);
+            base.WndProc(ref message);
         }
 
         private const int WM_NOFITY = 0x004e;

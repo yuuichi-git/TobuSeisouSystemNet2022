@@ -1,6 +1,8 @@
 ﻿/*
  * 2023-06-05
  */
+using Common;
+
 using Dao;
 
 using Vo;
@@ -54,6 +56,11 @@ namespace Supply {
          */
         private bool _hatFlag = false;
         private int _hatCode = 0;
+        /*
+         * カッパ
+         */
+        private bool _rainCoatFlag = false;
+        private int _rainCoatCode = 0;
         /*
          * ヘルメット
          */
@@ -115,7 +122,7 @@ namespace Supply {
              * Control初期化
              */
             InitializeComponent();
-            _panels = new Panel[] { PanelWinterBlouson, PanelWinterCargo, PanelColdProtection, PanelSummerShirt, PanelSummerCargo, PanelHat, PanelHelmet, PanelGlove };
+            _panels = new Panel[] { PanelWinterBlouson, PanelWinterCargo, PanelColdProtection, PanelSummerShirt, PanelSummerCargo, PanelHat, PanelRainCoat, PanelHelmet, PanelGlove };
             LabelAffiliation.Text = _affiliationValue;
             // RadioButtonのチェック状態を設定
             InitializeRadioButton();
@@ -265,6 +272,29 @@ namespace Supply {
                     MessageBox.Show(exception.Message);
                 }
             }
+            // ９・カッパ
+            foreach(RadioButton radioButton in PanelRainCoat.Controls) {
+                if(radioButton.Checked) {
+                    _rainCoatFlag = true;
+                    _rainCoatCode = int.Parse((string)radioButton.Tag) + _dictionaryAffiliationValue[_affiliationValue];
+                }
+            }
+            if(_rainCoatFlag) {
+                _supplyMoveVo = new SupplyMoveVo();
+                _supplyMoveVo.Staff_code = _staffCode;
+                _supplyMoveVo.Move_date = DateTime.Now.Date;
+                _supplyMoveVo.Supply_code = _rainCoatCode;
+                _supplyMoveVo.Supply_number = 1;
+                _supplyMoveVo.Move_flag = false; // true:入庫 false:出庫
+                _supplyMoveVo.Memo = TextBoxMemo.Text;
+                _supplyMoveVo.Insert_pc_name = Environment.MachineName;
+                _supplyMoveVo.Insert_ymd_hms = DateTime.Now;
+                try {
+                    _supplyDao.InsertOneSupplyMove(_supplyMoveVo);
+                } catch(Exception exception) {
+                    MessageBox.Show(exception.Message);
+                }
+            }
             // ヘルメット
             foreach(RadioButton radioButton in PanelHelmet.Controls) {
                 if(radioButton.Checked) {
@@ -352,6 +382,23 @@ namespace Supply {
                 } catch(Exception exception) {
                     MessageBox.Show(exception.Message);
                 }
+            }
+
+            /*
+             * 何も選択されていない場合の処理
+             */
+            if(!_winterBlousonFlag &&
+               !_winterCargoFlag &&
+               !_coldProtectionFlag &&
+               !_summerShirtFlag &&
+               !_summerCargoFlag &&
+               !_hatFlag &&
+               !_rainCoatFlag &&
+               !_helmetFlag &&
+               !_safetyShoseFlag &&
+               !_longShoseFlag &&
+               !_gloveFlag) {
+                MessageBox.Show("何も選択されていません。終了します。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
             this.Close();
         }

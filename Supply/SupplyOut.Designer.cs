@@ -103,6 +103,16 @@
             radioButton3 = new RadioButton();
             StatusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
+            PanelRainCoat = new Panel();
+            radioButton48 = new RadioButton();
+            radioButton49 = new RadioButton();
+            radioButton50 = new RadioButton();
+            radioButton51 = new RadioButton();
+            radioButton52 = new RadioButton();
+            radioButton53 = new RadioButton();
+            radioButton54 = new RadioButton();
+            radioButton55 = new RadioButton();
+            label12 = new Label();
             TableLayoutPanelBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
             PanelTop.SuspendLayout();
@@ -116,6 +126,7 @@
             PanelSummerCargo.SuspendLayout();
             PanelSummerShirt.SuspendLayout();
             StatusStrip1.SuspendLayout();
+            PanelRainCoat.SuspendLayout();
             SuspendLayout();
             // 
             // TableLayoutPanelBase
@@ -135,7 +146,7 @@
             TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
             TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
-            TableLayoutPanelBase.Size = new Size(598, 549);
+            TableLayoutPanelBase.Size = new Size(598, 689);
             TableLayoutPanelBase.TabIndex = 0;
             // 
             // MenuStrip1
@@ -199,6 +210,8 @@
             // 
             // PanelDetail
             // 
+            PanelDetail.Controls.Add(PanelRainCoat);
+            PanelDetail.Controls.Add(label12);
             PanelDetail.Controls.Add(label11);
             PanelDetail.Controls.Add(PanelColdProtection);
             PanelDetail.Controls.Add(label10);
@@ -224,7 +237,7 @@
             PanelDetail.Dock = DockStyle.Fill;
             PanelDetail.Location = new Point(3, 87);
             PanelDetail.Name = "PanelDetail";
-            PanelDetail.Size = new Size(592, 435);
+            PanelDetail.Size = new Size(592, 575);
             PanelDetail.TabIndex = 2;
             // 
             // label11
@@ -603,7 +616,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("メイリオ", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(12, 364);
+            label8.Location = new Point(12, 400);
             label8.Name = "label8";
             label8.Size = new Size(56, 18);
             label8.TabIndex = 23;
@@ -612,7 +625,7 @@
             // TextBoxMemo
             // 
             TextBoxMemo.ImeMode = ImeMode.Hiragana;
-            TextBoxMemo.Location = new Point(232, 364);
+            TextBoxMemo.Location = new Point(232, 400);
             TextBoxMemo.Multiline = true;
             TextBoxMemo.Name = "TextBoxMemo";
             TextBoxMemo.PlaceholderText = "出庫した全ての明細に対してメモが残ります。";
@@ -623,7 +636,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("メイリオ", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label7.Location = new Point(12, 332);
+            label7.Location = new Point(12, 368);
             label7.Name = "label7";
             label7.Size = new Size(56, 18);
             label7.TabIndex = 20;
@@ -636,7 +649,7 @@
             PanelGlove.Controls.Add(radioButton18);
             PanelGlove.Controls.Add(radioButton19);
             PanelGlove.Controls.Add(radioButton21);
-            PanelGlove.Location = new Point(232, 328);
+            PanelGlove.Location = new Point(232, 364);
             PanelGlove.Name = "PanelGlove";
             PanelGlove.Size = new Size(328, 28);
             PanelGlove.TabIndex = 19;
@@ -693,7 +706,7 @@
             // 
             ComboBoxLongShose.FormattingEnabled = true;
             ComboBoxLongShose.Items.AddRange(new object[] { "", "23.5", "24.0", "24.5", "25.0", "25.5", "26.0", "26.5", "27.0", "27.5", "28.0" });
-            ComboBoxLongShose.Location = new Point(232, 296);
+            ComboBoxLongShose.Location = new Point(232, 332);
             ComboBoxLongShose.Name = "ComboBoxLongShose";
             ComboBoxLongShose.Size = new Size(140, 23);
             ComboBoxLongShose.TabIndex = 18;
@@ -703,7 +716,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("メイリオ", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(12, 300);
+            label6.Location = new Point(12, 336);
             label6.Name = "label6";
             label6.Size = new Size(56, 18);
             label6.TabIndex = 17;
@@ -713,7 +726,7 @@
             // 
             ComboBoxSafetyShose.FormattingEnabled = true;
             ComboBoxSafetyShose.Items.AddRange(new object[] { "", "23.5", "24.0", "24.5", "25.0", "25.5", "26.0", "26.5", "27.0", "27.5", "28.0" });
-            ComboBoxSafetyShose.Location = new Point(232, 264);
+            ComboBoxSafetyShose.Location = new Point(232, 300);
             ComboBoxSafetyShose.Name = "ComboBoxSafetyShose";
             ComboBoxSafetyShose.Size = new Size(140, 23);
             ComboBoxSafetyShose.TabIndex = 16;
@@ -723,7 +736,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("メイリオ", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(12, 268);
+            label5.Location = new Point(12, 304);
             label5.Name = "label5";
             label5.Size = new Size(68, 18);
             label5.TabIndex = 15;
@@ -777,7 +790,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("メイリオ", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(12, 232);
+            label3.Location = new Point(12, 268);
             label3.Name = "label3";
             label3.Size = new Size(92, 18);
             label3.TabIndex = 11;
@@ -787,7 +800,7 @@
             // 
             PanelHelmet.BorderStyle = BorderStyle.FixedSingle;
             PanelHelmet.Controls.Add(radioButton15);
-            PanelHelmet.Location = new Point(232, 228);
+            PanelHelmet.Location = new Point(232, 264);
             PanelHelmet.Name = "PanelHelmet";
             PanelHelmet.Size = new Size(328, 28);
             PanelHelmet.TabIndex = 10;
@@ -1055,7 +1068,7 @@
             // StatusStrip1
             // 
             StatusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1 });
-            StatusStrip1.Location = new Point(0, 527);
+            StatusStrip1.Location = new Point(0, 667);
             StatusStrip1.Name = "StatusStrip1";
             StatusStrip1.Size = new Size(598, 22);
             StatusStrip1.SizingGrip = false;
@@ -1068,11 +1081,137 @@
             toolStripStatusLabel1.Size = new Size(39, 17);
             toolStripStatusLabel1.Text = "Status";
             // 
+            // PanelRainCoat
+            // 
+            PanelRainCoat.BorderStyle = BorderStyle.FixedSingle;
+            PanelRainCoat.Controls.Add(radioButton48);
+            PanelRainCoat.Controls.Add(radioButton49);
+            PanelRainCoat.Controls.Add(radioButton50);
+            PanelRainCoat.Controls.Add(radioButton51);
+            PanelRainCoat.Controls.Add(radioButton52);
+            PanelRainCoat.Controls.Add(radioButton53);
+            PanelRainCoat.Controls.Add(radioButton54);
+            PanelRainCoat.Controls.Add(radioButton55);
+            PanelRainCoat.Location = new Point(232, 228);
+            PanelRainCoat.Name = "PanelRainCoat";
+            PanelRainCoat.Size = new Size(328, 28);
+            PanelRainCoat.TabIndex = 30;
+            // 
+            // radioButton48
+            // 
+            radioButton48.AutoSize = true;
+            radioButton48.Enabled = false;
+            radioButton48.Font = new Font("メイリオ", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            radioButton48.Location = new Point(284, 4);
+            radioButton48.Name = "radioButton48";
+            radioButton48.Size = new Size(40, 22);
+            radioButton48.TabIndex = 9;
+            radioButton48.Tag = "2408";
+            radioButton48.Text = "6L";
+            radioButton48.UseVisualStyleBackColor = true;
+            // 
+            // radioButton49
+            // 
+            radioButton49.AutoSize = true;
+            radioButton49.Font = new Font("メイリオ", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            radioButton49.Location = new Point(244, 4);
+            radioButton49.Name = "radioButton49";
+            radioButton49.Size = new Size(40, 22);
+            radioButton49.TabIndex = 8;
+            radioButton49.Tag = "2407";
+            radioButton49.Text = "5L";
+            radioButton49.UseVisualStyleBackColor = true;
+            // 
+            // radioButton50
+            // 
+            radioButton50.AutoSize = true;
+            radioButton50.Font = new Font("メイリオ", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            radioButton50.Location = new Point(204, 4);
+            radioButton50.Name = "radioButton50";
+            radioButton50.Size = new Size(40, 22);
+            radioButton50.TabIndex = 5;
+            radioButton50.Tag = "2406";
+            radioButton50.Text = "4L";
+            radioButton50.UseVisualStyleBackColor = true;
+            // 
+            // radioButton51
+            // 
+            radioButton51.AutoSize = true;
+            radioButton51.Font = new Font("メイリオ", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            radioButton51.Location = new Point(124, 4);
+            radioButton51.Name = "radioButton51";
+            radioButton51.Size = new Size(40, 22);
+            radioButton51.TabIndex = 3;
+            radioButton51.Tag = "2404";
+            radioButton51.Text = "2L";
+            radioButton51.UseVisualStyleBackColor = true;
+            // 
+            // radioButton52
+            // 
+            radioButton52.AutoSize = true;
+            radioButton52.Enabled = false;
+            radioButton52.Font = new Font("メイリオ", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            radioButton52.Location = new Point(4, 4);
+            radioButton52.Name = "radioButton52";
+            radioButton52.Size = new Size(34, 22);
+            radioButton52.TabIndex = 0;
+            radioButton52.Tag = "2401";
+            radioButton52.Text = "S";
+            radioButton52.UseVisualStyleBackColor = true;
+            // 
+            // radioButton53
+            // 
+            radioButton53.AutoSize = true;
+            radioButton53.Checked = true;
+            radioButton53.Font = new Font("メイリオ", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            radioButton53.Location = new Point(44, 4);
+            radioButton53.Name = "radioButton53";
+            radioButton53.Size = new Size(36, 22);
+            radioButton53.TabIndex = 1;
+            radioButton53.TabStop = true;
+            radioButton53.Tag = "2402";
+            radioButton53.Text = "M";
+            radioButton53.UseVisualStyleBackColor = true;
+            // 
+            // radioButton54
+            // 
+            radioButton54.AutoSize = true;
+            radioButton54.Font = new Font("メイリオ", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            radioButton54.Location = new Point(164, 4);
+            radioButton54.Name = "radioButton54";
+            radioButton54.Size = new Size(40, 22);
+            radioButton54.TabIndex = 4;
+            radioButton54.Tag = "2405";
+            radioButton54.Text = "3L";
+            radioButton54.UseVisualStyleBackColor = true;
+            // 
+            // radioButton55
+            // 
+            radioButton55.AutoSize = true;
+            radioButton55.Font = new Font("メイリオ", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            radioButton55.Location = new Point(84, 4);
+            radioButton55.Name = "radioButton55";
+            radioButton55.Size = new Size(33, 22);
+            radioButton55.TabIndex = 2;
+            radioButton55.Tag = "2403";
+            radioButton55.Text = "L";
+            radioButton55.UseVisualStyleBackColor = true;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("メイリオ", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label12.Location = new Point(12, 232);
+            label12.Name = "label12";
+            label12.Size = new Size(68, 18);
+            label12.TabIndex = 31;
+            label12.Text = "　　カッパ";
+            // 
             // SupplyOut
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(598, 549);
+            ClientSize = new Size(598, 689);
             Controls.Add(TableLayoutPanelBase);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = MenuStrip1;
@@ -1108,6 +1247,8 @@
             PanelSummerShirt.PerformLayout();
             StatusStrip1.ResumeLayout(false);
             StatusStrip1.PerformLayout();
+            PanelRainCoat.ResumeLayout(false);
+            PanelRainCoat.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -1193,5 +1334,15 @@
         private RadioButton radioButton29;
         private RadioButton radioButton30;
         private RadioButton radioButton31;
+        private Panel PanelRainCoat;
+        private RadioButton radioButton48;
+        private RadioButton radioButton49;
+        private RadioButton radioButton50;
+        private RadioButton radioButton51;
+        private RadioButton radioButton52;
+        private RadioButton radioButton53;
+        private RadioButton radioButton54;
+        private RadioButton radioButton55;
+        private Label label12;
     }
 }

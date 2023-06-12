@@ -17,6 +17,7 @@ namespace Supply {
          * Dao
          */
         private readonly SupplyMasterDao _supplyMasterDao;
+        private readonly SupplyMoveDao _supplyMoveDao;
         /*
          * Vo
          */
@@ -56,6 +57,7 @@ namespace Supply {
              * Dao
              */
             _supplyMasterDao = new SupplyMasterDao(connectionVo);
+            _supplyMoveDao = new SupplyMoveDao(connectionVo);
             /*
              * Vo
              */
@@ -105,16 +107,36 @@ namespace Supply {
                 SheetViewList.RemoveRows(0, SheetViewList.Rows.Count);
 
             int i = 0;
+            int _supplyNumber = 0;
             foreach(SupplyMasterVo supplyMasterVo in listSupplyMasterVo) {
-
-
                 SheetViewList.Rows.Add(i, 1);
                 SheetViewList.RowHeader.Columns[0].Label = (i + 1).ToString(); // Rowヘッダ
                 SheetViewList.Rows[i].Height = 22; // Rowの高さ
                 SheetViewList.Rows[i].Resizable = false; // RowのResizableを禁止
+                // 備品コード
                 SheetViewList.Cells[i, colSupplyCode].Value = supplyMasterVo.Code;
+                // 備品名
                 SheetViewList.Cells[i, colSupplyName].Text = supplyMasterVo.Name;
+                // 適正在庫数
                 SheetViewList.Cells[i, colAppropriateStock].Value = supplyMasterVo.Proper_stock;
+                /*
+                 * 入庫数
+                 */
+                try {
+                    _supplyNumber = _supplyMoveDao.SelectCountSupplyMoveIn(DateTimePickerJpEx1.Value, DateTimePickerJpEx2.Value, supplyMasterVo.Code);
+                } catch(Exception exception) {
+                    MessageBox.Show(exception.Message);
+                }
+                SheetViewList.Cells[i, colWarehousing].Value = _supplyNumber;
+                /*
+                 * 出庫数
+                 */
+                try {
+                    _supplyNumber = _supplyMoveDao.SelectCountSupplyMoveOut(DateTimePickerJpEx1.Value, DateTimePickerJpEx2.Value, supplyMasterVo.Code);
+                } catch(Exception exception) {
+                    MessageBox.Show(exception.Message);
+                }
+                SheetViewList.Cells[i, colDelivery].Value = _supplyNumber;
 
                 i++;
             }
@@ -145,6 +167,16 @@ namespace Supply {
             sheetView.RemoveRows(0, sheetView.Rows.Count);
         }
 
+        /// <summary>
+        /// ToolStripMenuItemInventory_Click
+        /// 棚卸数の入力画面を開く
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItemInventory_Click(object sender, EventArgs e) {
+            SupplyIn supplyIn = new SupplyIn(_connectionVo,ComboBoxSupplyType.Text);
+            supplyIn.ShowDialog(this);
+        }
 
         /// <summary>
         /// ToolStripMenuItemExit_Click

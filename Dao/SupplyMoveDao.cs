@@ -25,6 +25,60 @@ namespace Dao {
         }
 
         /// <summary>
+        /// SelectCountSupplyMoveOut
+        /// 出庫数量を返す
+        /// </summary>
+        /// <param name="dateTime1"></param>
+        /// <param name="dateTime2"></param>
+        /// <param name="supplyCode"></param>
+        /// <returns></returns>
+        public int SelectCountSupplyMoveOut(DateTime dateTime1, DateTime dateTime2, int supplyCode) {
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT SUM(supply_number) " +
+                                     "FROM supply_move " +
+                                     "WHERE (move_date BETWEEN '" + dateTime1.ToString("yyyy-MM-dd") + "' AND '" + dateTime2.ToString("yyyy-MM-dd") + "')" +
+                                     "AND supply_code = " + supplyCode + " " +
+                                     "AND move_flag = 'false'"; // 出庫
+            try {
+                // レコードが存在しなきゃNULLが返ってくるからね
+                if(sqlCommand.ExecuteScalar() != DBNull.Value) {
+                    return (int)sqlCommand.ExecuteScalar();
+                } else {
+                    return 0;
+                }
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// SelectCountSupplyMoveIn
+        /// 入庫数量を返す
+        /// </summary>
+        /// <param name="dateTime1"></param>
+        /// <param name="dateTime2"></param>
+        /// <param name="supplyCode"></param>
+        /// <returns></returns>
+        public int SelectCountSupplyMoveIn(DateTime dateTime1, DateTime dateTime2, int supplyCode) {
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT SUM(supply_number) " +
+                                     "FROM supply_move " +
+                                     "WHERE (move_date BETWEEN '" + dateTime1.ToString("yyyy-MM-dd") + "' AND '" + dateTime2.ToString("yyyy-MM-dd") + "')" +
+                                     "AND supply_code = " + supplyCode + " " +
+                                     "AND move_flag = 'true'"; // 入庫
+            try {
+                // レコードが存在しなきゃNULLが返ってくるからね
+                if(sqlCommand.ExecuteScalar() != DBNull.Value) {
+                    return (int)sqlCommand.ExecuteScalar();
+                } else {
+                    return 0;
+                }
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
         /// InsertOneSupplyMove
         /// </summary>
         /// <param name="supplyMoveVo"></param>
