@@ -2,7 +2,7 @@
  * 2023-06-05
  */
 namespace Vo {
-    public class SupplyMoveVo {
+    public class SupplyOutVo {
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01, 00, 00, 00, 000);
 
         private int _staff_code;
@@ -22,7 +22,7 @@ namespace Vo {
         /// <summary>
         /// コンストラクター
         /// </summary>
-        public SupplyMoveVo() {
+        public SupplyOutVo() {
             _staff_code = 0;
             _move_date = _defaultDateTime;
             _supply_code = 0;

@@ -26,12 +26,12 @@ namespace Dao {
         /// <summary>
         /// SelectOneSupplyMaster
         /// </summary>
-        /// <param name="division">1:事務　2:雇上　3:産廃　4:水物</param>
+        /// <param name="supplyType">1:事務　2:雇上　3:産廃　4:水物</param>
         /// <returns></returns>
-        public List<SupplyMasterVo> SelectOneSupplyMaster(int division) {
+        public List<SupplyMasterVo> SelectOneSupplyMaster(int supplyType) {
             int startCode = 0;
             int endCode = 0;
-            switch(division) {
+            switch(supplyType) {
                 case 1:
                     startCode = 10000;
                     endCode = 19999;

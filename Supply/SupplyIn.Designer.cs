@@ -25,17 +25,26 @@
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SupplyIn));
             TableLayoutPanelBase = new TableLayoutPanel();
-            SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("resource1"));
+            SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("TableLayoutPanelBase.Controls"));
             SheetViewList = SpreadList.GetSheet(0);
+            statusStrip1 = new StatusStrip();
+            toolStripStatusLabel1 = new ToolStripStatusLabel();
+            ToolStripStatusLabelDetail = new ToolStripStatusLabel();
             PanelUp = new Panel();
             ButtonUpdate = new Button();
             label1 = new Label();
             MonthPicker1 = new ControlEx.MonthPicker();
             label3 = new Label();
             ComboBoxSupplyType = new ComboBox();
+            MenuStrip1 = new MenuStrip();
+            ToolStripMenuItemMenu = new ToolStripMenuItem();
+            ToolStripMenuItemExit = new ToolStripMenuItem();
+            ToolStripMenuItemHelp = new ToolStripMenuItem();
             TableLayoutPanelBase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)SpreadList).BeginInit();
+            statusStrip1.SuspendLayout();
             PanelUp.SuspendLayout();
+            MenuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // TableLayoutPanelBase
@@ -43,7 +52,9 @@
             TableLayoutPanelBase.ColumnCount = 1;
             TableLayoutPanelBase.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             TableLayoutPanelBase.Controls.Add(SpreadList, 0, 2);
+            TableLayoutPanelBase.Controls.Add(statusStrip1, 0, 3);
             TableLayoutPanelBase.Controls.Add(PanelUp, 0, 1);
+            TableLayoutPanelBase.Controls.Add(MenuStrip1, 0, 0);
             TableLayoutPanelBase.Dock = DockStyle.Fill;
             TableLayoutPanelBase.Location = new Point(0, 0);
             TableLayoutPanelBase.Name = "TableLayoutPanelBase";
@@ -57,13 +68,34 @@
             // 
             // SpreadList
             // 
-            SpreadList.AccessibleDescription = "fpSpread1, Sheet1, Row 0, Column 0";
+            SpreadList.AccessibleDescription = "SpreadList, Sheet1, Row 0, Column 0";
             SpreadList.Dock = DockStyle.Fill;
             SpreadList.Font = new Font("ＭＳ Ｐゴシック", 11F, FontStyle.Regular, GraphicsUnit.Point);
             SpreadList.Location = new Point(3, 101);
             SpreadList.Name = "SpreadList";
             SpreadList.Size = new Size(566, 649);
             SpreadList.TabIndex = 0;
+            // 
+            // statusStrip1
+            // 
+            statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, ToolStripStatusLabelDetail });
+            statusStrip1.Location = new Point(0, 755);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Size = new Size(572, 22);
+            statusStrip1.TabIndex = 3;
+            statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            toolStripStatusLabel1.Size = new Size(39, 17);
+            toolStripStatusLabel1.Text = "Status";
+            // 
+            // ToolStripStatusLabelDetail
+            // 
+            ToolStripStatusLabelDetail.Name = "ToolStripStatusLabelDetail";
+            ToolStripStatusLabelDetail.Size = new Size(143, 17);
+            ToolStripStatusLabelDetail.Text = "ToolStripStatusLabelDetail";
             // 
             // PanelUp
             // 
@@ -128,6 +160,36 @@
             ComboBoxSupplyType.Name = "ComboBoxSupplyType";
             ComboBoxSupplyType.Size = new Size(140, 23);
             ComboBoxSupplyType.TabIndex = 8;
+            ComboBoxSupplyType.SelectedIndexChanged += ComboBoxSupplyType_SelectedIndexChanged;
+            // 
+            // MenuStrip1
+            // 
+            MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemHelp });
+            MenuStrip1.Location = new Point(0, 0);
+            MenuStrip1.Name = "MenuStrip1";
+            MenuStrip1.Size = new Size(572, 24);
+            MenuStrip1.TabIndex = 2;
+            MenuStrip1.Text = "menuStrip1";
+            // 
+            // ToolStripMenuItemMenu
+            // 
+            ToolStripMenuItemMenu.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemExit });
+            ToolStripMenuItemMenu.Name = "ToolStripMenuItemMenu";
+            ToolStripMenuItemMenu.Size = new Size(52, 20);
+            ToolStripMenuItemMenu.Text = "メニュー";
+            // 
+            // ToolStripMenuItemExit
+            // 
+            ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
+            ToolStripMenuItemExit.Size = new Size(195, 22);
+            ToolStripMenuItemExit.Text = "アプリケーションを終了する";
+            ToolStripMenuItemExit.Click += ToolStripMenuItemExit_Click;
+            // 
+            // ToolStripMenuItemHelp
+            // 
+            ToolStripMenuItemHelp.Name = "ToolStripMenuItemHelp";
+            ToolStripMenuItemHelp.Size = new Size(48, 20);
+            ToolStripMenuItemHelp.Text = "ヘルプ";
             // 
             // SupplyIn
             // 
@@ -136,16 +198,23 @@
             ClientSize = new Size(572, 777);
             Controls.Add(TableLayoutPanelBase);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            MainMenuStrip = MenuStrip1;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "SupplyIn";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "SupplyIn";
             TopMost = true;
+            FormClosing += SupplyIn_FormClosing;
             TableLayoutPanelBase.ResumeLayout(false);
+            TableLayoutPanelBase.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)SpreadList).EndInit();
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
             PanelUp.ResumeLayout(false);
             PanelUp.PerformLayout();
+            MenuStrip1.ResumeLayout(false);
+            MenuStrip1.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -159,6 +228,13 @@
         private ControlEx.MonthPicker MonthPicker1;
         private Label label1;
         private Button ButtonUpdate;
+        private MenuStrip MenuStrip1;
+        private ToolStripMenuItem ToolStripMenuItemMenu;
+        private ToolStripMenuItem ToolStripMenuItemHelp;
+        private StatusStrip statusStrip1;
+        private ToolStripStatusLabel toolStripStatusLabel1;
+        private ToolStripStatusLabel ToolStripStatusLabelDetail;
+        private ToolStripMenuItem ToolStripMenuItemExit;
         private FarPoint.Win.Spread.SheetView SheetViewList;
     }
 }

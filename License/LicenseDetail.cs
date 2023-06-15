@@ -316,6 +316,17 @@ namespace License {
             }
         }
 
+
+        private PictureBox _targetPictureBox;
+        /// <summary>
+        /// ContextMenuStrip1_Opened
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ContextMenuStrip1_Opened(object sender, EventArgs e) {
+            _targetPictureBox = (PictureBox)((ContextMenuStrip)sender).SourceControl;
+        }
+
         /// <summary>
         /// 免許証を印刷する
         /// </summary>
@@ -323,7 +334,7 @@ namespace License {
         /// <param name="e"></param>
         private void ToolStripMenuItemPrint_Click(object sender, EventArgs e) {
             //PrintDocumentオブジェクトの作成
-            var printDocument = new PrintDocument();
+            PrintDocument printDocument = new PrintDocument();
             //PrintPageイベントハンドラの追加
             printDocument.PrintPage += new PrintPageEventHandler(Pd_PrintPage);
             //印刷を開始する
@@ -331,10 +342,19 @@ namespace License {
         }
 
         private void Pd_PrintPage(object sender, PrintPageEventArgs e) {
+            Image? image = null;
             //画像を読み込む
-            var image = PictureBoxHead.Image;
+            switch(_targetPictureBox.Name) {
+                case "PictureBoxHead":
+                    image = PictureBoxHead.Image;
+                    break;
+                case "PictureBoxTail":
+                    image = PictureBoxTail.Image;
+                    break;
+            }
             //画像を描画する
-            e.Graphics.DrawImage(image, 0, 0, 340, 216);//8.56 5.40
+            if(e.Graphics is not null)
+                e.Graphics.DrawImage(image, 0, 0, 340, 216);//8.56 5.40
             //次のページがないことを通知する
             e.HasMorePages = false;
             //後始末をする

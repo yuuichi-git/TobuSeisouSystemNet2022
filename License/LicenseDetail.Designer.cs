@@ -40,6 +40,7 @@
             label8 = new Label();
             ButtonUpdate = new Button();
             PanelLeft = new Panel();
+            DateBirthDate = new ControlEx.DateTimePickerJpEx();
             DateTimePickerGetDate3 = new ControlEx.DateTimePickerJpEx();
             DateTimePickerGetDate2 = new ControlEx.DateTimePickerJpEx();
             DateTimePickerGetDate1 = new ControlEx.DateTimePickerJpEx();
@@ -89,7 +90,6 @@
             ContextMenuStrip1 = new ContextMenuStrip(components);
             ToolStripMenuItemPrint = new ToolStripMenuItem();
             PictureBoxHead = new PictureBox();
-            DateBirthDate = new ControlEx.DateTimePickerJpEx();
             TableLayoutPanelBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -278,6 +278,15 @@
             PanelLeft.Name = "PanelLeft";
             PanelLeft.Size = new Size(599, 666);
             PanelLeft.TabIndex = 3;
+            // 
+            // DateBirthDate
+            // 
+            DateBirthDate.CustomFormat = " ";
+            DateBirthDate.Format = DateTimePickerFormat.Custom;
+            DateBirthDate.Location = new Point(76, 96);
+            DateBirthDate.Name = "DateBirthDate";
+            DateBirthDate.Size = new Size(184, 23);
+            DateBirthDate.TabIndex = 114;
             // 
             // DateTimePickerGetDate3
             // 
@@ -755,13 +764,14 @@
             // 
             ContextMenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemPrint });
             ContextMenuStrip1.Name = "ContextMenuStrip1";
-            ContextMenuStrip1.Size = new Size(118, 26);
+            ContextMenuStrip1.Size = new Size(181, 48);
             ContextMenuStrip1.Opening += ContextMenuStrip1_Opening;
+            ContextMenuStrip1.Opened += ContextMenuStrip1_Opened;
             // 
             // ToolStripMenuItemPrint
             // 
             ToolStripMenuItemPrint.Name = "ToolStripMenuItemPrint";
-            ToolStripMenuItemPrint.Size = new Size(117, 22);
+            ToolStripMenuItemPrint.Size = new Size(180, 22);
             ToolStripMenuItemPrint.Text = "印刷する";
             ToolStripMenuItemPrint.Click += ToolStripMenuItemPrint_Click;
             // 
@@ -775,15 +785,6 @@
             PictureBoxHead.SizeMode = PictureBoxSizeMode.Zoom;
             PictureBoxHead.TabIndex = 0;
             PictureBoxHead.TabStop = false;
-            // 
-            // DateBirthDate
-            // 
-            DateBirthDate.CustomFormat = " ";
-            DateBirthDate.Format = DateTimePickerFormat.Custom;
-            DateBirthDate.Location = new Point(76, 96);
-            DateBirthDate.Name = "DateBirthDate";
-            DateBirthDate.Size = new Size(184, 23);
-            DateBirthDate.TabIndex = 114;
             // 
             // LicenseDetail
             // 

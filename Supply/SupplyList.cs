@@ -155,6 +155,7 @@ namespace Supply {
         private void InitializeSheetViewList(SheetView sheetView) {
             SpreadList.AllowDragDrop = false; // DrugDropを禁止する
             SpreadList.PaintSelectionHeader = false; // ヘッダの選択状態をしない
+            SpreadList.TabStripPolicy = TabStripPolicy.Never; // シートタブを非表示にする
             sheetView.AlternatingRows.Count = 2; // 行スタイルを２行単位とします
             sheetView.AlternatingRows[0].BackColor = Color.WhiteSmoke; // 1行目の背景色を設定します
             sheetView.AlternatingRows[1].BackColor = Color.White; // 2行目の背景色を設定します

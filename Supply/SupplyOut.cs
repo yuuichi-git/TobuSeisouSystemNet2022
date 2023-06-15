@@ -24,7 +24,7 @@ namespace Supply {
          * Vo
          */
         private readonly ConnectionVo _connectionVo;
-        private SupplyMoveVo _supplyMoveVo;
+        private SupplyOutVo _supplyOutVo;
 
         /*
          * １・冬ブルゾン
@@ -142,17 +142,17 @@ namespace Supply {
                 }
             }
             if(_winterBlousonFlag) {
-                _supplyMoveVo = new SupplyMoveVo();
-                _supplyMoveVo.Staff_code = _staffCode;
-                _supplyMoveVo.Move_date = DateTime.Now.Date;
-                _supplyMoveVo.Supply_code = _winterBlousonCode;
-                _supplyMoveVo.Supply_number = 1;
-                _supplyMoveVo.Move_flag = false; // true:入庫 false:出庫
-                _supplyMoveVo.Memo = TextBoxMemo.Text;
-                _supplyMoveVo.Insert_pc_name = Environment.MachineName;
-                _supplyMoveVo.Insert_ymd_hms = DateTime.Now;
+                _supplyOutVo = new SupplyOutVo();
+                _supplyOutVo.Staff_code = _staffCode;
+                _supplyOutVo.Move_date = DateTime.Now.Date;
+                _supplyOutVo.Supply_code = _winterBlousonCode;
+                _supplyOutVo.Supply_number = 1;
+                _supplyOutVo.Move_flag = false; // true:入庫 false:出庫
+                _supplyOutVo.Memo = TextBoxMemo.Text;
+                _supplyOutVo.Insert_pc_name = Environment.MachineName;
+                _supplyOutVo.Insert_ymd_hms = DateTime.Now;
                 try {
-                    _supplyDao.InsertOneSupplyMove(_supplyMoveVo);
+                    _supplyDao.InsertOneSupplyMove(_supplyOutVo);
                 } catch(Exception exception) {
                     MessageBox.Show(exception.Message);
                 }
@@ -165,17 +165,17 @@ namespace Supply {
                 }
             }
             if(_winterCargoFlag) {
-                _supplyMoveVo = new SupplyMoveVo();
-                _supplyMoveVo.Staff_code = _staffCode;
-                _supplyMoveVo.Move_date = DateTime.Now.Date;
-                _supplyMoveVo.Supply_code = _winterCargoCode;
-                _supplyMoveVo.Supply_number = 1;
-                _supplyMoveVo.Move_flag = false; // true:入庫 false:出庫
-                _supplyMoveVo.Memo = TextBoxMemo.Text;
-                _supplyMoveVo.Insert_pc_name = Environment.MachineName;
-                _supplyMoveVo.Insert_ymd_hms = DateTime.Now;
+                _supplyOutVo = new SupplyOutVo();
+                _supplyOutVo.Staff_code = _staffCode;
+                _supplyOutVo.Move_date = DateTime.Now.Date;
+                _supplyOutVo.Supply_code = _winterCargoCode;
+                _supplyOutVo.Supply_number = 1;
+                _supplyOutVo.Move_flag = false; // true:入庫 false:出庫
+                _supplyOutVo.Memo = TextBoxMemo.Text;
+                _supplyOutVo.Insert_pc_name = Environment.MachineName;
+                _supplyOutVo.Insert_ymd_hms = DateTime.Now;
                 try {
-                    _supplyDao.InsertOneSupplyMove(_supplyMoveVo);
+                    _supplyDao.InsertOneSupplyMove(_supplyOutVo);
                 } catch(Exception exception) {
                     MessageBox.Show(exception.Message);
                 }
@@ -188,17 +188,17 @@ namespace Supply {
                 }
             }
             if(_coldProtectionFlag) {
-                _supplyMoveVo = new SupplyMoveVo();
-                _supplyMoveVo.Staff_code = _staffCode;
-                _supplyMoveVo.Move_date = DateTime.Now.Date;
-                _supplyMoveVo.Supply_code = _coldProtectionCode;
-                _supplyMoveVo.Supply_number = 1;
-                _supplyMoveVo.Move_flag = false; // true:入庫 false:出庫
-                _supplyMoveVo.Memo = TextBoxMemo.Text;
-                _supplyMoveVo.Insert_pc_name = Environment.MachineName;
-                _supplyMoveVo.Insert_ymd_hms = DateTime.Now;
+                _supplyOutVo = new SupplyOutVo();
+                _supplyOutVo.Staff_code = _staffCode;
+                _supplyOutVo.Move_date = DateTime.Now.Date;
+                _supplyOutVo.Supply_code = _coldProtectionCode;
+                _supplyOutVo.Supply_number = 1;
+                _supplyOutVo.Move_flag = false; // true:入庫 false:出庫
+                _supplyOutVo.Memo = TextBoxMemo.Text;
+                _supplyOutVo.Insert_pc_name = Environment.MachineName;
+                _supplyOutVo.Insert_ymd_hms = DateTime.Now;
                 try {
-                    _supplyDao.InsertOneSupplyMove(_supplyMoveVo);
+                    _supplyDao.InsertOneSupplyMove(_supplyOutVo);
                 } catch(Exception exception) {
                     MessageBox.Show(exception.Message);
                 }
@@ -211,17 +211,17 @@ namespace Supply {
                 }
             }
             if(_summerShirtFlag) {
-                _supplyMoveVo = new SupplyMoveVo();
-                _supplyMoveVo.Staff_code = _staffCode;
-                _supplyMoveVo.Move_date = DateTime.Now.Date;
-                _supplyMoveVo.Supply_code = _summerShirtCode;
-                _supplyMoveVo.Supply_number = 1;
-                _supplyMoveVo.Move_flag = false; // true:入庫 false:出庫
-                _supplyMoveVo.Memo = TextBoxMemo.Text;
-                _supplyMoveVo.Insert_pc_name = Environment.MachineName;
-                _supplyMoveVo.Insert_ymd_hms = DateTime.Now;
+                _supplyOutVo = new SupplyOutVo();
+                _supplyOutVo.Staff_code = _staffCode;
+                _supplyOutVo.Move_date = DateTime.Now.Date;
+                _supplyOutVo.Supply_code = _summerShirtCode;
+                _supplyOutVo.Supply_number = 1;
+                _supplyOutVo.Move_flag = false; // true:入庫 false:出庫
+                _supplyOutVo.Memo = TextBoxMemo.Text;
+                _supplyOutVo.Insert_pc_name = Environment.MachineName;
+                _supplyOutVo.Insert_ymd_hms = DateTime.Now;
                 try {
-                    _supplyDao.InsertOneSupplyMove(_supplyMoveVo);
+                    _supplyDao.InsertOneSupplyMove(_supplyOutVo);
                 } catch(Exception exception) {
                     MessageBox.Show(exception.Message);
                 }
@@ -234,17 +234,17 @@ namespace Supply {
                 }
             }
             if(_summerCargoFlag) {
-                _supplyMoveVo = new SupplyMoveVo();
-                _supplyMoveVo.Staff_code = _staffCode;
-                _supplyMoveVo.Move_date = DateTime.Now.Date;
-                _supplyMoveVo.Supply_code = _summerCargoCode;
-                _supplyMoveVo.Supply_number = 1;
-                _supplyMoveVo.Move_flag = false; // true:入庫 false:出庫
-                _supplyMoveVo.Memo = TextBoxMemo.Text;
-                _supplyMoveVo.Insert_pc_name = Environment.MachineName;
-                _supplyMoveVo.Insert_ymd_hms = DateTime.Now;
+                _supplyOutVo = new SupplyOutVo();
+                _supplyOutVo.Staff_code = _staffCode;
+                _supplyOutVo.Move_date = DateTime.Now.Date;
+                _supplyOutVo.Supply_code = _summerCargoCode;
+                _supplyOutVo.Supply_number = 1;
+                _supplyOutVo.Move_flag = false; // true:入庫 false:出庫
+                _supplyOutVo.Memo = TextBoxMemo.Text;
+                _supplyOutVo.Insert_pc_name = Environment.MachineName;
+                _supplyOutVo.Insert_ymd_hms = DateTime.Now;
                 try {
-                    _supplyDao.InsertOneSupplyMove(_supplyMoveVo);
+                    _supplyDao.InsertOneSupplyMove(_supplyOutVo);
                 } catch(Exception exception) {
                     MessageBox.Show(exception.Message);
                 }
@@ -257,17 +257,17 @@ namespace Supply {
                 }
             }
             if(_hatFlag) {
-                _supplyMoveVo = new SupplyMoveVo();
-                _supplyMoveVo.Staff_code = _staffCode;
-                _supplyMoveVo.Move_date = DateTime.Now.Date;
-                _supplyMoveVo.Supply_code = _hatCode;
-                _supplyMoveVo.Supply_number = 1;
-                _supplyMoveVo.Move_flag = false; // true:入庫 false:出庫
-                _supplyMoveVo.Memo = TextBoxMemo.Text;
-                _supplyMoveVo.Insert_pc_name = Environment.MachineName;
-                _supplyMoveVo.Insert_ymd_hms = DateTime.Now;
+                _supplyOutVo = new SupplyOutVo();
+                _supplyOutVo.Staff_code = _staffCode;
+                _supplyOutVo.Move_date = DateTime.Now.Date;
+                _supplyOutVo.Supply_code = _hatCode;
+                _supplyOutVo.Supply_number = 1;
+                _supplyOutVo.Move_flag = false; // true:入庫 false:出庫
+                _supplyOutVo.Memo = TextBoxMemo.Text;
+                _supplyOutVo.Insert_pc_name = Environment.MachineName;
+                _supplyOutVo.Insert_ymd_hms = DateTime.Now;
                 try {
-                    _supplyDao.InsertOneSupplyMove(_supplyMoveVo);
+                    _supplyDao.InsertOneSupplyMove(_supplyOutVo);
                 } catch(Exception exception) {
                     MessageBox.Show(exception.Message);
                 }
@@ -280,17 +280,17 @@ namespace Supply {
                 }
             }
             if(_rainCoatFlag) {
-                _supplyMoveVo = new SupplyMoveVo();
-                _supplyMoveVo.Staff_code = _staffCode;
-                _supplyMoveVo.Move_date = DateTime.Now.Date;
-                _supplyMoveVo.Supply_code = _rainCoatCode;
-                _supplyMoveVo.Supply_number = 1;
-                _supplyMoveVo.Move_flag = false; // true:入庫 false:出庫
-                _supplyMoveVo.Memo = TextBoxMemo.Text;
-                _supplyMoveVo.Insert_pc_name = Environment.MachineName;
-                _supplyMoveVo.Insert_ymd_hms = DateTime.Now;
+                _supplyOutVo = new SupplyOutVo();
+                _supplyOutVo.Staff_code = _staffCode;
+                _supplyOutVo.Move_date = DateTime.Now.Date;
+                _supplyOutVo.Supply_code = _rainCoatCode;
+                _supplyOutVo.Supply_number = 1;
+                _supplyOutVo.Move_flag = false; // true:入庫 false:出庫
+                _supplyOutVo.Memo = TextBoxMemo.Text;
+                _supplyOutVo.Insert_pc_name = Environment.MachineName;
+                _supplyOutVo.Insert_ymd_hms = DateTime.Now;
                 try {
-                    _supplyDao.InsertOneSupplyMove(_supplyMoveVo);
+                    _supplyDao.InsertOneSupplyMove(_supplyOutVo);
                 } catch(Exception exception) {
                     MessageBox.Show(exception.Message);
                 }
@@ -303,17 +303,17 @@ namespace Supply {
                 }
             }
             if(_helmetFlag) {
-                _supplyMoveVo = new SupplyMoveVo();
-                _supplyMoveVo.Staff_code = _staffCode;
-                _supplyMoveVo.Move_date = DateTime.Now.Date;
-                _supplyMoveVo.Supply_code = _helmetCode;
-                _supplyMoveVo.Supply_number = 1;
-                _supplyMoveVo.Move_flag = false; // true:入庫 false:出庫
-                _supplyMoveVo.Memo = TextBoxMemo.Text;
-                _supplyMoveVo.Insert_pc_name = Environment.MachineName;
-                _supplyMoveVo.Insert_ymd_hms = DateTime.Now;
+                _supplyOutVo = new SupplyOutVo();
+                _supplyOutVo.Staff_code = _staffCode;
+                _supplyOutVo.Move_date = DateTime.Now.Date;
+                _supplyOutVo.Supply_code = _helmetCode;
+                _supplyOutVo.Supply_number = 1;
+                _supplyOutVo.Move_flag = false; // true:入庫 false:出庫
+                _supplyOutVo.Memo = TextBoxMemo.Text;
+                _supplyOutVo.Insert_pc_name = Environment.MachineName;
+                _supplyOutVo.Insert_ymd_hms = DateTime.Now;
                 try {
-                    _supplyDao.InsertOneSupplyMove(_supplyMoveVo);
+                    _supplyDao.InsertOneSupplyMove(_supplyOutVo);
                 } catch(Exception exception) {
                     MessageBox.Show(exception.Message);
                 }
@@ -324,17 +324,17 @@ namespace Supply {
                 _safetyShoseCode = _dictionarySafetyShoseCode[ComboBoxSafetyShose.Text] + _dictionaryAffiliationValue[_affiliationValue];
             }
             if(_safetyShoseFlag) {
-                _supplyMoveVo = new SupplyMoveVo();
-                _supplyMoveVo.Staff_code = _staffCode;
-                _supplyMoveVo.Move_date = DateTime.Now.Date;
-                _supplyMoveVo.Supply_code = _safetyShoseCode;
-                _supplyMoveVo.Supply_number = 1;
-                _supplyMoveVo.Move_flag = false; // true:入庫 false:出庫
-                _supplyMoveVo.Memo = TextBoxMemo.Text;
-                _supplyMoveVo.Insert_pc_name = Environment.MachineName;
-                _supplyMoveVo.Insert_ymd_hms = DateTime.Now;
+                _supplyOutVo = new SupplyOutVo();
+                _supplyOutVo.Staff_code = _staffCode;
+                _supplyOutVo.Move_date = DateTime.Now.Date;
+                _supplyOutVo.Supply_code = _safetyShoseCode;
+                _supplyOutVo.Supply_number = 1;
+                _supplyOutVo.Move_flag = false; // true:入庫 false:出庫
+                _supplyOutVo.Memo = TextBoxMemo.Text;
+                _supplyOutVo.Insert_pc_name = Environment.MachineName;
+                _supplyOutVo.Insert_ymd_hms = DateTime.Now;
                 try {
-                    _supplyDao.InsertOneSupplyMove(_supplyMoveVo);
+                    _supplyDao.InsertOneSupplyMove(_supplyOutVo);
                 } catch(Exception exception) {
                     MessageBox.Show(exception.Message);
                 }
@@ -345,17 +345,17 @@ namespace Supply {
                 _longShoseCode = _dictionaryLongShoseCode[ComboBoxLongShose.Text] + _dictionaryAffiliationValue[_affiliationValue];
             }
             if(_longShoseFlag) {
-                _supplyMoveVo = new SupplyMoveVo();
-                _supplyMoveVo.Staff_code = _staffCode;
-                _supplyMoveVo.Move_date = DateTime.Now.Date;
-                _supplyMoveVo.Supply_code = _longShoseCode;
-                _supplyMoveVo.Supply_number = 1;
-                _supplyMoveVo.Move_flag = false; // true:入庫 false:出庫
-                _supplyMoveVo.Memo = TextBoxMemo.Text;
-                _supplyMoveVo.Insert_pc_name = Environment.MachineName;
-                _supplyMoveVo.Insert_ymd_hms = DateTime.Now;
+                _supplyOutVo = new SupplyOutVo();
+                _supplyOutVo.Staff_code = _staffCode;
+                _supplyOutVo.Move_date = DateTime.Now.Date;
+                _supplyOutVo.Supply_code = _longShoseCode;
+                _supplyOutVo.Supply_number = 1;
+                _supplyOutVo.Move_flag = false; // true:入庫 false:出庫
+                _supplyOutVo.Memo = TextBoxMemo.Text;
+                _supplyOutVo.Insert_pc_name = Environment.MachineName;
+                _supplyOutVo.Insert_ymd_hms = DateTime.Now;
                 try {
-                    _supplyDao.InsertOneSupplyMove(_supplyMoveVo);
+                    _supplyDao.InsertOneSupplyMove(_supplyOutVo);
                 } catch(Exception exception) {
                     MessageBox.Show(exception.Message);
                 }
@@ -368,17 +368,17 @@ namespace Supply {
                 }
             }
             if(_gloveFlag) {
-                _supplyMoveVo = new SupplyMoveVo();
-                _supplyMoveVo.Staff_code = _staffCode;
-                _supplyMoveVo.Move_date = DateTime.Now.Date;
-                _supplyMoveVo.Supply_code = _gloveCode;
-                _supplyMoveVo.Supply_number = 1;
-                _supplyMoveVo.Move_flag = false; // true:入庫 false:出庫
-                _supplyMoveVo.Memo = TextBoxMemo.Text;
-                _supplyMoveVo.Insert_pc_name = Environment.MachineName;
-                _supplyMoveVo.Insert_ymd_hms = DateTime.Now;
+                _supplyOutVo = new SupplyOutVo();
+                _supplyOutVo.Staff_code = _staffCode;
+                _supplyOutVo.Move_date = DateTime.Now.Date;
+                _supplyOutVo.Supply_code = _gloveCode;
+                _supplyOutVo.Supply_number = 1;
+                _supplyOutVo.Move_flag = false; // true:入庫 false:出庫
+                _supplyOutVo.Memo = TextBoxMemo.Text;
+                _supplyOutVo.Insert_pc_name = Environment.MachineName;
+                _supplyOutVo.Insert_ymd_hms = DateTime.Now;
                 try {
-                    _supplyDao.InsertOneSupplyMove(_supplyMoveVo);
+                    _supplyDao.InsertOneSupplyMove(_supplyOutVo);
                 } catch(Exception exception) {
                     MessageBox.Show(exception.Message);
                 }
