@@ -27,6 +27,7 @@
             TableLayoutPanelBase = new TableLayoutPanel();
             MenuStrip1 = new MenuStrip();
             ToolStripMenuItemMenu = new ToolStripMenuItem();
+            ToolStripMenuItemPrint = new ToolStripMenuItem();
             ToolStripMenuItemExit = new ToolStripMenuItem();
             ToolStripMenuItemEdit = new ToolStripMenuItem();
             ToolStripMenuItemInventory = new ToolStripMenuItem();
@@ -67,7 +68,7 @@
             TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 74F));
             TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
-            TableLayoutPanelBase.Size = new Size(734, 1041);
+            TableLayoutPanelBase.Size = new Size(784, 1041);
             TableLayoutPanelBase.TabIndex = 0;
             // 
             // MenuStrip1
@@ -75,16 +76,23 @@
             MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemEdit, ToolStripMenuItemHelp });
             MenuStrip1.Location = new Point(0, 0);
             MenuStrip1.Name = "MenuStrip1";
-            MenuStrip1.Size = new Size(734, 24);
+            MenuStrip1.Size = new Size(784, 24);
             MenuStrip1.TabIndex = 0;
             MenuStrip1.Text = "menuStrip1";
             // 
             // ToolStripMenuItemMenu
             // 
-            ToolStripMenuItemMenu.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemExit });
+            ToolStripMenuItemMenu.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemPrint, ToolStripMenuItemExit });
             ToolStripMenuItemMenu.Name = "ToolStripMenuItemMenu";
             ToolStripMenuItemMenu.Size = new Size(52, 20);
             ToolStripMenuItemMenu.Text = "メニュー";
+            // 
+            // ToolStripMenuItemPrint
+            // 
+            ToolStripMenuItemPrint.Name = "ToolStripMenuItemPrint";
+            ToolStripMenuItemPrint.Size = new Size(195, 22);
+            ToolStripMenuItemPrint.Text = "印刷する";
+            ToolStripMenuItemPrint.Click += ToolStripMenuItemPrint_Click;
             // 
             // ToolStripMenuItemExit
             // 
@@ -118,7 +126,7 @@
             StatusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, ToolStripStatusLabelDetail });
             StatusStrip1.Location = new Point(0, 1019);
             StatusStrip1.Name = "StatusStrip1";
-            StatusStrip1.Size = new Size(734, 22);
+            StatusStrip1.Size = new Size(784, 22);
             StatusStrip1.SizingGrip = false;
             StatusStrip1.TabIndex = 1;
             StatusStrip1.Text = "statusStrip1";
@@ -147,7 +155,7 @@
             PanelUp.Dock = DockStyle.Fill;
             PanelUp.Location = new Point(3, 27);
             PanelUp.Name = "PanelUp";
-            PanelUp.Size = new Size(728, 68);
+            PanelUp.Size = new Size(778, 68);
             PanelUp.TabIndex = 2;
             // 
             // label3
@@ -198,6 +206,7 @@
             DateTimePickerJpEx2.Name = "DateTimePickerJpEx2";
             DateTimePickerJpEx2.Size = new Size(184, 23);
             DateTimePickerJpEx2.TabIndex = 3;
+            DateTimePickerJpEx2.ValueChanged += DateTimePickerJpEx2_ValueChanged;
             // 
             // DateTimePickerJpEx1
             // 
@@ -207,12 +216,13 @@
             DateTimePickerJpEx1.Name = "DateTimePickerJpEx1";
             DateTimePickerJpEx1.Size = new Size(184, 23);
             DateTimePickerJpEx1.TabIndex = 2;
+            DateTimePickerJpEx1.ValueChanged += DateTimePickerJpEx1_ValueChanged;
             // 
             // ButtonUpdate
             // 
             ButtonUpdate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             ButtonUpdate.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            ButtonUpdate.Location = new Point(530, 16);
+            ButtonUpdate.Location = new Point(580, 16);
             ButtonUpdate.Name = "ButtonUpdate";
             ButtonUpdate.Size = new Size(180, 36);
             ButtonUpdate.TabIndex = 1;
@@ -227,14 +237,14 @@
             SpreadList.Font = new Font("ＭＳ Ｐゴシック", 11F, FontStyle.Regular, GraphicsUnit.Point);
             SpreadList.Location = new Point(3, 101);
             SpreadList.Name = "SpreadList";
-            SpreadList.Size = new Size(728, 913);
+            SpreadList.Size = new Size(778, 913);
             SpreadList.TabIndex = 3;
             // 
             // SupplyList
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(734, 1041);
+            ClientSize = new Size(784, 1041);
             Controls.Add(TableLayoutPanelBase);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = MenuStrip1;
@@ -275,8 +285,9 @@
         private Label label3;
         private ComboBox ComboBoxSupplyType;
         private ToolStripStatusLabel ToolStripStatusLabelDetail;
-        private FarPoint.Win.Spread.SheetView SheetViewList;
         private ToolStripMenuItem ToolStripMenuItemEdit;
         private ToolStripMenuItem ToolStripMenuItemInventory;
+        private ToolStripMenuItem ToolStripMenuItemPrint;
+        private FarPoint.Win.Spread.SheetView SheetViewList;
     }
 }

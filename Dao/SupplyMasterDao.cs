@@ -75,36 +75,5 @@ namespace Dao {
             }
             return listSupplyMasterVo;
         }
-
-        /// <summary>
-        /// SelectAllSupplyMaster
-        /// </summary>
-        /// <returns></returns>
-        public List<SupplyMasterVo> SelectAllSupplyMaster() {
-            List<SupplyMasterVo> listSupplyMasterVo = new List<SupplyMasterVo>();
-            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
-            sqlCommand.CommandText = "SELECT code," +
-                                            "name," +
-                                            "proper_stock," +
-                                            "insert_ymd_hms," +
-                                            "update_ymd_hms," +
-                                            "delete_ymd_hms," +
-                                            "delete_flag " +
-                                     "FROM supply_master";
-            using(var sqlDataReader = sqlCommand.ExecuteReader()) {
-                while(sqlDataReader.Read() == true) {
-                    SupplyMasterVo supplyMasterVo = new SupplyMasterVo();
-                    supplyMasterVo.Code = _defaultValue.GetDefaultValue<int>(sqlDataReader["code"]);
-                    supplyMasterVo.Name = _defaultValue.GetDefaultValue<string>(sqlDataReader["name"]);
-                    supplyMasterVo.Proper_stock = _defaultValue.GetDefaultValue<int>(sqlDataReader["proper_stock"]);
-                    supplyMasterVo.Insert_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["insert_ymd_hms"]);
-                    supplyMasterVo.Update_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["update_ymd_hms"]);
-                    supplyMasterVo.Delete_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["delete_ymd_hms"]);
-                    supplyMasterVo.Delete_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["delete_flag"]);
-                    listSupplyMasterVo.Add(supplyMasterVo);
-                }
-            }
-            return listSupplyMasterVo;
-        }
     }
 }

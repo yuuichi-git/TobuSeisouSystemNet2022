@@ -1,5 +1,4 @@
-﻿
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 
 using Common;
 
@@ -8,6 +7,7 @@ using Vo;
 namespace Dao {
     public class SupplyInDao {
         private readonly DefaultValue _defaultValue = new();
+        private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01, 00, 00, 00, 000);
         /*
          * Vo
          */
@@ -61,7 +61,8 @@ namespace Dao {
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT supply_master.code," +
                                             "supply_master.name," +
-                                            "supply_inventory.proper_stock " +
+                                            "supply_inventory.proper_stock," +
+                                            "supply_inventory.memo " +
                                      "FROM supply_master " +
                                      "LEFT OUTER JOIN supply_inventory ON supply_master.code = supply_inventory.code " +
                                      "AND supply_inventory.inventory_date BETWEEN '" + startDate.ToString("yyyy-MM-dd") + "' AND '" + endDate.ToString("yyyy-MM-dd") + "' " +
@@ -73,13 +74,51 @@ namespace Dao {
                     supplyInVo.SupplyCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["code"]);
                     supplyInVo.SupplyName = _defaultValue.GetDefaultValue<string>(sqlDataReader["name"]);
                     supplyInVo.InventoryStock = _defaultValue.GetDefaultValue<int>(sqlDataReader["proper_stock"]);
+                    supplyInVo.Memo = _defaultValue.GetDefaultValue<string>(sqlDataReader["memo"]);
                     listSupplyInVo.Add(supplyInVo);
                 }
             }
             return listSupplyInVo;
         }
 
-        public int SelectCountSupplyInventory(DateTime dateTime, int supplyCode) {
+        /// <summary>
+        /// InsertSupplyInventory
+        /// </summary>
+        /// <param name="supplyInventoryVo"></param>
+        /// <returns></returns>
+        public void InsertSupplyInventory(SupplyInventoryVo supplyInventoryVo) {
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "INSERT INTO supply_inventory(inventory_date," +
+                                                                  "code," +
+                                                                  "name," +
+                                                                  "proper_stock," +
+                                                                  "memo," +
+                                                                  "insert_ymd_hms," +
+                                                                  "update_ymd_hms," +
+                                                                  "delete_ymd_hms," +
+                                                                  "delete_flag) " +
+                                     "VALUES ('" + _defaultValue.GetDefaultValue<DateTime>(supplyInventoryVo.Inventory_date) + "'," +
+                                             "" + _defaultValue.GetDefaultValue<int>(supplyInventoryVo.Code) + "," +
+                                             "'" + _defaultValue.GetDefaultValue<string>(supplyInventoryVo.Name) + "'," +
+                                             "" + _defaultValue.GetDefaultValue<int>(supplyInventoryVo.ProperStock) + "," +
+                                             "'" + _defaultValue.GetDefaultValue<string>(supplyInventoryVo.Memo) + "'," +
+                                             "'" + DateTime.Now + "'," +
+                                             "'" + _defaultDateTime + "'," +
+                                             "'" + _defaultDateTime + "'," +
+                                             "'False'" +
+                                             ");";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// DeleteSupplyInventory
+        /// </summary>
+        /// <param name="dateTime"></param>
+        public void DeleteSupplyInventory(DateTime dateTime) {
             /*
              * 月初・月末を設定
              */
@@ -87,18 +126,10 @@ namespace Dao {
             DateTime endDate = new Date().GetEndOfMonth(dateTime);
 
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
-            sqlCommand.CommandText = "SELECT proper_stock " +
-                                     "FROM supply_inventory " +
-                                     "WHERE (inventory_date BETWEEN '" + startDate.ToString("yyyy-MM-dd") + "' AND '" + endDate.ToString("yyyy-MM-dd") + "') " +
-                                     "AND code = " + supplyCode + " " +
-                                     "AND delete_flag = 'false'";
+            sqlCommand.CommandText = "DELETE FROM supply_inventory " +
+                                     "WHERE inventory_date BETWEEN '" + startDate.ToString("yyyy-MM-dd") + "' AND '" + endDate.ToString("yyyy-MM-dd") + "'";
             try {
-                // レコードが存在しなきゃNULLが返ってくるからね
-                if(sqlCommand.ExecuteScalar() != DBNull.Value) {
-                    return (int)sqlCommand.ExecuteScalar();
-                } else {
-                    return 0;
-                }
+                sqlCommand.ExecuteNonQuery();
             } catch {
                 throw;
             }

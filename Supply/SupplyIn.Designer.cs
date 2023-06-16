@@ -26,8 +26,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SupplyIn));
             TableLayoutPanelBase = new TableLayoutPanel();
             SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("TableLayoutPanelBase.Controls"));
-            SheetViewList = SpreadList.GetSheet(0);
-            statusStrip1 = new StatusStrip();
+            StatusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             ToolStripStatusLabelDetail = new ToolStripStatusLabel();
             PanelUp = new Panel();
@@ -40,9 +39,10 @@
             ToolStripMenuItemMenu = new ToolStripMenuItem();
             ToolStripMenuItemExit = new ToolStripMenuItem();
             ToolStripMenuItemHelp = new ToolStripMenuItem();
+            SheetViewList = SpreadList.GetSheet(0);
             TableLayoutPanelBase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)SpreadList).BeginInit();
-            statusStrip1.SuspendLayout();
+            StatusStrip1.SuspendLayout();
             PanelUp.SuspendLayout();
             MenuStrip1.SuspendLayout();
             SuspendLayout();
@@ -52,7 +52,7 @@
             TableLayoutPanelBase.ColumnCount = 1;
             TableLayoutPanelBase.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             TableLayoutPanelBase.Controls.Add(SpreadList, 0, 2);
-            TableLayoutPanelBase.Controls.Add(statusStrip1, 0, 3);
+            TableLayoutPanelBase.Controls.Add(StatusStrip1, 0, 3);
             TableLayoutPanelBase.Controls.Add(PanelUp, 0, 1);
             TableLayoutPanelBase.Controls.Add(MenuStrip1, 0, 0);
             TableLayoutPanelBase.Dock = DockStyle.Fill;
@@ -63,7 +63,7 @@
             TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 74F));
             TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
-            TableLayoutPanelBase.Size = new Size(572, 777);
+            TableLayoutPanelBase.Size = new Size(644, 777);
             TableLayoutPanelBase.TabIndex = 0;
             // 
             // SpreadList
@@ -73,17 +73,17 @@
             SpreadList.Font = new Font("ＭＳ Ｐゴシック", 11F, FontStyle.Regular, GraphicsUnit.Point);
             SpreadList.Location = new Point(3, 101);
             SpreadList.Name = "SpreadList";
-            SpreadList.Size = new Size(566, 649);
+            SpreadList.Size = new Size(638, 649);
             SpreadList.TabIndex = 0;
             // 
-            // statusStrip1
+            // StatusStrip1
             // 
-            statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, ToolStripStatusLabelDetail });
-            statusStrip1.Location = new Point(0, 755);
-            statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(572, 22);
-            statusStrip1.TabIndex = 3;
-            statusStrip1.Text = "statusStrip1";
+            StatusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, ToolStripStatusLabelDetail });
+            StatusStrip1.Location = new Point(0, 755);
+            StatusStrip1.Name = "StatusStrip1";
+            StatusStrip1.Size = new Size(644, 22);
+            StatusStrip1.TabIndex = 3;
+            StatusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
@@ -107,14 +107,14 @@
             PanelUp.Dock = DockStyle.Fill;
             PanelUp.Location = new Point(3, 27);
             PanelUp.Name = "PanelUp";
-            PanelUp.Size = new Size(566, 68);
+            PanelUp.Size = new Size(638, 68);
             PanelUp.TabIndex = 1;
             // 
             // ButtonUpdate
             // 
             ButtonUpdate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             ButtonUpdate.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            ButtonUpdate.Location = new Point(365, 16);
+            ButtonUpdate.Location = new Point(437, 16);
             ButtonUpdate.Name = "ButtonUpdate";
             ButtonUpdate.Size = new Size(180, 36);
             ButtonUpdate.TabIndex = 12;
@@ -167,7 +167,7 @@
             MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemHelp });
             MenuStrip1.Location = new Point(0, 0);
             MenuStrip1.Name = "MenuStrip1";
-            MenuStrip1.Size = new Size(572, 24);
+            MenuStrip1.Size = new Size(644, 24);
             MenuStrip1.TabIndex = 2;
             MenuStrip1.Text = "menuStrip1";
             // 
@@ -195,7 +195,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(572, 777);
+            ClientSize = new Size(644, 777);
             Controls.Add(TableLayoutPanelBase);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = MenuStrip1;
@@ -209,8 +209,8 @@
             TableLayoutPanelBase.ResumeLayout(false);
             TableLayoutPanelBase.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)SpreadList).EndInit();
-            statusStrip1.ResumeLayout(false);
-            statusStrip1.PerformLayout();
+            StatusStrip1.ResumeLayout(false);
+            StatusStrip1.PerformLayout();
             PanelUp.ResumeLayout(false);
             PanelUp.PerformLayout();
             MenuStrip1.ResumeLayout(false);
@@ -231,7 +231,7 @@
         private MenuStrip MenuStrip1;
         private ToolStripMenuItem ToolStripMenuItemMenu;
         private ToolStripMenuItem ToolStripMenuItemHelp;
-        private StatusStrip statusStrip1;
+        private StatusStrip StatusStrip1;
         private ToolStripStatusLabel toolStripStatusLabel1;
         private ToolStripStatusLabel ToolStripStatusLabelDetail;
         private ToolStripMenuItem ToolStripMenuItemExit;

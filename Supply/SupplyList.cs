@@ -1,5 +1,7 @@
 using Common;
 
+using ControlEx;
+
 using Dao;
 
 using FarPoint.Win.Spread;
@@ -16,8 +18,7 @@ namespace Supply {
         /*
          * Dao
          */
-        private readonly SupplyMasterDao _supplyMasterDao;
-        private readonly SupplyMoveDao _supplyMoveDao;
+        private readonly SupplyListDao _supplyListDao;
         /*
          * Vo
          */
@@ -26,38 +27,37 @@ namespace Supply {
         /// <summary>
         /// 備品コード
         /// </summary>
-        private const int colSupplyCode = 0;
+        private const int _colSupplyCode = 0;
         /// <summary>
         /// 備品名
         /// </summary>
-        private const int colSupplyName = 1;
+        private const int _colSupplyName = 1;
         /// <summary>
         /// 適正在庫数
         /// </summary>
-        private const int colAppropriateStock = 2;
+        private const int _colAppropriateStock = 2;
         /// <summary>
         /// 月初在庫数
         /// </summary>
-        private const int colBeginingMonthStock = 3;
+        private const int _colBeginingMonthStock = 3;
         /// <summary>
         /// 入庫数
         /// </summary>
-        private const int colWarehousing = 4;
+        private const int _colWarehousing = 4;
         /// <summary>
         /// 出庫数
         /// </summary>
-        private const int colDelivery = 5;
+        private const int _colDelivery = 5;
         /// <summary>
         /// 在庫数
         /// </summary>
-        private const int colStock = 6;
+        private const int _colStock = 6;
 
         public SupplyList(ConnectionVo connectionVo) {
             /*
              * Dao
              */
-            _supplyMasterDao = new SupplyMasterDao(connectionVo);
-            _supplyMoveDao = new SupplyMoveDao(connectionVo);
+            _supplyListDao = new SupplyListDao(connectionVo);
             /*
              * Vo
              */
@@ -95,9 +95,6 @@ namespace Supply {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ButtonUpdate_Click(object sender, EventArgs e) {
-
-            List<SupplyMasterVo> listSupplyMasterVo = _supplyMasterDao.SelectOneSupplyMaster(_dictionaryAffiliationValue[ComboBoxSupplyType.Text]);
-
             // Spread 非活性化
             SpreadList.SuspendLayout();
             // 先頭行（列）インデックスを取得
@@ -107,37 +104,33 @@ namespace Supply {
                 SheetViewList.RemoveRows(0, SheetViewList.Rows.Count);
 
             int i = 0;
-            int _supplyNumber = 0;
-            foreach(SupplyMasterVo supplyMasterVo in listSupplyMasterVo) {
+            foreach(SupplyListVo supplyListVo in _supplyListDao.SelectSupplyListVo(DateTimePickerJpEx1.Value, DateTimePickerJpEx2.Value, _dictionaryAffiliationValue[ComboBoxSupplyType.Text])) {
+                int _beginingMonthStock = supplyListVo.BeginingMonthStock;
+                int _warehousing = supplyListVo.Warehousing;
+                int _delivery = supplyListVo.Delivery;
+                int _stock = _beginingMonthStock + _warehousing - _delivery;
+
+
                 SheetViewList.Rows.Add(i, 1);
                 SheetViewList.RowHeader.Columns[0].Label = (i + 1).ToString(); // Rowヘッダ
                 SheetViewList.Rows[i].Height = 22; // Rowの高さ
                 SheetViewList.Rows[i].Resizable = false; // RowのResizableを禁止
                 // 備品コード
-                SheetViewList.Cells[i, colSupplyCode].Value = supplyMasterVo.Code;
+                SheetViewList.Cells[i, _colSupplyCode].Value = supplyListVo.SupplyCode;
                 // 備品名
-                SheetViewList.Cells[i, colSupplyName].Text = supplyMasterVo.Name;
+                SheetViewList.Cells[i, _colSupplyName].Text = supplyListVo.SupplyName;
                 // 適正在庫数
-                SheetViewList.Cells[i, colAppropriateStock].Value = supplyMasterVo.Proper_stock;
-                /*
-                 * 入庫数
-                 */
-                try {
-                    _supplyNumber = _supplyMoveDao.SelectCountSupplyMoveIn(DateTimePickerJpEx1.Value, DateTimePickerJpEx2.Value, supplyMasterVo.Code);
-                } catch(Exception exception) {
-                    MessageBox.Show(exception.Message);
-                }
-                SheetViewList.Cells[i, colWarehousing].Value = _supplyNumber;
-                /*
-                 * 出庫数
-                 */
-                try {
-                    _supplyNumber = _supplyMoveDao.SelectCountSupplyMoveOut(DateTimePickerJpEx1.Value, DateTimePickerJpEx2.Value, supplyMasterVo.Code);
-                } catch(Exception exception) {
-                    MessageBox.Show(exception.Message);
-                }
-                SheetViewList.Cells[i, colDelivery].Value = _supplyNumber;
-
+                SheetViewList.Cells[i, _colAppropriateStock].Value = supplyListVo.AppropriateStock;
+                // 月初在庫数
+                SheetViewList.Cells[i, _colBeginingMonthStock].Value = _beginingMonthStock;
+                // 入庫数
+                SheetViewList.Cells[i, _colWarehousing].Value = _warehousing;
+                // 出庫数
+                SheetViewList.Cells[i, _colDelivery].Value = _delivery;
+                // 在庫数
+                SheetViewList.Cells[i, _colStock].Font = new Font("Yu Gothic UI", 10, FontStyle.Bold);
+                SheetViewList.Cells[i, _colStock].ForeColor = Color.Red;
+                SheetViewList.Cells[i, _colStock].Value = _stock;
                 i++;
             }
 
@@ -177,6 +170,32 @@ namespace Supply {
         private void ToolStripMenuItemInventory_Click(object sender, EventArgs e) {
             SupplyIn supplyIn = new SupplyIn(_connectionVo,ComboBoxSupplyType.Text);
             supplyIn.ShowDialog(this);
+        }
+
+        /// <summary>
+        /// DateTimePickerJpEx_ValueChanged
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DateTimePickerJpEx1_ValueChanged(object sender, EventArgs e) {
+            if(((DateTimePickerJpEx)sender).Value > DateTimePickerJpEx2.Value) {
+                DateTimePickerJpEx2.Value = ((DateTimePickerJpEx)sender).Value;
+            }
+        }
+        private void DateTimePickerJpEx2_ValueChanged(object sender, EventArgs e) {
+            if(((DateTimePickerJpEx)sender).Value < DateTimePickerJpEx1.Value) {
+                DateTimePickerJpEx1.Value = ((DateTimePickerJpEx)sender).Value;
+            }
+        }
+
+        /// <summary>
+        /// ToolStripMenuItemPrint_Click
+        /// 印刷する
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItemPrint_Click(object sender, EventArgs e) {
+            SpreadList.PrintSheet(SheetViewList);
         }
 
         /// <summary>

@@ -19,7 +19,7 @@ namespace Supply {
         /*
          * Dao
          */
-        private readonly SupplyMoveDao _supplyDao;
+        private readonly SupplyOutDao _supplyOutDao;
         /*
          * Vo
          */
@@ -113,7 +113,7 @@ namespace Supply {
             /*
              * Dao
              */
-            _supplyDao = new SupplyMoveDao(connectionVo);
+            _supplyOutDao = new SupplyOutDao(connectionVo);
             /*
              * Vo
              */
@@ -152,7 +152,7 @@ namespace Supply {
                 _supplyOutVo.Insert_pc_name = Environment.MachineName;
                 _supplyOutVo.Insert_ymd_hms = DateTime.Now;
                 try {
-                    _supplyDao.InsertOneSupplyMove(_supplyOutVo);
+                    _supplyOutDao.InsertOneSupplyMove(_supplyOutVo);
                 } catch(Exception exception) {
                     MessageBox.Show(exception.Message);
                 }
@@ -175,7 +175,7 @@ namespace Supply {
                 _supplyOutVo.Insert_pc_name = Environment.MachineName;
                 _supplyOutVo.Insert_ymd_hms = DateTime.Now;
                 try {
-                    _supplyDao.InsertOneSupplyMove(_supplyOutVo);
+                    _supplyOutDao.InsertOneSupplyMove(_supplyOutVo);
                 } catch(Exception exception) {
                     MessageBox.Show(exception.Message);
                 }
@@ -198,7 +198,7 @@ namespace Supply {
                 _supplyOutVo.Insert_pc_name = Environment.MachineName;
                 _supplyOutVo.Insert_ymd_hms = DateTime.Now;
                 try {
-                    _supplyDao.InsertOneSupplyMove(_supplyOutVo);
+                    _supplyOutDao.InsertOneSupplyMove(_supplyOutVo);
                 } catch(Exception exception) {
                     MessageBox.Show(exception.Message);
                 }
@@ -221,7 +221,7 @@ namespace Supply {
                 _supplyOutVo.Insert_pc_name = Environment.MachineName;
                 _supplyOutVo.Insert_ymd_hms = DateTime.Now;
                 try {
-                    _supplyDao.InsertOneSupplyMove(_supplyOutVo);
+                    _supplyOutDao.InsertOneSupplyMove(_supplyOutVo);
                 } catch(Exception exception) {
                     MessageBox.Show(exception.Message);
                 }
@@ -244,7 +244,7 @@ namespace Supply {
                 _supplyOutVo.Insert_pc_name = Environment.MachineName;
                 _supplyOutVo.Insert_ymd_hms = DateTime.Now;
                 try {
-                    _supplyDao.InsertOneSupplyMove(_supplyOutVo);
+                    _supplyOutDao.InsertOneSupplyMove(_supplyOutVo);
                 } catch(Exception exception) {
                     MessageBox.Show(exception.Message);
                 }
@@ -267,7 +267,7 @@ namespace Supply {
                 _supplyOutVo.Insert_pc_name = Environment.MachineName;
                 _supplyOutVo.Insert_ymd_hms = DateTime.Now;
                 try {
-                    _supplyDao.InsertOneSupplyMove(_supplyOutVo);
+                    _supplyOutDao.InsertOneSupplyMove(_supplyOutVo);
                 } catch(Exception exception) {
                     MessageBox.Show(exception.Message);
                 }
@@ -290,7 +290,7 @@ namespace Supply {
                 _supplyOutVo.Insert_pc_name = Environment.MachineName;
                 _supplyOutVo.Insert_ymd_hms = DateTime.Now;
                 try {
-                    _supplyDao.InsertOneSupplyMove(_supplyOutVo);
+                    _supplyOutDao.InsertOneSupplyMove(_supplyOutVo);
                 } catch(Exception exception) {
                     MessageBox.Show(exception.Message);
                 }
@@ -313,7 +313,7 @@ namespace Supply {
                 _supplyOutVo.Insert_pc_name = Environment.MachineName;
                 _supplyOutVo.Insert_ymd_hms = DateTime.Now;
                 try {
-                    _supplyDao.InsertOneSupplyMove(_supplyOutVo);
+                    _supplyOutDao.InsertOneSupplyMove(_supplyOutVo);
                 } catch(Exception exception) {
                     MessageBox.Show(exception.Message);
                 }
@@ -334,7 +334,7 @@ namespace Supply {
                 _supplyOutVo.Insert_pc_name = Environment.MachineName;
                 _supplyOutVo.Insert_ymd_hms = DateTime.Now;
                 try {
-                    _supplyDao.InsertOneSupplyMove(_supplyOutVo);
+                    _supplyOutDao.InsertOneSupplyMove(_supplyOutVo);
                 } catch(Exception exception) {
                     MessageBox.Show(exception.Message);
                 }
@@ -355,7 +355,7 @@ namespace Supply {
                 _supplyOutVo.Insert_pc_name = Environment.MachineName;
                 _supplyOutVo.Insert_ymd_hms = DateTime.Now;
                 try {
-                    _supplyDao.InsertOneSupplyMove(_supplyOutVo);
+                    _supplyOutDao.InsertOneSupplyMove(_supplyOutVo);
                 } catch(Exception exception) {
                     MessageBox.Show(exception.Message);
                 }
@@ -378,7 +378,7 @@ namespace Supply {
                 _supplyOutVo.Insert_pc_name = Environment.MachineName;
                 _supplyOutVo.Insert_ymd_hms = DateTime.Now;
                 try {
-                    _supplyDao.InsertOneSupplyMove(_supplyOutVo);
+                    _supplyOutDao.InsertOneSupplyMove(_supplyOutVo);
                 } catch(Exception exception) {
                     MessageBox.Show(exception.Message);
                 }

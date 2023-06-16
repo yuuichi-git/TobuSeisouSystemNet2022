@@ -10,6 +10,7 @@ namespace Supply {
     public partial class SupplyIn : Form {
         private InitializeForm _initializeForm = new();
         private string _affiliationValue = string.Empty;
+        private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01, 00, 00, 00, 000);
         private readonly Dictionary<string, int> _dictionaryAffiliationValue = new Dictionary<string, int> { { "事務での備品", 1 },
                                                                                                              { "雇上での備品", 2 },
                                                                                                              { "産廃での備品", 3 },
@@ -56,16 +57,62 @@ namespace Supply {
             InitializeSheetViewList(SheetViewList);
         }
 
-        int spreadListTopRow = 0;
         /// <summary>
         /// ButtonUpdate_Click
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ButtonUpdate_Click(object sender, EventArgs e) {
+            /*
+             * 
+             */
+            if(ComboBoxSupplyType.Text.Length < 1) {
+                MessageBox.Show("在庫種別を選択して下さい。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            DialogResult dialogResult = MessageBox.Show("棚卸データを更新します。よろしいですか？", MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            switch(dialogResult) {
+                case DialogResult.Cancel:
+                    return;
+            }
+
+            // 月初・月末を設定
+            DateTime startDate = new Date().GetBeginOfMonth(MonthPicker1.Value);
+            /*
+             * DELETE
+             */
+            try {
+                _supplyInDao.DeleteSupplyInventory(MonthPicker1.Value);
+            } catch(Exception exception) {
+                MessageBox.Show(exception.Message);
+            }
+            for(int i = 0; i < SheetViewList.RowCount; i++) {
+                // Voを作成
+                SupplyInventoryVo supplyInventoryVo = new SupplyInventoryVo();
+                supplyInventoryVo.Inventory_date = startDate;
+                supplyInventoryVo.Code = Convert.ToInt32(SheetViewList.Cells[i, 0].Value);
+                supplyInventoryVo.Name = SheetViewList.Cells[i, 1].Text;
+                supplyInventoryVo.ProperStock = Convert.ToInt32(SheetViewList.Cells[i, 2].Value);
+                supplyInventoryVo.Memo = SheetViewList.Cells[i, 3].Text;
+                supplyInventoryVo.Insert_ymd_hms = DateTime.Now;
+                supplyInventoryVo.Update_ymd_hms = _defaultDateTime;
+                supplyInventoryVo.Delete_ymd_hms = _defaultDateTime;
+                supplyInventoryVo.Delete_flag = false;
+                /*
+                 * INSERT
+                 */
+                try {
+                    _supplyInDao.InsertSupplyInventory(supplyInventoryVo);
+                } catch(Exception exception) {
+                    MessageBox.Show(exception.Message);
+                }
+            }
+            MessageBox.Show("正常にデータを更新しました。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Close();
         }
 
+        int spreadListTopRow = 0;
         /// <summary>
         /// SpreadOutput
         /// </summary>
@@ -100,9 +147,10 @@ namespace Supply {
                 SheetViewList.Cells[i, colSupplyCode].Value = supplyInVo.SupplyCode;
                 // 備品名
                 SheetViewList.Cells[i, colSupplyName].Text = supplyInVo.SupplyName;
-
                 // 今月の棚卸数
                 SheetViewList.Cells[i, 2].Value = supplyInVo.InventoryStock;
+                // メモ
+                SheetViewList.Cells[i, 3].Value = supplyInVo.Memo;
                 i++;
             }
 

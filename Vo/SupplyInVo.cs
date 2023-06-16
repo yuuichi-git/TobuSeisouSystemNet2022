@@ -6,6 +6,7 @@ namespace Vo {
         private int _supplyCode;
         private string _supplyName;
         private int _inventoryStock;
+        private string _memo;
 
         /// <summary>
         /// コンストラクター
@@ -14,6 +15,7 @@ namespace Vo {
             _supplyCode = 0;
             _supplyName = string.Empty;
             _inventoryStock = 0;
+            _memo = string.Empty;
         }
 
         /// <summary>
@@ -33,11 +35,19 @@ namespace Vo {
         }
 
         /// <summary>
-        /// 棚卸数１(先々月)
+        /// 棚卸数
         /// </summary>
         public int InventoryStock {
             get => _inventoryStock;
             set => _inventoryStock = value;
+        }
+
+        /// <summary>
+        /// メモ
+        /// </summary>
+        public string Memo {
+            get => _memo;
+            set => _memo = value;
         }
     }
 }
