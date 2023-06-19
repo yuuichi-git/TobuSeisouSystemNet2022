@@ -63,9 +63,6 @@
             ToolStripMenuItemLicense = new ToolStripMenuItem();
             ToolStripMenuItemToukanpo = new ToolStripMenuItem();
             ToolStripMenuItemMap = new ToolStripMenuItem();
-            SheetViewList = SpreadList.GetSheet(0);
-            SheetViewList2 = SpreadList.GetSheet(1);
-            SheetViewList3 = SpreadList.GetSheet(2);
             TabControlExStaff = new ControlEx.TabControlEx();
             tabPage1 = new TabPage();
             tabPage2 = new TabPage();
@@ -78,6 +75,9 @@
             tabPage9 = new TabPage();
             tabPage10 = new TabPage();
             tabPage11 = new TabPage();
+            SheetViewList = SpreadList.GetSheet(0);
+            SheetViewList2 = SpreadList.GetSheet(1);
+            SheetViewList3 = SpreadList.GetSheet(2);
             TableLayoutPanelExBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
             PanelUp.SuspendLayout();

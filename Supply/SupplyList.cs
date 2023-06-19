@@ -52,6 +52,10 @@ namespace Supply {
         /// 在庫数
         /// </summary>
         private const int _colStock = 6;
+        /// <summary>
+        /// 発注数
+        /// </summary>
+        private const int _colOrder = 7;
 
         public SupplyList(ConnectionVo connectionVo) {
             /*
@@ -105,11 +109,12 @@ namespace Supply {
 
             int i = 0;
             foreach(SupplyListVo supplyListVo in _supplyListDao.SelectSupplyListVo(DateTimePickerJpEx1.Value, DateTimePickerJpEx2.Value, _dictionaryAffiliationValue[ComboBoxSupplyType.Text])) {
+                int _appropriateStock = supplyListVo.AppropriateStock;
                 int _beginingMonthStock = supplyListVo.BeginingMonthStock;
                 int _warehousing = supplyListVo.Warehousing;
                 int _delivery = supplyListVo.Delivery;
                 int _stock = _beginingMonthStock + _warehousing - _delivery;
-
+                int _order = _appropriateStock - _stock;
 
                 SheetViewList.Rows.Add(i, 1);
                 SheetViewList.RowHeader.Columns[0].Label = (i + 1).ToString(); // Rowヘッダ
@@ -120,17 +125,26 @@ namespace Supply {
                 // 備品名
                 SheetViewList.Cells[i, _colSupplyName].Text = supplyListVo.SupplyName;
                 // 適正在庫数
-                SheetViewList.Cells[i, _colAppropriateStock].Value = supplyListVo.AppropriateStock;
+                SheetViewList.Cells[i, _colAppropriateStock].Font = new Font("Yu Gothic UI", 10, FontStyle.Bold);
+                SheetViewList.Cells[i, _colAppropriateStock].ForeColor = Color.Black;
+                SheetViewList.Cells[i, _colAppropriateStock].Value = _appropriateStock;
                 // 月初在庫数
+                SheetViewList.Cells[i, _colBeginingMonthStock].Font = new Font("Yu Gothic UI", 10, FontStyle.Bold);
+                SheetViewList.Cells[i, _colBeginingMonthStock].ForeColor = Color.Blue;
                 SheetViewList.Cells[i, _colBeginingMonthStock].Value = _beginingMonthStock;
                 // 入庫数
-                SheetViewList.Cells[i, _colWarehousing].Value = _warehousing;
+                SheetViewList.Cells[i, _colWarehousing].Value = _warehousing != 0 ? _warehousing : "";
                 // 出庫数
-                SheetViewList.Cells[i, _colDelivery].Value = _delivery;
+                SheetViewList.Cells[i, _colDelivery].Value = _delivery != 0 ? _delivery : "";
                 // 在庫数
                 SheetViewList.Cells[i, _colStock].Font = new Font("Yu Gothic UI", 10, FontStyle.Bold);
                 SheetViewList.Cells[i, _colStock].ForeColor = Color.Red;
                 SheetViewList.Cells[i, _colStock].Value = _stock;
+                // 発注数
+                SheetViewList.Cells[i, _colOrder].Font = new Font("Yu Gothic UI", 10, FontStyle.Bold);
+                SheetViewList.Cells[i, _colOrder].ForeColor = Color.Gray;
+                SheetViewList.Cells[i, _colOrder].Value = _order > 0 && _order <= _appropriateStock ? _order : "";
+
                 i++;
             }
 
@@ -196,6 +210,18 @@ namespace Supply {
         /// <param name="e"></param>
         private void ToolStripMenuItemPrint_Click(object sender, EventArgs e) {
             SpreadList.PrintSheet(SheetViewList);
+        }
+
+        /// <summary>
+        /// SpreadList_CellDoubleClick
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SpreadList_CellDoubleClick(object sender, CellClickEventArgs e) {
+            // ヘッダーのDoubleClickを回避
+            if(e.ColumnHeader)
+                return;
+            MessageBox.Show("従業員別出荷数表は只今作成中です。");
         }
 
         /// <summary>

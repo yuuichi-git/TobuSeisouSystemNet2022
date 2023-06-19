@@ -100,8 +100,8 @@ namespace Common {
         /// <returns></returns>
         public Form SupplyList(Form form) {
             form.KeyPreview = true;
-            form.MaximumSize = new Size(800, 1080);
-            form.MinimumSize = new Size(800, 1048);
+            form.MaximumSize = new Size(880, 1080);
+            form.MinimumSize = new Size(880, 1048);
             GetWorkingArea(form);
             return form;
         }
