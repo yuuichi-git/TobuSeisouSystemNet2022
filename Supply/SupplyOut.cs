@@ -107,9 +107,9 @@ namespace Supply {
         /// </summary>
         /// <param name="connectionVo"></param>
         /// <param name="affiliation"></param>
-        public SupplyOut(ConnectionVo connectionVo, string affiliation, int staffCode) {
+        public SupplyOut(ConnectionVo connectionVo, string affiliation, StaffMasterVo staffMasterVo) {
             _affiliationValue = affiliation;
-            _staffCode = staffCode;
+            _staffCode = staffMasterVo.Staff_code;
             /*
              * Dao
              */
@@ -123,7 +123,7 @@ namespace Supply {
              */
             InitializeComponent();
             _panels = new Panel[] { PanelWinterBlouson, PanelWinterCargo, PanelColdProtection, PanelSummerShirt, PanelSummerCargo, PanelHat, PanelRainCoat, PanelHelmet, PanelGlove };
-            LabelAffiliation.Text = _affiliationValue;
+            LabelAffiliation.Text = string.Concat(staffMasterVo.Display_name, "   (", _affiliationValue, ")");
             // RadioButtonのチェック状態を設定
             InitializeRadioButton();
         }

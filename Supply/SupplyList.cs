@@ -221,7 +221,8 @@ namespace Supply {
             // ヘッダーのDoubleClickを回避
             if(e.ColumnHeader)
                 return;
-            MessageBox.Show("従業員別出荷数表は只今作成中です。");
+            SupplyDetail supplyDetail = new SupplyDetail(_connectionVo,(int)SheetViewList.Cells[e.Row, _colSupplyCode].Value);
+            supplyDetail.ShowDialog(this);
         }
 
         /// <summary>
