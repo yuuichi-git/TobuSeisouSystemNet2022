@@ -327,6 +327,19 @@ namespace Common {
         }
 
         /// <summary>
+        /// StatusOfResidenceList
+        /// </summary>
+        /// <param name="form"></param>
+        /// <returns></returns>
+        public Form StatusOfResidenceList(Form form) {
+            form.KeyPreview = true;
+            form.MaximumSize = new Size(1920, 1080);
+            form.MinimumSize = new Size(1920, 1048);
+            GetWorkingArea(form);
+            return form;
+        }
+
+        /// <summary>
         /// SetTableLayoutPanelTop
         /// </summary>
         /// <param name="tableLayoutPanel"></param>

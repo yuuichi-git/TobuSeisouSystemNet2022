@@ -25,6 +25,8 @@ using Staff;
 
 using StaffDetail;
 
+using StatusOfResidence;
+
 using Supply;
 
 using ToukaiDenshi;
@@ -193,6 +195,14 @@ namespace TobuSeisouSystemNet2022 {
                             case "SupplyList":
                                 var supplyList = new SupplyList(_connectionVo);
                                 supplyList.Show(this);
+                                break;
+                            /*
+                             * StatusOfResidenceList
+                             * 在留カード・特別永住者証明書
+                             */
+                            case "StatusOfResidenceList":
+                                StatusOfResidenceList statusOfResidenceList = new StatusOfResidenceList(_connectionVo);
+                                statusOfResidenceList.Show(this);
                                 break;
                         }
                         break;
