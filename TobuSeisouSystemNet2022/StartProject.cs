@@ -94,59 +94,59 @@ namespace TobuSeisouSystemNet2022 {
                             // VehicleDispatch
                             case "VehicleDispatch":
                                 var vehicleDispatchBoad = new VehicleDispatchBoad(_connectionVo);
-                                vehicleDispatchBoad.Show(this);
+                                vehicleDispatchBoad.ShowDialog(this);
                                 break;
                             // VehicleDispatchSheetBoad
                             case "VehicleDispatchSheetBoad":
                                 var vehicleDispatchSheetBoad = new VehicleDispatchSheetBoad(_connectionVo);
-                                vehicleDispatchSheetBoad.Show(this);
+                                vehicleDispatchSheetBoad.ShowDialog(this);
                                 break;
                             // ProductionCleanOfficeList
                             case "ProductionCleanOfficeList":
                                 var productionCleanOfficeList = new ProductionList(_connectionVo, "ProductionCleanOfficeList");
-                                productionCleanOfficeList.Show(this);
+                                productionCleanOfficeList.ShowDialog(this);
                                 break;
                             // ProductionList
                             case "ProductionOfficeList":
                                 var productionOfficeList = new ProductionList(_connectionVo, "ProductionOfficeList");
-                                productionOfficeList.Show(this);
+                                productionOfficeList.ShowDialog(this);
                                 break;
                             // StaffList
                             case "StaffList":
                                 var staffList = new StaffList(_connectionVo);
-                                staffList.Show(this);
+                                staffList.ShowDialog(this);
                                 break;
                             // LicenseList
                             case "LicenseList":
                                 var licenseList = new LicenseList(_connectionVo);
-                                licenseList.Show(this);
+                                licenseList.ShowDialog(this);
                                 break;
                             default:
                                 break;
                             // CarAccidentList
                             case "CarAccidentList":
                                 var carAccidentList = new CarAccidentList(_connectionVo);
-                                carAccidentList.Show(this);
+                                carAccidentList.ShowDialog(this);
                                 break;
                             // CarList
                             case "CarList":
                                 var carList = new CarList(_connectionVo);
-                                carList.Show(this);
+                                carList.ShowDialog(this);
                                 break;
                             // CommuterInsuranceList
                             case "CommuterInsuranceList":
                                 var commuterInsuranceList = new CommuterInsuranceList(_connectionVo);
-                                commuterInsuranceList.Show(this);
+                                commuterInsuranceList.ShowDialog(this);
                                 break;
                             // StaffExcel
                             case "StaffExcel":
                                 var staffExcel = new StaffExcel(_connectionVo);
-                                staffExcel.Show(this);
+                                staffExcel.ShowDialog(this);
                                 break;
                             // StaffPartTimeDetail
                             case "AccountingParttimeList":
                                 var accountingParttimeList = new AccountingParttimeList(_connectionVo);
-                                accountingParttimeList.Show(this);
+                                accountingParttimeList.ShowDialog(this);
                                 break;
                             /*
                              * RollCallRecordBook
@@ -154,7 +154,7 @@ namespace TobuSeisouSystemNet2022 {
                              */
                             case "RollCallRecordBook":
                                 var rollCallRecordBook = new RollCallRecordBook(_connectionVo);
-                                rollCallRecordBook.Show(this);
+                                rollCallRecordBook.ShowDialog(this);
                                 break;
                             /*
                              * WardChiyoda
@@ -178,7 +178,7 @@ namespace TobuSeisouSystemNet2022 {
                              */
                             case "ToukanpoTrainingCardDetail":
                                 var toukanpoTrainingCardDetail = new ToukanpoTrainingCardDetail(_connectionVo);
-                                toukanpoTrainingCardDetail.Show(this);
+                                toukanpoTrainingCardDetail.ShowDialog(this);
                                 break;
                             /*
                              * ToukanpoSpeedSurvey
@@ -186,15 +186,15 @@ namespace TobuSeisouSystemNet2022 {
                              */
                             case "ToukanpoSpeedSurvey":
                                 var toukanpoSpeedSurvey = new ToukanpoSpeedSurvey(_connectionVo);
-                                toukanpoSpeedSurvey.Show(this);
+                                toukanpoSpeedSurvey.ShowDialog(this);
                                 break;
                             /*
                              * SupplyList
                              * 作業服等支給管理   
                              */
                             case "SupplyList":
-                                var supplyList = new SupplyList(_connectionVo);
-                                supplyList.Show(this);
+                                SupplyList supplyList = new SupplyList(_connectionVo);
+                                supplyList.ShowDialog(this);
                                 break;
                             /*
                              * StatusOfResidenceList
@@ -202,7 +202,7 @@ namespace TobuSeisouSystemNet2022 {
                              */
                             case "StatusOfResidenceList":
                                 StatusOfResidenceList statusOfResidenceList = new StatusOfResidenceList(_connectionVo);
-                                statusOfResidenceList.Show(this);
+                                statusOfResidenceList.ShowDialog(this);
                                 break;
                         }
                         break;

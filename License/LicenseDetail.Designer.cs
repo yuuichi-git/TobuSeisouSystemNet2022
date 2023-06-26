@@ -755,7 +755,7 @@
             PictureBoxTail.ContextMenuStrip = ContextMenuStrip1;
             PictureBoxTail.Location = new Point(16, 340);
             PictureBoxTail.Name = "PictureBoxTail";
-            PictureBoxTail.Size = new Size(484, 304);
+            PictureBoxTail.Size = new Size(488, 308);
             PictureBoxTail.SizeMode = PictureBoxSizeMode.Zoom;
             PictureBoxTail.TabIndex = 1;
             PictureBoxTail.TabStop = false;
@@ -764,14 +764,14 @@
             // 
             ContextMenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemPrint });
             ContextMenuStrip1.Name = "ContextMenuStrip1";
-            ContextMenuStrip1.Size = new Size(181, 48);
+            ContextMenuStrip1.Size = new Size(118, 26);
             ContextMenuStrip1.Opening += ContextMenuStrip1_Opening;
             ContextMenuStrip1.Opened += ContextMenuStrip1_Opened;
             // 
             // ToolStripMenuItemPrint
             // 
             ToolStripMenuItemPrint.Name = "ToolStripMenuItemPrint";
-            ToolStripMenuItemPrint.Size = new Size(180, 22);
+            ToolStripMenuItemPrint.Size = new Size(117, 22);
             ToolStripMenuItemPrint.Text = "印刷する";
             ToolStripMenuItemPrint.Click += ToolStripMenuItemPrint_Click;
             // 
@@ -781,7 +781,7 @@
             PictureBoxHead.ContextMenuStrip = ContextMenuStrip1;
             PictureBoxHead.Location = new Point(16, 16);
             PictureBoxHead.Name = "PictureBoxHead";
-            PictureBoxHead.Size = new Size(484, 304);
+            PictureBoxHead.Size = new Size(488, 308);
             PictureBoxHead.SizeMode = PictureBoxSizeMode.Zoom;
             PictureBoxHead.TabIndex = 0;
             PictureBoxHead.TabStop = false;

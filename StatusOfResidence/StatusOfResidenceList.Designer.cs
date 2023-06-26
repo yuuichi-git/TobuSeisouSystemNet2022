@@ -102,18 +102,21 @@
             ToolStripMenuItemNew.Name = "ToolStripMenuItemNew";
             ToolStripMenuItemNew.Size = new Size(98, 22);
             ToolStripMenuItemNew.Text = "新規";
+            ToolStripMenuItemNew.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemUpdate
             // 
             ToolStripMenuItemUpdate.Name = "ToolStripMenuItemUpdate";
             ToolStripMenuItemUpdate.Size = new Size(98, 22);
             ToolStripMenuItemUpdate.Text = "編集";
+            ToolStripMenuItemUpdate.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemDelete
             // 
             ToolStripMenuItemDelete.Name = "ToolStripMenuItemDelete";
             ToolStripMenuItemDelete.Size = new Size(98, 22);
             ToolStripMenuItemDelete.Text = "削除";
+            ToolStripMenuItemDelete.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemHelp
             // 
@@ -171,6 +174,7 @@
             SpreadList.Name = "SpreadList";
             SpreadList.Size = new Size(1898, 927);
             SpreadList.TabIndex = 3;
+            SpreadList.CellDoubleClick += SpreadList_CellDoubleClick;
             // 
             // StatusOfResidenceList
             // 

@@ -509,8 +509,8 @@ namespace CarAccident {
         /// </summary>
         private void InitializeComboBoxSelectDisplayName() {
             ComboBoxSelectDisplayName.Items.Clear();
-            foreach(var staffLedgerVo in _listStaffMasterVo)
-                ComboBoxSelectDisplayName.Items.Add(new ComboBoxSelectStaffLedgerVo(staffLedgerVo.Display_name, staffLedgerVo));
+            foreach(var staffMasterVo in _listStaffMasterVo)
+                ComboBoxSelectDisplayName.Items.Add(new ComboBoxSelectStaffLedgerVo(staffMasterVo.Display_name, staffMasterVo));
             ComboBoxSelectDisplayName.DisplayMember = "DisplayName";
         }
 

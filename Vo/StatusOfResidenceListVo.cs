@@ -6,7 +6,7 @@ namespace Vo {
         private string _staff_name;
         private string _staff_name_kana;
         private DateTime _birth_date;
-        private string _sex;
+        private string _gender;
         private string _nationality;
         private string _address;
         private string _status_of_residence;
@@ -23,7 +23,7 @@ namespace Vo {
             _staff_name = string.Empty;
             _staff_name_kana = string.Empty;
             _birth_date = _defaultDateTime;
-            _sex = string.Empty;
+            _gender = string.Empty;
             _nationality = string.Empty;
             _address = string.Empty;
             _status_of_residence = string.Empty;
@@ -56,9 +56,9 @@ namespace Vo {
         /// <summary>
         /// 性別
         /// </summary>
-        public string Sex {
-            get => _sex;
-            set => _sex = value;
+        public string Gender {
+            get => _gender;
+            set => _gender = value;
         }
         /// <summary>
         /// 国籍・地域
