@@ -66,9 +66,9 @@
             MenuStrip1 = new MenuStrip();
             ToolStripMenuItemMenu = new ToolStripMenuItem();
             ToolStripMenuItemExit = new ToolStripMenuItem();
-            ToolStripMenuItemHelp = new ToolStripMenuItem();
             ToolStripMenuItemEdit = new ToolStripMenuItem();
             ToolStripMenuItemDelete = new ToolStripMenuItem();
+            ToolStripMenuItemHelp = new ToolStripMenuItem();
             TableLayoutPanelBase.SuspendLayout();
             PanelUp.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -334,6 +334,7 @@
             // 
             // TextBoxStaffNameKana
             // 
+            TextBoxStaffNameKana.ImeMode = ImeMode.Katakana;
             TextBoxStaffNameKana.Location = new Point(128, 120);
             TextBoxStaffNameKana.Name = "TextBoxStaffNameKana";
             TextBoxStaffNameKana.Size = new Size(304, 23);
@@ -342,6 +343,7 @@
             // ComboBoxExWorkLimit
             // 
             ComboBoxExWorkLimit.FormattingEnabled = true;
+            ComboBoxExWorkLimit.ImeMode = ImeMode.Hiragana;
             ComboBoxExWorkLimit.Items.AddRange(new object[] { "就労制限なし" });
             ComboBoxExWorkLimit.Location = new Point(128, 316);
             ComboBoxExWorkLimit.Name = "ComboBoxExWorkLimit";
@@ -351,6 +353,7 @@
             // ComboBoxExStatusOfResidence
             // 
             ComboBoxExStatusOfResidence.FormattingEnabled = true;
+            ComboBoxExStatusOfResidence.ImeMode = ImeMode.Hiragana;
             ComboBoxExStatusOfResidence.Items.AddRange(new object[] { "定住者" });
             ComboBoxExStatusOfResidence.Location = new Point(128, 288);
             ComboBoxExStatusOfResidence.Name = "ComboBoxExStatusOfResidence";
@@ -404,6 +407,7 @@
             // 
             // TextBoxStaffName
             // 
+            TextBoxStaffName.ImeMode = ImeMode.AlphaFull;
             TextBoxStaffName.Location = new Point(128, 92);
             TextBoxStaffName.Name = "TextBoxStaffName";
             TextBoxStaffName.Size = new Size(304, 23);
@@ -522,12 +526,6 @@
             ToolStripMenuItemExit.Text = "アプリケーションを終了する";
             ToolStripMenuItemExit.Click += ToolStripMenuItemExit_Click;
             // 
-            // ToolStripMenuItemHelp
-            // 
-            ToolStripMenuItemHelp.Name = "ToolStripMenuItemHelp";
-            ToolStripMenuItemHelp.Size = new Size(48, 20);
-            ToolStripMenuItemHelp.Text = "ヘルプ";
-            // 
             // ToolStripMenuItemEdit
             // 
             ToolStripMenuItemEdit.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemDelete });
@@ -538,9 +536,15 @@
             // ToolStripMenuItemDelete
             // 
             ToolStripMenuItemDelete.Name = "ToolStripMenuItemDelete";
-            ToolStripMenuItemDelete.Size = new Size(180, 22);
+            ToolStripMenuItemDelete.Size = new Size(117, 22);
             ToolStripMenuItemDelete.Text = "削除する";
             ToolStripMenuItemDelete.Click += ToolStripMenuItemDelete_Click;
+            // 
+            // ToolStripMenuItemHelp
+            // 
+            ToolStripMenuItemHelp.Name = "ToolStripMenuItemHelp";
+            ToolStripMenuItemHelp.Size = new Size(48, 20);
+            ToolStripMenuItemHelp.Text = "ヘルプ";
             // 
             // StatusOfResidenceInsUp
             // 

@@ -98,7 +98,7 @@
             // ToolStripMenuItemNew
             // 
             ToolStripMenuItemNew.Name = "ToolStripMenuItemNew";
-            ToolStripMenuItemNew.Size = new Size(180, 22);
+            ToolStripMenuItemNew.Size = new Size(98, 22);
             ToolStripMenuItemNew.Text = "新規";
             ToolStripMenuItemNew.Click += ToolStripMenuItem_Click;
             // 
@@ -151,7 +151,7 @@
             // 
             // SpreadList
             // 
-            SpreadList.AccessibleDescription = "SpreadList, 従事者リスト, Row 0, Column 0";
+            SpreadList.AccessibleDescription = "SpreadList, List, Row 0, Column 0";
             SpreadList.Dock = DockStyle.Fill;
             SpreadList.Font = new Font("ＭＳ Ｐゴシック", 11F, FontStyle.Regular, GraphicsUnit.Point);
             SpreadList.Location = new Point(3, 87);
@@ -199,7 +199,7 @@
         private ToolStripMenuItem ToolStripMenuItemEdit;
         private ToolStripMenuItem ToolStripMenuItemNew;
         private FarPoint.Win.Spread.FpSpread SpreadList;
-        private FarPoint.Win.Spread.SheetView SheetViewList;
         private Button ButtonUpdate;
+        private FarPoint.Win.Spread.SheetView SheetViewList;
     }
 }

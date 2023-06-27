@@ -70,7 +70,7 @@ namespace StatusOfResidence {
         public StatusOfResidenceInsUp(ConnectionVo connectionVo, StatusOfResidenceVo statusOfResidenceVo) {
             // 呼び出し元を設定する
             _switch = "UPDATE";
-            
+
             /*
              * Dao
              */
@@ -123,8 +123,8 @@ namespace StatusOfResidence {
             statusOfResidenceVo.Address = TextBoxExAddress.Text;
             statusOfResidenceVo.Status_of_residence = ComboBoxExStatusOfResidence.Text;
             statusOfResidenceVo.Work_limit = ComboBoxExWorkLimit.Text;
-            statusOfResidenceVo.Period_date = DateTimePickerExPeriodDate.Value.Date;
-            statusOfResidenceVo.Deadline_date = DateTimePickerExDeadlineDate.Value.Date;
+            statusOfResidenceVo.Period_date = DateTimePickerExPeriodDate.GetValue();
+            statusOfResidenceVo.Deadline_date = DateTimePickerExDeadlineDate.GetValue();
             statusOfResidenceVo.Picture_head = (byte[]?)new ImageConverter().ConvertTo(PictureBoxHead.Image, typeof(byte[]));
             statusOfResidenceVo.Picture_tail = (byte[]?)new ImageConverter().ConvertTo(PictureBoxTail.Image, typeof(byte[]));
             statusOfResidenceVo.Insert_ymd_hms = DateTime.Now;
@@ -134,13 +134,30 @@ namespace StatusOfResidence {
             /*
              * Dao処理
              */
+            DialogResult dialogResult;
             try {
                 switch(_switch) {
                     case "INSERT":
-                        _statusOfResidenceDao.InsertOneStatusOfResidenceMaster(statusOfResidenceVo);
+                        dialogResult = MessageBox.Show("この情報で新規登録してもよろしいですか？", MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                        switch(dialogResult) {
+                            case DialogResult.OK:
+                                _statusOfResidenceDao.InsertOneStatusOfResidenceMaster(statusOfResidenceVo);
+                                this.Close();
+                                break;
+                            case DialogResult.Cancel:
+                                break;
+                        }
                         break;
                     case "UPDATE":
-                        _statusOfResidenceDao.UpdateOneStatusOfResidenceMaster(statusOfResidenceVo);
+                        dialogResult = MessageBox.Show("この情報で修正登録してもよろしいですか？", MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                        switch(dialogResult) {
+                            case DialogResult.OK:
+                                _statusOfResidenceDao.UpdateOneStatusOfResidenceMaster(statusOfResidenceVo);
+                                this.Close();
+                                break;
+                            case DialogResult.Cancel:
+                                break;
+                        }
                         break;
                 }
             } catch(Exception exception) {
@@ -154,7 +171,16 @@ namespace StatusOfResidence {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ToolStripMenuItemDelete_Click(object sender, EventArgs e) {
-            MessageBox.Show("Delete処理を書く");
+            DialogResult dialogResult;
+            dialogResult = MessageBox.Show("この情報を削除してもよろしいですか？", MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            switch(dialogResult) {
+                case DialogResult.OK:
+                    //_statusOfResidenceDao.UpdateOneStatusOfResidenceMaster(statusOfResidenceVo);
+                    this.Close();
+                    break;
+                case DialogResult.Cancel:
+                    break;
+            }
         }
 
         /// <summary>
@@ -330,16 +356,7 @@ namespace StatusOfResidence {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void StatusOfResidenceNew_FormClosing(object sender, FormClosingEventArgs e) {
-            var dialogResult = MessageBox.Show(MessageText.Message102, MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            switch(dialogResult) {
-                case DialogResult.OK:
-                    e.Cancel = false;
-                    Dispose();
-                    break;
-                case DialogResult.Cancel:
-                    e.Cancel = true;
-                    break;
-            }
+            this.Dispose();
         }
     }
 }

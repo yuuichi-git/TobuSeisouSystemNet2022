@@ -38,6 +38,19 @@ namespace ControlEx {
         }
 
         /// <summary>
+        /// GetValue
+        /// ブランクの場合、_DefaultDateTimeで返す
+        /// </summary>
+        /// <returns></returns>
+        public DateTime GetValue() {
+            if(this.CustomFormat != " ") {
+                return this.Value;
+            } else {
+                return new DateTime(1900,01,01,00,00,00);
+            }
+        }
+
+        /// <summary>
         /// GetJpValue
         /// 和暦表記をstringで返す
         /// </summary>
