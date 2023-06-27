@@ -12,6 +12,7 @@ using Vo;
 namespace StatusOfResidence {
     public partial class StatusOfResidenceList : Form {
         private InitializeForm _initializeForm = new();
+        private DateTime _defaultDateTime = new DateTime(1900,01,01,00,00,00);
         /*
          * Dao
          */
@@ -106,11 +107,13 @@ namespace StatusOfResidence {
                 SheetViewList.RemoveRows(0, SheetViewList.Rows.Count);
 
             int i = 0;
-            foreach(StatusOfResidenceVo statusOfResidenceVo in _statusOfResidenceDao.SelectStatusOfResidenceMaster()) {
+            foreach(StatusOfResidenceVo statusOfResidenceVo in _statusOfResidenceDao.SelectAllStatusOfResidenceMaster()) {
                 SheetViewList.Rows.Add(i, 1);
                 SheetViewList.RowHeader.Columns[0].Label = (i + 1).ToString(); // Rowヘッダ
                 SheetViewList.Rows[i].Height = 22; // Rowの高さ
                 SheetViewList.Rows[i].Resizable = false; // RowのResizableを禁止
+
+                SheetViewList.Rows[i].ForeColor = statusOfResidenceVo.Delete_flag ? Color.Red : Color.Black; // 削除済は赤色で表示する
                 SheetViewList.Cells[i, colStaffName].Tag = statusOfResidenceVo;
                 SheetViewList.Cells[i, colStaffName].Text = statusOfResidenceVo.Staff_name;
                 SheetViewList.Cells[i, colStaffNameKana].Text = statusOfResidenceVo.Staff_name_kana;
@@ -120,8 +123,10 @@ namespace StatusOfResidence {
                 SheetViewList.Cells[i, colAddress].Text = statusOfResidenceVo.Address;
                 SheetViewList.Cells[i, colStatusOfResidence].Text = statusOfResidenceVo.Status_of_residence;
                 SheetViewList.Cells[i, colWorkLimit].Text = statusOfResidenceVo.Work_limit;
-                SheetViewList.Cells[i, colPeriodDate].Value = statusOfResidenceVo.Period_date;
-                SheetViewList.Cells[i, colDeadlineDate].Value = statusOfResidenceVo.Deadline_date;
+                if(statusOfResidenceVo.Period_date != _defaultDateTime)
+                    SheetViewList.Cells[i, colPeriodDate].Value = statusOfResidenceVo.Period_date;
+                if(statusOfResidenceVo.Deadline_date != _defaultDateTime)
+                    SheetViewList.Cells[i, colDeadlineDate].Value = statusOfResidenceVo.Deadline_date;
                 i++;
             }
 
@@ -142,7 +147,7 @@ namespace StatusOfResidence {
             if(e.ColumnHeader)
                 return;
             // 修飾キーが無い場合
-            StatusOfResidenceInsUp statusOfResidenceNew = new StatusOfResidenceInsUp(_connectionVo, (StatusOfResidenceVo)SheetViewList.Cells[e.Row, colStaffName].Tag);
+            StatusOfResidenceInsUp statusOfResidenceNew = new StatusOfResidenceInsUp(_connectionVo, ((StatusOfResidenceVo)SheetViewList.Cells[e.Row, colStaffName].Tag).Staff_code);
             statusOfResidenceNew.ShowDialog(this);
         }
 

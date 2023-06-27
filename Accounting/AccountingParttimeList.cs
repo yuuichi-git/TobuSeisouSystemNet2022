@@ -37,8 +37,7 @@ namespace Accounting {
              */
             InitializeComponent();
             _initializeForm.AccountingParttimeList(this);
-            DateTimePickerExOperationDate.SetReadOnly(true);
-            DateTimePickerExOperationDate.SetValue(DateTime.Now.Date);
+            DateTimePickerJpExOperationDate.SetValue(DateTime.Now.Date);
             // シート
             SpreadList.TabStripPolicy = TabStripPolicy.Never;
             // ステータスバー
@@ -61,7 +60,7 @@ namespace Accounting {
         /// <param name="e"></param>
         private void ButtonUpdate_Click(object sender, EventArgs e) {
             InitializeSheetViewList();
-            _listVehicleDispatchDetailVo = new VehicleDispatchDetailDao(_connectionVo).SelectAllVehicleDispatchDetail(DateTimePickerExOperationDate.GetValue());
+            _listVehicleDispatchDetailVo = new VehicleDispatchDetailDao(_connectionVo).SelectAllVehicleDispatchDetail(DateTimePickerJpExOperationDate.GetValue());
             PutSheetViewList();
         }
 
@@ -70,7 +69,7 @@ namespace Accounting {
             int startCol = 1;
 
             // 日付
-            SheetViewList.Cells["E2"].Text = DateTimePickerExOperationDate.GetText();
+            SheetViewList.Cells["E2"].Text = DateTimePickerJpExOperationDate.GetValueJp();
 
             foreach(var staffMasterVo in _listStaffMasterVo.FindAll(x => x.Belongs == 12 && x.Vehicle_dispatch_target == true && x.Retirement_flag == false).OrderBy(x => x.Employment_date)) {
                 SheetViewList.Cells[startRow, startCol].Text = staffMasterVo.Display_name;
@@ -78,7 +77,7 @@ namespace Accounting {
                                                                                       x.Operator_code_2 == staffMasterVo.Staff_code ||
                                                                                       x.Operator_code_3 == staffMasterVo.Staff_code ||
                                                                                       x.Operator_code_4 == staffMasterVo.Staff_code) &&
-                                                                                      x.Operation_date == DateTimePickerExOperationDate.GetValue().Date);
+                                                                                      x.Operation_date == DateTimePickerJpExOperationDate.GetValue().Date);
                 /*
                  * 配車先が設定されてなくてStaffLabelExだけ置いてある場合処理をしない
                  * ”vehicleDispatchDetailVo.Set_code > 0” → この部分
@@ -128,7 +127,7 @@ namespace Accounting {
                 }
                 startRow++;
             }
-            ToolStripStatusLabelStatus.Text = string.Concat(DateTimePickerExOperationDate.GetText(), "のデータを更新しました。");
+            ToolStripStatusLabelStatus.Text = string.Concat(DateTimePickerJpExOperationDate.GetValueJp(), "のデータを更新しました。");
         }
 
         private void InitializeSheetViewList() {

@@ -26,7 +26,6 @@ namespace StatusOfResidence {
          * Vo
          */
         private readonly ConnectionVo _conectionVo;
-        private StatusOfResidenceVo? _statusOfResidenceVo;
 
         /// <summary>
         /// コンストラクター(新規)
@@ -46,7 +45,6 @@ namespace StatusOfResidence {
              * Vo
              */
             _conectionVo = connectionVo;
-            _statusOfResidenceVo = null;
 
             InitializeComponent();
             InitializeControlInsert();
@@ -67,7 +65,7 @@ namespace StatusOfResidence {
         /// </summary>
         /// <param name="connectionVo"></param>
         /// <param name="statusOfResidenceListVo"></param>
-        public StatusOfResidenceInsUp(ConnectionVo connectionVo, StatusOfResidenceVo statusOfResidenceVo) {
+        public StatusOfResidenceInsUp(ConnectionVo connectionVo, int staffCode) {
             // 呼び出し元を設定する
             _switch = "UPDATE";
 
@@ -81,10 +79,9 @@ namespace StatusOfResidence {
              * Vo
              */
             _conectionVo = connectionVo;
-            _statusOfResidenceVo = statusOfResidenceVo;
 
             InitializeComponent();
-            InitializeControlUpdate(statusOfResidenceVo);
+            InitializeControlUpdate(new StatusOfResidenceDao(connectionVo).SelectOneStatusOfResidenceMaster(staffCode));
 
             // ToolStripMenuItemEditを有効にする
             ToolStripMenuItemEdit.Enabled = true;
@@ -175,7 +172,11 @@ namespace StatusOfResidence {
             dialogResult = MessageBox.Show("この情報を削除してもよろしいですか？", MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             switch(dialogResult) {
                 case DialogResult.OK:
-                    //_statusOfResidenceDao.UpdateOneStatusOfResidenceMaster(statusOfResidenceVo);
+                    try {
+                        _statusOfResidenceDao.DeleteOneStatusOfResidenceMaster(int.Parse(TextBoxStaffCode.Text));
+                    } catch(Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
                     this.Close();
                     break;
                 case DialogResult.Cancel:

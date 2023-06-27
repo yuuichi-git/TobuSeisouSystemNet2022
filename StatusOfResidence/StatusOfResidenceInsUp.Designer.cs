@@ -310,6 +310,7 @@
             PictureBoxTail.Location = new Point(460, 344);
             PictureBoxTail.Name = "PictureBoxTail";
             PictureBoxTail.Size = new Size(488, 308);
+            PictureBoxTail.SizeMode = PictureBoxSizeMode.Zoom;
             PictureBoxTail.TabIndex = 21;
             PictureBoxTail.TabStop = false;
             // 
@@ -319,6 +320,7 @@
             PictureBoxHead.Location = new Point(460, 24);
             PictureBoxHead.Name = "PictureBoxHead";
             PictureBoxHead.Size = new Size(488, 308);
+            PictureBoxHead.SizeMode = PictureBoxSizeMode.Zoom;
             PictureBoxHead.TabIndex = 20;
             PictureBoxHead.TabStop = false;
             // 
@@ -407,7 +409,7 @@
             // 
             // TextBoxStaffName
             // 
-            TextBoxStaffName.ImeMode = ImeMode.AlphaFull;
+            TextBoxStaffName.ImeMode = ImeMode.Alpha;
             TextBoxStaffName.Location = new Point(128, 92);
             TextBoxStaffName.Name = "TextBoxStaffName";
             TextBoxStaffName.Size = new Size(304, 23);

@@ -1,9 +1,7 @@
 ﻿/*
  * 2023-05-12
  */
-using System;
 using System.Globalization;
-using System.Text.RegularExpressions;
 
 namespace ControlEx {
     public partial class DateTimePickerJpEx : DateTimePicker {
@@ -18,6 +16,9 @@ namespace ControlEx {
              * Controlを初期化
              */
             InitializeComponent();
+            /*
+             * カスタムに設定
+             */
             Japanese.DateTimeFormat.Calendar = new JapaneseCalendar();
             this.Format = DateTimePickerFormat.Custom;
             this.CustomFormat = " ";
@@ -74,7 +75,7 @@ namespace ControlEx {
         /// </summary>
         /// <returns></returns>
         public string GetValueJp() {
-            return string.Concat( this.Value.ToString("ggy年M月d日(dddd)", Japanese));
+            return string.Concat(this.Value.ToString("ggy年M月d日(dddd)", Japanese));
         }
 
         /// <summary>
@@ -87,7 +88,7 @@ namespace ControlEx {
         }
 
         /// <summary>
-        /// PutValue
+        /// SetValue
         /// Value値を設定する
         /// 1900-01-01の場合はブランクを表示する
         /// </summary>

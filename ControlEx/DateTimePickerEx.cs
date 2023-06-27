@@ -1,14 +1,19 @@
-﻿using System.Globalization;
+﻿/*
+ * 2023-05-12
+ */
+using System.Globalization;
 
 namespace ControlEx {
     public partial class DateTimePickerEx : DateTimePicker {
-        private string _customFormat;
+        private string _customFormat = "yyyy年MM月dd日(dddd)";
 
         /// <summary>
         /// コンストラクター
         /// </summary>
         public DateTimePickerEx() {
-            _customFormat = "yyyy年MM月dd日(dddd)";
+            /*
+             * Controlを初期化
+             */
             InitializeComponent();
             /*
              * カスタムに設定
@@ -46,7 +51,7 @@ namespace ControlEx {
             if(this.CustomFormat != " ") {
                 return this.Value;
             } else {
-                return new DateTime(1900,01,01,00,00,00);
+                return new DateTime(1900, 01, 01, 00, 00, 00);
             }
         }
 
@@ -60,6 +65,33 @@ namespace ControlEx {
             Japanese.DateTimeFormat.Calendar = new JapaneseCalendar();
             string jpDate = this.Value.ToString("gg y年", Japanese);
             return jpDate;
+        }
+
+        /// <summary>
+        /// SetBlank
+        /// </summary>
+        public void SetBlank() {
+            this.Value = new DateTime(1900, 01, 01, 0, 00, 00);
+            this.CustomFormat = string.Concat(" ");
+            this.Refresh();
+        }
+
+        /// <summary>
+        /// SetValue
+        /// Value値を設定する
+        /// 1900-01-01の場合はブランクを表示する
+        /// </summary>
+        /// <param name="dateTime"></param>
+        public void SetValue(DateTime dateTime) {
+            if(dateTime.Date != new DateTime(1900, 01, 01) || this.CustomFormat != " ") {
+                this.Value = dateTime;
+                this.CustomFormat = string.Concat(" ", dateTime.ToString("yyyy年MM月dd日(dddd)"));
+                this.Refresh();
+            } else {
+                this.Value = new DateTime(1900, 01, 01, 0, 00, 00);
+                this.CustomFormat = string.Concat(" ");
+                this.Refresh();
+            }
         }
     }
 }

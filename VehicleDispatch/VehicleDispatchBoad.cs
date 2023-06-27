@@ -63,13 +63,14 @@ namespace VehicleDispatch {
          */
         private ConnectionVo _connectionVo;
         private readonly List<SetMasterVo> _listSetMasterVo;
-        private List<SetMasterVo> _listDeepCopySetMasterVo;
         private readonly List<CarMasterVo> _listCarMasterVo;
-        private List<CarMasterVo> _listDeepCopyCarMasterVo;
-        private List<VehicleDispatchDetailCarVo> _listVehicleDispatchDetailCarVo;
         private readonly List<StaffMasterVo> _listStaffMasterVo;
-        private List<StaffMasterVo> _listDeepCopyStaffMasterVo;
+        private List<VehicleDispatchDetailCarVo> _listVehicleDispatchDetailCarVo;
         private List<VehicleDispatchDetailStaffVo> _listVehicleDispatchDetailStaffVo;
+        private List<SetMasterVo> _listDeepCopySetMasterVo;
+        private List<CarMasterVo> _listDeepCopyCarMasterVo;
+        private List<StaffMasterVo> _listDeepCopyStaffMasterVo;
+
         /*
          * Tab‚ÌŠJ•Â
          */
@@ -1726,7 +1727,7 @@ namespace VehicleDispatch {
                         bool dbDragStaffExist = false;
                         dragCellNumber = Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag);
                         /*
-                         * Drag‚³‚ê‚½eControl‚É‚æ‚Á‚Äˆ—‚ð•Ô‚é
+                         * Drag‚³‚ê‚½eControl‚É‚æ‚Á‚Äˆ—‚ð•Ï‚¦‚é
                          */
                         switch(dragCellNumber) {
                             case int i when i >= 151 && i <= 156: // ¶‘¤‚ÌTab(DBã‚ÅŠÇ—‚³‚ê‚Ä‚¢‚È‚¢Label)

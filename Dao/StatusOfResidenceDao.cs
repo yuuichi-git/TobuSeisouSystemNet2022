@@ -11,10 +11,6 @@ using Vo;
 namespace Dao {
     public class StatusOfResidenceDao {
         /*
-         * Dao
-         */
-
-        /*
          * Vo
          */
         private readonly ConnectionVo _connectionVo;
@@ -24,22 +20,18 @@ namespace Dao {
         /// </summary>
         public StatusOfResidenceDao(ConnectionVo connectionVo) {
             /*
-             * Dao
-             */
-
-            /*
              * Vo
              */
             _connectionVo = connectionVo;
-
         }
 
         /// <summary>
-        /// SelectStatusOfResidenceMaster
+        /// SelectOneStatusOfResidenceMaster
         /// </summary>
+        /// <param name="staffCode"></param>
         /// <returns></returns>
-        public List<StatusOfResidenceVo> SelectStatusOfResidenceMaster() {
-            List<StatusOfResidenceVo> listStatusOfResidenceVo = new List<StatusOfResidenceVo>();
+        public StatusOfResidenceVo SelectOneStatusOfResidenceMaster(int staffCode) {
+            StatusOfResidenceVo statusOfResidenceVo = new StatusOfResidenceVo();
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT status_of_residence_master.staff_code," +
                                             "status_of_residence_master.staff_name," +
@@ -56,8 +48,51 @@ namespace Dao {
                                             "status_of_residence_master.picture_tail " +
                                      "FROM status_of_residence_master " +
                                      "LEFT OUTER JOIN staff_master ON staff_master.staff_code = status_of_residence_master.staff_code " +
-                                     "WHERE status_of_residence_master.delete_flag = 'false' " +
-                                     "ORDER BY staff_master.name_kana ASC";
+                                     "WHERE status_of_residence_master.staff_code = " + staffCode + " " +
+                                     "ORDER BY status_of_residence_master.staff_name ASC";
+            using(var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while(sqlDataReader.Read() == true) {
+                    statusOfResidenceVo.Staff_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["staff_code"]);
+                    statusOfResidenceVo.Staff_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["staff_name"]);
+                    statusOfResidenceVo.Staff_name_kana = _defaultValue.GetDefaultValue<string>(sqlDataReader["staff_name_kana"]);
+                    statusOfResidenceVo.Birth_date = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["birth_date"]);
+                    statusOfResidenceVo.Gender = _defaultValue.GetDefaultValue<string>(sqlDataReader["gender"]);
+                    statusOfResidenceVo.Nationality = _defaultValue.GetDefaultValue<string>(sqlDataReader["nationality"]);
+                    statusOfResidenceVo.Address = _defaultValue.GetDefaultValue<string>(sqlDataReader["address"]);
+                    statusOfResidenceVo.Status_of_residence = _defaultValue.GetDefaultValue<string>(sqlDataReader["status_of_residence"]);
+                    statusOfResidenceVo.Work_limit = _defaultValue.GetDefaultValue<string>(sqlDataReader["work_limit"]);
+                    statusOfResidenceVo.Period_date = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["period_date"]);
+                    statusOfResidenceVo.Deadline_date = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["deadline_date"]);
+                    statusOfResidenceVo.Picture_head = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["picture_head"]);
+                    statusOfResidenceVo.Picture_tail = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["picture_tail"]);
+                }
+            }
+            return statusOfResidenceVo;
+        }
+
+        /// <summary>
+        /// SelectAllStatusOfResidenceMaster
+        /// </summary>
+        /// <returns></returns>
+        public List<StatusOfResidenceVo> SelectAllStatusOfResidenceMaster() {
+            List<StatusOfResidenceVo> listStatusOfResidenceVo = new List<StatusOfResidenceVo>();
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT status_of_residence_master.staff_code," +
+                                            "status_of_residence_master.staff_name," +
+                                            "status_of_residence_master.staff_name_kana," +
+                                            "status_of_residence_master.birth_date," +
+                                            "status_of_residence_master.gender," +
+                                            "status_of_residence_master.nationality," +
+                                            "status_of_residence_master.address," +
+                                            "status_of_residence_master.status_of_residence," +
+                                            "status_of_residence_master.work_limit," +
+                                            "status_of_residence_master.period_date," +
+                                            "status_of_residence_master.deadline_date," +
+                                            "status_of_residence_master.delete_flag " +
+                                     "FROM status_of_residence_master " +
+                                     "LEFT OUTER JOIN staff_master ON staff_master.staff_code = status_of_residence_master.staff_code " +
+                                     //"WHERE status_of_residence_master.delete_flag = 'false' " +
+                                     "ORDER BY status_of_residence_master.staff_name ASC";
             using(var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while(sqlDataReader.Read() == true) {
                     StatusOfResidenceVo statusOfResidenceVo = new StatusOfResidenceVo();
@@ -72,8 +107,7 @@ namespace Dao {
                     statusOfResidenceVo.Work_limit = _defaultValue.GetDefaultValue<string>(sqlDataReader["work_limit"]);
                     statusOfResidenceVo.Period_date = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["period_date"]);
                     statusOfResidenceVo.Deadline_date = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["deadline_date"]);
-                    statusOfResidenceVo.Picture_head = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["picture_head"]);
-                    statusOfResidenceVo.Picture_tail = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["picture_tail"]);
+                    statusOfResidenceVo.Delete_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["delete_flag"]);
                     listStatusOfResidenceVo.Add(statusOfResidenceVo);
                 }
             }
@@ -157,6 +191,24 @@ namespace Dao {
             try {
                 sqlCommand.Parameters.Add("@member_picture_head", SqlDbType.Image, statusOfResidenceVo.Picture_head.Length).Value = statusOfResidenceVo.Picture_head;
                 sqlCommand.Parameters.Add("@member_picture_tail", SqlDbType.Image, statusOfResidenceVo.Picture_tail.Length).Value = statusOfResidenceVo.Picture_tail;
+                return sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// DeleteOneStatusOfResidenceMaster
+        /// </summary>
+        /// <param name="staffCode"></param>
+        /// <returns></returns>
+        public int DeleteOneStatusOfResidenceMaster(int staffCode) {
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE status_of_residence_master " +
+                                     "SET delete_flag = 'true'," +
+                                         "delete_ymd_hms = '" + DateTime.Now + "' " +
+                                     "WHERE staff_code = " + staffCode;
+            try {
                 return sqlCommand.ExecuteNonQuery();
             } catch {
                 throw;

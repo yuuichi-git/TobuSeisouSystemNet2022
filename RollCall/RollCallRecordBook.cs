@@ -42,10 +42,8 @@ namespace RollCall {
              */
             InitializeComponent();
             _initializeForm.RollCallRecordBook(this);
-            // 読取り専用
-            UcDateTimeJpOperationDate.SetReadOnly(true);
             // 本日の日付をセット
-            UcDateTimeJpOperationDate.SetValue(DateTime.Now.Date);
+            DateTimePickerJpExOperationDate.SetValue(DateTime.Now.Date);
             // 初期値をセット
             ComboBoxArea.Text = "本社営業所";
         }
@@ -74,7 +72,7 @@ namespace RollCall {
             /*
              * roll_call_detailを取得
              */
-            _rollCallDetailVo = _rollCallDetailDao.SelectOneRollCallDetail(UcDateTimeJpOperationDate.GetValue().Date);
+            _rollCallDetailVo = _rollCallDetailDao.SelectOneRollCallDetail(DateTimePickerJpExOperationDate.GetValue().Date);
             if(_rollCallDetailVo == null) {
                 MessageBox.Show("点呼実施者記録が存在しません。処理を終了します。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -85,12 +83,12 @@ namespace RollCall {
              */
             CultureInfo Japanese = new CultureInfo("ja-JP");
             Japanese.DateTimeFormat.Calendar = new JapaneseCalendar();
-            SheetViewList.Cells[1, 1].Text = string.Concat(UcDateTimeJpOperationDate.GetValue().ToString("ggyy年MM月dd日(dddd)", Japanese), "  天候：", _rollCallDetailVo.Weather, "  ", ComboBoxArea.Text);
+            SheetViewList.Cells[1, 1].Text = string.Concat(DateTimePickerJpExOperationDate.GetValue().ToString("ggyy年MM月dd日(dddd)", Japanese), "  天候：", _rollCallDetailVo.Weather, "  ", ComboBoxArea.Text);
             /*
              * Rowの処理
              */
             int row = 0;
-            _listVehicleDispatchDetailVo = _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(UcDateTimeJpOperationDate.GetValue());
+            _listVehicleDispatchDetailVo = _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(DateTimePickerJpExOperationDate.GetValue());
             foreach(var vehicleDispatchDetailVo in _listVehicleDispatchDetailVo.FindAll(x => x.Operation_flag == true && x.Garage_flag == garageFlag).OrderBy(x => x.Operator_1_roll_call_ymd_hms)) {
                 /*
                  * 第五週が休車対象で、第５週になった場合点呼記録簿から除外する
