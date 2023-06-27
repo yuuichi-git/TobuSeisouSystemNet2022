@@ -3,13 +3,19 @@
  */
 using Common;
 
+using ControlEx;
+
 using Dao;
 
 using Vo;
 
 namespace StatusOfResidence {
-    public partial class StatusOfResidenceNewUpdate : Form {
-        OpenFileDialog openFileDialog = new();
+    public partial class StatusOfResidenceInsUp : Form {
+        // 新規・修正・削除を判別するためのフラグ
+        private string _switch = string.Empty;
+
+        private OpenFileDialog openFileDialog = new();
+        private DateTime _defaultDateTime = new DateTime(1900,01,01);
         /*
          * Dao
          */
@@ -20,13 +26,16 @@ namespace StatusOfResidence {
          * Vo
          */
         private readonly ConnectionVo _conectionVo;
-        private StatusOfResidenceListVo? _statusOfResidenceListVo;
+        private StatusOfResidenceVo? _statusOfResidenceVo;
 
         /// <summary>
         /// コンストラクター(新規)
         /// </summary>
         /// <param name="connectionVo"></param>
-        public StatusOfResidenceNewUpdate(ConnectionVo connectionVo) {
+        public StatusOfResidenceInsUp(ConnectionVo connectionVo) {
+            // 呼び出し元を設定する
+            _switch = "INSERT";
+
             /*
              * Dao
              */
@@ -37,13 +46,20 @@ namespace StatusOfResidence {
              * Vo
              */
             _conectionVo = connectionVo;
-            _statusOfResidenceListVo = null;
+            _statusOfResidenceVo = null;
 
             InitializeComponent();
-            InitializeControl();
+            InitializeControlInsert();
+
+            // ToolStripMenuItemEditを無効にする
+            ToolStripMenuItemEdit.Enabled = false;
+            /*
+             * ComboBoxExSerchStaffを初期化する
+             */
+            ComboBoxExSerchStaff.Enabled = true;
             InitializeComboBoxExSerchStaff();
 
-            this.Text = "StatusOfResidenceNew";
+            this.Text = "StatusOfResidenceInsert";
         }
 
         /// <summary>
@@ -51,21 +67,31 @@ namespace StatusOfResidence {
         /// </summary>
         /// <param name="connectionVo"></param>
         /// <param name="statusOfResidenceListVo"></param>
-        public StatusOfResidenceNewUpdate(ConnectionVo connectionVo, StatusOfResidenceListVo statusOfResidenceListVo) {
+        public StatusOfResidenceInsUp(ConnectionVo connectionVo, StatusOfResidenceVo statusOfResidenceVo) {
+            // 呼び出し元を設定する
+            _switch = "UPDATE";
+            
             /*
              * Dao
              */
+            _staffMasterDao = new StaffMasterDao(connectionVo);
             _statusOfResidenceDao = new StatusOfResidenceDao(connectionVo);
 
             /*
              * Vo
              */
             _conectionVo = connectionVo;
-            _statusOfResidenceListVo = statusOfResidenceListVo;
+            _statusOfResidenceVo = statusOfResidenceVo;
 
             InitializeComponent();
-            InitializeControl();
-            InitializeComboBoxExSerchStaff();
+            InitializeControlUpdate(statusOfResidenceVo);
+
+            // ToolStripMenuItemEditを有効にする
+            ToolStripMenuItemEdit.Enabled = true;
+            /*
+             * ComboBoxExSerchStaffを初期化する
+             */
+            ComboBoxExSerchStaff.Enabled = false;
 
             this.Text = "StatusOfResidenceUpdate";
         }
@@ -76,26 +102,68 @@ namespace StatusOfResidence {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ButtonUpdate_Click(object sender, EventArgs e) {
+            /*
+             * 入力のチェック
+             */
+            if(TextBoxStaffCode.Text.Length == 0) {
+                MessageBox.Show("従事者が選択されていません。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            /*
+             * 値をセット
+             */
             StatusOfResidenceVo statusOfResidenceVo = new StatusOfResidenceVo();
-
-
+            statusOfResidenceVo.Staff_code = int.Parse(TextBoxStaffCode.Text);
+            statusOfResidenceVo.Staff_name = TextBoxStaffName.Text;
+            statusOfResidenceVo.Staff_name_kana = TextBoxStaffNameKana.Text;
+            statusOfResidenceVo.Birth_date = DateTimePickerExBirthDay.Value.Date;
+            statusOfResidenceVo.Gender = ComboBoxExGender.Text;
+            statusOfResidenceVo.Nationality = ComboBoxExNationarity.Text;
+            statusOfResidenceVo.Address = TextBoxExAddress.Text;
+            statusOfResidenceVo.Status_of_residence = ComboBoxExStatusOfResidence.Text;
+            statusOfResidenceVo.Work_limit = ComboBoxExWorkLimit.Text;
+            statusOfResidenceVo.Period_date = DateTimePickerExPeriodDate.Value.Date;
+            statusOfResidenceVo.Deadline_date = DateTimePickerExDeadlineDate.Value.Date;
             statusOfResidenceVo.Picture_head = (byte[]?)new ImageConverter().ConvertTo(PictureBoxHead.Image, typeof(byte[]));
             statusOfResidenceVo.Picture_tail = (byte[]?)new ImageConverter().ConvertTo(PictureBoxTail.Image, typeof(byte[]));
-
+            statusOfResidenceVo.Insert_ymd_hms = DateTime.Now;
+            statusOfResidenceVo.Update_ymd_hms = _defaultDateTime;
+            statusOfResidenceVo.Delete_ymd_hms = _defaultDateTime;
+            statusOfResidenceVo.Delete_flag = false;
+            /*
+             * Dao処理
+             */
             try {
-                _statusOfResidenceDao.InsertOneStatusOfResidenceMaster(statusOfResidenceVo);
+                switch(_switch) {
+                    case "INSERT":
+                        _statusOfResidenceDao.InsertOneStatusOfResidenceMaster(statusOfResidenceVo);
+                        break;
+                    case "UPDATE":
+                        _statusOfResidenceDao.UpdateOneStatusOfResidenceMaster(statusOfResidenceVo);
+                        break;
+                }
             } catch(Exception exception) {
                 MessageBox.Show(exception.Message);
             }
         }
 
         /// <summary>
-        /// ToolStripMenuItem_Click
+        /// ToolStripMenuItemDelete_Click
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ToolStripMenuItem_Click(object sender, EventArgs e) {
-            switch(((ToolStripMenuItem)sender).Name) {
+        private void ToolStripMenuItemDelete_Click(object sender, EventArgs e) {
+            MessageBox.Show("Delete処理を書く");
+        }
+
+        /// <summary>
+        /// Button_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void Button_Click(object sender, EventArgs e) {
+            switch(((Button)sender).Name) {
                 case "ButtonSelectPictureHead":
                     openFileDialog = new OpenFileDialog();
                     openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
@@ -142,17 +210,71 @@ namespace StatusOfResidence {
         }
 
         /// <summary>
-        /// InitializeControl
+        /// InitializeControlNew
         /// </summary>
-        private void InitializeControl() {
+        private void InitializeControlInsert() {
+            //オートコンプリートモードの設定
+            ComboBoxExSerchStaff.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            //コンボボックスのアイテムをオートコンプリートの選択候補とする
+            ComboBoxExSerchStaff.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+            TextBoxStaffCode.Text = string.Empty;
+            TextBoxStaffNameMaster.Text = string.Empty;
             TextBoxStaffName.Text = string.Empty;
             TextBoxStaffNameKana.Text = string.Empty;
             DateTimePickerExBirthDay.Value = DateTime.Now.Date;
-            ComboBoxExSex.Text = string.Empty;
+            ComboBoxExGender.Text = string.Empty;
             ComboBoxExNationarity.Text = string.Empty;
-            ComboBoxExAddress.Text = string.Empty;
+            TextBoxExAddress.Text = string.Empty;
             ComboBoxExStatusOfResidence.Text = string.Empty;
             ComboBoxExWorkLimit.Text = string.Empty;
+            DateTimePickerExPeriodDate.Value = DateTime.Now.Date;
+            DateTimePickerExDeadlineDate.Value = DateTime.Now.Date;
+            PictureBoxHead.Image = null;
+            PictureBoxTail.Image = null;
+        }
+
+        /// <summary>
+        /// InitializeControlUpdate
+        /// </summary>
+        private void InitializeControlUpdate(StatusOfResidenceVo statusOfResidenceVo) {
+            TextBoxStaffCode.Text = statusOfResidenceVo.Staff_code.ToString();
+            TextBoxStaffNameMaster.Text = string.Empty;
+            TextBoxStaffName.Text = statusOfResidenceVo.Staff_name;
+            TextBoxStaffNameKana.Text = statusOfResidenceVo.Staff_name_kana;
+            DateTimePickerExBirthDay.Value = statusOfResidenceVo.Birth_date;
+            ComboBoxExGender.Text = statusOfResidenceVo.Gender;
+            ComboBoxExNationarity.Text = statusOfResidenceVo.Nationality;
+            TextBoxExAddress.Text = statusOfResidenceVo.Address;
+            ComboBoxExStatusOfResidence.Text = statusOfResidenceVo.Status_of_residence;
+            ComboBoxExWorkLimit.Text = statusOfResidenceVo.Work_limit;
+            DateTimePickerExPeriodDate.Value = statusOfResidenceVo.Period_date;
+            DateTimePickerExDeadlineDate.Value = statusOfResidenceVo.Deadline_date;
+            if(statusOfResidenceVo.Picture_head.Length != 0)
+                PictureBoxHead.Image = (Image?)new ImageConverter().ConvertFrom(statusOfResidenceVo.Picture_head);
+            if(statusOfResidenceVo.Picture_tail.Length != 0)
+                PictureBoxTail.Image = (Image?)new ImageConverter().ConvertFrom(statusOfResidenceVo.Picture_tail);
+        }
+
+        /// <summary>
+        /// ComboBoxExSerchStaff_SelectionChangeCommitted
+        /// 新規の場合のみ使う機能だよ
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ComboBoxExSerchStaff_SelectionChangeCommitted(object sender, EventArgs e) {
+            // StaffMasterVoを取得
+            StaffMasterVo staffMasterVo = ((ComboBoxSelectStaffMasterVo)((ComboBoxEx)sender).SelectedItem).StaffMasterVo;
+            /*
+             * 値をセット
+             */
+            TextBoxStaffCode.Text = staffMasterVo.Staff_code.ToString();
+            TextBoxStaffNameMaster.Text = staffMasterVo.Name;
+            TextBoxStaffName.Text = staffMasterVo.Name;
+            TextBoxStaffNameKana.Text = staffMasterVo.Name_kana;
+            DateTimePickerExBirthDay.Value = staffMasterVo.Birth_date;
+            ComboBoxExGender.Text = staffMasterVo.Gender;
+            TextBoxExAddress.Text = staffMasterVo.Current_address;
             DateTimePickerExPeriodDate.Value = DateTime.Now.Date;
             DateTimePickerExDeadlineDate.Value = DateTime.Now.Date;
             PictureBoxHead.Image = null;

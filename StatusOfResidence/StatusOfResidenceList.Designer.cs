@@ -30,8 +30,6 @@
             ToolStripMenuItemExit = new ToolStripMenuItem();
             ToolStripMenuItemEdit = new ToolStripMenuItem();
             ToolStripMenuItemNew = new ToolStripMenuItem();
-            ToolStripMenuItemUpdate = new ToolStripMenuItem();
-            ToolStripMenuItemDelete = new ToolStripMenuItem();
             ToolStripMenuItemHelp = new ToolStripMenuItem();
             PanelUp = new Panel();
             ButtonUpdate = new Button();
@@ -92,7 +90,7 @@
             // 
             // ToolStripMenuItemEdit
             // 
-            ToolStripMenuItemEdit.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemNew, ToolStripMenuItemUpdate, ToolStripMenuItemDelete });
+            ToolStripMenuItemEdit.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemNew });
             ToolStripMenuItemEdit.Name = "ToolStripMenuItemEdit";
             ToolStripMenuItemEdit.Size = new Size(43, 20);
             ToolStripMenuItemEdit.Text = "編集";
@@ -100,23 +98,9 @@
             // ToolStripMenuItemNew
             // 
             ToolStripMenuItemNew.Name = "ToolStripMenuItemNew";
-            ToolStripMenuItemNew.Size = new Size(98, 22);
+            ToolStripMenuItemNew.Size = new Size(180, 22);
             ToolStripMenuItemNew.Text = "新規";
             ToolStripMenuItemNew.Click += ToolStripMenuItem_Click;
-            // 
-            // ToolStripMenuItemUpdate
-            // 
-            ToolStripMenuItemUpdate.Name = "ToolStripMenuItemUpdate";
-            ToolStripMenuItemUpdate.Size = new Size(98, 22);
-            ToolStripMenuItemUpdate.Text = "編集";
-            ToolStripMenuItemUpdate.Click += ToolStripMenuItem_Click;
-            // 
-            // ToolStripMenuItemDelete
-            // 
-            ToolStripMenuItemDelete.Name = "ToolStripMenuItemDelete";
-            ToolStripMenuItemDelete.Size = new Size(98, 22);
-            ToolStripMenuItemDelete.Text = "削除";
-            ToolStripMenuItemDelete.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemHelp
             // 
@@ -214,8 +198,6 @@
         private ToolStripStatusLabel ToolStripStatusLabelDetail;
         private ToolStripMenuItem ToolStripMenuItemEdit;
         private ToolStripMenuItem ToolStripMenuItemNew;
-        private ToolStripMenuItem ToolStripMenuItemUpdate;
-        private ToolStripMenuItem ToolStripMenuItemDelete;
         private FarPoint.Win.Spread.FpSpread SpreadList;
         private FarPoint.Win.Spread.SheetView SheetViewList;
         private Button ButtonUpdate;

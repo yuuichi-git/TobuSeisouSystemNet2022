@@ -106,22 +106,22 @@ namespace StatusOfResidence {
                 SheetViewList.RemoveRows(0, SheetViewList.Rows.Count);
 
             int i = 0;
-            foreach(StatusOfResidenceListVo statusOfResidenceListVo in _statusOfResidenceDao.SelectStatusOfResidenceMaster()) {
+            foreach(StatusOfResidenceVo statusOfResidenceVo in _statusOfResidenceDao.SelectStatusOfResidenceMaster()) {
                 SheetViewList.Rows.Add(i, 1);
                 SheetViewList.RowHeader.Columns[0].Label = (i + 1).ToString(); // RowÉwÉbÉ_
                 SheetViewList.Rows[i].Height = 22; // RowÇÃçÇÇ≥
                 SheetViewList.Rows[i].Resizable = false; // RowÇÃResizableÇã÷é~
-                SheetViewList.Cells[i, colStaffName].Tag = statusOfResidenceListVo;
-                SheetViewList.Cells[i, colStaffName].Text = statusOfResidenceListVo.Staff_name;
-                SheetViewList.Cells[i, colStaffNameKana].Text = statusOfResidenceListVo.Staff_name_kana;
-                SheetViewList.Cells[i, colBirthDate].Value = statusOfResidenceListVo.Birth_date;
-                SheetViewList.Cells[i, colGender].Text = statusOfResidenceListVo.Gender;
-                SheetViewList.Cells[i, colNationality].Text = statusOfResidenceListVo.Nationality;
-                SheetViewList.Cells[i, colAddress].Text = statusOfResidenceListVo.Address;
-                SheetViewList.Cells[i, colStatusOfResidence].Text = statusOfResidenceListVo.Status_of_residence;
-                SheetViewList.Cells[i, colWorkLimit].Text = statusOfResidenceListVo.Work_limit;
-                SheetViewList.Cells[i, colPeriodDate].Value = statusOfResidenceListVo.Period_date;
-                SheetViewList.Cells[i, colDeadlineDate].Value = statusOfResidenceListVo.Deadline_date;
+                SheetViewList.Cells[i, colStaffName].Tag = statusOfResidenceVo;
+                SheetViewList.Cells[i, colStaffName].Text = statusOfResidenceVo.Staff_name;
+                SheetViewList.Cells[i, colStaffNameKana].Text = statusOfResidenceVo.Staff_name_kana;
+                SheetViewList.Cells[i, colBirthDate].Value = statusOfResidenceVo.Birth_date;
+                SheetViewList.Cells[i, colGender].Text = statusOfResidenceVo.Gender;
+                SheetViewList.Cells[i, colNationality].Text = statusOfResidenceVo.Nationality;
+                SheetViewList.Cells[i, colAddress].Text = statusOfResidenceVo.Address;
+                SheetViewList.Cells[i, colStatusOfResidence].Text = statusOfResidenceVo.Status_of_residence;
+                SheetViewList.Cells[i, colWorkLimit].Text = statusOfResidenceVo.Work_limit;
+                SheetViewList.Cells[i, colPeriodDate].Value = statusOfResidenceVo.Period_date;
+                SheetViewList.Cells[i, colDeadlineDate].Value = statusOfResidenceVo.Deadline_date;
                 i++;
             }
 
@@ -142,7 +142,7 @@ namespace StatusOfResidence {
             if(e.ColumnHeader)
                 return;
             // èCè¸ÉLÅ[Ç™ñ≥Ç¢èÍçá
-            StatusOfResidenceNewUpdate statusOfResidenceNew = new StatusOfResidenceNewUpdate(_connectionVo, (StatusOfResidenceListVo)SheetViewList.Cells[e.Row, colStaffName].Tag);
+            StatusOfResidenceInsUp statusOfResidenceNew = new StatusOfResidenceInsUp(_connectionVo, (StatusOfResidenceVo)SheetViewList.Cells[e.Row, colStaffName].Tag);
             statusOfResidenceNew.ShowDialog(this);
         }
 
@@ -154,14 +154,8 @@ namespace StatusOfResidence {
         private void ToolStripMenuItem_Click(object sender, EventArgs e) {
             switch(((ToolStripMenuItem)sender).Name) {
                 case "ToolStripMenuItemNew":
-                    StatusOfResidenceNewUpdate statusOfResidenceNew = new StatusOfResidenceNewUpdate(_connectionVo);
+                    StatusOfResidenceInsUp statusOfResidenceNew = new StatusOfResidenceInsUp(_connectionVo);
                     statusOfResidenceNew.ShowDialog(this);
-                    break;
-                case "ToolStripMenuItemUpdate":
-
-                    break;
-                case "ToolStripMenuItemDelete":
-
                     break;
             }
         }
