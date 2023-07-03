@@ -78,7 +78,7 @@ namespace SubstituteSheet {
             /*
              * １
              */
-            SheetView1.Cells["H18"].Text = string.Concat(_setMasterVo.Set_name, " 組");
+            SheetView1.Cells["H18"].Text = string.Concat(_setMasterVo.Set_name_2, " 組");
             SheetView1.Cells["K18"].Text = string.Concat(_operationDate.ToString("dddd"));
             /*
              * ２
@@ -110,7 +110,7 @@ namespace SubstituteSheet {
             // 代車の処理
             if(_vehicleDispatchDetailVo.Car_code != 0 && carCodeCleanOffice != _vehicleDispatchDetailVo.Car_code) {
                 SheetView1.Cells["G45"].Text = string.Concat(_listCarMasterVo.Find(x => x.Car_code == _vehicleDispatchDetailVo.Car_code).Registration_number,
-                                                                " (" ,
+                                                                " (",
                                                                 _listCarMasterVo.Find(x => x.Car_code == _vehicleDispatchDetailVo.Car_code).Door_number,
                                                                 ")");
                 SheetView1.Cells["D49"].Text = DateTime.Now.ToString("gg y年M月d日", cultureInfo);

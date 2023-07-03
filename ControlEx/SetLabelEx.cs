@@ -32,6 +32,9 @@ namespace ControlEx {
 
         private bool _garageFlag;
         private bool _operationFlag;
+        /// <summary>
+        /// true:第五週は休車 false:第五週は運行
+        /// </summary>
         private bool _fiveLapFlag;
 
         private string _drawStringContactMethod = "";
@@ -139,10 +142,10 @@ namespace ControlEx {
              * 分類コードによってBorder色を変える
              */
             switch(setMasterVo.Classification_code) {
-                case 10:
+                case 10: //雇上
                     _setLabelBorderColor = Color.DarkGray;
                     break;
-                case 11:
+                case 11: //区契
                     _setLabelBorderColor = Color.DarkOrange;
                     break;
                 /*

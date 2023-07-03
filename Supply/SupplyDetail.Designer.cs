@@ -64,7 +64,7 @@
             TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
             TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
-            TableLayoutPanelBase.Size = new Size(842, 737);
+            TableLayoutPanelBase.Size = new Size(864, 1041);
             TableLayoutPanelBase.TabIndex = 0;
             // 
             // MenuStrip1
@@ -72,7 +72,7 @@
             MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemHelp });
             MenuStrip1.Location = new Point(0, 0);
             MenuStrip1.Name = "MenuStrip1";
-            MenuStrip1.Size = new Size(842, 24);
+            MenuStrip1.Size = new Size(864, 24);
             MenuStrip1.TabIndex = 0;
             MenuStrip1.Text = "menuStrip1";
             // 
@@ -99,9 +99,9 @@
             // StatusStrip1
             // 
             StatusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, ToolStripStatusLabelDetail });
-            StatusStrip1.Location = new Point(0, 715);
+            StatusStrip1.Location = new Point(0, 1019);
             StatusStrip1.Name = "StatusStrip1";
-            StatusStrip1.Size = new Size(842, 22);
+            StatusStrip1.Size = new Size(864, 22);
             StatusStrip1.TabIndex = 1;
             StatusStrip1.Text = "statusStrip1";
             // 
@@ -127,7 +127,7 @@
             PanelUp.Dock = DockStyle.Fill;
             PanelUp.Location = new Point(3, 27);
             PanelUp.Name = "PanelUp";
-            PanelUp.Size = new Size(836, 54);
+            PanelUp.Size = new Size(858, 54);
             PanelUp.TabIndex = 2;
             // 
             // label2
@@ -153,6 +153,7 @@
             // DateTimePickerJpEx2
             // 
             DateTimePickerJpEx2.CustomFormat = " ";
+            DateTimePickerJpEx2.Enabled = false;
             DateTimePickerJpEx2.Format = DateTimePickerFormat.Custom;
             DateTimePickerJpEx2.Location = new Point(312, 16);
             DateTimePickerJpEx2.Name = "DateTimePickerJpEx2";
@@ -163,6 +164,7 @@
             // DateTimePickerJpEx1
             // 
             DateTimePickerJpEx1.CustomFormat = " ";
+            DateTimePickerJpEx1.Enabled = false;
             DateTimePickerJpEx1.Format = DateTimePickerFormat.Custom;
             DateTimePickerJpEx1.Location = new Point(100, 16);
             DateTimePickerJpEx1.Name = "DateTimePickerJpEx1";
@@ -174,7 +176,7 @@
             // 
             ButtonUpdate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             ButtonUpdate.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            ButtonUpdate.Location = new Point(634, 8);
+            ButtonUpdate.Location = new Point(656, 8);
             ButtonUpdate.Name = "ButtonUpdate";
             ButtonUpdate.Size = new Size(180, 36);
             ButtonUpdate.TabIndex = 2;
@@ -189,14 +191,14 @@
             SpreadList.Font = new Font("ＭＳ Ｐゴシック", 11F, FontStyle.Regular, GraphicsUnit.Point);
             SpreadList.Location = new Point(3, 87);
             SpreadList.Name = "SpreadList";
-            SpreadList.Size = new Size(836, 623);
+            SpreadList.Size = new Size(858, 927);
             SpreadList.TabIndex = 3;
             // 
             // SupplyDetail
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(842, 737);
+            ClientSize = new Size(864, 1041);
             Controls.Add(TableLayoutPanelBase);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = MenuStrip1;

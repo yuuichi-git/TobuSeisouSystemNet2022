@@ -195,13 +195,15 @@ namespace ControlEx {
         }
 
         /// <summary>
+        /// CreateLabel
         /// SetLabel作成
         /// Labelのイベントはここで登録する
         /// </summary>
         /// <param name="setMasterVo"></param>
         public void CreateLabel(SetMasterVo setMasterVo, VehicleDispatchDetailVo vehicleDispatchDetailVo, ContextMenuStrip contextMenuStrip) {
             try {
-                SetLabelEx labelEx = new SetLabelEx(setMasterVo, vehicleDispatchDetailVo).CreateLabel();
+                SetLabelEx labelEx = new SetLabelEx(setMasterVo,
+                                                    vehicleDispatchDetailVo).CreateLabel();
                 /*
                  * ContextMenuStrip
                  */
@@ -219,13 +221,15 @@ namespace ControlEx {
         }
 
         /// <summary>
+        /// CreateLabel
         /// CarLabel作成
         /// Labelのイベントはここで登録する
         /// </summary>
         /// <param name="carMasterVo"></param>
         public void CreateLabel(VehicleDispatchDetailVo vehicleDispatchDetailVo, CarMasterVo carMasterVo, ContextMenuStrip contextMenuStrip) {
             try {
-                CarLabelEx labelEx = new CarLabelEx(vehicleDispatchDetailVo, carMasterVo).CreateLabel();
+                CarLabelEx labelEx = new CarLabelEx(vehicleDispatchDetailVo,
+                                                    carMasterVo).CreateLabel();
                 /*
                  * ContextMenuStrip
                  */

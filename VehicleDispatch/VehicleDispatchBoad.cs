@@ -83,7 +83,7 @@ namespace VehicleDispatch {
          * 全画面の場合True
          * 編集画面の場合False
          */
-        private bool tenkoModeFlag = false;
+        private bool _tenkoModeFlag = false;
         /*
          * DragDrop操作をした瞬間の日時を保持する
          */
@@ -228,7 +228,7 @@ namespace VehicleDispatch {
                 column = i % 25;
                 row = i / 25 % 3;
                 VehicleDispatchDetailVo? vehicleDispatchDetailVo = listVehicleDispatchDetailVo.Find(x => x.Cell_number == i + 1);
-                var setControlEx = new SetControlEx(i);
+                SetControlEx setControlEx = new SetControlEx(i);
                 setControlEx.AllowDrop = true;
                 setControlEx.Tag = i;
                 /*
@@ -285,7 +285,7 @@ namespace VehicleDispatch {
                         setControlEx.CreateLabel(0,
                                                  staffMasterVo,
                                                  vehicleDispatchDetailVo.Operator_1_proxy_flag,
-                                                 tenkoModeFlag,
+                                                 _tenkoModeFlag,
                                                  vehicleDispatchDetailVo.Operator_1_roll_call_flag,
                                                  vehicleDispatchDetailVo.Operator_1_note.Length > 0 ? true : false,
                                                  vehicleDispatchDetailVo.Operator_1_occupation,
@@ -309,7 +309,7 @@ namespace VehicleDispatch {
                         setControlEx.CreateLabel(1,
                                                  staffMasterVo,
                                                  vehicleDispatchDetailVo.Operator_2_proxy_flag,
-                                                 tenkoModeFlag,
+                                                 _tenkoModeFlag,
                                                  vehicleDispatchDetailVo.Operator_2_roll_call_flag,
                                                  vehicleDispatchDetailVo.Operator_2_note.Length > 0 ? true : false,
                                                  vehicleDispatchDetailVo.Operator_2_occupation,
@@ -334,7 +334,7 @@ namespace VehicleDispatch {
                         setControlEx.CreateLabel(2,
                                                  staffMasterVo,
                                                  vehicleDispatchDetailVo.Operator_3_proxy_flag,
-                                                 tenkoModeFlag,
+                                                 _tenkoModeFlag,
                                                  vehicleDispatchDetailVo.Operator_3_roll_call_flag,
                                                  vehicleDispatchDetailVo.Operator_3_note.Length > 0 ? true : false,
                                                  vehicleDispatchDetailVo.Operator_3_occupation,
@@ -358,7 +358,7 @@ namespace VehicleDispatch {
                         setControlEx.CreateLabel(3,
                                                  staffMasterVo,
                                                  vehicleDispatchDetailVo.Operator_4_proxy_flag,
-                                                 tenkoModeFlag,
+                                                 _tenkoModeFlag,
                                                  vehicleDispatchDetailVo.Operator_4_roll_call_flag,
                                                  vehicleDispatchDetailVo.Operator_4_note.Length > 0 ? true : false,
                                                  vehicleDispatchDetailVo.Operator_4_occupation,
@@ -891,7 +891,7 @@ namespace VehicleDispatch {
         private void ModeEdit() {
             // 更新する
             TableLayoutPanelBase.SuspendLayout();
-            tenkoModeFlag = false;
+            _tenkoModeFlag = false;
             ButtonUpdate.PerformClick();
             _initializeForm.SetTableLayoutPanelAll(TableLayoutPanelBase, true);
             TableLayoutPanelBase.ResumeLayout();
@@ -903,7 +903,7 @@ namespace VehicleDispatch {
         private void ModeRollCall() {
             // 更新する
             TableLayoutPanelBase.SuspendLayout();
-            tenkoModeFlag = true;
+            _tenkoModeFlag = true;
             ButtonUpdate.PerformClick();
             _initializeForm.SetTableLayoutPanelAll(TableLayoutPanelBase, false);
             TableLayoutPanelBase.ResumeLayout();
@@ -917,7 +917,7 @@ namespace VehicleDispatch {
         /// <param name="e"></param>
         private void ToolStripMenuItemMenu_DropDownOpening(object sender, EventArgs e) {
             // 表示されている配車表を印刷(B4)する
-            ToolStripMenuItemPrint.Enabled = tenkoModeFlag;
+            ToolStripMenuItemPrint.Enabled = _tenkoModeFlag;
         }
 
         /// <summary>
@@ -2382,7 +2382,7 @@ namespace VehicleDispatch {
                 /*
                  * tenkoFlag → True:StaffLabelExをClickしたら点呼時間を記録
                  */
-                if(tenkoModeFlag) {
+                if(_tenkoModeFlag) {
                     if((ModifierKeys & Keys.Shift) == Keys.Shift) {
                         SetControlEx setControlEx = (SetControlEx)((StaffLabelEx)sender).Parent;
                         StaffLabelEx staffLabelEx = (StaffLabelEx)sender;

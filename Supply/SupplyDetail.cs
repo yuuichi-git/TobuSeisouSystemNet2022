@@ -13,6 +13,7 @@ using Vo;
 
 namespace Supply {
     public partial class SupplyDetail : Form {
+        private InitializeForm _initializeForm = new();
         private int _supplyCode;
         /*
          * Dao
@@ -51,7 +52,11 @@ namespace Supply {
         /// <summary>
         /// コンストラクター
         /// </summary>
-        public SupplyDetail(ConnectionVo connectionVo, int supplyCode) {
+        /// <param name="connectionVo"></param>
+        /// <param name="supplyCode">備品コード</param>
+        /// <param name="startDate"></param>
+        /// <param name="endDate"></param>
+        public SupplyDetail(ConnectionVo connectionVo, int supplyCode, DateTime startDate, DateTime endDate) {
             _supplyCode = supplyCode;
             /*
              * Dao
@@ -61,13 +66,16 @@ namespace Supply {
              * Vo
              */
             _connectionVo = connectionVo;
-
+            /*
+             * Control初期化
+             */
             InitializeComponent();
+            _initializeForm.SupplyDetail(this);
             /*
              * 月初・月末を設定
              */
-            DateTimePickerJpEx1.Value = new Date().GetBeginOfMonth(DateTimePickerJpEx1.Value);
-            DateTimePickerJpEx2.Value = new Date().GetEndOfMonth(DateTimePickerJpEx2.Value);
+            DateTimePickerJpEx1.Value = new Date().GetBeginOfMonth(startDate.Date);
+            DateTimePickerJpEx2.Value = new Date().GetEndOfMonth(endDate.Date);
             /*
              * SPREAD初期化
              */
@@ -96,11 +104,12 @@ namespace Supply {
                 SheetViewList.Rows[i].Height = 22; // Rowの高さ
                 SheetViewList.Rows[i].Resizable = false; // RowのResizableを禁止
 
-                SheetViewList.Cells[i, 0].Value = supplyDetailVo.MoveDate;
-                SheetViewList.Cells[i, 1].Value = supplyDetailVo.StaffCode;
-                SheetViewList.Cells[i, 2].Value = supplyDetailVo.StaffName;
-                SheetViewList.Cells[i, 3].Value = supplyDetailVo.SupplyCode;
-                SheetViewList.Cells[i, 4].Value = supplyDetailVo.SupplyName;
+                SheetViewList.Cells[i, _colMoveDate].Value = supplyDetailVo.MoveDate;
+                SheetViewList.Cells[i, _colStaffCode].Value = supplyDetailVo.StaffCode;
+                SheetViewList.Cells[i, _colStaffName].Value = supplyDetailVo.StaffName;
+                SheetViewList.Cells[i, _colSupplyCode].Value = supplyDetailVo.SupplyCode;
+                SheetViewList.Cells[i, _colSupplyName].Value = supplyDetailVo.SupplyName;
+                SheetViewList.Cells[i, _colMoveNumber].Value = supplyDetailVo.MoveNumber;
                 i++;
             }
 

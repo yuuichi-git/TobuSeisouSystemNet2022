@@ -66,7 +66,7 @@
         }
 
         /// <summary>
-        /// 該当年月の日数を返す
+        /// 月末日を返す
         /// </summary>
         /// <param name="dateTime"></param>
         /// <returns></returns>

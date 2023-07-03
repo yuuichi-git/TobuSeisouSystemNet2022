@@ -78,8 +78,8 @@ namespace Supply {
             /*
              * 月初・月末を設定
              */
-            DateTimePickerJpEx1.Value = new Date().GetBeginOfMonth(DateTimePickerJpEx1.Value);
-            DateTimePickerJpEx2.Value = new Date().GetEndOfMonth(DateTimePickerJpEx2.Value);
+            DateTimePickerJpEx1.Value = new Date().GetBeginOfMonth(DateTime.Now.Date);
+            DateTimePickerJpEx2.Value = new Date().GetEndOfMonth(DateTime.Now.Date);
             /*
              * SPREAD初期化
              */
@@ -221,7 +221,10 @@ namespace Supply {
             // ヘッダーのDoubleClickを回避
             if(e.ColumnHeader)
                 return;
-            SupplyDetail supplyDetail = new SupplyDetail(_connectionVo,(int)SheetViewList.Cells[e.Row, _colSupplyCode].Value);
+            SupplyDetail supplyDetail = new SupplyDetail(_connectionVo,
+                                                         (int)SheetViewList.Cells[e.Row, _colSupplyCode].Value,
+                                                         DateTimePickerJpEx1.Value.Date,
+                                                         DateTimePickerJpEx2.Value.Date);
             supplyDetail.ShowDialog(this);
         }
 
