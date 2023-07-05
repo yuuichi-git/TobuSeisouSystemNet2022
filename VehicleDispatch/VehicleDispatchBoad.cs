@@ -1,5 +1,6 @@
 using System.Drawing.Printing;
 using System.Globalization;
+using System.Windows.Forms;
 
 using CarRegister;
 
@@ -703,7 +704,8 @@ namespace VehicleDispatch {
                         /*
                          * CarLabelExを作成
                          */
-                        foreach(VehicleDispatchDetailCarVo vehicleDispatchDetailCarVo in _listVehicleDispatchDetailCarVo.FindAll(x => x.Cell_number == 168).OrderBy(x => x.Insert_ymd_hms)) {
+                        foreach(VehicleDispatchDetailCarVo vehicleDispatchDetailCarVo in _listVehicleDispatchDetailCarVo.FindAll(x => x.Cell_number == 168)
+                                                                                                                        .OrderBy(x => x.Insert_ymd_hms)) {
                             /*
                              * 2023-03-28 Findに対するNullチェックを入れる
                              */
@@ -765,7 +767,7 @@ namespace VehicleDispatch {
         private void CreateLabelTabControlExLeft() {
             // FlowLayoutPanelExSet
             foreach(SetMasterVo deepCopySetMasterVo in _listDeepCopySetMasterVo.FindAll(x => x.Classification_code != 10 && x.Classification_code != 11)
-                                                                       .OrderBy(x => x.Classification_code).ThenBy(x => x.Set_name)) {
+                                                                               .OrderBy(x => x.Classification_code).ThenBy(x => x.Set_name)) {
                 SetLabelEx setLabelEx = new SetLabelEx(deepCopySetMasterVo).CreateLabel();
                 // プロパティを設定
                 setLabelEx.ContextMenuStrip = ContextMenuStripSetLabel;
@@ -852,7 +854,14 @@ namespace VehicleDispatch {
         /// </summary>
         /// <param name="tableLayoutPanelEx"></param>
         private void TableLayoutPanelControlRemove(TableLayoutPanelEx tableLayoutPanelEx) {
-            tableLayoutPanelEx.Controls.Clear();
+            /*
+             * メソッドを Clear 呼び出しても、コントロール ハンドルはメモリから削除されません。 メモリ リークを回避するには、 メソッドを Dispose 明示的に呼び出す必要があります。
+             * ※後ろから解放している点が重要らしい。
+             */
+            //tableLayoutPanelEx.Controls.Clear();
+            for(int i = tableLayoutPanelEx.Controls.Count - 1; 0 <= i; i--) {
+                tableLayoutPanelEx.Controls[i].Dispose();
+            }
 
             ComputerInfo info = new ComputerInfo();
             ToolStripStatusLabelMemory.Text = string.Concat("合計物理メモリ:", info.TotalPhysicalMemory / 1024, " 利用可能物理メモリ:", info.AvailablePhysicalMemory / 1024);
@@ -863,7 +872,14 @@ namespace VehicleDispatch {
         /// </summary>
         /// <param name="flowLayoutPanelEx"></param>
         private void FlowLayoutPanelControlRemove(FlowLayoutPanelEx flowLayoutPanelEx) {
-            flowLayoutPanelEx.Controls.Clear();
+            /*
+             * メソッドを Clear 呼び出しても、コントロール ハンドルはメモリから削除されません。 メモリ リークを回避するには、 メソッドを Dispose 明示的に呼び出す必要があります。
+             *  ※後ろから解放している点が重要らしい。
+             */
+            //flowLayoutPanelEx.Controls.Clear();
+            for(int i = flowLayoutPanelEx.Controls.Count - 1; 0 <= i; i--) {
+                flowLayoutPanelEx.Controls[i].Dispose();
+            }
 
             ComputerInfo info = new ComputerInfo();
             ToolStripStatusLabelMemory.Text = string.Concat("合計物理メモリ:", info.TotalPhysicalMemory / 1024, " 利用可能物理メモリ:", info.AvailablePhysicalMemory / 1024);
@@ -1558,14 +1574,16 @@ namespace VehicleDispatch {
                 VehicleDispatchDetailVo vehicleDispatchDetailVo = new();
                 vehicleDispatchDetailVo.Cell_number = vehicleDispatchDetail.Cell_number;
                 vehicleDispatchDetailVo.Operation_date = DateTimePickerJpExOperationDate.GetValue();
-                vehicleDispatchDetailVo.Operation_flag = vehicleDispatchDetail.Day_of_week != string.Empty; // vehicle_dispatch_body.day_of_weekがstring.EmptydeでなければTrue(稼働)
+                vehicleDispatchDetailVo.Operation_flag = vehicleDispatchDetail.Day_of_week != string.Empty; // vehicle_dispatch_body.day_of_weekがstring.EmptyでなければTrue(稼働)
                 vehicleDispatchDetailVo.Garage_flag = vehicleDispatchDetail.Garage_flag;
                 vehicleDispatchDetailVo.Five_lap = vehicleDispatchDetail.Five_lap;
                 vehicleDispatchDetailVo.Move_flag = vehicleDispatchDetail.Move_flag;
                 vehicleDispatchDetailVo.Day_of_week = vehicleDispatchDetail.Day_of_week;
+                vehicleDispatchDetailVo.Shift_code = vehicleDispatchDetail.Shift_code;
                 vehicleDispatchDetailVo.Stand_by_flag = false;
                 vehicleDispatchDetailVo.Classification_flag = false;
                 vehicleDispatchDetailVo.Add_worker_flag = false;
+                vehicleDispatchDetailVo.Contact_infomation_flag = false;
                 vehicleDispatchDetailVo.Set_code = vehicleDispatchDetail.Set_code;
                 vehicleDispatchDetailVo.Set_note = vehicleDispatchDetail.Set_note; // vehicle_dispatch_body.note
                 vehicleDispatchDetailVo.Car_code = vehicleDispatchDetail.Car_code;
@@ -1574,21 +1592,25 @@ namespace VehicleDispatch {
                 vehicleDispatchDetailVo.Number_of_people = vehicleDispatchDetail.Number_of_people;
                 vehicleDispatchDetailVo.Operator_code_1 = vehicleDispatchDetail.Operator_code_1;
                 vehicleDispatchDetailVo.Operator_1_proxy_flag = false; // 値を作成
+                vehicleDispatchDetailVo.Operator_1_roll_call_flag = false;
                 vehicleDispatchDetailVo.Operator_1_roll_call_ymd_hms = _defaultDate; // 値を作成
                 vehicleDispatchDetailVo.Operator_1_note = ""; // 値を作成
                 vehicleDispatchDetailVo.Operator_1_occupation = vehicleDispatchDetail.Operator_1_occupation; // staff_masterに登録されている情報
                 vehicleDispatchDetailVo.Operator_code_2 = vehicleDispatchDetail.Operator_code_2;
                 vehicleDispatchDetailVo.Operator_2_proxy_flag = false; // 値を作成
+                vehicleDispatchDetailVo.Operator_2_roll_call_flag = false;
                 vehicleDispatchDetailVo.Operator_2_roll_call_ymd_hms = _defaultDate; // 値を作成
                 vehicleDispatchDetailVo.Operator_2_note = ""; // 値を作成
                 vehicleDispatchDetailVo.Operator_2_occupation = vehicleDispatchDetail.Operator_2_occupation; // staff_masterに登録されている情報
                 vehicleDispatchDetailVo.Operator_code_3 = vehicleDispatchDetail.Operator_code_3;
                 vehicleDispatchDetailVo.Operator_3_proxy_flag = false; // 値を作成
+                vehicleDispatchDetailVo.Operator_3_roll_call_flag = false;
                 vehicleDispatchDetailVo.Operator_3_roll_call_ymd_hms = _defaultDate; // 値を作成
                 vehicleDispatchDetailVo.Operator_3_note = ""; // 値を作成
                 vehicleDispatchDetailVo.Operator_3_occupation = vehicleDispatchDetail.Operator_3_occupation; // staff_masterに登録されている情報
                 vehicleDispatchDetailVo.Operator_code_4 = vehicleDispatchDetail.Operator_code_4;
                 vehicleDispatchDetailVo.Operator_4_proxy_flag = false; // 値を作成
+                vehicleDispatchDetailVo.Operator_4_roll_call_flag = false;
                 vehicleDispatchDetailVo.Operator_4_roll_call_ymd_hms = _defaultDate; // 値を作成
                 vehicleDispatchDetailVo.Operator_4_note = ""; // 値を作成
                 vehicleDispatchDetailVo.Operator_4_occupation = vehicleDispatchDetail.Operator_4_occupation; // staff_masterに登録されている情報

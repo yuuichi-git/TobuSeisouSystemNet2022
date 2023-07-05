@@ -562,7 +562,7 @@ namespace Dao {
                                          "five_lap = '" + setMasterVo.Five_lap + "'," +
                                          "move_flag = '" + setMasterVo.Move_flag + "'," +
                                          "day_of_week = '" + operationDate.ToString("ddd") + "'," +
-                                         "shift_code = 1," +
+                                         "shift_code = 0," + // 番手コードをセット
                                          "set_code = '" + setMasterVo.Set_code + "'," +
                                          "set_note = '" + setMasterVo.Remarks + "'," +
                                          "last_roll_call_flag = 'False'," +

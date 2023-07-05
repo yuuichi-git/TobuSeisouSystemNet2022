@@ -200,6 +200,8 @@ namespace ControlEx {
         /// Labelのイベントはここで登録する
         /// </summary>
         /// <param name="setMasterVo"></param>
+        /// <param name="vehicleDispatchDetailVo"></param>
+        /// <param name="contextMenuStrip"></param>
         public void CreateLabel(SetMasterVo setMasterVo, VehicleDispatchDetailVo vehicleDispatchDetailVo, ContextMenuStrip contextMenuStrip) {
             try {
                 SetLabelEx labelEx = new SetLabelEx(setMasterVo,
@@ -225,7 +227,9 @@ namespace ControlEx {
         /// CarLabel作成
         /// Labelのイベントはここで登録する
         /// </summary>
+        /// <param name="vehicleDispatchDetailVo"></param>
         /// <param name="carMasterVo"></param>
+        /// <param name="contextMenuStrip"></param>
         public void CreateLabel(VehicleDispatchDetailVo vehicleDispatchDetailVo, CarMasterVo carMasterVo, ContextMenuStrip contextMenuStrip) {
             try {
                 CarLabelEx labelEx = new CarLabelEx(vehicleDispatchDetailVo,
@@ -256,6 +260,7 @@ namespace ControlEx {
         /// <param name="tenkoModeFlag"></param>
         /// <param name="rollCallFlag"></param>
         /// <param name="noteFlag"></param>
+        /// <param name="occupation"></param>
         /// <param name="contextMenuStrip"></param>
         public void CreateLabel(int number, StaffMasterVo staffMasterVo, bool proxyFlag, bool tenkoModeFlag, bool rollCallFlag, bool noteFlag, int occupation, ContextMenuStrip contextMenuStrip) {
             try {
