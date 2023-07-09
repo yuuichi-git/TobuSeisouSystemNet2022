@@ -5,8 +5,8 @@ namespace ControlEx {
         /*
          * Labelのサイズ
          */
-        private const int _staffLabelHeight = 36;
-        private const int _staffLabelWidth = 70;
+        private const int _height = 36;
+        private const int _width = 70;
 
         // StaffMasterVo
         private readonly StaffMasterVo _staffMasterVo;
@@ -260,10 +260,10 @@ namespace ControlEx {
         /// <returns></returns>
         public StaffLabelEx CreateLabel() {
             this.BorderStyle = BorderStyle.FixedSingle;
-            this.Height = _staffLabelHeight;
+            this.Height = _height;
             this.Margin = new Padding(2);
             this.Tag = _staffMasterVo;
-            this.Width = _staffLabelWidth;
+            this.Width = _width;
             return this;
         }
 

@@ -28,7 +28,7 @@ namespace SubstituteSheet {
         /*
          * ë„î‘ÇÃìdòbî‘çÜ
          */
-        string telephoneNumber = "";
+        string _cellphoneNumber = "";
         /*
          * îzé‘êÊÉRÅ[ÉhÇ∆ìdòbî‘çÜÇÃïRÇ√ÇØ
          */
@@ -47,11 +47,11 @@ namespace SubstituteSheet {
         /*
          * ë„î‘ÇÃÉZÉãà íuÇÃïRÇ√ÇØ
          */
-        Dictionary<int, string> cellSetName = new Dictionary<int, string> { { 0, "B38" }, { 1, "B42" }, { 2, "B46" } };
-        Dictionary<int, string> cellOccupation = new Dictionary<int, string> { { 0, "B40" }, { 1, "B44" }, { 2, "B48" } };
-        Dictionary<int, string> cellBeforeStaffDisplayName = new Dictionary<int, string> { { 0, "D38" }, { 1, "D42" }, { 2, "D46" } };
-        Dictionary<int, string> cellAfterDisplayName = new Dictionary<int, string> { { 0, "I38" }, { 1, "I42" }, { 2, "I46" } };
-        Dictionary<int, string> cellTelephoneNumber = new Dictionary<int, string> { { 0, "I40" }, { 1, "I44" }, { 2, "I48" } };
+        Dictionary<int, string> _dictionarySetName = new Dictionary<int, string> { { 0, "B38" }, { 1, "B42" }, { 2, "B46" } };
+        Dictionary<int, string> _dictionaryOccupation = new Dictionary<int, string> { { 0, "B40" }, { 1, "B44" }, { 2, "B48" } };
+        Dictionary<int, string> _dictionaryBeforeStaffDisplayName = new Dictionary<int, string> { { 0, "D38" }, { 1, "D42" }, { 2, "D46" } };
+        Dictionary<int, string> _dictionaryAfterDisplayName = new Dictionary<int, string> { { 0, "I38" }, { 1, "I42" }, { 2, "I46" } };
+        Dictionary<int, string> _dictionaryCellphoneNumber = new Dictionary<int, string> { { 0, "I40" }, { 1, "I44" }, { 2, "I48" } };
         /*
          * ê¥ë|éññ±èäñºÅEFAXî‘çÜ
          */
@@ -126,7 +126,7 @@ namespace SubstituteSheet {
                     break;
             }
 
-            InitializeSheetViewPaper();
+            InitializeSheetView();
             PutSheetViewPaper();
         }
 
@@ -171,10 +171,10 @@ namespace SubstituteSheet {
                 case 1312105: // ë´óßïsîRÇS
                 case 1312203: // è¨ä‚ÇS
                 case 1312208: // è¨ä‚ÇT
-                    telephoneNumber = _listStaffMasterVo.Find(x => x.Staff_code == _vehicleDispatchDetailVo.Operator_code_1).Telephone_number;
+                    _cellphoneNumber = _listStaffMasterVo.Find(x => x.Staff_code == _vehicleDispatchDetailVo.Operator_code_1).Cellphone_number;
                     break;
                 default:
-                    telephoneNumber = dictionaryTelephoneNumber[_vehicleDispatchDetailVo.Set_code];
+                    _cellphoneNumber = dictionaryTelephoneNumber[_vehicleDispatchDetailVo.Set_code];
                     break;
             }
             // á@ê¥ë|éññ±èäÇ…ìoò^Ç≥ÇÍÇƒÇ¢ÇÈñ{î‘Oprator1ÇéÊìæÇ∑ÇÈ 
@@ -186,7 +186,7 @@ namespace SubstituteSheet {
                          "â^ì]éË",
                          _listStaffMasterVo.Find(x => x.Staff_code == operatorCodeCleanOffice).Display_name,
                          _listStaffMasterVo.Find(x => x.Staff_code == _vehicleDispatchDetailVo.Operator_code_1).Display_name,
-                         telephoneNumber);
+                         _cellphoneNumber);
                 _staffPutNumber++; // éüÇÃçsÇ…ÉCÉìÉNÉäÉÅÉìÉgÇ∑ÇÈ
             }
             // áBçÏã∆àıë„î‘ÇÃèàóù ListÇ…ÇªÇÍÇºÇÍäiî[Ç∑ÇÈ
@@ -227,7 +227,7 @@ namespace SubstituteSheet {
                              "êEàı",
                              _listStaffMasterVo.Find(x => x.Staff_code == _arrayCleanOfficeStaffCodes[arrayLoopCount]).Display_name,
                              _listStaffMasterVo.Find(x => x.Staff_code == _arrayVehicleDispatchDetailStaffCodes[arrayLoopCount]).Display_name,
-                             telephoneNumber);
+                             _cellphoneNumber);
                     _staffPutNumber++; // éüÇÃçsÇ…ÉCÉìÉNÉäÉÅÉìÉgÇ∑ÇÈ
                     arrayLoopCount++;
                 }
@@ -244,16 +244,19 @@ namespace SubstituteSheet {
         /// <param name="occupation"></param>
         /// <param name="beforeDisplayName"></param>
         /// <param name="afterDisplayName"></param>
-        /// <param name="telephoneNumber"></param>
-        private void PutStaff(int rowNumber, string setName, string occupation, string beforeDisplayName, string afterDisplayName, string telephoneNumber) {
-            SheetView1.Cells[cellSetName[rowNumber]].Text = string.Concat(setName, "ëg");
-            SheetView1.Cells[cellOccupation[rowNumber]].Text = occupation;
-            SheetView1.Cells[cellBeforeStaffDisplayName[rowNumber]].Text = beforeDisplayName;
-            SheetView1.Cells[cellAfterDisplayName[rowNumber]].Text = afterDisplayName;
-            SheetView1.Cells[cellTelephoneNumber[rowNumber]].Text = telephoneNumber;
+        /// <param name="cellphoneNumber"></param>
+        private void PutStaff(int rowNumber, string setName, string occupation, string beforeDisplayName, string afterDisplayName, string cellphoneNumber) {
+            SheetView1.Cells[_dictionarySetName[rowNumber]].Text = string.Concat(setName, "ëg");
+            SheetView1.Cells[_dictionaryOccupation[rowNumber]].Text = occupation;
+            SheetView1.Cells[_dictionaryBeforeStaffDisplayName[rowNumber]].Text = beforeDisplayName;
+            SheetView1.Cells[_dictionaryAfterDisplayName[rowNumber]].Text = afterDisplayName;
+            SheetView1.Cells[_dictionaryCellphoneNumber[rowNumber]].Text = cellphoneNumber;
         }
 
-        private void InitializeSheetViewPaper() {
+        /// <summary>
+        /// InitializeSheetView
+        /// </summary>
+        private void InitializeSheetView() {
             // çÏê¨ì˙ït
             SheetView1.Cells["G3"].ResetValue();
             // ëóÇËêÊ
@@ -307,12 +310,22 @@ namespace SubstituteSheet {
             SpreadList.PrintSheet(SheetView1);
         }
 
+        /// <summary>
+        /// ToolStripMenuItemExit_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ToolStripMenuItemExit_Click(object sender, EventArgs e) {
-
+            this.Close();
         }
 
+        /// <summary>
+        /// SubstituteSheet1_FormClosing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SubstituteSheet1_FormClosing(object sender, FormClosingEventArgs e) {
-
+            this.Dispose();
         }
     }
 }

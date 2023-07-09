@@ -880,7 +880,7 @@
         private GroupBox GroupBoxSelectName;
         private ContextMenuStrip ContextMenuStrip1;
         private ToolStripMenuItem ToolStripMenuItemPrint;
-        private ControlEx.DateTimePickerEx DateTimePickerJpExDeliveryDate;
+        //private ControlEx.DateTimePickerEx DateTimePickerJpExDeliveryDate;
         private ControlEx.DateTimePickerJpEx DateTimePickerJpEx1;
         private ControlEx.DateTimePickerJpEx DateExpirationDate;
         private ControlEx.DateTimePickerJpEx DateTimePickerGetDate3;

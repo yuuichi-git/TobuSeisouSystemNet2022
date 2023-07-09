@@ -353,14 +353,22 @@ namespace Dao {
                                              "'false'" +
                                              ");";
             try {
-                sqlCommand.Parameters.Add("@member_picture1", SqlDbType.Image, carAccidentMasterVo.Picture1.Length).Value = carAccidentMasterVo.Picture1;
-                sqlCommand.Parameters.Add("@member_picture2", SqlDbType.Image, carAccidentMasterVo.Picture2.Length).Value = carAccidentMasterVo.Picture2;
-                sqlCommand.Parameters.Add("@member_picture3", SqlDbType.Image, carAccidentMasterVo.Picture3.Length).Value = carAccidentMasterVo.Picture3;
-                sqlCommand.Parameters.Add("@member_picture4", SqlDbType.Image, carAccidentMasterVo.Picture4.Length).Value = carAccidentMasterVo.Picture4;
-                sqlCommand.Parameters.Add("@member_picture5", SqlDbType.Image, carAccidentMasterVo.Picture5.Length).Value = carAccidentMasterVo.Picture5;
-                sqlCommand.Parameters.Add("@member_picture6", SqlDbType.Image, carAccidentMasterVo.Picture6.Length).Value = carAccidentMasterVo.Picture6;
-                sqlCommand.Parameters.Add("@member_picture7", SqlDbType.Image, carAccidentMasterVo.Picture7.Length).Value = carAccidentMasterVo.Picture7;
-                sqlCommand.Parameters.Add("@member_picture8", SqlDbType.Image, carAccidentMasterVo.Picture8.Length).Value = carAccidentMasterVo.Picture8;
+                if(carAccidentMasterVo.Picture1 is not null)
+                    sqlCommand.Parameters.Add("@member_picture1", SqlDbType.Image, carAccidentMasterVo.Picture1.Length).Value = carAccidentMasterVo.Picture1;
+                if(carAccidentMasterVo.Picture2 is not null)
+                    sqlCommand.Parameters.Add("@member_picture2", SqlDbType.Image, carAccidentMasterVo.Picture2.Length).Value = carAccidentMasterVo.Picture2;
+                if(carAccidentMasterVo.Picture3 is not null)
+                    sqlCommand.Parameters.Add("@member_picture3", SqlDbType.Image, carAccidentMasterVo.Picture3.Length).Value = carAccidentMasterVo.Picture3;
+                if(carAccidentMasterVo.Picture4 is not null)
+                    sqlCommand.Parameters.Add("@member_picture4", SqlDbType.Image, carAccidentMasterVo.Picture4.Length).Value = carAccidentMasterVo.Picture4;
+                if(carAccidentMasterVo.Picture5 is not null)
+                    sqlCommand.Parameters.Add("@member_picture5", SqlDbType.Image, carAccidentMasterVo.Picture5.Length).Value = carAccidentMasterVo.Picture5;
+                if(carAccidentMasterVo.Picture6 is not null)
+                    sqlCommand.Parameters.Add("@member_picture6", SqlDbType.Image, carAccidentMasterVo.Picture6.Length).Value = carAccidentMasterVo.Picture6;
+                if(carAccidentMasterVo.Picture7 is not null)
+                    sqlCommand.Parameters.Add("@member_picture7", SqlDbType.Image, carAccidentMasterVo.Picture7.Length).Value = carAccidentMasterVo.Picture7;
+                if(carAccidentMasterVo.Picture8 is not null)
+                    sqlCommand.Parameters.Add("@member_picture8", SqlDbType.Image, carAccidentMasterVo.Picture8.Length).Value = carAccidentMasterVo.Picture8;
                 return sqlCommand.ExecuteNonQuery();
             } catch {
                 throw;
@@ -406,14 +414,22 @@ namespace Dao {
                                      "WHERE insert_ymd_hms='" + insertYmdHms.ToString("yyyy-MM-dd HH:mm:ss.fff") + "' " +
                                        "AND delete_Flag = 'False'";
             try {
-                sqlCommand.Parameters.Add("@member_picture1", SqlDbType.Image, carAccidentMasterVo.Picture1.Length).Value = carAccidentMasterVo.Picture1;
-                sqlCommand.Parameters.Add("@member_picture2", SqlDbType.Image, carAccidentMasterVo.Picture2.Length).Value = carAccidentMasterVo.Picture2;
-                sqlCommand.Parameters.Add("@member_picture3", SqlDbType.Image, carAccidentMasterVo.Picture3.Length).Value = carAccidentMasterVo.Picture3;
-                sqlCommand.Parameters.Add("@member_picture4", SqlDbType.Image, carAccidentMasterVo.Picture4.Length).Value = carAccidentMasterVo.Picture4;
-                sqlCommand.Parameters.Add("@member_picture5", SqlDbType.Image, carAccidentMasterVo.Picture5.Length).Value = carAccidentMasterVo.Picture5;
-                sqlCommand.Parameters.Add("@member_picture6", SqlDbType.Image, carAccidentMasterVo.Picture6.Length).Value = carAccidentMasterVo.Picture6;
-                sqlCommand.Parameters.Add("@member_picture7", SqlDbType.Image, carAccidentMasterVo.Picture7.Length).Value = carAccidentMasterVo.Picture7;
-                sqlCommand.Parameters.Add("@member_picture8", SqlDbType.Image, carAccidentMasterVo.Picture8.Length).Value = carAccidentMasterVo.Picture8;
+                if(carAccidentMasterVo.Picture1 is not null)
+                    sqlCommand.Parameters.Add("@member_picture1", SqlDbType.Image, carAccidentMasterVo.Picture1.Length).Value = carAccidentMasterVo.Picture1;
+                if(carAccidentMasterVo.Picture2 is not null)
+                    sqlCommand.Parameters.Add("@member_picture2", SqlDbType.Image, carAccidentMasterVo.Picture2.Length).Value = carAccidentMasterVo.Picture2;
+                if(carAccidentMasterVo.Picture3 is not null)
+                    sqlCommand.Parameters.Add("@member_picture3", SqlDbType.Image, carAccidentMasterVo.Picture3.Length).Value = carAccidentMasterVo.Picture3;
+                if(carAccidentMasterVo.Picture4 is not null)
+                    sqlCommand.Parameters.Add("@member_picture4", SqlDbType.Image, carAccidentMasterVo.Picture4.Length).Value = carAccidentMasterVo.Picture4;
+                if(carAccidentMasterVo.Picture5 is not null)
+                    sqlCommand.Parameters.Add("@member_picture5", SqlDbType.Image, carAccidentMasterVo.Picture5.Length).Value = carAccidentMasterVo.Picture5;
+                if(carAccidentMasterVo.Picture6 is not null)
+                    sqlCommand.Parameters.Add("@member_picture6", SqlDbType.Image, carAccidentMasterVo.Picture6.Length).Value = carAccidentMasterVo.Picture6;
+                if(carAccidentMasterVo.Picture7 is not null)
+                    sqlCommand.Parameters.Add("@member_picture7", SqlDbType.Image, carAccidentMasterVo.Picture7.Length).Value = carAccidentMasterVo.Picture7;
+                if(carAccidentMasterVo.Picture8 is not null)
+                    sqlCommand.Parameters.Add("@member_picture8", SqlDbType.Image, carAccidentMasterVo.Picture8.Length).Value = carAccidentMasterVo.Picture8;
                 return sqlCommand.ExecuteNonQuery();
             } catch {
                 throw;

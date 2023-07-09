@@ -113,7 +113,7 @@ namespace Production {
             InitializeComboBoxStaffMaster2();
             InitializeComboBoxStaffMaster3();
             InitializeComboBoxStaffMaster4();
-            ToolStripStatusLabelDetail.Text = "";
+            ToolStripStatusLabelDetail.Text = string.Empty;
 
             // 年度をセット
             ComboBoxFinancialYear.Text = DateTime.Now.AddMonths(-3).ToString("yyyy年度");
@@ -154,9 +154,12 @@ namespace Production {
         /// </summary>
         private void CrearTableLayoutPanelExCenter() {
             /*
-             * CellPaint内でControlを削除している
+             * メソッドを Clear 呼び出しても、コントロール ハンドルはメモリから削除されません。 メモリ リークを回避するには、 メソッドを Dispose 明示的に呼び出す必要があります。
+             * ※後ろから解放している点が重要らしい。
              */
-            TableLayoutPanelExCenter.ControlClear();
+            for(int i = TableLayoutPanelExCenter.Controls.Count - 1; 0 <= i; i--) {
+                TableLayoutPanelExCenter.Controls[i].Dispose();
+            }
         }
 
         /// <summary>
@@ -433,17 +436,17 @@ namespace Production {
                 return;
             var arrayIndex = Array.IndexOf(_arrayCheckBoxWeek, sender);
             _arrayComboBoxCar[arrayIndex].Enabled = ((CheckBox)sender).Checked;
-            _arrayComboBoxCar[arrayIndex].Text = "";
+            _arrayComboBoxCar[arrayIndex].Text = string.Empty;
             _arrayComboBoxStaff1[arrayIndex].Enabled = ((CheckBox)sender).Checked;
-            _arrayComboBoxStaff1[arrayIndex].Text = "";
+            _arrayComboBoxStaff1[arrayIndex].Text = string.Empty;
             _arrayComboBoxStaff2[arrayIndex].Enabled = ((CheckBox)sender).Checked;
-            _arrayComboBoxStaff2[arrayIndex].Text = "";
+            _arrayComboBoxStaff2[arrayIndex].Text = string.Empty;
             _arrayComboBoxStaff3[arrayIndex].Enabled = ((CheckBox)sender).Checked;
-            _arrayComboBoxStaff3[arrayIndex].Text = "";
+            _arrayComboBoxStaff3[arrayIndex].Text = string.Empty;
             _arrayComboBoxStaff4[arrayIndex].Enabled = ((CheckBox)sender).Checked;
-            _arrayComboBoxStaff4[arrayIndex].Text = "";
+            _arrayComboBoxStaff4[arrayIndex].Text = string.Empty;
             _arrayTextBoxMemo[arrayIndex].Enabled = ((CheckBox)sender).Checked;
-            _arrayTextBoxMemo[arrayIndex].Text = "";
+            _arrayTextBoxMemo[arrayIndex].Text = string.Empty;
         }
 
         /// <summary>
@@ -537,14 +540,14 @@ namespace Production {
         /// ClearControls
         /// </summary>
         private void ClearControls() {
-            LabelName.Text = "";
-            LabelCellNumber.Text = "";
+            LabelName.Text = string.Empty;
+            LabelCellNumber.Text = string.Empty;
             LabelSetName.Tag = null;
-            LabelSetName.Text = "";
-            LabelNumberOfPeople.Text = "";
-            LabelDayOfWeek.Text = "";
-            LabelFiveLap.Text = "";
-            LabelMoveFlag.Text = "";
+            LabelSetName.Text = string.Empty;
+            LabelNumberOfPeople.Text = string.Empty;
+            LabelDayOfWeek.Text = string.Empty;
+            LabelFiveLap.Text = string.Empty;
+            LabelMoveFlag.Text = string.Empty;
 
             Panel1.SuspendLayout();
             foreach(var checkBox in _arrayCheckBoxWeek) {
@@ -552,17 +555,17 @@ namespace Production {
                 checkBox.Checked = false;
             }
             foreach(var comboBox in _arrayComboBoxCar)
-                comboBox.Text = "";
+                comboBox.Text = string.Empty;
             foreach(var comboBox in _arrayComboBoxStaff1)
-                comboBox.Text = "";
+                comboBox.Text = string.Empty;
             foreach(var comboBox in _arrayComboBoxStaff2)
-                comboBox.Text = "";
+                comboBox.Text = string.Empty;
             foreach(var comboBox in _arrayComboBoxStaff3)
-                comboBox.Text = "";
+                comboBox.Text = string.Empty;
             foreach(var comboBox in _arrayComboBoxStaff4)
-                comboBox.Text = "";
+                comboBox.Text = string.Empty;
             foreach(var textBox in _arrayTextBoxMemo)
-                textBox.Text = "";
+                textBox.Text = string.Empty;
             Panel1.ResumeLayout();
         }
 

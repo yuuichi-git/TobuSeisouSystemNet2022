@@ -219,7 +219,7 @@
         private Panel PanelRight;
         private PictureBox PictureBox1;
         private Button ButtonPrint;
-        private FarPoint.Win.Spread.SheetView SheetViewCarLedger;
+        //private FarPoint.Win.Spread.SheetView SheetViewCarLedger;
         private FarPoint.Win.Spread.SheetView SheetViewCar;
     }
 }

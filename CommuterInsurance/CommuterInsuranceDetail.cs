@@ -140,12 +140,12 @@ namespace CommuterInsurance {
             DateTimePickerStartDate.Value = commuterInsuranceVo.StartDate;
             DateTimePickerEndDate.Value = commuterInsuranceVo.EndDate;
             TextBoxNote.Text = commuterInsuranceVo.Note;
-            if(commuterInsuranceVo.PictureHead.Length != 0) {
-                var imageConv = new ImageConverter();
+            if(commuterInsuranceVo.PictureHead is not null && commuterInsuranceVo.PictureHead.Length != 0) {
+                ImageConverter imageConv = new ImageConverter();
                 PictureBoxHead.Image = (Image?)imageConv.ConvertFrom(commuterInsuranceVo.PictureHead); //写真表
             }
-            if(commuterInsuranceVo.PictureTail.Length != 0) {
-                var imageConv = new ImageConverter();
+            if(commuterInsuranceVo.PictureTail is not null && commuterInsuranceVo.PictureTail.Length != 0) {
+                ImageConverter imageConv = new ImageConverter();
                 PictureBoxTail.Image = (Image?)imageConv.ConvertFrom(commuterInsuranceVo.PictureTail); //写真裏
             }
         }
@@ -369,7 +369,10 @@ namespace CommuterInsurance {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ComboBoxSelectName_SelectedIndexChanged(object sender, EventArgs e) {
+        private void ComboBoxSelectName_SelectedIndexChanged(object? sender, EventArgs e) {
+            // Nullチェック
+            if(sender is null)
+                return;
             var staffMasterVo = ((ComboBoxSelectNameVo)((ComboBox)sender).SelectedItem).StaffMasterVo;
             // StaffLedgerVoの値をControlにセットする
             TextBoxBelongs.Text = dictionaryBelongsCode[staffMasterVo.Belongs];

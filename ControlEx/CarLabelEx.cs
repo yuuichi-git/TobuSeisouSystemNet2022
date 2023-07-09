@@ -5,8 +5,8 @@ namespace ControlEx {
         /*
          * Labelのサイズ
          */
-        private const int _carLabelHeight = 68;
-        private const int _carLabelWidth = 70;
+        private const int _height = 68;
+        private const int _width = 70;
 
         private CarMasterVo _carMasterVo;
         private bool _proxyFlag; // 代番フラグ
@@ -110,10 +110,10 @@ namespace ControlEx {
         /// <returns></returns>
         public CarLabelEx CreateLabel() {
             this.BorderStyle = BorderStyle.FixedSingle;
-            this.Height = _carLabelHeight;
+            this.Height = _height;
             this.Margin = new Padding(2);
             this.Tag = _carMasterVo;
-            this.Width = _carLabelWidth;
+            this.Width = _width;
             return this;
         }
 

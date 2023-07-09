@@ -353,8 +353,7 @@ namespace License {
                     break;
             }
             //画像を描画する
-            if(e.Graphics is not null)
-                e.Graphics.DrawImage(image, 0, 0, 340, 216);//8.56 5.40
+            e.Graphics?.DrawImage(image, 0, 0, 340, 216);//8.56 5.40
             //次のページがないことを通知する
             e.HasMorePages = false;
             //後始末をする

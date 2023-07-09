@@ -11,9 +11,9 @@ using HorizontalAlignment = NPOI.SS.UserModel.HorizontalAlignment;
 namespace VehicleDispatchConvert {
 
     public class ConvertXls {
-        private IWorkbook _iWorkbook;
+        private ICell _iCell;
         private ISheet _iSheet;
-        private ICell iCell;
+        private IWorkbook _iWorkbook;
         /// <summary>
         /// A1形式を格納する
         /// </summary>
@@ -311,8 +311,8 @@ namespace VehicleDispatchConvert {
                                  * もしかしたら行数が足りなくなるかもね
                                  */
                                 cellReference = new(string.Concat("AL", 38 + RINJI_KOPURE));
-                                iCell = _iSheet.GetRow(cellReference.Row).GetCell(cellReference.Col);
-                                if(iCell.StringCellValue != "")
+                                _iCell = _iSheet.GetRow(cellReference.Row).GetCell(cellReference.Col);
+                                if(_iCell.StringCellValue != "")
                                     RINJI_KOPURE++;
 
                                 dictionaryCellPointValue = string.Concat("AA", 38 + RINJI_KOPURE);
@@ -325,8 +325,8 @@ namespace VehicleDispatchConvert {
                                  * もしかしたら行数が足りなくなるかもね
                                  */
                                 cellReference = new(string.Concat("AL", 65 + RINJI_HIRABO));
-                                iCell = _iSheet.GetRow(cellReference.Row).GetCell(cellReference.Col);
-                                if(iCell.StringCellValue != "")
+                                _iCell = _iSheet.GetRow(cellReference.Row).GetCell(cellReference.Col);
+                                if(_iCell.StringCellValue != "")
                                     RINJI_HIRABO++;
 
                                 dictionaryCellPointValue = string.Concat("AA", 65 + RINJI_HIRABO);
@@ -359,9 +359,9 @@ namespace VehicleDispatchConvert {
              * 点呼日 
              */
             hSSFRichTextString = new HSSFRichTextString(DateTime.Now.ToString("ggy年M月d日 [ddd]", cultureInfo));
-            iCell = _iSheet.GetRow(0).GetCell(0); // Column Row
-            iCell.CellStyle.Alignment = HorizontalAlignment.Center;
-            iCell.SetCellValue(hSSFRichTextString);
+            _iCell = _iSheet.GetRow(0).GetCell(0); // Column Row
+            _iCell.CellStyle.Alignment = HorizontalAlignment.Center;
+            _iCell.SetCellValue(hSSFRichTextString);
             /*
              * 配車先
              * 区契約は配車先名で、それ以外は”区”で表示する
@@ -373,18 +373,18 @@ namespace VehicleDispatchConvert {
             }
             iFont.IsStrikeout = !vehicleDispatchDetailVo.Operation_flag; // 取り消し線
             hSSFRichTextString.ApplyFont(iFont);
-            iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col); // Column Row
-            iCell.CellStyle.Alignment = HorizontalAlignment.Center;
-            iCell.SetCellValue(hSSFRichTextString);
+            _iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col); // Column Row
+            _iCell.CellStyle.Alignment = HorizontalAlignment.Center;
+            _iCell.SetCellValue(hSSFRichTextString);
             /*
              * 組数
              */
             hSSFRichTextString = new HSSFRichTextString(_listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Set_name_2);
             iFont.IsStrikeout = !vehicleDispatchDetailVo.Operation_flag; // 取り消し線
             hSSFRichTextString.ApplyFont(iFont);
-            iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 1); // Column Row
-            iCell.CellStyle.Alignment = HorizontalAlignment.Center;
-            iCell.SetCellValue(hSSFRichTextString);
+            _iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 1); // Column Row
+            _iCell.CellStyle.Alignment = HorizontalAlignment.Center;
+            _iCell.SetCellValue(hSSFRichTextString);
             if(vehicleDispatchDetailVo.Car_code != 0) {
                 /*
                  * ドア番号
@@ -392,19 +392,19 @@ namespace VehicleDispatchConvert {
                 hSSFRichTextString = new HSSFRichTextString(_listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Door_number.ToString());
                 iFont.IsStrikeout = !vehicleDispatchDetailVo.Operation_flag; // 取り消し線
                 hSSFRichTextString.ApplyFont(iFont);
-                iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 2); // Column Row
-                iCell.CellStyle.Alignment = HorizontalAlignment.Center;
-                iCell.SetCellValue(hSSFRichTextString);
+                _iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 2); // Column Row
+                _iCell.CellStyle.Alignment = HorizontalAlignment.Center;
+                _iCell.SetCellValue(hSSFRichTextString);
                 /*
                  * 自動車登録番号
                  */
                 hSSFRichTextString = new HSSFRichTextString(string.Concat(_listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Registration_number_3.ToString(),
-                                                                          _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Registration_number_4.ToString()));
+                                                                             _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Registration_number_4.ToString()));
                 iFont.IsStrikeout = !vehicleDispatchDetailVo.Operation_flag; // 取り消し線
                 hSSFRichTextString.ApplyFont(iFont);
-                iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 3); // Column Row
-                iCell.CellStyle.Alignment = HorizontalAlignment.Right;
-                iCell.SetCellValue(hSSFRichTextString);
+                _iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 3); // Column Row
+                _iCell.CellStyle.Alignment = HorizontalAlignment.Right;
+                _iCell.SetCellValue(hSSFRichTextString);
             }
             /*
              * 休車
@@ -412,9 +412,9 @@ namespace VehicleDispatchConvert {
             if(!vehicleDispatchDetailVo.Operation_flag) {
                 hSSFRichTextString = new HSSFRichTextString("休　車");
                 //hSSFRichTextString.ApplyFont(iFont);
-                iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 8); // Column Row
-                iCell.CellStyle.Alignment = HorizontalAlignment.Center;
-                iCell.SetCellValue(hSSFRichTextString);
+                _iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 8); // Column Row
+                _iCell.CellStyle.Alignment = HorizontalAlignment.Center;
+                _iCell.SetCellValue(hSSFRichTextString);
             }
             /*
              * 運転手と点呼
@@ -425,25 +425,25 @@ namespace VehicleDispatchConvert {
                  */
                 hSSFRichTextString = new HSSFRichTextString(_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Display_name);
                 hSSFRichTextString.ApplyFont(iFont);
-                iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 8); // Column Row
-                iCell.CellStyle.Alignment = HorizontalAlignment.Center;
-                iCell.SetCellValue(hSSFRichTextString);
+                _iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 8); // Column Row
+                _iCell.CellStyle.Alignment = HorizontalAlignment.Center;
+                _iCell.SetCellValue(hSSFRichTextString);
                 /*
                  * Belongs
                  */
                 hSSFRichTextString = new HSSFRichTextString(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1).Belongs]);
                 hSSFRichTextString.ApplyFont(iFont);
-                iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 9); // Column Row
-                iCell.CellStyle.Alignment = HorizontalAlignment.Center;
-                iCell.SetCellValue(hSSFRichTextString);
+                _iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 9); // Column Row
+                _iCell.CellStyle.Alignment = HorizontalAlignment.Center;
+                _iCell.SetCellValue(hSSFRichTextString);
                 /*
                  * GarageFlag
                  */
                 hSSFRichTextString = new HSSFRichTextString(vehicleDispatchDetailVo.Garage_flag ? "" : "三");
                 hSSFRichTextString.ApplyFont(iFont);
-                iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 10); // Column Row
-                iCell.CellStyle.Alignment = HorizontalAlignment.Center;
-                iCell.SetCellValue(hSSFRichTextString);
+                _iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 10); // Column Row
+                _iCell.CellStyle.Alignment = HorizontalAlignment.Center;
+                _iCell.SetCellValue(hSSFRichTextString);
                 /*
                  * 特定の配車先に対して点呼を実施する
                  */
@@ -453,57 +453,57 @@ namespace VehicleDispatchConvert {
                      */
                     hSSFRichTextString = new HSSFRichTextString("対面");
                     hSSFRichTextString.ApplyFont(iFont);
-                    iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 14); // Column Row
-                    iCell.CellStyle.Alignment = HorizontalAlignment.Center;
-                    iCell.SetCellValue(hSSFRichTextString);
+                    _iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 14); // Column Row
+                    _iCell.CellStyle.Alignment = HorizontalAlignment.Center;
+                    _iCell.SetCellValue(hSSFRichTextString);
                     /*
                      * 点呼時刻
                      */
                     hSSFRichTextString = new HSSFRichTextString(vehicleDispatchDetailVo.Operator_1_roll_call_ymd_hms.ToString("H:mm"));
                     hSSFRichTextString.ApplyFont(iFont);
-                    iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 16); // Column Row
-                    iCell.CellStyle.Alignment = HorizontalAlignment.Right;
-                    iCell.SetCellValue(hSSFRichTextString);
+                    _iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 16); // Column Row
+                    _iCell.CellStyle.Alignment = HorizontalAlignment.Right;
+                    _iCell.SetCellValue(hSSFRichTextString);
                     /*
                      * 免許 ✓
                      */
                     hSSFRichTextString = new HSSFRichTextString("✓");
                     hSSFRichTextString.ApplyFont(iFont);
-                    iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 17); // Column Row
-                    iCell.CellStyle.Alignment = HorizontalAlignment.Center;
-                    iCell.SetCellValue(hSSFRichTextString);
+                    _iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 17); // Column Row
+                    _iCell.CellStyle.Alignment = HorizontalAlignment.Center;
+                    _iCell.SetCellValue(hSSFRichTextString);
                     /*
                      * 健康
                      */
                     hSSFRichTextString = new HSSFRichTextString("✓");
                     hSSFRichTextString.ApplyFont(iFont);
-                    iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 18); // Column Row
-                    iCell.CellStyle.Alignment = HorizontalAlignment.Center;
-                    iCell.SetCellValue(hSSFRichTextString);
+                    _iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 18); // Column Row
+                    _iCell.CellStyle.Alignment = HorizontalAlignment.Center;
+                    _iCell.SetCellValue(hSSFRichTextString);
                     /*
                      * 点検
                      */
                     hSSFRichTextString = new HSSFRichTextString("✓");
                     hSSFRichTextString.ApplyFont(iFont);
-                    iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 19); // Column Row
-                    iCell.CellStyle.Alignment = HorizontalAlignment.Center;
-                    iCell.SetCellValue(hSSFRichTextString);
+                    _iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 19); // Column Row
+                    _iCell.CellStyle.Alignment = HorizontalAlignment.Center;
+                    _iCell.SetCellValue(hSSFRichTextString);
                     /*
                      * 飲酒
                      */
                     hSSFRichTextString = new HSSFRichTextString("✓");
                     hSSFRichTextString.ApplyFont(iFont);
-                    iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 20); // Column Row
-                    iCell.CellStyle.Alignment = HorizontalAlignment.Center;
-                    iCell.SetCellValue(hSSFRichTextString);
+                    _iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 20); // Column Row
+                    _iCell.CellStyle.Alignment = HorizontalAlignment.Center;
+                    _iCell.SetCellValue(hSSFRichTextString);
                     /*
                      * 検知器
                      */
                     hSSFRichTextString = new HSSFRichTextString("有");
                     hSSFRichTextString.ApplyFont(iFont);
-                    iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 21); // Column Row
-                    iCell.CellStyle.Alignment = HorizontalAlignment.Center;
-                    iCell.SetCellValue(hSSFRichTextString);
+                    _iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 21); // Column Row
+                    _iCell.CellStyle.Alignment = HorizontalAlignment.Center;
+                    _iCell.SetCellValue(hSSFRichTextString);
                     /*
                      * 点呼執行者
                      */
@@ -515,9 +515,9 @@ namespace VehicleDispatchConvert {
                             int second = vehicleDispatchDetailVo.Operator_1_roll_call_ymd_hms.Second; //秒（0～59）
                             hSSFRichTextString = new HSSFRichTextString((second % 2 == 0) ? _arrayTenkoName[0] : _arrayTenkoName[1]);
                             hSSFRichTextString.ApplyFont(iFont);
-                            iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 23); // Column Row
-                            iCell.CellStyle.Alignment = HorizontalAlignment.Center;
-                            iCell.SetCellValue(hSSFRichTextString);
+                            _iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 23); // Column Row
+                            _iCell.CellStyle.Alignment = HorizontalAlignment.Center;
+                            _iCell.SetCellValue(hSSFRichTextString);
                             break;
                         case false:
                             /*
@@ -525,9 +525,9 @@ namespace VehicleDispatchConvert {
                              */
                             hSSFRichTextString = new HSSFRichTextString(_arrayTenkoName[2]);
                             hSSFRichTextString.ApplyFont(iFont);
-                            iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 23); // Column Row
-                            iCell.CellStyle.Alignment = HorizontalAlignment.Center;
-                            iCell.SetCellValue(hSSFRichTextString);
+                            _iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 23); // Column Row
+                            _iCell.CellStyle.Alignment = HorizontalAlignment.Center;
+                            _iCell.SetCellValue(hSSFRichTextString);
                             break;
                     }
                 }
@@ -538,9 +538,9 @@ namespace VehicleDispatchConvert {
                  */
                 hSSFRichTextString = new HSSFRichTextString(string.Concat(GetWorkStaff(vehicleDispatchDetailVo), _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Display_name));
                 hSSFRichTextString.ApplyFont(iFont);
-                iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 11); // Column Row
-                iCell.CellStyle.Alignment = HorizontalAlignment.Center;
-                iCell.SetCellValue(hSSFRichTextString);
+                _iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 11); // Column Row
+                _iCell.CellStyle.Alignment = HorizontalAlignment.Center;
+                _iCell.SetCellValue(hSSFRichTextString);
                 if(GetWorkStaff(vehicleDispatchDetailVo) != "")
                     hSSFRichTextString.ApplyFont(0, 3, iFontStaff);
                 /*
@@ -549,9 +549,9 @@ namespace VehicleDispatchConvert {
                 hSSFRichTextString = new HSSFRichTextString(string.Concat(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Belongs],
                                                                           dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2).Occupation]));
                 hSSFRichTextString.ApplyFont(iFont);
-                iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 12); // Column Row
-                iCell.CellStyle.Alignment = HorizontalAlignment.Center;
-                iCell.SetCellValue(hSSFRichTextString);
+                _iCell = _iSheet.GetRow(_cellReference.Row).GetCell(_cellReference.Col + 12); // Column Row
+                _iCell.CellStyle.Alignment = HorizontalAlignment.Center;
+                _iCell.SetCellValue(hSSFRichTextString);
             }
             if(vehicleDispatchDetailVo.Operator_code_3 != 0) {
                 /*
@@ -559,9 +559,9 @@ namespace VehicleDispatchConvert {
                  */
                 hSSFRichTextString = new HSSFRichTextString(string.Concat(GetWorkStaff(vehicleDispatchDetailVo), _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Display_name));
                 hSSFRichTextString.ApplyFont(iFont);
-                iCell = _iSheet.GetRow(_cellReference.Row + 1).GetCell(_cellReference.Col + 11); // Column Row
-                iCell.CellStyle.Alignment = HorizontalAlignment.Center;
-                iCell.SetCellValue(hSSFRichTextString);
+                _iCell = _iSheet.GetRow(_cellReference.Row + 1).GetCell(_cellReference.Col + 11); // Column Row
+                _iCell.CellStyle.Alignment = HorizontalAlignment.Center;
+                _iCell.SetCellValue(hSSFRichTextString);
                 if(GetWorkStaff(vehicleDispatchDetailVo) != "")
                     hSSFRichTextString.ApplyFont(0, 3, iFontStaff);
                 /*
@@ -570,9 +570,9 @@ namespace VehicleDispatchConvert {
                 hSSFRichTextString = new HSSFRichTextString(string.Concat(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Belongs],
                                                                           dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3).Occupation]));
                 hSSFRichTextString.ApplyFont(iFont);
-                iCell = _iSheet.GetRow(_cellReference.Row + 1).GetCell(_cellReference.Col + 12); // Column Row
-                iCell.CellStyle.Alignment = HorizontalAlignment.Center;
-                iCell.SetCellValue(hSSFRichTextString);
+                _iCell = _iSheet.GetRow(_cellReference.Row + 1).GetCell(_cellReference.Col + 12); // Column Row
+                _iCell.CellStyle.Alignment = HorizontalAlignment.Center;
+                _iCell.SetCellValue(hSSFRichTextString);
             }
             if(vehicleDispatchDetailVo.Operator_code_4 != 0) {
                 /*
@@ -580,9 +580,9 @@ namespace VehicleDispatchConvert {
                  */
                 hSSFRichTextString = new HSSFRichTextString(string.Concat(GetWorkStaff(vehicleDispatchDetailVo), _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4).Display_name));
                 hSSFRichTextString.ApplyFont(iFont);
-                iCell = _iSheet.GetRow(_cellReference.Row + 1).GetCell(_cellReference.Col + 8); // Column Row
-                iCell.CellStyle.Alignment = HorizontalAlignment.Center;
-                iCell.SetCellValue(hSSFRichTextString);
+                _iCell = _iSheet.GetRow(_cellReference.Row + 1).GetCell(_cellReference.Col + 8); // Column Row
+                _iCell.CellStyle.Alignment = HorizontalAlignment.Center;
+                _iCell.SetCellValue(hSSFRichTextString);
                 if(GetWorkStaff(vehicleDispatchDetailVo) != "")
                     hSSFRichTextString.ApplyFont(0, 3, iFontStaff);
                 /*
@@ -591,9 +591,9 @@ namespace VehicleDispatchConvert {
                 hSSFRichTextString = new HSSFRichTextString(string.Concat(dictionaryBelongs[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4).Belongs],
                                                                           dictionaryOccupation[_listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4).Occupation]));
                 hSSFRichTextString.ApplyFont(iFont);
-                iCell = _iSheet.GetRow(_cellReference.Row + 1).GetCell(_cellReference.Col + 9); // Column Row
-                iCell.CellStyle.Alignment = HorizontalAlignment.Center;
-                iCell.SetCellValue(hSSFRichTextString);
+                _iCell = _iSheet.GetRow(_cellReference.Row + 1).GetCell(_cellReference.Col + 9); // Column Row
+                _iCell.CellStyle.Alignment = HorizontalAlignment.Center;
+                _iCell.SetCellValue(hSSFRichTextString);
             }
         }
 

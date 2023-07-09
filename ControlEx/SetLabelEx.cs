@@ -5,8 +5,8 @@ namespace ControlEx {
         /*
          * Labelのサイズ
          */
-        private const int _setLabelHeight = 68;
-        private const int _setLabelWidth = 70;
+        private const int _height = 68;
+        private const int _width = 70;
 
         private SetMasterVo _setMasterVo;
         /*
@@ -37,7 +37,7 @@ namespace ControlEx {
         /// </summary>
         private bool _fiveLapFlag;
 
-        private string _drawStringContactMethod = "";
+        private string _drawStringContactMethod = string.Empty;
         private readonly Font _drawFontContactMethod = new Font("Yu Gothic UI", 8, FontStyle.Regular, GraphicsUnit.Pixel);
 
         /*
@@ -131,7 +131,7 @@ namespace ControlEx {
 
         /// <summary>
         /// コンストラクタ(オーバーロード)
-        /// SetLabelEx用
+        /// SetControlEx用
         /// </summary>
         /// <param name="setMasterVo"></param>
         /// <param name="vehicleDispatchDetailVo"></param>
@@ -247,7 +247,7 @@ namespace ControlEx {
                     _drawStringContactMethod = "FAX";
                     break;
                 default:
-                    _drawStringContactMethod = "";
+                    _drawStringContactMethod = string.Empty;
                     break;
             }
             e.Graphics.DrawString(_drawStringContactMethod, _drawFontContactMethod, _brushColorBlack, new Point(17, 2));
@@ -299,10 +299,10 @@ namespace ControlEx {
         /// <returns></returns>
         public SetLabelEx CreateLabel() {
             this.BorderStyle = BorderStyle.FixedSingle;
-            this.Height = _setLabelHeight;
+            this.Height = _height;
             this.Margin = new Padding(2);
             this.Tag = _setMasterVo;
-            this.Width = _setLabelWidth;
+            this.Width = _width;
             return this;
         }
 
