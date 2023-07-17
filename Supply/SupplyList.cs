@@ -182,7 +182,18 @@ namespace Supply {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ToolStripMenuItemInventory_Click(object sender, EventArgs e) {
-            SupplyIn supplyIn = new SupplyIn(_connectionVo,ComboBoxSupplyType.Text);
+            SupplyInventory supplyInventory = new SupplyInventory(_connectionVo);
+            supplyInventory.ShowDialog(this);
+        }
+
+        /// <summary>
+        /// ToolStripMenuItemIn_Click
+        /// “üŒÉ”‚Ì“ü—Í‰æ–Ê‚ğŠJ‚­
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItemIn_Click(object sender, EventArgs e) {
+            SupplyIn supplyIn = new SupplyIn(_connectionVo);
             supplyIn.ShowDialog(this);
         }
 

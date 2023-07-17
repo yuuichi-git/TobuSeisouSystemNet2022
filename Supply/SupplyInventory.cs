@@ -1,8 +1,4 @@
-﻿/*
- * 2023-07-13
- * 備品入庫処理
- */
-using Common;
+﻿using Common;
 
 using Dao;
 
@@ -11,15 +7,16 @@ using FarPoint.Win.Spread;
 using Vo;
 
 namespace Supply {
-    public partial class SupplyIn : Form {
-        /*
-         * 定数
-         */
+    public partial class SupplyInventory : Form {
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01, 00, 00, 00, 000);
         private readonly Dictionary<string, int> _dictionaryAffiliationValue = new Dictionary<string, int> { { "事務での備品", 1 },
                                                                                                              { "雇上での備品", 2 },
                                                                                                              { "産廃での備品", 3 },
                                                                                                              { "水物での備品", 4 } };
+        /*
+         * Dao
+         */
+        private readonly SupplyInventoryDao _supplyInventoryDao;
         /// <summary>
         /// 備品コード
         /// </summary>
@@ -28,33 +25,22 @@ namespace Supply {
         /// 備品名
         /// </summary>
         private const int _colSupplyName = 1;
-        /// <summary>
-        /// 入庫数量
-        /// </summary>
-        private const int _colSupplyNumber = 2;
-        /// <summary>
-        /// メモ
-        /// </summary>
-        private const int _colSupplyMemo = 3;
-
-        /*
-         * Dao
-         */
-        private readonly SupplyInDao _supplyInDao;
 
         /// <summary>
         /// コンストラクター
         /// </summary>
-        public SupplyIn(ConnectionVo connectionVo) {
+        /// <param name="connectionVo"></param>
+        /// <param name="supplyType">タイプ</param>
+        public SupplyInventory(ConnectionVo connectionVo) {
             /*
              * Dao
              */
-            _supplyInDao = new SupplyInDao(connectionVo);
+            _supplyInventoryDao = new SupplyInventoryDao(connectionVo);
             /*
              * Control初期化
              */
             InitializeComponent();
-            DateTimePickerJpExMoveDate.SetValue(DateTime.Now);
+            MonthPicker1.Value = DateTime.Now.Date;
             /*
              * SPREAD初期化
              */
@@ -80,42 +66,36 @@ namespace Supply {
                 case DialogResult.Cancel:
                     return;
             }
+            // 月初・月末を設定
+            DateTime startDate = new Date().GetBeginOfMonth(MonthPicker1.Value);
             /*
              * DELETE
-             * 対象年月日の入庫データを削除する
              */
             try {
-                _supplyInDao.DeleteSupplyMove(DateTimePickerJpExMoveDate.GetValue().Date);
+                _supplyInventoryDao.DeleteSupplyInventory(MonthPicker1.Value);
             } catch(Exception exception) {
                 MessageBox.Show(exception.Message);
             }
 
             for(int i = 0; i < SheetViewList.RowCount; i++) {
                 // Voを作成
-                SupplyMoveVo supplyMoveVo = new SupplyMoveVo();
-                supplyMoveVo.Staff_code = 0; // 入庫処理にStaffCodeは必要ない
-                supplyMoveVo.Move_date = DateTimePickerJpExMoveDate.GetValue().Date;
-                supplyMoveVo.Supply_code = Convert.ToInt32(SheetViewList.Cells[i, _colSupplyCode].Value);
-                supplyMoveVo.Supply_number = Convert.ToInt32(SheetViewList.Cells[i, _colSupplyNumber].Value);
-                supplyMoveVo.Move_flag = true;
-                supplyMoveVo.Memo = SheetViewList.Cells[i, _colSupplyMemo].Text;
-                supplyMoveVo.Insert_pc_name = Environment.MachineName;
-                supplyMoveVo.Insert_ymd_hms = DateTime.Now;
-                supplyMoveVo.Update_pc_name = string.Empty;
-                supplyMoveVo.Update_ymd_hms = _defaultDateTime;
-                supplyMoveVo.Delete_pc_name = string.Empty;
-                supplyMoveVo.Delete_ymd_hms = _defaultDateTime;
-                supplyMoveVo.Delete_flag = false;
+                SupplyInventoryVo supplyInventoryVo = new SupplyInventoryVo();
+                supplyInventoryVo.Inventory_date = startDate;
+                supplyInventoryVo.Code = Convert.ToInt32(SheetViewList.Cells[i, 0].Value);
+                supplyInventoryVo.Name = SheetViewList.Cells[i, 1].Text;
+                supplyInventoryVo.ProperStock = Convert.ToInt32(SheetViewList.Cells[i, 2].Value);
+                supplyInventoryVo.Memo = SheetViewList.Cells[i, 3].Text;
+                supplyInventoryVo.Insert_ymd_hms = DateTime.Now;
+                supplyInventoryVo.Update_ymd_hms = _defaultDateTime;
+                supplyInventoryVo.Delete_ymd_hms = _defaultDateTime;
+                supplyInventoryVo.Delete_flag = false;
                 /*
                  * INSERT
-                 * 入庫数ゼロの物はInsertしない
                  */
-                if(supplyMoveVo.Supply_number != 0) {
-                    try {
-                        _supplyInDao.InsertSupplyMove(supplyMoveVo);
-                    } catch(Exception exception) {
-                        MessageBox.Show(exception.Message);
-                    }
+                try {
+                    _supplyInventoryDao.InsertSupplyInventory(supplyInventoryVo);
+                } catch(Exception exception) {
+                    MessageBox.Show(exception.Message);
                 }
             }
             MessageBox.Show("正常にデータを更新しました。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -127,9 +107,14 @@ namespace Supply {
         /// SpreadOutput
         /// </summary>
         public void SpreadOutput() {
+            /*
+             * ColumsHeaderの書換え
+             */
+            SheetViewList.ColumnHeader.Columns[2].Label = MonthPicker1.Value.ToString("MM月棚卸数"); // 今月
+
             List<SupplyScreenVo> listSupplyInVo = new();
             try {
-                listSupplyInVo = _supplyInDao.SelectSupplyMove(DateTimePickerJpExMoveDate.Value.Date, _dictionaryAffiliationValue[ComboBoxSupplyType.Text]);
+                listSupplyInVo = _supplyInventoryDao.SelectSupplyInventory(MonthPicker1.Value, _dictionaryAffiliationValue[ComboBoxSupplyType.Text]);
             } catch(Exception exception) {
                 MessageBox.Show(exception.Message);
             }
@@ -184,6 +169,8 @@ namespace Supply {
             sheetView.RowHeader.Columns[0].Width = 50; // 行ヘッダの幅を変更します
             sheetView.VerticalGridLine = new GridLine(GridLineType.Flat, Color.LightGray);
             sheetView.RemoveRows(0, sheetView.Rows.Count);
+
+            sheetView.ColumnHeader.Columns[2].Label = " "; // 今月
         }
 
         /// <summary>

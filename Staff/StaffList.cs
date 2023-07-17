@@ -15,7 +15,7 @@ using Vo;
 
 namespace Staff {
     public partial class StaffList : Form {
-        private InitializeForm _initializeForm = new(); 
+        private InitializeForm _initializeForm = new();
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01, 00, 00, 00, 000);
         private readonly Dictionary<int, string> dictionaryBelongs = new Dictionary<int, string> { { 10, "役員" }, { 11, "社員" }, { 12, "アルバイト" }, { 13, "派遣" }, { 20, "新運転" }, { 21, "自運労" } };
         private readonly Dictionary<int, string> dictionaryJobForm = new Dictionary<int, string> { { 10, "長期雇用" }, { 11, "手帳" }, { 12, "アルバイト" }, { 99, "" } };
@@ -31,7 +31,7 @@ namespace Staff {
         private List<ExtendsStaffMasterVo>? _listExtendsStaffMasterVo;
         private List<ExtendsStaffMasterVo>? _listFindAllStaffMasterVo;
         private IOrderedEnumerable<ExtendsStaffMasterVo>? _linqExtendsStaffMasterVo;
-        
+
         // SPREADのColumnの番号
         /// <summary>
         /// 所属

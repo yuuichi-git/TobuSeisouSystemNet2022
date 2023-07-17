@@ -1,20 +1,25 @@
 ﻿/*
  * 2023-06-14
+ * 表示用のVo
+ * SupplyInventory SupplyIn 共通
  */
 namespace Vo {
-    public class SupplyInVo {
+    /// <summary>
+    /// 画面表示用のVo
+    /// </summary>
+    public class SupplyScreenVo {
         private int _supplyCode;
         private string _supplyName;
-        private int _inventoryStock;
+        private int _supplyCount;
         private string _memo;
 
         /// <summary>
         /// コンストラクター
         /// </summary>
-        public SupplyInVo() {
+        public SupplyScreenVo() {
             _supplyCode = 0;
             _supplyName = string.Empty;
-            _inventoryStock = 0;
+            _supplyCount = 0;
             _memo = string.Empty;
         }
 
@@ -35,11 +40,11 @@ namespace Vo {
         }
 
         /// <summary>
-        /// 棚卸数
+        /// SupplyInventory→棚卸数 SupplyIn1→入庫数
         /// </summary>
-        public int InventoryStock {
-            get => _inventoryStock;
-            set => _inventoryStock = value;
+        public int SupplyCount {
+            get => _supplyCount;
+            set => _supplyCount = value;
         }
 
         /// <summary>

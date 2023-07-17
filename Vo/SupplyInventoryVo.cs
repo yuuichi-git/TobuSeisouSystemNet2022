@@ -38,18 +38,30 @@ namespace Vo {
             get => _inventory_date;
             set => _inventory_date = value;
         }
+        /// <summary>
+        /// 備品コード 1:事務 2:雇上 3:産廃 4:水物
+        /// </summary>
         public int Code {
             get => _code;
             set => _code = value;
         }
+        /// <summary>
+        /// 備品名
+        /// </summary>
         public string Name {
             get => _name;
             set => _name = value;
         }
+        /// <summary>
+        /// 在庫数
+        /// </summary>
         public int ProperStock {
             get => _properStock;
             set => _properStock = value;
         }
+        /// <summary>
+        /// メモ
+        /// </summary>
         public string Memo {
             get => _memo;
             set => _memo = value;

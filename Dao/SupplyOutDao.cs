@@ -20,7 +20,7 @@ namespace Dao {
         /// InsertOneSupplyMove
         /// </summary>
         /// <param name="supplyMoveVo"></param>
-        public void InsertOneSupplyMove(SupplyOutVo supplyMoveVo) {
+        public void InsertOneSupplyMove(SupplyMoveVo supplyMoveVo) {
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "INSERT INTO supply_move(staff_code," +
                                                              "move_date," +

@@ -45,6 +45,7 @@
             ButtonUpdate = new Button();
             SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("TableLayoutPanelBase.Controls"));
             SheetViewList = SpreadList.GetSheet(0);
+            ToolStripMenuItemIn = new ToolStripMenuItem();
             TableLayoutPanelBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -103,7 +104,7 @@
             // 
             // ToolStripMenuItemEdit
             // 
-            ToolStripMenuItemEdit.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemInventory });
+            ToolStripMenuItemEdit.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemInventory, ToolStripMenuItemIn });
             ToolStripMenuItemEdit.Name = "ToolStripMenuItemEdit";
             ToolStripMenuItemEdit.Size = new Size(43, 20);
             ToolStripMenuItemEdit.Text = "編集";
@@ -241,6 +242,13 @@
             SpreadList.TabIndex = 3;
             SpreadList.CellDoubleClick += SpreadList_CellDoubleClick;
             // 
+            // ToolStripMenuItemIn
+            // 
+            ToolStripMenuItemIn.Name = "ToolStripMenuItemIn";
+            ToolStripMenuItemIn.Size = new Size(186, 22);
+            ToolStripMenuItemIn.Text = "入庫数を入力する";
+            ToolStripMenuItemIn.Click += ToolStripMenuItemIn_Click;
+            // 
             // SupplyList
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -290,5 +298,6 @@
         private ToolStripMenuItem ToolStripMenuItemInventory;
         private ToolStripMenuItem ToolStripMenuItemPrint;
         private FarPoint.Win.Spread.SheetView SheetViewList;
+        private ToolStripMenuItem ToolStripMenuItemIn;
     }
 }

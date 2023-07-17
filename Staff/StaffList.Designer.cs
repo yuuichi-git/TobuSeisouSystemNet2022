@@ -63,9 +63,6 @@
             ToolStripMenuItemLicense = new ToolStripMenuItem();
             ToolStripMenuItemToukanpo = new ToolStripMenuItem();
             ToolStripMenuItemMap = new ToolStripMenuItem();
-            SheetViewList = SpreadList.GetSheet(0);
-            SheetViewList2 = SpreadList.GetSheet(1);
-            SheetViewList3 = SpreadList.GetSheet(2);
             TabControlExStaff = new ControlEx.TabControlEx();
             tabPage1 = new TabPage();
             tabPage2 = new TabPage();
@@ -78,6 +75,9 @@
             tabPage9 = new TabPage();
             tabPage10 = new TabPage();
             tabPage11 = new TabPage();
+            SheetViewList = SpreadList.GetSheet(0);
+            SheetViewList2 = SpreadList.GetSheet(1);
+            SheetViewList3 = SpreadList.GetSheet(2);
             TableLayoutPanelExBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
             PanelUp.SuspendLayout();
@@ -457,7 +457,7 @@
             // 
             // SpreadList
             // 
-            SpreadList.AccessibleDescription = "SpreadList, 運転者リスト, Row 0, Column 0";
+            SpreadList.AccessibleDescription = "SpreadList, 従事者リスト, Row 0, Column 0";
             SpreadList.ContextMenuStrip = ContextMenuStrip1;
             SpreadList.Dock = DockStyle.Fill;
             SpreadList.Font = new Font("ＭＳ Ｐゴシック", 11F, FontStyle.Regular, GraphicsUnit.Point);

@@ -64,10 +64,15 @@ namespace ControlEx {
 
         /// <summary>
         /// GetValue
+        /// ブランクだったら 1900-01-01 を返す
         /// </summary>
         /// <returns></returns>
         public DateTime GetValue() {
-            return this.Value;
+            if(this.CustomFormat == " ") {
+                return new DateTime(1900,01,01);
+            } else {
+                return this.Value;
+            }
         }
 
         /// <summary>

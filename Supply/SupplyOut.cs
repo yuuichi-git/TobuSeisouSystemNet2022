@@ -24,7 +24,7 @@ namespace Supply {
          * Vo
          */
         private readonly ConnectionVo _connectionVo;
-        private SupplyOutVo _supplyOutVo;
+        private SupplyMoveVo _supplyOutVo;
 
         /*
          * １・冬ブルゾン
@@ -142,7 +142,7 @@ namespace Supply {
                 }
             }
             if(_winterBlousonFlag) {
-                _supplyOutVo = new SupplyOutVo();
+                _supplyOutVo = new SupplyMoveVo();
                 _supplyOutVo.Staff_code = _staffCode;
                 _supplyOutVo.Move_date = DateTime.Now.Date;
                 _supplyOutVo.Supply_code = _winterBlousonCode;
@@ -165,7 +165,7 @@ namespace Supply {
                 }
             }
             if(_winterCargoFlag) {
-                _supplyOutVo = new SupplyOutVo();
+                _supplyOutVo = new SupplyMoveVo();
                 _supplyOutVo.Staff_code = _staffCode;
                 _supplyOutVo.Move_date = DateTime.Now.Date;
                 _supplyOutVo.Supply_code = _winterCargoCode;
@@ -188,7 +188,7 @@ namespace Supply {
                 }
             }
             if(_coldProtectionFlag) {
-                _supplyOutVo = new SupplyOutVo();
+                _supplyOutVo = new SupplyMoveVo();
                 _supplyOutVo.Staff_code = _staffCode;
                 _supplyOutVo.Move_date = DateTime.Now.Date;
                 _supplyOutVo.Supply_code = _coldProtectionCode;
@@ -211,7 +211,7 @@ namespace Supply {
                 }
             }
             if(_summerShirtFlag) {
-                _supplyOutVo = new SupplyOutVo();
+                _supplyOutVo = new SupplyMoveVo();
                 _supplyOutVo.Staff_code = _staffCode;
                 _supplyOutVo.Move_date = DateTime.Now.Date;
                 _supplyOutVo.Supply_code = _summerShirtCode;
@@ -234,7 +234,7 @@ namespace Supply {
                 }
             }
             if(_summerCargoFlag) {
-                _supplyOutVo = new SupplyOutVo();
+                _supplyOutVo = new SupplyMoveVo();
                 _supplyOutVo.Staff_code = _staffCode;
                 _supplyOutVo.Move_date = DateTime.Now.Date;
                 _supplyOutVo.Supply_code = _summerCargoCode;
@@ -257,7 +257,7 @@ namespace Supply {
                 }
             }
             if(_hatFlag) {
-                _supplyOutVo = new SupplyOutVo();
+                _supplyOutVo = new SupplyMoveVo();
                 _supplyOutVo.Staff_code = _staffCode;
                 _supplyOutVo.Move_date = DateTime.Now.Date;
                 _supplyOutVo.Supply_code = _hatCode;
@@ -280,7 +280,7 @@ namespace Supply {
                 }
             }
             if(_rainCoatFlag) {
-                _supplyOutVo = new SupplyOutVo();
+                _supplyOutVo = new SupplyMoveVo();
                 _supplyOutVo.Staff_code = _staffCode;
                 _supplyOutVo.Move_date = DateTime.Now.Date;
                 _supplyOutVo.Supply_code = _rainCoatCode;
@@ -303,7 +303,7 @@ namespace Supply {
                 }
             }
             if(_helmetFlag) {
-                _supplyOutVo = new SupplyOutVo();
+                _supplyOutVo = new SupplyMoveVo();
                 _supplyOutVo.Staff_code = _staffCode;
                 _supplyOutVo.Move_date = DateTime.Now.Date;
                 _supplyOutVo.Supply_code = _helmetCode;
@@ -324,7 +324,7 @@ namespace Supply {
                 _safetyShoseCode = _dictionarySafetyShoseCode[ComboBoxSafetyShose.Text] + _dictionaryAffiliationValue[_affiliationValue];
             }
             if(_safetyShoseFlag) {
-                _supplyOutVo = new SupplyOutVo();
+                _supplyOutVo = new SupplyMoveVo();
                 _supplyOutVo.Staff_code = _staffCode;
                 _supplyOutVo.Move_date = DateTime.Now.Date;
                 _supplyOutVo.Supply_code = _safetyShoseCode;
@@ -345,7 +345,7 @@ namespace Supply {
                 _longShoseCode = _dictionaryLongShoseCode[ComboBoxLongShose.Text] + _dictionaryAffiliationValue[_affiliationValue];
             }
             if(_longShoseFlag) {
-                _supplyOutVo = new SupplyOutVo();
+                _supplyOutVo = new SupplyMoveVo();
                 _supplyOutVo.Staff_code = _staffCode;
                 _supplyOutVo.Move_date = DateTime.Now.Date;
                 _supplyOutVo.Supply_code = _longShoseCode;
@@ -368,7 +368,7 @@ namespace Supply {
                 }
             }
             if(_gloveFlag) {
-                _supplyOutVo = new SupplyOutVo();
+                _supplyOutVo = new SupplyMoveVo();
                 _supplyOutVo.Staff_code = _staffCode;
                 _supplyOutVo.Move_date = DateTime.Now.Date;
                 _supplyOutVo.Supply_code = _gloveCode;

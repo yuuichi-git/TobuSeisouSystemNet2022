@@ -1547,8 +1547,6 @@ namespace VehicleDispatch {
                     break;
                 // メモを作成・編集
                 case "ToolStripMenuItemStaffMemo":
-                    // Nullチェック
-                    if(EvacuationSetControlEx is not null && EvacuationStaffLabelEx is not null && EvacuationFlowLayoutPanelEx is not null)
                         try {
                         StaffMemo staffMemo = new StaffMemo(_connectionVo,
                                                             DateTimePickerJpExOperationDate.GetValue(),
