@@ -37,7 +37,7 @@ namespace SubstituteSheet {
                                                                                           { 1310103, "080-8868-8023" }, // ç‘ã“c†‚P
                                                                                           { 1310201, "080-2202-7713" }, // ’†‰›ƒyƒbƒg‚V
                                                                                           { 1310202, "080-3493-3729" }, // ’†‰›ƒyƒbƒg‚W
-                                                                                          { 1312101, "" }, // ‘«—§‚P‚W
+                                                                                          { 1312134, "" }, // ‘«—§‚P‚V
                                                                                           { 1312102, "090-5560-0491" }, // ‘«—§‚Q‚R
                                                                                           { 1312103, "090-5560-0677" }, // ‘«—§‚Q‚S
                                                                                           { 1312104, "090-5560-0700" }, // ‘«—§‚R‚W
@@ -105,7 +105,7 @@ namespace SubstituteSheet {
                     _cleanOfficeName = string.Concat("@“Œ‹“sŠÂ‹«‰q¶–‹Æ‹¦“¯‘g‡", "\r\n", " @’†‰›‹æx•”@—l");
                     _cleanOfficeFax = string.Concat("’†‰›‹æx•”", "\r\n", " ‚e‚`‚w ‚O‚R|‚U‚Q‚W‚O|‚T‚W‚S‚P");
                     break;
-                case 1312101: // ‘«—§‚P‚W
+                case 1312134: // ‘«—§‚P‚W
                 case 1312102: // ‘«—§‚Q‚R
                 case 1312103: // ‘«—§‚Q‚S
                 case 1312104: // ‘«—§‚R‚W
@@ -168,6 +168,7 @@ namespace SubstituteSheet {
              */
             // ˜A—æ”Ô†‚ğƒZƒbƒg
             switch(_vehicleDispatchDetailVo.Set_code) {
+                case 1312134: // ‘«—§‚P‚V‘g
                 case 1312105: // ‘«—§•s”R‚S
                 case 1312203: // ¬Šâ‚S
                 case 1312208: // ¬Šâ‚T

@@ -3,6 +3,8 @@ using System.Globalization;
 
 using CarRegister;
 
+using CollectionWeight;
+
 using Common;
 
 using ControlEx;
@@ -1144,6 +1146,11 @@ namespace VehicleDispatch {
 
                     captureImage.Dispose();
                     break;
+                // 台東資源(古紙) 収集量入力
+                case "ToolStripMenuItemTaitouEdit":
+                    TaitouCollectionWeight taitouCollectionWeight = new TaitouCollectionWeight(_connectionVo);
+                    taitouCollectionWeight.ShowDialog(this);
+                    break;
                 // 清掃事務所へ提出している本番
                 case "ToolStripMenuItemInitializeCleanOffice":
                     MessageBox.Show("ToolStripMenuItemInitializeCleanOffice");
@@ -1415,7 +1422,7 @@ namespace VehicleDispatch {
                             case 1310202: // 中央ペット８
                                 new SubstituteSheet1(_connectionVo, DateTimePickerJpExOperationDate.GetValue(), (int)EvacuationSetControlEx.Tag, setMasterVo.Set_code).Show(this);
                                 break;
-                            case 1312101: // 足立１８
+                            case 1312134: // 足立１７
                             case 1312102: // 足立２３
                             case 1312103: // 足立２４
                             case 1312104: // 足立３８
@@ -1512,42 +1519,42 @@ namespace VehicleDispatch {
                     // Nullチェック
                     if(EvacuationSetControlEx is not null && EvacuationStaffLabelEx is not null)
                         try {
-                        /*
-                         * SetControlEx上でクリックされた時
-                         */
-                        if(EvacuationStaffLabelEx.Parent.GetType() == typeof(SetControlEx)) {
-                            _vehicleDispatchDetailDao.SetStaffProxyFlag(DateTimePickerJpExOperationDate.GetValue(),
-                                                                        (int)EvacuationSetControlEx.Tag,
-                                                                        EvacuationSetControlEx.GetPositionFromControl(EvacuationStaffLabelEx).Row,
-                                                                        true);
-                            EvacuationStaffLabelEx.SetProxyFlag(true);
+                            /*
+                             * SetControlEx上でクリックされた時
+                             */
+                            if(EvacuationStaffLabelEx.Parent.GetType() == typeof(SetControlEx)) {
+                                _vehicleDispatchDetailDao.SetStaffProxyFlag(DateTimePickerJpExOperationDate.GetValue(),
+                                                                            (int)EvacuationSetControlEx.Tag,
+                                                                            EvacuationSetControlEx.GetPositionFromControl(EvacuationStaffLabelEx).Row,
+                                                                            true);
+                                EvacuationStaffLabelEx.SetProxyFlag(true);
+                            }
+                        } catch(Exception exception) {
+                            MessageBox.Show(exception.Message);
                         }
-                    } catch(Exception exception) {
-                        MessageBox.Show(exception.Message);
-                    }
                     break;
                 // 代番処理
                 case "ToolStripMenuItemStaffProxyFalse":
                     // Nullチェック
                     if(EvacuationSetControlEx is not null && EvacuationStaffLabelEx is not null)
                         try {
-                        /*
-                         * SetControlEx上でクリックされた時
-                         */
-                        if(EvacuationStaffLabelEx.Parent.GetType() == typeof(SetControlEx)) {
-                            _vehicleDispatchDetailDao.SetStaffProxyFlag(DateTimePickerJpExOperationDate.GetValue(),
-                                                                        (int)EvacuationSetControlEx.Tag,
-                                                                        EvacuationSetControlEx.GetPositionFromControl(EvacuationStaffLabelEx).Row,
-                                                                        false);
-                            EvacuationStaffLabelEx.SetProxyFlag(false);
+                            /*
+                             * SetControlEx上でクリックされた時
+                             */
+                            if(EvacuationStaffLabelEx.Parent.GetType() == typeof(SetControlEx)) {
+                                _vehicleDispatchDetailDao.SetStaffProxyFlag(DateTimePickerJpExOperationDate.GetValue(),
+                                                                            (int)EvacuationSetControlEx.Tag,
+                                                                            EvacuationSetControlEx.GetPositionFromControl(EvacuationStaffLabelEx).Row,
+                                                                            false);
+                                EvacuationStaffLabelEx.SetProxyFlag(false);
+                            }
+                        } catch(Exception exception) {
+                            MessageBox.Show(exception.Message);
                         }
-                    } catch(Exception exception) {
-                        MessageBox.Show(exception.Message);
-                    }
                     break;
                 // メモを作成・編集
                 case "ToolStripMenuItemStaffMemo":
-                        try {
+                    try {
                         StaffMemo staffMemo = new StaffMemo(_connectionVo,
                                                             DateTimePickerJpExOperationDate.GetValue(),
                                                             EvacuationSetControlEx,
@@ -1565,14 +1572,14 @@ namespace VehicleDispatch {
                     // Nullチェック
                     if(EvacuationSetControlEx is not null && EvacuationStaffLabelEx is not null)
                         try {
-                        _vehicleDispatchDetailDao.UpdateOccupation(DateTimePickerJpExOperationDate.GetValue(),
-                                                                   (int)EvacuationSetControlEx.Tag,
-                                                                   EvacuationSetControlEx.GetPositionFromControl(EvacuationStaffLabelEx).Row,
-                                                                   10);
-                        EvacuationStaffLabelEx.SetOccupation(10);
-                    } catch(Exception exception) {
-                        MessageBox.Show(exception.Message);
-                    }
+                            _vehicleDispatchDetailDao.UpdateOccupation(DateTimePickerJpExOperationDate.GetValue(),
+                                                                       (int)EvacuationSetControlEx.Tag,
+                                                                       EvacuationSetControlEx.GetPositionFromControl(EvacuationStaffLabelEx).Row,
+                                                                       10);
+                            EvacuationStaffLabelEx.SetOccupation(10);
+                        } catch(Exception exception) {
+                            MessageBox.Show(exception.Message);
+                        }
                     break;
                 /*
                  * 職種を変更（11:作業員）
@@ -1581,14 +1588,14 @@ namespace VehicleDispatch {
                     // Nullチェック
                     if(EvacuationSetControlEx is not null && EvacuationStaffLabelEx is not null)
                         try {
-                        _vehicleDispatchDetailDao.UpdateOccupation(DateTimePickerJpExOperationDate.GetValue(),
-                                                                   (int)EvacuationSetControlEx.Tag,
-                                                                   EvacuationSetControlEx.GetPositionFromControl(EvacuationStaffLabelEx).Row,
-                                                                   11);
-                        EvacuationStaffLabelEx.SetOccupation(11);
-                    } catch(Exception exception) {
-                        MessageBox.Show(exception.Message);
-                    }
+                            _vehicleDispatchDetailDao.UpdateOccupation(DateTimePickerJpExOperationDate.GetValue(),
+                                                                       (int)EvacuationSetControlEx.Tag,
+                                                                       EvacuationSetControlEx.GetPositionFromControl(EvacuationStaffLabelEx).Row,
+                                                                       11);
+                            EvacuationStaffLabelEx.SetOccupation(11);
+                        } catch(Exception exception) {
+                            MessageBox.Show(exception.Message);
+                        }
                     break;
                 /*
                  * 電話連絡のマークを付ける

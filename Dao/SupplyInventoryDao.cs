@@ -6,6 +6,9 @@ using Vo;
 
 namespace Dao {
     public class SupplyInventoryDao {
+        /*
+         * 定数
+         */
         private readonly DefaultValue _defaultValue = new();
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01, 00, 00, 00, 000);
         /*

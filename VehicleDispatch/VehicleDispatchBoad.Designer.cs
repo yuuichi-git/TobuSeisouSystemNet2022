@@ -156,6 +156,8 @@
             ToolStripMenuItemEquipment3 = new ToolStripMenuItem();
             ToolStripMenuItemEquipment4 = new ToolStripMenuItem();
             ToolTip1 = new ToolTip(components);
+            ToolStripMenuItemEdit = new ToolStripMenuItem();
+            ToolStripMenuItemTaitouEdit = new ToolStripMenuItem();
             TableLayoutPanelBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -210,7 +212,7 @@
             // MenuStrip1
             // 
             TableLayoutPanelBase.SetColumnSpan(MenuStrip1, 3);
-            MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemDisplay, ToolStripMenuItemInitialize, ToolStripMenuItemHelp });
+            MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemEdit, ToolStripMenuItemDisplay, ToolStripMenuItemInitialize, ToolStripMenuItemHelp });
             MenuStrip1.Location = new Point(0, 0);
             MenuStrip1.Name = "MenuStrip1";
             MenuStrip1.Size = new Size(1904, 24);
@@ -1513,6 +1515,20 @@
             ToolTip1.InitialDelay = 500;
             ToolTip1.ReshowDelay = 0;
             // 
+            // ToolStripMenuItemEdit
+            // 
+            ToolStripMenuItemEdit.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemTaitouEdit });
+            ToolStripMenuItemEdit.Name = "ToolStripMenuItemEdit";
+            ToolStripMenuItemEdit.Size = new Size(43, 20);
+            ToolStripMenuItemEdit.Text = "編集";
+            // 
+            // ToolStripMenuItemTaitouEdit
+            // 
+            ToolStripMenuItemTaitouEdit.Name = "ToolStripMenuItemTaitouEdit";
+            ToolStripMenuItemTaitouEdit.Size = new Size(217, 22);
+            ToolStripMenuItemTaitouEdit.Text = "台東資源(古紙) 収集量入力";
+            ToolStripMenuItemTaitouEdit.Click += ToolStripMenuItem_Click;
+            // 
             // VehicleDispatchBoad
             // 
             AllowDrop = true;
@@ -1698,5 +1714,7 @@
         private ToolStripMenuItem ToolStripMenuItemEquipment2;
         private ToolStripMenuItem ToolStripMenuItemEquipment3;
         private ToolStripMenuItem ToolStripMenuItemEquipment4;
+        private ToolStripMenuItem ToolStripMenuItemEdit;
+        private ToolStripMenuItem ToolStripMenuItemTaitouEdit;
     }
 }

@@ -53,7 +53,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToukaiDenshi", "ToukaiDensh
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Supply", "Supply\Supply.csproj", "{C0954E20-1A93-42D6-B4D4-19B1B809A066}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StatusOfResidence", "StatusOfResidence\StatusOfResidence.csproj", "{7D73D4B1-DCA4-4276-9D04-BBBC3A7406EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StatusOfResidence", "StatusOfResidence\StatusOfResidence.csproj", "{7D73D4B1-DCA4-4276-9D04-BBBC3A7406EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollectionWeight", "CollectionWeight\CollectionWeight.csproj", "{C3F65BBC-BD8A-4410-91A8-E70B4EB7F638}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -271,6 +273,14 @@ Global
 		{7D73D4B1-DCA4-4276-9D04-BBBC3A7406EA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7D73D4B1-DCA4-4276-9D04-BBBC3A7406EA}.Release|x64.ActiveCfg = Release|Any CPU
 		{7D73D4B1-DCA4-4276-9D04-BBBC3A7406EA}.Release|x64.Build.0 = Release|Any CPU
+		{C3F65BBC-BD8A-4410-91A8-E70B4EB7F638}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3F65BBC-BD8A-4410-91A8-E70B4EB7F638}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3F65BBC-BD8A-4410-91A8-E70B4EB7F638}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C3F65BBC-BD8A-4410-91A8-E70B4EB7F638}.Debug|x64.Build.0 = Debug|Any CPU
+		{C3F65BBC-BD8A-4410-91A8-E70B4EB7F638}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3F65BBC-BD8A-4410-91A8-E70B4EB7F638}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3F65BBC-BD8A-4410-91A8-E70B4EB7F638}.Release|x64.ActiveCfg = Release|Any CPU
+		{C3F65BBC-BD8A-4410-91A8-E70B4EB7F638}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

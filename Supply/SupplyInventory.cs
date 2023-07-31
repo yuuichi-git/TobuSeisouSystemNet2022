@@ -8,15 +8,14 @@ using Vo;
 
 namespace Supply {
     public partial class SupplyInventory : Form {
+        /*
+         * 定数
+         */
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01, 00, 00, 00, 000);
         private readonly Dictionary<string, int> _dictionaryAffiliationValue = new Dictionary<string, int> { { "事務での備品", 1 },
                                                                                                              { "雇上での備品", 2 },
                                                                                                              { "産廃での備品", 3 },
                                                                                                              { "水物での備品", 4 } };
-        /*
-         * Dao
-         */
-        private readonly SupplyInventoryDao _supplyInventoryDao;
         /// <summary>
         /// 備品コード
         /// </summary>
@@ -25,7 +24,20 @@ namespace Supply {
         /// 備品名
         /// </summary>
         private const int _colSupplyName = 1;
+        /// <summary>
+        /// 棚卸数
+        /// </summary>
+        private const int _colSupplyProperStock = 2;
+        /// <summary>
+        /// メモ
+        /// </summary>
+        private const int _colSupplyMemo = 3;
 
+        /*
+         * Dao
+         */
+        private readonly SupplyInventoryDao _supplyInventoryDao;
+        
         /// <summary>
         /// コンストラクター
         /// </summary>
@@ -112,9 +124,9 @@ namespace Supply {
              */
             SheetViewList.ColumnHeader.Columns[2].Label = MonthPicker1.Value.ToString("MM月棚卸数"); // 今月
 
-            List<SupplyScreenVo> listSupplyInVo = new();
+            List<SupplyScreenVo> listSupplyScreenVo = new();
             try {
-                listSupplyInVo = _supplyInventoryDao.SelectSupplyInventory(MonthPicker1.Value, _dictionaryAffiliationValue[ComboBoxSupplyType.Text]);
+                listSupplyScreenVo = _supplyInventoryDao.SelectSupplyInventory(MonthPicker1.Value, _dictionaryAffiliationValue[ComboBoxSupplyType.Text]);
             } catch(Exception exception) {
                 MessageBox.Show(exception.Message);
             }
@@ -128,7 +140,7 @@ namespace Supply {
                 SheetViewList.RemoveRows(0, SheetViewList.Rows.Count);
 
             int i = 0;
-            foreach(SupplyScreenVo supplyInVo in listSupplyInVo) {
+            foreach(SupplyScreenVo supplyInVo in listSupplyScreenVo) {
                 SheetViewList.Rows.Add(i, 1);
                 SheetViewList.RowHeader.Columns[0].Label = (i + 1).ToString(); // Rowヘッダ
                 SheetViewList.Rows[i].Height = 22; // Rowの高さ
@@ -138,9 +150,9 @@ namespace Supply {
                 // 備品名
                 SheetViewList.Cells[i, _colSupplyName].Text = supplyInVo.SupplyName;
                 // 今月の棚卸数
-                SheetViewList.Cells[i, 2].Value = supplyInVo.SupplyCount;
+                SheetViewList.Cells[i, _colSupplyProperStock].Value = supplyInVo.SupplyCount;
                 // メモ
-                SheetViewList.Cells[i, 3].Value = supplyInVo.Memo;
+                SheetViewList.Cells[i, _colSupplyMemo].Value = supplyInVo.Memo;
                 i++;
             }
 
