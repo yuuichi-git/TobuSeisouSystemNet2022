@@ -1148,7 +1148,7 @@ namespace VehicleDispatch {
                     break;
                 // ‘ä“Œ‘Œ¹(ŒÃ†) ûW—Ê“ü—Í
                 case "ToolStripMenuItemTaitouEdit":
-                    TaitouCollectionWeight taitouCollectionWeight = new TaitouCollectionWeight(_connectionVo);
+                    CollectionWeightTaitouInput taitouCollectionWeight = new CollectionWeightTaitouInput(_connectionVo);
                     taitouCollectionWeight.ShowDialog(this);
                     break;
                 // ´‘|––±Š‚Ö’ño‚µ‚Ä‚¢‚é–{”Ô

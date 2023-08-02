@@ -1,5 +1,5 @@
 ﻿namespace CollectionWeight {
-    partial class TaitouCollectionWeight {
+    partial class CollectionWeightTaitouInput {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -37,32 +37,42 @@
             ButtonUpdate = new Button();
             PanelCenter = new Panel();
             groupBox2 = new GroupBox();
+            label13 = new Label();
+            label12 = new Label();
+            NumericUpDownEx7 = new ControlEx.NumericUpDownEx();
+            label11 = new Label();
             label6 = new Label();
-            numericUpDownEx6 = new ControlEx.NumericUpDownEx();
+            NumericUpDownEx6 = new ControlEx.NumericUpDownEx();
             label4 = new Label();
-            numericUpDownEx4 = new ControlEx.NumericUpDownEx();
             label5 = new Label();
-            numericUpDownEx5 = new ControlEx.NumericUpDownEx();
+            NumericUpDownEx5 = new ControlEx.NumericUpDownEx();
             groupBox1 = new GroupBox();
+            label14 = new Label();
+            label15 = new Label();
+            label10 = new Label();
+            label9 = new Label();
+            label8 = new Label();
             label3 = new Label();
-            numericUpDownEx3 = new ControlEx.NumericUpDownEx();
+            NumericUpDownEx4 = new ControlEx.NumericUpDownEx();
+            NumericUpDownEx3 = new ControlEx.NumericUpDownEx();
             label2 = new Label();
-            numericUpDownEx2 = new ControlEx.NumericUpDownEx();
+            NumericUpDownEx2 = new ControlEx.NumericUpDownEx();
             label1 = new Label();
-            numericUpDownEx1 = new ControlEx.NumericUpDownEx();
+            NumericUpDownEx1 = new ControlEx.NumericUpDownEx();
             TableLayoutPanelBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
             PanelUp.SuspendLayout();
             PanelCenter.SuspendLayout();
             groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownEx6).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownEx4).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownEx5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)NumericUpDownEx7).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)NumericUpDownEx6).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)NumericUpDownEx5).BeginInit();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownEx3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownEx2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownEx1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)NumericUpDownEx4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)NumericUpDownEx3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)NumericUpDownEx2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)NumericUpDownEx1).BeginInit();
             SuspendLayout();
             // 
             // TableLayoutPanelBase
@@ -82,7 +92,7 @@
             TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
             TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
-            TableLayoutPanelBase.Size = new Size(498, 425);
+            TableLayoutPanelBase.Size = new Size(498, 452);
             TableLayoutPanelBase.TabIndex = 0;
             // 
             // MenuStrip1
@@ -117,7 +127,7 @@
             // StatusStrip1
             // 
             StatusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, ToolStripStatusLabelDetail });
-            StatusStrip1.Location = new Point(0, 403);
+            StatusStrip1.Location = new Point(0, 430);
             StatusStrip1.Name = "StatusStrip1";
             StatusStrip1.Size = new Size(498, 22);
             StatusStrip1.SizingGrip = false;
@@ -156,6 +166,8 @@
             DateTimePickerJpExOperationDate.Name = "DateTimePickerJpExOperationDate";
             DateTimePickerJpExOperationDate.Size = new Size(184, 23);
             DateTimePickerJpExOperationDate.TabIndex = 9;
+            DateTimePickerJpExOperationDate.TabStop = false;
+            DateTimePickerJpExOperationDate.ValueChanged += DateTimePickerJpExOperationDate_ValueChanged;
             // 
             // label7
             // 
@@ -173,7 +185,7 @@
             ButtonUpdate.Location = new Point(340, 8);
             ButtonUpdate.Name = "ButtonUpdate";
             ButtonUpdate.Size = new Size(128, 36);
-            ButtonUpdate.TabIndex = 1;
+            ButtonUpdate.TabIndex = 0;
             ButtonUpdate.Text = "Update";
             ButtonUpdate.UseVisualStyleBackColor = true;
             ButtonUpdate.Click += ButtonUpdate_Click;
@@ -185,23 +197,62 @@
             PanelCenter.Dock = DockStyle.Fill;
             PanelCenter.Location = new Point(3, 87);
             PanelCenter.Name = "PanelCenter";
-            PanelCenter.Size = new Size(492, 311);
+            PanelCenter.Size = new Size(492, 338);
             PanelCenter.TabIndex = 3;
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(label13);
+            groupBox2.Controls.Add(label12);
+            groupBox2.Controls.Add(NumericUpDownEx7);
+            groupBox2.Controls.Add(label11);
             groupBox2.Controls.Add(label6);
-            groupBox2.Controls.Add(numericUpDownEx6);
+            groupBox2.Controls.Add(NumericUpDownEx6);
             groupBox2.Controls.Add(label4);
-            groupBox2.Controls.Add(numericUpDownEx4);
             groupBox2.Controls.Add(label5);
-            groupBox2.Controls.Add(numericUpDownEx5);
-            groupBox2.Location = new Point(104, 156);
+            groupBox2.Controls.Add(NumericUpDownEx5);
+            groupBox2.Location = new Point(104, 188);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(284, 130);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "三東運輸";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Location = new Point(200, 88);
+            label13.Name = "label13";
+            label13.Size = new Size(19, 15);
+            label13.TabIndex = 11;
+            label13.Text = "㎏";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(200, 60);
+            label12.Name = "label12";
+            label12.Size = new Size(19, 15);
+            label12.TabIndex = 10;
+            label12.Text = "㎏";
+            // 
+            // NumericUpDownEx7
+            // 
+            NumericUpDownEx7.Location = new Point(116, 84);
+            NumericUpDownEx7.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
+            NumericUpDownEx7.Name = "NumericUpDownEx7";
+            NumericUpDownEx7.Size = new Size(80, 23);
+            NumericUpDownEx7.TabIndex = 2;
+            NumericUpDownEx7.TextAlign = HorizontalAlignment.Right;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(200, 32);
+            label11.Name = "label11";
+            label11.Size = new Size(19, 15);
+            label11.TabIndex = 9;
+            label11.Text = "㎏";
             // 
             // label6
             // 
@@ -210,15 +261,16 @@
             label6.Name = "label6";
             label6.Size = new Size(31, 15);
             label6.TabIndex = 9;
-            label6.Text = "対策";
+            label6.Text = "臨時";
             // 
-            // numericUpDownEx6
+            // NumericUpDownEx6
             // 
-            numericUpDownEx6.Location = new Point(116, 84);
-            numericUpDownEx6.Name = "numericUpDownEx6";
-            numericUpDownEx6.Size = new Size(80, 23);
-            numericUpDownEx6.TabIndex = 8;
-            numericUpDownEx6.TextAlign = HorizontalAlignment.Right;
+            NumericUpDownEx6.Location = new Point(116, 56);
+            NumericUpDownEx6.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
+            NumericUpDownEx6.Name = "NumericUpDownEx6";
+            NumericUpDownEx6.Size = new Size(80, 23);
+            NumericUpDownEx6.TabIndex = 1;
+            NumericUpDownEx6.TextAlign = HorizontalAlignment.Right;
             // 
             // label4
             // 
@@ -229,14 +281,6 @@
             label4.TabIndex = 7;
             label4.Text = "軽組";
             // 
-            // numericUpDownEx4
-            // 
-            numericUpDownEx4.Location = new Point(116, 56);
-            numericUpDownEx4.Name = "numericUpDownEx4";
-            numericUpDownEx4.Size = new Size(80, 23);
-            numericUpDownEx4.TabIndex = 6;
-            numericUpDownEx4.TextAlign = HorizontalAlignment.Right;
-            // 
             // label5
             // 
             label5.AutoSize = true;
@@ -246,28 +290,80 @@
             label5.TabIndex = 5;
             label5.Text = "３組";
             // 
-            // numericUpDownEx5
+            // NumericUpDownEx5
             // 
-            numericUpDownEx5.Location = new Point(116, 28);
-            numericUpDownEx5.Name = "numericUpDownEx5";
-            numericUpDownEx5.Size = new Size(80, 23);
-            numericUpDownEx5.TabIndex = 4;
-            numericUpDownEx5.TextAlign = HorizontalAlignment.Right;
+            NumericUpDownEx5.Location = new Point(116, 28);
+            NumericUpDownEx5.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
+            NumericUpDownEx5.Name = "NumericUpDownEx5";
+            NumericUpDownEx5.Size = new Size(80, 23);
+            NumericUpDownEx5.TabIndex = 0;
+            NumericUpDownEx5.TextAlign = HorizontalAlignment.Right;
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(label14);
+            groupBox1.Controls.Add(label15);
+            groupBox1.Controls.Add(label10);
+            groupBox1.Controls.Add(label9);
+            groupBox1.Controls.Add(label8);
             groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(numericUpDownEx3);
+            groupBox1.Controls.Add(NumericUpDownEx4);
+            groupBox1.Controls.Add(NumericUpDownEx3);
             groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(numericUpDownEx2);
+            groupBox1.Controls.Add(NumericUpDownEx2);
             groupBox1.Controls.Add(label1);
-            groupBox1.Controls.Add(numericUpDownEx1);
+            groupBox1.Controls.Add(NumericUpDownEx1);
             groupBox1.Location = new Point(104, 16);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(284, 130);
+            groupBox1.Size = new Size(284, 160);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "東武清掃";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(200, 116);
+            label14.Name = "label14";
+            label14.Size = new Size(19, 15);
+            label14.TabIndex = 11;
+            label14.Text = "㎏";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(36, 116);
+            label15.Name = "label15";
+            label15.Size = new Size(75, 15);
+            label15.TabIndex = 10;
+            label15.Text = "臨時(金曜日)";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(200, 88);
+            label10.Name = "label10";
+            label10.Size = new Size(19, 15);
+            label10.TabIndex = 8;
+            label10.Text = "㎏";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(200, 60);
+            label9.Name = "label9";
+            label9.Size = new Size(19, 15);
+            label9.TabIndex = 7;
+            label9.Text = "㎏";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(200, 32);
+            label8.Name = "label8";
+            label8.Size = new Size(19, 15);
+            label8.TabIndex = 6;
+            label8.Text = "㎏";
             // 
             // label3
             // 
@@ -278,13 +374,23 @@
             label3.TabIndex = 5;
             label3.Text = "４組";
             // 
-            // numericUpDownEx3
+            // NumericUpDownEx4
             // 
-            numericUpDownEx3.Location = new Point(116, 84);
-            numericUpDownEx3.Name = "numericUpDownEx3";
-            numericUpDownEx3.Size = new Size(80, 23);
-            numericUpDownEx3.TabIndex = 4;
-            numericUpDownEx3.TextAlign = HorizontalAlignment.Right;
+            NumericUpDownEx4.Location = new Point(116, 112);
+            NumericUpDownEx4.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
+            NumericUpDownEx4.Name = "NumericUpDownEx4";
+            NumericUpDownEx4.Size = new Size(80, 23);
+            NumericUpDownEx4.TabIndex = 3;
+            NumericUpDownEx4.TextAlign = HorizontalAlignment.Right;
+            // 
+            // NumericUpDownEx3
+            // 
+            NumericUpDownEx3.Location = new Point(116, 84);
+            NumericUpDownEx3.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
+            NumericUpDownEx3.Name = "NumericUpDownEx3";
+            NumericUpDownEx3.Size = new Size(80, 23);
+            NumericUpDownEx3.TabIndex = 2;
+            NumericUpDownEx3.TextAlign = HorizontalAlignment.Right;
             // 
             // label2
             // 
@@ -295,13 +401,14 @@
             label2.TabIndex = 3;
             label2.Text = "２組";
             // 
-            // numericUpDownEx2
+            // NumericUpDownEx2
             // 
-            numericUpDownEx2.Location = new Point(116, 56);
-            numericUpDownEx2.Name = "numericUpDownEx2";
-            numericUpDownEx2.Size = new Size(80, 23);
-            numericUpDownEx2.TabIndex = 2;
-            numericUpDownEx2.TextAlign = HorizontalAlignment.Right;
+            NumericUpDownEx2.Location = new Point(116, 56);
+            NumericUpDownEx2.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
+            NumericUpDownEx2.Name = "NumericUpDownEx2";
+            NumericUpDownEx2.Size = new Size(80, 23);
+            NumericUpDownEx2.TabIndex = 1;
+            NumericUpDownEx2.TextAlign = HorizontalAlignment.Right;
             // 
             // label1
             // 
@@ -312,25 +419,26 @@
             label1.TabIndex = 1;
             label1.Text = "１組";
             // 
-            // numericUpDownEx1
+            // NumericUpDownEx1
             // 
-            numericUpDownEx1.Location = new Point(116, 28);
-            numericUpDownEx1.Name = "numericUpDownEx1";
-            numericUpDownEx1.Size = new Size(80, 23);
-            numericUpDownEx1.TabIndex = 0;
-            numericUpDownEx1.TextAlign = HorizontalAlignment.Right;
+            NumericUpDownEx1.Location = new Point(116, 28);
+            NumericUpDownEx1.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
+            NumericUpDownEx1.Name = "NumericUpDownEx1";
+            NumericUpDownEx1.Size = new Size(80, 23);
+            NumericUpDownEx1.TabIndex = 0;
+            NumericUpDownEx1.TextAlign = HorizontalAlignment.Right;
             // 
-            // TaitouCollectionWeight
+            // CollectionWeightTaitouInput
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(498, 425);
+            ClientSize = new Size(498, 452);
             Controls.Add(TableLayoutPanelBase);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = MenuStrip1;
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "TaitouCollectionWeight";
+            Name = "CollectionWeightTaitouInput";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "TaitouCollectionWeight";
             FormClosing += TaitouCollectionWeight_FormClosing;
@@ -345,14 +453,15 @@
             PanelCenter.ResumeLayout(false);
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownEx6).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownEx4).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownEx5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)NumericUpDownEx7).EndInit();
+            ((System.ComponentModel.ISupportInitialize)NumericUpDownEx6).EndInit();
+            ((System.ComponentModel.ISupportInitialize)NumericUpDownEx5).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownEx3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownEx2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numericUpDownEx1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)NumericUpDownEx4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)NumericUpDownEx3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)NumericUpDownEx2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)NumericUpDownEx1).EndInit();
             ResumeLayout(false);
         }
 
@@ -370,20 +479,29 @@
         private GroupBox groupBox2;
         private GroupBox groupBox1;
         private Label label1;
-        private ControlEx.NumericUpDownEx numericUpDownEx1;
+        private ControlEx.NumericUpDownEx NumericUpDownEx1;
         private Label label4;
-        private ControlEx.NumericUpDownEx numericUpDownEx4;
+        private ControlEx.NumericUpDownEx NumericUpDownEx4;
         private Label label5;
-        private ControlEx.NumericUpDownEx numericUpDownEx5;
+        private ControlEx.NumericUpDownEx NumericUpDownEx5;
         private Label label3;
-        private ControlEx.NumericUpDownEx numericUpDownEx3;
+        private ControlEx.NumericUpDownEx NumericUpDownEx3;
         private Label label2;
-        private ControlEx.NumericUpDownEx numericUpDownEx2;
+        private ControlEx.NumericUpDownEx NumericUpDownEx2;
         private Label label6;
-        private ControlEx.NumericUpDownEx numericUpDownEx6;
+        private ControlEx.NumericUpDownEx NumericUpDownEx6;
         private Button ButtonUpdate;
         private ControlEx.DateTimePickerJpEx DateTimePickerJpExOperationDate;
         private Label label7;
         private ToolStripMenuItem ToolStripMenuItemExit;
+        private Label label13;
+        private Label label12;
+        private Label label11;
+        private Label label10;
+        private Label label9;
+        private Label label8;
+        private Label label14;
+        private Label label15;
+        private ControlEx.NumericUpDownEx NumericUpDownEx7;
     }
 }
