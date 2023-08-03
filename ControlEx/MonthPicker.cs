@@ -2,6 +2,7 @@
 
 namespace ControlEx {
     public partial class MonthPicker : DateTimePicker {
+
         protected override void WndProc(ref Message message) {
             if(message.Msg == WM_NOFITY) {
                 var nmhdr = (NMHDR)Marshal.PtrToStructure(message.LParam, typeof(NMHDR));
@@ -16,7 +17,6 @@ namespace ControlEx {
                             if(nmviewchange.dwOldView == 1 && nmviewchange.dwNewView == 0) {
                                 SendMessage(Handle, DTM_CLOSEMONTHCAL, IntPtr.Zero, IntPtr.Zero);
                             }
-
                             break;
                         }
                 }

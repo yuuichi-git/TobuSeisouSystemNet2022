@@ -11,6 +11,8 @@ using CarAccident;
 
 using Certification;
 
+using CollectionWeight;
+
 using Common;
 
 using CommuterInsurance;
@@ -163,6 +165,14 @@ namespace TobuSeisouSystemNet2022 {
                             case "WardChiyoda":
                                 var wardChiyoda = new WardChiyoda(_connectionVo);
                                 wardChiyoda.ShowDialog(this);
+                                break;
+                            /*
+                             * CollectionWeightTaitou
+                             * 台東資源収集量集計表
+                             */
+                            case "CollectionWeightTaitou":
+                                CollectionWeightTaitouList collectionWeightTaitouList = new CollectionWeightTaitouList(_connectionVo);
+                                collectionWeightTaitouList.ShowDialog(this);
                                 break;
                             /*
                              * WardTaitou
