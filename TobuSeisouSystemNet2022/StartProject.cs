@@ -17,6 +17,8 @@ using Common;
 
 using CommuterInsurance;
 
+using LegalTwelveItem;
+
 using License;
 
 using Production;
@@ -117,6 +119,14 @@ namespace TobuSeisouSystemNet2022 {
                             case "StaffList":
                                 var staffList = new StaffList(_connectionVo);
                                 staffList.ShowDialog(this);
+                                break;
+                            /*
+                             * LegalTwelveItemList
+                             * 法定１２項目
+                             */
+                            case "LegalTwelveItemList":
+                                LegalTwelveItemList legalTwelveItemList = new LegalTwelveItemList(_connectionVo);
+                                legalTwelveItemList.ShowDialog(this);
                                 break;
                             // LicenseList
                             case "LicenseList":

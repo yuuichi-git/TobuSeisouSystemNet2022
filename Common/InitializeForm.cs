@@ -94,6 +94,19 @@ namespace Common {
         }
 
         /// <summary>
+        /// LegalTwelveItemList
+        /// </summary>
+        /// <param name="form"></param>
+        /// <returns></returns>
+        public Form LegalTwelveItemList(Form form) {
+            form.KeyPreview = true;
+            form.MaximumSize = new Size(1920, 1080);
+            form.MinimumSize = new Size(1920, 1048);
+            GetWorkingArea(form);
+            return form;
+        }
+
+        /// <summary>
         /// SupplyList
         /// </summary>
         /// <param name="form"></param>

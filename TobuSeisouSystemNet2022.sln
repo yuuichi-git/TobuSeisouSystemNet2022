@@ -55,7 +55,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Supply", "Supply\Supply.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StatusOfResidence", "StatusOfResidence\StatusOfResidence.csproj", "{7D73D4B1-DCA4-4276-9D04-BBBC3A7406EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollectionWeight", "CollectionWeight\CollectionWeight.csproj", "{C3F65BBC-BD8A-4410-91A8-E70B4EB7F638}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CollectionWeight", "CollectionWeight\CollectionWeight.csproj", "{C3F65BBC-BD8A-4410-91A8-E70B4EB7F638}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LegalTwelveItem", "LegalTwelveItem\LegalTwelveItem.csproj", "{0E00486D-AF59-41C6-A719-01F20A57ECD5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -281,6 +283,14 @@ Global
 		{C3F65BBC-BD8A-4410-91A8-E70B4EB7F638}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C3F65BBC-BD8A-4410-91A8-E70B4EB7F638}.Release|x64.ActiveCfg = Release|Any CPU
 		{C3F65BBC-BD8A-4410-91A8-E70B4EB7F638}.Release|x64.Build.0 = Release|Any CPU
+		{0E00486D-AF59-41C6-A719-01F20A57ECD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E00486D-AF59-41C6-A719-01F20A57ECD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E00486D-AF59-41C6-A719-01F20A57ECD5}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{0E00486D-AF59-41C6-A719-01F20A57ECD5}.Debug|x64.Build.0 = Debug|Any CPU
+		{0E00486D-AF59-41C6-A719-01F20A57ECD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E00486D-AF59-41C6-A719-01F20A57ECD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E00486D-AF59-41C6-A719-01F20A57ECD5}.Release|x64.ActiveCfg = Release|Any CPU
+		{0E00486D-AF59-41C6-A719-01F20A57ECD5}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
