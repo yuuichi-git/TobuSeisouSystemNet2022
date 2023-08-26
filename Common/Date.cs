@@ -82,6 +82,27 @@
         public int GetDaysInMonth(DateTime dateTime) {
             return DateTime.DaysInMonth(dateTime.Year, dateTime.Month);
         }
+
+        /// <summary>
+        /// 会計年度の始めの日付を返す
+        /// </summary>
+        /// <param name="datetime"></param>
+        /// <returns></returns>
+        public DateTime GetFiscalYearStartDate(DateTime datetime) {
+            int fiscalYear = datetime.AddMonths(-3).Year;
+            return new DateTime(fiscalYear, 4, 1,0,00,00,000);
+        }
+
+        /// <summary>
+        /// 会計年度の最後の日付を返す
+        /// </summary>
+        /// <param name="datetime"></param>
+        /// <returns></returns>
+        public DateTime GetFiscalYearEndDate(DateTime datetime) {
+            int fiscalYear = datetime.AddMonths(-3).Year;
+            return new DateTime(fiscalYear, 4, 1, 0, 00, 00, 000).AddDays(365);
+        }
+
     }
 }
 
