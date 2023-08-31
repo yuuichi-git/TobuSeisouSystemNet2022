@@ -820,7 +820,7 @@ namespace Staff {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void StaffList_FormClosing(object sender, FormClosingEventArgs e) {
-            var dialogResult = MessageBox.Show(MessageText.Message102, MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            DialogResult dialogResult = MessageBox.Show(MessageText.Message102, MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             switch(dialogResult) {
                 case DialogResult.OK:
                     e.Cancel = false;

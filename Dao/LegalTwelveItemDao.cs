@@ -111,8 +111,8 @@ namespace Dao {
         /// 画面表示に必要なデータを取得する
         /// </summary>
         /// <returns></returns>
-        public List<LegalTwelveItemFormVo> SelectLegalTwelveItemForm(DateTime startDate, DateTime endDate) {
-            List<LegalTwelveItemFormVo> listLegalTwelveItemFormVo = new List<LegalTwelveItemFormVo>();
+        public List<LegalTwelveItemListVo> SelectLegalTwelveItemForm(DateTime startDate, DateTime endDate) {
+            List<LegalTwelveItemListVo> listLegalTwelveItemFormVo = new List<LegalTwelveItemListVo>();
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT staff_master.occupation AS occupation_code," +
                                             "occupation_master.name AS occupation_name," +
@@ -157,22 +157,28 @@ namespace Dao {
                                                                                            "AND legal_twelve_item.students_date BETWEEN '" + startDate.ToString("yyyy-MM-dd") + "' AND '" + endDate.ToString("yyyy-MM-dd") + "') AS students_12_flag " +
                                      "FROM staff_master " +
                                      "LEFT OUTER JOIN occupation_master ON staff_master.occupation = occupation_master.code " +
-                                     "WHERE staff_master.belongs IN (10,11,12,20,21) AND staff_master.job_form IN (10,12,99) AND staff_master.occupation = 10 AND staff_master.retirement_flag = 'false'";
+                                     "WHERE staff_master.belongs IN (10,11,12,20,21) AND staff_master.job_form IN (10,12,99) AND staff_master.occupation = 10 AND staff_master.retirement_flag = 'false' " +
+                                     "ORDER BY staff_master.name_kana ASC";
             using(SqlDataReader sqlDataReader = sqlCommand.ExecuteReader()) {
                 while(sqlDataReader.Read() == true) {
-                    LegalTwelveItemFormVo legalTwelveItemFormVo = new LegalTwelveItemFormVo();
-                    //legalTwelveItemFormVo.Students_date = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["students_date"]);
-                    //legalTwelveItemFormVo.Students_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["students_flag"]);
-                    //legalTwelveItemFormVo.Staff_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["staff_code"]);
-                    //legalTwelveItemFormVo.Staff_sign = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["staff_sign"]);
-                    //legalTwelveItemFormVo.Memo = _defaultValue.GetDefaultValue<string>(sqlDataReader["memo"]);
-                    //legalTwelveItemFormVo.Insert_pc_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["insert_pc_name"]);
-                    //legalTwelveItemFormVo.Insert_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["insert_ymd_hms"]);
-                    //legalTwelveItemFormVo.Update_pc_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["update_pc_name"]);
-                    //legalTwelveItemFormVo.Update_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["update_ymd_hms"]);
-                    //legalTwelveItemFormVo.Delete_pc_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["delete_pc_name"]);
-                    //legalTwelveItemFormVo.Delete_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["delete_ymd_hms"]);
-                    //legalTwelveItemFormVo.Delete_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["delete_flag"]);
+                    LegalTwelveItemListVo legalTwelveItemFormVo = new LegalTwelveItemListVo();
+                    legalTwelveItemFormVo.Occupation_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["occupation_code"]);
+                    legalTwelveItemFormVo.Occupation_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["occupation_name"]);
+                    legalTwelveItemFormVo.Staff_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["staff_code"]);
+                    legalTwelveItemFormVo.Staff_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["staff_name"]);
+                    legalTwelveItemFormVo.Employment_date = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["employment_date"]);
+                    legalTwelveItemFormVo.Students_01_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["students_01_flag"]);
+                    legalTwelveItemFormVo.Students_02_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["students_02_flag"]);
+                    legalTwelveItemFormVo.Students_03_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["students_03_flag"]);
+                    legalTwelveItemFormVo.Students_04_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["students_04_flag"]);
+                    legalTwelveItemFormVo.Students_05_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["students_05_flag"]);
+                    legalTwelveItemFormVo.Students_06_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["students_06_flag"]);
+                    legalTwelveItemFormVo.Students_07_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["students_07_flag"]);
+                    legalTwelveItemFormVo.Students_08_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["students_08_flag"]);
+                    legalTwelveItemFormVo.Students_09_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["students_09_flag"]);
+                    legalTwelveItemFormVo.Students_10_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["students_10_flag"]);
+                    legalTwelveItemFormVo.Students_11_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["students_11_flag"]);
+                    legalTwelveItemFormVo.Students_12_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["students_12_flag"]);
                     listLegalTwelveItemFormVo.Add(legalTwelveItemFormVo);
                 }
                 return listLegalTwelveItemFormVo;
