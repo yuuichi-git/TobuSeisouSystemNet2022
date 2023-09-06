@@ -90,9 +90,10 @@ namespace LegalTwelveItem {
              * SheetViewListへ表示
              */
             int i = 0;
-            foreach(var legalTwelveItemFormVo in listLegalTwelveItemFormVo) {
+            foreach(LegalTwelveItemListVo legalTwelveItemFormVo in listLegalTwelveItemFormVo) {
                 SheetViewList.Rows.Add(i, 1);
                 SheetViewList.RowHeader.Columns[0].Label = (i + 1).ToString(); // Rowヘッダ
+                SheetViewList.Cells[i, colOccupation].Tag = legalTwelveItemFormVo; // LegalTwelveItemListVoを退避
                 SheetViewList.Cells[i, colOccupation].Text = legalTwelveItemFormVo.Occupation_name;
                 SheetViewList.Cells[i, colName].Text = legalTwelveItemFormVo.Staff_name;
                 SheetViewList.Cells[i, colEmploymentDate].Text = legalTwelveItemFormVo.Employment_date != _defaultDateTime ? legalTwelveItemFormVo.Employment_date.ToString("yyyy/MM/dd") : "";
@@ -131,7 +132,8 @@ namespace LegalTwelveItem {
             /*
              * Detailウインドウを表示
              */
-            LegalTwelveItemDetail legalTwelveItemDetail = new LegalTwelveItemDetail(_connectionVo);
+            LegalTwelveItemListVo legalTwelveItemListVo = (LegalTwelveItemListVo)SheetViewList.Cells[e.Row,colOccupation].Tag; // Voを取得
+            LegalTwelveItemDetail legalTwelveItemDetail = new LegalTwelveItemDetail(_connectionVo, DateTimePickerJpEx1.Value, DateTimePickerJpEx2.Value, legalTwelveItemListVo);
             legalTwelveItemDetail.ShowDialog(this);
         }
 

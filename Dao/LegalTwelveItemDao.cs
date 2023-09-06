@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using System.Data;
+using System.Data.SqlClient;
 
 using Common;
 
@@ -21,18 +22,22 @@ namespace Dao {
         }
 
         /// <summary>
-        /// SelectAllLegalTwelveItem
+        /// SelectOneLegalTwelveItem
         /// </summary>
         /// <param name="dateTime1"></param>
         /// <param name="dateTime2"></param>
+        /// <param name="studentsCode"></param>
+        /// <param name="staffCode"></param>
         /// <returns></returns>
-        public List<LegalTwelveItemVo> SelectAllLegalTwelveItem(DateTime dateTime1, DateTime dateTime2) {
+        public List<LegalTwelveItemVo> SelectAllLegalTwelveItem(DateTime dateTime1, DateTime dateTime2, int staffCode) {
             List<LegalTwelveItemVo> listLegalTwelveItemVo = new List<LegalTwelveItemVo>();
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT students_date," +
+                                            "students_code," +
                                             "students_flag," +
                                             "staff_code," +
-                                            //"staff_sign," +
+                                            "staff_sign," +
+                                            "sign_number," +
                                             "memo," +
                                             "insert_pc_name," +
                                             "insert_ymd_hms," +
@@ -42,14 +47,17 @@ namespace Dao {
                                             "delete_ymd_hms," +
                                             "delete_flag " +
                                      "FROM legal_twelve_item " +
-                                     "WHERE (students_date BETWEEN '" + dateTime1.ToString("yyyy/MM/dd") + "' AND '" + dateTime2.ToString("yyyy/MM/dd") + "')";
+                                     "WHERE (students_date BETWEEN '" + dateTime1 + "' AND '" + dateTime2 + "') " +
+                                     "AND staff_code = " + staffCode;
             using(SqlDataReader sqlDataReader = sqlCommand.ExecuteReader()) {
                 while(sqlDataReader.Read() == true) {
                     LegalTwelveItemVo legalTwelveItemVo = new LegalTwelveItemVo();
                     legalTwelveItemVo.Students_date = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["students_date"]);
+                    legalTwelveItemVo.Students_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["students_code"]);
                     legalTwelveItemVo.Students_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["students_flag"]);
                     legalTwelveItemVo.Staff_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["staff_code"]);
-                    //legalTwelveItemVo.Staff_sign = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["staff_sign"]);
+                    legalTwelveItemVo.Staff_sign = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["staff_sign"]);
+                    legalTwelveItemVo.Sign_number = _defaultValue.GetDefaultValue<int>(sqlDataReader["sign_number"]);
                     legalTwelveItemVo.Memo = _defaultValue.GetDefaultValue<string>(sqlDataReader["memo"]);
                     legalTwelveItemVo.Insert_pc_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["insert_pc_name"]);
                     legalTwelveItemVo.Insert_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["insert_ymd_hms"]);
@@ -61,48 +69,6 @@ namespace Dao {
                     listLegalTwelveItemVo.Add(legalTwelveItemVo);
                 }
                 return listLegalTwelveItemVo;
-            }
-        }
-
-        /// <summary>
-        /// SelectOneLegalTwelveItem
-        /// </summary>
-        /// <param name="dateTime"></param>
-        /// <param name="staffCode"></param>
-        /// <returns></returns>
-        public LegalTwelveItemVo SelectOneLegalTwelveItem(DateTime dateTime, int staffCode) {
-            LegalTwelveItemVo legalTwelveItemVo = new LegalTwelveItemVo();
-            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
-            sqlCommand.CommandText = "SELECT students_date," +
-                                            "students_flag," +
-                                            "staff_code," +
-                                            "staff_sign," +
-                                            "memo," +
-                                            "insert_pc_name," +
-                                            "insert_ymd_hms," +
-                                            "update_pc_name," +
-                                            "update_ymd_hms," +
-                                            "delete_pc_name," +
-                                            "delete_ymd_hms," +
-                                            "delete_flag " +
-                                     "FROM legal_twelve_item " +
-                                     "WHERE delete_flag = 'False'";
-            using(SqlDataReader sqlDataReader = sqlCommand.ExecuteReader()) {
-                while(sqlDataReader.Read() == true) {
-                    legalTwelveItemVo.Students_date = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["students_date"]);
-                    legalTwelveItemVo.Students_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["students_flag"]);
-                    legalTwelveItemVo.Staff_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["staff_code"]);
-                    legalTwelveItemVo.Staff_sign = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["staff_sign"]);
-                    legalTwelveItemVo.Memo = _defaultValue.GetDefaultValue<string>(sqlDataReader["memo"]);
-                    legalTwelveItemVo.Insert_pc_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["insert_pc_name"]);
-                    legalTwelveItemVo.Insert_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["insert_ymd_hms"]);
-                    legalTwelveItemVo.Update_pc_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["update_pc_name"]);
-                    legalTwelveItemVo.Update_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["update_ymd_hms"]);
-                    legalTwelveItemVo.Delete_pc_name = _defaultValue.GetDefaultValue<string>(sqlDataReader["delete_pc_name"]);
-                    legalTwelveItemVo.Delete_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["delete_ymd_hms"]);
-                    legalTwelveItemVo.Delete_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["delete_flag"]);
-                }
-                return legalTwelveItemVo;
             }
         }
 
@@ -182,6 +148,51 @@ namespace Dao {
                     listLegalTwelveItemFormVo.Add(legalTwelveItemFormVo);
                 }
                 return listLegalTwelveItemFormVo;
+            }
+        }
+
+        /// <summary>
+        /// InsertLegalTwelveItem
+        /// </summary>
+        /// <param name="legalTwelveItemVo"></param>
+        /// <returns></returns>
+        public int InsertLegalTwelveItem(LegalTwelveItemVo legalTwelveItemVo) {
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "INSERT INTO legal_twelve_item(students_date," +
+                                                                   "students_code," +
+                                                                   "students_flag," +
+                                                                   "staff_code," +
+                                                                   "staff_sign," +
+                                                                   "sign_number," +
+                                                                   "memo," +
+                                                                   "insert_pc_name," +
+                                                                   "insert_ymd_hms," +
+                                                                   "update_pc_name," +
+                                                                   "update_ymd_hms," +
+                                                                   "delete_pc_name," +
+                                                                   "delete_ymd_hms," +
+                                                                   "delete_flag) " +
+                                     "VALUES (" + legalTwelveItemVo.Students_date + "," +
+                                            "'" + legalTwelveItemVo.Students_code + "'," +
+                                             "" + legalTwelveItemVo.Students_flag + "," +
+                                             "" + legalTwelveItemVo.Staff_code + "," +
+                                            "@member_picture," +
+                                             "" + legalTwelveItemVo.Sign_number + "," +
+                                            "'" + legalTwelveItemVo.Memo + "'," +
+                                            "'" + legalTwelveItemVo.Insert_pc_name + "'," +
+                                            "'" + legalTwelveItemVo.Insert_ymd_hms + "'," +
+                                            "'" + legalTwelveItemVo.Update_pc_name + "'," +
+                                            "'" + legalTwelveItemVo.Update_ymd_hms + "'," +
+                                            "'" + legalTwelveItemVo.Delete_pc_name + "'," +
+                                            "'" + legalTwelveItemVo.Delete_ymd_hms + "'," +
+                                            "'" + legalTwelveItemVo.Delete_flag + "'" +
+                                            ");";
+            if(legalTwelveItemVo.Staff_sign is not null)
+                sqlCommand.Parameters.Add("@member_picture", SqlDbType.Image, legalTwelveItemVo.Staff_sign.Length).Value = legalTwelveItemVo.Staff_sign;
+            try {
+                return sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
             }
         }
     }

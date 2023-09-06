@@ -8,6 +8,7 @@ namespace Vo {
         private bool _students_flag;
         private int _staff_code;
         private byte[] _staff_sign;
+        private int _sign_number;
         private string _memo;
         private string _insert_pc_name;
         private DateTime _insert_ymd_hms;
@@ -27,6 +28,7 @@ namespace Vo {
             _students_flag = false;
             _staff_code = 0;
             _staff_sign = Array.Empty<byte>();
+            _sign_number = 0;
             _memo = string.Empty;
             _insert_pc_name = string.Empty;
             _insert_ymd_hms = _default_datetime;
@@ -71,6 +73,14 @@ namespace Vo {
         public byte[] Staff_sign {
             get => _staff_sign;
             set => _staff_sign = value;
+        }
+        /// <summary>
+        /// サイン番号
+        /// 1→1回目のサイン:2→2回目のサイン:3→3回目のサイン
+        /// </summary>
+        public int Sign_number {
+            get => _sign_number;
+            set => _sign_number = value;
         }
         /// <summary>
         /// メモ
