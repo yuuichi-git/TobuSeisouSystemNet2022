@@ -33,6 +33,9 @@
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             ToolStripStatusLabelDetail = new ToolStripStatusLabel();
             PanelCenter = new Panel();
+            ButtonClip3 = new Button();
+            ButtonClip2 = new Button();
+            ButtonClip1 = new Button();
             label7 = new Label();
             label6 = new Label();
             label5 = new Label();
@@ -49,9 +52,9 @@
             comboBoxEx3 = new ControlEx.ComboBoxEx();
             comboBoxEx2 = new ControlEx.ComboBoxEx();
             comboBoxEx1 = new ControlEx.ComboBoxEx();
-            button3 = new Button();
-            button2 = new Button();
-            button1 = new Button();
+            ButtonDelete3 = new Button();
+            ButtonDelete2 = new Button();
+            ButtonDelete1 = new Button();
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
@@ -196,6 +199,9 @@
             // 
             // PanelCenter
             // 
+            PanelCenter.Controls.Add(ButtonClip3);
+            PanelCenter.Controls.Add(ButtonClip2);
+            PanelCenter.Controls.Add(ButtonClip1);
             PanelCenter.Controls.Add(label7);
             PanelCenter.Controls.Add(label6);
             PanelCenter.Controls.Add(label5);
@@ -212,9 +218,9 @@
             PanelCenter.Controls.Add(comboBoxEx3);
             PanelCenter.Controls.Add(comboBoxEx2);
             PanelCenter.Controls.Add(comboBoxEx1);
-            PanelCenter.Controls.Add(button3);
-            PanelCenter.Controls.Add(button2);
-            PanelCenter.Controls.Add(button1);
+            PanelCenter.Controls.Add(ButtonDelete3);
+            PanelCenter.Controls.Add(ButtonDelete2);
+            PanelCenter.Controls.Add(ButtonDelete1);
             PanelCenter.Controls.Add(label3);
             PanelCenter.Controls.Add(label2);
             PanelCenter.Controls.Add(label1);
@@ -262,6 +268,39 @@
             PanelCenter.Name = "PanelCenter";
             PanelCenter.Size = new Size(1110, 654);
             PanelCenter.TabIndex = 0;
+            // 
+            // ButtonClip3
+            // 
+            ButtonClip3.Location = new Point(908, 608);
+            ButtonClip3.Name = "ButtonClip3";
+            ButtonClip3.Size = new Size(76, 24);
+            ButtonClip3.TabIndex = 60;
+            ButtonClip3.Tag = "0";
+            ButtonClip3.Text = "Clip";
+            ButtonClip3.UseVisualStyleBackColor = true;
+            ButtonClip3.Click += ButtonClip_Click;
+            // 
+            // ButtonClip2
+            // 
+            ButtonClip2.Location = new Point(560, 608);
+            ButtonClip2.Name = "ButtonClip2";
+            ButtonClip2.Size = new Size(76, 24);
+            ButtonClip2.TabIndex = 59;
+            ButtonClip2.Tag = "0";
+            ButtonClip2.Text = "Clip";
+            ButtonClip2.UseVisualStyleBackColor = true;
+            ButtonClip2.Click += ButtonClip_Click;
+            // 
+            // ButtonClip1
+            // 
+            ButtonClip1.Location = new Point(212, 608);
+            ButtonClip1.Name = "ButtonClip1";
+            ButtonClip1.Size = new Size(76, 24);
+            ButtonClip1.TabIndex = 58;
+            ButtonClip1.Tag = "0";
+            ButtonClip1.Text = "Clip";
+            ButtonClip1.UseVisualStyleBackColor = true;
+            ButtonClip1.Click += ButtonClip_Click;
             // 
             // label7
             // 
@@ -407,32 +446,38 @@
             comboBoxEx1.Size = new Size(64, 23);
             comboBoxEx1.TabIndex = 6;
             // 
-            // button3
+            // ButtonDelete3
             // 
-            button3.Location = new Point(988, 608);
-            button3.Name = "button3";
-            button3.Size = new Size(76, 24);
-            button3.TabIndex = 57;
-            button3.Text = "Clip";
-            button3.UseVisualStyleBackColor = true;
+            ButtonDelete3.Location = new Point(988, 608);
+            ButtonDelete3.Name = "ButtonDelete3";
+            ButtonDelete3.Size = new Size(76, 24);
+            ButtonDelete3.TabIndex = 57;
+            ButtonDelete3.Tag = "2";
+            ButtonDelete3.Text = "Delete";
+            ButtonDelete3.UseVisualStyleBackColor = true;
+            ButtonDelete3.Click += ButtonDelete_Click;
             // 
-            // button2
+            // ButtonDelete2
             // 
-            button2.Location = new Point(640, 608);
-            button2.Name = "button2";
-            button2.Size = new Size(76, 24);
-            button2.TabIndex = 56;
-            button2.Text = "Clip";
-            button2.UseVisualStyleBackColor = true;
+            ButtonDelete2.Location = new Point(640, 608);
+            ButtonDelete2.Name = "ButtonDelete2";
+            ButtonDelete2.Size = new Size(76, 24);
+            ButtonDelete2.TabIndex = 56;
+            ButtonDelete2.Tag = "1";
+            ButtonDelete2.Text = "Delete";
+            ButtonDelete2.UseVisualStyleBackColor = true;
+            ButtonDelete2.Click += ButtonDelete_Click;
             // 
-            // button1
+            // ButtonDelete1
             // 
-            button1.Location = new Point(292, 608);
-            button1.Name = "button1";
-            button1.Size = new Size(76, 24);
-            button1.TabIndex = 55;
-            button1.Text = "Clip";
-            button1.UseVisualStyleBackColor = true;
+            ButtonDelete1.Location = new Point(292, 608);
+            ButtonDelete1.Name = "ButtonDelete1";
+            ButtonDelete1.Size = new Size(76, 24);
+            ButtonDelete1.TabIndex = 55;
+            ButtonDelete1.Tag = "0";
+            ButtonDelete1.Text = "Delete";
+            ButtonDelete1.UseVisualStyleBackColor = true;
+            ButtonDelete1.Click += ButtonDelete_Click;
             // 
             // label3
             // 
@@ -592,7 +637,7 @@
             // 
             // dateTimePickerJpEx12
             // 
-            dateTimePickerJpEx12.CustomFormat = " gggyy年MM月dd日(ddd)";
+            dateTimePickerJpEx12.CustomFormat = " ";
             dateTimePickerJpEx12.Format = DateTimePickerFormat.Custom;
             dateTimePickerJpEx12.Location = new Point(468, 344);
             dateTimePickerJpEx12.Name = "dateTimePickerJpEx12";
@@ -601,7 +646,7 @@
             // 
             // dateTimePickerJpEx11
             // 
-            dateTimePickerJpEx11.CustomFormat = " gggyy年MM月dd日(ddd)";
+            dateTimePickerJpEx11.CustomFormat = " ";
             dateTimePickerJpEx11.Format = DateTimePickerFormat.Custom;
             dateTimePickerJpEx11.Location = new Point(468, 316);
             dateTimePickerJpEx11.Name = "dateTimePickerJpEx11";
@@ -610,7 +655,7 @@
             // 
             // dateTimePickerJpEx10
             // 
-            dateTimePickerJpEx10.CustomFormat = " gggyy年MM月dd日(ddd)";
+            dateTimePickerJpEx10.CustomFormat = " ";
             dateTimePickerJpEx10.Format = DateTimePickerFormat.Custom;
             dateTimePickerJpEx10.Location = new Point(468, 288);
             dateTimePickerJpEx10.Name = "dateTimePickerJpEx10";
@@ -619,7 +664,7 @@
             // 
             // dateTimePickerJpEx9
             // 
-            dateTimePickerJpEx9.CustomFormat = " gggyy年MM月dd日(ddd)";
+            dateTimePickerJpEx9.CustomFormat = " ";
             dateTimePickerJpEx9.Format = DateTimePickerFormat.Custom;
             dateTimePickerJpEx9.Location = new Point(468, 260);
             dateTimePickerJpEx9.Name = "dateTimePickerJpEx9";
@@ -628,7 +673,7 @@
             // 
             // dateTimePickerJpEx8
             // 
-            dateTimePickerJpEx8.CustomFormat = " gggyy年MM月dd日(ddd)";
+            dateTimePickerJpEx8.CustomFormat = " ";
             dateTimePickerJpEx8.Format = DateTimePickerFormat.Custom;
             dateTimePickerJpEx8.Location = new Point(468, 232);
             dateTimePickerJpEx8.Name = "dateTimePickerJpEx8";
@@ -637,7 +682,7 @@
             // 
             // dateTimePickerJpEx7
             // 
-            dateTimePickerJpEx7.CustomFormat = " gggyy年MM月dd日(ddd)";
+            dateTimePickerJpEx7.CustomFormat = " ";
             dateTimePickerJpEx7.Format = DateTimePickerFormat.Custom;
             dateTimePickerJpEx7.Location = new Point(468, 204);
             dateTimePickerJpEx7.Name = "dateTimePickerJpEx7";
@@ -646,7 +691,7 @@
             // 
             // dateTimePickerJpEx6
             // 
-            dateTimePickerJpEx6.CustomFormat = " gggyy年MM月dd日(ddd)";
+            dateTimePickerJpEx6.CustomFormat = " ";
             dateTimePickerJpEx6.Format = DateTimePickerFormat.Custom;
             dateTimePickerJpEx6.Location = new Point(468, 176);
             dateTimePickerJpEx6.Name = "dateTimePickerJpEx6";
@@ -655,7 +700,7 @@
             // 
             // dateTimePickerJpEx5
             // 
-            dateTimePickerJpEx5.CustomFormat = " gggyy年MM月dd日(ddd)";
+            dateTimePickerJpEx5.CustomFormat = " ";
             dateTimePickerJpEx5.Format = DateTimePickerFormat.Custom;
             dateTimePickerJpEx5.Location = new Point(468, 148);
             dateTimePickerJpEx5.Name = "dateTimePickerJpEx5";
@@ -664,7 +709,7 @@
             // 
             // dateTimePickerJpEx4
             // 
-            dateTimePickerJpEx4.CustomFormat = " gggyy年MM月dd日(ddd)";
+            dateTimePickerJpEx4.CustomFormat = " ";
             dateTimePickerJpEx4.Format = DateTimePickerFormat.Custom;
             dateTimePickerJpEx4.Location = new Point(468, 120);
             dateTimePickerJpEx4.Name = "dateTimePickerJpEx4";
@@ -673,7 +718,7 @@
             // 
             // dateTimePickerJpEx3
             // 
-            dateTimePickerJpEx3.CustomFormat = " gggyy年MM月dd日(ddd)";
+            dateTimePickerJpEx3.CustomFormat = " ";
             dateTimePickerJpEx3.Format = DateTimePickerFormat.Custom;
             dateTimePickerJpEx3.Location = new Point(468, 92);
             dateTimePickerJpEx3.Name = "dateTimePickerJpEx3";
@@ -682,7 +727,7 @@
             // 
             // dateTimePickerJpEx2
             // 
-            dateTimePickerJpEx2.CustomFormat = " gggyy年MM月dd日(ddd)";
+            dateTimePickerJpEx2.CustomFormat = " ";
             dateTimePickerJpEx2.Format = DateTimePickerFormat.Custom;
             dateTimePickerJpEx2.Location = new Point(468, 64);
             dateTimePickerJpEx2.Name = "dateTimePickerJpEx2";
@@ -691,7 +736,7 @@
             // 
             // dateTimePickerJpEx1
             // 
-            dateTimePickerJpEx1.CustomFormat = " gggyy年MM月dd日(dddd)";
+            dateTimePickerJpEx1.CustomFormat = " ";
             dateTimePickerJpEx1.Format = DateTimePickerFormat.Custom;
             dateTimePickerJpEx1.Location = new Point(468, 36);
             dateTimePickerJpEx1.Name = "dateTimePickerJpEx1";
@@ -981,9 +1026,9 @@
         private PictureBox PictureBox3;
         private PictureBox PictureBox2;
         private PictureBox PictureBox1;
-        private Button button3;
-        private Button button2;
-        private Button button1;
+        private Button ButtonDelete3;
+        private Button ButtonDelete2;
+        private Button ButtonDelete1;
         private ControlEx.ComboBoxEx comboBoxEx12;
         private ControlEx.ComboBoxEx comboBoxEx11;
         private ControlEx.ComboBoxEx comboBoxEx10;
@@ -1000,5 +1045,8 @@
         private Label label6;
         private Label label5;
         private Label label4;
+        private Button ButtonClip3;
+        private Button ButtonClip2;
+        private Button ButtonClip1;
     }
 }

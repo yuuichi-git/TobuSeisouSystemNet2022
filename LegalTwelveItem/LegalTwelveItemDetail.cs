@@ -11,6 +11,7 @@ using Vo;
 
 namespace LegalTwelveItem {
     public partial class LegalTwelveItemDetail : Form {
+        private readonly DateTime _defaultDateTime = new DateTime(1900,01,01);
         private DateTime _dateTime1;
         private DateTime _dateTime2;
         /// <summary>
@@ -24,6 +25,9 @@ namespace LegalTwelveItem {
         private DateTimePickerJpEx[] _arrayDateTimePickerJpEx = new DateTimePickerJpEx[12];
         private ComboBoxEx[] _arrayComboBoxEx = new ComboBoxEx[12];
         private TextBox[] _arrayTextBox = new TextBox[12];
+        private PictureBox[] _arrayPictureBox = new PictureBox[3];
+        private Button[] _arrayButtonClip = new Button[3];
+        private Button[] _arrayButtonDelete = new Button[3];
         /*
          * Dao
          */
@@ -56,6 +60,9 @@ namespace LegalTwelveItem {
             InitializeComponent();
             LabelStaffCode.Text = Convert.ToString(legalTwelveItemListVo.Staff_code);
             LabelStaffName.Text = legalTwelveItemListVo.Staff_name;
+            PictureBox1.Image = null;
+            PictureBox2.Image = null;
+            PictureBox3.Image = null;
             /*
              * Controlを配列にセット
              */
@@ -111,6 +118,18 @@ namespace LegalTwelveItem {
             _arrayTextBox[10] = textBox11;
             _arrayTextBox[11] = textBox12;
 
+            _arrayPictureBox[0] = PictureBox1;
+            _arrayPictureBox[1] = PictureBox2;
+            _arrayPictureBox[2] = PictureBox3;
+
+            _arrayButtonClip[0] = ButtonClip1;
+            _arrayButtonClip[1] = ButtonClip2;
+            _arrayButtonClip[2] = ButtonClip3;
+
+            _arrayButtonDelete[0] = ButtonDelete1;
+            _arrayButtonDelete[1] = ButtonDelete2;
+            _arrayButtonDelete[2] = ButtonDelete3;
+
             this.SheetViewOutput();
         }
 
@@ -124,10 +143,41 @@ namespace LegalTwelveItem {
              * 入力項目のバリデーション
              */
 
-            /*
-             * Controlの値をLegalTwelveItemVoに代入
-             */
-            LegalTwelveItemVo legalTwelveItemVo = new LegalTwelveItemVo();
+            for(int i = 0; i < 12; i++) {
+                if(_arrayCheckBox[i].Checked) {
+                    /*
+                     * Controlの値をLegalTwelveItemVoに代入
+                     */
+                    LegalTwelveItemVo legalTwelveItemVo = new LegalTwelveItemVo();
+                    legalTwelveItemVo.Students_date = _arrayDateTimePickerJpEx[i].GetValue();
+                    legalTwelveItemVo.Students_code = Convert.ToInt32(_arrayCheckBox[i].Tag);
+                    legalTwelveItemVo.Students_flag = _arrayCheckBox[i].Checked;
+                    legalTwelveItemVo.Staff_code = _legalTwelveItemListVo.Staff_code;
+                    legalTwelveItemVo.Staff_sign = (byte[]?)new ImageConverter().ConvertTo(_arrayPictureBox[_arrayComboBoxEx[i].SelectedIndex].Image, typeof(byte[]));
+                    legalTwelveItemVo.Sign_number = _arrayComboBoxEx[i].SelectedIndex;
+                    legalTwelveItemVo.Memo = _arrayTextBox[i].Text;
+                    legalTwelveItemVo.Insert_pc_name = Environment.MachineName;
+                    legalTwelveItemVo.Insert_ymd_hms = DateTime.Now;
+                    legalTwelveItemVo.Update_pc_name = string.Empty;
+                    legalTwelveItemVo.Update_ymd_hms = _defaultDateTime;
+                    legalTwelveItemVo.Delete_pc_name = string.Empty;
+                    legalTwelveItemVo.Delete_ymd_hms = _defaultDateTime;
+                    legalTwelveItemVo.Delete_flag = false;
+                    // DBを確認
+                    if(_legalTwelveItemDao.CheckLegalTwelveItem(legalTwelveItemVo)) {
+                        _legalTwelveItemDao.UpdateLegalTwelveItem(legalTwelveItemVo);
+                    } else {
+                        _legalTwelveItemDao.InsertLegalTwelveItem(legalTwelveItemVo);
+                    }
+                } else {
+                    /*
+                     * 最初にセットされた値(Vo)はTagに代入してある
+                     * _arrayTextBox[i].Tag = legalTwelveItemVo;
+                     */
+
+
+                }
+            }
 
 
         }
@@ -137,8 +187,17 @@ namespace LegalTwelveItem {
         /// </summary>
         private void SheetViewOutput() {
             List<LegalTwelveItemVo> listLegalTwelveItemVo = _legalTwelveItemDao.SelectAllLegalTwelveItem(_dateTime1,_dateTime2,_legalTwelveItemListVo.Staff_code);
+            /*
+             * CheckBox等の処理
+             */
             for(int i = 0; i < 12; i++) {
-                LegalTwelveItemVo? legalTwelveItemVo = listLegalTwelveItemVo.Find(x => x.Students_code == i + 1);
+                LegalTwelveItemVo? legalTwelveItemVo = listLegalTwelveItemVo.Find(x => x.Students_code == i);
+                /*
+                 * _arrayTextBoxのTagにLegalTwelveItemVoを格納
+                 * Recordを削除するさいに必要な情報になる
+                 */
+                _arrayTextBox[i].Tag = legalTwelveItemVo;
+
                 if(legalTwelveItemVo is not null) {
                     _arrayCheckBox[i].Checked = true;
                     _arrayDateTimePickerJpEx[i].SetValue(legalTwelveItemVo.Students_date);
@@ -151,6 +210,12 @@ namespace LegalTwelveItem {
                     _arrayTextBox[i].Text = string.Empty;
                 }
             }
+            /*
+             * PictureBoxの処理
+             */
+
+
+
         }
 
         /// <summary>
@@ -165,11 +230,44 @@ namespace LegalTwelveItem {
                 _arrayComboBoxEx[Convert.ToInt32(((CheckBox)sender).Tag)].Enabled = ((CheckBox)sender).Checked;
                 _arrayTextBox[Convert.ToInt32(((CheckBox)sender).Tag)].Enabled = ((CheckBox)sender).Checked;
             } else {
-                _arrayDateTimePickerJpEx[Convert.ToInt32(((CheckBox)sender).Tag)].Enabled = ((CheckBox)sender).Checked;
-                _arrayDateTimePickerJpEx[Convert.ToInt32(((CheckBox)sender).Tag)].SetBlank();
-                _arrayComboBoxEx[Convert.ToInt32(((CheckBox)sender).Tag)].Enabled = ((CheckBox)sender).Checked;
-                _arrayTextBox[Convert.ToInt32(((CheckBox)sender).Tag)].Enabled = ((CheckBox)sender).Checked;
+                if(_arrayDateTimePickerJpEx[Convert.ToInt32(((CheckBox)sender).Tag)].CustomFormat != " " || _arrayComboBoxEx[Convert.ToInt32(((CheckBox)sender).Tag)].Text != "" || _arrayTextBox[Convert.ToInt32(((CheckBox)sender).Tag)].Text != "") {
+                    DialogResult dialogResult = MessageBox.Show("登録されているデータを削除してもよろしいですか？", MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    switch(dialogResult) {
+                        case DialogResult.OK:
+                            _arrayDateTimePickerJpEx[Convert.ToInt32(((CheckBox)sender).Tag)].Enabled = ((CheckBox)sender).Checked;
+                            _arrayDateTimePickerJpEx[Convert.ToInt32(((CheckBox)sender).Tag)].SetBlank();
+                            _arrayComboBoxEx[Convert.ToInt32(((CheckBox)sender).Tag)].Enabled = ((CheckBox)sender).Checked;
+                            _arrayTextBox[Convert.ToInt32(((CheckBox)sender).Tag)].Enabled = ((CheckBox)sender).Checked;
+                            break;
+                        case DialogResult.Cancel:
+
+                            break;
+                    }
+                } else {
+                    _arrayDateTimePickerJpEx[Convert.ToInt32(((CheckBox)sender).Tag)].Enabled = ((CheckBox)sender).Checked;
+                    _arrayDateTimePickerJpEx[Convert.ToInt32(((CheckBox)sender).Tag)].SetBlank();
+                    _arrayComboBoxEx[Convert.ToInt32(((CheckBox)sender).Tag)].Enabled = ((CheckBox)sender).Checked;
+                    _arrayTextBox[Convert.ToInt32(((CheckBox)sender).Tag)].Enabled = ((CheckBox)sender).Checked;
+                }
             }
+        }
+
+        /// <summary>
+        /// ButtonClip_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonClip_Click(object sender, EventArgs e) {
+            _arrayPictureBox[Convert.ToInt32(((Button)sender).Tag)].Image = (Bitmap)Clipboard.GetDataObject().GetData(DataFormats.Bitmap);
+        }
+
+        /// <summary>
+        /// ButtonDelete_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ButtonDelete_Click(object sender, EventArgs e) {
+            _arrayPictureBox[Convert.ToInt32(((Button)sender).Tag)].Image = null;
         }
 
         /// <summary>

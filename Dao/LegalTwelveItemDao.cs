@@ -172,25 +172,78 @@ namespace Dao {
                                                                    "delete_pc_name," +
                                                                    "delete_ymd_hms," +
                                                                    "delete_flag) " +
-                                     "VALUES (" + legalTwelveItemVo.Students_date + "," +
-                                            "'" + legalTwelveItemVo.Students_code + "'," +
-                                             "" + legalTwelveItemVo.Students_flag + "," +
-                                             "" + legalTwelveItemVo.Staff_code + "," +
-                                            "@member_picture," +
-                                             "" + legalTwelveItemVo.Sign_number + "," +
-                                            "'" + legalTwelveItemVo.Memo + "'," +
-                                            "'" + legalTwelveItemVo.Insert_pc_name + "'," +
-                                            "'" + legalTwelveItemVo.Insert_ymd_hms + "'," +
-                                            "'" + legalTwelveItemVo.Update_pc_name + "'," +
-                                            "'" + legalTwelveItemVo.Update_ymd_hms + "'," +
-                                            "'" + legalTwelveItemVo.Delete_pc_name + "'," +
-                                            "'" + legalTwelveItemVo.Delete_ymd_hms + "'," +
-                                            "'" + legalTwelveItemVo.Delete_flag + "'" +
-                                            ");";
+                                     "VALUES ('" + legalTwelveItemVo.Students_date + "'," +
+                                              "" + legalTwelveItemVo.Students_code + "," +
+                                             "'" + legalTwelveItemVo.Students_flag + "'," +
+                                              "" + legalTwelveItemVo.Staff_code + "," +
+                                             "@member_picture," +
+                                              "" + legalTwelveItemVo.Sign_number + "," +
+                                             "'" + legalTwelveItemVo.Memo + "'," +
+                                             "'" + legalTwelveItemVo.Insert_pc_name + "'," +
+                                             "'" + legalTwelveItemVo.Insert_ymd_hms + "'," +
+                                             "'" + legalTwelveItemVo.Update_pc_name + "'," +
+                                             "'" + legalTwelveItemVo.Update_ymd_hms + "'," +
+                                             "'" + legalTwelveItemVo.Delete_pc_name + "'," +
+                                             "'" + legalTwelveItemVo.Delete_ymd_hms + "'," +
+                                             "'" + legalTwelveItemVo.Delete_flag + "'" +
+                                             ");";
             if(legalTwelveItemVo.Staff_sign is not null)
                 sqlCommand.Parameters.Add("@member_picture", SqlDbType.Image, legalTwelveItemVo.Staff_sign.Length).Value = legalTwelveItemVo.Staff_sign;
             try {
                 return sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// UpdateLegalTwelveItem
+        /// </summary>
+        /// <param name="legalTwelveItemVo"></param>
+        /// <returns></returns>
+        public int UpdateLegalTwelveItem(LegalTwelveItemVo legalTwelveItemVo) {
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE legal_twelve_item " +
+                                     "SET students_date = '" + _defaultValue.GetDefaultValue<DateTime>(legalTwelveItemVo.Students_date) + "'," +
+                                         "students_code = " + _defaultValue.GetDefaultValue<int>(legalTwelveItemVo.Students_code) + "," +
+                                         "students_flag = '" + _defaultValue.GetDefaultValue<bool>(legalTwelveItemVo.Students_flag) + "'," +
+                                         "staff_code = " + _defaultValue.GetDefaultValue<int>(legalTwelveItemVo.Staff_code) + "," +
+                                         "staff_sign = @member_picture," +
+                                         "sign_number = " + _defaultValue.GetDefaultValue<int>(legalTwelveItemVo.Sign_number) + "," +
+                                         "memo = '" + _defaultValue.GetDefaultValue<string>(legalTwelveItemVo.Memo) + "'," +
+                                         "insert_pc_name = '" + _defaultValue.GetDefaultValue<string>(legalTwelveItemVo.Insert_pc_name) + "'," +
+                                         "insert_ymd_hms = '" + _defaultValue.GetDefaultValue<DateTime>(legalTwelveItemVo.Insert_ymd_hms) + "'," +
+                                         "update_pc_name = '" + _defaultValue.GetDefaultValue<string>(legalTwelveItemVo.Update_pc_name) + "'," +
+                                         "update_ymd_hms = '" + _defaultValue.GetDefaultValue<DateTime>(legalTwelveItemVo.Update_ymd_hms) + "'," +
+                                         "delete_pc_name = '" + _defaultValue.GetDefaultValue<string>(legalTwelveItemVo.Delete_pc_name) + "'," +
+                                         "delete_ymd_hms = '" + _defaultValue.GetDefaultValue<DateTime>(legalTwelveItemVo.Delete_ymd_hms) + "'," +
+                                         "delete_flag = '" + _defaultValue.GetDefaultValue<bool>(legalTwelveItemVo.Delete_flag) + "' " +
+                                     "WHERE (students_date BETWEEN '" + legalTwelveItemVo.Students_date + "' AND '" + legalTwelveItemVo.Students_date + "') " +
+                                     "AND students_code = " + legalTwelveItemVo.Students_code + " " +
+                                     "AND staff_code = " + legalTwelveItemVo.Staff_code;
+            if(legalTwelveItemVo.Staff_sign is not null)
+                sqlCommand.Parameters.Add("@member_picture", SqlDbType.Image, legalTwelveItemVo.Staff_sign.Length).Value = legalTwelveItemVo.Staff_sign;
+            try {
+                return sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// CheckLegalTwelveItem
+        /// </summary>
+        /// <param name="legalTwelveItemVo"></param>
+        /// <returns></returns>
+        public bool CheckLegalTwelveItem(LegalTwelveItemVo legalTwelveItemVo) {
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT COUNT(students_date) " +
+                                     "FROM legal_twelve_item " +
+                                     "WHERE (students_date BETWEEN '" + legalTwelveItemVo.Students_date + "' AND '" + legalTwelveItemVo.Students_date + "') " +
+                                     "AND students_code = " + legalTwelveItemVo.Students_code + " " +
+                                     "AND staff_code = " + legalTwelveItemVo.Staff_code;
+            try {
+                return (int)sqlCommand.ExecuteScalar() > 0 ? true : false;
             } catch {
                 throw;
             }

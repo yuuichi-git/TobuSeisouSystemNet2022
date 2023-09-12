@@ -109,10 +109,8 @@ namespace SubstituteSheet {
             int carCodeCleanOffice = _vehicleDispatchBodyCleanOfficeDao.GetCarCode(cellNumber);
             // 代車の処理
             if(_vehicleDispatchDetailVo.Car_code != 0 && carCodeCleanOffice != _vehicleDispatchDetailVo.Car_code) {
-                SheetView1.Cells["G45"].Text = string.Concat(_listCarMasterVo.Find(x => x.Car_code == _vehicleDispatchDetailVo.Car_code).Registration_number,
-                                                                " (",
-                                                                _listCarMasterVo.Find(x => x.Car_code == _vehicleDispatchDetailVo.Car_code).Door_number,
-                                                                ")");
+                SheetView1.Cells["G45"].Text = string.Concat(_listCarMasterVo.Find(x => x.Car_code == _vehicleDispatchDetailVo.Car_code).Registration_number, " (",
+                                                                    _listCarMasterVo.Find(x => x.Car_code == _vehicleDispatchDetailVo.Car_code).Door_number, ")");
                 SheetView1.Cells["D49"].Text = DateTime.Now.ToString("gg y年M月d日", cultureInfo);
                 SheetView1.Cells["I49"].Text = string.Concat(DateTime.Now.ToString("gg y年M月d日", cultureInfo), " 迄");
             }
@@ -168,7 +166,7 @@ namespace SubstituteSheet {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ToolStripMenuItemExit_Click(object sender, EventArgs e) {
-
+            Close();
         }
 
         /// <summary>

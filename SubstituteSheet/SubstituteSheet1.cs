@@ -286,20 +286,19 @@ namespace SubstituteSheet {
             SheetView1.Cells["D38"].ResetValue(); // –{”Ô–¼
             SheetView1.Cells["I38"].ResetValue(); // ‘ã”Ô–¼
             SheetView1.Cells["I40"].ResetValue(); // ‘ã”ÔŒg‘Ñ”Ô†
-                                                  // ‚Qs–Ú
+            // ‚Qs–Ú
             SheetView1.Cells["B42"].ResetValue(); // ‘g
             SheetView1.Cells["B44"].ResetValue(); // ‰^“]èEEˆõ
             SheetView1.Cells["D42"].ResetValue(); // –{”Ô–¼
             SheetView1.Cells["I42"].ResetValue(); // ‘ã”Ô–¼
             SheetView1.Cells["I44"].ResetValue(); // ‘ã”ÔŒg‘Ñ”Ô†
-                                                  // ‚Rs–Ú
+            // ‚Rs–Ú
             SheetView1.Cells["B46"].ResetValue(); // ‘g
             SheetView1.Cells["B48"].ResetValue(); // ‰^“]èEEˆõ
             SheetView1.Cells["D46"].ResetValue(); // –{”Ô–¼
             SheetView1.Cells["I46"].ResetValue(); // ‘ã”Ô–¼
             SheetView1.Cells["I48"].ResetValue(); // ‘ã”ÔŒg‘Ñ”Ô†
-                                                  // ‘—‚èæ
-            SheetView1.Cells["H51"].ResetValue();
+            SheetView1.Cells["H51"].ResetValue(); // ‘—‚èæ
         }
 
         /// <summary>
