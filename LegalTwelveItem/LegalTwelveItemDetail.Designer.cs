@@ -101,6 +101,7 @@
             ToolStripMenuItemMenu = new ToolStripMenuItem();
             ToolStripMenuItemExit = new ToolStripMenuItem();
             ToolStripMenuItemHelp = new ToolStripMenuItem();
+            DateTimePickerJpExBase = new ControlEx.DateTimePickerJpEx();
             TableLayoutPanelBase.SuspendLayout();
             PanelUp.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -128,7 +129,7 @@
             TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
             TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
-            TableLayoutPanelBase.Size = new Size(1116, 768);
+            TableLayoutPanelBase.Size = new Size(1116, 859);
             TableLayoutPanelBase.TabIndex = 0;
             // 
             // PanelUp
@@ -178,7 +179,7 @@
             // StatusStrip1
             // 
             StatusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, ToolStripStatusLabelDetail });
-            StatusStrip1.Location = new Point(0, 746);
+            StatusStrip1.Location = new Point(0, 837);
             StatusStrip1.Name = "StatusStrip1";
             StatusStrip1.Size = new Size(1116, 22);
             StatusStrip1.SizingGrip = false;
@@ -199,6 +200,7 @@
             // 
             // PanelCenter
             // 
+            PanelCenter.Controls.Add(DateTimePickerJpExBase);
             PanelCenter.Controls.Add(ButtonClip3);
             PanelCenter.Controls.Add(ButtonClip2);
             PanelCenter.Controls.Add(ButtonClip1);
@@ -266,34 +268,34 @@
             PanelCenter.Dock = DockStyle.Fill;
             PanelCenter.Location = new Point(3, 87);
             PanelCenter.Name = "PanelCenter";
-            PanelCenter.Size = new Size(1110, 654);
+            PanelCenter.Size = new Size(1110, 745);
             PanelCenter.TabIndex = 0;
             // 
             // ButtonClip3
             // 
-            ButtonClip3.Location = new Point(908, 608);
+            ButtonClip3.Location = new Point(908, 704);
             ButtonClip3.Name = "ButtonClip3";
             ButtonClip3.Size = new Size(76, 24);
             ButtonClip3.TabIndex = 60;
-            ButtonClip3.Tag = "0";
+            ButtonClip3.Tag = "2";
             ButtonClip3.Text = "Clip";
             ButtonClip3.UseVisualStyleBackColor = true;
             ButtonClip3.Click += ButtonClip_Click;
             // 
             // ButtonClip2
             // 
-            ButtonClip2.Location = new Point(560, 608);
+            ButtonClip2.Location = new Point(560, 704);
             ButtonClip2.Name = "ButtonClip2";
             ButtonClip2.Size = new Size(76, 24);
             ButtonClip2.TabIndex = 59;
-            ButtonClip2.Tag = "0";
+            ButtonClip2.Tag = "1";
             ButtonClip2.Text = "Clip";
             ButtonClip2.UseVisualStyleBackColor = true;
             ButtonClip2.Click += ButtonClip_Click;
             // 
             // ButtonClip1
             // 
-            ButtonClip1.Location = new Point(212, 608);
+            ButtonClip1.Location = new Point(212, 704);
             ButtonClip1.Name = "ButtonClip1";
             ButtonClip1.Size = new Size(76, 24);
             ButtonClip1.TabIndex = 58;
@@ -305,7 +307,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(720, 12);
+            label7.Location = new Point(720, 48);
             label7.Name = "label7";
             label7.Size = new Size(31, 15);
             label7.TabIndex = 3;
@@ -314,7 +316,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(652, 12);
+            label6.Location = new Point(652, 48);
             label6.Name = "label6";
             label6.Size = new Size(48, 15);
             label6.TabIndex = 2;
@@ -323,7 +325,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(468, 12);
+            label5.Location = new Point(468, 48);
             label5.Name = "label5";
             label5.Size = new Size(67, 15);
             label5.TabIndex = 1;
@@ -332,7 +334,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(40, 12);
+            label4.Location = new Point(40, 48);
             label4.Name = "label4";
             label4.Size = new Size(79, 15);
             label4.TabIndex = 0;
@@ -342,7 +344,7 @@
             // 
             comboBoxEx12.FormattingEnabled = true;
             comboBoxEx12.Items.AddRange(new object[] { "１回目", "２回目", "３回目" });
-            comboBoxEx12.Location = new Point(652, 344);
+            comboBoxEx12.Location = new Point(652, 380);
             comboBoxEx12.Name = "comboBoxEx12";
             comboBoxEx12.Size = new Size(64, 23);
             comboBoxEx12.TabIndex = 50;
@@ -351,7 +353,7 @@
             // 
             comboBoxEx11.FormattingEnabled = true;
             comboBoxEx11.Items.AddRange(new object[] { "１回目", "２回目", "３回目" });
-            comboBoxEx11.Location = new Point(652, 316);
+            comboBoxEx11.Location = new Point(652, 352);
             comboBoxEx11.Name = "comboBoxEx11";
             comboBoxEx11.Size = new Size(64, 23);
             comboBoxEx11.TabIndex = 46;
@@ -360,7 +362,7 @@
             // 
             comboBoxEx10.FormattingEnabled = true;
             comboBoxEx10.Items.AddRange(new object[] { "１回目", "２回目", "３回目" });
-            comboBoxEx10.Location = new Point(652, 288);
+            comboBoxEx10.Location = new Point(652, 324);
             comboBoxEx10.Name = "comboBoxEx10";
             comboBoxEx10.Size = new Size(64, 23);
             comboBoxEx10.TabIndex = 42;
@@ -369,7 +371,7 @@
             // 
             comboBoxEx9.FormattingEnabled = true;
             comboBoxEx9.Items.AddRange(new object[] { "１回目", "２回目", "３回目" });
-            comboBoxEx9.Location = new Point(652, 260);
+            comboBoxEx9.Location = new Point(652, 296);
             comboBoxEx9.Name = "comboBoxEx9";
             comboBoxEx9.Size = new Size(64, 23);
             comboBoxEx9.TabIndex = 38;
@@ -378,7 +380,7 @@
             // 
             comboBoxEx8.FormattingEnabled = true;
             comboBoxEx8.Items.AddRange(new object[] { "１回目", "２回目", "３回目" });
-            comboBoxEx8.Location = new Point(652, 232);
+            comboBoxEx8.Location = new Point(652, 268);
             comboBoxEx8.Name = "comboBoxEx8";
             comboBoxEx8.Size = new Size(64, 23);
             comboBoxEx8.TabIndex = 34;
@@ -387,7 +389,7 @@
             // 
             comboBoxEx7.FormattingEnabled = true;
             comboBoxEx7.Items.AddRange(new object[] { "１回目", "２回目", "３回目" });
-            comboBoxEx7.Location = new Point(652, 204);
+            comboBoxEx7.Location = new Point(652, 240);
             comboBoxEx7.Name = "comboBoxEx7";
             comboBoxEx7.Size = new Size(64, 23);
             comboBoxEx7.TabIndex = 30;
@@ -396,7 +398,7 @@
             // 
             comboBoxEx6.FormattingEnabled = true;
             comboBoxEx6.Items.AddRange(new object[] { "１回目", "２回目", "３回目" });
-            comboBoxEx6.Location = new Point(652, 176);
+            comboBoxEx6.Location = new Point(652, 212);
             comboBoxEx6.Name = "comboBoxEx6";
             comboBoxEx6.Size = new Size(64, 23);
             comboBoxEx6.TabIndex = 26;
@@ -405,7 +407,7 @@
             // 
             comboBoxEx5.FormattingEnabled = true;
             comboBoxEx5.Items.AddRange(new object[] { "１回目", "２回目", "３回目" });
-            comboBoxEx5.Location = new Point(652, 148);
+            comboBoxEx5.Location = new Point(652, 184);
             comboBoxEx5.Name = "comboBoxEx5";
             comboBoxEx5.Size = new Size(64, 23);
             comboBoxEx5.TabIndex = 22;
@@ -414,7 +416,7 @@
             // 
             comboBoxEx4.FormattingEnabled = true;
             comboBoxEx4.Items.AddRange(new object[] { "１回目", "２回目", "３回目" });
-            comboBoxEx4.Location = new Point(652, 120);
+            comboBoxEx4.Location = new Point(652, 156);
             comboBoxEx4.Name = "comboBoxEx4";
             comboBoxEx4.Size = new Size(64, 23);
             comboBoxEx4.TabIndex = 18;
@@ -423,7 +425,7 @@
             // 
             comboBoxEx3.FormattingEnabled = true;
             comboBoxEx3.Items.AddRange(new object[] { "１回目", "２回目", "３回目" });
-            comboBoxEx3.Location = new Point(652, 92);
+            comboBoxEx3.Location = new Point(652, 128);
             comboBoxEx3.Name = "comboBoxEx3";
             comboBoxEx3.Size = new Size(64, 23);
             comboBoxEx3.TabIndex = 14;
@@ -432,7 +434,7 @@
             // 
             comboBoxEx2.FormattingEnabled = true;
             comboBoxEx2.Items.AddRange(new object[] { "１回目", "２回目", "３回目" });
-            comboBoxEx2.Location = new Point(652, 64);
+            comboBoxEx2.Location = new Point(652, 100);
             comboBoxEx2.Name = "comboBoxEx2";
             comboBoxEx2.Size = new Size(64, 23);
             comboBoxEx2.TabIndex = 10;
@@ -441,14 +443,14 @@
             // 
             comboBoxEx1.FormattingEnabled = true;
             comboBoxEx1.Items.AddRange(new object[] { "１回目", "２回目", "３回目" });
-            comboBoxEx1.Location = new Point(652, 36);
+            comboBoxEx1.Location = new Point(652, 72);
             comboBoxEx1.Name = "comboBoxEx1";
             comboBoxEx1.Size = new Size(64, 23);
             comboBoxEx1.TabIndex = 6;
             // 
             // ButtonDelete3
             // 
-            ButtonDelete3.Location = new Point(988, 608);
+            ButtonDelete3.Location = new Point(988, 704);
             ButtonDelete3.Name = "ButtonDelete3";
             ButtonDelete3.Size = new Size(76, 24);
             ButtonDelete3.TabIndex = 57;
@@ -459,7 +461,7 @@
             // 
             // ButtonDelete2
             // 
-            ButtonDelete2.Location = new Point(640, 608);
+            ButtonDelete2.Location = new Point(640, 704);
             ButtonDelete2.Name = "ButtonDelete2";
             ButtonDelete2.Size = new Size(76, 24);
             ButtonDelete2.TabIndex = 56;
@@ -470,7 +472,7 @@
             // 
             // ButtonDelete1
             // 
-            ButtonDelete1.Location = new Point(292, 608);
+            ButtonDelete1.Location = new Point(292, 704);
             ButtonDelete1.Name = "ButtonDelete1";
             ButtonDelete1.Size = new Size(76, 24);
             ButtonDelete1.TabIndex = 55;
@@ -482,7 +484,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(732, 388);
+            label3.Location = new Point(732, 444);
             label3.Name = "label3";
             label3.Size = new Size(93, 15);
             label3.TabIndex = 54;
@@ -491,7 +493,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(384, 388);
+            label2.Location = new Point(384, 444);
             label2.Name = "label2";
             label2.Size = new Size(93, 15);
             label2.TabIndex = 53;
@@ -500,7 +502,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(36, 388);
+            label1.Location = new Point(36, 444);
             label1.Name = "label1";
             label1.Size = new Size(93, 15);
             label1.TabIndex = 52;
@@ -510,9 +512,9 @@
             // 
             PictureBox3.BorderStyle = BorderStyle.FixedSingle;
             PictureBox3.Image = (Image)resources.GetObject("PictureBox3.Image");
-            PictureBox3.Location = new Point(732, 412);
+            PictureBox3.Location = new Point(732, 468);
             PictureBox3.Name = "PictureBox3";
-            PictureBox3.Size = new Size(338, 192);
+            PictureBox3.Size = new Size(338, 232);
             PictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
             PictureBox3.TabIndex = 38;
             PictureBox3.TabStop = false;
@@ -521,9 +523,9 @@
             // 
             PictureBox2.BorderStyle = BorderStyle.FixedSingle;
             PictureBox2.Image = (Image)resources.GetObject("PictureBox2.Image");
-            PictureBox2.Location = new Point(384, 412);
+            PictureBox2.Location = new Point(384, 468);
             PictureBox2.Name = "PictureBox2";
-            PictureBox2.Size = new Size(338, 192);
+            PictureBox2.Size = new Size(338, 232);
             PictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
             PictureBox2.TabIndex = 37;
             PictureBox2.TabStop = false;
@@ -532,9 +534,9 @@
             // 
             PictureBox1.BorderStyle = BorderStyle.FixedSingle;
             PictureBox1.Image = (Image)resources.GetObject("PictureBox1.Image");
-            PictureBox1.Location = new Point(36, 412);
+            PictureBox1.Location = new Point(36, 468);
             PictureBox1.Name = "PictureBox1";
-            PictureBox1.Size = new Size(338, 192);
+            PictureBox1.Size = new Size(338, 232);
             PictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             PictureBox1.TabIndex = 36;
             PictureBox1.TabStop = false;
@@ -542,7 +544,7 @@
             // textBox12
             // 
             textBox12.ImeMode = ImeMode.Hiragana;
-            textBox12.Location = new Point(720, 344);
+            textBox12.Location = new Point(720, 380);
             textBox12.Name = "textBox12";
             textBox12.Size = new Size(352, 23);
             textBox12.TabIndex = 51;
@@ -550,7 +552,7 @@
             // textBox11
             // 
             textBox11.ImeMode = ImeMode.Hiragana;
-            textBox11.Location = new Point(720, 316);
+            textBox11.Location = new Point(720, 352);
             textBox11.Name = "textBox11";
             textBox11.Size = new Size(352, 23);
             textBox11.TabIndex = 47;
@@ -558,7 +560,7 @@
             // textBox10
             // 
             textBox10.ImeMode = ImeMode.Hiragana;
-            textBox10.Location = new Point(720, 288);
+            textBox10.Location = new Point(720, 324);
             textBox10.Name = "textBox10";
             textBox10.Size = new Size(352, 23);
             textBox10.TabIndex = 43;
@@ -566,7 +568,7 @@
             // textBox9
             // 
             textBox9.ImeMode = ImeMode.Hiragana;
-            textBox9.Location = new Point(720, 260);
+            textBox9.Location = new Point(720, 296);
             textBox9.Name = "textBox9";
             textBox9.Size = new Size(352, 23);
             textBox9.TabIndex = 39;
@@ -574,7 +576,7 @@
             // textBox8
             // 
             textBox8.ImeMode = ImeMode.Hiragana;
-            textBox8.Location = new Point(720, 232);
+            textBox8.Location = new Point(720, 268);
             textBox8.Name = "textBox8";
             textBox8.Size = new Size(352, 23);
             textBox8.TabIndex = 35;
@@ -582,7 +584,7 @@
             // textBox7
             // 
             textBox7.ImeMode = ImeMode.Hiragana;
-            textBox7.Location = new Point(720, 204);
+            textBox7.Location = new Point(720, 240);
             textBox7.Name = "textBox7";
             textBox7.Size = new Size(352, 23);
             textBox7.TabIndex = 31;
@@ -590,7 +592,7 @@
             // textBox6
             // 
             textBox6.ImeMode = ImeMode.Hiragana;
-            textBox6.Location = new Point(720, 176);
+            textBox6.Location = new Point(720, 212);
             textBox6.Name = "textBox6";
             textBox6.Size = new Size(352, 23);
             textBox6.TabIndex = 27;
@@ -598,7 +600,7 @@
             // textBox5
             // 
             textBox5.ImeMode = ImeMode.Hiragana;
-            textBox5.Location = new Point(720, 148);
+            textBox5.Location = new Point(720, 184);
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(352, 23);
             textBox5.TabIndex = 23;
@@ -606,7 +608,7 @@
             // textBox4
             // 
             textBox4.ImeMode = ImeMode.Hiragana;
-            textBox4.Location = new Point(720, 120);
+            textBox4.Location = new Point(720, 156);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(352, 23);
             textBox4.TabIndex = 19;
@@ -614,7 +616,7 @@
             // textBox3
             // 
             textBox3.ImeMode = ImeMode.Hiragana;
-            textBox3.Location = new Point(720, 92);
+            textBox3.Location = new Point(720, 128);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(352, 23);
             textBox3.TabIndex = 15;
@@ -622,7 +624,7 @@
             // textBox2
             // 
             textBox2.ImeMode = ImeMode.Hiragana;
-            textBox2.Location = new Point(720, 64);
+            textBox2.Location = new Point(720, 100);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(352, 23);
             textBox2.TabIndex = 11;
@@ -630,7 +632,7 @@
             // textBox1
             // 
             textBox1.ImeMode = ImeMode.Hiragana;
-            textBox1.Location = new Point(720, 36);
+            textBox1.Location = new Point(720, 72);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(352, 23);
             textBox1.TabIndex = 7;
@@ -639,7 +641,7 @@
             // 
             dateTimePickerJpEx12.CustomFormat = " ";
             dateTimePickerJpEx12.Format = DateTimePickerFormat.Custom;
-            dateTimePickerJpEx12.Location = new Point(468, 344);
+            dateTimePickerJpEx12.Location = new Point(468, 380);
             dateTimePickerJpEx12.Name = "dateTimePickerJpEx12";
             dateTimePickerJpEx12.Size = new Size(180, 23);
             dateTimePickerJpEx12.TabIndex = 49;
@@ -648,7 +650,7 @@
             // 
             dateTimePickerJpEx11.CustomFormat = " ";
             dateTimePickerJpEx11.Format = DateTimePickerFormat.Custom;
-            dateTimePickerJpEx11.Location = new Point(468, 316);
+            dateTimePickerJpEx11.Location = new Point(468, 352);
             dateTimePickerJpEx11.Name = "dateTimePickerJpEx11";
             dateTimePickerJpEx11.Size = new Size(180, 23);
             dateTimePickerJpEx11.TabIndex = 45;
@@ -657,7 +659,7 @@
             // 
             dateTimePickerJpEx10.CustomFormat = " ";
             dateTimePickerJpEx10.Format = DateTimePickerFormat.Custom;
-            dateTimePickerJpEx10.Location = new Point(468, 288);
+            dateTimePickerJpEx10.Location = new Point(468, 324);
             dateTimePickerJpEx10.Name = "dateTimePickerJpEx10";
             dateTimePickerJpEx10.Size = new Size(180, 23);
             dateTimePickerJpEx10.TabIndex = 41;
@@ -666,7 +668,7 @@
             // 
             dateTimePickerJpEx9.CustomFormat = " ";
             dateTimePickerJpEx9.Format = DateTimePickerFormat.Custom;
-            dateTimePickerJpEx9.Location = new Point(468, 260);
+            dateTimePickerJpEx9.Location = new Point(468, 296);
             dateTimePickerJpEx9.Name = "dateTimePickerJpEx9";
             dateTimePickerJpEx9.Size = new Size(180, 23);
             dateTimePickerJpEx9.TabIndex = 37;
@@ -675,7 +677,7 @@
             // 
             dateTimePickerJpEx8.CustomFormat = " ";
             dateTimePickerJpEx8.Format = DateTimePickerFormat.Custom;
-            dateTimePickerJpEx8.Location = new Point(468, 232);
+            dateTimePickerJpEx8.Location = new Point(468, 268);
             dateTimePickerJpEx8.Name = "dateTimePickerJpEx8";
             dateTimePickerJpEx8.Size = new Size(180, 23);
             dateTimePickerJpEx8.TabIndex = 33;
@@ -684,7 +686,7 @@
             // 
             dateTimePickerJpEx7.CustomFormat = " ";
             dateTimePickerJpEx7.Format = DateTimePickerFormat.Custom;
-            dateTimePickerJpEx7.Location = new Point(468, 204);
+            dateTimePickerJpEx7.Location = new Point(468, 240);
             dateTimePickerJpEx7.Name = "dateTimePickerJpEx7";
             dateTimePickerJpEx7.Size = new Size(180, 23);
             dateTimePickerJpEx7.TabIndex = 29;
@@ -693,7 +695,7 @@
             // 
             dateTimePickerJpEx6.CustomFormat = " ";
             dateTimePickerJpEx6.Format = DateTimePickerFormat.Custom;
-            dateTimePickerJpEx6.Location = new Point(468, 176);
+            dateTimePickerJpEx6.Location = new Point(468, 212);
             dateTimePickerJpEx6.Name = "dateTimePickerJpEx6";
             dateTimePickerJpEx6.Size = new Size(180, 23);
             dateTimePickerJpEx6.TabIndex = 25;
@@ -702,7 +704,7 @@
             // 
             dateTimePickerJpEx5.CustomFormat = " ";
             dateTimePickerJpEx5.Format = DateTimePickerFormat.Custom;
-            dateTimePickerJpEx5.Location = new Point(468, 148);
+            dateTimePickerJpEx5.Location = new Point(468, 184);
             dateTimePickerJpEx5.Name = "dateTimePickerJpEx5";
             dateTimePickerJpEx5.Size = new Size(180, 23);
             dateTimePickerJpEx5.TabIndex = 21;
@@ -711,7 +713,7 @@
             // 
             dateTimePickerJpEx4.CustomFormat = " ";
             dateTimePickerJpEx4.Format = DateTimePickerFormat.Custom;
-            dateTimePickerJpEx4.Location = new Point(468, 120);
+            dateTimePickerJpEx4.Location = new Point(468, 156);
             dateTimePickerJpEx4.Name = "dateTimePickerJpEx4";
             dateTimePickerJpEx4.Size = new Size(180, 23);
             dateTimePickerJpEx4.TabIndex = 17;
@@ -720,7 +722,7 @@
             // 
             dateTimePickerJpEx3.CustomFormat = " ";
             dateTimePickerJpEx3.Format = DateTimePickerFormat.Custom;
-            dateTimePickerJpEx3.Location = new Point(468, 92);
+            dateTimePickerJpEx3.Location = new Point(468, 128);
             dateTimePickerJpEx3.Name = "dateTimePickerJpEx3";
             dateTimePickerJpEx3.Size = new Size(180, 23);
             dateTimePickerJpEx3.TabIndex = 13;
@@ -729,7 +731,7 @@
             // 
             dateTimePickerJpEx2.CustomFormat = " ";
             dateTimePickerJpEx2.Format = DateTimePickerFormat.Custom;
-            dateTimePickerJpEx2.Location = new Point(468, 64);
+            dateTimePickerJpEx2.Location = new Point(468, 100);
             dateTimePickerJpEx2.Name = "dateTimePickerJpEx2";
             dateTimePickerJpEx2.Size = new Size(180, 23);
             dateTimePickerJpEx2.TabIndex = 9;
@@ -738,7 +740,7 @@
             // 
             dateTimePickerJpEx1.CustomFormat = " ";
             dateTimePickerJpEx1.Format = DateTimePickerFormat.Custom;
-            dateTimePickerJpEx1.Location = new Point(468, 36);
+            dateTimePickerJpEx1.Location = new Point(468, 72);
             dateTimePickerJpEx1.Name = "dateTimePickerJpEx1";
             dateTimePickerJpEx1.Size = new Size(180, 23);
             dateTimePickerJpEx1.TabIndex = 5;
@@ -748,7 +750,7 @@
             checkBox12.AutoSize = true;
             checkBox12.Checked = true;
             checkBox12.CheckState = CheckState.Checked;
-            checkBox12.Location = new Point(40, 348);
+            checkBox12.Location = new Point(40, 384);
             checkBox12.Name = "checkBox12";
             checkBox12.Size = new Size(394, 19);
             checkBox12.TabIndex = 48;
@@ -762,7 +764,7 @@
             checkBox11.AutoSize = true;
             checkBox11.Checked = true;
             checkBox11.CheckState = CheckState.Checked;
-            checkBox11.Location = new Point(40, 320);
+            checkBox11.Location = new Point(40, 356);
             checkBox11.Name = "checkBox11";
             checkBox11.Size = new Size(132, 19);
             checkBox11.TabIndex = 44;
@@ -776,7 +778,7 @@
             checkBox10.AutoSize = true;
             checkBox10.Checked = true;
             checkBox10.CheckState = CheckState.Checked;
-            checkBox10.Location = new Point(40, 292);
+            checkBox10.Location = new Point(40, 328);
             checkBox10.Name = "checkBox10";
             checkBox10.Size = new Size(408, 19);
             checkBox10.TabIndex = 40;
@@ -790,7 +792,7 @@
             checkBox9.AutoSize = true;
             checkBox9.Checked = true;
             checkBox9.CheckState = CheckState.Checked;
-            checkBox9.Location = new Point(40, 264);
+            checkBox9.Location = new Point(40, 300);
             checkBox9.Name = "checkBox9";
             checkBox9.Size = new Size(219, 19);
             checkBox9.TabIndex = 36;
@@ -804,7 +806,7 @@
             checkBox8.AutoSize = true;
             checkBox8.Checked = true;
             checkBox8.CheckState = CheckState.Checked;
-            checkBox8.Location = new Point(40, 236);
+            checkBox8.Location = new Point(40, 272);
             checkBox8.Name = "checkBox8";
             checkBox8.Size = new Size(294, 19);
             checkBox8.TabIndex = 32;
@@ -818,7 +820,7 @@
             checkBox7.AutoSize = true;
             checkBox7.Checked = true;
             checkBox7.CheckState = CheckState.Checked;
-            checkBox7.Location = new Point(40, 208);
+            checkBox7.Location = new Point(40, 244);
             checkBox7.Name = "checkBox7";
             checkBox7.Size = new Size(341, 19);
             checkBox7.TabIndex = 28;
@@ -832,7 +834,7 @@
             checkBox6.AutoSize = true;
             checkBox6.Checked = true;
             checkBox6.CheckState = CheckState.Checked;
-            checkBox6.Location = new Point(40, 180);
+            checkBox6.Location = new Point(40, 216);
             checkBox6.Name = "checkBox6";
             checkBox6.Size = new Size(236, 19);
             checkBox6.TabIndex = 24;
@@ -846,7 +848,7 @@
             checkBox5.AutoSize = true;
             checkBox5.Checked = true;
             checkBox5.CheckState = CheckState.Checked;
-            checkBox5.Location = new Point(40, 152);
+            checkBox5.Location = new Point(40, 188);
             checkBox5.Name = "checkBox5";
             checkBox5.Size = new Size(120, 19);
             checkBox5.TabIndex = 20;
@@ -860,7 +862,7 @@
             checkBox4.AutoSize = true;
             checkBox4.Checked = true;
             checkBox4.CheckState = CheckState.Checked;
-            checkBox4.Location = new Point(40, 124);
+            checkBox4.Location = new Point(40, 160);
             checkBox4.Name = "checkBox4";
             checkBox4.Size = new Size(150, 19);
             checkBox4.TabIndex = 16;
@@ -874,7 +876,7 @@
             checkBox3.AutoSize = true;
             checkBox3.Checked = true;
             checkBox3.CheckState = CheckState.Checked;
-            checkBox3.Location = new Point(40, 96);
+            checkBox3.Location = new Point(40, 132);
             checkBox3.Name = "checkBox3";
             checkBox3.Size = new Size(151, 19);
             checkBox3.TabIndex = 12;
@@ -888,7 +890,7 @@
             checkBox2.AutoSize = true;
             checkBox2.Checked = true;
             checkBox2.CheckState = CheckState.Checked;
-            checkBox2.Location = new Point(40, 68);
+            checkBox2.Location = new Point(40, 104);
             checkBox2.Name = "checkBox2";
             checkBox2.Size = new Size(332, 19);
             checkBox2.TabIndex = 8;
@@ -902,7 +904,7 @@
             checkBox1.AutoSize = true;
             checkBox1.Checked = true;
             checkBox1.CheckState = CheckState.Checked;
-            checkBox1.Location = new Point(40, 40);
+            checkBox1.Location = new Point(40, 76);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(190, 19);
             checkBox1.TabIndex = 4;
@@ -940,11 +942,20 @@
             ToolStripMenuItemHelp.Size = new Size(48, 20);
             ToolStripMenuItemHelp.Text = "ヘルプ";
             // 
+            // DateTimePickerJpExBase
+            // 
+            DateTimePickerJpExBase.CustomFormat = " ";
+            DateTimePickerJpExBase.Format = DateTimePickerFormat.Custom;
+            DateTimePickerJpExBase.Location = new Point(468, 16);
+            DateTimePickerJpExBase.Name = "DateTimePickerJpExBase";
+            DateTimePickerJpExBase.Size = new Size(180, 23);
+            DateTimePickerJpExBase.TabIndex = 61;
+            // 
             // LegalTwelveItemDetail
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1116, 768);
+            ClientSize = new Size(1116, 859);
             Controls.Add(TableLayoutPanelBase);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = MenuStrip1;
@@ -1048,5 +1059,6 @@
         private Button ButtonClip3;
         private Button ButtonClip2;
         private Button ButtonClip1;
+        private ControlEx.DateTimePickerJpEx DateTimePickerJpExBase;
     }
 }

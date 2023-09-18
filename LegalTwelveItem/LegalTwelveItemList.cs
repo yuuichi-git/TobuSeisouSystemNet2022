@@ -20,21 +20,23 @@ namespace LegalTwelveItem {
         /*
          * Columns
          */
-        private const int colOccupation = 0;
-        private const int colName = 1;
-        private const int colEmploymentDate = 2;
-        private const int colStudentsFlag01 = 3;
-        private const int colStudentsFlag02 = 4;
-        private const int colStudentsFlag03 = 5;
-        private const int colStudentsFlag04 = 6;
-        private const int colStudentsFlag05 = 7;
-        private const int colStudentsFlag06 = 8;
-        private const int colStudentsFlag07 = 9;
-        private const int colStudentsFlag08 = 10;
-        private const int colStudentsFlag09 = 11;
-        private const int colStudentsFlag10 = 12;
-        private const int colStudentsFlag11 = 13;
-        private const int colStudentsFlag12 = 14;
+        private const int colBelongsName = 0;
+        private const int colJobFormName = 1;
+        private const int colOccupation = 2;
+        private const int colName = 3;
+        private const int colEmploymentDate = 4;
+        private const int colStudentsFlag01 = 5;
+        private const int colStudentsFlag02 = 6;
+        private const int colStudentsFlag03 = 7;
+        private const int colStudentsFlag04 = 8;
+        private const int colStudentsFlag05 = 9;
+        private const int colStudentsFlag06 = 10;
+        private const int colStudentsFlag07 = 11;
+        private const int colStudentsFlag08 = 12;
+        private const int colStudentsFlag09 = 13;
+        private const int colStudentsFlag10 = 14;
+        private const int colStudentsFlag11 = 15;
+        private const int colStudentsFlag12 = 16;
         /*
          * Vo
          */
@@ -60,6 +62,7 @@ namespace LegalTwelveItem {
             _initializeForm.LegalTwelveItemList(this);
             DateTimePickerJpEx1.Value = _date.GetFiscalYearStartDate(DateTime.Today);
             DateTimePickerJpEx2.Value = _date.GetFiscalYearEndDate(DateTime.Today);
+            CheckBoxShortTerm.Checked = false;
             InitializeSheetViewList(SheetViewList);
         }
 
@@ -85,7 +88,7 @@ namespace LegalTwelveItem {
             /*
              * レコードを取得
              */
-            List<LegalTwelveItemListVo> listLegalTwelveItemFormVo = _legalTwelveItemDao.SelectLegalTwelveItemForm(DateTimePickerJpEx1.GetValue(), DateTimePickerJpEx2.GetValue());
+            List<LegalTwelveItemListVo> listLegalTwelveItemFormVo = _legalTwelveItemDao.SelectLegalTwelveItemList(DateTimePickerJpEx1.GetValue(), DateTimePickerJpEx2.GetValue(),CheckBoxShortTerm.Checked);
             /*
              * SheetViewListへ表示
              */
@@ -93,8 +96,10 @@ namespace LegalTwelveItem {
             foreach(LegalTwelveItemListVo legalTwelveItemFormVo in listLegalTwelveItemFormVo) {
                 SheetViewList.Rows.Add(i, 1);
                 SheetViewList.RowHeader.Columns[0].Label = (i + 1).ToString(); // Rowヘッダ
-                SheetViewList.Cells[i, colOccupation].Tag = legalTwelveItemFormVo; // LegalTwelveItemListVoを退避
+                SheetViewList.Cells[i, colBelongsName].Text = legalTwelveItemFormVo.Belongs_name;
+                SheetViewList.Cells[i, colJobFormName].Text = legalTwelveItemFormVo.Job_form_name;
                 SheetViewList.Cells[i, colOccupation].Text = legalTwelveItemFormVo.Occupation_name;
+                SheetViewList.Cells[i, colName].Tag = legalTwelveItemFormVo; // LegalTwelveItemListVoを退避
                 SheetViewList.Cells[i, colName].Text = legalTwelveItemFormVo.Staff_name;
                 SheetViewList.Cells[i, colEmploymentDate].Text = legalTwelveItemFormVo.Employment_date != _defaultDateTime ? legalTwelveItemFormVo.Employment_date.ToString("yyyy/MM/dd") : "";
                 SheetViewList.Cells[i, colStudentsFlag01].Text = legalTwelveItemFormVo.Students_01_flag ? "〇" : "";
@@ -132,7 +137,7 @@ namespace LegalTwelveItem {
             /*
              * Detailウインドウを表示
              */
-            LegalTwelveItemListVo legalTwelveItemListVo = (LegalTwelveItemListVo)SheetViewList.Cells[e.Row,colOccupation].Tag; // Voを取得
+            LegalTwelveItemListVo legalTwelveItemListVo = (LegalTwelveItemListVo)SheetViewList.Cells[e.Row,colName].Tag; // Voを取得
             LegalTwelveItemDetail legalTwelveItemDetail = new LegalTwelveItemDetail(_connectionVo, DateTimePickerJpEx1.Value, DateTimePickerJpEx2.Value, legalTwelveItemListVo);
             legalTwelveItemDetail.ShowDialog(this);
         }
@@ -179,6 +184,16 @@ namespace LegalTwelveItem {
             if(((DateTimePickerJpEx)sender).Value < DateTimePickerJpEx1.Value) {
                 DateTimePickerJpEx1.Value = ((DateTimePickerJpEx)sender).Value;
             }
+        }
+
+        /// <summary>
+        /// ToolStripMenuItemPrintSheet_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItemPrintSheet_Click(object sender, EventArgs e) {
+            //アクティブシート印刷します
+            SpreadList.PrintSheet(SheetViewList);
         }
 
         /// <summary>

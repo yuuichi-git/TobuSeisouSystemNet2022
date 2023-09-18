@@ -5,6 +5,10 @@ namespace Vo {
     public class LegalTwelveItemListVo {
         private readonly DateTime _default_datetime = new DateTime(1900,01,01);
 
+        private int _belongs;
+        private string _belongs_name;
+        private int _job_form;
+        private string _job_form_name;
         private int _occupation_code;
         private string _occupation_name;
         private int _staff_code;
@@ -27,8 +31,12 @@ namespace Vo {
         /// コンストラクター
         /// </summary>
         public LegalTwelveItemListVo() {
+            _belongs = 0;
+            _belongs_name = string.Empty;
+            _job_form = 0;
+            _job_form_name = string.Empty;
             _occupation_code = 0;
-            _occupation_name= string.Empty;
+            _occupation_name = string.Empty;
             _staff_code = 0;
             _staff_name = string.Empty;
             _employment_date = _default_datetime;
@@ -46,6 +54,34 @@ namespace Vo {
             _students_12_flag = false;
         }
 
+        /// <summary>
+        /// 所属コード
+        /// </summary>
+        public int Belongs {
+            get => _belongs;
+            set => _belongs = value;
+        }
+        /// <summary>
+        /// 所属名
+        /// </summary>
+        public string Belongs_name {
+            get => _belongs_name;
+            set => _belongs_name = value;
+        }
+        /// <summary>
+        /// 形態コード
+        /// </summary>
+        public int Job_form {
+            get => _job_form;
+            set => _job_form = value;
+        }
+        /// <summary>
+        /// 形態名
+        /// </summary>
+        public string Job_form_name {
+            get => _job_form_name;
+            set => _job_form_name = value;
+        }
         /// <summary>
         /// 職種コード
         /// </summary>

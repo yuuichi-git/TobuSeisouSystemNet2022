@@ -163,29 +163,33 @@ namespace LegalTwelveItem {
                     legalTwelveItemVo.Delete_pc_name = string.Empty;
                     legalTwelveItemVo.Delete_ymd_hms = _defaultDateTime;
                     legalTwelveItemVo.Delete_flag = false;
-                    // DBを確認
-                    if(_legalTwelveItemDao.CheckLegalTwelveItem(legalTwelveItemVo)) {
-                        _legalTwelveItemDao.UpdateLegalTwelveItem(legalTwelveItemVo);
+                    /*
+                     * レコードが存在すればUPDATEする。
+                     * Tagに退避させてあるVoを渡す。変更前の値でSQLを発行しないとダメだよ！
+                     */
+                    if((LegalTwelveItemVo)_arrayTextBox[i].Tag is not null && _legalTwelveItemDao.CheckLegalTwelveItem((LegalTwelveItemVo)_arrayTextBox[i].Tag)) {
+                        _legalTwelveItemDao.UpdateOneLegalTwelveItem((LegalTwelveItemVo)_arrayTextBox[i].Tag, legalTwelveItemVo);
                     } else {
-                        _legalTwelveItemDao.InsertLegalTwelveItem(legalTwelveItemVo);
+                        _legalTwelveItemDao.InsertOneLegalTwelveItem(legalTwelveItemVo);
                     }
                 } else {
                     /*
                      * 最初にセットされた値(Vo)はTagに代入してある
                      * _arrayTextBox[i].Tag = legalTwelveItemVo;
                      */
-
-
+                    if((LegalTwelveItemVo)_arrayTextBox[i].Tag is not null)
+                        _legalTwelveItemDao.DeleteOneLegalTwelveItem((LegalTwelveItemVo)_arrayTextBox[i].Tag);
                 }
             }
-
-
+            this.Close();
         }
 
         /// <summary>
         /// SheetViewOutput
         /// </summary>
         private void SheetViewOutput() {
+            // BaseTimeを設定
+            DateTimePickerJpExBase.SetValue(DateTime.Today);
             List<LegalTwelveItemVo> listLegalTwelveItemVo = _legalTwelveItemDao.SelectAllLegalTwelveItem(_dateTime1,_dateTime2,_legalTwelveItemListVo.Staff_code);
             /*
              * CheckBox等の処理
@@ -213,9 +217,16 @@ namespace LegalTwelveItem {
             /*
              * PictureBoxの処理
              */
-
-
-
+            // bool a = listLegalTwelveItemVo.HasDuplicate(c => c.Sign_number);
+            IEnumerable<LegalTwelveItemVo> iEnumerableLegalTwelveItemVo = listLegalTwelveItemVo.DistinctByKey(c => c.Sign_number);
+            foreach(LegalTwelveItemVo legalTwelveItemVo in iEnumerableLegalTwelveItemVo.OrderBy(x => x.Sign_number)) {
+                if(legalTwelveItemVo.Staff_sign is not null && legalTwelveItemVo.Staff_sign.Length != 0) {
+                    ImageConverter imageConv = new ImageConverter();
+                    _arrayPictureBox[legalTwelveItemVo.Sign_number].Image = (Image?)imageConv.ConvertFrom(legalTwelveItemVo.Staff_sign);
+                } else {
+                    _arrayPictureBox[legalTwelveItemVo.Sign_number].Image = null;
+                }
+            }
         }
 
         /// <summary>
@@ -226,7 +237,11 @@ namespace LegalTwelveItem {
         private void CheckBox_CheckedChanged(object sender, EventArgs e) {
             if(((CheckBox)sender).Checked) {
                 _arrayDateTimePickerJpEx[Convert.ToInt32(((CheckBox)sender).Tag)].Enabled = ((CheckBox)sender).Checked;
-                _arrayDateTimePickerJpEx[Convert.ToInt32(((CheckBox)sender).Tag)].SetValue(DateTime.Today);
+                /*
+                 * 指導実施日が空白の場合、値を入力する
+                 */
+                if(_arrayDateTimePickerJpEx[Convert.ToInt32(((CheckBox)sender).Tag)].CustomFormat == " ")
+                    _arrayDateTimePickerJpEx[Convert.ToInt32(((CheckBox)sender).Tag)].SetValue(DateTimePickerJpExBase.GetValue());
                 _arrayComboBoxEx[Convert.ToInt32(((CheckBox)sender).Tag)].Enabled = ((CheckBox)sender).Checked;
                 _arrayTextBox[Convert.ToInt32(((CheckBox)sender).Tag)].Enabled = ((CheckBox)sender).Checked;
             } else {
@@ -240,7 +255,8 @@ namespace LegalTwelveItem {
                             _arrayTextBox[Convert.ToInt32(((CheckBox)sender).Tag)].Enabled = ((CheckBox)sender).Checked;
                             break;
                         case DialogResult.Cancel:
-
+                            // 処理を戻す意味で、フラグを反転させる
+                            ((CheckBox)sender).Checked = !((CheckBox)sender).Checked;
                             break;
                     }
                 } else {
@@ -285,16 +301,16 @@ namespace LegalTwelveItem {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void LegalTwelveItemDetail_FormClosing(object sender, FormClosingEventArgs e) {
-            DialogResult dialogResult = MessageBox.Show(MessageText.Message102, MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            switch(dialogResult) {
-                case DialogResult.OK:
-                    e.Cancel = false;
-                    Dispose();
-                    break;
-                case DialogResult.Cancel:
-                    e.Cancel = true;
-                    break;
-            }
+            //DialogResult dialogResult = MessageBox.Show(MessageText.Message102, MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            //switch(dialogResult) {
+            //    case DialogResult.OK:
+            //        e.Cancel = false;
+            //        Dispose();
+            //        break;
+            //    case DialogResult.Cancel:
+            //        e.Cancel = true;
+            //        break;
+            //}
         }
     }
 }

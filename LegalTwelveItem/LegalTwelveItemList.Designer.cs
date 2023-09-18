@@ -37,9 +37,12 @@
             MenuStrip1 = new MenuStrip();
             ToolStripMenuItemMenu = new ToolStripMenuItem();
             ToolStripMenuItemExit = new ToolStripMenuItem();
+            ToolStripMenuItemPrint = new ToolStripMenuItem();
+            ToolStripMenuItemPrintSheet = new ToolStripMenuItem();
             ToolStripMenuItemHelp = new ToolStripMenuItem();
-            SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("TableLayoutPanelBase.Controls"));
+            SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("resource1"));
             SheetViewList = SpreadList.GetSheet(0);
+            CheckBoxShortTerm = new CheckBox();
             TableLayoutPanelBase.SuspendLayout();
             StatusStrip1.SuspendLayout();
             PanelUp.SuspendLayout();
@@ -64,7 +67,7 @@
             TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
             TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
-            TableLayoutPanelBase.Size = new Size(1034, 1041);
+            TableLayoutPanelBase.Size = new Size(1184, 1041);
             TableLayoutPanelBase.TabIndex = 0;
             // 
             // StatusStrip1
@@ -72,7 +75,8 @@
             StatusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, ToolStripStatusLabelDetail });
             StatusStrip1.Location = new Point(0, 1019);
             StatusStrip1.Name = "StatusStrip1";
-            StatusStrip1.Size = new Size(1034, 22);
+            StatusStrip1.Size = new Size(1184, 22);
+            StatusStrip1.SizingGrip = false;
             StatusStrip1.TabIndex = 2;
             StatusStrip1.Text = "statusStrip1";
             // 
@@ -90,6 +94,7 @@
             // 
             // PanelUp
             // 
+            PanelUp.Controls.Add(CheckBoxShortTerm);
             PanelUp.Controls.Add(label2);
             PanelUp.Controls.Add(DateTimePickerJpEx2);
             PanelUp.Controls.Add(label1);
@@ -98,7 +103,7 @@
             PanelUp.Dock = DockStyle.Fill;
             PanelUp.Location = new Point(3, 27);
             PanelUp.Name = "PanelUp";
-            PanelUp.Size = new Size(1028, 54);
+            PanelUp.Size = new Size(1178, 54);
             PanelUp.TabIndex = 0;
             // 
             // label2
@@ -144,7 +149,7 @@
             // ButtonUpdate
             // 
             ButtonUpdate.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            ButtonUpdate.Location = new Point(812, 8);
+            ButtonUpdate.Location = new Point(964, 8);
             ButtonUpdate.Name = "ButtonUpdate";
             ButtonUpdate.Size = new Size(180, 36);
             ButtonUpdate.TabIndex = 1;
@@ -154,10 +159,10 @@
             // 
             // MenuStrip1
             // 
-            MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemHelp });
+            MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemPrint, ToolStripMenuItemHelp });
             MenuStrip1.Location = new Point(0, 0);
             MenuStrip1.Name = "MenuStrip1";
-            MenuStrip1.Size = new Size(1034, 24);
+            MenuStrip1.Size = new Size(1184, 24);
             MenuStrip1.TabIndex = 1;
             MenuStrip1.Text = "menuStrip1";
             // 
@@ -175,6 +180,20 @@
             ToolStripMenuItemExit.Text = "アプリケーションを終了する";
             ToolStripMenuItemExit.Click += ToolStripMenuItemExit_Click;
             // 
+            // ToolStripMenuItemPrint
+            // 
+            ToolStripMenuItemPrint.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemPrintSheet });
+            ToolStripMenuItemPrint.Name = "ToolStripMenuItemPrint";
+            ToolStripMenuItemPrint.Size = new Size(43, 20);
+            ToolStripMenuItemPrint.Text = "印刷";
+            // 
+            // ToolStripMenuItemPrintSheet
+            // 
+            ToolStripMenuItemPrintSheet.Name = "ToolStripMenuItemPrintSheet";
+            ToolStripMenuItemPrintSheet.Size = new Size(152, 22);
+            ToolStripMenuItemPrintSheet.Text = "シートを印刷する";
+            ToolStripMenuItemPrintSheet.Click += ToolStripMenuItemPrintSheet_Click;
+            // 
             // ToolStripMenuItemHelp
             // 
             ToolStripMenuItemHelp.Name = "ToolStripMenuItemHelp";
@@ -188,15 +207,25 @@
             SpreadList.Font = new Font("ＭＳ Ｐゴシック", 11F, FontStyle.Regular, GraphicsUnit.Point);
             SpreadList.Location = new Point(3, 87);
             SpreadList.Name = "SpreadList";
-            SpreadList.Size = new Size(1028, 927);
+            SpreadList.Size = new Size(1178, 927);
             SpreadList.TabIndex = 3;
             SpreadList.CellDoubleClick += SpreadList_CellDoubleClick;
+            // 
+            // CheckBoxShortTerm
+            // 
+            CheckBoxShortTerm.AutoSize = true;
+            CheckBoxShortTerm.Location = new Point(440, 20);
+            CheckBoxShortTerm.Name = "CheckBoxShortTerm";
+            CheckBoxShortTerm.Size = new Size(90, 19);
+            CheckBoxShortTerm.TabIndex = 6;
+            CheckBoxShortTerm.Text = "短期を含める";
+            CheckBoxShortTerm.UseVisualStyleBackColor = true;
             // 
             // LegalTwelveItemList
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1034, 1041);
+            ClientSize = new Size(1184, 1041);
             Controls.Add(TableLayoutPanelBase);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = MenuStrip1;
@@ -233,6 +262,9 @@
         private Label label2;
         private ControlEx.DateTimePickerJpEx DateTimePickerJpEx2;
         private Label label1;
+        private ToolStripMenuItem ToolStripMenuItemPrint;
+        private ToolStripMenuItem ToolStripMenuItemPrintSheet;
         private FarPoint.Win.Spread.SheetView SheetViewList;
+        private CheckBox CheckBoxShortTerm;
     }
 }
