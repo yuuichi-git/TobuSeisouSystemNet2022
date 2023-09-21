@@ -247,6 +247,7 @@ namespace VehicleDispatch {
                     setControlEx.SetFlag = true;
                     setControlEx.OperationFlag = vehicleDispatchDetailVo.Operation_flag;
                     setControlEx.ContactInformationFlag = vehicleDispatchDetailVo.Contact_infomation_flag;
+                    setControlEx.FaxTransmissionFlag = vehicleDispatchDetailVo.Fax_transmission_flag;
                     setControlEx.ClassificationFlag = vehicleDispatchDetailVo.Classification_flag;
                     setControlEx.LastRollCallFlag = vehicleDispatchDetailVo.Last_roll_call_flag;
                     setControlEx.ShiftCode = vehicleDispatchDetailVo.Shift_code;
@@ -980,7 +981,7 @@ namespace VehicleDispatch {
                         // 待機
                         ToolStripMenuItemStandByFlag.Enabled = true;
                         // 代車・代番のFAXを作成する
-                        ToolStripMenuItemFax.Enabled = (setMasterVo.Contact_method == 11 && DateTimePickerJpExOperationDate.GetValue().Date == DateTime.Now.Date && EvacuationSetControlEx.OperationFlag) ? true : false;
+                        ToolStripMenuItemCreateFax.Enabled = (setMasterVo.Contact_method == 11 && DateTimePickerJpExOperationDate.GetValue().Date == DateTime.Now.Date && EvacuationSetControlEx.OperationFlag) ? true : false;
                         //ToolStripMenuItemFax.Enabled = (setMasterVo.Contact_method == 11) ? true : false;
                         // 高速道路使用報告書
                         ToolStripMenuItemHighWayReport.Enabled = EvacuationSetLabelEx.OperationFlag;
@@ -1009,7 +1010,7 @@ namespace VehicleDispatch {
                         // 待機
                         ToolStripMenuItemStandByFlag.Enabled = false;
                         // 代車・代番のFAXを作成する
-                        ToolStripMenuItemFax.Enabled = false;
+                        ToolStripMenuItemCreateFax.Enabled = false;
                         // 高速道路使用報告書
                         ToolStripMenuItemHighWayReport.Enabled = false;
                     }
@@ -1257,6 +1258,33 @@ namespace VehicleDispatch {
                                                                                    false);
                             // SetLabelExを連絡事項なしにする
                             EvacuationSetControlEx.SetContactInformationFlag(false);
+                        } catch(Exception exception) {
+                            MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        }
+                    break;
+                // Fax
+                case "ToolStripMenuItemFaxTrue":
+                    // Nullチェック
+                    if(EvacuationSetControlEx is not null)
+                        try {
+                            _vehicleDispatchDetailDao.UpdateFaxTransmissionFlag(DateTimePickerJpExOperationDate.GetValue(),
+                                                                                (int)EvacuationSetControlEx.Tag,
+                                                                                true);
+                            // SetLabelExを連絡事項ありにする
+                            EvacuationSetControlEx.SetFaxTransmissionFlag(true);
+                        } catch(Exception exception) {
+                            MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        }
+                    break;
+                case "ToolStripMenuItemFaxFalse":
+                    // Nullチェック
+                    if(EvacuationSetControlEx is not null)
+                        try {
+                            _vehicleDispatchDetailDao.UpdateFaxTransmissionFlag(DateTimePickerJpExOperationDate.GetValue(),
+                                                                                (int)EvacuationSetControlEx.Tag,
+                                                                                false);
+                            // SetLabelExを連絡事項ありにする
+                            EvacuationSetControlEx.SetFaxTransmissionFlag(false);
                         } catch(Exception exception) {
                             MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         }
@@ -1654,6 +1682,7 @@ namespace VehicleDispatch {
                 vehicleDispatchDetailVo.Classification_flag = false;
                 vehicleDispatchDetailVo.Add_worker_flag = false;
                 vehicleDispatchDetailVo.Contact_infomation_flag = false;
+                vehicleDispatchDetailVo.Fax_transmission_flag = false;
                 vehicleDispatchDetailVo.Set_code = vehicleDispatchDetail.Set_code;
                 vehicleDispatchDetailVo.Set_note = vehicleDispatchDetail.Set_note; // vehicle_dispatch_body.note
                 vehicleDispatchDetailVo.Car_code = vehicleDispatchDetail.Car_code;

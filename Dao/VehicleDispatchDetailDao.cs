@@ -17,6 +17,9 @@ namespace Dao {
         /// </summary>
         /// <param name="connection"></param>
         public VehicleDispatchDetailDao(ConnectionVo connection) {
+            /*
+             * Vo
+             */
             _connectionVo = connection;
         }
 
@@ -98,6 +101,8 @@ namespace Dao {
 
         /// <summary>
         /// SelectOneVehicleDispatchDetail
+        /// 2023-09-21
+        /// vehicle_dispatch_detail.fax_transmission_flagを追加
         /// </summary>
         /// <param name="operationDate"></param>
         /// <param name="cellNumber"></param>
@@ -116,6 +121,7 @@ namespace Dao {
                                             "vehicle_dispatch_detail.classification_flag," +
                                             "vehicle_dispatch_detail.add_worker_flag," +
                                             "vehicle_dispatch_detail.contact_infomation_flag," +
+                                            "vehicle_dispatch_detail.fax_transmission_flag," +
                                             "vehicle_dispatch_detail.set_code," +
                                             "vehicle_dispatch_detail.set_note," +
                                             "vehicle_dispatch_detail.car_code," +
@@ -177,6 +183,7 @@ namespace Dao {
                     vehicleDispatchDetailVo.Classification_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["classification_flag"]);
                     vehicleDispatchDetailVo.Add_worker_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["add_worker_flag"]);
                     vehicleDispatchDetailVo.Contact_infomation_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["contact_infomation_flag"]);
+                    vehicleDispatchDetailVo.Fax_transmission_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["fax_transmission_flag"]);
                     vehicleDispatchDetailVo.Set_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["set_code"]);
                     vehicleDispatchDetailVo.Set_note = _defaultValue.GetDefaultValue<string>(sqlDataReader["set_note"]);
                     vehicleDispatchDetailVo.Car_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["car_code"]);
@@ -243,6 +250,7 @@ namespace Dao {
                                             "vehicle_dispatch_detail.classification_flag," +
                                             "vehicle_dispatch_detail.add_worker_flag," +
                                             "vehicle_dispatch_detail.contact_infomation_flag," +
+                                            "vehicle_dispatch_detail.fax_transmission_flag," +
                                             "vehicle_dispatch_detail.set_code," +
                                             "vehicle_dispatch_detail.set_note," +
                                             "vehicle_dispatch_detail.car_code," +
@@ -305,6 +313,7 @@ namespace Dao {
                     vehicleDispatchDetailVo.Classification_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["classification_flag"]);
                     vehicleDispatchDetailVo.Add_worker_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["add_worker_flag"]);
                     vehicleDispatchDetailVo.Contact_infomation_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["contact_infomation_flag"]);
+                    vehicleDispatchDetailVo.Fax_transmission_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["fax_transmission_flag"]);
                     vehicleDispatchDetailVo.Set_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["set_code"]);
                     vehicleDispatchDetailVo.Set_note = _defaultValue.GetDefaultValue<string>(sqlDataReader["set_note"]);
                     vehicleDispatchDetailVo.Car_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["car_code"]);
@@ -355,6 +364,8 @@ namespace Dao {
 
         /// <summary>
         /// InsertVehicleDispatchDetail
+        /// 2023-09-21
+        /// Fax_transmission_flagを追加
         /// </summary>
         /// <param name="listVehicleDispatchDetailVo"></param>
         public void InsertVehicleDispatchDetail(List<VehicleDispatchDetailVo> listVehicleDispatchDetailVo) {
@@ -373,6 +384,7 @@ namespace Dao {
                              "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Classification_flag) + "'," +
                              "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Add_worker_flag) + "'," +
                              "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Contact_infomation_flag) + "'," +
+                             "'" + _defaultValue.GetDefaultValue<bool>(vehicleDispatchDetailVo.Fax_transmission_flag) + "'," +
                                    _defaultValue.GetDefaultValue<int>(vehicleDispatchDetailVo.Set_code) + "," +
                              "'" + _defaultValue.GetDefaultValue<string>(vehicleDispatchDetailVo.Set_note) + "'," +
                                    _defaultValue.GetDefaultValue<int>(vehicleDispatchDetailVo.Car_code) + "," +
@@ -432,6 +444,7 @@ namespace Dao {
                                                                          "classification_flag," +
                                                                          "add_worker_flag," +
                                                                          "contact_infomation_flag," +
+                                                                         "fax_transmission_flag," +
                                                                          "set_code," +
                                                                          "set_note," +
                                                                          "car_code," +
@@ -523,6 +536,7 @@ namespace Dao {
                                          "shift_code = (SELECT shift_code FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
                                          "stand_by_flag = (SELECT stand_by_flag FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
                                          "classification_flag = (SELECT classification_flag FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
+                                         "fax_transmission_flag = (SELECT fax_transmission_flag FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
                                          "add_worker_flag = (SELECT add_worker_flag FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
                                          "set_code = (SELECT set_code FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
                                          "set_note = (SELECT set_note FROM vehicle_dispatch_detail WHERE cell_number = " + dragCellNumber + " AND operation_date =  '" + operationDate.ToString("yyyy-MM-dd") + "')," +
@@ -562,7 +576,7 @@ namespace Dao {
                                          "five_lap = '" + setMasterVo.Five_lap + "'," +
                                          "move_flag = '" + setMasterVo.Move_flag + "'," +
                                          "day_of_week = '" + operationDate.ToString("ddd") + "'," +
-                                         "shift_code = 0," + // 番手コードをセット
+                                         "shift_code = 0," + // 番手コードをセット(0:無 1:早番 2:遅番)
                                          "set_code = '" + setMasterVo.Set_code + "'," +
                                          "set_note = '" + setMasterVo.Remarks + "'," +
                                          "last_roll_call_flag = 'False'," +
@@ -603,6 +617,7 @@ namespace Dao {
                                          "stand_by_flag = 'False'," +
                                          "shift_code = 0," +
                                          "classification_flag = 'False'," +
+                                         "fax_transmission_flag = 'False'," +
                                          "add_worker_flag = 'False'," +
                                          "set_code = 0," +
                                          "set_note = ''," +
@@ -958,6 +973,32 @@ namespace Dao {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "UPDATE vehicle_dispatch_detail " +
                                      "SET contact_infomation_flag = '" + contactInformationFlag + "'," +
+                                         "update_pc_name = '" + Environment.MachineName + "'," +
+                                         "update_ymd_hms = '" + DateTime.Now + "' " +
+                                     "WHERE cell_number = " + dropCellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                return sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// UpdateFaxTransmissionFlag
+        /// SetControlExにFax送信あり・なしの枠を付ける
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="dropCellNumber"></param>
+        /// <param name="faxTransmissionFlag"></param>
+        /// <returns></returns>
+        public int UpdateFaxTransmissionFlag(DateTime operationDate, int dropCellNumber, bool faxTransmissionFlag) {
+            /*
+             * Tagがゼロから始まっているので１をプラスする
+             */
+            dropCellNumber++;
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE vehicle_dispatch_detail " +
+                                     "SET fax_transmission_flag = '" + faxTransmissionFlag + "'," +
                                          "update_pc_name = '" + Environment.MachineName + "'," +
                                          "update_ymd_hms = '" + DateTime.Now + "' " +
                                      "WHERE cell_number = " + dropCellNumber + " AND operation_date = '" + operationDate.ToString("yyyy-MM-dd") + "'";

@@ -5,66 +5,133 @@
  * 職種コードを追加(occupation)
  * 2023-05-04
  * 早番遅番コード
+ * 2023-09-21
+ * _fax_transmission_flagを追加
  */
 namespace Vo {
     public class VehicleDispatchDetailVo {
+        private readonly DateTime _default_datetime = new DateTime(1900,01,01);
+
         private int _cell_number;
         private DateTime _operation_date;
         private bool _operation_flag;
         private bool _garage_flag;
         private bool _five_lap;
         private bool _move_flag;
-        private string _day_of_week = "";
-        private int _shift_code = 0;
+        private string _day_of_week;
+        private int _shift_code;
         private bool _stand_by_flag;
         private bool _classification_flag;
         private bool _add_worker_flag;
         private bool _contact_infomation_flag;
+        private bool _fax_transmission_flag;
         private int _set_code;
-        private string _set_note = "";
+        private string _set_note;
         private int _car_code;
         private bool _car_proxy_flag;
-        private string _car_note = "";
+        private string _car_note;
         private int _number_of_people;
         private int _operator_code_1;
         private bool _operator_1_proxy_flag;
         private bool _operator_1_roll_call_flag;
         private DateTime _operator_1_roll_call_ymd_hms;
-        private string _operator_1_note = "";
+        private string _operator_1_note;
         private int _operator_1_occupation; // 職種
         private int _operator_code_2;
         private bool _operator_2_proxy_flag;
         private bool _operator_2_roll_call_flag;
         private DateTime _operator_2_roll_call_ymd_hms;
-        private string _operator_2_note = "";
+        private string _operator_2_note;
         private int _operator_2_occupation; // 職種
         private int _operator_code_3;
         private bool _operator_3_proxy_flag;
         private bool _operator_3_roll_call_flag;
         private DateTime _operator_3_roll_call_ymd_hms;
-        private string _operator_3_note = "";
+        private string _operator_3_note;
         private int _operator_3_occupation; // 職種
         private int _operator_code_4;
         private bool _operator_4_proxy_flag;
         private bool _operator_4_roll_call_flag;
         private DateTime _operator_4_roll_call_ymd_hms;
-        private string _operator_4_note = "";
+        private string _operator_4_note;
         private int _operator_4_occupation; // 職種
 
         private bool _last_roll_call_flag; // 帰庫点呼関連
         private int _last_plant_count; // 帰庫点呼関連
-        private string _last_plant_name = ""; // 帰庫点呼関連
-        private string _last_plant_hm = ""; // 帰庫点呼関連
-        private string _last_roll_call_hm = ""; // 帰庫点呼関連
+        private string _last_plant_name; // 帰庫点呼関連
+        private string _last_plant_hm; // 帰庫点呼関連
+        private string _last_roll_call_hm; // 帰庫点呼関連
 
-        private string _insert_pc_name = "";
+        private string _insert_pc_name;
         private DateTime _insert_ymd_hms;
-        private string _update_pc_name = "";
+        private string _update_pc_name;
         private DateTime _update_ymd_hms;
-        private string _delete_pc_name = "";
+        private string _delete_pc_name;
         private DateTime _delete_ymd_hms;
         private bool _delete_flag;
 
+        /// <summary>
+        /// コンストラクター
+        /// </summary>
+        public VehicleDispatchDetailVo() {
+            _cell_number = 0;
+            _operation_date = _default_datetime;
+            _operation_flag = false;
+            _garage_flag = false;
+            _five_lap = false;
+            _move_flag = false;
+            _day_of_week = string.Empty;
+            _shift_code = 0;
+            _stand_by_flag = false;
+            _classification_flag = false;
+            _add_worker_flag = false;
+            _contact_infomation_flag = false;
+            _fax_transmission_flag = false;
+            _set_code = 0;
+            _set_note = string.Empty;
+            _car_code = 0;
+            _car_proxy_flag = false;
+            _car_note = string.Empty;
+            _number_of_people = 0;
+            _operator_code_1 = 0;
+            _operator_1_proxy_flag = false;
+            _operator_1_roll_call_flag = false;
+            _operator_1_roll_call_ymd_hms = _default_datetime;
+            _operator_1_note = string.Empty;
+            _operator_1_occupation = 0; // 職種
+            _operator_code_2 = 0;
+            _operator_2_proxy_flag = false;
+            _operator_2_roll_call_flag = false;
+            _operator_2_roll_call_ymd_hms = _default_datetime;
+            _operator_2_note = string.Empty;
+            _operator_2_occupation = 0; // 職種
+            _operator_code_3 = 0;
+            _operator_3_proxy_flag = false;
+            _operator_3_roll_call_flag = false;
+            _operator_3_roll_call_ymd_hms = _default_datetime;
+            _operator_3_note = string.Empty;
+            _operator_3_occupation = 0; // 職種
+            _operator_code_4 = 0;
+            _operator_4_proxy_flag = false;
+            _operator_4_roll_call_flag = false;
+            _operator_4_roll_call_ymd_hms = _default_datetime;
+            _operator_4_note = string.Empty;
+            _operator_4_occupation = 0; // 職種
+
+            _last_roll_call_flag = false; // 帰庫点呼関連
+            _last_plant_count = 0; // 帰庫点呼関連
+            _last_plant_name = string.Empty; // 帰庫点呼関連
+            _last_plant_hm = string.Empty; // 帰庫点呼関連
+            _last_roll_call_hm = string.Empty; // 帰庫点呼関連
+
+            _insert_pc_name = string.Empty;
+            _insert_ymd_hms = _default_datetime;
+            _update_pc_name = string.Empty;
+            _update_ymd_hms = _default_datetime;
+            _delete_pc_name = string.Empty;
+            _delete_ymd_hms = _default_datetime;
+            _delete_flag = false;
+        }
         /// <summary>
         /// 配車表№
         /// </summary>
@@ -157,6 +224,14 @@ namespace Vo {
         public bool Contact_infomation_flag {
             get => _contact_infomation_flag;
             set => _contact_infomation_flag = value;
+        }
+        /// <summary>
+        /// Fax送信フラグ
+        /// true:Fax送信対象 false:なし
+        /// </summary>
+        public bool Fax_transmission_flag {
+            get => _fax_transmission_flag;
+            set => _fax_transmission_flag = value;
         }
         /// <summary>
         /// 組コード

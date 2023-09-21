@@ -96,6 +96,7 @@ namespace LegalTwelveItem {
             foreach(LegalTwelveItemListVo legalTwelveItemFormVo in listLegalTwelveItemFormVo) {
                 SheetViewList.Rows.Add(i, 1);
                 SheetViewList.RowHeader.Columns[0].Label = (i + 1).ToString(); // Rowヘッダ
+                SheetViewList.Rows[i].ForeColor = legalTwelveItemFormVo.Job_form == 11 ? Color.Red : Color.Black; // 手帳のレコードのForeColorをセット
                 SheetViewList.Cells[i, colBelongsName].Text = legalTwelveItemFormVo.Belongs_name;
                 SheetViewList.Cells[i, colJobFormName].Text = legalTwelveItemFormVo.Job_form_name;
                 SheetViewList.Cells[i, colOccupation].Text = legalTwelveItemFormVo.Occupation_name;

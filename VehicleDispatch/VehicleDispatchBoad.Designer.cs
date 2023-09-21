@@ -31,6 +31,8 @@
             ToolStripMenuItemConvertExcel = new ToolStripMenuItem();
             ToolStripMenuItemPrint = new ToolStripMenuItem();
             ToolStripMenuItemExit = new ToolStripMenuItem();
+            ToolStripMenuItemEdit = new ToolStripMenuItem();
+            ToolStripMenuItemTaitouEdit = new ToolStripMenuItem();
             ToolStripMenuItemDisplay = new ToolStripMenuItem();
             ToolStripMenuItemAllScreen = new ToolStripMenuItem();
             ToolStripMenuItemDefaultScreen = new ToolStripMenuItem();
@@ -130,6 +132,9 @@
             ToolStripMenuItemStandByFalse = new ToolStripMenuItem();
             toolStripSeparator7 = new ToolStripSeparator();
             ToolStripMenuItemFax = new ToolStripMenuItem();
+            ToolStripMenuItemFaxTrue = new ToolStripMenuItem();
+            ToolStripMenuItemFaxFalse = new ToolStripMenuItem();
+            ToolStripMenuItemCreateFax = new ToolStripMenuItem();
             ToolStripMenuItemHighWayReport = new ToolStripMenuItem();
             ContextMenuStripCarLabel = new ContextMenuStrip(components);
             ToolStripMenuItemCarDetail = new ToolStripMenuItem();
@@ -156,8 +161,6 @@
             ToolStripMenuItemEquipment3 = new ToolStripMenuItem();
             ToolStripMenuItemEquipment4 = new ToolStripMenuItem();
             ToolTip1 = new ToolTip(components);
-            ToolStripMenuItemEdit = new ToolStripMenuItem();
-            ToolStripMenuItemTaitouEdit = new ToolStripMenuItem();
             TableLayoutPanelBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -256,6 +259,20 @@
             ToolStripMenuItemExit.Size = new Size(195, 22);
             ToolStripMenuItemExit.Text = "アプリケーションを終了する";
             ToolStripMenuItemExit.Click += ToolStripMenuItemExit_Click;
+            // 
+            // ToolStripMenuItemEdit
+            // 
+            ToolStripMenuItemEdit.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemTaitouEdit });
+            ToolStripMenuItemEdit.Name = "ToolStripMenuItemEdit";
+            ToolStripMenuItemEdit.Size = new Size(43, 20);
+            ToolStripMenuItemEdit.Text = "編集";
+            // 
+            // ToolStripMenuItemTaitouEdit
+            // 
+            ToolStripMenuItemTaitouEdit.Name = "ToolStripMenuItemTaitouEdit";
+            ToolStripMenuItemTaitouEdit.Size = new Size(217, 22);
+            ToolStripMenuItemTaitouEdit.Text = "台東資源(古紙) 収集量入力";
+            ToolStripMenuItemTaitouEdit.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemDisplay
             // 
@@ -1138,9 +1155,9 @@
             // 
             // ContextMenuStripSetLabel
             // 
-            ContextMenuStripSetLabel.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemSetDetail, toolStripSeparator4, ToolStripMenuItemSetGarageChange, ToolStripMenuItemSetDelete, toolStripSeparator9, ToolStripMenuItemSetMemo, toolStripSeparator6, ToolStripMenuItemOperationFlag, ToolStripMenuItemClassification, ToolStripMenuItemContactInformation, ToolStripMenuItemAddWorker, ToolStripMenuItemShift, ToolStripMenuItemStandByFlag, toolStripSeparator7, ToolStripMenuItemFax, ToolStripMenuItemHighWayReport });
+            ContextMenuStripSetLabel.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemSetDetail, toolStripSeparator4, ToolStripMenuItemSetGarageChange, ToolStripMenuItemSetDelete, toolStripSeparator9, ToolStripMenuItemSetMemo, toolStripSeparator6, ToolStripMenuItemOperationFlag, ToolStripMenuItemClassification, ToolStripMenuItemContactInformation, ToolStripMenuItemAddWorker, ToolStripMenuItemShift, ToolStripMenuItemStandByFlag, toolStripSeparator7, ToolStripMenuItemFax, ToolStripMenuItemCreateFax, ToolStripMenuItemHighWayReport });
             ContextMenuStripSetLabel.Name = "ContextMenuStripSetLabel";
-            ContextMenuStripSetLabel.Size = new Size(235, 292);
+            ContextMenuStripSetLabel.Size = new Size(235, 314);
             ContextMenuStripSetLabel.Opened += ContextMenuStrip_Opened;
             // 
             // ToolStripMenuItemSetDetail
@@ -1340,10 +1357,31 @@
             // 
             // ToolStripMenuItemFax
             // 
+            ToolStripMenuItemFax.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemFaxTrue, ToolStripMenuItemFaxFalse });
             ToolStripMenuItemFax.Name = "ToolStripMenuItemFax";
             ToolStripMenuItemFax.Size = new Size(234, 22);
-            ToolStripMenuItemFax.Text = "代車・代番のFaxを作成する";
-            ToolStripMenuItemFax.Click += ToolStripMenuItem_Click;
+            ToolStripMenuItemFax.Text = "Fax送信確認";
+            // 
+            // ToolStripMenuItemFaxTrue
+            // 
+            ToolStripMenuItemFaxTrue.Name = "ToolStripMenuItemFaxTrue";
+            ToolStripMenuItemFaxTrue.Size = new Size(180, 22);
+            ToolStripMenuItemFaxTrue.Text = "Fax送信対応";
+            ToolStripMenuItemFaxTrue.Click += ToolStripMenuItem_Click;
+            // 
+            // ToolStripMenuItemFaxFalse
+            // 
+            ToolStripMenuItemFaxFalse.Name = "ToolStripMenuItemFaxFalse";
+            ToolStripMenuItemFaxFalse.Size = new Size(180, 22);
+            ToolStripMenuItemFaxFalse.Text = "Fax未対応";
+            ToolStripMenuItemFaxFalse.Click += ToolStripMenuItem_Click;
+            // 
+            // ToolStripMenuItemCreateFax
+            // 
+            ToolStripMenuItemCreateFax.Name = "ToolStripMenuItemCreateFax";
+            ToolStripMenuItemCreateFax.Size = new Size(234, 22);
+            ToolStripMenuItemCreateFax.Text = "代車・代番のFaxを作成する";
+            ToolStripMenuItemCreateFax.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemHighWayReport
             // 
@@ -1515,20 +1553,6 @@
             ToolTip1.InitialDelay = 500;
             ToolTip1.ReshowDelay = 0;
             // 
-            // ToolStripMenuItemEdit
-            // 
-            ToolStripMenuItemEdit.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemTaitouEdit });
-            ToolStripMenuItemEdit.Name = "ToolStripMenuItemEdit";
-            ToolStripMenuItemEdit.Size = new Size(43, 20);
-            ToolStripMenuItemEdit.Text = "編集";
-            // 
-            // ToolStripMenuItemTaitouEdit
-            // 
-            ToolStripMenuItemTaitouEdit.Name = "ToolStripMenuItemTaitouEdit";
-            ToolStripMenuItemTaitouEdit.Size = new Size(217, 22);
-            ToolStripMenuItemTaitouEdit.Text = "台東資源(古紙) 収集量入力";
-            ToolStripMenuItemTaitouEdit.Click += ToolStripMenuItem_Click;
-            // 
             // VehicleDispatchBoad
             // 
             AllowDrop = true;
@@ -1610,7 +1634,7 @@
         private ToolStripMenuItem ToolStripMenuItemSetDetail;
         private ToolStripMenuItem ToolStripMenuItemSetGarageAdachi;
         private ToolStripMenuItem ToolStripMenuItemSetGarageMisato;
-        private ToolStripMenuItem ToolStripMenuItemFax;
+        private ToolStripMenuItem ToolStripMenuItemCreateFax;
         private ToolStripMenuItem ToolStripMenuItemCarDetail;
         private ToolStripMenuItem ToolStripMenuItemStaffDetail;
         private ToolStripStatusLabel ToolStripStatusLabelStatus;
@@ -1716,5 +1740,8 @@
         private ToolStripMenuItem ToolStripMenuItemEquipment4;
         private ToolStripMenuItem ToolStripMenuItemEdit;
         private ToolStripMenuItem ToolStripMenuItemTaitouEdit;
+        private ToolStripMenuItem ToolStripMenuItemFax;
+        private ToolStripMenuItem ToolStripMenuItemFaxTrue;
+        private ToolStripMenuItem ToolStripMenuItemFaxFalse;
     }
 }

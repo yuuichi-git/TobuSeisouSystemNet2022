@@ -11,11 +11,8 @@ namespace ControlEx {
         private bool _lastRollCallFlag = default;
         private int _shiftCode = default;
 
-        /// <summary>
-        /// SetControlExのContactInformation(Border)を描画
-        /// true:表示 false:非表示
-        /// </summary>
-        private bool _setContactInformation = default;
+        private bool _setContactInformationFlag = default;
+        private bool _setFaxTransmissionFlag = default;
 
         /*
          * 空のSetControlExの文字列表示用
@@ -85,7 +82,8 @@ namespace ControlEx {
          * SetControlExを囲うPointと半透明色を設定する
          */
         Point[] _points = {new Point(1,  0), new Point(73, 0), new Point(73,  303), new Point(1, 303)};
-        SolidBrush _solidBrush = new(Color.FromArgb(15, Color.LimeGreen));
+        SolidBrush _solidBrushContactInformation = new(Color.FromArgb(15, Color.LimeGreen));
+        SolidBrush _solidBrushFaxTransmission = new(Color.FromArgb(15, Color.IndianRed));
         /// <summary>
         /// SetControlEx_CellPaint
         /// </summary>
@@ -95,8 +93,13 @@ namespace ControlEx {
             /*
              * 連絡事項ありの印
              */
-            if(_setContactInformation)
-                this.CreateGraphics().FillPolygon(_solidBrush, _points);
+            if(_setContactInformationFlag)
+                this.CreateGraphics().FillPolygon(_solidBrushContactInformation, _points);
+            /*
+             * Fax送信の印
+             */
+            if(_setFaxTransmissionFlag)
+                this.CreateGraphics().FillPolygon(_solidBrushFaxTransmission, _points);
             /*
              * SetControlEx全体にBorderを掛ける
              */
@@ -367,8 +370,8 @@ namespace ControlEx {
         /// true:連絡事項あり false:連絡事項なし
         /// </summary>
         public bool ContactInformationFlag {
-            get => _setContactInformation;
-            set => _setContactInformation = value;
+            get => _setContactInformationFlag;
+            set => _setContactInformationFlag = value;
         }
         /// <summary>
         /// 帰庫点呼フラグ
@@ -386,6 +389,14 @@ namespace ControlEx {
             get => _shiftCode;
             set => _shiftCode = value;
         }
+        /// <summary>
+        /// Fax
+        /// true:Fax送信 false:Fax未送信
+        /// </summary>
+        public bool FaxTransmissionFlag {
+            get => _setFaxTransmissionFlag;
+            set => _setFaxTransmissionFlag = value;
+        }
 
         /*
          * 公開メソッド
@@ -396,7 +407,17 @@ namespace ControlEx {
         /// </summary>
         /// <param name="contactInformationFlag"></param>
         public void SetContactInformationFlag(bool contactInformationFlag) {
-            _setContactInformation = contactInformationFlag;
+            _setContactInformationFlag = contactInformationFlag;
+            this.Refresh();
+        }
+
+        /// <summary>
+        /// SetFaxTransmissionFlag
+        /// true:Faxを送信する false:Faxを送信しない
+        /// </summary>
+        /// <param name="faxTransmissionFlag"></param>
+        public void SetFaxTransmissionFlag(bool faxTransmissionFlag) {
+            _setFaxTransmissionFlag = faxTransmissionFlag;
             this.Refresh();
         }
     }
