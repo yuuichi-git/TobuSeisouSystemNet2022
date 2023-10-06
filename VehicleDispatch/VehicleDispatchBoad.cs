@@ -788,7 +788,7 @@ namespace VehicleDispatch {
                 FlowLayoutPanelExSet.Controls.Add(setLabelEx);
             }
             // FlowLayoutPanelExCar
-            foreach(CarMasterVo deepCopyCarMasterVo in _listDeepCopyCarMasterVo.OrderBy(x => x.Disguise_kind_1)) {
+            foreach(CarMasterVo deepCopyCarMasterVo in _listDeepCopyCarMasterVo.FindAll(x => x.Delete_flag == false).OrderBy(x => x.Door_number)) {
                 CarLabelEx carLabelEx = new CarLabelEx(deepCopyCarMasterVo).CreateLabel();
                 // プロパティを設定
                 carLabelEx.ContextMenuStrip = ContextMenuStripCarLabel;
@@ -980,6 +980,8 @@ namespace VehicleDispatch {
                         ToolStripMenuItemAddWorker.Enabled = ((SetMasterVo)EvacuationSetLabelEx.Tag).Classification_code == 12 ? true : false;
                         // 待機
                         ToolStripMenuItemStandByFlag.Enabled = true;
+                        // FAX送信の確認
+                        ToolStripMenuItemFax.Enabled = (setMasterVo.Contact_method == 11 && DateTimePickerJpExOperationDate.GetValue().Date == DateTime.Now.Date && EvacuationSetControlEx.OperationFlag) ? true : false;
                         // 代車・代番のFAXを作成する
                         ToolStripMenuItemCreateFax.Enabled = (setMasterVo.Contact_method == 11 && DateTimePickerJpExOperationDate.GetValue().Date == DateTime.Now.Date && EvacuationSetControlEx.OperationFlag) ? true : false;
                         //ToolStripMenuItemFax.Enabled = (setMasterVo.Contact_method == 11) ? true : false;
@@ -1262,33 +1264,6 @@ namespace VehicleDispatch {
                             MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         }
                     break;
-                // Fax
-                case "ToolStripMenuItemFaxTrue":
-                    // Nullチェック
-                    if(EvacuationSetControlEx is not null)
-                        try {
-                            _vehicleDispatchDetailDao.UpdateFaxTransmissionFlag(DateTimePickerJpExOperationDate.GetValue(),
-                                                                                (int)EvacuationSetControlEx.Tag,
-                                                                                true);
-                            // SetLabelExを連絡事項ありにする
-                            EvacuationSetControlEx.SetFaxTransmissionFlag(true);
-                        } catch(Exception exception) {
-                            MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                        }
-                    break;
-                case "ToolStripMenuItemFaxFalse":
-                    // Nullチェック
-                    if(EvacuationSetControlEx is not null)
-                        try {
-                            _vehicleDispatchDetailDao.UpdateFaxTransmissionFlag(DateTimePickerJpExOperationDate.GetValue(),
-                                                                                (int)EvacuationSetControlEx.Tag,
-                                                                                false);
-                            // SetLabelExを連絡事項ありにする
-                            EvacuationSetControlEx.SetFaxTransmissionFlag(false);
-                        } catch(Exception exception) {
-                            MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                        }
-                    break;
                 // 作業員の配置
                 case "ToolStripMenuItemAddWorkerTrue":
                     // Nullチェック
@@ -1370,7 +1345,7 @@ namespace VehicleDispatch {
                             MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         }
                     break;
-                // 番手なし
+                // 番手
                 case "ToolStripMenuItemNoneShift":
                     // Nullチェック
                     if(EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null)
@@ -1383,7 +1358,6 @@ namespace VehicleDispatch {
                             MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         }
                     break;
-                // 番手早番
                 case "ToolStripMenuItemFirstShift":
                     // Nullチェック
                     if(EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null)
@@ -1396,7 +1370,6 @@ namespace VehicleDispatch {
                             MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         }
                     break;
-                // 番手遅番
                 case "ToolStripMenuItemLateShift":
                     // Nullチェック
                     if(EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null)
@@ -1409,7 +1382,7 @@ namespace VehicleDispatch {
                             MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         }
                     break;
-                // 待機を設定
+                // 待機を設定・解除
                 case "ToolStripMenuItemStandByTrue":
                     // Nullチェック
                     if(EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null)
@@ -1422,7 +1395,6 @@ namespace VehicleDispatch {
                             MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         }
                     break;
-                // 待機を解除
                 case "ToolStripMenuItemStandByFalse":
                     // Nullチェック
                     if(EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null)
@@ -1435,8 +1407,35 @@ namespace VehicleDispatch {
                             MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         }
                     break;
+                // Fax
+                case "ToolStripMenuItemFaxTrue":
+                    // Nullチェック
+                    if(EvacuationSetControlEx is not null)
+                        try {
+                            _vehicleDispatchDetailDao.UpdateFaxTransmissionFlag(DateTimePickerJpExOperationDate.GetValue(),
+                                                                                (int)EvacuationSetControlEx.Tag,
+                                                                                true);
+                            // SetLabelExを連絡事項ありにする
+                            EvacuationSetControlEx.SetFaxTransmissionFlag(true);
+                        } catch(Exception exception) {
+                            MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        }
+                    break;
+                case "ToolStripMenuItemFaxFalse":
+                    // Nullチェック
+                    if(EvacuationSetControlEx is not null)
+                        try {
+                            _vehicleDispatchDetailDao.UpdateFaxTransmissionFlag(DateTimePickerJpExOperationDate.GetValue(),
+                                                                                (int)EvacuationSetControlEx.Tag,
+                                                                                false);
+                            // SetLabelExを連絡事項ありにする
+                            EvacuationSetControlEx.SetFaxTransmissionFlag(false);
+                        } catch(Exception exception) {
+                            MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        }
+                    break;
                 // 代車・代番FAX
-                case "ToolStripMenuItemFax":
+                case "ToolStripMenuItemCreateFax":
                     // Nullチェック
                     if(EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null) {
                         SetMasterVo setMasterVo = (SetMasterVo)EvacuationSetLabelEx.Tag;

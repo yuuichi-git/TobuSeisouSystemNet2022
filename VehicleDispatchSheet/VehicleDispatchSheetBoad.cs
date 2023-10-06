@@ -986,6 +986,40 @@ namespace VehicleDispatchSheet {
                     blockRowCount++;
                 }
             }
+            /*
+             * 33:☆各種研修・処理場・回送等
+             */
+            blockRowCount = 0;
+            foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(DateTimePickerJpExOperationDate.GetValue())) {
+                /*
+                 * 運賃対象のレコード以外はBreakする
+                 */
+                if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 33) {
+                    if(blockRowCount == 0) {
+                        _beforeBlockName = "☆各種研修・処理場・回送等";
+                        CreateSpan(GetNextCellPosition(), _beforeBlockName);
+                    }
+                    entryCellPosition = GetNextCellPosition();
+                    /*
+                     * 列が”AA"に変わった場合はBlockNameを挿入する
+                     */
+                    if(entryCellPosition != null && entryCellPosition.Row == _startRow && entryCellPosition.Col == _dictionaryColNumber[1]) {
+                        CreateSpan(entryCellPosition, _beforeBlockName);
+                        entryCellPosition.Row++;
+                    }
+                    if(entryCellPosition != null) {
+                        CreateSetRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateCarRow(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator1Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator2Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator3Row(entryCellPosition, vehicleDispatchDetailVo);
+                        CreateOperator4Row(entryCellPosition, vehicleDispatchDetailVo);
+                    } else {
+                        MessageBox.Show("配車表の行数が不足しています。システム管理者へ報告して下さい。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    }
+                    blockRowCount++;
+                }
+            }
             SpreadBase.ResumeLayout(true);
         }
 
