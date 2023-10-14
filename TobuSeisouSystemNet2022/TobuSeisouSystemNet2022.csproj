@@ -18,6 +18,7 @@
     <ProjectReference Include="..\Certification\Certification.csproj" />
     <ProjectReference Include="..\Common\Common.csproj" />
     <ProjectReference Include="..\CommuterInsurance\CommuterInsurance.csproj" />
+    <ProjectReference Include="..\H_VehicleDispatch\H_VehicleDispatch.csproj" />
     <ProjectReference Include="..\LegalTwelveItem\LegalTwelveItem.csproj" />
     <ProjectReference Include="..\Production\Production.csproj" />
     <ProjectReference Include="..\StaffDetail\StaffDetail.csproj" />

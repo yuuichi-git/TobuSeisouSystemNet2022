@@ -996,7 +996,7 @@ namespace VehicleDispatchSheet {
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 33) {
                     if(blockRowCount == 0) {
-                        _beforeBlockName = "☆各種研修・処理場・回送等";
+                        _beforeBlockName = "☆各種研修・処理場・回送等 コード：1";
                         CreateSpan(GetNextCellPosition(), _beforeBlockName);
                     }
                     entryCellPosition = GetNextCellPosition();

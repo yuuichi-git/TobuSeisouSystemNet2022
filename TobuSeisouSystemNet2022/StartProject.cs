@@ -17,6 +17,8 @@ using Common;
 
 using CommuterInsurance;
 
+using H_VehicleDispatch;
+
 using LegalTwelveItem;
 
 using License;
@@ -99,6 +101,11 @@ namespace TobuSeisouSystemNet2022 {
                             case "VehicleDispatch":
                                 var vehicleDispatchBoad = new VehicleDispatchBoad(_connectionVo);
                                 vehicleDispatchBoad.ShowDialog(this);
+                                break;
+                            // H_VehicleDispatch
+                            case "H_VehicleDispatch":
+                                var h_VehicleDispatchBoard = new H_VehicleDispatchBoard(_connectionVo);
+                                h_VehicleDispatchBoard.ShowDialog(this);
                                 break;
                             // VehicleDispatchSheetBoad
                             case "VehicleDispatchSheetBoad":

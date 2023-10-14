@@ -31,6 +31,7 @@
             toolStripStatusLabel2 = new ToolStripStatusLabel();
             ToolStripStatusLabelPosition = new ToolStripStatusLabel();
             SpreadBase = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("TableLayoutPanelExBase.Controls"));
+            SheetView1 = SpreadBase.GetSheet(0);
             MenuStrip1 = new MenuStrip();
             ToolStripMenuItemMenu = new ToolStripMenuItem();
             配車表ToolStripMenuItem = new ToolStripMenuItem();
@@ -61,7 +62,6 @@
             label2 = new Label();
             label1 = new Label();
             ButtonUpdate = new Button();
-            SheetView1 = SpreadBase.GetSheet(0);
             TableLayoutPanelExBase.SuspendLayout();
             StatusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)SpreadBase).BeginInit();
@@ -311,7 +311,7 @@
             // 
             ComboBox4.DropDownStyle = ComboBoxStyle.DropDownList;
             ComboBox4.FormattingEnabled = true;
-            ComboBox4.Items.AddRange(new object[] { "", "新井", "波潟", "五十嵐", "川名", "石原", "今村", "辻" });
+            ComboBox4.Items.AddRange(new object[] { "", "新井", "波潟", "五十嵐", "川名", "石原", "今村", "百瀨", "辻" });
             ComboBox4.Location = new Point(612, 14);
             ComboBox4.Name = "ComboBox4";
             ComboBox4.Size = new Size(104, 23);
@@ -321,7 +321,7 @@
             // 
             ComboBox3.DropDownStyle = ComboBoxStyle.DropDownList;
             ComboBox3.FormattingEnabled = true;
-            ComboBox3.Items.AddRange(new object[] { "", "新井", "波潟", "五十嵐", "川名", "石原", "今村", "辻" });
+            ComboBox3.Items.AddRange(new object[] { "", "新井", "波潟", "五十嵐", "川名", "石原", "今村", "百瀨", "辻" });
             ComboBox3.Location = new Point(436, 14);
             ComboBox3.Name = "ComboBox3";
             ComboBox3.Size = new Size(104, 23);
@@ -349,7 +349,7 @@
             // 
             ComboBox2.DropDownStyle = ComboBoxStyle.DropDownList;
             ComboBox2.FormattingEnabled = true;
-            ComboBox2.Items.AddRange(new object[] { "", "新井", "波潟", "川名", "石原", "今村", "辻" });
+            ComboBox2.Items.AddRange(new object[] { "", "新井", "波潟", "川名", "石原", "今村", "百瀨", "辻" });
             ComboBox2.Location = new Point(260, 14);
             ComboBox2.Name = "ComboBox2";
             ComboBox2.Size = new Size(104, 23);
@@ -368,7 +368,7 @@
             // 
             ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             ComboBox1.FormattingEnabled = true;
-            ComboBox1.Items.AddRange(new object[] { "", "新井", "波潟", "川名", "石原", "今村", "辻" });
+            ComboBox1.Items.AddRange(new object[] { "", "新井", "波潟", "川名", "石原", "今村", "百瀨", "辻" });
             ComboBox1.Location = new Point(84, 14);
             ComboBox1.Name = "ComboBox1";
             ComboBox1.Size = new Size(104, 23);

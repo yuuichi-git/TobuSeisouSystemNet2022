@@ -23,105 +23,105 @@
         ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            TreeNode treeNode298 = new TreeNode("データベース接続");
-            TreeNode treeNode299 = new TreeNode("00　巡回指導資料");
-            TreeNode treeNode300 = new TreeNode("01　運転者台帳");
-            TreeNode treeNode301 = new TreeNode("02　運行管理規定");
-            TreeNode treeNode302 = new TreeNode("03　点呼記録簿・点呼執行要領");
-            TreeNode treeNode303 = new TreeNode("04　乗務記録(運転日報)");
-            TreeNode treeNode304 = new TreeNode("05　運行計画及び勤務割当表");
-            TreeNode treeNode305 = new TreeNode("06　乗務実績一覧表(拘束時間管理表)");
-            TreeNode treeNode306 = new TreeNode("07　運行記録計による記録");
-            TreeNode treeNode307 = new TreeNode("08　運行指示書");
-            TreeNode treeNode308 = new TreeNode("09　受注伝票");
-            TreeNode treeNode309 = new TreeNode("10　運行管理者・整備管理者選任届出書");
-            TreeNode treeNode310 = new TreeNode("11　運行管理者資格者証");
-            TreeNode treeNode311 = new TreeNode("12　運行管理者研修手帳");
-            TreeNode treeNode312 = new TreeNode("13　整備管理者研修手帳");
-            TreeNode treeNode313 = new TreeNode("14　教育実施計画");
-            TreeNode treeNode314 = new TreeNode("15　運転記録証明書又は無事故無違反証明書");
-            TreeNode treeNode315 = new TreeNode("16　乗務員指導記録簿");
-            TreeNode treeNode316 = new TreeNode("17　適性診断受診結果票");
-            TreeNode treeNode317 = new TreeNode("18　適性診断受診計画表");
-            TreeNode treeNode318 = new TreeNode("19　事故記録簿");
-            TreeNode treeNode319 = new TreeNode("20　自動車事故報告書");
-            TreeNode treeNode320 = new TreeNode("21　事業報告書・事業実績報告書");
-            TreeNode treeNode321 = new TreeNode("22　役員変更届出書");
-            TreeNode treeNode322 = new TreeNode("23　車両台帳・自動車検査証の写し");
-            TreeNode treeNode323 = new TreeNode("24　整備管理規定等の規定類");
-            TreeNode treeNode324 = new TreeNode("25　点検整備記録簿");
-            TreeNode treeNode325 = new TreeNode("26　日常点検基準");
-            TreeNode treeNode326 = new TreeNode("27　日常点検表");
-            TreeNode treeNode327 = new TreeNode("28　定期点検基準");
-            TreeNode treeNode328 = new TreeNode("29　定期点検整備実施計画表");
-            TreeNode treeNode329 = new TreeNode("30　賃金台帳");
-            TreeNode treeNode330 = new TreeNode("31　健康診断書・健康診断記録簿");
-            TreeNode treeNode331 = new TreeNode("32　就業規則");
-            TreeNode treeNode332 = new TreeNode("33　３６協定");
-            TreeNode treeNode333 = new TreeNode("34　出勤簿");
-            TreeNode treeNode334 = new TreeNode("35　運輸安全マネジメント関係");
-            TreeNode treeNode335 = new TreeNode("36　労災保険加入台帳");
-            TreeNode treeNode336 = new TreeNode("37　雇用保険加入台帳");
-            TreeNode treeNode337 = new TreeNode("38　健康保険加入台帳・厚生年金加入台帳");
-            TreeNode treeNode338 = new TreeNode("陸運局監査", new TreeNode[] { treeNode299, treeNode300, treeNode301, treeNode302, treeNode303, treeNode304, treeNode305, treeNode306, treeNode307, treeNode308, treeNode309, treeNode310, treeNode311, treeNode312, treeNode313, treeNode314, treeNode315, treeNode316, treeNode317, treeNode318, treeNode319, treeNode320, treeNode321, treeNode322, treeNode323, treeNode324, treeNode325, treeNode326, treeNode327, treeNode328, treeNode329, treeNode330, treeNode331, treeNode332, treeNode333, treeNode334, treeNode335, treeNode336, treeNode337 });
-            TreeNode treeNode339 = new TreeNode("　　環境マネジメントマニュアル");
-            TreeNode treeNode340 = new TreeNode("１　目的");
-            TreeNode treeNode341 = new TreeNode("２　適用範囲");
-            TreeNode treeNode342 = new TreeNode("３　用語の定義");
-            TreeNode treeNode343 = new TreeNode("４.１　外部及び内部の課題");
-            TreeNode treeNode344 = new TreeNode("４.２　利害関係者のニーズ及び期待");
-            TreeNode treeNode345 = new TreeNode("４.３　環境マネジメントシステムの範囲");
-            TreeNode treeNode346 = new TreeNode("４.４　環境マネジメントシステムの概要");
-            TreeNode treeNode347 = new TreeNode("４　当社をとりまく状況の理解", new TreeNode[] { treeNode343, treeNode344, treeNode345, treeNode346 });
-            TreeNode treeNode348 = new TreeNode("５.１　リーダーシップ及びコミットメント");
-            TreeNode treeNode349 = new TreeNode("５.２　環境方針");
-            TreeNode treeNode350 = new TreeNode("５.３　役割、責任及び権限");
-            TreeNode treeNode351 = new TreeNode("５　リーダーシップ", new TreeNode[] { treeNode348, treeNode349, treeNode350 });
-            TreeNode treeNode352 = new TreeNode("６.１.１　リスク及び機会の決定");
-            TreeNode treeNode353 = new TreeNode("６.１.２　環境側面");
-            TreeNode treeNode354 = new TreeNode("６.１.３　順守義務(法的及びその他の要求事項)");
-            TreeNode treeNode355 = new TreeNode("６.１.４　取組みの計画策定");
-            TreeNode treeNode356 = new TreeNode("６.１　リスク及び機会への取組み", new TreeNode[] { treeNode352, treeNode353, treeNode354, treeNode355 });
-            TreeNode treeNode357 = new TreeNode("６.２　環境目標及びプログラム");
-            TreeNode treeNode358 = new TreeNode("６　計画", new TreeNode[] { treeNode356, treeNode357 });
-            TreeNode treeNode359 = new TreeNode("７.１　資源");
-            TreeNode treeNode360 = new TreeNode("７.２.１　力量(有資格者)");
-            TreeNode treeNode361 = new TreeNode("７.２.２　教育訓練");
-            TreeNode treeNode362 = new TreeNode("７.２　力量、教育訓練", new TreeNode[] { treeNode360, treeNode361 });
-            TreeNode treeNode363 = new TreeNode("７.３　認識");
-            TreeNode treeNode364 = new TreeNode("７.４　コミュニケーション");
-            TreeNode treeNode365 = new TreeNode("７.５.１　文章体系・文章の作成・承認");
-            TreeNode treeNode366 = new TreeNode("７.５.２　文章の管理・識別");
-            TreeNode treeNode367 = new TreeNode("７.５.３　文章の見直し");
-            TreeNode treeNode368 = new TreeNode("７.５.４　外部文章の保管・配布の管理");
-            TreeNode treeNode369 = new TreeNode("７.５.５　環境記録の管理");
-            TreeNode treeNode370 = new TreeNode("７.５　文章管理", new TreeNode[] { treeNode365, treeNode366, treeNode367, treeNode368, treeNode369 });
-            TreeNode treeNode371 = new TreeNode("７　支援(サポート)", new TreeNode[] { treeNode359, treeNode362, treeNode363, treeNode364, treeNode370 });
-            TreeNode treeNode372 = new TreeNode("８.１　運用の計画及び管理");
-            TreeNode treeNode373 = new TreeNode("８.２.１　緊急事態の可能性の特定");
-            TreeNode treeNode374 = new TreeNode("８.２.２　緊急事態対応手順書の作成");
-            TreeNode treeNode375 = new TreeNode("８.２.３　緊急事態対応訓練(対応手順のテスト)");
-            TreeNode treeNode376 = new TreeNode("８.２.４　手順書の見直し");
-            TreeNode treeNode377 = new TreeNode("８.２.５　取引先を含む利害関係者への情報提供");
-            TreeNode treeNode378 = new TreeNode("８.２　緊急事態への準備及び対応", new TreeNode[] { treeNode373, treeNode374, treeNode375, treeNode376, treeNode377 });
-            TreeNode treeNode379 = new TreeNode("８　運用", new TreeNode[] { treeNode372, treeNode378 });
-            TreeNode treeNode380 = new TreeNode("９.１.１　取組みの項目の監視、測定");
-            TreeNode treeNode381 = new TreeNode("９.１.２　順守評価(法的及びその他の要求事項)");
-            TreeNode treeNode382 = new TreeNode("９.１　監視、測定、分析及び評価", new TreeNode[] { treeNode380, treeNode381 });
-            TreeNode treeNode383 = new TreeNode("９.２　内部監査");
-            TreeNode treeNode384 = new TreeNode("９.３　経営層による見直し(マネジメントレビュー)");
-            TreeNode treeNode385 = new TreeNode("９　パフォーマンス評価", new TreeNode[] { treeNode382, treeNode383, treeNode384 });
-            TreeNode treeNode386 = new TreeNode("１０.１　一般");
-            TreeNode treeNode387 = new TreeNode("１０.２　不適合への対応");
-            TreeNode treeNode388 = new TreeNode("１０.３　継続的改善");
-            TreeNode treeNode389 = new TreeNode("１０改善", new TreeNode[] { treeNode386, treeNode387, treeNode388 });
-            TreeNode treeNode390 = new TreeNode("ISO14001", new TreeNode[] { treeNode339, treeNode340, treeNode341, treeNode342, treeNode347, treeNode351, treeNode358, treeNode371, treeNode379, treeNode385, treeNode389 });
-            TreeNode treeNode391 = new TreeNode("本社営業所");
-            TreeNode treeNode392 = new TreeNode("三郷車庫");
-            TreeNode treeNode393 = new TreeNode("中間処理場");
-            TreeNode treeNode394 = new TreeNode("事故受付");
-            TreeNode treeNode395 = new TreeNode("免許証マスターファイルを作成する");
-            TreeNode treeNode396 = new TreeNode("東海電子(アルコールチェック)", new TreeNode[] { treeNode395 });
+            TreeNode treeNode1 = new TreeNode("データベース接続");
+            TreeNode treeNode2 = new TreeNode("00　巡回指導資料");
+            TreeNode treeNode3 = new TreeNode("01　運転者台帳");
+            TreeNode treeNode4 = new TreeNode("02　運行管理規定");
+            TreeNode treeNode5 = new TreeNode("03　点呼記録簿・点呼執行要領");
+            TreeNode treeNode6 = new TreeNode("04　乗務記録(運転日報)");
+            TreeNode treeNode7 = new TreeNode("05　運行計画及び勤務割当表");
+            TreeNode treeNode8 = new TreeNode("06　乗務実績一覧表(拘束時間管理表)");
+            TreeNode treeNode9 = new TreeNode("07　運行記録計による記録");
+            TreeNode treeNode10 = new TreeNode("08　運行指示書");
+            TreeNode treeNode11 = new TreeNode("09　受注伝票");
+            TreeNode treeNode12 = new TreeNode("10　運行管理者・整備管理者選任届出書");
+            TreeNode treeNode13 = new TreeNode("11　運行管理者資格者証");
+            TreeNode treeNode14 = new TreeNode("12　運行管理者研修手帳");
+            TreeNode treeNode15 = new TreeNode("13　整備管理者研修手帳");
+            TreeNode treeNode16 = new TreeNode("14　教育実施計画");
+            TreeNode treeNode17 = new TreeNode("15　運転記録証明書又は無事故無違反証明書");
+            TreeNode treeNode18 = new TreeNode("16　乗務員指導記録簿");
+            TreeNode treeNode19 = new TreeNode("17　適性診断受診結果票");
+            TreeNode treeNode20 = new TreeNode("18　適性診断受診計画表");
+            TreeNode treeNode21 = new TreeNode("19　事故記録簿");
+            TreeNode treeNode22 = new TreeNode("20　自動車事故報告書");
+            TreeNode treeNode23 = new TreeNode("21　事業報告書・事業実績報告書");
+            TreeNode treeNode24 = new TreeNode("22　役員変更届出書");
+            TreeNode treeNode25 = new TreeNode("23　車両台帳・自動車検査証の写し");
+            TreeNode treeNode26 = new TreeNode("24　整備管理規定等の規定類");
+            TreeNode treeNode27 = new TreeNode("25　点検整備記録簿");
+            TreeNode treeNode28 = new TreeNode("26　日常点検基準");
+            TreeNode treeNode29 = new TreeNode("27　日常点検表");
+            TreeNode treeNode30 = new TreeNode("28　定期点検基準");
+            TreeNode treeNode31 = new TreeNode("29　定期点検整備実施計画表");
+            TreeNode treeNode32 = new TreeNode("30　賃金台帳");
+            TreeNode treeNode33 = new TreeNode("31　健康診断書・健康診断記録簿");
+            TreeNode treeNode34 = new TreeNode("32　就業規則");
+            TreeNode treeNode35 = new TreeNode("33　３６協定");
+            TreeNode treeNode36 = new TreeNode("34　出勤簿");
+            TreeNode treeNode37 = new TreeNode("35　運輸安全マネジメント関係");
+            TreeNode treeNode38 = new TreeNode("36　労災保険加入台帳");
+            TreeNode treeNode39 = new TreeNode("37　雇用保険加入台帳");
+            TreeNode treeNode40 = new TreeNode("38　健康保険加入台帳・厚生年金加入台帳");
+            TreeNode treeNode41 = new TreeNode("陸運局監査", new TreeNode[] { treeNode2, treeNode3, treeNode4, treeNode5, treeNode6, treeNode7, treeNode8, treeNode9, treeNode10, treeNode11, treeNode12, treeNode13, treeNode14, treeNode15, treeNode16, treeNode17, treeNode18, treeNode19, treeNode20, treeNode21, treeNode22, treeNode23, treeNode24, treeNode25, treeNode26, treeNode27, treeNode28, treeNode29, treeNode30, treeNode31, treeNode32, treeNode33, treeNode34, treeNode35, treeNode36, treeNode37, treeNode38, treeNode39, treeNode40 });
+            TreeNode treeNode42 = new TreeNode("　　環境マネジメントマニュアル");
+            TreeNode treeNode43 = new TreeNode("１　目的");
+            TreeNode treeNode44 = new TreeNode("２　適用範囲");
+            TreeNode treeNode45 = new TreeNode("３　用語の定義");
+            TreeNode treeNode46 = new TreeNode("４.１　外部及び内部の課題");
+            TreeNode treeNode47 = new TreeNode("４.２　利害関係者のニーズ及び期待");
+            TreeNode treeNode48 = new TreeNode("４.３　環境マネジメントシステムの範囲");
+            TreeNode treeNode49 = new TreeNode("４.４　環境マネジメントシステムの概要");
+            TreeNode treeNode50 = new TreeNode("４　当社をとりまく状況の理解", new TreeNode[] { treeNode46, treeNode47, treeNode48, treeNode49 });
+            TreeNode treeNode51 = new TreeNode("５.１　リーダーシップ及びコミットメント");
+            TreeNode treeNode52 = new TreeNode("５.２　環境方針");
+            TreeNode treeNode53 = new TreeNode("５.３　役割、責任及び権限");
+            TreeNode treeNode54 = new TreeNode("５　リーダーシップ", new TreeNode[] { treeNode51, treeNode52, treeNode53 });
+            TreeNode treeNode55 = new TreeNode("６.１.１　リスク及び機会の決定");
+            TreeNode treeNode56 = new TreeNode("６.１.２　環境側面");
+            TreeNode treeNode57 = new TreeNode("６.１.３　順守義務(法的及びその他の要求事項)");
+            TreeNode treeNode58 = new TreeNode("６.１.４　取組みの計画策定");
+            TreeNode treeNode59 = new TreeNode("６.１　リスク及び機会への取組み", new TreeNode[] { treeNode55, treeNode56, treeNode57, treeNode58 });
+            TreeNode treeNode60 = new TreeNode("６.２　環境目標及びプログラム");
+            TreeNode treeNode61 = new TreeNode("６　計画", new TreeNode[] { treeNode59, treeNode60 });
+            TreeNode treeNode62 = new TreeNode("７.１　資源");
+            TreeNode treeNode63 = new TreeNode("７.２.１　力量(有資格者)");
+            TreeNode treeNode64 = new TreeNode("７.２.２　教育訓練");
+            TreeNode treeNode65 = new TreeNode("７.２　力量、教育訓練", new TreeNode[] { treeNode63, treeNode64 });
+            TreeNode treeNode66 = new TreeNode("７.３　認識");
+            TreeNode treeNode67 = new TreeNode("７.４　コミュニケーション");
+            TreeNode treeNode68 = new TreeNode("７.５.１　文章体系・文章の作成・承認");
+            TreeNode treeNode69 = new TreeNode("７.５.２　文章の管理・識別");
+            TreeNode treeNode70 = new TreeNode("７.５.３　文章の見直し");
+            TreeNode treeNode71 = new TreeNode("７.５.４　外部文章の保管・配布の管理");
+            TreeNode treeNode72 = new TreeNode("７.５.５　環境記録の管理");
+            TreeNode treeNode73 = new TreeNode("７.５　文章管理", new TreeNode[] { treeNode68, treeNode69, treeNode70, treeNode71, treeNode72 });
+            TreeNode treeNode74 = new TreeNode("７　支援(サポート)", new TreeNode[] { treeNode62, treeNode65, treeNode66, treeNode67, treeNode73 });
+            TreeNode treeNode75 = new TreeNode("８.１　運用の計画及び管理");
+            TreeNode treeNode76 = new TreeNode("８.２.１　緊急事態の可能性の特定");
+            TreeNode treeNode77 = new TreeNode("８.２.２　緊急事態対応手順書の作成");
+            TreeNode treeNode78 = new TreeNode("８.２.３　緊急事態対応訓練(対応手順のテスト)");
+            TreeNode treeNode79 = new TreeNode("８.２.４　手順書の見直し");
+            TreeNode treeNode80 = new TreeNode("８.２.５　取引先を含む利害関係者への情報提供");
+            TreeNode treeNode81 = new TreeNode("８.２　緊急事態への準備及び対応", new TreeNode[] { treeNode76, treeNode77, treeNode78, treeNode79, treeNode80 });
+            TreeNode treeNode82 = new TreeNode("８　運用", new TreeNode[] { treeNode75, treeNode81 });
+            TreeNode treeNode83 = new TreeNode("９.１.１　取組みの項目の監視、測定");
+            TreeNode treeNode84 = new TreeNode("９.１.２　順守評価(法的及びその他の要求事項)");
+            TreeNode treeNode85 = new TreeNode("９.１　監視、測定、分析及び評価", new TreeNode[] { treeNode83, treeNode84 });
+            TreeNode treeNode86 = new TreeNode("９.２　内部監査");
+            TreeNode treeNode87 = new TreeNode("９.３　経営層による見直し(マネジメントレビュー)");
+            TreeNode treeNode88 = new TreeNode("９　パフォーマンス評価", new TreeNode[] { treeNode85, treeNode86, treeNode87 });
+            TreeNode treeNode89 = new TreeNode("１０.１　一般");
+            TreeNode treeNode90 = new TreeNode("１０.２　不適合への対応");
+            TreeNode treeNode91 = new TreeNode("１０.３　継続的改善");
+            TreeNode treeNode92 = new TreeNode("１０改善", new TreeNode[] { treeNode89, treeNode90, treeNode91 });
+            TreeNode treeNode93 = new TreeNode("ISO14001", new TreeNode[] { treeNode42, treeNode43, treeNode44, treeNode45, treeNode50, treeNode54, treeNode61, treeNode74, treeNode82, treeNode88, treeNode92 });
+            TreeNode treeNode94 = new TreeNode("本社営業所");
+            TreeNode treeNode95 = new TreeNode("三郷車庫");
+            TreeNode treeNode96 = new TreeNode("中間処理場");
+            TreeNode treeNode97 = new TreeNode("事故受付");
+            TreeNode treeNode98 = new TreeNode("免許証マスターファイルを作成する");
+            TreeNode treeNode99 = new TreeNode("東海電子(アルコールチェック)", new TreeNode[] { treeNode98 });
             TableLayoutPanelBase = new TableLayoutPanel();
             MenuStrip1 = new MenuStrip();
             ToolStripMenuItemMenu = new ToolStripMenuItem();
@@ -138,25 +138,29 @@
             LabelDbName = new Label();
             LabelConnectStatus = new Label();
             label3 = new Label();
-            label4 = new Label();
             label5 = new Label();
-            label24 = new Label();
-            label25 = new Label();
+            label1 = new Label();
+            label7 = new Label();
+            label6 = new Label();
+            label21 = new Label();
+            label20 = new Label();
             label13 = new Label();
             label12 = new Label();
             label15 = new Label();
             label14 = new Label();
             label11 = new Label();
             label10 = new Label();
+            label44 = new Label();
+            label43 = new Label();
             label9 = new Label();
             label8 = new Label();
-            label26 = new Label();
             label27 = new Label();
-            label20 = new Label();
-            label21 = new Label();
-            label6 = new Label();
-            label7 = new Label();
-            label1 = new Label();
+            label26 = new Label();
+            label25 = new Label();
+            label24 = new Label();
+            label4 = new Label();
+            label45 = new Label();
+            label46 = new Label();
             TableLayoutPanelLeft = new TableLayoutPanel();
             PanelLeftMiddle = new Panel();
             TreeView1 = new TreeView();
@@ -185,8 +189,6 @@
             label31 = new Label();
             label28 = new Label();
             label29 = new Label();
-            label43 = new Label();
-            label44 = new Label();
             TableLayoutPanelBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -291,27 +293,29 @@
             TableLayoutPanelCenter.Controls.Add(LabelDbName, 0, 3);
             TableLayoutPanelCenter.Controls.Add(LabelConnectStatus, 0, 4);
             TableLayoutPanelCenter.Controls.Add(label3, 0, 6);
-            TableLayoutPanelCenter.Controls.Add(label4, 0, 7);
             TableLayoutPanelCenter.Controls.Add(label5, 0, 8);
-            TableLayoutPanelCenter.Controls.Add(label24, 0, 10);
-            TableLayoutPanelCenter.Controls.Add(label25, 0, 11);
-            TableLayoutPanelCenter.Controls.Add(label9, 0, 17);
-            TableLayoutPanelCenter.Controls.Add(label8, 0, 16);
-            TableLayoutPanelCenter.Controls.Add(label26, 0, 13);
-            TableLayoutPanelCenter.Controls.Add(label27, 0, 14);
             TableLayoutPanelCenter.Controls.Add(label1, 0, 0);
-            TableLayoutPanelCenter.Controls.Add(label7, 0, 35);
-            TableLayoutPanelCenter.Controls.Add(label6, 0, 34);
-            TableLayoutPanelCenter.Controls.Add(label21, 0, 32);
-            TableLayoutPanelCenter.Controls.Add(label20, 0, 31);
-            TableLayoutPanelCenter.Controls.Add(label13, 0, 29);
-            TableLayoutPanelCenter.Controls.Add(label12, 0, 28);
-            TableLayoutPanelCenter.Controls.Add(label15, 0, 26);
-            TableLayoutPanelCenter.Controls.Add(label14, 0, 25);
-            TableLayoutPanelCenter.Controls.Add(label11, 0, 23);
-            TableLayoutPanelCenter.Controls.Add(label10, 0, 22);
-            TableLayoutPanelCenter.Controls.Add(label43, 0, 19);
-            TableLayoutPanelCenter.Controls.Add(label44, 0, 20);
+            TableLayoutPanelCenter.Controls.Add(label7, 0, 38);
+            TableLayoutPanelCenter.Controls.Add(label6, 0, 37);
+            TableLayoutPanelCenter.Controls.Add(label21, 0, 35);
+            TableLayoutPanelCenter.Controls.Add(label20, 0, 34);
+            TableLayoutPanelCenter.Controls.Add(label13, 0, 32);
+            TableLayoutPanelCenter.Controls.Add(label12, 0, 31);
+            TableLayoutPanelCenter.Controls.Add(label15, 0, 29);
+            TableLayoutPanelCenter.Controls.Add(label14, 0, 28);
+            TableLayoutPanelCenter.Controls.Add(label11, 0, 26);
+            TableLayoutPanelCenter.Controls.Add(label10, 0, 25);
+            TableLayoutPanelCenter.Controls.Add(label44, 0, 23);
+            TableLayoutPanelCenter.Controls.Add(label43, 0, 22);
+            TableLayoutPanelCenter.Controls.Add(label9, 0, 20);
+            TableLayoutPanelCenter.Controls.Add(label8, 0, 19);
+            TableLayoutPanelCenter.Controls.Add(label27, 0, 17);
+            TableLayoutPanelCenter.Controls.Add(label26, 0, 16);
+            TableLayoutPanelCenter.Controls.Add(label25, 0, 14);
+            TableLayoutPanelCenter.Controls.Add(label24, 0, 13);
+            TableLayoutPanelCenter.Controls.Add(label4, 0, 7);
+            TableLayoutPanelCenter.Controls.Add(label45, 0, 10);
+            TableLayoutPanelCenter.Controls.Add(label46, 0, 11);
             TableLayoutPanelCenter.Dock = DockStyle.Fill;
             TableLayoutPanelCenter.Location = new Point(303, 27);
             TableLayoutPanelCenter.Name = "TableLayoutPanelCenter";
@@ -446,6 +450,253 @@
             label3.Text = "アプリケーション";
             label3.TextAlign = ContentAlignment.MiddleLeft;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.ForeColor = SystemColors.GrayText;
+            label5.Location = new Point(3, 180);
+            label5.Name = "label5";
+            label5.Size = new Size(348, 17);
+            label5.TabIndex = 9;
+            label5.Text = "　従業員・車両等のパネルをドラッグ＆ドロップ操作で配車します。";
+            label5.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Dock = DockStyle.Fill;
+            label1.Font = new Font("Yu Gothic UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = Color.Blue;
+            label1.Location = new Point(3, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(504, 30);
+            label1.TabIndex = 32;
+            label1.Text = "データベース接続";
+            label1.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.ForeColor = SystemColors.GrayText;
+            label7.Location = new Point(3, 780);
+            label7.Name = "label7";
+            label7.Size = new Size(239, 15);
+            label7.TabIndex = 11;
+            label7.Text = "　本番登録の新規及び修正や削除を行います。";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.Location = new Point(3, 760);
+            label6.Name = "label6";
+            label6.Size = new Size(154, 17);
+            label6.TabIndex = 10;
+            label6.Tag = "ProductionOfficeList";
+            label6.Text = "　本番変更(社内での本番)";
+            label6.Click += Label_Click;
+            label6.MouseEnter += Label_MouseEnter;
+            label6.MouseLeave += Label_MouseLeave;
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.ForeColor = SystemColors.GrayText;
+            label21.Location = new Point(3, 720);
+            label21.Name = "label21";
+            label21.Size = new Size(239, 15);
+            label21.TabIndex = 25;
+            label21.Text = "　本番登録の新規及び修正や削除を行います。";
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label20.Location = new Point(3, 700);
+            label20.Name = "label20";
+            label20.Size = new Size(185, 17);
+            label20.TabIndex = 24;
+            label20.Tag = "ProductionCleanOfficeList";
+            label20.Text = "　本番変更(登録されている本番)";
+            label20.Click += Label_Click;
+            label20.MouseEnter += Label_MouseEnter;
+            label20.MouseLeave += Label_MouseLeave;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label13.ForeColor = SystemColors.GrayText;
+            label13.Location = new Point(3, 660);
+            label13.Name = "label13";
+            label13.Size = new Size(296, 17);
+            label13.TabIndex = 17;
+            label13.Text = "　車両事故・作業事故等のトラブルを記録管理します。";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label12.Location = new Point(3, 640);
+            label12.Name = "label12";
+            label12.Size = new Size(99, 17);
+            label12.TabIndex = 16;
+            label12.Tag = "CarAccidentList";
+            label12.Text = "　事故記録台帳";
+            label12.Click += Label_Click;
+            label12.MouseEnter += Label_MouseEnter;
+            label12.MouseLeave += Label_MouseLeave;
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label15.ForeColor = SystemColors.GrayText;
+            label15.Location = new Point(3, 600);
+            label15.Name = "label15";
+            label15.Size = new Size(181, 17);
+            label15.TabIndex = 19;
+            label15.Text = "　車両の登録・修正を行います。";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label14.Location = new Point(3, 580);
+            label14.Name = "label14";
+            label14.Size = new Size(177, 17);
+            label14.TabIndex = 18;
+            label14.Tag = "CarList";
+            label14.Text = "　車両台帳（陸運局対応版）";
+            label14.Click += Label_Click;
+            label14.MouseEnter += Label_MouseEnter;
+            label14.MouseLeave += Label_MouseLeave;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.ForeColor = SystemColors.GrayText;
+            label11.Location = new Point(3, 540);
+            label11.Name = "label11";
+            label11.Size = new Size(171, 15);
+            label11.TabIndex = 15;
+            label11.Text = "　運転免許証の管理を行います。";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.Location = new Point(3, 520);
+            label10.Name = "label10";
+            label10.Size = new Size(86, 17);
+            label10.TabIndex = 14;
+            label10.Tag = "LicenseList";
+            label10.Text = "　免許証台帳";
+            label10.Click += Label_Click;
+            label10.MouseEnter += Label_MouseEnter;
+            label10.MouseLeave += Label_MouseLeave;
+            // 
+            // label44
+            // 
+            label44.AutoSize = true;
+            label44.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label44.ForeColor = Color.Gray;
+            label44.Location = new Point(3, 480);
+            label44.Name = "label44";
+            label44.Size = new Size(320, 17);
+            label44.TabIndex = 34;
+            label44.Text = "　運転手に対して実施する教育に関する記録を管理します。";
+            // 
+            // label43
+            // 
+            label43.AutoSize = true;
+            label43.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label43.Location = new Point(3, 460);
+            label43.Name = "label43";
+            label43.Size = new Size(287, 17);
+            label43.TabIndex = 33;
+            label43.Tag = "LegalTwelveItemList";
+            label43.Text = "　法定１２項目の教育実施記録簿(陸運局対応版)";
+            label43.Click += Label_Click;
+            label43.MouseEnter += Label_MouseEnter;
+            label43.MouseLeave += Label_MouseLeave;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label9.ForeColor = SystemColors.GrayText;
+            label9.Location = new Point(3, 420);
+            label9.Name = "label9";
+            label9.Size = new Size(177, 15);
+            label9.TabIndex = 13;
+            label9.Text = "　従事者の登録・修正を行います。";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.Location = new Point(3, 400);
+            label8.Name = "label8";
+            label8.Size = new Size(190, 17);
+            label8.TabIndex = 12;
+            label8.Tag = "StaffList";
+            label8.Text = "　従事者台帳（陸運局対応版）";
+            label8.Click += Label_Click;
+            label8.MouseEnter += Label_MouseEnter;
+            label8.MouseLeave += Label_MouseLeave;
+            // 
+            // label27
+            // 
+            label27.AutoSize = true;
+            label27.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label27.ForeColor = Color.Gray;
+            label27.Location = new Point(3, 360);
+            label27.Name = "label27";
+            label27.Size = new Size(206, 17);
+            label27.TabIndex = 31;
+            label27.Text = "　点呼記録簿を作成、印刷をします。";
+            // 
+            // label26
+            // 
+            label26.AutoSize = true;
+            label26.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label26.Location = new Point(3, 340);
+            label26.Name = "label26";
+            label26.Size = new Size(190, 17);
+            label26.TabIndex = 30;
+            label26.Tag = "RollCallRecordBook";
+            label26.Text = "　点呼記録簿（陸運局対応版）";
+            label26.Click += Label_Click;
+            label26.MouseEnter += Label_MouseEnter;
+            label26.MouseLeave += Label_MouseLeave;
+            // 
+            // label25
+            // 
+            label25.AutoSize = true;
+            label25.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label25.ForeColor = Color.Gray;
+            label25.Location = new Point(3, 300);
+            label25.Name = "label25";
+            label25.Size = new Size(170, 17);
+            label25.TabIndex = 29;
+            label25.Text = "　配車表を作成、印刷します。";
+            // 
+            // label24
+            // 
+            label24.AutoSize = true;
+            label24.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label24.Location = new Point(3, 280);
+            label24.Name = "label24";
+            label24.Size = new Size(60, 17);
+            label24.TabIndex = 28;
+            label24.Tag = "VehicleDispatchSheetBoad";
+            label24.Text = "　配車表";
+            label24.Click += Label_Click;
+            label24.MouseEnter += Label_MouseEnter;
+            label24.MouseLeave += Label_MouseLeave;
+            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -461,227 +712,30 @@
             label4.MouseEnter += Label_MouseEnter;
             label4.MouseLeave += Label_MouseLeave;
             // 
-            // label5
+            // label45
             // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.ForeColor = SystemColors.GrayText;
-            label5.Location = new Point(3, 180);
-            label5.Name = "label5";
-            label5.Size = new Size(348, 17);
-            label5.TabIndex = 9;
-            label5.Text = "　従業員・車両等のパネルをドラッグ＆ドロップ操作で配車します。";
-            label5.TextAlign = ContentAlignment.MiddleLeft;
+            label45.AutoSize = true;
+            label45.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label45.Location = new Point(3, 220);
+            label45.Name = "label45";
+            label45.Size = new Size(117, 17);
+            label45.TabIndex = 35;
+            label45.Tag = "H_VehicleDispatch";
+            label45.Text = "　配車システム Ver2";
+            label45.Click += Label_Click;
+            label45.MouseEnter += Label_MouseEnter;
+            label45.MouseLeave += Label_MouseLeave;
             // 
-            // label24
+            // label46
             // 
-            label24.AutoSize = true;
-            label24.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label24.Location = new Point(3, 220);
-            label24.Name = "label24";
-            label24.Size = new Size(60, 17);
-            label24.TabIndex = 28;
-            label24.Tag = "VehicleDispatchSheetBoad";
-            label24.Text = "　配車表";
-            label24.Click += Label_Click;
-            label24.MouseEnter += Label_MouseEnter;
-            label24.MouseLeave += Label_MouseLeave;
-            // 
-            // label25
-            // 
-            label25.AutoSize = true;
-            label25.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label25.ForeColor = Color.Gray;
-            label25.Location = new Point(3, 240);
-            label25.Name = "label25";
-            label25.Size = new Size(170, 17);
-            label25.TabIndex = 29;
-            label25.Text = "　配車表を作成、印刷します。";
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label13.ForeColor = SystemColors.GrayText;
-            label13.Location = new Point(3, 600);
-            label13.Name = "label13";
-            label13.Size = new Size(296, 17);
-            label13.TabIndex = 17;
-            label13.Text = "　車両事故・作業事故等のトラブルを記録管理します。";
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label12.Location = new Point(3, 580);
-            label12.Name = "label12";
-            label12.Size = new Size(99, 17);
-            label12.TabIndex = 16;
-            label12.Tag = "CarAccidentList";
-            label12.Text = "　事故記録台帳";
-            label12.Click += Label_Click;
-            label12.MouseEnter += Label_MouseEnter;
-            label12.MouseLeave += Label_MouseLeave;
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label15.ForeColor = SystemColors.GrayText;
-            label15.Location = new Point(3, 540);
-            label15.Name = "label15";
-            label15.Size = new Size(181, 17);
-            label15.TabIndex = 19;
-            label15.Text = "　車両の登録・修正を行います。";
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label14.Location = new Point(3, 520);
-            label14.Name = "label14";
-            label14.Size = new Size(177, 17);
-            label14.TabIndex = 18;
-            label14.Tag = "CarList";
-            label14.Text = "　車両台帳（陸運局対応版）";
-            label14.Click += Label_Click;
-            label14.MouseEnter += Label_MouseEnter;
-            label14.MouseLeave += Label_MouseLeave;
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.ForeColor = SystemColors.GrayText;
-            label11.Location = new Point(3, 480);
-            label11.Name = "label11";
-            label11.Size = new Size(171, 15);
-            label11.TabIndex = 15;
-            label11.Text = "　運転免許証の管理を行います。";
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(3, 460);
-            label10.Name = "label10";
-            label10.Size = new Size(86, 17);
-            label10.TabIndex = 14;
-            label10.Tag = "LicenseList";
-            label10.Text = "　免許証台帳";
-            label10.Click += Label_Click;
-            label10.MouseEnter += Label_MouseEnter;
-            label10.MouseLeave += Label_MouseLeave;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.ForeColor = SystemColors.GrayText;
-            label9.Location = new Point(3, 360);
-            label9.Name = "label9";
-            label9.Size = new Size(177, 15);
-            label9.TabIndex = 13;
-            label9.Text = "　従事者の登録・修正を行います。";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(3, 340);
-            label8.Name = "label8";
-            label8.Size = new Size(190, 17);
-            label8.TabIndex = 12;
-            label8.Tag = "StaffList";
-            label8.Text = "　従事者台帳（陸運局対応版）";
-            label8.Click += Label_Click;
-            label8.MouseEnter += Label_MouseEnter;
-            label8.MouseLeave += Label_MouseLeave;
-            // 
-            // label26
-            // 
-            label26.AutoSize = true;
-            label26.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label26.Location = new Point(3, 280);
-            label26.Name = "label26";
-            label26.Size = new Size(190, 17);
-            label26.TabIndex = 30;
-            label26.Tag = "RollCallRecordBook";
-            label26.Text = "　点呼記録簿（陸運局対応版）";
-            label26.Click += Label_Click;
-            label26.MouseEnter += Label_MouseEnter;
-            label26.MouseLeave += Label_MouseLeave;
-            // 
-            // label27
-            // 
-            label27.AutoSize = true;
-            label27.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label27.ForeColor = Color.Gray;
-            label27.Location = new Point(3, 300);
-            label27.Name = "label27";
-            label27.Size = new Size(206, 17);
-            label27.TabIndex = 31;
-            label27.Text = "　点呼記録簿を作成、印刷をします。";
-            // 
-            // label20
-            // 
-            label20.AutoSize = true;
-            label20.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label20.Location = new Point(3, 640);
-            label20.Name = "label20";
-            label20.Size = new Size(185, 17);
-            label20.TabIndex = 24;
-            label20.Tag = "ProductionCleanOfficeList";
-            label20.Text = "　本番変更(登録されている本番)";
-            label20.Click += Label_Click;
-            label20.MouseEnter += Label_MouseEnter;
-            label20.MouseLeave += Label_MouseLeave;
-            // 
-            // label21
-            // 
-            label21.AutoSize = true;
-            label21.ForeColor = SystemColors.GrayText;
-            label21.Location = new Point(3, 660);
-            label21.Name = "label21";
-            label21.Size = new Size(239, 15);
-            label21.TabIndex = 25;
-            label21.Text = "　本番登録の新規及び修正や削除を行います。";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(3, 700);
-            label6.Name = "label6";
-            label6.Size = new Size(154, 17);
-            label6.TabIndex = 10;
-            label6.Tag = "ProductionOfficeList";
-            label6.Text = "　本番変更(社内での本番)";
-            label6.Click += Label_Click;
-            label6.MouseEnter += Label_MouseEnter;
-            label6.MouseLeave += Label_MouseLeave;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.ForeColor = SystemColors.GrayText;
-            label7.Location = new Point(3, 720);
-            label7.Name = "label7";
-            label7.Size = new Size(239, 15);
-            label7.TabIndex = 11;
-            label7.Text = "　本番登録の新規及び修正や削除を行います。";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Dock = DockStyle.Fill;
-            label1.Font = new Font("Yu Gothic UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.ForeColor = Color.Blue;
-            label1.Location = new Point(3, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(504, 30);
-            label1.TabIndex = 32;
-            label1.Text = "データベース接続";
-            label1.TextAlign = ContentAlignment.MiddleLeft;
+            label46.AutoSize = true;
+            label46.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label46.ForeColor = SystemColors.GrayText;
+            label46.Location = new Point(3, 240);
+            label46.Name = "label46";
+            label46.Size = new Size(348, 17);
+            label46.TabIndex = 36;
+            label46.Text = "　従業員・車両等のパネルをドラッグ＆ドロップ操作で配車します。";
             // 
             // TableLayoutPanelLeft
             // 
@@ -715,244 +769,244 @@
             TreeView1.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             TreeView1.Location = new Point(0, 0);
             TreeView1.Name = "TreeView1";
-            treeNode298.ForeColor = Color.Gray;
-            treeNode298.Name = "ノード5";
-            treeNode298.Text = "データベース接続";
-            treeNode299.Name = "Node00";
-            treeNode299.Text = "00　巡回指導資料";
-            treeNode300.Name = "Node01";
-            treeNode300.Text = "01　運転者台帳";
-            treeNode301.Name = "Node02";
-            treeNode301.Text = "02　運行管理規定";
-            treeNode302.Name = "Node03";
-            treeNode302.Text = "03　点呼記録簿・点呼執行要領";
-            treeNode303.Name = "Node04";
-            treeNode303.Text = "04　乗務記録(運転日報)";
-            treeNode304.Name = "Node05";
-            treeNode304.Text = "05　運行計画及び勤務割当表";
-            treeNode305.Name = "Node06";
-            treeNode305.Text = "06　乗務実績一覧表(拘束時間管理表)";
-            treeNode306.Name = "Node07";
-            treeNode306.Text = "07　運行記録計による記録";
-            treeNode307.Name = "Node08";
-            treeNode307.Text = "08　運行指示書";
-            treeNode308.Name = "Node09";
-            treeNode308.Text = "09　受注伝票";
-            treeNode309.Name = "Node10";
-            treeNode309.Text = "10　運行管理者・整備管理者選任届出書";
-            treeNode310.Name = "Node11";
-            treeNode310.Text = "11　運行管理者資格者証";
-            treeNode311.Name = "Node12";
-            treeNode311.Text = "12　運行管理者研修手帳";
-            treeNode312.Name = "Node13";
-            treeNode312.Text = "13　整備管理者研修手帳";
-            treeNode313.Name = "Node14";
-            treeNode313.Text = "14　教育実施計画";
-            treeNode314.Name = "Node15";
-            treeNode314.Text = "15　運転記録証明書又は無事故無違反証明書";
-            treeNode315.Name = "Node16";
-            treeNode315.Text = "16　乗務員指導記録簿";
-            treeNode316.Name = "Node17";
-            treeNode316.Text = "17　適性診断受診結果票";
-            treeNode317.Name = "Node18";
-            treeNode317.Text = "18　適性診断受診計画表";
-            treeNode318.Name = "Node19";
-            treeNode318.Text = "19　事故記録簿";
-            treeNode319.Name = "Node20";
-            treeNode319.Text = "20　自動車事故報告書";
-            treeNode320.Name = "Node21";
-            treeNode320.Text = "21　事業報告書・事業実績報告書";
-            treeNode321.Name = "Node22";
-            treeNode321.Text = "22　役員変更届出書";
-            treeNode322.Name = "Node23";
-            treeNode322.Text = "23　車両台帳・自動車検査証の写し";
-            treeNode323.Name = "Node24";
-            treeNode323.Text = "24　整備管理規定等の規定類";
-            treeNode324.Name = "Node25";
-            treeNode324.Text = "25　点検整備記録簿";
-            treeNode325.Name = "Node26";
-            treeNode325.Text = "26　日常点検基準";
-            treeNode326.Name = "Node27";
-            treeNode326.Text = "27　日常点検表";
-            treeNode327.Name = "Node28";
-            treeNode327.Text = "28　定期点検基準";
-            treeNode328.Name = "Node29";
-            treeNode328.Text = "29　定期点検整備実施計画表";
-            treeNode329.Name = "Node30";
-            treeNode329.Text = "30　賃金台帳";
-            treeNode330.Name = "Node31";
-            treeNode330.Text = "31　健康診断書・健康診断記録簿";
-            treeNode331.Name = "Node32";
-            treeNode331.Text = "32　就業規則";
-            treeNode332.Name = "Node33";
-            treeNode332.Text = "33　３６協定";
-            treeNode333.Name = "Node34";
-            treeNode333.Text = "34　出勤簿";
-            treeNode334.Name = "Node35";
-            treeNode334.Text = "35　運輸安全マネジメント関係";
-            treeNode335.Name = "Node36";
-            treeNode335.Text = "36　労災保険加入台帳";
-            treeNode336.Name = "Node37";
-            treeNode336.Text = "37　雇用保険加入台帳";
-            treeNode337.Name = "Node38";
-            treeNode337.Text = "38　健康保険加入台帳・厚生年金加入台帳";
-            treeNode338.Name = "ノード2";
-            treeNode338.Text = "陸運局監査";
-            treeNode339.Name = "NodeISO0000";
-            treeNode339.Text = "　　環境マネジメントマニュアル";
-            treeNode340.Name = "NodeISO0100";
-            treeNode340.NodeFont = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            treeNode340.Text = "１　目的";
-            treeNode341.Name = "NodeISO0200";
-            treeNode341.Text = "２　適用範囲";
-            treeNode342.Name = "NodeISO0300";
-            treeNode342.Text = "３　用語の定義";
-            treeNode343.ForeColor = Color.Gray;
-            treeNode343.Name = "NodeISO0410";
-            treeNode343.Text = "４.１　外部及び内部の課題";
-            treeNode344.ForeColor = Color.Gray;
-            treeNode344.Name = "NodeISO0420";
-            treeNode344.Text = "４.２　利害関係者のニーズ及び期待";
-            treeNode345.ForeColor = Color.Gray;
-            treeNode345.Name = "NodeISO0430";
-            treeNode345.Text = "４.３　環境マネジメントシステムの範囲";
-            treeNode346.ForeColor = Color.Gray;
-            treeNode346.Name = "NodeISO0440";
-            treeNode346.Text = "４.４　環境マネジメントシステムの概要";
-            treeNode347.ForeColor = Color.Gray;
-            treeNode347.Name = "NodeISO0400";
-            treeNode347.Text = "４　当社をとりまく状況の理解";
-            treeNode348.ForeColor = Color.Gray;
-            treeNode348.Name = "NodeISO0510";
-            treeNode348.Text = "５.１　リーダーシップ及びコミットメント";
-            treeNode349.ForeColor = Color.Gray;
-            treeNode349.Name = "NodeISO0520";
-            treeNode349.Text = "５.２　環境方針";
-            treeNode350.ForeColor = Color.Gray;
-            treeNode350.Name = "NodeISO0530";
-            treeNode350.Text = "５.３　役割、責任及び権限";
-            treeNode351.ForeColor = Color.Gray;
-            treeNode351.Name = "NodeISO0500";
-            treeNode351.Text = "５　リーダーシップ";
-            treeNode352.ForeColor = Color.Gray;
-            treeNode352.Name = "NodeISO0611";
-            treeNode352.Text = "６.１.１　リスク及び機会の決定";
-            treeNode353.ForeColor = Color.Gray;
-            treeNode353.Name = "NodeISO0612";
-            treeNode353.Text = "６.１.２　環境側面";
-            treeNode354.ForeColor = Color.Gray;
-            treeNode354.Name = "NodeISO0613";
-            treeNode354.Text = "６.１.３　順守義務(法的及びその他の要求事項)";
-            treeNode355.ForeColor = Color.Gray;
-            treeNode355.Name = "NodeISO0614";
-            treeNode355.Text = "６.１.４　取組みの計画策定";
-            treeNode356.ForeColor = Color.Gray;
-            treeNode356.Name = "NodeISO0610";
-            treeNode356.Text = "６.１　リスク及び機会への取組み";
-            treeNode357.Name = "NodeISO0620";
-            treeNode357.Text = "６.２　環境目標及びプログラム";
-            treeNode358.Name = "NodeISO0600";
-            treeNode358.Text = "６　計画";
-            treeNode359.ForeColor = Color.Gray;
-            treeNode359.Name = "NodeISO0710";
-            treeNode359.Text = "７.１　資源";
-            treeNode360.Name = "NodeISO0721";
-            treeNode360.Text = "７.２.１　力量(有資格者)";
-            treeNode361.Name = "NodeISO0722";
-            treeNode361.Text = "７.２.２　教育訓練";
-            treeNode362.Name = "NodeISO0720";
-            treeNode362.Text = "７.２　力量、教育訓練";
-            treeNode363.ForeColor = Color.Gray;
-            treeNode363.Name = "NodeISO0730";
-            treeNode363.Text = "７.３　認識";
-            treeNode364.ForeColor = Color.Gray;
-            treeNode364.Name = "NodeISO0740";
-            treeNode364.Text = "７.４　コミュニケーション";
-            treeNode365.Name = "NodeISO0751";
-            treeNode365.Tag = "";
-            treeNode365.Text = "７.５.１　文章体系・文章の作成・承認";
-            treeNode366.ForeColor = Color.Gray;
-            treeNode366.Name = "NodeISO0752";
-            treeNode366.Text = "７.５.２　文章の管理・識別";
-            treeNode367.ForeColor = Color.Gray;
-            treeNode367.Name = "NodeISO0753";
-            treeNode367.Text = "７.５.３　文章の見直し";
-            treeNode368.ForeColor = Color.Gray;
-            treeNode368.Name = "NodeISO0754";
-            treeNode368.Text = "７.５.４　外部文章の保管・配布の管理";
-            treeNode369.ForeColor = Color.Gray;
-            treeNode369.Name = "NodeISO0755";
-            treeNode369.Text = "７.５.５　環境記録の管理";
-            treeNode370.Name = "NodeISO0750";
-            treeNode370.Text = "７.５　文章管理";
-            treeNode371.Name = "NodeISO0700";
-            treeNode371.Text = "７　支援(サポート)";
-            treeNode372.ForeColor = Color.Gray;
-            treeNode372.Name = "NodeISO0810";
-            treeNode372.Text = "８.１　運用の計画及び管理";
-            treeNode373.ForeColor = Color.Gray;
-            treeNode373.Name = "NodeISO0821";
-            treeNode373.Text = "８.２.１　緊急事態の可能性の特定";
-            treeNode374.ForeColor = Color.Gray;
-            treeNode374.Name = "NodeISO0822";
-            treeNode374.Text = "８.２.２　緊急事態対応手順書の作成";
-            treeNode375.ForeColor = Color.Gray;
-            treeNode375.Name = "NodeISO0823";
-            treeNode375.Text = "８.２.３　緊急事態対応訓練(対応手順のテスト)";
-            treeNode376.ForeColor = Color.Gray;
-            treeNode376.Name = "NodeISO0824";
-            treeNode376.Text = "８.２.４　手順書の見直し";
-            treeNode377.ForeColor = Color.Gray;
-            treeNode377.Name = "NodeISO0825";
-            treeNode377.Text = "８.２.５　取引先を含む利害関係者への情報提供";
-            treeNode378.ForeColor = Color.Gray;
-            treeNode378.Name = "NodeISO0820";
-            treeNode378.Text = "８.２　緊急事態への準備及び対応";
-            treeNode379.ForeColor = Color.Gray;
-            treeNode379.Name = "NodeISO0800";
-            treeNode379.Text = "８　運用";
-            treeNode380.Name = "NodeISO0911";
-            treeNode380.Text = "９.１.１　取組みの項目の監視、測定";
-            treeNode381.Name = "NodeISO0912";
-            treeNode381.Text = "９.１.２　順守評価(法的及びその他の要求事項)";
-            treeNode382.Name = "NodeISO0910";
-            treeNode382.Text = "９.１　監視、測定、分析及び評価";
-            treeNode383.Name = "NodeISO0920";
-            treeNode383.Text = "９.２　内部監査";
-            treeNode384.Name = "NodeISO0930";
-            treeNode384.Text = "９.３　経営層による見直し(マネジメントレビュー)";
-            treeNode385.Name = "NodeISO0900";
-            treeNode385.Text = "９　パフォーマンス評価";
-            treeNode386.ForeColor = Color.Gray;
-            treeNode386.Name = "NodeISO1010";
-            treeNode386.Text = "１０.１　一般";
-            treeNode387.ForeColor = Color.Gray;
-            treeNode387.Name = "NodeISO1020";
-            treeNode387.Text = "１０.２　不適合への対応";
-            treeNode388.ForeColor = Color.Gray;
-            treeNode388.Name = "NodeISO1030";
-            treeNode388.Text = "１０.３　継続的改善";
-            treeNode389.ForeColor = Color.Gray;
-            treeNode389.Name = "NodeISO1000";
-            treeNode389.Text = "１０改善";
-            treeNode390.Name = "ノード11";
-            treeNode390.Text = "ISO14001";
-            treeNode391.ForeColor = Color.Gray;
-            treeNode391.Name = "ノード0";
-            treeNode391.Text = "本社営業所";
-            treeNode392.ForeColor = Color.Gray;
-            treeNode392.Name = "ノード1";
-            treeNode392.Text = "三郷車庫";
-            treeNode393.ForeColor = Color.Gray;
-            treeNode393.Name = "NodeTreatmentPlant";
-            treeNode393.Text = "中間処理場";
-            treeNode394.Name = "NodeAccident";
-            treeNode394.Text = "事故受付";
-            treeNode395.Name = "NodeTokaiDenshi01";
-            treeNode395.Text = "免許証マスターファイルを作成する";
-            treeNode396.Name = "NodeTokai";
-            treeNode396.Text = "東海電子(アルコールチェック)";
-            TreeView1.Nodes.AddRange(new TreeNode[] { treeNode298, treeNode338, treeNode390, treeNode391, treeNode392, treeNode393, treeNode394, treeNode396 });
+            treeNode1.ForeColor = Color.Gray;
+            treeNode1.Name = "ノード5";
+            treeNode1.Text = "データベース接続";
+            treeNode2.Name = "Node00";
+            treeNode2.Text = "00　巡回指導資料";
+            treeNode3.Name = "Node01";
+            treeNode3.Text = "01　運転者台帳";
+            treeNode4.Name = "Node02";
+            treeNode4.Text = "02　運行管理規定";
+            treeNode5.Name = "Node03";
+            treeNode5.Text = "03　点呼記録簿・点呼執行要領";
+            treeNode6.Name = "Node04";
+            treeNode6.Text = "04　乗務記録(運転日報)";
+            treeNode7.Name = "Node05";
+            treeNode7.Text = "05　運行計画及び勤務割当表";
+            treeNode8.Name = "Node06";
+            treeNode8.Text = "06　乗務実績一覧表(拘束時間管理表)";
+            treeNode9.Name = "Node07";
+            treeNode9.Text = "07　運行記録計による記録";
+            treeNode10.Name = "Node08";
+            treeNode10.Text = "08　運行指示書";
+            treeNode11.Name = "Node09";
+            treeNode11.Text = "09　受注伝票";
+            treeNode12.Name = "Node10";
+            treeNode12.Text = "10　運行管理者・整備管理者選任届出書";
+            treeNode13.Name = "Node11";
+            treeNode13.Text = "11　運行管理者資格者証";
+            treeNode14.Name = "Node12";
+            treeNode14.Text = "12　運行管理者研修手帳";
+            treeNode15.Name = "Node13";
+            treeNode15.Text = "13　整備管理者研修手帳";
+            treeNode16.Name = "Node14";
+            treeNode16.Text = "14　教育実施計画";
+            treeNode17.Name = "Node15";
+            treeNode17.Text = "15　運転記録証明書又は無事故無違反証明書";
+            treeNode18.Name = "Node16";
+            treeNode18.Text = "16　乗務員指導記録簿";
+            treeNode19.Name = "Node17";
+            treeNode19.Text = "17　適性診断受診結果票";
+            treeNode20.Name = "Node18";
+            treeNode20.Text = "18　適性診断受診計画表";
+            treeNode21.Name = "Node19";
+            treeNode21.Text = "19　事故記録簿";
+            treeNode22.Name = "Node20";
+            treeNode22.Text = "20　自動車事故報告書";
+            treeNode23.Name = "Node21";
+            treeNode23.Text = "21　事業報告書・事業実績報告書";
+            treeNode24.Name = "Node22";
+            treeNode24.Text = "22　役員変更届出書";
+            treeNode25.Name = "Node23";
+            treeNode25.Text = "23　車両台帳・自動車検査証の写し";
+            treeNode26.Name = "Node24";
+            treeNode26.Text = "24　整備管理規定等の規定類";
+            treeNode27.Name = "Node25";
+            treeNode27.Text = "25　点検整備記録簿";
+            treeNode28.Name = "Node26";
+            treeNode28.Text = "26　日常点検基準";
+            treeNode29.Name = "Node27";
+            treeNode29.Text = "27　日常点検表";
+            treeNode30.Name = "Node28";
+            treeNode30.Text = "28　定期点検基準";
+            treeNode31.Name = "Node29";
+            treeNode31.Text = "29　定期点検整備実施計画表";
+            treeNode32.Name = "Node30";
+            treeNode32.Text = "30　賃金台帳";
+            treeNode33.Name = "Node31";
+            treeNode33.Text = "31　健康診断書・健康診断記録簿";
+            treeNode34.Name = "Node32";
+            treeNode34.Text = "32　就業規則";
+            treeNode35.Name = "Node33";
+            treeNode35.Text = "33　３６協定";
+            treeNode36.Name = "Node34";
+            treeNode36.Text = "34　出勤簿";
+            treeNode37.Name = "Node35";
+            treeNode37.Text = "35　運輸安全マネジメント関係";
+            treeNode38.Name = "Node36";
+            treeNode38.Text = "36　労災保険加入台帳";
+            treeNode39.Name = "Node37";
+            treeNode39.Text = "37　雇用保険加入台帳";
+            treeNode40.Name = "Node38";
+            treeNode40.Text = "38　健康保険加入台帳・厚生年金加入台帳";
+            treeNode41.Name = "ノード2";
+            treeNode41.Text = "陸運局監査";
+            treeNode42.Name = "NodeISO0000";
+            treeNode42.Text = "　　環境マネジメントマニュアル";
+            treeNode43.Name = "NodeISO0100";
+            treeNode43.NodeFont = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            treeNode43.Text = "１　目的";
+            treeNode44.Name = "NodeISO0200";
+            treeNode44.Text = "２　適用範囲";
+            treeNode45.Name = "NodeISO0300";
+            treeNode45.Text = "３　用語の定義";
+            treeNode46.ForeColor = Color.Gray;
+            treeNode46.Name = "NodeISO0410";
+            treeNode46.Text = "４.１　外部及び内部の課題";
+            treeNode47.ForeColor = Color.Gray;
+            treeNode47.Name = "NodeISO0420";
+            treeNode47.Text = "４.２　利害関係者のニーズ及び期待";
+            treeNode48.ForeColor = Color.Gray;
+            treeNode48.Name = "NodeISO0430";
+            treeNode48.Text = "４.３　環境マネジメントシステムの範囲";
+            treeNode49.ForeColor = Color.Gray;
+            treeNode49.Name = "NodeISO0440";
+            treeNode49.Text = "４.４　環境マネジメントシステムの概要";
+            treeNode50.ForeColor = Color.Gray;
+            treeNode50.Name = "NodeISO0400";
+            treeNode50.Text = "４　当社をとりまく状況の理解";
+            treeNode51.ForeColor = Color.Gray;
+            treeNode51.Name = "NodeISO0510";
+            treeNode51.Text = "５.１　リーダーシップ及びコミットメント";
+            treeNode52.ForeColor = Color.Gray;
+            treeNode52.Name = "NodeISO0520";
+            treeNode52.Text = "５.２　環境方針";
+            treeNode53.ForeColor = Color.Gray;
+            treeNode53.Name = "NodeISO0530";
+            treeNode53.Text = "５.３　役割、責任及び権限";
+            treeNode54.ForeColor = Color.Gray;
+            treeNode54.Name = "NodeISO0500";
+            treeNode54.Text = "５　リーダーシップ";
+            treeNode55.ForeColor = Color.Gray;
+            treeNode55.Name = "NodeISO0611";
+            treeNode55.Text = "６.１.１　リスク及び機会の決定";
+            treeNode56.ForeColor = Color.Gray;
+            treeNode56.Name = "NodeISO0612";
+            treeNode56.Text = "６.１.２　環境側面";
+            treeNode57.ForeColor = Color.Gray;
+            treeNode57.Name = "NodeISO0613";
+            treeNode57.Text = "６.１.３　順守義務(法的及びその他の要求事項)";
+            treeNode58.ForeColor = Color.Gray;
+            treeNode58.Name = "NodeISO0614";
+            treeNode58.Text = "６.１.４　取組みの計画策定";
+            treeNode59.ForeColor = Color.Gray;
+            treeNode59.Name = "NodeISO0610";
+            treeNode59.Text = "６.１　リスク及び機会への取組み";
+            treeNode60.Name = "NodeISO0620";
+            treeNode60.Text = "６.２　環境目標及びプログラム";
+            treeNode61.Name = "NodeISO0600";
+            treeNode61.Text = "６　計画";
+            treeNode62.ForeColor = Color.Gray;
+            treeNode62.Name = "NodeISO0710";
+            treeNode62.Text = "７.１　資源";
+            treeNode63.Name = "NodeISO0721";
+            treeNode63.Text = "７.２.１　力量(有資格者)";
+            treeNode64.Name = "NodeISO0722";
+            treeNode64.Text = "７.２.２　教育訓練";
+            treeNode65.Name = "NodeISO0720";
+            treeNode65.Text = "７.２　力量、教育訓練";
+            treeNode66.ForeColor = Color.Gray;
+            treeNode66.Name = "NodeISO0730";
+            treeNode66.Text = "７.３　認識";
+            treeNode67.ForeColor = Color.Gray;
+            treeNode67.Name = "NodeISO0740";
+            treeNode67.Text = "７.４　コミュニケーション";
+            treeNode68.Name = "NodeISO0751";
+            treeNode68.Tag = "";
+            treeNode68.Text = "７.５.１　文章体系・文章の作成・承認";
+            treeNode69.ForeColor = Color.Gray;
+            treeNode69.Name = "NodeISO0752";
+            treeNode69.Text = "７.５.２　文章の管理・識別";
+            treeNode70.ForeColor = Color.Gray;
+            treeNode70.Name = "NodeISO0753";
+            treeNode70.Text = "７.５.３　文章の見直し";
+            treeNode71.ForeColor = Color.Gray;
+            treeNode71.Name = "NodeISO0754";
+            treeNode71.Text = "７.５.４　外部文章の保管・配布の管理";
+            treeNode72.ForeColor = Color.Gray;
+            treeNode72.Name = "NodeISO0755";
+            treeNode72.Text = "７.５.５　環境記録の管理";
+            treeNode73.Name = "NodeISO0750";
+            treeNode73.Text = "７.５　文章管理";
+            treeNode74.Name = "NodeISO0700";
+            treeNode74.Text = "７　支援(サポート)";
+            treeNode75.ForeColor = Color.Gray;
+            treeNode75.Name = "NodeISO0810";
+            treeNode75.Text = "８.１　運用の計画及び管理";
+            treeNode76.ForeColor = Color.Gray;
+            treeNode76.Name = "NodeISO0821";
+            treeNode76.Text = "８.２.１　緊急事態の可能性の特定";
+            treeNode77.ForeColor = Color.Gray;
+            treeNode77.Name = "NodeISO0822";
+            treeNode77.Text = "８.２.２　緊急事態対応手順書の作成";
+            treeNode78.ForeColor = Color.Gray;
+            treeNode78.Name = "NodeISO0823";
+            treeNode78.Text = "８.２.３　緊急事態対応訓練(対応手順のテスト)";
+            treeNode79.ForeColor = Color.Gray;
+            treeNode79.Name = "NodeISO0824";
+            treeNode79.Text = "８.２.４　手順書の見直し";
+            treeNode80.ForeColor = Color.Gray;
+            treeNode80.Name = "NodeISO0825";
+            treeNode80.Text = "８.２.５　取引先を含む利害関係者への情報提供";
+            treeNode81.ForeColor = Color.Gray;
+            treeNode81.Name = "NodeISO0820";
+            treeNode81.Text = "８.２　緊急事態への準備及び対応";
+            treeNode82.ForeColor = Color.Gray;
+            treeNode82.Name = "NodeISO0800";
+            treeNode82.Text = "８　運用";
+            treeNode83.Name = "NodeISO0911";
+            treeNode83.Text = "９.１.１　取組みの項目の監視、測定";
+            treeNode84.Name = "NodeISO0912";
+            treeNode84.Text = "９.１.２　順守評価(法的及びその他の要求事項)";
+            treeNode85.Name = "NodeISO0910";
+            treeNode85.Text = "９.１　監視、測定、分析及び評価";
+            treeNode86.Name = "NodeISO0920";
+            treeNode86.Text = "９.２　内部監査";
+            treeNode87.Name = "NodeISO0930";
+            treeNode87.Text = "９.３　経営層による見直し(マネジメントレビュー)";
+            treeNode88.Name = "NodeISO0900";
+            treeNode88.Text = "９　パフォーマンス評価";
+            treeNode89.ForeColor = Color.Gray;
+            treeNode89.Name = "NodeISO1010";
+            treeNode89.Text = "１０.１　一般";
+            treeNode90.ForeColor = Color.Gray;
+            treeNode90.Name = "NodeISO1020";
+            treeNode90.Text = "１０.２　不適合への対応";
+            treeNode91.ForeColor = Color.Gray;
+            treeNode91.Name = "NodeISO1030";
+            treeNode91.Text = "１０.３　継続的改善";
+            treeNode92.ForeColor = Color.Gray;
+            treeNode92.Name = "NodeISO1000";
+            treeNode92.Text = "１０改善";
+            treeNode93.Name = "ノード11";
+            treeNode93.Text = "ISO14001";
+            treeNode94.ForeColor = Color.Gray;
+            treeNode94.Name = "ノード0";
+            treeNode94.Text = "本社営業所";
+            treeNode95.ForeColor = Color.Gray;
+            treeNode95.Name = "ノード1";
+            treeNode95.Text = "三郷車庫";
+            treeNode96.ForeColor = Color.Gray;
+            treeNode96.Name = "NodeTreatmentPlant";
+            treeNode96.Text = "中間処理場";
+            treeNode97.Name = "NodeAccident";
+            treeNode97.Text = "事故受付";
+            treeNode98.Name = "NodeTokaiDenshi01";
+            treeNode98.Text = "免許証マスターファイルを作成する";
+            treeNode99.Name = "NodeTokai";
+            treeNode99.Text = "東海電子(アルコールチェック)";
+            TreeView1.Nodes.AddRange(new TreeNode[] { treeNode1, treeNode41, treeNode93, treeNode94, treeNode95, treeNode96, treeNode97, treeNode99 });
             TreeView1.Size = new Size(288, 647);
             TreeView1.TabIndex = 4;
             TreeView1.NodeMouseDoubleClick += TreeView1_NodeMouseDoubleClick;
@@ -1270,31 +1324,6 @@
             label29.TabIndex = 33;
             label29.Text = "　修了書カードを登録します。";
             // 
-            // label43
-            // 
-            label43.AutoSize = true;
-            label43.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label43.Location = new Point(3, 400);
-            label43.Name = "label43";
-            label43.Size = new Size(287, 17);
-            label43.TabIndex = 33;
-            label43.Tag = "LegalTwelveItemList";
-            label43.Text = "　法定１２項目の教育実施記録簿(陸運局対応版)";
-            label43.Click += Label_Click;
-            label43.MouseEnter += Label_MouseEnter;
-            label43.MouseLeave += Label_MouseLeave;
-            // 
-            // label44
-            // 
-            label44.AutoSize = true;
-            label44.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label44.ForeColor = Color.Gray;
-            label44.Location = new Point(3, 420);
-            label44.Name = "label44";
-            label44.Size = new Size(320, 17);
-            label44.TabIndex = 34;
-            label44.Text = "　運転手に対して実施する教育に関する記録を管理します。";
-            // 
             // StartProject
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1303,6 +1332,7 @@
             Controls.Add(TableLayoutPanelBase);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
+            MinimizeBox = false;
             Name = "StartProject";
             Text = "StartProject";
             FormClosing += StartProject_FormClosing;
@@ -1390,5 +1420,7 @@
         private Label label42;
         private Label label43;
         private Label label44;
+        private Label label45;
+        private Label label46;
     }
 }

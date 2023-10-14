@@ -1365,14 +1365,14 @@
             // ToolStripMenuItemFaxTrue
             // 
             ToolStripMenuItemFaxTrue.Name = "ToolStripMenuItemFaxTrue";
-            ToolStripMenuItemFaxTrue.Size = new Size(180, 22);
+            ToolStripMenuItemFaxTrue.Size = new Size(139, 22);
             ToolStripMenuItemFaxTrue.Text = "Fax送信対応";
             ToolStripMenuItemFaxTrue.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemFaxFalse
             // 
             ToolStripMenuItemFaxFalse.Name = "ToolStripMenuItemFaxFalse";
-            ToolStripMenuItemFaxFalse.Size = new Size(180, 22);
+            ToolStripMenuItemFaxFalse.Size = new Size(139, 22);
             ToolStripMenuItemFaxFalse.Text = "Fax未対応";
             ToolStripMenuItemFaxFalse.Click += ToolStripMenuItem_Click;
             // 
