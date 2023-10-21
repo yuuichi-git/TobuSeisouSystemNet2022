@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\H_Vo\H_Vo.csproj" />
+    <ProjectReference Include="..\Vo\Vo.csproj" />
   </ItemGroup>
 
 </Project>
