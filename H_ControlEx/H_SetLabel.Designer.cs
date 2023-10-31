@@ -1,5 +1,5 @@
 ﻿namespace H_ControlEx {
-    partial class H_TableLayoutPanelExSetControl {
+    partial class H_SetLabel {
         /// <summary>
         /// 必要なデザイナー変数です。
         /// </summary>

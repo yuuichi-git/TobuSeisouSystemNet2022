@@ -3,7 +3,7 @@
  */
 using H_Common;
 
-using H_ControlEx;
+using H_Vo;
 
 using Vo;
 
@@ -14,6 +14,10 @@ namespace H_VehicleDispatch {
          */
         private readonly ConnectionVo _connectionVo;
 
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        /// <param name="connectionVo"></param>
         public H_VehicleDispatchBoard(ConnectionVo connectionVo) {
             /*
              * Vo
@@ -23,18 +27,24 @@ namespace H_VehicleDispatch {
              * コントロール初期化
              */
             InitializeComponent();
-            Rectangle desktop = new Desktop().GetWorkingArea(this);
-            this.Location = desktop.Location;
-            this.Size = desktop.Size;
+            Rectangle rectangle = new Desktop().GetWorkingArea(this);
+            this.KeyPreview = true;
+            this.Location = rectangle.Location;
+            this.Size = rectangle.Size;
             this.WindowState = FormWindowState.Maximized;
 
             h_DateTimePickerOperationDate.SetValue(DateTime.Today);
 
         }
 
-        private void h_ButtonExUpdate_Click(object sender, EventArgs e) {
-            H_TableLayoutPanelExSetControl h_TableLayoutPanelExSetControl = new H_TableLayoutPanelExSetControl();
-            h_TableLayoutPanelExBoard.Controls.Add(h_TableLayoutPanelExSetControl, 6, 0);
+        private void H_ButtonExUpdate_Click(object sender, EventArgs e) {
+            H_SetControlVo hSetControlVo = new H_SetControlVo();
+            hSetControlVo.ColumnNumber = 10;
+            h_TableLayoutPanelExBoard.AddSetControl(hSetControlVo);
+
+            H_SetControlVo hSetControlVo1 = new H_SetControlVo();
+            hSetControlVo1.ColumnNumber = 12;
+            h_TableLayoutPanelExBoard.AddSetControl(hSetControlVo1);
 
         }
     }

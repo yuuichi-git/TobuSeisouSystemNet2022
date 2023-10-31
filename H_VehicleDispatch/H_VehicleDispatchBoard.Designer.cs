@@ -50,7 +50,7 @@
             h_ButtonExUpdate = new H_ControlEx.H_ButtonEx();
             h_DateTimePickerOperationDate = new H_ControlEx.H_DateTimePickerEx();
             h_LabelEx1 = new H_ControlEx.H_LabelEx();
-            h_TableLayoutPanelExBoard = new H_ControlEx.H_TableLayoutPanelExBoard();
+            h_TableLayoutPanelExBoard = new H_ControlEx.H_Board();
             h_TableLayoutPanelExBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -315,7 +315,7 @@
             h_ButtonExUpdate.TabIndex = 2;
             h_ButtonExUpdate.Text = "最　新　化 ";
             h_ButtonExUpdate.UseVisualStyleBackColor = true;
-            h_ButtonExUpdate.Click += h_ButtonExUpdate_Click;
+            h_ButtonExUpdate.Click += H_ButtonExUpdate_Click;
             // 
             // h_DateTimePickerOperationDate
             // 
@@ -380,9 +380,9 @@
             h_TableLayoutPanelExBoard.Location = new Point(3, 39);
             h_TableLayoutPanelExBoard.Name = "h_TableLayoutPanelExBoard";
             h_TableLayoutPanelExBoard.RowCount = 3;
-            h_TableLayoutPanelExBoard.RowStyles.Add(new RowStyle(SizeType.Absolute, 320F));
-            h_TableLayoutPanelExBoard.RowStyles.Add(new RowStyle(SizeType.Absolute, 320F));
-            h_TableLayoutPanelExBoard.RowStyles.Add(new RowStyle(SizeType.Absolute, 320F));
+            h_TableLayoutPanelExBoard.RowStyles.Add(new RowStyle(SizeType.Absolute, 360F));
+            h_TableLayoutPanelExBoard.RowStyles.Add(new RowStyle(SizeType.Absolute, 360F));
+            h_TableLayoutPanelExBoard.RowStyles.Add(new RowStyle(SizeType.Absolute, 360F));
             h_TableLayoutPanelExBoard.Size = new Size(1830, 951);
             h_TableLayoutPanelExBoard.TabIndex = 1;
             // 
@@ -439,6 +439,6 @@
         private H_ControlEx.H_PanelEx h_PanelExCenterTop;
         private H_ControlEx.H_ButtonEx h_ButtonExBoard1;
         private H_ControlEx.H_ButtonEx h_ButtonExBoard2;
-        private H_ControlEx.H_TableLayoutPanelExBoard h_TableLayoutPanelExBoard;
+        private H_ControlEx.H_Board h_TableLayoutPanelExBoard;
     }
 }

@@ -1,32 +1,44 @@
 ﻿/*
  * 2023-10-20
  */
+using System.Drawing.Drawing2D;
+
+using H_Vo;
+
 namespace H_ControlEx {
-    public partial class H_TableLayoutPanelExSetControl : TableLayoutPanel {
+    public partial class H_SetControl : TableLayoutPanel {
         /*
-         * Cellの数
+         * プロパティ
          */
-        private const int _columnCount = 1;
-        private const int _rowCount = 4;
+        private const int _columnCount = 1; // Column数
+        private const int _rowCount = 4; // Row数
+        /*
+         * Vo
+         */
+        private readonly H_SetControlVo _hSetControlVo;
+        /*
+         * Eventを親へ渡す処理
+         * インスタンスから見えるようになる
+         */
+        public event MouseEventHandler Event_SetControl_MouseMove = delegate {};
 
         /// <summary>
         /// コンストラクタ
-        /// H_TableLayoutPanelExSetControlVoに全ての引数を代入しておく
+        /// H_SetControlVoに全ての引数を代入しておく
         /// </summary>
-        public H_TableLayoutPanelExSetControl() {
+        public H_SetControl(H_SetControlVo hSetControlVo) {
+            /*
+             * Vo
+             */
+            _hSetControlVo = hSetControlVo;
             /*
              * ControlIni
              */
             InitializeComponent();
-            /*
-             * SetControlExのセルを定義する
-             * コンストラクタで書くと、デザイン画面に反映されない。
-             */
             this.AllowDrop = true;
             this.Dock = DockStyle.Fill;
-            this.GrowStyle = TableLayoutPanelGrowStyle.FixedSize;
             this.Margin = new Padding(0);
-            this.Name = "H_TableLayoutPanelExSetControl";
+            this.Name = "H_SetControl";
             this.Padding = new Padding(0);
             this.Size = new Size(80, 360);
 
@@ -40,16 +52,30 @@ namespace H_ControlEx {
             /*
              * Event
              */
-            this.CellPaint += H_TableLayoutPanelExSetControl1_CellPaint;
-            this.Paint += H_TableLayoutPanelExSetControl1_Paint;
+            this.MouseMove += SetControl_MouseMove;
+            /*
+             * 各Labelを配置
+             */
+            // H_SetLabel
+            H_SetLabel hSetLabel = new H_SetLabel(_hSetControlVo.HSetMasterVo);
+            hSetLabel.MouseMove += SetControl_MouseMove; // SetLabelのEventをSetControlのEventとして登録
+            this.Controls.Add(hSetLabel, 0, 0); // SetLabelを追加
+            // H_CarLabel
+            H_CarLabel hCarLabel = new H_CarLabel(_hSetControlVo.HCarMasterVo);
+            hCarLabel.MouseMove += SetControl_MouseMove; // CarLabelのEventをSetControlのEventとして登録
+            this.Controls.Add(hCarLabel, 0, 1); // CarLabelを追加
+            // H_StaffLabel
+
         }
 
         /// <summary>
-        /// H_TableLayoutPanelExSetControl1_CellPaint
+        /// OnCellPaint
         /// </summary>
-        /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void H_TableLayoutPanelExSetControl1_CellPaint(object sender, TableLayoutCellPaintEventArgs e) {
+        protected override void OnCellPaint(TableLayoutCellPaintEventArgs e) {
+            /*
+             * Boderを描画
+             */
             Rectangle rectangle = e.CellBounds;
             rectangle.Inflate(-1, -1); // 枠のサイズを小さくする
             switch(e.Row) {
@@ -68,13 +94,11 @@ namespace H_ControlEx {
             }
         }
 
-        /// <summary>
-        /// H_TableLayoutPanelExSetControl1_Paint
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void H_TableLayoutPanelExSetControl1_Paint(object sender, PaintEventArgs e) {
-
+        /*
+         * Event
+         */
+        private void SetControl_MouseMove(object sender, MouseEventArgs e) {
+            Event_SetControl_MouseMove.Invoke(sender, e);
         }
     }
 }

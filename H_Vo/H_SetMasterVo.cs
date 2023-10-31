@@ -4,40 +4,72 @@
  */
 namespace H_Vo {
     public class H_SetMasterVo {
-        private int _word_code;
         private int _set_code;
-        private string _set_name = "";
-        private string _set_name_1 = "";
-        private string _set_name_2 = "";
+        private int _word_code;
+        private string _set_name;
+        private string _set_name_1;
+        private string _set_name_2;
         private int _fare_code;
         private bool _garage_flag;
         private int _classification_code;
-        private string _classification_name = ""; // 外部結合で取得
         private int _contact_method;
-        private string _contact_name = ""; // 外部結合で取得
         private int _number_of_people;
-        private string _working_days = "";
+        private string _working_days;
         private bool _five_lap;
         private bool _move_flag;
-        private string _remarks = "";
+        private string _remarks;
+        private string _insert_pc_name;
         private DateTime _insert_ymd_hms;
+        private string _update_pc_name;
         private DateTime _update_ymd_hms;
+        private string _delete_pc_name;
         private DateTime _delete_ymd_hms;
         private bool _delete_flag;
 
+        private readonly DateTime _defaultDateTime = new DateTime(1900,01,01);
+
         /// <summary>
-        /// 市区町村コード
+        /// コンストラクタ
         /// </summary>
-        public int Word_code {
-            get => _word_code;
-            set => _word_code = value;
+        public H_SetMasterVo() {
+            _set_code = 0;
+            _word_code = 0;
+            _set_name = string.Empty;
+            _set_name_1 = string.Empty;
+            _set_name_2 = string.Empty;
+            _fare_code = 0;
+            _garage_flag = true;
+            _classification_code = 0;
+            _contact_method = 0;
+            _number_of_people = 0;
+            _working_days = string.Empty;
+            _five_lap = true;
+            _move_flag = true;
+            _remarks = string.Empty;
+            _insert_pc_name = string.Empty;
+            _insert_ymd_hms = _defaultDateTime;
+            _update_pc_name = string.Empty;
+            _update_ymd_hms = _defaultDateTime;
+            _delete_pc_name = string.Empty;
+            _delete_ymd_hms = _defaultDateTime;
+            _delete_flag = false;
+
+
         }
+
         /// <summary>
         /// 組番号
         /// </summary>
         public int Set_code {
             get => _set_code;
             set => _set_code = value;
+        }
+        /// <summary>
+        /// 市区町村コード
+        /// </summary>
+        public int Word_code {
+            get => _word_code;
+            set => _word_code = value;
         }
         /// <summary>
         /// 組名
@@ -85,10 +117,6 @@ namespace H_Vo {
             get => _classification_code;
             set => _classification_code = value;
         }
-        public string Classification_name {
-            get => _classification_name;
-            set => _classification_name = value;
-        }
         /// <summary>
         /// 代番連絡方法
         /// 10:電話 11:Fax 12:しない
@@ -97,12 +125,9 @@ namespace H_Vo {
             get => _contact_method;
             set => _contact_method = value;
         }
-        public string Contact_name {
-            get => _contact_name;
-            set => _contact_name = value;
-        }
         /// <summary>
         /// 配車基本人数
+        /// 入力例:1～4
         /// </summary>
         public int Number_of_people {
             get => _number_of_people;
@@ -139,21 +164,30 @@ namespace H_Vo {
             get => _remarks;
             set => _remarks = value;
         }
+        public string Insert_pc_name {
+            get => _insert_pc_name;
+            set => _insert_pc_name = value;
+        }
         public DateTime Insert_ymd_hms {
             get => _insert_ymd_hms;
             set => _insert_ymd_hms = value;
+        }
+        public string Update_pc_name {
+            get => _update_pc_name;
+            set => _update_pc_name = value;
         }
         public DateTime Update_ymd_hms {
             get => _update_ymd_hms;
             set => _update_ymd_hms = value;
         }
+        public string Delete_pc_name {
+            get => _delete_pc_name;
+            set => _delete_pc_name = value;
+        }
         public DateTime Delete_ymd_hms {
             get => _delete_ymd_hms;
             set => _delete_ymd_hms = value;
         }
-        /// <summary>
-        /// 削除フラグ
-        /// </summary>
         public bool Delete_flag {
             get => _delete_flag;
             set => _delete_flag = value;
