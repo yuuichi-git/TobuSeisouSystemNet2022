@@ -38,11 +38,11 @@ namespace H_VehicleDispatch {
         }
 
         private void H_ButtonExUpdate_Click(object sender, EventArgs e) {
-            H_SetControlVo hSetControlVo = new H_SetControlVo();
+            H_SetControlVo hSetControlVo = new();
             hSetControlVo.ColumnNumber = 10;
             h_TableLayoutPanelExBoard.AddSetControl(hSetControlVo);
 
-            H_SetControlVo hSetControlVo1 = new H_SetControlVo();
+            H_SetControlVo hSetControlVo1 = new();
             hSetControlVo1.ColumnNumber = 12;
             h_TableLayoutPanelExBoard.AddSetControl(hSetControlVo1);
 

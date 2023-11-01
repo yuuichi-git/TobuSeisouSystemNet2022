@@ -4,6 +4,8 @@
      */
     [Serializable] // ←DeepCopyする場合には必要
     public class H_CarMasterVo {
+        private readonly DateTime _defaultDateTime = new DateTime(1900,01,01);
+
         private int _car_code;
         private int _classification_code;
         private string _classification_name = ""; // 外部結合で取得

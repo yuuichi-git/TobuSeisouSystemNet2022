@@ -12,13 +12,13 @@ namespace H_ControlEx {
         private const int _width = 76;
         private bool _firstRollCallFlag = false; // 出庫点呼フラグ true:出庫点呼済 false:未点呼
         private bool _fiveLapFlag = false; // 第五週稼働フラグ true:第五週稼働 false:第五週休車
-        private int _garageCode = 0; // 出庫地フラグ 0:本社 1:三郷
+        private int _garageCode = 1; // 出庫地コード 1:本社 2:三郷
         private bool _lastRollCallFlag = false; // 帰庫点呼フラグ true:帰庫点呼済 false:未点呼
         private bool _memoFlag = false; // メモフラグ true:メモあり false:メモなし
         private int _shiftCode = 0; // 番手コード 0→指定なし 1→早番 2→遅番
         private bool _standByFlag = false; // 待機フラグ true:待機あり false:待機なし
         private bool _workerFlag = false; // 作業員付フラグ true:サ付 false:サ無し
-        private int _workerCount = 0; // 1～4
+        private int _workerCount = 0; // 従事者数 1～4
 
         /// <summary>
         /// コンストラクタ

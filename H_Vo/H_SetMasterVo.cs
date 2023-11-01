@@ -3,7 +3,13 @@
  * 13101～13123までが23区コード
  */
 namespace H_Vo {
+    /*
+     * DeepCopyで使用
+     */
+    [Serializable] // ←DeepCopyする場合には必要
     public class H_SetMasterVo {
+        private readonly DateTime _defaultDateTime = new DateTime(1900,01,01);
+
         private int _set_code;
         private int _word_code;
         private string _set_name;
@@ -25,8 +31,6 @@ namespace H_Vo {
         private string _delete_pc_name;
         private DateTime _delete_ymd_hms;
         private bool _delete_flag;
-
-        private readonly DateTime _defaultDateTime = new DateTime(1900,01,01);
 
         /// <summary>
         /// コンストラクタ

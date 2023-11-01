@@ -1,8 +1,6 @@
 ﻿/*
  * 2023-10-20
  */
-using System.Drawing.Drawing2D;
-
 using H_Vo;
 
 namespace H_ControlEx {
@@ -54,17 +52,21 @@ namespace H_ControlEx {
              */
             this.MouseMove += SetControl_MouseMove;
             /*
-             * 各Labelを配置
+             * H_SetLabel
              */
-            // H_SetLabel
-            H_SetLabel hSetLabel = new H_SetLabel(_hSetControlVo.HSetMasterVo);
+            H_SetLabel hSetLabel = new(_hSetControlVo.HSetMasterVo);
             hSetLabel.MouseMove += SetControl_MouseMove; // SetLabelのEventをSetControlのEventとして登録
             this.Controls.Add(hSetLabel, 0, 0); // SetLabelを追加
-            // H_CarLabel
-            H_CarLabel hCarLabel = new H_CarLabel(_hSetControlVo.HCarMasterVo);
+            /*
+             * H_CarLabel
+             */
+            H_CarLabel hCarLabel = new(_hSetControlVo.HCarMasterVo);
             hCarLabel.MouseMove += SetControl_MouseMove; // CarLabelのEventをSetControlのEventとして登録
             this.Controls.Add(hCarLabel, 0, 1); // CarLabelを追加
-            // H_StaffLabel
+            /*
+             * H_StaffLabel(最大４名)
+             * 配車人数が３名以上の場合、SetControlは２列になる
+             */
 
         }
 
