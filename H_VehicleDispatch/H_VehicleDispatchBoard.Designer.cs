@@ -50,7 +50,6 @@
             h_ButtonExUpdate = new H_ControlEx.H_ButtonEx();
             h_DateTimePickerOperationDate = new H_ControlEx.H_DateTimePickerEx();
             h_LabelEx1 = new H_ControlEx.H_LabelEx();
-            h_TableLayoutPanelExBoard = new H_ControlEx.H_Board();
             h_TableLayoutPanelExBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -260,7 +259,6 @@
             h_TableLayoutPanelExCenter.ColumnCount = 1;
             h_TableLayoutPanelExCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             h_TableLayoutPanelExCenter.Controls.Add(h_PanelExCenterTop, 0, 0);
-            h_TableLayoutPanelExCenter.Controls.Add(h_TableLayoutPanelExBoard, 0, 1);
             h_TableLayoutPanelExCenter.Dock = DockStyle.Fill;
             h_TableLayoutPanelExCenter.Location = new Point(0, 0);
             h_TableLayoutPanelExCenter.Margin = new Padding(0);
@@ -337,55 +335,6 @@
             h_LabelEx1.TabIndex = 1;
             h_LabelEx1.Text = "配車日";
             // 
-            // h_TableLayoutPanelExBoard
-            // 
-            h_TableLayoutPanelExBoard.AutoScroll = true;
-            h_TableLayoutPanelExBoard.ColumnCount = 35;
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-            h_TableLayoutPanelExBoard.Dock = DockStyle.Fill;
-            h_TableLayoutPanelExBoard.Location = new Point(3, 39);
-            h_TableLayoutPanelExBoard.Name = "h_TableLayoutPanelExBoard";
-            h_TableLayoutPanelExBoard.RowCount = 3;
-            h_TableLayoutPanelExBoard.RowStyles.Add(new RowStyle(SizeType.Absolute, 360F));
-            h_TableLayoutPanelExBoard.RowStyles.Add(new RowStyle(SizeType.Absolute, 360F));
-            h_TableLayoutPanelExBoard.RowStyles.Add(new RowStyle(SizeType.Absolute, 360F));
-            h_TableLayoutPanelExBoard.Size = new Size(1830, 951);
-            h_TableLayoutPanelExBoard.TabIndex = 1;
-            // 
             // H_VehicleDispatchBoard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -439,6 +388,5 @@
         private H_ControlEx.H_PanelEx h_PanelExCenterTop;
         private H_ControlEx.H_ButtonEx h_ButtonExBoard1;
         private H_ControlEx.H_ButtonEx h_ButtonExBoard2;
-        private H_ControlEx.H_Board h_TableLayoutPanelExBoard;
     }
 }

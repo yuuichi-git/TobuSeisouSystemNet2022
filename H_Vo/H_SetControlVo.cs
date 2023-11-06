@@ -8,9 +8,21 @@ namespace H_Vo {
          * プロパティ
          */
         private int _columnNumber;
+        private int _rowNumber;
         private H_SetMasterVo _hSetMasterVo;
         private H_CarMasterVo _hCarMasterVo;
         private List<H_StaffMasterVo> _listHStaffMasterVo;
+
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        public H_SetControlVo() {
+            _columnNumber = 0;
+            _rowNumber = 0;
+            _hSetMasterVo = null;
+            _hCarMasterVo = null;
+            _listHStaffMasterVo = null;
+        }
 
         /*
          * Setter Getter
@@ -22,6 +34,14 @@ namespace H_Vo {
         public int ColumnNumber {
             get => _columnNumber;
             set => _columnNumber = value;
+        }
+        /// <summary>
+        /// RowNumber
+        /// SetControlのRow番号
+        /// </summary>
+        public int RowNumber {
+            get => _rowNumber;
+            set => _rowNumber = value;
         }
         /// <summary>
         /// SetMaster
@@ -44,6 +64,5 @@ namespace H_Vo {
             get => _listHStaffMasterVo;
             set => _listHStaffMasterVo = value;
         }
-        
     }
 }

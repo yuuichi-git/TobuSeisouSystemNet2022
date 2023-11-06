@@ -27,11 +27,11 @@ namespace H_ControlEx {
             this.Width = _width;
         }
 
-        protected override void OnPaint(PaintEventArgs pe) {
+        protected override void OnPaint(PaintEventArgs p) {
             /*
              * Boderを描画
              */
-            ControlPaint.DrawBorder(pe.Graphics, new Rectangle(0, 0, 74, 96), Color.DarkGray, ButtonBorderStyle.Solid);
+            ControlPaint.DrawBorder(p.Graphics, new Rectangle(0, 0, _width - 2, _height - 2), Color.Gray, ButtonBorderStyle.Solid);
         }
     }
 }

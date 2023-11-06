@@ -3,12 +3,15 @@
  */
 using H_Common;
 
+using H_ControlEx;
+
 using H_Vo;
 
 using Vo;
 
 namespace H_VehicleDispatch {
     public partial class H_VehicleDispatchBoard : Form {
+        private H_Board _hBoard;
         /*
          * Vo
          */
@@ -34,18 +37,38 @@ namespace H_VehicleDispatch {
             this.WindowState = FormWindowState.Maximized;
 
             h_DateTimePickerOperationDate.SetValue(DateTime.Today);
-
+            /*
+             * 配車用ボードを作成
+             */
+            _hBoard = new H_Board();
+            h_TableLayoutPanelExCenter.Controls.Add(_hBoard, 0, 1);
         }
 
         private void H_ButtonExUpdate_Click(object sender, EventArgs e) {
+            this.CreateVehicleDispatch();
+
+        }
+
+        /// <summary>
+        /// CreateVehicleDispatch
+        /// 配車データを作成
+        /// </summary>
+        private void CreateVehicleDispatch() {
             H_SetControlVo hSetControlVo = new();
-            hSetControlVo.ColumnNumber = 10;
-            h_TableLayoutPanelExBoard.AddSetControl(hSetControlVo);
+            hSetControlVo.ColumnNumber = 17;
+            hSetControlVo.RowNumber = 1;
 
-            H_SetControlVo hSetControlVo1 = new();
-            hSetControlVo1.ColumnNumber = 12;
-            h_TableLayoutPanelExBoard.AddSetControl(hSetControlVo1);
+            hSetControlVo.HSetMasterVo = new H_SetMasterVo();
+            hSetControlVo.HSetMasterVo.NumberOfPeople = 2;
+            hSetControlVo.HSetMasterVo.SpareOfPeople = true;
 
+            hSetControlVo.HCarMasterVo = new H_CarMasterVo();
+
+            hSetControlVo.ListHStaffMasterVo = new List<H_StaffMasterVo>();
+            hSetControlVo.ListHStaffMasterVo.Add(new H_StaffMasterVo());
+            hSetControlVo.ListHStaffMasterVo.Add(new H_StaffMasterVo());
+
+            _hBoard.AddSetControl(hSetControlVo);
         }
     }
 }

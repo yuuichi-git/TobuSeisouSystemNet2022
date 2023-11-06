@@ -10,53 +10,55 @@ namespace H_Vo {
     public class H_SetMasterVo {
         private readonly DateTime _defaultDateTime = new DateTime(1900,01,01);
 
-        private int _set_code;
-        private int _word_code;
-        private string _set_name;
-        private string _set_name_1;
-        private string _set_name_2;
-        private int _fare_code;
-        private bool _garage_flag;
-        private int _classification_code;
-        private int _contact_method;
-        private int _number_of_people;
-        private string _working_days;
-        private bool _five_lap;
-        private bool _move_flag;
+        private int _setCode;
+        private int _wordCode;
+        private string _setName;
+        private string _setName1;
+        private string _setName2;
+        private int _fareCode;
+        private bool _garageFlag;
+        private int _classificationCode;
+        private int _contactMethod;
+        private int _numberOfPeople;
+        private bool _spareOfPeople;
+        private string _workingDays;
+        private bool _fiveLap;
+        private bool _moveFlag;
         private string _remarks;
-        private string _insert_pc_name;
-        private DateTime _insert_ymd_hms;
-        private string _update_pc_name;
-        private DateTime _update_ymd_hms;
-        private string _delete_pc_name;
-        private DateTime _delete_ymd_hms;
-        private bool _delete_flag;
+        private string _insertPcName;
+        private DateTime _insertYmdHms;
+        private string _updatePcName;
+        private DateTime _updateYmdHms;
+        private string _deletePcName;
+        private DateTime _deleteYmdHms;
+        private bool _deleteFlag;
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
         public H_SetMasterVo() {
-            _set_code = 0;
-            _word_code = 0;
-            _set_name = string.Empty;
-            _set_name_1 = string.Empty;
-            _set_name_2 = string.Empty;
-            _fare_code = 0;
-            _garage_flag = true;
-            _classification_code = 0;
-            _contact_method = 0;
-            _number_of_people = 0;
-            _working_days = string.Empty;
-            _five_lap = true;
-            _move_flag = true;
+            _setCode = 0;
+            _wordCode = 0;
+            _setName = string.Empty;
+            _setName1 = string.Empty;
+            _setName2 = string.Empty;
+            _fareCode = 0;
+            _garageFlag = true;
+            _classificationCode = 0;
+            _contactMethod = 0;
+            _numberOfPeople = 0;
+            _spareOfPeople = false;
+            _workingDays = string.Empty;
+            _fiveLap = true;
+            _moveFlag = true;
             _remarks = string.Empty;
-            _insert_pc_name = string.Empty;
-            _insert_ymd_hms = _defaultDateTime;
-            _update_pc_name = string.Empty;
-            _update_ymd_hms = _defaultDateTime;
-            _delete_pc_name = string.Empty;
-            _delete_ymd_hms = _defaultDateTime;
-            _delete_flag = false;
+            _insertPcName = string.Empty;
+            _insertYmdHms = _defaultDateTime;
+            _updatePcName = string.Empty;
+            _updateYmdHms = _defaultDateTime;
+            _deletePcName = string.Empty;
+            _deleteYmdHms = _defaultDateTime;
+            _deleteFlag = false;
 
 
         }
@@ -64,102 +66,110 @@ namespace H_Vo {
         /// <summary>
         /// 組番号
         /// </summary>
-        public int Set_code {
-            get => _set_code;
-            set => _set_code = value;
+        public int SetCode {
+            get => _setCode;
+            set => _setCode = value;
         }
         /// <summary>
         /// 市区町村コード
         /// </summary>
-        public int Word_code {
-            get => _word_code;
-            set => _word_code = value;
+        public int WordCode {
+            get => _wordCode;
+            set => _wordCode = value;
         }
         /// <summary>
         /// 組名
         /// </summary>
-        public string Set_name {
-            get => _set_name;
-            set => _set_name = value;
+        public string SetName {
+            get => _setName;
+            set => _setName = value;
         }
         /// <summary>
         /// 組名 略称1
         /// Label表示の1行目
         /// </summary>
-        public string Set_name_1 {
-            get => _set_name_1;
-            set => _set_name_1 = value;
+        public string SetName1 {
+            get => _setName1;
+            set => _setName1 = value;
         }
         /// <summary>
         /// 組名 略称2
         /// Label表示の2行目
         /// </summary>
-        public string Set_name_2 {
-            get => _set_name_2;
-            set => _set_name_2 = value;
+        public string SetName2 {
+            get => _setName2;
+            set => _setName2 = value;
         }
         /// <summary>
         /// 運賃コード
         /// </summary>
-        public int Fare_code {
-            get => _fare_code;
-            set => _fare_code = value;
+        public int FareCode {
+            get => _fareCode;
+            set => _fareCode = value;
         }
         /// <summary>
         /// 車庫地
         /// true:足立 false:三郷
         /// </summary>
-        public bool Garage_flag {
-            get => _garage_flag;
-            set => _garage_flag = value;
+        public bool GarageFlag {
+            get => _garageFlag;
+            set => _garageFlag = value;
         }
         /// <summary>
         /// 分類コード
         /// 10:雇上 11:区契 12:臨時 20:清掃工場 30:社内 50:一般 51:社用車 99:指定なし
         /// </summary>
-        public int Classification_code {
-            get => _classification_code;
-            set => _classification_code = value;
+        public int ClassificationCode {
+            get => _classificationCode;
+            set => _classificationCode = value;
         }
         /// <summary>
         /// 代番連絡方法
         /// 10:電話 11:Fax 12:しない
         /// </summary>
-        public int Contact_method {
-            get => _contact_method;
-            set => _contact_method = value;
+        public int ContactMethod {
+            get => _contactMethod;
+            set => _contactMethod = value;
         }
         /// <summary>
         /// 配車基本人数
         /// 入力例:1～4
         /// </summary>
-        public int Number_of_people {
-            get => _number_of_people;
-            set => _number_of_people = value;
+        public int NumberOfPeople {
+            get => _numberOfPeople;
+            set => _numberOfPeople = value;
+        }
+        /// <summary>
+        /// スペアを付けられる配車先がどうか
+        /// true:予備人員を付けられる false:予備人員を付けられない
+        /// </summary>
+        public bool SpareOfPeople {
+            get => _spareOfPeople;
+            set => _spareOfPeople = value;
         }
         /// <summary>
         /// 稼働日
         /// 入力例:"月火水木金土日"
         /// </summary>
-        public string Working_days {
-            get => _working_days;
-            set => _working_days = value;
+        public string WorkingDays {
+            get => _workingDays;
+            set => _workingDays = value;
         }
         /// <summary>
         /// 第五週の稼働
         /// true:稼働 false:休車
         /// </summary>
-        public bool Five_lap {
-            get => _five_lap;
-            set => _five_lap = value;
+        public bool FiveLap {
+            get => _fiveLap;
+            set => _fiveLap = value;
         }
         /// <summary>
         /// 移動フラグ
         /// true:移動できる false:移動できない
         /// </summary>
-        public bool Move_flag {
-            get => _move_flag;
-            set => _move_flag = value;
+        public bool MoveFlag {
+            get => _moveFlag;
+            set => _moveFlag = value;
         }
         /// <summary>
         /// 備考
@@ -168,33 +178,33 @@ namespace H_Vo {
             get => _remarks;
             set => _remarks = value;
         }
-        public string Insert_pc_name {
-            get => _insert_pc_name;
-            set => _insert_pc_name = value;
+        public string InsertPcName {
+            get => _insertPcName;
+            set => _insertPcName = value;
         }
-        public DateTime Insert_ymd_hms {
-            get => _insert_ymd_hms;
-            set => _insert_ymd_hms = value;
+        public DateTime InsertYmdHms {
+            get => _insertYmdHms;
+            set => _insertYmdHms = value;
         }
-        public string Update_pc_name {
-            get => _update_pc_name;
-            set => _update_pc_name = value;
+        public string UpdatePcName {
+            get => _updatePcName;
+            set => _updatePcName = value;
         }
-        public DateTime Update_ymd_hms {
-            get => _update_ymd_hms;
-            set => _update_ymd_hms = value;
+        public DateTime UpdateYmdHms {
+            get => _updateYmdHms;
+            set => _updateYmdHms = value;
         }
-        public string Delete_pc_name {
-            get => _delete_pc_name;
-            set => _delete_pc_name = value;
+        public string DeletePcName {
+            get => _deletePcName;
+            set => _deletePcName = value;
         }
-        public DateTime Delete_ymd_hms {
-            get => _delete_ymd_hms;
-            set => _delete_ymd_hms = value;
+        public DateTime DeleteYmdHms {
+            get => _deleteYmdHms;
+            set => _deleteYmdHms = value;
         }
-        public bool Delete_flag {
-            get => _delete_flag;
-            set => _delete_flag = value;
+        public bool DeleteFlag {
+            get => _deleteFlag;
+            set => _deleteFlag = value;
         }
     }
 }

@@ -38,7 +38,7 @@ namespace H_ControlEx {
             /*
              * Boderを描画
              */
-            ControlPaint.DrawBorder(e.Graphics, new Rectangle(0, 0, 74, 74), Color.Blue, ButtonBorderStyle.Solid);
+            ControlPaint.DrawBorder(e.Graphics, new Rectangle(0, 0, _width - 2, _height - 2), Color.Blue, ButtonBorderStyle.Solid);
         }
     }
 }
