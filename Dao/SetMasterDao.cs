@@ -1,4 +1,6 @@
-﻿using Common;
+﻿using System.Data.SqlClient;
+
+using Common;
 
 using Vo;
 
@@ -16,8 +18,8 @@ namespace Dao {
         /// </summary>
         /// <returns></returns>
         public SetMasterVo SelectOneSetMaster(int setCode) {
-            var setMasterVo = new SetMasterVo();
-            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            SetMasterVo setMasterVo = new();
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT set_master.word_code," +
                                             "set_master.set_code," +
                                             "set_master.set_name," +

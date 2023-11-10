@@ -7,18 +7,19 @@ namespace H_Vo {
         /*
          * プロパティ
          */
-        private int _columnNumber;
-        private int _rowNumber;
-        private H_SetMasterVo _hSetMasterVo;
-        private H_CarMasterVo _hCarMasterVo;
-        private List<H_StaffMasterVo> _listHStaffMasterVo;
+        private int _cellNumber;
+        private bool _vehicleDispatchFlag;
+        private bool _purpose;
+        private H_SetMasterVo? _hSetMasterVo;
+        private H_CarMasterVo? _hCarMasterVo;
+        private List<H_StaffMasterVo>? _listHStaffMasterVo;
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
         public H_SetControlVo() {
-            _columnNumber = 0;
-            _rowNumber = 0;
+            _cellNumber = 0;
+            _purpose = false;
             _hSetMasterVo = null;
             _hCarMasterVo = null;
             _listHStaffMasterVo = null;
@@ -28,39 +29,46 @@ namespace H_Vo {
          * Setter Getter
          */
         /// <summary>
-        /// ColumnNumber
-        /// SetControlのColum番号
+        /// CellNumber
         /// </summary>
-        public int ColumnNumber {
-            get => _columnNumber;
-            set => _columnNumber = value;
+        public int CellNumber {
+            get => _cellNumber;
+            set => _cellNumber = value;
         }
         /// <summary>
-        /// RowNumber
-        /// SetControlのRow番号
+        /// 配車フラグ
+        /// true:配車の割当てが有る false:割当てが無い
         /// </summary>
-        public int RowNumber {
-            get => _rowNumber;
-            set => _rowNumber = value;
+        public bool VehicleDispatchFlag {
+            get => _vehicleDispatchFlag;
+            set => _vehicleDispatchFlag = value;
+        }
+        /// <summary>
+        /// SetControlの列数
+        /// true:２列 false:１列
+        /// </summary>
+        public bool Purpose {
+            get => _purpose;
+            set => _purpose = value;
         }
         /// <summary>
         /// SetMaster
         /// </summary>
-        public H_SetMasterVo HSetMasterVo {
+        public H_SetMasterVo? HSetMasterVo {
             get => _hSetMasterVo;
             set => _hSetMasterVo = value;
         }
         /// <summary>
         /// CarMaster
         /// </summary>
-        public H_CarMasterVo HCarMasterVo {
+        public H_CarMasterVo? HCarMasterVo {
             get => _hCarMasterVo;
             set => _hCarMasterVo = value;
         }
         /// <summary>
         /// StaffMaster
         /// </summary>
-        public List<H_StaffMasterVo> ListHStaffMasterVo {
+        public List<H_StaffMasterVo>? ListHStaffMasterVo {
             get => _listHStaffMasterVo;
             set => _listHStaffMasterVo = value;
         }

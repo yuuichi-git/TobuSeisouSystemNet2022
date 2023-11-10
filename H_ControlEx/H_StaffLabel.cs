@@ -6,10 +6,10 @@ using H_Vo;
 namespace H_ControlEx {
     public partial class H_StaffLabel : Label {
         /*
-         * プロパティ
+         * １つのパネルのサイズ
          */
-        private const int _height = 96;
-        private const int _width = 76;
+        private const float _panelWidth = 80;
+        private const float _panelHeight = 100;
 
         /// <summary>
         /// コンストラクタ
@@ -20,18 +20,18 @@ namespace H_ControlEx {
              */
             InitializeComponent();
             this.BorderStyle = BorderStyle.FixedSingle;
-            this.Height = _height;
+            this.Height = (int)_panelHeight - 4;
             this.Margin = new Padding(2);
             this.Name = "H_StaffLabel";
             this.Tag = hStaffMasterVo;
-            this.Width = _width;
+            this.Width = (int)_panelWidth - 4;
         }
 
         protected override void OnPaint(PaintEventArgs p) {
             /*
              * Boderを描画
              */
-            ControlPaint.DrawBorder(p.Graphics, new Rectangle(0, 0, _width - 2, _height - 2), Color.Gray, ButtonBorderStyle.Solid);
+            ControlPaint.DrawBorder(p.Graphics, new Rectangle(0, 0, (int)_panelWidth - 6, (int)_panelHeight - 6), Color.Gray, ButtonBorderStyle.Solid);
         }
     }
 }

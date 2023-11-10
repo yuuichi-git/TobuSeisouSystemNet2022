@@ -48,7 +48,7 @@
             h_ButtonExBoard2 = new H_ControlEx.H_ButtonEx();
             h_ButtonExBoard1 = new H_ControlEx.H_ButtonEx();
             h_ButtonExUpdate = new H_ControlEx.H_ButtonEx();
-            h_DateTimePickerOperationDate = new H_ControlEx.H_DateTimePickerEx();
+            H_DateTimePickerOperationDate = new H_ControlEx.H_DateTimePickerEx();
             h_LabelEx1 = new H_ControlEx.H_LabelEx();
             h_TableLayoutPanelExBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
@@ -274,7 +274,7 @@
             h_PanelExCenterTop.Controls.Add(h_ButtonExBoard2);
             h_PanelExCenterTop.Controls.Add(h_ButtonExBoard1);
             h_PanelExCenterTop.Controls.Add(h_ButtonExUpdate);
-            h_PanelExCenterTop.Controls.Add(h_DateTimePickerOperationDate);
+            h_PanelExCenterTop.Controls.Add(H_DateTimePickerOperationDate);
             h_PanelExCenterTop.Controls.Add(h_LabelEx1);
             h_PanelExCenterTop.Dock = DockStyle.Fill;
             h_PanelExCenterTop.Location = new Point(0, 0);
@@ -315,16 +315,16 @@
             h_ButtonExUpdate.UseVisualStyleBackColor = true;
             h_ButtonExUpdate.Click += H_ButtonExUpdate_Click;
             // 
-            // h_DateTimePickerOperationDate
+            // H_DateTimePickerOperationDate
             // 
-            h_DateTimePickerOperationDate.CustomFormat = "yyyy年MM月dd日(dddd)";
-            h_DateTimePickerOperationDate.Format = DateTimePickerFormat.Custom;
-            h_DateTimePickerOperationDate.Location = new Point(54, 7);
-            h_DateTimePickerOperationDate.Name = "h_DateTimePickerOperationDate";
-            h_DateTimePickerOperationDate.Size = new Size(180, 23);
-            h_DateTimePickerOperationDate.TabIndex = 0;
-            h_DateTimePickerOperationDate.TabStop = false;
-            h_DateTimePickerOperationDate.Value = new DateTime(2023, 10, 10, 0, 0, 0, 0);
+            H_DateTimePickerOperationDate.CustomFormat = "yyyy年MM月dd日(dddd)";
+            H_DateTimePickerOperationDate.Format = DateTimePickerFormat.Custom;
+            H_DateTimePickerOperationDate.Location = new Point(54, 7);
+            H_DateTimePickerOperationDate.Name = "H_DateTimePickerOperationDate";
+            H_DateTimePickerOperationDate.Size = new Size(180, 23);
+            H_DateTimePickerOperationDate.TabIndex = 0;
+            H_DateTimePickerOperationDate.TabStop = false;
+            H_DateTimePickerOperationDate.Value = new DateTime(2023, 10, 10, 0, 0, 0, 0);
             // 
             // h_LabelEx1
             // 
@@ -368,7 +368,7 @@
         private StatusStrip StatusStrip1;
         private ToolStripStatusLabel toolStripStatusLabel1;
         private ToolStripMenuItem ToolStripMenuItemInitialize;
-        private H_ControlEx.H_DateTimePickerEx h_DateTimePickerOperationDate;
+        private H_ControlEx.H_DateTimePickerEx H_DateTimePickerOperationDate;
         private H_ControlEx.H_LabelEx h_LabelEx1;
         private H_ControlEx.H_ButtonEx h_ButtonExUpdate;
         private H_ControlEx.H_PanelEx h_PanelExLeft;

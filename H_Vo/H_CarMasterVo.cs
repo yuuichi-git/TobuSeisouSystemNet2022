@@ -6,224 +6,256 @@
     public class H_CarMasterVo {
         private readonly DateTime _defaultDateTime = new DateTime(1900,01,01);
 
-        private int _car_code;
-        private int _classification_code;
-        private string _classification_name = ""; // 外部結合で取得
-        private string _registration_number = "";
-        private string _registration_number_1 = "";
-        private string _registration_number_2 = "";
-        private string _registration_number_3 = "";
-        private string _registration_number_4 = "";
-        private bool _garage_flag;
-        private int _door_number;
-        private DateTime _registration_date;
-        private DateTime _first_registration_date;
-        private int _car_kind_code;
-        private string _car_kind_name = ""; // 外部結合で取得
-        private string _disguise_kind_1 = "";
-        private string _disguise_kind_2 = "";
-        private string _disguise_kind_3 = "";
-        private string _car_use = "";
-        private int _other_code;
-        private string _other_name = "";
-        private int _shape_code;
-        private string _shape_name = ""; // 外部結合で取得
-        private int _manufacturer_code;
-        private string _manufacturer_name = ""; // 外部結合で取得
+        private int _carCode;
+        private int _classificationCode;
+        private string _registrationNumber;
+        private string _registrationNumber1;
+        private string _registrationNumber2;
+        private string _registrationNumber3;
+        private string _registrationNumber4;
+        private int _garageCode;
+        private int _doorNumber;
+        private DateTime _registrationDate;
+        private DateTime _firstRegistrationDate;
+        private int _carKindCode;
+        private string _disguiseKind1;
+        private string _disguiseKind2;
+        private string _disguiseKind3;
+        private string _carUse;
+        private int _otherCode;
+        private int _shapeCode;
+        private int _manufacturerCode;
         private decimal _capacity;
-        private decimal _maximum_load_capacity;
-        private decimal _vehicle_weight;
-        private decimal _total_vehicle_weight;
-        private string _vehicle_number = "";
+        private decimal _maximumLoadCapacity;
+        private decimal _vehicleWeight;
+        private decimal _totalVehicleWeight;
+        private string _vehicleNumber;
         private decimal _length;
         private decimal _width;
         private decimal _height;
-        private decimal _ff_axis_weight;
-        private decimal _fr_axis_weight;
-        private decimal _rf_axis_weight;
-        private decimal _rr_axis_weight;
-        private string _version = "";
-        private string _motor_version = "";
-        private decimal _total_displacement;
-        private string _types_of_fuel = "";
-        private string _version_designate_number = "";
-        private string _category_distinguish_number = "";
-        private string _owner_name = "";
-        private string _owner_address = "";
-        private string _user_name = "";
-        private string _user_address = "";
-        private string _base_address = "";
-        private DateTime _expiration_date;
-        private string _remarks = "";
-        private byte[] _picture = new byte[0];
-        private DateTime _insert_ymd_hms;
-        private DateTime _update_ymd_hms;
-        private DateTime _delete_ymd_hms;
-        private bool _delete_flag;
+        private decimal _ffAxisWeight;
+        private decimal _frAxisWeight;
+        private decimal _rfAxisWeight;
+        private decimal _rrAxisWeight;
+        private string _version;
+        private string _motorVersion;
+        private decimal _totalDisplacement;
+        private string _typesOfFuel;
+        private string _versionDesignateNumber;
+        private string _categoryDistinguishNumber;
+        private string _ownerName;
+        private string _ownerAddress;
+        private string _userName;
+        private string _userAddress;
+        private string _baseAddress;
+        private DateTime _expirationDate;
+        private string _remarks;
+        private byte[] _picture;
+        private string _insertPcName;
+        private DateTime _insertYmdHms;
+        private string _updatePcName;
+        private DateTime _updateYmdHms;
+        private string _deletePcName;
+        private DateTime _deleteYmdHms;
+        private bool _deleteFlag;
+
+        /// <summary>
+        /// コンストラクタ
+        /// </summary>
+        public H_CarMasterVo() {
+            _carCode = 0;
+            _classificationCode = default;
+            _registrationNumber = string.Empty;
+            _registrationNumber1 = string.Empty;
+            _registrationNumber2 = string.Empty;
+            _registrationNumber3 = string.Empty;
+            _registrationNumber4 = string.Empty;
+            _garageCode = default;
+            _doorNumber = default;
+            _registrationDate = _defaultDateTime;
+            _firstRegistrationDate = _defaultDateTime;
+            _carKindCode = default;
+            _disguiseKind1 = string.Empty;
+            _disguiseKind2 = string.Empty;
+            _disguiseKind3 = string.Empty;
+            _carUse = string.Empty;
+            _otherCode = default;
+            _shapeCode = default;
+            _manufacturerCode = default;
+            _capacity = default;
+            _maximumLoadCapacity = default;
+            _vehicleWeight = default;
+            _totalVehicleWeight = default;
+            _vehicleNumber = string.Empty;
+            _length = default;
+            _width = default;
+            _height = default;
+            _ffAxisWeight = default;
+            _frAxisWeight = default;
+            _rfAxisWeight = default;
+            _rrAxisWeight = default;
+            _version = string.Empty;
+            _motorVersion = string.Empty;
+            _totalDisplacement = default;
+            _typesOfFuel = string.Empty;
+            _versionDesignateNumber = string.Empty;
+            _categoryDistinguishNumber = string.Empty;
+            _ownerName = string.Empty;
+            _ownerAddress = string.Empty;
+            _userName = string.Empty;
+            _userAddress = string.Empty;
+            _baseAddress = string.Empty;
+            _expirationDate = _defaultDateTime;
+            _remarks = string.Empty;
+            _picture = Array.Empty<byte>();
+            _insertPcName = string.Empty;
+            _insertYmdHms = _defaultDateTime;
+            _updatePcName = string.Empty;
+            _updateYmdHms = _defaultDateTime;
+            _deletePcName = string.Empty;
+            _deleteYmdHms = _defaultDateTime;
+            _deleteFlag = false;
+        }
 
         /// <summary>
         /// 車両コード
         /// </summary>
-        public int Car_code {
-            get => _car_code;
-            set => _car_code = value;
+        public int CarCode {
+            get => _carCode;
+            set => _carCode = value;
         }
         /// <summary>
         /// 分類コード
         /// 10:雇上 11:区契 12:臨時 20:清掃工場 30:社内 50:一般 51:社用車 99:指定なし
         /// </summary>
-        public int Classification_code {
-            get => _classification_code;
-            set => _classification_code = value;
-        }
-        public string Classification_name {
-            get => _classification_name;
-            set => _classification_name = value;
+        public int ClassificationCode {
+            get => _classificationCode;
+            set => _classificationCode = value;
         }
         /// <summary>
         /// 自動車登録番号又は車両番号
         /// </summary>
-        public string Registration_number {
-            get => _registration_number;
-            set => _registration_number = value;
+        public string RegistrationNumber {
+            get => _registrationNumber;
+            set => _registrationNumber = value;
         }
         /// <summary>
         /// 自動車登録番号又は車両番号1
         /// </summary>
-        public string Registration_number_1 {
-            get => _registration_number_1;
-            set => _registration_number_1 = value;
+        public string RegistrationNumber1 {
+            get => _registrationNumber1;
+            set => _registrationNumber1 = value;
         }
         /// <summary>
         /// 自動車登録番号又は車両番号2
         /// </summary>
-        public string Registration_number_2 {
-            get => _registration_number_2;
-            set => _registration_number_2 = value;
+        public string RegistrationNumber2 {
+            get => _registrationNumber2;
+            set => _registrationNumber2 = value;
         }
         /// <summary>
         /// 自動車登録番号又は車両番号3
         /// </summary>
-        public string Registration_number_3 {
-            get => _registration_number_3;
-            set => _registration_number_3 = value;
+        public string RegistrationNumber3 {
+            get => _registrationNumber3;
+            set => _registrationNumber3 = value;
         }
         /// <summary>
         /// 自動車登録番号又は車両番号4
         /// </summary>
-        public string Registration_number_4 {
-            get => _registration_number_4;
-            set => _registration_number_4 = value;
+        public string RegistrationNumber4 {
+            get => _registrationNumber4;
+            set => _registrationNumber4 = value;
         }
         /// <summary>
         /// 車庫地
-        /// true:足立 false:三郷
+        /// 1:足立 2:三郷
         /// </summary>
-        public bool Garage_flag {
-            get => _garage_flag;
-            set => _garage_flag = value;
+        public int GarageCode {
+            get => _garageCode;
+            set => _garageCode = value;
         }
         /// <summary>
         /// ドア番号
         /// "78-1"等の文字で表すドア番は"781"等と記載する
         /// </summary>
-        public int Door_number {
-            get => _door_number;
-            set => _door_number = value;
+        public int DoorNumber {
+            get => _doorNumber;
+            set => _doorNumber = value;
         }
         /// <summary>
         /// 登録年月日/交付年月日
         /// </summary>
-        public DateTime Registration_date {
-            get => _registration_date;
-            set => _registration_date = value;
+        public DateTime RegistrationDate {
+            get => _registrationDate;
+            set => _registrationDate = value;
         }
         /// <summary>
         /// 初年度登録年月
         /// </summary>
-        public DateTime First_registration_date {
-            get => _first_registration_date;
-            set => _first_registration_date = value;
+        public DateTime FirstRegistrationDate {
+            get => _firstRegistrationDate;
+            set => _firstRegistrationDate = value;
         }
         /// <summary>
         /// 自動車の種別
+        /// 10:軽自動車 11:小型 12:普通
         /// </summary>
-        public int Car_kind_code {
-            get => _car_kind_code;
-            set => _car_kind_code = value;
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        public string Car_kind_name {
-            get => _car_kind_name;
-            set => _car_kind_name = value;
+        public int CarKindCode {
+            get => _carKindCode;
+            set => _carKindCode = value;
         }
         /// <summary>
         /// 仮装の種類1(配車での名称)
         /// </summary>
-        public string Disguise_kind_1 {
-            get => _disguise_kind_1;
-            set => _disguise_kind_1 = value;
+        public string DisguiseKind1 {
+            get => _disguiseKind1;
+            set => _disguiseKind1 = value;
         }
         /// <summary>
         /// 仮装の種類2(事故報告書での名称)
         /// </summary>
-        public string Disguise_kind_2 {
-            get => _disguise_kind_2;
-            set => _disguise_kind_2 = value;
+        public string DisguiseKind2 {
+            get => _disguiseKind2;
+            set => _disguiseKind2 = value;
         }
         /// <summary>
         /// 仮装の種類3(整備での名称)
         /// </summary>
-        public string Disguise_kind_3 {
-            get => _disguise_kind_3;
-            set => _disguise_kind_3 = value;
+        public string DisguiseKind3 {
+            get => _disguiseKind3;
+            set => _disguiseKind3 = value;
         }
         /// <summary>
         /// 用途
         /// </summary>
-        public string Car_use {
-            get => _car_use;
-            set => _car_use = value;
+        public string CarUse {
+            get => _carUse;
+            set => _carUse = value;
         }
         /// <summary>
         /// 自家用・事業用の別コード
         /// 10:事業用 11:自家用
         /// </summary>
-        public int Other_code {
-            get => _other_code;
-            set => _other_code = value;
-        }
-        public string Other_name {
-            get => _other_name;
-            set => _other_name = value;
+        public int OtherCode {
+            get => _otherCode;
+            set => _otherCode = value;
         }
         /// <summary>
         /// 車体の形状コード
         /// 10:キャブオーバー 11:塵芥車 12:ダンプ 13:コンテナ専用 14:脱着装置付コンテナ専用車 15:粉粒体運搬車 16:糞尿車 17:清掃車
         /// </summary>
-        public int Shape_code {
-            get => _shape_code;
-            set => _shape_code = value;
-        }
-        public string Shape_name {
-            get => _shape_name;
-            set => _shape_name = value;
+        public int ShapeCode {
+            get => _shapeCode;
+            set => _shapeCode = value;
         }
         /// <summary>
         /// 車両メーカーコード
-        /// </summary>
-        public int Manufacturer_code {
-            get => _manufacturer_code;
-            set => _manufacturer_code = value;
-        }
-        /// <summary>
         /// 10:いすゞ 11:日産 12:ダイハツ 13:日野 14:スバル
         /// </summary>
-        public string Manufacturer_name {
-            get => _manufacturer_name;
-            set => _manufacturer_name = value;
+        public int ManufacturerCode {
+            get => _manufacturerCode;
+            set => _manufacturerCode = value;
         }
         /// <summary>
         /// 乗車定員
@@ -235,30 +267,30 @@
         /// <summary>
         /// 最大積載量
         /// </summary>
-        public decimal Maximum_load_capacity {
-            get => _maximum_load_capacity;
-            set => _maximum_load_capacity = value;
+        public decimal MaximumLoadCapacity {
+            get => _maximumLoadCapacity;
+            set => _maximumLoadCapacity = value;
         }
         /// <summary>
         /// 車両重量
         /// </summary>
-        public decimal Vehicle_weight {
-            get => _vehicle_weight;
-            set => _vehicle_weight = value;
+        public decimal VehicleWeight {
+            get => _vehicleWeight;
+            set => _vehicleWeight = value;
         }
         /// <summary>
         /// 車両総重量
         /// </summary>
-        public decimal Total_vehicle_weight {
-            get => _total_vehicle_weight;
-            set => _total_vehicle_weight = value;
+        public decimal TotalVehicleWeight {
+            get => _totalVehicleWeight;
+            set => _totalVehicleWeight = value;
         }
         /// <summary>
         /// 車台番号
         /// </summary>
-        public string Vehicle_number {
-            get => _vehicle_number;
-            set => _vehicle_number = value;
+        public string VehicleNumber {
+            get => _vehicleNumber;
+            set => _vehicleNumber = value;
         }
         /// <summary>
         /// 長さ
@@ -284,30 +316,30 @@
         /// <summary>
         /// 前前軸重
         /// </summary>
-        public decimal Ff_axis_weight {
-            get => _ff_axis_weight;
-            set => _ff_axis_weight = value;
+        public decimal FfAxisWeight {
+            get => _ffAxisWeight;
+            set => _ffAxisWeight = value;
         }
         /// <summary>
         /// 前後軸重
         /// </summary>
-        public decimal Fr_axis_weight {
-            get => _fr_axis_weight;
-            set => _fr_axis_weight = value;
+        public decimal FrAxisWeight {
+            get => _frAxisWeight;
+            set => _frAxisWeight = value;
         }
         /// <summary>
         /// 後前軸重
         /// </summary>
-        public decimal Rf_axis_weight {
-            get => _rf_axis_weight;
-            set => _rf_axis_weight = value;
+        public decimal RfAxisWeight {
+            get => _rfAxisWeight;
+            set => _rfAxisWeight = value;
         }
         /// <summary>
         /// 後後軸重
         /// </summary>
-        public decimal Rr_axis_weight {
-            get => _rr_axis_weight;
-            set => _rr_axis_weight = value;
+        public decimal RrAxisWeight {
+            get => _rrAxisWeight;
+            set => _rrAxisWeight = value;
         }
         /// <summary>
         /// 型式
@@ -319,79 +351,79 @@
         /// <summary>
         /// 原動機の型式
         /// </summary>
-        public string Motor_version {
-            get => _motor_version;
-            set => _motor_version = value;
+        public string MotorVersion {
+            get => _motorVersion;
+            set => _motorVersion = value;
         }
         /// <summary>
         /// 総排気量又は定格出力
         /// </summary>
-        public decimal Total_displacement {
-            get => _total_displacement;
-            set => _total_displacement = value;
+        public decimal TotalDisplacement {
+            get => _totalDisplacement;
+            set => _totalDisplacement = value;
         }
         /// <summary>
         /// 燃料の種類
         /// </summary>
-        public string Types_of_fuel {
-            get => _types_of_fuel;
-            set => _types_of_fuel = value;
+        public string TypesOfFuel {
+            get => _typesOfFuel;
+            set => _typesOfFuel = value;
         }
         /// <summary>
         /// 型式指定番号
         /// </summary>
-        public string Version_designate_number {
-            get => _version_designate_number;
-            set => _version_designate_number = value;
+        public string VersionDesignateNumber {
+            get => _versionDesignateNumber;
+            set => _versionDesignateNumber = value;
         }
         /// <summary>
         /// 類別区分番号
         /// </summary>
-        public string Category_distinguish_number {
-            get => _category_distinguish_number;
-            set => _category_distinguish_number = value;
+        public string CategoryDistinguishNumber {
+            get => _categoryDistinguishNumber;
+            set => _categoryDistinguishNumber = value;
         }
         /// <summary>
         /// 所有者の氏名又は名称
         /// </summary>
-        public string Owner_name {
-            get => _owner_name;
-            set => _owner_name = value;
+        public string OwnerName {
+            get => _ownerName;
+            set => _ownerName = value;
         }
         /// <summary>
         /// 所有者の住所
         /// </summary>
-        public string Owner_address {
-            get => _owner_address;
-            set => _owner_address = value;
+        public string OwnerAddress {
+            get => _ownerAddress;
+            set => _ownerAddress = value;
         }
         /// <summary>
         /// 使用者の氏名又は名称
         /// </summary>
-        public string User_name {
-            get => _user_name;
-            set => _user_name = value;
+        public string UserName {
+            get => _userName;
+            set => _userName = value;
         }
         /// <summary>
         /// 使用者の住所
         /// </summary>
-        public string User_address {
-            get => _user_address;
-            set => _user_address = value;
+        public string UserAddress {
+            get => _userAddress;
+            set => _userAddress = value;
         }
         /// <summary>
         /// 使用の本拠の位置
         /// </summary>
-        public string Base_address {
-            get => _base_address;
-            set => _base_address = value;
+        public string BaseAddress {
+            get => _baseAddress;
+            set => _baseAddress = value;
         }
         /// <summary>
         /// 有効期限の満了する日
         /// </summary>
-        public DateTime Expiration_date {
-            get => _expiration_date;
-            set => _expiration_date = value;
+        public DateTime ExpirationDate {
+            get => _expirationDate;
+            set => _expirationDate = value;
         }
         /// <summary>
         /// 備考
@@ -401,30 +433,39 @@
             set => _remarks = value;
         }
         /// <summary>
-        /// 車検証画像  
+        /// 車検証画像
         /// </summary>
         public byte[] Picture {
             get => _picture;
             set => _picture = value;
         }
-        public DateTime Insert_ymd_hms {
-            get => _insert_ymd_hms;
-            set => _insert_ymd_hms = value;
+        public string InsertPcName {
+            get => _insertPcName;
+            set => _insertPcName = value;
         }
-        public DateTime Update_ymd_hms {
-            get => _update_ymd_hms;
-            set => _update_ymd_hms = value;
+        public DateTime InsertYmdHms {
+            get => _insertYmdHms;
+            set => _insertYmdHms = value;
         }
-        public DateTime Delete_ymd_hms {
-            get => _delete_ymd_hms;
-            set => _delete_ymd_hms = value;
+        public string UpdatePcName {
+            get => _updatePcName;
+            set => _updatePcName = value;
         }
-        /// <summary>
-        /// 削除フラグ
-        /// </summary>
-        public bool Delete_flag {
-            get => _delete_flag;
-            set => _delete_flag = value;
+        public DateTime UpdateYmdHms {
+            get => _updateYmdHms;
+            set => _updateYmdHms = value;
+        }
+        public string DeletePcName {
+            get => _deletePcName;
+            set => _deletePcName = value;
+        }
+        public DateTime DeleteYmdHms {
+            get => _deleteYmdHms;
+            set => _deleteYmdHms = value;
+        }
+        public bool DeleteFlag {
+            get => _deleteFlag;
+            set => _deleteFlag = value;
         }
     }
 }

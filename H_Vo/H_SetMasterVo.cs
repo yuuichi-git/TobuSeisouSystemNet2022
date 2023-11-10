@@ -8,7 +8,7 @@ namespace H_Vo {
      */
     [Serializable] // ←DeepCopyする場合には必要
     public class H_SetMasterVo {
-        private readonly DateTime _defaultDateTime = new DateTime(1900,01,01);
+        private readonly DateTime _defaultDateTime = new(1900,01,01);
 
         private int _setCode;
         private int _wordCode;
@@ -16,7 +16,7 @@ namespace H_Vo {
         private string _setName1;
         private string _setName2;
         private int _fareCode;
-        private bool _garageFlag;
+        private int _garageFlag;
         private int _classificationCode;
         private int _contactMethod;
         private int _numberOfPeople;
@@ -43,7 +43,7 @@ namespace H_Vo {
             _setName1 = string.Empty;
             _setName2 = string.Empty;
             _fareCode = 0;
-            _garageFlag = true;
+            _garageFlag = 0;
             _classificationCode = 0;
             _contactMethod = 0;
             _numberOfPeople = 0;
@@ -111,7 +111,7 @@ namespace H_Vo {
         /// 車庫地
         /// true:足立 false:三郷
         /// </summary>
-        public bool GarageFlag {
+        public int GarageFlag {
             get => _garageFlag;
             set => _garageFlag = value;
         }
@@ -125,7 +125,7 @@ namespace H_Vo {
         }
         /// <summary>
         /// 代番連絡方法
-        /// 10:電話 11:Fax 12:しない
+        /// 10:電話 11:Fax 12:しない 13:TEL/FAX
         /// </summary>
         public int ContactMethod {
             get => _contactMethod;

@@ -1,27 +1,30 @@
 ﻿/*
  * 2023-10-19
  */
-using FarPoint.PDF;
-
 using H_Vo;
 
 namespace H_ControlEx {
     public partial class H_Board : TableLayoutPanel {
+        /*
+         * １つのパネルのサイズ
+         */
+        private const float _panelWidth = 80;
+        private const float _panelHeight = 100;
+        /*
+         * Cellの数
+         */
+        private const int _columnCount = 50; // Columnの数
+        private const int _rowCount = 4; // Rowの数
         /*
          * 変数定義
          */
         private Point _oldMousePoint;
         private Point _oldAutoScrollPosition;
         /*
-         * Cellの数
-         */
-        private const int _columnCount = 40; // Columnの数
-        private const int _rowCount = 3; // Rowの数
-        /*
          * Cellのサイズ
          */
-        private const float _colWidth = 80;
-        private const float _rowHeight = 360;
+        private const float _columnWidth = _panelWidth;
+        private const float _rowHeight = _panelHeight * _rowCount;
 
         /// <summary>
         /// コンストラクタ
@@ -40,7 +43,7 @@ namespace H_ControlEx {
 
             this.ColumnCount = _columnCount;
             for(int i = 0; i < _columnCount; i++)
-                this.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, _colWidth));
+                this.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, _columnWidth));
             this.RowCount = _rowCount;
             for(int i = 0; i < _rowCount; i++)
                 this.RowStyles.Add(new RowStyle(SizeType.Absolute, _rowHeight));
@@ -59,7 +62,7 @@ namespace H_ControlEx {
         /// <param name="e"></param>
         private void H_Board_MouseDown(object sender, MouseEventArgs e) {
             if(e.Button == MouseButtons.Left) {
-                _oldMousePoint = ((Control)sender).PointToScreen(new Point(e.X, e.Y));
+                this._oldMousePoint = ((Control)sender).PointToScreen(new Point(e.X, e.Y));
                 this.Cursor = Cursors.Hand;
             }
         }
@@ -103,12 +106,26 @@ namespace H_ControlEx {
         /// </summary>
         /// <param name="hSetControlVo"></param>
         public void AddSetControl(H_SetControlVo hSetControlVo) {
+            /*
+             * 配車用
+             */
             H_SetControl hSetControl = new(hSetControlVo);
             hSetControl.Event_SetControl_MouseDown += H_Board_MouseDown; // Eventを登録
             hSetControl.Event_SetControl_MouseUp += H_Board_MouseUp; // Eventを登録
             hSetControl.Event_SetControl_MouseMove += H_Board_MouseMove; // Eventを登録
-            this.Controls.Add(hSetControl, hSetControlVo.ColumnNumber, hSetControlVo.RowNumber);
-            this.SetColumnSpan(hSetControl, hSetControlVo.HSetMasterVo.NumberOfPeople > 2 || hSetControlVo.HSetMasterVo.SpareOfPeople ? 2 : 1); // SetControlが１列用か２列用かを特定する
+
+            this.Controls.Add(hSetControl, GetAddCellPoint(hSetControlVo.CellNumber).X, GetAddCellPoint(hSetControlVo.CellNumber).Y);
+            this.SetColumnSpan(hSetControl, hSetControlVo.Purpose ? 2 : 1);
+        }
+
+        /// <summary>
+        /// GetAddCellPoint
+        /// CellNumberをTableLayoutPanelのCell座標に変換する
+        /// </summary>
+        /// <param name="cellNumber"></param>
+        /// <returns></returns>
+        private Point GetAddCellPoint(int cellNumber) {
+            return new Point(cellNumber % _columnCount, cellNumber / _columnCount);
         }
     }
 }

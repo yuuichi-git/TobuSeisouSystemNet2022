@@ -5,12 +5,20 @@ using H_Vo;
 
 namespace H_ControlEx {
     public partial class H_SetControl : TableLayoutPanel {
-        Dictionary<int,Point> _dictionaryCellPoint; // StaffLabel用のCellの位置
+        /*
+         * １つのパネルのサイズ
+         */
+        private const float _panelWidth = 80;
+        private const float _panelHeight = 100;
         /*
          * プロパティ
          */
         private const int _columnCount = 1; // Column数
         private const int _rowCount = 4; // Row数
+        /*
+         * StaffLabel用のCellの位置を保持
+         */
+        private Dictionary<int,Point> _dictionaryCellPoint = new() { { 0, new Point(0, 2) }, { 1, new Point(0, 3) }, { 2, new Point(1, 2) }, { 3, new Point(1, 3) } }; // StaffLabel用のCellの位置
         /*
          * Vo
          */
@@ -25,10 +33,10 @@ namespace H_ControlEx {
 
         /// <summary>
         /// コンストラクタ
+        /// 配車されているSetControlを作成する
         /// H_SetControlVoに全ての引数を代入しておく
         /// </summary>
         public H_SetControl(H_SetControlVo hSetControlVo) {
-            _dictionaryCellPoint = new Dictionary<int, Point>() { { 0, new Point(0, 2) }, { 1, new Point(0, 3) }, { 2, new Point(1, 2) }, { 3, new Point(1, 3) } }; // StaffLabel用のCellの位置
             /*
              * Vo
              */
@@ -45,34 +53,31 @@ namespace H_ControlEx {
             /*
              * SetControlの形状(１列か２列か)を決定する
              */
-            if(hSetControlVo.HSetMasterVo.NumberOfPeople > 2 || hSetControlVo.HSetMasterVo.SpareOfPeople) {
-                this.Size = new Size(160, 360);
-                this.ColumnCount = 2;
-                this.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-                this.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-                this.RowCount = _rowCount;
-                this.RowStyles.Add(new RowStyle(SizeType.Absolute, 80F));
-                this.RowStyles.Add(new RowStyle(SizeType.Absolute, 80F));
-                this.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
-                this.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
-
-                this.CreateHSetLabel(_hSetControlVo.HSetMasterVo); // H_SetLabel
-                this.CreateHCarLabel(_hSetControlVo.HCarMasterVo); // H_CarLabel
-                this.CreateHStaffLabel(_hSetControlVo.ListHStaffMasterVo); // H_StaffLabel
-            } else {
-                this.Size = new Size(80, 360);
-                this.ColumnCount = 1;
-                this.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 80F));
-                this.RowCount = _rowCount;
-                this.RowStyles.Add(new RowStyle(SizeType.Absolute, 80F));
-                this.RowStyles.Add(new RowStyle(SizeType.Absolute, 80F));
-                this.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
-                this.RowStyles.Add(new RowStyle(SizeType.Absolute, 100F));
-
-                this.CreateHSetLabel(_hSetControlVo.HSetMasterVo); // H_SetLabel
-                this.CreateHCarLabel(_hSetControlVo.HCarMasterVo); // H_CarLabel
-                this.CreateHStaffLabel(_hSetControlVo.ListHStaffMasterVo); // H_StaffLabel
+            switch(hSetControlVo.Purpose) {
+                case true: // ２列
+                    this.Size = new Size(160, 400);
+                    this.ColumnCount = 2;
+                    this.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, _panelWidth));
+                    this.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, _panelWidth));
+                    this.RowCount = _rowCount;
+                    this.RowStyles.Add(new RowStyle(SizeType.Absolute, _panelHeight));
+                    this.RowStyles.Add(new RowStyle(SizeType.Absolute, _panelHeight));
+                    this.RowStyles.Add(new RowStyle(SizeType.Absolute, _panelHeight));
+                    this.RowStyles.Add(new RowStyle(SizeType.Absolute, _panelHeight));
+                    break;
+                case false: // １列
+                    this.Size = new Size(80, 400);
+                    this.ColumnCount = 1;
+                    this.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, _panelWidth));
+                    this.RowCount = _rowCount;
+                    this.RowStyles.Add(new RowStyle(SizeType.Absolute, _panelHeight));
+                    this.RowStyles.Add(new RowStyle(SizeType.Absolute, _panelHeight));
+                    this.RowStyles.Add(new RowStyle(SizeType.Absolute, _panelHeight));
+                    this.RowStyles.Add(new RowStyle(SizeType.Absolute, _panelHeight));
+                    break;
             }
+            // SetLabelを作成
+            CreateHSetLabel(hSetControlVo.HSetMasterVo);
 
             /*
              * Event
@@ -128,38 +133,43 @@ namespace H_ControlEx {
              */
             Rectangle rectangle = e.CellBounds;
             rectangle.Inflate(-1, -1); // 枠のサイズを小さくする
-            switch(e.Column) {
-                case 0:
-                    switch(e.Row) {
-                        case 0: // SetLabel
-                            ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // SetLabelExの枠線
-                            break;
-                        case 1: // CarLabel
-                            ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // CarLabelExの枠線
-                            break;
-                        case 2: // StaffLabel(1人目)
-                            if(_hSetControlVo.HSetMasterVo.NumberOfPeople > 0)
-                                ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // StaffLabelの枠線
-                            break;
-                        case 3: // StaffLabel(2人目)
-                            if(_hSetControlVo.HSetMasterVo.NumberOfPeople > 1)
-                                ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // StaffLabelの枠線
-                            break;
-                    }
-                    break;
-                case 1:
-                    switch(e.Row) {
-                        case 2: // StaffLabel(3人目)
-                            if(_hSetControlVo.HSetMasterVo.NumberOfPeople > 2 || _hSetControlVo.HSetMasterVo.SpareOfPeople)
-                                ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // StaffLabelの枠線
-                            break;
-                        case 3: // StaffLabel(4人目)
-                            if(_hSetControlVo.HSetMasterVo.NumberOfPeople > 3)
-                                ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // StaffLabelの枠線
-                            break;
-                    }
-                    break;
+            if(_hSetControlVo.VehicleDispatchFlag) {
+                switch(e.Column) {
+                    case 0:
+                        switch(e.Row) {
+                            case 0: // SetLabel
+                                ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // SetLabelExの枠線
+                                break;
+                            case 1: // CarLabel
+                                ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // CarLabelExの枠線
+                                break;
+                            case 2: // StaffLabel(1人目)
+                                if(_hSetControlVo.HSetMasterVo.NumberOfPeople >= 1)
+                                    ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // StaffLabelの枠線
+                                break;
+                            case 3: // StaffLabel(2人目)
+                                if(_hSetControlVo.HSetMasterVo.NumberOfPeople >= 2)
+                                    ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // StaffLabelの枠線
+                                break;
+                        }
+                        break;
+                    case 1:
+                        switch(e.Row) {
+                            case 2: // StaffLabel(3人目)
+                                if(_hSetControlVo.HSetMasterVo.NumberOfPeople >= 3)
+                                    ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // StaffLabelの枠線
+                                break;
+                            case 3: // StaffLabel(4人目)
+                                if(_hSetControlVo.HSetMasterVo.NumberOfPeople >= 4)
+                                    ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // StaffLabelの枠線
+                                break;
+                        }
+                        break;
+                }
+            } else {
+
             }
+
         }
 
         /*
