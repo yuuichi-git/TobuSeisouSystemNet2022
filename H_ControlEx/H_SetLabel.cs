@@ -5,6 +5,7 @@ using H_Vo;
 
 namespace H_ControlEx {
     public partial class H_SetLabel : Label {
+        private Image _imageSetLabel;
         /*
          * １つのパネルのサイズ
          */
@@ -26,19 +27,19 @@ namespace H_ControlEx {
          * Vo
          */
         private readonly H_SetMasterVo _hSetMasterVo;
-
         /*
          * 色の定義
          */
         private readonly SolidBrush _brushColorBlack = new(Color.Black);
         private readonly SolidBrush _brushColorWhite = new SolidBrush(Color.White);
+        private readonly SolidBrush _brushFillColor;
         private Color _setLabelBorderColor = new();
         /*
          * Fontの定義
          */
         private readonly Font _drawFontSetLabel = new("Yu Gothic UI", 13, FontStyle.Regular, GraphicsUnit.Pixel);
         private readonly Font _drawFontContactMethod = new("Yu Gothic UI", 10, FontStyle.Regular, GraphicsUnit.Pixel);
-
+        
         private string _drawStringContactMethod = string.Empty;
 
         /// <summary>
@@ -47,17 +48,35 @@ namespace H_ControlEx {
         /// <param name="hSetMasterVo"></param>
         public H_SetLabel(H_SetMasterVo hSetMasterVo) {
             /*
+             * GarageCode
              * Classification_code
              */
-            switch(hSetMasterVo.ClassificationCode) {
-                case 10:
-                    _setLabelBorderColor = Color.DarkGray;
+            switch(hSetMasterVo.GarageCode) {
+                case 1:
+                    switch(hSetMasterVo.ClassificationCode) {
+                        case 10:
+                            _imageSetLabel = Properties.Resources.SetLabelWhiteY;
+                            break;
+                        case 11:
+                            _imageSetLabel = Properties.Resources.SetLabelWhiteK;
+                            break;
+                        default:
+                            _imageSetLabel = Properties.Resources.SetLabelWhite;
+                            break;
+                    }
                     break;
-                case 11:
-                    _setLabelBorderColor = Color.DarkOrange;
-                    break;
-                default:
-                    _setLabelBorderColor = Color.White;
+                case 2:
+                    switch(hSetMasterVo.ClassificationCode) {
+                        case 10:
+                            _imageSetLabel = Properties.Resources.SetLabelPowerBlueY;
+                            break;
+                        case 11:
+                            _imageSetLabel = Properties.Resources.SetLabelPowerBlueK;
+                            break;
+                        default:
+                            _imageSetLabel = Properties.Resources.SetLabelPowerBlue;
+                            break;
+                    }
                     break;
             }
             /*
@@ -68,7 +87,7 @@ namespace H_ControlEx {
              * ControlIni
              */
             InitializeComponent();
-            this.BorderStyle = BorderStyle.FixedSingle;
+            this.BorderStyle = BorderStyle.None;
             this.Height = (int)_panelHeight - 2;
             this.Margin = new Padding(2);
             this.Name = "H_SetLabel";
@@ -82,13 +101,10 @@ namespace H_ControlEx {
         /// <param name="e"></param>
         protected override void OnPaint(PaintEventArgs e) {
             /*
-             * Boderを描画
-             */
-            ControlPaint.DrawBorder(e.Graphics, new Rectangle(0, 0, (int)_panelWidth - 6, (int)_panelHeight - 6), _setLabelBorderColor, ButtonBorderStyle.Solid);
-            /*
              * Label Fill
              */
-            e.Graphics.FillRectangle(_brushColorWhite, new Rectangle(2, 2, (int)_panelWidth - 10, (int)_panelHeight - 10));
+            e.Graphics.DrawImage(_imageSetLabel, 2, 2, _panelWidth - 8, _panelHeight - 6);
+
             /*
              * 文字(TEL/FAX)を描画
              */
@@ -106,7 +122,7 @@ namespace H_ControlEx {
                     _drawStringContactMethod = string.Empty;
                     break;
             }
-            e.Graphics.DrawString(_drawStringContactMethod, _drawFontContactMethod, _brushColorBlack, new Point(12, 4));
+            e.Graphics.DrawString(_drawStringContactMethod, _drawFontContactMethod, _brushColorBlack, new Point(6, 1));
             /*
              * 文字(配車先)を描画
              */
@@ -114,7 +130,7 @@ namespace H_ControlEx {
             stringFormat.LineAlignment = StringAlignment.Center;
             stringFormat.Alignment = StringAlignment.Center;
             e.Graphics.DrawString(string.Concat(_hSetMasterVo.SetName1, "\r\n", _hSetMasterVo.SetName2),
-                                                  _drawFontSetLabel, new SolidBrush(Color.Black), new Rectangle(0, 0, (int)_panelWidth - 6, (int)_panelHeight - 6), stringFormat);
+                                                  _drawFontSetLabel, new SolidBrush(Color.Black), new Rectangle(0, 10, (int)_panelWidth - 6, (int)_panelHeight - 6), stringFormat);
 
 
 

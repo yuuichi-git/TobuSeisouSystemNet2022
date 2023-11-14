@@ -78,7 +78,8 @@ namespace H_ControlEx {
             }
             // SetLabelを作成
             CreateHSetLabel(hSetControlVo.HSetMasterVo);
-
+            // CarLabelを作成
+            CreateHCarLabel(hSetControlVo.HCarMasterVo);
             /*
              * Event
              */
@@ -91,7 +92,7 @@ namespace H_ControlEx {
         /// CreateHSetLabel
         /// </summary>
         private void CreateHSetLabel(H_SetMasterVo hSetMasterVo) {
-            if(hSetMasterVo is not null) { // HSetMasterVoがNullの場合、作成処理をしない
+            if(hSetMasterVo is not null && hSetMasterVo.SetCode != 0) {
                 H_SetLabel hSetLabel = new(hSetMasterVo);
                 this.Controls.Add(hSetLabel, 0, 0); // SetLabelを追加
             }
@@ -101,7 +102,7 @@ namespace H_ControlEx {
         /// CreateHCarLabel
         /// </summary>
         private void CreateHCarLabel(H_CarMasterVo hCarMasterVo) {
-            if(hCarMasterVo is not null) { // HCarMasterVoがNullの場合、作成処理をしない
+            if(hCarMasterVo is not null && hCarMasterVo.CarCode != 0) {
                 H_CarLabel hCarLabel = new(hCarMasterVo);
                 this.Controls.Add(hCarLabel, 0, 1); // CarLabelを追加
             }
@@ -113,7 +114,7 @@ namespace H_ControlEx {
         /// <param name="listHStaffMasterVo"></param>
         private void CreateHStaffLabel(List<H_StaffMasterVo> listHStaffMasterVo) {
             int i = 0;
-            if(listHStaffMasterVo is not null) { // HStaffMasterVoがNullの場合、作成処理をしない
+            if(listHStaffMasterVo is not null) {
                 foreach(H_StaffMasterVo hStaffMasterVo in listHStaffMasterVo) {
                     Point point = _dictionaryCellPoint[i];
                     H_StaffLabel hStaffLabel = new(hStaffMasterVo);
@@ -137,12 +138,6 @@ namespace H_ControlEx {
                 switch(e.Column) {
                     case 0:
                         switch(e.Row) {
-                            case 0: // SetLabel
-                                ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // SetLabelExの枠線
-                                break;
-                            case 1: // CarLabel
-                                ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // CarLabelExの枠線
-                                break;
                             case 2: // StaffLabel(1人目)
                                 if(_hSetControlVo.HSetMasterVo.NumberOfPeople >= 1)
                                     ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // StaffLabelの枠線

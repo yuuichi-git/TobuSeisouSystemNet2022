@@ -16,7 +16,7 @@ namespace H_Vo {
         private string _setName1;
         private string _setName2;
         private int _fareCode;
-        private int _garageFlag;
+        private int _garageCode;
         private int _classificationCode;
         private int _contactMethod;
         private int _numberOfPeople;
@@ -43,7 +43,7 @@ namespace H_Vo {
             _setName1 = string.Empty;
             _setName2 = string.Empty;
             _fareCode = 0;
-            _garageFlag = 0;
+            _garageCode = 0;
             _classificationCode = 0;
             _contactMethod = 0;
             _numberOfPeople = 0;
@@ -109,11 +109,11 @@ namespace H_Vo {
         }
         /// <summary>
         /// 車庫地
-        /// true:足立 false:三郷
+        /// 1:足立 2:三郷
         /// </summary>
-        public int GarageFlag {
-            get => _garageFlag;
-            set => _garageFlag = value;
+        public int GarageCode {
+            get => _garageCode;
+            set => _garageCode = value;
         }
         /// <summary>
         /// 分類コード

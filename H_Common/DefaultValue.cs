@@ -27,6 +27,9 @@ namespace H_Common {
                     case "String":
                         objectValue = "";
                         break;
+                    case "Decimal":
+                        objectValue = 0.0;
+                        break;
                 }
             }
             return (T)objectValue;

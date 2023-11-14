@@ -64,7 +64,7 @@ namespace H_Dao {
                     hSetMasterVo.SetName1 = _defaultValue.GetDefaultValue<string>(sqlDataReader["SetName1"]);
                     hSetMasterVo.SetName2 = _defaultValue.GetDefaultValue<string>(sqlDataReader["SetName2"]);
                     hSetMasterVo.FareCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["FareCode"]);
-                    hSetMasterVo.GarageFlag = _defaultValue.GetDefaultValue<int>(sqlDataReader["GarageFlag"]);
+                    hSetMasterVo.GarageCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["GarageFlag"]);
                     hSetMasterVo.ClassificationCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["ClassificationCode"]);
                     hSetMasterVo.ContactMethod = _defaultValue.GetDefaultValue<int>(sqlDataReader["ContactMethod"]);
                     hSetMasterVo.NumberOfPeople = _defaultValue.GetDefaultValue<int>(sqlDataReader["NumberOfPeople"]);

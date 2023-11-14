@@ -96,6 +96,14 @@ namespace H_Common {
         }
 
         /// <summary>
+        /// 会計年度を返す
+        /// </summary>
+        /// <returns></returns>
+        public int GetFiscalYear(DateTime dateTime) {
+            return dateTime.AddMonths(-3).Year;
+        }
+
+        /// <summary>
         /// 会計年度の始めの日付を返す
         /// </summary>
         /// <param name="datetime"></param>
