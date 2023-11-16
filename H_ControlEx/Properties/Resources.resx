@@ -145,6 +145,9 @@
   <data name="SetLabelPowerBlueY" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SetLabelPowerBlueY.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="SetLabelRed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SetLabelRed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="SetLabelWhite" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SetLabelWhite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -153,5 +156,8 @@
   </data>
   <data name="SetLabelWhiteY" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SetLabelWhiteY.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StaffLabel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\StaffLabel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

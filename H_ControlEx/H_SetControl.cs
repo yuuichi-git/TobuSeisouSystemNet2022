@@ -77,9 +77,11 @@ namespace H_ControlEx {
                     break;
             }
             // SetLabelを作成
-            CreateHSetLabel(hSetControlVo.HSetMasterVo);
+            CreateHSetLabel(hSetControlVo);
             // CarLabelを作成
-            CreateHCarLabel(hSetControlVo.HCarMasterVo);
+            CreateHCarLabel(hSetControlVo);
+            // StaffLabelを作成
+            CreateHStaffLabel(hSetControlVo);
             /*
              * Event
              */
@@ -91,9 +93,9 @@ namespace H_ControlEx {
         /// <summary>
         /// CreateHSetLabel
         /// </summary>
-        private void CreateHSetLabel(H_SetMasterVo hSetMasterVo) {
-            if(hSetMasterVo is not null && hSetMasterVo.SetCode != 0) {
-                H_SetLabel hSetLabel = new(hSetMasterVo);
+        private void CreateHSetLabel(H_SetControlVo hSetControlVo) {
+            if(hSetControlVo.HSetMasterVo is not null && hSetControlVo.HSetMasterVo.SetCode != 0) {
+                H_SetLabel hSetLabel = new(hSetControlVo);
                 this.Controls.Add(hSetLabel, 0, 0); // SetLabelを追加
             }
         }
@@ -101,9 +103,9 @@ namespace H_ControlEx {
         /// <summary>
         /// CreateHCarLabel
         /// </summary>
-        private void CreateHCarLabel(H_CarMasterVo hCarMasterVo) {
-            if(hCarMasterVo is not null && hCarMasterVo.CarCode != 0) {
-                H_CarLabel hCarLabel = new(hCarMasterVo);
+        private void CreateHCarLabel(H_SetControlVo hSetControlVo) {
+            if(hSetControlVo.HCarMasterVo is not null && hSetControlVo.HCarMasterVo.CarCode != 0) {
+                H_CarLabel hCarLabel = new(hSetControlVo);
                 this.Controls.Add(hCarLabel, 0, 1); // CarLabelを追加
             }
         }
@@ -112,10 +114,10 @@ namespace H_ControlEx {
         /// CreateHStaffLabel
         /// </summary>
         /// <param name="listHStaffMasterVo"></param>
-        private void CreateHStaffLabel(List<H_StaffMasterVo> listHStaffMasterVo) {
+        private void CreateHStaffLabel(H_SetControlVo hSetControlVo) {
             int i = 0;
-            if(listHStaffMasterVo is not null) {
-                foreach(H_StaffMasterVo hStaffMasterVo in listHStaffMasterVo) {
+            if(hSetControlVo.ListHStaffMasterVo is not null) {
+                foreach(H_StaffMasterVo hStaffMasterVo in hSetControlVo.ListHStaffMasterVo) {
                     Point point = _dictionaryCellPoint[i];
                     H_StaffLabel hStaffLabel = new(hStaffMasterVo);
                     this.Controls.Add(hStaffLabel, point.X, point.Y); // StaffLabelを追加

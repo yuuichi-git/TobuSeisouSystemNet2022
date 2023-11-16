@@ -1,6 +1,4 @@
-﻿using FarPoint.Win.Spread;
-
-namespace Common {
+﻿namespace Common {
     public class CaptureControl {
         [System.Runtime.InteropServices.DllImport("gdi32.dll")]
         private static extern bool BitBlt(IntPtr hdcDest,

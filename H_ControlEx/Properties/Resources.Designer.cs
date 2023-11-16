@@ -153,6 +153,16 @@ namespace H_ControlEx.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
+        internal static System.Drawing.Bitmap SetLabelRed {
+            get {
+                object obj = ResourceManager.GetObject("SetLabelRed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
         internal static System.Drawing.Bitmap SetLabelWhite {
             get {
                 object obj = ResourceManager.GetObject("SetLabelWhite", resourceCulture);
@@ -176,6 +186,16 @@ namespace H_ControlEx.Properties {
         internal static System.Drawing.Bitmap SetLabelWhiteY {
             get {
                 object obj = ResourceManager.GetObject("SetLabelWhiteY", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
+        /// </summary>
+        internal static System.Drawing.Bitmap StaffLabel {
+            get {
+                object obj = ResourceManager.GetObject("StaffLabel", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

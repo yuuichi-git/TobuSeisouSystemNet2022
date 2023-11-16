@@ -25,12 +25,14 @@ namespace H_VehicleDispatch {
         private readonly H_VehicleDispatchDao _hVehicleDispatchDao;
         private H_SetMasterDao _hSetMasterDao;
         private H_CarMasterDao _hCarMasterDao;
+        private H_StaffMasterDao _hStaffMasterDao;
         /*
          * Vo
          */
         private readonly ConnectionVo _connectionVo;
         private List<H_SetMasterVo> _listHSetMasterVo;
         private List<H_CarMasterVo> _listHCarMasterVo;
+        private List<H_StaffMasterVo> _listHStaffMasterVo;
 
         /// <summary>
         /// コンストラクタ
@@ -44,6 +46,7 @@ namespace H_VehicleDispatch {
             _hVehicleDispatchDao = new H_VehicleDispatchDao(connectionVo);
             _hSetMasterDao = new H_SetMasterDao(connectionVo);
             _hCarMasterDao = new H_CarMasterDao(connectionVo);
+            _hStaffMasterDao = new H_StaffMasterDao(connectionVo);
             /*
              * Vo
              */
@@ -62,7 +65,8 @@ namespace H_VehicleDispatch {
              * 関連データを読込む
              */
             _listHSetMasterVo = _hSetMasterDao.SelectAllHSetMaster();
-            _listHCarMasterVo = _hCarMasterDao.SelectAllCarMaster();
+            _listHCarMasterVo = _hCarMasterDao.SelectAllHCarMaster();
+            _listHStaffMasterVo = _hStaffMasterDao.SelectAllHStaffMaster();
             /*
              * 配車用ボードを作成
              */
@@ -72,7 +76,6 @@ namespace H_VehicleDispatch {
 
 
         private void H_ButtonExUpdate_Click(object sender, EventArgs e) {
-            this.CreateVehicleDispatch();
 
         }
 
@@ -81,6 +84,8 @@ namespace H_VehicleDispatch {
         /// 配車データを作成
         /// </summary>
         private void CreateVehicleDispatch() {
+            // H_Boardを初期化
+            this.HBoardControlRemove(_hBoard);
             int financialYear = _date.GetFiscalYear(H_DateTimePickerOperationDate.Value);
             string dayOgWeek = H_DateTimePickerOperationDate.Value.ToString("ddd");
             // H_VehicleDispatchHeadを取得
@@ -89,33 +94,62 @@ namespace H_VehicleDispatch {
             List< H_VehicleDispatchVo> listHVehicleDispatchVo = _hVehicleDispatchDao.SelectHVehicleDispatchVo(financialYear,dayOgWeek);
             foreach(H_VehicleDispatchHeadVo hVehicleDispatchHeadVo in listHVehicleDispatchHeadVo.FindAll(x => (x.Purpose == true && x.SetCode != 0) || x.Purpose == false).OrderBy(x => x.CellNumber)) {
                 H_SetControlVo hSetControlVo = new();
+                hSetControlVo.OperationDate = H_DateTimePickerOperationDate.Value;
                 hSetControlVo.CellNumber = hVehicleDispatchHeadVo.CellNumber;
                 hSetControlVo.VehicleDispatchFlag = hVehicleDispatchHeadVo.VehicleDispatchFlag;
                 hSetControlVo.Purpose = hVehicleDispatchHeadVo.Purpose;
                 /*
-                 * SetLabel作成
+                 * 対象日のレコードを抽出
                  */
-                if(hVehicleDispatchHeadVo.SetCode != 0) {
-                    hSetControlVo.HSetMasterVo = _listHSetMasterVo.Find(x => x.SetCode == hVehicleDispatchHeadVo.SetCode);
-                } else {
-                    hSetControlVo.HSetMasterVo = null;
-                }
+                H_VehicleDispatchVo? hVehicleDispatchVo = listHVehicleDispatchVo.Find(x => x.SetCode == hVehicleDispatchHeadVo?.SetCode);
+                /*
+                 * SetLabel作成
+                 * SetCodeがゼロの場合Nullを返す
+                 */
+                hSetControlVo.HSetMasterVo = _listHSetMasterVo.Find(x => x.SetCode == hVehicleDispatchVo?.SetCode);
                 /*
                  * CarLabel作成
-                 * SetCodeがゼロの場合を考えて
+                 * CarCodeがゼロの場合Nullを返す
                  */
-                H_VehicleDispatchVo? hVehicleDispatchVo = listHVehicleDispatchVo.Find(x => x.SetCode == hVehicleDispatchHeadVo.SetCode);
-                if(hVehicleDispatchVo is not null) {
-                    hSetControlVo.HCarMasterVo = _listHCarMasterVo.Find(x => x.CarCode == hVehicleDispatchVo.CarCode);
-                } else {
-                    hSetControlVo.HCarMasterVo = null;
-                }
+                hSetControlVo.HCarMasterVo = _listHCarMasterVo.Find(x => x.CarCode == hVehicleDispatchVo?.CarCode);
                 /*
                  * StaffLabel作成
+                 * 
                  */
-                hSetControlVo.ListHStaffMasterVo = null;
-
+                hSetControlVo.ListHStaffMasterVo = _listHStaffMasterVo.FindAll(x => x.StaffCode == hVehicleDispatchVo?.StaffCode1
+                                                                                      || x.StaffCode == hVehicleDispatchVo?.StaffCode2
+                                                                                      || x.StaffCode == hVehicleDispatchVo?.StaffCode3
+                                                                                      || x.StaffCode == hVehicleDispatchVo?.StaffCode4);
                 _hBoard.AddSetControl(hSetControlVo);
+            }
+        }
+
+        /// <summary>
+        /// HBoardControlRemove
+        /// </summary>
+        /// <param name="hBoard"></param>
+        private void HBoardControlRemove(H_Board hBoard) {
+            /*
+             * メソッドを Clear 呼び出しても、コントロール ハンドルはメモリから削除されません。 メモリ リークを回避するには、 メソッドを Dispose 明示的に呼び出す必要があります。
+             * ※後ろから解放している点が重要らしい。
+             */
+            for(int i = hBoard.Controls.Count - 1; 0 <= i; i--)
+                hBoard.Controls[i].Dispose();
+        }
+
+        /// <summary>
+        /// ToolStripMenuItem_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItem_Click(object sender, EventArgs e) {
+            switch(((ToolStripMenuItem)sender).Name) {
+                /*
+                 * 配車を初期化する
+                 */
+                case "ToolStripMenuItemInitializeVehicleDispatch":
+                    this.CreateVehicleDispatch();
+                    break;
             }
         }
     }

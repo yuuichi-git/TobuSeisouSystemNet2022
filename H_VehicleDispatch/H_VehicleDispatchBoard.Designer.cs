@@ -26,7 +26,11 @@
             h_TableLayoutPanelExBase = new H_ControlEx.H_TableLayoutPanelEx();
             MenuStrip1 = new MenuStrip();
             ToolStripMenuItemMenu = new ToolStripMenuItem();
+            ToolStripMenuItemExit = new ToolStripMenuItem();
             ToolStripMenuItemInitialize = new ToolStripMenuItem();
+            ToolStripMenuItemInitializeVehicleDispatch = new ToolStripMenuItem();
+            ToolStripMenuItemPrint = new ToolStripMenuItem();
+            ToolStripMenuItemPrintB4 = new ToolStripMenuItem();
             ToolStripMenuItemHelp = new ToolStripMenuItem();
             StatusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
@@ -45,8 +49,6 @@
             h_PanelExCenter = new H_ControlEx.H_PanelEx();
             h_TableLayoutPanelExCenter = new H_ControlEx.H_TableLayoutPanelEx();
             h_PanelExCenterTop = new H_ControlEx.H_PanelEx();
-            h_ButtonExBoard2 = new H_ControlEx.H_ButtonEx();
-            h_ButtonExBoard1 = new H_ControlEx.H_ButtonEx();
             h_ButtonExUpdate = new H_ControlEx.H_ButtonEx();
             H_DateTimePickerOperationDate = new H_ControlEx.H_DateTimePickerEx();
             h_LabelEx1 = new H_ControlEx.H_LabelEx();
@@ -85,7 +87,7 @@
             // MenuStrip1
             // 
             h_TableLayoutPanelExBase.SetColumnSpan(MenuStrip1, 3);
-            MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemInitialize, ToolStripMenuItemHelp });
+            MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemInitialize, ToolStripMenuItemPrint, ToolStripMenuItemHelp });
             MenuStrip1.Location = new Point(0, 0);
             MenuStrip1.Name = "MenuStrip1";
             MenuStrip1.Size = new Size(1904, 24);
@@ -94,15 +96,43 @@
             // 
             // ToolStripMenuItemMenu
             // 
+            ToolStripMenuItemMenu.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemExit });
             ToolStripMenuItemMenu.Name = "ToolStripMenuItemMenu";
             ToolStripMenuItemMenu.Size = new Size(52, 20);
             ToolStripMenuItemMenu.Text = "メニュー";
             // 
+            // ToolStripMenuItemExit
+            // 
+            ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
+            ToolStripMenuItemExit.Size = new Size(195, 22);
+            ToolStripMenuItemExit.Text = "アプリケーションを終了する";
+            // 
             // ToolStripMenuItemInitialize
             // 
+            ToolStripMenuItemInitialize.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemInitializeVehicleDispatch });
             ToolStripMenuItemInitialize.Name = "ToolStripMenuItemInitialize";
             ToolStripMenuItemInitialize.Size = new Size(55, 20);
             ToolStripMenuItemInitialize.Text = "初期化";
+            // 
+            // ToolStripMenuItemInitializeVehicleDispatch
+            // 
+            ToolStripMenuItemInitializeVehicleDispatch.Name = "ToolStripMenuItemInitializeVehicleDispatch";
+            ToolStripMenuItemInitializeVehicleDispatch.Size = new Size(180, 22);
+            ToolStripMenuItemInitializeVehicleDispatch.Text = "配車を初期化する";
+            ToolStripMenuItemInitializeVehicleDispatch.Click += ToolStripMenuItem_Click;
+            // 
+            // ToolStripMenuItemPrint
+            // 
+            ToolStripMenuItemPrint.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemPrintB4 });
+            ToolStripMenuItemPrint.Name = "ToolStripMenuItemPrint";
+            ToolStripMenuItemPrint.Size = new Size(43, 20);
+            ToolStripMenuItemPrint.Text = "印刷";
+            // 
+            // ToolStripMenuItemPrintB4
+            // 
+            ToolStripMenuItemPrintB4.Name = "ToolStripMenuItemPrintB4";
+            ToolStripMenuItemPrintB4.Size = new Size(140, 22);
+            ToolStripMenuItemPrintB4.Text = "B4で印刷する";
             // 
             // ToolStripMenuItemHelp
             // 
@@ -271,8 +301,6 @@
             // 
             // h_PanelExCenterTop
             // 
-            h_PanelExCenterTop.Controls.Add(h_ButtonExBoard2);
-            h_PanelExCenterTop.Controls.Add(h_ButtonExBoard1);
             h_PanelExCenterTop.Controls.Add(h_ButtonExUpdate);
             h_PanelExCenterTop.Controls.Add(H_DateTimePickerOperationDate);
             h_PanelExCenterTop.Controls.Add(h_LabelEx1);
@@ -282,26 +310,6 @@
             h_PanelExCenterTop.Name = "h_PanelExCenterTop";
             h_PanelExCenterTop.Size = new Size(1836, 36);
             h_PanelExCenterTop.TabIndex = 0;
-            // 
-            // h_ButtonExBoard2
-            // 
-            h_ButtonExBoard2.Location = new Point(416, 3);
-            h_ButtonExBoard2.Name = "h_ButtonExBoard2";
-            h_ButtonExBoard2.Size = new Size(126, 30);
-            h_ButtonExBoard2.TabIndex = 4;
-            h_ButtonExBoard2.TabStop = false;
-            h_ButtonExBoard2.Text = "配車パネル２";
-            h_ButtonExBoard2.UseVisualStyleBackColor = true;
-            // 
-            // h_ButtonExBoard1
-            // 
-            h_ButtonExBoard1.Location = new Point(286, 3);
-            h_ButtonExBoard1.Name = "h_ButtonExBoard1";
-            h_ButtonExBoard1.Size = new Size(126, 30);
-            h_ButtonExBoard1.TabIndex = 3;
-            h_ButtonExBoard1.TabStop = false;
-            h_ButtonExBoard1.Text = "配車パネル１";
-            h_ButtonExBoard1.UseVisualStyleBackColor = true;
             // 
             // h_ButtonExUpdate
             // 
@@ -386,7 +394,9 @@
         private H_ControlEx.H_PanelEx h_PanelExCenter;
         private H_ControlEx.H_TableLayoutPanelEx h_TableLayoutPanelExCenter;
         private H_ControlEx.H_PanelEx h_PanelExCenterTop;
-        private H_ControlEx.H_ButtonEx h_ButtonExBoard1;
-        private H_ControlEx.H_ButtonEx h_ButtonExBoard2;
+        private ToolStripMenuItem ToolStripMenuItemExit;
+        private ToolStripMenuItem ToolStripMenuItemInitializeVehicleDispatch;
+        private ToolStripMenuItem ToolStripMenuItemPrint;
+        private ToolStripMenuItem ToolStripMenuItemPrintB4;
     }
 }

@@ -122,5 +122,25 @@ namespace H_Common {
             int fiscalYear = datetime.AddMonths(-3).Year;
             return new DateTime(fiscalYear, 4, 1, 0, 00, 00, 000).AddDays(365);
         }
+
+        /// <summary>
+        /// GetWorkingDays
+        /// 稼働日(曜日配車・第五週)かどうかを判定する
+        /// </summary>
+        /// <param name="dayOfWeek">稼働日</param>
+        /// <param name="workingDays">稼働する曜日</param>
+        /// <param name="fiveLap">五週目フラグ</param>
+        /// <returns></returns>
+        public bool GetWorkingDays(DateTime dateTime, string workingDays, bool fiveLap) {
+            if(workingDays.Contains(dateTime.ToString("ddd"))) {
+                if(!fiveLap && dateTime.Day > 28) {
+                    return false;
+                } else {
+                    return true;
+                }
+            } else {
+                return false;
+            }
+        }
     }
 }

@@ -26,10 +26,10 @@ namespace H_Dao {
         }
 
         /// <summary>
-        /// SelectAllCarMaster
+        /// SelectAllHCarMaster
         /// </summary>
         /// <returns></returns>
-        public List<H_CarMasterVo> SelectAllCarMaster() {
+        public List<H_CarMasterVo> SelectAllHCarMaster() {
             List<H_CarMasterVo> listHCarMasterVo = new();
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT CarCode," +

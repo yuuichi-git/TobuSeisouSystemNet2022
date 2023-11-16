@@ -10,7 +10,7 @@ namespace H_Vo {
         private readonly DateTime _defaultDateTime = new DateTime(1900,01,01);
 
         private int _staffCode;
-        private int _code;
+        private int _unionCode;
         private int _belongs;
         private bool _vehicleDispatchTarget;
         private int _jobForm;
@@ -22,6 +22,7 @@ namespace H_Vo {
         private DateTime _birthDate;
         private DateTime _employmentDate;
         private string _currentAddress;
+        private string _beforeChangeAddress;
         private string _remarks;
         private string _telephoneNumber;
         private string _cellphoneNumber;
@@ -70,7 +71,63 @@ namespace H_Vo {
         /// コンストラクタ
         /// </summary>
         public H_StaffMasterVo() {
-        
+            _staffCode = 0;
+            _unionCode = 0;
+            _belongs = 0;
+            _vehicleDispatchTarget = false;
+            _jobForm = 0;
+            _occupation = 0;
+            _nameKana = string.Empty;
+            _name = string.Empty;
+            _displayName = string.Empty;
+            _gender = string.Empty;
+            _birthDate = _defaultDateTime;
+            _employmentDate = _defaultDateTime;
+            _currentAddress = string.Empty;
+            _beforeChangeAddress = string.Empty;
+            _remarks = string.Empty;
+            _telephoneNumber = string.Empty;
+            _cellphoneNumber = string.Empty;
+            _picture = Array.Empty<byte>();
+            _bloodType = string.Empty;
+            _selectionDate = _defaultDateTime;
+            _notSelectionDate = _defaultDateTime;
+            _notSelectionReason = string.Empty;
+            _licenseNumber = string.Empty;
+            _listHStaffHistoryVo = new List<H_StaffHistoryVo>();
+            _listHStaffExperienceVo = new List<H_StaffExperienceVo>();
+            _retirementFlag = false;
+            _retirementDate = _defaultDateTime;
+            _retirementNote = string.Empty;
+            _deathDate = _defaultDateTime;
+            _deathNote = string.Empty;
+            _listHStaffFamilyVo = new List<H_StaffFamilyVo>();
+            _urgentTelephoneNumber = string.Empty;
+            _urgentTelephoneMethod = string.Empty;
+            _healthInsuranceDate = _defaultDateTime;
+            _healthInsuranceNumber = string.Empty;
+            _healthInsuranceNote = string.Empty;
+            _welfarePensionDate = _defaultDateTime;
+            _welfarePensionNumber = string.Empty;
+            _welfarePensionNote = string.Empty;
+            _employmentInsuranceDate = _defaultDateTime;
+            _employmentInsuranceNumber = string.Empty;
+            _employmentInsuranceNote = string.Empty;
+            _workerAccidentInsuranceDate = _defaultDateTime;
+            _workerAccidentInsuranceNumber = string.Empty;
+            _workerAccidentInsuranceNote = string.Empty;
+            _listHStaffMedicalExaminationVo = new List<H_StaffMedicalExaminationVo>();
+            _listHStaffCarViolateVo = new List<H_StaffCarViolateVo>();
+            _listHStaffEducateVo = new List<H_StaffEducateVo>();
+            _listHStaffProperVo = new List<H_StaffProperVo>();
+            _listHStaffPunishmentVo = new List<H_StaffPunishmentVo>();
+            _insertPcName = string.Empty;
+            _insertYmdHms = _defaultDateTime;
+            _updatePcName = string.Empty;
+            _updateYmdHms = _defaultDateTime;
+            _deletePcName = string.Empty;
+            _deleteYmdHms = _defaultDateTime;
+            _deleteFlag = false;
         }
 
         /// <summary>
@@ -83,9 +140,9 @@ namespace H_Vo {
         /// <summary>
         /// 組合コード
         /// </summary>
-        public int Code {
-            get => _code;
-            set => _code = value;
+        public int UnionCode {
+            get => _unionCode;
+            set => _unionCode = value;
         }
         /// <summary>
         /// 所属
@@ -169,6 +226,13 @@ namespace H_Vo {
         public string CurrentAddress {
             get => _currentAddress;
             set => _currentAddress = value;
+        }
+        /// <summary>
+        /// 変更前住所
+        /// </summary>
+        public string BeforeChangeAddress {
+            get => _beforeChangeAddress;
+            set => _beforeChangeAddress = value;
         }
         /// <summary>
         /// その他備考

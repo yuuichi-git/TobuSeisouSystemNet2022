@@ -21,6 +21,7 @@ namespace H_ControlEx {
         /*
          * Vo
          */
+        private readonly H_SetControlVo _hSetControlVo;
         private readonly H_CarMasterVo _hCarMasterVo;
         /*
          * 色の定義
@@ -36,14 +37,19 @@ namespace H_ControlEx {
         /// コンストラクタ
         /// </summary>
         /// <param name="hCarMasterVo"></param>
-        public H_CarLabel(H_CarMasterVo hCarMasterVo) {
+        public H_CarLabel(H_SetControlVo hSetControlVo) {
+            /*
+             * Vo
+             */
+            _hSetControlVo = hSetControlVo;
+            _hCarMasterVo = hSetControlVo.HCarMasterVo;
             /*
              * GarageCode
              * Classification_code
              */
-            switch(hCarMasterVo.GarageCode) {
+            switch(hSetControlVo.HCarMasterVo.GarageCode) {
                 case 1:
-                    switch(hCarMasterVo.ClassificationCode) {
+                    switch(hSetControlVo.HCarMasterVo.ClassificationCode) {
                         case 10:
                             _imageCarLabel = Properties.Resources.CarLabelWhiteY;
                             break;
@@ -56,7 +62,7 @@ namespace H_ControlEx {
                     }
                     break;
                 case 2:
-                    switch(hCarMasterVo.ClassificationCode) {
+                    switch(hSetControlVo.HCarMasterVo.ClassificationCode) {
                         case 10:
                             _imageCarLabel = Properties.Resources.CarLabelPowerBlueY;
                             break;
@@ -70,13 +76,9 @@ namespace H_ControlEx {
                     break;
             }
             /*
-             * Vo
-             */
-            _hCarMasterVo = hCarMasterVo;
-            /*
              * 本社・三郷で色を変える
              */
-            switch(hCarMasterVo.GarageCode) {
+            switch(hSetControlVo.HCarMasterVo.GarageCode) {
                 case 1:
                     _brushFillColor = new SolidBrush(Color.White);
                     break;
@@ -92,7 +94,7 @@ namespace H_ControlEx {
             this.Height = (int)_panelHeight - 4;
             this.Margin = new Padding(2);
             this.Name = "H_CarLabel";
-            this.Tag = hCarMasterVo;
+            this.Tag = hSetControlVo.HCarMasterVo;
             this.Width = (int)_panelWidth - 4;
         }
 
@@ -106,7 +108,7 @@ namespace H_ControlEx {
              */
             e.Graphics.DrawImage(_imageCarLabel, 2, 0, _panelWidth - 8, _panelHeight - 6);
             /*
-             * 文字(配車先)を描画
+             * 文字(車両)を描画
              */
             StringFormat stringFormat = new();
             stringFormat.LineAlignment = StringAlignment.Center;

@@ -7,6 +7,7 @@ namespace H_Vo {
         /*
          * プロパティ
          */
+        private DateTime _operationDate;
         private int _cellNumber;
         private bool _vehicleDispatchFlag;
         private bool _purpose;
@@ -28,6 +29,13 @@ namespace H_Vo {
         /*
          * Setter Getter
          */
+        /// <summary>
+        /// 稼働日
+        /// </summary>
+        public DateTime OperationDate {
+            get => _operationDate;
+            set => _operationDate = value;
+        }
         /// <summary>
         /// CellNumber
         /// </summary>

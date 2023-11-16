@@ -1,10 +1,13 @@
 ﻿/*
  * 2023-10-24
  */
+using H_Common;
+
 using H_Vo;
 
 namespace H_ControlEx {
     public partial class H_SetLabel : Label {
+        private Date _date = new();
         private Image _imageSetLabel;
         /*
          * １つのパネルのサイズ
@@ -14,9 +17,10 @@ namespace H_ControlEx {
         /*
          * プロパティ
          */
-        private bool _firstRollCallFlag = false; // 出庫点呼フラグ true:出庫点呼済 false:未点呼
+        private bool _operationFlag = true; // 稼働フラグ true:稼働 false:休車
         private bool _fiveLapFlag = false; // 第五週稼働フラグ true:第五週稼働 false:第五週休車
         private int _garageCode = 1; // 出庫地コード 1:本社 2:三郷
+        private bool _firstRollCallFlag = false; // 出庫点呼フラグ true:出庫点呼済 false:未点呼
         private bool _lastRollCallFlag = false; // 帰庫点呼フラグ true:帰庫点呼済 false:未点呼
         private bool _memoFlag = false; // メモフラグ true:メモあり false:メモなし
         private int _shiftCode = 0; // 番手コード 0→指定なし 1→早番 2→遅番
@@ -26,6 +30,7 @@ namespace H_ControlEx {
         /*
          * Vo
          */
+        private readonly H_SetControlVo _hSetControlVo;
         private readonly H_SetMasterVo _hSetMasterVo;
         /*
          * 色の定義
@@ -39,21 +44,21 @@ namespace H_ControlEx {
          */
         private readonly Font _drawFontSetLabel = new("Yu Gothic UI", 13, FontStyle.Regular, GraphicsUnit.Pixel);
         private readonly Font _drawFontContactMethod = new("Yu Gothic UI", 10, FontStyle.Regular, GraphicsUnit.Pixel);
-        
+
         private string _drawStringContactMethod = string.Empty;
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
         /// <param name="hSetMasterVo"></param>
-        public H_SetLabel(H_SetMasterVo hSetMasterVo) {
+        public H_SetLabel(H_SetControlVo hSetControlVo) {
             /*
              * GarageCode
              * Classification_code
              */
-            switch(hSetMasterVo.GarageCode) {
+            switch(hSetControlVo.HSetMasterVo.GarageCode) {
                 case 1:
-                    switch(hSetMasterVo.ClassificationCode) {
+                    switch(hSetControlVo.HSetMasterVo.ClassificationCode) {
                         case 10:
                             _imageSetLabel = Properties.Resources.SetLabelWhiteY;
                             break;
@@ -66,7 +71,7 @@ namespace H_ControlEx {
                     }
                     break;
                 case 2:
-                    switch(hSetMasterVo.ClassificationCode) {
+                    switch(hSetControlVo.HSetMasterVo.ClassificationCode) {
                         case 10:
                             _imageSetLabel = Properties.Resources.SetLabelPowerBlueY;
                             break;
@@ -80,9 +85,15 @@ namespace H_ControlEx {
                     break;
             }
             /*
+             * 稼働・休車
+             */
+            if(!_date.GetWorkingDays(hSetControlVo.OperationDate, hSetControlVo.HSetMasterVo.WorkingDays, hSetControlVo.HSetMasterVo.FiveLap))
+                _imageSetLabel = Properties.Resources.SetLabelRed;
+            /*
              * Vo
              */
-            _hSetMasterVo = hSetMasterVo;
+            _hSetControlVo = hSetControlVo;
+            _hSetMasterVo = hSetControlVo.HSetMasterVo;
             /*
              * ControlIni
              */
@@ -91,7 +102,7 @@ namespace H_ControlEx {
             this.Height = (int)_panelHeight - 2;
             this.Margin = new Padding(2);
             this.Name = "H_SetLabel";
-            this.Tag = hSetMasterVo;
+            this.Tag = hSetControlVo.HSetMasterVo;
             this.Width = (int)_panelWidth - 2;
         }
 
@@ -131,9 +142,6 @@ namespace H_ControlEx {
             stringFormat.Alignment = StringAlignment.Center;
             e.Graphics.DrawString(string.Concat(_hSetMasterVo.SetName1, "\r\n", _hSetMasterVo.SetName2),
                                                   _drawFontSetLabel, new SolidBrush(Color.Black), new Rectangle(0, 10, (int)_panelWidth - 6, (int)_panelHeight - 6), stringFormat);
-
-
-
         }
     }
 }
