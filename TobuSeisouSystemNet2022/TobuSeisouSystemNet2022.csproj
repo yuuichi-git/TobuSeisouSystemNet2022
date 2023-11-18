@@ -8,18 +8,15 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <StartupObject>TobuSeisouSystemNet2022.Program</StartupObject>
     <AssemblyName>TobuSeisouSystemNet2022</AssemblyName>
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <Optimize>True</Optimize>
-    <DebugType>full</DebugType>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DebugType>full</DebugType>
-  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'" />
 
   <ItemGroup>
     <ProjectReference Include="..\Accounting\Accounting.csproj" />
@@ -64,6 +61,10 @@
 
   <ItemGroup>
     <Folder Include="Properties\PublishProfiles\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ClickOnceApplicationDeploymentWrapper" Version="1.0.6" />
   </ItemGroup>
 
   <ItemGroup>
