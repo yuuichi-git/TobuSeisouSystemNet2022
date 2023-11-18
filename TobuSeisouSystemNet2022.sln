@@ -67,7 +67,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H_ControlEx", "H_ControlEx\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H_Vo", "H_Vo\H_Vo.csproj", "{71B05313-D387-4935-8892-ACFC8F023CD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H_Dao", "H_Dao\H_Dao.csproj", "{2A032298-1B4F-4391-B39B-3118D1B215E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H_Dao", "H_Dao\H_Dao.csproj", "{2A032298-1B4F-4391-B39B-3118D1B215E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
