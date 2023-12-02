@@ -13,7 +13,7 @@ using Vo;
 
 namespace H_VehicleDispatch {
     public partial class H_VehicleDispatchBoard : Form {
-        private Date _date = new();
+        private readonly Date _date = new();
         /*
          * 変数定義
          */
@@ -114,12 +114,12 @@ namespace H_VehicleDispatch {
                 hSetControlVo.HCarMasterVo = _listHCarMasterVo.Find(x => x.CarCode == hVehicleDispatchVo?.CarCode);
                 /*
                  * StaffLabel作成
-                 * 
+                 * Listに入れる順番を保障する必要がある
                  */
                 hSetControlVo.ListHStaffMasterVo = _listHStaffMasterVo.FindAll(x => x.StaffCode == hVehicleDispatchVo?.StaffCode1
-                                                                                      || x.StaffCode == hVehicleDispatchVo?.StaffCode2
-                                                                                      || x.StaffCode == hVehicleDispatchVo?.StaffCode3
-                                                                                      || x.StaffCode == hVehicleDispatchVo?.StaffCode4);
+                                                                                 || x.StaffCode == hVehicleDispatchVo?.StaffCode2
+                                                                                 || x.StaffCode == hVehicleDispatchVo?.StaffCode3
+                                                                                 || x.StaffCode == hVehicleDispatchVo?.StaffCode4);
                 _hBoard.AddSetControl(hSetControlVo);
             }
         }

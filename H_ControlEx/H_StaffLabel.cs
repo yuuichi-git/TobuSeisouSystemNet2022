@@ -18,7 +18,7 @@ namespace H_ControlEx {
         /*
           * Fontの定義
           */
-        private readonly Font _drawFontStaffLabel = new("メイリオ", 14, FontStyle.Regular, GraphicsUnit.Pixel);
+        private readonly Font _drawFontStaffLabel = new("メイリオ", 13, FontStyle.Regular, GraphicsUnit.Pixel);
 
         /// <summary>
         /// コンストラクタ
@@ -42,6 +42,10 @@ namespace H_ControlEx {
             this.Width = (int)_panelWidth - 4;
         }
 
+        /// <summary>
+        /// OnPaint
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnPaint(PaintEventArgs e) {
             /*
              * Label Fill

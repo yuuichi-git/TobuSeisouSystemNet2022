@@ -52,6 +52,7 @@
             h_ButtonExUpdate = new H_ControlEx.H_ButtonEx();
             H_DateTimePickerOperationDate = new H_ControlEx.H_DateTimePickerEx();
             h_LabelEx1 = new H_ControlEx.H_LabelEx();
+            ToolStripStatusLabelDetail = new ToolStripStatusLabel();
             h_TableLayoutPanelExBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -117,7 +118,7 @@
             // ToolStripMenuItemInitializeVehicleDispatch
             // 
             ToolStripMenuItemInitializeVehicleDispatch.Name = "ToolStripMenuItemInitializeVehicleDispatch";
-            ToolStripMenuItemInitializeVehicleDispatch.Size = new Size(180, 22);
+            ToolStripMenuItemInitializeVehicleDispatch.Size = new Size(162, 22);
             ToolStripMenuItemInitializeVehicleDispatch.Text = "配車を初期化する";
             ToolStripMenuItemInitializeVehicleDispatch.Click += ToolStripMenuItem_Click;
             // 
@@ -143,7 +144,7 @@
             // StatusStrip1
             // 
             h_TableLayoutPanelExBase.SetColumnSpan(StatusStrip1, 3);
-            StatusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1 });
+            StatusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, ToolStripStatusLabelDetail });
             StatusStrip1.Location = new Point(0, 1019);
             StatusStrip1.Name = "StatusStrip1";
             StatusStrip1.Size = new Size(1904, 22);
@@ -343,6 +344,12 @@
             h_LabelEx1.TabIndex = 1;
             h_LabelEx1.Text = "配車日";
             // 
+            // ToolStripStatusLabelDetail
+            // 
+            ToolStripStatusLabelDetail.Name = "ToolStripStatusLabelDetail";
+            ToolStripStatusLabelDetail.Size = new Size(143, 17);
+            ToolStripStatusLabelDetail.Text = "ToolStripStatusLabelDetail";
+            // 
             // H_VehicleDispatchBoard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -398,5 +405,6 @@
         private ToolStripMenuItem ToolStripMenuItemInitializeVehicleDispatch;
         private ToolStripMenuItem ToolStripMenuItemPrint;
         private ToolStripMenuItem ToolStripMenuItemPrintB4;
+        private ToolStripStatusLabel ToolStripStatusLabelDetail;
     }
 }

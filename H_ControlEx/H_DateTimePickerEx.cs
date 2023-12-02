@@ -2,7 +2,7 @@
 
 namespace H_ControlEx {
     public partial class H_DateTimePickerEx : DateTimePicker {
-        private readonly DateTime _defaultDateTime = new DateTime(1900,01,01,0,00,00,000);
+        private readonly DateTime _defaultDateTime = new(1900,01,01);
         // 言語カルチャーを設定
         private readonly CultureInfo cultureInfo = new("Ja-JP", true);
 

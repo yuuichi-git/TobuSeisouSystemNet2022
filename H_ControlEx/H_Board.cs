@@ -97,7 +97,6 @@ namespace H_ControlEx {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         protected override void OnCellPaint(TableLayoutCellPaintEventArgs e) {
-            
         }
 
         /// <summary>

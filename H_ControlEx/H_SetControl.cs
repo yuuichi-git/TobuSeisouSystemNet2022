@@ -138,35 +138,33 @@ namespace H_ControlEx {
             rectangle.Inflate(-1, -1); // 枠のサイズを小さくする
             if(_hSetControlVo.VehicleDispatchFlag) {
                 switch(e.Column) {
-                    case 0:
+                    case 0: // １列目
                         switch(e.Row) {
                             case 2: // StaffLabel(1人目)
                                 if(_hSetControlVo.HSetMasterVo.NumberOfPeople >= 1)
-                                    ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // StaffLabelの枠線
+                                    ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // StaffLabel1の枠線
                                 break;
                             case 3: // StaffLabel(2人目)
                                 if(_hSetControlVo.HSetMasterVo.NumberOfPeople >= 2)
-                                    ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // StaffLabelの枠線
+                                    ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // StaffLabel2の枠線
                                 break;
                         }
                         break;
-                    case 1:
+                    case 1: // ２列目
                         switch(e.Row) {
                             case 2: // StaffLabel(3人目)
                                 if(_hSetControlVo.HSetMasterVo.NumberOfPeople >= 3)
-                                    ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // StaffLabelの枠線
+                                    ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // StaffLabel3の枠線
                                 break;
                             case 3: // StaffLabel(4人目)
                                 if(_hSetControlVo.HSetMasterVo.NumberOfPeople >= 4)
-                                    ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // StaffLabelの枠線
+                                    ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // StaffLabel4の枠線
                                 break;
                         }
                         break;
                 }
             } else {
-
             }
-
         }
 
         /*

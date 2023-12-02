@@ -141,7 +141,7 @@ namespace H_ControlEx {
             stringFormat.LineAlignment = StringAlignment.Center;
             stringFormat.Alignment = StringAlignment.Center;
             e.Graphics.DrawString(string.Concat(_hSetMasterVo.SetName1, "\r\n", _hSetMasterVo.SetName2),
-                                                  _drawFontSetLabel, new SolidBrush(Color.Black), new Rectangle(0, 10, (int)_panelWidth - 6, (int)_panelHeight - 6), stringFormat);
+                                                _drawFontSetLabel, new SolidBrush(Color.Black), new Rectangle(0, 10, (int)_panelWidth - 6, (int)_panelHeight - 6), stringFormat);
         }
     }
 }

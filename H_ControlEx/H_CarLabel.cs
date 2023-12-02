@@ -3,8 +3,6 @@
  */
 using H_Vo;
 
-using Vo;
-
 namespace H_ControlEx {
     public partial class H_CarLabel : Label {
         private Image _imageCarLabel;
@@ -114,8 +112,8 @@ namespace H_ControlEx {
             stringFormat.LineAlignment = StringAlignment.Center;
             stringFormat.Alignment = StringAlignment.Center;
             string number = string.Concat(_hCarMasterVo.RegistrationNumber1, _hCarMasterVo.RegistrationNumber2, "\r\n"
-                                            , _hCarMasterVo.RegistrationNumber3, _hCarMasterVo.RegistrationNumber4, "\r\n"
-                                            , _hCarMasterVo.DisguiseKind1, _hCarMasterVo.DoorNumber != 0 ? _hCarMasterVo.DoorNumber : " ");
+                                        , _hCarMasterVo.RegistrationNumber3, _hCarMasterVo.RegistrationNumber4, "\r\n"
+                                        , _hCarMasterVo.DisguiseKind1, _hCarMasterVo.DoorNumber != 0 ? _hCarMasterVo.DoorNumber : " ");
             e.Graphics.DrawString(number, _drawFontCarLabel, new SolidBrush(Color.Black), new Rectangle(0, 0, (int)_panelWidth - 6, (int)_panelHeight - 6), stringFormat);
         }
     }
