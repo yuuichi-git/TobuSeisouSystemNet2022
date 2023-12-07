@@ -26,10 +26,37 @@ namespace H_ControlEx {
         /*
          * Eventを親へ渡す処理
          * インスタンスから見えるようになる
+         * SetControl
          */
-        public event MouseEventHandler Event_SetControl_MouseDown = delegate {};
-        public event MouseEventHandler Event_SetControl_MouseUp = delegate {};
-        public event MouseEventHandler Event_SetControl_MouseMove = delegate {};
+        public event MouseEventHandler Event_HSetControlEx_MouseDown = delegate {};
+        public event MouseEventHandler Event_HSetControlEx_MouseUp = delegate {};
+        public event MouseEventHandler Event_HSetControlEx_MouseMove = delegate {};
+        public event DragEventHandler Event_HSetControlEx_DragEnter = delegate {};
+        public event DragEventHandler Event_HSetControlEx_DragDrop = delegate {};
+        /*
+         * Eventを親へ渡す処理
+         * インスタンスから見えるようになる
+         * SetLabel
+         */
+        public event MouseEventHandler Event_HSetLabelEx_MouseClick = delegate {};
+        public event MouseEventHandler Event_HSetLabelEx_MouseDoubleClick = delegate {};
+        public event MouseEventHandler Event_HSetLabelEx_MouseMove = delegate {};
+        /*
+         * Eventを親へ渡す処理
+         * インスタンスから見えるようになる
+         * CarLabel
+         */
+        public event MouseEventHandler Event_HCarLabelEx_MouseClick = delegate {};
+        public event MouseEventHandler Event_HCarLabelEx_MouseDoubleClick = delegate {};
+        public event MouseEventHandler Event_HCarLabelEx_MouseMove = delegate {};
+        /*
+         * Eventを親へ渡す処理
+         * インスタンスから見えるようになる
+         * StaffLabel
+         */
+        public event MouseEventHandler Event_HStaffLabelEx_MouseClick = delegate {};
+        public event MouseEventHandler Event_HStaffLabelEx_MouseDoubleClick = delegate {};
+        public event MouseEventHandler Event_HStaffLabelEx_MouseMove = delegate {};
 
         /// <summary>
         /// コンストラクタ
@@ -85,44 +112,70 @@ namespace H_ControlEx {
             /*
              * Event
              */
-            this.MouseDown += SetControl_MouseDown;
-            this.MouseUp += SetControl_MouseUp;
-            this.MouseMove += SetControl_MouseMove;
+            this.MouseDown += HSetControlEx_MouseDown;
+            this.MouseUp += HSetControlEx_MouseUp;
+            this.MouseMove += HSetControlEx_MouseMove;
+            this.DragEnter += HSetControlEx_DragEnter;
+            this.DragDrop += HSetControlEx_DragDrop;
         }
 
         /// <summary>
         /// CreateHSetLabel
+        /// SetCodeがゼロの場合HSetLabelは作成しない
         /// </summary>
         private void CreateHSetLabel(H_SetControlVo hSetControlVo) {
             if(hSetControlVo.HSetMasterVo is not null && hSetControlVo.HSetMasterVo.SetCode != 0) {
                 H_SetLabel hSetLabel = new(hSetControlVo);
-                this.Controls.Add(hSetLabel, 0, 0); // SetLabelを追加
+                /*
+                 * Event
+                 */
+                hSetLabel.MouseClick += HSetLabelEx_MouseClick;
+                hSetLabel.MouseDoubleClick += HSetLabelEx_MouseDoubleClick;
+                hSetLabel.MouseMove += HSetLabelEx_MouseMove;
+                // SetLabelを追加
+                this.Controls.Add(hSetLabel, 0, 0);
             }
         }
 
         /// <summary>
         /// CreateHCarLabel
+        /// CarCodeがゼロの場合HCarLabelは作成しない
         /// </summary>
         private void CreateHCarLabel(H_SetControlVo hSetControlVo) {
             if(hSetControlVo.HCarMasterVo is not null && hSetControlVo.HCarMasterVo.CarCode != 0) {
                 H_CarLabel hCarLabel = new(hSetControlVo);
-                this.Controls.Add(hCarLabel, 0, 1); // CarLabelを追加
+                /*
+                 * Event
+                 */
+                hCarLabel.MouseClick += HCarLabelEx_MouseClick;
+                hCarLabel.MouseDoubleClick += HCarLabelEx_MouseDoubleClick;
+                hCarLabel.MouseMove += HCarLabelEx_MouseMove;
+                // CarLabelを追加
+                this.Controls.Add(hCarLabel, 0, 1);
             }
         }
 
         /// <summary>
         /// CreateHStaffLabel
+        /// StaffCodeがゼロの場合HStaffLabelは作成しない
         /// </summary>
         /// <param name="listHStaffMasterVo"></param>
         private void CreateHStaffLabel(H_SetControlVo hSetControlVo) {
             int i = 0;
-            if(hSetControlVo.ListHStaffMasterVo is not null) {
-                foreach(H_StaffMasterVo hStaffMasterVo in hSetControlVo.ListHStaffMasterVo) {
+            foreach(H_StaffMasterVo hStaffMasterVo in hSetControlVo.ListHStaffMasterVo) {
+                if(hStaffMasterVo.StaffCode != 0) {
                     Point point = _dictionaryCellPoint[i];
                     H_StaffLabel hStaffLabel = new(hStaffMasterVo);
-                    this.Controls.Add(hStaffLabel, point.X, point.Y); // StaffLabelを追加
-                    i++;
+                    /*
+                     * Event
+                     */
+                    hStaffLabel.MouseClick += HStaffLabelEx_MouseClick;
+                    hStaffLabel.MouseDoubleClick += HStaffLabelEx_MouseDoubleClick;
+                    hStaffLabel.MouseMove += HStaffLabelEx_MouseMove;
+                    // StaffLabelを追加
+                    this.Controls.Add(hStaffLabel, point.X, point.Y);
                 }
+                i++;
             }
         }
 
@@ -168,16 +221,58 @@ namespace H_ControlEx {
         }
 
         /*
-         * Event
+         * H_SetControlEx
          */
-        private void SetControl_MouseDown(object sender, MouseEventArgs e) {
-            Event_SetControl_MouseDown.Invoke(sender, e);
+        private void HSetControlEx_MouseDown(object sender, MouseEventArgs e) {
+            Event_HSetControlEx_MouseDown.Invoke(sender, e);
         }
-        private void SetControl_MouseUp(object sender, MouseEventArgs e) {
-            Event_SetControl_MouseUp.Invoke(sender, e);
+        private void HSetControlEx_MouseUp(object sender, MouseEventArgs e) {
+            Event_HSetControlEx_MouseUp.Invoke(sender, e);
         }
-        private void SetControl_MouseMove(object sender, MouseEventArgs e) {
-            Event_SetControl_MouseMove.Invoke(sender, e);
+        private void HSetControlEx_MouseMove(object sender, MouseEventArgs e) {
+            Event_HSetControlEx_MouseMove.Invoke(sender, e);
+        }
+        private void HSetControlEx_DragEnter(object sender, DragEventArgs e) {
+            Event_HSetControlEx_DragEnter.Invoke(sender, e);
+        }
+        private void HSetControlEx_DragDrop(object sender, DragEventArgs e) {
+            Event_HSetControlEx_DragDrop.Invoke(sender, e);
+        }
+        /*
+         * H_SetLabelEx
+         */
+        private void HSetLabelEx_MouseClick(object sender, MouseEventArgs e) {
+            Event_HSetLabelEx_MouseClick.Invoke(sender, e);
+        }
+        private void HSetLabelEx_MouseDoubleClick(object sender, MouseEventArgs e) {
+            Event_HSetLabelEx_MouseDoubleClick.Invoke(sender, e);
+        }
+        private void HSetLabelEx_MouseMove(object sender, MouseEventArgs e) {
+            Event_HSetLabelEx_MouseMove.Invoke(sender, e);
+        }
+        /*
+         * H_CarLabelEx
+         */
+        private void HCarLabelEx_MouseClick(object sender, MouseEventArgs e) {
+            Event_HCarLabelEx_MouseClick.Invoke(sender, e);
+        }
+        private void HCarLabelEx_MouseDoubleClick(object sender, MouseEventArgs e) {
+            Event_HCarLabelEx_MouseDoubleClick.Invoke(sender, e);
+        }
+        private void HCarLabelEx_MouseMove(object sender, MouseEventArgs e) {
+            Event_HCarLabelEx_MouseMove.Invoke(sender, e);
+        }
+        /*
+         * H_StaffLabelEx
+         */
+        private void HStaffLabelEx_MouseClick(object sender, MouseEventArgs e) {
+            Event_HStaffLabelEx_MouseClick.Invoke(sender, e);
+        }
+        private void HStaffLabelEx_MouseDoubleClick(object sender, MouseEventArgs e) {
+            Event_HStaffLabelEx_MouseDoubleClick.Invoke(sender, e);
+        }
+        private void HStaffLabelEx_MouseMove(object sender, MouseEventArgs e) {
+            Event_HStaffLabelEx_MouseMove.Invoke(sender, e);
         }
     }
 }

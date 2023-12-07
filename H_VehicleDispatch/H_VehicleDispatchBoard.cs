@@ -100,6 +100,13 @@ namespace H_VehicleDispatch {
                 hSetControlVo.Purpose = hVehicleDispatchHeadVo.Purpose;
                 /*
                  * 対象日のレコードを抽出
+                 * CellNumber
+                 * SetCode
+                 * CarCode
+                 * StaffCode1
+                 * StaffCode2
+                 * StaffCode3
+                 * StaffCode4
                  */
                 H_VehicleDispatchVo? hVehicleDispatchVo = listHVehicleDispatchVo.Find(x => x.SetCode == hVehicleDispatchHeadVo?.SetCode);
                 /*
@@ -116,11 +123,30 @@ namespace H_VehicleDispatch {
                  * StaffLabel作成
                  * Listに入れる順番を保障する必要がある
                  */
-                hSetControlVo.ListHStaffMasterVo = _listHStaffMasterVo.FindAll(x => x.StaffCode == hVehicleDispatchVo?.StaffCode1
-                                                                                 || x.StaffCode == hVehicleDispatchVo?.StaffCode2
-                                                                                 || x.StaffCode == hVehicleDispatchVo?.StaffCode3
-                                                                                 || x.StaffCode == hVehicleDispatchVo?.StaffCode4);
+                hSetControlVo.ListHStaffMasterVo = new();
+                hSetControlVo.ListHStaffMasterVo.Add(GetHStaffMasterVo(_listHStaffMasterVo, hVehicleDispatchVo?.StaffCode1));
+                hSetControlVo.ListHStaffMasterVo.Add(GetHStaffMasterVo(_listHStaffMasterVo, hVehicleDispatchVo?.StaffCode2));
+                hSetControlVo.ListHStaffMasterVo.Add(GetHStaffMasterVo(_listHStaffMasterVo, hVehicleDispatchVo?.StaffCode3));
+                hSetControlVo.ListHStaffMasterVo.Add(GetHStaffMasterVo(_listHStaffMasterVo, hVehicleDispatchVo?.StaffCode4));
                 _hBoard.AddSetControl(hSetControlVo);
+            }
+        }
+
+        /// <summary>
+        /// GetHStaffMasterVo
+        /// List<H_StaffMasterVo>からH_StaffMasterVoを抽出する
+        /// </summary>
+        /// <param name="listHStaffMasterVo"></param>
+        /// <returns></returns>
+        private H_StaffMasterVo GetHStaffMasterVo(List<H_StaffMasterVo> listHStaffMasterVo, int? staffCode) {
+            H_StaffMasterVo? hStaffMasterVo = new();
+            hStaffMasterVo = listHStaffMasterVo.Find(x => x.StaffCode == staffCode);
+            if(hStaffMasterVo is not null) {
+                // 検索で見つかったVoを返す
+                return hStaffMasterVo;
+            } else {
+                // StaffCodeがゼロ(存在しない)を返す
+                return new H_StaffMasterVo();
             }
         }
 

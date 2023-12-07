@@ -88,6 +88,7 @@ namespace H_ControlEx {
              * ControlIni
              */
             InitializeComponent();
+            this.AllowDrop = true;
             this.BorderStyle = BorderStyle.None;
             this.Height = (int)_panelHeight - 4;
             this.Margin = new Padding(2);
