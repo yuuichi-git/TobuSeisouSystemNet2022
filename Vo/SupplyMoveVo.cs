@@ -3,7 +3,7 @@
  */
 namespace Vo {
     public class SupplyMoveVo {
-        private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01, 00, 00, 00, 000);
+        private readonly DateTime _defaultDateTime = new(1900, 01, 01, 00, 00, 00, 000);
 
         private int _staff_code;
         private DateTime _move_date;

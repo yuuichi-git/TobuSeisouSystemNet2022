@@ -3,7 +3,7 @@
  * H_SetControlに値を渡す為のVo
  */
 namespace H_Vo {
-    public class H_SetControlVo {
+    public class H_ControlVo {
         /*
          * プロパティ
          */
@@ -14,16 +14,22 @@ namespace H_Vo {
         private H_SetMasterVo? _hSetMasterVo;
         private H_CarMasterVo? _hCarMasterVo;
         private List<H_StaffMasterVo>? _listHStaffMasterVo;
+        private List<H_SetMasterVo>? _listDeepCopyHSetMasterVo;
+        private List<H_CarMasterVo>? _listDeepCopyHCarMasterVo;
+        private List<H_StaffMasterVo>? _listDeepCopyHStaffMasterVo;
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public H_SetControlVo() {
+        public H_ControlVo() {
             _cellNumber = 0;
             _purpose = false;
             _hSetMasterVo = null;
             _hCarMasterVo = null;
             _listHStaffMasterVo = null;
+            _listDeepCopyHSetMasterVo = null;
+            _listDeepCopyHCarMasterVo = null;
+            _listDeepCopyHStaffMasterVo = null;
         }
 
         /*
@@ -79,6 +85,27 @@ namespace H_Vo {
         public List<H_StaffMasterVo>? ListHStaffMasterVo {
             get => _listHStaffMasterVo;
             set => _listHStaffMasterVo = value;
+        }
+        /// <summary>
+        /// ListDeepCopyHSetMasterVo
+        /// </summary>
+        public List<H_SetMasterVo>? ListDeepCopyHSetMasterVo {
+            get => _listDeepCopyHSetMasterVo;
+            set => _listDeepCopyHSetMasterVo = value;
+        }
+        /// <summary>
+        /// ListDeepCopyHCarMasterVo
+        /// </summary>
+        public List<H_CarMasterVo>? ListDeepCopyHCarMasterVo {
+            get => _listDeepCopyHCarMasterVo;
+            set => _listDeepCopyHCarMasterVo = value;
+        }
+        /// <summary>
+        /// ListDeepCopyHStaffMasterVo
+        /// </summary>
+        public List<H_StaffMasterVo>? ListDeepCopyHStaffMasterVo {
+            get => _listDeepCopyHStaffMasterVo;
+            set => _listDeepCopyHStaffMasterVo = value;
         }
     }
 }

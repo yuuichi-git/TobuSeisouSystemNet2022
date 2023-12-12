@@ -9,6 +9,8 @@ using H_Dao;
 
 using H_Vo;
 
+using StockBox;
+
 using Vo;
 
 namespace H_VehicleDispatch {
@@ -33,6 +35,12 @@ namespace H_VehicleDispatch {
         private List<H_SetMasterVo> _listHSetMasterVo;
         private List<H_CarMasterVo> _listHCarMasterVo;
         private List<H_StaffMasterVo> _listHStaffMasterVo;
+        /*
+         * DeepCopy
+         */
+        private List<H_SetMasterVo>? _listDeepCopyHSetMasterVo;
+        private List<H_CarMasterVo>? _listDeepCopyHCarMasterVo;
+        private List<H_StaffMasterVo>? _listDeepCopyHStaffMasterVo;
 
         /// <summary>
         /// コンストラクタ
@@ -74,16 +82,18 @@ namespace H_VehicleDispatch {
             h_TableLayoutPanelExCenter.Controls.Add(_hBoard, 0, 1);
         }
 
-
-        private void H_ButtonExUpdate_Click(object sender, EventArgs e) {
-
-        }
-
         /// <summary>
         /// CreateVehicleDispatch
         /// 配車データを作成
         /// </summary>
         private void CreateVehicleDispatch() {
+            /*
+             * DeepCopy
+             * このListから使用されたレコードを削除していく
+             */
+            _listDeepCopyHSetMasterVo = new CopyUtility().DeepCopy(_listHSetMasterVo);
+            _listDeepCopyHCarMasterVo = new CopyUtility().DeepCopy(_listHCarMasterVo);
+            _listDeepCopyHStaffMasterVo = new CopyUtility().DeepCopy(_listHStaffMasterVo);
             // H_Boardを初期化
             this.HBoardControlRemove(_hBoard);
             int financialYear = _date.GetFiscalYear(H_DateTimePickerOperationDate.Value);
@@ -91,9 +101,9 @@ namespace H_VehicleDispatch {
             // H_VehicleDispatchHeadを取得
             List<H_VehicleDispatchHeadVo> listHVehicleDispatchHeadVo = _hVehicleDispatchHeadDao.SelectAllHVehicleDispatchHeadVo(_date.GetFiscalYear());
             // H_VehicleDispatchを取得
-            List< H_VehicleDispatchVo> listHVehicleDispatchVo = _hVehicleDispatchDao.SelectHVehicleDispatchVo(financialYear,dayOgWeek);
+            List<H_VehicleDispatchVo> listHVehicleDispatchVo = _hVehicleDispatchDao.SelectHVehicleDispatchVo(financialYear, dayOgWeek);
             foreach(H_VehicleDispatchHeadVo hVehicleDispatchHeadVo in listHVehicleDispatchHeadVo.FindAll(x => (x.Purpose == true && x.SetCode != 0) || x.Purpose == false).OrderBy(x => x.CellNumber)) {
-                H_SetControlVo hSetControlVo = new();
+                H_ControlVo hSetControlVo = new();
                 hSetControlVo.OperationDate = H_DateTimePickerOperationDate.Value;
                 hSetControlVo.CellNumber = hVehicleDispatchHeadVo.CellNumber;
                 hSetControlVo.VehicleDispatchFlag = hVehicleDispatchHeadVo.VehicleDispatchFlag;
@@ -128,6 +138,7 @@ namespace H_VehicleDispatch {
                 hSetControlVo.ListHStaffMasterVo.Add(GetHStaffMasterVo(_listHStaffMasterVo, hVehicleDispatchVo?.StaffCode2));
                 hSetControlVo.ListHStaffMasterVo.Add(GetHStaffMasterVo(_listHStaffMasterVo, hVehicleDispatchVo?.StaffCode3));
                 hSetControlVo.ListHStaffMasterVo.Add(GetHStaffMasterVo(_listHStaffMasterVo, hVehicleDispatchVo?.StaffCode4));
+
                 _hBoard.AddSetControl(hSetControlVo);
             }
         }
@@ -177,6 +188,45 @@ namespace H_VehicleDispatch {
                     this.CreateVehicleDispatch();
                     break;
             }
+        }
+
+        /// <summary>
+        /// HButtonEx_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HButtonEx_Click(object sender, EventArgs e) {
+            switch(((H_ButtonEx)sender).Name) {
+                case "h_ButtonExUpdate":
+                    break;
+                case "h_ButtonExLeft1":
+                    H_ControlVo hControlVo = new();
+                    hControlVo.ListDeepCopyHSetMasterVo = _listDeepCopyHSetMasterVo;
+                    hControlVo.ListDeepCopyHCarMasterVo = _listDeepCopyHCarMasterVo;
+                    hControlVo.ListDeepCopyHStaffMasterVo = _listDeepCopyHStaffMasterVo;
+                    H_StockBoxs hStockBoxs = new(hControlVo);
+                    hStockBoxs.Show();
+                    break;
+                case "h_ButtonExLeft2":
+                    break;
+                case "h_ButtonExLeft3":
+                    break;
+                case "h_ButtonExLeft4":
+                    break;
+                case "h_ButtonExLeft5":
+                    break;
+                case "h_ButtonExRight1":
+                    break;
+                case "h_ButtonExRight2":
+                    break;
+                case "h_ButtonExRight3":
+                    break;
+                case "h_ButtonExRight4":
+                    break;
+                case "h_ButtonExRight5":
+                    break;
+            }
+
         }
     }
 }

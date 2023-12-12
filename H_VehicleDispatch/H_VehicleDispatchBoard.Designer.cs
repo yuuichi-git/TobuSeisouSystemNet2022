@@ -34,6 +34,7 @@
             ToolStripMenuItemHelp = new ToolStripMenuItem();
             StatusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
+            ToolStripStatusLabelDetail = new ToolStripStatusLabel();
             h_PanelExLeft = new H_ControlEx.H_PanelEx();
             h_ButtonExLeft5 = new H_ControlEx.H_ButtonEx();
             h_ButtonExLeft4 = new H_ControlEx.H_ButtonEx();
@@ -52,7 +53,6 @@
             h_ButtonExUpdate = new H_ControlEx.H_ButtonEx();
             H_DateTimePickerOperationDate = new H_ControlEx.H_DateTimePickerEx();
             h_LabelEx1 = new H_ControlEx.H_LabelEx();
-            ToolStripStatusLabelDetail = new ToolStripStatusLabel();
             h_TableLayoutPanelExBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -157,6 +157,12 @@
             toolStripStatusLabel1.Size = new Size(39, 17);
             toolStripStatusLabel1.Text = "Status";
             // 
+            // ToolStripStatusLabelDetail
+            // 
+            ToolStripStatusLabelDetail.Name = "ToolStripStatusLabelDetail";
+            ToolStripStatusLabelDetail.Size = new Size(143, 17);
+            ToolStripStatusLabelDetail.Text = "ToolStripStatusLabelDetail";
+            // 
             // h_PanelExLeft
             // 
             h_PanelExLeft.Controls.Add(h_ButtonExLeft5);
@@ -179,6 +185,7 @@
             h_ButtonExLeft5.TabIndex = 4;
             h_ButtonExLeft5.TabStop = false;
             h_ButtonExLeft5.UseVisualStyleBackColor = true;
+            h_ButtonExLeft5.Click += HButtonEx_Click;
             // 
             // h_ButtonExLeft4
             // 
@@ -188,6 +195,7 @@
             h_ButtonExLeft4.TabIndex = 3;
             h_ButtonExLeft4.TabStop = false;
             h_ButtonExLeft4.UseVisualStyleBackColor = true;
+            h_ButtonExLeft4.Click += HButtonEx_Click;
             // 
             // h_ButtonExLeft3
             // 
@@ -197,6 +205,7 @@
             h_ButtonExLeft3.TabIndex = 2;
             h_ButtonExLeft3.TabStop = false;
             h_ButtonExLeft3.UseVisualStyleBackColor = true;
+            h_ButtonExLeft3.Click += HButtonEx_Click;
             // 
             // h_ButtonExLeft2
             // 
@@ -206,6 +215,7 @@
             h_ButtonExLeft2.TabIndex = 1;
             h_ButtonExLeft2.TabStop = false;
             h_ButtonExLeft2.UseVisualStyleBackColor = true;
+            h_ButtonExLeft2.Click += HButtonEx_Click;
             // 
             // h_ButtonExLeft1
             // 
@@ -215,6 +225,7 @@
             h_ButtonExLeft1.TabIndex = 0;
             h_ButtonExLeft1.TabStop = false;
             h_ButtonExLeft1.UseVisualStyleBackColor = true;
+            h_ButtonExLeft1.Click += HButtonEx_Click;
             // 
             // h_PanelExRight
             // 
@@ -238,6 +249,7 @@
             h_ButtonExRight5.TabIndex = 9;
             h_ButtonExRight5.TabStop = false;
             h_ButtonExRight5.UseVisualStyleBackColor = true;
+            h_ButtonExRight5.Click += HButtonEx_Click;
             // 
             // h_ButtonExRight4
             // 
@@ -247,6 +259,7 @@
             h_ButtonExRight4.TabIndex = 8;
             h_ButtonExRight4.TabStop = false;
             h_ButtonExRight4.UseVisualStyleBackColor = true;
+            h_ButtonExRight4.Click += HButtonEx_Click;
             // 
             // h_ButtonExRight3
             // 
@@ -256,6 +269,7 @@
             h_ButtonExRight3.TabIndex = 7;
             h_ButtonExRight3.TabStop = false;
             h_ButtonExRight3.UseVisualStyleBackColor = true;
+            h_ButtonExRight3.Click += HButtonEx_Click;
             // 
             // h_ButtonExRight2
             // 
@@ -265,6 +279,7 @@
             h_ButtonExRight2.TabIndex = 6;
             h_ButtonExRight2.TabStop = false;
             h_ButtonExRight2.UseVisualStyleBackColor = true;
+            h_ButtonExRight2.Click += HButtonEx_Click;
             // 
             // h_ButtonExRight1
             // 
@@ -274,6 +289,7 @@
             h_ButtonExRight1.TabIndex = 5;
             h_ButtonExRight1.TabStop = false;
             h_ButtonExRight1.UseVisualStyleBackColor = true;
+            h_ButtonExRight1.Click += HButtonEx_Click;
             // 
             // h_PanelExCenter
             // 
@@ -322,7 +338,7 @@
             h_ButtonExUpdate.TabIndex = 2;
             h_ButtonExUpdate.Text = "最　新　化 ";
             h_ButtonExUpdate.UseVisualStyleBackColor = true;
-            h_ButtonExUpdate.Click += H_ButtonExUpdate_Click;
+            h_ButtonExUpdate.Click += HButtonEx_Click;
             // 
             // H_DateTimePickerOperationDate
             // 
@@ -343,12 +359,6 @@
             h_LabelEx1.Size = new Size(43, 15);
             h_LabelEx1.TabIndex = 1;
             h_LabelEx1.Text = "配車日";
-            // 
-            // ToolStripStatusLabelDetail
-            // 
-            ToolStripStatusLabelDetail.Name = "ToolStripStatusLabelDetail";
-            ToolStripStatusLabelDetail.Size = new Size(143, 17);
-            ToolStripStatusLabelDetail.Text = "ToolStripStatusLabelDetail";
             // 
             // H_VehicleDispatchBoard
             // 

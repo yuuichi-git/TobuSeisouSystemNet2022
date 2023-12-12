@@ -30,7 +30,7 @@ namespace H_ControlEx {
         /*
          * Vo
          */
-        private readonly H_SetControlVo _hSetControlVo;
+        private readonly H_ControlVo _hSetControlVo;
         private readonly H_SetMasterVo _hSetMasterVo;
         /*
          * 色の定義
@@ -51,7 +51,7 @@ namespace H_ControlEx {
         /// コンストラクタ
         /// </summary>
         /// <param name="hSetMasterVo"></param>
-        public H_SetLabel(H_SetControlVo hSetControlVo) {
+        public H_SetLabel(H_ControlVo hSetControlVo) {
             /*
              * GarageCode
              * Classification_code

@@ -69,6 +69,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H_Vo", "H_Vo\H_Vo.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H_Dao", "H_Dao\H_Dao.csproj", "{2A032298-1B4F-4391-B39B-3118D1B215E4}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H_StockBox", "StockBox\H_StockBox.csproj", "{83C7725A-F444-4351-97DE-5DCE1D982125}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -341,6 +343,14 @@ Global
 		{2A032298-1B4F-4391-B39B-3118D1B215E4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2A032298-1B4F-4391-B39B-3118D1B215E4}.Release|x64.ActiveCfg = Release|Any CPU
 		{2A032298-1B4F-4391-B39B-3118D1B215E4}.Release|x64.Build.0 = Release|Any CPU
+		{83C7725A-F444-4351-97DE-5DCE1D982125}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83C7725A-F444-4351-97DE-5DCE1D982125}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83C7725A-F444-4351-97DE-5DCE1D982125}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{83C7725A-F444-4351-97DE-5DCE1D982125}.Debug|x64.Build.0 = Debug|Any CPU
+		{83C7725A-F444-4351-97DE-5DCE1D982125}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83C7725A-F444-4351-97DE-5DCE1D982125}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83C7725A-F444-4351-97DE-5DCE1D982125}.Release|x64.ActiveCfg = Release|Any CPU
+		{83C7725A-F444-4351-97DE-5DCE1D982125}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

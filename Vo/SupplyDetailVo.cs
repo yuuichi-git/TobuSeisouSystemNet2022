@@ -10,7 +10,7 @@ namespace Vo {
         private string _supplyName;
         private int _moveNumber;
 
-        private readonly DateTime _defaultDateTime = new DateTime(1900,01,01);
+        private readonly DateTime _defaultDateTime = new(1900,01,01);
 
         /// <summary>
         /// コンストラクター

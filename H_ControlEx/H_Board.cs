@@ -68,25 +68,22 @@ namespace H_ControlEx {
         /// SetControlを追加する
         /// </summary>
         /// <param name="hSetControlVo"></param>
-        public void AddSetControl(H_SetControlVo hSetControlVo) {
+        public void AddSetControl(H_ControlVo hSetControlVo) {
             H_SetControl hSetControl = new(hSetControlVo);
             hSetControl.Event_HSetControlEx_MouseDown += H_Board_MouseDown;
             hSetControl.Event_HSetControlEx_MouseUp += H_Board_MouseUp;
             hSetControl.Event_HSetControlEx_MouseMove += H_Board_MouseMove;
-            hSetControl.Event_HSetControlEx_DragEnter += HSetControlEx_DragEnter;
-            hSetControl.Event_HSetControlEx_DragDrop += HSetControlEx_DragDrop;
-
-            hSetControl.Event_HSetLabelEx_MouseClick += HSetLabelEx_MouseClick;
-            hSetControl.Event_HSetLabelEx_MouseDoubleClick += HSetLabelEx_MouseDoubleClick;
-            hSetControl.Event_HSetLabelEx_MouseMove += HSetLabelEx_MouseMove;
-
-            hSetControl.Event_HCarLabelEx_MouseClick += HCarLabelEx_MouseClick;
-            hSetControl.Event_HCarLabelEx_MouseDoubleClick += HCarLabelEx_MouseDoubleClick;
-            hSetControl.Event_HCarLabelEx_MouseMove += HCarLabelEx_MouseMove;
-
-            hSetControl.Event_HStaffLabelEx_MouseClick += HStaffLabelEx_MouseClick;
-            hSetControl.Event_HStaffLabelEx_MouseDoubleClick += HStaffLabelEx_MouseDoubleClick;
-            hSetControl.Event_HStaffLabelEx_MouseMove += HStaffLabelEx_MouseMove;
+            hSetControl.Event_HSetControlEx_DragEnter += HSetControl_DragEnter;
+            hSetControl.Event_HSetControlEx_DragDrop += HSetControl_DragDrop;
+            hSetControl.Event_HSetLabelEx_MouseClick += HSetLabel_MouseClick;
+            hSetControl.Event_HSetLabelEx_MouseDoubleClick += HSetLabel_MouseDoubleClick;
+            hSetControl.Event_HSetLabelEx_MouseMove += HSetLabel_MouseMove;
+            hSetControl.Event_HCarLabelEx_MouseClick += HCarLabel_MouseClick;
+            hSetControl.Event_HCarLabelEx_MouseDoubleClick += HCarLabel_MouseDoubleClick;
+            hSetControl.Event_HCarLabelEx_MouseMove += HCarLabel_MouseMove;
+            hSetControl.Event_HStaffLabelEx_MouseClick += HStaffLabel_MouseClick;
+            hSetControl.Event_HStaffLabelEx_MouseDoubleClick += HStaffLabel_MouseDoubleClick;
+            hSetControl.Event_HStaffLabelEx_MouseMove += HStaffLabel_MouseMove;
 
             this.Controls.Add(hSetControl, GetAddCellPoint(hSetControlVo.CellNumber).X, GetAddCellPoint(hSetControlVo.CellNumber).Y);
             this.SetColumnSpan(hSetControl, hSetControlVo.Purpose ? 2 : 1);
@@ -142,11 +139,11 @@ namespace H_ControlEx {
         }
 
         /// <summary>
-        /// HSetControlEx_DragEnter
+        /// HSetControl_DragEnter
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void HSetControlEx_DragEnter(object sender, DragEventArgs e) {
+        private void HSetControl_DragEnter(object sender, DragEventArgs e) {
             if(e.Data.GetDataPresent(typeof(H_SetLabel)) || e.Data.GetDataPresent(typeof(H_CarLabel)) || e.Data.GetDataPresent(typeof(H_StaffLabel)))
                 e.Effect = DragDropEffects.Move;
             else
@@ -154,11 +151,11 @@ namespace H_ControlEx {
         }
 
         /// <summary>
-        /// HSetControlEx_DragDrop
+        /// HSetControl_DragDrop
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void HSetControlEx_DragDrop(object sender, DragEventArgs e) {
+        private void HSetControl_DragDrop(object sender, DragEventArgs e) {
             H_SetControl hSetControl = (H_SetControl)sender;
             Point clientPoint = hSetControl.PointToClient(new Point(e.X, e.Y));
             Point cellPoint = new(0, 0);
@@ -189,98 +186,107 @@ namespace H_ControlEx {
             }
 
             if(e.Data.GetDataPresent(typeof(H_SetLabel))) {
-                MessageBox.Show("H_SetLabel");
+                H_SetLabel dragItem = (H_SetLabel)e.Data.GetData(typeof(H_SetLabel));
+                hSetControl.Controls.Add(dragItem, cellPoint.X, cellPoint.Y);
             }
             if(e.Data.GetDataPresent(typeof(H_CarLabel))) {
-                MessageBox.Show("H_CarLabel");
+                H_CarLabel dragItem = (H_CarLabel)e.Data.GetData(typeof(H_CarLabel));
+                hSetControl.Controls.Add(dragItem, cellPoint.X, cellPoint.Y);
             }
             if(e.Data.GetDataPresent(typeof(H_StaffLabel))) {
-                MessageBox.Show("H_StaffLabel");
+                H_StaffLabel dragItem = (H_StaffLabel)e.Data.GetData(typeof(H_StaffLabel));
+                hSetControl.Controls.Add(dragItem, cellPoint.X, cellPoint.Y);
             }
         }
 
         /// <summary>
-        /// 
+        /// HSetLabel_MouseClick
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void HSetLabelEx_MouseClick(object sender, MouseEventArgs e) {
+        private void HSetLabel_MouseClick(object sender, MouseEventArgs e) {
 
         }
 
         /// <summary>
-        /// 
+        /// HSetLabel_MouseDoubleClick
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void HSetLabelEx_MouseDoubleClick(object sender, MouseEventArgs e) {
+        private void HSetLabel_MouseDoubleClick(object sender, MouseEventArgs e) {
 
         }
 
         /// <summary>
-        /// HSetLabelEx_MouseMove
+        /// HSetLabel_MouseMove
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void HSetLabelEx_MouseMove(object sender, MouseEventArgs e) {
+        private void HSetLabel_MouseMove(object sender, MouseEventArgs e) {
+            H_SetLabel hSetLabel = (H_SetLabel)sender;
+            H_SetMasterVo hSetMasterVo = (H_SetMasterVo)hSetLabel.Tag;
+            if(e.Button == MouseButtons.Left) {
+                if(hSetMasterVo.MoveFlag)
+                    hSetLabel.DoDragDrop(sender, DragDropEffects.Move);
+            }
+        }
+
+        /// <summary>
+        /// HCarLabel_MouseClick
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HCarLabel_MouseClick(object sender, MouseEventArgs e) {
+
+        }
+
+        /// <summary>
+        /// HCarLabel_MouseDoubleClick
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HCarLabel_MouseDoubleClick(object sender, MouseEventArgs e) {
+
+        }
+
+        /// <summary>
+        /// HCarLabel_MouseMove
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HCarLabel_MouseMove(object sender, MouseEventArgs e) {
+            H_CarLabel hCarLabel = (H_CarLabel)sender;
             if(e.Button == MouseButtons.Left)
-                ((H_SetLabel)sender).DoDragDrop(sender, DragDropEffects.Move);
+                hCarLabel.DoDragDrop(sender, DragDropEffects.Move);
         }
 
         /// <summary>
-        /// 
+        /// HStaffLabel_MouseClick
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void HCarLabelEx_MouseClick(object sender, MouseEventArgs e) {
-
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void HCarLabelEx_MouseDoubleClick(object sender, MouseEventArgs e) {
+        private void HStaffLabel_MouseClick(object sender, MouseEventArgs e) {
 
         }
 
         /// <summary>
-        /// 
+        /// HStaffLabel_MouseDoubleClick
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void HCarLabelEx_MouseMove(object sender, MouseEventArgs e) {
+        private void HStaffLabel_MouseDoubleClick(object sender, MouseEventArgs e) {
+
+        }
+
+        /// <summary>
+        /// HStaffLabel_MouseMove
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HStaffLabel_MouseMove(object sender, MouseEventArgs e) {
+            H_StaffLabel hStaffLabel = (H_StaffLabel)sender;
             if(e.Button == MouseButtons.Left)
-                ((H_CarLabel)sender).DoDragDrop(sender, DragDropEffects.Move);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void HStaffLabelEx_MouseClick(object sender, MouseEventArgs e) {
-
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void HStaffLabelEx_MouseDoubleClick(object sender, MouseEventArgs e) {
-
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void HStaffLabelEx_MouseMove(object sender, MouseEventArgs e) {
-            if(e.Button == MouseButtons.Left)
-                ((H_StaffLabel)sender).DoDragDrop(sender, DragDropEffects.Move);
+                hStaffLabel.DoDragDrop(sender, DragDropEffects.Move);
         }
     }
 }

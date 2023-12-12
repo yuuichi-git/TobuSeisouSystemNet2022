@@ -19,7 +19,7 @@ namespace H_ControlEx {
         /*
          * Vo
          */
-        private readonly H_SetControlVo _hSetControlVo;
+        private readonly H_ControlVo _hSetControlVo;
         private readonly H_CarMasterVo _hCarMasterVo;
         /*
          * 色の定義
@@ -35,7 +35,7 @@ namespace H_ControlEx {
         /// コンストラクタ
         /// </summary>
         /// <param name="hCarMasterVo"></param>
-        public H_CarLabel(H_SetControlVo hSetControlVo) {
+        public H_CarLabel(H_ControlVo hSetControlVo) {
             /*
              * Vo
              */

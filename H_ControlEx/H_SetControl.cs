@@ -22,7 +22,7 @@ namespace H_ControlEx {
         /*
          * Vo
          */
-        private readonly H_SetControlVo _hSetControlVo;
+        private readonly H_ControlVo _hSetControlVo;
         /*
          * Eventを親へ渡す処理
          * インスタンスから見えるようになる
@@ -63,7 +63,7 @@ namespace H_ControlEx {
         /// 配車されているSetControlを作成する
         /// H_SetControlVoに全ての引数を代入しておく
         /// </summary>
-        public H_SetControl(H_SetControlVo hSetControlVo) {
+        public H_SetControl(H_ControlVo hSetControlVo) {
             /*
              * Vo
              */
@@ -77,6 +77,7 @@ namespace H_ControlEx {
             this.Margin = new Padding(0);
             this.Name = "H_SetControl";
             this.Padding = new Padding(0);
+            this.Tag = hSetControlVo;
             /*
              * SetControlの形状(１列か２列か)を決定する
              */
@@ -123,7 +124,7 @@ namespace H_ControlEx {
         /// CreateHSetLabel
         /// SetCodeがゼロの場合HSetLabelは作成しない
         /// </summary>
-        private void CreateHSetLabel(H_SetControlVo hSetControlVo) {
+        private void CreateHSetLabel(H_ControlVo hSetControlVo) {
             if(hSetControlVo.HSetMasterVo is not null && hSetControlVo.HSetMasterVo.SetCode != 0) {
                 H_SetLabel hSetLabel = new(hSetControlVo);
                 /*
@@ -141,7 +142,7 @@ namespace H_ControlEx {
         /// CreateHCarLabel
         /// CarCodeがゼロの場合HCarLabelは作成しない
         /// </summary>
-        private void CreateHCarLabel(H_SetControlVo hSetControlVo) {
+        private void CreateHCarLabel(H_ControlVo hSetControlVo) {
             if(hSetControlVo.HCarMasterVo is not null && hSetControlVo.HCarMasterVo.CarCode != 0) {
                 H_CarLabel hCarLabel = new(hSetControlVo);
                 /*
@@ -160,7 +161,7 @@ namespace H_ControlEx {
         /// StaffCodeがゼロの場合HStaffLabelは作成しない
         /// </summary>
         /// <param name="listHStaffMasterVo"></param>
-        private void CreateHStaffLabel(H_SetControlVo hSetControlVo) {
+        private void CreateHStaffLabel(H_ControlVo hSetControlVo) {
             int i = 0;
             foreach(H_StaffMasterVo hStaffMasterVo in hSetControlVo.ListHStaffMasterVo) {
                 if(hStaffMasterVo.StaffCode != 0) {

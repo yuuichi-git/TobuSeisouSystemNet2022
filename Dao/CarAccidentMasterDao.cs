@@ -8,7 +8,7 @@ namespace Dao {
     public class CarAccidentMasterDao {
         private readonly ConnectionVo _connectionVo;
         private readonly DefaultValue _defaultValue = new();
-        private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01, 00, 00, 00, 000);
+        private readonly DateTime _defaultDateTime = new(1900, 01, 01, 00, 00, 00, 000);
 
         /// <summary>
         /// コンストラクタ

@@ -8,7 +8,7 @@
         private DateTime _delete_ymd_hms;
         private bool _delete_flag;
 
-        private readonly DateTime _defaultDateTime = new DateTime(1900,01,01);
+        private readonly DateTime _defaultDateTime = new(1900,01,01);
 
         public SupplyMasterVo() {
             _code = 0;

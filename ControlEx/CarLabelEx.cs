@@ -11,9 +11,9 @@ namespace ControlEx {
         private CarMasterVo _carMasterVo;
         private bool _proxyFlag; // 代番フラグ
         private readonly Color _borderColor = Color.White;
-        private readonly Font _drawFont = new Font("Yu Gothic UI", 12, FontStyle.Regular, GraphicsUnit.Pixel);
+        private readonly Font _drawFont = new("Yu Gothic UI", 12, FontStyle.Regular, GraphicsUnit.Pixel);
         private readonly SolidBrush _drowBrushFill;
-        private readonly SolidBrush _drawBrushFont = new SolidBrush(Color.Black);
+        private readonly SolidBrush _drawBrushFont = new(Color.Black);
 
         /// <summary>
         /// コンストラクター(オーバーロード)
@@ -73,7 +73,7 @@ namespace ControlEx {
             /*
              * Boderを描画
              */
-            Rectangle rectangleBoder = new Rectangle(0, 0, 68, 66);
+            Rectangle rectangleBoder = new(0, 0, 68, 66);
             ControlPaint.DrawBorder(e.Graphics, rectangleBoder, _borderColor, ButtonBorderStyle.Solid);
             /*
              * Fillを描画
