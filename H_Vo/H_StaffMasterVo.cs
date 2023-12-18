@@ -170,7 +170,7 @@ namespace H_Vo {
         }
         /// <summary>
         /// 職種
-        /// 10:運転手 11:作業員 99:指定なし
+        /// 10:運転手 11:作業員 20:事務職 99:指定なし
         /// </summary>
         public int Occupation {
             get => _occupation;

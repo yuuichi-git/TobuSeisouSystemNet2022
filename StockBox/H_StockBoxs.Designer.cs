@@ -104,71 +104,71 @@
             ToolStripMenuItemFree.Checked = true;
             ToolStripMenuItemFree.CheckState = CheckState.Checked;
             ToolStripMenuItemFree.Name = "ToolStripMenuItemFree";
-            ToolStripMenuItemFree.Size = new Size(120, 22);
+            ToolStripMenuItemFree.Size = new Size(194, 22);
             ToolStripMenuItemFree.Text = "フリー";
             ToolStripMenuItemFree.Click += ToolStripMenuItem_Click;
             // 
             // toolStripSeparator3
             // 
             toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(117, 6);
+            toolStripSeparator3.Size = new Size(191, 6);
             // 
             // ToolStripMenuItemSet
             // 
             ToolStripMenuItemSet.Name = "ToolStripMenuItemSet";
-            ToolStripMenuItemSet.Size = new Size(120, 22);
+            ToolStripMenuItemSet.Size = new Size(194, 22);
             ToolStripMenuItemSet.Text = "配車先";
             ToolStripMenuItemSet.Click += ToolStripMenuItem_Click;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(117, 6);
+            toolStripSeparator1.Size = new Size(191, 6);
             // 
             // ToolStripMenuItemCar
             // 
             ToolStripMenuItemCar.Name = "ToolStripMenuItemCar";
-            ToolStripMenuItemCar.Size = new Size(120, 22);
+            ToolStripMenuItemCar.Size = new Size(194, 22);
             ToolStripMenuItemCar.Text = "車両";
             ToolStripMenuItemCar.Click += ToolStripMenuItem_Click;
             // 
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(117, 6);
+            toolStripSeparator2.Size = new Size(191, 6);
             // 
             // ToolStripMenuItemEmployee
             // 
             ToolStripMenuItemEmployee.Name = "ToolStripMenuItemEmployee";
-            ToolStripMenuItemEmployee.Size = new Size(120, 22);
-            ToolStripMenuItemEmployee.Text = "社員";
+            ToolStripMenuItemEmployee.Size = new Size(194, 22);
+            ToolStripMenuItemEmployee.Text = "事務職(社員・アルバイト)";
             ToolStripMenuItemEmployee.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemPartTime
             // 
             ToolStripMenuItemPartTime.Name = "ToolStripMenuItemPartTime";
-            ToolStripMenuItemPartTime.Size = new Size(120, 22);
+            ToolStripMenuItemPartTime.Size = new Size(194, 22);
             ToolStripMenuItemPartTime.Text = "アルバイト";
             ToolStripMenuItemPartTime.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemLongTerm
             // 
             ToolStripMenuItemLongTerm.Name = "ToolStripMenuItemLongTerm";
-            ToolStripMenuItemLongTerm.Size = new Size(120, 22);
+            ToolStripMenuItemLongTerm.Size = new Size(194, 22);
             ToolStripMenuItemLongTerm.Text = "長期";
             ToolStripMenuItemLongTerm.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemShortTerm
             // 
             ToolStripMenuItemShortTerm.Name = "ToolStripMenuItemShortTerm";
-            ToolStripMenuItemShortTerm.Size = new Size(120, 22);
+            ToolStripMenuItemShortTerm.Size = new Size(194, 22);
             ToolStripMenuItemShortTerm.Text = "短期";
             ToolStripMenuItemShortTerm.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemDispatch
             // 
             ToolStripMenuItemDispatch.Name = "ToolStripMenuItemDispatch";
-            ToolStripMenuItemDispatch.Size = new Size(120, 22);
+            ToolStripMenuItemDispatch.Size = new Size(194, 22);
             ToolStripMenuItemDispatch.Text = "派遣";
             ToolStripMenuItemDispatch.Click += ToolStripMenuItem_Click;
             // 

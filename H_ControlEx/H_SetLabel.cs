@@ -48,17 +48,17 @@ namespace H_ControlEx {
         private string _drawStringContactMethod = string.Empty;
 
         /// <summary>
-        /// コンストラクタ
+        /// コンストラクター
         /// </summary>
-        /// <param name="hSetMasterVo"></param>
-        public H_SetLabel(H_ControlVo hSetControlVo) {
+        /// <param name="hControlVo"></param>
+        public H_SetLabel(H_ControlVo hControlVo) {
             /*
              * GarageCode
              * Classification_code
              */
-            switch(hSetControlVo.HSetMasterVo.GarageCode) {
+            switch(hControlVo.HSetMasterVo.GarageCode) {
                 case 1:
-                    switch(hSetControlVo.HSetMasterVo.ClassificationCode) {
+                    switch(hControlVo.HSetMasterVo.ClassificationCode) {
                         case 10:
                             _imageSetLabel = Properties.Resources.SetLabelWhiteY;
                             break;
@@ -71,7 +71,7 @@ namespace H_ControlEx {
                     }
                     break;
                 case 2:
-                    switch(hSetControlVo.HSetMasterVo.ClassificationCode) {
+                    switch(hControlVo.HSetMasterVo.ClassificationCode) {
                         case 10:
                             _imageSetLabel = Properties.Resources.SetLabelPowerBlueY;
                             break;
@@ -87,13 +87,13 @@ namespace H_ControlEx {
             /*
              * 稼働・休車
              */
-            if(!_date.GetWorkingDays(hSetControlVo.OperationDate, hSetControlVo.HSetMasterVo.WorkingDays, hSetControlVo.HSetMasterVo.FiveLap))
+            if(!_date.GetWorkingDays(hControlVo.OperationDate, hControlVo.HSetMasterVo.WorkingDays, hControlVo.HSetMasterVo.FiveLap))
                 _imageSetLabel = Properties.Resources.SetLabelRed;
             /*
              * Vo
              */
-            _hSetControlVo = hSetControlVo;
-            _hSetMasterVo = hSetControlVo.HSetMasterVo;
+            _hSetControlVo = hControlVo;
+            _hSetMasterVo = hControlVo.HSetMasterVo;
             /*
              * ControlIni
              */
@@ -103,7 +103,7 @@ namespace H_ControlEx {
             this.Height = (int)_panelHeight - 2;
             this.Margin = new Padding(2);
             this.Name = "H_SetLabel";
-            this.Tag = hSetControlVo.HSetMasterVo;
+            this.Tag = hControlVo.HSetMasterVo;
             this.Width = (int)_panelWidth - 2;
         }
 

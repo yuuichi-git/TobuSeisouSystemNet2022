@@ -28,6 +28,9 @@ namespace H_ControlEx {
              * Vo
              */
             _staffMasterVo = hStaffMasterVo;
+            /*
+             * 
+             */
 
             _imageStaffLabel = Properties.Resources.StaffLabel;
             /*
@@ -53,7 +56,7 @@ namespace H_ControlEx {
              */
             e.Graphics.DrawImage(_imageStaffLabel, 2, 1, _panelWidth - 8, _panelHeight - 6);
             /*
-             * 文字(車両)を描画
+             * 文字(氏名)を描画
              */
             StringFormat stringFormat = new();
             stringFormat.Alignment = StringAlignment.Center;

@@ -144,10 +144,24 @@ namespace H_ControlEx {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void HSetControl_DragEnter(object sender, DragEventArgs e) {
-            if(e.Data.GetDataPresent(typeof(H_SetLabel)) || e.Data.GetDataPresent(typeof(H_CarLabel)) || e.Data.GetDataPresent(typeof(H_StaffLabel)))
+            if(e.Data.GetDataPresent(typeof(H_SetLabel))) {
+                var a = (H_SetLabel)e.Data.GetData(typeof(H_SetLabel));
+                /*
+                 * Drag元によって値を変える
+                 */
+                switch(a.Parent.Name) {
+                    case "H_FlowLayoutPanelExBase":
+                        e.Effect = DragDropEffects.Copy;
+                        break;
+                    case "H_SetControl":
+                        e.Effect = DragDropEffects.Move;
+                        break;
+                }
+            } else if(e.Data.GetDataPresent(typeof(H_CarLabel)) || e.Data.GetDataPresent(typeof(H_StaffLabel))) {
                 e.Effect = DragDropEffects.Move;
-            else
+            } else {
                 e.Effect = DragDropEffects.None;
+            }
         }
 
         /// <summary>
@@ -187,7 +201,20 @@ namespace H_ControlEx {
 
             if(e.Data.GetDataPresent(typeof(H_SetLabel))) {
                 H_SetLabel dragItem = (H_SetLabel)e.Data.GetData(typeof(H_SetLabel));
-                hSetControl.Controls.Add(dragItem, cellPoint.X, cellPoint.Y);
+                if(e.Effect == DragDropEffects.Copy) {
+                    /*
+                     * H_StockBoxsにアイテムを残すのでH_SetLabelのコピーを作成
+                     */
+                    H_ControlVo hControlVo = new();
+                    hControlVo.HSetMasterVo = (H_SetMasterVo)dragItem.Tag;
+                    H_SetLabel hSetLabel = new(hControlVo);
+                    hSetLabel.MouseClick += HSetLabel_MouseClick;
+                    hSetLabel.MouseDoubleClick += HSetLabel_MouseDoubleClick;
+                    hSetLabel.MouseMove += HSetLabel_MouseMove;
+                    hSetControl.Controls.Add(hSetLabel, cellPoint.X, cellPoint.Y);
+                } else if(e.Effect == DragDropEffects.Move) {
+                    hSetControl.Controls.Add(dragItem, cellPoint.X, cellPoint.Y);
+                }
             }
             if(e.Data.GetDataPresent(typeof(H_CarLabel))) {
                 H_CarLabel dragItem = (H_CarLabel)e.Data.GetData(typeof(H_CarLabel));

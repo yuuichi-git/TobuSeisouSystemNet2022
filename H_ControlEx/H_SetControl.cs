@@ -63,11 +63,11 @@ namespace H_ControlEx {
         /// 配車されているSetControlを作成する
         /// H_SetControlVoに全ての引数を代入しておく
         /// </summary>
-        public H_SetControl(H_ControlVo hSetControlVo) {
+        public H_SetControl(H_ControlVo hControlVo) {
             /*
              * Vo
              */
-            _hSetControlVo = hSetControlVo;
+            _hSetControlVo = hControlVo;
             /*
              * ControlIni
              */
@@ -77,11 +77,11 @@ namespace H_ControlEx {
             this.Margin = new Padding(0);
             this.Name = "H_SetControl";
             this.Padding = new Padding(0);
-            this.Tag = hSetControlVo;
+            this.Tag = hControlVo;
             /*
              * SetControlの形状(１列か２列か)を決定する
              */
-            switch(hSetControlVo.Purpose) {
+            switch(hControlVo.Purpose) {
                 case true: // ２列
                     this.Size = new Size(160, 400);
                     this.ColumnCount = 2;
@@ -105,11 +105,11 @@ namespace H_ControlEx {
                     break;
             }
             // SetLabelを作成
-            CreateHSetLabel(hSetControlVo);
+            CreateHSetLabel(hControlVo);
             // CarLabelを作成
-            CreateHCarLabel(hSetControlVo);
+            CreateHCarLabel(hControlVo);
             // StaffLabelを作成
-            CreateHStaffLabel(hSetControlVo);
+            CreateHStaffLabel(hControlVo);
             /*
              * Event
              */
@@ -124,9 +124,9 @@ namespace H_ControlEx {
         /// CreateHSetLabel
         /// SetCodeがゼロの場合HSetLabelは作成しない
         /// </summary>
-        private void CreateHSetLabel(H_ControlVo hSetControlVo) {
-            if(hSetControlVo.HSetMasterVo is not null && hSetControlVo.HSetMasterVo.SetCode != 0) {
-                H_SetLabel hSetLabel = new(hSetControlVo);
+        private void CreateHSetLabel(H_ControlVo hControlVo) {
+            if(hControlVo.HSetMasterVo is not null && hControlVo.HSetMasterVo.SetCode != 0) {
+                H_SetLabel hSetLabel = new(hControlVo);
                 /*
                  * Event
                  */
@@ -142,9 +142,9 @@ namespace H_ControlEx {
         /// CreateHCarLabel
         /// CarCodeがゼロの場合HCarLabelは作成しない
         /// </summary>
-        private void CreateHCarLabel(H_ControlVo hSetControlVo) {
-            if(hSetControlVo.HCarMasterVo is not null && hSetControlVo.HCarMasterVo.CarCode != 0) {
-                H_CarLabel hCarLabel = new(hSetControlVo);
+        private void CreateHCarLabel(H_ControlVo hControlVo) {
+            if(hControlVo.HCarMasterVo is not null && hControlVo.HCarMasterVo.CarCode != 0) {
+                H_CarLabel hCarLabel = new(hControlVo);
                 /*
                  * Event
                  */
@@ -161,9 +161,9 @@ namespace H_ControlEx {
         /// StaffCodeがゼロの場合HStaffLabelは作成しない
         /// </summary>
         /// <param name="listHStaffMasterVo"></param>
-        private void CreateHStaffLabel(H_ControlVo hSetControlVo) {
+        private void CreateHStaffLabel(H_ControlVo hControlVo) {
             int i = 0;
-            foreach(H_StaffMasterVo hStaffMasterVo in hSetControlVo.ListHStaffMasterVo) {
+            foreach(H_StaffMasterVo hStaffMasterVo in hControlVo.ListHStaffMasterVo) {
                 if(hStaffMasterVo.StaffCode != 0) {
                     Point point = _dictionaryCellPoint[i];
                     H_StaffLabel hStaffLabel = new(hStaffMasterVo);

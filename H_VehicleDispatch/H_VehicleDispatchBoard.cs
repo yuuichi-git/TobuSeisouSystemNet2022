@@ -43,7 +43,7 @@ namespace H_VehicleDispatch {
         private List<H_StaffMasterVo>? _listDeepCopyHStaffMasterVo;
 
         /// <summary>
-        /// コンストラクタ
+        /// コンストラクター
         /// </summary>
         /// <param name="connectionVo"></param>
         public H_VehicleDispatchBoard(ConnectionVo connectionVo) {
@@ -129,16 +129,25 @@ namespace H_VehicleDispatch {
                  * CarCodeがゼロの場合Nullを返す
                  */
                 hSetControlVo.HCarMasterVo = _listHCarMasterVo.Find(x => x.CarCode == hVehicleDispatchVo?.CarCode);
+                // H_Board上に配置されたH_CarLabelを削除する
+                _listDeepCopyHCarMasterVo?.RemoveAll(x => x.CarCode == hVehicleDispatchVo?.CarCode);
                 /*
                  * StaffLabel作成
                  * Listに入れる順番を保障する必要がある
                  */
                 hSetControlVo.ListHStaffMasterVo = new();
+                // H_Board上に配置されたH_StaffLabelを削除する
+                _listDeepCopyHStaffMasterVo?.RemoveAll(x => x.StaffCode == hVehicleDispatchVo?.StaffCode1);
                 hSetControlVo.ListHStaffMasterVo.Add(GetHStaffMasterVo(_listHStaffMasterVo, hVehicleDispatchVo?.StaffCode1));
+                // H_Board上に配置されたH_StaffLabelを削除する
+                _listDeepCopyHStaffMasterVo?.RemoveAll(x => x.StaffCode == hVehicleDispatchVo?.StaffCode2);
                 hSetControlVo.ListHStaffMasterVo.Add(GetHStaffMasterVo(_listHStaffMasterVo, hVehicleDispatchVo?.StaffCode2));
+                // H_Board上に配置されたH_StaffLabelを削除する
+                _listDeepCopyHStaffMasterVo?.RemoveAll(x => x.StaffCode == hVehicleDispatchVo?.StaffCode3);
                 hSetControlVo.ListHStaffMasterVo.Add(GetHStaffMasterVo(_listHStaffMasterVo, hVehicleDispatchVo?.StaffCode3));
+                // H_Board上に配置されたH_StaffLabelを削除する
+                _listDeepCopyHStaffMasterVo?.RemoveAll(x => x.StaffCode == hVehicleDispatchVo?.StaffCode4);
                 hSetControlVo.ListHStaffMasterVo.Add(GetHStaffMasterVo(_listHStaffMasterVo, hVehicleDispatchVo?.StaffCode4));
-
                 _hBoard.AddSetControl(hSetControlVo);
             }
         }
