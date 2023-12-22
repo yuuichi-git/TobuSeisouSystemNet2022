@@ -15,10 +15,13 @@ namespace H_ControlEx {
          */
         private const int _columnCount = 1; // Column数
         private const int _rowCount = 4; // Row数
+        private bool _oldOnCursorFlag = false;
+        private bool _newOnCursorFlag = false;
+        private Point _activeCellPoint = new();
         /*
          * StaffLabel用のCellの位置を保持
          */
-        private Dictionary<int,Point> _dictionaryCellPoint = new() { { 0, new Point(0, 2) }, { 1, new Point(0, 3) }, { 2, new Point(1, 2) }, { 3, new Point(1, 3) } }; // StaffLabel用のCellの位置
+        private Dictionary<int, Point> _dictionaryCellPoint = new() { { 0, new Point(0, 2) }, { 1, new Point(0, 3) }, { 2, new Point(1, 2) }, { 3, new Point(1, 3) } }; // StaffLabel用のCellの位置
         /*
          * Vo
          */
@@ -28,35 +31,35 @@ namespace H_ControlEx {
          * インスタンスから見えるようになる
          * SetControl
          */
-        public event MouseEventHandler Event_HSetControlEx_MouseDown = delegate {};
-        public event MouseEventHandler Event_HSetControlEx_MouseUp = delegate {};
-        public event MouseEventHandler Event_HSetControlEx_MouseMove = delegate {};
-        public event DragEventHandler Event_HSetControlEx_DragEnter = delegate {};
-        public event DragEventHandler Event_HSetControlEx_DragDrop = delegate {};
+        public event MouseEventHandler Event_HSetControlEx_MouseDown = delegate { };
+        public event MouseEventHandler Event_HSetControlEx_MouseUp = delegate { };
+        public event MouseEventHandler Event_HSetControlEx_MouseMove = delegate { };
+        public event DragEventHandler Event_HSetControlEx_DragEnter = delegate { };
+        public event DragEventHandler Event_HSetControlEx_DragDrop = delegate { };
         /*
          * Eventを親へ渡す処理
          * インスタンスから見えるようになる
          * SetLabel
          */
-        public event MouseEventHandler Event_HSetLabelEx_MouseClick = delegate {};
-        public event MouseEventHandler Event_HSetLabelEx_MouseDoubleClick = delegate {};
-        public event MouseEventHandler Event_HSetLabelEx_MouseMove = delegate {};
+        public event MouseEventHandler Event_HSetLabelEx_MouseClick = delegate { };
+        public event MouseEventHandler Event_HSetLabelEx_MouseDoubleClick = delegate { };
+        public event MouseEventHandler Event_HSetLabelEx_MouseMove = delegate { };
         /*
          * Eventを親へ渡す処理
          * インスタンスから見えるようになる
          * CarLabel
          */
-        public event MouseEventHandler Event_HCarLabelEx_MouseClick = delegate {};
-        public event MouseEventHandler Event_HCarLabelEx_MouseDoubleClick = delegate {};
-        public event MouseEventHandler Event_HCarLabelEx_MouseMove = delegate {};
+        public event MouseEventHandler Event_HCarLabelEx_MouseClick = delegate { };
+        public event MouseEventHandler Event_HCarLabelEx_MouseDoubleClick = delegate { };
+        public event MouseEventHandler Event_HCarLabelEx_MouseMove = delegate { };
         /*
          * Eventを親へ渡す処理
          * インスタンスから見えるようになる
          * StaffLabel
          */
-        public event MouseEventHandler Event_HStaffLabelEx_MouseClick = delegate {};
-        public event MouseEventHandler Event_HStaffLabelEx_MouseDoubleClick = delegate {};
-        public event MouseEventHandler Event_HStaffLabelEx_MouseMove = delegate {};
+        public event MouseEventHandler Event_HStaffLabelEx_MouseClick = delegate { };
+        public event MouseEventHandler Event_HStaffLabelEx_MouseDoubleClick = delegate { };
+        public event MouseEventHandler Event_HStaffLabelEx_MouseMove = delegate { };
 
         /// <summary>
         /// コンストラクタ
@@ -82,10 +85,9 @@ namespace H_ControlEx {
              * SetControlの形状(１列か２列か)を決定する
              */
             switch(hControlVo.Purpose) {
-                case true: // ２列
-                    this.Size = new Size(160, 400);
-                    this.ColumnCount = 2;
-                    this.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, _panelWidth));
+                case false: // １列
+                    this.Size = new Size(80, 400);
+                    this.ColumnCount = 1;
                     this.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, _panelWidth));
                     this.RowCount = _rowCount;
                     this.RowStyles.Add(new RowStyle(SizeType.Absolute, _panelHeight));
@@ -93,9 +95,10 @@ namespace H_ControlEx {
                     this.RowStyles.Add(new RowStyle(SizeType.Absolute, _panelHeight));
                     this.RowStyles.Add(new RowStyle(SizeType.Absolute, _panelHeight));
                     break;
-                case false: // １列
-                    this.Size = new Size(80, 400);
-                    this.ColumnCount = 1;
+                case true: // ２列
+                    this.Size = new Size(160, 400);
+                    this.ColumnCount = 2;
+                    this.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, _panelWidth));
                     this.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, _panelWidth));
                     this.RowCount = _rowCount;
                     this.RowStyles.Add(new RowStyle(SizeType.Absolute, _panelHeight));
@@ -116,6 +119,7 @@ namespace H_ControlEx {
             this.MouseDown += HSetControlEx_MouseDown;
             this.MouseUp += HSetControlEx_MouseUp;
             this.MouseMove += HSetControlEx_MouseMove;
+            this.MouseLeave += HSetControlEx_MouseLeave;
             this.DragEnter += HSetControlEx_DragEnter;
             this.DragDrop += HSetControlEx_DragDrop;
         }
@@ -186,7 +190,7 @@ namespace H_ControlEx {
         /// <param name="e"></param>
         protected override void OnCellPaint(TableLayoutCellPaintEventArgs e) {
             /*
-             * Boderを描画
+             * Boderを描画する
              */
             Rectangle rectangle = e.CellBounds;
             rectangle.Inflate(-1, -1); // 枠のサイズを小さくする
@@ -219,6 +223,16 @@ namespace H_ControlEx {
                 }
             } else {
             }
+            /*
+             * H_SetControlの外枠を描画する
+             */
+            if(_oldOnCursorFlag) {
+                if(((H_ControlVo)this.Tag).Purpose) {
+                    e.Graphics.DrawRectangle(new Pen(Color.DarkBlue, 2), new Rectangle(1, 1, 158, 398));
+                } else {
+                    e.Graphics.DrawRectangle(new Pen(Color.DarkBlue, 2), new Rectangle(1, 1, 78, 398));
+                }
+            }
         }
 
         /*
@@ -231,7 +245,25 @@ namespace H_ControlEx {
             Event_HSetControlEx_MouseUp.Invoke(sender, e);
         }
         private void HSetControlEx_MouseMove(object sender, MouseEventArgs e) {
+            /*
+             * Control上にカーソルがある
+             */
+            _newOnCursorFlag = true;
+            if(_oldOnCursorFlag != _newOnCursorFlag) {
+                _oldOnCursorFlag = _newOnCursorFlag;
+                Refresh();
+            }
             Event_HSetControlEx_MouseMove.Invoke(sender, e);
+        }
+        private void HSetControlEx_MouseLeave(object sender, EventArgs e) {
+            /*
+             * Control上にカーソルがない
+             */
+            _newOnCursorFlag = false;
+            if(_oldOnCursorFlag != _newOnCursorFlag) {
+                _oldOnCursorFlag = _newOnCursorFlag;
+                Refresh();
+            }
         }
         private void HSetControlEx_DragEnter(object sender, DragEventArgs e) {
             Event_HSetControlEx_DragEnter.Invoke(sender, e);

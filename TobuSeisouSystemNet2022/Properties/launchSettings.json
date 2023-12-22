@@ -3,7 +3,8 @@
     "TobuSeisouSystemNet2022": {
       "commandName": "Project",
       "sqlDebugging": true,
-      "nativeDebugging": true
+      "nativeDebugging": true,
+      "hotReloadEnabled": false
     }
   }
 }

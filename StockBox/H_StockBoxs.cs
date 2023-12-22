@@ -111,7 +111,8 @@ namespace StockBox {
                 case "ToolStripMenuItemDispatch": // îhå≠
                     this.ToolStripMenuItemCheckedChange(sender);
                     this.FlowLayoutPanelExControlRemove();
-
+                    List<H_StaffMasterVo> _listDeepCopyHStaffMasterVoDispatch = _copyUtility.DeepCopy(_hControlVo.ListDeepCopyHStaffMasterVo);
+                    this.CreateHStaffLabel(_listDeepCopyHStaffMasterVoDispatch.FindAll(x => x.Belongs == 13 && x.JobForm == 99 && x.RetirementFlag == false));
                     break;
                 case "ToolStripMenuItemSortAsc": // è∏èá
                     this.ToolStripMenuItemCheckedChange(sender);
@@ -239,10 +240,8 @@ namespace StockBox {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void HFlowLayoutPanelExBase_DragDrop(object sender, DragEventArgs e) {
-            //if(e.Data.GetDataPresent(typeof(H_SetLabel))) {
-            //    H_SetLabel dragItem = (H_SetLabel)e.Data.GetData(typeof(H_SetLabel));
-            //    ((H_FlowLayoutPanelEx)sender).Controls.Add(dragItem);
-            //}
+            if(e.Data.GetDataPresent(typeof(H_SetLabel))) {
+            }
             if(e.Data.GetDataPresent(typeof(H_CarLabel))) {
                 H_CarLabel dragItem = (H_CarLabel)e.Data.GetData(typeof(H_CarLabel));
                 ((H_FlowLayoutPanelEx)sender).Controls.Add(dragItem);

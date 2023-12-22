@@ -42,17 +42,17 @@ namespace H_ControlEx {
             this.Padding = new Padding(0);
 
             this.ColumnCount = _columnCount;
-            for(int i = 0; i < _columnCount; i++)
+            for (int i = 0; i < _columnCount; i++)
                 this.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, _columnWidth));
             this.RowCount = _rowCount;
-            for(int i = 0; i < _rowCount; i++)
+            for (int i = 0; i < _rowCount; i++)
                 this.RowStyles.Add(new RowStyle(SizeType.Absolute, _rowHeight));
             /*
              * Event
              */
-            this.MouseDown += H_Board_MouseDown; // Eventを登録
-            this.MouseUp += H_Board_MouseUp; // Eventを登録
-            this.MouseMove += H_Board_MouseMove; // Eventを登録
+            this.MouseDown += HSetControl_MouseDown; // Eventを登録
+            this.MouseUp += HSetControl_MouseUp; // Eventを登録
+            this.MouseMove += HSetControl_MouseMove; // Eventを登録
         }
 
         /// <summary>
@@ -70,9 +70,9 @@ namespace H_ControlEx {
         /// <param name="hSetControlVo"></param>
         public void AddSetControl(H_ControlVo hSetControlVo) {
             H_SetControl hSetControl = new(hSetControlVo);
-            hSetControl.Event_HSetControlEx_MouseDown += H_Board_MouseDown;
-            hSetControl.Event_HSetControlEx_MouseUp += H_Board_MouseUp;
-            hSetControl.Event_HSetControlEx_MouseMove += H_Board_MouseMove;
+            hSetControl.Event_HSetControlEx_MouseDown += HSetControl_MouseDown;
+            hSetControl.Event_HSetControlEx_MouseUp += HSetControl_MouseUp;
+            hSetControl.Event_HSetControlEx_MouseMove += HSetControl_MouseMove;
             hSetControl.Event_HSetControlEx_DragEnter += HSetControl_DragEnter;
             hSetControl.Event_HSetControlEx_DragDrop += HSetControl_DragDrop;
             hSetControl.Event_HSetLabelEx_MouseClick += HSetLabel_MouseClick;
@@ -103,34 +103,43 @@ namespace H_ControlEx {
          * ----------Event----------
          */
         /// <summary>
-        /// H_Board_MouseDown
+        /// HSetControl_MouseDown
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void H_Board_MouseDown(object sender, MouseEventArgs e) {
-            if(e.Button == MouseButtons.Left) {
+        private void HSetControl_MouseDown(object sender, MouseEventArgs e) {
+            /*
+             * スクロール処理
+             */
+            if (e.Button == MouseButtons.Left) {
                 this._oldMousePoint = ((Control)sender).PointToScreen(new Point(e.X, e.Y));
                 this.Cursor = Cursors.Hand;
             }
         }
 
         /// <summary>
-        /// H_Board_MouseUp
+        /// HSetControl_MouseUp
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void H_Board_MouseUp(object sender, MouseEventArgs e) {
+        private void HSetControl_MouseUp(object sender, MouseEventArgs e) {
+            /*
+             * スクロール処理
+             */
             this._oldAutoScrollPosition = this.AutoScrollPosition;
             this.Cursor = Cursors.Default;
         }
 
         /// <summary>
-        /// H_Board_MouseMove
+        /// HSetControl_MouseMove
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void H_Board_MouseMove(object sender, MouseEventArgs e) {
-            if(e.Button == MouseButtons.Left) {
+        private void HSetControl_MouseMove(object sender, MouseEventArgs e) {
+            /*
+             * スクロール処理
+             */
+            if (e.Button == MouseButtons.Left) {
                 Point _newMousePoint = ((Control)sender).PointToScreen(new Point(e.X, e.Y));
                 int x = this._oldAutoScrollPosition.X + (_newMousePoint.X - this._oldMousePoint.X);
                 int y = this._oldAutoScrollPosition.Y + (_newMousePoint.Y - this._oldMousePoint.Y);
@@ -144,20 +153,24 @@ namespace H_ControlEx {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void HSetControl_DragEnter(object sender, DragEventArgs e) {
-            if(e.Data.GetDataPresent(typeof(H_SetLabel))) {
-                var a = (H_SetLabel)e.Data.GetData(typeof(H_SetLabel));
-                /*
-                 * Drag元によって値を変える
-                 */
-                switch(a.Parent.Name) {
-                    case "H_FlowLayoutPanelExBase":
-                        e.Effect = DragDropEffects.Copy;
-                        break;
-                    case "H_SetControl":
-                        e.Effect = DragDropEffects.Move;
-                        break;
+            H_SetControl hSetControl = (H_SetControl)sender;
+            Point clientPoint = hSetControl.PointToClient(new Point(e.X, e.Y));
+            Point cellPoint = new(clientPoint.X / (int)_panelWidth, clientPoint.Y / (int)_panelHeight);
+            if (e.Data.GetDataPresent(typeof(H_SetLabel))) {
+                if (cellPoint.X == 0 && cellPoint.Y == 0) {
+                    H_SetLabel hSetLabel = (H_SetLabel)e.Data.GetData(typeof(H_SetLabel));
+                    switch (hSetLabel.Parent.Name) {
+                        case "H_SetControl":
+                            e.Effect = DragDropEffects.Move;
+                            break;
+                        case "H_FlowLayoutPanelExBase":
+                            e.Effect = DragDropEffects.Copy;
+                            break;
+                    }
+                } else {
+                    e.Effect = DragDropEffects.None;
                 }
-            } else if(e.Data.GetDataPresent(typeof(H_CarLabel)) || e.Data.GetDataPresent(typeof(H_StaffLabel))) {
+            } else if (e.Data.GetDataPresent(typeof(H_CarLabel)) || e.Data.GetDataPresent(typeof(H_StaffLabel))) {
                 e.Effect = DragDropEffects.Move;
             } else {
                 e.Effect = DragDropEffects.None;
@@ -172,36 +185,10 @@ namespace H_ControlEx {
         private void HSetControl_DragDrop(object sender, DragEventArgs e) {
             H_SetControl hSetControl = (H_SetControl)sender;
             Point clientPoint = hSetControl.PointToClient(new Point(e.X, e.Y));
-            Point cellPoint = new(0, 0);
-            /*
-             * 画面座標(X, Y)を、H_SetControl上のクライアント座標に変換する
-             */
-            switch(clientPoint.X) {
-                case int i when i < 80:
-                    cellPoint.X = 0;
-                    break;
-                case int i when i < 160:
-                    cellPoint.X = 1;
-                    break;
-            }
-            switch(clientPoint.Y) {
-                case int i when i < 100:
-                    cellPoint.Y = 0;
-                    break;
-                case int i when i < 200:
-                    cellPoint.Y = 1;
-                    break;
-                case int i when i < 300:
-                    cellPoint.Y = 2;
-                    break;
-                case int i when i < 400:
-                    cellPoint.Y = 3;
-                    break;
-            }
-
-            if(e.Data.GetDataPresent(typeof(H_SetLabel))) {
+            Point cellPoint = new(clientPoint.X / (int)_panelWidth, clientPoint.Y / (int)_panelHeight);
+            if (e.Data.GetDataPresent(typeof(H_SetLabel))) {
                 H_SetLabel dragItem = (H_SetLabel)e.Data.GetData(typeof(H_SetLabel));
-                if(e.Effect == DragDropEffects.Copy) {
+                if (e.Effect == DragDropEffects.Copy) {
                     /*
                      * H_StockBoxsにアイテムを残すのでH_SetLabelのコピーを作成
                      */
@@ -212,15 +199,15 @@ namespace H_ControlEx {
                     hSetLabel.MouseDoubleClick += HSetLabel_MouseDoubleClick;
                     hSetLabel.MouseMove += HSetLabel_MouseMove;
                     hSetControl.Controls.Add(hSetLabel, cellPoint.X, cellPoint.Y);
-                } else if(e.Effect == DragDropEffects.Move) {
+                } else if (e.Effect == DragDropEffects.Move) {
                     hSetControl.Controls.Add(dragItem, cellPoint.X, cellPoint.Y);
                 }
             }
-            if(e.Data.GetDataPresent(typeof(H_CarLabel))) {
+            if (e.Data.GetDataPresent(typeof(H_CarLabel))) {
                 H_CarLabel dragItem = (H_CarLabel)e.Data.GetData(typeof(H_CarLabel));
                 hSetControl.Controls.Add(dragItem, cellPoint.X, cellPoint.Y);
             }
-            if(e.Data.GetDataPresent(typeof(H_StaffLabel))) {
+            if (e.Data.GetDataPresent(typeof(H_StaffLabel))) {
                 H_StaffLabel dragItem = (H_StaffLabel)e.Data.GetData(typeof(H_StaffLabel));
                 hSetControl.Controls.Add(dragItem, cellPoint.X, cellPoint.Y);
             }
@@ -252,9 +239,9 @@ namespace H_ControlEx {
         private void HSetLabel_MouseMove(object sender, MouseEventArgs e) {
             H_SetLabel hSetLabel = (H_SetLabel)sender;
             H_SetMasterVo hSetMasterVo = (H_SetMasterVo)hSetLabel.Tag;
-            if(e.Button == MouseButtons.Left) {
-                if(hSetMasterVo.MoveFlag)
-                    hSetLabel.DoDragDrop(sender, DragDropEffects.Move);
+            if (e.Button == MouseButtons.Left) {
+                if (hSetMasterVo.MoveFlag)
+                    hSetLabel.DoDragDrop(sender, DragDropEffects.All);
             }
         }
 
@@ -283,8 +270,8 @@ namespace H_ControlEx {
         /// <param name="e"></param>
         private void HCarLabel_MouseMove(object sender, MouseEventArgs e) {
             H_CarLabel hCarLabel = (H_CarLabel)sender;
-            if(e.Button == MouseButtons.Left)
-                hCarLabel.DoDragDrop(sender, DragDropEffects.Move);
+            if (e.Button == MouseButtons.Left)
+                hCarLabel.DoDragDrop(sender, DragDropEffects.All);
         }
 
         /// <summary>
@@ -312,8 +299,8 @@ namespace H_ControlEx {
         /// <param name="e"></param>
         private void HStaffLabel_MouseMove(object sender, MouseEventArgs e) {
             H_StaffLabel hStaffLabel = (H_StaffLabel)sender;
-            if(e.Button == MouseButtons.Left)
-                hStaffLabel.DoDragDrop(sender, DragDropEffects.Move);
+            if (e.Button == MouseButtons.Left)
+                hStaffLabel.DoDragDrop(sender, DragDropEffects.All);
         }
     }
 }
