@@ -19,7 +19,6 @@ namespace H_ControlEx {
         /*
          * Vo
          */
-        private readonly H_ControlVo _hSetControlVo;
         private readonly H_CarMasterVo _hCarMasterVo;
         /*
          * 色の定義
@@ -31,23 +30,26 @@ namespace H_ControlEx {
          * Fontの定義
          */
         private readonly Font _drawFontCarLabel = new("Yu Gothic UI", 13, FontStyle.Regular, GraphicsUnit.Pixel);
+        /*
+         * ContextMenuStrip 
+         */
+
         /// <summary>
         /// コンストラクタ
         /// </summary>
         /// <param name="hCarMasterVo"></param>
-        public H_CarLabel(H_ControlVo hSetControlVo) {
+        public H_CarLabel(H_CarMasterVo hCarMasterVo) {
             /*
              * Vo
              */
-            _hSetControlVo = hSetControlVo;
-            _hCarMasterVo = hSetControlVo.HCarMasterVo;
+            _hCarMasterVo = hCarMasterVo;
             /*
              * GarageCode
              * Classification_code
              */
-            switch(hSetControlVo.HCarMasterVo.GarageCode) {
+            switch(_hCarMasterVo.GarageCode) {
                 case 1:
-                    switch(hSetControlVo.HCarMasterVo.ClassificationCode) {
+                    switch(_hCarMasterVo.ClassificationCode) {
                         case 10:
                             _imageCarLabel = Properties.Resources.CarLabelWhiteY;
                             break;
@@ -60,7 +62,7 @@ namespace H_ControlEx {
                     }
                     break;
                 case 2:
-                    switch(hSetControlVo.HCarMasterVo.ClassificationCode) {
+                    switch(_hCarMasterVo.ClassificationCode) {
                         case 10:
                             _imageCarLabel = Properties.Resources.CarLabelPowerBlueY;
                             break;
@@ -76,7 +78,7 @@ namespace H_ControlEx {
             /*
              * 本社・三郷で色を変える
              */
-            switch(hSetControlVo.HCarMasterVo.GarageCode) {
+            switch(_hCarMasterVo.GarageCode) {
                 case 1:
                     _brushFillColor = new SolidBrush(Color.White);
                     break;
@@ -93,7 +95,7 @@ namespace H_ControlEx {
             this.Height = (int)_panelHeight - 4;
             this.Margin = new Padding(2);
             this.Name = "H_CarLabel";
-            this.Tag = hSetControlVo.HCarMasterVo;
+            this.Tag = _hCarMasterVo;
             this.Width = (int)_panelWidth - 4;
         }
 

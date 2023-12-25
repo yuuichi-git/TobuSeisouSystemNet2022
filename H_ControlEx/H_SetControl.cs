@@ -36,6 +36,7 @@ namespace H_ControlEx {
         public event MouseEventHandler Event_HSetControlEx_MouseMove = delegate { };
         public event DragEventHandler Event_HSetControlEx_DragEnter = delegate { };
         public event DragEventHandler Event_HSetControlEx_DragDrop = delegate { };
+        public event DragEventHandler Event_HSetControlEx_DragOver = delegate { };
         /*
          * Eventを親へ渡す処理
          * インスタンスから見えるようになる
@@ -84,7 +85,7 @@ namespace H_ControlEx {
             /*
              * SetControlの形状(１列か２列か)を決定する
              */
-            switch(hControlVo.Purpose) {
+            switch (hControlVo.Purpose) {
                 case false: // １列
                     this.Size = new Size(80, 400);
                     this.ColumnCount = 1;
@@ -122,6 +123,7 @@ namespace H_ControlEx {
             this.MouseLeave += HSetControlEx_MouseLeave;
             this.DragEnter += HSetControlEx_DragEnter;
             this.DragDrop += HSetControlEx_DragDrop;
+            this.DragOver += HSetControlEx_DragOver;
         }
 
         /// <summary>
@@ -129,7 +131,7 @@ namespace H_ControlEx {
         /// SetCodeがゼロの場合HSetLabelは作成しない
         /// </summary>
         private void CreateHSetLabel(H_ControlVo hControlVo) {
-            if(hControlVo.HSetMasterVo is not null && hControlVo.HSetMasterVo.SetCode != 0) {
+            if (hControlVo.HSetMasterVo is not null && hControlVo.HSetMasterVo.SetCode != 0) {
                 H_SetLabel hSetLabel = new(hControlVo);
                 /*
                  * Event
@@ -147,8 +149,8 @@ namespace H_ControlEx {
         /// CarCodeがゼロの場合HCarLabelは作成しない
         /// </summary>
         private void CreateHCarLabel(H_ControlVo hControlVo) {
-            if(hControlVo.HCarMasterVo is not null && hControlVo.HCarMasterVo.CarCode != 0) {
-                H_CarLabel hCarLabel = new(hControlVo);
+            if (hControlVo.HCarMasterVo is not null && hControlVo.HCarMasterVo.CarCode != 0) {
+                H_CarLabel hCarLabel = new(hControlVo.HCarMasterVo);
                 /*
                  * Event
                  */
@@ -167,8 +169,8 @@ namespace H_ControlEx {
         /// <param name="listHStaffMasterVo"></param>
         private void CreateHStaffLabel(H_ControlVo hControlVo) {
             int i = 0;
-            foreach(H_StaffMasterVo hStaffMasterVo in hControlVo.ListHStaffMasterVo) {
-                if(hStaffMasterVo.StaffCode != 0) {
+            foreach (H_StaffMasterVo hStaffMasterVo in hControlVo.ListHStaffMasterVo) {
+                if (hStaffMasterVo.StaffCode != 0) {
                     Point point = _dictionaryCellPoint[i];
                     H_StaffLabel hStaffLabel = new(hStaffMasterVo);
                     /*
@@ -194,28 +196,28 @@ namespace H_ControlEx {
              */
             Rectangle rectangle = e.CellBounds;
             rectangle.Inflate(-1, -1); // 枠のサイズを小さくする
-            if(_hSetControlVo.VehicleDispatchFlag) {
-                switch(e.Column) {
+            if (_hSetControlVo.VehicleDispatchFlag) {
+                switch (e.Column) {
                     case 0: // １列目
-                        switch(e.Row) {
+                        switch (e.Row) {
                             case 2: // StaffLabel(1人目)
-                                if(_hSetControlVo.HSetMasterVo.NumberOfPeople >= 1)
+                                if (_hSetControlVo.HSetMasterVo.NumberOfPeople >= 1)
                                     ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // StaffLabel1の枠線
                                 break;
                             case 3: // StaffLabel(2人目)
-                                if(_hSetControlVo.HSetMasterVo.NumberOfPeople >= 2)
+                                if (_hSetControlVo.HSetMasterVo.NumberOfPeople >= 2)
                                     ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // StaffLabel2の枠線
                                 break;
                         }
                         break;
                     case 1: // ２列目
-                        switch(e.Row) {
+                        switch (e.Row) {
                             case 2: // StaffLabel(3人目)
-                                if(_hSetControlVo.HSetMasterVo.NumberOfPeople >= 3)
+                                if (_hSetControlVo.HSetMasterVo.NumberOfPeople >= 3)
                                     ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // StaffLabel3の枠線
                                 break;
                             case 3: // StaffLabel(4人目)
-                                if(_hSetControlVo.HSetMasterVo.NumberOfPeople >= 4)
+                                if (_hSetControlVo.HSetMasterVo.NumberOfPeople >= 4)
                                     ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // StaffLabel4の枠線
                                 break;
                         }
@@ -226,8 +228,8 @@ namespace H_ControlEx {
             /*
              * H_SetControlの外枠を描画する
              */
-            if(_oldOnCursorFlag) {
-                if(((H_ControlVo)this.Tag).Purpose) {
+            if (_oldOnCursorFlag) {
+                if (((H_ControlVo)this.Tag).Purpose) {
                     e.Graphics.DrawRectangle(new Pen(Color.DarkBlue, 2), new Rectangle(1, 1, 158, 398));
                 } else {
                     e.Graphics.DrawRectangle(new Pen(Color.DarkBlue, 2), new Rectangle(1, 1, 78, 398));
@@ -249,7 +251,7 @@ namespace H_ControlEx {
              * Control上にカーソルがある
              */
             _newOnCursorFlag = true;
-            if(_oldOnCursorFlag != _newOnCursorFlag) {
+            if (_oldOnCursorFlag != _newOnCursorFlag) {
                 _oldOnCursorFlag = _newOnCursorFlag;
                 Refresh();
             }
@@ -260,7 +262,7 @@ namespace H_ControlEx {
              * Control上にカーソルがない
              */
             _newOnCursorFlag = false;
-            if(_oldOnCursorFlag != _newOnCursorFlag) {
+            if (_oldOnCursorFlag != _newOnCursorFlag) {
                 _oldOnCursorFlag = _newOnCursorFlag;
                 Refresh();
             }
@@ -270,6 +272,9 @@ namespace H_ControlEx {
         }
         private void HSetControlEx_DragDrop(object sender, DragEventArgs e) {
             Event_HSetControlEx_DragDrop.Invoke(sender, e);
+        }
+        private void HSetControlEx_DragOver(object sender, DragEventArgs e) {
+            Event_HSetControlEx_DragOver.Invoke(sender, e);
         }
         /*
          * H_SetLabelEx

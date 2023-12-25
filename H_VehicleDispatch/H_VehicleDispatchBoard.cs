@@ -19,22 +19,22 @@ namespace H_VehicleDispatch {
         /*
          * 変数定義
          */
-        private H_Board _hBoard;
+        private readonly H_Board _hBoard;
         /*
          * Dao
          */
         private readonly H_VehicleDispatchHeadDao _hVehicleDispatchHeadDao;
         private readonly H_VehicleDispatchDao _hVehicleDispatchDao;
-        private H_SetMasterDao _hSetMasterDao;
-        private H_CarMasterDao _hCarMasterDao;
-        private H_StaffMasterDao _hStaffMasterDao;
+        private readonly H_SetMasterDao _hSetMasterDao;
+        private readonly H_CarMasterDao _hCarMasterDao;
+        private readonly H_StaffMasterDao _hStaffMasterDao;
         /*
          * Vo
          */
         private readonly ConnectionVo _connectionVo;
-        private List<H_SetMasterVo> _listHSetMasterVo;
-        private List<H_CarMasterVo> _listHCarMasterVo;
-        private List<H_StaffMasterVo> _listHStaffMasterVo;
+        private readonly List<H_SetMasterVo> _listHSetMasterVo;
+        private readonly List<H_CarMasterVo> _listHCarMasterVo;
+        private readonly List<H_StaffMasterVo> _listHStaffMasterVo;
         /*
          * DeepCopy
          */
@@ -176,7 +176,7 @@ namespace H_VehicleDispatch {
         /// <param name="hBoard"></param>
         private void HBoardControlRemove(H_Board hBoard) {
             /*
-             * メソッドを Clear 呼び出しても、コントロール ハンドルはメモリから削除されません。 メモリ リークを回避するには、 メソッドを Dispose 明示的に呼び出す必要があります。
+             * メソッドをClear呼び出してもコントロール ハンドルはメモリから削除されません。 メモリリークを回避するにはメソッドをDispose明示的に呼び出す必要があります。
              * ※後ろから解放している点が重要らしい。
              */
             for(int i = hBoard.Controls.Count - 1; 0 <= i; i--)
@@ -235,7 +235,6 @@ namespace H_VehicleDispatch {
                 case "h_ButtonExRight5":
                     break;
             }
-
         }
     }
 }

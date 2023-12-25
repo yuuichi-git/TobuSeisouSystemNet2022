@@ -75,6 +75,7 @@ namespace H_ControlEx {
             hSetControl.Event_HSetControlEx_MouseMove += HSetControl_MouseMove;
             hSetControl.Event_HSetControlEx_DragEnter += HSetControl_DragEnter;
             hSetControl.Event_HSetControlEx_DragDrop += HSetControl_DragDrop;
+            hSetControl.Event_HSetControlEx_DragOver += HSetControl_DragOver;
             hSetControl.Event_HSetLabelEx_MouseClick += HSetLabel_MouseClick;
             hSetControl.Event_HSetLabelEx_MouseDoubleClick += HSetLabel_MouseDoubleClick;
             hSetControl.Event_HSetLabelEx_MouseMove += HSetLabel_MouseMove;
@@ -149,32 +150,11 @@ namespace H_ControlEx {
 
         /// <summary>
         /// HSetControl_DragEnter
+        /// オブジェクトがコントロールの境界内にドラッグされると一度だけ発生します。
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void HSetControl_DragEnter(object sender, DragEventArgs e) {
-            H_SetControl hSetControl = (H_SetControl)sender;
-            Point clientPoint = hSetControl.PointToClient(new Point(e.X, e.Y));
-            Point cellPoint = new(clientPoint.X / (int)_panelWidth, clientPoint.Y / (int)_panelHeight);
-            if (e.Data.GetDataPresent(typeof(H_SetLabel))) {
-                if (cellPoint.X == 0 && cellPoint.Y == 0) {
-                    H_SetLabel hSetLabel = (H_SetLabel)e.Data.GetData(typeof(H_SetLabel));
-                    switch (hSetLabel.Parent.Name) {
-                        case "H_SetControl":
-                            e.Effect = DragDropEffects.Move;
-                            break;
-                        case "H_FlowLayoutPanelExBase":
-                            e.Effect = DragDropEffects.Copy;
-                            break;
-                    }
-                } else {
-                    e.Effect = DragDropEffects.None;
-                }
-            } else if (e.Data.GetDataPresent(typeof(H_CarLabel)) || e.Data.GetDataPresent(typeof(H_StaffLabel))) {
-                e.Effect = DragDropEffects.Move;
-            } else {
-                e.Effect = DragDropEffects.None;
-            }
         }
 
         /// <summary>
@@ -210,6 +190,45 @@ namespace H_ControlEx {
             if (e.Data.GetDataPresent(typeof(H_StaffLabel))) {
                 H_StaffLabel dragItem = (H_StaffLabel)e.Data.GetData(typeof(H_StaffLabel));
                 hSetControl.Controls.Add(dragItem, cellPoint.X, cellPoint.Y);
+            }
+        }
+
+        /// <summary>
+        /// HSetControl_DragOver
+        /// ドラッグ アンド ドロップ操作中にマウス カーソルがコントロールの境界内を移動したときに発生します。
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HSetControl_DragOver(object sender, DragEventArgs e) {
+            Point clientPoint = ((H_SetControl)sender).PointToClient(new Point(e.X, e.Y));
+            Point cellPoint = new(clientPoint.X / (int)_panelWidth, clientPoint.Y / (int)_panelHeight);
+            if (e.Data.GetDataPresent(typeof(H_SetLabel))) {
+                if (cellPoint.X == 0 && cellPoint.Y == 0) {
+                    switch (((H_SetLabel)e.Data.GetData(typeof(H_SetLabel))).Parent.Name) {
+                        case "H_SetControl":
+                            e.Effect = DragDropEffects.Move;
+                            break;
+                        case "H_FlowLayoutPanelExBase":
+                            e.Effect = DragDropEffects.Copy;
+                            break;
+                    }
+                } else {
+                    e.Effect = DragDropEffects.None;
+                }
+            } else if (e.Data.GetDataPresent(typeof(H_CarLabel))) {
+                if (cellPoint.X == 0 && cellPoint.Y == 1) {
+                    e.Effect = DragDropEffects.Move;
+                } else {
+                    e.Effect = DragDropEffects.None;
+                }
+            } else if (e.Data.GetDataPresent(typeof(H_StaffLabel))) {
+                if (cellPoint.Y == 2 || cellPoint.Y == 3) {
+                    e.Effect = DragDropEffects.Move;
+                } else {
+                    e.Effect = DragDropEffects.None;
+                }
+            } else {
+                e.Effect = DragDropEffects.None;
             }
         }
 

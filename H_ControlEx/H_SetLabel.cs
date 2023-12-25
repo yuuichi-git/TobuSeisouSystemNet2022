@@ -44,8 +44,11 @@ namespace H_ControlEx {
          */
         private readonly Font _drawFontSetLabel = new("Yu Gothic UI", 13, FontStyle.Regular, GraphicsUnit.Pixel);
         private readonly Font _drawFontContactMethod = new("Yu Gothic UI", 10, FontStyle.Regular, GraphicsUnit.Pixel);
-
+        
         private string _drawStringContactMethod = string.Empty;
+        /*
+         * ContextMenuStrip 
+         */
 
         /// <summary>
         /// コンストラクター
@@ -56,9 +59,9 @@ namespace H_ControlEx {
              * GarageCode
              * Classification_code
              */
-            switch(hControlVo.HSetMasterVo.GarageCode) {
+            switch (hControlVo.HSetMasterVo.GarageCode) {
                 case 1:
-                    switch(hControlVo.HSetMasterVo.ClassificationCode) {
+                    switch (hControlVo.HSetMasterVo.ClassificationCode) {
                         case 10:
                             _imageSetLabel = Properties.Resources.SetLabelWhiteY;
                             break;
@@ -71,7 +74,7 @@ namespace H_ControlEx {
                     }
                     break;
                 case 2:
-                    switch(hControlVo.HSetMasterVo.ClassificationCode) {
+                    switch (hControlVo.HSetMasterVo.ClassificationCode) {
                         case 10:
                             _imageSetLabel = Properties.Resources.SetLabelPowerBlueY;
                             break;
@@ -87,7 +90,7 @@ namespace H_ControlEx {
             /*
              * 稼働・休車
              */
-            if(!_date.GetWorkingDays(hControlVo.OperationDate, hControlVo.HSetMasterVo.WorkingDays, hControlVo.HSetMasterVo.FiveLap))
+            if (!_date.GetWorkingDays(hControlVo.OperationDate, hControlVo.HSetMasterVo.WorkingDays, hControlVo.HSetMasterVo.FiveLap))
                 _imageSetLabel = Properties.Resources.SetLabelRed;
             /*
              * Vo
@@ -120,7 +123,7 @@ namespace H_ControlEx {
             /*
              * 文字(TEL/FAX)を描画
              */
-            switch(_hSetMasterVo.ContactMethod) {
+            switch (_hSetMasterVo.ContactMethod) {
                 case 10: // TEL
                     _drawStringContactMethod = "TEL";
                     break;

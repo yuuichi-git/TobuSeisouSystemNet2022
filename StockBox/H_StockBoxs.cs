@@ -65,7 +65,7 @@ namespace StockBox {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ToolStripMenuItem_Click(object sender, EventArgs e) {
-            switch(((ToolStripMenuItem)sender).Name) {
+            switch (((ToolStripMenuItem)sender).Name) {
                 case "ToolStripMenuItemExit": // アプリケーションを終了する
                     this.Close();
                     break;
@@ -82,7 +82,8 @@ namespace StockBox {
                 case "ToolStripMenuItemCar": // 車両
                     this.ToolStripMenuItemCheckedChange(sender);
                     this.FlowLayoutPanelExControlRemove();
-                    this.CreateHCarLabel(_hControlVo);
+                    List<H_CarMasterVo> _listDeepCopyHCarMasterVo = _copyUtility.DeepCopy(_hControlVo.ListDeepCopyHCarMasterVo);
+                    this.CreateHCarLabel(_listDeepCopyHCarMasterVo.FindAll(x => x.DeleteFlag == false));
                     break;
                 case "ToolStripMenuItemEmployee": // 社員
                     this.ToolStripMenuItemCheckedChange(sender);
@@ -132,9 +133,9 @@ namespace StockBox {
         /// </summary>
         /// <param name="hControlVo"></param>
         private void CreateHSetLabel(H_ControlVo hControlVo) {
-            foreach(H_SetMasterVo hSetMasterVo in hControlVo.ListDeepCopyHSetMasterVo.FindAll(x => x.ClassificationCode != 10 && x.ClassificationCode != 11)
+            foreach (H_SetMasterVo hSetMasterVo in hControlVo.ListDeepCopyHSetMasterVo.FindAll(x => x.ClassificationCode != 10 && x.ClassificationCode != 11)
                                                                                      .OrderBy(x => x.ClassificationCode).ThenBy(x => x.SetName)) {
-                if(hSetMasterVo is not null && hSetMasterVo.SetCode != 0) {
+                if (hSetMasterVo is not null && hSetMasterVo.SetCode != 0) {
                     hControlVo.HSetMasterVo = hSetMasterVo;
                     H_SetLabel hSetLabel = new(hControlVo);
                     hSetLabel.MouseClick += HSetLabel_MouseClick;
@@ -148,12 +149,11 @@ namespace StockBox {
         /// <summary>
         /// CreateHCarLabel
         /// </summary>
-        /// <param name="hControlVo"></param>
-        private void CreateHCarLabel(H_ControlVo hControlVo) {
-            foreach(H_CarMasterVo hCarMasterVo in hControlVo.ListDeepCopyHCarMasterVo.OrderBy(x => x.ClassificationCode).ThenBy(x => x.DoorNumber)) {
-                if(hCarMasterVo is not null && hCarMasterVo.CarCode != 0) {
-                    hControlVo.HCarMasterVo = hCarMasterVo;
-                    H_CarLabel hCarLabel = new(hControlVo);
+        /// <param name="listHCarMasterVo"></param>
+        private void CreateHCarLabel(List<H_CarMasterVo> listHCarMasterVo) {
+            foreach (H_CarMasterVo hCarMasterVo in listHCarMasterVo.OrderBy(x => x.ClassificationCode).ThenBy(x => x.DoorNumber)) {
+                if (hCarMasterVo is not null && hCarMasterVo.CarCode != 0) {
+                    H_CarLabel hCarLabel = new(hCarMasterVo);
                     hCarLabel.MouseClick += HCarLabel_MouseClick;
                     hCarLabel.MouseDoubleClick += HCarLabel_MouseDoubleClick;
                     hCarLabel.MouseMove += HCarLabel_MouseMove;
@@ -165,10 +165,10 @@ namespace StockBox {
         /// <summary>
         /// CreateHStaffLabel
         /// </summary>
-        /// <param name="hControlVo"></param>
+        /// <param name="listHStaffMasterVo"></param>
         private void CreateHStaffLabel(List<H_StaffMasterVo> listHStaffMasterVo) {
-            foreach(H_StaffMasterVo hStaffMasterVo in listHStaffMasterVo.OrderBy(x => x.NameKana)) {
-                if(hStaffMasterVo is not null && hStaffMasterVo.StaffCode != 0) {
+            foreach (H_StaffMasterVo hStaffMasterVo in listHStaffMasterVo.OrderBy(x => x.NameKana)) {
+                if (hStaffMasterVo is not null && hStaffMasterVo.StaffCode != 0) {
                     H_StaffLabel hStaffLabel = new(hStaffMasterVo);
                     hStaffLabel.MouseClick += HStaffLabel_MouseClick;
                     hStaffLabel.MouseDoubleClick += HStaffLabel_MouseDoubleClick;
@@ -187,8 +187,8 @@ namespace StockBox {
         }
         private void HSetLabel_MouseMove(object sender, MouseEventArgs e) {
             H_SetLabel hSetLabel = (H_SetLabel)sender;
-            if(e.Button == MouseButtons.Left) {
-                if(((H_SetMasterVo)hSetLabel.Tag).MoveFlag)
+            if (e.Button == MouseButtons.Left) {
+                if (((H_SetMasterVo)hSetLabel.Tag).MoveFlag)
                     hSetLabel.DoDragDrop(sender, DragDropEffects.All);
             }
         }
@@ -201,7 +201,7 @@ namespace StockBox {
         private void HCarLabel_MouseDoubleClick(object sender, MouseEventArgs e) {
         }
         private void HCarLabel_MouseMove(object sender, MouseEventArgs e) {
-            if(e.Button == MouseButtons.Left) {
+            if (e.Button == MouseButtons.Left) {
                 ((H_CarLabel)sender).DoDragDrop(sender, DragDropEffects.All);
             }
         }
@@ -214,7 +214,7 @@ namespace StockBox {
         private void HStaffLabel_MouseDoubleClick(object sender, MouseEventArgs e) {
         }
         private void HStaffLabel_MouseMove(object sender, MouseEventArgs e) {
-            if(e.Button == MouseButtons.Left) {
+            if (e.Button == MouseButtons.Left) {
                 ((H_StaffLabel)sender).DoDragDrop(sender, DragDropEffects.All);
             }
         }
@@ -225,9 +225,9 @@ namespace StockBox {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void HFlowLayoutPanelExBase_DragEnter(object sender, DragEventArgs e) {
-            if(e.Data.GetDataPresent(typeof(H_SetLabel))) {
+            if (e.Data.GetDataPresent(typeof(H_SetLabel))) {
                 //e.Effect = DragDropEffects.Move;
-            } else if(e.Data.GetDataPresent(typeof(H_CarLabel)) || e.Data.GetDataPresent(typeof(H_StaffLabel))) {
+            } else if (e.Data.GetDataPresent(typeof(H_CarLabel)) || e.Data.GetDataPresent(typeof(H_StaffLabel))) {
                 e.Effect = DragDropEffects.Move;
             } else {
                 e.Effect = DragDropEffects.None;
@@ -240,13 +240,13 @@ namespace StockBox {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void HFlowLayoutPanelExBase_DragDrop(object sender, DragEventArgs e) {
-            if(e.Data.GetDataPresent(typeof(H_SetLabel))) {
+            if (e.Data.GetDataPresent(typeof(H_SetLabel))) {
             }
-            if(e.Data.GetDataPresent(typeof(H_CarLabel))) {
+            if (e.Data.GetDataPresent(typeof(H_CarLabel))) {
                 H_CarLabel dragItem = (H_CarLabel)e.Data.GetData(typeof(H_CarLabel));
                 ((H_FlowLayoutPanelEx)sender).Controls.Add(dragItem);
             }
-            if(e.Data.GetDataPresent(typeof(H_StaffLabel))) {
+            if (e.Data.GetDataPresent(typeof(H_StaffLabel))) {
                 H_StaffLabel dragItem = (H_StaffLabel)e.Data.GetData(typeof(H_StaffLabel));
                 ((H_FlowLayoutPanelEx)sender).Controls.Add(dragItem);
             }
@@ -258,9 +258,9 @@ namespace StockBox {
         /// </summary>
         /// <param name="sender"></param>
         private void ToolStripMenuItemCheckedChange(object sender) {
-            foreach(object item in ToolStripMenuItemChange.DropDownItems) {
-                if(item.GetType() == typeof(ToolStripMenuItem)) {
-                    if(item.Equals(sender)) {
+            foreach (object item in ToolStripMenuItemChange.DropDownItems) {
+                if (item.GetType() == typeof(ToolStripMenuItem)) {
+                    if (item.Equals(sender)) {
                         ((ToolStripMenuItem)item).Checked = true;
                     } else {
                         ((ToolStripMenuItem)item).Checked = false;
@@ -277,7 +277,7 @@ namespace StockBox {
              * メソッドを Clear 呼び出しても、コントロール ハンドルはメモリから削除されません。 メモリ リークを回避するには、 メソッドを Dispose 明示的に呼び出す必要があります。
              * ※後ろから解放している点が重要らしい。
              */
-            for(int i = _hFlowLayoutPanelExBase.Controls.Count - 1; 0 <= i; i--)
+            for (int i = _hFlowLayoutPanelExBase.Controls.Count - 1; 0 <= i; i--)
                 _hFlowLayoutPanelExBase.Controls[i].Dispose();
         }
 

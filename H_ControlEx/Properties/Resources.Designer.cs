@@ -193,9 +193,9 @@ namespace H_ControlEx.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap StaffLabel {
+        internal static System.Drawing.Bitmap StaffLabelGreen {
             get {
-                object obj = ResourceManager.GetObject("StaffLabel", resourceCulture);
+                object obj = ResourceManager.GetObject("StaffLabelGreen", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -203,9 +203,9 @@ namespace H_ControlEx.Properties {
         /// <summary>
         ///   型 System.Drawing.Bitmap のローカライズされたリソースを検索します。
         /// </summary>
-        internal static System.Drawing.Bitmap StaffLabelGreen {
+        internal static System.Drawing.Bitmap StaffLabelWhite {
             get {
-                object obj = ResourceManager.GetObject("StaffLabelGreen", resourceCulture);
+                object obj = ResourceManager.GetObject("StaffLabelWhite", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
