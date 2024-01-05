@@ -4,13 +4,14 @@
  */
 namespace H_Vo {
     public class H_ControlVo {
+        private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
         /*
          * プロパティ
          */
         private DateTime _operationDate;
         private int _cellNumber;
         private bool _vehicleDispatchFlag;
-        private bool _purpose;
+        private bool _purposeFlag;
         private H_SetMasterVo? _hSetMasterVo;
         private H_CarMasterVo? _hCarMasterVo;
         private List<H_StaffMasterVo>? _listHStaffMasterVo;
@@ -22,8 +23,10 @@ namespace H_Vo {
         /// コンストラクタ
         /// </summary>
         public H_ControlVo() {
+            _operationDate = _defaultDateTime;
             _cellNumber = 0;
-            _purpose = false;
+            _vehicleDispatchFlag = false;
+            _purposeFlag = false;
             _hSetMasterVo = null;
             _hCarMasterVo = null;
             _listHStaffMasterVo = null;
@@ -61,9 +64,9 @@ namespace H_Vo {
         /// SetControlの列数
         /// true:２列 false:１列
         /// </summary>
-        public bool Purpose {
-            get => _purpose;
-            set => _purpose = value;
+        public bool PurposeFlag {
+            get => _purposeFlag;
+            set => _purposeFlag = value;
         }
         /// <summary>
         /// SetMaster

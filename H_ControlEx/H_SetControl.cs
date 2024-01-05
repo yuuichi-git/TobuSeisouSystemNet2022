@@ -85,7 +85,7 @@ namespace H_ControlEx {
             /*
              * SetControlの形状(１列か２列か)を決定する
              */
-            switch (hControlVo.Purpose) {
+            switch (hControlVo.PurposeFlag) {
                 case false: // １列
                     this.Size = new Size(80, 400);
                     this.ColumnCount = 1;
@@ -109,11 +109,11 @@ namespace H_ControlEx {
                     break;
             }
             // SetLabelを作成
-            CreateHSetLabel(hControlVo);
+            CreateHSetLabel(hControlVo.HSetMasterVo, hControlVo.OperationDate);
             // CarLabelを作成
-            CreateHCarLabel(hControlVo);
+            CreateHCarLabel(hControlVo.HCarMasterVo);
             // StaffLabelを作成
-            CreateHStaffLabel(hControlVo);
+            CreateHStaffLabel(hControlVo.ListHStaffMasterVo);
             /*
              * Event
              */
@@ -130,9 +130,9 @@ namespace H_ControlEx {
         /// CreateHSetLabel
         /// SetCodeがゼロの場合HSetLabelは作成しない
         /// </summary>
-        private void CreateHSetLabel(H_ControlVo hControlVo) {
-            if (hControlVo.HSetMasterVo is not null && hControlVo.HSetMasterVo.SetCode != 0) {
-                H_SetLabel hSetLabel = new(hControlVo);
+        private void CreateHSetLabel(H_SetMasterVo hSetMasterVo, DateTime operationDate) {
+            if (hSetMasterVo is not null && hSetMasterVo.SetCode != 0) {
+                H_SetLabel hSetLabel = new(hSetMasterVo, operationDate);
                 /*
                  * Event
                  */
@@ -148,9 +148,9 @@ namespace H_ControlEx {
         /// CreateHCarLabel
         /// CarCodeがゼロの場合HCarLabelは作成しない
         /// </summary>
-        private void CreateHCarLabel(H_ControlVo hControlVo) {
-            if (hControlVo.HCarMasterVo is not null && hControlVo.HCarMasterVo.CarCode != 0) {
-                H_CarLabel hCarLabel = new(hControlVo.HCarMasterVo);
+        private void CreateHCarLabel(H_CarMasterVo hCarMasterVo) {
+            if (hCarMasterVo is not null && hCarMasterVo.CarCode != 0) {
+                H_CarLabel hCarLabel = new(hCarMasterVo);
                 /*
                  * Event
                  */
@@ -167,9 +167,9 @@ namespace H_ControlEx {
         /// StaffCodeがゼロの場合HStaffLabelは作成しない
         /// </summary>
         /// <param name="listHStaffMasterVo"></param>
-        private void CreateHStaffLabel(H_ControlVo hControlVo) {
+        private void CreateHStaffLabel(List<H_StaffMasterVo> listHStaffMasterVo) {
             int i = 0;
-            foreach (H_StaffMasterVo hStaffMasterVo in hControlVo.ListHStaffMasterVo) {
+            foreach (H_StaffMasterVo hStaffMasterVo in listHStaffMasterVo) {
                 if (hStaffMasterVo.StaffCode != 0) {
                     Point point = _dictionaryCellPoint[i];
                     H_StaffLabel hStaffLabel = new(hStaffMasterVo);
@@ -229,7 +229,7 @@ namespace H_ControlEx {
              * H_SetControlの外枠を描画する
              */
             if (_oldOnCursorFlag) {
-                if (((H_ControlVo)this.Tag).Purpose) {
+                if (((H_ControlVo)this.Tag).PurposeFlag) {
                     e.Graphics.DrawRectangle(new Pen(Color.DarkBlue, 2), new Rectangle(1, 1, 158, 398));
                 } else {
                     e.Graphics.DrawRectangle(new Pen(Color.DarkBlue, 2), new Rectangle(1, 1, 78, 398));

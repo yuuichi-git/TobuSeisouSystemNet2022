@@ -12,7 +12,7 @@ namespace StockBox {
         /*
          * ïœêîíËã`
          */
-        private readonly H_FlowLayoutPanelEx _hFlowLayoutPanelExBase;
+        private H_FlowLayoutPanelEx _hFlowLayoutPanelExBase;
         /*
          * Vo
          */
@@ -129,15 +129,13 @@ namespace StockBox {
         }
 
         /// <summary>
-        /// CreateHSetLabel
+        /// CreateHSetLabel 
         /// </summary>
         /// <param name="hControlVo"></param>
         private void CreateHSetLabel(H_ControlVo hControlVo) {
-            foreach (H_SetMasterVo hSetMasterVo in hControlVo.ListDeepCopyHSetMasterVo.FindAll(x => x.ClassificationCode != 10 && x.ClassificationCode != 11)
-                                                                                     .OrderBy(x => x.ClassificationCode).ThenBy(x => x.SetName)) {
+            foreach (H_SetMasterVo hSetMasterVo in hControlVo.ListDeepCopyHSetMasterVo.FindAll(x => x.ClassificationCode != 10 && x.ClassificationCode != 11).OrderBy(x => x.ClassificationCode).ThenBy(x => x.SetName)) {
                 if (hSetMasterVo is not null && hSetMasterVo.SetCode != 0) {
-                    hControlVo.HSetMasterVo = hSetMasterVo;
-                    H_SetLabel hSetLabel = new(hControlVo);
+                    H_SetLabel hSetLabel = new(hSetMasterVo, hControlVo.OperationDate);
                     hSetLabel.MouseClick += HSetLabel_MouseClick;
                     hSetLabel.MouseDoubleClick += HSetLabel_MouseDoubleClick;
                     hSetLabel.MouseMove += HSetLabel_MouseMove;

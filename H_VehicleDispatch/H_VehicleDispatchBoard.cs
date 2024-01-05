@@ -28,6 +28,7 @@ namespace H_VehicleDispatch {
         private readonly H_SetMasterDao _hSetMasterDao;
         private readonly H_CarMasterDao _hCarMasterDao;
         private readonly H_StaffMasterDao _hStaffMasterDao;
+        private H_VehicleDispatchDetailDao _hVehicleDispatchDetailDao;
         /*
          * Vo
          */
@@ -55,6 +56,7 @@ namespace H_VehicleDispatch {
             _hSetMasterDao = new H_SetMasterDao(connectionVo);
             _hCarMasterDao = new H_CarMasterDao(connectionVo);
             _hStaffMasterDao = new H_StaffMasterDao(connectionVo);
+            _hVehicleDispatchDetailDao = new H_VehicleDispatchDetailDao(connectionVo);
             /*
              * Vo
              */
@@ -83,10 +85,10 @@ namespace H_VehicleDispatch {
         }
 
         /// <summary>
-        /// CreateVehicleDispatch
         /// 配車データを作成
+        /// VehicleDispatch(Head/Body)
         /// </summary>
-        private void CreateVehicleDispatch() {
+        private void CreateVehicleDispatchInitialize() {
             /*
              * DeepCopy
              * このListから使用されたレコードを削除していく
@@ -102,12 +104,12 @@ namespace H_VehicleDispatch {
             List<H_VehicleDispatchHeadVo> listHVehicleDispatchHeadVo = _hVehicleDispatchHeadDao.SelectAllHVehicleDispatchHeadVo(_date.GetFiscalYear());
             // H_VehicleDispatchを取得
             List<H_VehicleDispatchVo> listHVehicleDispatchVo = _hVehicleDispatchDao.SelectHVehicleDispatchVo(financialYear, dayOgWeek);
-            foreach(H_VehicleDispatchHeadVo hVehicleDispatchHeadVo in listHVehicleDispatchHeadVo.FindAll(x => (x.Purpose == true && x.SetCode != 0) || x.Purpose == false).OrderBy(x => x.CellNumber)) {
+            foreach (H_VehicleDispatchHeadVo hVehicleDispatchHeadVo in listHVehicleDispatchHeadVo.FindAll(x => (x.Purpose == true && x.SetCode != 0) || x.Purpose == false).OrderBy(x => x.CellNumber)) {
                 H_ControlVo hSetControlVo = new();
                 hSetControlVo.OperationDate = H_DateTimePickerOperationDate.Value;
                 hSetControlVo.CellNumber = hVehicleDispatchHeadVo.CellNumber;
                 hSetControlVo.VehicleDispatchFlag = hVehicleDispatchHeadVo.VehicleDispatchFlag;
-                hSetControlVo.Purpose = hVehicleDispatchHeadVo.Purpose;
+                hSetControlVo.PurposeFlag = hVehicleDispatchHeadVo.Purpose;
                 /*
                  * 対象日のレコードを抽出
                  * CellNumber
@@ -153,6 +155,109 @@ namespace H_VehicleDispatch {
         }
 
         /// <summary>
+        /// 配車データを作成
+        /// VehicleDispatchDetail
+        /// </summary>
+        private void CreateVehicleDispatch() {
+            /*
+             * DeepCopy
+             * このListから使用されたレコードを削除していく
+             */
+            _listDeepCopyHSetMasterVo = new CopyUtility().DeepCopy(_listHSetMasterVo);
+            _listDeepCopyHCarMasterVo = new CopyUtility().DeepCopy(_listHCarMasterVo);
+            _listDeepCopyHStaffMasterVo = new CopyUtility().DeepCopy(_listHStaffMasterVo);
+            // H_Boardを初期化
+            this.HBoardControlRemove(_hBoard);
+
+
+
+        }
+
+        /// <summary>
+        /// H_Boardの子コントロールを走査・取得・解析する
+        /// </summary>
+        private void ReadHBoard() {
+            List<H_VehicleDispatchDetailVo> _listHVehicleDispatchDetailVo = new();
+            foreach (H_SetControl hSetControl in _hBoard.Controls) {
+                _listHVehicleDispatchDetailVo.Add(ReadHSetControl(hSetControl));
+            }
+            try {
+                _hVehicleDispatchDetailDao.InsertHVehicleDispatchDetail(_listHVehicleDispatchDetailVo);
+            }
+            catch (Exception exception) {
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        /// <summary>
+        /// H_SetControlを解析して
+        /// </summary>
+        /// <param name="hSetControl"></param>
+        /// <returns></returns>
+        private H_VehicleDispatchDetailVo ReadHSetControl(H_SetControl hSetControl) {
+            H_VehicleDispatchDetailVo hVehicleDispatchDetailVo = new();
+            /*
+             * ヘッダーの処理
+             */
+            H_ControlVo hControlVo = (H_ControlVo)hSetControl.Tag;
+            hVehicleDispatchDetailVo.CellNumber = hControlVo.CellNumber;
+            hVehicleDispatchDetailVo.OperationDate = hControlVo.OperationDate;
+            hVehicleDispatchDetailVo.VehicleDispatchFlag = hControlVo.VehicleDispatchFlag;
+            hVehicleDispatchDetailVo.PurposeFlag = hControlVo.PurposeFlag;
+            /*
+             * 配車先関連の処理
+             */
+            var _hSetLabel = hSetControl.GetControlFromPosition(0, 0); // Controlが存在しなければNULLが返る
+            if (_hSetLabel is not null) {
+                H_SetLabel hSetLabel = (H_SetLabel)_hSetLabel;
+                H_SetMasterVo hSetMasterVo = (H_SetMasterVo)_hSetLabel.Tag;
+                hVehicleDispatchDetailVo.SetCode = hSetMasterVo.SetCode;
+                hVehicleDispatchDetailVo.ManagedSpaceCode = hSetMasterVo.ManagedSpaceCode;
+                hVehicleDispatchDetailVo.ClassificationCode = hSetMasterVo.ClassificationCode;
+                hVehicleDispatchDetailVo.LastRollCallFlag = hSetLabel.LastRollCallFlag;
+                hVehicleDispatchDetailVo.LastRollCallYmdHms = hSetLabel.LastRollCallYmdHms;
+                hVehicleDispatchDetailVo.SetMemoFlag = hSetLabel.MemoFlag;
+                hVehicleDispatchDetailVo.SetMemo = hSetLabel.Memo;
+                hVehicleDispatchDetailVo.ShiftCode = hSetLabel.ShiftCode;
+                hVehicleDispatchDetailVo.StandByFlag = hSetLabel.StandByFlag;
+                hVehicleDispatchDetailVo.AddWorkerFlag = hSetLabel.AddWorkerFlag;
+                hVehicleDispatchDetailVo.ContactInfomationFlag = hSetLabel.ContactInfomationFlag;
+                hVehicleDispatchDetailVo.FaxTransmissionFlag = hSetLabel.FaxTransmissionFlag;
+            } else {
+                // ※VoのDefault値
+            }
+            /*
+             * 車両関連の処理
+             */
+            var _hCarLabel = hSetControl.GetControlFromPosition(0, 1); // Controlが存在しなければNULLが返る
+            if (_hCarLabel is not null) {
+                H_CarLabel hCarLabel = (H_CarLabel)_hCarLabel;
+                H_CarMasterVo hCarMasterVo = (H_CarMasterVo)_hCarLabel.Tag;
+                hVehicleDispatchDetailVo.CarCode = hCarMasterVo.CarCode;
+                hVehicleDispatchDetailVo.GarageCode = hCarMasterVo.GarageCode;
+                hVehicleDispatchDetailVo.CarProxyFlag = hCarLabel.CarProxyFlag;
+                hVehicleDispatchDetailVo.CarMemoFlag = hCarLabel.CarMemoFlag;
+                hVehicleDispatchDetailVo.CarMemo = hCarLabel.CarMemo;
+            } else {
+                // ※VoのDefault値
+            }
+            /*
+             * 従事者関連の処理
+             */
+            if (hControlVo.PurposeFlag) {
+
+
+
+            } else {
+                
+
+
+            }
+
+            return hVehicleDispatchDetailVo;
+        }
+
+        /// <summary>
         /// GetHStaffMasterVo
         /// List<H_StaffMasterVo>からH_StaffMasterVoを抽出する
         /// </summary>
@@ -161,7 +266,7 @@ namespace H_VehicleDispatch {
         private H_StaffMasterVo GetHStaffMasterVo(List<H_StaffMasterVo> listHStaffMasterVo, int? staffCode) {
             H_StaffMasterVo? hStaffMasterVo = new();
             hStaffMasterVo = listHStaffMasterVo.Find(x => x.StaffCode == staffCode);
-            if(hStaffMasterVo is not null) {
+            if (hStaffMasterVo is not null) {
                 // 検索で見つかったVoを返す
                 return hStaffMasterVo;
             } else {
@@ -179,24 +284,8 @@ namespace H_VehicleDispatch {
              * メソッドをClear呼び出してもコントロール ハンドルはメモリから削除されません。 メモリリークを回避するにはメソッドをDispose明示的に呼び出す必要があります。
              * ※後ろから解放している点が重要らしい。
              */
-            for(int i = hBoard.Controls.Count - 1; 0 <= i; i--)
+            for (int i = hBoard.Controls.Count - 1; 0 <= i; i--)
                 hBoard.Controls[i].Dispose();
-        }
-
-        /// <summary>
-        /// ToolStripMenuItem_Click
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void ToolStripMenuItem_Click(object sender, EventArgs e) {
-            switch(((ToolStripMenuItem)sender).Name) {
-                /*
-                 * 配車を初期化する
-                 */
-                case "ToolStripMenuItemInitializeVehicleDispatch":
-                    this.CreateVehicleDispatch();
-                    break;
-            }
         }
 
         /// <summary>
@@ -205,8 +294,9 @@ namespace H_VehicleDispatch {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void HButtonEx_Click(object sender, EventArgs e) {
-            switch(((H_ButtonEx)sender).Name) {
+            switch (((H_ButtonEx)sender).Name) {
                 case "h_ButtonExUpdate":
+                    this.CreateVehicleDispatch();
                     break;
                 case "h_ButtonExLeft1":
                     H_ControlVo hControlVo = new();
@@ -233,6 +323,23 @@ namespace H_VehicleDispatch {
                 case "h_ButtonExRight4":
                     break;
                 case "h_ButtonExRight5":
+                    ReadHBoard();
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// ToolStripMenuItem_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItem_Click(object sender, EventArgs e) {
+            switch (((ToolStripMenuItem)sender).Name) {
+                /*
+                 * 配車を初期化する
+                 */
+                case "ToolStripMenuItemInitializeVehicleDispatch":
+                    this.CreateVehicleDispatchInitialize();
                     break;
             }
         }

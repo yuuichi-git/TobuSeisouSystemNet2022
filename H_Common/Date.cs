@@ -126,6 +126,7 @@ namespace H_Common {
         /// <summary>
         /// GetWorkingDays
         /// 稼働日(曜日配車・第五週)かどうかを判定する
+        /// true:稼働 false:休車
         /// </summary>
         /// <param name="dayOfWeek">稼働日</param>
         /// <param name="workingDays">稼働する曜日</param>

@@ -87,7 +87,7 @@ namespace H_ControlEx {
             hSetControl.Event_HStaffLabelEx_MouseMove += HStaffLabel_MouseMove;
 
             this.Controls.Add(hSetControl, GetAddCellPoint(hSetControlVo.CellNumber).X, GetAddCellPoint(hSetControlVo.CellNumber).Y);
-            this.SetColumnSpan(hSetControl, hSetControlVo.Purpose ? 2 : 1);
+            this.SetColumnSpan(hSetControl, hSetControlVo.PurposeFlag ? 2 : 1);
         }
 
         /// <summary>
@@ -172,9 +172,7 @@ namespace H_ControlEx {
                     /*
                      * H_StockBoxsにアイテムを残すのでH_SetLabelのコピーを作成
                      */
-                    H_ControlVo hControlVo = new();
-                    hControlVo.HSetMasterVo = (H_SetMasterVo)dragItem.Tag;
-                    H_SetLabel hSetLabel = new(hControlVo);
+                    H_SetLabel hSetLabel = new((H_SetMasterVo)dragItem.Tag, ((H_ControlVo)hSetControl.Tag).OperationDate);
                     hSetLabel.MouseClick += HSetLabel_MouseClick;
                     hSetLabel.MouseDoubleClick += HSetLabel_MouseDoubleClick;
                     hSetLabel.MouseMove += HSetLabel_MouseMove;
@@ -299,7 +297,9 @@ namespace H_ControlEx {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void HStaffLabel_MouseClick(object sender, MouseEventArgs e) {
-
+            if ((ModifierKeys & Keys.Shift) == Keys.Shift) {
+                MessageBox.Show("HStaffLabel_MouseClick");
+            }
         }
 
         /// <summary>
@@ -308,7 +308,7 @@ namespace H_ControlEx {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void HStaffLabel_MouseDoubleClick(object sender, MouseEventArgs e) {
-
+            MessageBox.Show("HStaffLabel_MouseDoubleClick");
         }
 
         /// <summary>

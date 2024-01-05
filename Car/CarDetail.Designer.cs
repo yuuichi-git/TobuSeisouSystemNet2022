@@ -38,6 +38,8 @@
             ButtonClipPicture = new Button();
             ButtonUpdate = new Button();
             panel1 = new Panel();
+            DateTimePickerJpExExpirationDate = new ControlEx.DateTimePickerJpEx();
+            DateTimePickerJpExRegistrationDate = new ControlEx.DateTimePickerJpEx();
             label40 = new Label();
             TextBoxDoorNumber = new TextBox();
             label39 = new Label();
@@ -121,8 +123,6 @@
             label1 = new Label();
             ComboBoxClassificationName = new ComboBox();
             PictureBox1 = new PictureBox();
-            DateTimePickerJpExRegistrationDate = new ControlEx.DateTimePickerJpEx();
-            DateTimePickerJpExExpirationDate = new ControlEx.DateTimePickerJpEx();
             TableLayoutPanelBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -377,6 +377,24 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(544, 925);
             panel1.TabIndex = 3;
+            // 
+            // DateTimePickerJpExExpirationDate
+            // 
+            DateTimePickerJpExExpirationDate.CustomFormat = " ";
+            DateTimePickerJpExExpirationDate.Format = DateTimePickerFormat.Custom;
+            DateTimePickerJpExExpirationDate.Location = new Point(180, 1044);
+            DateTimePickerJpExExpirationDate.Name = "DateTimePickerJpExExpirationDate";
+            DateTimePickerJpExExpirationDate.Size = new Size(184, 23);
+            DateTimePickerJpExExpirationDate.TabIndex = 89;
+            // 
+            // DateTimePickerJpExRegistrationDate
+            // 
+            DateTimePickerJpExRegistrationDate.CustomFormat = " ";
+            DateTimePickerJpExRegistrationDate.Format = DateTimePickerFormat.Custom;
+            DateTimePickerJpExRegistrationDate.Location = new Point(180, 120);
+            DateTimePickerJpExRegistrationDate.Name = "DateTimePickerJpExRegistrationDate";
+            DateTimePickerJpExRegistrationDate.Size = new Size(184, 23);
+            DateTimePickerJpExRegistrationDate.TabIndex = 88;
             // 
             // label40
             // 
@@ -994,14 +1012,14 @@
             // 
             // ComboBoxDisguiseKind1
             // 
+            ComboBoxDisguiseKind1.DropDownStyle = ComboBoxStyle.DropDownList;
             ComboBoxDisguiseKind1.FormattingEnabled = true;
             ComboBoxDisguiseKind1.ImeMode = ImeMode.Hiragana;
-            ComboBoxDisguiseKind1.Items.AddRange(new object[] { "小プ" });
+            ComboBoxDisguiseKind1.Items.AddRange(new object[] { "軽小", "軽ダ", "新特", "普通", "平ボ", "小プ", "小ダ", "新大", "大G", "コンテナ", "鉄道" });
             ComboBoxDisguiseKind1.Location = new Point(180, 204);
             ComboBoxDisguiseKind1.Name = "ComboBoxDisguiseKind1";
             ComboBoxDisguiseKind1.Size = new Size(144, 23);
             ComboBoxDisguiseKind1.TabIndex = 13;
-            ComboBoxDisguiseKind1.Text = "小プ";
             // 
             // label8
             // 
@@ -1190,24 +1208,6 @@
             PictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             PictureBox1.TabIndex = 4;
             PictureBox1.TabStop = false;
-            // 
-            // DateTimePickerJpExRegistrationDate
-            // 
-            DateTimePickerJpExRegistrationDate.CustomFormat = " ";
-            DateTimePickerJpExRegistrationDate.Format = DateTimePickerFormat.Custom;
-            DateTimePickerJpExRegistrationDate.Location = new Point(180, 120);
-            DateTimePickerJpExRegistrationDate.Name = "DateTimePickerJpExRegistrationDate";
-            DateTimePickerJpExRegistrationDate.Size = new Size(184, 23);
-            DateTimePickerJpExRegistrationDate.TabIndex = 88;
-            // 
-            // DateTimePickerJpExExpirationDate
-            // 
-            DateTimePickerJpExExpirationDate.CustomFormat = " ";
-            DateTimePickerJpExExpirationDate.Format = DateTimePickerFormat.Custom;
-            DateTimePickerJpExExpirationDate.Location = new Point(180, 1044);
-            DateTimePickerJpExExpirationDate.Name = "DateTimePickerJpExExpirationDate";
-            DateTimePickerJpExExpirationDate.Size = new Size(184, 23);
-            DateTimePickerJpExExpirationDate.TabIndex = 89;
             // 
             // CarDetail
             // 

@@ -676,7 +676,7 @@ namespace VehicleDispatchSheet {
                 }
             }
             /*
-             * 24:☆臨時　雇上/区契　軽小貨/軽ダ　コード：11
+             * 24:☆臨時　雇上/区契　軽小/軽ダ　コード：11
              */
             blockRowCount = 0;
             foreach(var vehicleDispatchDetailVo in _vehicleDispatchDetailDao.SelectAllVehicleDispatchDetail(DateTimePickerJpExOperationDate.GetValue())) {
@@ -685,7 +685,7 @@ namespace VehicleDispatchSheet {
                  */
                 if(vehicleDispatchDetailVo.Set_code > 0 && _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Fare_code == 0 &&
                                                            _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code).Classification_code == 12 &&
-                                                          (_listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Disguise_kind_1 == "軽小貨" ||
+                                                          (_listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Disguise_kind_1 == "軽小" ||
                                                            _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code).Disguise_kind_1 == "軽ダ")) {
                     if(blockRowCount == 0) {
                         _beforeBlockName = "☆臨時　雇上/区契　軽小貨/軽ダ　コード：11";
