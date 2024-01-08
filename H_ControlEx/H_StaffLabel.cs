@@ -15,25 +15,33 @@ namespace H_ControlEx {
          * プロパティー
          */
         /// <summary>
+        /// 代番フラグ
+        /// true:代番 false:本番
+        /// </summary>
+        private bool _staffProxyFlag = false;
+        /// <summary>
         /// 出庫点呼フラグ
         /// true:出庫点呼済 false:未点呼
         /// </summary>
-        private bool _firstRollCallFlag = true;
+        private bool _staffRollCallFlag = true;
+        /// <summary>
+        /// 点呼日時
+        /// </summary>
+        private DateTime _staffRollCallYmdHms = new DateTime(1900, 01, 01);
         /// <summary>
         /// メモフラグ
         /// true:メモあり false:メモなし
         /// </summary>
-        private bool _memoFlag = false;
+        private bool _staffMemoFlag = false;
         /// <summary>
-        /// <summary>
-        /// 代番フラグ
-        /// true:代番 false:本番
+        /// メモ
         /// </summary>
-        private bool _proxyFlag = false;
+        private string _staffMemo = string.Empty;
         /*
          * Vo
          */
         private readonly H_StaffMasterVo _staffMasterVo;
+        private H_VehicleDispatchDetailVo _hVehicleDispatchDetailVo;
         /*
           * Fontの定義
           */
@@ -44,20 +52,13 @@ namespace H_ControlEx {
         /// コンストラクター
         /// </summary>
         /// <param name="hStaffMasterVo"></param>
-        public H_StaffLabel(H_StaffMasterVo hStaffMasterVo) {
+        public H_StaffLabel(H_ControlVo hControlVo) {
             /*
              * Vo
              */
-            _staffMasterVo = hStaffMasterVo;
-            /*
-             * Imageを選択する
-             */
-            _imageStaffLabel = hStaffMasterVo.JobForm switch {
-                10 => Properties.Resources.StaffLabelWhite,
-                11 => Properties.Resources.StaffLabelGreen,
-                12 => Properties.Resources.StaffLabelYellow,
-                _ => Properties.Resources.StaffLabelWhite,
-            };
+            _staffMasterVo = hControlVo.HStaffMasterVo;
+            _hVehicleDispatchDetailVo = hControlVo.HVehicleDispatchDetailVo;
+
             /*
              * ControlIni
              */
@@ -67,9 +68,22 @@ namespace H_ControlEx {
             this.Height = (int)_panelHeight - 4;
             this.Margin = new Padding(2);
             this.Name = "H_StaffLabel";
-            this.Tag = hStaffMasterVo;
+            this.Tag = _staffMasterVo;
             this.Width = (int)_panelWidth - 4;
             this.CreateContextMenuStrip();
+            /*
+             * Imageを選択する
+             */
+            _imageStaffLabel = _staffMasterVo.JobForm switch {
+                10 => Properties.Resources.StaffLabelWhite,
+                11 => Properties.Resources.StaffLabelGreen,
+                12 => Properties.Resources.StaffLabelYellow,
+                _ => Properties.Resources.StaffLabelWhite,
+            };
+            /*
+             * プロパティーの設定
+             */
+
         }
 
         /// <summary>
@@ -105,21 +119,21 @@ namespace H_ControlEx {
             /*
              * 代番処理を描画
              */
-            if (_proxyFlag) {
+            if (_staffProxyFlag) {
                 e.Graphics.FillRectangle(Brushes.ForestGreen, 14, 4, 48, 5);
                 e.Graphics.DrawLine(new Pen(Color.LawnGreen), new Point(10, 6), new Point(63, 6));
             }
             /*
              * メモを描画
              */
-            if (_memoFlag) {
+            if (_staffMemoFlag) {
                 Point[] points = { new Point(7, 10), new Point(21, 10), new Point(7, 24) };
                 e.Graphics.FillPolygon(new SolidBrush(Color.Crimson), points);
             }
             /*
              * 点呼の印を描画
              */
-            if (!_firstRollCallFlag) {
+            if (!_staffRollCallFlag) {
                 e.Graphics.FillEllipse(Brushes.Crimson, 56, 73, 10, 10);
                 e.Graphics.FillEllipse(Brushes.LightPink, 60, 77, 4, 4);
             }
@@ -271,6 +285,48 @@ namespace H_ControlEx {
                     MessageBox.Show("ToolStripMenuItemStaffEquioment");
                     break;
             }
+        }
+
+        /*
+         * アクセサー
+         */
+        /// <summary>
+        /// 代番フラグ
+        /// true:代番 false:本番
+        /// </summary>
+        public bool StaffProxyFlag {
+            get => _staffProxyFlag;
+            set => _staffProxyFlag = value;
+        }
+        /// <summary>
+        /// 出庫点呼フラグ
+        /// true:出庫点呼済 false:未点呼
+        /// </summary>
+        public bool StaffRollCallFlag {
+            get => _staffRollCallFlag;
+            set => _staffRollCallFlag = value;
+        }
+        /// <summary>
+        /// 出庫点呼日時
+        /// </summary>
+        public DateTime StaffRollCallYmdHms {
+            get => _staffRollCallYmdHms;
+            set => _staffRollCallYmdHms = value;
+        }
+        /// <summary>
+        /// メモフラグ
+        /// true:メモあり false:メモなし
+        /// </summary>
+        public bool StaffMemoFlag {
+            get => _staffMemoFlag;
+            set => _staffMemoFlag = value;
+        }
+        /// <summary>
+        /// メモ
+        /// </summary>
+        public string StaffMemo {
+            get => _staffMemo;
+            set => _staffMemo = value;
         }
     }
 }

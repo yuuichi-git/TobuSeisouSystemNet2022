@@ -25,7 +25,7 @@ namespace H_ControlEx {
         /*
          * Vo
          */
-        private readonly H_ControlVo _hSetControlVo;
+        private readonly H_ControlVo _hControlVo;
         /*
          * Eventを親へ渡す処理
          * インスタンスから見えるようになる
@@ -71,7 +71,7 @@ namespace H_ControlEx {
             /*
              * Vo
              */
-            _hSetControlVo = hControlVo;
+            _hControlVo = hControlVo;
             /*
              * ControlIni
              */
@@ -109,11 +109,11 @@ namespace H_ControlEx {
                     break;
             }
             // SetLabelを作成
-            CreateHSetLabel(hControlVo.HSetMasterVo, hControlVo.OperationDate);
+            CreateHSetLabel(hControlVo);
             // CarLabelを作成
-            CreateHCarLabel(hControlVo.HCarMasterVo);
+            CreateHCarLabel(hControlVo);
             // StaffLabelを作成
-            CreateHStaffLabel(hControlVo.ListHStaffMasterVo);
+            CreateHStaffLabel(hControlVo);
             /*
              * Event
              */
@@ -130,9 +130,9 @@ namespace H_ControlEx {
         /// CreateHSetLabel
         /// SetCodeがゼロの場合HSetLabelは作成しない
         /// </summary>
-        private void CreateHSetLabel(H_SetMasterVo hSetMasterVo, DateTime operationDate) {
-            if (hSetMasterVo is not null && hSetMasterVo.SetCode != 0) {
-                H_SetLabel hSetLabel = new(hSetMasterVo, operationDate);
+        private void CreateHSetLabel(H_ControlVo hControlVo) {
+            if (hControlVo.HSetMasterVo is not null && hControlVo.HSetMasterVo.SetCode != 0) {
+                H_SetLabel hSetLabel = new(hControlVo);
                 /*
                  * Event
                  */
@@ -148,9 +148,9 @@ namespace H_ControlEx {
         /// CreateHCarLabel
         /// CarCodeがゼロの場合HCarLabelは作成しない
         /// </summary>
-        private void CreateHCarLabel(H_CarMasterVo hCarMasterVo) {
-            if (hCarMasterVo is not null && hCarMasterVo.CarCode != 0) {
-                H_CarLabel hCarLabel = new(hCarMasterVo);
+        private void CreateHCarLabel(H_ControlVo hControlVo) {
+            if (hControlVo.HCarMasterVo is not null && hControlVo.HCarMasterVo.CarCode != 0) {
+                H_CarLabel hCarLabel = new(hControlVo);
                 /*
                  * Event
                  */
@@ -167,12 +167,13 @@ namespace H_ControlEx {
         /// StaffCodeがゼロの場合HStaffLabelは作成しない
         /// </summary>
         /// <param name="listHStaffMasterVo"></param>
-        private void CreateHStaffLabel(List<H_StaffMasterVo> listHStaffMasterVo) {
+        private void CreateHStaffLabel(H_ControlVo _hControlVo) {
             int i = 0;
-            foreach (H_StaffMasterVo hStaffMasterVo in listHStaffMasterVo) {
+            foreach (H_StaffMasterVo hStaffMasterVo in _hControlVo.ListHStaffMasterVo) {
                 if (hStaffMasterVo.StaffCode != 0) {
                     Point point = _dictionaryCellPoint[i];
-                    H_StaffLabel hStaffLabel = new(hStaffMasterVo);
+                    _hControlVo.HStaffMasterVo = hStaffMasterVo;
+                    H_StaffLabel hStaffLabel = new(_hControlVo);
                     /*
                      * Event
                      */
@@ -196,16 +197,16 @@ namespace H_ControlEx {
              */
             Rectangle rectangle = e.CellBounds;
             rectangle.Inflate(-1, -1); // 枠のサイズを小さくする
-            if (_hSetControlVo.VehicleDispatchFlag) {
+            if (_hControlVo.VehicleDispatchFlag) {
                 switch (e.Column) {
                     case 0: // １列目
                         switch (e.Row) {
                             case 2: // StaffLabel(1人目)
-                                if (_hSetControlVo.HSetMasterVo.NumberOfPeople >= 1)
+                                if (_hControlVo.HSetMasterVo.NumberOfPeople >= 1)
                                     ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // StaffLabel1の枠線
                                 break;
                             case 3: // StaffLabel(2人目)
-                                if (_hSetControlVo.HSetMasterVo.NumberOfPeople >= 2)
+                                if (_hControlVo.HSetMasterVo.NumberOfPeople >= 2)
                                     ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // StaffLabel2の枠線
                                 break;
                         }
@@ -213,11 +214,11 @@ namespace H_ControlEx {
                     case 1: // ２列目
                         switch (e.Row) {
                             case 2: // StaffLabel(3人目)
-                                if (_hSetControlVo.HSetMasterVo.NumberOfPeople >= 3)
+                                if (_hControlVo.HSetMasterVo.NumberOfPeople >= 3)
                                     ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // StaffLabel3の枠線
                                 break;
                             case 3: // StaffLabel(4人目)
-                                if (_hSetControlVo.HSetMasterVo.NumberOfPeople >= 4)
+                                if (_hControlVo.HSetMasterVo.NumberOfPeople >= 4)
                                     ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // StaffLabel4の枠線
                                 break;
                         }

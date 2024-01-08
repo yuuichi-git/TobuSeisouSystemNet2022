@@ -172,7 +172,7 @@ namespace H_ControlEx {
                     /*
                      * H_StockBoxsにアイテムを残すのでH_SetLabelのコピーを作成
                      */
-                    H_SetLabel hSetLabel = new((H_SetMasterVo)dragItem.Tag, ((H_ControlVo)hSetControl.Tag).OperationDate);
+                    H_SetLabel hSetLabel = new((H_ControlVo)hSetControl.Tag);
                     hSetLabel.MouseClick += HSetLabel_MouseClick;
                     hSetLabel.MouseDoubleClick += HSetLabel_MouseDoubleClick;
                     hSetLabel.MouseMove += HSetLabel_MouseMove;

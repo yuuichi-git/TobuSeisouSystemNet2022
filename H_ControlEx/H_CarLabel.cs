@@ -20,6 +20,11 @@ namespace H_ControlEx {
         /// </summary>
         private bool _carProxyFlag = false;
         /// <summary>
+        /// 車庫地コード
+        /// 0:該当なし 1:本社 2:三郷
+        /// </summary>
+        private int _carGarageCode = 0;
+        /// <summary>
         /// メモフラグ
         /// true:メモが存在する false:メモが存在しない
         /// </summary>
@@ -33,6 +38,7 @@ namespace H_ControlEx {
          * Vo
          */
         private readonly H_CarMasterVo _hCarMasterVo;
+        private H_VehicleDispatchDetailVo _hVehicleDispatchDetailVo;
         /*
          * 色の定義
          */
@@ -48,22 +54,12 @@ namespace H_ControlEx {
         /// コンストラクタ
         /// </summary>
         /// <param name="hCarMasterVo"></param>
-        public H_CarLabel(H_CarMasterVo hCarMasterVo) {
+        public H_CarLabel(H_ControlVo hControlVo) {
             /*
              * Vo
              */
-            _hCarMasterVo = hCarMasterVo;
-            /*
-             * 本社・三郷で色を変える
-             */
-            switch (_hCarMasterVo.GarageCode) {
-                case 1:
-                    _brushFillColor = new SolidBrush(Color.White);
-                    break;
-                case 2:
-                    _brushFillColor = new SolidBrush(Color.PowderBlue);
-                    break;
-            }
+            _hCarMasterVo = hControlVo.HCarMasterVo;
+            _hVehicleDispatchDetailVo = hControlVo.HVehicleDispatchDetailVo;
             /*
              * ControlIni
              */
@@ -75,8 +71,34 @@ namespace H_ControlEx {
             this.Name = "H_CarLabel";
             this.Tag = _hCarMasterVo;
             this.Width = (int)_panelWidth - 4;
-
             this.CreateContextMenuStrip();
+
+            /*
+             * プロパティーの設定
+             */
+            if (_hVehicleDispatchDetailVo is not null) {
+                this.CarProxyFlag = _hVehicleDispatchDetailVo.CarProxyFlag; // 代車フラグ
+                switch (_hVehicleDispatchDetailVo.CarGarageCode) { // 出庫地
+                    case 1:
+                        _brushFillColor = new SolidBrush(Color.White);
+                        break;
+                    case 2:
+                        _brushFillColor = new SolidBrush(Color.PowderBlue);
+                        break;
+                }
+                this.CarMemoFlag = _hVehicleDispatchDetailVo.CarMemoFlag; // メモフラグ
+                this.CarMemo = _hVehicleDispatchDetailVo.CarMemo; // メモ
+            } else {
+                switch (_hCarMasterVo.GarageCode) {
+                    case 1:
+                        _brushFillColor = new SolidBrush(Color.White);
+                        break;
+                    case 2:
+                        _brushFillColor = new SolidBrush(Color.PowderBlue);
+                        break;
+                }
+            }
+
         }
 
         /// <summary>
@@ -194,7 +216,7 @@ namespace H_ControlEx {
             toolStripMenuItem01.DropDownItems.Add(toolStripMenuItem01_1);
             contextMenuStrip.Items.Add(toolStripMenuItem01);
             /*
-             * 出庫地
+             * 車庫地コード
              */
             ToolStripMenuItem toolStripMenuItem02 = new("出庫地"); // 親アイテム
             toolStripMenuItem01.Name = "ToolStripMenuItemCarWarehouse";
@@ -268,6 +290,14 @@ namespace H_ControlEx {
         public bool CarProxyFlag {
             get => _carProxyFlag;
             set => _carProxyFlag = value;
+        }
+        /// <summary>
+        /// 車庫地コード
+        /// 0:該当なし 1:本社 2:三郷
+        /// </summary>
+        public int CarGarageCode {
+            get => _carGarageCode;
+            set => _carGarageCode = value;
         }
         /// <summary>
         /// メモフラグ

@@ -21,6 +21,12 @@ namespace StockBox {
          * インスタンス
          */
         private CopyUtility _copyUtility;
+        /*
+         * 
+         */
+        private readonly List<H_SetMasterVo> _temporaryListDeepCopyHSetMasterVo;
+        private readonly List<H_CarMasterVo> _temporaryListDeepCopyHCarMasterVo;
+        private readonly List<H_StaffMasterVo> _temporaryListDeepCopyHStaffMasterVo;
 
         /// <summary>
         /// コンストラクター
@@ -57,6 +63,12 @@ namespace StockBox {
             _hFlowLayoutPanelExBase.DragEnter += HFlowLayoutPanelExBase_DragEnter;
             _hFlowLayoutPanelExBase.DragDrop += HFlowLayoutPanelExBase_DragDrop;
             h_TableLayoutPanelExBase.Controls.Add(_hFlowLayoutPanelExBase, 0, 1);
+            /*
+             * DeepCopyを保管
+             */
+            _temporaryListDeepCopyHSetMasterVo = new CopyUtility().DeepCopy(hControlVo.ListDeepCopyHSetMasterVo);
+            _temporaryListDeepCopyHCarMasterVo = new CopyUtility().DeepCopy(hControlVo.ListDeepCopyHCarMasterVo);
+            _temporaryListDeepCopyHStaffMasterVo = new CopyUtility().DeepCopy(hControlVo.ListDeepCopyHStaffMasterVo);
         }
 
         /// <summary>
@@ -77,53 +89,57 @@ namespace StockBox {
                 case "ToolStripMenuItemSet": // 配車先
                     this.ToolStripMenuItemCheckedChange(sender);
                     this.FlowLayoutPanelExControlRemove();
+                    _hControlVo.ListDeepCopyHSetMasterVo = _temporaryListDeepCopyHSetMasterVo.FindAll(x => x.DeleteFlag == false);
                     this.CreateHSetLabel(_hControlVo);
                     break;
                 case "ToolStripMenuItemCar": // 車両
                     this.ToolStripMenuItemCheckedChange(sender);
                     this.FlowLayoutPanelExControlRemove();
-                    List<H_CarMasterVo> _listDeepCopyHCarMasterVo = _copyUtility.DeepCopy(_hControlVo.ListDeepCopyHCarMasterVo);
-                    this.CreateHCarLabel(_listDeepCopyHCarMasterVo.FindAll(x => x.DeleteFlag == false));
+                    _hControlVo.ListDeepCopyHCarMasterVo = _temporaryListDeepCopyHCarMasterVo.FindAll(x => x.DeleteFlag == false);
+                    this.CreateHCarLabel(_hControlVo);
                     break;
                 case "ToolStripMenuItemEmployee": // 社員
                     this.ToolStripMenuItemCheckedChange(sender);
                     this.FlowLayoutPanelExControlRemove();
-                    List<H_StaffMasterVo> _listDeepCopyHStaffMasterVoEmployee = _copyUtility.DeepCopy(_hControlVo.ListDeepCopyHStaffMasterVo);
-                    this.CreateHStaffLabel(_listDeepCopyHStaffMasterVoEmployee.FindAll(x => (x.Belongs == 10 || x.Belongs == 11 || (x.Belongs == 12 && x.Occupation == 20)) && x.RetirementFlag == false));
+                    _hControlVo.ListDeepCopyHStaffMasterVo = _temporaryListDeepCopyHStaffMasterVo.FindAll(x => (x.Belongs == 10 || x.Belongs == 11 || (x.Belongs == 12 && x.Occupation == 20)) && x.RetirementFlag == false);
+                    this.CreateHStaffLabel(_hControlVo);
                     break;
                 case "ToolStripMenuItemPartTime": // アルバイト
                     this.ToolStripMenuItemCheckedChange(sender);
                     this.FlowLayoutPanelExControlRemove();
-                    List<H_StaffMasterVo> _listDeepCopyHStaffMasterVoPartTime = _copyUtility.DeepCopy(_hControlVo.ListDeepCopyHStaffMasterVo);
-                    this.CreateHStaffLabel(_listDeepCopyHStaffMasterVoPartTime.FindAll(x => x.Belongs == 12 && x.Occupation != 20 && x.RetirementFlag == false));
+                    _hControlVo.ListDeepCopyHStaffMasterVo = _temporaryListDeepCopyHStaffMasterVo.FindAll(x => x.Belongs == 12 && x.Occupation != 20 && x.RetirementFlag == false);
+                    this.CreateHStaffLabel(_hControlVo);
                     break;
                 case "ToolStripMenuItemLongTerm": // 長期
                     this.ToolStripMenuItemCheckedChange(sender);
                     this.FlowLayoutPanelExControlRemove();
-                    List<H_StaffMasterVo> _listDeepCopyHStaffMasterVoLongTerm = _copyUtility.DeepCopy(_hControlVo.ListDeepCopyHStaffMasterVo);
-                    this.CreateHStaffLabel(_listDeepCopyHStaffMasterVoLongTerm.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.JobForm == 10 && x.RetirementFlag == false));
+                    _hControlVo.ListDeepCopyHStaffMasterVo = _temporaryListDeepCopyHStaffMasterVo.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.JobForm == 10 && x.RetirementFlag == false);
+                    this.CreateHStaffLabel(_hControlVo);
                     break;
                 case "ToolStripMenuItemShortTerm": // 短期
                     this.ToolStripMenuItemCheckedChange(sender);
                     this.FlowLayoutPanelExControlRemove();
-                    List<H_StaffMasterVo> _listDeepCopyHStaffMasterVoShortTerm = _copyUtility.DeepCopy(_hControlVo.ListDeepCopyHStaffMasterVo);
-                    this.CreateHStaffLabel(_listDeepCopyHStaffMasterVoShortTerm.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.JobForm == 11 && x.RetirementFlag == false));
+                    _hControlVo.ListDeepCopyHStaffMasterVo = _temporaryListDeepCopyHStaffMasterVo.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.JobForm == 11 && x.RetirementFlag == false);
+                    this.CreateHStaffLabel(_hControlVo);
                     break;
                 case "ToolStripMenuItemDispatch": // 派遣
                     this.ToolStripMenuItemCheckedChange(sender);
                     this.FlowLayoutPanelExControlRemove();
-                    List<H_StaffMasterVo> _listDeepCopyHStaffMasterVoDispatch = _copyUtility.DeepCopy(_hControlVo.ListDeepCopyHStaffMasterVo);
-                    this.CreateHStaffLabel(_listDeepCopyHStaffMasterVoDispatch.FindAll(x => x.Belongs == 13 && x.JobForm == 99 && x.RetirementFlag == false));
+                    _hControlVo.ListDeepCopyHStaffMasterVo = _temporaryListDeepCopyHStaffMasterVo.FindAll(x => x.Belongs == 13 && x.JobForm == 99 && x.RetirementFlag == false);
+                    this.CreateHStaffLabel(_hControlVo);
                     break;
                 case "ToolStripMenuItemSortAsc": // 昇順
                     this.ToolStripMenuItemCheckedChange(sender);
                     this.FlowLayoutPanelExControlRemove();
+
                     break;
                 case "ToolStripMenuItemSortDesk": // 降順
                     this.ToolStripMenuItemCheckedChange(sender);
                     this.FlowLayoutPanelExControlRemove();
+
                     break;
                 case "ToolStripMenuItemHelp": // ヘルプ
+
                     break;
             }
         }
@@ -135,7 +151,8 @@ namespace StockBox {
         private void CreateHSetLabel(H_ControlVo hControlVo) {
             foreach (H_SetMasterVo hSetMasterVo in hControlVo.ListDeepCopyHSetMasterVo.FindAll(x => x.ClassificationCode != 10 && x.ClassificationCode != 11).OrderBy(x => x.ClassificationCode).ThenBy(x => x.SetName)) {
                 if (hSetMasterVo is not null && hSetMasterVo.SetCode != 0) {
-                    H_SetLabel hSetLabel = new(hSetMasterVo, hControlVo.OperationDate);
+                    hControlVo.HSetMasterVo = hSetMasterVo;
+                    H_SetLabel hSetLabel = new(hControlVo);
                     hSetLabel.MouseClick += HSetLabel_MouseClick;
                     hSetLabel.MouseDoubleClick += HSetLabel_MouseDoubleClick;
                     hSetLabel.MouseMove += HSetLabel_MouseMove;
@@ -148,10 +165,11 @@ namespace StockBox {
         /// CreateHCarLabel
         /// </summary>
         /// <param name="listHCarMasterVo"></param>
-        private void CreateHCarLabel(List<H_CarMasterVo> listHCarMasterVo) {
-            foreach (H_CarMasterVo hCarMasterVo in listHCarMasterVo.OrderBy(x => x.ClassificationCode).ThenBy(x => x.DoorNumber)) {
+        private void CreateHCarLabel(H_ControlVo hControlVo) {
+            foreach (H_CarMasterVo hCarMasterVo in hControlVo.ListDeepCopyHCarMasterVo.OrderBy(x => x.ClassificationCode).ThenBy(x => x.DoorNumber)) {
                 if (hCarMasterVo is not null && hCarMasterVo.CarCode != 0) {
-                    H_CarLabel hCarLabel = new(hCarMasterVo);
+                    hControlVo.HCarMasterVo = hCarMasterVo;
+                    H_CarLabel hCarLabel = new(hControlVo);
                     hCarLabel.MouseClick += HCarLabel_MouseClick;
                     hCarLabel.MouseDoubleClick += HCarLabel_MouseDoubleClick;
                     hCarLabel.MouseMove += HCarLabel_MouseMove;
@@ -164,10 +182,11 @@ namespace StockBox {
         /// CreateHStaffLabel
         /// </summary>
         /// <param name="listHStaffMasterVo"></param>
-        private void CreateHStaffLabel(List<H_StaffMasterVo> listHStaffMasterVo) {
-            foreach (H_StaffMasterVo hStaffMasterVo in listHStaffMasterVo.OrderBy(x => x.NameKana)) {
+        private void CreateHStaffLabel(H_ControlVo hControlVo) {
+            foreach (H_StaffMasterVo hStaffMasterVo in hControlVo.ListDeepCopyHStaffMasterVo.OrderBy(x => x.NameKana)) {
                 if (hStaffMasterVo is not null && hStaffMasterVo.StaffCode != 0) {
-                    H_StaffLabel hStaffLabel = new(hStaffMasterVo);
+                    hControlVo.HStaffMasterVo = hStaffMasterVo;
+                    H_StaffLabel hStaffLabel = new(hControlVo);
                     hStaffLabel.MouseClick += HStaffLabel_MouseClick;
                     hStaffLabel.MouseDoubleClick += HStaffLabel_MouseDoubleClick;
                     hStaffLabel.MouseMove += HStaffLabel_MouseMove;

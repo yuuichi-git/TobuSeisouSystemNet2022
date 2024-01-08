@@ -2,42 +2,56 @@
  * 2023-10-21
  * H_SetControlに値を渡す為のVo
  */
+using Vo;
+
 namespace H_Vo {
     public class H_ControlVo {
-        private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
         /*
          * プロパティ
          */
-        private DateTime _operationDate;
         private int _cellNumber;
+        private DateTime _operationDate;
+        private bool _operationFlag;
         private bool _vehicleDispatchFlag;
         private bool _purposeFlag;
         private H_SetMasterVo? _hSetMasterVo;
         private H_CarMasterVo? _hCarMasterVo;
+        private H_StaffMasterVo? _hStaffMasterVo;
         private List<H_StaffMasterVo>? _listHStaffMasterVo;
         private List<H_SetMasterVo>? _listDeepCopyHSetMasterVo;
         private List<H_CarMasterVo>? _listDeepCopyHCarMasterVo;
         private List<H_StaffMasterVo>? _listDeepCopyHStaffMasterVo;
+        private H_VehicleDispatchDetailVo? _hVehicleDispatchDetailVo;
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
         public H_ControlVo() {
-            _operationDate = _defaultDateTime;
+            _operationDate = new DateTime(1900, 01, 01);
+            _operationFlag = false;
             _cellNumber = 0;
             _vehicleDispatchFlag = false;
             _purposeFlag = false;
             _hSetMasterVo = null;
             _hCarMasterVo = null;
+            _hStaffMasterVo = null;
             _listHStaffMasterVo = null;
             _listDeepCopyHSetMasterVo = null;
             _listDeepCopyHCarMasterVo = null;
             _listDeepCopyHStaffMasterVo = null;
+            _hVehicleDispatchDetailVo = null;
         }
 
         /*
          * Setter Getter
          */
+        /// <summary>
+        /// CellNumber
+        /// </summary>
+        public int CellNumber {
+            get => _cellNumber;
+            set => _cellNumber = value;
+        }
         /// <summary>
         /// 稼働日
         /// </summary>
@@ -46,11 +60,12 @@ namespace H_Vo {
             set => _operationDate = value;
         }
         /// <summary>
-        /// CellNumber
+        /// 稼働フラグ
+        /// true:稼働日 false:休車
         /// </summary>
-        public int CellNumber {
-            get => _cellNumber;
-            set => _cellNumber = value;
+        public bool OperationFlag {
+            get => _operationFlag;
+            set => _operationFlag = value;
         }
         /// <summary>
         /// 配車フラグ
@@ -83,7 +98,14 @@ namespace H_Vo {
             set => _hCarMasterVo = value;
         }
         /// <summary>
-        /// StaffMaster
+        /// HStaffMasterVo
+        /// </summary>
+        public H_StaffMasterVo? HStaffMasterVo {
+            get => _hStaffMasterVo;
+            set => _hStaffMasterVo = value;
+        }
+        /// <summary>
+        /// ListHStaffMasterVo
         /// </summary>
         public List<H_StaffMasterVo>? ListHStaffMasterVo {
             get => _listHStaffMasterVo;
@@ -109,6 +131,13 @@ namespace H_Vo {
         public List<H_StaffMasterVo>? ListDeepCopyHStaffMasterVo {
             get => _listDeepCopyHStaffMasterVo;
             set => _listDeepCopyHStaffMasterVo = value;
+        }
+        /// <summary>
+        /// テーブル(H_VehicleDispatchDetail)を格納
+        /// </summary>
+        public H_VehicleDispatchDetailVo? HVehicleDispatchDetailVo {
+            get => _hVehicleDispatchDetailVo;
+            set => _hVehicleDispatchDetailVo = value;
         }
     }
 }

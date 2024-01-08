@@ -17,7 +17,9 @@ namespace H_ControlEx {
         /*
          * Vo
          */
+        private H_ControlVo _hControlVo;
         private H_SetMasterVo _hSetMasterVo;
+        private H_VehicleDispatchDetailVo _hVehicleDispatchDetailVo;
         /*
          * プロパティ
          */
@@ -69,7 +71,6 @@ namespace H_ControlEx {
         /// true:Fax送信 false:なし
         /// </summary>
         private bool _faxTransmissionFlag = false;
-        private int _workerCount = 0; // 従事者数 1～4
         /*
          * 色の定義
          */
@@ -88,15 +89,14 @@ namespace H_ControlEx {
         /// </summary>
         /// <param name="hSetMasterVo">Vo</param>
         /// <param name="operationDate">稼働日</param>
-        public H_SetLabel(H_SetMasterVo hSetMasterVo, DateTime operationDate) {
-            /*
-             * 稼働・休車の初期設定
-             */
-            _operationFlag = _date.GetWorkingDays(operationDate, hSetMasterVo.WorkingDays, hSetMasterVo.FiveLap);
+        //public H_SetLabel(H_SetMasterVo hSetMasterVo, DateTime operationDate) {
+        public H_SetLabel(H_ControlVo hControlVo) {
             /*
              * Vo
              */
-            _hSetMasterVo = hSetMasterVo;
+            _hControlVo = hControlVo;
+            _hSetMasterVo = hControlVo.HSetMasterVo;
+            _hVehicleDispatchDetailVo = hControlVo.HVehicleDispatchDetailVo;
             /*
              * ControlIni
              */
@@ -106,10 +106,27 @@ namespace H_ControlEx {
             this.Height = (int)_panelHeight - 2;
             this.Margin = new Padding(2);
             this.Name = "H_SetLabel";
-            this.Tag = hSetMasterVo;
+            this.Tag = hControlVo.HSetMasterVo;
             this.Width = (int)_panelWidth - 2;
-
             this.CreateContextMenuStrip();
+
+            /*
+             * プロパティーの設定
+             */
+            if (_hVehicleDispatchDetailVo is not null) {
+                this.OperationFlag = _hVehicleDispatchDetailVo.OperationFlag; // 稼働フラグ
+                this.LastRollCallFlag = _hVehicleDispatchDetailVo.LastRollCallFlag; // 帰庫点呼フラグ
+                this.LastRollCallYmdHms = _hVehicleDispatchDetailVo.LastRollCallYmdHms; // 帰庫点呼日時
+                this.MemoFlag = _hVehicleDispatchDetailVo.SetMemoFlag; // メモフラグ
+                this.Memo = _hVehicleDispatchDetailVo.SetMemo; // メモ
+                this.ShiftCode = _hVehicleDispatchDetailVo.ShiftCode; // 番手コード
+                this.StandByFlag = _hVehicleDispatchDetailVo.StandByFlag; // 待機フラグ
+                this.AddWorkerFlag = _hVehicleDispatchDetailVo.AddWorkerFlag; // 作業員付フラグ
+                this.ContactInfomationFlag = _hVehicleDispatchDetailVo.ContactInfomationFlag; // 連絡事項印フラグ
+                this.FaxTransmissionFlag = _hVehicleDispatchDetailVo.FaxTransmissionFlag; // FAX送信フラグ
+            } else {
+                this.OperationFlag = _date.GetWorkingDays(hControlVo.OperationDate, hControlVo.HSetMasterVo.WorkingDays, hControlVo.HSetMasterVo.FiveLap);
+            }
         }
 
         /// <summary>
@@ -161,19 +178,20 @@ namespace H_ControlEx {
                                                 _drawFontSetLabel,
                                                 new SolidBrush(Color.Black),
                                                 new Rectangle(0, 10, (int)_panelWidth - 6, (int)_panelHeight - 6), stringFormat);
-            /*
-             * メモを描画
-             */
-            if (_memoFlag) {
-                Point[] points = { new Point(7, 21), new Point(21, 21), new Point(7, 35) };
-                e.Graphics.FillPolygon(new SolidBrush(Color.Crimson), points);
-            }
+
             /*
              * 帰庫点呼フラグ
              */
             if (_lastRollCallFlag) {
                 Point[] points = { new Point(54, 21), new Point(69, 21), new Point(69, 36) };
                 e.Graphics.FillPolygon(new SolidBrush(Color.Gray), points);
+            }
+            /*
+             * メモを描画
+             */
+            if (_memoFlag) {
+                Point[] points = { new Point(7, 21), new Point(21, 21), new Point(7, 35) };
+                e.Graphics.FillPolygon(new SolidBrush(Color.Crimson), points);
             }
             /*
              * 番手コード
@@ -196,6 +214,14 @@ namespace H_ControlEx {
              */
             if (_addWorkerFlag)
                 e.Graphics.DrawString("作付", _drawFontShiftCode, Brushes.DarkRed, new Point(24, 20));
+            /*
+             * 連絡事項印フラグ
+             */
+
+            /*
+             * FAX送信フラグ
+             */
+
         }
 
         /// <summary>
@@ -469,6 +495,17 @@ namespace H_ControlEx {
         /*
          * アクセサー
          */
+        /// <summary>
+        /// 稼働フラグ
+        /// true:稼働日 false:休車
+        /// </summary>
+        public bool OperationFlag {
+            get => _operationFlag;
+            set {
+                _operationFlag = value;
+                _hControlVo.OperationFlag = value;
+            }
+        }
         /// <summary>
         /// 帰庫点呼フラグ
         /// </summary>

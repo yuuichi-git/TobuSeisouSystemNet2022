@@ -7,6 +7,7 @@ namespace H_Vo {
 
         private int _cellNumber;
         private DateTime _operationDate;
+        private bool _operationFlag;
         private bool _vehicleDispatchFlag;
         private bool _purposeFlag;
         private int _setCode;
@@ -22,10 +23,11 @@ namespace H_Vo {
         private bool _contactInfomationFlag;
         private bool _faxTransmissionFlag;
         private int _carCode;
-        private int _garageCode;
+        private int _carGarageCode;
         private bool _carProxyFlag;
         private bool _carMemoFlag;
         private string _carMemo;
+        private int _targetStaffNumber;
         private int _staffCode1;
         private int _staffOccupation1;
         private bool _staffProxyFlag1;
@@ -68,6 +70,7 @@ namespace H_Vo {
         public H_VehicleDispatchDetailVo() {
             _cellNumber = 0;
             _operationDate = _defaultDateTime;
+            _operationFlag = false;
             _vehicleDispatchFlag = false;
             _purposeFlag = false;
             _setCode = 0;
@@ -83,10 +86,11 @@ namespace H_Vo {
             _contactInfomationFlag = false;
             _faxTransmissionFlag = false;
             _carCode = 0;
-            _garageCode = 0;
+            _carGarageCode = 0;
             _carProxyFlag = false;
             _carMemoFlag = false;
             _carMemo = string.Empty;
+            _targetStaffNumber = 99;
             _staffCode1 = 0;
             _staffOccupation1 = 99;
             _staffProxyFlag1 = false;
@@ -138,6 +142,14 @@ namespace H_Vo {
         public DateTime OperationDate {
             get => _operationDate;
             set => _operationDate = value;
+        }
+        /// <summary>
+        /// 稼働フラグ
+        /// true:稼働日 false:休車
+        /// </summary>
+        public bool OperationFlag {
+            get => _operationFlag;
+            set => _operationFlag = value;
         }
         /// <summary>
         /// 配車フラグ
@@ -258,9 +270,9 @@ namespace H_Vo {
         /// 車庫地コード
         /// 0:該当なし 1:本社 2:三郷
         /// </summary>
-        public int GarageCode {
-            get => _garageCode;
-            set => _garageCode = value;
+        public int CarGarageCode {
+            get => _carGarageCode;
+            set => _carGarageCode = value;
         }
         /// <summary>
         /// 代車フラグ
@@ -284,6 +296,14 @@ namespace H_Vo {
         public string CarMemo {
             get => _carMemo;
             set => _carMemo = value;
+        }
+        /// <summary>
+        /// TargetStaffの番号
+        /// 0:運転手 1:作業員１ 2:作業員２ 3:作業員３
+        /// </summary>
+        public int TargetStaffNumber {
+            get => _targetStaffNumber;
+            set => _targetStaffNumber = value;
         }
         /// <summary>
         /// 従事者コード1
