@@ -7,7 +7,7 @@ using H_Vo;
 
 namespace H_ControlEx {
     public partial class H_SetLabel : Label {
-        private Date _date = new();
+        private readonly Date _date = new();
         private Image _imageSetLabel;
         /*
          * １つのパネルのサイズ
@@ -24,43 +24,15 @@ namespace H_ControlEx {
          * プロパティ
          */
         /// <summary>
-        /// 稼働フラグ
-        /// true:稼働 false:休車
-        /// </summary>
-        private bool _operationFlag;
-        /// <summary>
-        /// 帰庫点呼フラグ
-        /// true:帰庫点呼済 false:未点呼
-        /// </summary>
-        private bool _lastRollCallFlag = false;
-        /// <summary>
-        /// 帰庫点呼日時
-        /// </summary>
-        private DateTime _lastRollCallYmdHms = new DateTime(1900, 01, 01);
-        /// <summary>
-        /// メモフラグ
-        /// true:メモあり false:メモなし
-        /// </summary>
-        private bool _memoFlag = false;
-        /// <summary>
-        /// メモ
-        /// </summary>
-        private string _memo = string.Empty;
-        /// <summary>
-        /// 番手コード
-        /// 0→指定なし 1→早番 2→遅番
-        /// </summary>
-        private int _shiftCode = 0;
-        /// <summary>
-        /// 待機フラグ
-        /// true:待機あり false:待機なし
-        /// </summary>
-        private bool _standByFlag = false;
-        /// <summary>
         /// 作業員付フラグ
         /// true:サ付 false:サ無し
         /// </summary>
         private bool _addWorkerFlag = false;
+        /// <summary>
+        /// 分類コード
+        /// 10:雇上 11:区契 12:臨時 20:清掃工場 30:社内 50:一般 51:社用車 99:指定なし
+        /// </summary>
+        private int _classificationCode = 99;
         /// <summary>
         /// 連絡事項印フラグ
         /// true:連絡事項あり false:連絡事項なし
@@ -71,6 +43,45 @@ namespace H_ControlEx {
         /// true:Fax送信 false:なし
         /// </summary>
         private bool _faxTransmissionFlag = false;
+        /// <summary>
+        /// 帰庫点呼フラグ
+        /// true:帰庫点呼済 false:未点呼
+        /// </summary>
+        private bool _lastRollCallFlag = false;
+        /// <summary>
+        /// 帰庫点呼日時
+        /// </summary>
+        private DateTime _lastRollCallYmdHms = new DateTime(1900, 01, 01);
+        /// <summary>
+        /// 管理地
+        /// 0:該当なし 1:足立 2:三郷
+        /// </summary>
+        private int _managedSpaceCode;
+        /// <summary>
+        /// メモ
+        /// </summary>
+        private string _memo = string.Empty;
+        /// <summary>
+        /// メモフラグ
+        /// true:メモあり false:メモなし
+        /// </summary>
+        private bool _memoFlag = false;
+        /// <summary>
+        /// 稼働フラグ
+        /// true:稼働 false:休車
+        /// </summary>
+        private bool _operationFlag;
+        /// <summary>
+        /// 番手コード
+        /// 0→指定なし 1→早番 2→遅番
+        /// </summary>
+        private int _shiftCode = 0;
+        /// <summary>
+        /// 待機フラグ
+        /// true:待機あり false:待機なし
+        /// </summary>
+        private bool _standByFlag = false;
+
         /*
          * 色の定義
          */
@@ -106,7 +117,7 @@ namespace H_ControlEx {
             this.Height = (int)_panelHeight - 2;
             this.Margin = new Padding(2);
             this.Name = "H_SetLabel";
-            this.Tag = hControlVo.HSetMasterVo;
+            this.Tag = _hSetMasterVo;
             this.Width = (int)_panelWidth - 2;
             this.CreateContextMenuStrip();
 
@@ -114,18 +125,20 @@ namespace H_ControlEx {
              * プロパティーの設定
              */
             if (_hVehicleDispatchDetailVo is not null) {
-                this.OperationFlag = _hVehicleDispatchDetailVo.OperationFlag; // 稼働フラグ
-                this.LastRollCallFlag = _hVehicleDispatchDetailVo.LastRollCallFlag; // 帰庫点呼フラグ
-                this.LastRollCallYmdHms = _hVehicleDispatchDetailVo.LastRollCallYmdHms; // 帰庫点呼日時
-                this.MemoFlag = _hVehicleDispatchDetailVo.SetMemoFlag; // メモフラグ
-                this.Memo = _hVehicleDispatchDetailVo.SetMemo; // メモ
-                this.ShiftCode = _hVehicleDispatchDetailVo.ShiftCode; // 番手コード
-                this.StandByFlag = _hVehicleDispatchDetailVo.StandByFlag; // 待機フラグ
                 this.AddWorkerFlag = _hVehicleDispatchDetailVo.AddWorkerFlag; // 作業員付フラグ
+                this.ClassificationCode = _hVehicleDispatchDetailVo.ClassificationCode; // 分類コード
                 this.ContactInfomationFlag = _hVehicleDispatchDetailVo.ContactInfomationFlag; // 連絡事項印フラグ
                 this.FaxTransmissionFlag = _hVehicleDispatchDetailVo.FaxTransmissionFlag; // FAX送信フラグ
+                this.LastRollCallFlag = _hVehicleDispatchDetailVo.LastRollCallFlag; // 帰庫点呼フラグ
+                this.LastRollCallYmdHms = _hVehicleDispatchDetailVo.LastRollCallYmdHms; // 帰庫点呼日時
+                this.ManagedSpaceCode = _hVehicleDispatchDetailVo.ManagedSpaceCode; // 管理地
+                this.Memo = _hVehicleDispatchDetailVo.SetMemo; // メモ
+                this.MemoFlag = _hVehicleDispatchDetailVo.SetMemoFlag; // メモフラグ
+                this.OperationFlag = _hVehicleDispatchDetailVo.OperationFlag; // 稼働フラグ
+                this.ShiftCode = _hVehicleDispatchDetailVo.ShiftCode; // 番手コード
+                this.StandByFlag = _hVehicleDispatchDetailVo.StandByFlag; // 待機フラグ
             } else {
-                this.OperationFlag = _date.GetWorkingDays(hControlVo.OperationDate, hControlVo.HSetMasterVo.WorkingDays, hControlVo.HSetMasterVo.FiveLap);
+                this.OperationFlag = _date.GetWorkingDays(_hControlVo.OperationDate, _hSetMasterVo.WorkingDays, _hSetMasterVo.FiveLap);
             }
         }
 
@@ -152,6 +165,9 @@ namespace H_ControlEx {
                             11 => Properties.Resources.SetLabelPowerBlueK,
                             _ => Properties.Resources.SetLabelPowerBlue,
                         };
+                        break;
+                    default:
+                        _imageSetLabel = Properties.Resources.SetLabelRed;
                         break;
                 }
             } else {
@@ -182,21 +198,21 @@ namespace H_ControlEx {
             /*
              * 帰庫点呼フラグ
              */
-            if (_lastRollCallFlag) {
+            if (LastRollCallFlag) {
                 Point[] points = { new Point(54, 21), new Point(69, 21), new Point(69, 36) };
                 e.Graphics.FillPolygon(new SolidBrush(Color.Gray), points);
             }
             /*
              * メモを描画
              */
-            if (_memoFlag) {
+            if (MemoFlag) {
                 Point[] points = { new Point(7, 21), new Point(21, 21), new Point(7, 35) };
                 e.Graphics.FillPolygon(new SolidBrush(Color.Crimson), points);
             }
             /*
              * 番手コード
              */
-            switch (_shiftCode) {
+            switch (ShiftCode) {
                 case 1:
                     e.Graphics.DrawString("早番", _drawFontShiftCode, Brushes.DarkRed, new Point(7, 77));
                     break;
@@ -207,12 +223,12 @@ namespace H_ControlEx {
             /*
              * 待機フラグ
              */
-            if (_standByFlag)
+            if (StandByFlag)
                 e.Graphics.DrawString("待機", _drawFontShiftCode, Brushes.DarkRed, new Point(43, 77));
             /*
              * 作業員付フラグ
              */
-            if (_addWorkerFlag)
+            if (AddWorkerFlag)
                 e.Graphics.DrawString("作付", _drawFontShiftCode, Brushes.DarkRed, new Point(24, 20));
             /*
              * 連絡事項印フラグ
@@ -427,43 +443,47 @@ namespace H_ControlEx {
                     MessageBox.Show("ToolStripMenuItemSetDetail");
                     break;
                 case "ToolStripMenuItemSetWarehouseAdachi": // 本社管理
-                    _hSetMasterVo.ManagedSpaceCode = 1;
+                    this.ManagedSpaceCode = 1;
                     this.Refresh();
                     break;
                 case "ToolStripMenuItemSetWarehouseMisato": // 三郷管理
-                    _hSetMasterVo.ManagedSpaceCode = 2;
+                    this.ManagedSpaceCode = 2;
                     this.Refresh();
                     break;
                 case "ToolStripMenuItemSetOperationAdachi": // 配車する
-                    _operationFlag = true;
+                    this.OperationFlag = true;
                     this.Refresh();
                     break;
                 case "ToolStripMenuItemSetOperationMisato": // 休車する
-                    _operationFlag = false;
+                    this.OperationFlag = false;
                     this.Refresh();
                     break;
                 case "ToolStripMenuItemSetMemo": // メモを作成・編集する
                     MessageBox.Show("ToolStripMenuItemSetMemo");
                     break;
                 case "ToolStripMenuItemClassificationYOUJYOU": // 雇上契約に変更する
-                    _hSetMasterVo.ClassificationCode = 10;
+                    this.ClassificationCode = 10;
                     this.Refresh();
                     break;
                 case "ToolStripMenuItemClassificationKUKEI": // 区契約に変更する
-                    _hSetMasterVo.ClassificationCode = 11;
+                    this.ClassificationCode = 11;
                     this.Refresh();
                     break;
                 case "ToolStripMenuItemContactInformationTrue": // 連絡事項あり
-                    MessageBox.Show("ToolStripMenuItemContactInformationTrue");
+                    this.ContactInfomationFlag = true;
+                    this.Refresh();
                     break;
                 case "ToolStripMenuItemContactInformationFalse": // 連絡事項なし
-                    MessageBox.Show("ToolStripMenuItemContactInformationFalse");
+                    this.ContactInfomationFlag = false;
+                    this.Refresh();
                     break;
                 case "ToolStripMenuItemAddWorkerTrue": // 作業員付きに変更する
-                    MessageBox.Show("ToolStripMenuItemAddWorkerTrue");
+                    this.AddWorkerFlag = true;
+                    this.Refresh();
                     break;
                 case "ToolStripMenuItemAddWorkerFalse": // 作業員なしに変更する
-                    MessageBox.Show("ToolStripMenuItemAddWorkerFalse");
+                    this.AddWorkerFlag = false;
+                    this.Refresh();
                     break;
                 case "ToolStripMenuItemShiftFirst": // 早番に変更する
                     MessageBox.Show("ToolStripMenuItemShiftFirst");
@@ -496,68 +516,23 @@ namespace H_ControlEx {
          * アクセサー
          */
         /// <summary>
-        /// 稼働フラグ
-        /// true:稼働日 false:休車
-        /// </summary>
-        public bool OperationFlag {
-            get => _operationFlag;
-            set {
-                _operationFlag = value;
-                _hControlVo.OperationFlag = value;
-            }
-        }
-        /// <summary>
-        /// 帰庫点呼フラグ
-        /// </summary>
-        public bool LastRollCallFlag {
-            get => _lastRollCallFlag;
-            set => _lastRollCallFlag = value;
-        }
-        /// <summary>
-        /// 帰庫点呼日時
-        /// </summary>
-        public DateTime LastRollCallYmdHms {
-            get => _lastRollCallYmdHms;
-            set => _lastRollCallYmdHms = value;
-        }
-        /// <summary>
-        /// メモフラグ
-        /// true:メモあり false:メモなし
-        /// </summary>
-        public bool MemoFlag {
-            get => _memoFlag;
-            set => _memoFlag = value;
-        }
-        /// <summary>
-        /// メモ
-        /// </summary>
-        public string Memo {
-            get => _memo;
-            set => _memo = value;
-        }
-        /// <summary>
-        /// 番手コード
-        /// 0:指定なし 1:早番 2:遅番
-        /// </summary>
-        public int ShiftCode {
-            get => _shiftCode;
-            set => _shiftCode = value;
-        }
-        /// <summary>
-        /// 待機フラグ
-        /// true:待機 false:通常
-        /// </summary>
-        public bool StandByFlag {
-            get => _standByFlag;
-            set => _standByFlag = value;
-        }
-        /// <summary>
         /// 作業員付きフラグ
         /// true:作業員付き false:作業員なし
         /// </summary>
         public bool AddWorkerFlag {
             get => _addWorkerFlag;
             set => _addWorkerFlag = value;
+        }
+        /// <summary>
+        /// 分類コード
+        /// 10:雇上 11:区契 12:臨時 20:清掃工場 30:社内 50:一般 51:社用車 99:指定なし
+        /// </summary>
+        public int ClassificationCode {
+            get => _classificationCode;
+            set {
+                _classificationCode = value;
+                _hSetMasterVo.ClassificationCode = value;
+            }
         }
         /// <summary>
         /// 連絡事項印フラグ
@@ -574,6 +549,73 @@ namespace H_ControlEx {
         public bool FaxTransmissionFlag {
             get => _faxTransmissionFlag;
             set => _faxTransmissionFlag = value;
+        }
+        /// <summary>
+        /// 帰庫点呼フラグ
+        /// </summary>
+        public bool LastRollCallFlag {
+            get => _lastRollCallFlag;
+            set => _lastRollCallFlag = value;
+        }
+        /// <summary>
+        /// 帰庫点呼日時
+        /// </summary>
+        public DateTime LastRollCallYmdHms {
+            get => _lastRollCallYmdHms;
+            set => _lastRollCallYmdHms = value;
+        }
+        /// <summary>
+        /// 管理地
+        /// 0:該当なし 1:足立 2:三郷
+        /// </summary>
+        public int ManagedSpaceCode {
+            get => _managedSpaceCode;
+            set {
+                _managedSpaceCode = value;
+                _hSetMasterVo.ManagedSpaceCode = value;
+            }
+        }
+        /// <summary>
+        /// メモ
+        /// </summary>
+        public string Memo {
+            get => _memo;
+            set => _memo = value;
+        }
+        /// <summary>
+        /// メモフラグ
+        /// true:メモあり false:メモなし
+        /// </summary>
+        public bool MemoFlag {
+            get => _memoFlag;
+            set => _memoFlag = value;
+        }
+        /// <summary>
+        /// 稼働フラグ
+        /// true:稼働日 false:休車
+        /// </summary>
+        public bool OperationFlag {
+            get => _operationFlag;
+            set {
+                _operationFlag = value;
+                _hControlVo.OperationFlag = value;
+            }
+        }
+        /// <summary>
+        /// 番手コード
+        /// 0:指定なし 1:早番 2:遅番
+        /// </summary>
+        public int ShiftCode {
+            get => _shiftCode;
+            set => _shiftCode = value;
+        }
+        /// <summary>
+        /// 待機フラグ
+        /// true:待機 false:通常
+        /// </summary>
+        public bool StandByFlag {
+            get => _standByFlag;
+            set => _standByFlag = value;
         }
     }
 }

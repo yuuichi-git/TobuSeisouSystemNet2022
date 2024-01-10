@@ -17,16 +17,9 @@ namespace StockBox {
          * Vo
          */
         private H_ControlVo _hControlVo;
-        /*
-         * インスタンス
-         */
-        private CopyUtility _copyUtility;
-        /*
-         * 
-         */
-        private readonly List<H_SetMasterVo> _temporaryListDeepCopyHSetMasterVo;
-        private readonly List<H_CarMasterVo> _temporaryListDeepCopyHCarMasterVo;
-        private readonly List<H_StaffMasterVo> _temporaryListDeepCopyHStaffMasterVo;
+        private readonly List<H_SetMasterVo> _temporaryRemoveListHSetMasterVo;
+        private readonly List<H_CarMasterVo> _temporaryRemoveListHCarMasterVo;
+        private readonly List<H_StaffMasterVo> _temporaryRemoveListHStaffMasterVo;
 
         /// <summary>
         /// コンストラクター
@@ -36,10 +29,6 @@ namespace StockBox {
              * Vo
              */
             _hControlVo = hControlVo;
-            /*
-             * インスタンス
-             */
-            _copyUtility = new CopyUtility();
             /*
              * コントロール初期化
              */
@@ -64,11 +53,11 @@ namespace StockBox {
             _hFlowLayoutPanelExBase.DragDrop += HFlowLayoutPanelExBase_DragDrop;
             h_TableLayoutPanelExBase.Controls.Add(_hFlowLayoutPanelExBase, 0, 1);
             /*
-             * DeepCopyを保管
+             * DeepCopyを一時保管
              */
-            _temporaryListDeepCopyHSetMasterVo = new CopyUtility().DeepCopy(hControlVo.ListDeepCopyHSetMasterVo);
-            _temporaryListDeepCopyHCarMasterVo = new CopyUtility().DeepCopy(hControlVo.ListDeepCopyHCarMasterVo);
-            _temporaryListDeepCopyHStaffMasterVo = new CopyUtility().DeepCopy(hControlVo.ListDeepCopyHStaffMasterVo);
+            _temporaryRemoveListHSetMasterVo = new CopyUtility().DeepCopy(hControlVo.RemoveListHSetMasterVo);
+            _temporaryRemoveListHCarMasterVo = new CopyUtility().DeepCopy(hControlVo.RemoveListHCarMasterVo);
+            _temporaryRemoveListHStaffMasterVo = new CopyUtility().DeepCopy(hControlVo.RemoveListHStaffMasterVo);
         }
 
         /// <summary>
@@ -89,43 +78,43 @@ namespace StockBox {
                 case "ToolStripMenuItemSet": // 配車先
                     this.ToolStripMenuItemCheckedChange(sender);
                     this.FlowLayoutPanelExControlRemove();
-                    _hControlVo.ListDeepCopyHSetMasterVo = _temporaryListDeepCopyHSetMasterVo.FindAll(x => x.DeleteFlag == false);
+                    _hControlVo.RemoveListHSetMasterVo = _temporaryRemoveListHSetMasterVo.FindAll(x => x.ClassificationCode != 10 && x.ClassificationCode != 11 && x.DeleteFlag == false);
                     this.CreateHSetLabel(_hControlVo);
                     break;
                 case "ToolStripMenuItemCar": // 車両
                     this.ToolStripMenuItemCheckedChange(sender);
                     this.FlowLayoutPanelExControlRemove();
-                    _hControlVo.ListDeepCopyHCarMasterVo = _temporaryListDeepCopyHCarMasterVo.FindAll(x => x.DeleteFlag == false);
+                    _hControlVo.RemoveListHCarMasterVo = _temporaryRemoveListHCarMasterVo.FindAll(x => x.DeleteFlag == false);
                     this.CreateHCarLabel(_hControlVo);
                     break;
                 case "ToolStripMenuItemEmployee": // 社員
                     this.ToolStripMenuItemCheckedChange(sender);
                     this.FlowLayoutPanelExControlRemove();
-                    _hControlVo.ListDeepCopyHStaffMasterVo = _temporaryListDeepCopyHStaffMasterVo.FindAll(x => (x.Belongs == 10 || x.Belongs == 11 || (x.Belongs == 12 && x.Occupation == 20)) && x.RetirementFlag == false);
+                    _hControlVo.RemoveListHStaffMasterVo = _temporaryRemoveListHStaffMasterVo.FindAll(x => (x.Belongs == 10 || x.Belongs == 11 || (x.Belongs == 12 && x.Occupation == 20)) && x.RetirementFlag == false);
                     this.CreateHStaffLabel(_hControlVo);
                     break;
                 case "ToolStripMenuItemPartTime": // アルバイト
                     this.ToolStripMenuItemCheckedChange(sender);
                     this.FlowLayoutPanelExControlRemove();
-                    _hControlVo.ListDeepCopyHStaffMasterVo = _temporaryListDeepCopyHStaffMasterVo.FindAll(x => x.Belongs == 12 && x.Occupation != 20 && x.RetirementFlag == false);
+                    _hControlVo.RemoveListHStaffMasterVo = _temporaryRemoveListHStaffMasterVo.FindAll(x => x.Belongs == 12 && x.Occupation != 20 && x.RetirementFlag == false);
                     this.CreateHStaffLabel(_hControlVo);
                     break;
                 case "ToolStripMenuItemLongTerm": // 長期
                     this.ToolStripMenuItemCheckedChange(sender);
                     this.FlowLayoutPanelExControlRemove();
-                    _hControlVo.ListDeepCopyHStaffMasterVo = _temporaryListDeepCopyHStaffMasterVo.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.JobForm == 10 && x.RetirementFlag == false);
+                    _hControlVo.RemoveListHStaffMasterVo = _temporaryRemoveListHStaffMasterVo.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.JobForm == 10 && x.RetirementFlag == false);
                     this.CreateHStaffLabel(_hControlVo);
                     break;
                 case "ToolStripMenuItemShortTerm": // 短期
                     this.ToolStripMenuItemCheckedChange(sender);
                     this.FlowLayoutPanelExControlRemove();
-                    _hControlVo.ListDeepCopyHStaffMasterVo = _temporaryListDeepCopyHStaffMasterVo.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.JobForm == 11 && x.RetirementFlag == false);
+                    _hControlVo.RemoveListHStaffMasterVo = _temporaryRemoveListHStaffMasterVo.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.JobForm == 11 && x.RetirementFlag == false);
                     this.CreateHStaffLabel(_hControlVo);
                     break;
                 case "ToolStripMenuItemDispatch": // 派遣
                     this.ToolStripMenuItemCheckedChange(sender);
                     this.FlowLayoutPanelExControlRemove();
-                    _hControlVo.ListDeepCopyHStaffMasterVo = _temporaryListDeepCopyHStaffMasterVo.FindAll(x => x.Belongs == 13 && x.JobForm == 99 && x.RetirementFlag == false);
+                    _hControlVo.RemoveListHStaffMasterVo = _temporaryRemoveListHStaffMasterVo.FindAll(x => x.Belongs == 13 && x.JobForm == 99 && x.RetirementFlag == false);
                     this.CreateHStaffLabel(_hControlVo);
                     break;
                 case "ToolStripMenuItemSortAsc": // 昇順
@@ -149,7 +138,7 @@ namespace StockBox {
         /// </summary>
         /// <param name="hControlVo"></param>
         private void CreateHSetLabel(H_ControlVo hControlVo) {
-            foreach (H_SetMasterVo hSetMasterVo in hControlVo.ListDeepCopyHSetMasterVo.FindAll(x => x.ClassificationCode != 10 && x.ClassificationCode != 11).OrderBy(x => x.ClassificationCode).ThenBy(x => x.SetName)) {
+            foreach (H_SetMasterVo hSetMasterVo in hControlVo.RemoveListHSetMasterVo.OrderBy(x => x.ClassificationCode).ThenBy(x => x.SetName)) {
                 if (hSetMasterVo is not null && hSetMasterVo.SetCode != 0) {
                     hControlVo.HSetMasterVo = hSetMasterVo;
                     H_SetLabel hSetLabel = new(hControlVo);
@@ -166,7 +155,7 @@ namespace StockBox {
         /// </summary>
         /// <param name="listHCarMasterVo"></param>
         private void CreateHCarLabel(H_ControlVo hControlVo) {
-            foreach (H_CarMasterVo hCarMasterVo in hControlVo.ListDeepCopyHCarMasterVo.OrderBy(x => x.ClassificationCode).ThenBy(x => x.DoorNumber)) {
+            foreach (H_CarMasterVo hCarMasterVo in hControlVo.RemoveListHCarMasterVo.OrderBy(x => x.ClassificationCode).ThenBy(x => x.DoorNumber)) {
                 if (hCarMasterVo is not null && hCarMasterVo.CarCode != 0) {
                     hControlVo.HCarMasterVo = hCarMasterVo;
                     H_CarLabel hCarLabel = new(hControlVo);
@@ -183,7 +172,7 @@ namespace StockBox {
         /// </summary>
         /// <param name="listHStaffMasterVo"></param>
         private void CreateHStaffLabel(H_ControlVo hControlVo) {
-            foreach (H_StaffMasterVo hStaffMasterVo in hControlVo.ListDeepCopyHStaffMasterVo.OrderBy(x => x.NameKana)) {
+            foreach (H_StaffMasterVo hStaffMasterVo in hControlVo.RemoveListHStaffMasterVo.OrderBy(x => x.NameKana)) {
                 if (hStaffMasterVo is not null && hStaffMasterVo.StaffCode != 0) {
                     hControlVo.HStaffMasterVo = hStaffMasterVo;
                     H_StaffLabel hStaffLabel = new(hControlVo);

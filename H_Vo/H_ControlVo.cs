@@ -2,8 +2,6 @@
  * 2023-10-21
  * H_SetControlに値を渡す為のVo
  */
-using Vo;
-
 namespace H_Vo {
     public class H_ControlVo {
         /*
@@ -17,10 +15,11 @@ namespace H_Vo {
         private H_SetMasterVo? _hSetMasterVo;
         private H_CarMasterVo? _hCarMasterVo;
         private H_StaffMasterVo? _hStaffMasterVo;
+        private int _selectNumberStaffMasterVo;
         private List<H_StaffMasterVo>? _listHStaffMasterVo;
-        private List<H_SetMasterVo>? _listDeepCopyHSetMasterVo;
-        private List<H_CarMasterVo>? _listDeepCopyHCarMasterVo;
-        private List<H_StaffMasterVo>? _listDeepCopyHStaffMasterVo;
+        private List<H_SetMasterVo>? _removeListHSetMasterVo;
+        private List<H_CarMasterVo>? _removeListHCarMasterVo;
+        private List<H_StaffMasterVo>? _removeListHStaffMasterVo;
         private H_VehicleDispatchDetailVo? _hVehicleDispatchDetailVo;
 
         /// <summary>
@@ -35,10 +34,11 @@ namespace H_Vo {
             _hSetMasterVo = null;
             _hCarMasterVo = null;
             _hStaffMasterVo = null;
+            _selectNumberStaffMasterVo = 0;
             _listHStaffMasterVo = null;
-            _listDeepCopyHSetMasterVo = null;
-            _listDeepCopyHCarMasterVo = null;
-            _listDeepCopyHStaffMasterVo = null;
+            _removeListHSetMasterVo = null;
+            _removeListHCarMasterVo = null;
+            _removeListHStaffMasterVo = null;
             _hVehicleDispatchDetailVo = null;
         }
 
@@ -105,6 +105,13 @@ namespace H_Vo {
             set => _hStaffMasterVo = value;
         }
         /// <summary>
+        /// 0:運転手 1:作業員① 2:作業員② 3:作業員③
+        /// </summary>
+        public int SelectNumberStaffMasterVo {
+            get => _selectNumberStaffMasterVo;
+            set => _selectNumberStaffMasterVo = value;
+        }
+        /// <summary>
         /// ListHStaffMasterVo
         /// </summary>
         public List<H_StaffMasterVo>? ListHStaffMasterVo {
@@ -112,25 +119,25 @@ namespace H_Vo {
             set => _listHStaffMasterVo = value;
         }
         /// <summary>
-        /// ListDeepCopyHSetMasterVo
+        /// 配車されているH_SetMasterVoを除いたもの
         /// </summary>
-        public List<H_SetMasterVo>? ListDeepCopyHSetMasterVo {
-            get => _listDeepCopyHSetMasterVo;
-            set => _listDeepCopyHSetMasterVo = value;
+        public List<H_SetMasterVo>? RemoveListHSetMasterVo {
+            get => _removeListHSetMasterVo;
+            set => _removeListHSetMasterVo = value;
         }
         /// <summary>
-        /// ListDeepCopyHCarMasterVo
+        /// 配車されているH_CarMasterVoを除いたもの
         /// </summary>
-        public List<H_CarMasterVo>? ListDeepCopyHCarMasterVo {
-            get => _listDeepCopyHCarMasterVo;
-            set => _listDeepCopyHCarMasterVo = value;
+        public List<H_CarMasterVo>? RemoveListHCarMasterVo {
+            get => _removeListHCarMasterVo;
+            set => _removeListHCarMasterVo = value;
         }
         /// <summary>
-        /// ListDeepCopyHStaffMasterVo
+        /// 配車されているH_StaffMasterVoを除いたもの
         /// </summary>
-        public List<H_StaffMasterVo>? ListDeepCopyHStaffMasterVo {
-            get => _listDeepCopyHStaffMasterVo;
-            set => _listDeepCopyHStaffMasterVo = value;
+        public List<H_StaffMasterVo>? RemoveListHStaffMasterVo {
+            get => _removeListHStaffMasterVo;
+            set => _removeListHStaffMasterVo = value;
         }
         /// <summary>
         /// テーブル(H_VehicleDispatchDetail)を格納

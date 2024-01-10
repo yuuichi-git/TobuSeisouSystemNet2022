@@ -5,6 +5,7 @@ using H_Vo;
 
 namespace H_ControlEx {
     public partial class H_SetControl : TableLayoutPanel {
+        private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
         /*
          * １つのパネルのサイズ
          */
@@ -17,7 +18,6 @@ namespace H_ControlEx {
         private const int _rowCount = 4; // Row数
         private bool _oldOnCursorFlag = false;
         private bool _newOnCursorFlag = false;
-        private Point _activeCellPoint = new();
         /*
          * StaffLabel用のCellの位置を保持
          */
@@ -88,7 +88,7 @@ namespace H_ControlEx {
             switch (hControlVo.PurposeFlag) {
                 case false: // １列
                     this.Size = new Size(80, 400);
-                    this.ColumnCount = 1;
+                    this.ColumnCount = _columnCount;
                     this.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, _panelWidth));
                     this.RowCount = _rowCount;
                     this.RowStyles.Add(new RowStyle(SizeType.Absolute, _panelHeight));
@@ -98,7 +98,7 @@ namespace H_ControlEx {
                     break;
                 case true: // ２列
                     this.Size = new Size(160, 400);
-                    this.ColumnCount = 2;
+                    this.ColumnCount = _columnCount + 1;
                     this.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, _panelWidth));
                     this.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, _panelWidth));
                     this.RowCount = _rowCount;
@@ -167,13 +167,13 @@ namespace H_ControlEx {
         /// StaffCodeがゼロの場合HStaffLabelは作成しない
         /// </summary>
         /// <param name="listHStaffMasterVo"></param>
-        private void CreateHStaffLabel(H_ControlVo _hControlVo) {
+        private void CreateHStaffLabel(H_ControlVo hControlVo) {
             int i = 0;
-            foreach (H_StaffMasterVo hStaffMasterVo in _hControlVo.ListHStaffMasterVo) {
+            foreach (H_StaffMasterVo hStaffMasterVo in hControlVo.ListHStaffMasterVo) {
                 if (hStaffMasterVo.StaffCode != 0) {
-                    Point point = _dictionaryCellPoint[i];
-                    _hControlVo.HStaffMasterVo = hStaffMasterVo;
-                    H_StaffLabel hStaffLabel = new(_hControlVo);
+                    hControlVo.HStaffMasterVo = hStaffMasterVo;
+                    hControlVo.SelectNumberStaffMasterVo = i; // List内の何番目のデータかを格納
+                    H_StaffLabel hStaffLabel = new(hControlVo);
                     /*
                      * Event
                      */
@@ -181,7 +181,7 @@ namespace H_ControlEx {
                     hStaffLabel.MouseDoubleClick += HStaffLabelEx_MouseDoubleClick;
                     hStaffLabel.MouseMove += HStaffLabelEx_MouseMove;
                     // StaffLabelを追加
-                    this.Controls.Add(hStaffLabel, point.X, point.Y);
+                    this.Controls.Add(hStaffLabel, _dictionaryCellPoint[i].X, _dictionaryCellPoint[i].Y);
                 }
                 i++;
             }
@@ -312,6 +312,137 @@ namespace H_ControlEx {
         }
         private void HStaffLabelEx_MouseMove(object sender, MouseEventArgs e) {
             Event_HStaffLabelEx_MouseMove.Invoke(sender, e);
+        }
+
+        /*
+         * Getter/Setter
+         */
+        /// <summary>
+        /// H_SetControlを解析してH_VehicleDispatchDetailVoに変換(作成)する
+        /// </summary>
+        /// <param name="hSetControl"></param>
+        /// <returns></returns>
+        public H_VehicleDispatchDetailVo CreateHVehicleDispatchDetailVo() {
+            H_VehicleDispatchDetailVo hVehicleDispatchDetailVo = new();
+            H_ControlVo hControlVo = (H_ControlVo)this.Tag;
+            hVehicleDispatchDetailVo.CellNumber = hControlVo.CellNumber;
+            hVehicleDispatchDetailVo.OperationDate = hControlVo.OperationDate;
+            hVehicleDispatchDetailVo.OperationFlag = hControlVo.OperationFlag;
+            hVehicleDispatchDetailVo.PurposeFlag = hControlVo.PurposeFlag;
+            hVehicleDispatchDetailVo.VehicleDispatchFlag = hControlVo.VehicleDispatchFlag;
+            /*
+             * 配車先関連の処理
+             * Labelが存在していなければVoのDefault値
+             */
+            var objectSet = this.GetControlFromPosition(0, 0); // Controlが存在しなければNULLが返る
+            if (objectSet is not null) {
+                H_SetLabel hSetLabel = (H_SetLabel)objectSet;
+                H_SetMasterVo hSetMasterVo = (H_SetMasterVo)objectSet.Tag;
+                hVehicleDispatchDetailVo.AddWorkerFlag = hSetLabel.AddWorkerFlag;
+                hVehicleDispatchDetailVo.ClassificationCode = hSetLabel.ClassificationCode;
+                hVehicleDispatchDetailVo.ContactInfomationFlag = hSetLabel.ContactInfomationFlag;
+                hVehicleDispatchDetailVo.FaxTransmissionFlag = hSetLabel.FaxTransmissionFlag;
+                hVehicleDispatchDetailVo.LastRollCallFlag = hSetLabel.LastRollCallFlag;
+                hVehicleDispatchDetailVo.LastRollCallYmdHms = hSetLabel.LastRollCallYmdHms;
+                hVehicleDispatchDetailVo.ManagedSpaceCode = hSetLabel.ManagedSpaceCode;
+                hVehicleDispatchDetailVo.SetCode = hSetMasterVo.SetCode;
+                hVehicleDispatchDetailVo.SetMemo = hSetLabel.Memo;
+                hVehicleDispatchDetailVo.SetMemoFlag = hSetLabel.MemoFlag;
+                hVehicleDispatchDetailVo.ShiftCode = hSetLabel.ShiftCode;
+                hVehicleDispatchDetailVo.StandByFlag = hSetLabel.StandByFlag;
+            }
+            /*
+             * 車両関連の処理
+             * Labelが存在していなければVoのDefault値
+             */
+            var objectCar = this.GetControlFromPosition(0, 1); // Controlが存在しなければNULLが返る
+            if (objectCar is not null) {
+                H_CarLabel hCarLabel = (H_CarLabel)objectCar;
+                H_CarMasterVo hCarMasterVo = (H_CarMasterVo)objectCar.Tag;
+                hVehicleDispatchDetailVo.CarCode = hCarMasterVo.CarCode;
+                hVehicleDispatchDetailVo.CarGarageCode = hCarMasterVo.GarageCode;
+                hVehicleDispatchDetailVo.CarMemo = hCarLabel.CarMemo;
+                hVehicleDispatchDetailVo.CarMemoFlag = hCarLabel.CarMemoFlag;
+                hVehicleDispatchDetailVo.CarProxyFlag = hCarLabel.CarProxyFlag;
+            }
+            /*
+             * 従事者関連の処理
+             * Labelが存在していなければVoのDefault値
+             */
+            /*
+             * 運転手
+             */
+            var objectStaff1 = this.GetControlFromPosition(0, 2); // Controlが存在しなければNULLが返る
+            if (objectStaff1 is not null) {
+                H_StaffLabel hStaffLabel = (H_StaffLabel)objectStaff1;
+                H_StaffMasterVo hStaffMasterVo = (H_StaffMasterVo)objectStaff1.Tag;
+                hVehicleDispatchDetailVo.StaffCode1 = hStaffMasterVo.StaffCode;
+                hVehicleDispatchDetailVo.StaffOccupation1 = hStaffLabel.StaffOccupationCode;
+                hVehicleDispatchDetailVo.StaffProxyFlag1 = hStaffLabel.StaffProxyFlag;
+                hVehicleDispatchDetailVo.StaffRollCallFlag1 = hStaffLabel.StaffRollCallFlag;
+                hVehicleDispatchDetailVo.StaffRollCallYmdHms1 = hStaffLabel.StaffRollCallYmdHms;
+                hVehicleDispatchDetailVo.StaffMemoFlag1 = hStaffLabel.StaffMemoFlag;
+                hVehicleDispatchDetailVo.StaffMemo1 = hStaffLabel.StaffMemo;
+            }
+            /*
+             * 作業員１
+             */
+            var objectStaff2 = this.GetControlFromPosition(0, 3); // Controlが存在しなければNULLが返る
+            if (objectStaff2 is not null) {
+                H_StaffLabel hStaffLabel = (H_StaffLabel)objectStaff2;
+                H_StaffMasterVo hStaffMasterVo = (H_StaffMasterVo)objectStaff2.Tag;
+                hVehicleDispatchDetailVo.StaffCode2 = hStaffMasterVo.StaffCode;
+                hVehicleDispatchDetailVo.StaffOccupation2 = hStaffMasterVo.Occupation;
+                hVehicleDispatchDetailVo.StaffProxyFlag2 = hStaffLabel.StaffProxyFlag;
+                hVehicleDispatchDetailVo.StaffRollCallFlag2 = hStaffLabel.StaffRollCallFlag;
+                hVehicleDispatchDetailVo.StaffRollCallYmdHms2 = hStaffLabel.StaffRollCallYmdHms;
+                hVehicleDispatchDetailVo.StaffMemoFlag2 = hStaffLabel.StaffMemoFlag;
+                hVehicleDispatchDetailVo.StaffMemo2 = hStaffLabel.StaffMemo;
+            }
+            /*
+             * H_SetControlの形状が２列の場合、作業員２・３の処理をする
+             */
+            if (hControlVo.PurposeFlag) {
+                /*
+                 * 作業員２
+                 */
+                var objectStaff3 = this.GetControlFromPosition(1, 2); // Controlが存在しなければNULLが返る
+                if (objectStaff3 is not null) {
+                    H_StaffLabel hStaffLabel = (H_StaffLabel)objectStaff3;
+                    H_StaffMasterVo hStaffMasterVo = (H_StaffMasterVo)objectStaff3.Tag;
+                    hVehicleDispatchDetailVo.StaffCode3 = hStaffMasterVo.StaffCode;
+                    hVehicleDispatchDetailVo.StaffOccupation3 = hStaffMasterVo.Occupation;
+                    hVehicleDispatchDetailVo.StaffProxyFlag3 = hStaffLabel.StaffProxyFlag;
+                    hVehicleDispatchDetailVo.StaffRollCallFlag3 = hStaffLabel.StaffRollCallFlag;
+                    hVehicleDispatchDetailVo.StaffRollCallYmdHms3 = hStaffLabel.StaffRollCallYmdHms;
+                    hVehicleDispatchDetailVo.StaffMemoFlag3 = hStaffLabel.StaffMemoFlag;
+                    hVehicleDispatchDetailVo.StaffMemo3 = hStaffLabel.StaffMemo;
+                }
+                /*
+                 * 作業員３
+                 */
+                var objectStaff4 = this.GetControlFromPosition(1, 3); // Controlが存在しなければNULLが返る
+                if (objectStaff4 is not null) {
+                    H_StaffLabel hStaffLabel = (H_StaffLabel)objectStaff4;
+                    H_StaffMasterVo hStaffMasterVo = (H_StaffMasterVo)objectStaff4.Tag;
+                    hVehicleDispatchDetailVo.StaffCode4 = hStaffMasterVo.StaffCode;
+                    hVehicleDispatchDetailVo.StaffOccupation4 = hStaffMasterVo.Occupation;
+                    hVehicleDispatchDetailVo.StaffProxyFlag4 = hStaffLabel.StaffProxyFlag;
+                    hVehicleDispatchDetailVo.StaffRollCallFlag4 = hStaffLabel.StaffRollCallFlag;
+                    hVehicleDispatchDetailVo.StaffRollCallYmdHms4 = hStaffLabel.StaffRollCallYmdHms;
+                    hVehicleDispatchDetailVo.StaffMemoFlag4 = hStaffLabel.StaffMemoFlag;
+                    hVehicleDispatchDetailVo.StaffMemo4 = hStaffLabel.StaffMemo;
+                }
+            }
+            hVehicleDispatchDetailVo.InsertPcName = Environment.MachineName;
+            hVehicleDispatchDetailVo.InsertYmdHms = DateTime.Now;
+            hVehicleDispatchDetailVo.UpdatePcName = string.Empty;
+            hVehicleDispatchDetailVo.UpdateYmdHms = _defaultDateTime;
+            hVehicleDispatchDetailVo.DeletePcName = string.Empty;
+            hVehicleDispatchDetailVo.DeleteYmdHms = _defaultDateTime;
+            hVehicleDispatchDetailVo.DeleteFlag = false;
+
+            return hVehicleDispatchDetailVo;
         }
     }
 }

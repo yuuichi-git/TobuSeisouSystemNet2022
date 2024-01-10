@@ -164,6 +164,7 @@ namespace H_ControlEx {
         /// <param name="e"></param>
         private void HSetControl_DragDrop(object sender, DragEventArgs e) {
             H_SetControl hSetControl = (H_SetControl)sender;
+            H_ControlVo hControlVo = (H_ControlVo)hSetControl.Tag;
             Point clientPoint = hSetControl.PointToClient(new Point(e.X, e.Y));
             Point cellPoint = new(clientPoint.X / (int)_panelWidth, clientPoint.Y / (int)_panelHeight);
             if (e.Data.GetDataPresent(typeof(H_SetLabel))) {
@@ -172,7 +173,8 @@ namespace H_ControlEx {
                     /*
                      * H_StockBoxsにアイテムを残すのでH_SetLabelのコピーを作成
                      */
-                    H_SetLabel hSetLabel = new((H_ControlVo)hSetControl.Tag);
+                    hControlVo.HSetMasterVo = (H_SetMasterVo)dragItem.Tag;
+                    H_SetLabel hSetLabel = new(hControlVo);
                     hSetLabel.MouseClick += HSetLabel_MouseClick;
                     hSetLabel.MouseDoubleClick += HSetLabel_MouseDoubleClick;
                     hSetLabel.MouseMove += HSetLabel_MouseMove;

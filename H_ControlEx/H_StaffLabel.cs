@@ -5,7 +5,7 @@ using H_Vo;
 
 namespace H_ControlEx {
     public partial class H_StaffLabel : Label {
-        private Image _imageStaffLabel;
+        private readonly Image _imageStaffLabel;
         /*
          * １つのパネルのサイズ
          */
@@ -14,6 +14,20 @@ namespace H_ControlEx {
         /*
          * プロパティー
          */
+        /// <summary>
+        /// メモ
+        /// </summary>
+        private string _staffMemo = string.Empty;
+        /// <summary>
+        /// メモフラグ
+        /// true:メモあり false:メモなし
+        /// </summary>
+        private bool _staffMemoFlag = false;
+        /// <summary>
+        /// 職種
+        /// 10:運転手 11:作業員 20:事務職 99:指定なし
+        /// </summary>
+        private int _staffOccupationCode = 99;
         /// <summary>
         /// 代番フラグ
         /// true:代番 false:本番
@@ -28,18 +42,11 @@ namespace H_ControlEx {
         /// 点呼日時
         /// </summary>
         private DateTime _staffRollCallYmdHms = new DateTime(1900, 01, 01);
-        /// <summary>
-        /// メモフラグ
-        /// true:メモあり false:メモなし
-        /// </summary>
-        private bool _staffMemoFlag = false;
-        /// <summary>
-        /// メモ
-        /// </summary>
-        private string _staffMemo = string.Empty;
+
         /*
          * Vo
          */
+        private H_ControlVo _hControlVo;
         private readonly H_StaffMasterVo _staffMasterVo;
         private H_VehicleDispatchDetailVo _hVehicleDispatchDetailVo;
         /*
@@ -56,9 +63,9 @@ namespace H_ControlEx {
             /*
              * Vo
              */
+            _hControlVo = hControlVo;
             _staffMasterVo = hControlVo.HStaffMasterVo;
             _hVehicleDispatchDetailVo = hControlVo.HVehicleDispatchDetailVo;
-
             /*
              * ControlIni
              */
@@ -83,7 +90,47 @@ namespace H_ControlEx {
             /*
              * プロパティーの設定
              */
+            if (_hVehicleDispatchDetailVo is not null) {
+                /*
+                 * _hControlVo.SelectNumberStaffMasterVoを使って、何番目のデータかを知る
+                 */
+                switch (_hControlVo.SelectNumberStaffMasterVo) {
+                    case 0:
+                        this.StaffMemo = _hVehicleDispatchDetailVo.StaffMemo1;
+                        this.StaffMemoFlag = _hVehicleDispatchDetailVo.StaffMemoFlag1;
+                        this.StaffOccupationCode = _hVehicleDispatchDetailVo.StaffOccupation1;
+                        this.StaffProxyFlag = _hVehicleDispatchDetailVo.StaffProxyFlag1;
+                        this.StaffRollCallFlag = _hVehicleDispatchDetailVo.StaffRollCallFlag1;
+                        this.StaffRollCallYmdHms = _hVehicleDispatchDetailVo.StaffRollCallYmdHms1;
+                        break;
+                    case 1:
+                        this.StaffMemo = _hVehicleDispatchDetailVo.StaffMemo2;
+                        this.StaffMemoFlag = _hVehicleDispatchDetailVo.StaffMemoFlag2;
+                        this.StaffOccupationCode = _hVehicleDispatchDetailVo.StaffOccupation2;
+                        this.StaffProxyFlag = _hVehicleDispatchDetailVo.StaffProxyFlag2;
+                        this.StaffRollCallFlag = _hVehicleDispatchDetailVo.StaffRollCallFlag2;
+                        this.StaffRollCallYmdHms = _hVehicleDispatchDetailVo.StaffRollCallYmdHms2;
+                        break;
+                    case 2:
+                        this.StaffMemo = _hVehicleDispatchDetailVo.StaffMemo3;
+                        this.StaffMemoFlag = _hVehicleDispatchDetailVo.StaffMemoFlag3;
+                        this.StaffOccupationCode = _hVehicleDispatchDetailVo.StaffOccupation3;
+                        this.StaffProxyFlag = _hVehicleDispatchDetailVo.StaffProxyFlag3;
+                        this.StaffRollCallFlag = _hVehicleDispatchDetailVo.StaffRollCallFlag3;
+                        this.StaffRollCallYmdHms = _hVehicleDispatchDetailVo.StaffRollCallYmdHms3;
+                        break;
+                    case 3:
+                        this.StaffMemo = _hVehicleDispatchDetailVo.StaffMemo4;
+                        this.StaffMemoFlag = _hVehicleDispatchDetailVo.StaffMemoFlag4;
+                        this.StaffOccupationCode = _hVehicleDispatchDetailVo.StaffOccupation4;
+                        this.StaffProxyFlag = _hVehicleDispatchDetailVo.StaffProxyFlag4;
+                        this.StaffRollCallFlag = _hVehicleDispatchDetailVo.StaffRollCallFlag4;
+                        this.StaffRollCallYmdHms = _hVehicleDispatchDetailVo.StaffRollCallYmdHms4;
+                        break;
+                }
+            } else {
 
+            }
         }
 
         /// <summary>
@@ -115,25 +162,25 @@ namespace H_ControlEx {
              * Occupation
              * 10:運転手 11:作業員 20:事務職 99:指定なし
              */
-            e.Graphics.DrawString(_staffMasterVo.Occupation == 11 ? "作" : "", _drawFontOccupation, Brushes.DarkGray, 8, 72);
+            e.Graphics.DrawString(this.StaffOccupationCode == 11 ? "作" : "", _drawFontOccupation, Brushes.DarkGray, 8, 72);
             /*
              * 代番処理を描画
              */
-            if (_staffProxyFlag) {
+            if (StaffProxyFlag) {
                 e.Graphics.FillRectangle(Brushes.ForestGreen, 14, 4, 48, 5);
                 e.Graphics.DrawLine(new Pen(Color.LawnGreen), new Point(10, 6), new Point(63, 6));
             }
             /*
              * メモを描画
              */
-            if (_staffMemoFlag) {
+            if (StaffMemoFlag) {
                 Point[] points = { new Point(7, 10), new Point(21, 10), new Point(7, 24) };
                 e.Graphics.FillPolygon(new SolidBrush(Color.Crimson), points);
             }
             /*
              * 点呼の印を描画
              */
-            if (!_staffRollCallFlag) {
+            if (!StaffRollCallFlag) {
                 e.Graphics.FillEllipse(Brushes.Crimson, 56, 73, 10, 10);
                 e.Graphics.FillEllipse(Brushes.LightPink, 60, 77, 4, 4);
             }
@@ -291,6 +338,29 @@ namespace H_ControlEx {
          * アクセサー
          */
         /// <summary>
+        /// メモ
+        /// </summary>
+        public string StaffMemo {
+            get => _staffMemo;
+            set => _staffMemo = value;
+        }
+        /// <summary>
+        /// メモフラグ
+        /// true:メモあり false:メモなし
+        /// </summary>
+        public bool StaffMemoFlag {
+            get => _staffMemoFlag;
+            set => _staffMemoFlag = value;
+        }
+        /// <summary>
+        /// 職種
+        /// 10:運転手 11:作業員 20:事務職 99:指定なし
+        /// </summary>
+        public int StaffOccupationCode {
+            get => _staffOccupationCode;
+            set => _staffOccupationCode = value;
+        }
+        /// <summary>
         /// 代番フラグ
         /// true:代番 false:本番
         /// </summary>
@@ -312,21 +382,6 @@ namespace H_ControlEx {
         public DateTime StaffRollCallYmdHms {
             get => _staffRollCallYmdHms;
             set => _staffRollCallYmdHms = value;
-        }
-        /// <summary>
-        /// メモフラグ
-        /// true:メモあり false:メモなし
-        /// </summary>
-        public bool StaffMemoFlag {
-            get => _staffMemoFlag;
-            set => _staffMemoFlag = value;
-        }
-        /// <summary>
-        /// メモ
-        /// </summary>
-        public string StaffMemo {
-            get => _staffMemo;
-            set => _staffMemo = value;
         }
     }
 }

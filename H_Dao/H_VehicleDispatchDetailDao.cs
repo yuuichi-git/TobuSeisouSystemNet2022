@@ -93,8 +93,7 @@ namespace H_Dao {
                                             "H_VehicleDispatchDetail.DeleteYmdHms," +
                                             "H_VehicleDispatchDetail.DeleteFlag " +
                                      "FROM H_VehicleDispatchDetail " +
-                                     "WHERE H_VehicleDispatchDetail.OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "' " +
-                                     "AND H_VehicleDispatchDetail.DeleteFlag = 'false'";
+                                     "WHERE H_VehicleDispatchDetail.OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
             using (var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while (sqlDataReader.Read() == true) {
                     H_VehicleDispatchDetailVo hVehicleDispatchDetailVo = new();
