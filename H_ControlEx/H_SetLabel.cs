@@ -3,6 +3,8 @@
  */
 using H_Common;
 
+using H_Dao;
+
 using H_Vo;
 
 namespace H_ControlEx {
@@ -15,7 +17,11 @@ namespace H_ControlEx {
         private const float _panelWidth = 80;
         private const float _panelHeight = 100;
         /*
-         * Vo
+         * H_Dao 
+         */
+        private H_VehicleDispatchDetailDao _hVehicleDispatchDetailDao;
+        /*
+         * H_Vo
          */
         private H_ControlVo _hControlVo;
         private H_SetMasterVo _hSetMasterVo;
@@ -81,17 +87,24 @@ namespace H_ControlEx {
         /// true:待機あり false:待機なし
         /// </summary>
         private bool _standByFlag = false;
-
+        /*
+         * H_SetControlのアクセサーを操作するのに使うので退避させておく
+         */
+        private H_SetControl _evacuationHSetControl;
         /*
          * 色の定義
          */
-        private SolidBrush _brushColorBlack = new(Color.Black);
+        private readonly SolidBrush _brushColorBlack = new(Color.Black);
+        private readonly SolidBrush _solidBrushContactInformation = new(Color.FromArgb(15, Color.LimeGreen));
+        private readonly SolidBrush _solidBrushFaxTransmission = new(Color.FromArgb(15, Color.IndianRed));
         /*
          * Fontの定義
          */
         private Font _drawFontSetLabel = new("Yu Gothic UI", 13, FontStyle.Regular, GraphicsUnit.Pixel);
         private Font _drawFontContactMethod = new("Yu Gothic UI", 10, FontStyle.Regular, GraphicsUnit.Pixel);
         private Font _drawFontShiftCode = new("Yu Gothic UI", 11, FontStyle.Regular, GraphicsUnit.Pixel);
+        private Font _drawFontStandByFlag = new("Yu Gothic UI", 11, FontStyle.Regular, GraphicsUnit.Pixel);
+        private Font _drawFontAddWorkerFlag = new("Yu Gothic UI", 11, FontStyle.Regular, GraphicsUnit.Pixel);
 
         private string _drawStringContactMethod = string.Empty;
 
@@ -100,8 +113,11 @@ namespace H_ControlEx {
         /// </summary>
         /// <param name="hSetMasterVo">Vo</param>
         /// <param name="operationDate">稼働日</param>
-        //public H_SetLabel(H_SetMasterVo hSetMasterVo, DateTime operationDate) {
         public H_SetLabel(H_ControlVo hControlVo) {
+            /*
+             * H_Dao 
+             */
+            _hVehicleDispatchDetailDao = new(hControlVo.ConnectionVo);
             /*
              * Vo
              */
@@ -113,6 +129,7 @@ namespace H_ControlEx {
              */
             InitializeComponent();
             this.AllowDrop = true;
+            this.BackColor = Color.Transparent;
             this.BorderStyle = BorderStyle.None;
             this.Height = (int)_panelHeight - 2;
             this.Margin = new Padding(2);
@@ -125,6 +142,9 @@ namespace H_ControlEx {
              * プロパティーの設定
              */
             if (_hVehicleDispatchDetailVo is not null) {
+                /*
+                 * _hVehicleDispatchDetailVoが固有に保持している値をセットする
+                 */
                 this.AddWorkerFlag = _hVehicleDispatchDetailVo.AddWorkerFlag; // 作業員付フラグ
                 this.ClassificationCode = _hVehicleDispatchDetailVo.ClassificationCode; // 分類コード
                 this.ContactInfomationFlag = _hVehicleDispatchDetailVo.ContactInfomationFlag; // 連絡事項印フラグ
@@ -138,6 +158,11 @@ namespace H_ControlEx {
                 this.ShiftCode = _hVehicleDispatchDetailVo.ShiftCode; // 番手コード
                 this.StandByFlag = _hVehicleDispatchDetailVo.StandByFlag; // 待機フラグ
             } else {
+                /*
+                 * H_SetLabelを作成するのに最低限必要な値をセットする
+                 */
+                this.ClassificationCode = _hSetMasterVo.ClassificationCode; // 分類コード
+                this.ManagedSpaceCode = _hSetMasterVo.ManagedSpaceCode; // 管理地
                 this.OperationFlag = _date.GetWorkingDays(_hControlVo.OperationDate, _hSetMasterVo.WorkingDays, _hSetMasterVo.FiveLap);
             }
         }
@@ -150,17 +175,17 @@ namespace H_ControlEx {
             /*
              * H_SetLbelのImage選択
              */
-            if (_operationFlag) {
-                switch (_hSetMasterVo.ManagedSpaceCode) {
+            if (OperationFlag) {
+                switch (ManagedSpaceCode) {
                     case 1:
-                        _imageSetLabel = _hSetMasterVo.ClassificationCode switch {
+                        _imageSetLabel = ClassificationCode switch {
                             10 => Properties.Resources.SetLabelWhiteY,
                             11 => Properties.Resources.SetLabelWhiteK,
                             _ => Properties.Resources.SetLabelWhite,
                         };
                         break;
                     case 2:
-                        _imageSetLabel = _hSetMasterVo.ClassificationCode switch {
+                        _imageSetLabel = ClassificationCode switch {
                             10 => Properties.Resources.SetLabelPowerBlueY,
                             11 => Properties.Resources.SetLabelPowerBlueK,
                             _ => Properties.Resources.SetLabelPowerBlue,
@@ -224,20 +249,12 @@ namespace H_ControlEx {
              * 待機フラグ
              */
             if (StandByFlag)
-                e.Graphics.DrawString("待機", _drawFontShiftCode, Brushes.DarkRed, new Point(43, 77));
+                e.Graphics.DrawString("待機", _drawFontStandByFlag, Brushes.DarkRed, new Point(43, 77));
             /*
              * 作業員付フラグ
              */
             if (AddWorkerFlag)
-                e.Graphics.DrawString("作付", _drawFontShiftCode, Brushes.DarkRed, new Point(24, 20));
-            /*
-             * 連絡事項印フラグ
-             */
-
-            /*
-             * FAX送信フラグ
-             */
-
+                e.Graphics.DrawString("作付", _drawFontAddWorkerFlag, Brushes.DarkRed, new Point(24, 20));
         }
 
         /// <summary>
@@ -266,6 +283,10 @@ namespace H_ControlEx {
                     }
                 }
             }
+            /*
+             * H_SetControlのアクセサーを操作するのに使うので退避させておく
+             */
+            _evacuationHSetControl = (H_SetControl)((H_SetLabel)((ContextMenuStrip)sender).SourceControl).Parent;
         }
 
         /// <summary>
@@ -288,21 +309,6 @@ namespace H_ControlEx {
              */
             contextMenuStrip.Items.Add(new ToolStripSeparator());
             /*
-             * 出庫地
-             */
-            ToolStripMenuItem toolStripMenuItem01 = new("管理地"); // 親アイテム
-            toolStripMenuItem01.Name = "ToolStripMenuItemSetWarehouse";
-            ToolStripMenuItem toolStripMenuItem01_0 = new("本社管理"); // 子アイテム１
-            toolStripMenuItem01_0.Name = "ToolStripMenuItemSetWarehouseAdachi";
-            toolStripMenuItem01_0.Click += ToolStripMenuItem_Click;
-            toolStripMenuItem01.DropDownItems.Add(toolStripMenuItem01_0);
-            contextMenuStrip.Items.Add(toolStripMenuItem01);
-            ToolStripMenuItem toolStripMenuItem01_1 = new("三郷管理"); // 子アイテム２
-            toolStripMenuItem01_1.Name = "ToolStripMenuItemSetWarehouseMisato";
-            toolStripMenuItem01_1.Click += ToolStripMenuItem_Click;
-            toolStripMenuItem01.DropDownItems.Add(toolStripMenuItem01_1);
-            contextMenuStrip.Items.Add(toolStripMenuItem01);
-            /*
              * 配車の状態
              */
             ToolStripMenuItem toolStripMenuItem02 = new("配車の状態"); // 親アイテム
@@ -318,12 +324,20 @@ namespace H_ControlEx {
             toolStripMenuItem02.DropDownItems.Add(toolStripMenuItem02_1);
             contextMenuStrip.Items.Add(toolStripMenuItem02);
             /*
-             * メモを作成・編集する
+             * 管理地
              */
-            ToolStripMenuItem toolStripMenuItem03 = new("メモを作成・編集する");
-            toolStripMenuItem03.Name = "ToolStripMenuItemSetMemo";
-            toolStripMenuItem03.Click += ToolStripMenuItem_Click;
-            contextMenuStrip.Items.Add(toolStripMenuItem03);
+            ToolStripMenuItem toolStripMenuItem01 = new("管理地"); // 親アイテム
+            toolStripMenuItem01.Name = "ToolStripMenuItemSetWarehouse";
+            ToolStripMenuItem toolStripMenuItem01_0 = new("本社管理"); // 子アイテム１
+            toolStripMenuItem01_0.Name = "ToolStripMenuItemSetWarehouseAdachi";
+            toolStripMenuItem01_0.Click += ToolStripMenuItem_Click;
+            toolStripMenuItem01.DropDownItems.Add(toolStripMenuItem01_0);
+            contextMenuStrip.Items.Add(toolStripMenuItem01);
+            ToolStripMenuItem toolStripMenuItem01_1 = new("三郷管理"); // 子アイテム２
+            toolStripMenuItem01_1.Name = "ToolStripMenuItemSetWarehouseMisato";
+            toolStripMenuItem01_1.Click += ToolStripMenuItem_Click;
+            toolStripMenuItem01.DropDownItems.Add(toolStripMenuItem01_1);
+            contextMenuStrip.Items.Add(toolStripMenuItem01);
             /*
              * 雇上・区契
              */
@@ -339,21 +353,6 @@ namespace H_ControlEx {
             toolStripMenuItem04_1.Click += ToolStripMenuItem_Click;
             toolStripMenuItem04.DropDownItems.Add(toolStripMenuItem04_1);
             contextMenuStrip.Items.Add(toolStripMenuItem04);
-            /*
-             * 連絡事項
-             */
-            ToolStripMenuItem toolStripMenuItem05 = new("連絡事項"); // 親アイテム
-            toolStripMenuItem05.Name = "ToolStripMenuItemContactInformation";
-            ToolStripMenuItem toolStripMenuItem05_0 = new("連絡事項あり"); // 子アイテム１
-            toolStripMenuItem05_0.Name = "ToolStripMenuItemContactInformationTrue";
-            toolStripMenuItem05_0.Click += ToolStripMenuItem_Click;
-            toolStripMenuItem05.DropDownItems.Add(toolStripMenuItem05_0);
-            contextMenuStrip.Items.Add(toolStripMenuItem05);
-            ToolStripMenuItem toolStripMenuItem05_1 = new("連絡事項なし"); // 子アイテム２
-            toolStripMenuItem05_1.Name = "ToolStripMenuItemContactInformationFalse";
-            toolStripMenuItem05_1.Click += ToolStripMenuItem_Click;
-            toolStripMenuItem05.DropDownItems.Add(toolStripMenuItem05_1);
-            contextMenuStrip.Items.Add(toolStripMenuItem05);
             /*
              * 作業員付きの配置
              */
@@ -405,6 +404,28 @@ namespace H_ControlEx {
             toolStripMenuItem08.DropDownItems.Add(toolStripMenuItem08_1);
             contextMenuStrip.Items.Add(toolStripMenuItem08);
             /*
+             * 連絡事項
+             */
+            ToolStripMenuItem toolStripMenuItem05 = new("連絡事項"); // 親アイテム
+            toolStripMenuItem05.Name = "ToolStripMenuItemContactInformation";
+            ToolStripMenuItem toolStripMenuItem05_0 = new("連絡事項あり"); // 子アイテム１
+            toolStripMenuItem05_0.Name = "ToolStripMenuItemContactInformationTrue";
+            toolStripMenuItem05_0.Click += ToolStripMenuItem_Click;
+            toolStripMenuItem05.DropDownItems.Add(toolStripMenuItem05_0);
+            contextMenuStrip.Items.Add(toolStripMenuItem05);
+            ToolStripMenuItem toolStripMenuItem05_1 = new("連絡事項なし"); // 子アイテム２
+            toolStripMenuItem05_1.Name = "ToolStripMenuItemContactInformationFalse";
+            toolStripMenuItem05_1.Click += ToolStripMenuItem_Click;
+            toolStripMenuItem05.DropDownItems.Add(toolStripMenuItem05_1);
+            contextMenuStrip.Items.Add(toolStripMenuItem05);
+            /*
+             * メモを作成・編集する
+             */
+            ToolStripMenuItem toolStripMenuItem03 = new("メモを作成・編集する");
+            toolStripMenuItem03.Name = "ToolStripMenuItemSetMemo";
+            toolStripMenuItem03.Click += ToolStripMenuItem_Click;
+            contextMenuStrip.Items.Add(toolStripMenuItem03);
+            /*
              * スペーサー
              */
             contextMenuStrip.Items.Add(new ToolStripSeparator());
@@ -445,18 +466,50 @@ namespace H_ControlEx {
                 case "ToolStripMenuItemSetWarehouseAdachi": // 本社管理
                     this.ManagedSpaceCode = 1;
                     this.Refresh();
+                    /*
+                     * DB書換え
+                     */
+                    try {
+                        _hVehicleDispatchDetailDao.UpdateManagedSpaceCode(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.ManagedSpaceCode);
+                    } catch (Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
                     break;
                 case "ToolStripMenuItemSetWarehouseMisato": // 三郷管理
                     this.ManagedSpaceCode = 2;
                     this.Refresh();
+                    /*
+                     * DB書換え
+                     */
+                    try {
+                        _hVehicleDispatchDetailDao.UpdateManagedSpaceCode(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.ManagedSpaceCode);
+                    } catch (Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
                     break;
                 case "ToolStripMenuItemSetOperationAdachi": // 配車する
                     this.OperationFlag = true;
                     this.Refresh();
+                    /*
+                     * DB書換え
+                     */
+                    try {
+                        _hVehicleDispatchDetailDao.UpdateOperationFlag(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.OperationFlag);
+                    } catch (Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
                     break;
                 case "ToolStripMenuItemSetOperationMisato": // 休車する
                     this.OperationFlag = false;
                     this.Refresh();
+                    /*
+                     * DB書換え
+                     */
+                    try {
+                        _hVehicleDispatchDetailDao.UpdateOperationFlag(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.OperationFlag);
+                    } catch (Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
                     break;
                 case "ToolStripMenuItemSetMemo": // メモを作成・編集する
                     MessageBox.Show("ToolStripMenuItemSetMemo");
@@ -464,47 +517,158 @@ namespace H_ControlEx {
                 case "ToolStripMenuItemClassificationYOUJYOU": // 雇上契約に変更する
                     this.ClassificationCode = 10;
                     this.Refresh();
+                    /*
+                     * DB書換え
+                     */
+                    try {
+                        _hVehicleDispatchDetailDao.UpdateClassificationCode(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.ClassificationCode);
+                    } catch (Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
                     break;
                 case "ToolStripMenuItemClassificationKUKEI": // 区契約に変更する
                     this.ClassificationCode = 11;
                     this.Refresh();
+                    /*
+                     * DB書換え
+                     */
+                    try {
+                        _hVehicleDispatchDetailDao.UpdateClassificationCode(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.ClassificationCode);
+                    } catch (Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
                     break;
                 case "ToolStripMenuItemContactInformationTrue": // 連絡事項あり
                     this.ContactInfomationFlag = true;
-                    this.Refresh();
+                    // H_Controlのメソッドを呼び出す
+                    _evacuationHSetControl.ContactInfomationFlag = true;
+                    /*
+                     * DB書換え
+                     */
+                    try {
+                        _hVehicleDispatchDetailDao.UpdateContactInfomationFlag(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.ContactInfomationFlag);
+                    } catch (Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
                     break;
                 case "ToolStripMenuItemContactInformationFalse": // 連絡事項なし
                     this.ContactInfomationFlag = false;
-                    this.Refresh();
+                    // H_Controlのメソッドを呼び出す
+                    _evacuationHSetControl.ContactInfomationFlag = false;
+                    /*
+                     * DB書換え
+                     */
+                    try {
+                        _hVehicleDispatchDetailDao.UpdateContactInfomationFlag(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.ContactInfomationFlag);
+                    } catch (Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
                     break;
                 case "ToolStripMenuItemAddWorkerTrue": // 作業員付きに変更する
                     this.AddWorkerFlag = true;
                     this.Refresh();
+                    /*
+                     * DB書換え
+                     */
+                    try {
+                        _hVehicleDispatchDetailDao.UpdateAddWorkerFlag(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.AddWorkerFlag);
+                    } catch (Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
                     break;
                 case "ToolStripMenuItemAddWorkerFalse": // 作業員なしに変更する
                     this.AddWorkerFlag = false;
                     this.Refresh();
+                    /*
+                     * DB書換え
+                     */
+                    try {
+                        _hVehicleDispatchDetailDao.UpdateAddWorkerFlag(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.AddWorkerFlag);
+                    } catch (Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
                     break;
                 case "ToolStripMenuItemShiftFirst": // 早番に変更する
-                    MessageBox.Show("ToolStripMenuItemShiftFirst");
+                    this.ShiftCode = 1;
+                    this.Refresh();
+                    /*
+                     * DB書換え
+                     */
+                    try {
+                        _hVehicleDispatchDetailDao.UpdateShiftCode(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.ShiftCode);
+                    } catch (Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
                     break;
                 case "ToolStripMenuItemShiftLater": // 遅番に変更する
-                    MessageBox.Show("ToolStripMenuItemShiftLater");
+                    this.ShiftCode = 2;
+                    this.Refresh();
+                    /*
+                     * DB書換え
+                     */
+                    try {
+                        _hVehicleDispatchDetailDao.UpdateShiftCode(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.ShiftCode);
+                    } catch (Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
                     break;
                 case "ToolStripMenuItemShiftNone": // 解除する
-                    MessageBox.Show("ToolStripMenuItemShiftNone");
+                    this.ShiftCode = 0;
+                    this.Refresh();
+                    /*
+                     * DB書換え
+                     */
+                    try {
+                        _hVehicleDispatchDetailDao.UpdateShiftCode(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.ShiftCode);
+                    } catch (Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
                     break;
                 case "ToolStripMenuItemStandByTrue": // 待機に変更する
-                    MessageBox.Show("ToolStripMenuItemStandByTrue");
+                    this.StandByFlag = true;
+                    this.Refresh();
+                    /*
+                     * DB書換え
+                     */
+                    try {
+                        _hVehicleDispatchDetailDao.UpdateStandByFlag(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.StandByFlag);
+                    } catch (Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
                     break;
                 case "ToolStripMenuItemStandByFalse": // 待機を解除する
-                    MessageBox.Show("ToolStripMenuItemStandByFalse");
+                    this.StandByFlag = false;
+                    this.Refresh();
+                    /*
+                     * DB書換え
+                     */
+                    try {
+                        _hVehicleDispatchDetailDao.UpdateStandByFlag(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.StandByFlag);
+                    } catch (Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
                     break;
                 case "ToolStripMenuItemFaxInformationTrue": // Fax送信をする
-                    MessageBox.Show("ToolStripMenuItemFaxInformationTrue");
+                    this.FaxTransmissionFlag = true;
+                    /*
+                     * DB書換え
+                     */
+                    try {
+                        _hVehicleDispatchDetailDao.UpdateFaxTransmissionFlag(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.FaxTransmissionFlag);
+                    } catch (Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
                     break;
                 case "ToolStripMenuItemFaxInformationFalse": // Fax送信をしない
-                    MessageBox.Show("ToolStripMenuItemFaxInformationFalse");
+                    this.FaxTransmissionFlag = false;
+                    /*
+                     * DB書換え
+                     */
+                    try {
+                        _hVehicleDispatchDetailDao.UpdateFaxTransmissionFlag(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.FaxTransmissionFlag);
+                    } catch (Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
                     break;
                 case "ToolStripMenuItemCreateFax": // 代車・代番Faxを作成する
                     MessageBox.Show("ToolStripMenuItemCreateFax");
@@ -540,7 +704,11 @@ namespace H_ControlEx {
         /// </summary>
         public bool ContactInfomationFlag {
             get => _contactInfomationFlag;
-            set => _contactInfomationFlag = value;
+            set {
+                _contactInfomationFlag = value;
+                if (this.Parent is not null)
+                    ((H_SetControl)this.Parent).ContactInfomationFlag = value;
+            }
         }
         /// <summary>
         /// FAX送信フラグ
@@ -548,7 +716,11 @@ namespace H_ControlEx {
         /// </summary>
         public bool FaxTransmissionFlag {
             get => _faxTransmissionFlag;
-            set => _faxTransmissionFlag = value;
+            set {
+                _faxTransmissionFlag = value;
+                if (this.Parent is not null)
+                    ((H_SetControl)this.Parent).FaxTransmissionFlag = value;
+            }
         }
         /// <summary>
         /// 帰庫点呼フラグ

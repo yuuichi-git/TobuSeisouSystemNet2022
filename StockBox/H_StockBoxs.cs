@@ -16,7 +16,7 @@ namespace StockBox {
         /*
          * Vo
          */
-        private H_ControlVo _hControlVo;
+        private readonly H_ControlVo _hControlVo;
         private readonly List<H_SetMasterVo> _temporaryRemoveListHSetMasterVo;
         private readonly List<H_CarMasterVo> _temporaryRemoveListHCarMasterVo;
         private readonly List<H_StaffMasterVo> _temporaryRemoveListHStaffMasterVo;

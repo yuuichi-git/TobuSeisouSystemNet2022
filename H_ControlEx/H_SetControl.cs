@@ -18,14 +18,25 @@ namespace H_ControlEx {
         private const int _rowCount = 4; // Row数
         private bool _oldOnCursorFlag = false;
         private bool _newOnCursorFlag = false;
+        /// <summary>
+        /// 連絡事項フラグ
+        /// </summary>
+        private bool _contactInfomationFlag = false;
+        /// <summary>
+        /// Fax送信確認フラグ
+        /// </summary>
+        private bool _faxTransmissionFlag = false;
+
         /*
          * StaffLabel用のCellの位置を保持
          */
-        private Dictionary<int, Point> _dictionaryCellPoint = new() { { 0, new Point(0, 2) }, { 1, new Point(0, 3) }, { 2, new Point(1, 2) }, { 3, new Point(1, 3) } }; // StaffLabel用のCellの位置
+        private readonly Dictionary<int, Point> _dictionaryCellPoint = new() { { 0, new Point(0, 2) }, { 1, new Point(0, 3) }, { 2, new Point(1, 2) }, { 3, new Point(1, 3) } }; // StaffLabel用のCellの位置
         /*
          * Vo
          */
         private readonly H_ControlVo _hControlVo;
+        private readonly H_VehicleDispatchDetailVo _hVehicleDispatchDetailVo;
+
         /*
          * Eventを親へ渡す処理
          * インスタンスから見えるようになる
@@ -72,6 +83,7 @@ namespace H_ControlEx {
              * Vo
              */
             _hControlVo = hControlVo;
+            _hVehicleDispatchDetailVo = hControlVo.HVehicleDispatchDetailVo;
             /*
              * ControlIni
              */
@@ -81,11 +93,11 @@ namespace H_ControlEx {
             this.Margin = new Padding(0);
             this.Name = "H_SetControl";
             this.Padding = new Padding(0);
-            this.Tag = hControlVo;
+            this.Tag = _hControlVo;
             /*
              * SetControlの形状(１列か２列か)を決定する
              */
-            switch (hControlVo.PurposeFlag) {
+            switch (_hControlVo.PurposeFlag) {
                 case false: // １列
                     this.Size = new Size(80, 400);
                     this.ColumnCount = _columnCount;
@@ -108,12 +120,13 @@ namespace H_ControlEx {
                     this.RowStyles.Add(new RowStyle(SizeType.Absolute, _panelHeight));
                     break;
             }
-            // SetLabelを作成
-            CreateHSetLabel(hControlVo);
-            // CarLabelを作成
-            CreateHCarLabel(hControlVo);
-            // StaffLabelを作成
-            CreateHStaffLabel(hControlVo);
+            /*
+             * H_SetControl特有の動作を設定
+             */
+            if (_hVehicleDispatchDetailVo is not null) {
+                _contactInfomationFlag = _hVehicleDispatchDetailVo.ContactInfomationFlag;
+                _faxTransmissionFlag = _hVehicleDispatchDetailVo.FaxTransmissionFlag;
+            }
             /*
              * Event
              */
@@ -124,6 +137,12 @@ namespace H_ControlEx {
             this.DragEnter += HSetControlEx_DragEnter;
             this.DragDrop += HSetControlEx_DragDrop;
             this.DragOver += HSetControlEx_DragOver;
+            /*
+             * H_SetControlに格納する各Labelを作成する 
+             */
+            CreateHSetLabel(_hControlVo); // SetLabel           
+            CreateHCarLabel(_hControlVo); // CarLabel
+            CreateHStaffLabel(_hControlVo); // StaffLabel
         }
 
         /// <summary>
@@ -187,20 +206,37 @@ namespace H_ControlEx {
             }
         }
 
+        /*
+         * SetControlExを囲うPointと半透明色を設定する
+         */
+        readonly SolidBrush _solidBrushContactInformation = new(Color.FromArgb(70, Color.LimeGreen));
+        readonly SolidBrush _solidBrushFaxTransmission = new(Color.FromArgb(70, Color.IndianRed));
         /// <summary>
         /// OnCellPaint
         /// </summary>
         /// <param name="e"></param>
         protected override void OnCellPaint(TableLayoutCellPaintEventArgs e) {
+            Rectangle rectangle = e.CellBounds;
+            rectangle.Inflate(-1, -1); // 枠のサイズを小さくする
             /*
              * Boderを描画する
              */
-            Rectangle rectangle = e.CellBounds;
-            rectangle.Inflate(-1, -1); // 枠のサイズを小さくする
             if (_hControlVo.VehicleDispatchFlag) {
                 switch (e.Column) {
                     case 0: // １列目
                         switch (e.Row) {
+                            case 0: // H_SetLabel
+                                if (_contactInfomationFlag)
+                                    e.Graphics.FillRectangle(_solidBrushContactInformation, rectangle);
+                                if (_faxTransmissionFlag)
+                                    e.Graphics.FillRectangle(_solidBrushFaxTransmission, rectangle);
+                                break;
+                            case 1: // H_CarLabel
+                                if (_contactInfomationFlag)
+                                    e.Graphics.FillRectangle(_solidBrushContactInformation, rectangle);
+                                if (_faxTransmissionFlag)
+                                    e.Graphics.FillRectangle(_solidBrushFaxTransmission, rectangle);
+                                break;
                             case 2: // StaffLabel(1人目)
                                 if (_hControlVo.HSetMasterVo.NumberOfPeople >= 1)
                                     ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // StaffLabel1の枠線
@@ -443,6 +479,32 @@ namespace H_ControlEx {
             hVehicleDispatchDetailVo.DeleteFlag = false;
 
             return hVehicleDispatchDetailVo;
+        }
+
+        /*
+         * アクセサー
+         */
+        /// <summary>
+        /// 連絡事項フラグ
+        /// true:連絡事項あり false:なし
+        /// </summary>
+        public bool ContactInfomationFlag {
+            get => _contactInfomationFlag;
+            set {
+                _contactInfomationFlag = value;
+                this.Refresh();
+            }
+        }
+        /// <summary>
+        /// Fax送信確認フラグ
+        /// true:Fax送信あり false:なし
+        /// </summary>
+        public bool FaxTransmissionFlag {
+            get => _faxTransmissionFlag;
+            set {
+                _faxTransmissionFlag = value;
+                this.Refresh();
+            }
         }
     }
 }

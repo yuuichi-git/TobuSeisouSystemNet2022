@@ -1,6 +1,8 @@
 ﻿/*
  * 2023-10-31
  */
+using H_Dao;
+
 using H_Vo;
 
 namespace H_ControlEx {
@@ -42,7 +44,10 @@ namespace H_ControlEx {
         /// 点呼日時
         /// </summary>
         private DateTime _staffRollCallYmdHms = new DateTime(1900, 01, 01);
-
+        /*
+         * H_Dao 
+         */
+        private H_VehicleDispatchDetailDao _hVehicleDispatchDetailDao;
         /*
          * Vo
          */
@@ -61,6 +66,10 @@ namespace H_ControlEx {
         /// <param name="hStaffMasterVo"></param>
         public H_StaffLabel(H_ControlVo hControlVo) {
             /*
+             * H_Dao 
+             */
+            _hVehicleDispatchDetailDao = new(hControlVo.ConnectionVo);
+            /*
              * Vo
              */
             _hControlVo = hControlVo;
@@ -71,6 +80,7 @@ namespace H_ControlEx {
              */
             InitializeComponent();
             this.AllowDrop = true;
+            this.BackColor = Color.Transparent;
             this.BorderStyle = BorderStyle.None;
             this.Height = (int)_panelHeight - 4;
             this.Margin = new Padding(2);

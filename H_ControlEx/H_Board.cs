@@ -69,7 +69,11 @@ namespace H_ControlEx {
         /// </summary>
         /// <param name="hSetControlVo"></param>
         public void AddSetControl(H_ControlVo hSetControlVo) {
+            // インスタンス作成
             H_SetControl hSetControl = new(hSetControlVo);
+            /*
+             * イベントを登録
+             */
             hSetControl.Event_HSetControlEx_MouseDown += HSetControl_MouseDown;
             hSetControl.Event_HSetControlEx_MouseUp += HSetControl_MouseUp;
             hSetControl.Event_HSetControlEx_MouseMove += HSetControl_MouseMove;
@@ -85,7 +89,9 @@ namespace H_ControlEx {
             hSetControl.Event_HStaffLabelEx_MouseClick += HStaffLabel_MouseClick;
             hSetControl.Event_HStaffLabelEx_MouseDoubleClick += HStaffLabel_MouseDoubleClick;
             hSetControl.Event_HStaffLabelEx_MouseMove += HStaffLabel_MouseMove;
-
+            /*
+             * Controlを配置
+             */
             this.Controls.Add(hSetControl, GetAddCellPoint(hSetControlVo.CellNumber).X, GetAddCellPoint(hSetControlVo.CellNumber).Y);
             this.SetColumnSpan(hSetControl, hSetControlVo.PurposeFlag ? 2 : 1);
         }
@@ -164,7 +170,6 @@ namespace H_ControlEx {
         /// <param name="e"></param>
         private void HSetControl_DragDrop(object sender, DragEventArgs e) {
             H_SetControl hSetControl = (H_SetControl)sender;
-            H_ControlVo hControlVo = (H_ControlVo)hSetControl.Tag;
             Point clientPoint = hSetControl.PointToClient(new Point(e.X, e.Y));
             Point cellPoint = new(clientPoint.X / (int)_panelWidth, clientPoint.Y / (int)_panelHeight);
             if (e.Data.GetDataPresent(typeof(H_SetLabel))) {
@@ -173,6 +178,7 @@ namespace H_ControlEx {
                     /*
                      * H_StockBoxsにアイテムを残すのでH_SetLabelのコピーを作成
                      */
+                    H_ControlVo hControlVo = (H_ControlVo)hSetControl.Tag;
                     hControlVo.HSetMasterVo = (H_SetMasterVo)dragItem.Tag;
                     H_SetLabel hSetLabel = new(hControlVo);
                     hSetLabel.MouseClick += HSetLabel_MouseClick;

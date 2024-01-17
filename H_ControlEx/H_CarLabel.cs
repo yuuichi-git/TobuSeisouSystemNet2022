@@ -1,6 +1,8 @@
 ﻿/*
  * 2023-10-25
  */
+using H_Dao;
+
 using H_Vo;
 
 namespace H_ControlEx {
@@ -34,6 +36,10 @@ namespace H_ControlEx {
         /// </summary>
         private bool _carProxyFlag = false;
         /*
+         * H_Dao 
+         */
+        private H_VehicleDispatchDetailDao _hVehicleDispatchDetailDao;
+        /*
          * Vo
          */
         private readonly H_CarMasterVo _hCarMasterVo;
@@ -49,6 +55,10 @@ namespace H_ControlEx {
         /// <param name="hCarMasterVo"></param>
         public H_CarLabel(H_ControlVo hControlVo) {
             /*
+             * H_Dao 
+             */
+            _hVehicleDispatchDetailDao = new(hControlVo.ConnectionVo);
+            /*
              * Vo
              */
             _hCarMasterVo = hControlVo.HCarMasterVo;
@@ -58,6 +68,7 @@ namespace H_ControlEx {
              */
             InitializeComponent();
             this.AllowDrop = true;
+            this.BackColor = Color.Transparent;
             this.BorderStyle = BorderStyle.None;
             this.Height = (int)_panelHeight - 4;
             this.Margin = new Padding(2);

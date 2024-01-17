@@ -2,11 +2,14 @@
  * 2023-10-21
  * H_SetControlに値を渡す為のVo
  */
+using Vo;
+
 namespace H_Vo {
     public class H_ControlVo {
         /*
          * プロパティ
          */
+        private ConnectionVo? _connectionVo;
         private int _cellNumber;
         private DateTime _operationDate;
         private bool _operationFlag;
@@ -26,6 +29,7 @@ namespace H_Vo {
         /// コンストラクタ
         /// </summary>
         public H_ControlVo() {
+            _connectionVo = null;
             _operationDate = new DateTime(1900, 01, 01);
             _operationFlag = false;
             _cellNumber = 0;
@@ -45,6 +49,13 @@ namespace H_Vo {
         /*
          * Setter Getter
          */
+        /// <summary>
+        /// ConnectionVo
+        /// </summary>
+        public ConnectionVo? ConnectionVo {
+            get => _connectionVo;
+            set => _connectionVo = value;
+        }
         /// <summary>
         /// CellNumber
         /// </summary>

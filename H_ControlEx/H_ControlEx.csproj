@@ -13,13 +13,16 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <Optimize>True</Optimize>
+    <DebugType>embedded</DebugType>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\H_Common\H_Common.csproj" />
+    <ProjectReference Include="..\H_Dao\H_Dao.csproj" />
     <ProjectReference Include="..\H_Vo\H_Vo.csproj" />
   </ItemGroup>
 

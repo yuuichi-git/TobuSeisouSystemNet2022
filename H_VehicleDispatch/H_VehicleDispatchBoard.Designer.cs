@@ -34,6 +34,7 @@
             ToolStripMenuItemHelp = new ToolStripMenuItem();
             StatusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
+            ToolStripProgressBar1 = new ToolStripProgressBar();
             ToolStripStatusLabelDetail = new ToolStripStatusLabel();
             h_PanelExLeft = new H_ControlEx.H_PanelEx();
             h_ButtonExLeft5 = new H_ControlEx.H_ButtonEx();
@@ -144,7 +145,7 @@
             // StatusStrip1
             // 
             h_TableLayoutPanelExBase.SetColumnSpan(StatusStrip1, 3);
-            StatusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, ToolStripStatusLabelDetail });
+            StatusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, ToolStripProgressBar1, ToolStripStatusLabelDetail });
             StatusStrip1.Location = new Point(0, 1019);
             StatusStrip1.Name = "StatusStrip1";
             StatusStrip1.Size = new Size(1904, 22);
@@ -156,6 +157,13 @@
             toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             toolStripStatusLabel1.Size = new Size(39, 17);
             toolStripStatusLabel1.Text = "Status";
+            // 
+            // ToolStripProgressBar1
+            // 
+            ToolStripProgressBar1.Name = "ToolStripProgressBar1";
+            ToolStripProgressBar1.Size = new Size(200, 16);
+            ToolStripProgressBar1.Step = 1;
+            ToolStripProgressBar1.Value = 50;
             // 
             // ToolStripStatusLabelDetail
             // 
@@ -416,5 +424,6 @@
         private ToolStripMenuItem ToolStripMenuItemPrint;
         private ToolStripMenuItem ToolStripMenuItemPrintB4;
         private ToolStripStatusLabel ToolStripStatusLabelDetail;
+        private ToolStripProgressBar ToolStripProgressBar1;
     }
 }

@@ -11,9 +11,12 @@ using Vo;
 
 namespace H_Dao {
     public class H_VehicleDispatchDetailDao {
+        /*
+         * H_Common
+         */
         private readonly DefaultValue _defaultValue = new();
         /*
-         * Vo
+         * H_Vo
          */
         private readonly ConnectionVo _connectionVo;
 
@@ -22,7 +25,7 @@ namespace H_Dao {
         /// </summary>
         public H_VehicleDispatchDetailDao(ConnectionVo connectionVo) {
             /*
-             * Vo
+             * H_Vo
              */
             _connectionVo = connectionVo;
         }
@@ -292,6 +295,169 @@ namespace H_Dao {
                 sqlCommand.ExecuteNonQuery();
             }
             catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 作業員付フラグ
+        /// </summary>
+        /// <param name="cellNumber"></param>
+        /// <param name="operationDate"></param>
+        /// <param name="addWorkerFlag"></param>
+        public void UpdateAddWorkerFlag(int cellNumber, DateTime operationDate, bool addWorkerFlag) {
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE H_VehicleDispatchDetail " +
+                                     "SET AddWorkerFlag = '" + addWorkerFlag + "'," +
+                                         "UpdatePcName = '" + Environment.MachineName + "'," +
+                                         "UpdateYmdHms = '" + DateTime.Now + "' " +
+                                     "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// UpdateClassificationCode
+        /// </summary>
+        /// <param name="cellNumber"></param>
+        /// <param name="operationDate"></param>
+        /// <param name="classificationCode"></param>
+        public void UpdateClassificationCode(int cellNumber, DateTime operationDate, int classificationCode) {
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE H_VehicleDispatchDetail " +
+                                     "SET ClassificationCode = " + classificationCode + "," +
+                                         "UpdatePcName = '" + Environment.MachineName + "'," +
+                                         "UpdateYmdHms = '" + DateTime.Now + "' " +
+                                     "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            }
+            catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 連絡事項印フラグ
+        /// </summary>
+        /// <param name="cellNumber"></param>
+        /// <param name="operationDate"></param>
+        /// <param name="contactInfomationFlag"></param>
+        public void UpdateContactInfomationFlag(int cellNumber, DateTime operationDate, bool contactInfomationFlag) {
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE H_VehicleDispatchDetail " +
+                                     "SET ContactInfomationFlag = '" + contactInfomationFlag + "'," +
+                                         "UpdatePcName = '" + Environment.MachineName + "'," +
+                                         "UpdateYmdHms = '" + DateTime.Now + "' " +
+                                     "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// FAX送信フラグ
+        /// </summary>
+        /// <param name="cellNumber"></param>
+        /// <param name="operationDate"></param>
+        /// <param name="faxTransmissionFlag"></param>
+        public void UpdateFaxTransmissionFlag(int cellNumber, DateTime operationDate, bool faxTransmissionFlag) {
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE H_VehicleDispatchDetail " +
+                                     "SET FaxTransmissionFlag = '" + faxTransmissionFlag + "'," +
+                                         "UpdatePcName = '" + Environment.MachineName + "'," +
+                                         "UpdateYmdHms = '" + DateTime.Now + "' " +
+                                     "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 管理地
+        /// </summary>
+        /// <param name="cellNumber"></param>
+        /// <param name="operationDate"></param>
+        /// <param name="managedSpaceCode"></param>
+        public void UpdateManagedSpaceCode(int cellNumber, DateTime operationDate, int managedSpaceCode) {
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE H_VehicleDispatchDetail " +
+                                     "SET ManagedSpaceCode = " + managedSpaceCode + "," +
+                                         "UpdatePcName = '" + Environment.MachineName + "'," +
+                                         "UpdateYmdHms = '" + DateTime.Now + "' " +
+                                     "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            }
+            catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 稼働フラグ
+        /// </summary>
+        /// <param name="cellNumber"></param>
+        /// <param name="operationDate"></param>
+        /// <param name="operationFlag"></param>
+        public void UpdateOperationFlag(int cellNumber, DateTime operationDate, bool operationFlag) {
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE H_VehicleDispatchDetail " +
+                                     "SET OperationFlag = '" + operationFlag + "'," +
+                                         "UpdatePcName = '" + Environment.MachineName + "'," +
+                                         "UpdateYmdHms = '" + DateTime.Now + "' " +
+                                     "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            }
+            catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 番手コード
+        /// </summary>
+        /// <param name="cellNumber"></param>
+        /// <param name="operationDate"></param>
+        /// <param name="shiftCode"></param>
+        public void UpdateShiftCode(int cellNumber, DateTime operationDate, int shiftCode) {
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE H_VehicleDispatchDetail " +
+                                     "SET ShiftCode = " + shiftCode + "," +
+                                         "UpdatePcName = '" + Environment.MachineName + "'," +
+                                         "UpdateYmdHms = '" + DateTime.Now + "' " +
+                                     "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 待機フラグ
+        /// </summary>
+        /// <param name="cellNumber"></param>
+        /// <param name="operationDate"></param>
+        /// <param name="standByFlag"></param>
+        public void UpdateStandByFlag(int cellNumber, DateTime operationDate, bool standByFlag) {
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE H_VehicleDispatchDetail " +
+                                     "SET StandByFlag = '" + standByFlag + "'," +
+                                         "UpdatePcName = '" + Environment.MachineName + "'," +
+                                         "UpdateYmdHms = '" + DateTime.Now + "' " +
+                                     "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            } catch {
                 throw;
             }
         }
