@@ -7,7 +7,26 @@ using H_Vo;
 
 namespace H_ControlEx {
     public partial class H_StaffLabel : Label {
+        /*
+         * Eventを親へ渡す処理
+         * インスタンスから見えるようになる
+         * StaffLabel
+         */
+        public event MouseEventHandler Event_HStaffLabel_MouseClick = delegate { };
+        public event MouseEventHandler Event_HStaffLabel_MouseDoubleClick = delegate { };
+        public event MouseEventHandler Event_HStaffLabel_MouseMove = delegate { };
+
         private readonly Image _imageStaffLabel;
+        /*
+         * H_Dao 
+         */
+        private H_VehicleDispatchDetailDao _hVehicleDispatchDetailDao;
+        /*
+         * Vo
+         */
+        private H_ControlVo _hControlVo;
+        private readonly H_StaffMasterVo _staffMasterVo;
+        private H_VehicleDispatchDetailVo _hVehicleDispatchDetailVo;
         /*
          * １つのパネルのサイズ
          */
@@ -16,6 +35,11 @@ namespace H_ControlEx {
         /*
          * プロパティー
          */
+        /// <summary>
+        /// H_SetControl上での配置位置を記録
+        /// 0:運転手 1:作業員① 2:作業員② 3:作業員③ 9:指定なし
+        /// </summary>
+        private int _cellNumber = 9;
         /// <summary>
         /// メモ
         /// </summary>
@@ -39,21 +63,15 @@ namespace H_ControlEx {
         /// 出庫点呼フラグ
         /// true:出庫点呼済 false:未点呼
         /// </summary>
-        private bool _staffRollCallFlag = true;
+        private bool _staffRollCallFlag = false;
         /// <summary>
         /// 点呼日時
         /// </summary>
         private DateTime _staffRollCallYmdHms = new DateTime(1900, 01, 01);
         /*
-         * H_Dao 
+         * H_SetControlのアクセサーを操作するのに使うので退避させておく
          */
-        private H_VehicleDispatchDetailDao _hVehicleDispatchDetailDao;
-        /*
-         * Vo
-         */
-        private H_ControlVo _hControlVo;
-        private readonly H_StaffMasterVo _staffMasterVo;
-        private H_VehicleDispatchDetailVo _hVehicleDispatchDetailVo;
+        private H_SetControl _evacuationHSetControl;
         /*
           * Fontの定義
           */
@@ -103,9 +121,11 @@ namespace H_ControlEx {
             if (_hVehicleDispatchDetailVo is not null) {
                 /*
                  * _hControlVo.SelectNumberStaffMasterVoを使って、何番目のデータかを知る
+                 * これ以降はthis.CellNumberに格納するので使わない・・・
                  */
                 switch (_hControlVo.SelectNumberStaffMasterVo) {
                     case 0:
+                        this.CellNumber = 0;
                         this.StaffMemo = _hVehicleDispatchDetailVo.StaffMemo1;
                         this.StaffMemoFlag = _hVehicleDispatchDetailVo.StaffMemoFlag1;
                         this.StaffOccupationCode = _hVehicleDispatchDetailVo.StaffOccupation1;
@@ -114,6 +134,7 @@ namespace H_ControlEx {
                         this.StaffRollCallYmdHms = _hVehicleDispatchDetailVo.StaffRollCallYmdHms1;
                         break;
                     case 1:
+                        this.CellNumber = 1;
                         this.StaffMemo = _hVehicleDispatchDetailVo.StaffMemo2;
                         this.StaffMemoFlag = _hVehicleDispatchDetailVo.StaffMemoFlag2;
                         this.StaffOccupationCode = _hVehicleDispatchDetailVo.StaffOccupation2;
@@ -122,6 +143,7 @@ namespace H_ControlEx {
                         this.StaffRollCallYmdHms = _hVehicleDispatchDetailVo.StaffRollCallYmdHms2;
                         break;
                     case 2:
+                        this.CellNumber = 2;
                         this.StaffMemo = _hVehicleDispatchDetailVo.StaffMemo3;
                         this.StaffMemoFlag = _hVehicleDispatchDetailVo.StaffMemoFlag3;
                         this.StaffOccupationCode = _hVehicleDispatchDetailVo.StaffOccupation3;
@@ -130,6 +152,7 @@ namespace H_ControlEx {
                         this.StaffRollCallYmdHms = _hVehicleDispatchDetailVo.StaffRollCallYmdHms3;
                         break;
                     case 3:
+                        this.CellNumber = 3;
                         this.StaffMemo = _hVehicleDispatchDetailVo.StaffMemo4;
                         this.StaffMemoFlag = _hVehicleDispatchDetailVo.StaffMemoFlag4;
                         this.StaffOccupationCode = _hVehicleDispatchDetailVo.StaffOccupation4;
@@ -139,8 +162,28 @@ namespace H_ControlEx {
                         break;
                 }
             } else {
+                switch (_hControlVo.SelectNumberStaffMasterVo) {
+                    case 0:
+                        this.CellNumber = 0;
+                        break;
+                    case 1:
+                        this.CellNumber = 1;
+                        break;
+                    case 2:
+                        this.CellNumber = 2;
+                        break;
+                    case 3:
+                        this.CellNumber = 3;
+                        break;
 
+                }
             }
+            /*
+             * Event
+             */
+            this.MouseClick += HStaffLabel_MouseClick;
+            this.MouseDoubleClick += HStaffLabel_MouseDoubleClick;
+            this.MouseMove += HStaffLabel_MouseMove;
         }
 
         /// <summary>
@@ -172,25 +215,25 @@ namespace H_ControlEx {
              * Occupation
              * 10:運転手 11:作業員 20:事務職 99:指定なし
              */
-            e.Graphics.DrawString(this.StaffOccupationCode == 11 ? "作" : "", _drawFontOccupation, Brushes.DarkGray, 8, 72);
+            e.Graphics.DrawString(_staffOccupationCode == 11 ? "作" : "", _drawFontOccupation, Brushes.DarkGray, 8, 72);
             /*
              * 代番処理を描画
              */
-            if (StaffProxyFlag) {
+            if (_staffProxyFlag) {
                 e.Graphics.FillRectangle(Brushes.ForestGreen, 14, 4, 48, 5);
                 e.Graphics.DrawLine(new Pen(Color.LawnGreen), new Point(10, 6), new Point(63, 6));
             }
             /*
              * メモを描画
              */
-            if (StaffMemoFlag) {
+            if (_staffMemoFlag) {
                 Point[] points = { new Point(7, 10), new Point(21, 10), new Point(7, 24) };
                 e.Graphics.FillPolygon(new SolidBrush(Color.Crimson), points);
             }
             /*
              * 点呼の印を描画
              */
-            if (!StaffRollCallFlag) {
+            if (!_staffRollCallFlag) {
                 e.Graphics.FillEllipse(Brushes.Crimson, 56, 73, 10, 10);
                 e.Graphics.FillEllipse(Brushes.LightPink, 60, 77, 4, 4);
             }
@@ -207,6 +250,10 @@ namespace H_ControlEx {
                     if (item.GetType() == typeof(ToolStripMenuItem))
                         ((ToolStripMenuItem)item).Enabled = true;
                 }
+                /*
+                 * H_SetControlのアクセサーを操作するのに使うので退避させておく
+                 */
+                _evacuationHSetControl = (H_SetControl)((H_StaffLabel)((ContextMenuStrip)sender).SourceControl).Parent;
             } else if (((H_StaffLabel)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(H_FlowLayoutPanelEx)) {
                 foreach (object item in ((ContextMenuStrip)sender).Items) {
                     if (item.GetType() == typeof(ToolStripMenuItem)) {
@@ -260,43 +307,43 @@ namespace H_ControlEx {
             toolStripMenuItem01.DropDownItems.Add(toolStripMenuItem01_1);
             contextMenuStrip.Items.Add(toolStripMenuItem01);
             /*
-             * メモを作成・編集する
-             */
-            ToolStripMenuItem toolStripMenuItem02 = new("メモを作成・編集する");
-            toolStripMenuItem02.Name = "ToolStripMenuItemStaffMemo";
-            toolStripMenuItem02.Click += ToolStripMenuItem_Click;
-            contextMenuStrip.Items.Add(toolStripMenuItem02);
-            /*
              * 料金設定
              */
-            ToolStripMenuItem toolStripMenuItem03 = new("料金設定"); // 親アイテム
-            toolStripMenuItem03.Name = "ToolStripMenuItemStaffOccupation";
-            ToolStripMenuItem toolStripMenuItem03_0 = new("運転手の料金設定にする(運賃コードに依存)"); // 子アイテム１
-            toolStripMenuItem03_0.Name = "ToolStripMenuItemStaffOccupation10";
+            ToolStripMenuItem toolStripMenuItem02 = new("料金設定"); // 親アイテム
+            toolStripMenuItem02.Name = "ToolStripMenuItemStaffOccupation";
+            ToolStripMenuItem toolStripMenuItem02_0 = new("運転手の料金設定にする(運賃コードに依存)"); // 子アイテム１
+            toolStripMenuItem02_0.Name = "ToolStripMenuItemStaffOccupation10";
+            toolStripMenuItem02_0.Click += ToolStripMenuItem_Click;
+            toolStripMenuItem02.DropDownItems.Add(toolStripMenuItem02_0);
+            contextMenuStrip.Items.Add(toolStripMenuItem02);
+
+            ToolStripMenuItem toolStripMenuItem02_1 = new("作業員の料金設定にする"); // 子アイテム２
+            toolStripMenuItem02_1.Name = "ToolStripMenuItemStaffOccupation11";
+            toolStripMenuItem02_1.Click += ToolStripMenuItem_Click;
+            toolStripMenuItem02.DropDownItems.Add(toolStripMenuItem02_1);
+            contextMenuStrip.Items.Add(toolStripMenuItem02);
+            /*
+             * 電話連絡・出勤確認
+             */
+            ToolStripMenuItem toolStripMenuItem03 = new("出勤確認"); // 親アイテム
+            toolStripMenuItem03.Name = "ToolStripMenuItemStaffTelephoneMark";
+            ToolStripMenuItem toolStripMenuItem03_0 = new("出勤を確認済"); // 子アイテム１
+            toolStripMenuItem03_0.Name = "ToolStripMenuItemTelephoneMarkTrue";
             toolStripMenuItem03_0.Click += ToolStripMenuItem_Click;
             toolStripMenuItem03.DropDownItems.Add(toolStripMenuItem03_0);
             contextMenuStrip.Items.Add(toolStripMenuItem03);
 
-            ToolStripMenuItem toolStripMenuItem03_1 = new("作業員の料金設定にする"); // 子アイテム２
-            toolStripMenuItem03_1.Name = "ToolStripMenuItemStaffOccupation11";
+            ToolStripMenuItem toolStripMenuItem03_1 = new("出勤を未確認"); // 子アイテム２
+            toolStripMenuItem03_1.Name = "ToolStripMenuItemStaffTelephoneMarkFalse";
             toolStripMenuItem03_1.Click += ToolStripMenuItem_Click;
             toolStripMenuItem03.DropDownItems.Add(toolStripMenuItem03_1);
             contextMenuStrip.Items.Add(toolStripMenuItem03);
             /*
-             * 電話連絡・出勤確認
+             * メモを作成・編集する
              */
-            ToolStripMenuItem toolStripMenuItem04 = new("出勤確認"); // 親アイテム
-            toolStripMenuItem04.Name = "ToolStripMenuItemStaffTelephoneMark";
-            ToolStripMenuItem toolStripMenuItem04_0 = new("出勤を確認済"); // 子アイテム１
-            toolStripMenuItem04_0.Name = "ToolStripMenuItemTelephoneMarkTrue";
-            toolStripMenuItem04_0.Click += ToolStripMenuItem_Click;
-            toolStripMenuItem04.DropDownItems.Add(toolStripMenuItem04_0);
-            contextMenuStrip.Items.Add(toolStripMenuItem04);
-
-            ToolStripMenuItem toolStripMenuItem04_1 = new("出勤を未確認"); // 子アイテム２
-            toolStripMenuItem04_1.Name = "ToolStripMenuItemStaffTelephoneMarkFalse";
-            toolStripMenuItem04_1.Click += ToolStripMenuItem_Click;
-            toolStripMenuItem04.DropDownItems.Add(toolStripMenuItem04_1);
+            ToolStripMenuItem toolStripMenuItem04 = new("メモを作成・編集する");
+            toolStripMenuItem04.Name = "ToolStripMenuItemStaffMemo";
+            toolStripMenuItem04.Click += ToolStripMenuItem_Click;
             contextMenuStrip.Items.Add(toolStripMenuItem04);
             /*
              * 備品を支給する
@@ -318,25 +365,65 @@ namespace H_ControlEx {
                     MessageBox.Show("ToolStripMenuItemStaffDetail");
                     break;
                 case "ToolStripMenuItemStaffProxyTrue": // 代番として記録する
-                    MessageBox.Show("ToolStripMenuItemStaffProxyTrue");
+                    this.StaffProxyFlag = true;
+                    this.Refresh();
+                    /*
+                     * DB書換え
+                     */
+                    try {
+                        _hVehicleDispatchDetailDao.UpdateStaffProxyFlag(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.StaffProxyFlag, this.CellNumber);
+                    } catch (Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
                     break;
                 case "ToolStripMenuItemStaffProxyFalse": // 代番を解除する
-                    MessageBox.Show("ToolStripMenuItemStaffProxyFalse");
+                    this.StaffProxyFlag = false;
+                    this.Refresh();
+                    /*
+                     * DB書換え
+                     */
+                    try {
+                        _hVehicleDispatchDetailDao.UpdateStaffProxyFlag(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.StaffProxyFlag, this.CellNumber);
+                    } catch (Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
+                    break;
+                case "ToolStripMenuItemStaffOccupation10": // 運転手の料金設定にする(運賃コードに依存)
+                    this.StaffOccupationCode = 10;
+                    this.Refresh();
+                    /*
+                     * DB書換え
+                     */
+                    try {
+                        _hVehicleDispatchDetailDao.UpdateStaffOccupation(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.StaffOccupationCode, this.CellNumber);
+                    } catch (Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
+                    break;
+                case "ToolStripMenuItemStaffOccupation11": // 作業員の料金設定にする
+                    this.StaffOccupationCode = 11;
+                    this.Refresh();
+                    /*
+                     * DB書換え
+                     */
+                    try {
+                        _hVehicleDispatchDetailDao.UpdateStaffOccupation(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.StaffOccupationCode, this.CellNumber);
+                    } catch (Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
+                    break;
+                case "ToolStripMenuItemTelephoneMarkTrue": // 出勤を確認済
+                    this.StaffRollCallFlag = true;
+                    this.Refresh();
+
+                    break;
+                case "ToolStripMenuItemStaffTelephoneMarkFalse": // 出勤を未確認
+                    this.StaffRollCallFlag = false;
+                    this.Refresh();
+
                     break;
                 case "ToolStripMenuItemStaffMemo": // メモを作成・編集する
                     MessageBox.Show("ToolStripMenuItemStaffMemo");
-                    break;
-                case "ToolStripMenuItemStaffOccupation10": // 運転手の料金設定にする(運賃コードに依存)
-                    MessageBox.Show("ToolStripMenuItemStaffOccupation10");
-                    break;
-                case "ToolStripMenuItemStaffOccupation11": // 作業員の料金設定にする
-                    MessageBox.Show("ToolStripMenuItemStaffOccupation11");
-                    break;
-                case "ToolStripMenuItemTelephoneMarkTrue": // 出勤を確認済
-                    MessageBox.Show("ToolStripMenuItemTelephoneMarkTrue");
-                    break;
-                case "ToolStripMenuItemStaffTelephoneMarkFalse": // 出勤を未確認
-                    MessageBox.Show("ToolStripMenuItemStaffTelephoneMarkFalse");
                     break;
                 case "ToolStripMenuItemStaffEquioment": // 備品を支給する
                     MessageBox.Show("ToolStripMenuItemStaffEquioment");
@@ -347,6 +434,14 @@ namespace H_ControlEx {
         /*
          * アクセサー
          */
+        /// <summary>
+        /// H_SetControl上での配置位置を記録
+        /// 0:運転手 1:作業員① 2:作業員② 3:作業員③ 9:指定なし
+        /// </summary>
+        public int CellNumber {
+            get => _cellNumber;
+            set => _cellNumber = value;
+        }
         /// <summary>
         /// メモ
         /// </summary>
@@ -392,6 +487,19 @@ namespace H_ControlEx {
         public DateTime StaffRollCallYmdHms {
             get => _staffRollCallYmdHms;
             set => _staffRollCallYmdHms = value;
+        }
+
+        /*
+         * H_StaffLabelEx
+         */
+        private void HStaffLabel_MouseClick(object sender, MouseEventArgs e) {
+            Event_HStaffLabel_MouseClick.Invoke(sender, e);
+        }
+        private void HStaffLabel_MouseDoubleClick(object sender, MouseEventArgs e) {
+            Event_HStaffLabel_MouseDoubleClick.Invoke(sender, e);
+        }
+        private void HStaffLabel_MouseMove(object sender, MouseEventArgs e) {
+            Event_HStaffLabel_MouseMove.Invoke(sender, e);
         }
     }
 }

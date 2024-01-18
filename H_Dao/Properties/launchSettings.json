@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "H_Dao": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

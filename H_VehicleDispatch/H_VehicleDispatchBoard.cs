@@ -15,7 +15,6 @@ using Vo;
 
 namespace H_VehicleDispatch {
     public partial class H_VehicleDispatchBoard : Form {
-        private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
         private readonly Date _date = new();
         /*
          * 変数定義
@@ -365,7 +364,6 @@ namespace H_VehicleDispatch {
                 case "h_ButtonExRight4":
                     break;
                 case "h_ButtonExRight5":
-                    ReadHBoard();
                     break;
             }
         }
@@ -382,6 +380,12 @@ namespace H_VehicleDispatch {
                  */
                 case "ToolStripMenuItemInitializeVehicleDispatch":
                     this.CreateVehicleDispatchInitialize();
+                    break;
+                /*
+                 * 終了処理
+                 */
+                case "ToolStripMenuItemExit":
+                    MessageBox.Show("ToolStripMenuItemExit");
                     break;
             }
         }

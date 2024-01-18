@@ -116,6 +116,7 @@ namespace H_Vo {
             set => _hStaffMasterVo = value;
         }
         /// <summary>
+        /// H_StaffLabelを作成する際に必要なパラメータだよ
         /// 0:運転手 1:作業員① 2:作業員② 3:作業員③
         /// </summary>
         public int SelectNumberStaffMasterVo {

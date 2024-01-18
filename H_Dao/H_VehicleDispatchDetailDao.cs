@@ -293,8 +293,7 @@ namespace H_Dao {
                                      "VALUES " + sqlString;
             try {
                 sqlCommand.ExecuteNonQuery();
-            }
-            catch {
+            } catch {
                 throw;
             }
         }
@@ -334,8 +333,7 @@ namespace H_Dao {
                                      "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
             try {
                 sqlCommand.ExecuteNonQuery();
-            }
-            catch {
+            } catch {
                 throw;
             }
         }
@@ -350,6 +348,46 @@ namespace H_Dao {
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "UPDATE H_VehicleDispatchDetail " +
                                      "SET ContactInfomationFlag = '" + contactInfomationFlag + "'," +
+                                         "UpdatePcName = '" + Environment.MachineName + "'," +
+                                         "UpdateYmdHms = '" + DateTime.Now + "' " +
+                                     "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 車庫地コード
+        /// </summary>
+        /// <param name="cellNumber"></param>
+        /// <param name="operationDate"></param>
+        /// <param name="carGarageCode"></param>
+        public void UpdateCarGarageCode(int cellNumber, DateTime operationDate, int carGarageCode) {
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE H_VehicleDispatchDetail " +
+                                     "SET CarGarageCode = " + carGarageCode + "," +
+                                         "UpdatePcName = '" + Environment.MachineName + "'," +
+                                         "UpdateYmdHms = '" + DateTime.Now + "' " +
+                                     "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 代車フラグ
+        /// </summary>
+        /// <param name="cellNumber"></param>
+        /// <param name="operationDate"></param>
+        /// <param name="carProxyFlag"></param>
+        public void UpdateCarProxyFlag(int cellNumber, DateTime operationDate, bool carProxyFlag) {
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE H_VehicleDispatchDetail " +
+                                     "SET CarProxyFlag = '" + carProxyFlag + "'," +
                                          "UpdatePcName = '" + Environment.MachineName + "'," +
                                          "UpdateYmdHms = '" + DateTime.Now + "' " +
                                      "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
@@ -395,8 +433,7 @@ namespace H_Dao {
                                      "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
             try {
                 sqlCommand.ExecuteNonQuery();
-            }
-            catch {
+            } catch {
                 throw;
             }
         }
@@ -416,8 +453,7 @@ namespace H_Dao {
                                      "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
             try {
                 sqlCommand.ExecuteNonQuery();
-            }
-            catch {
+            } catch {
                 throw;
             }
         }
@@ -432,6 +468,79 @@ namespace H_Dao {
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "UPDATE H_VehicleDispatchDetail " +
                                      "SET ShiftCode = " + shiftCode + "," +
+                                         "UpdatePcName = '" + Environment.MachineName + "'," +
+                                         "UpdateYmdHms = '" + DateTime.Now + "' " +
+                                     "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 職種コード
+        /// 10:運転手 11:作業員 20:事務職 99:指定なし
+        /// </summary>
+        /// <param name="cellNumber"></param>
+        /// <param name="operationDate"></param>
+        /// <param name="staffOccupation"></param>
+        /// <param name="staffNumber"></param>
+        public void UpdateStaffOccupation(int cellNumber, DateTime operationDate, int staffOccupation, int staffNumber) {
+            string sqlStaffOccupation = string.Empty;
+            switch (staffNumber) {
+                case 0:
+                    sqlStaffOccupation = "StaffOccupation1";
+                    break;
+                case 1:
+                    sqlStaffOccupation = "StaffOccupation2";
+                    break;
+                case 2:
+                    sqlStaffOccupation = "StaffOccupation3";
+                    break;
+                case 3:
+                    sqlStaffOccupation = "StaffOccupation4";
+                    break;
+            }
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE H_VehicleDispatchDetail " +
+                                     "SET " + sqlStaffOccupation + " = " + staffOccupation + "," +
+                                         "UpdatePcName = '" + Environment.MachineName + "'," +
+                                         "UpdateYmdHms = '" + DateTime.Now + "' " +
+                                     "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 代番フラグ
+        /// </summary>
+        /// <param name="cellNumber"></param>
+        /// <param name="operationDate"></param>
+        /// <param name="staffProxyFlag"></param>
+        /// <param name="staffNumber">0:運転手 1:作業員① 2:作業員② 3:作業員③</param>
+        public void UpdateStaffProxyFlag(int cellNumber, DateTime operationDate, bool staffProxyFlag, int staffNumber) {
+            string sqlStaffProxyFlag = string.Empty;
+            switch (staffNumber) {
+                case 0:
+                    sqlStaffProxyFlag = "StaffProxyFlag1";
+                    break;
+                case 1:
+                    sqlStaffProxyFlag = "StaffProxyFlag2";
+                    break;
+                case 2:
+                    sqlStaffProxyFlag = "StaffProxyFlag3";
+                    break;
+                case 3:
+                    sqlStaffProxyFlag = "StaffProxyFlag4";
+                    break;
+            }
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE H_VehicleDispatchDetail " +
+                                     "SET " + sqlStaffProxyFlag  + " = '" + staffProxyFlag + "'," +
                                          "UpdatePcName = '" + Environment.MachineName + "'," +
                                          "UpdateYmdHms = '" + DateTime.Now + "' " +
                                      "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
@@ -472,8 +581,7 @@ namespace H_Dao {
                                      "WHERE OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
             try {
                 sqlCommand.ExecuteNonQuery();
-            }
-            catch {
+            } catch {
                 throw;
             }
         }

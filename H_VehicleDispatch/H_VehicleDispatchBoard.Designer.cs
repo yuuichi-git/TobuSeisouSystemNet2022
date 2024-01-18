@@ -108,6 +108,7 @@
             ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
             ToolStripMenuItemExit.Size = new Size(195, 22);
             ToolStripMenuItemExit.Text = "アプリケーションを終了する";
+            ToolStripMenuItemExit.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemInitialize
             // 
@@ -119,7 +120,7 @@
             // ToolStripMenuItemInitializeVehicleDispatch
             // 
             ToolStripMenuItemInitializeVehicleDispatch.Name = "ToolStripMenuItemInitializeVehicleDispatch";
-            ToolStripMenuItemInitializeVehicleDispatch.Size = new Size(162, 22);
+            ToolStripMenuItemInitializeVehicleDispatch.Size = new Size(180, 22);
             ToolStripMenuItemInitializeVehicleDispatch.Text = "配車を初期化する";
             ToolStripMenuItemInitializeVehicleDispatch.Click += ToolStripMenuItem_Click;
             // 
@@ -133,7 +134,7 @@
             // ToolStripMenuItemPrintB4
             // 
             ToolStripMenuItemPrintB4.Name = "ToolStripMenuItemPrintB4";
-            ToolStripMenuItemPrintB4.Size = new Size(140, 22);
+            ToolStripMenuItemPrintB4.Size = new Size(180, 22);
             ToolStripMenuItemPrintB4.Text = "B4で印刷する";
             // 
             // ToolStripMenuItemHelp

@@ -9,6 +9,15 @@ using H_Vo;
 
 namespace H_ControlEx {
     public partial class H_SetLabel : Label {
+        /*
+         * Eventを親へ渡す処理
+         * インスタンスから見えるようになる
+         * SetLabel
+         */
+        public event MouseEventHandler Event_HSetLabel_MouseClick = delegate { };
+        public event MouseEventHandler Event_HSetLabel_MouseDoubleClick = delegate { };
+        public event MouseEventHandler Event_HSetLabel_MouseMove = delegate { };
+
         private readonly Date _date = new();
         private Image _imageSetLabel;
         /*
@@ -165,6 +174,12 @@ namespace H_ControlEx {
                 this.ManagedSpaceCode = _hSetMasterVo.ManagedSpaceCode; // 管理地
                 this.OperationFlag = _date.GetWorkingDays(_hControlVo.OperationDate, _hSetMasterVo.WorkingDays, _hSetMasterVo.FiveLap);
             }
+            /*
+             * Event
+             */
+            this.MouseClick += HSetLabel_MouseClick;
+            this.MouseDoubleClick += HSetLabel_MouseDoubleClick;
+            this.MouseMove += HSetLabel_MouseMove;
         }
 
         /// <summary>
@@ -268,6 +283,10 @@ namespace H_ControlEx {
                     if (item.GetType() == typeof(ToolStripMenuItem))
                         ((ToolStripMenuItem)item).Enabled = true;
                 }
+                /*
+                 * H_SetControlのアクセサーを操作するのに使うので退避させておく
+                 */
+                _evacuationHSetControl = (H_SetControl)((H_SetLabel)((ContextMenuStrip)sender).SourceControl).Parent;
             } else if (((H_SetLabel)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(H_FlowLayoutPanelEx)) {
                 foreach (object item in ((ContextMenuStrip)sender).Items) {
                     if (item.GetType() == typeof(ToolStripMenuItem)) {
@@ -283,10 +302,6 @@ namespace H_ControlEx {
                     }
                 }
             }
-            /*
-             * H_SetControlのアクセサーを操作するのに使うので退避させておく
-             */
-            _evacuationHSetControl = (H_SetControl)((H_SetLabel)((ContextMenuStrip)sender).SourceControl).Parent;
         }
 
         /// <summary>
@@ -311,120 +326,120 @@ namespace H_ControlEx {
             /*
              * 配車の状態
              */
-            ToolStripMenuItem toolStripMenuItem02 = new("配車の状態"); // 親アイテム
-            toolStripMenuItem02.Name = "ToolStripMenuItemSetOperation";
-            ToolStripMenuItem toolStripMenuItem02_0 = new("配車する"); // 子アイテム１
-            toolStripMenuItem02_0.Name = "ToolStripMenuItemSetOperationAdachi";
-            toolStripMenuItem02_0.Click += ToolStripMenuItem_Click;
-            toolStripMenuItem02.DropDownItems.Add(toolStripMenuItem02_0);
-            contextMenuStrip.Items.Add(toolStripMenuItem02);
-            ToolStripMenuItem toolStripMenuItem02_1 = new("休車する"); // 子アイテム２
-            toolStripMenuItem02_1.Name = "ToolStripMenuItemSetOperationMisato";
-            toolStripMenuItem02_1.Click += ToolStripMenuItem_Click;
-            toolStripMenuItem02.DropDownItems.Add(toolStripMenuItem02_1);
-            contextMenuStrip.Items.Add(toolStripMenuItem02);
-            /*
-             * 管理地
-             */
-            ToolStripMenuItem toolStripMenuItem01 = new("管理地"); // 親アイテム
-            toolStripMenuItem01.Name = "ToolStripMenuItemSetWarehouse";
-            ToolStripMenuItem toolStripMenuItem01_0 = new("本社管理"); // 子アイテム１
-            toolStripMenuItem01_0.Name = "ToolStripMenuItemSetWarehouseAdachi";
+            ToolStripMenuItem toolStripMenuItem01 = new("配車の状態"); // 親アイテム
+            toolStripMenuItem01.Name = "ToolStripMenuItemSetOperation";
+            ToolStripMenuItem toolStripMenuItem01_0 = new("配車する"); // 子アイテム１
+            toolStripMenuItem01_0.Name = "ToolStripMenuItemSetOperationAdachi";
             toolStripMenuItem01_0.Click += ToolStripMenuItem_Click;
             toolStripMenuItem01.DropDownItems.Add(toolStripMenuItem01_0);
             contextMenuStrip.Items.Add(toolStripMenuItem01);
-            ToolStripMenuItem toolStripMenuItem01_1 = new("三郷管理"); // 子アイテム２
-            toolStripMenuItem01_1.Name = "ToolStripMenuItemSetWarehouseMisato";
+            ToolStripMenuItem toolStripMenuItem01_1 = new("休車する"); // 子アイテム２
+            toolStripMenuItem01_1.Name = "ToolStripMenuItemSetOperationMisato";
             toolStripMenuItem01_1.Click += ToolStripMenuItem_Click;
             toolStripMenuItem01.DropDownItems.Add(toolStripMenuItem01_1);
             contextMenuStrip.Items.Add(toolStripMenuItem01);
             /*
+             * 管理地
+             */
+            ToolStripMenuItem toolStripMenuItem02 = new("管理地"); // 親アイテム
+            toolStripMenuItem02.Name = "ToolStripMenuItemSetWarehouse";
+            ToolStripMenuItem toolStripMenuItem02_0 = new("本社管理"); // 子アイテム１
+            toolStripMenuItem02_0.Name = "ToolStripMenuItemSetWarehouseAdachi";
+            toolStripMenuItem02_0.Click += ToolStripMenuItem_Click;
+            toolStripMenuItem02.DropDownItems.Add(toolStripMenuItem02_0);
+            contextMenuStrip.Items.Add(toolStripMenuItem02);
+            ToolStripMenuItem toolStripMenuItem02_1 = new("三郷管理"); // 子アイテム２
+            toolStripMenuItem02_1.Name = "ToolStripMenuItemSetWarehouseMisato";
+            toolStripMenuItem02_1.Click += ToolStripMenuItem_Click;
+            toolStripMenuItem02.DropDownItems.Add(toolStripMenuItem02_1);
+            contextMenuStrip.Items.Add(toolStripMenuItem02);
+            /*
              * 雇上・区契
              */
-            ToolStripMenuItem toolStripMenuItem04 = new("雇上・区契"); // 親アイテム
-            toolStripMenuItem04.Name = "ToolStripMenuItemClassification";
-            ToolStripMenuItem toolStripMenuItem04_0 = new("雇上契約に変更する"); // 子アイテム１
-            toolStripMenuItem04_0.Name = "ToolStripMenuItemClassificationYOUJYOU";
+            ToolStripMenuItem toolStripMenuItem03 = new("雇上・区契"); // 親アイテム
+            toolStripMenuItem03.Name = "ToolStripMenuItemClassification";
+            ToolStripMenuItem toolStripMenuItem03_0 = new("雇上契約に変更する"); // 子アイテム１
+            toolStripMenuItem03_0.Name = "ToolStripMenuItemClassificationYOUJYOU";
+            toolStripMenuItem03_0.Click += ToolStripMenuItem_Click;
+            toolStripMenuItem03.DropDownItems.Add(toolStripMenuItem03_0);
+            contextMenuStrip.Items.Add(toolStripMenuItem03);
+            ToolStripMenuItem toolStripMenuItem03_1 = new("区契約に変更する"); // 子アイテム２
+            toolStripMenuItem03_1.Name = "ToolStripMenuItemClassificationKUKEI";
+            toolStripMenuItem03_1.Click += ToolStripMenuItem_Click;
+            toolStripMenuItem03.DropDownItems.Add(toolStripMenuItem03_1);
+            contextMenuStrip.Items.Add(toolStripMenuItem03);
+            /*
+             * 作業員付きの配置
+             */
+            ToolStripMenuItem toolStripMenuItem04 = new("作業員付きの配置"); // 親アイテム
+            toolStripMenuItem04.Name = "ToolStripMenuItemAddWorker";
+            ToolStripMenuItem toolStripMenuItem04_0 = new("作業員付きに変更する"); // 子アイテム１
+            toolStripMenuItem04_0.Name = "ToolStripMenuItemAddWorkerTrue";
             toolStripMenuItem04_0.Click += ToolStripMenuItem_Click;
             toolStripMenuItem04.DropDownItems.Add(toolStripMenuItem04_0);
             contextMenuStrip.Items.Add(toolStripMenuItem04);
-            ToolStripMenuItem toolStripMenuItem04_1 = new("区契約に変更する"); // 子アイテム２
-            toolStripMenuItem04_1.Name = "ToolStripMenuItemClassificationKUKEI";
+            ToolStripMenuItem toolStripMenuItem04_1 = new("作業員なしに変更する"); // 子アイテム２
+            toolStripMenuItem04_1.Name = "ToolStripMenuItemAddWorkerFalse";
             toolStripMenuItem04_1.Click += ToolStripMenuItem_Click;
             toolStripMenuItem04.DropDownItems.Add(toolStripMenuItem04_1);
             contextMenuStrip.Items.Add(toolStripMenuItem04);
             /*
-             * 作業員付きの配置
+             * 早番・遅番
              */
-            ToolStripMenuItem toolStripMenuItem06 = new("作業員付きの配置"); // 親アイテム
-            toolStripMenuItem06.Name = "ToolStripMenuItemAddWorker";
-            ToolStripMenuItem toolStripMenuItem06_0 = new("作業員付きに変更する"); // 子アイテム１
-            toolStripMenuItem06_0.Name = "ToolStripMenuItemAddWorkerTrue";
+            ToolStripMenuItem toolStripMenuItem05 = new("早番・遅番"); // 親アイテム
+            toolStripMenuItem05.Name = "ToolStripMenuItemShift";
+            ToolStripMenuItem toolStripMenuItem05_0 = new("早番に変更する"); // 子アイテム１
+            toolStripMenuItem05_0.Name = "ToolStripMenuItemShiftFirst";
+            toolStripMenuItem05_0.Click += ToolStripMenuItem_Click;
+            toolStripMenuItem05.DropDownItems.Add(toolStripMenuItem05_0);
+            contextMenuStrip.Items.Add(toolStripMenuItem05);
+            ToolStripMenuItem toolStripMenuItem05_1 = new("遅番に変更する"); // 子アイテム２
+            toolStripMenuItem05_1.Name = "ToolStripMenuItemShiftLater";
+            toolStripMenuItem05_1.Click += ToolStripMenuItem_Click;
+            toolStripMenuItem05.DropDownItems.Add(toolStripMenuItem05_1);
+            contextMenuStrip.Items.Add(toolStripMenuItem05);
+            ToolStripMenuItem toolStripMenuItem05_2 = new("解除する"); // 子アイテム３
+            toolStripMenuItem05_2.Name = "ToolStripMenuItemShiftNone";
+            toolStripMenuItem05_2.Click += ToolStripMenuItem_Click;
+            toolStripMenuItem05.DropDownItems.Add(toolStripMenuItem05_2);
+            contextMenuStrip.Items.Add(toolStripMenuItem05);
+            /*
+             * 待機
+             */
+            ToolStripMenuItem toolStripMenuItem06 = new("待機"); // 親アイテム
+            toolStripMenuItem06.Name = "ToolStripMenuItemStandBy";
+            ToolStripMenuItem toolStripMenuItem06_0 = new("待機に変更する"); // 子アイテム１
+            toolStripMenuItem06_0.Name = "ToolStripMenuItemStandByTrue";
             toolStripMenuItem06_0.Click += ToolStripMenuItem_Click;
             toolStripMenuItem06.DropDownItems.Add(toolStripMenuItem06_0);
             contextMenuStrip.Items.Add(toolStripMenuItem06);
-            ToolStripMenuItem toolStripMenuItem06_1 = new("作業員なしに変更する"); // 子アイテム２
-            toolStripMenuItem06_1.Name = "ToolStripMenuItemAddWorkerFalse";
+            ToolStripMenuItem toolStripMenuItem06_1 = new("待機を解除する"); // 子アイテム２
+            toolStripMenuItem06_1.Name = "ToolStripMenuItemStandByFalse";
             toolStripMenuItem06_1.Click += ToolStripMenuItem_Click;
             toolStripMenuItem06.DropDownItems.Add(toolStripMenuItem06_1);
             contextMenuStrip.Items.Add(toolStripMenuItem06);
             /*
-             * 早番・遅番
+             * 連絡事項
              */
-            ToolStripMenuItem toolStripMenuItem07 = new("早番・遅番"); // 親アイテム
-            toolStripMenuItem07.Name = "ToolStripMenuItemShift";
-            ToolStripMenuItem toolStripMenuItem07_0 = new("早番に変更する"); // 子アイテム１
-            toolStripMenuItem07_0.Name = "ToolStripMenuItemShiftFirst";
+            ToolStripMenuItem toolStripMenuItem07 = new("連絡事項"); // 親アイテム
+            toolStripMenuItem07.Name = "ToolStripMenuItemContactInformation";
+            ToolStripMenuItem toolStripMenuItem07_0 = new("連絡事項あり"); // 子アイテム１
+            toolStripMenuItem07_0.Name = "ToolStripMenuItemContactInformationTrue";
             toolStripMenuItem07_0.Click += ToolStripMenuItem_Click;
             toolStripMenuItem07.DropDownItems.Add(toolStripMenuItem07_0);
             contextMenuStrip.Items.Add(toolStripMenuItem07);
-            ToolStripMenuItem toolStripMenuItem07_1 = new("遅番に変更する"); // 子アイテム２
-            toolStripMenuItem07_1.Name = "ToolStripMenuItemShiftLater";
+            ToolStripMenuItem toolStripMenuItem07_1 = new("連絡事項なし"); // 子アイテム２
+            toolStripMenuItem07_1.Name = "ToolStripMenuItemContactInformationFalse";
             toolStripMenuItem07_1.Click += ToolStripMenuItem_Click;
             toolStripMenuItem07.DropDownItems.Add(toolStripMenuItem07_1);
             contextMenuStrip.Items.Add(toolStripMenuItem07);
-            ToolStripMenuItem toolStripMenuItem07_2 = new("解除する"); // 子アイテム３
-            toolStripMenuItem07_2.Name = "ToolStripMenuItemShiftNone";
-            toolStripMenuItem07_2.Click += ToolStripMenuItem_Click;
-            toolStripMenuItem07.DropDownItems.Add(toolStripMenuItem07_2);
-            contextMenuStrip.Items.Add(toolStripMenuItem07);
-            /*
-             * 待機
-             */
-            ToolStripMenuItem toolStripMenuItem08 = new("待機"); // 親アイテム
-            toolStripMenuItem08.Name = "ToolStripMenuItemStandBy";
-            ToolStripMenuItem toolStripMenuItem08_0 = new("待機に変更する"); // 子アイテム１
-            toolStripMenuItem08_0.Name = "ToolStripMenuItemStandByTrue";
-            toolStripMenuItem08_0.Click += ToolStripMenuItem_Click;
-            toolStripMenuItem08.DropDownItems.Add(toolStripMenuItem08_0);
-            contextMenuStrip.Items.Add(toolStripMenuItem08);
-            ToolStripMenuItem toolStripMenuItem08_1 = new("待機を解除する"); // 子アイテム２
-            toolStripMenuItem08_1.Name = "ToolStripMenuItemStandByFalse";
-            toolStripMenuItem08_1.Click += ToolStripMenuItem_Click;
-            toolStripMenuItem08.DropDownItems.Add(toolStripMenuItem08_1);
-            contextMenuStrip.Items.Add(toolStripMenuItem08);
-            /*
-             * 連絡事項
-             */
-            ToolStripMenuItem toolStripMenuItem05 = new("連絡事項"); // 親アイテム
-            toolStripMenuItem05.Name = "ToolStripMenuItemContactInformation";
-            ToolStripMenuItem toolStripMenuItem05_0 = new("連絡事項あり"); // 子アイテム１
-            toolStripMenuItem05_0.Name = "ToolStripMenuItemContactInformationTrue";
-            toolStripMenuItem05_0.Click += ToolStripMenuItem_Click;
-            toolStripMenuItem05.DropDownItems.Add(toolStripMenuItem05_0);
-            contextMenuStrip.Items.Add(toolStripMenuItem05);
-            ToolStripMenuItem toolStripMenuItem05_1 = new("連絡事項なし"); // 子アイテム２
-            toolStripMenuItem05_1.Name = "ToolStripMenuItemContactInformationFalse";
-            toolStripMenuItem05_1.Click += ToolStripMenuItem_Click;
-            toolStripMenuItem05.DropDownItems.Add(toolStripMenuItem05_1);
-            contextMenuStrip.Items.Add(toolStripMenuItem05);
             /*
              * メモを作成・編集する
              */
-            ToolStripMenuItem toolStripMenuItem03 = new("メモを作成・編集する");
-            toolStripMenuItem03.Name = "ToolStripMenuItemSetMemo";
-            toolStripMenuItem03.Click += ToolStripMenuItem_Click;
-            contextMenuStrip.Items.Add(toolStripMenuItem03);
+            ToolStripMenuItem toolStripMenuItem08 = new("メモを作成・編集する");
+            toolStripMenuItem08.Name = "ToolStripMenuItemSetMemo";
+            toolStripMenuItem08.Click += ToolStripMenuItem_Click;
+            contextMenuStrip.Items.Add(toolStripMenuItem08);
             /*
              * スペーサー
              */
@@ -788,6 +803,19 @@ namespace H_ControlEx {
         public bool StandByFlag {
             get => _standByFlag;
             set => _standByFlag = value;
+        }
+
+        /*
+         * H_SetLabelEx
+         */
+        private void HSetLabel_MouseClick(object sender, MouseEventArgs e) {
+            Event_HSetLabel_MouseClick.Invoke(sender, e);
+        }
+        private void HSetLabel_MouseDoubleClick(object sender, MouseEventArgs e) {
+            Event_HSetLabel_MouseDoubleClick.Invoke(sender, e);
+        }
+        private void HSetLabel_MouseMove(object sender, MouseEventArgs e) {
+            Event_HSetLabel_MouseMove.Invoke(sender, e);
         }
     }
 }

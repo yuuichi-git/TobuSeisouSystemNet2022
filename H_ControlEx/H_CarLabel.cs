@@ -7,7 +7,26 @@ using H_Vo;
 
 namespace H_ControlEx {
     public partial class H_CarLabel : Label {
+        /*
+         * Eventを親へ渡す処理
+         * インスタンスから見えるようになる
+         * CarLabel
+         */
+        public event MouseEventHandler Event_HCarLabel_MouseClick = delegate { };
+        public event MouseEventHandler Event_HCarLabel_MouseDoubleClick = delegate { };
+        public event MouseEventHandler Event_HCarLabel_MouseMove = delegate { };
+
         private Image _imageCarLabel;
+        /*
+         * H_Dao 
+         */
+        private H_VehicleDispatchDetailDao _hVehicleDispatchDetailDao;
+        /*
+         * Vo
+         */
+        private H_ControlVo _hControlVo;
+        private readonly H_CarMasterVo _hCarMasterVo;
+        private H_VehicleDispatchDetailVo _hVehicleDispatchDetailVo;
         /*
          * １つのパネルのサイズ
          */
@@ -36,14 +55,9 @@ namespace H_ControlEx {
         /// </summary>
         private bool _carProxyFlag = false;
         /*
-         * H_Dao 
+         * H_SetControlのアクセサーを操作するのに使うので退避させておく
          */
-        private H_VehicleDispatchDetailDao _hVehicleDispatchDetailDao;
-        /*
-         * Vo
-         */
-        private readonly H_CarMasterVo _hCarMasterVo;
-        private H_VehicleDispatchDetailVo _hVehicleDispatchDetailVo;
+        private H_SetControl _evacuationHSetControl;
         /*
          * Fontの定義
          */
@@ -61,6 +75,7 @@ namespace H_ControlEx {
             /*
              * Vo
              */
+            _hControlVo = hControlVo;
             _hCarMasterVo = hControlVo.HCarMasterVo;
             _hVehicleDispatchDetailVo = hControlVo.HVehicleDispatchDetailVo;
             /*
@@ -88,6 +103,12 @@ namespace H_ControlEx {
             } else {
                 this.CarGarageCode = _hCarMasterVo.GarageCode; // 車庫地
             }
+            /*
+             * Event
+             */
+            this.MouseClick += HCarLabel_MouseClick;
+            this.MouseDoubleClick += HCarLabel_MouseDoubleClick;
+            this.MouseMove += HCarLabel_MouseMove;
         }
 
         /// <summary>
@@ -152,6 +173,10 @@ namespace H_ControlEx {
                     if (item.GetType() == typeof(ToolStripMenuItem))
                         ((ToolStripMenuItem)item).Enabled = true;
                 }
+                /*
+                 * H_SetControlのアクセサーを操作するのに使うので退避させておく
+                 */
+                _evacuationHSetControl = (H_SetControl)((H_CarLabel)((ContextMenuStrip)sender).SourceControl).Parent;
             } else if (((H_CarLabel)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(H_FlowLayoutPanelEx)) {
                 foreach (object item in ((ContextMenuStrip)sender).Items) {
                     if (item.GetType() == typeof(ToolStripMenuItem)) {
@@ -189,34 +214,34 @@ namespace H_ControlEx {
              */
             contextMenuStrip.Items.Add(new ToolStripSeparator());
             /*
-             * 代番処理
+             * 車庫地コード
              */
-            ToolStripMenuItem toolStripMenuItem01 = new("代車処理"); // 親アイテム
-            toolStripMenuItem01.Name = "ToolStripMenuItemCarProxy";
-            ToolStripMenuItem toolStripMenuItem01_0 = new("代車として記録する"); // 子アイテム１
-            toolStripMenuItem01_0.Name = "ToolStripMenuItemCarProxyTrue";
+            ToolStripMenuItem toolStripMenuItem01 = new("出庫地"); // 親アイテム
+            toolStripMenuItem01.Name = "ToolStripMenuItemCarWarehouse";
+            ToolStripMenuItem toolStripMenuItem01_0 = new("本社から出庫"); // 子アイテム１
+            toolStripMenuItem01_0.Name = "ToolStripMenuItemCarWarehouseAdachi";
             toolStripMenuItem01_0.Click += ToolStripMenuItem_Click;
             toolStripMenuItem01.DropDownItems.Add(toolStripMenuItem01_0);
             contextMenuStrip.Items.Add(toolStripMenuItem01);
 
-            ToolStripMenuItem toolStripMenuItem01_1 = new("代車を解除する"); // 子アイテム２
-            toolStripMenuItem01_1.Name = "ToolStripMenuItemCarProxyFalse";
+            ToolStripMenuItem toolStripMenuItem01_1 = new("三郷から出庫"); // 子アイテム２
+            toolStripMenuItem01_1.Name = "ToolStripMenuItemCarWarehouseMisato";
             toolStripMenuItem01_1.Click += ToolStripMenuItem_Click;
             toolStripMenuItem01.DropDownItems.Add(toolStripMenuItem01_1);
             contextMenuStrip.Items.Add(toolStripMenuItem01);
             /*
-             * 車庫地コード
+             * 代番処理
              */
-            ToolStripMenuItem toolStripMenuItem02 = new("出庫地"); // 親アイテム
-            toolStripMenuItem01.Name = "ToolStripMenuItemCarWarehouse";
-            ToolStripMenuItem toolStripMenuItem02_0 = new("本社から出庫"); // 子アイテム１
-            toolStripMenuItem02_0.Name = "ToolStripMenuItemCarWarehouseAdachi";
+            ToolStripMenuItem toolStripMenuItem02 = new("代車処理"); // 親アイテム
+            toolStripMenuItem02.Name = "ToolStripMenuItemCarProxy";
+            ToolStripMenuItem toolStripMenuItem02_0 = new("代車として記録する"); // 子アイテム１
+            toolStripMenuItem02_0.Name = "ToolStripMenuItemCarProxyTrue";
             toolStripMenuItem02_0.Click += ToolStripMenuItem_Click;
             toolStripMenuItem02.DropDownItems.Add(toolStripMenuItem02_0);
             contextMenuStrip.Items.Add(toolStripMenuItem02);
 
-            ToolStripMenuItem toolStripMenuItem02_1 = new("三郷から出庫"); // 子アイテム２
-            toolStripMenuItem02_1.Name = "ToolStripMenuItemCarWarehouseMisato";
+            ToolStripMenuItem toolStripMenuItem02_1 = new("代車を解除する"); // 子アイテム２
+            toolStripMenuItem02_1.Name = "ToolStripMenuItemCarProxyFalse";
             toolStripMenuItem02_1.Click += ToolStripMenuItem_Click;
             toolStripMenuItem02.DropDownItems.Add(toolStripMenuItem02_1);
             contextMenuStrip.Items.Add(toolStripMenuItem02);
@@ -246,21 +271,53 @@ namespace H_ControlEx {
                 case "ToolStripMenuItemCarDetail": // 車両台帳を表示する
                     MessageBox.Show("ToolStripMenuItemCarDetail");
                     break;
-                case "ToolStripMenuItemCarProxyTrue": // 代車として記録する
-                    CarProxyFlag = true;
-                    this.Refresh();
-                    break;
-                case "ToolStripMenuItemCarProxyFalse": // 代車を解除する
-                    CarProxyFlag = false;
-                    this.Refresh();
-                    break;
                 case "ToolStripMenuItemCarWarehouseAdachi": // 本社から出庫
-                    CarGarageCode = 1;
+                    this.CarGarageCode = 1;
                     this.Refresh();
+                    /*
+                     * DB書換え
+                     */
+                    try {
+                        _hVehicleDispatchDetailDao.UpdateCarGarageCode(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.CarGarageCode);
+                    } catch (Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
                     break;
                 case "ToolStripMenuItemCarWarehouseMisato": // 三郷から出庫
-                    CarGarageCode = 2;
+                    this.CarGarageCode = 2;
                     this.Refresh();
+                    /*
+                     * DB書換え
+                     */
+                    try {
+                        _hVehicleDispatchDetailDao.UpdateCarGarageCode(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.CarGarageCode);
+                    } catch (Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
+                    break;
+                case "ToolStripMenuItemCarProxyTrue": // 代車として記録する
+                    this.CarProxyFlag = true;
+                    this.Refresh();
+                    /*
+                     * DB書換え
+                     */
+                    try {
+                        _hVehicleDispatchDetailDao.UpdateCarProxyFlag(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.CarProxyFlag);
+                    } catch (Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
+                    break;
+                case "ToolStripMenuItemCarProxyFalse": // 代車を解除する
+                    this.CarProxyFlag = false;
+                    this.Refresh();
+                    /*
+                     * DB書換え
+                     */
+                    try {
+                        _hVehicleDispatchDetailDao.UpdateCarProxyFlag(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.CarProxyFlag);
+                    } catch (Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
                     break;
                 case "ToolStripMenuItemCarMemo": // メモを作成・編集する
                     MessageBox.Show("ToolStripMenuItemCarMemo");
@@ -307,7 +364,22 @@ namespace H_ControlEx {
         /// </summary>
         public bool CarProxyFlag {
             get => _carProxyFlag;
-            set => _carProxyFlag = value;
+            set {
+                _carProxyFlag = value;
+            }
+        }
+
+        /*
+         * H_CarLabelEx
+         */
+        private void HCarLabel_MouseClick(object sender, MouseEventArgs e) {
+            Event_HCarLabel_MouseClick.Invoke(sender, e);
+        }
+        private void HCarLabel_MouseDoubleClick(object sender, MouseEventArgs e) {
+            Event_HCarLabel_MouseDoubleClick.Invoke(sender, e);
+        }
+        private void HCarLabel_MouseMove(object sender, MouseEventArgs e) {
+            Event_HCarLabel_MouseMove.Invoke(sender, e);
         }
     }
 }

@@ -56,14 +56,6 @@ namespace H_ControlEx {
         }
 
         /// <summary>
-        /// OnCellPaint
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        protected override void OnCellPaint(TableLayoutCellPaintEventArgs e) {
-        }
-
-        /// <summary>
         /// AddSetControl
         /// SetControlを追加する
         /// </summary>
@@ -74,21 +66,21 @@ namespace H_ControlEx {
             /*
              * イベントを登録
              */
-            hSetControl.Event_HSetControlEx_MouseDown += HSetControl_MouseDown;
-            hSetControl.Event_HSetControlEx_MouseUp += HSetControl_MouseUp;
-            hSetControl.Event_HSetControlEx_MouseMove += HSetControl_MouseMove;
-            hSetControl.Event_HSetControlEx_DragEnter += HSetControl_DragEnter;
-            hSetControl.Event_HSetControlEx_DragDrop += HSetControl_DragDrop;
-            hSetControl.Event_HSetControlEx_DragOver += HSetControl_DragOver;
-            hSetControl.Event_HSetLabelEx_MouseClick += HSetLabel_MouseClick;
-            hSetControl.Event_HSetLabelEx_MouseDoubleClick += HSetLabel_MouseDoubleClick;
-            hSetControl.Event_HSetLabelEx_MouseMove += HSetLabel_MouseMove;
-            hSetControl.Event_HCarLabelEx_MouseClick += HCarLabel_MouseClick;
-            hSetControl.Event_HCarLabelEx_MouseDoubleClick += HCarLabel_MouseDoubleClick;
-            hSetControl.Event_HCarLabelEx_MouseMove += HCarLabel_MouseMove;
-            hSetControl.Event_HStaffLabelEx_MouseClick += HStaffLabel_MouseClick;
-            hSetControl.Event_HStaffLabelEx_MouseDoubleClick += HStaffLabel_MouseDoubleClick;
-            hSetControl.Event_HStaffLabelEx_MouseMove += HStaffLabel_MouseMove;
+            hSetControl.Event_HSetControl_MouseDown += HSetControl_MouseDown;
+            hSetControl.Event_HSetControl_MouseUp += HSetControl_MouseUp;
+            hSetControl.Event_HSetControl_MouseMove += HSetControl_MouseMove;
+            hSetControl.Event_HSetControl_DragEnter += HSetControl_DragEnter;
+            hSetControl.Event_HSetControl_DragDrop += HSetControl_DragDrop;
+            hSetControl.Event_HSetControl_DragOver += HSetControl_DragOver;
+            hSetControl.Event_HSetControl_HSetLabel_MouseClick += HSetLabel_MouseClick;
+            hSetControl.Event_HSetControl_HSetLabel_MouseDoubleClick += HSetLabel_MouseDoubleClick;
+            hSetControl.Event_HSetControl_HSetLabel_MouseMove += HSetLabel_MouseMove;
+            hSetControl.Event_HSetControl_HCarLabel_MouseClick += HCarLabel_MouseClick;
+            hSetControl.Event_HSetControl_HCarLabel_MouseDoubleClick += HCarLabel_MouseDoubleClick;
+            hSetControl.Event_HSetControl_HCarLabel_MouseMove += HCarLabel_MouseMove;
+            hSetControl.Event_HSetControl_HStaffLabel_MouseClick += HStaffLabel_MouseClick;
+            hSetControl.Event_HSetControl_HStaffLabel_MouseDoubleClick += HStaffLabel_MouseDoubleClick;
+            hSetControl.Event_HSetControl_HStaffLabel_MouseMove += HStaffLabel_MouseMove;
             /*
              * Controlを配置
              */

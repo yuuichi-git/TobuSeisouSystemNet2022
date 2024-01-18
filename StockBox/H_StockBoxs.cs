@@ -142,9 +142,9 @@ namespace StockBox {
                 if (hSetMasterVo is not null && hSetMasterVo.SetCode != 0) {
                     hControlVo.HSetMasterVo = hSetMasterVo;
                     H_SetLabel hSetLabel = new(hControlVo);
-                    hSetLabel.MouseClick += HSetLabel_MouseClick;
-                    hSetLabel.MouseDoubleClick += HSetLabel_MouseDoubleClick;
-                    hSetLabel.MouseMove += HSetLabel_MouseMove;
+                    hSetLabel.Event_HSetLabel_MouseClick += HSetLabel_MouseClick;
+                    hSetLabel.Event_HSetLabel_MouseDoubleClick += HSetLabel_MouseDoubleClick;
+                    hSetLabel.Event_HSetLabel_MouseMove += HSetLabel_MouseMove;
                     _hFlowLayoutPanelExBase.Controls.Add(hSetLabel); // SetLabel‚ð’Ç‰Á
                 }
             }
@@ -159,9 +159,9 @@ namespace StockBox {
                 if (hCarMasterVo is not null && hCarMasterVo.CarCode != 0) {
                     hControlVo.HCarMasterVo = hCarMasterVo;
                     H_CarLabel hCarLabel = new(hControlVo);
-                    hCarLabel.MouseClick += HCarLabel_MouseClick;
-                    hCarLabel.MouseDoubleClick += HCarLabel_MouseDoubleClick;
-                    hCarLabel.MouseMove += HCarLabel_MouseMove;
+                    hCarLabel.Event_HCarLabel_MouseClick += HCarLabel_MouseClick;
+                    hCarLabel.Event_HCarLabel_MouseDoubleClick += HCarLabel_MouseDoubleClick;
+                    hCarLabel.Event_HCarLabel_MouseMove += HCarLabel_MouseMove;
                     _hFlowLayoutPanelExBase.Controls.Add(hCarLabel); // CarLabel‚ð’Ç‰Á
                 }
             }
@@ -176,9 +176,9 @@ namespace StockBox {
                 if (hStaffMasterVo is not null && hStaffMasterVo.StaffCode != 0) {
                     hControlVo.HStaffMasterVo = hStaffMasterVo;
                     H_StaffLabel hStaffLabel = new(hControlVo);
-                    hStaffLabel.MouseClick += HStaffLabel_MouseClick;
-                    hStaffLabel.MouseDoubleClick += HStaffLabel_MouseDoubleClick;
-                    hStaffLabel.MouseMove += HStaffLabel_MouseMove;
+                    hStaffLabel.Event_HStaffLabel_MouseClick += HStaffLabel_MouseClick;
+                    hStaffLabel.Event_HStaffLabel_MouseDoubleClick += HStaffLabel_MouseDoubleClick;
+                    hStaffLabel.Event_HStaffLabel_MouseMove += HStaffLabel_MouseMove;
                     _hFlowLayoutPanelExBase.Controls.Add(hStaffLabel); // StaffLabel‚ð’Ç‰Á
                 }
             }
@@ -216,8 +216,12 @@ namespace StockBox {
          * H_StaffLabelEx
          */
         private void HStaffLabel_MouseClick(object sender, MouseEventArgs e) {
+            if ((ModifierKeys & Keys.Shift) == Keys.Shift) {
+                MessageBox.Show("HStaffLabel_MouseClick");
+            }
         }
         private void HStaffLabel_MouseDoubleClick(object sender, MouseEventArgs e) {
+            MessageBox.Show("HStaffLabel_MouseDoubleClick");
         }
         private void HStaffLabel_MouseMove(object sender, MouseEventArgs e) {
             if (e.Button == MouseButtons.Left) {
