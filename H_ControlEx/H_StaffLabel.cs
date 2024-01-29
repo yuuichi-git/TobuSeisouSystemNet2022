@@ -31,7 +31,7 @@ namespace H_ControlEx {
          * １つのパネルのサイズ
          */
         private const float _panelWidth = 80;
-        private const float _panelHeight = 100;
+        private const float _panelHeight = 120;
         /*
          * プロパティー
          */
@@ -75,7 +75,7 @@ namespace H_ControlEx {
         /*
           * Fontの定義
           */
-        private readonly Font _drawFontStaffLabel = new("メイリオ", 13, FontStyle.Regular, GraphicsUnit.Pixel);
+        private readonly Font _drawFontStaffLabel = new("メイリオ", 14, FontStyle.Regular, GraphicsUnit.Pixel);
         private readonly Font _drawFontOccupation = new("HGS創英ﾌﾟﾚｾﾞﾝｽEB", 10, FontStyle.Regular, GraphicsUnit.Pixel);
 
         /// <summary>
@@ -175,7 +175,6 @@ namespace H_ControlEx {
                     case 3:
                         this.CellNumber = 3;
                         break;
-
                 }
             }
             /*
@@ -215,7 +214,7 @@ namespace H_ControlEx {
              * Occupation
              * 10:運転手 11:作業員 20:事務職 99:指定なし
              */
-            e.Graphics.DrawString(_staffOccupationCode == 11 ? "作" : "", _drawFontOccupation, Brushes.DarkGray, 8, 72);
+            e.Graphics.DrawString(_staffOccupationCode == 11 ? "作" : "", _drawFontOccupation, Brushes.DarkGray, 8, 92);
             /*
              * 代番処理を描画
              */
@@ -234,8 +233,8 @@ namespace H_ControlEx {
              * 点呼の印を描画
              */
             if (!_staffRollCallFlag) {
-                e.Graphics.FillEllipse(Brushes.Crimson, 56, 73, 10, 10);
-                e.Graphics.FillEllipse(Brushes.LightPink, 60, 77, 4, 4);
+                e.Graphics.FillEllipse(Brushes.Crimson, 56, 93, 10, 10);
+                e.Graphics.FillEllipse(Brushes.LightPink, 60, 97, 4, 4);
             }
         }
 
@@ -361,10 +360,16 @@ namespace H_ControlEx {
         /// <param name="e"></param>
         private void ToolStripMenuItem_Click(object sender, EventArgs e) {
             switch (((ToolStripMenuItem)sender).Name) {
-                case "ToolStripMenuItemStaffDetail": // 従事者台帳を表示する
+                /*
+                 * 従事者台帳を表示する
+                 */
+                case "ToolStripMenuItemStaffDetail":
                     MessageBox.Show("ToolStripMenuItemStaffDetail");
                     break;
-                case "ToolStripMenuItemStaffProxyTrue": // 代番として記録する
+                /*
+                 * 代番として記録する
+                 */
+                case "ToolStripMenuItemStaffProxyTrue":
                     this.StaffProxyFlag = true;
                     this.Refresh();
                     /*
@@ -376,7 +381,10 @@ namespace H_ControlEx {
                         MessageBox.Show(exception.Message);
                     }
                     break;
-                case "ToolStripMenuItemStaffProxyFalse": // 代番を解除する
+                /*
+                 * 代番を解除する
+                 */
+                case "ToolStripMenuItemStaffProxyFalse":
                     this.StaffProxyFlag = false;
                     this.Refresh();
                     /*
@@ -388,7 +396,10 @@ namespace H_ControlEx {
                         MessageBox.Show(exception.Message);
                     }
                     break;
-                case "ToolStripMenuItemStaffOccupation10": // 運転手の料金設定にする(運賃コードに依存)
+                /*
+                 * 運転手の料金設定にする(運賃コードに依存)
+                 */
+                case "ToolStripMenuItemStaffOccupation10":
                     this.StaffOccupationCode = 10;
                     this.Refresh();
                     /*
@@ -400,7 +411,10 @@ namespace H_ControlEx {
                         MessageBox.Show(exception.Message);
                     }
                     break;
-                case "ToolStripMenuItemStaffOccupation11": // 作業員の料金設定にする
+                /*
+                 * 作業員の料金設定にする
+                 */
+                case "ToolStripMenuItemStaffOccupation11":
                     this.StaffOccupationCode = 11;
                     this.Refresh();
                     /*
@@ -412,20 +426,43 @@ namespace H_ControlEx {
                         MessageBox.Show(exception.Message);
                     }
                     break;
-                case "ToolStripMenuItemTelephoneMarkTrue": // 出勤を確認済
+                /*
+                 * 出勤を確認済
+                 */
+                case "ToolStripMenuItemTelephoneMarkTrue":
                     this.StaffRollCallFlag = true;
                     this.Refresh();
-
+                    /*
+                     * DB書換え
+                     */
+                    try {
+                        _hVehicleDispatchDetailDao.UpdateStaffRollCall(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.StaffRollCallFlag, this.CellNumber);
+                    } catch (Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
                     break;
-                case "ToolStripMenuItemStaffTelephoneMarkFalse": // 出勤を未確認
+                /*
+                 * 出勤を未確認
+                 */
+                case "ToolStripMenuItemStaffTelephoneMarkFalse":
                     this.StaffRollCallFlag = false;
                     this.Refresh();
-
+                    try {
+                        _hVehicleDispatchDetailDao.UpdateStaffRollCall(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.StaffRollCallFlag, this.CellNumber);
+                    } catch (Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
                     break;
-                case "ToolStripMenuItemStaffMemo": // メモを作成・編集する
+                /*
+                 * メモを作成・編集する
+                 */
+                case "ToolStripMenuItemStaffMemo":
                     MessageBox.Show("ToolStripMenuItemStaffMemo");
                     break;
-                case "ToolStripMenuItemStaffEquioment": // 備品を支給する
+                /*
+                 * 備品を支給する
+                 */
+                case "ToolStripMenuItemStaffEquioment":
                     MessageBox.Show("ToolStripMenuItemStaffEquioment");
                     break;
             }
@@ -490,15 +527,40 @@ namespace H_ControlEx {
         }
 
         /*
-         * H_StaffLabelEx
+         * Event
          */
         private void HStaffLabel_MouseClick(object sender, MouseEventArgs e) {
-            Event_HStaffLabel_MouseClick.Invoke(sender, e);
+            /*
+             * Shift+ClickがH_SetControl上で発火した場合
+             */
+            if ((ModifierKeys & Keys.Shift) == Keys.Shift) {
+                if (((H_StaffLabel)sender).Parent.GetType() == typeof(H_SetControl)) {
+                    this.StaffRollCallFlag = !this.StaffRollCallFlag;
+                    this.Refresh();
+                    /*
+                     * DB書換え
+                     */
+                    try {
+                        _hVehicleDispatchDetailDao.UpdateStaffRollCall(((H_ControlVo)((H_SetControl)((H_StaffLabel)sender).Parent).Tag).CellNumber, _hControlVo.OperationDate, this.StaffRollCallFlag, this.CellNumber);
+                    } catch (Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
+                    // Eventを親へ転送する
+                    Event_HStaffLabel_MouseClick.Invoke(sender, e);
+                    /*
+                     * Shift+ClickがH_FlowLayoutPanelEx上で発火した場合
+                     */
+                } else if (((H_StaffLabel)sender).Parent.GetType() == typeof(H_FlowLayoutPanelEx)) {
+                    MessageBox.Show("StockBoxsでの点呼処理はできません。", "ErrorMessage", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
         private void HStaffLabel_MouseDoubleClick(object sender, MouseEventArgs e) {
+            // Eventを親へ転送する
             Event_HStaffLabel_MouseDoubleClick.Invoke(sender, e);
         }
         private void HStaffLabel_MouseMove(object sender, MouseEventArgs e) {
+            // Eventを親へ転送する
             Event_HStaffLabel_MouseMove.Invoke(sender, e);
         }
     }

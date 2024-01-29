@@ -120,7 +120,7 @@
             // ToolStripMenuItemInitializeVehicleDispatch
             // 
             ToolStripMenuItemInitializeVehicleDispatch.Name = "ToolStripMenuItemInitializeVehicleDispatch";
-            ToolStripMenuItemInitializeVehicleDispatch.Size = new Size(180, 22);
+            ToolStripMenuItemInitializeVehicleDispatch.Size = new Size(162, 22);
             ToolStripMenuItemInitializeVehicleDispatch.Text = "配車を初期化する";
             ToolStripMenuItemInitializeVehicleDispatch.Click += ToolStripMenuItem_Click;
             // 
@@ -134,7 +134,7 @@
             // ToolStripMenuItemPrintB4
             // 
             ToolStripMenuItemPrintB4.Name = "ToolStripMenuItemPrintB4";
-            ToolStripMenuItemPrintB4.Size = new Size(180, 22);
+            ToolStripMenuItemPrintB4.Size = new Size(140, 22);
             ToolStripMenuItemPrintB4.Text = "B4で印刷する";
             // 
             // ToolStripMenuItemHelp
@@ -319,8 +319,9 @@
             h_TableLayoutPanelExCenter.Location = new Point(0, 0);
             h_TableLayoutPanelExCenter.Margin = new Padding(0);
             h_TableLayoutPanelExCenter.Name = "h_TableLayoutPanelExCenter";
-            h_TableLayoutPanelExCenter.RowCount = 2;
+            h_TableLayoutPanelExCenter.RowCount = 3;
             h_TableLayoutPanelExCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 36F));
+            h_TableLayoutPanelExCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 122F));
             h_TableLayoutPanelExCenter.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             h_TableLayoutPanelExCenter.Size = new Size(1836, 993);
             h_TableLayoutPanelExCenter.TabIndex = 0;

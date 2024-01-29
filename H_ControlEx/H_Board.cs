@@ -1,15 +1,27 @@
 ﻿/*
  * 2023-10-19
  */
+using H_Dao;
+
 using H_Vo;
+
+using Vo;
 
 namespace H_ControlEx {
     public partial class H_Board : TableLayoutPanel {
         /*
-         * １つのパネルのサイズ
+         * Dao
+         */
+        private H_VehicleDispatchDetailDao _hVehicleDispatchDetailDao;
+        /*
+         * 
+         */
+        private readonly ConnectionVo _connectionVo;
+        /*
+         * １つのパネルのサイズ(TableLayoutPanelのCellの事だよ)
          */
         private const float _panelWidth = 80;
-        private const float _panelHeight = 100;
+        private const float _panelHeight = 120;
         /*
          * Cellの数
          */
@@ -29,7 +41,15 @@ namespace H_ControlEx {
         /// <summary>
         /// コンストラクタ
         /// </summary>
-        public H_Board() {
+        public H_Board(ConnectionVo connectionVo) {
+            /*
+             * Dao
+             */
+            _hVehicleDispatchDetailDao = new(connectionVo);
+            /*
+             * Vo
+             */
+            _connectionVo = connectionVo;
             /*
              * ControlIni
              */
@@ -156,38 +176,163 @@ namespace H_ControlEx {
         }
 
         /// <summary>
+        /// Drag元のH_ControlVo
+        /// </summary>
+        H_ControlVo beforeHControlVo;
+        /// <summary>
         /// HSetControl_DragDrop
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void HSetControl_DragDrop(object sender, DragEventArgs e) {
-            H_SetControl hSetControl = (H_SetControl)sender;
-            Point clientPoint = hSetControl.PointToClient(new Point(e.X, e.Y));
+            H_SetControl afterHSetControl = (H_SetControl)sender;
+            Point clientPoint = afterHSetControl.PointToClient(new Point(e.X, e.Y));
             Point cellPoint = new(clientPoint.X / (int)_panelWidth, clientPoint.Y / (int)_panelHeight);
+            /*
+             * ①DragされたObjectを取得する
+             * ②Drag元のCellNumberを操作する
+             * ③Drop先のDBRecordを操作する
+             * ④Labelを移動する
+             */
             if (e.Data.GetDataPresent(typeof(H_SetLabel))) {
+                // ①DragされたObjectを取得する
                 H_SetLabel dragItem = (H_SetLabel)e.Data.GetData(typeof(H_SetLabel));
-                if (e.Effect == DragDropEffects.Copy) {
+                // Drag元の親Controlを退避
+                Control beforeParentControl = dragItem.Parent;
+                /*
+                 * Drag元のCellNumberを退避させておく(DB上からDragデータを削除するのに使用)
+                 */
+                switch (dragItem.Parent.Name) {
+                    case "H_SetControl": // (e.Effect == DragDropEffects.Move)
+                        beforeHControlVo = (H_ControlVo)dragItem.Parent.Tag;
+                        /*
+                         * H_SetControl間での移動
+                         */
+                        H_ControlVo afterHControlVoForHSetControl = (H_ControlVo)afterHSetControl.Tag; // H_SetControl上にH_SetLabelが存在していない時のH_ControlVoを取得している
+                        afterHControlVoForHSetControl.ConnectionVo = _connectionVo;
+                        afterHControlVoForHSetControl.OperationDate = beforeHControlVo.OperationDate;
+                        afterHControlVoForHSetControl.OperationFlag = beforeHControlVo.OperationFlag;
+                        afterHControlVoForHSetControl.VehicleDispatchFlag = true;
+                        afterHControlVoForHSetControl.HSetMasterVo = (H_SetMasterVo)dragItem.Tag; // DropされたH_SetMasterVoを代入
+                                                                                    // Controlを追加する
+                        afterHSetControl.Controls.Add(dragItem, cellPoint.X, cellPoint.Y);
+                        break;
+                    case "H_FlowLayoutPanelExBase": // (e.Effect == DragDropEffects.Copy)
+                        /*
+                         * H_StockBoxsからのコピーなのでH_SetLabelのコピーを新規作成
+                         */
+                        H_ControlVo afterHControlVoForHFlowLayoutPanelExBase = (H_ControlVo)afterHSetControl.Tag; // H_SetControl上にH_SetLabelが存在していない時のH_ControlVoを取得している
+                        afterHControlVoForHFlowLayoutPanelExBase.ConnectionVo = _connectionVo;
+                        afterHControlVoForHFlowLayoutPanelExBase.OperationFlag = true;
+                        afterHControlVoForHFlowLayoutPanelExBase.VehicleDispatchFlag = true;
+                        afterHControlVoForHFlowLayoutPanelExBase.HSetMasterVo = (H_SetMasterVo)dragItem.Tag; // DropされたH_SetMasterVoを代入
+                        afterHControlVoForHFlowLayoutPanelExBase.HVehicleDispatchDetailVo = null; // このパラメータをNullにしておけばH_SetLabelが新規として作成される
+                        H_SetLabel hSetLabel = new(afterHControlVoForHFlowLayoutPanelExBase);
+                        hSetLabel.MouseClick += HSetLabel_MouseClick;
+                        hSetLabel.MouseDoubleClick += HSetLabel_MouseDoubleClick;
+                        hSetLabel.MouseMove += HSetLabel_MouseMove;
+                        // Controlを追加する
+                        afterHSetControl.Controls.Add(hSetLabel, cellPoint.X, cellPoint.Y);
+                        break;
+
+                }
+                //if (e.Effect == DragDropEffects.Copy) {
+                //    /*
+                //     * H_StockBoxsからのコピーなのでH_SetLabelのコピーを新規作成
+                //     */
+                //    H_ControlVo afterHControlVo = (H_ControlVo)afterHSetControl.Tag; // H_SetControl上にH_SetLabelが存在していない時のH_ControlVoを取得している
+                //    afterHControlVo.ConnectionVo = _connectionVo;
+                //    afterHControlVo.OperationFlag = true;
+                //    afterHControlVo.VehicleDispatchFlag = true;
+                //    afterHControlVo.HSetMasterVo = (H_SetMasterVo)dragItem.Tag; // DropされたH_SetMasterVoを代入
+                //    afterHControlVo.HVehicleDispatchDetailVo = null; // このパラメータをNullにしておけばH_SetLabelが新規として作成される
+                //    H_SetLabel hSetLabel = new(afterHControlVo);
+                //    hSetLabel.MouseClick += HSetLabel_MouseClick;
+                //    hSetLabel.MouseDoubleClick += HSetLabel_MouseDoubleClick;
+                //    hSetLabel.MouseMove += HSetLabel_MouseMove;
+                //    // Controlを追加する
+                //    afterHSetControl.Controls.Add(hSetLabel, cellPoint.X, cellPoint.Y);
+
+                //} else if (e.Effect == DragDropEffects.Move) {
+                //    /*
+                //     * H_SetControl間での移動
+                //     */
+                //    H_ControlVo afterHControlVo = (H_ControlVo)afterHSetControl.Tag; // H_SetControl上にH_SetLabelが存在していない時のH_ControlVoを取得している
+                //    afterHControlVo.ConnectionVo = _connectionVo;
+                //    afterHControlVo.OperationDate = beforeHControlVo.OperationDate;
+                //    afterHControlVo.OperationFlag = beforeHControlVo.OperationFlag;
+                //    afterHControlVo.VehicleDispatchFlag = true;
+                //    afterHControlVo.HSetMasterVo = (H_SetMasterVo)dragItem.Tag; // DropされたH_SetMasterVoを代入
+                //    // Controlを追加する
+                //    afterHSetControl.Controls.Add(dragItem, cellPoint.X, cellPoint.Y);
+                //}
+                /*
+                 * Drag元の親コントロールを調べる
+                 */
+                switch (beforeParentControl.Name) {
                     /*
-                     * H_StockBoxsにアイテムを残すのでH_SetLabelのコピーを作成
+                     * H_SetControlからDragされた場合
                      */
-                    H_ControlVo hControlVo = (H_ControlVo)hSetControl.Tag;
-                    hControlVo.HSetMasterVo = (H_SetMasterVo)dragItem.Tag;
-                    H_SetLabel hSetLabel = new(hControlVo);
-                    hSetLabel.MouseClick += HSetLabel_MouseClick;
-                    hSetLabel.MouseDoubleClick += HSetLabel_MouseDoubleClick;
-                    hSetLabel.MouseMove += HSetLabel_MouseMove;
-                    hSetControl.Controls.Add(hSetLabel, cellPoint.X, cellPoint.Y);
-                } else if (e.Effect == DragDropEffects.Move) {
-                    hSetControl.Controls.Add(dragItem, cellPoint.X, cellPoint.Y);
+                    case "H_SetControl":
+                        // Drag元のRecordをUpdateする
+                        _hVehicleDispatchDetailDao.UpdateHVehicleDispatchDetail(((H_SetControl)this.GetControlFromPosition(beforeHControlVo.CellNumber % 50, beforeHControlVo.CellNumber / 50)).ConvertHVehicleDispatchDetailVo());
+                        // Drop先のRecordをUpdateする
+                        _hVehicleDispatchDetailDao.UpdateHVehicleDispatchDetail(afterHSetControl.ConvertHVehicleDispatchDetailVo());
+                        break;
+                    /*
+                     * H_FlowLayoutPanelExBaseからDragされた場合
+                     */
+                    case "H_FlowLayoutPanelExBase":
+                        // Drop先のRecordをUpdateする
+                        _hVehicleDispatchDetailDao.UpdateHVehicleDispatchDetail(afterHSetControl.ConvertHVehicleDispatchDetailVo());
+                        break;
                 }
             }
+            /*
+             * ①DragされたObjectを取得する
+             * ②Drag元のCellNumberを操作する
+             * ③Drop先のDBRecordを操作する
+             * ④Labelを移動する
+             */
             if (e.Data.GetDataPresent(typeof(H_CarLabel))) {
                 H_CarLabel dragItem = (H_CarLabel)e.Data.GetData(typeof(H_CarLabel));
-                hSetControl.Controls.Add(dragItem, cellPoint.X, cellPoint.Y);
+                // Drag元の親Controlを退避
+                Control beforeParentControl = dragItem.Parent;
+                afterHSetControl.Controls.Add(dragItem, cellPoint.X, cellPoint.Y);
+                /*
+                 * Drag元の親コントロールを調べる
+                 */
+                switch (beforeParentControl.Name) {
+                    case "H_SetControl":
+
+                        break;
+                    default:
+                        break;
+                }
+
             }
+            /*
+             * ①DragされたObjectを取得する
+             * ②Drag元のCellNumberを操作する
+             * ③Drop先のDBRecordを操作する
+             * ④Labelを移動する
+             */
             if (e.Data.GetDataPresent(typeof(H_StaffLabel))) {
                 H_StaffLabel dragItem = (H_StaffLabel)e.Data.GetData(typeof(H_StaffLabel));
-                hSetControl.Controls.Add(dragItem, cellPoint.X, cellPoint.Y);
+                // Drag元の親Controlを退避
+                Control beforeParentControl = dragItem.Parent;
+                afterHSetControl.Controls.Add(dragItem, cellPoint.X, cellPoint.Y);
+                /*
+                 * Drag元の親コントロールを調べる
+                 */
+                switch (beforeParentControl.Name) {
+                    case "H_SetControl":
+
+                        break;
+                    default:
+                        break;
+                }
+
             }
         }
 
@@ -297,9 +442,7 @@ namespace H_ControlEx {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void HStaffLabel_MouseClick(object sender, MouseEventArgs e) {
-            if ((ModifierKeys & Keys.Shift) == Keys.Shift) {
-                MessageBox.Show("HStaffLabel_MouseClick");
-            }
+
         }
 
         /// <summary>

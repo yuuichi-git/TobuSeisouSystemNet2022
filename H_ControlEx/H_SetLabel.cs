@@ -24,7 +24,7 @@ namespace H_ControlEx {
          * １つのパネルのサイズ
          */
         private const float _panelWidth = 80;
-        private const float _panelHeight = 100;
+        private const float _panelHeight = 120;
         /*
          * H_Dao 
          */
@@ -190,8 +190,8 @@ namespace H_ControlEx {
             /*
              * H_SetLbelのImage選択
              */
-            if (OperationFlag) {
-                switch (ManagedSpaceCode) {
+            if (_operationFlag) {
+                switch (_managedSpaceCode) {
                     case 1:
                         _imageSetLabel = ClassificationCode switch {
                             10 => Properties.Resources.SetLabelWhiteY,
@@ -234,25 +234,24 @@ namespace H_ControlEx {
                                                 _drawFontSetLabel,
                                                 new SolidBrush(Color.Black),
                                                 new Rectangle(0, 10, (int)_panelWidth - 6, (int)_panelHeight - 6), stringFormat);
-
             /*
              * 帰庫点呼フラグ
              */
-            if (LastRollCallFlag) {
+            if (_lastRollCallFlag) {
                 Point[] points = { new Point(54, 21), new Point(69, 21), new Point(69, 36) };
                 e.Graphics.FillPolygon(new SolidBrush(Color.Gray), points);
             }
             /*
              * メモを描画
              */
-            if (MemoFlag) {
+            if (_memoFlag) {
                 Point[] points = { new Point(7, 21), new Point(21, 21), new Point(7, 35) };
                 e.Graphics.FillPolygon(new SolidBrush(Color.Crimson), points);
             }
             /*
              * 番手コード
              */
-            switch (ShiftCode) {
+            switch (_shiftCode) {
                 case 1:
                     e.Graphics.DrawString("早番", _drawFontShiftCode, Brushes.DarkRed, new Point(7, 77));
                     break;
@@ -263,12 +262,12 @@ namespace H_ControlEx {
             /*
              * 待機フラグ
              */
-            if (StandByFlag)
+            if (_standByFlag)
                 e.Graphics.DrawString("待機", _drawFontStandByFlag, Brushes.DarkRed, new Point(43, 77));
             /*
              * 作業員付フラグ
              */
-            if (AddWorkerFlag)
+            if (_addWorkerFlag)
                 e.Graphics.DrawString("作付", _drawFontAddWorkerFlag, Brushes.DarkRed, new Point(24, 20));
         }
 
@@ -466,6 +465,17 @@ namespace H_ControlEx {
             toolStripMenuItem10.Name = "ToolStripMenuItemCreateFax";
             toolStripMenuItem10.Click += ToolStripMenuItem_Click;
             contextMenuStrip.Items.Add(toolStripMenuItem10);
+            /*
+             * スペーサー
+             */
+            contextMenuStrip.Items.Add(new ToolStripSeparator());
+            /*
+             * 削除する
+             */
+            ToolStripMenuItem toolStripMenuItem11 = new("削除する");
+            toolStripMenuItem11.Name = "ToolStripMenuItemSetDelete";
+            toolStripMenuItem11.Click += ToolStripMenuItem_Click;
+            contextMenuStrip.Items.Add(toolStripMenuItem11);
         }
 
         /// <summary>
@@ -687,6 +697,9 @@ namespace H_ControlEx {
                     break;
                 case "ToolStripMenuItemCreateFax": // 代車・代番Faxを作成する
                     MessageBox.Show("ToolStripMenuItemCreateFax");
+                    break;
+                case "ToolStripMenuItemSetDelete": // 削除する
+                    MessageBox.Show("ToolStripMenuItemSetDelete");
                     break;
             }
         }

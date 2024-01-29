@@ -2,7 +2,7 @@
   "profiles": {
     "H_ControlEx": {
       "commandName": "Project",
-      "nativeDebugging": false
+      "nativeDebugging": true
     }
   }
 }

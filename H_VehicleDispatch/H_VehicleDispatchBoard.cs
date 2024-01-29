@@ -19,6 +19,7 @@ namespace H_VehicleDispatch {
         /*
          * 変数定義
          */
+        private readonly H_FlowLayoutPanelEx _hFlowLayoutPanelExFree;
         private readonly H_Board _hBoard;
         /*
          * Dao
@@ -81,10 +82,23 @@ namespace H_VehicleDispatch {
             _listHCarMasterVo = _hCarMasterDao.SelectAllHCarMaster();
             _listHStaffMasterVo = _hStaffMasterDao.SelectAllHStaffMaster();
             /*
+             * Freeゾーンを作成
+             */
+            _hFlowLayoutPanelExFree = new();
+            _hFlowLayoutPanelExFree.AllowDrop = true;
+            _hFlowLayoutPanelExFree.BorderStyle = BorderStyle.FixedSingle;
+            _hFlowLayoutPanelExFree.Dock = DockStyle.Fill;
+            _hFlowLayoutPanelExFree.Margin = new Padding(20, 0, 20, 0);
+            _hFlowLayoutPanelExFree.Name = "H_FlowLayoutPanelExFree";
+            _hFlowLayoutPanelExFree.Padding = new Padding(1, 0, 1, 0);
+            _hFlowLayoutPanelExFree.DragOver += HFlowLayoutPanelExFree_DragOver;
+            _hFlowLayoutPanelExFree.DragDrop += HFlowLayoutPanelExFree_DragDrop;
+            h_TableLayoutPanelExCenter.Controls.Add(_hFlowLayoutPanelExFree, 0, 1);
+            /*
              * 配車用ボードを作成
              */
-            _hBoard = new H_Board();
-            h_TableLayoutPanelExCenter.Controls.Add(_hBoard, 0, 1);
+            _hBoard = new H_Board(_connectionVo);
+            h_TableLayoutPanelExCenter.Controls.Add(_hBoard, 0, 2);
         }
 
         /// <summary>
@@ -284,13 +298,12 @@ namespace H_VehicleDispatch {
         private void ReadHBoard() {
             List<H_VehicleDispatchDetailVo> _listHVehicleDispatchDetailVo = new();
             foreach (H_SetControl hSetControl in _hBoard.Controls) {
-                _listHVehicleDispatchDetailVo.Add(hSetControl.CreateHVehicleDispatchDetailVo());
+                _listHVehicleDispatchDetailVo.Add(hSetControl.ConvertHVehicleDispatchDetailVo());
             }
             try {
                 _hVehicleDispatchDetailDao.DeleteHVehicleDispatchDetail(H_DateTimePickerOperationDate.GetValue());
                 _hVehicleDispatchDetailDao.InsertHVehicleDispatchDetail(_listHVehicleDispatchDetailVo);
-            }
-            catch (Exception exception) {
+            } catch (Exception exception) {
                 MessageBox.Show(exception.Message);
             }
         }
@@ -387,6 +400,75 @@ namespace H_VehicleDispatch {
                 case "ToolStripMenuItemExit":
                     MessageBox.Show("ToolStripMenuItemExit");
                     break;
+            }
+        }
+
+        /// <summary>
+        /// HFlowLayoutPanelExFree_DragOver
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HFlowLayoutPanelExFree_DragOver(object sender, DragEventArgs e) {
+            if (e.Data is not null) {
+                /*
+                 * SetLabelはDropを禁止する
+                 * CarLabelはDropを許可する
+                 * StaffLabelはDropを許可する
+                 */
+                if (e.Data.GetDataPresent(typeof(H_SetLabel))) {
+                    e.Effect = DragDropEffects.None;
+                } else if (e.Data.GetDataPresent(typeof(H_CarLabel))) {
+                    e.Effect = DragDropEffects.Move;
+                } else if (e.Data.GetDataPresent(typeof(H_StaffLabel))) {
+                    e.Effect = DragDropEffects.Move;
+                }
+            }
+        }
+
+        /// <summary>
+        /// HFlowLayoutPanelExFree_DragDrop
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HFlowLayoutPanelExFree_DragDrop(object sender, DragEventArgs e) {
+            if (e.Data is not null) {
+                if (e.Data.GetDataPresent(typeof(H_SetLabel))) {
+                    ToolStripStatusLabelDetail.Text = "H_SetLabelはここへは移動出来ません。";
+                    return;
+                } else if (e.Data.GetDataPresent(typeof(H_CarLabel))) {
+                    H_CarLabel dragItem = (H_CarLabel)e.Data.GetData(typeof(H_CarLabel));
+                    // Drag元の親Controlを退避
+                    Control beforeParentControl = dragItem.Parent;
+                    ((H_FlowLayoutPanelEx)sender).Controls.Add(dragItem);
+                    /*
+                     * Drag元の親コントロールを調べる
+                     */
+                    switch (beforeParentControl.Name) {
+                        case "H_SetControl":
+                            // Drag元のRecordをUpdateする
+                            _hVehicleDispatchDetailDao.UpdateHVehicleDispatchDetail(((H_SetControl)_hBoard.GetControlFromPosition(((H_ControlVo)beforeParentControl.Tag).CellNumber % 50, ((H_ControlVo)beforeParentControl.Tag).CellNumber / 50)).ConvertHVehicleDispatchDetailVo());
+                            break;
+                        default:
+                            break;
+                    }
+                } else if (e.Data.GetDataPresent(typeof(H_StaffLabel))) {
+                    H_StaffLabel dragItem = (H_StaffLabel)e.Data.GetData(typeof(H_StaffLabel));
+                    // Drag元の親Controlを退避
+                    Control beforeParentControl = dragItem.Parent;
+                    // DragItemをDrop先へ移動
+                    ((H_FlowLayoutPanelEx)sender).Controls.Add(dragItem);
+                    /*
+                     * Drag元の親コントロールを調べる
+                     */
+                    switch (beforeParentControl.Name) {
+                        case "H_SetControl":
+                            // Drag元のRecordをUpdateする
+                            _hVehicleDispatchDetailDao.UpdateHVehicleDispatchDetail(((H_SetControl)_hBoard.GetControlFromPosition(((H_ControlVo)beforeParentControl.Tag).CellNumber % 50, ((H_ControlVo)beforeParentControl.Tag).CellNumber / 50)).ConvertHVehicleDispatchDetailVo());
+                            break;
+                        default:
+                            break;
+                    }
+                }
             }
         }
     }
