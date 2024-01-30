@@ -86,15 +86,15 @@ namespace Dao {
         /// 画面表示に必要なデータを取得する
         /// </summary>
         /// <returns></returns>
-        public List<LegalTwelveItemListVo> SelectLegalTwelveItemList(DateTime startDate, DateTime endDate, bool shortTerm) {
+        public List<LegalTwelveItemListVo> SelectLegalTwelveItemList(DateTime startDate, DateTime endDate, bool allTermFlag) {
             /*
              * 短期を含めるかどうかのSQLを作成
              */
-            string sqlShortTerm;
-            if(shortTerm) {
-                sqlShortTerm = "staff_master.job_form IN(10,11,12,99)";
+            string allTerm;
+            if(allTermFlag) {
+                allTerm = "staff_master.belongs IN (10,11,12,20,21) AND staff_master.job_form IN(10,11,12,99) AND staff_master.retirement_flag = 'false' ";
             } else {
-                sqlShortTerm = "staff_master.job_form IN(10,12,99)";
+                allTerm = "staff_master.belongs IN (10,11,12,20,21) AND staff_master.job_form IN(10,12,99) AND staff_master.occupation = 10 AND staff_master.retirement_flag = 'false' ";
             }
 
             List<LegalTwelveItemListVo> listLegalTwelveItemFormVo = new List<LegalTwelveItemListVo>();
@@ -144,7 +144,7 @@ namespace Dao {
                                                                                            "AND legal_twelve_item.students_date BETWEEN '" + startDate.ToString("yyyy-MM-dd") + "' AND '" + endDate.ToString("yyyy-MM-dd") + "') AS students_12_flag " +
                                      "FROM staff_master " +
                                      "LEFT OUTER JOIN occupation_master ON staff_master.occupation = occupation_master.code " +
-                                     "WHERE staff_master.belongs IN (10,11,12,20,21) AND " + sqlShortTerm + " AND staff_master.occupation = 10 AND staff_master.retirement_flag = 'false' " +
+                                     "WHERE " + allTerm + " AND staff_master.retirement_flag = 'false' " +
                                      "ORDER BY staff_master.name_kana ASC";
             using(SqlDataReader sqlDataReader = sqlCommand.ExecuteReader()) {
                 while(sqlDataReader.Read() == true) {

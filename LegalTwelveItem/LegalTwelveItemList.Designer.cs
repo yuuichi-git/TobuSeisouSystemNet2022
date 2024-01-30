@@ -29,6 +29,7 @@
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             ToolStripStatusLabelDetail = new ToolStripStatusLabel();
             PanelUp = new Panel();
+            CheckBoxAllTerm = new CheckBox();
             label2 = new Label();
             DateTimePickerJpEx2 = new ControlEx.DateTimePickerJpEx();
             label1 = new Label();
@@ -40,9 +41,8 @@
             ToolStripMenuItemPrint = new ToolStripMenuItem();
             ToolStripMenuItemPrintSheet = new ToolStripMenuItem();
             ToolStripMenuItemHelp = new ToolStripMenuItem();
-            SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("resource1"));
+            SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("TableLayoutPanelBase.Controls"));
             SheetViewList = SpreadList.GetSheet(0);
-            CheckBoxShortTerm = new CheckBox();
             TableLayoutPanelBase.SuspendLayout();
             StatusStrip1.SuspendLayout();
             PanelUp.SuspendLayout();
@@ -94,7 +94,7 @@
             // 
             // PanelUp
             // 
-            PanelUp.Controls.Add(CheckBoxShortTerm);
+            PanelUp.Controls.Add(CheckBoxAllTerm);
             PanelUp.Controls.Add(label2);
             PanelUp.Controls.Add(DateTimePickerJpEx2);
             PanelUp.Controls.Add(label1);
@@ -105,6 +105,16 @@
             PanelUp.Name = "PanelUp";
             PanelUp.Size = new Size(1178, 54);
             PanelUp.TabIndex = 0;
+            // 
+            // CheckBoxAllTerm
+            // 
+            CheckBoxAllTerm.AutoSize = true;
+            CheckBoxAllTerm.Location = new Point(440, 20);
+            CheckBoxAllTerm.Name = "CheckBoxAllTerm";
+            CheckBoxAllTerm.Size = new Size(87, 19);
+            CheckBoxAllTerm.TabIndex = 6;
+            CheckBoxAllTerm.Text = "全てを含める";
+            CheckBoxAllTerm.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -211,16 +221,6 @@
             SpreadList.TabIndex = 3;
             SpreadList.CellDoubleClick += SpreadList_CellDoubleClick;
             // 
-            // CheckBoxShortTerm
-            // 
-            CheckBoxShortTerm.AutoSize = true;
-            CheckBoxShortTerm.Location = new Point(440, 20);
-            CheckBoxShortTerm.Name = "CheckBoxShortTerm";
-            CheckBoxShortTerm.Size = new Size(90, 19);
-            CheckBoxShortTerm.TabIndex = 6;
-            CheckBoxShortTerm.Text = "短期を含める";
-            CheckBoxShortTerm.UseVisualStyleBackColor = true;
-            // 
             // LegalTwelveItemList
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -265,6 +265,6 @@
         private ToolStripMenuItem ToolStripMenuItemPrint;
         private ToolStripMenuItem ToolStripMenuItemPrintSheet;
         private FarPoint.Win.Spread.SheetView SheetViewList;
-        private CheckBox CheckBoxShortTerm;
+        private CheckBox CheckBoxAllTerm;
     }
 }

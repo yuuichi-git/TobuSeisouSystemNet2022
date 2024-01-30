@@ -131,36 +131,6 @@
             ToolStripMenuItemHelp = new ToolStripMenuItem();
             StatusStrip1 = new StatusStrip();
             ToolStripStatusLabel1 = new ToolStripStatusLabel();
-            TableLayoutPanelCenter = new TableLayoutPanel();
-            label2 = new Label();
-            ButtonDbConnect = new Button();
-            LabelServerName = new Label();
-            LabelDbName = new Label();
-            LabelConnectStatus = new Label();
-            label3 = new Label();
-            label5 = new Label();
-            label1 = new Label();
-            label7 = new Label();
-            label6 = new Label();
-            label21 = new Label();
-            label20 = new Label();
-            label13 = new Label();
-            label12 = new Label();
-            label15 = new Label();
-            label14 = new Label();
-            label11 = new Label();
-            label10 = new Label();
-            label44 = new Label();
-            label43 = new Label();
-            label9 = new Label();
-            label8 = new Label();
-            label27 = new Label();
-            label26 = new Label();
-            label25 = new Label();
-            label24 = new Label();
-            label4 = new Label();
-            label45 = new Label();
-            label46 = new Label();
             TableLayoutPanelLeft = new TableLayoutPanel();
             PanelLeftMiddle = new Panel();
             TreeView1 = new TreeView();
@@ -189,14 +159,53 @@
             label31 = new Label();
             label28 = new Label();
             label29 = new Label();
+            HTableLayoutPanelExCenter = new H_ControlEx.H_TableLayoutPanelEx();
+            HPanelTop = new H_ControlEx.H_PanelEx();
+            h_ComboBoxEx1 = new H_ControlEx.H_ComboBoxEx();
+            label46 = new Label();
+            ButtonDbConnect = new Button();
+            label2 = new Label();
+            label1 = new Label();
+            LabelServerName = new Label();
+            LabelConnectStatus = new Label();
+            LabelDbName = new Label();
+            HTabControlEx = new H_ControlEx.H_TabControlEx();
+            TabPage1 = new TabPage();
+            label27 = new Label();
+            label43 = new Label();
+            label25 = new Label();
+            label26 = new Label();
+            label21 = new Label();
+            label24 = new Label();
+            label15 = new Label();
+            label20 = new Label();
+            label13 = new Label();
+            label14 = new Label();
+            label11 = new Label();
+            label12 = new Label();
+            label9 = new Label();
+            label10 = new Label();
+            label7 = new Label();
+            label8 = new Label();
+            label5 = new Label();
+            label6 = new Label();
+            label4 = new Label();
+            label3 = new Label();
+            TabPage2 = new TabPage();
+            label44 = new Label();
+            label45 = new Label();
             TableLayoutPanelBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
-            TableLayoutPanelCenter.SuspendLayout();
             TableLayoutPanelLeft.SuspendLayout();
             PanelLeftMiddle.SuspendLayout();
             PanelLeftTop.SuspendLayout();
             PanelRight.SuspendLayout();
+            HTableLayoutPanelExCenter.SuspendLayout();
+            HPanelTop.SuspendLayout();
+            HTabControlEx.SuspendLayout();
+            TabPage1.SuspendLayout();
+            TabPage2.SuspendLayout();
             SuspendLayout();
             // 
             // TableLayoutPanelBase
@@ -207,9 +216,9 @@
             TableLayoutPanelBase.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 300F));
             TableLayoutPanelBase.Controls.Add(MenuStrip1, 0, 0);
             TableLayoutPanelBase.Controls.Add(StatusStrip1, 0, 2);
-            TableLayoutPanelBase.Controls.Add(TableLayoutPanelCenter, 1, 1);
             TableLayoutPanelBase.Controls.Add(TableLayoutPanelLeft, 0, 1);
             TableLayoutPanelBase.Controls.Add(PanelRight, 2, 1);
+            TableLayoutPanelBase.Controls.Add(HTableLayoutPanelExCenter, 1, 1);
             TableLayoutPanelBase.Dock = DockStyle.Fill;
             TableLayoutPanelBase.Location = new Point(0, 0);
             TableLayoutPanelBase.Name = "TableLayoutPanelBase";
@@ -280,462 +289,6 @@
             ToolStripStatusLabel1.Name = "ToolStripStatusLabel1";
             ToolStripStatusLabel1.Size = new Size(39, 17);
             ToolStripStatusLabel1.Text = "Status";
-            // 
-            // TableLayoutPanelCenter
-            // 
-            TableLayoutPanelCenter.AutoScroll = true;
-            TableLayoutPanelCenter.ColumnCount = 2;
-            TableLayoutPanelCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            TableLayoutPanelCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 200F));
-            TableLayoutPanelCenter.Controls.Add(label2, 0, 1);
-            TableLayoutPanelCenter.Controls.Add(ButtonDbConnect, 1, 1);
-            TableLayoutPanelCenter.Controls.Add(LabelServerName, 0, 2);
-            TableLayoutPanelCenter.Controls.Add(LabelDbName, 0, 3);
-            TableLayoutPanelCenter.Controls.Add(LabelConnectStatus, 0, 4);
-            TableLayoutPanelCenter.Controls.Add(label3, 0, 6);
-            TableLayoutPanelCenter.Controls.Add(label5, 0, 8);
-            TableLayoutPanelCenter.Controls.Add(label1, 0, 0);
-            TableLayoutPanelCenter.Controls.Add(label7, 0, 38);
-            TableLayoutPanelCenter.Controls.Add(label6, 0, 37);
-            TableLayoutPanelCenter.Controls.Add(label21, 0, 35);
-            TableLayoutPanelCenter.Controls.Add(label20, 0, 34);
-            TableLayoutPanelCenter.Controls.Add(label13, 0, 32);
-            TableLayoutPanelCenter.Controls.Add(label12, 0, 31);
-            TableLayoutPanelCenter.Controls.Add(label15, 0, 29);
-            TableLayoutPanelCenter.Controls.Add(label14, 0, 28);
-            TableLayoutPanelCenter.Controls.Add(label11, 0, 26);
-            TableLayoutPanelCenter.Controls.Add(label10, 0, 25);
-            TableLayoutPanelCenter.Controls.Add(label44, 0, 23);
-            TableLayoutPanelCenter.Controls.Add(label43, 0, 22);
-            TableLayoutPanelCenter.Controls.Add(label9, 0, 20);
-            TableLayoutPanelCenter.Controls.Add(label8, 0, 19);
-            TableLayoutPanelCenter.Controls.Add(label27, 0, 17);
-            TableLayoutPanelCenter.Controls.Add(label26, 0, 16);
-            TableLayoutPanelCenter.Controls.Add(label25, 0, 14);
-            TableLayoutPanelCenter.Controls.Add(label24, 0, 13);
-            TableLayoutPanelCenter.Controls.Add(label4, 0, 7);
-            TableLayoutPanelCenter.Controls.Add(label45, 0, 10);
-            TableLayoutPanelCenter.Controls.Add(label46, 0, 11);
-            TableLayoutPanelCenter.Dock = DockStyle.Fill;
-            TableLayoutPanelCenter.Location = new Point(303, 27);
-            TableLayoutPanelCenter.Name = "TableLayoutPanelCenter";
-            TableLayoutPanelCenter.RowCount = 53;
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 30F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            TableLayoutPanelCenter.Size = new Size(710, 713);
-            TableLayoutPanelCenter.TabIndex = 2;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Dock = DockStyle.Fill;
-            label2.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(3, 30);
-            label2.Name = "label2";
-            label2.Size = new Size(504, 20);
-            label2.TabIndex = 2;
-            label2.Text = "　データベースの接続と切断及びステータスを管理";
-            label2.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // ButtonDbConnect
-            // 
-            ButtonDbConnect.Location = new Point(513, 33);
-            ButtonDbConnect.Name = "ButtonDbConnect";
-            TableLayoutPanelCenter.SetRowSpan(ButtonDbConnect, 2);
-            ButtonDbConnect.Size = new Size(175, 34);
-            ButtonDbConnect.TabIndex = 3;
-            ButtonDbConnect.Text = "データベース接続";
-            ButtonDbConnect.UseVisualStyleBackColor = true;
-            ButtonDbConnect.Click += ButtonDbConnect_Click;
-            // 
-            // LabelServerName
-            // 
-            LabelServerName.AutoSize = true;
-            LabelServerName.Dock = DockStyle.Fill;
-            LabelServerName.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            LabelServerName.ForeColor = SystemColors.GrayText;
-            LabelServerName.Location = new Point(3, 50);
-            LabelServerName.Name = "LabelServerName";
-            LabelServerName.Size = new Size(504, 20);
-            LabelServerName.TabIndex = 4;
-            LabelServerName.Text = "　接続先サーバー：";
-            LabelServerName.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // LabelDbName
-            // 
-            LabelDbName.AutoSize = true;
-            LabelDbName.Dock = DockStyle.Fill;
-            LabelDbName.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            LabelDbName.ForeColor = SystemColors.GrayText;
-            LabelDbName.Location = new Point(3, 70);
-            LabelDbName.Name = "LabelDbName";
-            LabelDbName.Size = new Size(504, 20);
-            LabelDbName.TabIndex = 5;
-            LabelDbName.Text = "　接続先データベース：";
-            LabelDbName.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // LabelConnectStatus
-            // 
-            LabelConnectStatus.AutoSize = true;
-            LabelConnectStatus.Dock = DockStyle.Fill;
-            LabelConnectStatus.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            LabelConnectStatus.ForeColor = SystemColors.GrayText;
-            LabelConnectStatus.Location = new Point(3, 90);
-            LabelConnectStatus.Name = "LabelConnectStatus";
-            LabelConnectStatus.Size = new Size(504, 20);
-            LabelConnectStatus.TabIndex = 6;
-            LabelConnectStatus.Text = "　状態：";
-            LabelConnectStatus.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Dock = DockStyle.Fill;
-            label3.Font = new Font("Yu Gothic UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(3, 130);
-            label3.Name = "label3";
-            label3.Size = new Size(504, 30);
-            label3.TabIndex = 7;
-            label3.Text = "アプリケーション";
-            label3.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.ForeColor = SystemColors.GrayText;
-            label5.Location = new Point(3, 180);
-            label5.Name = "label5";
-            label5.Size = new Size(348, 17);
-            label5.TabIndex = 9;
-            label5.Text = "　従業員・車両等のパネルをドラッグ＆ドロップ操作で配車します。";
-            label5.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Dock = DockStyle.Fill;
-            label1.Font = new Font("Yu Gothic UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.ForeColor = Color.Blue;
-            label1.Location = new Point(3, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(504, 30);
-            label1.TabIndex = 32;
-            label1.Text = "データベース接続";
-            label1.TextAlign = ContentAlignment.MiddleLeft;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.ForeColor = SystemColors.GrayText;
-            label7.Location = new Point(3, 780);
-            label7.Name = "label7";
-            label7.Size = new Size(239, 15);
-            label7.TabIndex = 11;
-            label7.Text = "　本番登録の新規及び修正や削除を行います。";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(3, 760);
-            label6.Name = "label6";
-            label6.Size = new Size(154, 17);
-            label6.TabIndex = 10;
-            label6.Tag = "ProductionOfficeList";
-            label6.Text = "　本番変更(社内での本番)";
-            label6.Click += Label_Click;
-            label6.MouseEnter += Label_MouseEnter;
-            label6.MouseLeave += Label_MouseLeave;
-            // 
-            // label21
-            // 
-            label21.AutoSize = true;
-            label21.ForeColor = SystemColors.GrayText;
-            label21.Location = new Point(3, 720);
-            label21.Name = "label21";
-            label21.Size = new Size(239, 15);
-            label21.TabIndex = 25;
-            label21.Text = "　本番登録の新規及び修正や削除を行います。";
-            // 
-            // label20
-            // 
-            label20.AutoSize = true;
-            label20.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label20.Location = new Point(3, 700);
-            label20.Name = "label20";
-            label20.Size = new Size(185, 17);
-            label20.TabIndex = 24;
-            label20.Tag = "ProductionCleanOfficeList";
-            label20.Text = "　本番変更(登録されている本番)";
-            label20.Click += Label_Click;
-            label20.MouseEnter += Label_MouseEnter;
-            label20.MouseLeave += Label_MouseLeave;
-            // 
-            // label13
-            // 
-            label13.AutoSize = true;
-            label13.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label13.ForeColor = SystemColors.GrayText;
-            label13.Location = new Point(3, 660);
-            label13.Name = "label13";
-            label13.Size = new Size(296, 17);
-            label13.TabIndex = 17;
-            label13.Text = "　車両事故・作業事故等のトラブルを記録管理します。";
-            // 
-            // label12
-            // 
-            label12.AutoSize = true;
-            label12.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label12.Location = new Point(3, 640);
-            label12.Name = "label12";
-            label12.Size = new Size(99, 17);
-            label12.TabIndex = 16;
-            label12.Tag = "CarAccidentList";
-            label12.Text = "　事故記録台帳";
-            label12.Click += Label_Click;
-            label12.MouseEnter += Label_MouseEnter;
-            label12.MouseLeave += Label_MouseLeave;
-            // 
-            // label15
-            // 
-            label15.AutoSize = true;
-            label15.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label15.ForeColor = SystemColors.GrayText;
-            label15.Location = new Point(3, 600);
-            label15.Name = "label15";
-            label15.Size = new Size(181, 17);
-            label15.TabIndex = 19;
-            label15.Text = "　車両の登録・修正を行います。";
-            // 
-            // label14
-            // 
-            label14.AutoSize = true;
-            label14.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label14.Location = new Point(3, 580);
-            label14.Name = "label14";
-            label14.Size = new Size(177, 17);
-            label14.TabIndex = 18;
-            label14.Tag = "CarList";
-            label14.Text = "　車両台帳（陸運局対応版）";
-            label14.Click += Label_Click;
-            label14.MouseEnter += Label_MouseEnter;
-            label14.MouseLeave += Label_MouseLeave;
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.ForeColor = SystemColors.GrayText;
-            label11.Location = new Point(3, 540);
-            label11.Name = "label11";
-            label11.Size = new Size(171, 15);
-            label11.TabIndex = 15;
-            label11.Text = "　運転免許証の管理を行います。";
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label10.Location = new Point(3, 520);
-            label10.Name = "label10";
-            label10.Size = new Size(86, 17);
-            label10.TabIndex = 14;
-            label10.Tag = "LicenseList";
-            label10.Text = "　免許証台帳";
-            label10.Click += Label_Click;
-            label10.MouseEnter += Label_MouseEnter;
-            label10.MouseLeave += Label_MouseLeave;
-            // 
-            // label44
-            // 
-            label44.AutoSize = true;
-            label44.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label44.ForeColor = Color.Gray;
-            label44.Location = new Point(3, 480);
-            label44.Name = "label44";
-            label44.Size = new Size(320, 17);
-            label44.TabIndex = 34;
-            label44.Text = "　運転手に対して実施する教育に関する記録を管理します。";
-            // 
-            // label43
-            // 
-            label43.AutoSize = true;
-            label43.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label43.Location = new Point(3, 460);
-            label43.Name = "label43";
-            label43.Size = new Size(287, 17);
-            label43.TabIndex = 33;
-            label43.Tag = "LegalTwelveItemList";
-            label43.Text = "　法定１２項目の教育実施記録簿(陸運局対応版)";
-            label43.Click += Label_Click;
-            label43.MouseEnter += Label_MouseEnter;
-            label43.MouseLeave += Label_MouseLeave;
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Yu Gothic UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label9.ForeColor = SystemColors.GrayText;
-            label9.Location = new Point(3, 420);
-            label9.Name = "label9";
-            label9.Size = new Size(177, 15);
-            label9.TabIndex = 13;
-            label9.Text = "　従事者の登録・修正を行います。";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(3, 400);
-            label8.Name = "label8";
-            label8.Size = new Size(190, 17);
-            label8.TabIndex = 12;
-            label8.Tag = "StaffList";
-            label8.Text = "　従事者台帳（陸運局対応版）";
-            label8.Click += Label_Click;
-            label8.MouseEnter += Label_MouseEnter;
-            label8.MouseLeave += Label_MouseLeave;
-            // 
-            // label27
-            // 
-            label27.AutoSize = true;
-            label27.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label27.ForeColor = Color.Gray;
-            label27.Location = new Point(3, 360);
-            label27.Name = "label27";
-            label27.Size = new Size(206, 17);
-            label27.TabIndex = 31;
-            label27.Text = "　点呼記録簿を作成、印刷をします。";
-            // 
-            // label26
-            // 
-            label26.AutoSize = true;
-            label26.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label26.Location = new Point(3, 340);
-            label26.Name = "label26";
-            label26.Size = new Size(190, 17);
-            label26.TabIndex = 30;
-            label26.Tag = "RollCallRecordBook";
-            label26.Text = "　点呼記録簿（陸運局対応版）";
-            label26.Click += Label_Click;
-            label26.MouseEnter += Label_MouseEnter;
-            label26.MouseLeave += Label_MouseLeave;
-            // 
-            // label25
-            // 
-            label25.AutoSize = true;
-            label25.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label25.ForeColor = Color.Gray;
-            label25.Location = new Point(3, 300);
-            label25.Name = "label25";
-            label25.Size = new Size(170, 17);
-            label25.TabIndex = 29;
-            label25.Text = "　配車表を作成、印刷します。";
-            // 
-            // label24
-            // 
-            label24.AutoSize = true;
-            label24.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label24.Location = new Point(3, 280);
-            label24.Name = "label24";
-            label24.Size = new Size(60, 17);
-            label24.TabIndex = 28;
-            label24.Tag = "VehicleDispatchSheetBoad";
-            label24.Text = "　配車表";
-            label24.Click += Label_Click;
-            label24.MouseEnter += Label_MouseEnter;
-            label24.MouseLeave += Label_MouseLeave;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(3, 160);
-            label4.Name = "label4";
-            label4.Size = new Size(87, 17);
-            label4.TabIndex = 8;
-            label4.Tag = "VehicleDispatch";
-            label4.Text = "　配車システム";
-            label4.TextAlign = ContentAlignment.MiddleLeft;
-            label4.Click += Label_Click;
-            label4.MouseEnter += Label_MouseEnter;
-            label4.MouseLeave += Label_MouseLeave;
-            // 
-            // label45
-            // 
-            label45.AutoSize = true;
-            label45.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label45.Location = new Point(3, 220);
-            label45.Name = "label45";
-            label45.Size = new Size(117, 17);
-            label45.TabIndex = 35;
-            label45.Tag = "H_VehicleDispatch";
-            label45.Text = "　配車システム Ver2";
-            label45.Click += Label_Click;
-            label45.MouseEnter += Label_MouseEnter;
-            label45.MouseLeave += Label_MouseLeave;
-            // 
-            // label46
-            // 
-            label46.AutoSize = true;
-            label46.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label46.ForeColor = SystemColors.GrayText;
-            label46.Location = new Point(3, 240);
-            label46.Name = "label46";
-            label46.Size = new Size(348, 17);
-            label46.TabIndex = 36;
-            label46.Text = "　従業員・車両等のパネルをドラッグ＆ドロップ操作で配車します。";
             // 
             // TableLayoutPanelLeft
             // 
@@ -1324,6 +877,457 @@
             label29.TabIndex = 33;
             label29.Text = "　修了書カードを登録します。";
             // 
+            // HTableLayoutPanelExCenter
+            // 
+            HTableLayoutPanelExCenter.ColumnCount = 1;
+            HTableLayoutPanelExCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            HTableLayoutPanelExCenter.Controls.Add(HPanelTop, 0, 0);
+            HTableLayoutPanelExCenter.Controls.Add(HTabControlEx, 0, 1);
+            HTableLayoutPanelExCenter.Dock = DockStyle.Fill;
+            HTableLayoutPanelExCenter.Location = new Point(303, 27);
+            HTableLayoutPanelExCenter.Name = "HTableLayoutPanelExCenter";
+            HTableLayoutPanelExCenter.RowCount = 2;
+            HTableLayoutPanelExCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 140F));
+            HTableLayoutPanelExCenter.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            HTableLayoutPanelExCenter.Size = new Size(710, 713);
+            HTableLayoutPanelExCenter.TabIndex = 5;
+            // 
+            // HPanelTop
+            // 
+            HPanelTop.Controls.Add(h_ComboBoxEx1);
+            HPanelTop.Controls.Add(label46);
+            HPanelTop.Controls.Add(ButtonDbConnect);
+            HPanelTop.Controls.Add(label2);
+            HPanelTop.Controls.Add(label1);
+            HPanelTop.Controls.Add(LabelServerName);
+            HPanelTop.Controls.Add(LabelConnectStatus);
+            HPanelTop.Controls.Add(LabelDbName);
+            HPanelTop.Dock = DockStyle.Fill;
+            HPanelTop.Location = new Point(3, 3);
+            HPanelTop.Name = "HPanelTop";
+            HPanelTop.Size = new Size(704, 134);
+            HPanelTop.TabIndex = 4;
+            // 
+            // h_ComboBoxEx1
+            // 
+            h_ComboBoxEx1.DropDownStyle = ComboBoxStyle.DropDownList;
+            h_ComboBoxEx1.FormattingEnabled = true;
+            h_ComboBoxEx1.Location = new Point(84, 109);
+            h_ComboBoxEx1.Name = "h_ComboBoxEx1";
+            h_ComboBoxEx1.Size = new Size(260, 23);
+            h_ComboBoxEx1.TabIndex = 34;
+            // 
+            // label46
+            // 
+            label46.AutoSize = true;
+            label46.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label46.ForeColor = SystemColors.GrayText;
+            label46.Location = new Point(8, 112);
+            label46.Name = "label46";
+            label46.Size = new Size(72, 17);
+            label46.TabIndex = 33;
+            label46.Text = "　モニター：";
+            label46.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // ButtonDbConnect
+            // 
+            ButtonDbConnect.Location = new Point(516, 38);
+            ButtonDbConnect.Name = "ButtonDbConnect";
+            ButtonDbConnect.Size = new Size(175, 34);
+            ButtonDbConnect.TabIndex = 3;
+            ButtonDbConnect.Text = "データベース接続";
+            ButtonDbConnect.UseVisualStyleBackColor = true;
+            ButtonDbConnect.Click += ButtonDbConnect_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(8, 30);
+            label2.Name = "label2";
+            label2.Size = new Size(258, 17);
+            label2.TabIndex = 2;
+            label2.Text = "　データベースの接続と切断及びステータスを管理";
+            label2.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Yu Gothic UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.ForeColor = Color.Blue;
+            label1.Location = new Point(8, 4);
+            label1.Name = "label1";
+            label1.Size = new Size(112, 21);
+            label1.TabIndex = 32;
+            label1.Text = "データベース接続";
+            label1.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // LabelServerName
+            // 
+            LabelServerName.AutoSize = true;
+            LabelServerName.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            LabelServerName.ForeColor = SystemColors.GrayText;
+            LabelServerName.Location = new Point(8, 50);
+            LabelServerName.Name = "LabelServerName";
+            LabelServerName.Size = new Size(111, 17);
+            LabelServerName.TabIndex = 4;
+            LabelServerName.Text = "　接続先サーバー：";
+            LabelServerName.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // LabelConnectStatus
+            // 
+            LabelConnectStatus.AutoSize = true;
+            LabelConnectStatus.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            LabelConnectStatus.ForeColor = SystemColors.GrayText;
+            LabelConnectStatus.Location = new Point(8, 90);
+            LabelConnectStatus.Name = "LabelConnectStatus";
+            LabelConnectStatus.Size = new Size(60, 17);
+            LabelConnectStatus.TabIndex = 6;
+            LabelConnectStatus.Text = "　状態：";
+            LabelConnectStatus.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // LabelDbName
+            // 
+            LabelDbName.AutoSize = true;
+            LabelDbName.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            LabelDbName.ForeColor = SystemColors.GrayText;
+            LabelDbName.Location = new Point(8, 70);
+            LabelDbName.Name = "LabelDbName";
+            LabelDbName.Size = new Size(130, 17);
+            LabelDbName.TabIndex = 5;
+            LabelDbName.Text = "　接続先データベース：";
+            LabelDbName.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // HTabControlEx
+            // 
+            HTabControlEx.Controls.Add(TabPage1);
+            HTabControlEx.Controls.Add(TabPage2);
+            HTabControlEx.Dock = DockStyle.Fill;
+            HTabControlEx.ItemSize = new Size(150, 20);
+            HTabControlEx.Location = new Point(3, 143);
+            HTabControlEx.Name = "HTabControlEx";
+            HTabControlEx.SelectedIndex = 0;
+            HTabControlEx.Size = new Size(704, 567);
+            HTabControlEx.SizeMode = TabSizeMode.Fixed;
+            HTabControlEx.TabIndex = 5;
+            // 
+            // TabPage1
+            // 
+            TabPage1.Controls.Add(label27);
+            TabPage1.Controls.Add(label43);
+            TabPage1.Controls.Add(label25);
+            TabPage1.Controls.Add(label26);
+            TabPage1.Controls.Add(label21);
+            TabPage1.Controls.Add(label24);
+            TabPage1.Controls.Add(label15);
+            TabPage1.Controls.Add(label20);
+            TabPage1.Controls.Add(label13);
+            TabPage1.Controls.Add(label14);
+            TabPage1.Controls.Add(label11);
+            TabPage1.Controls.Add(label12);
+            TabPage1.Controls.Add(label9);
+            TabPage1.Controls.Add(label10);
+            TabPage1.Controls.Add(label7);
+            TabPage1.Controls.Add(label8);
+            TabPage1.Controls.Add(label5);
+            TabPage1.Controls.Add(label6);
+            TabPage1.Controls.Add(label4);
+            TabPage1.Controls.Add(label3);
+            TabPage1.Location = new Point(4, 24);
+            TabPage1.Name = "TabPage1";
+            TabPage1.Padding = new Padding(3);
+            TabPage1.Size = new Size(696, 539);
+            TabPage1.TabIndex = 0;
+            TabPage1.Text = "現行システム";
+            TabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label27
+            // 
+            label27.AutoSize = true;
+            label27.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label27.ForeColor = Color.DarkGray;
+            label27.Location = new Point(44, 348);
+            label27.Name = "label27";
+            label27.Size = new Size(74, 17);
+            label27.TabIndex = 19;
+            label27.Text = "配車システム";
+            // 
+            // label43
+            // 
+            label43.AutoSize = true;
+            label43.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label43.Location = new Point(16, 331);
+            label43.Name = "label43";
+            label43.Size = new Size(159, 17);
+            label43.TabIndex = 18;
+            label43.Tag = "ProductionOfficeList";
+            label43.Text = "本番変更（社内での本番）";
+            label43.Click += Label_Click;
+            label43.MouseEnter += Label_MouseEnter;
+            label43.MouseLeave += Label_MouseLeave;
+            // 
+            // label25
+            // 
+            label25.AutoSize = true;
+            label25.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label25.ForeColor = Color.DarkGray;
+            label25.Location = new Point(44, 312);
+            label25.Name = "label25";
+            label25.Size = new Size(74, 17);
+            label25.TabIndex = 17;
+            label25.Text = "配車システム";
+            // 
+            // label26
+            // 
+            label26.AutoSize = true;
+            label26.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label26.Location = new Point(16, 295);
+            label26.Name = "label26";
+            label26.Size = new Size(190, 17);
+            label26.TabIndex = 16;
+            label26.Tag = "ProductionCleanOfficeList";
+            label26.Text = "本番変更（登録されている本番）";
+            label26.Click += Label_Click;
+            label26.MouseEnter += Label_MouseEnter;
+            label26.MouseLeave += Label_MouseLeave;
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label21.ForeColor = Color.DarkGray;
+            label21.Location = new Point(44, 276);
+            label21.Name = "label21";
+            label21.Size = new Size(74, 17);
+            label21.TabIndex = 15;
+            label21.Text = "配車システム";
+            // 
+            // label24
+            // 
+            label24.AutoSize = true;
+            label24.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label24.Location = new Point(16, 259);
+            label24.Name = "label24";
+            label24.Size = new Size(188, 17);
+            label24.TabIndex = 14;
+            label24.Tag = "LegalTwelveItemList";
+            label24.Text = "法定１２項目の教育実施記録簿";
+            label24.Click += Label_Click;
+            label24.MouseEnter += Label_MouseEnter;
+            label24.MouseLeave += Label_MouseLeave;
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label15.ForeColor = Color.DarkGray;
+            label15.Location = new Point(44, 240);
+            label15.Name = "label15";
+            label15.Size = new Size(74, 17);
+            label15.TabIndex = 13;
+            label15.Text = "配車システム";
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label20.Location = new Point(16, 223);
+            label20.Name = "label20";
+            label20.Size = new Size(132, 17);
+            label20.TabIndex = 12;
+            label20.Tag = "CarAccidentList";
+            label20.Text = "事故・トラブル記録台帳";
+            label20.Click += Label_Click;
+            label20.MouseEnter += Label_MouseEnter;
+            label20.MouseLeave += Label_MouseLeave;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label13.ForeColor = Color.DarkGray;
+            label13.Location = new Point(44, 204);
+            label13.Name = "label13";
+            label13.Size = new Size(74, 17);
+            label13.TabIndex = 11;
+            label13.Text = "配車システム";
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label14.Location = new Point(16, 187);
+            label14.Name = "label14";
+            label14.Size = new Size(73, 17);
+            label14.TabIndex = 10;
+            label14.Tag = "RollCallRecordBook";
+            label14.Text = "点呼記録簿";
+            label14.Click += Label_Click;
+            label14.MouseEnter += Label_MouseEnter;
+            label14.MouseLeave += Label_MouseLeave;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label11.ForeColor = Color.DarkGray;
+            label11.Location = new Point(44, 168);
+            label11.Name = "label11";
+            label11.Size = new Size(74, 17);
+            label11.TabIndex = 9;
+            label11.Text = "配車システム";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label12.Location = new Point(16, 151);
+            label12.Name = "label12";
+            label12.Size = new Size(60, 17);
+            label12.TabIndex = 8;
+            label12.Tag = "CarList";
+            label12.Text = "車両台帳";
+            label12.Click += Label_Click;
+            label12.MouseEnter += Label_MouseEnter;
+            label12.MouseLeave += Label_MouseLeave;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label9.ForeColor = Color.DarkGray;
+            label9.Location = new Point(44, 134);
+            label9.Name = "label9";
+            label9.Size = new Size(74, 17);
+            label9.TabIndex = 7;
+            label9.Text = "配車システム";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.Location = new Point(16, 117);
+            label10.Name = "label10";
+            label10.Size = new Size(73, 17);
+            label10.TabIndex = 6;
+            label10.Tag = "LicenseList";
+            label10.Text = "免許証台帳";
+            label10.Click += Label_Click;
+            label10.MouseEnter += Label_MouseEnter;
+            label10.MouseLeave += Label_MouseLeave;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label7.ForeColor = Color.DarkGray;
+            label7.Location = new Point(43, 97);
+            label7.Name = "label7";
+            label7.Size = new Size(74, 17);
+            label7.TabIndex = 5;
+            label7.Text = "配車システム";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label8.Location = new Point(16, 80);
+            label8.Name = "label8";
+            label8.Size = new Size(73, 17);
+            label8.TabIndex = 4;
+            label8.Tag = "StaffList";
+            label8.Text = "従事者台帳";
+            label8.Click += Label_Click;
+            label8.MouseEnter += Label_MouseEnter;
+            label8.MouseLeave += Label_MouseLeave;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.ForeColor = Color.DarkGray;
+            label5.Location = new Point(43, 61);
+            label5.Name = "label5";
+            label5.Size = new Size(74, 17);
+            label5.TabIndex = 3;
+            label5.Text = "配車システム";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label6.Location = new Point(16, 44);
+            label6.Name = "label6";
+            label6.Size = new Size(47, 17);
+            label6.TabIndex = 2;
+            label6.Tag = "VehicleDispatchSheetBoad";
+            label6.Text = "配車表";
+            label6.Click += Label_Click;
+            label6.MouseEnter += Label_MouseEnter;
+            label6.MouseLeave += Label_MouseLeave;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.ForeColor = Color.DarkGray;
+            label4.Location = new Point(43, 26);
+            label4.Name = "label4";
+            label4.Size = new Size(74, 17);
+            label4.TabIndex = 1;
+            label4.Text = "配車システム";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Location = new Point(16, 8);
+            label3.Name = "label3";
+            label3.Size = new Size(74, 17);
+            label3.TabIndex = 0;
+            label3.Tag = "VehicleDispatch";
+            label3.Text = "配車システム";
+            label3.Click += Label_Click;
+            label3.MouseEnter += Label_MouseEnter;
+            label3.MouseLeave += Label_MouseLeave;
+            // 
+            // TabPage2
+            // 
+            TabPage2.Controls.Add(label44);
+            TabPage2.Controls.Add(label45);
+            TabPage2.Location = new Point(4, 24);
+            TabPage2.Name = "TabPage2";
+            TabPage2.Padding = new Padding(3);
+            TabPage2.Size = new Size(696, 539);
+            TabPage2.TabIndex = 1;
+            TabPage2.Text = "新型（令和６年度～）";
+            TabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label44
+            // 
+            label44.AutoSize = true;
+            label44.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label44.ForeColor = Color.DarkGray;
+            label44.Location = new Point(42, 26);
+            label44.Name = "label44";
+            label44.Size = new Size(74, 17);
+            label44.TabIndex = 3;
+            label44.Text = "配車システム";
+            // 
+            // label45
+            // 
+            label45.AutoSize = true;
+            label45.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label45.Location = new Point(16, 8);
+            label45.Name = "label45";
+            label45.Size = new Size(74, 17);
+            label45.TabIndex = 2;
+            label45.Tag = "H_VehicleDispatch";
+            label45.Text = "配車システム";
+            label45.Click += Label_Click;
+            label45.MouseEnter += Label_MouseEnter;
+            label45.MouseLeave += Label_MouseLeave;
+            // 
             // StartProject
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1342,14 +1346,20 @@
             MenuStrip1.PerformLayout();
             StatusStrip1.ResumeLayout(false);
             StatusStrip1.PerformLayout();
-            TableLayoutPanelCenter.ResumeLayout(false);
-            TableLayoutPanelCenter.PerformLayout();
             TableLayoutPanelLeft.ResumeLayout(false);
             PanelLeftMiddle.ResumeLayout(false);
             PanelLeftTop.ResumeLayout(false);
             PanelLeftTop.PerformLayout();
             PanelRight.ResumeLayout(false);
             PanelRight.PerformLayout();
+            HTableLayoutPanelExCenter.ResumeLayout(false);
+            HPanelTop.ResumeLayout(false);
+            HPanelTop.PerformLayout();
+            HTabControlEx.ResumeLayout(false);
+            TabPage1.ResumeLayout(false);
+            TabPage1.PerformLayout();
+            TabPage2.ResumeLayout(false);
+            TabPage2.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -1361,38 +1371,13 @@
         private ToolStripMenuItem ToolStripMenuItemHelp;
         private StatusStrip StatusStrip1;
         private ToolStripStatusLabel ToolStripStatusLabel1;
-        private TableLayoutPanel TableLayoutPanelCenter;
-        private Label label2;
-        private Button ButtonDbConnect;
-        private Label LabelServerName;
-        private Label LabelDbName;
-        private Label LabelConnectStatus;
         private ToolStripMenuItem ToolStripMenuItemExit;
-        private Label label3;
-        private Label label4;
-        private Label label5;
-        private Label label6;
-        private Label label7;
-        private Label label8;
-        private Label label9;
-        private Label label10;
-        private Label label11;
-        private Label label12;
-        private Label label13;
-        private Label label14;
-        private Label label15;
         private Label label16;
         private Label label17;
         private Label label18;
         private Label label19;
-        private Label label20;
-        private Label label21;
         private Label label23;
         private Label label22;
-        private Label label24;
-        private Label label25;
-        private Label label26;
-        private Label label27;
         private Label label28;
         private Label label29;
         private TableLayoutPanel TableLayoutPanelLeft;
@@ -1411,16 +1396,46 @@
         private Label label36;
         private ToolStripMenuItem ToolStripMenuItemDataBase;
         private ToolStripMenuItem ToolStripMenuItemLocalDataBase;
-        private Label label1;
         private Label label37;
         private Label label38;
         private Label label39;
         private Label label40;
         private Label label41;
         private Label label42;
+        private H_ControlEx.H_TableLayoutPanelEx HTableLayoutPanelExCenter;
+        private Button ButtonDbConnect;
+        private H_ControlEx.H_PanelEx HPanelTop;
+        private Label label2;
+        private Label label1;
+        private Label LabelServerName;
+        private Label LabelConnectStatus;
+        private Label LabelDbName;
+        private H_ControlEx.H_TabControlEx HTabControlEx;
+        private TabPage TabPage1;
+        private TabPage TabPage2;
+        private Label label3;
+        private Label label9;
+        private Label label10;
+        private Label label7;
+        private Label label8;
+        private Label label5;
+        private Label label6;
+        private Label label4;
+        private Label label15;
+        private Label label20;
+        private Label label13;
+        private Label label14;
+        private Label label11;
+        private Label label12;
+        private Label label27;
         private Label label43;
+        private Label label25;
+        private Label label26;
+        private Label label21;
+        private Label label24;
         private Label label44;
         private Label label45;
         private Label label46;
+        private H_ControlEx.H_ComboBoxEx h_ComboBoxEx1;
     }
 }

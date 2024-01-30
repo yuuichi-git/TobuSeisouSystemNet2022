@@ -28,8 +28,6 @@
             ToolStripMenuItemMenu = new ToolStripMenuItem();
             ToolStripMenuItemExit = new ToolStripMenuItem();
             ToolStripMenuItemChange = new ToolStripMenuItem();
-            ToolStripMenuItemFree = new ToolStripMenuItem();
-            toolStripSeparator3 = new ToolStripSeparator();
             ToolStripMenuItemSet = new ToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
             ToolStripMenuItemCar = new ToolStripMenuItem();
@@ -94,24 +92,10 @@
             // 
             // ToolStripMenuItemChange
             // 
-            ToolStripMenuItemChange.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemFree, toolStripSeparator3, ToolStripMenuItemSet, toolStripSeparator1, ToolStripMenuItemCar, toolStripSeparator2, ToolStripMenuItemEmployee, ToolStripMenuItemPartTime, ToolStripMenuItemLongTerm, ToolStripMenuItemShortTerm, ToolStripMenuItemDispatch });
+            ToolStripMenuItemChange.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemSet, toolStripSeparator1, ToolStripMenuItemCar, toolStripSeparator2, ToolStripMenuItemEmployee, ToolStripMenuItemPartTime, ToolStripMenuItemLongTerm, ToolStripMenuItemShortTerm, ToolStripMenuItemDispatch });
             ToolStripMenuItemChange.Name = "ToolStripMenuItemChange";
             ToolStripMenuItemChange.Size = new Size(60, 20);
             ToolStripMenuItemChange.Text = "切り替え";
-            // 
-            // ToolStripMenuItemFree
-            // 
-            ToolStripMenuItemFree.Checked = true;
-            ToolStripMenuItemFree.CheckState = CheckState.Checked;
-            ToolStripMenuItemFree.Name = "ToolStripMenuItemFree";
-            ToolStripMenuItemFree.Size = new Size(194, 22);
-            ToolStripMenuItemFree.Text = "フリー";
-            ToolStripMenuItemFree.Click += ToolStripMenuItem_Click;
-            // 
-            // toolStripSeparator3
-            // 
-            toolStripSeparator3.Name = "toolStripSeparator3";
-            toolStripSeparator3.Size = new Size(191, 6);
             // 
             // ToolStripMenuItemSet
             // 
@@ -261,8 +245,6 @@
         private ToolStripMenuItem ToolStripMenuItemLongTerm;
         private ToolStripMenuItem ToolStripMenuItemShortTerm;
         private ToolStripMenuItem ToolStripMenuItemDispatch;
-        private ToolStripMenuItem ToolStripMenuItemFree;
-        private ToolStripSeparator toolStripSeparator3;
         private ToolStripMenuItem ToolStripMenuItemExit;
         private ToolStripMenuItem ToolStripMenuItemSortAsc;
         private ToolStripMenuItem ToolStripMenuItemSortDesk;

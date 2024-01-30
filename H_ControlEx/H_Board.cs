@@ -214,7 +214,7 @@ namespace H_ControlEx {
                         afterHControlVoForHSetControl.OperationFlag = beforeHControlVo.OperationFlag;
                         afterHControlVoForHSetControl.VehicleDispatchFlag = true;
                         afterHControlVoForHSetControl.HSetMasterVo = (H_SetMasterVo)dragItem.Tag; // DropされたH_SetMasterVoを代入
-                                                                                    // Controlを追加する
+                                                                                                  // Controlを追加する
                         afterHSetControl.Controls.Add(dragItem, cellPoint.X, cellPoint.Y);
                         break;
                     case "H_FlowLayoutPanelExBase": // (e.Effect == DragDropEffects.Copy)
@@ -236,53 +236,19 @@ namespace H_ControlEx {
                         break;
 
                 }
-                //if (e.Effect == DragDropEffects.Copy) {
-                //    /*
-                //     * H_StockBoxsからのコピーなのでH_SetLabelのコピーを新規作成
-                //     */
-                //    H_ControlVo afterHControlVo = (H_ControlVo)afterHSetControl.Tag; // H_SetControl上にH_SetLabelが存在していない時のH_ControlVoを取得している
-                //    afterHControlVo.ConnectionVo = _connectionVo;
-                //    afterHControlVo.OperationFlag = true;
-                //    afterHControlVo.VehicleDispatchFlag = true;
-                //    afterHControlVo.HSetMasterVo = (H_SetMasterVo)dragItem.Tag; // DropされたH_SetMasterVoを代入
-                //    afterHControlVo.HVehicleDispatchDetailVo = null; // このパラメータをNullにしておけばH_SetLabelが新規として作成される
-                //    H_SetLabel hSetLabel = new(afterHControlVo);
-                //    hSetLabel.MouseClick += HSetLabel_MouseClick;
-                //    hSetLabel.MouseDoubleClick += HSetLabel_MouseDoubleClick;
-                //    hSetLabel.MouseMove += HSetLabel_MouseMove;
-                //    // Controlを追加する
-                //    afterHSetControl.Controls.Add(hSetLabel, cellPoint.X, cellPoint.Y);
-
-                //} else if (e.Effect == DragDropEffects.Move) {
-                //    /*
-                //     * H_SetControl間での移動
-                //     */
-                //    H_ControlVo afterHControlVo = (H_ControlVo)afterHSetControl.Tag; // H_SetControl上にH_SetLabelが存在していない時のH_ControlVoを取得している
-                //    afterHControlVo.ConnectionVo = _connectionVo;
-                //    afterHControlVo.OperationDate = beforeHControlVo.OperationDate;
-                //    afterHControlVo.OperationFlag = beforeHControlVo.OperationFlag;
-                //    afterHControlVo.VehicleDispatchFlag = true;
-                //    afterHControlVo.HSetMasterVo = (H_SetMasterVo)dragItem.Tag; // DropされたH_SetMasterVoを代入
-                //    // Controlを追加する
-                //    afterHSetControl.Controls.Add(dragItem, cellPoint.X, cellPoint.Y);
-                //}
                 /*
                  * Drag元の親コントロールを調べる
                  */
                 switch (beforeParentControl.Name) {
-                    /*
-                     * H_SetControlからDragされた場合
-                     */
-                    case "H_SetControl":
+                    case "H_SetControl": // H_SetControl→H_SetControlへの移動
+                        beforeHControlVo = (H_ControlVo)dragItem.Parent.Tag;
                         // Drag元のRecordをUpdateする
                         _hVehicleDispatchDetailDao.UpdateHVehicleDispatchDetail(((H_SetControl)this.GetControlFromPosition(beforeHControlVo.CellNumber % 50, beforeHControlVo.CellNumber / 50)).ConvertHVehicleDispatchDetailVo());
                         // Drop先のRecordをUpdateする
                         _hVehicleDispatchDetailDao.UpdateHVehicleDispatchDetail(afterHSetControl.ConvertHVehicleDispatchDetailVo());
                         break;
-                    /*
-                     * H_FlowLayoutPanelExBaseからDragされた場合
-                     */
-                    case "H_FlowLayoutPanelExBase":
+                    case "H_FlowLayoutPanelExFree": // H_FlowLayoutPanelExFree→H_SetControlへの移動
+                    case "H_FlowLayoutPanelExBase": // H_FlowLayoutPanelExBase→H_SetControlへの移動
                         // Drop先のRecordをUpdateする
                         _hVehicleDispatchDetailDao.UpdateHVehicleDispatchDetail(afterHSetControl.ConvertHVehicleDispatchDetailVo());
                         break;
@@ -303,13 +269,19 @@ namespace H_ControlEx {
                  * Drag元の親コントロールを調べる
                  */
                 switch (beforeParentControl.Name) {
-                    case "H_SetControl":
-
+                    case "H_SetControl": // H_SetControl→H_SetControlへの移動
+                        beforeHControlVo = (H_ControlVo)dragItem.Parent.Tag;
+                        // Drag元のRecordをUpdateする
+                        _hVehicleDispatchDetailDao.UpdateHVehicleDispatchDetail(((H_SetControl)this.GetControlFromPosition(beforeHControlVo.CellNumber % 50, beforeHControlVo.CellNumber / 50)).ConvertHVehicleDispatchDetailVo());
+                        // Drop先のRecordをUpdateする
+                        _hVehicleDispatchDetailDao.UpdateHVehicleDispatchDetail(afterHSetControl.ConvertHVehicleDispatchDetailVo());
                         break;
-                    default:
+                    case "H_FlowLayoutPanelExFree": // H_FlowLayoutPanelExFree→H_SetControlへの移動
+                    case "H_FlowLayoutPanelExBase": // H_FlowLayoutPanelExBase→H_SetControlへの移動
+                        // Drop先のRecordをUpdateする
+                        _hVehicleDispatchDetailDao.UpdateHVehicleDispatchDetail(afterHSetControl.ConvertHVehicleDispatchDetailVo());
                         break;
                 }
-
             }
             /*
              * ①DragされたObjectを取得する
@@ -326,13 +298,19 @@ namespace H_ControlEx {
                  * Drag元の親コントロールを調べる
                  */
                 switch (beforeParentControl.Name) {
-                    case "H_SetControl":
-
+                    case "H_SetControl": // H_SetControl→H_SetControlへの移動
+                        beforeHControlVo = (H_ControlVo)dragItem.Parent.Tag;
+                        // Drag元のRecordをUpdateする
+                        _hVehicleDispatchDetailDao.UpdateHVehicleDispatchDetail(((H_SetControl)this.GetControlFromPosition(beforeHControlVo.CellNumber % 50, beforeHControlVo.CellNumber / 50)).ConvertHVehicleDispatchDetailVo());
+                        // Drop先のRecordをUpdateする
+                        _hVehicleDispatchDetailDao.UpdateHVehicleDispatchDetail(afterHSetControl.ConvertHVehicleDispatchDetailVo());
                         break;
-                    default:
+                    case "H_FlowLayoutPanelExFree": // H_FlowLayoutPanelExFree→H_SetControlへの移動
+                    case "H_FlowLayoutPanelExBase": // H_FlowLayoutPanelExBase→H_SetControlへの移動
+                        // Drop先のRecordをUpdateする
+                        _hVehicleDispatchDetailDao.UpdateHVehicleDispatchDetail(afterHSetControl.ConvertHVehicleDispatchDetailVo());
                         break;
                 }
-
             }
         }
 

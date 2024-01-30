@@ -45,7 +45,7 @@ namespace StockBox {
              * FlowLayoutPanelExを作成
              */
             _hFlowLayoutPanelExBase = new H_FlowLayoutPanelEx();
-            _hFlowLayoutPanelExBase.AllowDrop = true;
+            _hFlowLayoutPanelExBase.AllowDrop = false; // ドラッグドロップを受け付けない
             _hFlowLayoutPanelExBase.AutoScroll = true;
             _hFlowLayoutPanelExBase.Dock = DockStyle.Fill;
             _hFlowLayoutPanelExBase.Name = "H_FlowLayoutPanelExBase";
@@ -69,11 +69,6 @@ namespace StockBox {
             switch (((ToolStripMenuItem)sender).Name) {
                 case "ToolStripMenuItemExit": // アプリケーションを終了する
                     this.Close();
-                    break;
-                case "ToolStripMenuItemFree": // フリー
-                    this.ToolStripMenuItemCheckedChange(sender);
-                    this.FlowLayoutPanelExControlRemove();
-
                     break;
                 case "ToolStripMenuItemSet": // 配車先
                     this.ToolStripMenuItemCheckedChange(sender);

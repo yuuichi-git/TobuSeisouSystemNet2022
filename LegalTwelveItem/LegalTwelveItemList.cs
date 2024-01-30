@@ -62,7 +62,7 @@ namespace LegalTwelveItem {
             _initializeForm.LegalTwelveItemList(this);
             DateTimePickerJpEx1.Value = _date.GetFiscalYearStartDate(DateTime.Today);
             DateTimePickerJpEx2.Value = _date.GetFiscalYearEndDate(DateTime.Today);
-            CheckBoxShortTerm.Checked = false;
+            CheckBoxAllTerm.Checked = false;
             InitializeSheetViewList(SheetViewList);
         }
 
@@ -88,7 +88,7 @@ namespace LegalTwelveItem {
             /*
              * レコードを取得
              */
-            List<LegalTwelveItemListVo> listLegalTwelveItemFormVo = _legalTwelveItemDao.SelectLegalTwelveItemList(DateTimePickerJpEx1.GetValue(), DateTimePickerJpEx2.GetValue(),CheckBoxShortTerm.Checked);
+            List<LegalTwelveItemListVo> listLegalTwelveItemFormVo = _legalTwelveItemDao.SelectLegalTwelveItemList(DateTimePickerJpEx1.GetValue(), DateTimePickerJpEx2.GetValue(),CheckBoxAllTerm.Checked);
             /*
              * SheetViewListへ表示
              */

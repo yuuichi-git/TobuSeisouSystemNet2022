@@ -236,11 +236,11 @@ namespace H_ControlEx {
                                     e.Graphics.FillRectangle(_solidBrushFaxTransmission, rectangle);
                                 break;
                             case 2: // StaffLabel(1人目)
-                                if (_hControlVo.HSetMasterVo.NumberOfPeople >= 1)
+                                if (_hControlVo.HSetMasterVo is not null && _hControlVo.HSetMasterVo.NumberOfPeople >= 1)
                                     ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // StaffLabel1の枠線
                                 break;
                             case 3: // StaffLabel(2人目)
-                                if (_hControlVo.HSetMasterVo.NumberOfPeople >= 2)
+                                if (_hControlVo.HSetMasterVo is not null && _hControlVo.HSetMasterVo.NumberOfPeople >= 2)
                                     ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // StaffLabel2の枠線
                                 break;
                         }
@@ -248,11 +248,11 @@ namespace H_ControlEx {
                     case 1: // ２列目
                         switch (e.Row) {
                             case 2: // StaffLabel(3人目)
-                                if (_hControlVo.HSetMasterVo.NumberOfPeople >= 3)
+                                if (_hControlVo.HSetMasterVo is not null && _hControlVo.HSetMasterVo.NumberOfPeople >= 3)
                                     ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // StaffLabel3の枠線
                                 break;
                             case 3: // StaffLabel(4人目)
-                                if (_hControlVo.HSetMasterVo.NumberOfPeople >= 4)
+                                if (_hControlVo.HSetMasterVo is not null && _hControlVo.HSetMasterVo.NumberOfPeople >= 4)
                                     ControlPaint.DrawBorder(e.Graphics, rectangle, Color.Gray, ButtonBorderStyle.Dotted); // StaffLabel4の枠線
                                 break;
                         }
@@ -519,7 +519,7 @@ namespace H_ControlEx {
                         H_StaffLabel hStaffLabel = (H_StaffLabel)objectStaff1;
                         H_StaffMasterVo hStaffMasterVo = (H_StaffMasterVo)objectStaff1.Tag;
                         hVehicleDispatchDetailVo.StaffCode1 = hStaffMasterVo.StaffCode;
-                        hVehicleDispatchDetailVo.StaffOccupation1 = hStaffLabel.StaffOccupationCode;
+                        hVehicleDispatchDetailVo.StaffOccupation1 = hStaffMasterVo.Occupation;
                         hVehicleDispatchDetailVo.StaffProxyFlag1 = hStaffLabel.StaffProxyFlag;
                         hVehicleDispatchDetailVo.StaffRollCallFlag1 = hStaffLabel.StaffRollCallFlag;
                         hVehicleDispatchDetailVo.StaffRollCallYmdHms1 = hStaffLabel.StaffRollCallYmdHms;
