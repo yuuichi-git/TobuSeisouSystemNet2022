@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows10.0.20348.0</TargetFramework>
-    <Nullable>disable</Nullable>
+    <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <NoWin32Manifest>true</NoWin32Manifest>
@@ -12,7 +12,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\H_ControlEx\H_ControlEx.csproj" />
-    <ProjectReference Include="..\H_Utility\H_Utility.csproj" />
+    <ProjectReference Include="..\H_Vo\H_Vo.csproj" />
   </ItemGroup>
 
 </Project>

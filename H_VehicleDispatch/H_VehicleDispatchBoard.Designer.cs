@@ -29,6 +29,9 @@
             ToolStripMenuItemExit = new ToolStripMenuItem();
             ToolStripMenuItemInitialize = new ToolStripMenuItem();
             ToolStripMenuItemInitializeVehicleDispatch = new ToolStripMenuItem();
+            ToolStripMenuItemInitializeVehicleDispatchCopy = new ToolStripMenuItem();
+            ToolStripMenuItemUpdateVehicleDispatch = new ToolStripMenuItem();
+            ToolStripMenuItemUpdateVehicleDispatchCleanOffice = new ToolStripMenuItem();
             ToolStripMenuItemPrint = new ToolStripMenuItem();
             ToolStripMenuItemPrintB4 = new ToolStripMenuItem();
             ToolStripMenuItemHelp = new ToolStripMenuItem();
@@ -42,12 +45,6 @@
             h_ButtonExLeft3 = new H_ControlEx.H_ButtonEx();
             h_ButtonExLeft2 = new H_ControlEx.H_ButtonEx();
             h_ButtonExLeft1 = new H_ControlEx.H_ButtonEx();
-            h_PanelExRight = new H_ControlEx.H_PanelEx();
-            h_ButtonExRight5 = new H_ControlEx.H_ButtonEx();
-            h_ButtonExRight4 = new H_ControlEx.H_ButtonEx();
-            h_ButtonExRight3 = new H_ControlEx.H_ButtonEx();
-            h_ButtonExRight2 = new H_ControlEx.H_ButtonEx();
-            h_ButtonExRight1 = new H_ControlEx.H_ButtonEx();
             h_PanelExCenter = new H_ControlEx.H_PanelEx();
             h_TableLayoutPanelExCenter = new H_ControlEx.H_TableLayoutPanelEx();
             h_PanelExCenterTop = new H_ControlEx.H_PanelEx();
@@ -58,7 +55,6 @@
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
             h_PanelExLeft.SuspendLayout();
-            h_PanelExRight.SuspendLayout();
             h_PanelExCenter.SuspendLayout();
             h_TableLayoutPanelExCenter.SuspendLayout();
             h_PanelExCenterTop.SuspendLayout();
@@ -66,14 +62,13 @@
             // 
             // h_TableLayoutPanelExBase
             // 
-            h_TableLayoutPanelExBase.ColumnCount = 3;
+            h_TableLayoutPanelExBase.ColumnCount = 2;
             h_TableLayoutPanelExBase.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 34F));
             h_TableLayoutPanelExBase.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            h_TableLayoutPanelExBase.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 34F));
+            h_TableLayoutPanelExBase.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
             h_TableLayoutPanelExBase.Controls.Add(MenuStrip1, 0, 0);
             h_TableLayoutPanelExBase.Controls.Add(StatusStrip1, 0, 2);
             h_TableLayoutPanelExBase.Controls.Add(h_PanelExLeft, 0, 1);
-            h_TableLayoutPanelExBase.Controls.Add(h_PanelExRight, 2, 1);
             h_TableLayoutPanelExBase.Controls.Add(h_PanelExCenter, 1, 1);
             h_TableLayoutPanelExBase.Dock = DockStyle.Fill;
             h_TableLayoutPanelExBase.Location = new Point(0, 0);
@@ -82,14 +77,13 @@
             h_TableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
             h_TableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             h_TableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
-            h_TableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             h_TableLayoutPanelExBase.Size = new Size(1904, 1041);
             h_TableLayoutPanelExBase.TabIndex = 0;
             // 
             // MenuStrip1
             // 
-            h_TableLayoutPanelExBase.SetColumnSpan(MenuStrip1, 3);
-            MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemInitialize, ToolStripMenuItemPrint, ToolStripMenuItemHelp });
+            h_TableLayoutPanelExBase.SetColumnSpan(MenuStrip1, 2);
+            MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemInitialize, ToolStripMenuItemUpdateVehicleDispatch, ToolStripMenuItemPrint, ToolStripMenuItemHelp });
             MenuStrip1.Location = new Point(0, 0);
             MenuStrip1.Name = "MenuStrip1";
             MenuStrip1.Size = new Size(1904, 24);
@@ -112,7 +106,7 @@
             // 
             // ToolStripMenuItemInitialize
             // 
-            ToolStripMenuItemInitialize.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemInitializeVehicleDispatch });
+            ToolStripMenuItemInitialize.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemInitializeVehicleDispatch, ToolStripMenuItemInitializeVehicleDispatchCopy });
             ToolStripMenuItemInitialize.Name = "ToolStripMenuItemInitialize";
             ToolStripMenuItemInitialize.Size = new Size(55, 20);
             ToolStripMenuItemInitialize.Text = "初期化";
@@ -120,9 +114,28 @@
             // ToolStripMenuItemInitializeVehicleDispatch
             // 
             ToolStripMenuItemInitializeVehicleDispatch.Name = "ToolStripMenuItemInitializeVehicleDispatch";
-            ToolStripMenuItemInitializeVehicleDispatch.Size = new Size(162, 22);
-            ToolStripMenuItemInitializeVehicleDispatch.Text = "配車を初期化する";
+            ToolStripMenuItemInitializeVehicleDispatch.Size = new Size(262, 22);
+            ToolStripMenuItemInitializeVehicleDispatch.Text = "配車を初期化する(清掃事務所登録)";
             ToolStripMenuItemInitializeVehicleDispatch.Click += ToolStripMenuItem_Click;
+            // 
+            // ToolStripMenuItemInitializeVehicleDispatchCopy
+            // 
+            ToolStripMenuItemInitializeVehicleDispatchCopy.Name = "ToolStripMenuItemInitializeVehicleDispatchCopy";
+            ToolStripMenuItemInitializeVehicleDispatchCopy.Size = new Size(262, 22);
+            ToolStripMenuItemInitializeVehicleDispatchCopy.Text = "配車を初期化する(前日の配車をコピー)";
+            // 
+            // ToolStripMenuItemUpdateVehicleDispatch
+            // 
+            ToolStripMenuItemUpdateVehicleDispatch.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemUpdateVehicleDispatchCleanOffice });
+            ToolStripMenuItemUpdateVehicleDispatch.Name = "ToolStripMenuItemUpdateVehicleDispatch";
+            ToolStripMenuItemUpdateVehicleDispatch.Size = new Size(43, 20);
+            ToolStripMenuItemUpdateVehicleDispatch.Text = "登録";
+            // 
+            // ToolStripMenuItemUpdateVehicleDispatchCleanOffice
+            // 
+            ToolStripMenuItemUpdateVehicleDispatchCleanOffice.Name = "ToolStripMenuItemUpdateVehicleDispatchCleanOffice";
+            ToolStripMenuItemUpdateVehicleDispatchCleanOffice.Size = new Size(230, 22);
+            ToolStripMenuItemUpdateVehicleDispatchCleanOffice.Text = "この配車組を本番として登録する";
             // 
             // ToolStripMenuItemPrint
             // 
@@ -145,7 +158,7 @@
             // 
             // StatusStrip1
             // 
-            h_TableLayoutPanelExBase.SetColumnSpan(StatusStrip1, 3);
+            h_TableLayoutPanelExBase.SetColumnSpan(StatusStrip1, 2);
             StatusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, ToolStripProgressBar1, ToolStripStatusLabelDetail });
             StatusStrip1.Location = new Point(0, 1019);
             StatusStrip1.Name = "StatusStrip1";
@@ -188,41 +201,45 @@
             // 
             // h_ButtonExLeft5
             // 
-            h_ButtonExLeft5.Location = new Point(2, 436);
+            h_ButtonExLeft5.Location = new Point(2, 494);
             h_ButtonExLeft5.Name = "h_ButtonExLeft5";
             h_ButtonExLeft5.Size = new Size(30, 100);
             h_ButtonExLeft5.TabIndex = 4;
             h_ButtonExLeft5.TabStop = false;
+            h_ButtonExLeft5.TextDirectionVertical = "";
             h_ButtonExLeft5.UseVisualStyleBackColor = true;
             h_ButtonExLeft5.Click += HButtonEx_Click;
             // 
             // h_ButtonExLeft4
             // 
-            h_ButtonExLeft4.Location = new Point(2, 336);
+            h_ButtonExLeft4.Location = new Point(2, 392);
             h_ButtonExLeft4.Name = "h_ButtonExLeft4";
             h_ButtonExLeft4.Size = new Size(30, 100);
             h_ButtonExLeft4.TabIndex = 3;
             h_ButtonExLeft4.TabStop = false;
+            h_ButtonExLeft4.TextDirectionVertical = "";
             h_ButtonExLeft4.UseVisualStyleBackColor = true;
             h_ButtonExLeft4.Click += HButtonEx_Click;
             // 
             // h_ButtonExLeft3
             // 
-            h_ButtonExLeft3.Location = new Point(2, 236);
+            h_ButtonExLeft3.Location = new Point(2, 290);
             h_ButtonExLeft3.Name = "h_ButtonExLeft3";
             h_ButtonExLeft3.Size = new Size(30, 100);
             h_ButtonExLeft3.TabIndex = 2;
             h_ButtonExLeft3.TabStop = false;
+            h_ButtonExLeft3.TextDirectionVertical = "";
             h_ButtonExLeft3.UseVisualStyleBackColor = true;
             h_ButtonExLeft3.Click += HButtonEx_Click;
             // 
             // h_ButtonExLeft2
             // 
-            h_ButtonExLeft2.Location = new Point(2, 136);
+            h_ButtonExLeft2.Location = new Point(2, 188);
             h_ButtonExLeft2.Name = "h_ButtonExLeft2";
             h_ButtonExLeft2.Size = new Size(30, 100);
             h_ButtonExLeft2.TabIndex = 1;
             h_ButtonExLeft2.TabStop = false;
+            h_ButtonExLeft2.TextDirectionVertical = "";
             h_ButtonExLeft2.UseVisualStyleBackColor = true;
             h_ButtonExLeft2.Click += HButtonEx_Click;
             // 
@@ -230,75 +247,12 @@
             // 
             h_ButtonExLeft1.Location = new Point(2, 36);
             h_ButtonExLeft1.Name = "h_ButtonExLeft1";
-            h_ButtonExLeft1.Size = new Size(30, 100);
+            h_ButtonExLeft1.Size = new Size(30, 150);
             h_ButtonExLeft1.TabIndex = 0;
             h_ButtonExLeft1.TabStop = false;
+            h_ButtonExLeft1.TextDirectionVertical = "";
             h_ButtonExLeft1.UseVisualStyleBackColor = true;
             h_ButtonExLeft1.Click += HButtonEx_Click;
-            // 
-            // h_PanelExRight
-            // 
-            h_PanelExRight.Controls.Add(h_ButtonExRight5);
-            h_PanelExRight.Controls.Add(h_ButtonExRight4);
-            h_PanelExRight.Controls.Add(h_ButtonExRight3);
-            h_PanelExRight.Controls.Add(h_ButtonExRight2);
-            h_PanelExRight.Controls.Add(h_ButtonExRight1);
-            h_PanelExRight.Dock = DockStyle.Fill;
-            h_PanelExRight.Location = new Point(1870, 24);
-            h_PanelExRight.Margin = new Padding(0);
-            h_PanelExRight.Name = "h_PanelExRight";
-            h_PanelExRight.Size = new Size(34, 993);
-            h_PanelExRight.TabIndex = 8;
-            // 
-            // h_ButtonExRight5
-            // 
-            h_ButtonExRight5.Location = new Point(2, 434);
-            h_ButtonExRight5.Name = "h_ButtonExRight5";
-            h_ButtonExRight5.Size = new Size(30, 100);
-            h_ButtonExRight5.TabIndex = 9;
-            h_ButtonExRight5.TabStop = false;
-            h_ButtonExRight5.UseVisualStyleBackColor = true;
-            h_ButtonExRight5.Click += HButtonEx_Click;
-            // 
-            // h_ButtonExRight4
-            // 
-            h_ButtonExRight4.Location = new Point(2, 334);
-            h_ButtonExRight4.Name = "h_ButtonExRight4";
-            h_ButtonExRight4.Size = new Size(30, 100);
-            h_ButtonExRight4.TabIndex = 8;
-            h_ButtonExRight4.TabStop = false;
-            h_ButtonExRight4.UseVisualStyleBackColor = true;
-            h_ButtonExRight4.Click += HButtonEx_Click;
-            // 
-            // h_ButtonExRight3
-            // 
-            h_ButtonExRight3.Location = new Point(2, 234);
-            h_ButtonExRight3.Name = "h_ButtonExRight3";
-            h_ButtonExRight3.Size = new Size(30, 100);
-            h_ButtonExRight3.TabIndex = 7;
-            h_ButtonExRight3.TabStop = false;
-            h_ButtonExRight3.UseVisualStyleBackColor = true;
-            h_ButtonExRight3.Click += HButtonEx_Click;
-            // 
-            // h_ButtonExRight2
-            // 
-            h_ButtonExRight2.Location = new Point(2, 134);
-            h_ButtonExRight2.Name = "h_ButtonExRight2";
-            h_ButtonExRight2.Size = new Size(30, 100);
-            h_ButtonExRight2.TabIndex = 6;
-            h_ButtonExRight2.TabStop = false;
-            h_ButtonExRight2.UseVisualStyleBackColor = true;
-            h_ButtonExRight2.Click += HButtonEx_Click;
-            // 
-            // h_ButtonExRight1
-            // 
-            h_ButtonExRight1.Location = new Point(2, 34);
-            h_ButtonExRight1.Name = "h_ButtonExRight1";
-            h_ButtonExRight1.Size = new Size(30, 100);
-            h_ButtonExRight1.TabIndex = 5;
-            h_ButtonExRight1.TabStop = false;
-            h_ButtonExRight1.UseVisualStyleBackColor = true;
-            h_ButtonExRight1.Click += HButtonEx_Click;
             // 
             // h_PanelExCenter
             // 
@@ -307,7 +261,7 @@
             h_PanelExCenter.Location = new Point(34, 24);
             h_PanelExCenter.Margin = new Padding(0);
             h_PanelExCenter.Name = "h_PanelExCenter";
-            h_PanelExCenter.Size = new Size(1836, 993);
+            h_PanelExCenter.Size = new Size(1870, 993);
             h_PanelExCenter.TabIndex = 9;
             // 
             // h_TableLayoutPanelExCenter
@@ -323,7 +277,7 @@
             h_TableLayoutPanelExCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 36F));
             h_TableLayoutPanelExCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 122F));
             h_TableLayoutPanelExCenter.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            h_TableLayoutPanelExCenter.Size = new Size(1836, 993);
+            h_TableLayoutPanelExCenter.Size = new Size(1870, 993);
             h_TableLayoutPanelExCenter.TabIndex = 0;
             // 
             // h_PanelExCenterTop
@@ -335,18 +289,19 @@
             h_PanelExCenterTop.Location = new Point(0, 0);
             h_PanelExCenterTop.Margin = new Padding(0);
             h_PanelExCenterTop.Name = "h_PanelExCenterTop";
-            h_PanelExCenterTop.Size = new Size(1836, 36);
+            h_PanelExCenterTop.Size = new Size(1870, 36);
             h_PanelExCenterTop.TabIndex = 0;
             // 
             // h_ButtonExUpdate
             // 
             h_ButtonExUpdate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             h_ButtonExUpdate.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            h_ButtonExUpdate.Location = new Point(1659, 2);
+            h_ButtonExUpdate.Location = new Point(1662, 2);
             h_ButtonExUpdate.Name = "h_ButtonExUpdate";
             h_ButtonExUpdate.Size = new Size(174, 32);
             h_ButtonExUpdate.TabIndex = 2;
             h_ButtonExUpdate.Text = "最　新　化 ";
+            h_ButtonExUpdate.TextDirectionVertical = "";
             h_ButtonExUpdate.UseVisualStyleBackColor = true;
             h_ButtonExUpdate.Click += HButtonEx_Click;
             // 
@@ -386,7 +341,6 @@
             StatusStrip1.ResumeLayout(false);
             StatusStrip1.PerformLayout();
             h_PanelExLeft.ResumeLayout(false);
-            h_PanelExRight.ResumeLayout(false);
             h_PanelExCenter.ResumeLayout(false);
             h_TableLayoutPanelExCenter.ResumeLayout(false);
             h_PanelExCenterTop.ResumeLayout(false);
@@ -412,12 +366,6 @@
         private H_ControlEx.H_ButtonEx h_ButtonExLeft4;
         private H_ControlEx.H_ButtonEx h_ButtonExLeft3;
         private H_ControlEx.H_ButtonEx h_ButtonExLeft2;
-        private H_ControlEx.H_PanelEx h_PanelExRight;
-        private H_ControlEx.H_ButtonEx h_ButtonExRight5;
-        private H_ControlEx.H_ButtonEx h_ButtonExRight4;
-        private H_ControlEx.H_ButtonEx h_ButtonExRight3;
-        private H_ControlEx.H_ButtonEx h_ButtonExRight2;
-        private H_ControlEx.H_ButtonEx h_ButtonExRight1;
         private H_ControlEx.H_PanelEx h_PanelExCenter;
         private H_ControlEx.H_TableLayoutPanelEx h_TableLayoutPanelExCenter;
         private H_ControlEx.H_PanelEx h_PanelExCenterTop;
@@ -427,5 +375,8 @@
         private ToolStripMenuItem ToolStripMenuItemPrintB4;
         private ToolStripStatusLabel ToolStripStatusLabelDetail;
         private ToolStripProgressBar ToolStripProgressBar1;
+        private ToolStripMenuItem ToolStripMenuItemInitializeVehicleDispatchCopy;
+        private ToolStripMenuItem ToolStripMenuItemUpdateVehicleDispatch;
+        private ToolStripMenuItem ToolStripMenuItemUpdateVehicleDispatchCleanOffice;
     }
 }

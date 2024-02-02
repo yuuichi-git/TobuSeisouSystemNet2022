@@ -1,9 +1,9 @@
 /*
  * 2023-12-07
  */
-using H_Common;
-
 using H_ControlEx;
+
+using H_Utility;
 
 using H_Vo;
 
@@ -12,14 +12,15 @@ namespace StockBox {
         /*
          * 変数定義
          */
-        private readonly H_FlowLayoutPanelEx _hFlowLayoutPanelExBase;
+        private readonly H_FlowLayoutPanelEx _hFlowLayoutPanelExStockBoxs;
+        private readonly H_ArrayUtility _hArrayUtility = new();
         /*
          * Vo
          */
         private readonly H_ControlVo _hControlVo;
-        private readonly List<H_SetMasterVo> _temporaryRemoveListHSetMasterVo;
-        private readonly List<H_CarMasterVo> _temporaryRemoveListHCarMasterVo;
-        private readonly List<H_StaffMasterVo> _temporaryRemoveListHStaffMasterVo;
+        private List<H_SetMasterVo> _temporaryRemoveListHSetMasterVo;
+        private List<H_CarMasterVo> _temporaryRemoveListHCarMasterVo;
+        private List<H_StaffMasterVo> _temporaryRemoveListHStaffMasterVo;
 
         /// <summary>
         /// コンストラクター
@@ -34,26 +35,21 @@ namespace StockBox {
              */
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.Sizable;
+            this.Name = "H_StockBoxs";
             this.Opacity = 0.9;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             /*
              * FlowLayoutPanelExを作成
              */
-            _hFlowLayoutPanelExBase = new H_FlowLayoutPanelEx();
-            _hFlowLayoutPanelExBase.AllowDrop = false; // ドラッグドロップを受け付けない
-            _hFlowLayoutPanelExBase.AutoScroll = true;
-            _hFlowLayoutPanelExBase.Dock = DockStyle.Fill;
-            _hFlowLayoutPanelExBase.Name = "H_FlowLayoutPanelExBase";
-            _hFlowLayoutPanelExBase.DragEnter += HFlowLayoutPanelExBase_DragEnter;
-            _hFlowLayoutPanelExBase.DragDrop += HFlowLayoutPanelExBase_DragDrop;
-            h_TableLayoutPanelExBase.Controls.Add(_hFlowLayoutPanelExBase, 0, 1);
-            /*
-             * DeepCopyを一時保管
-             */
-            _temporaryRemoveListHSetMasterVo = new CopyUtility().DeepCopy(hControlVo.RemoveListHSetMasterVo);
-            _temporaryRemoveListHCarMasterVo = new CopyUtility().DeepCopy(hControlVo.RemoveListHCarMasterVo);
-            _temporaryRemoveListHStaffMasterVo = new CopyUtility().DeepCopy(hControlVo.RemoveListHStaffMasterVo);
+            _hFlowLayoutPanelExStockBoxs = new H_FlowLayoutPanelEx();
+            _hFlowLayoutPanelExStockBoxs.AllowDrop = false; // ドラッグドロップを受け付けない
+            _hFlowLayoutPanelExStockBoxs.AutoScroll = true;
+            _hFlowLayoutPanelExStockBoxs.Dock = DockStyle.Fill;
+            _hFlowLayoutPanelExStockBoxs.Name = "H_FlowLayoutPanelExBase";
+            _hFlowLayoutPanelExStockBoxs.DragEnter += HFlowLayoutPanelExBase_DragEnter;
+            _hFlowLayoutPanelExStockBoxs.DragDrop += HFlowLayoutPanelExBase_DragDrop;
+            h_TableLayoutPanelExBase.Controls.Add(_hFlowLayoutPanelExStockBoxs, 0, 1);
         }
 
         /// <summary>
@@ -69,57 +65,62 @@ namespace StockBox {
                 case "ToolStripMenuItemSet": // 配車先
                     this.ToolStripMenuItemCheckedChange(sender);
                     this.FlowLayoutPanelExControlRemove();
+                    _temporaryRemoveListHSetMasterVo = _hControlVo.ListHSetMasterVo;
                     _hControlVo.RemoveListHSetMasterVo = _temporaryRemoveListHSetMasterVo.FindAll(x => x.ClassificationCode != 10 && x.ClassificationCode != 11 && x.DeleteFlag == false);
                     this.CreateHSetLabel(_hControlVo);
                     break;
                 case "ToolStripMenuItemCar": // 車両
                     this.ToolStripMenuItemCheckedChange(sender);
                     this.FlowLayoutPanelExControlRemove();
+                    _temporaryRemoveListHCarMasterVo = _hArrayUtility.RemoveHCarMasterVo((TableLayoutPanel)_hControlVo.HBoard, (FlowLayoutPanel)_hControlVo.HFlowLayoutPanelExStockBoxs, _hControlVo.ListHCarMasterVo);
                     _hControlVo.RemoveListHCarMasterVo = _temporaryRemoveListHCarMasterVo.FindAll(x => x.DeleteFlag == false);
                     this.CreateHCarLabel(_hControlVo);
                     break;
                 case "ToolStripMenuItemEmployee": // 社員
                     this.ToolStripMenuItemCheckedChange(sender);
                     this.FlowLayoutPanelExControlRemove();
+                    _temporaryRemoveListHStaffMasterVo = _hArrayUtility.RemoveHStaffMasterVo((TableLayoutPanel)_hControlVo.HBoard, (FlowLayoutPanel)_hControlVo.HFlowLayoutPanelExStockBoxs, _hControlVo.ListHStaffMasterVo);
                     _hControlVo.RemoveListHStaffMasterVo = _temporaryRemoveListHStaffMasterVo.FindAll(x => (x.Belongs == 10 || x.Belongs == 11 || (x.Belongs == 12 && x.Occupation == 20)) && x.RetirementFlag == false);
                     this.CreateHStaffLabel(_hControlVo);
                     break;
                 case "ToolStripMenuItemPartTime": // アルバイト
                     this.ToolStripMenuItemCheckedChange(sender);
                     this.FlowLayoutPanelExControlRemove();
+                    _temporaryRemoveListHStaffMasterVo = _hArrayUtility.RemoveHStaffMasterVo((TableLayoutPanel)_hControlVo.HBoard, (FlowLayoutPanel)_hControlVo.HFlowLayoutPanelExStockBoxs, _hControlVo.ListHStaffMasterVo);
                     _hControlVo.RemoveListHStaffMasterVo = _temporaryRemoveListHStaffMasterVo.FindAll(x => x.Belongs == 12 && x.Occupation != 20 && x.RetirementFlag == false);
                     this.CreateHStaffLabel(_hControlVo);
                     break;
                 case "ToolStripMenuItemLongTerm": // 長期
                     this.ToolStripMenuItemCheckedChange(sender);
                     this.FlowLayoutPanelExControlRemove();
+                    _temporaryRemoveListHStaffMasterVo = _hArrayUtility.RemoveHStaffMasterVo((TableLayoutPanel)_hControlVo.HBoard, (FlowLayoutPanel)_hControlVo.HFlowLayoutPanelExStockBoxs, _hControlVo.ListHStaffMasterVo);
                     _hControlVo.RemoveListHStaffMasterVo = _temporaryRemoveListHStaffMasterVo.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.JobForm == 10 && x.RetirementFlag == false);
                     this.CreateHStaffLabel(_hControlVo);
                     break;
                 case "ToolStripMenuItemShortTerm": // 短期
                     this.ToolStripMenuItemCheckedChange(sender);
                     this.FlowLayoutPanelExControlRemove();
+                    _temporaryRemoveListHStaffMasterVo = _hArrayUtility.RemoveHStaffMasterVo((TableLayoutPanel)_hControlVo.HBoard, (FlowLayoutPanel)_hControlVo.HFlowLayoutPanelExStockBoxs, _hControlVo.ListHStaffMasterVo);
                     _hControlVo.RemoveListHStaffMasterVo = _temporaryRemoveListHStaffMasterVo.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.JobForm == 11 && x.RetirementFlag == false);
                     this.CreateHStaffLabel(_hControlVo);
                     break;
                 case "ToolStripMenuItemDispatch": // 派遣
                     this.ToolStripMenuItemCheckedChange(sender);
                     this.FlowLayoutPanelExControlRemove();
+                    _temporaryRemoveListHStaffMasterVo = _hArrayUtility.RemoveHStaffMasterVo((TableLayoutPanel)_hControlVo.HBoard, (FlowLayoutPanel)_hControlVo.HFlowLayoutPanelExStockBoxs, _hControlVo.ListHStaffMasterVo);
                     _hControlVo.RemoveListHStaffMasterVo = _temporaryRemoveListHStaffMasterVo.FindAll(x => x.Belongs == 13 && x.JobForm == 99 && x.RetirementFlag == false);
                     this.CreateHStaffLabel(_hControlVo);
                     break;
                 case "ToolStripMenuItemSortAsc": // 昇順
                     this.ToolStripMenuItemCheckedChange(sender);
-                    this.FlowLayoutPanelExControlRemove();
 
                     break;
                 case "ToolStripMenuItemSortDesk": // 降順
                     this.ToolStripMenuItemCheckedChange(sender);
-                    this.FlowLayoutPanelExControlRemove();
 
                     break;
                 case "ToolStripMenuItemHelp": // ヘルプ
-                    
+
                     break;
             }
         }
@@ -136,7 +137,7 @@ namespace StockBox {
                     hSetLabel.Event_HSetLabel_MouseClick += HSetLabel_MouseClick;
                     hSetLabel.Event_HSetLabel_MouseDoubleClick += HSetLabel_MouseDoubleClick;
                     hSetLabel.Event_HSetLabel_MouseMove += HSetLabel_MouseMove;
-                    _hFlowLayoutPanelExBase.Controls.Add(hSetLabel); // SetLabelを追加
+                    _hFlowLayoutPanelExStockBoxs.Controls.Add(hSetLabel); // SetLabelを追加
                 }
             }
         }
@@ -153,7 +154,7 @@ namespace StockBox {
                     hCarLabel.Event_HCarLabel_MouseClick += HCarLabel_MouseClick;
                     hCarLabel.Event_HCarLabel_MouseDoubleClick += HCarLabel_MouseDoubleClick;
                     hCarLabel.Event_HCarLabel_MouseMove += HCarLabel_MouseMove;
-                    _hFlowLayoutPanelExBase.Controls.Add(hCarLabel); // CarLabelを追加
+                    _hFlowLayoutPanelExStockBoxs.Controls.Add(hCarLabel); // CarLabelを追加
                 }
             }
         }
@@ -170,7 +171,7 @@ namespace StockBox {
                     hStaffLabel.Event_HStaffLabel_MouseClick += HStaffLabel_MouseClick;
                     hStaffLabel.Event_HStaffLabel_MouseDoubleClick += HStaffLabel_MouseDoubleClick;
                     hStaffLabel.Event_HStaffLabel_MouseMove += HStaffLabel_MouseMove;
-                    _hFlowLayoutPanelExBase.Controls.Add(hStaffLabel); // StaffLabelを追加
+                    _hFlowLayoutPanelExStockBoxs.Controls.Add(hStaffLabel); // StaffLabelを追加
                 }
             }
         }
@@ -278,8 +279,8 @@ namespace StockBox {
              * メソッドを Clear 呼び出しても、コントロール ハンドルはメモリから削除されません。 メモリ リークを回避するには、 メソッドを Dispose 明示的に呼び出す必要があります。
              * ※後ろから解放している点が重要らしい。
              */
-            for (int i = _hFlowLayoutPanelExBase.Controls.Count - 1; 0 <= i; i--)
-                _hFlowLayoutPanelExBase.Controls[i].Dispose();
+            for (int i = _hFlowLayoutPanelExStockBoxs.Controls.Count - 1; 0 <= i; i--)
+                _hFlowLayoutPanelExStockBoxs.Controls[i].Dispose();
         }
 
         /// <summary>

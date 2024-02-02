@@ -71,6 +71,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H_Dao", "H_Dao\H_Dao.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H_StockBox", "StockBox\H_StockBox.csproj", "{83C7725A-F444-4351-97DE-5DCE1D982125}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H_Utility", "H_Utility\H_Utility.csproj", "{9C34D595-053F-4EE0-9D22-782D1563799E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -351,6 +353,14 @@ Global
 		{83C7725A-F444-4351-97DE-5DCE1D982125}.Release|Any CPU.Build.0 = Release|Any CPU
 		{83C7725A-F444-4351-97DE-5DCE1D982125}.Release|x64.ActiveCfg = Release|Any CPU
 		{83C7725A-F444-4351-97DE-5DCE1D982125}.Release|x64.Build.0 = Release|Any CPU
+		{9C34D595-053F-4EE0-9D22-782D1563799E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C34D595-053F-4EE0-9D22-782D1563799E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C34D595-053F-4EE0-9D22-782D1563799E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9C34D595-053F-4EE0-9D22-782D1563799E}.Debug|x64.Build.0 = Debug|Any CPU
+		{9C34D595-053F-4EE0-9D22-782D1563799E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C34D595-053F-4EE0-9D22-782D1563799E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C34D595-053F-4EE0-9D22-782D1563799E}.Release|x64.ActiveCfg = Release|Any CPU
+		{9C34D595-053F-4EE0-9D22-782D1563799E}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

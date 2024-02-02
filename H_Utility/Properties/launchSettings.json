@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "H_Utility": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

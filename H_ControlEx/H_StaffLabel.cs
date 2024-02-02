@@ -73,8 +73,8 @@ namespace H_ControlEx {
          */
         private H_SetControl _evacuationHSetControl;
         /*
-          * Fontの定義
-          */
+         * Fontの定義
+         */
         private readonly Font _drawFontStaffLabel = new("メイリオ", 14, FontStyle.Regular, GraphicsUnit.Pixel);
         private readonly Font _drawFontOccupation = new("HGS創英ﾌﾟﾚｾﾞﾝｽEB", 10, FontStyle.Regular, GraphicsUnit.Pixel);
 

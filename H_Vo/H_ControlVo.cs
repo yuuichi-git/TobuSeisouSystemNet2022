@@ -11,6 +11,8 @@ namespace H_Vo {
          * プロパティ
          */
         private ConnectionVo? _connectionVo;
+        private Control? _hBoard;
+        private Control? _hFlowLayoutPanelExStockBoxs;
         private int _cellNumber;
         private DateTime _operationDate;
         private bool _operationFlag;
@@ -20,6 +22,8 @@ namespace H_Vo {
         private H_CarMasterVo? _hCarMasterVo;
         private H_StaffMasterVo? _hStaffMasterVo;
         private int _selectNumberStaffMasterVo;
+        private List<H_SetMasterVo>? _listHSetMasterVo;
+        private List<H_CarMasterVo>? _listHCarMasterVo;
         private List<H_StaffMasterVo>? _listHStaffMasterVo;
         private List<H_SetMasterVo>? _removeListHSetMasterVo;
         private List<H_CarMasterVo>? _removeListHCarMasterVo;
@@ -31,6 +35,8 @@ namespace H_Vo {
         /// </summary>
         public H_ControlVo() {
             _connectionVo = null;
+            _hBoard = null;
+            _hFlowLayoutPanelExStockBoxs = null;
             _cellNumber = 0;
             _operationDate = new DateTime(1900, 01, 01);
             _operationFlag = false;
@@ -40,6 +46,8 @@ namespace H_Vo {
             _hCarMasterVo = null;
             _hStaffMasterVo = null;
             _selectNumberStaffMasterVo = 0;
+            _listHSetMasterVo = null;
+            _listHCarMasterVo = null;
             _listHStaffMasterVo = null;
             _removeListHSetMasterVo = null;
             _removeListHCarMasterVo = null;
@@ -56,6 +64,20 @@ namespace H_Vo {
         public ConnectionVo? ConnectionVo {
             get => _connectionVo;
             set => _connectionVo = value;
+        }
+        /// <summary>
+        /// HBoard
+        /// </summary>
+        public Control? HBoard {
+            get => _hBoard;
+            set => _hBoard = value;
+        }
+        /// <summary>
+        /// HFlowLayoutPanelExStockBoxs
+        /// </summary>
+        public Control? HFlowLayoutPanelExStockBoxs {
+            get => _hFlowLayoutPanelExStockBoxs;
+            set => _hFlowLayoutPanelExStockBoxs = value;
         }
         /// <summary>
         /// CellNumber
@@ -125,7 +147,24 @@ namespace H_Vo {
             set => _selectNumberStaffMasterVo = value;
         }
         /// <summary>
+        /// ListHSetMasterVo
+        /// 未加工
+        /// </summary>
+        public List<H_SetMasterVo>? ListHSetMasterVo {
+            get => _listHSetMasterVo;
+            set => _listHSetMasterVo = value;
+        }
+        /// <summary>
+        /// ListHCarMasterVo
+        /// 未加工
+        /// </summary>
+        public List<H_CarMasterVo>? ListHCarMasterVo {
+            get => _listHCarMasterVo;
+            set => _listHCarMasterVo = value;
+        }
+        /// <summary>
         /// ListHStaffMasterVo
+        /// 未加工
         /// </summary>
         public List<H_StaffMasterVo>? ListHStaffMasterVo {
             get => _listHStaffMasterVo;
