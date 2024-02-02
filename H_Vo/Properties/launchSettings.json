@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "H_Vo": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

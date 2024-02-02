@@ -12,7 +12,7 @@ namespace StockBox {
         /*
          * 変数定義
          */
-        private H_FlowLayoutPanelEx _hFlowLayoutPanelExBase;
+        private readonly H_FlowLayoutPanelEx _hFlowLayoutPanelExBase;
         /*
          * Vo
          */
@@ -33,14 +33,10 @@ namespace StockBox {
              * コントロール初期化
              */
             InitializeComponent();
-            this.AllowDrop = true;
             this.FormBorderStyle = FormBorderStyle.Sizable;
-            this.Location = new Point(26, 84);
             this.Opacity = 0.9;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.StartPosition = FormStartPosition.Manual;
-            this.TopMost = true;
             /*
              * FlowLayoutPanelExを作成
              */
@@ -123,7 +119,7 @@ namespace StockBox {
 
                     break;
                 case "ToolStripMenuItemHelp": // ヘルプ
-
+                    
                     break;
             }
         }

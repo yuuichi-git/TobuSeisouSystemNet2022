@@ -17,4 +17,10 @@
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'" />
 
+  <ItemGroup>
+    <ProjectReference Include="..\ControlEx\ControlEx.csproj" />
+    <ProjectReference Include="..\H_Vo\H_Vo.csproj" />
+    <ProjectReference Include="..\Vo\Vo.csproj" />
+  </ItemGroup>
+
 </Project>

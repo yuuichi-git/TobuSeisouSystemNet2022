@@ -1,7 +1,6 @@
 ﻿/*
  * 2023-11-08
  */
-
 namespace H_Common {
     public class Date {
         private readonly DateTime _todayDate = DateTime.Today;

@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ControlEx": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

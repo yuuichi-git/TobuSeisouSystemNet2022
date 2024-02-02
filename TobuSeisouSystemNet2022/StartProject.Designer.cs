@@ -161,7 +161,7 @@
             label29 = new Label();
             HTableLayoutPanelExCenter = new H_ControlEx.H_TableLayoutPanelEx();
             HPanelTop = new H_ControlEx.H_PanelEx();
-            h_ComboBoxEx1 = new H_ControlEx.H_ComboBoxEx();
+            HComboBoxMoniter = new H_ControlEx.H_ComboBoxEx();
             label46 = new Label();
             ButtonDbConnect = new Button();
             label2 = new Label();
@@ -226,7 +226,7 @@
             TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
             TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
-            TableLayoutPanelBase.Size = new Size(1316, 767);
+            TableLayoutPanelBase.Size = new Size(1316, 675);
             TableLayoutPanelBase.TabIndex = 0;
             // 
             // MenuStrip1
@@ -277,7 +277,7 @@
             // 
             TableLayoutPanelBase.SetColumnSpan(StatusStrip1, 3);
             StatusStrip1.Items.AddRange(new ToolStripItem[] { ToolStripStatusLabel1 });
-            StatusStrip1.Location = new Point(0, 745);
+            StatusStrip1.Location = new Point(0, 653);
             StatusStrip1.Name = "StatusStrip1";
             StatusStrip1.Size = new Size(1316, 22);
             StatusStrip1.SizingGrip = false;
@@ -302,7 +302,7 @@
             TableLayoutPanelLeft.RowCount = 2;
             TableLayoutPanelLeft.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
             TableLayoutPanelLeft.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            TableLayoutPanelLeft.Size = new Size(294, 713);
+            TableLayoutPanelLeft.Size = new Size(294, 621);
             TableLayoutPanelLeft.TabIndex = 3;
             // 
             // PanelLeftMiddle
@@ -311,7 +311,7 @@
             PanelLeftMiddle.Dock = DockStyle.Fill;
             PanelLeftMiddle.Location = new Point(3, 63);
             PanelLeftMiddle.Name = "PanelLeftMiddle";
-            PanelLeftMiddle.Size = new Size(288, 647);
+            PanelLeftMiddle.Size = new Size(288, 555);
             PanelLeftMiddle.TabIndex = 0;
             // 
             // TreeView1
@@ -560,7 +560,7 @@
             treeNode99.Name = "NodeTokai";
             treeNode99.Text = "東海電子(アルコールチェック)";
             TreeView1.Nodes.AddRange(new TreeNode[] { treeNode1, treeNode41, treeNode93, treeNode94, treeNode95, treeNode96, treeNode97, treeNode99 });
-            TreeView1.Size = new Size(288, 647);
+            TreeView1.Size = new Size(288, 555);
             TreeView1.TabIndex = 4;
             TreeView1.NodeMouseDoubleClick += TreeView1_NodeMouseDoubleClick;
             // 
@@ -619,7 +619,7 @@
             PanelRight.Dock = DockStyle.Fill;
             PanelRight.Location = new Point(1019, 27);
             PanelRight.Name = "PanelRight";
-            PanelRight.Size = new Size(294, 713);
+            PanelRight.Size = new Size(294, 621);
             PanelRight.TabIndex = 4;
             // 
             // label41
@@ -889,12 +889,12 @@
             HTableLayoutPanelExCenter.RowCount = 2;
             HTableLayoutPanelExCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 140F));
             HTableLayoutPanelExCenter.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            HTableLayoutPanelExCenter.Size = new Size(710, 713);
+            HTableLayoutPanelExCenter.Size = new Size(710, 621);
             HTableLayoutPanelExCenter.TabIndex = 5;
             // 
             // HPanelTop
             // 
-            HPanelTop.Controls.Add(h_ComboBoxEx1);
+            HPanelTop.Controls.Add(HComboBoxMoniter);
             HPanelTop.Controls.Add(label46);
             HPanelTop.Controls.Add(ButtonDbConnect);
             HPanelTop.Controls.Add(label2);
@@ -908,14 +908,14 @@
             HPanelTop.Size = new Size(704, 134);
             HPanelTop.TabIndex = 4;
             // 
-            // h_ComboBoxEx1
+            // HComboBoxMoniter
             // 
-            h_ComboBoxEx1.DropDownStyle = ComboBoxStyle.DropDownList;
-            h_ComboBoxEx1.FormattingEnabled = true;
-            h_ComboBoxEx1.Location = new Point(84, 109);
-            h_ComboBoxEx1.Name = "h_ComboBoxEx1";
-            h_ComboBoxEx1.Size = new Size(260, 23);
-            h_ComboBoxEx1.TabIndex = 34;
+            HComboBoxMoniter.DropDownStyle = ComboBoxStyle.DropDownList;
+            HComboBoxMoniter.FormattingEnabled = true;
+            HComboBoxMoniter.Location = new Point(84, 109);
+            HComboBoxMoniter.Name = "HComboBoxMoniter";
+            HComboBoxMoniter.Size = new Size(260, 23);
+            HComboBoxMoniter.TabIndex = 34;
             // 
             // label46
             // 
@@ -1007,7 +1007,7 @@
             HTabControlEx.Location = new Point(3, 143);
             HTabControlEx.Name = "HTabControlEx";
             HTabControlEx.SelectedIndex = 0;
-            HTabControlEx.Size = new Size(704, 567);
+            HTabControlEx.Size = new Size(704, 475);
             HTabControlEx.SizeMode = TabSizeMode.Fixed;
             HTabControlEx.TabIndex = 5;
             // 
@@ -1036,7 +1036,7 @@
             TabPage1.Location = new Point(4, 24);
             TabPage1.Name = "TabPage1";
             TabPage1.Padding = new Padding(3);
-            TabPage1.Size = new Size(696, 539);
+            TabPage1.Size = new Size(696, 447);
             TabPage1.TabIndex = 0;
             TabPage1.Text = "現行システム";
             TabPage1.UseVisualStyleBackColor = true;
@@ -1048,9 +1048,9 @@
             label27.ForeColor = Color.DarkGray;
             label27.Location = new Point(44, 348);
             label27.Name = "label27";
-            label27.Size = new Size(74, 17);
+            label27.Size = new Size(216, 17);
             label27.TabIndex = 19;
-            label27.Text = "配車システム";
+            label27.Text = "社内で使用する本番を記録・修正します";
             // 
             // label43
             // 
@@ -1073,9 +1073,9 @@
             label25.ForeColor = Color.DarkGray;
             label25.Location = new Point(44, 312);
             label25.Name = "label25";
-            label25.Size = new Size(74, 17);
+            label25.Size = new Size(275, 17);
             label25.TabIndex = 17;
-            label25.Text = "配車システム";
+            label25.Text = "清掃事務所へ登録している本番を記録・修正します";
             // 
             // label26
             // 
@@ -1098,9 +1098,9 @@
             label21.ForeColor = Color.DarkGray;
             label21.Location = new Point(44, 276);
             label21.Name = "label21";
-            label21.Size = new Size(74, 17);
+            label21.Size = new Size(126, 17);
             label21.TabIndex = 15;
-            label21.Text = "配車システム";
+            label21.Text = "研修記録を管理します";
             // 
             // label24
             // 
@@ -1123,9 +1123,9 @@
             label15.ForeColor = Color.DarkGray;
             label15.Location = new Point(44, 240);
             label15.Name = "label15";
-            label15.Size = new Size(74, 17);
+            label15.Size = new Size(205, 17);
             label15.TabIndex = 13;
-            label15.Text = "配車システム";
+            label15.Text = "事故・トラブル記録を作成・管理します";
             // 
             // label20
             // 
@@ -1148,9 +1148,9 @@
             label13.ForeColor = Color.DarkGray;
             label13.Location = new Point(44, 204);
             label13.Name = "label13";
-            label13.Size = new Size(74, 17);
+            label13.Size = new Size(172, 17);
             label13.TabIndex = 11;
-            label13.Text = "配車システム";
+            label13.Text = "点呼記録簿を作成・管理します";
             // 
             // label14
             // 
@@ -1173,9 +1173,9 @@
             label11.ForeColor = Color.DarkGray;
             label11.Location = new Point(44, 168);
             label11.Name = "label11";
-            label11.Size = new Size(74, 17);
+            label11.Size = new Size(159, 17);
             label11.TabIndex = 9;
-            label11.Text = "配車システム";
+            label11.Text = "車両台帳を作成・管理します";
             // 
             // label12
             // 
@@ -1198,9 +1198,9 @@
             label9.ForeColor = Color.DarkGray;
             label9.Location = new Point(44, 134);
             label9.Name = "label9";
-            label9.Size = new Size(74, 17);
+            label9.Size = new Size(172, 17);
             label9.TabIndex = 7;
-            label9.Text = "配車システム";
+            label9.Text = "免許証台帳を作成・管理します";
             // 
             // label10
             // 
@@ -1223,9 +1223,9 @@
             label7.ForeColor = Color.DarkGray;
             label7.Location = new Point(43, 97);
             label7.Name = "label7";
-            label7.Size = new Size(74, 17);
+            label7.Size = new Size(172, 17);
             label7.TabIndex = 5;
-            label7.Text = "配車システム";
+            label7.Text = "従事者台帳を作成・管理します";
             // 
             // label8
             // 
@@ -1248,9 +1248,9 @@
             label5.ForeColor = Color.DarkGray;
             label5.Location = new Point(43, 61);
             label5.Name = "label5";
-            label5.Size = new Size(74, 17);
+            label5.Size = new Size(113, 17);
             label5.TabIndex = 3;
-            label5.Text = "配車システム";
+            label5.Text = "配車表を作成します";
             // 
             // label6
             // 
@@ -1273,9 +1273,9 @@
             label4.ForeColor = Color.DarkGray;
             label4.Location = new Point(43, 26);
             label4.Name = "label4";
-            label4.Size = new Size(74, 17);
+            label4.Size = new Size(203, 17);
             label4.TabIndex = 1;
-            label4.Text = "配車システム";
+            label4.Text = "ドラッグ＆ドロップによるUI配車システム";
             // 
             // label3
             // 
@@ -1310,9 +1310,9 @@
             label44.ForeColor = Color.DarkGray;
             label44.Location = new Point(42, 26);
             label44.Name = "label44";
-            label44.Size = new Size(74, 17);
+            label44.Size = new Size(203, 17);
             label44.TabIndex = 3;
-            label44.Text = "配車システム";
+            label44.Text = "ドラッグ＆ドロップによるUI配車システム";
             // 
             // label45
             // 
@@ -1332,7 +1332,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1316, 767);
+            ClientSize = new Size(1316, 675);
             Controls.Add(TableLayoutPanelBase);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
@@ -1436,6 +1436,6 @@
         private Label label44;
         private Label label45;
         private Label label46;
-        private H_ControlEx.H_ComboBoxEx h_ComboBoxEx1;
+        private H_ControlEx.H_ComboBoxEx HComboBoxMoniter;
     }
 }

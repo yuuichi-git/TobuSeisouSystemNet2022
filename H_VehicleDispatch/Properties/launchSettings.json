@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "H_VehicleDispatch": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

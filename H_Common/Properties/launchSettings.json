@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "H_Common": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

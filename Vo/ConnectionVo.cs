@@ -12,16 +12,21 @@ namespace Vo {
         /// <summary>
         /// 接続を保持
         /// </summary>
-        private SqlConnection _connection = new();
+        private SqlConnection _connection;
         /// <summary>
         /// 接続先名を保持
         /// </summary>
         private string _serverName = string.Empty;
+        /// <summary>
+        /// 表示モニターを保持
+        /// </summary>
+        private Screen _screen;
 
         /// <summary>
         /// コンストラクタ
         /// </summary>
         public ConnectionVo() {
+            _connection = new();
         }
 
         /// <summary>
@@ -29,9 +34,9 @@ namespace Vo {
         /// </summary>
         /// <param name="localDb">強制的にLocalDBへ接続するかどうかのフラグ</param>
         public void Connect(bool localDb) {
-            switch(Environment.MachineName) {
+            switch (Environment.MachineName) {
                 case "LAPTOP-LI7NSQIT":
-                    if(!localDb) { // 自動選択
+                    if (!localDb) { // 自動選択
                         _serverName = new PingResponse().GetPingResponse("192.168.1.21") ? @"TOBUSERVER\SQLEXPRESS" : "(Local)";
                     } else { // LocalDBを選択
                         _serverName = "(Local)";
@@ -57,21 +62,31 @@ namespace Vo {
 
         /// <summary>
         /// DisConnect
-        /// Dbを切断
+        /// DBを切断
         /// </summary>
         /// <returns></returns>
         public void DisConnect() {
             try {
                 Connection.Close();
                 Connection.Dispose();
-            } catch(Exception) {
+            } catch (Exception) {
                 throw;
             }
         }
 
+        /// <summary>
+        /// Connection
+        /// </summary>
         public SqlConnection Connection {
             get => _connection;
             set => _connection = value;
+        }
+        /// <summary>
+        /// Screen
+        /// </summary>
+        public Screen Screen {
+            get => _screen;
+            set => _screen = value;
         }
     }
 }

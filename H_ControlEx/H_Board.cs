@@ -214,7 +214,7 @@ namespace H_ControlEx {
                         afterHControlVoForHSetControl.OperationFlag = beforeHControlVo.OperationFlag;
                         afterHControlVoForHSetControl.VehicleDispatchFlag = true;
                         afterHControlVoForHSetControl.HSetMasterVo = (H_SetMasterVo)dragItem.Tag; // DropされたH_SetMasterVoを代入
-                                                                                                  // Controlを追加する
+                        // Controlを追加する
                         afterHSetControl.Controls.Add(dragItem, cellPoint.X, cellPoint.Y);
                         break;
                     case "H_FlowLayoutPanelExBase": // (e.Effect == DragDropEffects.Copy)
@@ -270,7 +270,7 @@ namespace H_ControlEx {
                  */
                 switch (beforeParentControl.Name) {
                     case "H_SetControl": // H_SetControl→H_SetControlへの移動
-                        beforeHControlVo = (H_ControlVo)dragItem.Parent.Tag;
+                        beforeHControlVo = (H_ControlVo)beforeParentControl.Tag;
                         // Drag元のRecordをUpdateする
                         _hVehicleDispatchDetailDao.UpdateHVehicleDispatchDetail(((H_SetControl)this.GetControlFromPosition(beforeHControlVo.CellNumber % 50, beforeHControlVo.CellNumber / 50)).ConvertHVehicleDispatchDetailVo());
                         // Drop先のRecordをUpdateする
@@ -299,7 +299,7 @@ namespace H_ControlEx {
                  */
                 switch (beforeParentControl.Name) {
                     case "H_SetControl": // H_SetControl→H_SetControlへの移動
-                        beforeHControlVo = (H_ControlVo)dragItem.Parent.Tag;
+                        beforeHControlVo = (H_ControlVo)beforeParentControl.Tag;
                         // Drag元のRecordをUpdateする
                         _hVehicleDispatchDetailDao.UpdateHVehicleDispatchDetail(((H_SetControl)this.GetControlFromPosition(beforeHControlVo.CellNumber % 50, beforeHControlVo.CellNumber / 50)).ConvertHVehicleDispatchDetailVo());
                         // Drop先のRecordをUpdateする

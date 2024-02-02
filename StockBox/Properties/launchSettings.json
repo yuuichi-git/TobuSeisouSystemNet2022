@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "H_StockBox": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

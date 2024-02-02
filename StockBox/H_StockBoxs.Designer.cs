@@ -64,7 +64,7 @@
             h_TableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
             h_TableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             h_TableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
-            h_TableLayoutPanelExBase.Size = new Size(516, 691);
+            h_TableLayoutPanelExBase.Size = new Size(974, 661);
             h_TableLayoutPanelExBase.TabIndex = 0;
             // 
             // MenuStrip1
@@ -72,7 +72,7 @@
             MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemChange, ToolStripMenuItemSort, ToolStripMenuItemHelp });
             MenuStrip1.Location = new Point(0, 0);
             MenuStrip1.Name = "MenuStrip1";
-            MenuStrip1.Size = new Size(516, 24);
+            MenuStrip1.Size = new Size(974, 24);
             MenuStrip1.TabIndex = 0;
             MenuStrip1.Text = "menuStrip1";
             // 
@@ -184,9 +184,9 @@
             // StatusStrip1
             // 
             StatusStrip1.Items.AddRange(new ToolStripItem[] { ToolStripStatusLabel1, ToolStripStatusLabelDetail });
-            StatusStrip1.Location = new Point(0, 669);
+            StatusStrip1.Location = new Point(0, 639);
             StatusStrip1.Name = "StatusStrip1";
-            StatusStrip1.Size = new Size(516, 22);
+            StatusStrip1.Size = new Size(974, 22);
             StatusStrip1.TabIndex = 1;
             StatusStrip1.Text = "StatusStrip1";
             // 
@@ -207,7 +207,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(516, 691);
+            ClientSize = new Size(974, 661);
             Controls.Add(h_TableLayoutPanelExBase);
             MainMenuStrip = MenuStrip1;
             MaximizeBox = false;

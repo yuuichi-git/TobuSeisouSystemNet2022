@@ -5,6 +5,7 @@
 using Vo;
 
 namespace H_Vo {
+
     public class H_ControlVo {
         /*
          * プロパティ
@@ -30,9 +31,9 @@ namespace H_Vo {
         /// </summary>
         public H_ControlVo() {
             _connectionVo = null;
+            _cellNumber = 0;
             _operationDate = new DateTime(1900, 01, 01);
             _operationFlag = false;
-            _cellNumber = 0;
             _vehicleDispatchFlag = false;
             _purposeFlag = false;
             _hSetMasterVo = null;

@@ -17,6 +17,8 @@ using Common;
 
 using CommuterInsurance;
 
+using H_Common;
+
 using H_VehicleDispatch;
 
 using LegalTwelveItem;
@@ -62,6 +64,10 @@ namespace TobuSeisouSystemNet2022 {
             new InitializeForm().StartProject(this);
             LabelPcName.Text = string.Concat("〇 PC-Name：", Environment.MachineName);
             LabelIpAddress.Text = string.Concat("〇 IP-Address：", new Ip().GetIpAddress());
+
+            HComboBoxMoniter.DataSource = Screen.AllScreens;
+            HComboBoxMoniter.DisplayMember = "DeviceName";
+            HComboBoxMoniter.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         /// <summary>
@@ -80,7 +86,9 @@ namespace TobuSeisouSystemNet2022 {
                 LabelServerName.Text = string.Concat("　接続先サーバー：", _connectionVo.Connection.DataSource);
                 LabelDbName.Text = string.Concat("　接続先データベース：", _connectionVo.Connection.Database);
                 LabelConnectStatus.Text = string.Concat("　状態：", _connectionVo.Connection.State);
-            } catch(Exception exception) {
+                // モニター選択を無効にする
+                HComboBoxMoniter.Enabled = false;
+            } catch (Exception exception) {
                 MessageBox.Show(exception.Message, MessageText.Message501, MessageBoxButtons.OK, MessageBoxIcon.Question);
             }
         }
@@ -91,21 +99,19 @@ namespace TobuSeisouSystemNet2022 {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Label_Click(object sender, EventArgs e) {
-            if(_connectionVo.Connection != null) {
-                switch(_connectionVo.Connection.State) {
+            if (_connectionVo.Connection != null) {
+                switch (_connectionVo.Connection.State) {
                     case ConnectionState.Closed: //接続が閉じています。
                         break;
                     case ConnectionState.Open: //接続が開いています。
-                        switch((string)((Label)sender).Tag) {
+                        switch ((string)((Label)sender).Tag) {
+                            /*
+                             * 旧型
+                             */
                             // VehicleDispatch
                             case "VehicleDispatch":
                                 var vehicleDispatchBoad = new VehicleDispatchBoad(_connectionVo);
                                 vehicleDispatchBoad.ShowDialog(this);
-                                break;
-                            // H_VehicleDispatch
-                            case "H_VehicleDispatch":
-                                var h_VehicleDispatchBoard = new H_VehicleDispatchBoard(_connectionVo);
-                                h_VehicleDispatchBoard.ShowDialog(this);
                                 break;
                             // VehicleDispatchSheetBoad
                             case "VehicleDispatchSheetBoad":
@@ -231,6 +237,24 @@ namespace TobuSeisouSystemNet2022 {
                                 StatusOfResidenceList statusOfResidenceList = new StatusOfResidenceList(_connectionVo);
                                 statusOfResidenceList.ShowDialog(this);
                                 break;
+                            /*
+                             * 新型
+                             */
+                            // H_VehicleDispatch
+                            case "H_VehicleDispatch":
+                                // Screenを退避
+                                _connectionVo.Screen = (Screen)HComboBoxMoniter.SelectedItem;
+                                /*
+                                 * Formを表示する
+                                 */
+                                H_VehicleDispatchBoard hVehicleDispatchBoard = new H_VehicleDispatchBoard(_connectionVo);
+                                Rectangle rectangle = new Desktop().GetMonitorWorkingArea(hVehicleDispatchBoard, (Screen)HComboBoxMoniter.SelectedItem);
+                                hVehicleDispatchBoard.KeyPreview = true;
+                                hVehicleDispatchBoard.Location = rectangle.Location;
+                                hVehicleDispatchBoard.Size = rectangle.Size;
+                                hVehicleDispatchBoard.WindowState = FormWindowState.Maximized;
+                                hVehicleDispatchBoard.ShowDialog();
+                                break;
                         }
                         break;
                     case ConnectionState.Connecting: //接続オブジェクトがデータ ソースに接続しています。
@@ -281,7 +305,7 @@ namespace TobuSeisouSystemNet2022 {
         /// <param name="e"></param>
         private void StartProject_FormClosing(object sender, FormClosingEventArgs e) {
             var dialogResult = MessageBox.Show(MessageText.Message102, MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            switch(dialogResult) {
+            switch (dialogResult) {
                 case DialogResult.OK:
                     e.Cancel = false;
                     Dispose();
@@ -299,8 +323,8 @@ namespace TobuSeisouSystemNet2022 {
         /// <param name="e"></param>
         private void TreeView1_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e) {
             var files = new Files();
-            if(_connectionVo.Connection.State == ConnectionState.Open) {
-                switch(e.Node.Name) {
+            if (_connectionVo.Connection.State == ConnectionState.Open) {
+                switch (e.Node.Name) {
                     /*
                      * 陸運局監査
                      */
