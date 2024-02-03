@@ -81,7 +81,7 @@ namespace H_VehicleDispatch {
              */
             _listHSetMasterVo = _hSetMasterDao.SelectAllHSetMaster();
             _listHCarMasterVo = _hCarMasterDao.SelectAllHCarMaster();
-            _listHStaffMasterVo = _hStaffMasterDao.SelectAllHStaffMaster();
+            _listHStaffMasterVo = _hStaffMasterDao.SelectHStaffMaster();
             /*
              * Freeゾーンを作成
              */

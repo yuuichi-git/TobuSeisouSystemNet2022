@@ -33,7 +33,7 @@ namespace H_Dao {
         /// H_StaffMaster
         /// </summary>
         /// <returns></returns>
-        public List<H_StaffMasterVo> SelectAllHStaffMaster() {
+        public List<H_StaffMasterVo> SelectHStaffMaster() {
             List<H_StaffMasterVo> listHStaffMasterVo = new();
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT StaffCode," +
