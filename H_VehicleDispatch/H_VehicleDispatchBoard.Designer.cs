@@ -123,6 +123,7 @@
             ToolStripMenuItemInitializeVehicleDispatchCopy.Name = "ToolStripMenuItemInitializeVehicleDispatchCopy";
             ToolStripMenuItemInitializeVehicleDispatchCopy.Size = new Size(262, 22);
             ToolStripMenuItemInitializeVehicleDispatchCopy.Text = "配車を初期化する(前日の配車をコピー)";
+            ToolStripMenuItemInitializeVehicleDispatchCopy.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemUpdateVehicleDispatch
             // 
@@ -136,6 +137,7 @@
             ToolStripMenuItemUpdateVehicleDispatchCleanOffice.Name = "ToolStripMenuItemUpdateVehicleDispatchCleanOffice";
             ToolStripMenuItemUpdateVehicleDispatchCleanOffice.Size = new Size(230, 22);
             ToolStripMenuItemUpdateVehicleDispatchCleanOffice.Text = "この配車組を本番として登録する";
+            ToolStripMenuItemUpdateVehicleDispatchCleanOffice.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemPrint
             // 
@@ -147,8 +149,9 @@
             // ToolStripMenuItemPrintB4
             // 
             ToolStripMenuItemPrintB4.Name = "ToolStripMenuItemPrintB4";
-            ToolStripMenuItemPrintB4.Size = new Size(140, 22);
+            ToolStripMenuItemPrintB4.Size = new Size(180, 22);
             ToolStripMenuItemPrintB4.Text = "B4で印刷する";
+            ToolStripMenuItemPrintB4.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemHelp
             // 

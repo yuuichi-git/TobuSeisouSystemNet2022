@@ -4,7 +4,7 @@
  */
 namespace H_Vo {
     public class H_StaffEducateVo {
-        private readonly DateTime _defaultDateTime = new DateTime(1900,01,01);
+        private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
 
         private int _staffCode;
         private DateTime _educateDate;
@@ -21,7 +21,16 @@ namespace H_Vo {
         /// コンストラクタ
         /// </summary>
         public H_StaffEducateVo() {
-
+            _staffCode = 0;
+            _educateDate = _defaultDateTime;
+            _educateName = string.Empty;
+            _insertPcName = string.Empty;
+            _insertYmdHms = _defaultDateTime;
+            _updatePcName = string.Empty;
+            _updateYmdHms = _defaultDateTime;
+            _deletePcName = string.Empty;
+            _deleteYmdHms = _defaultDateTime;
+            _deleteFlag = false;
         }
 
         /// <summary>

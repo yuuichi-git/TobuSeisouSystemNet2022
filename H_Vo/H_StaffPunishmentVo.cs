@@ -4,7 +4,7 @@
  */
 namespace H_Vo {
     public class H_StaffPunishmentVo {
-        private readonly DateTime _defaultDateTime = new DateTime(1900,01,01);
+        private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
 
         private int _staffCode;
         private DateTime _punishmentDate;
@@ -21,7 +21,16 @@ namespace H_Vo {
         /// コンストラクタ
         /// </summary>
         public H_StaffPunishmentVo() {
-
+            _staffCode = 0;
+            _punishmentDate = _defaultDateTime;
+            _punishmentNote = string.Empty;
+            _insertPcName = string.Empty;
+            _insertYmdHms = _defaultDateTime;
+            _updatePcName = string.Empty;
+            _updateYmdHms = _defaultDateTime;
+            _deletePcName = string.Empty;
+            _deleteYmdHms = _defaultDateTime;
+            _deleteFlag = false;
         }
 
         /// <summary>

@@ -4,7 +4,7 @@
  */
 namespace H_Vo {
     public class H_StaffExperienceVo {
-        private readonly DateTime _defaultDateTime = new DateTime(1900,01,01);
+        private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
 
         private int _staffCode;
         private string _experienceKind;
@@ -23,7 +23,18 @@ namespace H_Vo {
         /// コンストラクタ
         /// </summary>
         public H_StaffExperienceVo() {
-
+            _staffCode = 0;
+            _experienceKind = string.Empty;
+            _experienceLoad = string.Empty;
+            _experienceDuration = string.Empty;
+            _experienceNote = string.Empty;
+            _insertPcName = string.Empty;
+            _insertYmdHms = _defaultDateTime;
+            _updatePcName = string.Empty;
+            _updateYmdHms = _defaultDateTime;
+            _deletePcName = string.Empty;
+            _deleteYmdHms = _defaultDateTime;
+            _deleteFlag = false;
         }
 
         /// <summary>

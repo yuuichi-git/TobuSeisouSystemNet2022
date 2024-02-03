@@ -344,7 +344,6 @@ namespace H_VehicleDispatch {
                     } else {
                         MessageBox.Show("このプログラム（H_StockBoxs）は、既に起動しています。多重起動は禁止されています。", "多重起動メッセージ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-
                     break;
                 case "h_ButtonExLeft2":
                     break;
@@ -374,13 +373,19 @@ namespace H_VehicleDispatch {
                  * 配車を初期化する(前日の配車をコピー)
                  */
                 case "ToolStripMenuItemInitializeVehicleDispatchCopy":
-
+                    MessageBox.Show("ToolStripMenuItemInitializeVehicleDispatchCopy");
                     break;
                 /*
                  * この配車組を本番として登録する
                  */
                 case "ToolStripMenuItemUpdateVehicleDispatchCleanOffice":
-
+                    MessageBox.Show("ToolStripMenuItemUpdateVehicleDispatchCleanOffice");
+                    break;
+                /*
+                 * B4で印刷する
+                 */
+                case "ToolStripMenuItemPrintB4":
+                    MessageBox.Show("ToolStripMenuItemPrintB4");
                     break;
                 /*
                  * 終了処理
