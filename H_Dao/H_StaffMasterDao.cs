@@ -18,6 +18,10 @@ namespace H_Dao {
          */
         private readonly ConnectionVo _connectionVo;
 
+        /// <summary>
+        /// コンストラクター
+        /// </summary>
+        /// <param name="connectionVo"></param>
         public H_StaffMasterDao(ConnectionVo connectionVo) {
             /*
              * Vo
@@ -25,6 +29,10 @@ namespace H_Dao {
             _connectionVo = connectionVo;
         }
 
+        /// <summary>
+        /// H_StaffMaster
+        /// </summary>
+        /// <returns></returns>
         public List<H_StaffMasterVo> SelectAllHStaffMaster() {
             List<H_StaffMasterVo> listHStaffMasterVo = new();
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
