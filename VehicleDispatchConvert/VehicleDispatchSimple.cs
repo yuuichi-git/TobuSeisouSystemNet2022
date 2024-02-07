@@ -4,7 +4,7 @@ using Dao;
 
 using NPOI.SS.UserModel;
 
-using Vo;
+using H_Vo;
 
 namespace VehicleDispatchConvert {
     public partial class VehicleDispatchSimple : Form {

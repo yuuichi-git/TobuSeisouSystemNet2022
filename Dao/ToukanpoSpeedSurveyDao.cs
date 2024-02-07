@@ -1,6 +1,6 @@
 ﻿using System.Data.SqlClient;
 
-using Vo;
+using H_Vo;
 
 namespace Dao {
     public class ToukanpoSpeedSurveyDao {

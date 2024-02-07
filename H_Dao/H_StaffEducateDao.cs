@@ -7,7 +7,7 @@ using H_Common;
 
 using H_Vo;
 
-using Vo;
+using H_Vo;
 
 namespace H_Dao {
 
@@ -36,7 +36,7 @@ namespace H_Dao {
         /// SelectOneHStaffEducateMaster
         /// </summary>
         /// <returns></returns>
-        public List<H_StaffEducateVo> SelectOneHStaffEducateMaster() {
+        public List<H_StaffEducateVo> SelectOneHStaffEducateMaster(int staffCode) {
             List<H_StaffEducateVo> listHStaffEducateVo = new();
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT StaffCode," +
@@ -49,7 +49,8 @@ namespace H_Dao {
                                             "DeletePcName," +
                                             "DeleteYmdHms," +
                                             "DeleteFlag " +
-                                     "FROM H_StaffEducateMaster";
+                                     "FROM H_StaffEducateMaster " +
+                                     "WHERE StaffCode = " + staffCode + "";
             using (var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while (sqlDataReader.Read() == true) {
                     H_StaffEducateVo hStaffEducateVo = new();

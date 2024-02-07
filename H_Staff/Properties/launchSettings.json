@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "H_Staff": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Vo.Properties {
+namespace H_Vo.Properties {
     using System;
     
     

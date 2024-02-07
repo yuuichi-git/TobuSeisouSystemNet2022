@@ -8,7 +8,7 @@
  * 2023-09-21
  * _fax_transmission_flagを追加
  */
-namespace Vo {
+namespace H_Vo {
     public class VehicleDispatchDetailVo {
         private readonly DateTime _default_datetime = new DateTime(1900,01,01);
 

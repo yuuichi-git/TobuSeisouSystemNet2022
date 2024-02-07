@@ -2,7 +2,7 @@
 
 using Common;
 
-using Vo;
+using H_Vo;
 
 namespace Dao {
     public class WardChiyodaDao {

@@ -4,7 +4,7 @@ using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using NPOI.SS.Util;
 
-using Vo;
+using H_Vo;
 
 using HorizontalAlignment = NPOI.SS.UserModel.HorizontalAlignment;
 

@@ -1,6 +1,6 @@
 ﻿using Dao;
 
-using Vo;
+using H_Vo;
 
 namespace License {
     public partial class LicenseCard : Form {

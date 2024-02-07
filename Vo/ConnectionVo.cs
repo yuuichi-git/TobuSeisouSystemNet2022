@@ -5,9 +5,9 @@ using System.Data.SqlClient;
 
 using Common;
 
-using Vo.Properties;
+using H_Vo.Properties;
 
-namespace Vo {
+namespace H_Vo {
     public class ConnectionVo {
         /// <summary>
         /// 接続を保持

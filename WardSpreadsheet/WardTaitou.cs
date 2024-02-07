@@ -8,7 +8,7 @@ using Dao;
 using FarPoint.Excel;
 using FarPoint.Win.Spread;
 
-using Vo;
+using H_Vo;
 
 namespace WardSpreadsheet {
     public partial class WardTaitou : Form {

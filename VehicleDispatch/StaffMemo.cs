@@ -2,7 +2,7 @@
 
 using Dao;
 
-using Vo;
+using H_Vo;
 
 namespace VehicleDispatch {
     public partial class StaffMemo : Form {

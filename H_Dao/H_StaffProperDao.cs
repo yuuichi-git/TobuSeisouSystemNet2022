@@ -7,7 +7,7 @@ using H_Common;
 
 using H_Vo;
 
-using Vo;
+using H_Vo;
 
 namespace H_Dao {
     public class H_StaffProperDao {
@@ -29,10 +29,45 @@ namespace H_Dao {
         }
 
         /// <summary>
+        /// GetProperDate
+        /// 初任診断の受診日を取得する
+        /// </summary>
+        /// <param name="staffCode"></param>
+        /// <returns>初任診断の受診日を返す。存在しない場合はstring.Emptyを返す</returns>
+        public string GetSyoninProperDate(int staffCode) {
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT TOP 1 ProperDate FROM H_StaffProperMaster WHERE StaffCode = " + staffCode + " AND ProperKind = '初任診断'";
+            var data = sqlCommand.ExecuteScalar();
+            if (data is not null) {
+                return sqlCommand.ExecuteScalar().ToString();
+            } else {
+                return string.Empty;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="staffCode"></param>
+        /// <returns></returns>
+        public string GetTekireiProperDate(int staffCode) {
+            TimeSpan timeSpan = new(0, 0, 0, 0);
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT TOP 1 ProperDate FROM H_StaffProperMaster WHERE StaffCode = " + staffCode + " AND ProperKind = '適齢診断'";
+            var data = sqlCommand.ExecuteScalar();
+            if (data is not null) {
+                timeSpan = ((DateTime)sqlCommand.ExecuteScalar()).AddYears(3) - DateTime.Now.Date;
+                return string.Concat(timeSpan.Days, "日後");
+            } else {
+                return string.Empty;
+            }
+        }
+
+        /// <summary>
         /// SelectOneHStaffProperMaster
         /// </summary>
         /// <returns></returns>
-        public List<H_StaffProperVo> SelectOneHStaffProperMaster() {
+        public List<H_StaffProperVo> SelectOneHStaffProperMaster(int staffCode) {
             List<H_StaffProperVo> listHStaffProperVo = new();
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT StaffCode," +
@@ -46,7 +81,8 @@ namespace H_Dao {
                                             "DeletePcName," +
                                             "DeleteYmdHms," +
                                             "DeleteFlag " +
-                                     "FROM H_StaffProperMaster";
+                                     "FROM H_StaffProperMaster " +
+                                     "WHERE StaffCode = " + staffCode + "";
             using (var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while (sqlDataReader.Read() == true) {
                     H_StaffProperVo hStaffProperVo = new();

@@ -11,7 +11,7 @@ using License;
 
 using Toukanpo;
 
-using Vo;
+using H_Vo;
 
 namespace Staff {
     public partial class StaffList : Form {
@@ -177,37 +177,37 @@ namespace Staff {
              */
             bool check;
             check = false;
-            foreach(CheckBox checkBox in GroupBox1.Controls) {
-                if(checkBox.Checked)
+            foreach (CheckBox checkBox in GroupBox1.Controls) {
+                if (checkBox.Checked)
                     check = true;
             }
-            if(!check) {
+            if (!check) {
                 MessageBox.Show("役職又は所属(第一条件)の全てのチェックを外す事は出来ません", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
 
             check = false;
-            foreach(CheckBox checkBox in GroupBox2.Controls) {
-                if(checkBox.Checked)
+            foreach (CheckBox checkBox in GroupBox2.Controls) {
+                if (checkBox.Checked)
                     check = true;
             }
-            if(!check) {
+            if (!check) {
                 MessageBox.Show("雇用形態(第二条件)の全てのチェックを外す事は出来ません", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
 
             check = false;
-            foreach(CheckBox checkBox in GroupBox3.Controls) {
-                if(checkBox.Checked)
+            foreach (CheckBox checkBox in GroupBox3.Controls) {
+                if (checkBox.Checked)
                     check = true;
             }
-            if(!check) {
+            if (!check) {
                 MessageBox.Show("職種(第三条件)の全てのチェックを外す事は出来ません", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
 
             _listExtendsStaffMasterVo = new StaffMasterDao(_connectionVo).SelectAllExtendsStaffMasterVo(CreateSqlString(GroupBox1), CreateSqlString(GroupBox2), CreateSqlString(GroupBox3));
-            switch(SpreadList.ActiveSheet.SheetName) {
+            switch (SpreadList.ActiveSheet.SheetName) {
                 case "従事者リスト":
                     SheetViewListOutPut();
                     break;
@@ -230,9 +230,9 @@ namespace Staff {
         private string CreateSqlString(GroupBox groupBox) {
             int i = 0;
             string sql = "";
-            foreach(CheckBox checkBox in groupBox.Controls) {
-                if(checkBox.Checked) {
-                    if(i == 0) {
+            foreach (CheckBox checkBox in groupBox.Controls) {
+                if (checkBox.Checked) {
+                    if (i == 0) {
                         sql += string.Concat(checkBox.Tag.ToString());
                     } else {
                         sql += string.Concat(",", checkBox.Tag.ToString());
@@ -249,8 +249,8 @@ namespace Staff {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void TabControlEx1_Click(object sender, EventArgs e) {
-            if(_listFindAllStaffMasterVo != null) {
-                switch(SpreadList.ActiveSheet.SheetName) {
+            if (_listFindAllStaffMasterVo != null) {
+                switch (SpreadList.ActiveSheet.SheetName) {
                     case "従事者リスト":
                         SheetViewListOutPut();
                         break;
@@ -274,7 +274,7 @@ namespace Staff {
             // 先頭行（列）インデックスを取得
             spreadListTopRow = SpreadList.GetViewportTopRow(0);
             // Rowを削除する
-            if(SheetViewList.Rows.Count > 0)
+            if (SheetViewList.Rows.Count > 0)
                 SheetViewList.RemoveRows(0, SheetViewList.Rows.Count);
 
             _listFindAllStaffMasterVo = TabControlExStaff.SelectedTab.Tag switch {
@@ -292,14 +292,14 @@ namespace Staff {
             };
 
             // 退職者
-            if(!CheckBoxRetired.Checked)
+            if (!CheckBoxRetired.Checked)
                 _listFindAllStaffMasterVo = _listFindAllStaffMasterVo?.FindAll(x => x.Retirement_flag != true);
             // ソート
             _linqExtendsStaffMasterVo = _listFindAllStaffMasterVo?.OrderBy(x => x.Name_kana);
 
             int i = 0;
-            if(_linqExtendsStaffMasterVo is not null)
-                foreach(var extendsStaffMasterVo in _linqExtendsStaffMasterVo) {
+            if (_linqExtendsStaffMasterVo is not null)
+                foreach (var extendsStaffMasterVo in _linqExtendsStaffMasterVo) {
                     // 所属
                     var _belongs = extendsStaffMasterVo.Belongs;
                     // 形態
@@ -319,7 +319,7 @@ namespace Staff {
                     // 免許証
                     bool _licenseLedgerFlag = false;
                     DateTime? _licenseLedgerExpirationDate = null;
-                    if(extendsStaffMasterVo?.LicenseNumber?.Length > 0) {
+                    if (extendsStaffMasterVo?.LicenseNumber?.Length > 0) {
                         // 免許証
                         _licenseLedgerFlag = true;
                         // 免許証期限
@@ -329,8 +329,8 @@ namespace Staff {
                     var _commutingNotificationFlag = extendsStaffMasterVo?.CommutingNotification;
                     // 任意保険終了年月日
                     DateTime? _meansOfCommutingEndDate = null;
-                    if(extendsStaffMasterVo is not null && extendsStaffMasterVo.CommutingNotification) {
-                        if(extendsStaffMasterVo.CommuterInsuranceEndDate.Date != _defaultDateTime.Date)
+                    if (extendsStaffMasterVo is not null && extendsStaffMasterVo.CommutingNotification) {
+                        if (extendsStaffMasterVo.CommuterInsuranceEndDate.Date != _defaultDateTime.Date)
                             _meansOfCommutingEndDate = extendsStaffMasterVo.CommuterInsuranceEndDate.Date;
                     } else {
                         _meansOfCommutingEndDate = null;
@@ -338,53 +338,53 @@ namespace Staff {
                     // 生年月日・年齢
                     DateTime? _birth_date = null;
                     string _age = "";
-                    if(extendsStaffMasterVo is not null && extendsStaffMasterVo.Birth_date != _defaultDateTime) {
+                    if (extendsStaffMasterVo is not null && extendsStaffMasterVo.Birth_date != _defaultDateTime) {
                         _birth_date = extendsStaffMasterVo.Birth_date.Date;
                         // 年齢
                         _age = string.Concat(new Date().GetStaffAge(extendsStaffMasterVo.Birth_date.Date), "歳");
                     }
                     // 雇用年月日
                     DateTime? _employment_date = null;
-                    if(extendsStaffMasterVo is not null && extendsStaffMasterVo.Employment_date != _defaultDateTime) {
+                    if (extendsStaffMasterVo is not null && extendsStaffMasterVo.Employment_date != _defaultDateTime) {
                         _employment_date = extendsStaffMasterVo.Employment_date.Date;
                     }
                     // 勤続
                     string _service_date = "";
-                    if(extendsStaffMasterVo is not null && extendsStaffMasterVo.Employment_date != _defaultDateTime) {
+                    if (extendsStaffMasterVo is not null && extendsStaffMasterVo.Employment_date != _defaultDateTime) {
                         _service_date = string.Concat(new Date().GetEmploymenteYear(extendsStaffMasterVo.Employment_date.Date).ToString("#0年"), new Date().GetEmploymenteMonth(extendsStaffMasterVo.Employment_date.Date).ToString("00月"));
                     }
                     // 初任
                     DateTime? _proper_kind_syonin = null;
-                    if(extendsStaffMasterVo?.Proper_kind_1 == "初任診断")
+                    if (extendsStaffMasterVo?.Proper_kind_1 == "初任診断")
                         _proper_kind_syonin = extendsStaffMasterVo.Proper_date_1;
-                    if(extendsStaffMasterVo?.Proper_kind_2 == "初任診断")
+                    if (extendsStaffMasterVo?.Proper_kind_2 == "初任診断")
                         _proper_kind_syonin = extendsStaffMasterVo.Proper_date_2;
-                    if(extendsStaffMasterVo?.Proper_kind_3 == "初任診断")
+                    if (extendsStaffMasterVo?.Proper_kind_3 == "初任診断")
                         _proper_kind_syonin = extendsStaffMasterVo.Proper_date_3;
                     // 適齢
                     string _proper_kind_tekirei = "";
                     var timeSpan = new TimeSpan(0, 0, 0, 0);
 
-                    if(extendsStaffMasterVo is not null && (extendsStaffMasterVo.Proper_kind_1 == "適齢診断" || extendsStaffMasterVo.Proper_kind_2 == "適齢診断" || extendsStaffMasterVo.Proper_kind_3 == "適齢診断")) {
-                        if(extendsStaffMasterVo.Proper_kind_1 == "適齢診断") {
+                    if (extendsStaffMasterVo is not null && (extendsStaffMasterVo.Proper_kind_1 == "適齢診断" || extendsStaffMasterVo.Proper_kind_2 == "適齢診断" || extendsStaffMasterVo.Proper_kind_3 == "適齢診断")) {
+                        if (extendsStaffMasterVo.Proper_kind_1 == "適齢診断") {
                             timeSpan = extendsStaffMasterVo.Proper_date_1.AddYears(3) - DateTime.Now.Date;
-                        } else if(extendsStaffMasterVo.Proper_kind_2 == "適齢診断") {
+                        } else if (extendsStaffMasterVo.Proper_kind_2 == "適齢診断") {
                             timeSpan = extendsStaffMasterVo.Proper_date_2.AddYears(3) - DateTime.Now.Date;
-                        } else if(extendsStaffMasterVo.Proper_kind_3 == "適齢診断") {
+                        } else if (extendsStaffMasterVo.Proper_kind_3 == "適齢診断") {
                             timeSpan = extendsStaffMasterVo.Proper_date_3.AddYears(3) - DateTime.Now.Date;
                         }
                         _proper_kind_tekirei = string.Concat(timeSpan.Days, "日後");
                     }
                     // 事故数
                     string _car_accident_count = "";
-                    if(extendsStaffMasterVo is not null && extendsStaffMasterVo.CarAccidentMasterCount != 0) {
+                    if (extendsStaffMasterVo is not null && extendsStaffMasterVo.CarAccidentMasterCount != 0) {
                         _car_accident_count = string.Concat(extendsStaffMasterVo.CarAccidentMasterCount, "件");
                     }
                     /*
                      * １年以内の健康診断
                      */
                     string _medical_examination;
-                    if(extendsStaffMasterVo.Medical_examination_date_1 < DateTime.Now.Date.AddYears(-1)) {
+                    if (extendsStaffMasterVo.Medical_examination_date_1 < DateTime.Now.Date.AddYears(-1)) {
                         _medical_examination = "健康診断を受けて下さい";
                     } else {
                         _medical_examination = string.Concat("受診(", extendsStaffMasterVo.Medical_examination_date_1.ToString("yyyy/MM/dd"), ")");
@@ -452,7 +452,7 @@ namespace Staff {
             // 先頭行（列）インデックスを取得
             spreadListTopRow = SpreadList.GetViewportTopRow(0);
             // Rowを削除する
-            if(SheetViewList2.Rows.Count > 0)
+            if (SheetViewList2.Rows.Count > 0)
                 SheetViewList2.RemoveRows(0, SheetViewList2.Rows.Count);
 
             _listFindAllStaffMasterVo = TabControlExStaff.SelectedTab.Tag switch {
@@ -470,14 +470,14 @@ namespace Staff {
             };
 
             // 退職者
-            if(!CheckBoxRetired.Checked)
+            if (!CheckBoxRetired.Checked)
                 _listFindAllStaffMasterVo = _listFindAllStaffMasterVo?.FindAll(x => x.Retirement_flag != true);
             // ソート
             _linqExtendsStaffMasterVo = _listFindAllStaffMasterVo?.OrderBy(x => x.Belongs).ThenBy(x => x.Code).ThenBy(x => x.Name_kana);
 
             int i = 0;
-            if(_linqExtendsStaffMasterVo is not null)
-                foreach(var extendsStaffMasterVo in _linqExtendsStaffMasterVo) {
+            if (_linqExtendsStaffMasterVo is not null)
+                foreach (var extendsStaffMasterVo in _linqExtendsStaffMasterVo) {
                     // 所属
                     var _belongs = extendsStaffMasterVo.Belongs;
                     // 種別
@@ -491,7 +491,7 @@ namespace Staff {
                     // 生年月日・年齢
                     DateTime? _birth_date = null;
                     string _age = "";
-                    if(extendsStaffMasterVo is not null && extendsStaffMasterVo.Birth_date != _defaultDateTime) {
+                    if (extendsStaffMasterVo is not null && extendsStaffMasterVo.Birth_date != _defaultDateTime) {
                         _birth_date = extendsStaffMasterVo.Birth_date.Date;
                         // 年齢
                         _age = string.Concat(new Date().GetStaffAge(extendsStaffMasterVo.Birth_date.Date), "歳");
@@ -534,7 +534,7 @@ namespace Staff {
             // 先頭行（列）インデックスを取得
             spreadListTopRow = SpreadList.GetViewportTopRow(0);
             // Rowを削除する
-            if(SheetViewList3.Rows.Count > 0)
+            if (SheetViewList3.Rows.Count > 0)
                 SheetViewList3.RemoveRows(0, SheetViewList3.Rows.Count);
 
             _listFindAllStaffMasterVo = TabControlExStaff.SelectedTab.Tag switch {
@@ -552,14 +552,14 @@ namespace Staff {
             };
 
             // 退職者
-            if(!CheckBoxRetired.Checked)
+            if (!CheckBoxRetired.Checked)
                 _listFindAllStaffMasterVo = _listFindAllStaffMasterVo?.FindAll(x => x.Retirement_flag != true);
             // ソート
             _linqExtendsStaffMasterVo = _listFindAllStaffMasterVo?.OrderBy(x => x.Belongs).ThenBy(x => x.Code).ThenBy(x => x.Name_kana);
 
             int i = 0;
-            if(_linqExtendsStaffMasterVo is not null)
-                foreach(var extendsStaffMasterVo in _linqExtendsStaffMasterVo) {
+            if (_linqExtendsStaffMasterVo is not null)
+                foreach (var extendsStaffMasterVo in _linqExtendsStaffMasterVo) {
                     // 所属
                     var _belongs = extendsStaffMasterVo.Belongs;
                     // 種別
@@ -570,7 +570,7 @@ namespace Staff {
                     var _name_kana = extendsStaffMasterVo.Name_kana;
                     // 年齢
                     string _age = "";
-                    if(extendsStaffMasterVo is not null && extendsStaffMasterVo.Birth_date != _defaultDateTime) {
+                    if (extendsStaffMasterVo is not null && extendsStaffMasterVo.Birth_date != _defaultDateTime) {
                         // 年齢
                         _age = string.Concat(new Date().GetStaffAge(extendsStaffMasterVo.Birth_date.Date), "歳");
                     }
@@ -604,13 +604,13 @@ namespace Staff {
         /// <param name="e"></param>
         private void SpreadList_CellDoubleClick(object sender, CellClickEventArgs e) {
             // ダブルクリックされたのが従事者リストで無ければReturnする
-            if(((FpSpread)sender).ActiveSheet.SheetName != "従事者リスト")
+            if (((FpSpread)sender).ActiveSheet.SheetName != "従事者リスト")
                 return;
             // ヘッダーのDoubleClickを回避
-            if(e.ColumnHeader)
+            if (e.ColumnHeader)
                 return;
             // Shiftが押された場合
-            if((ModifierKeys & Keys.Shift) == Keys.Shift) {
+            if ((ModifierKeys & Keys.Shift) == Keys.Shift) {
                 var staffRegisterPaper = new StaffPaper(_connectionVo, ((ExtendsStaffMasterVo)SheetViewList.Cells[e.Row, colName].Tag).Staff_code);
                 staffRegisterPaper.ShowDialog();
                 return;
@@ -699,13 +699,13 @@ namespace Staff {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ContextMenuStrip1_Opening(object sender, CancelEventArgs e) {
-            switch(SpreadList.ActiveSheet.SheetName) {
+            switch (SpreadList.ActiveSheet.SheetName) {
                 case "従事者リスト":
                     ContextMenuStrip1.Enabled = true;
                     /*
                      * SheetViewにRowが無い場合や、Rowが選択されていない場合はReturnする
                      */
-                    if(SheetViewList.RowCount < 1 || !SheetViewList.IsBlockSelected) {
+                    if (SheetViewList.RowCount < 1 || !SheetViewList.IsBlockSelected) {
                         e.Cancel = true;
                         return;
                     }
@@ -715,9 +715,9 @@ namespace Staff {
                     /*
                      * 免許証
                      */
-                    if(cellRange[0].RowCount == 1) {
+                    if (cellRange[0].RowCount == 1) {
                         var license = SheetViewList.Cells[SheetViewList.ActiveRowIndex, colLicense].Value;
-                        if((bool)license) {
+                        if ((bool)license) {
                             ToolStripMenuItemLicense.Enabled = true;
                         } else {
                             ToolStripMenuItemLicense.Enabled = false;
@@ -728,9 +728,9 @@ namespace Staff {
                     /*
                      * 東環保
                      */
-                    if(cellRange[0].RowCount == 1) {
+                    if (cellRange[0].RowCount == 1) {
                         var toukanpoCard = SheetViewList.Cells[SheetViewList.ActiveRowIndex, colToukanpoCard].Value;
-                        if((bool)toukanpoCard) {
+                        if ((bool)toukanpoCard) {
                             ToolStripMenuItemToukanpo.Enabled = true;
                         } else {
                             ToolStripMenuItemToukanpo.Enabled = false;
@@ -741,9 +741,9 @@ namespace Staff {
                     /*
                      * 地図を表示する
                      */
-                    if(cellRange[0].RowCount == 1) {
+                    if (cellRange[0].RowCount == 1) {
                         var currentAddress = SheetViewList.Cells[SheetViewList.ActiveRowIndex, colCurrentAddress].Text;
-                        if(!string.IsNullOrEmpty(currentAddress)) {
+                        if (!string.IsNullOrEmpty(currentAddress)) {
                             ToolStripMenuItemMap.Enabled = true;
                         } else {
                             ToolStripMenuItemMap.Enabled = false;
@@ -768,7 +768,7 @@ namespace Staff {
         /// <param name="e"></param>
         private void ToolStripMenuItem_Click(object sender, EventArgs e) {
             int staffCode = ((ExtendsStaffMasterVo)SheetViewList.Cells[SheetViewList.ActiveRowIndex, colName].Tag).Staff_code;
-            switch(((ToolStripMenuItem)sender).Name) {
+            switch (((ToolStripMenuItem)sender).Name) {
                 /*
                  * 免許証を表示
                  */
@@ -821,7 +821,7 @@ namespace Staff {
         /// <param name="e"></param>
         private void StaffList_FormClosing(object sender, FormClosingEventArgs e) {
             DialogResult dialogResult = MessageBox.Show(MessageText.Message102, MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            switch(dialogResult) {
+            switch (dialogResult) {
                 case DialogResult.OK:
                     e.Cancel = false;
                     Dispose();

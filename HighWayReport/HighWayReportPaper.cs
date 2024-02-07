@@ -2,7 +2,7 @@ using ControlEx;
 
 using FarPoint.Win.Spread;
 
-using Vo;
+using H_Vo;
 
 namespace HighWayReport {
     public partial class HighWayReportPaper : Form {

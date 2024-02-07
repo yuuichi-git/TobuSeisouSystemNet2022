@@ -1,7 +1,7 @@
 ﻿/*
  * 各種マスターを元に本番登録を保持する
  */
-namespace Vo {
+namespace H_Vo {
     public class VehicleDispatchHeadVo {
         private int _cell_number; // 配車表№
         private bool _garage_flag; // 車庫地

@@ -13,7 +13,7 @@ using H_Vo;
 
 using StockBox;
 
-using Vo;
+using H_Vo;
 
 namespace H_VehicleDispatch {
     public partial class H_VehicleDispatchBoard : Form {
@@ -81,7 +81,7 @@ namespace H_VehicleDispatch {
              */
             _listHSetMasterVo = _hSetMasterDao.SelectAllHSetMaster();
             _listHCarMasterVo = _hCarMasterDao.SelectAllHCarMaster();
-            _listHStaffMasterVo = _hStaffMasterDao.SelectHStaffMaster();
+            _listHStaffMasterVo = _hStaffMasterDao.SelectAllHStaffMasterForStaffLabel();
             /*
              * Freeゾーンを作成
              */

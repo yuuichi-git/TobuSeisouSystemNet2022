@@ -1,4 +1,4 @@
-﻿namespace Vo {
+﻿namespace H_Vo {
     public class RollCallDetailVo {
         private DateTime _operation_date;
         private string _roll_call_name_1 = "";

@@ -4,7 +4,7 @@ using Dao;
 
 using FarPoint.Win.Spread;
 
-using Vo;
+using H_Vo;
 
 namespace WardSpreadsheet {
     public partial class WardChiyoda : Form {

@@ -5,7 +5,7 @@ using Common;
 
 using Dao;
 
-using Vo;
+using H_Vo;
 
 namespace CommuterInsurance {
     public partial class CommuterInsuranceDetail : Form {

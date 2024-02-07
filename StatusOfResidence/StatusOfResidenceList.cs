@@ -7,7 +7,7 @@ using Dao;
 
 using FarPoint.Win.Spread;
 
-using Vo;
+using H_Vo;
 
 namespace StatusOfResidence {
     public partial class StatusOfResidenceList : Form {

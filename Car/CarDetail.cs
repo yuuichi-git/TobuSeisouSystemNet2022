@@ -2,7 +2,7 @@
 
 using Dao;
 
-using Vo;
+using H_Vo;
 
 namespace CarRegister {
     public partial class CarDetail : Form {

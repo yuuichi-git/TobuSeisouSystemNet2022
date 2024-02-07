@@ -3,7 +3,7 @@
  * 表示用のVo
  * SupplyInventory SupplyIn 共通
  */
-namespace Vo {
+namespace H_Vo {
     /// <summary>
     /// 画面表示用のVo
     /// </summary>

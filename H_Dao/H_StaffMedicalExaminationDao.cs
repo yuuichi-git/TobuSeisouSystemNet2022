@@ -7,7 +7,7 @@ using H_Common;
 
 using H_Vo;
 
-using Vo;
+using H_Vo;
 
 namespace H_Dao {
     public class H_StaffMedicalExaminationDao {
@@ -29,10 +29,26 @@ namespace H_Dao {
         }
 
         /// <summary>
+        /// レコードの存在確認
+        /// </summary>
+        /// <param name="staffCode"></param>
+        /// <returns>true:存在する false:存在しない</returns>
+        public string GetMedicalExaminationDate(int staffCode) {
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT TOP 1 MedicalExaminationDate FROM H_StaffMedicalExaminationMaster WHERE StaffCode = " + staffCode + "";
+            var data = sqlCommand.ExecuteScalar();
+            if (data is not null) {
+                return sqlCommand.ExecuteScalar().ToString();
+            } else {
+                return string.Empty;
+            }
+        }
+
+        /// <summary>
         /// SelectOneHStaffMedicalExaminationMaster
         /// </summary>
         /// <returns></returns>
-        public List<H_StaffMedicalExaminationVo> SelectOneHStaffMedicalExaminationMaster() {
+        public List<H_StaffMedicalExaminationVo> SelectOneHStaffMedicalExaminationMaster(int staffCode) {
             List<H_StaffMedicalExaminationVo> listHStaffMedicalExaminationVo = new();
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT StaffCode," +
@@ -46,7 +62,8 @@ namespace H_Dao {
                                             "DeletePcName," +
                                             "DeleteYmdHms," +
                                             "DeleteFlag " +
-                                     "FROM H_StaffMedicalExaminationMaster";
+                                     "FROM H_StaffMedicalExaminationMaster " +
+                                     "WHERE StaffCode = " + staffCode + "";
             using (var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while (sqlDataReader.Read() == true) {
                     H_StaffMedicalExaminationVo hStaffMedicalExaminationVo = new();

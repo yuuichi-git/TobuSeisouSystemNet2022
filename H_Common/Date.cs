@@ -3,6 +3,7 @@
  */
 namespace H_Common {
     public class Date {
+        private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
         private readonly DateTime _todayDate = DateTime.Today;
 
         /// <summary>
@@ -10,14 +11,51 @@ namespace H_Common {
         /// </summary>
         /// <param name="dateTime"></param>
         /// <returns></returns>
-        public int GetStaffAge(DateTime dateTime) {
+        public int GetAge(DateTime dateTime) {
             int age = _todayDate.Year - dateTime.Year;
-            //誕生日がまだ来ていなければ、1引く
-            if(_todayDate.Month < dateTime.Month || (_todayDate.Month == dateTime.Month && _todayDate.Day < dateTime.Day)) {
-                age--;
+            if (dateTime.Date != _defaultDateTime.Date) {
+                //誕生日がまだ来ていなければ、1引く
+                if (_todayDate.Month < dateTime.Month || (_todayDate.Month == dateTime.Month && _todayDate.Day < dateTime.Day)) {
+                    age--;
+                }
+            } else {
+                age = 0;
             }
             return age;
         }
+
+        /// <summary>
+        /// 誕生日
+        /// 1900/01/01の場合はstring.Emptyを返す
+        /// </summary>
+        /// <param name="dateTime"></param>
+        /// <returns></returns>
+        public string GetBirthday(DateTime dateTime) {
+            string birthday;
+            if (dateTime.Date != _defaultDateTime.Date) {
+                birthday = dateTime.Date.ToString("yyyy/MM/dd");
+            } else {
+                birthday = string.Empty;
+            }
+            return birthday;
+        }
+
+        /// <summary>
+        /// 雇用年月日
+        /// 1900/01/01の場合はstring.Emptyを返す
+        /// </summary>
+        /// <param name="dateTime"></param>
+        /// <returns></returns>
+        public string GetEmploymentDate(DateTime dateTime) {
+            string employmentDate;
+            if (dateTime.Date != _defaultDateTime.Date) {
+                employmentDate = dateTime.Date.ToString("yyyy/MM/dd");
+            } else {
+                employmentDate = string.Empty;
+            }
+            return employmentDate;
+        }
+
         /// <summary>
         /// 勤続年数を計算
         /// </summary>
@@ -132,8 +170,8 @@ namespace H_Common {
         /// <param name="fiveLap">五週目フラグ</param>
         /// <returns></returns>
         public bool GetWorkingDays(DateTime dateTime, string workingDays, bool fiveLap) {
-            if(workingDays.Contains(dateTime.ToString("ddd"))) {
-                if(!fiveLap && dateTime.Day > 28) {
+            if (workingDays.Contains(dateTime.ToString("ddd"))) {
+                if (!fiveLap && dateTime.Day > 28) {
                     return false;
                 } else {
                     return true;

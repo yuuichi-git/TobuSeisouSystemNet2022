@@ -1,4 +1,4 @@
-﻿using Vo;
+﻿using H_Vo;
 
 namespace ControlEx {
     public partial class CarLabelEx : Label {

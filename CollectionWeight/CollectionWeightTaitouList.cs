@@ -9,7 +9,7 @@ using Dao;
 
 using FarPoint.Win.Spread;
 
-using Vo;
+using H_Vo;
 
 namespace CollectionWeight {
     public partial class CollectionWeightTaitouList : Form {

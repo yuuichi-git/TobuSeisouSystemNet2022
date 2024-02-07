@@ -9,7 +9,7 @@ using Dao;
 
 using FarPoint.Win.Spread;
 
-using Vo;
+using H_Vo;
 
 namespace LegalTwelveItem {
     public partial class LegalTwelveItemList : Form {

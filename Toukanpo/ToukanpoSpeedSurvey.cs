@@ -5,7 +5,7 @@ using Dao;
 using FarPoint.Excel;
 using FarPoint.Win.Spread;
 
-using Vo;
+using H_Vo;
 
 namespace Toukanpo {
     public partial class ToukanpoSpeedSurvey : Form {

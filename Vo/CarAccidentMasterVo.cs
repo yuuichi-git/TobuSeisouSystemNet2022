@@ -1,4 +1,4 @@
-﻿namespace Vo {
+﻿namespace H_Vo {
     public class CarAccidentMasterVo {
         private bool _totalling_flag;
         private DateTime _occurrence_ymd_hms;

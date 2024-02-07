@@ -1,4 +1,4 @@
-﻿namespace Vo {
+﻿namespace H_Vo {
     public class ExtendsStaffMasterVo : StaffMasterVo {
         private bool _toukanpoTrainingCardFlag;
         private string? _licenseNumber;

@@ -6,7 +6,7 @@ using Dao;
 
 using FarPoint.Win.Spread;
 
-using Vo;
+using H_Vo;
 
 namespace Car {
     public partial class CarList : Form {

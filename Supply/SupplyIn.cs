@@ -8,7 +8,7 @@ using Dao;
 
 using FarPoint.Win.Spread;
 
-using Vo;
+using H_Vo;
 
 namespace Supply {
     public partial class SupplyIn : Form {

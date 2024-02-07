@@ -1,4 +1,4 @@
-﻿namespace Vo {
+﻿namespace H_Vo {
     public class ToukanpoTrainingCardVo {
         private int _staff_code = 0;
         private string _display_name = "";

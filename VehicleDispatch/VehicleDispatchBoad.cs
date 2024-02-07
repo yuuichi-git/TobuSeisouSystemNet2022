@@ -25,7 +25,7 @@ using Supply;
 
 using VehicleDispatchConvert;
 
-using Vo;
+using H_Vo;
 
 namespace VehicleDispatch {
     public partial class VehicleDispatchBoad : Form {

@@ -1,7 +1,7 @@
 ﻿/*
  * 2023-06-05
  */
-namespace Vo {
+namespace H_Vo {
     public class SupplyMoveVo {
         private readonly DateTime _defaultDateTime = new(1900, 01, 01, 00, 00, 00, 000);
 

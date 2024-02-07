@@ -6,7 +6,7 @@ using Common;
 
 using Dao;
 
-using Vo;
+using H_Vo;
 
 namespace Production {
     public partial class ProductionSelect : Form {

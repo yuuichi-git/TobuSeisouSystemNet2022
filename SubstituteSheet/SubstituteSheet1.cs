@@ -6,7 +6,7 @@ using Dao;
 
 using FarPoint.Win.Spread;
 
-using Vo;
+using H_Vo;
 
 namespace SubstituteSheet {
     public partial class SubstituteSheet1 : Form {

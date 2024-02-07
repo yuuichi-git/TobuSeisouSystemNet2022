@@ -1,4 +1,4 @@
-﻿namespace Vo {
+﻿namespace H_Vo {
     public class StaffMasterExcelVo {
         private int _row;
         private int _code;

@@ -1,4 +1,4 @@
-﻿namespace Vo {
+﻿namespace H_Vo {
     public class CertificationFileVo {
         private int _staff_code;
         private string _staff_name = "";

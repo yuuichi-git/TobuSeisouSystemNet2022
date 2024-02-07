@@ -5,7 +5,7 @@ using System.Data;
 
 using Common;
 
-using Vo;
+using H_Vo;
 
 namespace Dao {
     public class CommuterInsuranceDao {

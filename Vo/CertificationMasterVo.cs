@@ -1,4 +1,4 @@
-﻿namespace Vo {
+﻿namespace H_Vo {
     public class CertificationMasterVo {
         private int _certification_code;
         private string _certification_name = "";

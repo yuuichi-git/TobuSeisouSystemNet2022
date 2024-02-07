@@ -3,7 +3,7 @@
  */
 using Dao;
 
-using Vo;
+using H_Vo;
 
 namespace CollectionWeight {
     public partial class CollectionWeightTaitouInput : Form {

@@ -19,6 +19,8 @@ using CommuterInsurance;
 
 using H_Common;
 
+using H_Staff;
+
 using H_VehicleDispatch;
 
 using LegalTwelveItem;
@@ -45,7 +47,7 @@ using VehicleDispatch;
 
 using VehicleDispatchSheet;
 
-using Vo;
+using H_Vo;
 
 using WardSpreadsheet;
 
@@ -242,18 +244,33 @@ namespace TobuSeisouSystemNet2022 {
                              */
                             // H_VehicleDispatch
                             case "H_VehicleDispatch":
-                                // Screenを退避
+                                // Screenを退避(新型のみ)
                                 _connectionVo.Screen = (Screen)HComboBoxMoniter.SelectedItem;
                                 /*
                                  * Formを表示する
                                  */
                                 H_VehicleDispatchBoard hVehicleDispatchBoard = new H_VehicleDispatchBoard(_connectionVo);
-                                Rectangle rectangle = new Desktop().GetMonitorWorkingArea(hVehicleDispatchBoard, (Screen)HComboBoxMoniter.SelectedItem);
+                                Rectangle rectangleHVehicleDispatchBoard = new Desktop().GetMonitorWorkingArea(hVehicleDispatchBoard, (Screen)HComboBoxMoniter.SelectedItem);
                                 hVehicleDispatchBoard.KeyPreview = true;
-                                hVehicleDispatchBoard.Location = rectangle.Location;
-                                hVehicleDispatchBoard.Size = rectangle.Size;
+                                hVehicleDispatchBoard.Location = rectangleHVehicleDispatchBoard.Location;
+                                hVehicleDispatchBoard.Size = rectangleHVehicleDispatchBoard.Size;
                                 hVehicleDispatchBoard.WindowState = FormWindowState.Maximized;
                                 hVehicleDispatchBoard.ShowDialog();
+                                break;
+                            // H_StaffList
+                            case "H_StaffList":
+                                // Screenを退避(新型のみ)
+                                _connectionVo.Screen = (Screen)HComboBoxMoniter.SelectedItem;
+                                /*
+                                 * Formを表示する
+                                 */
+                                HStaffList hStaffList = new(_connectionVo);
+                                Rectangle rectangleHStaffList = new Desktop().GetMonitorWorkingArea(hStaffList, (Screen)HComboBoxMoniter.SelectedItem);
+                                hStaffList.KeyPreview = true;
+                                hStaffList.Location = rectangleHStaffList.Location;
+                                hStaffList.Size = new Size(1920, 1080);
+                                hStaffList.WindowState = FormWindowState.Normal;
+                                hStaffList.ShowDialog();
                                 break;
                         }
                         break;

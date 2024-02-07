@@ -1,4 +1,4 @@
-﻿namespace Vo {
+﻿namespace H_Vo {
     public class LicenseMasterVo {
         private int _staff_code;
         private string? _name_kana;

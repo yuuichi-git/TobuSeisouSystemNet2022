@@ -192,6 +192,8 @@
             label4 = new Label();
             label3 = new Label();
             TabPage2 = new TabPage();
+            label47 = new Label();
+            label48 = new Label();
             label44 = new Label();
             label45 = new Label();
             TableLayoutPanelBase.SuspendLayout();
@@ -1293,15 +1295,42 @@
             // 
             // TabPage2
             // 
+            TabPage2.Controls.Add(label47);
+            TabPage2.Controls.Add(label48);
             TabPage2.Controls.Add(label44);
             TabPage2.Controls.Add(label45);
             TabPage2.Location = new Point(4, 24);
             TabPage2.Name = "TabPage2";
             TabPage2.Padding = new Padding(3);
-            TabPage2.Size = new Size(696, 539);
+            TabPage2.Size = new Size(696, 447);
             TabPage2.TabIndex = 1;
             TabPage2.Text = "新型（令和６年度～）";
             TabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label47
+            // 
+            label47.AutoSize = true;
+            label47.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label47.ForeColor = Color.DarkGray;
+            label47.Location = new Point(42, 60);
+            label47.Name = "label47";
+            label47.Size = new Size(172, 17);
+            label47.TabIndex = 7;
+            label47.Text = "従事者台帳を作成・管理します";
+            // 
+            // label48
+            // 
+            label48.AutoSize = true;
+            label48.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label48.Location = new Point(16, 44);
+            label48.Name = "label48";
+            label48.Size = new Size(73, 17);
+            label48.TabIndex = 6;
+            label48.Tag = "H_StaffList";
+            label48.Text = "従事者台帳";
+            label48.Click += Label_Click;
+            label48.MouseEnter += Label_MouseEnter;
+            label48.MouseLeave += Label_MouseLeave;
             // 
             // label44
             // 
@@ -1437,5 +1466,7 @@
         private Label label45;
         private Label label46;
         private H_ControlEx.H_ComboBoxEx HComboBoxMoniter;
+        private Label label47;
+        private Label label48;
     }
 }

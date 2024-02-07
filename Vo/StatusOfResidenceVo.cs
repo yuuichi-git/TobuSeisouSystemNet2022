@@ -1,7 +1,7 @@
 ﻿/*
  * 2023-06-23
  */
-namespace Vo {
+namespace H_Vo {
     public class StatusOfResidenceVo {
         private int _staff_code;
         private string _staff_name;
