@@ -2,12 +2,18 @@
 
 namespace H_ControlEx {
     public partial class H_DateTimePickerEx : DateTimePicker {
-        private readonly DateTime _defaultDateTime = new(1900,01,01);
-        // 言語カルチャーを設定
+        private readonly DateTime _defaultDateTime = new(1900, 01, 01);
+        /// <summary>
+        /// 言語カルチャーを設定
+        /// </summary>
         private readonly CultureInfo cultureInfo = new("Ja-JP", true);
+        /// <summary>
+        /// 言語フラグ teur:和暦 false:西暦
+        /// </summary>
+        private bool cultureFlag = true;
 
         /// <summary>
-        /// コンストラクタ
+        /// コンストラクター
         /// </summary>
         public H_DateTimePickerEx() {
             // 言語カルチャーを設定
@@ -16,7 +22,7 @@ namespace H_ControlEx {
              * コントロール初期化
              */
             InitializeComponent();
-            this.CustomFormat = "yyyy年MM月dd日(dddd)";
+            this.CustomFormat = string.Concat(" ", DateTime.Now.ToString("yyyy年MM月dd日(dddd)"));
             this.Format = DateTimePickerFormat.Custom;
             this.Height = 23;
             this.Value = DateTime.Today;
@@ -32,7 +38,8 @@ namespace H_ControlEx {
             /*
              * Eventを登録
              */
-            this.KeyDown += H_DateTimePicker_KeyDown;
+            this.CloseUp += H_DateTimePickerEx_CloseUp;
+            this.KeyDown += H_DateTimePickerEx_KeyDown;
         }
 
         /// <summary>
@@ -44,12 +51,28 @@ namespace H_ControlEx {
         }
 
         /// <summary>
+        /// H_DateTimePickerEx_CloseUp
+        /// カレンダーを閉じた時のイベント
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void H_DateTimePickerEx_CloseUp(object sender, EventArgs e) {
+            if (this.CustomFormat != " ") {
+                if (cultureFlag) {
+                    this.CustomFormat = string.Concat(" ", this.Value.ToString("ggyy", cultureInfo) + "年MM月dd日(dddd)");
+                } else {
+                    this.CustomFormat = string.Concat(" ", this.Value.ToString("yyyy年MM月dd日(dddd)"));
+                }
+            }
+        }
+
+        /// <summary>
         /// H_DateTimePicker_KeyDown
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void H_DateTimePicker_KeyDown(object sender, KeyEventArgs e) {
-            switch(e.KeyData) {
+        private void H_DateTimePickerEx_KeyDown(object sender, KeyEventArgs e) {
+            switch (e.KeyData) {
                 /*
                  * クリア表示
                  */
@@ -59,17 +82,30 @@ namespace H_ControlEx {
                     break;
                 /*
                  * 西暦で表示
+                 * ブランクの場合はDateTime.Nowを入れる。ブランクでない場合はthis.valueを変換する。
                  */
                 case Keys.Control | Keys.A:
-                    this.CustomFormat = string.Concat(" ", this.Value.ToString("yyyy年MM月dd日(dddd)"));
-                    this.Refresh();
+                    cultureFlag = false;
+                    if (this.CustomFormat == " ") {
+                        this.CustomFormat = string.Concat(" ", DateTime.Now.ToString("yyyy年MM月dd日(dddd)"));
+                        this.Refresh();
+                    } else {
+                        this.CustomFormat = string.Concat(" ", this.Value.ToString("yyyy年MM月dd日(dddd)"));
+                        this.Refresh();
+                    }
                     break;
                 /*
                  * 和暦で表示
                  */
                 case Keys.Control | Keys.J:
-                    this.CustomFormat = string.Concat(this.Value.ToString("ggyy", cultureInfo) + "年MM月dd日(dddd)");
-                    this.Refresh();
+                    cultureFlag = true;
+                    if (this.CustomFormat == " ") {
+                        this.CustomFormat = string.Concat(" ", DateTime.Now.ToString("ggyy", cultureInfo) + "年MM月dd日(dddd)");
+                        this.Refresh();
+                    } else {
+                        this.CustomFormat = string.Concat(" ", this.Value.ToString("ggyy", cultureInfo) + "年MM月dd日(dddd)");
+                        this.Refresh();
+                    }
                     break;
             }
         }
@@ -80,7 +116,7 @@ namespace H_ControlEx {
         /// </summary>
         /// <returns></returns>
         public DateTime GetValue() {
-            if(this.CustomFormat == " ") {
+            if (this.CustomFormat == " ") {
                 return _defaultDateTime;
             } else {
                 return this.Value;
@@ -111,7 +147,7 @@ namespace H_ControlEx {
         /// </summary>
         /// <param name="dateTime"></param>
         public void SetValue(DateTime dateTime) {
-            if(dateTime.Date != _defaultDateTime || this.CustomFormat != " ") {
+            if (dateTime.Date != _defaultDateTime || this.CustomFormat != " ") {
                 this.Value = dateTime;
                 this.Refresh();
             } else {

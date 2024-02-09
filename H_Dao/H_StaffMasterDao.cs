@@ -67,40 +67,40 @@ namespace H_Dao {
                                             "Occupation," +
                                             "NameKana," +
                                             "Name," +
-                                            "DisplayName," +
-                                            "Gender," +
+                                            //"DisplayName," +
+                                            //"Gender," +
                                             "BirthDate," +
                                             "EmploymentDate," +
                                             "CurrentAddress," +
-                                            "BeforeChangeAddress," +
-                                            "Remarks," +
-                                            "TelephoneNumber," +
-                                            "CellphoneNumber," +
+                                            //"BeforeChangeAddress," +
+                                            //"Remarks," +
+                                            //"TelephoneNumber," +
+                                            //"CellphoneNumber," +
                                             //"Picture," +
-                                            "BloodType," +
-                                            "SelectionDate," +
-                                            "NotSelectionDate," +
-                                            "NotSelectionReason," +
-                                            "LicenseNumber," +
+                                            //"BloodType," +
+                                            //"SelectionDate," +
+                                            //"NotSelectionDate," +
+                                            //"NotSelectionReason," +
+                                            //"LicenseNumber," +
                                             "RetirementFlag," +
-                                            "RetirementDate," +
-                                            "RetirementNote," +
-                                            "DeathDate," +
-                                            "DeathNote," +
-                                            "UrgentTelephoneNumber," +
-                                            "UrgentTelephoneMethod," +
+                                            //"RetirementDate," +
+                                            //"RetirementNote," +
+                                            //"DeathDate," +
+                                            //"DeathNote," +
+                                            //"UrgentTelephoneNumber," +
+                                            //"UrgentTelephoneMethod," +
                                             "HealthInsuranceDate," +
-                                            "HealthInsuranceNumber," +
-                                            "HealthInsuranceNote," +
+                                            //"HealthInsuranceNumber," +
+                                            //"HealthInsuranceNote," +
                                             "WelfarePensionDate," +
-                                            "WelfarePensionNumber," +
-                                            "WelfarePensionNote," +
+                                            //"WelfarePensionNumber," +
+                                            //"WelfarePensionNote," +
                                             "EmploymentInsuranceDate," +
-                                            "EmploymentInsuranceNumber," +
-                                            "EmploymentInsuranceNote," +
+                                            //"EmploymentInsuranceNumber," +
+                                            //"EmploymentInsuranceNote," +
                                             "WorkerAccidentInsuranceDate," +
-                                            "WorkerAccidentInsuranceNumber," +
-                                            "WorkerAccidentInsuranceNote," +
+                                            //"WorkerAccidentInsuranceNumber," +
+                                            //"WorkerAccidentInsuranceNote," +
                                             //"InsertPcName," +
                                             //"InsertYmdHms," +
                                             //"UpdatePcName," +
@@ -120,43 +120,43 @@ namespace H_Dao {
                     hStaffMasterVo.Occupation = _defaultValue.GetDefaultValue<int>(sqlDataReader["Occupation"]);
                     hStaffMasterVo.NameKana = _defaultValue.GetDefaultValue<string>(sqlDataReader["NameKana"]);
                     hStaffMasterVo.Name = _defaultValue.GetDefaultValue<string>(sqlDataReader["Name"]);
-                    hStaffMasterVo.DisplayName = _defaultValue.GetDefaultValue<string>(sqlDataReader["DisplayName"]);
-                    hStaffMasterVo.Gender = _defaultValue.GetDefaultValue<string>(sqlDataReader["Gender"]);
+                    //hStaffMasterVo.DisplayName = _defaultValue.GetDefaultValue<string>(sqlDataReader["DisplayName"]);
+                    //hStaffMasterVo.Gender = _defaultValue.GetDefaultValue<string>(sqlDataReader["Gender"]);
                     hStaffMasterVo.BirthDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["BirthDate"]);
                     hStaffMasterVo.EmploymentDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["EmploymentDate"]);
                     hStaffMasterVo.CurrentAddress = _defaultValue.GetDefaultValue<string>(sqlDataReader["CurrentAddress"]);
-                    hStaffMasterVo.BeforeChangeAddress = _defaultValue.GetDefaultValue<string>(sqlDataReader["BeforeChangeAddress"]);
-                    hStaffMasterVo.Remarks = _defaultValue.GetDefaultValue<string>(sqlDataReader["Remarks"]);
-                    hStaffMasterVo.TelephoneNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["TelephoneNumber"]);
-                    hStaffMasterVo.CellphoneNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["CellphoneNumber"]);
+                    //hStaffMasterVo.BeforeChangeAddress = _defaultValue.GetDefaultValue<string>(sqlDataReader["BeforeChangeAddress"]);
+                    //hStaffMasterVo.Remarks = _defaultValue.GetDefaultValue<string>(sqlDataReader["Remarks"]);
+                    //hStaffMasterVo.TelephoneNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["TelephoneNumber"]);
+                    //hStaffMasterVo.CellphoneNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["CellphoneNumber"]);
                     //hStaffMasterVo.Picture = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["Picture"]);
-                    hStaffMasterVo.BloodType = _defaultValue.GetDefaultValue<string>(sqlDataReader["BloodType"]);
-                    hStaffMasterVo.SelectionDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["SelectionDate"]);
-                    hStaffMasterVo.NotSelectionDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["NotSelectionDate"]);
-                    hStaffMasterVo.NotSelectionReason = _defaultValue.GetDefaultValue<string>(sqlDataReader["NotSelectionReason"]);
-                    hStaffMasterVo.LicenseNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["LicenseNumber"]);
+                    //hStaffMasterVo.BloodType = _defaultValue.GetDefaultValue<string>(sqlDataReader["BloodType"]);
+                    //hStaffMasterVo.SelectionDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["SelectionDate"]);
+                    //hStaffMasterVo.NotSelectionDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["NotSelectionDate"]);
+                    //hStaffMasterVo.NotSelectionReason = _defaultValue.GetDefaultValue<string>(sqlDataReader["NotSelectionReason"]);
+                    //hStaffMasterVo.LicenseNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["LicenseNumber"]);
                     //hStaffMasterVo.ListHStaffHistoryVo = _hStaffHistoryDao.SelectOneHStaffHistoryMaster(_defaultValue.GetDefaultValue<int>(sqlDataReader["StaffCode"]));
                     //hStaffMasterVo.ListHStaffExperienceVo = _hStaffExperienceDao.SelectOneHStaffExperienceMaster(_defaultValue.GetDefaultValue<int>(sqlDataReader["StaffCode"]));
                     hStaffMasterVo.RetirementFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["RetirementFlag"]);
-                    hStaffMasterVo.RetirementDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["RetirementDate"]);
-                    hStaffMasterVo.RetirementNote = _defaultValue.GetDefaultValue<string>(sqlDataReader["RetirementNote"]);
-                    hStaffMasterVo.DeathDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["DeathDate"]);
-                    hStaffMasterVo.DeathNote = _defaultValue.GetDefaultValue<string>(sqlDataReader["DeathNote"]);
+                    //hStaffMasterVo.RetirementDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["RetirementDate"]);
+                    //hStaffMasterVo.RetirementNote = _defaultValue.GetDefaultValue<string>(sqlDataReader["RetirementNote"]);
+                    //hStaffMasterVo.DeathDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["DeathDate"]);
+                    //hStaffMasterVo.DeathNote = _defaultValue.GetDefaultValue<string>(sqlDataReader["DeathNote"]);
                     //hStaffMasterVo.ListHStaffFamilyVo = _hStaffFamilyDao.SelectOneHStaffFamilyMaster(_defaultValue.GetDefaultValue<int>(sqlDataReader["StaffCode"]));
-                    hStaffMasterVo.UrgentTelephoneNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["UrgentTelephoneNumber"]);
-                    hStaffMasterVo.UrgentTelephoneMethod = _defaultValue.GetDefaultValue<string>(sqlDataReader["UrgentTelephoneMethod"]);
+                    //hStaffMasterVo.UrgentTelephoneNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["UrgentTelephoneNumber"]);
+                    //hStaffMasterVo.UrgentTelephoneMethod = _defaultValue.GetDefaultValue<string>(sqlDataReader["UrgentTelephoneMethod"]);
                     hStaffMasterVo.HealthInsuranceDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["HealthInsuranceDate"]);
-                    hStaffMasterVo.HealthInsuranceNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["HealthInsuranceNumber"]);
-                    hStaffMasterVo.HealthInsuranceNote = _defaultValue.GetDefaultValue<string>(sqlDataReader["HealthInsuranceNote"]);
+                    //hStaffMasterVo.HealthInsuranceNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["HealthInsuranceNumber"]);
+                    //hStaffMasterVo.HealthInsuranceNote = _defaultValue.GetDefaultValue<string>(sqlDataReader["HealthInsuranceNote"]);
                     hStaffMasterVo.WelfarePensionDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["WelfarePensionDate"]);
-                    hStaffMasterVo.WelfarePensionNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["WelfarePensionNumber"]);
-                    hStaffMasterVo.WelfarePensionNote = _defaultValue.GetDefaultValue<string>(sqlDataReader["WelfarePensionNote"]);
+                    //hStaffMasterVo.WelfarePensionNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["WelfarePensionNumber"]);
+                    //hStaffMasterVo.WelfarePensionNote = _defaultValue.GetDefaultValue<string>(sqlDataReader["WelfarePensionNote"]);
                     hStaffMasterVo.EmploymentInsuranceDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["EmploymentInsuranceDate"]);
-                    hStaffMasterVo.EmploymentInsuranceNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["EmploymentInsuranceNumber"]);
-                    hStaffMasterVo.EmploymentInsuranceNote = _defaultValue.GetDefaultValue<string>(sqlDataReader["EmploymentInsuranceNote"]);
+                    //hStaffMasterVo.EmploymentInsuranceNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["EmploymentInsuranceNumber"]);
+                    //hStaffMasterVo.EmploymentInsuranceNote = _defaultValue.GetDefaultValue<string>(sqlDataReader["EmploymentInsuranceNote"]);
                     hStaffMasterVo.WorkerAccidentInsuranceDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["WorkerAccidentInsuranceDate"]);
-                    hStaffMasterVo.WorkerAccidentInsuranceNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["WorkerAccidentInsuranceNumber"]);
-                    hStaffMasterVo.WorkerAccidentInsuranceNote = _defaultValue.GetDefaultValue<string>(sqlDataReader["WorkerAccidentInsuranceNote"]);
+                    //hStaffMasterVo.WorkerAccidentInsuranceNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["WorkerAccidentInsuranceNumber"]);
+                    //hStaffMasterVo.WorkerAccidentInsuranceNote = _defaultValue.GetDefaultValue<string>(sqlDataReader["WorkerAccidentInsuranceNote"]);
                     //hStaffMasterVo.ListHStaffMedicalExaminationVo = _hStaffMedicalExaminationDao.SelectOneHStaffMedicalExaminationMaster(_defaultValue.GetDefaultValue<int>(sqlDataReader["StaffCode"]));
                     //hStaffMasterVo.ListHStaffCarViolateVo = _hStaffCarViolateDao.SelectOneHStaffCarViolateMaster(_defaultValue.GetDefaultValue<int>(sqlDataReader["StaffCode"]));
                     //hStaffMasterVo.ListHStaffEducateVo = _hStaffEducateDao.SelectOneHStaffEducateMaster(_defaultValue.GetDefaultValue<int>(sqlDataReader["StaffCode"]));
@@ -179,7 +179,7 @@ namespace H_Dao {
         /// SelectHStaffMasterForStaffDetail
         /// </summary>
         /// <returns>詳細を含むListを返す</returns>
-        public List<H_StaffMasterVo> SelectHStaffMasterForStaffDetail() {
+        public List<H_StaffMasterVo> SelectHStaffMasterForStaffDetail(int staffCode) {
             List<H_StaffMasterVo> listHStaffMasterVo = new();
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT StaffCode," +
@@ -199,7 +199,7 @@ namespace H_Dao {
                                             "Remarks," +
                                             "TelephoneNumber," +
                                             "CellphoneNumber," +
-                                            //"Picture," +
+                                            "Picture," +
                                             "BloodType," +
                                             "SelectionDate," +
                                             "NotSelectionDate," +
@@ -231,7 +231,8 @@ namespace H_Dao {
                                             "DeletePcName," +
                                             "DeleteYmdHms," +
                                             "DeleteFlag " +
-                                     "FROM H_StaffMaster";
+                                     "FROM H_StaffMaster " +
+                                     "WHERE StaffCode = " + staffCode + "";
             using (var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while (sqlDataReader.Read() == true) {
                     H_StaffMasterVo hStaffMasterVo = new();
@@ -252,7 +253,7 @@ namespace H_Dao {
                     hStaffMasterVo.Remarks = _defaultValue.GetDefaultValue<string>(sqlDataReader["Remarks"]);
                     hStaffMasterVo.TelephoneNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["TelephoneNumber"]);
                     hStaffMasterVo.CellphoneNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["CellphoneNumber"]);
-                    //hStaffMasterVo.Picture = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["Picture"]);
+                    hStaffMasterVo.Picture = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["Picture"]);
                     hStaffMasterVo.BloodType = _defaultValue.GetDefaultValue<string>(sqlDataReader["BloodType"]);
                     hStaffMasterVo.SelectionDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["SelectionDate"]);
                     hStaffMasterVo.NotSelectionDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["NotSelectionDate"]);
