@@ -61,7 +61,7 @@
             label38 = new Label();
             label39 = new Label();
             groupBox10 = new GroupBox();
-            groupBox7 = new GroupBox();
+            GroupBoxExHistory = new GroupBox();
             DateHistoryDate6 = new ControlEx.DateTimePickerJpEx();
             DateHistoryDate5 = new ControlEx.DateTimePickerJpEx();
             DateHistoryDate4 = new ControlEx.DateTimePickerJpEx();
@@ -183,7 +183,7 @@
             label1 = new Label();
             ComboBoxBelongs = new ComboBox();
             PanelRight = new Panel();
-            groupBox18 = new GroupBox();
+            GroupBoxProper = new GroupBox();
             DateProperDate3 = new ControlEx.DateTimePickerJpEx();
             DateProperDate2 = new ControlEx.DateTimePickerJpEx();
             DateProperDate1 = new ControlEx.DateTimePickerJpEx();
@@ -349,7 +349,7 @@
             PanelTop.SuspendLayout();
             PanelLeft.SuspendLayout();
             groupBox9.SuspendLayout();
-            groupBox7.SuspendLayout();
+            GroupBoxExHistory.SuspendLayout();
             groupBox6.SuspendLayout();
             groupBox5.SuspendLayout();
             groupBox4.SuspendLayout();
@@ -360,7 +360,7 @@
             GroupBoxOccupation.SuspendLayout();
             GroupBoxBelongs.SuspendLayout();
             PanelRight.SuspendLayout();
-            groupBox18.SuspendLayout();
+            GroupBoxProper.SuspendLayout();
             groupBox17.SuspendLayout();
             groupBox16.SuspendLayout();
             groupBox15.SuspendLayout();
@@ -471,7 +471,7 @@
             PanelLeft.AutoScroll = true;
             PanelLeft.BorderStyle = BorderStyle.FixedSingle;
             PanelLeft.Controls.Add(groupBox9);
-            PanelLeft.Controls.Add(groupBox7);
+            PanelLeft.Controls.Add(GroupBoxExHistory);
             PanelLeft.Controls.Add(groupBox6);
             PanelLeft.Controls.Add(groupBox5);
             PanelLeft.Controls.Add(groupBox4);
@@ -735,34 +735,34 @@
             groupBox10.TabStop = false;
             groupBox10.Text = "運転に関する情報";
             // 
-            // groupBox7
+            // GroupBoxExHistory
             // 
-            groupBox7.Controls.Add(DateHistoryDate6);
-            groupBox7.Controls.Add(DateHistoryDate5);
-            groupBox7.Controls.Add(DateHistoryDate4);
-            groupBox7.Controls.Add(DateHistoryDate3);
-            groupBox7.Controls.Add(DateHistoryDate2);
-            groupBox7.Controls.Add(DateHistoryDate1);
-            groupBox7.Controls.Add(label35);
-            groupBox7.Controls.Add(label30);
-            groupBox7.Controls.Add(label31);
-            groupBox7.Controls.Add(label32);
-            groupBox7.Controls.Add(label33);
-            groupBox7.Controls.Add(label34);
-            groupBox7.Controls.Add(TextBoxHistoryNote6);
-            groupBox7.Controls.Add(TextBoxHistoryNote5);
-            groupBox7.Controls.Add(TextBoxHistoryNote4);
-            groupBox7.Controls.Add(TextBoxHistoryNote3);
-            groupBox7.Controls.Add(TextBoxHistoryNote2);
-            groupBox7.Controls.Add(label29);
-            groupBox7.Controls.Add(TextBoxHistoryNote1);
-            groupBox7.Controls.Add(label28);
-            groupBox7.Location = new Point(12, 762);
-            groupBox7.Name = "groupBox7";
-            groupBox7.Size = new Size(912, 227);
-            groupBox7.TabIndex = 13;
-            groupBox7.TabStop = false;
-            groupBox7.Text = "履歴";
+            GroupBoxExHistory.Controls.Add(DateHistoryDate6);
+            GroupBoxExHistory.Controls.Add(DateHistoryDate5);
+            GroupBoxExHistory.Controls.Add(DateHistoryDate4);
+            GroupBoxExHistory.Controls.Add(DateHistoryDate3);
+            GroupBoxExHistory.Controls.Add(DateHistoryDate2);
+            GroupBoxExHistory.Controls.Add(DateHistoryDate1);
+            GroupBoxExHistory.Controls.Add(label35);
+            GroupBoxExHistory.Controls.Add(label30);
+            GroupBoxExHistory.Controls.Add(label31);
+            GroupBoxExHistory.Controls.Add(label32);
+            GroupBoxExHistory.Controls.Add(label33);
+            GroupBoxExHistory.Controls.Add(label34);
+            GroupBoxExHistory.Controls.Add(TextBoxHistoryNote6);
+            GroupBoxExHistory.Controls.Add(TextBoxHistoryNote5);
+            GroupBoxExHistory.Controls.Add(TextBoxHistoryNote4);
+            GroupBoxExHistory.Controls.Add(TextBoxHistoryNote3);
+            GroupBoxExHistory.Controls.Add(TextBoxHistoryNote2);
+            GroupBoxExHistory.Controls.Add(label29);
+            GroupBoxExHistory.Controls.Add(TextBoxHistoryNote1);
+            GroupBoxExHistory.Controls.Add(label28);
+            GroupBoxExHistory.Location = new Point(12, 762);
+            GroupBoxExHistory.Name = "GroupBoxExHistory";
+            GroupBoxExHistory.Size = new Size(912, 227);
+            GroupBoxExHistory.TabIndex = 13;
+            GroupBoxExHistory.TabStop = false;
+            GroupBoxExHistory.Text = "履歴";
             // 
             // DateHistoryDate6
             // 
@@ -1975,7 +1975,7 @@
             // 
             PanelRight.AutoScroll = true;
             PanelRight.BorderStyle = BorderStyle.FixedSingle;
-            PanelRight.Controls.Add(groupBox18);
+            PanelRight.Controls.Add(GroupBoxProper);
             PanelRight.Controls.Add(groupBox17);
             PanelRight.Controls.Add(groupBox16);
             PanelRight.Controls.Add(groupBox15);
@@ -1989,29 +1989,29 @@
             PanelRight.Size = new Size(946, 931);
             PanelRight.TabIndex = 4;
             // 
-            // groupBox18
+            // GroupBoxProper
             // 
-            groupBox18.Controls.Add(DateProperDate3);
-            groupBox18.Controls.Add(DateProperDate2);
-            groupBox18.Controls.Add(DateProperDate1);
-            groupBox18.Controls.Add(label102);
-            groupBox18.Controls.Add(TextBoxProperNote3);
-            groupBox18.Controls.Add(TextBoxProperNote2);
-            groupBox18.Controls.Add(label97);
-            groupBox18.Controls.Add(TextBoxProperNote1);
-            groupBox18.Controls.Add(label98);
-            groupBox18.Controls.Add(ComboBoxProperKind3);
-            groupBox18.Controls.Add(ComboBoxProperKind2);
-            groupBox18.Controls.Add(ComboBoxProperKind1);
-            groupBox18.Controls.Add(label99);
-            groupBox18.Controls.Add(label100);
-            groupBox18.Controls.Add(label101);
-            groupBox18.Location = new Point(12, 1386);
-            groupBox18.Name = "groupBox18";
-            groupBox18.Size = new Size(912, 147);
-            groupBox18.TabIndex = 102;
-            groupBox18.TabStop = false;
-            groupBox18.Text = "適性診断(NASVA)";
+            GroupBoxProper.Controls.Add(DateProperDate3);
+            GroupBoxProper.Controls.Add(DateProperDate2);
+            GroupBoxProper.Controls.Add(DateProperDate1);
+            GroupBoxProper.Controls.Add(label102);
+            GroupBoxProper.Controls.Add(TextBoxProperNote3);
+            GroupBoxProper.Controls.Add(TextBoxProperNote2);
+            GroupBoxProper.Controls.Add(label97);
+            GroupBoxProper.Controls.Add(TextBoxProperNote1);
+            GroupBoxProper.Controls.Add(label98);
+            GroupBoxProper.Controls.Add(ComboBoxProperKind3);
+            GroupBoxProper.Controls.Add(ComboBoxProperKind2);
+            GroupBoxProper.Controls.Add(ComboBoxProperKind1);
+            GroupBoxProper.Controls.Add(label99);
+            GroupBoxProper.Controls.Add(label100);
+            GroupBoxProper.Controls.Add(label101);
+            GroupBoxProper.Location = new Point(12, 1386);
+            GroupBoxProper.Name = "GroupBoxProper";
+            GroupBoxProper.Size = new Size(912, 147);
+            GroupBoxProper.TabIndex = 102;
+            GroupBoxProper.TabStop = false;
+            GroupBoxProper.Text = "適性診断(NASVA)";
             // 
             // DateProperDate3
             // 
@@ -3573,8 +3573,8 @@
             PanelLeft.ResumeLayout(false);
             groupBox9.ResumeLayout(false);
             groupBox9.PerformLayout();
-            groupBox7.ResumeLayout(false);
-            groupBox7.PerformLayout();
+            GroupBoxExHistory.ResumeLayout(false);
+            GroupBoxExHistory.PerformLayout();
             groupBox6.ResumeLayout(false);
             groupBox6.PerformLayout();
             groupBox5.ResumeLayout(false);
@@ -3591,8 +3591,8 @@
             GroupBoxBelongs.ResumeLayout(false);
             GroupBoxBelongs.PerformLayout();
             PanelRight.ResumeLayout(false);
-            groupBox18.ResumeLayout(false);
-            groupBox18.PerformLayout();
+            GroupBoxProper.ResumeLayout(false);
+            GroupBoxProper.PerformLayout();
             groupBox17.ResumeLayout(false);
             groupBox17.PerformLayout();
             groupBox16.ResumeLayout(false);
@@ -3659,7 +3659,7 @@
         private Button ButtonSelectPicture;
         private GroupBox groupBox9;
         private GroupBox groupBox10;
-        private GroupBox groupBox7;
+        private GroupBox GroupBoxExHistory;
         private Label label35;
         private Label label30;
         private Label label31;
@@ -3823,7 +3823,7 @@
         private Label label52;
         private Label label53;
         private TextBox TextBoxFamilyName1;
-        private GroupBox groupBox18;
+        private GroupBox GroupBoxProper;
         private Label label102;
         private TextBox TextBoxProperNote3;
         private TextBox TextBoxProperNote2;

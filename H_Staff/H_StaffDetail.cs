@@ -9,6 +9,5 @@ namespace H_Staff {
             InitializeComponent();
         }
 
-
     }
 }
