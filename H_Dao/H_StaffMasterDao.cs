@@ -24,6 +24,7 @@ namespace H_Dao {
         private readonly H_StaffEducateDao _hStaffEducateDao;
         private readonly H_StaffProperDao _hStaffProperDao;
         private readonly H_StaffPunishmentDao _hStaffPunishmentDao;
+        private readonly H_LicenseMasterDao _hLicenseMasterDao;
         /*
          * Vo
          */
@@ -45,6 +46,7 @@ namespace H_Dao {
             _hStaffEducateDao = new(connectionVo);
             _hStaffProperDao = new(connectionVo);
             _hStaffPunishmentDao = new(connectionVo);
+            _hLicenseMasterDao = new(connectionVo);
             /*
              * Vo
              */
@@ -179,8 +181,8 @@ namespace H_Dao {
         /// SelectHStaffMasterForStaffDetail
         /// </summary>
         /// <returns>詳細を含むListを返す</returns>
-        public List<H_StaffMasterVo> SelectHStaffMasterForStaffDetail(int staffCode) {
-            List<H_StaffMasterVo> listHStaffMasterVo = new();
+        public H_StaffMasterVo? SelectOneHStaffMasterForStaffDetail(int staffCode) {
+            H_StaffMasterVo hStaffMasterVo = new();
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT StaffCode," +
                                             "UnionCode," +
@@ -235,7 +237,6 @@ namespace H_Dao {
                                      "WHERE StaffCode = " + staffCode + "";
             using (var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while (sqlDataReader.Read() == true) {
-                    H_StaffMasterVo hStaffMasterVo = new();
                     hStaffMasterVo.StaffCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["StaffCode"]);
                     hStaffMasterVo.UnionCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["UnionCode"]);
                     hStaffMasterVo.Belongs = _defaultValue.GetDefaultValue<int>(sqlDataReader["Belongs"]);
@@ -258,7 +259,7 @@ namespace H_Dao {
                     hStaffMasterVo.SelectionDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["SelectionDate"]);
                     hStaffMasterVo.NotSelectionDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["NotSelectionDate"]);
                     hStaffMasterVo.NotSelectionReason = _defaultValue.GetDefaultValue<string>(sqlDataReader["NotSelectionReason"]);
-                    hStaffMasterVo.LicenseNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["LicenseNumber"]);
+                    hStaffMasterVo.HLicenseMasterVo = _hLicenseMasterDao.SelectOneHLicenseMaster(_defaultValue.GetDefaultValue<int>(sqlDataReader["StaffCode"]));
                     hStaffMasterVo.ListHStaffHistoryVo = _hStaffHistoryDao.SelectOneHStaffHistoryMaster(_defaultValue.GetDefaultValue<int>(sqlDataReader["StaffCode"]));
                     hStaffMasterVo.ListHStaffExperienceVo = _hStaffExperienceDao.SelectOneHStaffExperienceMaster(_defaultValue.GetDefaultValue<int>(sqlDataReader["StaffCode"]));
                     hStaffMasterVo.RetirementFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["RetirementFlag"]);
@@ -293,10 +294,9 @@ namespace H_Dao {
                     hStaffMasterVo.DeletePcName = _defaultValue.GetDefaultValue<string>(sqlDataReader["DeletePcName"]);
                     hStaffMasterVo.DeleteYmdHms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["DeleteYmdHms"]);
                     hStaffMasterVo.DeleteFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["DeleteFlag"]);
-                    listHStaffMasterVo.Add(hStaffMasterVo);
                 }
             }
-            return listHStaffMasterVo;
+            return hStaffMasterVo;
         }
 
         /// <summary>
@@ -382,7 +382,7 @@ namespace H_Dao {
                     hStaffMasterVo.SelectionDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["SelectionDate"]);
                     hStaffMasterVo.NotSelectionDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["NotSelectionDate"]);
                     hStaffMasterVo.NotSelectionReason = _defaultValue.GetDefaultValue<string>(sqlDataReader["NotSelectionReason"]);
-                    hStaffMasterVo.LicenseNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["LicenseNumber"]);
+                    hStaffMasterVo.HLicenseMasterVo = _hLicenseMasterDao.SelectOneHLicenseMaster(_defaultValue.GetDefaultValue<int>(sqlDataReader["StaffCode"]));
                     hStaffMasterVo.RetirementFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["RetirementFlag"]);
                     hStaffMasterVo.RetirementDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["RetirementDate"]);
                     hStaffMasterVo.RetirementNote = _defaultValue.GetDefaultValue<string>(sqlDataReader["RetirementNote"]);

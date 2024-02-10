@@ -59,7 +59,7 @@ namespace H_ControlEx {
         private void H_DateTimePickerEx_CloseUp(object sender, EventArgs e) {
             if (this.CustomFormat != " ") {
                 if (cultureFlag) {
-                    this.CustomFormat = string.Concat(" ", this.Value.ToString("ggyy", cultureInfo) + "年MM月dd日(dddd)");
+                    this.CustomFormat = string.Concat(" ", this.Value.ToString("ggyy年MM月dd日(dddd)", cultureInfo));
                 } else {
                     this.CustomFormat = string.Concat(" ", this.Value.ToString("yyyy年MM月dd日(dddd)"));
                 }
@@ -96,14 +96,15 @@ namespace H_ControlEx {
                     break;
                 /*
                  * 和暦で表示
+                 * ブランクの場合はDateTime.Nowを入れる。ブランクでない場合はthis.valueを変換する。
                  */
                 case Keys.Control | Keys.J:
                     cultureFlag = true;
                     if (this.CustomFormat == " ") {
-                        this.CustomFormat = string.Concat(" ", DateTime.Now.ToString("ggyy", cultureInfo) + "年MM月dd日(dddd)");
+                        this.CustomFormat = string.Concat(" ", DateTime.Now.ToString("ggyy年MM月dd日(dddd)", cultureInfo));
                         this.Refresh();
                     } else {
-                        this.CustomFormat = string.Concat(" ", this.Value.ToString("ggyy", cultureInfo) + "年MM月dd日(dddd)");
+                        this.CustomFormat = string.Concat(" ", this.Value.ToString("ggyy年MM月dd日(dddd)", cultureInfo));
                         this.Refresh();
                     }
                     break;
@@ -147,12 +148,11 @@ namespace H_ControlEx {
         /// </summary>
         /// <param name="dateTime"></param>
         public void SetValue(DateTime dateTime) {
-            if (dateTime.Date != _defaultDateTime || this.CustomFormat != " ") {
-                this.Value = dateTime;
+            if (dateTime.Date != _defaultDateTime.Date) {
+                this.CustomFormat = string.Concat(" ", dateTime.ToString("ggyy年MM月dd日(dddd)", cultureInfo));
                 this.Refresh();
             } else {
                 this.CustomFormat = " ";
-                this.Value = _defaultDateTime;
                 this.Refresh();
             }
         }

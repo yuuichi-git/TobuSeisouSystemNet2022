@@ -338,7 +338,7 @@ namespace H_Staff {
                 return;
             }
             // 修飾キーが無い場合
-            HStaffDetail hStaffDetail = new(_connectionVo);
+            HStaffDetail hStaffDetail = new(_connectionVo, ((H_StaffMasterVo)SheetViewList.Cells[e.Row, colName].Tag).StaffCode);
             Rectangle rectangleHStaffDetail = new Desktop().GetMonitorWorkingArea(hStaffDetail, _connectionVo.Screen);
             hStaffDetail.KeyPreview = true;
             hStaffDetail.Location = rectangleHStaffDetail.Location;

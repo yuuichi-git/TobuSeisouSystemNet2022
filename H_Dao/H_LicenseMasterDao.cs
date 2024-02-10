@@ -60,8 +60,8 @@ namespace H_Dao {
         /// </summary>
         /// <param name="staffCode"></param>
         /// <returns></returns>
-        public List<H_LicenseMasterVo> SelectHLicenseMasterForStaffDetail(int staffCode) {
-            List<H_LicenseMasterVo> listHLicenseMasterVo = new();
+        public H_LicenseMasterVo SelectOneHLicenseMaster(int staffCode) {
+            H_LicenseMasterVo hLicenseMasterVo = new();
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT StaffCode," +
                                             "Name," +
@@ -102,7 +102,6 @@ namespace H_Dao {
                                      "WHERE StaffCode = " + staffCode + "";
             using (var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while (sqlDataReader.Read() == true) {
-                    H_LicenseMasterVo hLicenseMasterVo = new();
                     hLicenseMasterVo.StaffCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["StaffCode"]);
                     hLicenseMasterVo.Name = _defaultValue.GetDefaultValue<string>(sqlDataReader["Name"]);
                     hLicenseMasterVo.NameKana = _defaultValue.GetDefaultValue<string>(sqlDataReader["NameKana"]);
@@ -138,10 +137,9 @@ namespace H_Dao {
                     hLicenseMasterVo.DeletePcName = _defaultValue.GetDefaultValue<string>(sqlDataReader["DeletePcName"]);
                     hLicenseMasterVo.DeleteYmdHms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["DeleteYmdHms"]);
                     hLicenseMasterVo.DeleteFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["DeleteFlag"]);
-                    listHLicenseMasterVo.Add(hLicenseMasterVo);
                 }
             }
-            return listHLicenseMasterVo;
+            return hLicenseMasterVo;
         }
     }
 }

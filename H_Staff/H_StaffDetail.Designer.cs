@@ -26,6 +26,7 @@
             HTableLayoutPanelExBase = new H_ControlEx.H_TableLayoutPanelEx();
             MenuStrip1 = new MenuStrip();
             ToolStripMenuItemMenu = new ToolStripMenuItem();
+            ToolStripMenuItemExit = new ToolStripMenuItem();
             ToolStripMenuItemHelp = new ToolStripMenuItem();
             StatusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
@@ -133,33 +134,20 @@
             HDateTimeExRetirementDate = new H_ControlEx.H_DateTimePickerEx();
             h_LabelEx34 = new H_ControlEx.H_LabelEx();
             GroupBoxJobForm = new GroupBox();
-            HRadioButtonExNone1 = new H_ControlEx.H_RadioButtonEx();
-            HRadioButtonExEmployee2 = new H_ControlEx.H_RadioButtonEx();
-            HRadioButtonExPart2 = new H_ControlEx.H_RadioButtonEx();
             HRadioButtonExShortTarm = new H_ControlEx.H_RadioButtonEx();
             HRadioButtonExLongTarm = new H_ControlEx.H_RadioButtonEx();
             GroupBoxBelongs = new GroupBox();
             h_LabelEx2 = new H_ControlEx.H_LabelEx();
-            HRadioButtonExJiunrou = new H_ControlEx.H_RadioButtonEx();
-            HRadioButtonExSinunten = new H_ControlEx.H_RadioButtonEx();
-            HRadioButtonExDispatch = new H_ControlEx.H_RadioButtonEx();
-            HRadioButtonExPart1 = new H_ControlEx.H_RadioButtonEx();
-            HRadioButtonExEmployee1 = new H_ControlEx.H_RadioButtonEx();
-            HRadioButtonExOfficer = new H_ControlEx.H_RadioButtonEx();
             HComboBoxExBelongs = new H_ControlEx.H_ComboBoxEx();
             HCheckBoxExTargetFlag = new H_ControlEx.H_CheckBoxEx();
             HPanelExMiddleRight = new H_ControlEx.H_PanelEx();
             HGroupBoxProper = new GroupBox();
-            h_LabelEx82 = new H_ControlEx.H_LabelEx();
             h_LabelEx83 = new H_ControlEx.H_LabelEx();
             h_LabelEx84 = new H_ControlEx.H_LabelEx();
             h_LabelEx85 = new H_ControlEx.H_LabelEx();
             h_LabelEx81 = new H_ControlEx.H_LabelEx();
             h_LabelEx80 = new H_ControlEx.H_LabelEx();
             h_LabelEx79 = new H_ControlEx.H_LabelEx();
-            HTextBoxExProperNote4 = new H_ControlEx.H_TextBoxEx();
-            HDateTimeExProperDate4 = new H_ControlEx.H_DateTimePickerEx();
-            HComboBoxExProperKind4 = new H_ControlEx.H_ComboBoxEx();
             HTextBoxExProperNote3 = new H_ControlEx.H_TextBoxEx();
             HDateTimeExProperDate3 = new H_ControlEx.H_DateTimePickerEx();
             HComboBoxExProperKind3 = new H_ControlEx.H_ComboBoxEx();
@@ -173,16 +161,12 @@
             HDateTimeExProperDate = new H_ControlEx.H_DateTimePickerEx();
             HComboBoxExProperKind = new H_ControlEx.H_ComboBoxEx();
             HGroupBoxEducate = new GroupBox();
-            h_LabelEx77 = new H_ControlEx.H_LabelEx();
             h_LabelEx78 = new H_ControlEx.H_LabelEx();
             h_LabelEx76 = new H_ControlEx.H_LabelEx();
             h_LabelEx75 = new H_ControlEx.H_LabelEx();
-            h_LabelEx69 = new H_ControlEx.H_LabelEx();
             h_LabelEx70 = new H_ControlEx.H_LabelEx();
             h_LabelEx71 = new H_ControlEx.H_LabelEx();
-            HComboBoxExEducateName4 = new H_ControlEx.H_ComboBoxEx();
             h_LabelEx72 = new H_ControlEx.H_LabelEx();
-            HDateTimeExEducateDate4 = new H_ControlEx.H_DateTimePickerEx();
             HComboBoxExEducateName3 = new H_ControlEx.H_ComboBoxEx();
             HDateTimeExEducateDate3 = new H_ControlEx.H_DateTimePickerEx();
             HComboBoxExEducateName2 = new H_ControlEx.H_ComboBoxEx();
@@ -194,18 +178,14 @@
             h_LabelEx74 = new H_ControlEx.H_LabelEx();
             HDateTimeExEducateDate = new H_ControlEx.H_DateTimePickerEx();
             HGroupBoxExCarViolate = new GroupBox();
-            HTextBoxExCarViolatePlace4 = new H_ControlEx.H_TextBoxEx();
             HTextBoxExCarViolatePlace3 = new H_ControlEx.H_TextBoxEx();
             HTextBoxExCarViolatePlace2 = new H_ControlEx.H_TextBoxEx();
             HTextBoxExCarViolatePlace1 = new H_ControlEx.H_TextBoxEx();
             HTextBoxExCarViolatePlace = new H_ControlEx.H_TextBoxEx();
             h_LabelEx56 = new H_ControlEx.H_LabelEx();
-            h_LabelEx57 = new H_ControlEx.H_LabelEx();
             h_LabelEx64 = new H_ControlEx.H_LabelEx();
             h_LabelEx65 = new H_ControlEx.H_LabelEx();
-            HComboBoxExCarViolateContent4 = new H_ControlEx.H_ComboBoxEx();
             h_LabelEx66 = new H_ControlEx.H_LabelEx();
-            HDateTimeExCarViolateDate4 = new H_ControlEx.H_DateTimePickerEx();
             HComboBoxExCarViolateContent3 = new H_ControlEx.H_ComboBoxEx();
             HDateTimeExCarViolateDate3 = new H_ControlEx.H_DateTimePickerEx();
             HComboBoxExCarViolateContent2 = new H_ControlEx.H_ComboBoxEx();
@@ -218,27 +198,23 @@
             HDateTimeExCarViolateDate = new H_ControlEx.H_DateTimePickerEx();
             groupBox12 = new GroupBox();
             h_LabelEx55 = new H_ControlEx.H_LabelEx();
-            HGroupBoxExMedicalExamination = new GroupBox();
-            HTextBoxExMedicalExaminationNote4 = new H_ControlEx.H_TextBoxEx();
+            HGroupBoxExMedical = new GroupBox();
             HTextBoxExMedicalExaminationNote3 = new H_ControlEx.H_TextBoxEx();
             HTextBoxExMedicalExaminationNote2 = new H_ControlEx.H_TextBoxEx();
             HTextBoxExMedicalExaminationNote1 = new H_ControlEx.H_TextBoxEx();
             HTextBoxExMedicalExaminationNote = new H_ControlEx.H_TextBoxEx();
             h_LabelEx54 = new H_ControlEx.H_LabelEx();
-            h_LabelEx60 = new H_ControlEx.H_LabelEx();
             h_LabelEx61 = new H_ControlEx.H_LabelEx();
             h_LabelEx62 = new H_ControlEx.H_LabelEx();
-            HComboBoxExMedicalExaminationNote4 = new H_ControlEx.H_ComboBoxEx();
             h_LabelEx63 = new H_ControlEx.H_LabelEx();
-            HDateTimeExMedicalExaminationDate4 = new H_ControlEx.H_DateTimePickerEx();
-            HComboBoxExMedicalExaminationNote3 = new H_ControlEx.H_ComboBoxEx();
+            HComboBoxExMedicalInstitutionName3 = new H_ControlEx.H_ComboBoxEx();
             HDateTimeExMedicalExaminationDate3 = new H_ControlEx.H_DateTimePickerEx();
-            HComboBoxExMedicalExaminationNote2 = new H_ControlEx.H_ComboBoxEx();
+            HComboBoxExMedicalInstitutionName2 = new H_ControlEx.H_ComboBoxEx();
             HDateTimeExMedicalExaminationDate2 = new H_ControlEx.H_DateTimePickerEx();
-            HComboBoxExMedicalExaminationNote1 = new H_ControlEx.H_ComboBoxEx();
+            HComboBoxExMedicalInstitutionName1 = new H_ControlEx.H_ComboBoxEx();
             HDateTimeExMedicalExaminationDate1 = new H_ControlEx.H_DateTimePickerEx();
             h_LabelEx58 = new H_ControlEx.H_LabelEx();
-            HComboBoxExMedicalExaminationNote = new H_ControlEx.H_ComboBoxEx();
+            HComboBoxExMedicalInstitutionName = new H_ControlEx.H_ComboBoxEx();
             h_LabelEx59 = new H_ControlEx.H_LabelEx();
             HDateTimeExMedicalExaminationDate = new H_ControlEx.H_DateTimePickerEx();
             HGroupBoxExInsurance = new GroupBox();
@@ -289,14 +265,11 @@
             h_LabelEx39 = new H_ControlEx.H_LabelEx();
             HTextBoxExFamilyName = new H_ControlEx.H_TextBoxEx();
             HGroupBoxExPunishment = new GroupBox();
-            h_LabelEx88 = new H_ControlEx.H_LabelEx();
             h_LabelEx89 = new H_ControlEx.H_LabelEx();
             h_LabelEx90 = new H_ControlEx.H_LabelEx();
             h_LabelEx91 = new H_ControlEx.H_LabelEx();
             h_LabelEx86 = new H_ControlEx.H_LabelEx();
             h_LabelEx87 = new H_ControlEx.H_LabelEx();
-            HTextBoxExPunishmentNote4 = new H_ControlEx.H_TextBoxEx();
-            HDateTimeExPunishmentDate4 = new H_ControlEx.H_DateTimePickerEx();
             HTextBoxExPunishmentNote3 = new H_ControlEx.H_TextBoxEx();
             HDateTimeExPunishmentDate3 = new H_ControlEx.H_DateTimePickerEx();
             HTextBoxExPunishmentNote2 = new H_ControlEx.H_TextBoxEx();
@@ -305,7 +278,6 @@
             HDateTimeExPunishmentDate1 = new H_ControlEx.H_DateTimePickerEx();
             HTextBoxExPunishmentNote = new H_ControlEx.H_TextBoxEx();
             HDateTimeExPunishmentDate = new H_ControlEx.H_DateTimePickerEx();
-            ToolStripMenuItemExit = new ToolStripMenuItem();
             HTableLayoutPanelExBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -326,7 +298,7 @@
             HGroupBoxEducate.SuspendLayout();
             HGroupBoxExCarViolate.SuspendLayout();
             groupBox12.SuspendLayout();
-            HGroupBoxExMedicalExamination.SuspendLayout();
+            HGroupBoxExMedical.SuspendLayout();
             HGroupBoxExInsurance.SuspendLayout();
             HGroupBoxExFamily.SuspendLayout();
             HGroupBoxExPunishment.SuspendLayout();
@@ -349,7 +321,7 @@
             HTableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
             HTableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             HTableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
-            HTableLayoutPanelExBase.Size = new Size(1904, 1671);
+            HTableLayoutPanelExBase.Size = new Size(1904, 1551);
             HTableLayoutPanelExBase.TabIndex = 0;
             // 
             // MenuStrip1
@@ -368,6 +340,12 @@
             ToolStripMenuItemMenu.Size = new Size(52, 20);
             ToolStripMenuItemMenu.Text = "メニュー";
             // 
+            // ToolStripMenuItemExit
+            // 
+            ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
+            ToolStripMenuItemExit.Size = new Size(195, 22);
+            ToolStripMenuItemExit.Text = "アプリケーションを終了する";
+            // 
             // ToolStripMenuItemHelp
             // 
             ToolStripMenuItemHelp.Name = "ToolStripMenuItemHelp";
@@ -377,7 +355,7 @@
             // StatusStrip1
             // 
             StatusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, ToolStripStatusLabelDetail });
-            StatusStrip1.Location = new Point(0, 1649);
+            StatusStrip1.Location = new Point(0, 1529);
             StatusStrip1.Name = "StatusStrip1";
             StatusStrip1.Size = new Size(1904, 22);
             StatusStrip1.TabIndex = 1;
@@ -412,8 +390,9 @@
             ButtonUpdate.Name = "ButtonUpdate";
             ButtonUpdate.Size = new Size(180, 36);
             ButtonUpdate.TabIndex = 10;
-            ButtonUpdate.Text = "最 新 化";
+            ButtonUpdate.Text = "UPDATE";
             ButtonUpdate.UseVisualStyleBackColor = true;
+            ButtonUpdate.Click += ButtonUpdate_Click;
             // 
             // HTableLayoutPanelExMiddle
             // 
@@ -428,7 +407,7 @@
             HTableLayoutPanelExMiddle.RowCount = 1;
             HTableLayoutPanelExMiddle.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             HTableLayoutPanelExMiddle.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            HTableLayoutPanelExMiddle.Size = new Size(1898, 1557);
+            HTableLayoutPanelExMiddle.Size = new Size(1898, 1437);
             HTableLayoutPanelExMiddle.TabIndex = 3;
             // 
             // HPanelExMiddleLeft
@@ -445,7 +424,7 @@
             HPanelExMiddleLeft.Dock = DockStyle.Fill;
             HPanelExMiddleLeft.Location = new Point(3, 3);
             HPanelExMiddleLeft.Name = "HPanelExMiddleLeft";
-            HPanelExMiddleLeft.Size = new Size(943, 1551);
+            HPanelExMiddleLeft.Size = new Size(943, 1431);
             HPanelExMiddleLeft.TabIndex = 0;
             // 
             // GroupBoxExOccupation
@@ -566,6 +545,7 @@
             // 
             // HTextBoxExExperienceNote3
             // 
+            HTextBoxExExperienceNote3.Enabled = false;
             HTextBoxExExperienceNote3.Location = new Point(408, 144);
             HTextBoxExExperienceNote3.Name = "HTextBoxExExperienceNote3";
             HTextBoxExExperienceNote3.Size = new Size(412, 23);
@@ -583,6 +563,7 @@
             // 
             // HTextBoxExExperienceDuration3
             // 
+            HTextBoxExExperienceDuration3.Enabled = false;
             HTextBoxExExperienceDuration3.Location = new Point(280, 144);
             HTextBoxExExperienceDuration3.Name = "HTextBoxExExperienceDuration3";
             HTextBoxExExperienceDuration3.Size = new Size(124, 23);
@@ -591,6 +572,7 @@
             // 
             // HTextBoxExExperienceLoad3
             // 
+            HTextBoxExExperienceLoad3.Enabled = false;
             HTextBoxExExperienceLoad3.Location = new Point(172, 144);
             HTextBoxExExperienceLoad3.Name = "HTextBoxExExperienceLoad3";
             HTextBoxExExperienceLoad3.Size = new Size(104, 23);
@@ -599,6 +581,7 @@
             // 
             // HComboBoxExExperienceKind3
             // 
+            HComboBoxExExperienceKind3.Enabled = false;
             HComboBoxExExperienceKind3.FormattingEnabled = true;
             HComboBoxExExperienceKind3.Location = new Point(44, 144);
             HComboBoxExExperienceKind3.Name = "HComboBoxExExperienceKind3";
@@ -607,6 +590,7 @@
             // 
             // HTextBoxExExperienceNote2
             // 
+            HTextBoxExExperienceNote2.Enabled = false;
             HTextBoxExExperienceNote2.Location = new Point(408, 116);
             HTextBoxExExperienceNote2.Name = "HTextBoxExExperienceNote2";
             HTextBoxExExperienceNote2.Size = new Size(412, 23);
@@ -615,6 +599,7 @@
             // 
             // HTextBoxExExperienceDuration2
             // 
+            HTextBoxExExperienceDuration2.Enabled = false;
             HTextBoxExExperienceDuration2.Location = new Point(280, 116);
             HTextBoxExExperienceDuration2.Name = "HTextBoxExExperienceDuration2";
             HTextBoxExExperienceDuration2.Size = new Size(124, 23);
@@ -623,6 +608,7 @@
             // 
             // HTextBoxExExperienceLoad2
             // 
+            HTextBoxExExperienceLoad2.Enabled = false;
             HTextBoxExExperienceLoad2.Location = new Point(172, 116);
             HTextBoxExExperienceLoad2.Name = "HTextBoxExExperienceLoad2";
             HTextBoxExExperienceLoad2.Size = new Size(104, 23);
@@ -631,6 +617,7 @@
             // 
             // HComboBoxExExperienceKind2
             // 
+            HComboBoxExExperienceKind2.Enabled = false;
             HComboBoxExExperienceKind2.FormattingEnabled = true;
             HComboBoxExExperienceKind2.Location = new Point(44, 116);
             HComboBoxExExperienceKind2.Name = "HComboBoxExExperienceKind2";
@@ -639,6 +626,7 @@
             // 
             // HTextBoxExExperienceNote1
             // 
+            HTextBoxExExperienceNote1.Enabled = false;
             HTextBoxExExperienceNote1.Location = new Point(408, 88);
             HTextBoxExExperienceNote1.Name = "HTextBoxExExperienceNote1";
             HTextBoxExExperienceNote1.Size = new Size(412, 23);
@@ -647,6 +635,7 @@
             // 
             // HTextBoxExExperienceDuration1
             // 
+            HTextBoxExExperienceDuration1.Enabled = false;
             HTextBoxExExperienceDuration1.Location = new Point(280, 88);
             HTextBoxExExperienceDuration1.Name = "HTextBoxExExperienceDuration1";
             HTextBoxExExperienceDuration1.Size = new Size(124, 23);
@@ -655,6 +644,7 @@
             // 
             // HTextBoxExExperienceLoad1
             // 
+            HTextBoxExExperienceLoad1.Enabled = false;
             HTextBoxExExperienceLoad1.Location = new Point(172, 88);
             HTextBoxExExperienceLoad1.Name = "HTextBoxExExperienceLoad1";
             HTextBoxExExperienceLoad1.Size = new Size(104, 23);
@@ -663,6 +653,7 @@
             // 
             // HComboBoxExExperienceKind1
             // 
+            HComboBoxExExperienceKind1.Enabled = false;
             HComboBoxExExperienceKind1.FormattingEnabled = true;
             HComboBoxExExperienceKind1.Location = new Point(44, 88);
             HComboBoxExExperienceKind1.Name = "HComboBoxExExperienceKind1";
@@ -761,6 +752,7 @@
             // 
             // HTextBoxExHistoryNote3
             // 
+            HTextBoxExHistoryNote3.Enabled = false;
             HTextBoxExHistoryNote3.Location = new Point(228, 140);
             HTextBoxExHistoryNote3.Name = "HTextBoxExHistoryNote3";
             HTextBoxExHistoryNote3.Size = new Size(592, 23);
@@ -770,6 +762,7 @@
             // HDateTimeExHistoryDate3
             // 
             HDateTimeExHistoryDate3.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExHistoryDate3.Enabled = false;
             HDateTimeExHistoryDate3.Format = DateTimePickerFormat.Custom;
             HDateTimeExHistoryDate3.Location = new Point(40, 140);
             HDateTimeExHistoryDate3.Name = "HDateTimeExHistoryDate3";
@@ -788,6 +781,7 @@
             // 
             // HTextBoxExHistoryNote2
             // 
+            HTextBoxExHistoryNote2.Enabled = false;
             HTextBoxExHistoryNote2.Location = new Point(228, 112);
             HTextBoxExHistoryNote2.Name = "HTextBoxExHistoryNote2";
             HTextBoxExHistoryNote2.Size = new Size(592, 23);
@@ -797,6 +791,7 @@
             // HDateTimeExHistoryDate2
             // 
             HDateTimeExHistoryDate2.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExHistoryDate2.Enabled = false;
             HDateTimeExHistoryDate2.Format = DateTimePickerFormat.Custom;
             HDateTimeExHistoryDate2.Location = new Point(40, 112);
             HDateTimeExHistoryDate2.Name = "HDateTimeExHistoryDate2";
@@ -815,6 +810,7 @@
             // 
             // HTextBoxExHistoryNote1
             // 
+            HTextBoxExHistoryNote1.Enabled = false;
             HTextBoxExHistoryNote1.Location = new Point(228, 84);
             HTextBoxExHistoryNote1.Name = "HTextBoxExHistoryNote1";
             HTextBoxExHistoryNote1.Size = new Size(592, 23);
@@ -824,6 +820,7 @@
             // HDateTimeExHistoryDate1
             // 
             HDateTimeExHistoryDate1.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExHistoryDate1.Enabled = false;
             HDateTimeExHistoryDate1.Format = DateTimePickerFormat.Custom;
             HDateTimeExHistoryDate1.Location = new Point(40, 84);
             HDateTimeExHistoryDate1.Name = "HDateTimeExHistoryDate1";
@@ -895,6 +892,7 @@
             // 
             // HComboBoxExLicenseCondition
             // 
+            HComboBoxExLicenseCondition.Enabled = false;
             HComboBoxExLicenseCondition.FormattingEnabled = true;
             HComboBoxExLicenseCondition.Location = new Point(284, 80);
             HComboBoxExLicenseCondition.Name = "HComboBoxExLicenseCondition";
@@ -904,6 +902,7 @@
             // HDateTimeExLicenseTypeExpirationDate
             // 
             HDateTimeExLicenseTypeExpirationDate.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExLicenseTypeExpirationDate.Enabled = false;
             HDateTimeExLicenseTypeExpirationDate.Format = DateTimePickerFormat.Custom;
             HDateTimeExLicenseTypeExpirationDate.Location = new Point(492, 132);
             HDateTimeExLicenseTypeExpirationDate.Name = "HDateTimeExLicenseTypeExpirationDate";
@@ -924,6 +923,7 @@
             // HDateTimeExLicenseTypeDate
             // 
             HDateTimeExLicenseTypeDate.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExLicenseTypeDate.Enabled = false;
             HDateTimeExLicenseTypeDate.Format = DateTimePickerFormat.Custom;
             HDateTimeExLicenseTypeDate.Location = new Point(308, 132);
             HDateTimeExLicenseTypeDate.Name = "HDateTimeExLicenseTypeDate";
@@ -943,6 +943,7 @@
             // 
             // HTextBoxExLicenseType
             // 
+            HTextBoxExLicenseType.Enabled = false;
             HTextBoxExLicenseType.Location = new Point(44, 132);
             HTextBoxExLicenseType.Name = "HTextBoxExLicenseType";
             HTextBoxExLicenseType.Size = new Size(260, 23);
@@ -1081,9 +1082,11 @@
             // 
             // HPictureBoxExStaff
             // 
+            HPictureBoxExStaff.BorderStyle = BorderStyle.FixedSingle;
             HPictureBoxExStaff.Location = new Point(764, 40);
             HPictureBoxExStaff.Name = "HPictureBoxExStaff";
             HPictureBoxExStaff.Size = new Size(128, 152);
+            HPictureBoxExStaff.SizeMode = PictureBoxSizeMode.Zoom;
             HPictureBoxExStaff.TabIndex = 24;
             HPictureBoxExStaff.TabStop = false;
             // 
@@ -1168,6 +1171,7 @@
             // 
             HComboBoxExBloodType.DropDownStyle = ComboBoxStyle.DropDownList;
             HComboBoxExBloodType.FormattingEnabled = true;
+            HComboBoxExBloodType.Items.AddRange(new object[] { "A型", "B型", "O型", "AB型" });
             HComboBoxExBloodType.Location = new Point(688, 108);
             HComboBoxExBloodType.Name = "HComboBoxExBloodType";
             HComboBoxExBloodType.Size = new Size(56, 23);
@@ -1196,6 +1200,7 @@
             // 
             HComboBoxExGender.DropDownStyle = ComboBoxStyle.DropDownList;
             HComboBoxExGender.FormattingEnabled = true;
+            HComboBoxExGender.Items.AddRange(new object[] { "男性", "女性" });
             HComboBoxExGender.Location = new Point(568, 108);
             HComboBoxExGender.Name = "HComboBoxExGender";
             HComboBoxExGender.Size = new Size(56, 23);
@@ -1337,7 +1342,7 @@
             // 
             // HTextBoxExDeathNote
             // 
-            HTextBoxExDeathNote.Location = new Point(200, 120);
+            HTextBoxExDeathNote.Location = new Point(200, 116);
             HTextBoxExDeathNote.Name = "HTextBoxExDeathNote";
             HTextBoxExDeathNote.Size = new Size(652, 23);
             HTextBoxExDeathNote.TabIndex = 32;
@@ -1346,7 +1351,7 @@
             // h_LabelEx36
             // 
             h_LabelEx36.AutoSize = true;
-            h_LabelEx36.Location = new Point(28, 124);
+            h_LabelEx36.Location = new Point(28, 120);
             h_LabelEx36.Name = "h_LabelEx36";
             h_LabelEx36.Size = new Size(166, 15);
             h_LabelEx36.TabIndex = 31;
@@ -1356,7 +1361,7 @@
             // 
             HDateTimeExDeathDate.CustomFormat = "yyyy年MM月dd日(dddd)";
             HDateTimeExDeathDate.Format = DateTimePickerFormat.Custom;
-            HDateTimeExDeathDate.Location = new Point(200, 92);
+            HDateTimeExDeathDate.Location = new Point(200, 88);
             HDateTimeExDeathDate.Name = "HDateTimeExDeathDate";
             HDateTimeExDeathDate.Size = new Size(180, 23);
             HDateTimeExDeathDate.TabIndex = 30;
@@ -1365,7 +1370,7 @@
             // h_LabelEx37
             // 
             h_LabelEx37.AutoSize = true;
-            h_LabelEx37.Location = new Point(28, 96);
+            h_LabelEx37.Location = new Point(28, 92);
             h_LabelEx37.Name = "h_LabelEx37";
             h_LabelEx37.Size = new Size(159, 15);
             h_LabelEx37.TabIndex = 29;
@@ -1374,7 +1379,7 @@
             // 
             // HTextBoxExRetirementNote
             // 
-            HTextBoxExRetirementNote.Location = new Point(164, 60);
+            HTextBoxExRetirementNote.Location = new Point(164, 56);
             HTextBoxExRetirementNote.Name = "HTextBoxExRetirementNote";
             HTextBoxExRetirementNote.Size = new Size(688, 23);
             HTextBoxExRetirementNote.TabIndex = 28;
@@ -1383,7 +1388,7 @@
             // h_LabelEx35
             // 
             h_LabelEx35.AutoSize = true;
-            h_LabelEx35.Location = new Point(40, 64);
+            h_LabelEx35.Location = new Point(40, 60);
             h_LabelEx35.Name = "h_LabelEx35";
             h_LabelEx35.Size = new Size(111, 15);
             h_LabelEx35.TabIndex = 27;
@@ -1392,17 +1397,19 @@
             // HCheckBoxExRetirementFlag
             // 
             HCheckBoxExRetirementFlag.AutoSize = true;
-            HCheckBoxExRetirementFlag.Location = new Point(164, 38);
+            HCheckBoxExRetirementFlag.Location = new Point(164, 34);
             HCheckBoxExRetirementFlag.Name = "HCheckBoxExRetirementFlag";
             HCheckBoxExRetirementFlag.Size = new Size(15, 14);
             HCheckBoxExRetirementFlag.TabIndex = 16;
             HCheckBoxExRetirementFlag.UseVisualStyleBackColor = true;
+            HCheckBoxExRetirementFlag.Click += HCheckBoxExRetirementFlag_Click;
             // 
             // HDateTimeExRetirementDate
             // 
             HDateTimeExRetirementDate.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExRetirementDate.Enabled = false;
             HDateTimeExRetirementDate.Format = DateTimePickerFormat.Custom;
-            HDateTimeExRetirementDate.Location = new Point(184, 32);
+            HDateTimeExRetirementDate.Location = new Point(184, 28);
             HDateTimeExRetirementDate.Name = "HDateTimeExRetirementDate";
             HDateTimeExRetirementDate.Size = new Size(180, 23);
             HDateTimeExRetirementDate.TabIndex = 15;
@@ -1411,7 +1418,7 @@
             // h_LabelEx34
             // 
             h_LabelEx34.AutoSize = true;
-            h_LabelEx34.Location = new Point(28, 36);
+            h_LabelEx34.Location = new Point(28, 32);
             h_LabelEx34.Name = "h_LabelEx34";
             h_LabelEx34.Size = new Size(123, 15);
             h_LabelEx34.TabIndex = 14;
@@ -1420,9 +1427,6 @@
             // 
             // GroupBoxJobForm
             // 
-            GroupBoxJobForm.Controls.Add(HRadioButtonExNone1);
-            GroupBoxJobForm.Controls.Add(HRadioButtonExEmployee2);
-            GroupBoxJobForm.Controls.Add(HRadioButtonExPart2);
             GroupBoxJobForm.Controls.Add(HRadioButtonExShortTarm);
             GroupBoxJobForm.Controls.Add(HRadioButtonExLongTarm);
             GroupBoxJobForm.Location = new Point(8, 72);
@@ -1432,43 +1436,10 @@
             GroupBoxJobForm.TabStop = false;
             GroupBoxJobForm.Text = "雇用形態";
             // 
-            // HRadioButtonExNone1
-            // 
-            HRadioButtonExNone1.AutoSize = true;
-            HRadioButtonExNone1.Location = new Point(276, 28);
-            HRadioButtonExNone1.Name = "HRadioButtonExNone1";
-            HRadioButtonExNone1.Size = new Size(67, 19);
-            HRadioButtonExNone1.TabIndex = 9;
-            HRadioButtonExNone1.TabStop = true;
-            HRadioButtonExNone1.Text = "指定なし";
-            HRadioButtonExNone1.UseVisualStyleBackColor = true;
-            // 
-            // HRadioButtonExEmployee2
-            // 
-            HRadioButtonExEmployee2.AutoSize = true;
-            HRadioButtonExEmployee2.Location = new Point(16, 28);
-            HRadioButtonExEmployee2.Name = "HRadioButtonExEmployee2";
-            HRadioButtonExEmployee2.Size = new Size(49, 19);
-            HRadioButtonExEmployee2.TabIndex = 8;
-            HRadioButtonExEmployee2.TabStop = true;
-            HRadioButtonExEmployee2.Text = "社員";
-            HRadioButtonExEmployee2.UseVisualStyleBackColor = true;
-            // 
-            // HRadioButtonExPart2
-            // 
-            HRadioButtonExPart2.AutoSize = true;
-            HRadioButtonExPart2.Location = new Point(196, 28);
-            HRadioButtonExPart2.Name = "HRadioButtonExPart2";
-            HRadioButtonExPart2.Size = new Size(71, 19);
-            HRadioButtonExPart2.TabIndex = 7;
-            HRadioButtonExPart2.TabStop = true;
-            HRadioButtonExPart2.Text = "アルバイト";
-            HRadioButtonExPart2.UseVisualStyleBackColor = true;
-            // 
             // HRadioButtonExShortTarm
             // 
             HRadioButtonExShortTarm.AutoSize = true;
-            HRadioButtonExShortTarm.Location = new Point(136, 28);
+            HRadioButtonExShortTarm.Location = new Point(76, 28);
             HRadioButtonExShortTarm.Name = "HRadioButtonExShortTarm";
             HRadioButtonExShortTarm.Size = new Size(49, 19);
             HRadioButtonExShortTarm.TabIndex = 7;
@@ -1479,7 +1450,7 @@
             // HRadioButtonExLongTarm
             // 
             HRadioButtonExLongTarm.AutoSize = true;
-            HRadioButtonExLongTarm.Location = new Point(76, 28);
+            HRadioButtonExLongTarm.Location = new Point(16, 28);
             HRadioButtonExLongTarm.Name = "HRadioButtonExLongTarm";
             HRadioButtonExLongTarm.Size = new Size(49, 19);
             HRadioButtonExLongTarm.TabIndex = 6;
@@ -1490,12 +1461,6 @@
             // GroupBoxBelongs
             // 
             GroupBoxBelongs.Controls.Add(h_LabelEx2);
-            GroupBoxBelongs.Controls.Add(HRadioButtonExJiunrou);
-            GroupBoxBelongs.Controls.Add(HRadioButtonExSinunten);
-            GroupBoxBelongs.Controls.Add(HRadioButtonExDispatch);
-            GroupBoxBelongs.Controls.Add(HRadioButtonExPart1);
-            GroupBoxBelongs.Controls.Add(HRadioButtonExEmployee1);
-            GroupBoxBelongs.Controls.Add(HRadioButtonExOfficer);
             GroupBoxBelongs.Controls.Add(HComboBoxExBelongs);
             GroupBoxBelongs.Controls.Add(HCheckBoxExTargetFlag);
             GroupBoxBelongs.Location = new Point(8, 8);
@@ -1514,72 +1479,6 @@
             h_LabelEx2.TabIndex = 1;
             h_LabelEx2.Text = "所属";
             // 
-            // HRadioButtonExJiunrou
-            // 
-            HRadioButtonExJiunrou.AutoSize = true;
-            HRadioButtonExJiunrou.Location = new Point(676, 28);
-            HRadioButtonExJiunrou.Name = "HRadioButtonExJiunrou";
-            HRadioButtonExJiunrou.Size = new Size(61, 19);
-            HRadioButtonExJiunrou.TabIndex = 4;
-            HRadioButtonExJiunrou.TabStop = true;
-            HRadioButtonExJiunrou.Text = "自運労";
-            HRadioButtonExJiunrou.UseVisualStyleBackColor = true;
-            // 
-            // HRadioButtonExSinunten
-            // 
-            HRadioButtonExSinunten.AutoSize = true;
-            HRadioButtonExSinunten.Location = new Point(604, 28);
-            HRadioButtonExSinunten.Name = "HRadioButtonExSinunten";
-            HRadioButtonExSinunten.Size = new Size(61, 19);
-            HRadioButtonExSinunten.TabIndex = 5;
-            HRadioButtonExSinunten.TabStop = true;
-            HRadioButtonExSinunten.Text = "新運転";
-            HRadioButtonExSinunten.UseVisualStyleBackColor = true;
-            // 
-            // HRadioButtonExDispatch
-            // 
-            HRadioButtonExDispatch.AutoSize = true;
-            HRadioButtonExDispatch.Location = new Point(544, 28);
-            HRadioButtonExDispatch.Name = "HRadioButtonExDispatch";
-            HRadioButtonExDispatch.Size = new Size(49, 19);
-            HRadioButtonExDispatch.TabIndex = 4;
-            HRadioButtonExDispatch.TabStop = true;
-            HRadioButtonExDispatch.Text = "派遣";
-            HRadioButtonExDispatch.UseVisualStyleBackColor = true;
-            // 
-            // HRadioButtonExPart1
-            // 
-            HRadioButtonExPart1.AutoSize = true;
-            HRadioButtonExPart1.Location = new Point(464, 28);
-            HRadioButtonExPart1.Name = "HRadioButtonExPart1";
-            HRadioButtonExPart1.Size = new Size(71, 19);
-            HRadioButtonExPart1.TabIndex = 4;
-            HRadioButtonExPart1.TabStop = true;
-            HRadioButtonExPart1.Text = "アルバイト";
-            HRadioButtonExPart1.UseVisualStyleBackColor = true;
-            // 
-            // HRadioButtonExEmployee1
-            // 
-            HRadioButtonExEmployee1.AutoSize = true;
-            HRadioButtonExEmployee1.Location = new Point(380, 28);
-            HRadioButtonExEmployee1.Name = "HRadioButtonExEmployee1";
-            HRadioButtonExEmployee1.Size = new Size(73, 19);
-            HRadioButtonExEmployee1.TabIndex = 4;
-            HRadioButtonExEmployee1.TabStop = true;
-            HRadioButtonExEmployee1.Text = "東武清掃";
-            HRadioButtonExEmployee1.UseVisualStyleBackColor = true;
-            // 
-            // HRadioButtonExOfficer
-            // 
-            HRadioButtonExOfficer.AutoSize = true;
-            HRadioButtonExOfficer.Location = new Point(320, 28);
-            HRadioButtonExOfficer.Name = "HRadioButtonExOfficer";
-            HRadioButtonExOfficer.Size = new Size(49, 19);
-            HRadioButtonExOfficer.TabIndex = 3;
-            HRadioButtonExOfficer.TabStop = true;
-            HRadioButtonExOfficer.Text = "役員";
-            HRadioButtonExOfficer.UseVisualStyleBackColor = true;
-            // 
             // HComboBoxExBelongs
             // 
             HComboBoxExBelongs.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -1589,6 +1488,7 @@
             HComboBoxExBelongs.Name = "HComboBoxExBelongs";
             HComboBoxExBelongs.Size = new Size(156, 23);
             HComboBoxExBelongs.TabIndex = 1;
+            HComboBoxExBelongs.SelectedIndexChanged += HComboBoxExBelongs_SelectedIndexChanged;
             // 
             // HCheckBoxExTargetFlag
             // 
@@ -1607,28 +1507,24 @@
             HPanelExMiddleRight.Controls.Add(HGroupBoxEducate);
             HPanelExMiddleRight.Controls.Add(HGroupBoxExCarViolate);
             HPanelExMiddleRight.Controls.Add(groupBox12);
-            HPanelExMiddleRight.Controls.Add(HGroupBoxExMedicalExamination);
+            HPanelExMiddleRight.Controls.Add(HGroupBoxExMedical);
             HPanelExMiddleRight.Controls.Add(HGroupBoxExInsurance);
             HPanelExMiddleRight.Controls.Add(HGroupBoxExFamily);
             HPanelExMiddleRight.Controls.Add(HGroupBoxExPunishment);
             HPanelExMiddleRight.Dock = DockStyle.Fill;
             HPanelExMiddleRight.Location = new Point(952, 3);
             HPanelExMiddleRight.Name = "HPanelExMiddleRight";
-            HPanelExMiddleRight.Size = new Size(943, 1551);
+            HPanelExMiddleRight.Size = new Size(943, 1431);
             HPanelExMiddleRight.TabIndex = 1;
             // 
             // HGroupBoxProper
             // 
-            HGroupBoxProper.Controls.Add(h_LabelEx82);
             HGroupBoxProper.Controls.Add(h_LabelEx83);
             HGroupBoxProper.Controls.Add(h_LabelEx84);
             HGroupBoxProper.Controls.Add(h_LabelEx85);
             HGroupBoxProper.Controls.Add(h_LabelEx81);
             HGroupBoxProper.Controls.Add(h_LabelEx80);
             HGroupBoxProper.Controls.Add(h_LabelEx79);
-            HGroupBoxProper.Controls.Add(HTextBoxExProperNote4);
-            HGroupBoxProper.Controls.Add(HDateTimeExProperDate4);
-            HGroupBoxProper.Controls.Add(HComboBoxExProperKind4);
             HGroupBoxProper.Controls.Add(HTextBoxExProperNote3);
             HGroupBoxProper.Controls.Add(HDateTimeExProperDate3);
             HGroupBoxProper.Controls.Add(HComboBoxExProperKind3);
@@ -1641,21 +1537,12 @@
             HGroupBoxProper.Controls.Add(HTextBoxExProperNote);
             HGroupBoxProper.Controls.Add(HDateTimeExProperDate);
             HGroupBoxProper.Controls.Add(HComboBoxExProperKind);
-            HGroupBoxProper.Location = new Point(8, 1128);
+            HGroupBoxProper.Location = new Point(8, 1060);
             HGroupBoxProper.Name = "HGroupBoxProper";
-            HGroupBoxProper.Size = new Size(912, 200);
+            HGroupBoxProper.Size = new Size(912, 176);
             HGroupBoxProper.TabIndex = 7;
             HGroupBoxProper.TabStop = false;
             HGroupBoxProper.Text = "適正診断(NASVA他)";
-            // 
-            // h_LabelEx82
-            // 
-            h_LabelEx82.AutoSize = true;
-            h_LabelEx82.Location = new Point(24, 172);
-            h_LabelEx82.Name = "h_LabelEx82";
-            h_LabelEx82.Size = new Size(19, 15);
-            h_LabelEx82.TabIndex = 127;
-            h_LabelEx82.Text = "④";
             // 
             // h_LabelEx83
             // 
@@ -1711,34 +1598,9 @@
             h_LabelEx79.TabIndex = 121;
             h_LabelEx79.Text = "診断の種類";
             // 
-            // HTextBoxExProperNote4
-            // 
-            HTextBoxExProperNote4.Location = new Point(400, 168);
-            HTextBoxExProperNote4.Name = "HTextBoxExProperNote4";
-            HTextBoxExProperNote4.Size = new Size(372, 23);
-            HTextBoxExProperNote4.TabIndex = 119;
-            HTextBoxExProperNote4.Text = "〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇";
-            // 
-            // HDateTimeExProperDate4
-            // 
-            HDateTimeExProperDate4.CustomFormat = "yyyy年MM月dd日(dddd)";
-            HDateTimeExProperDate4.Format = DateTimePickerFormat.Custom;
-            HDateTimeExProperDate4.Location = new Point(212, 168);
-            HDateTimeExProperDate4.Name = "HDateTimeExProperDate4";
-            HDateTimeExProperDate4.Size = new Size(180, 23);
-            HDateTimeExProperDate4.TabIndex = 118;
-            HDateTimeExProperDate4.Value = new DateTime(2024, 2, 8, 0, 0, 0, 0);
-            // 
-            // HComboBoxExProperKind4
-            // 
-            HComboBoxExProperKind4.FormattingEnabled = true;
-            HComboBoxExProperKind4.Location = new Point(48, 168);
-            HComboBoxExProperKind4.Name = "HComboBoxExProperKind4";
-            HComboBoxExProperKind4.Size = new Size(156, 23);
-            HComboBoxExProperKind4.TabIndex = 117;
-            // 
             // HTextBoxExProperNote3
             // 
+            HTextBoxExProperNote3.Enabled = false;
             HTextBoxExProperNote3.Location = new Point(400, 140);
             HTextBoxExProperNote3.Name = "HTextBoxExProperNote3";
             HTextBoxExProperNote3.Size = new Size(372, 23);
@@ -1748,6 +1610,7 @@
             // HDateTimeExProperDate3
             // 
             HDateTimeExProperDate3.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExProperDate3.Enabled = false;
             HDateTimeExProperDate3.Format = DateTimePickerFormat.Custom;
             HDateTimeExProperDate3.Location = new Point(212, 140);
             HDateTimeExProperDate3.Name = "HDateTimeExProperDate3";
@@ -1757,6 +1620,7 @@
             // 
             // HComboBoxExProperKind3
             // 
+            HComboBoxExProperKind3.Enabled = false;
             HComboBoxExProperKind3.FormattingEnabled = true;
             HComboBoxExProperKind3.Location = new Point(48, 140);
             HComboBoxExProperKind3.Name = "HComboBoxExProperKind3";
@@ -1765,6 +1629,7 @@
             // 
             // HTextBoxExProperNote2
             // 
+            HTextBoxExProperNote2.Enabled = false;
             HTextBoxExProperNote2.Location = new Point(400, 112);
             HTextBoxExProperNote2.Name = "HTextBoxExProperNote2";
             HTextBoxExProperNote2.Size = new Size(372, 23);
@@ -1774,6 +1639,7 @@
             // HDateTimeExProperDate2
             // 
             HDateTimeExProperDate2.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExProperDate2.Enabled = false;
             HDateTimeExProperDate2.Format = DateTimePickerFormat.Custom;
             HDateTimeExProperDate2.Location = new Point(212, 112);
             HDateTimeExProperDate2.Name = "HDateTimeExProperDate2";
@@ -1783,6 +1649,7 @@
             // 
             // HComboBoxExProperKind2
             // 
+            HComboBoxExProperKind2.Enabled = false;
             HComboBoxExProperKind2.FormattingEnabled = true;
             HComboBoxExProperKind2.Location = new Point(48, 112);
             HComboBoxExProperKind2.Name = "HComboBoxExProperKind2";
@@ -1791,6 +1658,7 @@
             // 
             // HTextBoxExProperNote1
             // 
+            HTextBoxExProperNote1.Enabled = false;
             HTextBoxExProperNote1.Location = new Point(400, 84);
             HTextBoxExProperNote1.Name = "HTextBoxExProperNote1";
             HTextBoxExProperNote1.Size = new Size(372, 23);
@@ -1800,6 +1668,7 @@
             // HDateTimeExProperDate1
             // 
             HDateTimeExProperDate1.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExProperDate1.Enabled = false;
             HDateTimeExProperDate1.Format = DateTimePickerFormat.Custom;
             HDateTimeExProperDate1.Location = new Point(212, 84);
             HDateTimeExProperDate1.Name = "HDateTimeExProperDate1";
@@ -1809,6 +1678,7 @@
             // 
             // HComboBoxExProperKind1
             // 
+            HComboBoxExProperKind1.Enabled = false;
             HComboBoxExProperKind1.FormattingEnabled = true;
             HComboBoxExProperKind1.Location = new Point(48, 84);
             HComboBoxExProperKind1.Name = "HComboBoxExProperKind1";
@@ -1843,16 +1713,12 @@
             // 
             // HGroupBoxEducate
             // 
-            HGroupBoxEducate.Controls.Add(h_LabelEx77);
             HGroupBoxEducate.Controls.Add(h_LabelEx78);
             HGroupBoxEducate.Controls.Add(h_LabelEx76);
             HGroupBoxEducate.Controls.Add(h_LabelEx75);
-            HGroupBoxEducate.Controls.Add(h_LabelEx69);
             HGroupBoxEducate.Controls.Add(h_LabelEx70);
             HGroupBoxEducate.Controls.Add(h_LabelEx71);
-            HGroupBoxEducate.Controls.Add(HComboBoxExEducateName4);
             HGroupBoxEducate.Controls.Add(h_LabelEx72);
-            HGroupBoxEducate.Controls.Add(HDateTimeExEducateDate4);
             HGroupBoxEducate.Controls.Add(HComboBoxExEducateName3);
             HGroupBoxEducate.Controls.Add(HDateTimeExEducateDate3);
             HGroupBoxEducate.Controls.Add(HComboBoxExEducateName2);
@@ -1863,21 +1729,12 @@
             HGroupBoxEducate.Controls.Add(HComboBoxExEducateName);
             HGroupBoxEducate.Controls.Add(h_LabelEx74);
             HGroupBoxEducate.Controls.Add(HDateTimeExEducateDate);
-            HGroupBoxEducate.Location = new Point(8, 920);
+            HGroupBoxEducate.Location = new Point(8, 876);
             HGroupBoxEducate.Name = "HGroupBoxEducate";
-            HGroupBoxEducate.Size = new Size(912, 200);
+            HGroupBoxEducate.Size = new Size(912, 176);
             HGroupBoxEducate.TabIndex = 6;
             HGroupBoxEducate.TabStop = false;
             HGroupBoxEducate.Text = "社内教育の実施記録";
-            // 
-            // h_LabelEx77
-            // 
-            h_LabelEx77.AutoSize = true;
-            h_LabelEx77.Location = new Point(660, 172);
-            h_LabelEx77.Name = "h_LabelEx77";
-            h_LabelEx77.Size = new Size(154, 15);
-            h_LabelEx77.TabIndex = 120;
-            h_LabelEx77.Text = "(詳細は指導教育記録を参照)";
             // 
             // h_LabelEx78
             // 
@@ -1906,15 +1763,6 @@
             h_LabelEx75.TabIndex = 117;
             h_LabelEx75.Text = "(詳細は指導教育記録を参照)";
             // 
-            // h_LabelEx69
-            // 
-            h_LabelEx69.AutoSize = true;
-            h_LabelEx69.Location = new Point(24, 172);
-            h_LabelEx69.Name = "h_LabelEx69";
-            h_LabelEx69.Size = new Size(19, 15);
-            h_LabelEx69.TabIndex = 110;
-            h_LabelEx69.Text = "④";
-            // 
             // h_LabelEx70
             // 
             h_LabelEx70.AutoSize = true;
@@ -1933,14 +1781,6 @@
             h_LabelEx71.TabIndex = 107;
             h_LabelEx71.Text = "②";
             // 
-            // HComboBoxExEducateName4
-            // 
-            HComboBoxExEducateName4.FormattingEnabled = true;
-            HComboBoxExEducateName4.Location = new Point(236, 168);
-            HComboBoxExEducateName4.Name = "HComboBoxExEducateName4";
-            HComboBoxExEducateName4.Size = new Size(416, 23);
-            HComboBoxExEducateName4.TabIndex = 116;
-            // 
             // h_LabelEx72
             // 
             h_LabelEx72.AutoSize = true;
@@ -1950,18 +1790,9 @@
             h_LabelEx72.TabIndex = 106;
             h_LabelEx72.Text = "①";
             // 
-            // HDateTimeExEducateDate4
-            // 
-            HDateTimeExEducateDate4.CustomFormat = "yyyy年MM月dd日(dddd)";
-            HDateTimeExEducateDate4.Format = DateTimePickerFormat.Custom;
-            HDateTimeExEducateDate4.Location = new Point(48, 168);
-            HDateTimeExEducateDate4.Name = "HDateTimeExEducateDate4";
-            HDateTimeExEducateDate4.Size = new Size(180, 23);
-            HDateTimeExEducateDate4.TabIndex = 115;
-            HDateTimeExEducateDate4.Value = new DateTime(2024, 2, 8, 0, 0, 0, 0);
-            // 
             // HComboBoxExEducateName3
             // 
+            HComboBoxExEducateName3.Enabled = false;
             HComboBoxExEducateName3.FormattingEnabled = true;
             HComboBoxExEducateName3.Location = new Point(236, 140);
             HComboBoxExEducateName3.Name = "HComboBoxExEducateName3";
@@ -1971,6 +1802,7 @@
             // HDateTimeExEducateDate3
             // 
             HDateTimeExEducateDate3.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExEducateDate3.Enabled = false;
             HDateTimeExEducateDate3.Format = DateTimePickerFormat.Custom;
             HDateTimeExEducateDate3.Location = new Point(48, 140);
             HDateTimeExEducateDate3.Name = "HDateTimeExEducateDate3";
@@ -1980,6 +1812,7 @@
             // 
             // HComboBoxExEducateName2
             // 
+            HComboBoxExEducateName2.Enabled = false;
             HComboBoxExEducateName2.FormattingEnabled = true;
             HComboBoxExEducateName2.Location = new Point(236, 112);
             HComboBoxExEducateName2.Name = "HComboBoxExEducateName2";
@@ -1989,6 +1822,7 @@
             // HDateTimeExEducateDate2
             // 
             HDateTimeExEducateDate2.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExEducateDate2.Enabled = false;
             HDateTimeExEducateDate2.Format = DateTimePickerFormat.Custom;
             HDateTimeExEducateDate2.Location = new Point(48, 112);
             HDateTimeExEducateDate2.Name = "HDateTimeExEducateDate2";
@@ -1998,6 +1832,7 @@
             // 
             // HComboBoxExEducateName1
             // 
+            HComboBoxExEducateName1.Enabled = false;
             HComboBoxExEducateName1.FormattingEnabled = true;
             HComboBoxExEducateName1.Location = new Point(236, 84);
             HComboBoxExEducateName1.Name = "HComboBoxExEducateName1";
@@ -2007,6 +1842,7 @@
             // HDateTimeExEducateDate1
             // 
             HDateTimeExEducateDate1.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExEducateDate1.Enabled = false;
             HDateTimeExEducateDate1.Format = DateTimePickerFormat.Custom;
             HDateTimeExEducateDate1.Location = new Point(48, 84);
             HDateTimeExEducateDate1.Name = "HDateTimeExEducateDate1";
@@ -2052,18 +1888,14 @@
             // 
             // HGroupBoxExCarViolate
             // 
-            HGroupBoxExCarViolate.Controls.Add(HTextBoxExCarViolatePlace4);
             HGroupBoxExCarViolate.Controls.Add(HTextBoxExCarViolatePlace3);
             HGroupBoxExCarViolate.Controls.Add(HTextBoxExCarViolatePlace2);
             HGroupBoxExCarViolate.Controls.Add(HTextBoxExCarViolatePlace1);
             HGroupBoxExCarViolate.Controls.Add(HTextBoxExCarViolatePlace);
             HGroupBoxExCarViolate.Controls.Add(h_LabelEx56);
-            HGroupBoxExCarViolate.Controls.Add(h_LabelEx57);
             HGroupBoxExCarViolate.Controls.Add(h_LabelEx64);
             HGroupBoxExCarViolate.Controls.Add(h_LabelEx65);
-            HGroupBoxExCarViolate.Controls.Add(HComboBoxExCarViolateContent4);
             HGroupBoxExCarViolate.Controls.Add(h_LabelEx66);
-            HGroupBoxExCarViolate.Controls.Add(HDateTimeExCarViolateDate4);
             HGroupBoxExCarViolate.Controls.Add(HComboBoxExCarViolateContent3);
             HGroupBoxExCarViolate.Controls.Add(HDateTimeExCarViolateDate3);
             HGroupBoxExCarViolate.Controls.Add(HComboBoxExCarViolateContent2);
@@ -2074,23 +1906,16 @@
             HGroupBoxExCarViolate.Controls.Add(HComboBoxExCarViolateContent);
             HGroupBoxExCarViolate.Controls.Add(h_LabelEx68);
             HGroupBoxExCarViolate.Controls.Add(HDateTimeExCarViolateDate);
-            HGroupBoxExCarViolate.Location = new Point(8, 712);
+            HGroupBoxExCarViolate.Location = new Point(8, 692);
             HGroupBoxExCarViolate.Name = "HGroupBoxExCarViolate";
-            HGroupBoxExCarViolate.Size = new Size(912, 200);
+            HGroupBoxExCarViolate.Size = new Size(912, 176);
             HGroupBoxExCarViolate.TabIndex = 5;
             HGroupBoxExCarViolate.TabStop = false;
             HGroupBoxExCarViolate.Text = "業務上の交通違反歴";
             // 
-            // HTextBoxExCarViolatePlace4
-            // 
-            HTextBoxExCarViolatePlace4.Location = new Point(464, 168);
-            HTextBoxExCarViolatePlace4.Name = "HTextBoxExCarViolatePlace4";
-            HTextBoxExCarViolatePlace4.Size = new Size(308, 23);
-            HTextBoxExCarViolatePlace4.TabIndex = 106;
-            HTextBoxExCarViolatePlace4.Text = "〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇";
-            // 
             // HTextBoxExCarViolatePlace3
             // 
+            HTextBoxExCarViolatePlace3.Enabled = false;
             HTextBoxExCarViolatePlace3.Location = new Point(464, 140);
             HTextBoxExCarViolatePlace3.Name = "HTextBoxExCarViolatePlace3";
             HTextBoxExCarViolatePlace3.Size = new Size(308, 23);
@@ -2099,6 +1924,7 @@
             // 
             // HTextBoxExCarViolatePlace2
             // 
+            HTextBoxExCarViolatePlace2.Enabled = false;
             HTextBoxExCarViolatePlace2.Location = new Point(464, 112);
             HTextBoxExCarViolatePlace2.Name = "HTextBoxExCarViolatePlace2";
             HTextBoxExCarViolatePlace2.Size = new Size(308, 23);
@@ -2107,6 +1933,7 @@
             // 
             // HTextBoxExCarViolatePlace1
             // 
+            HTextBoxExCarViolatePlace1.Enabled = false;
             HTextBoxExCarViolatePlace1.Location = new Point(464, 84);
             HTextBoxExCarViolatePlace1.Name = "HTextBoxExCarViolatePlace1";
             HTextBoxExCarViolatePlace1.Size = new Size(308, 23);
@@ -2130,15 +1957,6 @@
             h_LabelEx56.TabIndex = 101;
             h_LabelEx56.Text = "備考";
             // 
-            // h_LabelEx57
-            // 
-            h_LabelEx57.AutoSize = true;
-            h_LabelEx57.Location = new Point(24, 172);
-            h_LabelEx57.Name = "h_LabelEx57";
-            h_LabelEx57.Size = new Size(19, 15);
-            h_LabelEx57.TabIndex = 94;
-            h_LabelEx57.Text = "④";
-            // 
             // h_LabelEx64
             // 
             h_LabelEx64.AutoSize = true;
@@ -2157,14 +1975,6 @@
             h_LabelEx65.TabIndex = 91;
             h_LabelEx65.Text = "②";
             // 
-            // HComboBoxExCarViolateContent4
-            // 
-            HComboBoxExCarViolateContent4.FormattingEnabled = true;
-            HComboBoxExCarViolateContent4.Location = new Point(236, 168);
-            HComboBoxExCarViolateContent4.Name = "HComboBoxExCarViolateContent4";
-            HComboBoxExCarViolateContent4.Size = new Size(220, 23);
-            HComboBoxExCarViolateContent4.TabIndex = 100;
-            // 
             // h_LabelEx66
             // 
             h_LabelEx66.AutoSize = true;
@@ -2174,18 +1984,9 @@
             h_LabelEx66.TabIndex = 90;
             h_LabelEx66.Text = "①";
             // 
-            // HDateTimeExCarViolateDate4
-            // 
-            HDateTimeExCarViolateDate4.CustomFormat = "yyyy年MM月dd日(dddd)";
-            HDateTimeExCarViolateDate4.Format = DateTimePickerFormat.Custom;
-            HDateTimeExCarViolateDate4.Location = new Point(48, 168);
-            HDateTimeExCarViolateDate4.Name = "HDateTimeExCarViolateDate4";
-            HDateTimeExCarViolateDate4.Size = new Size(180, 23);
-            HDateTimeExCarViolateDate4.TabIndex = 99;
-            HDateTimeExCarViolateDate4.Value = new DateTime(2024, 2, 8, 0, 0, 0, 0);
-            // 
             // HComboBoxExCarViolateContent3
             // 
+            HComboBoxExCarViolateContent3.Enabled = false;
             HComboBoxExCarViolateContent3.FormattingEnabled = true;
             HComboBoxExCarViolateContent3.Location = new Point(236, 140);
             HComboBoxExCarViolateContent3.Name = "HComboBoxExCarViolateContent3";
@@ -2195,6 +1996,7 @@
             // HDateTimeExCarViolateDate3
             // 
             HDateTimeExCarViolateDate3.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExCarViolateDate3.Enabled = false;
             HDateTimeExCarViolateDate3.Format = DateTimePickerFormat.Custom;
             HDateTimeExCarViolateDate3.Location = new Point(48, 140);
             HDateTimeExCarViolateDate3.Name = "HDateTimeExCarViolateDate3";
@@ -2204,6 +2006,7 @@
             // 
             // HComboBoxExCarViolateContent2
             // 
+            HComboBoxExCarViolateContent2.Enabled = false;
             HComboBoxExCarViolateContent2.FormattingEnabled = true;
             HComboBoxExCarViolateContent2.Location = new Point(236, 112);
             HComboBoxExCarViolateContent2.Name = "HComboBoxExCarViolateContent2";
@@ -2213,6 +2016,7 @@
             // HDateTimeExCarViolateDate2
             // 
             HDateTimeExCarViolateDate2.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExCarViolateDate2.Enabled = false;
             HDateTimeExCarViolateDate2.Format = DateTimePickerFormat.Custom;
             HDateTimeExCarViolateDate2.Location = new Point(48, 112);
             HDateTimeExCarViolateDate2.Name = "HDateTimeExCarViolateDate2";
@@ -2222,6 +2026,7 @@
             // 
             // HComboBoxExCarViolateContent1
             // 
+            HComboBoxExCarViolateContent1.Enabled = false;
             HComboBoxExCarViolateContent1.FormattingEnabled = true;
             HComboBoxExCarViolateContent1.Location = new Point(236, 84);
             HComboBoxExCarViolateContent1.Name = "HComboBoxExCarViolateContent1";
@@ -2231,6 +2036,7 @@
             // HDateTimeExCarViolateDate1
             // 
             HDateTimeExCarViolateDate1.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExCarViolateDate1.Enabled = false;
             HDateTimeExCarViolateDate1.Format = DateTimePickerFormat.Custom;
             HDateTimeExCarViolateDate1.Location = new Point(48, 84);
             HDateTimeExCarViolateDate1.Name = "HDateTimeExCarViolateDate1";
@@ -2277,7 +2083,7 @@
             // groupBox12
             // 
             groupBox12.Controls.Add(h_LabelEx55);
-            groupBox12.Location = new Point(8, 602);
+            groupBox12.Location = new Point(8, 580);
             groupBox12.Name = "groupBox12";
             groupBox12.Size = new Size(912, 102);
             groupBox12.TabIndex = 4;
@@ -2295,47 +2101,36 @@
             h_LabelEx55.Text = "事故記録は「事故報告書記録」から入力して下さい";
             h_LabelEx55.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // HGroupBoxExMedicalExamination
+            // HGroupBoxExMedical
             // 
-            HGroupBoxExMedicalExamination.Controls.Add(HTextBoxExMedicalExaminationNote4);
-            HGroupBoxExMedicalExamination.Controls.Add(HTextBoxExMedicalExaminationNote3);
-            HGroupBoxExMedicalExamination.Controls.Add(HTextBoxExMedicalExaminationNote2);
-            HGroupBoxExMedicalExamination.Controls.Add(HTextBoxExMedicalExaminationNote1);
-            HGroupBoxExMedicalExamination.Controls.Add(HTextBoxExMedicalExaminationNote);
-            HGroupBoxExMedicalExamination.Controls.Add(h_LabelEx54);
-            HGroupBoxExMedicalExamination.Controls.Add(h_LabelEx60);
-            HGroupBoxExMedicalExamination.Controls.Add(h_LabelEx61);
-            HGroupBoxExMedicalExamination.Controls.Add(h_LabelEx62);
-            HGroupBoxExMedicalExamination.Controls.Add(HComboBoxExMedicalExaminationNote4);
-            HGroupBoxExMedicalExamination.Controls.Add(h_LabelEx63);
-            HGroupBoxExMedicalExamination.Controls.Add(HDateTimeExMedicalExaminationDate4);
-            HGroupBoxExMedicalExamination.Controls.Add(HComboBoxExMedicalExaminationNote3);
-            HGroupBoxExMedicalExamination.Controls.Add(HDateTimeExMedicalExaminationDate3);
-            HGroupBoxExMedicalExamination.Controls.Add(HComboBoxExMedicalExaminationNote2);
-            HGroupBoxExMedicalExamination.Controls.Add(HDateTimeExMedicalExaminationDate2);
-            HGroupBoxExMedicalExamination.Controls.Add(HComboBoxExMedicalExaminationNote1);
-            HGroupBoxExMedicalExamination.Controls.Add(HDateTimeExMedicalExaminationDate1);
-            HGroupBoxExMedicalExamination.Controls.Add(h_LabelEx58);
-            HGroupBoxExMedicalExamination.Controls.Add(HComboBoxExMedicalExaminationNote);
-            HGroupBoxExMedicalExamination.Controls.Add(h_LabelEx59);
-            HGroupBoxExMedicalExamination.Controls.Add(HDateTimeExMedicalExaminationDate);
-            HGroupBoxExMedicalExamination.Location = new Point(8, 396);
-            HGroupBoxExMedicalExamination.Name = "HGroupBoxExMedicalExamination";
-            HGroupBoxExMedicalExamination.Size = new Size(912, 200);
-            HGroupBoxExMedicalExamination.TabIndex = 3;
-            HGroupBoxExMedicalExamination.TabStop = false;
-            HGroupBoxExMedicalExamination.Text = "健康状態(健康診断等の実施結果による特記すべき事項)　※運転の可否に十分に留意すること";
-            // 
-            // HTextBoxExMedicalExaminationNote4
-            // 
-            HTextBoxExMedicalExaminationNote4.Location = new Point(464, 168);
-            HTextBoxExMedicalExaminationNote4.Name = "HTextBoxExMedicalExaminationNote4";
-            HTextBoxExMedicalExaminationNote4.Size = new Size(308, 23);
-            HTextBoxExMedicalExaminationNote4.TabIndex = 84;
-            HTextBoxExMedicalExaminationNote4.Text = "〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇";
+            HGroupBoxExMedical.Controls.Add(HTextBoxExMedicalExaminationNote3);
+            HGroupBoxExMedical.Controls.Add(HTextBoxExMedicalExaminationNote2);
+            HGroupBoxExMedical.Controls.Add(HTextBoxExMedicalExaminationNote1);
+            HGroupBoxExMedical.Controls.Add(HTextBoxExMedicalExaminationNote);
+            HGroupBoxExMedical.Controls.Add(h_LabelEx54);
+            HGroupBoxExMedical.Controls.Add(h_LabelEx61);
+            HGroupBoxExMedical.Controls.Add(h_LabelEx62);
+            HGroupBoxExMedical.Controls.Add(h_LabelEx63);
+            HGroupBoxExMedical.Controls.Add(HComboBoxExMedicalInstitutionName3);
+            HGroupBoxExMedical.Controls.Add(HDateTimeExMedicalExaminationDate3);
+            HGroupBoxExMedical.Controls.Add(HComboBoxExMedicalInstitutionName2);
+            HGroupBoxExMedical.Controls.Add(HDateTimeExMedicalExaminationDate2);
+            HGroupBoxExMedical.Controls.Add(HComboBoxExMedicalInstitutionName1);
+            HGroupBoxExMedical.Controls.Add(HDateTimeExMedicalExaminationDate1);
+            HGroupBoxExMedical.Controls.Add(h_LabelEx58);
+            HGroupBoxExMedical.Controls.Add(HComboBoxExMedicalInstitutionName);
+            HGroupBoxExMedical.Controls.Add(h_LabelEx59);
+            HGroupBoxExMedical.Controls.Add(HDateTimeExMedicalExaminationDate);
+            HGroupBoxExMedical.Location = new Point(8, 396);
+            HGroupBoxExMedical.Name = "HGroupBoxExMedical";
+            HGroupBoxExMedical.Size = new Size(912, 176);
+            HGroupBoxExMedical.TabIndex = 3;
+            HGroupBoxExMedical.TabStop = false;
+            HGroupBoxExMedical.Text = "健康状態(健康診断等の実施結果による特記すべき事項)　※運転の可否に十分に留意すること";
             // 
             // HTextBoxExMedicalExaminationNote3
             // 
+            HTextBoxExMedicalExaminationNote3.Enabled = false;
             HTextBoxExMedicalExaminationNote3.Location = new Point(464, 140);
             HTextBoxExMedicalExaminationNote3.Name = "HTextBoxExMedicalExaminationNote3";
             HTextBoxExMedicalExaminationNote3.Size = new Size(308, 23);
@@ -2344,6 +2139,7 @@
             // 
             // HTextBoxExMedicalExaminationNote2
             // 
+            HTextBoxExMedicalExaminationNote2.Enabled = false;
             HTextBoxExMedicalExaminationNote2.Location = new Point(464, 112);
             HTextBoxExMedicalExaminationNote2.Name = "HTextBoxExMedicalExaminationNote2";
             HTextBoxExMedicalExaminationNote2.Size = new Size(308, 23);
@@ -2352,6 +2148,7 @@
             // 
             // HTextBoxExMedicalExaminationNote1
             // 
+            HTextBoxExMedicalExaminationNote1.Enabled = false;
             HTextBoxExMedicalExaminationNote1.Location = new Point(464, 84);
             HTextBoxExMedicalExaminationNote1.Name = "HTextBoxExMedicalExaminationNote1";
             HTextBoxExMedicalExaminationNote1.Size = new Size(308, 23);
@@ -2375,15 +2172,6 @@
             h_LabelEx54.TabIndex = 79;
             h_LabelEx54.Text = "診断以外で気づいた点";
             // 
-            // h_LabelEx60
-            // 
-            h_LabelEx60.AutoSize = true;
-            h_LabelEx60.Location = new Point(24, 172);
-            h_LabelEx60.Name = "h_LabelEx60";
-            h_LabelEx60.Size = new Size(19, 15);
-            h_LabelEx60.TabIndex = 70;
-            h_LabelEx60.Text = "④";
-            // 
             // h_LabelEx61
             // 
             h_LabelEx61.AutoSize = true;
@@ -2402,14 +2190,6 @@
             h_LabelEx62.TabIndex = 68;
             h_LabelEx62.Text = "②";
             // 
-            // HComboBoxExMedicalExaminationNote4
-            // 
-            HComboBoxExMedicalExaminationNote4.FormattingEnabled = true;
-            HComboBoxExMedicalExaminationNote4.Location = new Point(236, 168);
-            HComboBoxExMedicalExaminationNote4.Name = "HComboBoxExMedicalExaminationNote4";
-            HComboBoxExMedicalExaminationNote4.Size = new Size(220, 23);
-            HComboBoxExMedicalExaminationNote4.TabIndex = 78;
-            // 
             // h_LabelEx63
             // 
             h_LabelEx63.AutoSize = true;
@@ -2419,27 +2199,19 @@
             h_LabelEx63.TabIndex = 67;
             h_LabelEx63.Text = "①";
             // 
-            // HDateTimeExMedicalExaminationDate4
+            // HComboBoxExMedicalInstitutionName3
             // 
-            HDateTimeExMedicalExaminationDate4.CustomFormat = "yyyy年MM月dd日(dddd)";
-            HDateTimeExMedicalExaminationDate4.Format = DateTimePickerFormat.Custom;
-            HDateTimeExMedicalExaminationDate4.Location = new Point(48, 168);
-            HDateTimeExMedicalExaminationDate4.Name = "HDateTimeExMedicalExaminationDate4";
-            HDateTimeExMedicalExaminationDate4.Size = new Size(180, 23);
-            HDateTimeExMedicalExaminationDate4.TabIndex = 76;
-            HDateTimeExMedicalExaminationDate4.Value = new DateTime(2024, 2, 8, 0, 0, 0, 0);
-            // 
-            // HComboBoxExMedicalExaminationNote3
-            // 
-            HComboBoxExMedicalExaminationNote3.FormattingEnabled = true;
-            HComboBoxExMedicalExaminationNote3.Location = new Point(236, 140);
-            HComboBoxExMedicalExaminationNote3.Name = "HComboBoxExMedicalExaminationNote3";
-            HComboBoxExMedicalExaminationNote3.Size = new Size(220, 23);
-            HComboBoxExMedicalExaminationNote3.TabIndex = 75;
+            HComboBoxExMedicalInstitutionName3.Enabled = false;
+            HComboBoxExMedicalInstitutionName3.FormattingEnabled = true;
+            HComboBoxExMedicalInstitutionName3.Location = new Point(236, 140);
+            HComboBoxExMedicalInstitutionName3.Name = "HComboBoxExMedicalInstitutionName3";
+            HComboBoxExMedicalInstitutionName3.Size = new Size(220, 23);
+            HComboBoxExMedicalInstitutionName3.TabIndex = 75;
             // 
             // HDateTimeExMedicalExaminationDate3
             // 
             HDateTimeExMedicalExaminationDate3.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExMedicalExaminationDate3.Enabled = false;
             HDateTimeExMedicalExaminationDate3.Format = DateTimePickerFormat.Custom;
             HDateTimeExMedicalExaminationDate3.Location = new Point(48, 140);
             HDateTimeExMedicalExaminationDate3.Name = "HDateTimeExMedicalExaminationDate3";
@@ -2447,17 +2219,19 @@
             HDateTimeExMedicalExaminationDate3.TabIndex = 73;
             HDateTimeExMedicalExaminationDate3.Value = new DateTime(2024, 2, 8, 0, 0, 0, 0);
             // 
-            // HComboBoxExMedicalExaminationNote2
+            // HComboBoxExMedicalInstitutionName2
             // 
-            HComboBoxExMedicalExaminationNote2.FormattingEnabled = true;
-            HComboBoxExMedicalExaminationNote2.Location = new Point(236, 112);
-            HComboBoxExMedicalExaminationNote2.Name = "HComboBoxExMedicalExaminationNote2";
-            HComboBoxExMedicalExaminationNote2.Size = new Size(220, 23);
-            HComboBoxExMedicalExaminationNote2.TabIndex = 72;
+            HComboBoxExMedicalInstitutionName2.Enabled = false;
+            HComboBoxExMedicalInstitutionName2.FormattingEnabled = true;
+            HComboBoxExMedicalInstitutionName2.Location = new Point(236, 112);
+            HComboBoxExMedicalInstitutionName2.Name = "HComboBoxExMedicalInstitutionName2";
+            HComboBoxExMedicalInstitutionName2.Size = new Size(220, 23);
+            HComboBoxExMedicalInstitutionName2.TabIndex = 72;
             // 
             // HDateTimeExMedicalExaminationDate2
             // 
             HDateTimeExMedicalExaminationDate2.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExMedicalExaminationDate2.Enabled = false;
             HDateTimeExMedicalExaminationDate2.Format = DateTimePickerFormat.Custom;
             HDateTimeExMedicalExaminationDate2.Location = new Point(48, 112);
             HDateTimeExMedicalExaminationDate2.Name = "HDateTimeExMedicalExaminationDate2";
@@ -2465,17 +2239,19 @@
             HDateTimeExMedicalExaminationDate2.TabIndex = 70;
             HDateTimeExMedicalExaminationDate2.Value = new DateTime(2024, 2, 8, 0, 0, 0, 0);
             // 
-            // HComboBoxExMedicalExaminationNote1
+            // HComboBoxExMedicalInstitutionName1
             // 
-            HComboBoxExMedicalExaminationNote1.FormattingEnabled = true;
-            HComboBoxExMedicalExaminationNote1.Location = new Point(236, 84);
-            HComboBoxExMedicalExaminationNote1.Name = "HComboBoxExMedicalExaminationNote1";
-            HComboBoxExMedicalExaminationNote1.Size = new Size(220, 23);
-            HComboBoxExMedicalExaminationNote1.TabIndex = 69;
+            HComboBoxExMedicalInstitutionName1.Enabled = false;
+            HComboBoxExMedicalInstitutionName1.FormattingEnabled = true;
+            HComboBoxExMedicalInstitutionName1.Location = new Point(236, 84);
+            HComboBoxExMedicalInstitutionName1.Name = "HComboBoxExMedicalInstitutionName1";
+            HComboBoxExMedicalInstitutionName1.Size = new Size(220, 23);
+            HComboBoxExMedicalInstitutionName1.TabIndex = 69;
             // 
             // HDateTimeExMedicalExaminationDate1
             // 
             HDateTimeExMedicalExaminationDate1.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExMedicalExaminationDate1.Enabled = false;
             HDateTimeExMedicalExaminationDate1.Format = DateTimePickerFormat.Custom;
             HDateTimeExMedicalExaminationDate1.Location = new Point(48, 84);
             HDateTimeExMedicalExaminationDate1.Name = "HDateTimeExMedicalExaminationDate1";
@@ -2492,13 +2268,13 @@
             h_LabelEx58.TabIndex = 65;
             h_LabelEx58.Text = "健診機関・詳細";
             // 
-            // HComboBoxExMedicalExaminationNote
+            // HComboBoxExMedicalInstitutionName
             // 
-            HComboBoxExMedicalExaminationNote.FormattingEnabled = true;
-            HComboBoxExMedicalExaminationNote.Location = new Point(236, 48);
-            HComboBoxExMedicalExaminationNote.Name = "HComboBoxExMedicalExaminationNote";
-            HComboBoxExMedicalExaminationNote.Size = new Size(220, 23);
-            HComboBoxExMedicalExaminationNote.TabIndex = 66;
+            HComboBoxExMedicalInstitutionName.FormattingEnabled = true;
+            HComboBoxExMedicalInstitutionName.Location = new Point(236, 48);
+            HComboBoxExMedicalInstitutionName.Name = "HComboBoxExMedicalInstitutionName";
+            HComboBoxExMedicalInstitutionName.Size = new Size(220, 23);
+            HComboBoxExMedicalInstitutionName.TabIndex = 66;
             // 
             // h_LabelEx59
             // 
@@ -2759,6 +2535,7 @@
             // h_LabelEx47
             // 
             h_LabelEx47.AutoSize = true;
+            h_LabelEx47.Enabled = false;
             h_LabelEx47.Location = new Point(668, 172);
             h_LabelEx47.Name = "h_LabelEx47";
             h_LabelEx47.Size = new Size(31, 15);
@@ -2767,6 +2544,7 @@
             // 
             // HComboBoxExFamilyRelationship4
             // 
+            HComboBoxExFamilyRelationship4.Enabled = false;
             HComboBoxExFamilyRelationship4.FormattingEnabled = true;
             HComboBoxExFamilyRelationship4.Location = new Point(704, 168);
             HComboBoxExFamilyRelationship4.Name = "HComboBoxExFamilyRelationship4";
@@ -2776,6 +2554,7 @@
             // HDateTimeExFamilyBirthDate4
             // 
             HDateTimeExFamilyBirthDate4.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExFamilyBirthDate4.Enabled = false;
             HDateTimeExFamilyBirthDate4.Format = DateTimePickerFormat.Custom;
             HDateTimeExFamilyBirthDate4.Location = new Point(476, 168);
             HDateTimeExFamilyBirthDate4.Name = "HDateTimeExFamilyBirthDate4";
@@ -2785,6 +2564,7 @@
             // 
             // HTextBoxExFamilyName4
             // 
+            HTextBoxExFamilyName4.Enabled = false;
             HTextBoxExFamilyName4.Location = new Point(48, 168);
             HTextBoxExFamilyName4.Name = "HTextBoxExFamilyName4";
             HTextBoxExFamilyName4.Size = new Size(420, 23);
@@ -2794,6 +2574,7 @@
             // h_LabelEx46
             // 
             h_LabelEx46.AutoSize = true;
+            h_LabelEx46.Enabled = false;
             h_LabelEx46.Location = new Point(668, 144);
             h_LabelEx46.Name = "h_LabelEx46";
             h_LabelEx46.Size = new Size(31, 15);
@@ -2802,6 +2583,7 @@
             // 
             // HComboBoxExFamilyRelationship3
             // 
+            HComboBoxExFamilyRelationship3.Enabled = false;
             HComboBoxExFamilyRelationship3.FormattingEnabled = true;
             HComboBoxExFamilyRelationship3.Location = new Point(704, 140);
             HComboBoxExFamilyRelationship3.Name = "HComboBoxExFamilyRelationship3";
@@ -2811,6 +2593,7 @@
             // HDateTimeExFamilyBirthDate3
             // 
             HDateTimeExFamilyBirthDate3.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExFamilyBirthDate3.Enabled = false;
             HDateTimeExFamilyBirthDate3.Format = DateTimePickerFormat.Custom;
             HDateTimeExFamilyBirthDate3.Location = new Point(476, 140);
             HDateTimeExFamilyBirthDate3.Name = "HDateTimeExFamilyBirthDate3";
@@ -2820,6 +2603,7 @@
             // 
             // HTextBoxExFamilyName3
             // 
+            HTextBoxExFamilyName3.Enabled = false;
             HTextBoxExFamilyName3.Location = new Point(48, 140);
             HTextBoxExFamilyName3.Name = "HTextBoxExFamilyName3";
             HTextBoxExFamilyName3.Size = new Size(420, 23);
@@ -2829,6 +2613,7 @@
             // h_LabelEx45
             // 
             h_LabelEx45.AutoSize = true;
+            h_LabelEx45.Enabled = false;
             h_LabelEx45.Location = new Point(668, 116);
             h_LabelEx45.Name = "h_LabelEx45";
             h_LabelEx45.Size = new Size(31, 15);
@@ -2837,6 +2622,7 @@
             // 
             // HComboBoxExFamilyRelationship2
             // 
+            HComboBoxExFamilyRelationship2.Enabled = false;
             HComboBoxExFamilyRelationship2.FormattingEnabled = true;
             HComboBoxExFamilyRelationship2.Location = new Point(704, 112);
             HComboBoxExFamilyRelationship2.Name = "HComboBoxExFamilyRelationship2";
@@ -2846,6 +2632,7 @@
             // HDateTimeExFamilyBirthDate2
             // 
             HDateTimeExFamilyBirthDate2.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExFamilyBirthDate2.Enabled = false;
             HDateTimeExFamilyBirthDate2.Format = DateTimePickerFormat.Custom;
             HDateTimeExFamilyBirthDate2.Location = new Point(476, 112);
             HDateTimeExFamilyBirthDate2.Name = "HDateTimeExFamilyBirthDate2";
@@ -2855,6 +2642,7 @@
             // 
             // HTextBoxExFamilyName2
             // 
+            HTextBoxExFamilyName2.Enabled = false;
             HTextBoxExFamilyName2.Location = new Point(48, 112);
             HTextBoxExFamilyName2.Name = "HTextBoxExFamilyName2";
             HTextBoxExFamilyName2.Size = new Size(420, 23);
@@ -2864,6 +2652,7 @@
             // h_LabelEx44
             // 
             h_LabelEx44.AutoSize = true;
+            h_LabelEx44.Enabled = false;
             h_LabelEx44.Location = new Point(668, 88);
             h_LabelEx44.Name = "h_LabelEx44";
             h_LabelEx44.Size = new Size(31, 15);
@@ -2872,6 +2661,7 @@
             // 
             // HComboBoxExFamilyRelationship1
             // 
+            HComboBoxExFamilyRelationship1.Enabled = false;
             HComboBoxExFamilyRelationship1.FormattingEnabled = true;
             HComboBoxExFamilyRelationship1.Location = new Point(704, 84);
             HComboBoxExFamilyRelationship1.Name = "HComboBoxExFamilyRelationship1";
@@ -2881,6 +2671,7 @@
             // HDateTimeExFamilyBirthDate1
             // 
             HDateTimeExFamilyBirthDate1.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExFamilyBirthDate1.Enabled = false;
             HDateTimeExFamilyBirthDate1.Format = DateTimePickerFormat.Custom;
             HDateTimeExFamilyBirthDate1.Location = new Point(476, 84);
             HDateTimeExFamilyBirthDate1.Name = "HDateTimeExFamilyBirthDate1";
@@ -2890,6 +2681,7 @@
             // 
             // HTextBoxExFamilyName1
             // 
+            HTextBoxExFamilyName1.Enabled = false;
             HTextBoxExFamilyName1.Location = new Point(48, 84);
             HTextBoxExFamilyName1.Name = "HTextBoxExFamilyName1";
             HTextBoxExFamilyName1.Size = new Size(420, 23);
@@ -2978,14 +2770,11 @@
             // 
             // HGroupBoxExPunishment
             // 
-            HGroupBoxExPunishment.Controls.Add(h_LabelEx88);
             HGroupBoxExPunishment.Controls.Add(h_LabelEx89);
             HGroupBoxExPunishment.Controls.Add(h_LabelEx90);
             HGroupBoxExPunishment.Controls.Add(h_LabelEx91);
             HGroupBoxExPunishment.Controls.Add(h_LabelEx86);
             HGroupBoxExPunishment.Controls.Add(h_LabelEx87);
-            HGroupBoxExPunishment.Controls.Add(HTextBoxExPunishmentNote4);
-            HGroupBoxExPunishment.Controls.Add(HDateTimeExPunishmentDate4);
             HGroupBoxExPunishment.Controls.Add(HTextBoxExPunishmentNote3);
             HGroupBoxExPunishment.Controls.Add(HDateTimeExPunishmentDate3);
             HGroupBoxExPunishment.Controls.Add(HTextBoxExPunishmentNote2);
@@ -2994,21 +2783,12 @@
             HGroupBoxExPunishment.Controls.Add(HDateTimeExPunishmentDate1);
             HGroupBoxExPunishment.Controls.Add(HTextBoxExPunishmentNote);
             HGroupBoxExPunishment.Controls.Add(HDateTimeExPunishmentDate);
-            HGroupBoxExPunishment.Location = new Point(8, 1336);
+            HGroupBoxExPunishment.Location = new Point(8, 1244);
             HGroupBoxExPunishment.Name = "HGroupBoxExPunishment";
-            HGroupBoxExPunishment.Size = new Size(912, 201);
+            HGroupBoxExPunishment.Size = new Size(912, 176);
             HGroupBoxExPunishment.TabIndex = 0;
             HGroupBoxExPunishment.TabStop = false;
             HGroupBoxExPunishment.Text = "賞罰・譴責";
-            // 
-            // h_LabelEx88
-            // 
-            h_LabelEx88.AutoSize = true;
-            h_LabelEx88.Location = new Point(24, 172);
-            h_LabelEx88.Name = "h_LabelEx88";
-            h_LabelEx88.Size = new Size(19, 15);
-            h_LabelEx88.TabIndex = 139;
-            h_LabelEx88.Text = "④";
             // 
             // h_LabelEx89
             // 
@@ -3055,26 +2835,9 @@
             h_LabelEx87.TabIndex = 134;
             h_LabelEx87.Text = "実施年月日";
             // 
-            // HTextBoxExPunishmentNote4
-            // 
-            HTextBoxExPunishmentNote4.Location = new Point(236, 168);
-            HTextBoxExPunishmentNote4.Name = "HTextBoxExPunishmentNote4";
-            HTextBoxExPunishmentNote4.Size = new Size(532, 23);
-            HTextBoxExPunishmentNote4.TabIndex = 133;
-            HTextBoxExPunishmentNote4.Text = "〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇〇";
-            // 
-            // HDateTimeExPunishmentDate4
-            // 
-            HDateTimeExPunishmentDate4.CustomFormat = "yyyy年MM月dd日(dddd)";
-            HDateTimeExPunishmentDate4.Format = DateTimePickerFormat.Custom;
-            HDateTimeExPunishmentDate4.Location = new Point(48, 168);
-            HDateTimeExPunishmentDate4.Name = "HDateTimeExPunishmentDate4";
-            HDateTimeExPunishmentDate4.Size = new Size(180, 23);
-            HDateTimeExPunishmentDate4.TabIndex = 132;
-            HDateTimeExPunishmentDate4.Value = new DateTime(2024, 2, 8, 0, 0, 0, 0);
-            // 
             // HTextBoxExPunishmentNote3
             // 
+            HTextBoxExPunishmentNote3.Enabled = false;
             HTextBoxExPunishmentNote3.Location = new Point(236, 140);
             HTextBoxExPunishmentNote3.Name = "HTextBoxExPunishmentNote3";
             HTextBoxExPunishmentNote3.Size = new Size(532, 23);
@@ -3084,6 +2847,7 @@
             // HDateTimeExPunishmentDate3
             // 
             HDateTimeExPunishmentDate3.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExPunishmentDate3.Enabled = false;
             HDateTimeExPunishmentDate3.Format = DateTimePickerFormat.Custom;
             HDateTimeExPunishmentDate3.Location = new Point(48, 140);
             HDateTimeExPunishmentDate3.Name = "HDateTimeExPunishmentDate3";
@@ -3093,6 +2857,7 @@
             // 
             // HTextBoxExPunishmentNote2
             // 
+            HTextBoxExPunishmentNote2.Enabled = false;
             HTextBoxExPunishmentNote2.Location = new Point(236, 112);
             HTextBoxExPunishmentNote2.Name = "HTextBoxExPunishmentNote2";
             HTextBoxExPunishmentNote2.Size = new Size(532, 23);
@@ -3102,6 +2867,7 @@
             // HDateTimeExPunishmentDate2
             // 
             HDateTimeExPunishmentDate2.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExPunishmentDate2.Enabled = false;
             HDateTimeExPunishmentDate2.Format = DateTimePickerFormat.Custom;
             HDateTimeExPunishmentDate2.Location = new Point(48, 112);
             HDateTimeExPunishmentDate2.Name = "HDateTimeExPunishmentDate2";
@@ -3111,6 +2877,7 @@
             // 
             // HTextBoxExPunishmentNote1
             // 
+            HTextBoxExPunishmentNote1.Enabled = false;
             HTextBoxExPunishmentNote1.Location = new Point(236, 84);
             HTextBoxExPunishmentNote1.Name = "HTextBoxExPunishmentNote1";
             HTextBoxExPunishmentNote1.Size = new Size(532, 23);
@@ -3120,6 +2887,7 @@
             // HDateTimeExPunishmentDate1
             // 
             HDateTimeExPunishmentDate1.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExPunishmentDate1.Enabled = false;
             HDateTimeExPunishmentDate1.Format = DateTimePickerFormat.Custom;
             HDateTimeExPunishmentDate1.Location = new Point(48, 84);
             HDateTimeExPunishmentDate1.Name = "HDateTimeExPunishmentDate1";
@@ -3145,23 +2913,17 @@
             HDateTimeExPunishmentDate.TabIndex = 124;
             HDateTimeExPunishmentDate.Value = new DateTime(2024, 2, 8, 0, 0, 0, 0);
             // 
-            // ToolStripMenuItemExit
-            // 
-            ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
-            ToolStripMenuItemExit.Size = new Size(195, 22);
-            ToolStripMenuItemExit.Text = "アプリケーションを終了する";
-            // 
             // HStaffDetail
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1904, 1671);
+            ClientSize = new Size(1904, 1551);
             Controls.Add(HTableLayoutPanelExBase);
             MainMenuStrip = MenuStrip1;
-            MaximumSize = new Size(1920, 1710);
+            MaximumSize = new Size(1920, 1590);
             MinimumSize = new Size(1918, 1046);
             Name = "HStaffDetail";
-            Text = "H_StaffDetail";
+            Text = "D";
             HTableLayoutPanelExBase.ResumeLayout(false);
             HTableLayoutPanelExBase.PerformLayout();
             MenuStrip1.ResumeLayout(false);
@@ -3196,8 +2958,8 @@
             HGroupBoxExCarViolate.ResumeLayout(false);
             HGroupBoxExCarViolate.PerformLayout();
             groupBox12.ResumeLayout(false);
-            HGroupBoxExMedicalExamination.ResumeLayout(false);
-            HGroupBoxExMedicalExamination.PerformLayout();
+            HGroupBoxExMedical.ResumeLayout(false);
+            HGroupBoxExMedical.PerformLayout();
             HGroupBoxExInsurance.ResumeLayout(false);
             HGroupBoxExInsurance.PerformLayout();
             HGroupBoxExFamily.ResumeLayout(false);
@@ -3225,15 +2987,7 @@
         private H_ControlEx.H_ComboBoxEx HComboBoxExBelongs;
         private H_ControlEx.H_CheckBoxEx HCheckBoxExTargetFlag;
         private GroupBox GroupBoxJobForm;
-        private H_ControlEx.H_RadioButtonEx HRadioButtonExJiunrou;
-        private H_ControlEx.H_RadioButtonEx HRadioButtonExSinunten;
-        private H_ControlEx.H_RadioButtonEx HRadioButtonExDispatch;
-        private H_ControlEx.H_RadioButtonEx HRadioButtonExPart1;
-        private H_ControlEx.H_RadioButtonEx HRadioButtonExEmployee1;
-        private H_ControlEx.H_RadioButtonEx HRadioButtonExOfficer;
         private GroupBox HGroupBoxExRetirement;
-        private H_ControlEx.H_RadioButtonEx HRadioButtonExEmployee2;
-        private H_ControlEx.H_RadioButtonEx HRadioButtonExPart2;
         private H_ControlEx.H_RadioButtonEx HRadioButtonExShortTarm;
         private H_ControlEx.H_RadioButtonEx HRadioButtonExLongTarm;
         private GroupBox HGroupBoxExPersonalData;
@@ -3371,25 +3125,21 @@
         private H_ControlEx.H_ComboBoxEx HComboBoxExEmploymentInsuranceNumber;
         private H_ControlEx.H_ComboBoxEx HComboBoxExWelfarePensionNumber;
         private H_ControlEx.H_ComboBoxEx HComboBoxExHealthInsuranceNumber;
-        private GroupBox HGroupBoxExMedicalExamination;
+        private GroupBox HGroupBoxExMedical;
         private H_ControlEx.H_LabelEx h_LabelEx54;
-        private H_ControlEx.H_LabelEx h_LabelEx60;
         private H_ControlEx.H_LabelEx h_LabelEx61;
         private H_ControlEx.H_LabelEx h_LabelEx62;
-        private H_ControlEx.H_ComboBoxEx HComboBoxExMedicalExaminationNote4;
         private H_ControlEx.H_LabelEx h_LabelEx63;
-        private H_ControlEx.H_DateTimePickerEx HDateTimeExMedicalExaminationDate4;
-        private H_ControlEx.H_ComboBoxEx HComboBoxExMedicalExaminationNote3;
+        private H_ControlEx.H_ComboBoxEx HComboBoxExMedicalInstitutionName3;
         private H_ControlEx.H_DateTimePickerEx HDateTimeExMedicalExaminationDate3;
-        private H_ControlEx.H_ComboBoxEx HComboBoxExMedicalExaminationNote2;
+        private H_ControlEx.H_ComboBoxEx HComboBoxExMedicalInstitutionName2;
         private H_ControlEx.H_DateTimePickerEx HDateTimeExMedicalExaminationDate2;
-        private H_ControlEx.H_ComboBoxEx HComboBoxExMedicalExaminationNote1;
+        private H_ControlEx.H_ComboBoxEx HComboBoxExMedicalInstitutionName1;
         private H_ControlEx.H_DateTimePickerEx HDateTimeExMedicalExaminationDate1;
         private H_ControlEx.H_LabelEx h_LabelEx58;
-        private H_ControlEx.H_ComboBoxEx HComboBoxExMedicalExaminationNote;
+        private H_ControlEx.H_ComboBoxEx HComboBoxExMedicalInstitutionName;
         private H_ControlEx.H_LabelEx h_LabelEx59;
         private H_ControlEx.H_DateTimePickerEx HDateTimeExMedicalExaminationDate;
-        private H_ControlEx.H_TextBoxEx HTextBoxExMedicalExaminationNote4;
         private H_ControlEx.H_TextBoxEx HTextBoxExMedicalExaminationNote3;
         private H_ControlEx.H_TextBoxEx HTextBoxExMedicalExaminationNote2;
         private H_ControlEx.H_TextBoxEx HTextBoxExMedicalExaminationNote1;
@@ -3397,18 +3147,14 @@
         private GroupBox groupBox12;
         private H_ControlEx.H_LabelEx h_LabelEx55;
         private GroupBox HGroupBoxExCarViolate;
-        private H_ControlEx.H_TextBoxEx HTextBoxExCarViolatePlace4;
         private H_ControlEx.H_TextBoxEx HTextBoxExCarViolatePlace3;
         private H_ControlEx.H_TextBoxEx HTextBoxExCarViolatePlace2;
         private H_ControlEx.H_TextBoxEx HTextBoxExCarViolatePlace1;
         private H_ControlEx.H_TextBoxEx HTextBoxExCarViolatePlace;
         private H_ControlEx.H_LabelEx h_LabelEx56;
-        private H_ControlEx.H_LabelEx h_LabelEx57;
         private H_ControlEx.H_LabelEx h_LabelEx64;
         private H_ControlEx.H_LabelEx h_LabelEx65;
-        private H_ControlEx.H_ComboBoxEx HComboBoxExCarViolateContent4;
         private H_ControlEx.H_LabelEx h_LabelEx66;
-        private H_ControlEx.H_DateTimePickerEx HDateTimeExCarViolateDate4;
         private H_ControlEx.H_ComboBoxEx HComboBoxExCarViolateContent3;
         private H_ControlEx.H_DateTimePickerEx HDateTimeExCarViolateDate3;
         private H_ControlEx.H_ComboBoxEx HComboBoxExCarViolateContent2;
@@ -3420,16 +3166,12 @@
         private H_ControlEx.H_LabelEx h_LabelEx68;
         private H_ControlEx.H_DateTimePickerEx HDateTimeExCarViolateDate;
         private GroupBox HGroupBoxEducate;
-        private H_ControlEx.H_LabelEx h_LabelEx77;
         private H_ControlEx.H_LabelEx h_LabelEx78;
         private H_ControlEx.H_LabelEx h_LabelEx76;
         private H_ControlEx.H_LabelEx h_LabelEx75;
-        private H_ControlEx.H_LabelEx h_LabelEx69;
         private H_ControlEx.H_LabelEx h_LabelEx70;
         private H_ControlEx.H_LabelEx h_LabelEx71;
-        private H_ControlEx.H_ComboBoxEx HComboBoxExEducateName4;
         private H_ControlEx.H_LabelEx h_LabelEx72;
-        private H_ControlEx.H_DateTimePickerEx HDateTimeExEducateDate4;
         private H_ControlEx.H_ComboBoxEx HComboBoxExEducateName3;
         private H_ControlEx.H_DateTimePickerEx HDateTimeExEducateDate3;
         private H_ControlEx.H_ComboBoxEx HComboBoxExEducateName2;
@@ -3441,16 +3183,12 @@
         private H_ControlEx.H_LabelEx h_LabelEx74;
         private H_ControlEx.H_DateTimePickerEx HDateTimeExEducateDate;
         private GroupBox HGroupBoxProper;
-        private H_ControlEx.H_LabelEx h_LabelEx82;
         private H_ControlEx.H_LabelEx h_LabelEx83;
         private H_ControlEx.H_LabelEx h_LabelEx84;
         private H_ControlEx.H_LabelEx h_LabelEx85;
         private H_ControlEx.H_LabelEx h_LabelEx81;
         private H_ControlEx.H_LabelEx h_LabelEx80;
         private H_ControlEx.H_LabelEx h_LabelEx79;
-        private H_ControlEx.H_TextBoxEx HTextBoxExProperNote4;
-        private H_ControlEx.H_DateTimePickerEx HDateTimeExProperDate4;
-        private H_ControlEx.H_ComboBoxEx HComboBoxExProperKind4;
         private H_ControlEx.H_TextBoxEx HTextBoxExProperNote3;
         private H_ControlEx.H_DateTimePickerEx HDateTimeExProperDate3;
         private H_ControlEx.H_ComboBoxEx HComboBoxExProperKind3;
@@ -3463,14 +3201,11 @@
         private H_ControlEx.H_TextBoxEx HTextBoxExProperNote;
         private H_ControlEx.H_DateTimePickerEx HDateTimeExProperDate;
         private H_ControlEx.H_ComboBoxEx HComboBoxExProperKind;
-        private H_ControlEx.H_LabelEx h_LabelEx88;
         private H_ControlEx.H_LabelEx h_LabelEx89;
         private H_ControlEx.H_LabelEx h_LabelEx90;
         private H_ControlEx.H_LabelEx h_LabelEx91;
         private H_ControlEx.H_LabelEx h_LabelEx86;
         private H_ControlEx.H_LabelEx h_LabelEx87;
-        private H_ControlEx.H_TextBoxEx HTextBoxExPunishmentNote4;
-        private H_ControlEx.H_DateTimePickerEx HDateTimeExPunishmentDate4;
         private H_ControlEx.H_TextBoxEx HTextBoxExPunishmentNote3;
         private H_ControlEx.H_DateTimePickerEx HDateTimeExPunishmentDate3;
         private H_ControlEx.H_TextBoxEx HTextBoxExPunishmentNote2;
@@ -3479,7 +3214,6 @@
         private H_ControlEx.H_DateTimePickerEx HDateTimeExPunishmentDate1;
         private H_ControlEx.H_TextBoxEx HTextBoxExPunishmentNote;
         private H_ControlEx.H_DateTimePickerEx HDateTimeExPunishmentDate;
-        private H_ControlEx.H_RadioButtonEx HRadioButtonExNone1;
         private GroupBox GroupBoxExOccupation;
         private H_ControlEx.H_RadioButtonEx HRadioButtonExNone2;
         private H_ControlEx.H_RadioButtonEx HRadioButtonExOfficeWork;

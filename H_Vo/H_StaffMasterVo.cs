@@ -31,7 +31,7 @@ namespace H_Vo {
         private DateTime _selectionDate;
         private DateTime _notSelectionDate;
         private string _notSelectionReason;
-        private string _licenseNumber;
+        private H_LicenseMasterVo _hLicenseMasterVo;
         private List<H_StaffHistoryVo> _listHStaffHistoryVo;
         private List<H_StaffExperienceVo> _listHStaffExperienceVo;
         private bool _retirementFlag;
@@ -93,7 +93,7 @@ namespace H_Vo {
             _selectionDate = _defaultDateTime;
             _notSelectionDate = _defaultDateTime;
             _notSelectionReason = string.Empty;
-            _licenseNumber = string.Empty;
+            _hLicenseMasterVo = new H_LicenseMasterVo();
             _listHStaffHistoryVo = new List<H_StaffHistoryVo>();
             _listHStaffExperienceVo = new List<H_StaffExperienceVo>();
             _retirementFlag = false;
@@ -293,9 +293,9 @@ namespace H_Vo {
         /// <summary>
         /// 免許証番号
         /// </summary>
-        public string LicenseNumber {
-            get => _licenseNumber;
-            set => _licenseNumber = value;
+        public H_LicenseMasterVo HLicenseMasterVo {
+            get => _hLicenseMasterVo;
+            set => _hLicenseMasterVo = value;
         }
         /// <summary>
         /// 職業履歴
