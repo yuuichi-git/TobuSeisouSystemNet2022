@@ -80,5 +80,40 @@ namespace H_Dao {
             }
             return listHStaffMedicalExaminationVo;
         }
+
+        /// <summary>
+        /// InsertOneHStaffMedicalExaminationMaster
+        /// </summary>
+        /// <param name="hStaffMedicalExaminationVo"></param>
+        public void InsertOneHStaffMedicalExaminationMaster(H_StaffMedicalExaminationVo hStaffMedicalExaminationVo) {
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "INSERT INTO H_StaffMedicalExaminationMaster(StaffCode," +
+                                                                                 "MedicalExaminationDate," +
+                                                                                 "MedicalInstitutionName," +
+                                                                                 "MedicalExaminationNote," +
+                                                                                 "InsertPcName," +
+                                                                                 "InsertYmdHms," +
+                                                                                 "UpdatePcName," +
+                                                                                 "DeletePcName," +
+                                                                                 "DeleteYmdHms," +
+                                                                                 "DeleteFlag) " +
+                                     "VALUES (" + _defaultValue.GetDefaultValue<int>(hStaffMedicalExaminationVo.StaffCode) + "," +
+                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffMedicalExaminationVo.MedicalExaminationDate) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffMedicalExaminationVo.MedicalInstitutionName) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffMedicalExaminationVo.MedicalExaminationNote) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffMedicalExaminationVo.InsertPcName) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffMedicalExaminationVo.InsertYmdHms) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffMedicalExaminationVo.UpdatePcName) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffMedicalExaminationVo.UpdateYmdHms) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffMedicalExaminationVo.DeletePcName) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffMedicalExaminationVo.DeleteYmdHms) + "'," +
+                                            "'False'" +
+                                            ");";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
     }
 }

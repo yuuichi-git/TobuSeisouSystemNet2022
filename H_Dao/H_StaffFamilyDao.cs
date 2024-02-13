@@ -66,5 +66,40 @@ namespace H_Dao {
             }
             return listHStaffFamilyVo;
         }
+
+        /// <summary>
+        /// InsertOneHStaffFamilyMaster
+        /// </summary>
+        /// <param name="hStaffFamilyVo"></param>
+        public void InsertOneHStaffFamilyMaster(H_StaffFamilyVo hStaffFamilyVo) {
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "INSERT INTO H_StaffExperienceMaster(StaffCode," +
+                                                                         "FamilyName," +
+                                                                         "FamilyBirthDay," +
+                                                                         "FamilyRelationship," +
+                                                                         "InsertPcName," +
+                                                                         "InsertYmdHms," +
+                                                                         "UpdatePcName," +
+                                                                         "DeletePcName," +
+                                                                         "DeleteYmdHms," +
+                                                                         "DeleteFlag) " +
+                                     "VALUES (" + _defaultValue.GetDefaultValue<int>(hStaffFamilyVo.StaffCode) + "," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffFamilyVo.FamilyName) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffFamilyVo.FamilyBirthDay) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffFamilyVo.FamilyRelationship) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffFamilyVo.InsertPcName) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffFamilyVo.InsertYmdHms) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffFamilyVo.UpdatePcName) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffFamilyVo.UpdateYmdHms) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffFamilyVo.DeletePcName) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffFamilyVo.DeleteYmdHms) + "'," +
+                                            "'False'" +
+                                            ");";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
     }
 }

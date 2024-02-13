@@ -7,8 +7,6 @@ using H_Common;
 
 using H_Vo;
 
-using H_Vo;
-
 namespace H_Dao {
     public class H_StaffProperDao {
         private readonly DefaultValue _defaultValue = new();
@@ -100,6 +98,41 @@ namespace H_Dao {
                 }
             }
             return listHStaffProperVo;
+        }
+
+        /// <summary>
+        /// InsertOneHStaffProperMaster
+        /// </summary>
+        /// <param name="hStaffProperVo"></param>
+        public void InsertOneHStaffProperMaster(H_StaffProperVo hStaffProperVo) {
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "INSERT INTO H_StaffProperMaster(StaffCode," +
+                                                                     "ProperKind," +
+                                                                     "ProperDate," +
+                                                                     "ProperNote," +
+                                                                     "InsertPcName," +
+                                                                     "InsertYmdHms," +
+                                                                     "UpdatePcName," +
+                                                                     "DeletePcName," +
+                                                                     "DeleteYmdHms," +
+                                                                     "DeleteFlag) " +
+                                     "VALUES (" + _defaultValue.GetDefaultValue<int>(hStaffProperVo.StaffCode) + "," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffProperVo.ProperKind) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffProperVo.ProperDate) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffProperVo.ProperNote) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffProperVo.InsertPcName) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffProperVo.InsertYmdHms) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffProperVo.UpdatePcName) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffProperVo.UpdateYmdHms) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffProperVo.DeletePcName) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffProperVo.DeleteYmdHms) + "'," +
+                                            "'False'" +
+                                            ");";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
         }
     }
 }

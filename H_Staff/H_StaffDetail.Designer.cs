@@ -41,6 +41,7 @@
             HRadioButtonExOperator = new H_ControlEx.H_RadioButtonEx();
             HRadioButtonExDriver = new H_ControlEx.H_RadioButtonEx();
             HGroupBoxExExperience = new GroupBox();
+            AddHGroupBoxExExperience = new H_ControlEx.H_ButtonEx();
             h_LabelEx92 = new H_ControlEx.H_LabelEx();
             h_LabelEx28 = new H_ControlEx.H_LabelEx();
             h_LabelEx32 = new H_ControlEx.H_LabelEx();
@@ -65,6 +66,7 @@
             HTextBoxExExperienceLoad = new H_ControlEx.H_TextBoxEx();
             HComboBoxExExperienceKind = new H_ControlEx.H_ComboBoxEx();
             HGroupBoxExHistory = new GroupBox();
+            AddHGroupBoxExHistory = new H_ControlEx.H_ButtonEx();
             h_LabelEx27 = new H_ControlEx.H_LabelEx();
             HTextBoxExHistoryNote3 = new H_ControlEx.H_TextBoxEx();
             HDateTimeExHistoryDate3 = new H_ControlEx.H_DateTimePickerEx();
@@ -142,6 +144,7 @@
             HCheckBoxExTargetFlag = new H_ControlEx.H_CheckBoxEx();
             HPanelExMiddleRight = new H_ControlEx.H_PanelEx();
             HGroupBoxProper = new GroupBox();
+            AddHGroupBoxProper = new H_ControlEx.H_ButtonEx();
             h_LabelEx83 = new H_ControlEx.H_LabelEx();
             h_LabelEx84 = new H_ControlEx.H_LabelEx();
             h_LabelEx85 = new H_ControlEx.H_LabelEx();
@@ -161,6 +164,7 @@
             HDateTimeExProperDate = new H_ControlEx.H_DateTimePickerEx();
             HComboBoxExProperKind = new H_ControlEx.H_ComboBoxEx();
             HGroupBoxEducate = new GroupBox();
+            AddHGroupBoxEducate = new H_ControlEx.H_ButtonEx();
             h_LabelEx78 = new H_ControlEx.H_LabelEx();
             h_LabelEx76 = new H_ControlEx.H_LabelEx();
             h_LabelEx75 = new H_ControlEx.H_LabelEx();
@@ -178,6 +182,7 @@
             h_LabelEx74 = new H_ControlEx.H_LabelEx();
             HDateTimeExEducateDate = new H_ControlEx.H_DateTimePickerEx();
             HGroupBoxExCarViolate = new GroupBox();
+            AddHGroupBoxExCarViolate = new H_ControlEx.H_ButtonEx();
             HTextBoxExCarViolatePlace3 = new H_ControlEx.H_TextBoxEx();
             HTextBoxExCarViolatePlace2 = new H_ControlEx.H_TextBoxEx();
             HTextBoxExCarViolatePlace1 = new H_ControlEx.H_TextBoxEx();
@@ -199,6 +204,7 @@
             groupBox12 = new GroupBox();
             h_LabelEx55 = new H_ControlEx.H_LabelEx();
             HGroupBoxExMedical = new GroupBox();
+            AddHGroupBoxExMedical = new H_ControlEx.H_ButtonEx();
             HTextBoxExMedicalExaminationNote3 = new H_ControlEx.H_TextBoxEx();
             HTextBoxExMedicalExaminationNote2 = new H_ControlEx.H_TextBoxEx();
             HTextBoxExMedicalExaminationNote1 = new H_ControlEx.H_TextBoxEx();
@@ -235,6 +241,7 @@
             h_LabelEx51 = new H_ControlEx.H_LabelEx();
             h_LabelEx50 = new H_ControlEx.H_LabelEx();
             HGroupBoxExFamily = new GroupBox();
+            AddHGroupBoxExFamily = new H_ControlEx.H_ButtonEx();
             HTextBoxExUrgentTelephoneMethod = new H_ControlEx.H_TextBoxEx();
             HTextBoxExUrgentTelephoneNumber = new H_ControlEx.H_TextBoxEx();
             h_LabelEx49 = new H_ControlEx.H_LabelEx();
@@ -265,6 +272,7 @@
             h_LabelEx39 = new H_ControlEx.H_LabelEx();
             HTextBoxExFamilyName = new H_ControlEx.H_TextBoxEx();
             HGroupBoxExPunishment = new GroupBox();
+            AddHGroupBoxExPunishment = new H_ControlEx.H_ButtonEx();
             h_LabelEx89 = new H_ControlEx.H_LabelEx();
             h_LabelEx90 = new H_ControlEx.H_LabelEx();
             h_LabelEx91 = new H_ControlEx.H_LabelEx();
@@ -345,6 +353,7 @@
             ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
             ToolStripMenuItemExit.Size = new Size(195, 22);
             ToolStripMenuItemExit.Text = "アプリケーションを終了する";
+            ToolStripMenuItemExit.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemHelp
             // 
@@ -392,7 +401,7 @@
             ButtonUpdate.TabIndex = 10;
             ButtonUpdate.Text = "UPDATE";
             ButtonUpdate.UseVisualStyleBackColor = true;
-            ButtonUpdate.Click += ButtonUpdate_Click;
+            ButtonUpdate.Click += Button_Click;
             // 
             // HTableLayoutPanelExMiddle
             // 
@@ -486,6 +495,7 @@
             // 
             // HGroupBoxExExperience
             // 
+            HGroupBoxExExperience.Controls.Add(AddHGroupBoxExExperience);
             HGroupBoxExExperience.Controls.Add(h_LabelEx92);
             HGroupBoxExExperience.Controls.Add(h_LabelEx28);
             HGroupBoxExExperience.Controls.Add(h_LabelEx32);
@@ -515,6 +525,17 @@
             HGroupBoxExExperience.TabIndex = 6;
             HGroupBoxExExperience.TabStop = false;
             HGroupBoxExExperience.Text = "過去に運転経験のある自動車の種類・経験期間等";
+            // 
+            // AddHGroupBoxExExperience
+            // 
+            AddHGroupBoxExExperience.Location = new Point(824, 50);
+            AddHGroupBoxExExperience.Name = "AddHGroupBoxExExperience";
+            AddHGroupBoxExExperience.Size = new Size(68, 23);
+            AddHGroupBoxExExperience.TabIndex = 62;
+            AddHGroupBoxExExperience.Text = "追加";
+            AddHGroupBoxExExperience.TextDirectionVertical = "";
+            AddHGroupBoxExExperience.UseVisualStyleBackColor = true;
+            AddHGroupBoxExExperience.Click += Button_Click;
             // 
             // h_LabelEx92
             // 
@@ -721,6 +742,7 @@
             // 
             // HGroupBoxExHistory
             // 
+            HGroupBoxExHistory.Controls.Add(AddHGroupBoxExHistory);
             HGroupBoxExHistory.Controls.Add(h_LabelEx27);
             HGroupBoxExHistory.Controls.Add(HTextBoxExHistoryNote3);
             HGroupBoxExHistory.Controls.Add(HDateTimeExHistoryDate3);
@@ -740,6 +762,17 @@
             HGroupBoxExHistory.TabIndex = 5;
             HGroupBoxExHistory.TabStop = false;
             HGroupBoxExHistory.Text = "職業履歴";
+            // 
+            // AddHGroupBoxExHistory
+            // 
+            AddHGroupBoxExHistory.Location = new Point(824, 48);
+            AddHGroupBoxExHistory.Name = "AddHGroupBoxExHistory";
+            AddHGroupBoxExHistory.Size = new Size(68, 23);
+            AddHGroupBoxExHistory.TabIndex = 44;
+            AddHGroupBoxExHistory.Text = "追加";
+            AddHGroupBoxExHistory.TextDirectionVertical = "";
+            AddHGroupBoxExHistory.UseVisualStyleBackColor = true;
+            AddHGroupBoxExHistory.Click += Button_Click;
             // 
             // h_LabelEx27
             // 
@@ -1519,6 +1552,7 @@
             // 
             // HGroupBoxProper
             // 
+            HGroupBoxProper.Controls.Add(AddHGroupBoxProper);
             HGroupBoxProper.Controls.Add(h_LabelEx83);
             HGroupBoxProper.Controls.Add(h_LabelEx84);
             HGroupBoxProper.Controls.Add(h_LabelEx85);
@@ -1543,6 +1577,17 @@
             HGroupBoxProper.TabIndex = 7;
             HGroupBoxProper.TabStop = false;
             HGroupBoxProper.Text = "適正診断(NASVA他)";
+            // 
+            // AddHGroupBoxProper
+            // 
+            AddHGroupBoxProper.Location = new Point(776, 48);
+            AddHGroupBoxProper.Name = "AddHGroupBoxProper";
+            AddHGroupBoxProper.Size = new Size(68, 23);
+            AddHGroupBoxProper.TabIndex = 127;
+            AddHGroupBoxProper.Text = "追加";
+            AddHGroupBoxProper.TextDirectionVertical = "";
+            AddHGroupBoxProper.UseVisualStyleBackColor = true;
+            AddHGroupBoxProper.Click += Button_Click;
             // 
             // h_LabelEx83
             // 
@@ -1713,6 +1758,7 @@
             // 
             // HGroupBoxEducate
             // 
+            HGroupBoxEducate.Controls.Add(AddHGroupBoxEducate);
             HGroupBoxEducate.Controls.Add(h_LabelEx78);
             HGroupBoxEducate.Controls.Add(h_LabelEx76);
             HGroupBoxEducate.Controls.Add(h_LabelEx75);
@@ -1735,6 +1781,17 @@
             HGroupBoxEducate.TabIndex = 6;
             HGroupBoxEducate.TabStop = false;
             HGroupBoxEducate.Text = "社内教育の実施記録";
+            // 
+            // AddHGroupBoxEducate
+            // 
+            AddHGroupBoxEducate.Location = new Point(656, 48);
+            AddHGroupBoxEducate.Name = "AddHGroupBoxEducate";
+            AddHGroupBoxEducate.Size = new Size(68, 23);
+            AddHGroupBoxEducate.TabIndex = 120;
+            AddHGroupBoxEducate.Text = "追加";
+            AddHGroupBoxEducate.TextDirectionVertical = "";
+            AddHGroupBoxEducate.UseVisualStyleBackColor = true;
+            AddHGroupBoxEducate.Click += Button_Click;
             // 
             // h_LabelEx78
             // 
@@ -1888,6 +1945,7 @@
             // 
             // HGroupBoxExCarViolate
             // 
+            HGroupBoxExCarViolate.Controls.Add(AddHGroupBoxExCarViolate);
             HGroupBoxExCarViolate.Controls.Add(HTextBoxExCarViolatePlace3);
             HGroupBoxExCarViolate.Controls.Add(HTextBoxExCarViolatePlace2);
             HGroupBoxExCarViolate.Controls.Add(HTextBoxExCarViolatePlace1);
@@ -1912,6 +1970,17 @@
             HGroupBoxExCarViolate.TabIndex = 5;
             HGroupBoxExCarViolate.TabStop = false;
             HGroupBoxExCarViolate.Text = "業務上の交通違反歴";
+            // 
+            // AddHGroupBoxExCarViolate
+            // 
+            AddHGroupBoxExCarViolate.Location = new Point(776, 48);
+            AddHGroupBoxExCarViolate.Name = "AddHGroupBoxExCarViolate";
+            AddHGroupBoxExCarViolate.Size = new Size(68, 23);
+            AddHGroupBoxExCarViolate.TabIndex = 106;
+            AddHGroupBoxExCarViolate.Text = "追加";
+            AddHGroupBoxExCarViolate.TextDirectionVertical = "";
+            AddHGroupBoxExCarViolate.UseVisualStyleBackColor = true;
+            AddHGroupBoxExCarViolate.Click += Button_Click;
             // 
             // HTextBoxExCarViolatePlace3
             // 
@@ -2103,6 +2172,7 @@
             // 
             // HGroupBoxExMedical
             // 
+            HGroupBoxExMedical.Controls.Add(AddHGroupBoxExMedical);
             HGroupBoxExMedical.Controls.Add(HTextBoxExMedicalExaminationNote3);
             HGroupBoxExMedical.Controls.Add(HTextBoxExMedicalExaminationNote2);
             HGroupBoxExMedical.Controls.Add(HTextBoxExMedicalExaminationNote1);
@@ -2127,6 +2197,17 @@
             HGroupBoxExMedical.TabIndex = 3;
             HGroupBoxExMedical.TabStop = false;
             HGroupBoxExMedical.Text = "健康状態(健康診断等の実施結果による特記すべき事項)　※運転の可否に十分に留意すること";
+            // 
+            // AddHGroupBoxExMedical
+            // 
+            AddHGroupBoxExMedical.Location = new Point(776, 48);
+            AddHGroupBoxExMedical.Name = "AddHGroupBoxExMedical";
+            AddHGroupBoxExMedical.Size = new Size(68, 23);
+            AddHGroupBoxExMedical.TabIndex = 84;
+            AddHGroupBoxExMedical.Text = "追加";
+            AddHGroupBoxExMedical.TextDirectionVertical = "";
+            AddHGroupBoxExMedical.UseVisualStyleBackColor = true;
+            AddHGroupBoxExMedical.Click += Button_Click;
             // 
             // HTextBoxExMedicalExaminationNote3
             // 
@@ -2462,6 +2543,7 @@
             // 
             // HGroupBoxExFamily
             // 
+            HGroupBoxExFamily.Controls.Add(AddHGroupBoxExFamily);
             HGroupBoxExFamily.Controls.Add(HTextBoxExUrgentTelephoneMethod);
             HGroupBoxExFamily.Controls.Add(HTextBoxExUrgentTelephoneNumber);
             HGroupBoxExFamily.Controls.Add(h_LabelEx49);
@@ -2497,6 +2579,17 @@
             HGroupBoxExFamily.TabIndex = 1;
             HGroupBoxExFamily.TabStop = false;
             HGroupBoxExFamily.Text = "家族構成";
+            // 
+            // AddHGroupBoxExFamily
+            // 
+            AddHGroupBoxExFamily.Location = new Point(772, 48);
+            AddHGroupBoxExFamily.Name = "AddHGroupBoxExFamily";
+            AddHGroupBoxExFamily.Size = new Size(68, 23);
+            AddHGroupBoxExFamily.TabIndex = 67;
+            AddHGroupBoxExFamily.Text = "追加";
+            AddHGroupBoxExFamily.TextDirectionVertical = "";
+            AddHGroupBoxExFamily.UseVisualStyleBackColor = true;
+            AddHGroupBoxExFamily.Click += Button_Click;
             // 
             // HTextBoxExUrgentTelephoneMethod
             // 
@@ -2770,6 +2863,7 @@
             // 
             // HGroupBoxExPunishment
             // 
+            HGroupBoxExPunishment.Controls.Add(AddHGroupBoxExPunishment);
             HGroupBoxExPunishment.Controls.Add(h_LabelEx89);
             HGroupBoxExPunishment.Controls.Add(h_LabelEx90);
             HGroupBoxExPunishment.Controls.Add(h_LabelEx91);
@@ -2789,6 +2883,17 @@
             HGroupBoxExPunishment.TabIndex = 0;
             HGroupBoxExPunishment.TabStop = false;
             HGroupBoxExPunishment.Text = "賞罰・譴責";
+            // 
+            // AddHGroupBoxExPunishment
+            // 
+            AddHGroupBoxExPunishment.Location = new Point(772, 48);
+            AddHGroupBoxExPunishment.Name = "AddHGroupBoxExPunishment";
+            AddHGroupBoxExPunishment.Size = new Size(68, 23);
+            AddHGroupBoxExPunishment.TabIndex = 139;
+            AddHGroupBoxExPunishment.Text = "追加";
+            AddHGroupBoxExPunishment.TextDirectionVertical = "";
+            AddHGroupBoxExPunishment.UseVisualStyleBackColor = true;
+            AddHGroupBoxExPunishment.Click += Button_Click;
             // 
             // h_LabelEx89
             // 
@@ -2923,7 +3028,8 @@
             MaximumSize = new Size(1920, 1590);
             MinimumSize = new Size(1918, 1046);
             Name = "HStaffDetail";
-            Text = "D";
+            Text = "HStaffDetail";
+            FormClosing += HStaffDetail_FormClosing;
             HTableLayoutPanelExBase.ResumeLayout(false);
             HTableLayoutPanelExBase.PerformLayout();
             MenuStrip1.ResumeLayout(false);
@@ -3226,5 +3332,13 @@
         private H_ControlEx.H_TextBoxEx HTextBoxExWelfarePensionNote;
         private H_ControlEx.H_TextBoxEx HTextBoxExHealthInsuranceNote;
         private ToolStripMenuItem ToolStripMenuItemExit;
+        private H_ControlEx.H_ButtonEx AddHGroupBoxExExperience;
+        private H_ControlEx.H_ButtonEx AddHGroupBoxExHistory;
+        private H_ControlEx.H_ButtonEx AddHGroupBoxProper;
+        private H_ControlEx.H_ButtonEx AddHGroupBoxEducate;
+        private H_ControlEx.H_ButtonEx AddHGroupBoxExCarViolate;
+        private H_ControlEx.H_ButtonEx AddHGroupBoxExMedical;
+        private H_ControlEx.H_ButtonEx AddHGroupBoxExFamily;
+        private H_ControlEx.H_ButtonEx AddHGroupBoxExPunishment;
     }
 }

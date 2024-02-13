@@ -68,5 +68,42 @@ namespace H_Dao {
             }
             return listHStaffExperienceVo;
         }
+
+        /// <summary>
+        /// InsertOneHStaffExperienceMaster
+        /// </summary>
+        /// <param name="hStaffExperienceVo"></param>
+        public void InsertOneHStaffExperienceMaster(H_StaffExperienceVo hStaffExperienceVo) {
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "INSERT INTO H_StaffExperienceMaster(StaffCode," +
+                                                                         "ExperienceKind," +
+                                                                         "ExperienceLoad," +
+                                                                         "ExperienceDuration," +
+                                                                         "ExperienceNote," +
+                                                                         "InsertPcName," +
+                                                                         "InsertYmdHms," +
+                                                                         "UpdatePcName," +
+                                                                         "DeletePcName," +
+                                                                         "DeleteYmdHms," +
+                                                                         "DeleteFlag) " +
+                                     "VALUES (" + _defaultValue.GetDefaultValue<int>(hStaffExperienceVo.StaffCode) + "," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffExperienceVo.ExperienceKind) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffExperienceVo.ExperienceLoad) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffExperienceVo.ExperienceDuration) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffExperienceVo.ExperienceNote) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffExperienceVo.InsertPcName) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffExperienceVo.InsertYmdHms) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffExperienceVo.UpdatePcName) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffExperienceVo.UpdateYmdHms) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffExperienceVo.DeletePcName) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffExperienceVo.DeleteYmdHms) + "'," +
+                                            "'False'" +
+                                            ");";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
     }
 }

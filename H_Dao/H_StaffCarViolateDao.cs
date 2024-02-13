@@ -70,5 +70,40 @@ namespace H_Dao {
             }
             return listHStaffCarViolateVo;
         }
+
+        /// <summary>
+        /// InsertOneHStaffCarViolateMaster
+        /// </summary>
+        /// <param name="hStaffCarViolateVo"></param>
+        public void InsertOneHStaffCarViolateMaster(H_StaffCarViolateVo hStaffCarViolateVo) {
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "INSERT INTO H_StaffCarViolateMaster(StaffCode," +
+                                                                         "CarViolateDate," +
+                                                                         "CarViolateContent," +
+                                                                         "CarViolatePlace," +
+                                                                         "InsertPcName," +
+                                                                         "InsertYmdHms," +
+                                                                         "UpdatePcName," +
+                                                                         "DeletePcName," +
+                                                                         "DeleteYmdHms," +
+                                                                         "DeleteFlag) " +
+                                     "VALUES (" + _defaultValue.GetDefaultValue<int>(hStaffCarViolateVo.StaffCode) + "," +
+                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffCarViolateVo.CarViolateDate) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffCarViolateVo.CarViolateContent) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffCarViolateVo.CarViolatePlace) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffCarViolateVo.InsertPcName) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffCarViolateVo.InsertYmdHms) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffCarViolateVo.UpdatePcName) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffCarViolateVo.UpdateYmdHms) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffCarViolateVo.DeletePcName) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffCarViolateVo.DeleteYmdHms) + "'," +
+                                            "'False'" +
+                                            ");";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
     }
 }

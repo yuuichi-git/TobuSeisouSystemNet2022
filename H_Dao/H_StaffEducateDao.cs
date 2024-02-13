@@ -69,5 +69,38 @@ namespace H_Dao {
             }
             return listHStaffEducateVo;
         }
+
+        /// <summary>
+        /// InsertOneHStaffEducateMaster
+        /// </summary>
+        /// <param name="hStaffEducateVo"></param>
+        public void InsertOneHStaffEducateMaster(H_StaffEducateVo hStaffEducateVo) {
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "INSERT INTO H_StaffEducateMaster(StaffCode," +
+                                                                      "EducateDate," +
+                                                                      "EducateName," +
+                                                                      "InsertPcName," +
+                                                                      "InsertYmdHms," +
+                                                                      "UpdatePcName," +
+                                                                      "DeletePcName," +
+                                                                      "DeleteYmdHms," +
+                                                                      "DeleteFlag) " +
+                                     "VALUES (" + _defaultValue.GetDefaultValue<int>(hStaffEducateVo.StaffCode) + "," +
+                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffEducateVo.EducateDate) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffEducateVo.EducateName) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffEducateVo.InsertPcName) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffEducateVo.InsertYmdHms) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffEducateVo.UpdatePcName) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffEducateVo.UpdateYmdHms) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffEducateVo.DeletePcName) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffEducateVo.DeleteYmdHms) + "'," +
+                                            "'False'" +
+                                            ");";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
     }
 }
