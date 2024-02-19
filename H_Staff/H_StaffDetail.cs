@@ -11,7 +11,7 @@ namespace H_Staff {
     public partial class HStaffDetail : Form {
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
         // ErrorProviderのインスタンスを生成
-        ErrorProvider errorProvider = new();
+        readonly ErrorProvider errorProvider = new();
         /// <summary>
         /// StaffCode
         /// </summary>
@@ -66,10 +66,12 @@ namespace H_Staff {
              * Vo
              */
             _connectionVo = connectionVo;
+            // StaffCode(新規なので０で初期化)
+            _staffCode = _hStaffMasterDao.GetStaffCode(24000);
 
             InitializeComponent();
             // アイコンを常に点滅に設定する
-            errorProvider.BlinkStyle = ErrorBlinkStyle.AlwaysBlink;
+            errorProvider.BlinkStyle = ErrorBlinkStyle.BlinkIfDifferentError;
             this.InitializeControls();
         }
 
@@ -79,8 +81,6 @@ namespace H_Staff {
         /// <param name="connectionVo"></param>
         /// <param name="staffCode"></param>
         public HStaffDetail(ConnectionVo connectionVo, int staffCode) {
-            // StaffCode
-            _staffCode = 0;
             // 修正モード
             _modeFlag = false;
             /*
@@ -99,23 +99,112 @@ namespace H_Staff {
              * Vo
              */
             _connectionVo = connectionVo;
-
+            // StaffCode
+            _staffCode = staffCode;
             InitializeComponent();
+            // アイコンを常に点滅に設定する
+            errorProvider.BlinkStyle = ErrorBlinkStyle.AlwaysBlink;
             this.InitializeControls();
-            this.ScreenOutput(_hStaffMasterDao.SelectOneHStaffMasterForStaffDetail(staffCode));
+            try {
+                this.ScreenOutput(_hStaffMasterDao.SelectOneHStaffMasterForStaffDetail(staffCode));
+            } catch (Exception exception) {
+                MessageBox.Show(exception.Message);
+            }
         }
 
         /// <summary>
         /// CreateHStaffMasterVo
         /// Voを作成してUpdateする
         /// </summary>
-        private void CreateHStaffMasterVo() {
+        private H_StaffMasterVo CreateHStaffMasterVo() {
             H_StaffMasterVo hStaffMasterVo = new();
+            /*
+             * GroupBoxBelongs
+             * 所属
+             */
+            Dictionary<string, int> dictionaryBelongs = new Dictionary<string, int> { { "役員", 10 }, { "社員", 11 }, { "アルバイト", 12 }, { "派遣", 13 }, { "新運転", 20 }, { "自運労", 21 } };
+            hStaffMasterVo.VehicleDispatchTarget = HCheckBoxExTargetFlag.Checked;
+            hStaffMasterVo.Belongs = dictionaryBelongs[HComboBoxExBelongs.Text];
+            /*
+             * GroupBoxJobForm
+             * 雇用形態
+             */
+            Dictionary<string, int> dictionaryJobForm = new Dictionary<string, int> { { "長期", 10 }, { "短期", 11 }, { "指定なし", 99 } };
+            foreach (Control control in GroupBoxJobForm.Controls) {
+                H_RadioButtonEx hRadioButtonEx = (H_RadioButtonEx)control;
+                if (hRadioButtonEx.Checked)
+                    hStaffMasterVo.JobForm = dictionaryJobForm[hRadioButtonEx.Text];
+            }
+            /*
+             * GroupBoxExOccupation
+             * 職種
+             */
+            Dictionary<string, int> dictionaryOccupation = new Dictionary<string, int> { { "事務職", 20 }, { "運転手", 10 }, { "作業員", 11 }, { "指定なし", 99 } };
+            foreach (Control control in GroupBoxExOccupation.Controls) {
+                H_RadioButtonEx hRadioButtonEx = (H_RadioButtonEx)control;
+                if (hRadioButtonEx.Checked)
+                    hStaffMasterVo.Occupation = dictionaryOccupation[hRadioButtonEx.Text];
+            }
+            /*
+             * HGroupBoxExPersonalData
+             * 個人情報
+             */
+            int.TryParse(HTextBoxExStaffCode.Text, out int _staffCode); // StaffCode
+            hStaffMasterVo.StaffCode = _staffCode;
+            int.TryParse(HTextBoxExUnionCode.Text, out int _unionCode); // 組合コード
+            hStaffMasterVo.UnionCode = _unionCode;
+            hStaffMasterVo.NameKana = HTextBoxExNameKana.Text; // カナ
+            hStaffMasterVo.Name = HTextBoxExName.Text; // 氏名
+            hStaffMasterVo.DisplayName = HTextBoxExDisplayName.Text; // 氏名
+            hStaffMasterVo.BirthDate = HDateTimeExBirthDate.GetValue(); // 生年月日
+            hStaffMasterVo.EmploymentDate = HDateTimeExEmploymentDate.GetValue(); // 雇用年月日
+            hStaffMasterVo.Gender = HComboBoxExGender.Text; // 性別
+            hStaffMasterVo.BloodType = HComboBoxExBloodType.Text; // 血液型
+            hStaffMasterVo.CurrentAddress = HTextBoxExCurrentAddress.Text; // 現住所
+            hStaffMasterVo.Remarks = HTextBoxExRemarks.Text; // その他備考
+            hStaffMasterVo.TelephoneNumber = HTextBoxExTelephoneNumber.Text; // 電話番号
+            hStaffMasterVo.CellphoneNumber = HTextBoxExCellphoneNumber.Text; // 携帯電話番号
+            hStaffMasterVo.Picture = (byte[]?)new ImageConverter().ConvertTo(HPictureBoxExStaff.Image, typeof(byte[])); // 写真
+            /*
+             * HGroupBoxExDrive
+             * 運転に関する情報
+             */
+            hStaffMasterVo.SelectionDate = HDateTimeExSelectionDate.GetValue(); // 運転手として選任された日
+            hStaffMasterVo.NotSelectionDate = HDateTimeExNotSelectionDate.GetValue(); // 運転手として選任されなくなった日
+            hStaffMasterVo.NotSelectionReason = HTextBoxExNotSelectionReason.Text; // 選任されなくなった理由
+            /*
+             * HGroupBoxExRetirement
+             * 解雇・退職の日付と理由
+             */
+            hStaffMasterVo.RetirementFlag = HCheckBoxExRetirementFlag.Checked; // 退職フラグ
+            hStaffMasterVo.RetirementDate = HDateTimeExRetirementDate.GetValue(); // 退職日
+            hStaffMasterVo.RetirementNote = HTextBoxExRetirementNote.Text; // 退職理由
+            hStaffMasterVo.DeathDate = HDateTimeExDeathDate.GetValue(); // 死亡日
+            hStaffMasterVo.DeathNote = HTextBoxExDeathNote.Text; // 死亡理由
+            /*
+             * HGroupBoxExFamily
+             * 家族構成
+             */
+            hStaffMasterVo.UrgentTelephoneNumber = HTextBoxExUrgentTelephoneNumber.Text; // 緊急連絡先
+            hStaffMasterVo.UrgentTelephoneMethod = HTextBoxExUrgentTelephoneMethod.Text; // 緊急連絡方法
+            /*
+             * HGroupBoxExInsurance
+             * 保険関係
+             */
+            hStaffMasterVo.HealthInsuranceDate = HDateTimeExHealthInsuranceDate.GetValue(); // 健康保険加入日
+            hStaffMasterVo.HealthInsuranceNumber = HComboBoxExHealthInsuranceNumber.Text; // 健康保険番号
+            hStaffMasterVo.HealthInsuranceNote = HTextBoxExHealthInsuranceNote.Text; // 健康保険備考
+            hStaffMasterVo.WelfarePensionDate = HDateTimeExWelfarePensionDate.GetValue(); // 年金保険加入日
+            hStaffMasterVo.WelfarePensionNumber = HComboBoxExWelfarePensionNumber.Text; // 年金保険番号
+            hStaffMasterVo.WelfarePensionNote = HTextBoxExWelfarePensionNote.Text; // 年金保険備考
+            hStaffMasterVo.EmploymentInsuranceDate = HDateTimeExEmploymentInsuranceDate.GetValue(); // 雇用保険加入日
+            hStaffMasterVo.EmploymentInsuranceNumber = HComboBoxExEmploymentInsuranceNumber.Text; // 雇用保険番号
+            hStaffMasterVo.EmploymentInsuranceNote = HTextBoxExEmploymentInsuranceNote.Text; // 雇用保険備考
+            hStaffMasterVo.WorkerAccidentInsuranceDate = HDateTimeExWorkerAccidentInsuranceDate.GetValue(); // 労災保険加入日
+            hStaffMasterVo.WorkerAccidentInsuranceNumber = HComboBoxExWorkerAccidentInsuranceNumber.Text; // 労災保険番号
+            hStaffMasterVo.WorkerAccidentInsuranceNote = HTextBoxExWorkerAccidentInsuranceNote.Text; // 労災保険備考
 
-
-
-
-
+            return hStaffMasterVo;
         }
 
         /// <summary>
@@ -125,28 +214,53 @@ namespace H_Staff {
         /// <param name="e"></param>
         private void Button_Click(object sender, EventArgs e) {
             switch (((Button)sender).Name) {
+                /*
+                 * INSERT/UPDATE
+                 */
                 case "ButtonUpdate":
-
-
+                    try {
+                        int.TryParse(HTextBoxExStaffCode.Text, out int staffCode);
+                        if (_hStaffMasterDao.ExistenceHStaffMasterRecord(staffCode)) {
+                            // UPDATE
+                            _hStaffMasterDao.UpdateOneHStaffMaster(CreateHStaffMasterVo());
+                            _updateFlag = false;
+                            this.Close();
+                        } else {
+                            // INSERT
+                            _hStaffMasterDao.InsertOneHStaffMaster(CreateHStaffMasterVo());
+                            _updateFlag = false;
+                            this.Close();
+                        }
+                    } catch (Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
                     break;
                 case "AddHGroupBoxExHistory": // 職業履歴
                     try {
                         // 更新
                         H_StaffHistoryVo hStaffHistoryVo = new();
+                        int.TryParse(HTextBoxExStaffCode.Text, out int _staffCode); // StaffCode
+                        hStaffHistoryVo.StaffCode = _staffCode;
                         hStaffHistoryVo.HistoryDate = HDateTimeExHistoryDate.GetValue();
-                        hStaffHistoryVo.HistoryNote = HTextBoxExHistoryNote.Text;
+                        hStaffHistoryVo.CompanyName = HTextBoxExCompanyName.Text;
                         /*
                          * Validation
                          */
-                        if (HDateTimeExHistoryDate.Value.Date == _defaultDateTime.Date) {
-                            errorProvider.SetError(HDateTimeExHistoryDate, "入社日を入力して下さい。");
+                        if (HDateTimeExHistoryDate.GetValue().Date == _defaultDateTime.Date) {
+                            errorProvider.SetError(HDateTimeExHistoryDate, "入社日");
                             break;
-                        } else if (HTextBoxExHistoryNote.Text == string.Empty) {
-                            errorProvider.SetError(HTextBoxExHistoryNote, "在籍記録を入力して下さい。");
+                        } else if (HTextBoxExCompanyName.Text.Length == 0) {
+                            errorProvider.SetError(HTextBoxExCompanyName, "在籍記録");
                             break;
                         }
                         _hStaffHistoryDao.InsertOneHStaffHistoryMaster(hStaffHistoryVo);
                         ToolStripStatusLabelDetail.Text = "AddHGroupBoxExHistoryを更新しました。";
+                        /*
+                         * 更新後の初期化
+                         */
+                        errorProvider.Clear();
+                        HDateTimeExHistoryDate.SetBlank();
+                        HTextBoxExCompanyName.Text = string.Empty;
                         // 再表示
                         this.ScreenOutputHGroupBoxExHistory(_hStaffHistoryDao.SelectOneHStaffHistoryMaster(_staffCode));
                         _updateFlag = true;
@@ -159,6 +273,8 @@ namespace H_Staff {
                     try {
                         // 更新
                         H_StaffExperienceVo hStaffExperienceVo = new();
+                        int.TryParse(HTextBoxExStaffCode.Text, out int _staffCode); // StaffCode
+                        hStaffExperienceVo.StaffCode = _staffCode;
                         hStaffExperienceVo.ExperienceKind = HComboBoxExExperienceKind.Text;
                         hStaffExperienceVo.ExperienceLoad = HTextBoxExExperienceLoad.Text;
                         hStaffExperienceVo.ExperienceDuration = HTextBoxExExperienceDuration.Text;
@@ -166,18 +282,26 @@ namespace H_Staff {
                         /*
                          * Validation
                          */
-                        if (HComboBoxExExperienceKind.Text == string.Empty) {
-                            errorProvider.SetError(HComboBoxExExperienceKind, "");
+                        if (HComboBoxExExperienceKind.Text.Length == 0) {
+                            errorProvider.SetError(HComboBoxExExperienceKind, "過去に運転経験のある自動車の種類");
                             break;
-                        } else if (HTextBoxExExperienceLoad.Text == string.Empty) {
-                            errorProvider.SetError(HTextBoxExExperienceLoad, "");
+                        } else if (HTextBoxExExperienceLoad.Text.Length == 0) {
+                            errorProvider.SetError(HTextBoxExExperienceLoad, "過去に運転経験のある自動車の積載量");
                             break;
-                        } else if (HTextBoxExExperienceDuration.Text == string.Empty) {
-                            errorProvider.SetError(HTextBoxExExperienceDuration, "");
+                        } else if (HTextBoxExExperienceDuration.Text.Length == 0) {
+                            errorProvider.SetError(HTextBoxExExperienceDuration, "過去に運転経験のある自動車の経験期間");
                             break;
                         }
                         _hStaffExperienceDao.InsertOneHStaffExperienceMaster(hStaffExperienceVo);
                         ToolStripStatusLabelDetail.Text = "AddHGroupBoxExExperienceを更新しました。";
+                        /*
+                         * 更新後の初期化
+                         */
+                        errorProvider.Clear();
+                        HComboBoxExExperienceKind.Text = string.Empty;
+                        HTextBoxExExperienceLoad.Text = string.Empty;
+                        HTextBoxExExperienceDuration.Text = string.Empty;
+                        HTextBoxExExperienceNote.Text = string.Empty;
                         // 再表示
                         this.ScreenOutputHGroupBoxExExperience(_hStaffExperienceDao.SelectOneHStaffExperienceMaster(_staffCode));
                         _updateFlag = true;
@@ -190,24 +314,33 @@ namespace H_Staff {
                     try {
                         // 更新
                         H_StaffFamilyVo hStaffFamilyVo = new();
+                        int.TryParse(HTextBoxExStaffCode.Text, out int _staffCode); // StaffCode
+                        hStaffFamilyVo.StaffCode = _staffCode;
                         hStaffFamilyVo.FamilyName = HTextBoxExFamilyName.Text;
                         hStaffFamilyVo.FamilyBirthDay = HDateTimeExFamilyBirthDate.GetValue();
                         hStaffFamilyVo.FamilyRelationship = HComboBoxExFamilyRelationship.Text;
                         /*
                          * Validation
                          */
-                        if (HTextBoxExFamilyName.Text == string.Empty) {
-                            errorProvider.SetError(HTextBoxExFamilyName, "");
+                        if (HTextBoxExFamilyName.Text.Length == 0) {
+                            errorProvider.SetError(HTextBoxExFamilyName, "家族氏名");
                             break;
-                        } else if (HDateTimeExFamilyBirthDate.Value.Date == _defaultDateTime.Date) {
-                            errorProvider.SetError(HDateTimeExFamilyBirthDate, "");
+                        } else if (HDateTimeExFamilyBirthDate.GetValue().Date == _defaultDateTime.Date) {
+                            errorProvider.SetError(HDateTimeExFamilyBirthDate, "生年月日");
                             break;
-                        } else if (HComboBoxExFamilyRelationship.Text == string.Empty) {
-                            errorProvider.SetError(HComboBoxExFamilyRelationship, "");
+                        } else if (HComboBoxExFamilyRelationship.Text.Length == 0) {
+                            errorProvider.SetError(HComboBoxExFamilyRelationship, "従業員との関係");
                             break;
                         }
                         _hStaffFamilyDao.InsertOneHStaffFamilyMaster(hStaffFamilyVo);
                         ToolStripStatusLabelDetail.Text = "AddHGroupBoxExFamilyを更新しました。";
+                        /*
+                         * 更新後の初期化
+                         */
+                        errorProvider.Clear();
+                        HTextBoxExFamilyName.Text = string.Empty;
+                        HDateTimeExFamilyBirthDate.SetBlank();
+                        HComboBoxExFamilyRelationship.Text = string.Empty;
                         // 再表示
                         this.ScreenOutputHGroupBoxExFamily(_hStaffFamilyDao.SelectOneHStaffFamilyMaster(_staffCode));
                         _updateFlag = true;
@@ -220,21 +353,30 @@ namespace H_Staff {
                     try {
                         // 更新
                         H_StaffMedicalExaminationVo hStaffMedicalExaminationVo = new();
+                        int.TryParse(HTextBoxExStaffCode.Text, out int _staffCode); // StaffCode
+                        hStaffMedicalExaminationVo.StaffCode = _staffCode;
                         hStaffMedicalExaminationVo.MedicalExaminationDate = HDateTimeExMedicalExaminationDate.GetValue();
                         hStaffMedicalExaminationVo.MedicalInstitutionName = HComboBoxExMedicalInstitutionName.Text;
                         hStaffMedicalExaminationVo.MedicalExaminationNote = HTextBoxExMedicalExaminationNote.Text;
                         /*
                          * Validation
                          */
-                        if (HDateTimeExMedicalExaminationDate.Value.Date == _defaultDateTime.Date) {
-                            errorProvider.SetError(HDateTimeExMedicalExaminationDate, "");
+                        if (HDateTimeExMedicalExaminationDate.GetValue().Date == _defaultDateTime.Date) {
+                            errorProvider.SetError(HDateTimeExMedicalExaminationDate, "健診実施日");
                             break;
-                        } else if (HComboBoxExMedicalInstitutionName.Text == string.Empty) {
-                            errorProvider.SetError(HComboBoxExMedicalInstitutionName, "");
+                        } else if (HComboBoxExMedicalInstitutionName.Text.Length == 0) {
+                            errorProvider.SetError(HComboBoxExMedicalInstitutionName, "受診機関名");
                             break;
                         }
                         _hStaffMedicalExaminationDao.InsertOneHStaffMedicalExaminationMaster(hStaffMedicalExaminationVo);
                         ToolStripStatusLabelDetail.Text = "AddHGroupBoxExMedicalを更新しました。";
+                        /*
+                         * 更新後の初期化
+                         */
+                        errorProvider.Clear();
+                        HDateTimeExMedicalExaminationDate.SetBlank();
+                        HComboBoxExMedicalInstitutionName.Text = string.Empty;
+                        HTextBoxExMedicalExaminationNote.Text = string.Empty;
                         // 再表示
                         this.ScreenOutputHGroupBoxExMedical(_hStaffMedicalExaminationDao.SelectOneHStaffMedicalExaminationMaster(_staffCode));
                         _updateFlag = true;
@@ -247,21 +389,30 @@ namespace H_Staff {
                     try {
                         // 更新
                         H_StaffCarViolateVo hStaffCarViolateVo = new();
+                        int.TryParse(HTextBoxExStaffCode.Text, out int _staffCode); // StaffCode
+                        hStaffCarViolateVo.StaffCode = _staffCode;
                         hStaffCarViolateVo.CarViolateDate = HDateTimeExCarViolateDate.GetValue();
                         hStaffCarViolateVo.CarViolateContent = HComboBoxExCarViolateContent.Text;
                         hStaffCarViolateVo.CarViolatePlace = HTextBoxExCarViolatePlace.Text;
                         /*
                          * Validation
                          */
-                        if (HDateTimeExCarViolateDate.Value.Date == _defaultDateTime.Date) {
-                            errorProvider.SetError(HDateTimeExCarViolateDate, "");
+                        if (HDateTimeExCarViolateDate.GetValue().Date == _defaultDateTime.Date) {
+                            errorProvider.SetError(HDateTimeExCarViolateDate, "違反年月日");
                             break;
-                        } else if (HComboBoxExCarViolateContent.Text == string.Empty) {
-                            errorProvider.SetError(HComboBoxExCarViolateContent, "");
+                        } else if (HComboBoxExCarViolateContent.Text.Length == 0) {
+                            errorProvider.SetError(HComboBoxExCarViolateContent, "違反名");
                             break;
                         }
                         _hStaffCarViolateDao.InsertOneHStaffCarViolateMaster(hStaffCarViolateVo);
                         ToolStripStatusLabelDetail.Text = "AddHGroupBoxExCarViolateを更新しました。";
+                        /*
+                         * 更新後の初期化
+                         */
+                        errorProvider.Clear();
+                        HDateTimeExCarViolateDate.SetBlank();
+                        HComboBoxExCarViolateContent.Text = string.Empty;
+                        HTextBoxExCarViolatePlace.Text = string.Empty;
                         // 再表示
                         this.ScreenOutputHGroupBoxExCarViolate(_hStaffCarViolateDao.SelectOneHStaffCarViolateMaster(_staffCode));
                         _updateFlag = true;
@@ -274,20 +425,28 @@ namespace H_Staff {
                     try {
                         // 更新
                         H_StaffEducateVo hStaffEducateVo = new();
+                        int.TryParse(HTextBoxExStaffCode.Text, out int _staffCode); // StaffCode
+                        hStaffEducateVo.StaffCode = _staffCode;
                         hStaffEducateVo.EducateDate = HDateTimeExEducateDate.GetValue();
                         hStaffEducateVo.EducateName = HComboBoxExEducateName.Text;
                         /*
                          * Validation
                          */
-                        if (HDateTimeExEducateDate.Value.Date == _defaultDateTime.Date) {
-                            errorProvider.SetError(HDateTimeExEducateDate, "");
+                        if (HDateTimeExEducateDate.GetValue().Date == _defaultDateTime.Date) {
+                            errorProvider.SetError(HDateTimeExEducateDate, "教育を受けた年月日");
                             break;
-                        } else if (HComboBoxExEducateName.Text == string.Empty) {
-                            errorProvider.SetError(HComboBoxExEducateName, "");
+                        } else if (HComboBoxExEducateName.Text.Length == 0) {
+                            errorProvider.SetError(HComboBoxExEducateName, "教育名称");
                             break;
                         }
                         _hStaffEducateDao.InsertOneHStaffEducateMaster(hStaffEducateVo);
                         ToolStripStatusLabelDetail.Text = "AddHGroupBoxEducateを更新しました。";
+                        /*
+                         * 更新後の初期化
+                         */
+                        errorProvider.Clear();
+                        HDateTimeExEducateDate.SetBlank();
+                        HComboBoxExEducateName.Text = string.Empty;
                         // 再表示
                         this.ScreenOutputHGroupBoxEducate(_hStaffEducateDao.SelectOneHStaffEducateMaster(_staffCode));
                         _updateFlag = true;
@@ -300,24 +459,33 @@ namespace H_Staff {
                     try {
                         // 更新
                         H_StaffProperVo hStaffProperVo = new();
+                        int.TryParse(HTextBoxExStaffCode.Text, out int _staffCode); // StaffCode
+                        hStaffProperVo.StaffCode = _staffCode;
                         hStaffProperVo.ProperKind = HComboBoxExProperKind.Text;
                         hStaffProperVo.ProperDate = HDateTimeExProperDate.GetValue();
                         hStaffProperVo.ProperNote = HTextBoxExProperNote.Text;
                         /*
                         * Validation
                         */
-                        if (HComboBoxExProperKind.Text == string.Empty) {
-                            errorProvider.SetError(HComboBoxExProperKind, "");
+                        if (HComboBoxExProperKind.Text.Length == 0) {
+                            errorProvider.SetError(HComboBoxExProperKind, "診断の種類");
                             break;
-                        } else if (HDateTimeExProperDate.Value.Date == _defaultDateTime.Date) {
-                            errorProvider.SetError(HDateTimeExProperDate, "");
+                        } else if (HDateTimeExProperDate.GetValue().Date == _defaultDateTime.Date) {
+                            errorProvider.SetError(HDateTimeExProperDate, "診断年月日");
                             break;
-                        } else if (HTextBoxExProperNote.Text == string.Empty) {
+                        } else if (HTextBoxExProperNote.Text.Length == 0) {
                             errorProvider.SetError(HTextBoxExProperNote, "");
                             break;
                         }
                         _hStaffProperDao.InsertOneHStaffProperMaster(hStaffProperVo);
                         ToolStripStatusLabelDetail.Text = "AddHGroupBoxProperを更新しました。";
+                        /*
+                         * 更新後の初期化
+                         */
+                        errorProvider.Clear();
+                        HComboBoxExProperKind.Text = string.Empty;
+                        HDateTimeExProperDate.SetBlank();
+                        HTextBoxExProperNote.Text = string.Empty;
                         // 再表示
                         this.ScreenOutputHGroupBoxProper(_hStaffProperDao.SelectOneHStaffProperMaster(_staffCode));
                         _updateFlag = true;
@@ -331,20 +499,28 @@ namespace H_Staff {
                     try {
                         // 更新
                         H_StaffPunishmentVo hStaffPunishmentVo = new();
+                        int.TryParse(HTextBoxExStaffCode.Text, out int _staffCode); // StaffCode
+                        hStaffPunishmentVo.StaffCode = _staffCode;
                         hStaffPunishmentVo.PunishmentDate = HDateTimeExPunishmentDate.GetValue();
                         hStaffPunishmentVo.PunishmentNote = HTextBoxExPunishmentNote.Text;
                         /*
                          * Validation
                          */
-                        if (HDateTimeExPunishmentDate.Value.Date == _defaultDateTime.Date) {
-                            errorProvider.SetError(HDateTimeExPunishmentDate, "");
+                        if (HDateTimeExPunishmentDate.GetValue().Date == _defaultDateTime.Date) {
+                            errorProvider.SetError(HDateTimeExPunishmentDate, "年月日");
                             break;
-                        } else if (HTextBoxExPunishmentNote.Text == string.Empty) {
-                            errorProvider.SetError(HTextBoxExPunishmentNote, "");
+                        } else if (HTextBoxExPunishmentNote.Text.Length == 0) {
+                            errorProvider.SetError(HTextBoxExPunishmentNote, "備考");
                             break;
                         }
                         _hStaffPunishmentDao.InsertOneHStaffPunishmentMasters(hStaffPunishmentVo);
                         ToolStripStatusLabelDetail.Text = "AddHGroupBoxExPunishmentを更新しました。";
+                        /*
+                         * 更新後の初期化
+                         */
+                        errorProvider.Clear();
+                        HDateTimeExPunishmentDate.SetBlank();
+                        HTextBoxExPunishmentNote.Text = string.Empty;
                         // 再表示
                         this.ScreenOutputHGroupBoxExPunishment(_hStaffPunishmentDao.SelectOneHStaffPunishmentMaster(_staffCode));
                         _updateFlag = true;
@@ -363,6 +539,18 @@ namespace H_Staff {
         /// <param name="e"></param>
         private void ToolStripMenuItem_Click(object sender, EventArgs e) {
             switch (((ToolStripMenuItem)sender).Name) {
+                /*
+                 * Picture クリップボード
+                 */
+                case "ToolStripMenuItemPictureClipCopy":
+                    HPictureBoxExStaff.Image = (Bitmap)Clipboard.GetDataObject().GetData(DataFormats.Bitmap);
+                    break;
+                /*
+                 * Picture 削除
+                 */
+                case "ToolStripMenuItemPictureDelete":
+                    HPictureBoxExStaff.Image = null;
+                    break;
                 /*
                  * アプリケーションを終了する
                  */
@@ -400,6 +588,9 @@ namespace H_Staff {
                 case 11:
                     HRadioButtonExShortTarm.Checked = true;
                     break;
+                case 99:
+                    HRadioButtonExNone1.Checked = true;
+                    break;
             }
             /*
              * GroupBoxExOccupation
@@ -436,7 +627,7 @@ namespace H_Staff {
             HTextBoxExRemarks.Text = hStaffMasterVo.Remarks;
             HTextBoxExTelephoneNumber.Text = hStaffMasterVo.TelephoneNumber;
             HTextBoxExCellphoneNumber.Text = hStaffMasterVo.CellphoneNumber;
-            HPictureBoxExStaff.Image = (Image?)new ImageConverter().ConvertFrom(hStaffMasterVo.Picture);
+            HPictureBoxExStaff.Image = hStaffMasterVo.Picture.Length != 0 ? (Image?)new ImageConverter().ConvertFrom(hStaffMasterVo.Picture) : null;
             /*
              * HGroupBoxExDrive
              * 運転に関する情報
@@ -532,14 +723,16 @@ namespace H_Staff {
         /// </summary>
         private void ScreenOutputHGroupBoxExHistory(List<H_StaffHistoryVo> listHStaffHistoryVo) {
             Dictionary<int, H_DateTimePickerEx> dictionaryHistoryDate = new Dictionary<int, H_DateTimePickerEx> { { 0, HDateTimeExHistoryDate1 }, { 1, HDateTimeExHistoryDate2 }, { 2, HDateTimeExHistoryDate3 } };
-            Dictionary<int, H_TextBoxEx> dictionaryHistoryNote = new Dictionary<int, H_TextBoxEx> { { 0, HTextBoxExHistoryNote1 }, { 1, HTextBoxExHistoryNote2 }, { 2, HTextBoxExHistoryNote3 } };
+            Dictionary<int, H_TextBoxEx> dictionaryHistoryNote = new Dictionary<int, H_TextBoxEx> { { 0, HTextBoxExCompanyName1 }, { 1, HTextBoxExCompanyName2 }, { 2, HTextBoxExCompanyName3 } };
             HDateTimeExHistoryDate.SetBlank();
-            HTextBoxExHistoryNote.Text = string.Empty;
+            HTextBoxExCompanyName.Text = string.Empty;
             int countHGroupBoxExHistory = 0;
             foreach (H_StaffHistoryVo hStaffHistoryVo in listHStaffHistoryVo) {
                 dictionaryHistoryDate[countHGroupBoxExHistory].SetValue(hStaffHistoryVo.HistoryDate);
-                dictionaryHistoryNote[countHGroupBoxExHistory].Text = hStaffHistoryVo.HistoryNote;
+                dictionaryHistoryNote[countHGroupBoxExHistory].Text = hStaffHistoryVo.CompanyName;
                 countHGroupBoxExHistory++;
+                if (countHGroupBoxExHistory > 2)
+                    break;
             }
         }
 
@@ -562,6 +755,8 @@ namespace H_Staff {
                 dictionaryExperienceDuration[countHGroupBoxExExperience].Text = hStaffExperienceVo.ExperienceDuration;
                 dictionaryExperienceNote[countHGroupBoxExExperience].Text += hStaffExperienceVo.ExperienceNote;
                 countHGroupBoxExExperience++;
+                if (countHGroupBoxExExperience > 2)
+                    break;
             }
         }
 
@@ -581,6 +776,8 @@ namespace H_Staff {
                 dictionaryFamilyBirthDate[countHGroupBoxExFamily].SetValue(hStaffFamilyVo.FamilyBirthDay);
                 dictionaryFamilyRelationship[countHGroupBoxExFamily].Text = hStaffFamilyVo.FamilyRelationship;
                 countHGroupBoxExFamily++;
+                if (countHGroupBoxExFamily > 2)
+                    break;
             }
 
         }
@@ -601,6 +798,8 @@ namespace H_Staff {
                 dictionaryMedicalName[countHGroupBoxExMedical].Text = hStaffMedicalExaminationVo.MedicalInstitutionName;
                 dictionaryMedicalNote[countHGroupBoxExMedical].Text += hStaffMedicalExaminationVo.MedicalExaminationNote;
                 countHGroupBoxExMedical++;
+                if (countHGroupBoxExMedical > 2)
+                    break;
             }
         }
 
@@ -620,6 +819,8 @@ namespace H_Staff {
                 dictionaryCarViolateContent[countHGroupBoxExCarViolate].Text = hStaffCarViolateVo.CarViolateContent;
                 dictionaryCarViolatePlace[countHGroupBoxExCarViolate].Text += hStaffCarViolateVo.CarViolatePlace;
                 countHGroupBoxExCarViolate++;
+                if (countHGroupBoxExCarViolate > 2)
+                    break;
             }
         }
 
@@ -636,6 +837,8 @@ namespace H_Staff {
                 dictionaryEducateDate[countHGroupBoxEducate].SetValue(hStaffEducateVo.EducateDate);
                 dictionaryEducateName[countHGroupBoxEducate].Text = hStaffEducateVo.EducateName;
                 countHGroupBoxEducate++;
+                if (countHGroupBoxEducate > 2)
+                    break;
             }
         }
 
@@ -655,6 +858,8 @@ namespace H_Staff {
                 dictionaryProperDate[countHGroupBoxProper].SetValue(hStaffProperVo.ProperDate);
                 dictionaryProperNote[countHGroupBoxProper].Text = hStaffProperVo.ProperNote;
                 countHGroupBoxProper++;
+                if (countHGroupBoxProper > 2)
+                    break;
             }
         }
 
@@ -671,6 +876,8 @@ namespace H_Staff {
                 dictionaryPunishmentDate[countHGroupBoxExPunishment].SetValue(hStaffPunishmentVo.PunishmentDate);
                 dictionaryPunishmentNote[countHGroupBoxExPunishment].Text = hStaffPunishmentVo.PunishmentNote;
                 countHGroupBoxExPunishment++;
+                if (countHGroupBoxExPunishment > 2)
+                    break;
             }
         }
 
@@ -733,13 +940,13 @@ namespace H_Staff {
              * 職業履歴
              */
             HDateTimeExHistoryDate.SetBlank();
-            HTextBoxExHistoryNote.Text = string.Empty;
+            HTextBoxExCompanyName.Text = string.Empty;
             HDateTimeExHistoryDate1.SetBlank();
-            HTextBoxExHistoryNote1.Text = string.Empty;
+            HTextBoxExCompanyName1.Text = string.Empty;
             HDateTimeExHistoryDate2.SetBlank();
-            HTextBoxExHistoryNote2.Text = string.Empty;
+            HTextBoxExCompanyName2.Text = string.Empty;
             HDateTimeExHistoryDate3.SetBlank();
-            HTextBoxExHistoryNote3.Text = string.Empty;
+            HTextBoxExCompanyName3.Text = string.Empty;
             /*
              * HGroupBoxExExperience
              * 過去に運転経験のある自動車の種類・経験期間等
@@ -893,6 +1100,7 @@ namespace H_Staff {
                 case "社員":
                     HRadioButtonExLongTarm.Enabled = false;
                     HRadioButtonExShortTarm.Enabled = false;
+                    HRadioButtonExNone1.Enabled = true;
                     HRadioButtonExOfficeWork.Enabled = true;
                     HRadioButtonExDriver.Enabled = true;
                     HRadioButtonExOperator.Enabled = true;
@@ -901,14 +1109,16 @@ namespace H_Staff {
                 case "アルバイト":
                     HRadioButtonExLongTarm.Enabled = false;
                     HRadioButtonExShortTarm.Enabled = false;
-                    HRadioButtonExOfficeWork.Enabled = false;
+                    HRadioButtonExNone1.Enabled = true;
+                    HRadioButtonExOfficeWork.Enabled = true;
                     HRadioButtonExDriver.Enabled = true;
                     HRadioButtonExOperator.Enabled = true;
-                    HRadioButtonExNone2.Enabled = false;
+                    HRadioButtonExNone2.Enabled = true;
                     break;
                 case "派遣":
                     HRadioButtonExLongTarm.Enabled = false;
                     HRadioButtonExShortTarm.Enabled = false;
+                    HRadioButtonExNone1.Enabled = true;
                     HRadioButtonExOfficeWork.Enabled = false;
                     HRadioButtonExDriver.Enabled = false;
                     HRadioButtonExOperator.Enabled = true;
@@ -918,6 +1128,7 @@ namespace H_Staff {
                 case "自運労":
                     HRadioButtonExLongTarm.Enabled = true;
                     HRadioButtonExShortTarm.Enabled = true;
+                    HRadioButtonExNone1.Enabled = false;
                     HRadioButtonExOfficeWork.Enabled = false;
                     HRadioButtonExDriver.Enabled = true;
                     HRadioButtonExOperator.Enabled = true;
@@ -941,7 +1152,23 @@ namespace H_Staff {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void HStaffDetail_FormClosing(object sender, FormClosingEventArgs e) {
-
+            /*
+             * 各詳細が更新されていた場合、全てを更新しなければ終了させない
+             */
+            if (_updateFlag) {
+                MessageBox.Show("一部詳細が更新(INSERT)されています。UPDATEボタンを押下して下さい。", "メッセージ", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                e.Cancel = true;
+            }
+            DialogResult dialogResult = MessageBox.Show("アプリケーションを終了します。よろしいですか？", "メッセージ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            switch (dialogResult) {
+                case DialogResult.OK:
+                    e.Cancel = false;
+                    Dispose();
+                    break;
+                case DialogResult.Cancel:
+                    e.Cancel = true;
+                    break;
+            }
         }
     }
 }

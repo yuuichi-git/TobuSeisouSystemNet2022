@@ -25,7 +25,10 @@
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HStaffList));
             HTableLayoutPanelExBase = new H_ControlEx.H_TableLayoutPanelEx();
-            SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("resource1"));
+            SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("HTableLayoutPanelExBase.Controls"));
+            SheetViewList = SpreadList.GetSheet(0);
+            SheetViewList2 = SpreadList.GetSheet(1);
+            SheetViewList3 = SpreadList.GetSheet(2);
             StatusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             ToolStripStatusLabelDetail = new ToolStripStatusLabel();
@@ -65,9 +68,6 @@
             tabPage8 = new TabPage();
             tabPage9 = new TabPage();
             tabPage10 = new TabPage();
-            SheetViewList = SpreadList.GetSheet(0);
-            SheetViewList2 = SpreadList.GetSheet(1);
-            SheetViewList3 = SpreadList.GetSheet(2);
             HTableLayoutPanelExBase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)SpreadList).BeginInit();
             StatusStrip1.SuspendLayout();
@@ -217,7 +217,7 @@
             checkBox2.Name = "checkBox2";
             checkBox2.Size = new Size(62, 19);
             checkBox2.TabIndex = 3;
-            checkBox2.Tag = "99";
+            checkBox2.Tag = "20";
             checkBox2.Text = "事務職";
             checkBox2.UseVisualStyleBackColor = true;
             // 
@@ -457,7 +457,7 @@
             tabPage1.Padding = new Padding(3);
             tabPage1.Size = new Size(1896, 3);
             tabPage1.TabIndex = 0;
-            tabPage1.Text = "ア";
+            tabPage1.Text = "あ行";
             tabPage1.UseVisualStyleBackColor = true;
             // 
             // tabPage2
@@ -467,7 +467,7 @@
             tabPage2.Padding = new Padding(3);
             tabPage2.Size = new Size(1896, 3);
             tabPage2.TabIndex = 1;
-            tabPage2.Text = "カ";
+            tabPage2.Text = "か行";
             tabPage2.UseVisualStyleBackColor = true;
             // 
             // tabPage3
@@ -476,7 +476,7 @@
             tabPage3.Name = "tabPage3";
             tabPage3.Size = new Size(1896, 3);
             tabPage3.TabIndex = 2;
-            tabPage3.Text = "サ";
+            tabPage3.Text = "さ行";
             tabPage3.UseVisualStyleBackColor = true;
             // 
             // tabPage4
@@ -485,7 +485,7 @@
             tabPage4.Name = "tabPage4";
             tabPage4.Size = new Size(1896, 3);
             tabPage4.TabIndex = 3;
-            tabPage4.Text = "タ";
+            tabPage4.Text = "た行";
             tabPage4.UseVisualStyleBackColor = true;
             // 
             // tabPage5
@@ -494,7 +494,7 @@
             tabPage5.Name = "tabPage5";
             tabPage5.Size = new Size(1896, 3);
             tabPage5.TabIndex = 4;
-            tabPage5.Text = "ナ";
+            tabPage5.Text = "な行";
             tabPage5.UseVisualStyleBackColor = true;
             // 
             // tabPage6
@@ -503,7 +503,7 @@
             tabPage6.Name = "tabPage6";
             tabPage6.Size = new Size(1896, 3);
             tabPage6.TabIndex = 5;
-            tabPage6.Text = "ハ";
+            tabPage6.Text = "は行";
             tabPage6.UseVisualStyleBackColor = true;
             // 
             // tabPage7
@@ -512,7 +512,7 @@
             tabPage7.Name = "tabPage7";
             tabPage7.Size = new Size(1896, 3);
             tabPage7.TabIndex = 6;
-            tabPage7.Text = "マ";
+            tabPage7.Text = "ま行";
             tabPage7.UseVisualStyleBackColor = true;
             // 
             // tabPage8
@@ -521,7 +521,7 @@
             tabPage8.Name = "tabPage8";
             tabPage8.Size = new Size(1896, 3);
             tabPage8.TabIndex = 7;
-            tabPage8.Text = "ヤ";
+            tabPage8.Text = "や行";
             tabPage8.UseVisualStyleBackColor = true;
             // 
             // tabPage9
@@ -530,7 +530,7 @@
             tabPage9.Name = "tabPage9";
             tabPage9.Size = new Size(1896, 3);
             tabPage9.TabIndex = 8;
-            tabPage9.Text = "ラ";
+            tabPage9.Text = "ら行";
             tabPage9.UseVisualStyleBackColor = true;
             // 
             // tabPage10
@@ -539,7 +539,7 @@
             tabPage10.Name = "tabPage10";
             tabPage10.Size = new Size(1896, 3);
             tabPage10.TabIndex = 9;
-            tabPage10.Text = "ワ";
+            tabPage10.Text = "わ行";
             tabPage10.UseVisualStyleBackColor = true;
             // 
             // HStaffList
@@ -552,7 +552,7 @@
             MinimumSize = new Size(1918, 1046);
             Name = "HStaffList";
             Text = "H_StaffList";
-            FormClosing += H_StaffList_FormClosing;
+            FormClosing += HStaffList_FormClosing;
             HTableLayoutPanelExBase.ResumeLayout(false);
             HTableLayoutPanelExBase.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)SpreadList).EndInit();

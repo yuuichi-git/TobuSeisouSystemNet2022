@@ -7,10 +7,9 @@ using H_Common;
 
 using H_Vo;
 
-using H_Vo;
-
 namespace H_Dao {
     public class H_StaffFamilyDao {
+        private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
         private readonly DefaultValue _defaultValue = new();
         /*
          * Vo
@@ -72,27 +71,28 @@ namespace H_Dao {
         /// </summary>
         /// <param name="hStaffFamilyVo"></param>
         public void InsertOneHStaffFamilyMaster(H_StaffFamilyVo hStaffFamilyVo) {
-            var sqlCommand = _connectionVo.Connection.CreateCommand();
-            sqlCommand.CommandText = "INSERT INTO H_StaffExperienceMaster(StaffCode," +
-                                                                         "FamilyName," +
-                                                                         "FamilyBirthDay," +
-                                                                         "FamilyRelationship," +
-                                                                         "InsertPcName," +
-                                                                         "InsertYmdHms," +
-                                                                         "UpdatePcName," +
-                                                                         "DeletePcName," +
-                                                                         "DeleteYmdHms," +
-                                                                         "DeleteFlag) " +
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "INSERT INTO H_StaffFamilyMaster(StaffCode," +
+                                                                     "FamilyName," +
+                                                                     "FamilyBirthDay," +
+                                                                     "FamilyRelationship," +
+                                                                     "InsertPcName," +
+                                                                     "InsertYmdHms," +
+                                                                     "UpdatePcName," +
+                                                                     "UpdateYmdHms," +
+                                                                     "DeletePcName," +
+                                                                     "DeleteYmdHms," +
+                                                                     "DeleteFlag) " +
                                      "VALUES (" + _defaultValue.GetDefaultValue<int>(hStaffFamilyVo.StaffCode) + "," +
                                             "'" + _defaultValue.GetDefaultValue<string>(hStaffFamilyVo.FamilyName) + "'," +
                                             "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffFamilyVo.FamilyBirthDay) + "'," +
                                             "'" + _defaultValue.GetDefaultValue<string>(hStaffFamilyVo.FamilyRelationship) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffFamilyVo.InsertPcName) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffFamilyVo.InsertYmdHms) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffFamilyVo.UpdatePcName) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffFamilyVo.UpdateYmdHms) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffFamilyVo.DeletePcName) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffFamilyVo.DeleteYmdHms) + "'," +
+                                            "'" + Environment.MachineName + "'," +
+                                            "'" + DateTime.Now + "'," +
+                                            "'" + "" + "'," +
+                                            "'" + _defaultDateTime + "'," +
+                                            "'" + "" + "'," +
+                                            "'" + _defaultDateTime + "'," +
                                             "'False'" +
                                             ");";
             try {

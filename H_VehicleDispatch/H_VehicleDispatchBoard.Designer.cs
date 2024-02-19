@@ -149,7 +149,7 @@
             // ToolStripMenuItemPrintB4
             // 
             ToolStripMenuItemPrintB4.Name = "ToolStripMenuItemPrintB4";
-            ToolStripMenuItemPrintB4.Size = new Size(180, 22);
+            ToolStripMenuItemPrintB4.Size = new Size(140, 22);
             ToolStripMenuItemPrintB4.Text = "B4で印刷する";
             ToolStripMenuItemPrintB4.Click += ToolStripMenuItem_Click;
             // 

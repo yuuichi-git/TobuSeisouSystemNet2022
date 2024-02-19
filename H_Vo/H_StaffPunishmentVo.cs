@@ -41,7 +41,7 @@ namespace H_Vo {
             set => _staffCode = value;
         }
         /// <summary>
-        /// 日付
+        /// 年月日
         /// </summary>
         public DateTime PunishmentDate {
             get => _punishmentDate;

@@ -9,6 +9,7 @@ using H_Vo;
 
 namespace H_Dao {
     public class H_StaffHistoryDao {
+        private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
         private readonly DefaultValue _defaultValue = new();
         /*
          * Vo
@@ -83,12 +84,12 @@ namespace H_Dao {
                                      "VALUES (" + _defaultValue.GetDefaultValue<int>(hStaffHistoryVo.StaffCode) + "," +
                                              "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffHistoryVo.HistoryDate) + "'," +
                                              "'" + _defaultValue.GetDefaultValue<string>(hStaffHistoryVo.CompanyName) + "'," +
-                                             "'" + _defaultValue.GetDefaultValue<string>(hStaffHistoryVo.InsertPcName) + "'," +
-                                             "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffHistoryVo.InsertYmdHms) + "'," +
-                                             "'" + _defaultValue.GetDefaultValue<string>(hStaffHistoryVo.UpdatePcName) + "'," +
-                                             "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffHistoryVo.UpdateYmdHms) + "'," +
-                                             "'" + _defaultValue.GetDefaultValue<string>(hStaffHistoryVo.DeletePcName) + "'," +
-                                             "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffHistoryVo.DeleteYmdHms) + "'," +
+                                             "'" + Environment.MachineName + "'," +
+                                             "'" + DateTime.Now + "'," +
+                                             "'" + "" + "'," +
+                                             "'" + _defaultDateTime + "'," +
+                                             "'" + "" + "'," +
+                                             "'" + _defaultDateTime + "'," +
                                              "'False'" +
                                              ");";
             try {

@@ -1,6 +1,8 @@
 ﻿/*
  * 2024-02-03
  */
+using Common;
+
 using FarPoint.Win.Spread;
 
 using H_Common;
@@ -13,9 +15,9 @@ namespace H_Staff {
     public partial class HStaffList : Form {
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
         private readonly Dictionary<int, string> dictionaryBelongs = new Dictionary<int, string> { { 10, "役員" }, { 11, "社員" }, { 12, "アルバイト" }, { 13, "派遣" }, { 20, "新運転" }, { 21, "自運労" } };
-        private readonly Dictionary<int, string> dictionaryJobForm = new Dictionary<int, string> { { 10, "長期雇用" }, { 11, "手帳" }, { 12, "アルバイト" }, { 99, "" } };
+        private readonly Dictionary<int, string> dictionaryJobForm = new Dictionary<int, string> { { 10, "長期雇用" }, { 11, "手帳" }, { 99, "" } };
         private readonly Dictionary<int, string> dictionaryOccupation = new Dictionary<int, string> { { 10, "運転手" }, { 11, "作業員" }, { 20, "事務職" }, { 99, "" } };
-        private readonly Date _date = new();
+        private readonly H_Common.Date _date = new();
         private List<H_StaffMasterVo>? _listStaffMasterVo = null;
         /*
          * Dao
@@ -176,12 +178,67 @@ namespace H_Staff {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Button_Click(object sender, EventArgs e) {
+            /*
+             * SQL条件を作成する
+             * SQLを作成する際に、全てのチェック項目のチェックが外れていないかを確認する
+             */
+            bool check;
+            check = false;
+            foreach (CheckBox checkBox in GroupBox1.Controls) {
+                if (checkBox.Checked)
+                    check = true;
+            }
+            if (!check) {
+                MessageBox.Show("役職又は所属(第一条件)の全てのチェックを外す事は出来ません", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
+            check = false;
+            foreach (CheckBox checkBox in GroupBox2.Controls) {
+                if (checkBox.Checked)
+                    check = true;
+            }
+            if (!check) {
+                MessageBox.Show("雇用形態(第二条件)の全てのチェックを外す事は出来ません", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
+            check = false;
+            foreach (CheckBox checkBox in GroupBox3.Controls) {
+                if (checkBox.Checked)
+                    check = true;
+            }
+            if (!check) {
+                MessageBox.Show("職種(第三条件)の全てのチェックを外す事は出来ません", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
             switch (((Button)sender).Name) {
                 case "ButtonUpdate":
-                    _listStaffMasterVo = _hStaffMasterDao.SelectHStaffMasterForStaffList();
+                    _listStaffMasterVo = _hStaffMasterDao.SelectHStaffMasterForStaffList(CreateSqlString(GroupBox1), CreateSqlString(GroupBox2), CreateSqlString(GroupBox3));
                     this.SheetViewListOutPut();
                     break;
             }
+        }
+
+        /// <summary>
+        /// CreateSqlString
+        /// </summary>
+        /// <param name="groupBox"></param>
+        /// <returns></returns>
+        private string CreateSqlString(GroupBox groupBox) {
+            int i = 0;
+            string sql = "";
+            foreach (CheckBox checkBox in groupBox.Controls) {
+                if (checkBox.Checked) {
+                    if (i == 0) {
+                        sql += string.Concat(checkBox.Tag.ToString());
+                    } else {
+                        sql += string.Concat(",", checkBox.Tag.ToString());
+                    }
+                    i++;
+                }
+            }
+            return sql;
         }
 
         /// <summary>
@@ -213,29 +270,29 @@ namespace H_Staff {
             if (SheetViewList.Rows.Count > 0)
                 SheetViewList.RemoveRows(0, SheetViewList.Rows.Count);
             List<H_StaffMasterVo>? findListStaffMasterVo = HTabControlExKANA.SelectedTab.Text switch {
-                "ア" => _listStaffMasterVo?.FindAll(x => x.NameKana.StartsWith("ア") || x.NameKana.StartsWith("イ") || x.NameKana.StartsWith("ウ") || x.NameKana.StartsWith("エ") || x.NameKana.StartsWith("オ")),
-                "カ" => _listStaffMasterVo?.FindAll(x => x.NameKana.StartsWith("カ") || x.NameKana.StartsWith("ガ") || x.NameKana.StartsWith("キ") || x.NameKana.StartsWith("ギ") || x.NameKana.StartsWith("ク") || x.NameKana.StartsWith("グ") || x.NameKana.StartsWith("ケ") || x.NameKana.StartsWith("ゲ") || x.NameKana.StartsWith("コ") || x.NameKana.StartsWith("ゴ")),
-                "サ" => _listStaffMasterVo?.FindAll(x => x.NameKana.StartsWith("サ") || x.NameKana.StartsWith("シ") || x.NameKana.StartsWith("ス") || x.NameKana.StartsWith("セ") || x.NameKana.StartsWith("ソ")),
-                "タ" => _listStaffMasterVo?.FindAll(x => x.NameKana.StartsWith("タ") || x.NameKana.StartsWith("ダ") || x.NameKana.StartsWith("チ") || x.NameKana.StartsWith("ツ") || x.NameKana.StartsWith("テ") || x.NameKana.StartsWith("デ") || x.NameKana.StartsWith("ト") || x.NameKana.StartsWith("ド")),
-                "ナ" => _listStaffMasterVo?.FindAll(x => x.NameKana.StartsWith("ナ") || x.NameKana.StartsWith("ニ") || x.NameKana.StartsWith("ヌ") || x.NameKana.StartsWith("ネ") || x.NameKana.StartsWith("ノ")),
-                "ハ" => _listStaffMasterVo?.FindAll(x => x.NameKana.StartsWith("ハ") || x.NameKana.StartsWith("パ") || x.NameKana.StartsWith("ヒ") || x.NameKana.StartsWith("ビ") || x.NameKana.StartsWith("フ") || x.NameKana.StartsWith("ブ") || x.NameKana.StartsWith("ヘ") || x.NameKana.StartsWith("ベ") || x.NameKana.StartsWith("ホ")),
-                "マ" => _listStaffMasterVo?.FindAll(x => x.NameKana.StartsWith("マ") || x.NameKana.StartsWith("ミ") || x.NameKana.StartsWith("ム") || x.NameKana.StartsWith("メ") || x.NameKana.StartsWith("モ")),
-                "ヤ" => _listStaffMasterVo?.FindAll(x => x.NameKana.StartsWith("ヤ") || x.NameKana.StartsWith("ユ") || x.NameKana.StartsWith("ヨ")),
-                "ラ" => _listStaffMasterVo?.FindAll(x => x.NameKana.StartsWith("ラ") || x.NameKana.StartsWith("リ") || x.NameKana.StartsWith("ル") || x.NameKana.StartsWith("レ") || x.NameKana.StartsWith("ロ")),
-                "ワ" => _listStaffMasterVo?.FindAll(x => x.NameKana.StartsWith("ワ") || x.NameKana.StartsWith("ヲ") || x.NameKana.StartsWith("ン")),
+                "あ行" => _listStaffMasterVo?.FindAll(x => x.NameKana.StartsWith("ア") || x.NameKana.StartsWith("イ") || x.NameKana.StartsWith("ウ") || x.NameKana.StartsWith("エ") || x.NameKana.StartsWith("オ")),
+                "か行" => _listStaffMasterVo?.FindAll(x => x.NameKana.StartsWith("カ") || x.NameKana.StartsWith("ガ") || x.NameKana.StartsWith("キ") || x.NameKana.StartsWith("ギ") || x.NameKana.StartsWith("ク") || x.NameKana.StartsWith("グ") || x.NameKana.StartsWith("ケ") || x.NameKana.StartsWith("ゲ") || x.NameKana.StartsWith("コ") || x.NameKana.StartsWith("ゴ")),
+                "さ行" => _listStaffMasterVo?.FindAll(x => x.NameKana.StartsWith("サ") || x.NameKana.StartsWith("シ") || x.NameKana.StartsWith("ス") || x.NameKana.StartsWith("セ") || x.NameKana.StartsWith("ソ")),
+                "た行" => _listStaffMasterVo?.FindAll(x => x.NameKana.StartsWith("タ") || x.NameKana.StartsWith("ダ") || x.NameKana.StartsWith("チ") || x.NameKana.StartsWith("ツ") || x.NameKana.StartsWith("テ") || x.NameKana.StartsWith("デ") || x.NameKana.StartsWith("ト") || x.NameKana.StartsWith("ド")),
+                "な行" => _listStaffMasterVo?.FindAll(x => x.NameKana.StartsWith("ナ") || x.NameKana.StartsWith("ニ") || x.NameKana.StartsWith("ヌ") || x.NameKana.StartsWith("ネ") || x.NameKana.StartsWith("ノ")),
+                "は行" => _listStaffMasterVo?.FindAll(x => x.NameKana.StartsWith("ハ") || x.NameKana.StartsWith("パ") || x.NameKana.StartsWith("ヒ") || x.NameKana.StartsWith("ビ") || x.NameKana.StartsWith("フ") || x.NameKana.StartsWith("ブ") || x.NameKana.StartsWith("ヘ") || x.NameKana.StartsWith("ベ") || x.NameKana.StartsWith("ホ")),
+                "ま行" => _listStaffMasterVo?.FindAll(x => x.NameKana.StartsWith("マ") || x.NameKana.StartsWith("ミ") || x.NameKana.StartsWith("ム") || x.NameKana.StartsWith("メ") || x.NameKana.StartsWith("モ")),
+                "や行" => _listStaffMasterVo?.FindAll(x => x.NameKana.StartsWith("ヤ") || x.NameKana.StartsWith("ユ") || x.NameKana.StartsWith("ヨ")),
+                "ら行" => _listStaffMasterVo?.FindAll(x => x.NameKana.StartsWith("ラ") || x.NameKana.StartsWith("リ") || x.NameKana.StartsWith("ル") || x.NameKana.StartsWith("レ") || x.NameKana.StartsWith("ロ")),
+                "わ行" => _listStaffMasterVo?.FindAll(x => x.NameKana.StartsWith("ワ") || x.NameKana.StartsWith("ヲ") || x.NameKana.StartsWith("ン")),
                 _ => _listStaffMasterVo,
             };
             // 退職者
             if (!CheckBoxRetired.Checked)
                 findListStaffMasterVo = findListStaffMasterVo?.FindAll(x => x.RetirementFlag != true);
             if (findListStaffMasterVo is not null) {
-                foreach (H_StaffMasterVo hStaffMasterVo in findListStaffMasterVo) {
+                foreach (H_StaffMasterVo hStaffMasterVo in findListStaffMasterVo.OrderBy(x => x.NameKana)) {
                     SheetViewList.Rows.Add(rowCount, 1);
                     SheetViewList.RowHeader.Columns[0].Label = (rowCount + 1).ToString(); // Rowヘッダ
                     SheetViewList.Rows[rowCount].ForeColor = hStaffMasterVo.RetirementFlag ? Color.Red : Color.Black; // 退職済のレコードのForeColorをセット
-                    SheetViewList.Rows[rowCount].Height = 22; // Rowの高さ
+                    SheetViewList.Rows[rowCount].Height = 20; // Rowの高さ
                     SheetViewList.Rows[rowCount].Resizable = false; // RowのResizableを禁止
-                    SheetViewList.Cells[rowCount, colName].Tag = hStaffMasterVo;
+                    SheetViewList.Rows[rowCount].Tag = hStaffMasterVo;
                     // 所属
                     SheetViewList.Cells[rowCount, colBelongs].Value = dictionaryBelongs[hStaffMasterVo.Belongs];
                     // 雇用形態
@@ -257,7 +314,8 @@ namespace H_Staff {
                     // 雇用年月日
                     SheetViewList.Cells[rowCount, colEmploymentDate].Value = _date.GetEmploymentDate(hStaffMasterVo.EmploymentDate.Date);
                     // 勤続年数
-                    SheetViewList.Cells[rowCount, colServiceDate].Value = string.Concat(_date.GetEmploymenteYear(hStaffMasterVo.EmploymentDate.Date).ToString("#0年"), _date.GetEmploymenteMonth(hStaffMasterVo.EmploymentDate.Date).ToString("00月"));
+                    if (hStaffMasterVo.EmploymentDate.Date != _defaultDateTime.Date)
+                        SheetViewList.Cells[rowCount, colServiceDate].Value = string.Concat(_date.GetEmploymenteYear(hStaffMasterVo.EmploymentDate.Date).ToString("#0年"), _date.GetEmploymenteMonth(hStaffMasterVo.EmploymentDate.Date).ToString("00月"));
                     // 東環保研修カード
                     SheetViewList.Cells[rowCount, colToukanpoCard].Value = _hToukanpoTrainingCardDao.ExistenceToukanpoTrainingCard(hStaffMasterVo.StaffCode);
                     // 免許証期限
@@ -271,8 +329,8 @@ namespace H_Staff {
                     /*
                      * 1年以内の健康診断
                      */
-                    string medicalExaminationDate = _hStaffMedicalExaminationDao.GetMedicalExaminationDate(hStaffMasterVo.StaffCode);
-                    if (medicalExaminationDate != string.Empty) {
+                    DateTime medicalExaminationDate = _hStaffMedicalExaminationDao.GetMedicalExaminationDate(hStaffMasterVo.StaffCode);
+                    if (medicalExaminationDate != _defaultDateTime) {
                         SheetViewList.Cells[rowCount, colMedicalExaminationDate].Value = string.Concat("受診日(", medicalExaminationDate, ")");
                     } else {
                         SheetViewList.Cells[rowCount, colMedicalExaminationDate].Value = "健康診断の記録無し";
@@ -309,11 +367,11 @@ namespace H_Staff {
             sheetView.AlternatingRows.Count = 2; // 行スタイルを２行単位とします
             sheetView.AlternatingRows[0].BackColor = Color.WhiteSmoke; // 1行目の背景色を設定します
             sheetView.AlternatingRows[1].BackColor = Color.White; // 2行目の背景色を設定します
-            sheetView.ColumnHeader.Rows[0].Height = 28; // Columnヘッダの高さ
+            sheetView.ColumnHeader.Rows[0].Height = 26; // Columnヘッダの高さ
             sheetView.GrayAreaBackColor = Color.White;
             sheetView.HorizontalGridLine = new GridLine(GridLineType.None);
             sheetView.RowHeader.Columns[0].Font = new Font("Yu Gothic UI", 9); // 行ヘッダのFont
-            sheetView.RowHeader.Columns[0].Width = 50; // 行ヘッダの幅を変更します
+            sheetView.RowHeader.Columns[0].Width = 48; // 行ヘッダの幅を変更します
             sheetView.VerticalGridLine = new GridLine(GridLineType.Flat, Color.LightGray);
             sheetView.RemoveRows(0, sheetView.Rows.Count);
             return sheetView;
@@ -333,18 +391,23 @@ namespace H_Staff {
                 return;
             // Shiftが押された場合
             if ((ModifierKeys & Keys.Shift) == Keys.Shift) {
-                //var staffRegisterPaper = new StaffPaper(_connectionVo, ((ExtendsStaffMasterVo)SheetViewList.Cells[e.Row, colName].Tag).Staff_code);
-                //staffRegisterPaper.ShowDialog();
+                HStaffPaper hStaffPaper = new(_connectionVo, ((H_StaffMasterVo)SheetViewList.Rows[e.Row].Tag).StaffCode);
+                Rectangle rectangleHStaffPaper = new Desktop().GetMonitorWorkingArea(hStaffPaper, _connectionVo.Screen);
+                hStaffPaper.KeyPreview = true;
+                hStaffPaper.Location = rectangleHStaffPaper.Location;
+                hStaffPaper.Size = new Size(1920, 1080);
+                hStaffPaper.WindowState = FormWindowState.Normal;
+                hStaffPaper.Show(this);
                 return;
             }
             // 修飾キーが無い場合
-            HStaffDetail hStaffDetail = new(_connectionVo, ((H_StaffMasterVo)SheetViewList.Cells[e.Row, colName].Tag).StaffCode);
+            HStaffDetail hStaffDetail = new(_connectionVo, ((H_StaffMasterVo)SheetViewList.Rows[e.Row].Tag).StaffCode);
             Rectangle rectangleHStaffDetail = new Desktop().GetMonitorWorkingArea(hStaffDetail, _connectionVo.Screen);
             hStaffDetail.KeyPreview = true;
             hStaffDetail.Location = rectangleHStaffDetail.Location;
             hStaffDetail.Size = new Size(1920, 1080);
             hStaffDetail.WindowState = FormWindowState.Normal;
-            hStaffDetail.ShowDialog();
+            hStaffDetail.Show(this);
         }
 
         /// <summary>
@@ -352,8 +415,17 @@ namespace H_Staff {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void H_StaffList_FormClosing(object sender, FormClosingEventArgs e) {
-
+        private void HStaffList_FormClosing(object sender, FormClosingEventArgs e) {
+            DialogResult dialogResult = MessageBox.Show("アプリケーションを終了します。よろしいですか？", "メッセージ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            switch (dialogResult) {
+                case DialogResult.OK:
+                    e.Cancel = false;
+                    Dispose();
+                    break;
+                case DialogResult.Cancel:
+                    e.Cancel = true;
+                    break;
+            }
         }
     }
 }

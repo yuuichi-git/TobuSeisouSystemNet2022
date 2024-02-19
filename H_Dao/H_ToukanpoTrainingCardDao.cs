@@ -5,8 +5,6 @@ using System.Data.SqlClient;
 
 using H_Vo;
 
-using H_Vo;
-
 namespace H_Dao {
     public class H_ToukanpoTrainingCardDao {
         /*

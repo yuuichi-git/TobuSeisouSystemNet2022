@@ -7,10 +7,9 @@ using H_Common;
 
 using H_Vo;
 
-using H_Vo;
-
 namespace H_Dao {
     public class H_StaffExperienceDao {
+        private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
         private readonly DefaultValue _defaultValue = new();
         /*
          * Vo
@@ -74,7 +73,7 @@ namespace H_Dao {
         /// </summary>
         /// <param name="hStaffExperienceVo"></param>
         public void InsertOneHStaffExperienceMaster(H_StaffExperienceVo hStaffExperienceVo) {
-            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "INSERT INTO H_StaffExperienceMaster(StaffCode," +
                                                                          "ExperienceKind," +
                                                                          "ExperienceLoad," +
@@ -83,6 +82,7 @@ namespace H_Dao {
                                                                          "InsertPcName," +
                                                                          "InsertYmdHms," +
                                                                          "UpdatePcName," +
+                                                                         "UpdateYmdHms," +
                                                                          "DeletePcName," +
                                                                          "DeleteYmdHms," +
                                                                          "DeleteFlag) " +
@@ -91,12 +91,12 @@ namespace H_Dao {
                                             "'" + _defaultValue.GetDefaultValue<string>(hStaffExperienceVo.ExperienceLoad) + "'," +
                                             "'" + _defaultValue.GetDefaultValue<string>(hStaffExperienceVo.ExperienceDuration) + "'," +
                                             "'" + _defaultValue.GetDefaultValue<string>(hStaffExperienceVo.ExperienceNote) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffExperienceVo.InsertPcName) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffExperienceVo.InsertYmdHms) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffExperienceVo.UpdatePcName) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffExperienceVo.UpdateYmdHms) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffExperienceVo.DeletePcName) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffExperienceVo.DeleteYmdHms) + "'," +
+                                            "'" + Environment.MachineName + "'," +
+                                            "'" + DateTime.Now + "'," +
+                                            "'" + "" + "'," +
+                                            "'" + _defaultDateTime + "'," +
+                                            "'" + "" + "'," +
+                                            "'" + _defaultDateTime + "'," +
                                             "'False'" +
                                             ");";
             try {

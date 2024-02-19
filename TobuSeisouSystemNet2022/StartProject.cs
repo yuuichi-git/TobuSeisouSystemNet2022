@@ -255,7 +255,7 @@ namespace TobuSeisouSystemNet2022 {
                                 hVehicleDispatchBoard.Location = rectangleHVehicleDispatchBoard.Location;
                                 hVehicleDispatchBoard.Size = rectangleHVehicleDispatchBoard.Size;
                                 hVehicleDispatchBoard.WindowState = FormWindowState.Maximized;
-                                hVehicleDispatchBoard.ShowDialog();
+                                hVehicleDispatchBoard.Show(this);
                                 break;
                             // H_StaffList
                             case "H_StaffList":
@@ -270,7 +270,7 @@ namespace TobuSeisouSystemNet2022 {
                                 hStaffList.Location = rectangleHStaffList.Location;
                                 hStaffList.Size = new Size(1920, 1080);
                                 hStaffList.WindowState = FormWindowState.Normal;
-                                hStaffList.ShowDialog();
+                                hStaffList.Show(this);
                                 break;
                         }
                         break;

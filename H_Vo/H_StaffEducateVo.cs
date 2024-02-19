@@ -41,7 +41,7 @@ namespace H_Vo {
             set => _staffCode = value;
         }
         /// <summary>
-        /// 教育を受けた日付
+        /// 教育を受けた年月日
         /// </summary>
         public DateTime EducateDate {
             get => _educateDate;

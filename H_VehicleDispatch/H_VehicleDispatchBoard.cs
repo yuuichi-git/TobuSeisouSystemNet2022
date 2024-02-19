@@ -7,13 +7,13 @@ using H_ControlEx;
 
 using H_Dao;
 
+using H_RollColl;
+
 using H_Utility;
 
 using H_Vo;
 
 using StockBox;
-
-using H_Vo;
 
 namespace H_VehicleDispatch {
     public partial class H_VehicleDispatchBoard : Form {
@@ -99,6 +99,7 @@ namespace H_VehicleDispatch {
              * 配車用ボードを作成
              */
             _hBoard = new H_Board(_connectionVo);
+            _hBoard.Event_HBoard_HSetControl_HSetLabel_MouseDoubleClick += HBoard_HSetControl_HSetLabel_MouseDoubleClick;
             h_TableLayoutPanelExCenter.Controls.Add(_hBoard, 0, 2);
         }
 
@@ -463,6 +464,16 @@ namespace H_VehicleDispatch {
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// HBoard_HSetControl_HSetLabel_MouseDoubleClick
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HBoard_HSetControl_HSetLabel_MouseDoubleClick(object? sender, MouseEventArgs e) {
+            H_LastRollCall hLastRollCall = new(_connectionVo);
+            hLastRollCall.Show(this);
         }
     }
 }

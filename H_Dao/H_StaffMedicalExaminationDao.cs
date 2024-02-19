@@ -9,6 +9,7 @@ using H_Vo;
 
 namespace H_Dao {
     public class H_StaffMedicalExaminationDao {
+        private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
         private readonly DefaultValue _defaultValue = new();
         /*
          * Vo
@@ -30,15 +31,15 @@ namespace H_Dao {
         /// レコードの存在確認
         /// </summary>
         /// <param name="staffCode"></param>
-        /// <returns>true:存在する false:存在しない</returns>
-        public string GetMedicalExaminationDate(int staffCode) {
+        /// <returns>存在する:DateTime型 存在しない:_defaultDateTime</returns>
+        public DateTime GetMedicalExaminationDate(int staffCode) {
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT TOP 1 MedicalExaminationDate FROM H_StaffMedicalExaminationMaster WHERE StaffCode = " + staffCode + "";
             var data = sqlCommand.ExecuteScalar();
             if (data is not null) {
-                return sqlCommand.ExecuteScalar().ToString();
+                return (DateTime)sqlCommand.ExecuteScalar();
             } else {
-                return string.Empty;
+                return _defaultDateTime;
             }
         }
 
@@ -86,7 +87,7 @@ namespace H_Dao {
         /// </summary>
         /// <param name="hStaffMedicalExaminationVo"></param>
         public void InsertOneHStaffMedicalExaminationMaster(H_StaffMedicalExaminationVo hStaffMedicalExaminationVo) {
-            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "INSERT INTO H_StaffMedicalExaminationMaster(StaffCode," +
                                                                                  "MedicalExaminationDate," +
                                                                                  "MedicalInstitutionName," +
@@ -94,6 +95,7 @@ namespace H_Dao {
                                                                                  "InsertPcName," +
                                                                                  "InsertYmdHms," +
                                                                                  "UpdatePcName," +
+                                                                                 "UpdateYmdHms," +
                                                                                  "DeletePcName," +
                                                                                  "DeleteYmdHms," +
                                                                                  "DeleteFlag) " +
@@ -101,12 +103,12 @@ namespace H_Dao {
                                             "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffMedicalExaminationVo.MedicalExaminationDate) + "'," +
                                             "'" + _defaultValue.GetDefaultValue<string>(hStaffMedicalExaminationVo.MedicalInstitutionName) + "'," +
                                             "'" + _defaultValue.GetDefaultValue<string>(hStaffMedicalExaminationVo.MedicalExaminationNote) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffMedicalExaminationVo.InsertPcName) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffMedicalExaminationVo.InsertYmdHms) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffMedicalExaminationVo.UpdatePcName) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffMedicalExaminationVo.UpdateYmdHms) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffMedicalExaminationVo.DeletePcName) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffMedicalExaminationVo.DeleteYmdHms) + "'," +
+                                            "'" + Environment.MachineName + "'," +
+                                            "'" + DateTime.Now + "'," +
+                                            "'" + "" + "'," +
+                                            "'" + _defaultDateTime + "'," +
+                                            "'" + "" + "'," +
+                                            "'" + _defaultDateTime + "'," +
                                             "'False'" +
                                             ");";
             try {

@@ -5,10 +5,12 @@ using H_Dao;
 
 using H_Vo;
 
-using H_Vo;
-
 namespace H_ControlEx {
     public partial class H_Board : TableLayoutPanel {
+        /*
+         * H_Boardで扱うEventの中でH_VehicleDispatchBoardに公開するもの
+         */
+        public event MouseEventHandler Event_HBoard_HSetControl_HSetLabel_MouseDoubleClick = delegate { };
         /*
          * Dao
          */
@@ -368,7 +370,7 @@ namespace H_ControlEx {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void HSetLabel_MouseDoubleClick(object sender, MouseEventArgs e) {
-
+            Event_HBoard_HSetControl_HSetLabel_MouseDoubleClick.Invoke(sender, e);
         }
 
         /// <summary>

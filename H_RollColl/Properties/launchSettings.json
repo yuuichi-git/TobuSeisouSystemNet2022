@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "H_RollColl": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

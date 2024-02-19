@@ -7,14 +7,10 @@ using H_Common;
 
 using H_Vo;
 
-using H_Vo;
-
 namespace H_Dao {
 
     public class H_StaffEducateDao {
-        /*
-         * インスタンス
-         */
+        private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
         private readonly DefaultValue _defaultValue = new();
         /*
          * Vo
@@ -75,25 +71,26 @@ namespace H_Dao {
         /// </summary>
         /// <param name="hStaffEducateVo"></param>
         public void InsertOneHStaffEducateMaster(H_StaffEducateVo hStaffEducateVo) {
-            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "INSERT INTO H_StaffEducateMaster(StaffCode," +
                                                                       "EducateDate," +
                                                                       "EducateName," +
                                                                       "InsertPcName," +
                                                                       "InsertYmdHms," +
                                                                       "UpdatePcName," +
+                                                                      "UpdateYmdHms," +
                                                                       "DeletePcName," +
                                                                       "DeleteYmdHms," +
                                                                       "DeleteFlag) " +
                                      "VALUES (" + _defaultValue.GetDefaultValue<int>(hStaffEducateVo.StaffCode) + "," +
                                             "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffEducateVo.EducateDate) + "'," +
                                             "'" + _defaultValue.GetDefaultValue<string>(hStaffEducateVo.EducateName) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffEducateVo.InsertPcName) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffEducateVo.InsertYmdHms) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffEducateVo.UpdatePcName) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffEducateVo.UpdateYmdHms) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffEducateVo.DeletePcName) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffEducateVo.DeleteYmdHms) + "'," +
+                                            "'" + Environment.MachineName + "'," +
+                                            "'" + DateTime.Now + "'," +
+                                            "'" + "" + "'," +
+                                            "'" + _defaultDateTime + "'," +
+                                            "'" + "" + "'," +
+                                            "'" + _defaultDateTime + "'," +
                                             "'False'" +
                                             ");";
             try {

@@ -9,6 +9,7 @@ using H_Vo;
 
 namespace H_Dao {
     public class H_StaffProperDao {
+        private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
         private readonly DefaultValue _defaultValue = new();
         /*
          * Vo
@@ -27,7 +28,7 @@ namespace H_Dao {
         }
 
         /// <summary>
-        /// GetProperDate
+        /// GetSyoninProperDate
         /// 初任診断の受診日を取得する
         /// </summary>
         /// <param name="staffCode"></param>
@@ -49,7 +50,7 @@ namespace H_Dao {
         /// <param name="staffCode"></param>
         /// <returns></returns>
         public string GetTekireiProperDate(int staffCode) {
-            TimeSpan timeSpan = new(0, 0, 0, 0);
+            TimeSpan timeSpan;
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT TOP 1 ProperDate FROM H_StaffProperMaster WHERE StaffCode = " + staffCode + " AND ProperKind = '適齢診断'";
             var data = sqlCommand.ExecuteScalar();
@@ -105,7 +106,7 @@ namespace H_Dao {
         /// </summary>
         /// <param name="hStaffProperVo"></param>
         public void InsertOneHStaffProperMaster(H_StaffProperVo hStaffProperVo) {
-            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "INSERT INTO H_StaffProperMaster(StaffCode," +
                                                                      "ProperKind," +
                                                                      "ProperDate," +
@@ -113,6 +114,7 @@ namespace H_Dao {
                                                                      "InsertPcName," +
                                                                      "InsertYmdHms," +
                                                                      "UpdatePcName," +
+                                                                     "UpdateYmdHms," +
                                                                      "DeletePcName," +
                                                                      "DeleteYmdHms," +
                                                                      "DeleteFlag) " +
@@ -120,12 +122,12 @@ namespace H_Dao {
                                             "'" + _defaultValue.GetDefaultValue<string>(hStaffProperVo.ProperKind) + "'," +
                                             "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffProperVo.ProperDate) + "'," +
                                             "'" + _defaultValue.GetDefaultValue<string>(hStaffProperVo.ProperNote) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffProperVo.InsertPcName) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffProperVo.InsertYmdHms) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffProperVo.UpdatePcName) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffProperVo.UpdateYmdHms) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffProperVo.DeletePcName) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffProperVo.DeleteYmdHms) + "'," +
+                                            "'" + Environment.MachineName + "'," +
+                                            "'" + DateTime.Now + "'," +
+                                            "'" + "" + "'," +
+                                            "'" + _defaultDateTime + "'," +
+                                            "'" + "" + "'," +
+                                            "'" + _defaultDateTime + "'," +
                                             "'False'" +
                                             ");";
             try {

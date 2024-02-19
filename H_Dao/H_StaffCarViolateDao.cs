@@ -7,13 +7,9 @@ using H_Common;
 
 using H_Vo;
 
-using H_Vo;
-
 namespace H_Dao {
     public class H_StaffCarViolateDao {
-        /*
-         * インスタンス
-         */
+        private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
         private readonly DefaultValue _defaultValue = new();
         /*
          * Vo
@@ -76,7 +72,7 @@ namespace H_Dao {
         /// </summary>
         /// <param name="hStaffCarViolateVo"></param>
         public void InsertOneHStaffCarViolateMaster(H_StaffCarViolateVo hStaffCarViolateVo) {
-            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "INSERT INTO H_StaffCarViolateMaster(StaffCode," +
                                                                          "CarViolateDate," +
                                                                          "CarViolateContent," +
@@ -84,6 +80,7 @@ namespace H_Dao {
                                                                          "InsertPcName," +
                                                                          "InsertYmdHms," +
                                                                          "UpdatePcName," +
+                                                                         "UpdateYmdHms," +
                                                                          "DeletePcName," +
                                                                          "DeleteYmdHms," +
                                                                          "DeleteFlag) " +
@@ -91,12 +88,12 @@ namespace H_Dao {
                                             "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffCarViolateVo.CarViolateDate) + "'," +
                                             "'" + _defaultValue.GetDefaultValue<string>(hStaffCarViolateVo.CarViolateContent) + "'," +
                                             "'" + _defaultValue.GetDefaultValue<string>(hStaffCarViolateVo.CarViolatePlace) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffCarViolateVo.InsertPcName) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffCarViolateVo.InsertYmdHms) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffCarViolateVo.UpdatePcName) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffCarViolateVo.UpdateYmdHms) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<string>(hStaffCarViolateVo.DeletePcName) + "'," +
-                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hStaffCarViolateVo.DeleteYmdHms) + "'," +
+                                            "'" + Environment.MachineName + "'," +
+                                            "'" + DateTime.Now + "'," +
+                                            "'" + "" + "'," +
+                                            "'" + _defaultDateTime + "'," +
+                                            "'" + "" + "'," +
+                                            "'" + _defaultDateTime + "'," +
                                             "'False'" +
                                             ");";
             try {

@@ -25,6 +25,7 @@
     <ProjectReference Include="..\H_Common\H_Common.csproj" />
     <ProjectReference Include="..\H_ControlEx\H_ControlEx.csproj" />
     <ProjectReference Include="..\H_Dao\H_Dao.csproj" />
+    <ProjectReference Include="..\H_RollColl\H_RollColl.csproj" />
     <ProjectReference Include="..\H_Utility\H_Utility.csproj" />
     <ProjectReference Include="..\StockBox\H_StockBox.csproj" />
     <ProjectReference Include="..\Vo\Vo.csproj" />

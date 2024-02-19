@@ -7,8 +7,6 @@ using H_Common;
 
 using H_Vo;
 
-using H_Vo;
-
 namespace H_Dao {
     public class H_VehicleDispatchDao {
         private readonly DefaultValue _defaultValue = new();
@@ -45,8 +43,8 @@ namespace H_Dao {
                                      "LEFT OUTER JOIN H_VehicleDispatchBody ON H_VehicleDispatchHead.SetCode = H_VehicleDispatchBody.SetCode " +
                                      "WHERE H_VehicleDispatchHead.FinancialYear = '" + financialYear.ToString() + "' " +
                                        "AND H_VehicleDispatchBody.DayOfWeek = '" + dayOfWeek + "'";
-            using(var sqlDataReader = sqlCommand.ExecuteReader()) {
-                while(sqlDataReader.Read() == true) {
+            using (var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while (sqlDataReader.Read() == true) {
                     H_VehicleDispatchVo hVehicleDispatchVo = new();
                     hVehicleDispatchVo.CellNumber = _defaultValue.GetDefaultValue<int>(sqlDataReader["CellNumber"]);
                     hVehicleDispatchVo.SetCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["SetCode"]);

@@ -57,10 +57,10 @@ namespace RollCall {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Control_KeyDown(object sender, KeyEventArgs e) {
-            if(e.KeyCode == Keys.Enter) {
+            if (e.KeyCode == Keys.Enter) {
                 // タブオーダー順で次のコントロールにフォーカスを移動
                 SendKeys.Send("{TAB}");
-                switch(this.ActiveControl.GetType().Name) {
+                switch (this.ActiveControl.GetType().Name) {
                     case "DateTimePickerFarstPlantTime":
 
                         break;
@@ -100,7 +100,7 @@ namespace RollCall {
             /*
              * 入力項目のチェック
              */
-            if(DateTimePickerFarstRollCallTime.Value.ToString("HH:mm") != "00:00") {
+            if (DateTimePickerFarstRollCallTime.Value.ToString("HH:mm") != "00:00") {
                 operator1RollCallFlag = true;
             } else {
                 MessageBox.Show("出庫時刻が不正です。", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -108,25 +108,25 @@ namespace RollCall {
             }
             operator1RollCallYmdHms = DateTimePickerFarstRollCallTime.Value;
             last_roll_call_flag = true;
-            if((int)NumericLastPlantCount.Value > 0) {
+            if ((int)NumericLastPlantCount.Value > 0) {
                 last_plant_count = (int)NumericLastPlantCount.Value;
             } else {
                 MessageBox.Show("搬入回数が不正です", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if(ComboBoxLastPlantName.Text.Length > 0) {
+            if (ComboBoxLastPlantName.Text.Length > 0) {
                 last_plant_name = ComboBoxLastPlantName.Text;
             } else {
                 MessageBox.Show("最終搬入場所が不正です", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if(MaskedTextBoxLastPlantTime.Text != "") {
+            if (MaskedTextBoxLastPlantTime.Text != "") {
                 last_plant_ymd_hms = MaskedTextBoxLastPlantTime.Text;
             } else {
                 MessageBox.Show("最終搬入時間が不正です", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if(MaskedTextBoxLastRollCallTime.Text != "") {
+            if (MaskedTextBoxLastRollCallTime.Text != "") {
                 last_roll_call_ymd_hms = MaskedTextBoxLastRollCallTime.Text;
             } else {
                 MessageBox.Show("帰庫点呼時間が不正です", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -145,7 +145,7 @@ namespace RollCall {
                 // Labelをセット
                 _setLabelEx.SetLastRollCallFlag(true);
                 this.Close();
-            } catch(Exception exception) {
+            } catch (Exception exception) {
                 MessageBox.Show(exception.Message);
             }
         }
@@ -158,7 +158,7 @@ namespace RollCall {
         /// <param name="e"></param>
         private void ButtonClear_Click(object sender, EventArgs e) {
             var dialogResult = MessageBox.Show("本当に削除してもよろしいですか？", MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            switch(dialogResult) {
+            switch (dialogResult) {
                 case DialogResult.OK:
                     /*
                      * データをリセットする
@@ -184,7 +184,7 @@ namespace RollCall {
                         _setLabelEx.SetLastRollCallFlag(false);
                         this.Close();
                         Dispose();
-                    } catch(Exception exception) {
+                    } catch (Exception exception) {
                         MessageBox.Show(exception.Message);
                     }
                     break;

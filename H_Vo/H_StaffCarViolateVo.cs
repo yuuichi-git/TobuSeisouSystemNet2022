@@ -43,7 +43,7 @@ namespace H_Vo {
             set => _staffCode = value;
         }
         /// <summary>
-        /// 違反日時
+        /// 違反年月日
         /// </summary>
         public DateTime CarViolateDate {
             get => _carViolateDate;

@@ -9,7 +9,6 @@ namespace H_Vo {
         private int _staffCode;
         private DateTime _historyDate;
         private string _companyName;
-        private string _historyNote;
         private string _insertPcName;
         private DateTime _insertYmdHms;
         private string _updatePcName;
@@ -25,7 +24,6 @@ namespace H_Vo {
             _staffCode = 0;
             _historyDate = _defaultDateTime;
             _companyName = string.Empty;
-            _historyNote = string.Empty;
             _insertPcName = string.Empty;
             _insertYmdHms = _defaultDateTime;
             _updatePcName = string.Empty;
@@ -50,18 +48,11 @@ namespace H_Vo {
             set => _historyDate = value;
         }
         /// <summary>
-        /// 過去に在籍していた会社名
+        /// 在籍会社名
         /// </summary>
         public string CompanyName {
             get => _companyName;
             set => _companyName = value;
-        }
-        /// <summary>
-        /// メモ
-        /// </summary>
-        public string HistoryNote {
-            get => _historyNote;
-            set => _historyNote = value;
         }
         public string InsertPcName {
             get => _insertPcName;

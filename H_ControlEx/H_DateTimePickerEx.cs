@@ -22,7 +22,7 @@ namespace H_ControlEx {
              * コントロール初期化
              */
             InitializeComponent();
-            this.CustomFormat = string.Concat(" ", DateTime.Now.ToString("yyyy年MM月dd日(dddd)"));
+            this.CustomFormat = " yyyy年MM月dd日(dddd)";
             this.Format = DateTimePickerFormat.Custom;
             this.Height = 23;
             this.Value = DateTime.Today;
@@ -59,9 +59,9 @@ namespace H_ControlEx {
         private void H_DateTimePickerEx_CloseUp(object sender, EventArgs e) {
             if (this.CustomFormat != " ") {
                 if (cultureFlag) {
-                    this.CustomFormat = string.Concat(" ", this.Value.ToString("ggyy年MM月dd日(dddd)", cultureInfo));
+                    this.CustomFormat = this.Value.ToString(" ggyy年MM月dd日(dddd)", cultureInfo);
                 } else {
-                    this.CustomFormat = string.Concat(" ", this.Value.ToString("yyyy年MM月dd日(dddd)"));
+                    this.CustomFormat = this.Value.ToString(" yyyy年MM月dd日(dddd)");
                 }
             }
         }
@@ -78,6 +78,7 @@ namespace H_ControlEx {
                  */
                 case Keys.Escape:
                     this.CustomFormat = " ";
+                    this.Value = _defaultDateTime;
                     this.Refresh();
                     break;
                 /*
@@ -87,10 +88,12 @@ namespace H_ControlEx {
                 case Keys.Control | Keys.A:
                     cultureFlag = false;
                     if (this.CustomFormat == " ") {
-                        this.CustomFormat = string.Concat(" ", DateTime.Now.ToString("yyyy年MM月dd日(dddd)"));
+                        this.CustomFormat = " yyyy年MM月dd日(dddd)";
+                        this.Value = _defaultDateTime;
                         this.Refresh();
                     } else {
-                        this.CustomFormat = string.Concat(" ", this.Value.ToString("yyyy年MM月dd日(dddd)"));
+                        this.CustomFormat = " yyyy年MM月dd日(dddd)";
+                        this.Value = DateTime.Today;
                         this.Refresh();
                     }
                     break;
@@ -101,10 +104,12 @@ namespace H_ControlEx {
                 case Keys.Control | Keys.J:
                     cultureFlag = true;
                     if (this.CustomFormat == " ") {
-                        this.CustomFormat = string.Concat(" ", DateTime.Now.ToString("ggyy年MM月dd日(dddd)", cultureInfo));
+                        this.CustomFormat = DateTime.Now.ToString(" ggyy年MM月dd日(dddd)", cultureInfo);
+                        this.Value = _defaultDateTime;
                         this.Refresh();
                     } else {
-                        this.CustomFormat = string.Concat(" ", this.Value.ToString("ggyy年MM月dd日(dddd)", cultureInfo));
+                        this.CustomFormat = this.Value.ToString(" ggyy年MM月dd日(dddd)", cultureInfo);
+                        this.Value = DateTime.Today;
                         this.Refresh();
                     }
                     break;
@@ -129,7 +134,7 @@ namespace H_ControlEx {
         /// </summary>
         /// <returns></returns>
         public string GetValueJp() {
-            return this.Value.ToString("ggy年M月d日(dddd)", cultureInfo);
+            return this.Value.ToString(" ggy年M月d日(dddd)", cultureInfo);
         }
 
         /// <summary>
@@ -149,10 +154,12 @@ namespace H_ControlEx {
         /// <param name="dateTime"></param>
         public void SetValue(DateTime dateTime) {
             if (dateTime.Date != _defaultDateTime.Date) {
-                this.CustomFormat = string.Concat(" ", dateTime.ToString("ggyy年MM月dd日(dddd)", cultureInfo));
+                this.CustomFormat = dateTime.ToString(" ggyy年MM月dd日(dddd)", cultureInfo);
+                this.Value = dateTime;
                 this.Refresh();
             } else {
                 this.CustomFormat = " ";
+                this.Value = _defaultDateTime;
                 this.Refresh();
             }
         }
