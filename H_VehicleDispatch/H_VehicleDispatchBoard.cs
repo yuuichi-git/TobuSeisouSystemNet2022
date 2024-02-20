@@ -471,8 +471,10 @@ namespace H_VehicleDispatch {
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void HBoard_HSetControl_HSetLabel_MouseDoubleClick(object? sender, MouseEventArgs e) {
-            H_LastRollCall hLastRollCall = new(_connectionVo);
+        private void HBoard_HSetControl_HSetLabel_MouseDoubleClick(object sender, MouseEventArgs e) {
+            int setCode = ((H_SetMasterVo)((H_SetLabel)sender).Tag).SetCode;
+            DateTime dateTime = H_DateTimePickerOperationDate.GetValue();
+            H_LastRollCall hLastRollCall = new(_connectionVo, setCode, dateTime);
             hLastRollCall.Show(this);
         }
     }

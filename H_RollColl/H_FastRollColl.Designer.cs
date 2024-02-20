@@ -29,7 +29,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1904, 1041);
+            MinimumSize = new Size(1918, 1046);
             Name = "H_FastRollColl";
             Text = "H_FastRollColl";
             ResumeLayout(false);

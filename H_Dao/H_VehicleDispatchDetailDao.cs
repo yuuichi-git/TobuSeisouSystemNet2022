@@ -7,8 +7,6 @@ using H_Common;
 
 using H_Vo;
 
-using H_Vo;
-
 namespace H_Dao {
     public class H_VehicleDispatchDetailDao {
         /*

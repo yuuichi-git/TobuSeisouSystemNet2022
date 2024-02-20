@@ -192,6 +192,8 @@
             label4 = new Label();
             label3 = new Label();
             TabPage2 = new TabPage();
+            label49 = new Label();
+            label50 = new Label();
             label47 = new Label();
             label48 = new Label();
             label44 = new Label();
@@ -1295,6 +1297,8 @@
             // 
             // TabPage2
             // 
+            TabPage2.Controls.Add(label49);
+            TabPage2.Controls.Add(label50);
             TabPage2.Controls.Add(label47);
             TabPage2.Controls.Add(label48);
             TabPage2.Controls.Add(label44);
@@ -1306,6 +1310,31 @@
             TabPage2.TabIndex = 1;
             TabPage2.Text = "新型（令和６年度～）";
             TabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label49
+            // 
+            label49.AutoSize = true;
+            label49.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label49.ForeColor = Color.DarkGray;
+            label49.Location = new Point(42, 96);
+            label49.Name = "label49";
+            label49.Size = new Size(113, 17);
+            label49.TabIndex = 9;
+            label49.Text = "配車表を作成します";
+            // 
+            // label50
+            // 
+            label50.AutoSize = true;
+            label50.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label50.Location = new Point(16, 80);
+            label50.Name = "label50";
+            label50.Size = new Size(47, 17);
+            label50.TabIndex = 8;
+            label50.Tag = "H_FastRollColl";
+            label50.Text = "配車表";
+            label50.Click += Label_Click;
+            label50.MouseEnter += Label_MouseEnter;
+            label50.MouseLeave += Label_MouseLeave;
             // 
             // label47
             // 
@@ -1468,5 +1497,7 @@
         private H_ControlEx.H_ComboBoxEx HComboBoxMoniter;
         private Label label47;
         private Label label48;
+        private Label label49;
+        private Label label50;
     }
 }

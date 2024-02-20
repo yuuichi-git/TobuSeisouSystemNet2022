@@ -23,6 +23,8 @@ using H_Staff;
 
 using H_VehicleDispatch;
 
+using H_Vo;
+
 using LegalTwelveItem;
 
 using License;
@@ -46,8 +48,6 @@ using Toukanpo;
 using VehicleDispatch;
 
 using VehicleDispatchSheet;
-
-using H_Vo;
 
 using WardSpreadsheet;
 
@@ -271,6 +271,10 @@ namespace TobuSeisouSystemNet2022 {
                                 hStaffList.Size = new Size(1920, 1080);
                                 hStaffList.WindowState = FormWindowState.Normal;
                                 hStaffList.Show(this);
+                                break;
+                            // H_FastRollColl
+                            case "H_FastRollColl":
+
                                 break;
                         }
                         break;

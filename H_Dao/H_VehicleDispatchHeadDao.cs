@@ -7,8 +7,6 @@ using H_Common;
 
 using H_Vo;
 
-using H_Vo;
-
 namespace H_Dao {
     public class H_VehicleDispatchHeadDao {
         private readonly DefaultValue _defaultValue = new();
@@ -46,8 +44,8 @@ namespace H_Dao {
                                             "DeleteFlag " +
                                      "FROM H_VehicleDispatchHead " +
                                      "WHERE FinancialYear = '" + financialYear.ToString() + "'";
-            using(var sqlDataReader = sqlCommand.ExecuteReader()) {
-                while(sqlDataReader.Read() == true) {
+            using (var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while (sqlDataReader.Read() == true) {
                     H_VehicleDispatchHeadVo hVehicleDispatchHeadVo = new();
                     hVehicleDispatchHeadVo.CellNumber = _defaultValue.GetDefaultValue<int>(sqlDataReader["CellNumber"]);
                     hVehicleDispatchHeadVo.VehicleDispatchFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["VehicleDispatchFlag"]);

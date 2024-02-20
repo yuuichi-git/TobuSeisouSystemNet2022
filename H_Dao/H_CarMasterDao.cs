@@ -7,8 +7,6 @@ using H_Common;
 
 using H_Vo;
 
-using H_Vo;
-
 namespace H_Dao {
     public class H_CarMasterDao {
         private readonly DefaultValue _defaultValue = new();
@@ -86,8 +84,8 @@ namespace H_Dao {
                                             "DeleteFlag " +
                                      "FROM H_CarMaster";
             // "WHERE delete_flag = 'False' " + // 2022-07-08 delete_flagを入れると過去の配車に削除済のCarLabelが反映出来なくなる
-            using(SqlDataReader sqlDataReader = sqlCommand.ExecuteReader()) {
-                while(sqlDataReader.Read() == true) {
+            using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader()) {
+                while (sqlDataReader.Read() == true) {
                     H_CarMasterVo hCarMasterVo = new();
                     hCarMasterVo.CarCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["CarCode"]);
                     hCarMasterVo.ClassificationCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["ClassificationCode"]);

@@ -7,8 +7,6 @@ using H_Common;
 
 using H_Vo;
 
-using H_Vo;
-
 namespace H_Dao {
     public class H_SetMasterDao {
         private readonly DefaultValue _defaultValue = new();
@@ -55,8 +53,8 @@ namespace H_Dao {
                                             "DeleteFlag " +
                                      "FROM H_SetMaster";
             // "WHERE delete_flag = 'False'"; // delete_flagを入れると過去の配車に削除済のSetLabelが反映出来なくなる
-            using(var sqlDataReader = sqlCommand.ExecuteReader()) {
-                while(sqlDataReader.Read() == true) {
+            using (var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while (sqlDataReader.Read() == true) {
                     H_SetMasterVo hSetMasterVo = new();
                     hSetMasterVo.SetCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["SetCode"]);
                     hSetMasterVo.WordCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["WordCode"]);
