@@ -230,7 +230,7 @@ namespace H_ControlEx {
             StringFormat stringFormat = new();
             stringFormat.LineAlignment = StringAlignment.Center;
             stringFormat.Alignment = StringAlignment.Center;
-            e.Graphics.DrawString(string.Concat(_hSetMasterVo.SetName1, "\r\n", _hSetMasterVo.SetName2),
+            e.Graphics.DrawString(string.Concat(_hSetMasterVo.SetName1, "\r\n", _hSetMasterVo.SetName2, "\r\n", "(", _hSetMasterVo.SetCode, ")"),
                                                 _drawFontSetLabel,
                                                 new SolidBrush(Color.Black),
                                                 new Rectangle(0, 10, (int)_panelWidth - 6, (int)_panelHeight - 6), stringFormat);
@@ -238,15 +238,13 @@ namespace H_ControlEx {
              * 帰庫点呼フラグ
              */
             if (_lastRollCallFlag) {
-                Point[] points = { new Point(54, 21), new Point(69, 21), new Point(69, 36) };
-                e.Graphics.FillPolygon(new SolidBrush(Color.Gray), points);
+                e.Graphics.FillPolygon(new SolidBrush(Color.Gray), new Point[] { new Point(54, 21), new Point(69, 21), new Point(69, 36) });
             }
             /*
              * メモを描画
              */
             if (_memoFlag) {
-                Point[] points = { new Point(7, 21), new Point(21, 21), new Point(7, 35) };
-                e.Graphics.FillPolygon(new SolidBrush(Color.Crimson), points);
+                e.Graphics.FillPolygon(new SolidBrush(Color.Crimson), new Point[] { new Point(7, 21), new Point(21, 21), new Point(7, 35) });
             }
             /*
              * 番手コード
@@ -699,7 +697,23 @@ namespace H_ControlEx {
                     MessageBox.Show("ToolStripMenuItemCreateFax");
                     break;
                 case "ToolStripMenuItemSetDelete": // 削除する
-                    MessageBox.Show("ToolStripMenuItemSetDelete");
+                    if (!_hSetMasterVo.MoveFlag) {
+                        MessageBox.Show("この配車先は、移動や削除を禁止されています。", "メッセージ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    if (_hVehicleDispatchDetailVo.CarCode != 0 || _hVehicleDispatchDetailVo.StaffCode1 != 0 || _hVehicleDispatchDetailVo.StaffCode2 != 0 || _hVehicleDispatchDetailVo.StaffCode3 != 0 || _hVehicleDispatchDetailVo.StaffCode4 != 0) {
+                        MessageBox.Show("この配車先は、車両又は従事者が設定されています。削除できません。", "メッセージ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    /*
+                     * DB書換え
+                     */
+                    try {
+                        _hVehicleDispatchDetailDao.ResetSetCode(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate);
+                        this.Dispose();
+                    } catch (Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
                     break;
             }
         }

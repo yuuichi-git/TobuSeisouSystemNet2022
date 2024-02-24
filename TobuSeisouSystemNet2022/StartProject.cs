@@ -19,6 +19,8 @@ using CommuterInsurance;
 
 using H_Common;
 
+using H_RollColl;
+
 using H_Staff;
 
 using H_VehicleDispatch;
@@ -274,7 +276,18 @@ namespace TobuSeisouSystemNet2022 {
                                 break;
                             // H_FastRollColl
                             case "H_FastRollColl":
-
+                                // Screenを退避(新型のみ)
+                                _connectionVo.Screen = (Screen)HComboBoxMoniter.SelectedItem;
+                                /*
+                                 * Formを表示する
+                                 */
+                                H_FirstRollColl hFirstRollColl = new(_connectionVo);
+                                Rectangle rectangleHFirstRollColl = new Desktop().GetMonitorWorkingArea(hFirstRollColl, (Screen)HComboBoxMoniter.SelectedItem);
+                                hFirstRollColl.KeyPreview = true;
+                                hFirstRollColl.Location = rectangleHFirstRollColl.Location;
+                                hFirstRollColl.Size = new Size(1920, 1080);
+                                hFirstRollColl.WindowState = FormWindowState.Normal;
+                                hFirstRollColl.Show(this);
                                 break;
                         }
                         break;

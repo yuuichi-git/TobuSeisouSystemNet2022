@@ -13,11 +13,6 @@ namespace H_RollColl {
          * Dao
          */
         private readonly H_LastRollCallDao _hLastRollCallDao;
-        /*
-         * Vo
-         */
-        private readonly ConnectionVo _connectionVo;
-        private H_LastRollCallVo _hLastRollCallVo;
 
         /// <summary>
         /// コンストラクター
@@ -30,11 +25,6 @@ namespace H_RollColl {
              * Dao
              */
             _hLastRollCallDao = new H_LastRollCallDao(connectionVo);
-            /*
-             * Vo
-             */
-            _connectionVo = connectionVo;
-            _hLastRollCallVo = new();
             /*
              * コントロール初期化
              */
@@ -79,11 +69,11 @@ namespace H_RollColl {
             H_LastRollCallVo hLastRollCallVo = new();
             hLastRollCallVo.SetCode = _setCode;
             hLastRollCallVo.OperationDate = _operationDateTime;
-            hLastRollCallVo.FirstRollCallHms = MaskedTextBoxFirstRollCallTime.Text;
+            hLastRollCallVo.FirstRollCallHms = HMaskedTextBoxExFirstRollCallTime.Text;
             hLastRollCallVo.LastPlantCount = (int)HNumericUpDownExLastPlantCount.Value;
             hLastRollCallVo.LastPlantName = HComboBoxExLastPlantName.Text;
-            hLastRollCallVo.LastPlantHms = MaskedTextBoxLastPlantYmdHms.Text;
-            hLastRollCallVo.LastRollCallHms = MaskedTextBoxLastRollCallYmdHms.Text;
+            hLastRollCallVo.LastPlantHms = HMaskedTextBoxExLastPlantYmdHms.Text;
+            hLastRollCallVo.LastRollCallHms = HMaskedTextBoxExLastRollCallYmdHms.Text;
             hLastRollCallVo.FirstOdoMeter = HNumericUpDownExFirstOdoMeter.Value;
             hLastRollCallVo.LastOdoMeter = HNumericUpDownExLastOdoMeter.Value;
             hLastRollCallVo.OilAmount = HNumericUpDownExOilAmount.Value;
@@ -96,11 +86,11 @@ namespace H_RollColl {
         /// <param name="hLastRollCallVo"></param>
         private void SetControl(H_LastRollCallVo hLastRollCallVo) {
             HDateTimePickerExOperationDate.Value = hLastRollCallVo.OperationDate.Date;
-            MaskedTextBoxFirstRollCallTime.Text = hLastRollCallVo.FirstRollCallHms;
+            HMaskedTextBoxExFirstRollCallTime.Text = hLastRollCallVo.FirstRollCallHms;
             HNumericUpDownExLastPlantCount.Value = hLastRollCallVo.LastPlantCount;
             HComboBoxExLastPlantName.Text = hLastRollCallVo.LastPlantName;
-            MaskedTextBoxLastPlantYmdHms.Text = hLastRollCallVo.LastPlantHms;
-            MaskedTextBoxLastRollCallYmdHms.Text = hLastRollCallVo.LastRollCallHms;
+            HMaskedTextBoxExLastPlantYmdHms.Text = hLastRollCallVo.LastPlantHms;
+            HMaskedTextBoxExLastRollCallYmdHms.Text = hLastRollCallVo.LastRollCallHms;
             HNumericUpDownExFirstOdoMeter.Value = hLastRollCallVo.FirstOdoMeter;
             HNumericUpDownExLastOdoMeter.Value = hLastRollCallVo.LastOdoMeter;
             HNumericUpDownExOilAmount.Value = hLastRollCallVo.OilAmount;
@@ -111,11 +101,11 @@ namespace H_RollColl {
         /// </summary>
         private void InitializeControl() {
             HDateTimePickerExOperationDate.Value = _operationDateTime.Date;
-            MaskedTextBoxFirstRollCallTime.Text = string.Empty;
+            HMaskedTextBoxExFirstRollCallTime.Text = string.Empty;
             HNumericUpDownExLastPlantCount.Value = 0;
             HComboBoxExLastPlantName.Text = string.Empty;
-            MaskedTextBoxLastPlantYmdHms.Text = string.Empty;
-            MaskedTextBoxLastRollCallYmdHms.Text = string.Empty;
+            HMaskedTextBoxExLastPlantYmdHms.Text = string.Empty;
+            HMaskedTextBoxExLastRollCallYmdHms.Text = string.Empty;
             HNumericUpDownExFirstOdoMeter.Value = 0;
             HNumericUpDownExLastOdoMeter.Value = 0;
             HNumericUpDownExOilAmount.Value = 0;

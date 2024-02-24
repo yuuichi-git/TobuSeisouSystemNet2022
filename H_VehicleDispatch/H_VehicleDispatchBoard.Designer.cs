@@ -28,10 +28,10 @@
             ToolStripMenuItemMenu = new ToolStripMenuItem();
             ToolStripMenuItemExit = new ToolStripMenuItem();
             ToolStripMenuItemInitialize = new ToolStripMenuItem();
-            ToolStripMenuItemInitializeVehicleDispatch = new ToolStripMenuItem();
+            ToolStripMenuItemInitializeVehicleDispatchBody = new ToolStripMenuItem();
             ToolStripMenuItemInitializeVehicleDispatchCopy = new ToolStripMenuItem();
             ToolStripMenuItemUpdateVehicleDispatch = new ToolStripMenuItem();
-            ToolStripMenuItemUpdateVehicleDispatchCleanOffice = new ToolStripMenuItem();
+            ToolStripMenuItemUpdateVehicleDispatchBody = new ToolStripMenuItem();
             ToolStripMenuItemPrint = new ToolStripMenuItem();
             ToolStripMenuItemPrintB4 = new ToolStripMenuItem();
             ToolStripMenuItemHelp = new ToolStripMenuItem();
@@ -46,7 +46,7 @@
             h_ButtonExLeft2 = new H_ControlEx.H_ButtonEx();
             h_ButtonExLeft1 = new H_ControlEx.H_ButtonEx();
             h_PanelExCenter = new H_ControlEx.H_PanelEx();
-            h_TableLayoutPanelExCenter = new H_ControlEx.H_TableLayoutPanelEx();
+            HTableLayoutPanelExCenter = new H_ControlEx.H_TableLayoutPanelEx();
             h_PanelExCenterTop = new H_ControlEx.H_PanelEx();
             h_ButtonExUpdate = new H_ControlEx.H_ButtonEx();
             H_DateTimePickerOperationDate = new H_ControlEx.H_DateTimePickerEx();
@@ -56,7 +56,7 @@
             StatusStrip1.SuspendLayout();
             h_PanelExLeft.SuspendLayout();
             h_PanelExCenter.SuspendLayout();
-            h_TableLayoutPanelExCenter.SuspendLayout();
+            HTableLayoutPanelExCenter.SuspendLayout();
             h_PanelExCenterTop.SuspendLayout();
             SuspendLayout();
             // 
@@ -106,17 +106,17 @@
             // 
             // ToolStripMenuItemInitialize
             // 
-            ToolStripMenuItemInitialize.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemInitializeVehicleDispatch, ToolStripMenuItemInitializeVehicleDispatchCopy });
+            ToolStripMenuItemInitialize.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemInitializeVehicleDispatchBody, ToolStripMenuItemInitializeVehicleDispatchCopy });
             ToolStripMenuItemInitialize.Name = "ToolStripMenuItemInitialize";
             ToolStripMenuItemInitialize.Size = new Size(55, 20);
             ToolStripMenuItemInitialize.Text = "初期化";
             // 
-            // ToolStripMenuItemInitializeVehicleDispatch
+            // ToolStripMenuItemInitializeVehicleDispatchBody
             // 
-            ToolStripMenuItemInitializeVehicleDispatch.Name = "ToolStripMenuItemInitializeVehicleDispatch";
-            ToolStripMenuItemInitializeVehicleDispatch.Size = new Size(262, 22);
-            ToolStripMenuItemInitializeVehicleDispatch.Text = "配車を初期化する(清掃事務所登録)";
-            ToolStripMenuItemInitializeVehicleDispatch.Click += ToolStripMenuItem_Click;
+            ToolStripMenuItemInitializeVehicleDispatchBody.Name = "ToolStripMenuItemInitializeVehicleDispatchBody";
+            ToolStripMenuItemInitializeVehicleDispatchBody.Size = new Size(262, 22);
+            ToolStripMenuItemInitializeVehicleDispatchBody.Text = "配車を初期化する(本番登録)";
+            ToolStripMenuItemInitializeVehicleDispatchBody.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemInitializeVehicleDispatchCopy
             // 
@@ -127,17 +127,17 @@
             // 
             // ToolStripMenuItemUpdateVehicleDispatch
             // 
-            ToolStripMenuItemUpdateVehicleDispatch.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemUpdateVehicleDispatchCleanOffice });
+            ToolStripMenuItemUpdateVehicleDispatch.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemUpdateVehicleDispatchBody });
             ToolStripMenuItemUpdateVehicleDispatch.Name = "ToolStripMenuItemUpdateVehicleDispatch";
             ToolStripMenuItemUpdateVehicleDispatch.Size = new Size(43, 20);
             ToolStripMenuItemUpdateVehicleDispatch.Text = "登録";
             // 
-            // ToolStripMenuItemUpdateVehicleDispatchCleanOffice
+            // ToolStripMenuItemUpdateVehicleDispatchBody
             // 
-            ToolStripMenuItemUpdateVehicleDispatchCleanOffice.Name = "ToolStripMenuItemUpdateVehicleDispatchCleanOffice";
-            ToolStripMenuItemUpdateVehicleDispatchCleanOffice.Size = new Size(230, 22);
-            ToolStripMenuItemUpdateVehicleDispatchCleanOffice.Text = "この配車組を本番として登録する";
-            ToolStripMenuItemUpdateVehicleDispatchCleanOffice.Click += ToolStripMenuItem_Click;
+            ToolStripMenuItemUpdateVehicleDispatchBody.Name = "ToolStripMenuItemUpdateVehicleDispatchBody";
+            ToolStripMenuItemUpdateVehicleDispatchBody.Size = new Size(204, 22);
+            ToolStripMenuItemUpdateVehicleDispatchBody.Text = "この配車組を本番登録する";
+            ToolStripMenuItemUpdateVehicleDispatchBody.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemPrint
             // 
@@ -259,7 +259,7 @@
             // 
             // h_PanelExCenter
             // 
-            h_PanelExCenter.Controls.Add(h_TableLayoutPanelExCenter);
+            h_PanelExCenter.Controls.Add(HTableLayoutPanelExCenter);
             h_PanelExCenter.Dock = DockStyle.Fill;
             h_PanelExCenter.Location = new Point(34, 24);
             h_PanelExCenter.Margin = new Padding(0);
@@ -267,21 +267,26 @@
             h_PanelExCenter.Size = new Size(1870, 993);
             h_PanelExCenter.TabIndex = 9;
             // 
-            // h_TableLayoutPanelExCenter
+            // HTableLayoutPanelExCenter
             // 
-            h_TableLayoutPanelExCenter.ColumnCount = 1;
-            h_TableLayoutPanelExCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-            h_TableLayoutPanelExCenter.Controls.Add(h_PanelExCenterTop, 0, 0);
-            h_TableLayoutPanelExCenter.Dock = DockStyle.Fill;
-            h_TableLayoutPanelExCenter.Location = new Point(0, 0);
-            h_TableLayoutPanelExCenter.Margin = new Padding(0);
-            h_TableLayoutPanelExCenter.Name = "h_TableLayoutPanelExCenter";
-            h_TableLayoutPanelExCenter.RowCount = 3;
-            h_TableLayoutPanelExCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 36F));
-            h_TableLayoutPanelExCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 122F));
-            h_TableLayoutPanelExCenter.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            h_TableLayoutPanelExCenter.Size = new Size(1870, 993);
-            h_TableLayoutPanelExCenter.TabIndex = 0;
+            HTableLayoutPanelExCenter.ColumnCount = 1;
+            HTableLayoutPanelExCenter.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            HTableLayoutPanelExCenter.Controls.Add(h_PanelExCenterTop, 0, 0);
+            HTableLayoutPanelExCenter.Dock = DockStyle.Fill;
+            HTableLayoutPanelExCenter.Location = new Point(0, 0);
+            HTableLayoutPanelExCenter.Margin = new Padding(0);
+            HTableLayoutPanelExCenter.Name = "HTableLayoutPanelExCenter";
+            HTableLayoutPanelExCenter.RowCount = 3;
+            HTableLayoutPanelExCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 36F));
+            HTableLayoutPanelExCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 122F));
+            HTableLayoutPanelExCenter.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            HTableLayoutPanelExCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            HTableLayoutPanelExCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            HTableLayoutPanelExCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            HTableLayoutPanelExCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            HTableLayoutPanelExCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            HTableLayoutPanelExCenter.Size = new Size(1870, 993);
+            HTableLayoutPanelExCenter.TabIndex = 0;
             // 
             // h_PanelExCenterTop
             // 
@@ -345,7 +350,7 @@
             StatusStrip1.PerformLayout();
             h_PanelExLeft.ResumeLayout(false);
             h_PanelExCenter.ResumeLayout(false);
-            h_TableLayoutPanelExCenter.ResumeLayout(false);
+            HTableLayoutPanelExCenter.ResumeLayout(false);
             h_PanelExCenterTop.ResumeLayout(false);
             h_PanelExCenterTop.PerformLayout();
             ResumeLayout(false);
@@ -370,16 +375,16 @@
         private H_ControlEx.H_ButtonEx h_ButtonExLeft3;
         private H_ControlEx.H_ButtonEx h_ButtonExLeft2;
         private H_ControlEx.H_PanelEx h_PanelExCenter;
-        private H_ControlEx.H_TableLayoutPanelEx h_TableLayoutPanelExCenter;
+        private H_ControlEx.H_TableLayoutPanelEx HTableLayoutPanelExCenter;
         private H_ControlEx.H_PanelEx h_PanelExCenterTop;
         private ToolStripMenuItem ToolStripMenuItemExit;
-        private ToolStripMenuItem ToolStripMenuItemInitializeVehicleDispatch;
+        private ToolStripMenuItem ToolStripMenuItemInitializeVehicleDispatchBody;
         private ToolStripMenuItem ToolStripMenuItemPrint;
         private ToolStripMenuItem ToolStripMenuItemPrintB4;
         private ToolStripStatusLabel ToolStripStatusLabelDetail;
         private ToolStripProgressBar ToolStripProgressBar1;
         private ToolStripMenuItem ToolStripMenuItemInitializeVehicleDispatchCopy;
         private ToolStripMenuItem ToolStripMenuItemUpdateVehicleDispatch;
-        private ToolStripMenuItem ToolStripMenuItemUpdateVehicleDispatchCleanOffice;
+        private ToolStripMenuItem ToolStripMenuItemUpdateVehicleDispatchBody;
     }
 }

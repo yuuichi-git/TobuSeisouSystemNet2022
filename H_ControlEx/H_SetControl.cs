@@ -1,6 +1,8 @@
 ﻿/*
  * 2023-10-20
  */
+using H_Dao;
+
 using H_Vo;
 
 namespace H_ControlEx {
@@ -32,9 +34,23 @@ namespace H_ControlEx {
         private readonly SolidBrush _solidBrushContactInformation = new(Color.FromArgb(70, Color.LimeGreen));
         private readonly SolidBrush _solidBrushFaxTransmission = new(Color.FromArgb(70, Color.IndianRed));
         /*
+         * 透かし文字用のフォーマット
+         */
+        private StringFormat stringFormat;
+        /*
+         * 空のSetControlExの文字列表示用
+         */
+        private readonly Rectangle rectangleFill = new(2, 2, 76, 116);
+        private readonly Font _drawFont = new("Yu Gothic UI", 14, FontStyle.Italic, GraphicsUnit.Pixel);
+        private readonly SolidBrush _drawBrushFont = new(Color.DarkGray);
+        /*
          * StaffLabel用のCellの位置を保持
          */
         private readonly Dictionary<int, Point> _dictionaryCellPoint = new() { { 0, new Point(0, 2) }, { 1, new Point(0, 3) }, { 2, new Point(1, 2) }, { 3, new Point(1, 3) } }; // StaffLabel用のCellの位置
+        /*
+         * Dao
+         */
+        private readonly H_VehicleDispatchBodyDao _hVehicleDispatchBodyDao;
         /*
          * Vo
          */
@@ -83,6 +99,16 @@ namespace H_ControlEx {
         /// </summary>
         public H_SetControl(H_ControlVo hControlVo) {
             /*
+             * 透かし文字用のフォーマット
+             */
+            stringFormat = new StringFormat();
+            stringFormat.LineAlignment = StringAlignment.Center;
+            stringFormat.Alignment = StringAlignment.Center;
+            /*
+             * Dao
+             */
+            _hVehicleDispatchBodyDao = new(hControlVo.ConnectionVo);
+            /*
              * Vo
              */
             _hControlVo = hControlVo;
@@ -96,7 +122,7 @@ namespace H_ControlEx {
             this.Margin = new Padding(0);
             this.Name = "H_SetControl";
             this.Padding = new Padding(0);
-            this.Tag = _hControlVo;
+            this.Tag = hControlVo;
             /*
              * SetControlの形状(１列か２列か)を決定する
              */
@@ -259,6 +285,89 @@ namespace H_ControlEx {
                         break;
                 }
             } else {
+                switch (_hControlVo.CellNumber) {
+                    /*
+                     * 管理者
+                     */
+                    case 44:
+                    case 45:
+                        e.Graphics.DrawString(string.Concat("本社", "\r\n", "運行管理"), _drawFont, _drawBrushFont, rectangleFill, stringFormat);
+                        break;
+                    case 46:
+                        e.Graphics.DrawString(string.Concat("三郷", "\r\n", "運行管理"), _drawFont, _drawBrushFont, rectangleFill, stringFormat);
+                        break;
+                    case 47:
+                    case 48:
+                        e.Graphics.DrawString(string.Concat("本社", "\r\n", "整備管理"), _drawFont, _drawBrushFont, rectangleFill, stringFormat);
+                        break;
+                    case 49:
+                        e.Graphics.DrawString(string.Concat("三郷", "\r\n", "整備管理"), _drawFont, _drawBrushFont, rectangleFill, stringFormat);
+                        break;
+                    /*
+                     * 大型枠
+                     */
+                    case 120:
+                        e.Graphics.DrawString("コンテナ", _drawFont, _drawBrushFont, rectangleFill, stringFormat);
+                        break;
+                    case 121:
+                    case 122:
+                    case 123:
+                    case 124:
+                    case 125:
+                    case 126:
+                    case 127:
+                    case 128:
+                    case 129:
+                        e.Graphics.DrawString("大型ダンプ", _drawFont, _drawBrushFont, rectangleFill, stringFormat);
+                        break;
+                    case 130:
+                    case 131:
+                        e.Graphics.DrawString("鉄道", _drawFont, _drawBrushFont, rectangleFill, stringFormat);
+                        break;
+                    /*
+                     * 事務関係
+                     */
+                    case 150:
+                        e.Graphics.DrawString("無断欠勤", _drawFont, _drawBrushFont, rectangleFill, stringFormat);
+                        break;
+                    case 151:
+                    case 152:
+                    case 153:
+                    case 154:
+                        e.Graphics.DrawString("朝電欠勤", _drawFont, _drawBrushFont, rectangleFill, stringFormat);
+                        break;
+                    case 156:
+                    case 157:
+                    case 158:
+                    case 159:
+                    case 160:
+                        e.Graphics.DrawString("有給休暇", _drawFont, _drawBrushFont, rectangleFill, stringFormat);
+                        break;
+                    case 162:
+                    case 163:
+                    case 164:
+                    case 165:
+                    case 166:
+                    case 167:
+                    case 168:
+                    case 169:
+                    case 170:
+                    case 171:
+                        e.Graphics.DrawString(string.Concat("組合員", "\r\n", "欠勤"), _drawFont, _drawBrushFont, rectangleFill, stringFormat);
+                        break;
+                    case 173:
+                    case 174:
+                    case 175:
+                    case 176:
+                    case 177:
+                    case 178:
+                    case 179:
+                    case 180:
+                    case 181:
+                    case 182:
+                        e.Graphics.DrawString(string.Concat("バイト", "\r\n", "欠勤"), _drawFont, _drawBrushFont, rectangleFill, stringFormat);
+                        break;
+                }
             }
             /*
              * H_SetControlの外枠を描画する
@@ -594,6 +703,7 @@ namespace H_ControlEx {
             return hVehicleDispatchDetailVo;
         }
 
+
         /*
          * アクセサー
          */
@@ -617,6 +727,50 @@ namespace H_ControlEx {
             set {
                 _faxTransmissionFlag = value;
                 this.Refresh();
+            }
+        }
+
+        /// <summary>
+        /// GetSetMasterVo
+        /// GetControlFromPosition(0, 0)
+        /// </summary>
+        /// <returns>H_SetMasterVoを返す Labelが存在しなかった場合はNull</returns>
+        public H_SetMasterVo GetSetMasterVo() {
+            Control control = this.GetControlFromPosition(0, 0);
+            if (control is not null && control.GetType() == typeof(H_SetLabel)) {
+                return (H_SetMasterVo)((H_SetLabel)control).Tag;
+            } else {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// GetCarMasterVo
+        /// GetControlFromPosition(0, 1)
+        /// </summary>
+        /// <returns>H_CarMasterVoを返す Labelが存在しなかった場合はNull</returns>
+        public H_CarMasterVo GetCarMasterVo() {
+            Control control = this.GetControlFromPosition(0, 1);
+            if (control is not null && control.GetType() == typeof(H_CarLabel)) {
+                return (H_CarMasterVo)((H_CarLabel)control).Tag;
+            } else {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// GetStaffMasterVo
+        /// GetControlFromPosition(?, ?)
+        /// </summary>
+        /// <param name="number">0:運転手 1:作業員１ 2:作業員２ 3:作業員３</param>
+        /// <returns>H_StaffMasterVoを返す Labelが存在しなかった場合はNull</returns>
+        public H_StaffMasterVo GetStaffMasterVo(int number) {
+            Dictionary<int, Point> _dictionaryPosition = new Dictionary<int, Point>() { { 0, new Point(0, 2) }, { 1, new Point(0, 3) }, { 2, new Point(1, 2) }, { 3, new Point(1, 3) } };
+            Control control = this.GetControlFromPosition(_dictionaryPosition[number].X, _dictionaryPosition[number].Y);
+            if (control is not null && control.GetType() == typeof(H_StaffLabel)) {
+                return (H_StaffMasterVo)((H_StaffLabel)control).Tag;
+            } else {
+                return null;
             }
         }
     }

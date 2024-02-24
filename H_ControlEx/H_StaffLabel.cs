@@ -109,12 +109,29 @@ namespace H_ControlEx {
             /*
              * Imageを選択する
              */
-            _imageStaffLabel = _staffMasterVo.JobForm switch {
-                10 => Properties.Resources.StaffLabelWhite,
-                11 => Properties.Resources.StaffLabelGreen,
-                12 => Properties.Resources.StaffLabelYellow,
-                _ => Properties.Resources.StaffLabelWhite,
-            };
+            switch (_staffMasterVo.Belongs) {
+                case 10: // 役員
+                case 11: // 社員
+                    _imageStaffLabel = Properties.Resources.StaffLabelWhite;
+                    break;
+                case 12: // アルバイト
+                    _imageStaffLabel = Properties.Resources.StaffLabelYellow;
+                    break;
+                case 13: // 派遣
+                    _imageStaffLabel = Properties.Resources.StaffLabelWhite;
+                    break;
+                case 20: // 新運転
+                case 21: // 自運労
+                    switch (_staffMasterVo.JobForm) {
+                        case 11:
+                            _imageStaffLabel = Properties.Resources.StaffLabelGreen;
+                            break;
+                        default:
+                            _imageStaffLabel = Properties.Resources.StaffLabelWhite;
+                            break;
+                    }
+                    break;
+            }
             /*
              * プロパティーの設定
              */

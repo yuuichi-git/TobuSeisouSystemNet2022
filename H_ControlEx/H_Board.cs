@@ -187,26 +187,26 @@ namespace H_ControlEx {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void HSetControl_DragDrop(object sender, DragEventArgs e) {
+            // DropされたH_SetControlを退避
             H_SetControl afterHSetControl = (H_SetControl)sender;
             Point clientPoint = afterHSetControl.PointToClient(new Point(e.X, e.Y));
             Point cellPoint = new(clientPoint.X / (int)_panelWidth, clientPoint.Y / (int)_panelHeight);
             /*
-             * ①DragされたObjectを取得する
+             * ①Dragされたオブジェクトを退避
              * ②Drag元のCellNumberを操作する
              * ③Drop先のDBRecordを操作する
              * ④Labelを移動する
              */
             if (e.Data.GetDataPresent(typeof(H_SetLabel))) {
-                // ①DragされたObjectを取得する
                 H_SetLabel dragItem = (H_SetLabel)e.Data.GetData(typeof(H_SetLabel));
-                // Drag元の親Controlを退避
+                // ①Dragされたオブジェクトを退避
                 Control beforeParentControl = dragItem.Parent;
                 /*
                  * Drag元のCellNumberを退避させておく(DB上からDragデータを削除するのに使用)
                  */
-                switch (dragItem.Parent.Name) {
+                switch (beforeParentControl.Name) {
                     case "H_SetControl": // (e.Effect == DragDropEffects.Move)
-                        beforeHControlVo = (H_ControlVo)dragItem.Parent.Tag;
+                        beforeHControlVo = (H_ControlVo)beforeParentControl.Tag;
                         /*
                          * H_SetControl間での移動
                          */
@@ -243,7 +243,7 @@ namespace H_ControlEx {
                  */
                 switch (beforeParentControl.Name) {
                     case "H_SetControl": // H_SetControl→H_SetControlへの移動
-                        beforeHControlVo = (H_ControlVo)dragItem.Parent.Tag;
+                        beforeHControlVo = (H_ControlVo)beforeParentControl.Tag;
                         // Drag元のRecordをUpdateする
                         _hVehicleDispatchDetailDao.UpdateHVehicleDispatchDetail(((H_SetControl)this.GetControlFromPosition(beforeHControlVo.CellNumber % 50, beforeHControlVo.CellNumber / 50)).ConvertHVehicleDispatchDetailVo());
                         // Drop先のRecordをUpdateする
@@ -257,14 +257,14 @@ namespace H_ControlEx {
                 }
             }
             /*
-             * ①DragされたObjectを取得する
+             * ①Dragされたオブジェクトを退避
              * ②Drag元のCellNumberを操作する
              * ③Drop先のDBRecordを操作する
              * ④Labelを移動する
              */
             if (e.Data.GetDataPresent(typeof(H_CarLabel))) {
                 H_CarLabel dragItem = (H_CarLabel)e.Data.GetData(typeof(H_CarLabel));
-                // Drag元の親Controlを退避
+                // ①Dragされたオブジェクトを退避
                 Control beforeParentControl = dragItem.Parent;
                 afterHSetControl.Controls.Add(dragItem, cellPoint.X, cellPoint.Y);
                 /*
@@ -286,14 +286,14 @@ namespace H_ControlEx {
                 }
             }
             /*
-             * ①DragされたObjectを取得する
+             * ①Dragされたオブジェクトを退避
              * ②Drag元のCellNumberを操作する
              * ③Drop先のDBRecordを操作する
              * ④Labelを移動する
              */
             if (e.Data.GetDataPresent(typeof(H_StaffLabel))) {
                 H_StaffLabel dragItem = (H_StaffLabel)e.Data.GetData(typeof(H_StaffLabel));
-                // Drag元の親Controlを退避
+                // ①Dragされたオブジェクトを退避
                 Control beforeParentControl = dragItem.Parent;
                 afterHSetControl.Controls.Add(dragItem, cellPoint.X, cellPoint.Y);
                 /*

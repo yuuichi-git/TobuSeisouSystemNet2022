@@ -9,6 +9,7 @@ using H_Vo;
 
 namespace H_Dao {
     public class H_VehicleDispatchDetailDao {
+        private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
         /*
          * H_Common
          */
@@ -479,6 +480,40 @@ namespace H_Dao {
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "UPDATE H_VehicleDispatchDetail " +
                                      "SET FaxTransmissionFlag = '" + faxTransmissionFlag + "'," +
+                                         "UpdatePcName = '" + Environment.MachineName + "'," +
+                                         "UpdateYmdHms = '" + DateTime.Now + "' " +
+                                     "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 配車先情報をリセット（削除）する
+        /// </summary>
+        /// <param name="cellNumber"></param>
+        /// <param name="operationDate"></param>
+        /// <param name="faxTransmissionFlag"></param>
+        public void ResetSetCode(int cellNumber, DateTime operationDate) {
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE H_VehicleDispatchDetail " +
+                                     "SET OperationFlag = 'false'," +
+                                         "VehicleDispatchFlag = 'false'," +
+                                         "PurposeFlag = 'false'," +
+                                         "SetCode = 0," +
+                                         "ManagedSpaceCode = 0," +
+                                         "ClassificationCode = 99," +
+                                         "LastRollCallFlag = 'false'," +
+                                         "LastRollCallYmdHms = '" + _defaultDateTime + "'," +
+                                         "SetMemoFlag = 'false'," +
+                                         "SetMemo = ''," +
+                                         "ShiftCode = 0," +
+                                         "StandByFlag = 'false'," +
+                                         "AddWorkerFlag = 'false'," +
+                                         "ContactInfomationFlag = 'false'," +
+                                         "FaxTransmissionFlag = 'false'," +
                                          "UpdatePcName = '" + Environment.MachineName + "'," +
                                          "UpdateYmdHms = '" + DateTime.Now + "' " +
                                      "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";

@@ -2,7 +2,7 @@
  * 2024-02-19
  */
 namespace H_Vo {
-    public class H_FastRollCallVo {
+    public class H_FirstRollCallVo {
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
         private DateTime _operationDate;
         private string _rollCallName1;
@@ -14,17 +14,17 @@ namespace H_Vo {
         private string _instruction1;
         private string _instruction2;
         private string _insertPcName;
-        private DateTime _insertYmsHms;
+        private DateTime _insertYmdHms;
         private string _updatePcName;
         private DateTime _updateYmdHms;
         private string _deletePcName;
-        private DateTime _deleteYmsHms;
+        private DateTime _deleteYmdHms;
         private bool _deleteFlag;
 
         /// <summary>
         /// コンストラクター
         /// </summary>
-        public H_FastRollCallVo() {
+        public H_FirstRollCallVo() {
             _operationDate = _defaultDateTime;
             _rollCallName1 = string.Empty;
             _rollCallName2 = string.Empty;
@@ -35,11 +35,11 @@ namespace H_Vo {
             _instruction1 = string.Empty;
             _instruction2 = string.Empty;
             _insertPcName = string.Empty;
-            _insertYmsHms = _defaultDateTime;
+            _insertYmdHms = _defaultDateTime;
             _updatePcName = string.Empty;
             _updateYmdHms = _defaultDateTime;
             _deletePcName = string.Empty;
-            _deleteYmsHms = _defaultDateTime;
+            _deleteYmdHms = _defaultDateTime;
             _deleteFlag = false;
         }
 
@@ -110,9 +110,9 @@ namespace H_Vo {
             get => _insertPcName;
             set => _insertPcName = value;
         }
-        public DateTime InsertYmsHms {
-            get => _insertYmsHms;
-            set => _insertYmsHms = value;
+        public DateTime InsertYmdHms {
+            get => _insertYmdHms;
+            set => _insertYmdHms = value;
         }
         public string UpdatePcName {
             get => _updatePcName;
@@ -126,9 +126,9 @@ namespace H_Vo {
             get => _deletePcName;
             set => _deletePcName = value;
         }
-        public DateTime DeleteYmsHms {
-            get => _deleteYmsHms;
-            set => _deleteYmsHms = value;
+        public DateTime DeleteYmdHms {
+            get => _deleteYmdHms;
+            set => _deleteYmdHms = value;
         }
         public bool DeleteFlag {
             get => _deleteFlag;

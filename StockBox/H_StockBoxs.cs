@@ -39,6 +39,7 @@ namespace StockBox {
             this.Opacity = 0.9;
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.StartPosition = FormStartPosition.CenterParent;
             /*
              * FlowLayoutPanelEx‚ğì¬
              */

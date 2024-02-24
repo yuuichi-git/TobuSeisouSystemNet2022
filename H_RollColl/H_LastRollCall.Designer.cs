@@ -39,9 +39,9 @@
             HButtonExUpdate = new H_ControlEx.H_ButtonEx();
             HNumericUpDownExLastPlantCount = new H_ControlEx.H_NumericUpDownEx();
             h_LabelEx9 = new H_ControlEx.H_LabelEx();
-            MaskedTextBoxFirstRollCallTime = new MaskedTextBox();
-            MaskedTextBoxLastPlantYmdHms = new MaskedTextBox();
-            MaskedTextBoxLastRollCallYmdHms = new MaskedTextBox();
+            HMaskedTextBoxExFirstRollCallTime = new H_ControlEx.H_MaskedTextBoxEx();
+            HMaskedTextBoxExLastPlantYmdHms = new H_ControlEx.H_MaskedTextBoxEx();
+            HMaskedTextBoxExLastRollCallYmdHms = new H_ControlEx.H_MaskedTextBoxEx();
             ((System.ComponentModel.ISupportInitialize)HNumericUpDownExFirstOdoMeter).BeginInit();
             ((System.ComponentModel.ISupportInitialize)HNumericUpDownExLastOdoMeter).BeginInit();
             ((System.ComponentModel.ISupportInitialize)HNumericUpDownExOilAmount).BeginInit();
@@ -203,44 +203,41 @@
             h_LabelEx9.TabIndex = 12;
             h_LabelEx9.Text = "搬入回数";
             // 
-            // MaskedTextBoxFirstRollCallTime
+            // HMaskedTextBoxExFirstRollCallTime
             // 
-            MaskedTextBoxFirstRollCallTime.Location = new Point(104, 40);
-            MaskedTextBoxFirstRollCallTime.Mask = "90時90分";
-            MaskedTextBoxFirstRollCallTime.Name = "MaskedTextBoxFirstRollCallTime";
-            MaskedTextBoxFirstRollCallTime.Size = new Size(76, 23);
-            MaskedTextBoxFirstRollCallTime.TabIndex = 1;
-            MaskedTextBoxFirstRollCallTime.TextAlign = HorizontalAlignment.Right;
-            MaskedTextBoxFirstRollCallTime.ValidatingType = typeof(DateTime);
+            HMaskedTextBoxExFirstRollCallTime.Location = new Point(104, 40);
+            HMaskedTextBoxExFirstRollCallTime.Mask = "00時00分";
+            HMaskedTextBoxExFirstRollCallTime.Name = "HMaskedTextBoxExFirstRollCallTime";
+            HMaskedTextBoxExFirstRollCallTime.Size = new Size(76, 23);
+            HMaskedTextBoxExFirstRollCallTime.TabIndex = 1;
+            HMaskedTextBoxExFirstRollCallTime.TextAlign = HorizontalAlignment.Right;
             // 
-            // MaskedTextBoxLastPlantYmdHms
+            // HMaskedTextBoxExLastPlantYmdHms
             // 
-            MaskedTextBoxLastPlantYmdHms.Location = new Point(104, 124);
-            MaskedTextBoxLastPlantYmdHms.Mask = "90時90分";
-            MaskedTextBoxLastPlantYmdHms.Name = "MaskedTextBoxLastPlantYmdHms";
-            MaskedTextBoxLastPlantYmdHms.Size = new Size(76, 23);
-            MaskedTextBoxLastPlantYmdHms.TabIndex = 4;
-            MaskedTextBoxLastPlantYmdHms.TextAlign = HorizontalAlignment.Right;
-            MaskedTextBoxLastPlantYmdHms.ValidatingType = typeof(DateTime);
+            HMaskedTextBoxExLastPlantYmdHms.Location = new Point(104, 124);
+            HMaskedTextBoxExLastPlantYmdHms.Mask = "00時00分";
+            HMaskedTextBoxExLastPlantYmdHms.Name = "HMaskedTextBoxExLastPlantYmdHms";
+            HMaskedTextBoxExLastPlantYmdHms.Size = new Size(76, 23);
+            HMaskedTextBoxExLastPlantYmdHms.TabIndex = 4;
+            HMaskedTextBoxExLastPlantYmdHms.TextAlign = HorizontalAlignment.Right;
             // 
-            // MaskedTextBoxLastRollCallYmdHms
+            // HMaskedTextBoxExLastRollCallYmdHms
             // 
-            MaskedTextBoxLastRollCallYmdHms.Location = new Point(104, 152);
-            MaskedTextBoxLastRollCallYmdHms.Mask = "90時90分";
-            MaskedTextBoxLastRollCallYmdHms.Name = "MaskedTextBoxLastRollCallYmdHms";
-            MaskedTextBoxLastRollCallYmdHms.Size = new Size(76, 23);
-            MaskedTextBoxLastRollCallYmdHms.TabIndex = 5;
-            MaskedTextBoxLastRollCallYmdHms.TextAlign = HorizontalAlignment.Right;
-            MaskedTextBoxLastRollCallYmdHms.ValidatingType = typeof(DateTime);
+            HMaskedTextBoxExLastRollCallYmdHms.Location = new Point(104, 152);
+            HMaskedTextBoxExLastRollCallYmdHms.Mask = "00時00分";
+            HMaskedTextBoxExLastRollCallYmdHms.Name = "HMaskedTextBoxExLastRollCallYmdHms";
+            HMaskedTextBoxExLastRollCallYmdHms.Size = new Size(76, 23);
+            HMaskedTextBoxExLastRollCallYmdHms.TabIndex = 5;
+            HMaskedTextBoxExLastRollCallYmdHms.TextAlign = HorizontalAlignment.Right;
             // 
             // H_LastRollCall
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(309, 311);
-            Controls.Add(MaskedTextBoxLastRollCallYmdHms);
-            Controls.Add(MaskedTextBoxLastPlantYmdHms);
-            Controls.Add(MaskedTextBoxFirstRollCallTime);
+            Controls.Add(HMaskedTextBoxExLastRollCallYmdHms);
+            Controls.Add(HMaskedTextBoxExLastPlantYmdHms);
+            Controls.Add(HMaskedTextBoxExFirstRollCallTime);
             Controls.Add(HNumericUpDownExLastPlantCount);
             Controls.Add(h_LabelEx9);
             Controls.Add(HButtonExUpdate);
@@ -288,8 +285,8 @@
         private H_ControlEx.H_ButtonEx HButtonExUpdate;
         private H_ControlEx.H_NumericUpDownEx HNumericUpDownExLastPlantCount;
         private H_ControlEx.H_LabelEx h_LabelEx9;
-        private MaskedTextBox MaskedTextBoxFirstRollCallTime;
-        private MaskedTextBox MaskedTextBoxLastPlantYmdHms;
-        private MaskedTextBox MaskedTextBoxLastRollCallYmdHms;
+        private H_ControlEx.H_MaskedTextBoxEx HMaskedTextBoxExFirstRollCallTime;
+        private H_ControlEx.H_MaskedTextBoxEx HMaskedTextBoxExLastPlantYmdHms;
+        private H_ControlEx.H_MaskedTextBoxEx HMaskedTextBoxExLastRollCallYmdHms;
     }
 }
