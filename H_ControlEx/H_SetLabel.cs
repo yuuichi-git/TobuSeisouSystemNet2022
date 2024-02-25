@@ -23,7 +23,7 @@ namespace H_ControlEx {
         /*
          * １つのパネルのサイズ
          */
-        private const float _panelWidth = 80;
+        private const float _panelWidth = 75; // 2024-02-24 80→75に変更
         private const float _panelHeight = 120;
         /*
          * H_Dao 
@@ -196,6 +196,10 @@ namespace H_ControlEx {
                         _imageSetLabel = ClassificationCode switch {
                             10 => Properties.Resources.SetLabelWhiteY,
                             11 => Properties.Resources.SetLabelWhiteK,
+                            96 => Properties.Resources.SetLabelGray,
+                            97 => Properties.Resources.SetLabelGray,
+                            98 => Properties.Resources.SetLabelGrayGreen,
+                            99 => Properties.Resources.SetLabelGrayRed,
                             _ => Properties.Resources.SetLabelWhite,
                         };
                         break;
@@ -203,6 +207,10 @@ namespace H_ControlEx {
                         _imageSetLabel = ClassificationCode switch {
                             10 => Properties.Resources.SetLabelPowerBlueY,
                             11 => Properties.Resources.SetLabelPowerBlueK,
+                            96 => Properties.Resources.SetLabelGray,
+                            97 => Properties.Resources.SetLabelGray,
+                            98 => Properties.Resources.SetLabelGrayGreen,
+                            99 => Properties.Resources.SetLabelGrayRed,
                             _ => Properties.Resources.SetLabelPowerBlue,
                         };
                         break;
@@ -230,10 +238,10 @@ namespace H_ControlEx {
             StringFormat stringFormat = new();
             stringFormat.LineAlignment = StringAlignment.Center;
             stringFormat.Alignment = StringAlignment.Center;
-            e.Graphics.DrawString(string.Concat(_hSetMasterVo.SetName1, "\r\n", _hSetMasterVo.SetName2, "\r\n", "(", _hSetMasterVo.SetCode, ")"),
+            e.Graphics.DrawString(string.Concat(_hSetMasterVo.SetName1, "\r\n", _hSetMasterVo.SetName2, "\r\n", _hSetMasterVo.SetCode),
                                                 _drawFontSetLabel,
                                                 new SolidBrush(Color.Black),
-                                                new Rectangle(0, 10, (int)_panelWidth - 6, (int)_panelHeight - 6), stringFormat);
+                                                new Rectangle(0, 10, (int)_panelWidth - 2, (int)_panelHeight - 6), stringFormat);
             /*
              * 帰庫点呼フラグ
              */
@@ -251,22 +259,22 @@ namespace H_ControlEx {
              */
             switch (_shiftCode) {
                 case 1:
-                    e.Graphics.DrawString("早番", _drawFontShiftCode, Brushes.DarkRed, new Point(7, 77));
+                    e.Graphics.DrawString("早番", _drawFontShiftCode, Brushes.DarkRed, new Point(7, 90));
                     break;
                 case 2:
-                    e.Graphics.DrawString("遅番", _drawFontShiftCode, Brushes.DarkRed, new Point(7, 77));
+                    e.Graphics.DrawString("遅番", _drawFontShiftCode, Brushes.DarkRed, new Point(7, 90));
                     break;
             }
             /*
              * 待機フラグ
              */
             if (_standByFlag)
-                e.Graphics.DrawString("待機", _drawFontStandByFlag, Brushes.DarkRed, new Point(43, 77));
+                e.Graphics.DrawString("待機", _drawFontStandByFlag, Brushes.DarkRed, new Point(38, 90));
             /*
              * 作業員付フラグ
              */
             if (_addWorkerFlag)
-                e.Graphics.DrawString("作付", _drawFontAddWorkerFlag, Brushes.DarkRed, new Point(24, 20));
+                e.Graphics.DrawString("作付", _drawFontAddWorkerFlag, Brushes.DarkRed, new Point(22, 20));
         }
 
         /// <summary>

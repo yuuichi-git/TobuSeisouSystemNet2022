@@ -218,7 +218,7 @@ namespace H_RollColl {
             List<H_VehicleDispatchDetailVo> listHVehicleDispatchDetailVo = _hVehicleDispatchDetailDao.SelectHVehicleDispatchDetail(HDateTimePickerExOperationDate.GetValue());
             foreach (H_FareMasterVo hFareMasterVo in _listHFareMasterVo.OrderBy(x => x.FareCode)) {
                 blockRowCount = 0;
-                foreach (H_VehicleDispatchDetailVo hVehicleDispatchDetailVo in listHVehicleDispatchDetailVo) {
+                foreach (H_VehicleDispatchDetailVo hVehicleDispatchDetailVo in listHVehicleDispatchDetailVo.OrderBy(x => x.CellNumber)) {
                     /*
                      * 配車表に表示する条件
                      * SetCode > 0

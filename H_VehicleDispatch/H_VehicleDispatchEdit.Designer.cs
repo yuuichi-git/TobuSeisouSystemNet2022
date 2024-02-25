@@ -35,6 +35,7 @@
             HRadioButtonExSunday = new H_ControlEx.H_RadioButtonEx();
             HButtonExUpdate = new H_ControlEx.H_ButtonEx();
             HPanelExDayOfWeek = new H_ControlEx.H_PanelEx();
+            HButtonExCancel = new H_ControlEx.H_ButtonEx();
             ((System.ComponentModel.ISupportInitialize)HNumericUpDownExFinancialYear).BeginInit();
             HPanelExDayOfWeek.SuspendLayout();
             SuspendLayout();
@@ -50,6 +51,7 @@
             // 
             // HNumericUpDownExFinancialYear
             // 
+            HNumericUpDownExFinancialYear.Enabled = false;
             HNumericUpDownExFinancialYear.Location = new Point(128, 12);
             HNumericUpDownExFinancialYear.Maximum = new decimal(new int[] { 2024, 0, 0, 0 });
             HNumericUpDownExFinancialYear.Minimum = new decimal(new int[] { 2023, 0, 0, 0 });
@@ -58,7 +60,6 @@
             HNumericUpDownExFinancialYear.TabIndex = 2;
             HNumericUpDownExFinancialYear.TextAlign = HorizontalAlignment.Right;
             HNumericUpDownExFinancialYear.Value = new decimal(new int[] { 2023, 0, 0, 0 });
-            HNumericUpDownExFinancialYear.ValueChanged += HNumericUpDownExFinancialYear_ValueChanged;
             // 
             // h_LabelEx1
             // 
@@ -80,7 +81,6 @@
             HRadioButtonExMonday.Tag = "月";
             HRadioButtonExMonday.Text = "月曜日";
             HRadioButtonExMonday.UseVisualStyleBackColor = true;
-            HRadioButtonExMonday.CheckedChanged += HRadioButtonEx_CheckedChanged;
             // 
             // HRadioButtonExTuesday
             // 
@@ -93,7 +93,6 @@
             HRadioButtonExTuesday.Tag = "火";
             HRadioButtonExTuesday.Text = "火曜日";
             HRadioButtonExTuesday.UseVisualStyleBackColor = true;
-            HRadioButtonExTuesday.CheckedChanged += HRadioButtonEx_CheckedChanged;
             // 
             // HRadioButtonExWednesday
             // 
@@ -106,7 +105,6 @@
             HRadioButtonExWednesday.Tag = "水";
             HRadioButtonExWednesday.Text = "水曜日";
             HRadioButtonExWednesday.UseVisualStyleBackColor = true;
-            HRadioButtonExWednesday.CheckedChanged += HRadioButtonEx_CheckedChanged;
             // 
             // HRadioButtonExThursday
             // 
@@ -119,7 +117,6 @@
             HRadioButtonExThursday.Tag = "木";
             HRadioButtonExThursday.Text = "木曜日";
             HRadioButtonExThursday.UseVisualStyleBackColor = true;
-            HRadioButtonExThursday.CheckedChanged += HRadioButtonEx_CheckedChanged;
             // 
             // HRadioButtonExFriday
             // 
@@ -132,7 +129,6 @@
             HRadioButtonExFriday.Tag = "金";
             HRadioButtonExFriday.Text = "金曜日";
             HRadioButtonExFriday.UseVisualStyleBackColor = true;
-            HRadioButtonExFriday.CheckedChanged += HRadioButtonEx_CheckedChanged;
             // 
             // HRadioButtonExSaturday
             // 
@@ -146,7 +142,6 @@
             HRadioButtonExSaturday.Tag = "土";
             HRadioButtonExSaturday.Text = "土曜日";
             HRadioButtonExSaturday.UseVisualStyleBackColor = true;
-            HRadioButtonExSaturday.CheckedChanged += HRadioButtonEx_CheckedChanged;
             // 
             // HRadioButtonExSunday
             // 
@@ -160,15 +155,14 @@
             HRadioButtonExSunday.Tag = "日";
             HRadioButtonExSunday.Text = "日曜日";
             HRadioButtonExSunday.UseVisualStyleBackColor = true;
-            HRadioButtonExSunday.CheckedChanged += HRadioButtonEx_CheckedChanged;
             // 
             // HButtonExUpdate
             // 
-            HButtonExUpdate.Location = new Point(32, 244);
+            HButtonExUpdate.Location = new Point(16, 240);
             HButtonExUpdate.Name = "HButtonExUpdate";
-            HButtonExUpdate.Size = new Size(168, 32);
+            HButtonExUpdate.Size = new Size(124, 32);
             HButtonExUpdate.TabIndex = 11;
-            HButtonExUpdate.Text = "この条件で記録する";
+            HButtonExUpdate.Text = "記録する";
             HButtonExUpdate.TextDirectionVertical = "";
             HButtonExUpdate.UseVisualStyleBackColor = true;
             HButtonExUpdate.Click += HButtonExUpdate_Click;
@@ -183,16 +177,29 @@
             HPanelExDayOfWeek.Controls.Add(HRadioButtonExWednesday);
             HPanelExDayOfWeek.Controls.Add(HRadioButtonExFriday);
             HPanelExDayOfWeek.Controls.Add(HRadioButtonExThursday);
+            HPanelExDayOfWeek.Enabled = false;
             HPanelExDayOfWeek.Location = new Point(12, 40);
             HPanelExDayOfWeek.Name = "HPanelExDayOfWeek";
             HPanelExDayOfWeek.Size = new Size(200, 184);
             HPanelExDayOfWeek.TabIndex = 12;
+            // 
+            // HButtonExCancel
+            // 
+            HButtonExCancel.Location = new Point(144, 240);
+            HButtonExCancel.Name = "HButtonExCancel";
+            HButtonExCancel.Size = new Size(68, 32);
+            HButtonExCancel.TabIndex = 13;
+            HButtonExCancel.Text = "Cancel";
+            HButtonExCancel.TextDirectionVertical = "";
+            HButtonExCancel.UseVisualStyleBackColor = true;
+            HButtonExCancel.Click += HButtonExCancel_Click;
             // 
             // H_VehicleDispatchEdit
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(226, 288);
+            Controls.Add(HButtonExCancel);
             Controls.Add(HPanelExDayOfWeek);
             Controls.Add(HButtonExUpdate);
             Controls.Add(HNumericUpDownExFinancialYear);
@@ -224,5 +231,6 @@
         private H_ControlEx.H_RadioButtonEx HRadioButtonExSunday;
         private H_ControlEx.H_ButtonEx HButtonExUpdate;
         private H_ControlEx.H_PanelEx HPanelExDayOfWeek;
+        private H_ControlEx.H_ButtonEx HButtonExCancel;
     }
 }

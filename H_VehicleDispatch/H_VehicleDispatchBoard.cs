@@ -9,8 +9,6 @@ using H_Dao;
 
 using H_RollColl;
 
-using H_Utility;
-
 using H_Vo;
 
 using StockBox;
@@ -23,7 +21,6 @@ namespace H_VehicleDispatch {
          */
         private readonly H_FlowLayoutPanelEx _hFlowLayoutPanelExFree;
         private readonly H_Board _hBoard;
-        private readonly H_ArrayUtility _hArrayUtility = new();
         /*
          * Dao
          */
@@ -121,7 +118,7 @@ namespace H_VehicleDispatch {
 
             // H_Boardを初期化
             this.HBoardControlRemove(_hBoard);
-            int financialYear = _date.GetFiscalYear(H_DateTimePickerOperationDate.Value);
+            int financialYear = _date.GetFiscalYear(H_DateTimePickerOperationDate.GetValue());
             string dayOgWeek = H_DateTimePickerOperationDate.Value.ToString("ddd");
             // H_VehicleDispatchHeadを取得
             List<H_VehicleDispatchHeadVo> listHVehicleDispatchHeadVo = _hVehicleDispatchHeadDao.SelectAllHVehicleDispatchHeadVo(_date.GetFiscalYear());
@@ -152,7 +149,7 @@ namespace H_VehicleDispatch {
                  * StaffCode3
                  * StaffCode4
                  */
-                H_VehicleDispatchVo? hVehicleDispatchVo = listHVehicleDispatchVo.Find(x => x.SetCode == hVehicleDispatchHeadVo?.SetCode);
+                H_VehicleDispatchVo? hVehicleDispatchVo = listHVehicleDispatchVo.Find(x => x.SetCode == hVehicleDispatchHeadVo.SetCode);
                 /*
                  * SetLabel作成
                  * SetCodeがゼロの場合Nullを返す
@@ -385,48 +382,56 @@ namespace H_VehicleDispatch {
                  * この配車組を 'H_VehicleDispatchBody' に登録する
                  */
                 case "ToolStripMenuItemUpdateVehicleDispatchBody":
-                    H_VehicleDispatchEdit hVehicleDispatchEdit = new(_connectionVo, H_DateTimePickerOperationDate.GetValue());
+                    /*
+                     * ダイアログを表示
+                     */
+                    H_VehicleDispatchEdit hVehicleDispatchEdit = new(H_DateTimePickerOperationDate.GetValue());
                     hVehicleDispatchEdit.StartPosition = FormStartPosition.CenterParent;
-                    hVehicleDispatchEdit.ShowDialog(this);
-                    switch (hVehicleDispatchEdit.CloseFlag) {
-                        case true: // 更新した場合
-
-                            foreach (H_SetControl hSetControl in _hBoard.Controls) {
-                                H_VehicleDispatchBodyVo hVehicleDispatchBodyVo = new();
-                                hVehicleDispatchBodyVo.SetCode = hSetControl.GetSetMasterVo() is not null ? hSetControl.GetSetMasterVo().SetCode : 0;
-                                hVehicleDispatchBodyVo.DayOfWeek = hVehicleDispatchEdit.SelectDayOfWeek;
-                                hVehicleDispatchBodyVo.CarCode = hSetControl.GetCarMasterVo() is not null ? hSetControl.GetCarMasterVo().CarCode : 0;
-                                switch (((H_ControlVo)hSetControl.Tag).PurposeFlag) {
-                                    case true: // ２列
-                                        hVehicleDispatchBodyVo.StaffCode1 = hSetControl.GetStaffMasterVo(0) is not null ? hSetControl.GetStaffMasterVo(0).StaffCode : 0;
-                                        hVehicleDispatchBodyVo.StaffCode2 = hSetControl.GetStaffMasterVo(1) is not null ? hSetControl.GetStaffMasterVo(1).StaffCode : 0;
-                                        hVehicleDispatchBodyVo.StaffCode3 = hSetControl.GetStaffMasterVo(2) is not null ? hSetControl.GetStaffMasterVo(2).StaffCode : 0;
-                                        hVehicleDispatchBodyVo.StaffCode4 = hSetControl.GetStaffMasterVo(3) is not null ? hSetControl.GetStaffMasterVo(3).StaffCode : 0;
-                                        break;
-                                    case false: // １列
-                                        hVehicleDispatchBodyVo.StaffCode1 = hSetControl.GetStaffMasterVo(0) is not null ? hSetControl.GetStaffMasterVo(0).StaffCode : 0;
-                                        hVehicleDispatchBodyVo.StaffCode2 = hSetControl.GetStaffMasterVo(1) is not null ? hSetControl.GetStaffMasterVo(1).StaffCode : 0;
-                                        hVehicleDispatchBodyVo.StaffCode3 = 0;
-                                        hVehicleDispatchBodyVo.StaffCode4 = 0;
-                                        break;
-                                }
-                                hVehicleDispatchBodyVo.FinancialYear = _date.GetFiscalYear(H_DateTimePickerOperationDate.GetValue());
-                                /*
-                                 * DB更新
-                                 */
-                                if (_hVehicleDispatchBodyDao.ExistenceHVehicleDispatchBodyVo(hSetControl.GetSetMasterVo() is not null ? hSetControl.GetSetMasterVo().SetCode : 0, hVehicleDispatchEdit.SelectDayOfWeek)) {
-                                    // Recordが存在する　UPDATE
+                    if (hVehicleDispatchEdit.ShowDialog(this) == DialogResult.OK) {
+                        foreach (H_SetControl hSetControl in _hBoard.Controls) {
+                            H_VehicleDispatchBodyVo hVehicleDispatchBodyVo = new();
+                            hVehicleDispatchBodyVo.SetCode = hSetControl.GetSetMasterVo() is not null ? hSetControl.GetSetMasterVo().SetCode : 0;
+                            hVehicleDispatchBodyVo.DayOfWeek = H_DateTimePickerOperationDate.GetValue().ToString("ddd");
+                            hVehicleDispatchBodyVo.CarCode = hSetControl.GetCarMasterVo() is not null ? hSetControl.GetCarMasterVo().CarCode : 0;
+                            switch (((H_ControlVo)hSetControl.Tag).PurposeFlag) {
+                                case true: // ２列
+                                    hVehicleDispatchBodyVo.StaffCode1 = hSetControl.GetStaffMasterVo(0) is not null ? hSetControl.GetStaffMasterVo(0).StaffCode : 0;
+                                    hVehicleDispatchBodyVo.StaffCode2 = hSetControl.GetStaffMasterVo(1) is not null ? hSetControl.GetStaffMasterVo(1).StaffCode : 0;
+                                    hVehicleDispatchBodyVo.StaffCode3 = hSetControl.GetStaffMasterVo(2) is not null ? hSetControl.GetStaffMasterVo(2).StaffCode : 0;
+                                    hVehicleDispatchBodyVo.StaffCode4 = hSetControl.GetStaffMasterVo(3) is not null ? hSetControl.GetStaffMasterVo(3).StaffCode : 0;
+                                    break;
+                                case false: // １列
+                                    hVehicleDispatchBodyVo.StaffCode1 = hSetControl.GetStaffMasterVo(0) is not null ? hSetControl.GetStaffMasterVo(0).StaffCode : 0;
+                                    hVehicleDispatchBodyVo.StaffCode2 = hSetControl.GetStaffMasterVo(1) is not null ? hSetControl.GetStaffMasterVo(1).StaffCode : 0;
+                                    hVehicleDispatchBodyVo.StaffCode3 = 0;
+                                    hVehicleDispatchBodyVo.StaffCode4 = 0;
+                                    break;
+                            }
+                            hVehicleDispatchBodyVo.FinancialYear = _date.GetFiscalYear(H_DateTimePickerOperationDate.GetValue());
+                            /*
+                             * DB更新
+                             */
+                            if (_hVehicleDispatchBodyDao.ExistenceHVehicleDispatchBodyVo(hSetControl.GetSetMasterVo() is not null ? hSetControl.GetSetMasterVo().SetCode : 0, H_DateTimePickerOperationDate.GetValue().ToString("ddd"))) {
+                                // Recordが存在する　UPDATE
+                                try {
                                     _hVehicleDispatchBodyDao.UpdateOneHVehicleDispatchBodyVo(hVehicleDispatchBodyVo);
-                                } else {
-                                    // Recordが存在しない　INSERT
+                                } catch (Exception exception) {
+                                    MessageBox.Show(exception.Message);
+                                }
+                            } else {
+                                // Recordが存在しない　INSERT
+                                try {
                                     _hVehicleDispatchBodyDao.InsertOneHVehicleDispatchBodyVo(hVehicleDispatchBodyVo);
+                                } catch (Exception exception) {
+                                    MessageBox.Show(exception.Message);
                                 }
                             }
-                            break;
-                        case false: // ×で閉じた場合
-
-                            break;
+                        }
+                        MessageBox.Show("更新されました", "メッセージ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    } else {
+                        MessageBox.Show("更新がキャンセルされました", "メッセージ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
+
                     hVehicleDispatchEdit.Dispose();
                     break;
                 /*

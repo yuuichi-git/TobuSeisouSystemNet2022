@@ -30,7 +30,7 @@ namespace H_ControlEx {
         /*
          * １つのパネルのサイズ
          */
-        private const float _panelWidth = 80;
+        private const float _panelWidth = 75; // 2024-02-24 80→75に変更
         private const float _panelHeight = 100;
         /*
          * プロパティ
@@ -145,13 +145,13 @@ namespace H_ControlEx {
             string number = string.Concat(_hCarMasterVo.RegistrationNumber1, _hCarMasterVo.RegistrationNumber2, "\r\n"
                                         , _hCarMasterVo.RegistrationNumber3, _hCarMasterVo.RegistrationNumber4, "\r\n"
                                         , _hCarMasterVo.DisguiseKind1, _hCarMasterVo.DoorNumber != 0 ? _hCarMasterVo.DoorNumber : " ");
-            e.Graphics.DrawString(number, _drawFontCarLabel, new SolidBrush(Color.Black), new Rectangle(0, 0, (int)_panelWidth - 6, (int)_panelHeight - 6), stringFormat);
+            e.Graphics.DrawString(number, _drawFontCarLabel, new SolidBrush(Color.Black), new Rectangle(0, 0, (int)_panelWidth - 2, (int)_panelHeight - 6), stringFormat);
             /*
              * 代車処理を描画
              */
             if (_carProxyFlag) {
-                e.Graphics.FillRectangle(Brushes.ForestGreen, 8, 5, 60, 5);
-                e.Graphics.DrawLine(new Pen(Color.LawnGreen), new Point(7, 7), new Point(69, 7));
+                e.Graphics.FillRectangle(Brushes.ForestGreen, 8, 5, 55, 5);
+                e.Graphics.DrawLine(new Pen(Color.LawnGreen), new Point(7, 7), new Point(64, 7));
             }
             /*
              * メモを描画

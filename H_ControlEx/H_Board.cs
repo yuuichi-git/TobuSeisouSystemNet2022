@@ -22,7 +22,7 @@ namespace H_ControlEx {
         /*
          * １つのパネルのサイズ(TableLayoutPanelのCellの事だよ)
          */
-        private const float _panelWidth = 80;
+        private const float _panelWidth = 75; // 2024-02-24 80→75に変更
         private const float _panelHeight = 120;
         /*
          * Cellの数
@@ -103,6 +103,7 @@ namespace H_ControlEx {
             hSetControl.Event_HSetControl_HStaffLabel_MouseClick += HStaffLabel_MouseClick;
             hSetControl.Event_HSetControl_HStaffLabel_MouseDoubleClick += HStaffLabel_MouseDoubleClick;
             hSetControl.Event_HSetControl_HStaffLabel_MouseMove += HStaffLabel_MouseMove;
+            hSetControl.Event_HSetControl_HStaffLabel_ToolStripMenuItem_Click += HSetControl_HStaffLabel_ToolStripMenuItem_Click;
             /*
              * Controlを配置
              */
@@ -443,6 +444,34 @@ namespace H_ControlEx {
             H_StaffLabel hStaffLabel = (H_StaffLabel)sender;
             if (e.Button == MouseButtons.Left)
                 hStaffLabel.DoDragDrop(sender, DragDropEffects.All);
+        }
+
+        /// <summary>
+        /// HSetControl_HStaffLabel_ToolStripMenuItem_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HSetControl_HStaffLabel_ToolStripMenuItem_Click(object sender, EventArgs e) {
+            switch (((ToolStripMenuItem)sender).Name) {
+                /*
+                 * 従事者台帳を表示する
+                 */
+                case "ToolStripMenuItemStaffDetail":
+                    MessageBox.Show("てっぺんに到着した！");
+                    break;
+                /*
+                 * メモを作成・編集する
+                 */
+                case "ToolStripMenuItemStaffMemo":
+                    MessageBox.Show("ToolStripMenuItemStaffMemo");
+                    break;
+                /*
+                 * 備品を支給する
+                 */
+                case "ToolStripMenuItemStaffEquioment":
+                    MessageBox.Show("ToolStripMenuItemStaffEquioment");
+                    break;
+            }
         }
     }
 }

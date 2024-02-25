@@ -11,7 +11,7 @@ namespace H_ControlEx {
         /*
          * １つのパネルのサイズ
          */
-        private const float _panelWidth = 80;
+        private const float _panelWidth = 75; // 2024-02-24 80→75に変更
         private const float _panelHeight = 120;
         /*
          * プロパティ
@@ -91,6 +91,7 @@ namespace H_ControlEx {
         public event MouseEventHandler Event_HSetControl_HStaffLabel_MouseClick = delegate { };
         public event MouseEventHandler Event_HSetControl_HStaffLabel_MouseDoubleClick = delegate { };
         public event MouseEventHandler Event_HSetControl_HStaffLabel_MouseMove = delegate { };
+        public event EventHandler Event_HSetControl_HStaffLabel_ToolStripMenuItem_Click = delegate { };
 
         /// <summary>
         /// コンストラクタ
@@ -128,7 +129,7 @@ namespace H_ControlEx {
              */
             switch (_hControlVo.PurposeFlag) {
                 case false: // １列
-                    this.Size = new Size(80, 400);
+                    this.Size = new Size(75, 400);
                     this.ColumnCount = _columnCount;
                     this.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, _panelWidth));
                     this.RowCount = _rowCount;
@@ -138,7 +139,7 @@ namespace H_ControlEx {
                     this.RowStyles.Add(new RowStyle(SizeType.Absolute, _panelHeight));
                     break;
                 case true: // ２列
-                    this.Size = new Size(160, 400);
+                    this.Size = new Size(150, 400);
                     this.ColumnCount = _columnCount + 1;
                     this.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, _panelWidth));
                     this.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, _panelWidth));
@@ -228,6 +229,7 @@ namespace H_ControlEx {
                     hStaffLabel.Event_HStaffLabel_MouseClick += HSetControl_HStaffLabel_MouseClick;
                     hStaffLabel.Event_HStaffLabel_MouseDoubleClick += HSetControl_HStaffLabel_MouseDoubleClick;
                     hStaffLabel.Event_HStaffLabel_MouseMove += HSetControl_HStaffLabel_MouseMove;
+                    hStaffLabel.Event_HStaffLabel_ToolStripMenuItem_Click += HSetControl_HStaffLabel_ToolStripMenuItem_Click;
                     // StaffLabelを追加
                     this.Controls.Add(hStaffLabel, _dictionaryCellPoint[i].X, _dictionaryCellPoint[i].Y);
                 }
@@ -374,9 +376,9 @@ namespace H_ControlEx {
              */
             if (_oldOnCursorFlag) {
                 if (((H_ControlVo)this.Tag).PurposeFlag) {
-                    e.Graphics.DrawRectangle(new Pen(Color.DarkBlue, 2), new Rectangle(1, 1, 158, 479));
+                    e.Graphics.DrawRectangle(new Pen(Color.DarkBlue, 2), new Rectangle(1, 1, 148, 479));
                 } else {
-                    e.Graphics.DrawRectangle(new Pen(Color.DarkBlue, 2), new Rectangle(1, 1, 78, 479));
+                    e.Graphics.DrawRectangle(new Pen(Color.DarkBlue, 2), new Rectangle(1, 1, 73, 479));
                 }
             }
         }
@@ -540,6 +542,9 @@ namespace H_ControlEx {
             Event_HSetControl_HStaffLabel_MouseMove.Invoke(sender, e);
         }
 
+        private void HSetControl_HStaffLabel_ToolStripMenuItem_Click(object sender, EventArgs e) {
+            Event_HSetControl_HStaffLabel_ToolStripMenuItem_Click.Invoke(sender, e);
+        }
         /*
          * Getter/Setter
          */
@@ -765,8 +770,7 @@ namespace H_ControlEx {
         /// <param name="number">0:運転手 1:作業員１ 2:作業員２ 3:作業員３</param>
         /// <returns>H_StaffMasterVoを返す Labelが存在しなかった場合はNull</returns>
         public H_StaffMasterVo GetStaffMasterVo(int number) {
-            Dictionary<int, Point> _dictionaryPosition = new Dictionary<int, Point>() { { 0, new Point(0, 2) }, { 1, new Point(0, 3) }, { 2, new Point(1, 2) }, { 3, new Point(1, 3) } };
-            Control control = this.GetControlFromPosition(_dictionaryPosition[number].X, _dictionaryPosition[number].Y);
+            Control control = this.GetControlFromPosition(_dictionaryCellPoint[number].X, _dictionaryCellPoint[number].Y);
             if (control is not null && control.GetType() == typeof(H_StaffLabel)) {
                 return (H_StaffMasterVo)((H_StaffLabel)control).Tag;
             } else {

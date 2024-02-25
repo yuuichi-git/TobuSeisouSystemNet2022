@@ -15,6 +15,7 @@ namespace H_ControlEx {
         public event MouseEventHandler Event_HStaffLabel_MouseClick = delegate { };
         public event MouseEventHandler Event_HStaffLabel_MouseDoubleClick = delegate { };
         public event MouseEventHandler Event_HStaffLabel_MouseMove = delegate { };
+        public event EventHandler Event_HStaffLabel_ToolStripMenuItem_Click = delegate {};
 
         private readonly Image _imageStaffLabel;
         /*
@@ -30,7 +31,7 @@ namespace H_ControlEx {
         /*
          * １つのパネルのサイズ
          */
-        private const float _panelWidth = 80;
+        private const float _panelWidth = 75; // 2024-02-24 80→75に変更
         private const float _panelHeight = 120;
         /*
          * プロパティー
@@ -236,8 +237,8 @@ namespace H_ControlEx {
              * 代番処理を描画
              */
             if (_staffProxyFlag) {
-                e.Graphics.FillRectangle(Brushes.ForestGreen, 14, 4, 48, 5);
-                e.Graphics.DrawLine(new Pen(Color.LawnGreen), new Point(10, 6), new Point(63, 6));
+                e.Graphics.FillRectangle(Brushes.ForestGreen, 14, 4, 43, 5);
+                e.Graphics.DrawLine(new Pen(Color.LawnGreen), new Point(10, 6), new Point(58, 6));
             }
             /*
              * メモを描画
@@ -250,8 +251,8 @@ namespace H_ControlEx {
              * 点呼の印を描画
              */
             if (!_staffRollCallFlag) {
-                e.Graphics.FillEllipse(Brushes.Crimson, 56, 93, 10, 10);
-                e.Graphics.FillEllipse(Brushes.LightPink, 60, 97, 4, 4);
+                e.Graphics.FillEllipse(Brushes.Crimson, 51, 92, 10, 10);
+                e.Graphics.FillEllipse(Brushes.LightPink, 55, 97, 4, 4);
             }
         }
 
@@ -376,12 +377,16 @@ namespace H_ControlEx {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ToolStripMenuItem_Click(object sender, EventArgs e) {
+            Event_HStaffLabel_ToolStripMenuItem_Click.Invoke(sender, e);
             switch (((ToolStripMenuItem)sender).Name) {
                 /*
                  * 従事者台帳を表示する
                  */
                 case "ToolStripMenuItemStaffDetail":
-                    MessageBox.Show("ToolStripMenuItemStaffDetail");
+                    /*
+                     * H_Boardに処理を回している
+                     * H_StaffLabel→H_SetControl→H_Board
+                     */
                     break;
                 /*
                  * 代番として記録する
@@ -474,13 +479,19 @@ namespace H_ControlEx {
                  * メモを作成・編集する
                  */
                 case "ToolStripMenuItemStaffMemo":
-                    MessageBox.Show("ToolStripMenuItemStaffMemo");
+                    /*
+                     * H_Boardに処理を回している
+                     * H_StaffLabel→H_SetControl→H_Board
+                     */
                     break;
                 /*
                  * 備品を支給する
                  */
                 case "ToolStripMenuItemStaffEquioment":
-                    MessageBox.Show("ToolStripMenuItemStaffEquioment");
+                    /*
+                     * H_Boardに処理を回している
+                     * H_StaffLabel→H_SetControl→H_Board
+                     */
                     break;
             }
         }
