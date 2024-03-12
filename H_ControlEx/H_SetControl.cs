@@ -67,6 +67,8 @@ namespace H_ControlEx {
         public event DragEventHandler Event_HSetControl_DragEnter = delegate { };
         public event DragEventHandler Event_HSetControl_DragDrop = delegate { };
         public event DragEventHandler Event_HSetControl_DragOver = delegate { };
+        // SetLabel,CarLabel,StaffLabel 共通
+        public event EventHandler Event_HSetControl_HLabel_ToolStripMenuItem_Click = delegate { };
         /*
          * Eventを親へ渡す処理
          * インスタンスから見えるようになる
@@ -91,7 +93,6 @@ namespace H_ControlEx {
         public event MouseEventHandler Event_HSetControl_HStaffLabel_MouseClick = delegate { };
         public event MouseEventHandler Event_HSetControl_HStaffLabel_MouseDoubleClick = delegate { };
         public event MouseEventHandler Event_HSetControl_HStaffLabel_MouseMove = delegate { };
-        public event EventHandler Event_HSetControl_HStaffLabel_ToolStripMenuItem_Click = delegate { };
 
         /// <summary>
         /// コンストラクタ
@@ -188,6 +189,7 @@ namespace H_ControlEx {
                 hSetLabel.Event_HSetLabel_MouseClick += HSetControl_HSetLabel_MouseClick;
                 hSetLabel.Event_HSetLabel_MouseDoubleClick += HSetControl_HSetLabel_MouseDoubleClick;
                 hSetLabel.Event_HSetLabel_MouseMove += HSetControl_HSetLabel_MouseMove;
+                hSetLabel.Event_HSetLabel_ToolStripMenuItem_Click += HSetControl_HSetLabel_ToolStripMenuItem_Click;
                 // SetLabelを追加
                 this.Controls.Add(hSetLabel, 0, 0);
             }
@@ -206,6 +208,7 @@ namespace H_ControlEx {
                 hCarLabel.Event_HCarLabel_MouseClick += HSetControl_HCarLabel_MouseClick;
                 hCarLabel.Event_HCarLabel_MouseDoubleClick += HSetControl_HCarLabel_MouseDoubleClick;
                 hCarLabel.Event_HCarLabel_MouseMove += HSetControl_HCarLabel_MouseMove;
+                hCarLabel.Event_HCarLabel_ToolStripMenuItem_Click += HSetControl_HCarLabel_ToolStripMenuItem_Click;
                 // CarLabelを追加
                 this.Controls.Add(hCarLabel, 0, 1);
             }
@@ -325,49 +328,6 @@ namespace H_ControlEx {
                     case 130:
                     case 131:
                         e.Graphics.DrawString("鉄道", _drawFont, _drawBrushFont, rectangleFill, stringFormat);
-                        break;
-                    /*
-                     * 事務関係
-                     */
-                    case 150:
-                        e.Graphics.DrawString("無断欠勤", _drawFont, _drawBrushFont, rectangleFill, stringFormat);
-                        break;
-                    case 151:
-                    case 152:
-                    case 153:
-                    case 154:
-                        e.Graphics.DrawString("朝電欠勤", _drawFont, _drawBrushFont, rectangleFill, stringFormat);
-                        break;
-                    case 156:
-                    case 157:
-                    case 158:
-                    case 159:
-                    case 160:
-                        e.Graphics.DrawString("有給休暇", _drawFont, _drawBrushFont, rectangleFill, stringFormat);
-                        break;
-                    case 162:
-                    case 163:
-                    case 164:
-                    case 165:
-                    case 166:
-                    case 167:
-                    case 168:
-                    case 169:
-                    case 170:
-                    case 171:
-                        e.Graphics.DrawString(string.Concat("組合員", "\r\n", "欠勤"), _drawFont, _drawBrushFont, rectangleFill, stringFormat);
-                        break;
-                    case 173:
-                    case 174:
-                    case 175:
-                    case 176:
-                    case 177:
-                    case 178:
-                    case 179:
-                    case 180:
-                    case 181:
-                    case 182:
-                        e.Graphics.DrawString(string.Concat("バイト", "\r\n", "欠勤"), _drawFont, _drawBrushFont, rectangleFill, stringFormat);
                         break;
                 }
             }
@@ -489,6 +449,15 @@ namespace H_ControlEx {
         }
 
         /// <summary>
+        /// HSetControl_HSetLabel_ToolStripMenuItem_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HSetControl_HSetLabel_ToolStripMenuItem_Click(object sender, EventArgs e) {
+            Event_HSetControl_HLabel_ToolStripMenuItem_Click.Invoke(sender, e);
+        }
+
+        /// <summary>
         /// HSetControl_HCarLabel_MouseClick
         /// </summary>
         /// <param name="sender"></param>
@@ -513,6 +482,15 @@ namespace H_ControlEx {
         /// <param name="e"></param>
         private void HSetControl_HCarLabel_MouseMove(object sender, MouseEventArgs e) {
             Event_HSetControl_HCarLabel_MouseMove.Invoke(sender, e);
+        }
+
+        /// <summary>
+        /// HSetControl_HCarLabel_ToolStripMenuItem_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HSetControl_HCarLabel_ToolStripMenuItem_Click(object sender, EventArgs e) {
+            Event_HSetControl_HLabel_ToolStripMenuItem_Click.Invoke(sender, e);
         }
 
         /// <summary>
@@ -541,9 +519,13 @@ namespace H_ControlEx {
         private void HSetControl_HStaffLabel_MouseMove(object sender, MouseEventArgs e) {
             Event_HSetControl_HStaffLabel_MouseMove.Invoke(sender, e);
         }
-
+        /// <summary>
+        /// HSetControl_HStaffLabel_ToolStripMenuItem_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void HSetControl_HStaffLabel_ToolStripMenuItem_Click(object sender, EventArgs e) {
-            Event_HSetControl_HStaffLabel_ToolStripMenuItem_Click.Invoke(sender, e);
+            Event_HSetControl_HLabel_ToolStripMenuItem_Click.Invoke(sender, e);
         }
         /*
          * Getter/Setter

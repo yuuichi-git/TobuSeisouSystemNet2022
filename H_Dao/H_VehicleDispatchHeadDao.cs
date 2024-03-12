@@ -24,6 +24,7 @@ namespace H_Dao {
 
         /// <summary>
         /// SelectAllHVehicleDispatchHeadVo
+        /// 対象年度のレコードを抽出する
         /// </summary>
         /// <param name="financialYear"></param>
         /// <returns></returns>
@@ -43,7 +44,7 @@ namespace H_Dao {
                                             "DeleteYmdHms," +
                                             "DeleteFlag " +
                                      "FROM H_VehicleDispatchHead " +
-                                     "WHERE FinancialYear = '" + financialYear.ToString() + "'";
+                                     "WHERE FinancialYear = " + financialYear + "";
             using (var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while (sqlDataReader.Read() == true) {
                     H_VehicleDispatchHeadVo hVehicleDispatchHeadVo = new();

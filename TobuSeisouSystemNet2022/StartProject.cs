@@ -19,6 +19,8 @@ using CommuterInsurance;
 
 using H_Common;
 
+using H_Dao;
+
 using H_RollColl;
 
 using H_Staff;
@@ -103,6 +105,7 @@ namespace TobuSeisouSystemNet2022 {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Label_Click(object sender, EventArgs e) {
+            DialogResult dialogResult;
             if (_connectionVo.Connection != null) {
                 switch (_connectionVo.Connection.State) {
                     case ConnectionState.Closed: //接続が閉じています。
@@ -288,6 +291,28 @@ namespace TobuSeisouSystemNet2022 {
                                 hFirstRollColl.Size = new Size(1920, 1080);
                                 hFirstRollColl.WindowState = FormWindowState.Normal;
                                 hFirstRollColl.Show(this);
+                                break;
+                            /*
+                             * データ移行ツール
+                             */
+                            case "DbCarMaster":
+                                dialogResult = MessageBox.Show("SQLを発行します。本当によろしいですか？", "SQLメッセージ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                                if (dialogResult == DialogResult.OK) {
+                                    new ConvertTableDao(_connectionVo).ConvertHCarMaster();
+                                }
+                                break;
+                            case "DbStaffMaster":
+                                dialogResult = MessageBox.Show("SQLを発行します。本当によろしいですか？", "SQLメッセージ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                                if (dialogResult == DialogResult.OK) {
+                                    new ConvertTableDao(_connectionVo).ConvertHStaffMaster();
+                                }
+                                break;
+                            // 新規年度のHVehicleDispatchBodyを作成する
+                            case "DbHVehicleDispatchBody":
+                                dialogResult = MessageBox.Show("SQLを発行します。本当によろしいですか？", "SQLメッセージ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                                if (dialogResult == DialogResult.OK) {
+                                    new ConvertTableDao(_connectionVo).CreateHVehicleDispatchBody();
+                                }
                                 break;
                         }
                         break;

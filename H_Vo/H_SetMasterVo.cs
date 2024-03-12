@@ -8,7 +8,7 @@ namespace H_Vo {
      */
     [Serializable] // ←DeepCopyする場合には必要
     public class H_SetMasterVo {
-        private readonly DateTime _defaultDateTime = new(1900,01,01);
+        private readonly DateTime _defaultDateTime = new(1900, 01, 01);
 
         private int _setCode;
         private int _wordCode;
@@ -25,6 +25,8 @@ namespace H_Vo {
         private bool _fiveLap;
         private bool _moveFlag;
         private string _remarks;
+        private string _telephoneNumber;
+        private string _faxNumber;
         private string _insertPcName;
         private DateTime _insertYmdHms;
         private string _updatePcName;
@@ -52,6 +54,8 @@ namespace H_Vo {
             _fiveLap = true;
             _moveFlag = true;
             _remarks = string.Empty;
+            _telephoneNumber = string.Empty;
+            _faxNumber = string.Empty;
             _insertPcName = string.Empty;
             _insertYmdHms = _defaultDateTime;
             _updatePcName = string.Empty;
@@ -177,6 +181,20 @@ namespace H_Vo {
         public string Remarks {
             get => _remarks;
             set => _remarks = value;
+        }
+        /// <summary>
+        /// 電話番号
+        /// </summary>
+        public string TelephoneNumber {
+            get => _telephoneNumber;
+            set => _telephoneNumber = value;
+        }
+        /// <summary>
+        /// Fax番号
+        /// </summary>
+        public string FaxNumber {
+            get => _faxNumber;
+            set => _faxNumber = value;
         }
         public string InsertPcName {
             get => _insertPcName;

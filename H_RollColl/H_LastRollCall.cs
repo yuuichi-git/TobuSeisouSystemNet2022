@@ -1,39 +1,55 @@
 ﻿/*
  * 2024-02-19
  */
+using System.Diagnostics;
+
+using H_Common;
+
+using H_ControlEx;
+
 using H_Dao;
 
 using H_Vo;
 
 namespace H_RollColl {
     public partial class H_LastRollCall : Form {
-        private readonly int _setCode;
+        private H_SetLabel _hSetLabel;
         private readonly DateTime _operationDateTime;
+        private readonly int _cellNumber;
+        private readonly int _setCode;
+        /*
+         * H_Common 
+         */
+        private readonly Date _date = new();
         /*
          * Dao
          */
         private readonly H_LastRollCallDao _hLastRollCallDao;
+        private readonly H_VehicleDispatchDetailDao _hVehicleDispatchDetailDao;
 
         /// <summary>
         /// コンストラクター
         /// </summary>
         /// <param name="connectionVo"></param>
-        public H_LastRollCall(ConnectionVo connectionVo, int setCode, DateTime dateTime) {
+        public H_LastRollCall(ConnectionVo connectionVo, H_SetLabel hSetLabel, int cellNumber, int setCode, DateTime operationDate) {
+            _hSetLabel = hSetLabel;
+            _operationDateTime = operationDate;
+            _cellNumber = cellNumber;
             _setCode = setCode;
-            _operationDateTime = dateTime;
             /*
              * Dao
              */
-            _hLastRollCallDao = new H_LastRollCallDao(connectionVo);
+            _hLastRollCallDao = new(connectionVo);
+            _hVehicleDispatchDetailDao = new(connectionVo);
             /*
              * コントロール初期化
              */
             InitializeComponent();
-            this.Size = new Size(325, 350);
+            this.Size = new Size(325, 400);
             this.StartPosition = FormStartPosition.CenterScreen;
 
-            if (_hLastRollCallDao.ExistenceHLastRollCallVo(setCode, dateTime.Date)) {
-                this.SetControl(_hLastRollCallDao.SelectOneHLastRollCallVo(setCode, dateTime.Date));
+            if (_hLastRollCallDao.ExistenceHLastRollCallVo(setCode, operationDate.Date)) {
+                this.SetControl(_hLastRollCallDao.SelectOneHLastRollCallVo(setCode, operationDate.Date));
             } else {
                 InitializeControl();
             }
@@ -51,13 +67,24 @@ namespace H_RollColl {
 
             try {
                 if (_hLastRollCallDao.ExistenceHLastRollCallVo(_setCode, _operationDateTime.Date)) {
-                    _hLastRollCallDao.UpdateOneHLastRollCallVo(CreateHLastRollCallVo());
+                    try {
+                        _hVehicleDispatchDetailDao.UpdateLastRollCall(HCheckBoxExLastRollCallCancel.Checked, _cellNumber, CreateHLastRollCallVo());
+                        _hLastRollCallDao.UpdateOneHLastRollCallVo(CreateHLastRollCallVo());
+                    } catch (Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
                 } else {
-                    _hLastRollCallDao.InsertOneHLastRollCallVo(CreateHLastRollCallVo());
+                    try {
+                        _hVehicleDispatchDetailDao.UpdateLastRollCall(HCheckBoxExLastRollCallCancel.Checked, _cellNumber, CreateHLastRollCallVo());
+                        _hLastRollCallDao.InsertOneHLastRollCallVo(CreateHLastRollCallVo());
+                    } catch (Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
                 }
             } catch (Exception exception) {
                 MessageBox.Show(exception.Message);
             }
+            _hSetLabel.LastRollCallFlag = !HCheckBoxExLastRollCallCancel.Checked;
             this.Close();
         }
 
@@ -68,12 +95,13 @@ namespace H_RollColl {
         private H_LastRollCallVo CreateHLastRollCallVo() {
             H_LastRollCallVo hLastRollCallVo = new();
             hLastRollCallVo.SetCode = _setCode;
-            hLastRollCallVo.OperationDate = _operationDateTime;
-            hLastRollCallVo.FirstRollCallHms = HMaskedTextBoxExFirstRollCallTime.Text;
+            hLastRollCallVo.OperationDate = HDateTimePickerExOperationDate.GetValue();
+            Debug.WriteLine(HMaskedTextBoxExFirstRollCallTime.Text);
+            hLastRollCallVo.FirstRollCallYmdHms = _date.GetStringTimeToDateTime(HDateTimePickerExOperationDate.GetValue(), HMaskedTextBoxExFirstRollCallTime.Text);
             hLastRollCallVo.LastPlantCount = (int)HNumericUpDownExLastPlantCount.Value;
             hLastRollCallVo.LastPlantName = HComboBoxExLastPlantName.Text;
-            hLastRollCallVo.LastPlantHms = HMaskedTextBoxExLastPlantYmdHms.Text;
-            hLastRollCallVo.LastRollCallHms = HMaskedTextBoxExLastRollCallYmdHms.Text;
+            hLastRollCallVo.LastPlantYmdHms = _date.GetStringTimeToDateTime(HDateTimePickerExOperationDate.GetValue(), HMaskedTextBoxExLastPlantYmdHms.Text);
+            hLastRollCallVo.LastRollCallYmdHms = _date.GetStringTimeToDateTime(HDateTimePickerExOperationDate.GetValue(), HMaskedTextBoxExLastRollCallYmdHms.Text);
             hLastRollCallVo.FirstOdoMeter = HNumericUpDownExFirstOdoMeter.Value;
             hLastRollCallVo.LastOdoMeter = HNumericUpDownExLastOdoMeter.Value;
             hLastRollCallVo.OilAmount = HNumericUpDownExOilAmount.Value;
@@ -85,12 +113,12 @@ namespace H_RollColl {
         /// </summary>
         /// <param name="hLastRollCallVo"></param>
         private void SetControl(H_LastRollCallVo hLastRollCallVo) {
-            HDateTimePickerExOperationDate.Value = hLastRollCallVo.OperationDate.Date;
-            HMaskedTextBoxExFirstRollCallTime.Text = hLastRollCallVo.FirstRollCallHms;
+            HDateTimePickerExOperationDate.SetValue(hLastRollCallVo.OperationDate.Date);
+            HMaskedTextBoxExFirstRollCallTime.Text = hLastRollCallVo.FirstRollCallYmdHms.ToString("HH:mm");
             HNumericUpDownExLastPlantCount.Value = hLastRollCallVo.LastPlantCount;
             HComboBoxExLastPlantName.Text = hLastRollCallVo.LastPlantName;
-            HMaskedTextBoxExLastPlantYmdHms.Text = hLastRollCallVo.LastPlantHms;
-            HMaskedTextBoxExLastRollCallYmdHms.Text = hLastRollCallVo.LastRollCallHms;
+            HMaskedTextBoxExLastPlantYmdHms.Text = hLastRollCallVo.LastPlantYmdHms.ToString("HH:mm");
+            HMaskedTextBoxExLastRollCallYmdHms.Text = hLastRollCallVo.LastRollCallYmdHms.ToString("HH:mm");
             HNumericUpDownExFirstOdoMeter.Value = hLastRollCallVo.FirstOdoMeter;
             HNumericUpDownExLastOdoMeter.Value = hLastRollCallVo.LastOdoMeter;
             HNumericUpDownExOilAmount.Value = hLastRollCallVo.OilAmount;

@@ -10,6 +10,7 @@ using H_Vo;
 namespace H_Dao {
     public class H_VehicleDispatchDetailDao {
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
+        private readonly Date _date = new();
         /*
          * H_Common
          */
@@ -30,11 +31,184 @@ namespace H_Dao {
         }
 
         /// <summary>
+        /// ExistenceHVehicleDispatchDetail
+        /// true:該当レコードあり false:該当レコードなし
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <returns></returns>
+        public bool ExistenceHVehicleDispatchDetail(DateTime operationDate) {
+            int count;
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT COUNT(CellNumber) " +
+                                     "FROM H_VehicleDispatchDetail " +
+                                     "WHERE OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                count = (int)sqlCommand.ExecuteScalar();
+            } catch {
+                throw;
+            }
+            return count != 0 ? true : false;
+        }
+
+        /// <summary>
+        /// ExistenceHVehicleDispatchDetail
+        /// true:該当レコードあり false:該当レコードなし 
+        /// </summary>
+        /// <param name="cellNumber"></param>
+        /// <param name="operationDate"></param>
+        /// <returns></returns>
+        public bool ExistenceHVehicleDispatchDetail(int cellNumber, DateTime operationDate) {
+            int count;
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT COUNT(CellNumber) " +
+                                     "FROM H_VehicleDispatchDetail " +
+                                     "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                count = (int)sqlCommand.ExecuteScalar();
+            } catch {
+                throw;
+            }
+            return count != 0 ? true : false;
+        }
+
+        /// <summary>
+        /// SelectOneHVehicleDispatchDetail
+        /// </summary>
+        /// <param name="cellNumber"></param>
+        /// <param name="operationDate"></param>
+        /// <returns></returns>
+        public H_VehicleDispatchDetailVo SelectOneHVehicleDispatchDetail(int cellNumber, DateTime operationDate) {
+            H_VehicleDispatchDetailVo hVehicleDispatchDetailVo = new();
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT H_VehicleDispatchDetail.CellNumber," +
+                                            "H_VehicleDispatchDetail.OperationDate," +
+                                            "H_VehicleDispatchDetail.OperationFlag," +
+                                            "H_VehicleDispatchDetail.VehicleDispatchFlag," +
+                                            "H_VehicleDispatchDetail.PurposeFlag," +
+                                            "H_VehicleDispatchDetail.SetCode," +
+                                            "H_VehicleDispatchDetail.ManagedSpaceCode," +
+                                            "H_VehicleDispatchDetail.ClassificationCode," +
+                                            "H_VehicleDispatchDetail.LastRollCallFlag," +
+                                            "H_VehicleDispatchDetail.LastRollCallYmdHms," +
+                                            "H_VehicleDispatchDetail.SetMemoFlag," +
+                                            "H_VehicleDispatchDetail.SetMemo," +
+                                            "H_VehicleDispatchDetail.ShiftCode," +
+                                            "H_VehicleDispatchDetail.StandByFlag," +
+                                            "H_VehicleDispatchDetail.AddWorkerFlag," +
+                                            "H_VehicleDispatchDetail.ContactInfomationFlag," +
+                                            "H_VehicleDispatchDetail.FaxTransmissionFlag," +
+                                            "H_VehicleDispatchDetail.CarCode," +
+                                            "H_VehicleDispatchDetail.CarGarageCode," +
+                                            "H_VehicleDispatchDetail.CarProxyFlag," +
+                                            "H_VehicleDispatchDetail.CarMemoFlag," +
+                                            "H_VehicleDispatchDetail.CarMemo," +
+                                            "H_VehicleDispatchDetail.StaffCode1," +
+                                            "H_VehicleDispatchDetail.StaffOccupation1," +
+                                            "H_VehicleDispatchDetail.StaffProxyFlag1," +
+                                            "H_VehicleDispatchDetail.StaffRollCallFlag1," +
+                                            "H_VehicleDispatchDetail.StaffRollCallYmdHms1," +
+                                            "H_VehicleDispatchDetail.StaffMemoFlag1," +
+                                            "H_VehicleDispatchDetail.StaffMemo1," +
+                                            "H_VehicleDispatchDetail.StaffCode2," +
+                                            "H_VehicleDispatchDetail.StaffOccupation2," +
+                                            "H_VehicleDispatchDetail.StaffProxyFlag2," +
+                                            "H_VehicleDispatchDetail.StaffRollCallFlag2," +
+                                            "H_VehicleDispatchDetail.StaffRollCallYmdHms2," +
+                                            "H_VehicleDispatchDetail.StaffMemoFlag2," +
+                                            "H_VehicleDispatchDetail.StaffMemo2," +
+                                            "H_VehicleDispatchDetail.StaffCode3," +
+                                            "H_VehicleDispatchDetail.StaffOccupation3," +
+                                            "H_VehicleDispatchDetail.StaffProxyFlag3," +
+                                            "H_VehicleDispatchDetail.StaffRollCallFlag3," +
+                                            "H_VehicleDispatchDetail.StaffRollCallYmdHms3," +
+                                            "H_VehicleDispatchDetail.StaffMemoFlag3," +
+                                            "H_VehicleDispatchDetail.StaffMemo3," +
+                                            "H_VehicleDispatchDetail.StaffCode4," +
+                                            "H_VehicleDispatchDetail.StaffOccupation4," +
+                                            "H_VehicleDispatchDetail.StaffProxyFlag4," +
+                                            "H_VehicleDispatchDetail.StaffRollCallFlag4," +
+                                            "H_VehicleDispatchDetail.StaffRollCallYmdHms4," +
+                                            "H_VehicleDispatchDetail.StaffMemoFlag4," +
+                                            "H_VehicleDispatchDetail.StaffMemo4," +
+                                            "H_VehicleDispatchDetail.InsertPcName," +
+                                            "H_VehicleDispatchDetail.InsertYmdHms," +
+                                            "H_VehicleDispatchDetail.UpdatePcName," +
+                                            "H_VehicleDispatchDetail.UpdateYmdHms," +
+                                            "H_VehicleDispatchDetail.DeletePcName," +
+                                            "H_VehicleDispatchDetail.DeleteYmdHms," +
+                                            "H_VehicleDispatchDetail.DeleteFlag " +
+                                     "FROM H_VehicleDispatchDetail " +
+                                     "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            using (var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while (sqlDataReader.Read() == true) {
+                    hVehicleDispatchDetailVo.CellNumber = _defaultValue.GetDefaultValue<int>(sqlDataReader["CellNumber"]);
+                    hVehicleDispatchDetailVo.OperationDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["OperationDate"]);
+                    hVehicleDispatchDetailVo.OperationFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["OperationFlag"]);
+                    hVehicleDispatchDetailVo.VehicleDispatchFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["VehicleDispatchFlag"]);
+                    hVehicleDispatchDetailVo.PurposeFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["PurposeFlag"]);
+                    hVehicleDispatchDetailVo.SetCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["SetCode"]);
+                    hVehicleDispatchDetailVo.ManagedSpaceCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["ManagedSpaceCode"]);
+                    hVehicleDispatchDetailVo.ClassificationCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["ClassificationCode"]);
+                    hVehicleDispatchDetailVo.LastRollCallFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["LastRollCallFlag"]);
+                    hVehicleDispatchDetailVo.LastRollCallYmdHms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["LastRollCallYmdHms"]);
+                    hVehicleDispatchDetailVo.SetMemoFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["SetMemoFlag"]);
+                    hVehicleDispatchDetailVo.SetMemo = _defaultValue.GetDefaultValue<string>(sqlDataReader["SetMemo"]);
+                    hVehicleDispatchDetailVo.ShiftCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["ShiftCode"]);
+                    hVehicleDispatchDetailVo.StandByFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["StandByFlag"]);
+                    hVehicleDispatchDetailVo.AddWorkerFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["AddWorkerFlag"]);
+                    hVehicleDispatchDetailVo.ContactInfomationFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["ContactInfomationFlag"]);
+                    hVehicleDispatchDetailVo.FaxTransmissionFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["FaxTransmissionFlag"]);
+                    hVehicleDispatchDetailVo.CarCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["CarCode"]);
+                    hVehicleDispatchDetailVo.CarGarageCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["CarGarageCode"]);
+                    hVehicleDispatchDetailVo.CarProxyFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["CarProxyFlag"]);
+                    hVehicleDispatchDetailVo.CarMemoFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["CarMemoFlag"]);
+                    hVehicleDispatchDetailVo.CarMemo = _defaultValue.GetDefaultValue<string>(sqlDataReader["CarMemo"]);
+                    hVehicleDispatchDetailVo.StaffCode1 = _defaultValue.GetDefaultValue<int>(sqlDataReader["StaffCode1"]);
+                    hVehicleDispatchDetailVo.StaffOccupation1 = _defaultValue.GetDefaultValue<int>(sqlDataReader["StaffOccupation1"]);
+                    hVehicleDispatchDetailVo.StaffProxyFlag1 = _defaultValue.GetDefaultValue<bool>(sqlDataReader["StaffProxyFlag1"]);
+                    hVehicleDispatchDetailVo.StaffRollCallFlag1 = _defaultValue.GetDefaultValue<bool>(sqlDataReader["StaffRollCallFlag1"]);
+                    hVehicleDispatchDetailVo.StaffRollCallYmdHms1 = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["StaffRollCallYmdHms1"]);
+                    hVehicleDispatchDetailVo.StaffMemoFlag1 = _defaultValue.GetDefaultValue<bool>(sqlDataReader["StaffMemoFlag1"]);
+                    hVehicleDispatchDetailVo.StaffMemo1 = _defaultValue.GetDefaultValue<string>(sqlDataReader["StaffMemo1"]);
+                    hVehicleDispatchDetailVo.StaffCode2 = _defaultValue.GetDefaultValue<int>(sqlDataReader["StaffCode2"]);
+                    hVehicleDispatchDetailVo.StaffOccupation2 = _defaultValue.GetDefaultValue<int>(sqlDataReader["StaffOccupation2"]);
+                    hVehicleDispatchDetailVo.StaffProxyFlag2 = _defaultValue.GetDefaultValue<bool>(sqlDataReader["StaffProxyFlag2"]);
+                    hVehicleDispatchDetailVo.StaffRollCallFlag2 = _defaultValue.GetDefaultValue<bool>(sqlDataReader["StaffRollCallFlag2"]);
+                    hVehicleDispatchDetailVo.StaffRollCallYmdHms2 = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["StaffRollCallYmdHms2"]);
+                    hVehicleDispatchDetailVo.StaffMemoFlag2 = _defaultValue.GetDefaultValue<bool>(sqlDataReader["StaffMemoFlag2"]);
+                    hVehicleDispatchDetailVo.StaffMemo2 = _defaultValue.GetDefaultValue<string>(sqlDataReader["StaffMemo2"]);
+                    hVehicleDispatchDetailVo.StaffCode3 = _defaultValue.GetDefaultValue<int>(sqlDataReader["StaffCode3"]);
+                    hVehicleDispatchDetailVo.StaffOccupation3 = _defaultValue.GetDefaultValue<int>(sqlDataReader["StaffOccupation3"]);
+                    hVehicleDispatchDetailVo.StaffProxyFlag3 = _defaultValue.GetDefaultValue<bool>(sqlDataReader["StaffProxyFlag3"]);
+                    hVehicleDispatchDetailVo.StaffRollCallFlag3 = _defaultValue.GetDefaultValue<bool>(sqlDataReader["StaffRollCallFlag3"]);
+                    hVehicleDispatchDetailVo.StaffRollCallYmdHms3 = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["StaffRollCallYmdHms3"]);
+                    hVehicleDispatchDetailVo.StaffMemoFlag3 = _defaultValue.GetDefaultValue<bool>(sqlDataReader["StaffMemoFlag3"]);
+                    hVehicleDispatchDetailVo.StaffMemo3 = _defaultValue.GetDefaultValue<string>(sqlDataReader["StaffMemo3"]);
+                    hVehicleDispatchDetailVo.StaffCode4 = _defaultValue.GetDefaultValue<int>(sqlDataReader["StaffCode4"]);
+                    hVehicleDispatchDetailVo.StaffOccupation4 = _defaultValue.GetDefaultValue<int>(sqlDataReader["StaffOccupation4"]);
+                    hVehicleDispatchDetailVo.StaffProxyFlag4 = _defaultValue.GetDefaultValue<bool>(sqlDataReader["StaffProxyFlag4"]);
+                    hVehicleDispatchDetailVo.StaffRollCallFlag4 = _defaultValue.GetDefaultValue<bool>(sqlDataReader["StaffRollCallFlag4"]);
+                    hVehicleDispatchDetailVo.StaffRollCallYmdHms4 = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["StaffRollCallYmdHms4"]);
+                    hVehicleDispatchDetailVo.StaffMemoFlag4 = _defaultValue.GetDefaultValue<bool>(sqlDataReader["StaffMemoFlag4"]);
+                    hVehicleDispatchDetailVo.StaffMemo4 = _defaultValue.GetDefaultValue<string>(sqlDataReader["StaffMemo4"]);
+                    hVehicleDispatchDetailVo.InsertPcName = _defaultValue.GetDefaultValue<string>(sqlDataReader["InsertPcName"]);
+                    hVehicleDispatchDetailVo.InsertYmdHms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["InsertYmdHms"]);
+                    hVehicleDispatchDetailVo.UpdatePcName = _defaultValue.GetDefaultValue<string>(sqlDataReader["UpdatePcName"]);
+                    hVehicleDispatchDetailVo.UpdateYmdHms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["UpdateYmdHms"]);
+                    hVehicleDispatchDetailVo.DeletePcName = _defaultValue.GetDefaultValue<string>(sqlDataReader["DeletePcName"]);
+                    hVehicleDispatchDetailVo.DeleteYmdHms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["DeleteYmdHms"]);
+                    hVehicleDispatchDetailVo.DeleteFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["DeleteFlag"]);
+                }
+            }
+            return hVehicleDispatchDetailVo;
+        }
+
+        /// <summary>
         /// SelectHVehicleDispatchDetail
         /// </summary>
         /// <param name="operationDate"></param>
         /// <returns></returns>
-        public List<H_VehicleDispatchDetailVo> SelectHVehicleDispatchDetail(DateTime operationDate) {
+        public List<H_VehicleDispatchDetailVo> SelectAllHVehicleDispatchDetail(DateTime operationDate) {
             List<H_VehicleDispatchDetailVo> listHVehicleDispatchDetailVo = new();
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT H_VehicleDispatchDetail.CellNumber," +
@@ -160,6 +334,133 @@ namespace H_Dao {
                 }
             }
             return listHVehicleDispatchDetailVo;
+        }
+
+        /// <summary>
+        /// InsertHVehicleDispatchDetail
+        /// </summary>
+        /// <param name="hVehicleDispatchDetailVo"></param>
+        public void InsertOneHVehicleDispatchDetail(H_VehicleDispatchDetailVo hVehicleDispatchDetailVo) {
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "INSERT INTO H_VehicleDispatchDetail(CellNumber," +
+                                                                         "OperationDate," +
+                                                                         "OperationFlag," +
+                                                                         "VehicleDispatchFlag," +
+                                                                         "PurposeFlag," +
+                                                                         "SetCode," +
+                                                                         "ManagedSpaceCode," +
+                                                                         "ClassificationCode," +
+                                                                         "LastRollCallFlag," +
+                                                                         "LastRollCallYmdHms," +
+                                                                         "SetMemoFlag," +
+                                                                         "SetMemo," +
+                                                                         "ShiftCode," +
+                                                                         "StandByFlag," +
+                                                                         "AddWorkerFlag," +
+                                                                         "ContactInfomationFlag," +
+                                                                         "FaxTransmissionFlag," +
+                                                                         "CarCode," +
+                                                                         "CarGarageCode," +
+                                                                         "CarProxyFlag," +
+                                                                         "CarMemoFlag," +
+                                                                         "CarMemo," +
+                                                                         "StaffCode1," +
+                                                                         "StaffOccupation1," +
+                                                                         "StaffProxyFlag1," +
+                                                                         "StaffRollCallFlag1," +
+                                                                         "StaffRollCallYmdHms1," +
+                                                                         "StaffMemoFlag1," +
+                                                                         "StaffMemo1," +
+                                                                         "StaffCode2," +
+                                                                         "StaffOccupation2," +
+                                                                         "StaffProxyFlag2," +
+                                                                         "StaffRollCallFlag2," +
+                                                                         "StaffRollCallYmdHms2," +
+                                                                         "StaffMemoFlag2," +
+                                                                         "StaffMemo2," +
+                                                                         "StaffCode3," +
+                                                                         "StaffOccupation3," +
+                                                                         "StaffProxyFlag3," +
+                                                                         "StaffRollCallFlag3," +
+                                                                         "StaffRollCallYmdHms3," +
+                                                                         "StaffMemoFlag3," +
+                                                                         "StaffMemo3," +
+                                                                         "StaffCode4," +
+                                                                         "StaffOccupation4," +
+                                                                         "StaffProxyFlag4," +
+                                                                         "StaffRollCallFlag4," +
+                                                                         "StaffRollCallYmdHms4," +
+                                                                         "StaffMemoFlag4," +
+                                                                         "StaffMemo4," +
+                                                                         "InsertPcName," +
+                                                                         "InsertYmdHms," +
+                                                                         "UpdatePcName," +
+                                                                         "UpdateYmdHms," +
+                                                                         "DeletePcName," +
+                                                                         "DeleteYmdHms," +
+                                                                         "DeleteFlag) " +
+                                     "VALUES (" + _defaultValue.GetDefaultValue<int>(hVehicleDispatchDetailVo.CellNumber) + ", " +
+                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hVehicleDispatchDetailVo.OperationDate) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<bool>(hVehicleDispatchDetailVo.OperationFlag) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<bool>(hVehicleDispatchDetailVo.VehicleDispatchFlag) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<bool>(hVehicleDispatchDetailVo.PurposeFlag) + "'," +
+                                             "" + _defaultValue.GetDefaultValue<int>(hVehicleDispatchDetailVo.SetCode) + "," +
+                                             "" + _defaultValue.GetDefaultValue<int>(hVehicleDispatchDetailVo.ManagedSpaceCode) + "," +
+                                             "" + _defaultValue.GetDefaultValue<int>(hVehicleDispatchDetailVo.ClassificationCode) + "," +
+                                            "'" + _defaultValue.GetDefaultValue<bool>(hVehicleDispatchDetailVo.LastRollCallFlag) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hVehicleDispatchDetailVo.LastRollCallYmdHms) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<bool>(hVehicleDispatchDetailVo.SetMemoFlag) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hVehicleDispatchDetailVo.SetMemo) + "'," +
+                                             "" + _defaultValue.GetDefaultValue<int>(hVehicleDispatchDetailVo.ShiftCode) + "," +
+                                            "'" + _defaultValue.GetDefaultValue<bool>(hVehicleDispatchDetailVo.StandByFlag) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<bool>(hVehicleDispatchDetailVo.AddWorkerFlag) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<bool>(hVehicleDispatchDetailVo.ContactInfomationFlag) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<bool>(hVehicleDispatchDetailVo.FaxTransmissionFlag) + "'," +
+                                             "" + _defaultValue.GetDefaultValue<int>(hVehicleDispatchDetailVo.CarCode) + "," +
+                                             "" + _defaultValue.GetDefaultValue<int>(hVehicleDispatchDetailVo.CarGarageCode) + "," +
+                                            "'" + _defaultValue.GetDefaultValue<bool>(hVehicleDispatchDetailVo.CarProxyFlag) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<bool>(hVehicleDispatchDetailVo.CarMemoFlag) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hVehicleDispatchDetailVo.CarMemo) + "'," +
+                                             "" + _defaultValue.GetDefaultValue<int>(hVehicleDispatchDetailVo.StaffCode1) + "," +
+                                             "" + _defaultValue.GetDefaultValue<int>(hVehicleDispatchDetailVo.StaffOccupation1) + "," +
+                                            "'" + _defaultValue.GetDefaultValue<bool>(hVehicleDispatchDetailVo.StaffProxyFlag1) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<bool>(hVehicleDispatchDetailVo.StaffRollCallFlag1) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hVehicleDispatchDetailVo.StaffRollCallYmdHms1) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<bool>(hVehicleDispatchDetailVo.StaffMemoFlag1) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hVehicleDispatchDetailVo.StaffMemo1) + "'," +
+                                             "" + _defaultValue.GetDefaultValue<int>(hVehicleDispatchDetailVo.StaffCode2) + "," +
+                                             "" + _defaultValue.GetDefaultValue<int>(hVehicleDispatchDetailVo.StaffOccupation2) + "," +
+                                            "'" + _defaultValue.GetDefaultValue<bool>(hVehicleDispatchDetailVo.StaffProxyFlag2) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<bool>(hVehicleDispatchDetailVo.StaffRollCallFlag2) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hVehicleDispatchDetailVo.StaffRollCallYmdHms2) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<bool>(hVehicleDispatchDetailVo.StaffMemoFlag2) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hVehicleDispatchDetailVo.StaffMemo2) + "'," +
+                                             "" + _defaultValue.GetDefaultValue<int>(hVehicleDispatchDetailVo.StaffCode3) + "," +
+                                             "" + _defaultValue.GetDefaultValue<int>(hVehicleDispatchDetailVo.StaffOccupation3) + "," +
+                                            "'" + _defaultValue.GetDefaultValue<bool>(hVehicleDispatchDetailVo.StaffProxyFlag3) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<bool>(hVehicleDispatchDetailVo.StaffRollCallFlag3) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hVehicleDispatchDetailVo.StaffRollCallYmdHms3) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<bool>(hVehicleDispatchDetailVo.StaffMemoFlag3) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hVehicleDispatchDetailVo.StaffMemo3) + "'," +
+                                             "" + _defaultValue.GetDefaultValue<int>(hVehicleDispatchDetailVo.StaffCode4) + "," +
+                                             "" + _defaultValue.GetDefaultValue<int>(hVehicleDispatchDetailVo.StaffOccupation4) + "," +
+                                            "'" + _defaultValue.GetDefaultValue<bool>(hVehicleDispatchDetailVo.StaffProxyFlag4) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<bool>(hVehicleDispatchDetailVo.StaffRollCallFlag4) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hVehicleDispatchDetailVo.StaffRollCallYmdHms4) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<bool>(hVehicleDispatchDetailVo.StaffMemoFlag4) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hVehicleDispatchDetailVo.StaffMemo4) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hVehicleDispatchDetailVo.InsertPcName) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hVehicleDispatchDetailVo.InsertYmdHms) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hVehicleDispatchDetailVo.UpdatePcName) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hVehicleDispatchDetailVo.UpdateYmdHms) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<string>(hVehicleDispatchDetailVo.DeletePcName) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<DateTime>(hVehicleDispatchDetailVo.DeleteYmdHms) + "'," +
+                                            "'" + _defaultValue.GetDefaultValue<bool>(hVehicleDispatchDetailVo.DeleteFlag) + "')";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
         }
 
         /// <summary>
@@ -300,69 +601,132 @@ namespace H_Dao {
         /// <summary>
         /// UpdateHVehicleDispatchDetail
         /// </summary>
-        /// <param name="listHVehicleDispatchDetailVo"></param>
-        public void UpdateHVehicleDispatchDetail(H_VehicleDispatchDetailVo listHVehicleDispatchDetailVo) {
+        /// <param name="hVehicleDispatchDetailVo"></param>
+        public void UpdateOneHVehicleDispatchDetail(H_VehicleDispatchDetailVo hVehicleDispatchDetailVo) {
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "UPDATE H_VehicleDispatchDetail " +
-                                     "Set " +
-                                         //"CellNumber = " + listHVehicleDispatchDetailVo.CellNumber + "," +
-                                         //"OperationDate = '" + listHVehicleDispatchDetailVo.OperationDate + "'," +
-                                         "OperationFlag = '" + listHVehicleDispatchDetailVo.OperationFlag + "'," +
-                                         "VehicleDispatchFlag = '" + listHVehicleDispatchDetailVo.VehicleDispatchFlag + "'," +
-                                         "PurposeFlag = '" + listHVehicleDispatchDetailVo.PurposeFlag + "'," +
-                                         "SetCode = " + listHVehicleDispatchDetailVo.SetCode + "," +
-                                         "ManagedSpaceCode = " + listHVehicleDispatchDetailVo.ManagedSpaceCode + "," +
-                                         "ClassificationCode = " + listHVehicleDispatchDetailVo.ClassificationCode + "," +
-                                         "LastRollCallFlag = '" + listHVehicleDispatchDetailVo.LastRollCallFlag + "'," +
-                                         "LastRollCallYmdHms = '" + listHVehicleDispatchDetailVo.LastRollCallYmdHms + "'," +
-                                         "SetMemoFlag = '" + listHVehicleDispatchDetailVo.SetMemoFlag + "'," +
-                                         "SetMemo = '" + listHVehicleDispatchDetailVo.SetMemo + "'," +
-                                         "ShiftCode = " + listHVehicleDispatchDetailVo.ShiftCode + "," +
-                                         "StandByFlag = '" + listHVehicleDispatchDetailVo.StandByFlag + "'," +
-                                         "AddWorkerFlag = '" + listHVehicleDispatchDetailVo.AddWorkerFlag + "'," +
-                                         "ContactInfomationFlag = '" + listHVehicleDispatchDetailVo.ContactInfomationFlag + "'," +
-                                         "FaxTransmissionFlag = '" + listHVehicleDispatchDetailVo.FaxTransmissionFlag + "'," +
-                                         "CarCode = " + listHVehicleDispatchDetailVo.CarCode + "," +
-                                         "CarGarageCode = " + listHVehicleDispatchDetailVo.CarGarageCode + "," +
-                                         "CarProxyFlag = '" + listHVehicleDispatchDetailVo.CarProxyFlag + "'," +
-                                         "CarMemoFlag = '" + listHVehicleDispatchDetailVo.CarMemoFlag + "'," +
-                                         "CarMemo = '" + listHVehicleDispatchDetailVo.CarMemo + "'," +
-                                         "StaffCode1 = " + listHVehicleDispatchDetailVo.StaffCode1 + "," +
-                                         "StaffOccupation1 = " + listHVehicleDispatchDetailVo.StaffOccupation1 + "," +
-                                         "StaffProxyFlag1 = '" + listHVehicleDispatchDetailVo.StaffProxyFlag1 + "'," +
-                                         "StaffRollCallFlag1 = '" + listHVehicleDispatchDetailVo.StaffRollCallFlag1 + "'," +
-                                         "StaffRollCallYmdHms1 = '" + listHVehicleDispatchDetailVo.StaffRollCallYmdHms1 + "'," +
-                                         "StaffMemoFlag1 = '" + listHVehicleDispatchDetailVo.StaffMemoFlag1 + "'," +
-                                         "StaffMemo1 = '" + listHVehicleDispatchDetailVo.StaffMemo1 + "'," +
-                                         "StaffCode2 = " + listHVehicleDispatchDetailVo.StaffCode2 + "," +
-                                         "StaffOccupation2 = " + listHVehicleDispatchDetailVo.StaffOccupation2 + "," +
-                                         "StaffProxyFlag2 = '" + listHVehicleDispatchDetailVo.StaffProxyFlag2 + "'," +
-                                         "StaffRollCallFlag2 = '" + listHVehicleDispatchDetailVo.StaffRollCallFlag2 + "'," +
-                                         "StaffRollCallYmdHms2 = '" + listHVehicleDispatchDetailVo.StaffRollCallYmdHms2 + "'," +
-                                         "StaffMemoFlag2 = '" + listHVehicleDispatchDetailVo.StaffMemoFlag2 + "'," +
-                                         "StaffMemo2 = '" + listHVehicleDispatchDetailVo.StaffMemo2 + "'," +
-                                         "StaffCode3 = " + listHVehicleDispatchDetailVo.StaffCode3 + "," +
-                                         "StaffOccupation3 = " + listHVehicleDispatchDetailVo.StaffOccupation3 + "," +
-                                         "StaffProxyFlag3 = '" + listHVehicleDispatchDetailVo.StaffProxyFlag3 + "'," +
-                                         "StaffRollCallFlag3 = '" + listHVehicleDispatchDetailVo.StaffRollCallFlag3 + "'," +
-                                         "StaffRollCallYmdHms3 = '" + listHVehicleDispatchDetailVo.StaffRollCallYmdHms3 + "'," +
-                                         "StaffMemoFlag3 = '" + listHVehicleDispatchDetailVo.StaffMemoFlag3 + "'," +
-                                         "StaffMemo3 = '" + listHVehicleDispatchDetailVo.StaffMemo3 + "'," +
-                                         "StaffCode4 = " + listHVehicleDispatchDetailVo.StaffCode4 + "," +
-                                         "StaffOccupation4 = " + listHVehicleDispatchDetailVo.StaffOccupation4 + "," +
-                                         "StaffProxyFlag4 = '" + listHVehicleDispatchDetailVo.StaffProxyFlag4 + "'," +
-                                         "StaffRollCallFlag4 = '" + listHVehicleDispatchDetailVo.StaffRollCallFlag4 + "'," +
-                                         "StaffRollCallYmdHms4 = '" + listHVehicleDispatchDetailVo.StaffRollCallYmdHms4 + "'," +
-                                         "StaffMemoFlag4 = '" + listHVehicleDispatchDetailVo.StaffMemoFlag4 + "'," +
-                                         "StaffMemo4 = '" + listHVehicleDispatchDetailVo.StaffMemo4 + "'," +
-                                         //"InsertPcName = '" + listHVehicleDispatchDetailVo.InsertPcName + "'," +
-                                         //"InsertYmdHms = '" + listHVehicleDispatchDetailVo.InsertYmdHms + "'," +
+                                     "Set CellNumber = " + hVehicleDispatchDetailVo.CellNumber + "," +
+                                         "OperationDate = '" + hVehicleDispatchDetailVo.OperationDate + "'," +
+                                         "OperationFlag = '" + hVehicleDispatchDetailVo.OperationFlag + "'," +
+                                         "VehicleDispatchFlag = '" + hVehicleDispatchDetailVo.VehicleDispatchFlag + "'," +
+                                         "PurposeFlag = '" + hVehicleDispatchDetailVo.PurposeFlag + "'," +
+                                         "SetCode = " + hVehicleDispatchDetailVo.SetCode + "," +
+                                         "ManagedSpaceCode = " + hVehicleDispatchDetailVo.ManagedSpaceCode + "," +
+                                         "ClassificationCode = " + hVehicleDispatchDetailVo.ClassificationCode + "," +
+                                         "LastRollCallFlag = '" + hVehicleDispatchDetailVo.LastRollCallFlag + "'," +
+                                         "LastRollCallYmdHms = '" + hVehicleDispatchDetailVo.LastRollCallYmdHms + "'," +
+                                         "SetMemoFlag = '" + hVehicleDispatchDetailVo.SetMemoFlag + "'," +
+                                         "SetMemo = '" + hVehicleDispatchDetailVo.SetMemo + "'," +
+                                         "ShiftCode = " + hVehicleDispatchDetailVo.ShiftCode + "," +
+                                         "StandByFlag = '" + hVehicleDispatchDetailVo.StandByFlag + "'," +
+                                         "AddWorkerFlag = '" + hVehicleDispatchDetailVo.AddWorkerFlag + "'," +
+                                         "ContactInfomationFlag = '" + hVehicleDispatchDetailVo.ContactInfomationFlag + "'," +
+                                         "FaxTransmissionFlag = '" + hVehicleDispatchDetailVo.FaxTransmissionFlag + "'," +
+                                         "CarCode = " + hVehicleDispatchDetailVo.CarCode + "," +
+                                         "CarGarageCode = " + hVehicleDispatchDetailVo.CarGarageCode + "," +
+                                         "CarProxyFlag = '" + hVehicleDispatchDetailVo.CarProxyFlag + "'," +
+                                         "CarMemoFlag = '" + hVehicleDispatchDetailVo.CarMemoFlag + "'," +
+                                         "CarMemo = '" + hVehicleDispatchDetailVo.CarMemo + "'," +
+                                         "StaffCode1 = " + hVehicleDispatchDetailVo.StaffCode1 + "," +
+                                         "StaffOccupation1 = " + hVehicleDispatchDetailVo.StaffOccupation1 + "," +
+                                         "StaffProxyFlag1 = '" + hVehicleDispatchDetailVo.StaffProxyFlag1 + "'," +
+                                         "StaffRollCallFlag1 = '" + hVehicleDispatchDetailVo.StaffRollCallFlag1 + "'," +
+                                         "StaffRollCallYmdHms1 = '" + hVehicleDispatchDetailVo.StaffRollCallYmdHms1 + "'," +
+                                         "StaffMemoFlag1 = '" + hVehicleDispatchDetailVo.StaffMemoFlag1 + "'," +
+                                         "StaffMemo1 = '" + hVehicleDispatchDetailVo.StaffMemo1 + "'," +
+                                         "StaffCode2 = " + hVehicleDispatchDetailVo.StaffCode2 + "," +
+                                         "StaffOccupation2 = " + hVehicleDispatchDetailVo.StaffOccupation2 + "," +
+                                         "StaffProxyFlag2 = '" + hVehicleDispatchDetailVo.StaffProxyFlag2 + "'," +
+                                         "StaffRollCallFlag2 = '" + hVehicleDispatchDetailVo.StaffRollCallFlag2 + "'," +
+                                         "StaffRollCallYmdHms2 = '" + hVehicleDispatchDetailVo.StaffRollCallYmdHms2 + "'," +
+                                         "StaffMemoFlag2 = '" + hVehicleDispatchDetailVo.StaffMemoFlag2 + "'," +
+                                         "StaffMemo2 = '" + hVehicleDispatchDetailVo.StaffMemo2 + "'," +
+                                         "StaffCode3 = " + hVehicleDispatchDetailVo.StaffCode3 + "," +
+                                         "StaffOccupation3 = " + hVehicleDispatchDetailVo.StaffOccupation3 + "," +
+                                         "StaffProxyFlag3 = '" + hVehicleDispatchDetailVo.StaffProxyFlag3 + "'," +
+                                         "StaffRollCallFlag3 = '" + hVehicleDispatchDetailVo.StaffRollCallFlag3 + "'," +
+                                         "StaffRollCallYmdHms3 = '" + hVehicleDispatchDetailVo.StaffRollCallYmdHms3 + "'," +
+                                         "StaffMemoFlag3 = '" + hVehicleDispatchDetailVo.StaffMemoFlag3 + "'," +
+                                         "StaffMemo3 = '" + hVehicleDispatchDetailVo.StaffMemo3 + "'," +
+                                         "StaffCode4 = " + hVehicleDispatchDetailVo.StaffCode4 + "," +
+                                         "StaffOccupation4 = " + hVehicleDispatchDetailVo.StaffOccupation4 + "," +
+                                         "StaffProxyFlag4 = '" + hVehicleDispatchDetailVo.StaffProxyFlag4 + "'," +
+                                         "StaffRollCallFlag4 = '" + hVehicleDispatchDetailVo.StaffRollCallFlag4 + "'," +
+                                         "StaffRollCallYmdHms4 = '" + hVehicleDispatchDetailVo.StaffRollCallYmdHms4 + "'," +
+                                         "StaffMemoFlag4 = '" + hVehicleDispatchDetailVo.StaffMemoFlag4 + "'," +
+                                         "StaffMemo4 = '" + hVehicleDispatchDetailVo.StaffMemo4 + "'," +
                                          "UpdatePcName = '" + Environment.MachineName + "'," +
                                          "UpdateYmdHms = '" + DateTime.Now + "'," +
-                                         //"DeletePcName = '" + listHVehicleDispatchDetailVo.DeletePcName + "'," +
-                                         //"DeleteYmdHms = '" + listHVehicleDispatchDetailVo.DeleteYmdHms + "'," +
                                          "DeleteFlag = 'false' " +
-                                     "WHERE CellNumber = " + listHVehicleDispatchDetailVo.CellNumber + " AND OperationDate = '" + listHVehicleDispatchDetailVo.OperationDate.ToString("yyyy-MM-dd") + "'";
+                                     "WHERE CellNumber = " + hVehicleDispatchDetailVo.CellNumber + " AND OperationDate = '" + hVehicleDispatchDetailVo.OperationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 全営業日の配車(ClassificationCode=11・12)の従業員のみを複製する
+        /// </summary>
+        /// <param name="hVehicleDispatchDetailVo"></param>
+        public void UpdateOneHVehicleDispatchDetailCopy(H_VehicleDispatchDetailVo hVehicleDispatchDetailVo) {
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE H_VehicleDispatchDetail " +
+                                     "Set CellNumber = " + hVehicleDispatchDetailVo.CellNumber + "," +
+                                         "OperationDate = '" + hVehicleDispatchDetailVo.OperationDate + "'," +
+                                         //"OperationFlag = '" + hVehicleDispatchDetailVo.OperationFlag + "'," +
+                                         //"VehicleDispatchFlag = '" + hVehicleDispatchDetailVo.VehicleDispatchFlag + "'," +
+                                         //"PurposeFlag = '" + hVehicleDispatchDetailVo.PurposeFlag + "'," +
+                                         //"SetCode = " + hVehicleDispatchDetailVo.SetCode + "," +
+                                         //"ManagedSpaceCode = " + hVehicleDispatchDetailVo.ManagedSpaceCode + "," +
+                                         //"ClassificationCode = " + hVehicleDispatchDetailVo.ClassificationCode + "," +
+                                         //"LastRollCallFlag = '" + hVehicleDispatchDetailVo.LastRollCallFlag + "'," +
+                                         //"LastRollCallYmdHms = '" + hVehicleDispatchDetailVo.LastRollCallYmdHms + "'," +
+                                         //"SetMemoFlag = '" + hVehicleDispatchDetailVo.SetMemoFlag + "'," +
+                                         //"SetMemo = '" + hVehicleDispatchDetailVo.SetMemo + "'," +
+                                         //"ShiftCode = " + hVehicleDispatchDetailVo.ShiftCode + "," +
+                                         //"StandByFlag = '" + hVehicleDispatchDetailVo.StandByFlag + "'," +
+                                         //"AddWorkerFlag = '" + hVehicleDispatchDetailVo.AddWorkerFlag + "'," +
+                                         //"ContactInfomationFlag = '" + hVehicleDispatchDetailVo.ContactInfomationFlag + "'," +
+                                         //"FaxTransmissionFlag = '" + hVehicleDispatchDetailVo.FaxTransmissionFlag + "'," +
+                                         "CarCode = " + hVehicleDispatchDetailVo.CarCode + "," +
+                                         "CarGarageCode = " + hVehicleDispatchDetailVo.CarGarageCode + "," +
+                                         "CarProxyFlag = '" + hVehicleDispatchDetailVo.CarProxyFlag + "'," +
+                                         "CarMemoFlag = '" + hVehicleDispatchDetailVo.CarMemoFlag + "'," +
+                                         "CarMemo = '" + hVehicleDispatchDetailVo.CarMemo + "'," +
+                                         "StaffCode1 = " + hVehicleDispatchDetailVo.StaffCode1 + "," +
+                                         "StaffOccupation1 = " + hVehicleDispatchDetailVo.StaffOccupation1 + "," +
+                                         "StaffProxyFlag1 = '" + hVehicleDispatchDetailVo.StaffProxyFlag1 + "'," +
+                                         //"StaffRollCallFlag1 = '" + hVehicleDispatchDetailVo.StaffRollCallFlag1 + "'," +
+                                         //"StaffRollCallYmdHms1 = '" + hVehicleDispatchDetailVo.StaffRollCallYmdHms1 + "'," +
+                                         "StaffMemoFlag1 = '" + hVehicleDispatchDetailVo.StaffMemoFlag1 + "'," +
+                                         "StaffMemo1 = '" + hVehicleDispatchDetailVo.StaffMemo1 + "'," +
+                                         "StaffCode2 = " + hVehicleDispatchDetailVo.StaffCode2 + "," +
+                                         "StaffOccupation2 = " + hVehicleDispatchDetailVo.StaffOccupation2 + "," +
+                                         "StaffProxyFlag2 = '" + hVehicleDispatchDetailVo.StaffProxyFlag2 + "'," +
+                                         //"StaffRollCallFlag2 = '" + hVehicleDispatchDetailVo.StaffRollCallFlag2 + "'," +
+                                         //"StaffRollCallYmdHms2 = '" + hVehicleDispatchDetailVo.StaffRollCallYmdHms2 + "'," +
+                                         "StaffMemoFlag2 = '" + hVehicleDispatchDetailVo.StaffMemoFlag2 + "'," +
+                                         "StaffMemo2 = '" + hVehicleDispatchDetailVo.StaffMemo2 + "'," +
+                                         "StaffCode3 = " + hVehicleDispatchDetailVo.StaffCode3 + "," +
+                                         "StaffOccupation3 = " + hVehicleDispatchDetailVo.StaffOccupation3 + "," +
+                                         "StaffProxyFlag3 = '" + hVehicleDispatchDetailVo.StaffProxyFlag3 + "'," +
+                                         //"StaffRollCallFlag3 = '" + hVehicleDispatchDetailVo.StaffRollCallFlag3 + "'," +
+                                         //"StaffRollCallYmdHms3 = '" + hVehicleDispatchDetailVo.StaffRollCallYmdHms3 + "'," +
+                                         "StaffMemoFlag3 = '" + hVehicleDispatchDetailVo.StaffMemoFlag3 + "'," +
+                                         "StaffMemo3 = '" + hVehicleDispatchDetailVo.StaffMemo3 + "'," +
+                                         "StaffCode4 = " + hVehicleDispatchDetailVo.StaffCode4 + "," +
+                                         "StaffOccupation4 = " + hVehicleDispatchDetailVo.StaffOccupation4 + "," +
+                                         "StaffProxyFlag4 = '" + hVehicleDispatchDetailVo.StaffProxyFlag4 + "'," +
+                                         //"StaffRollCallFlag4 = '" + hVehicleDispatchDetailVo.StaffRollCallFlag4 + "'," +
+                                         //"StaffRollCallYmdHms4 = '" + hVehicleDispatchDetailVo.StaffRollCallYmdHms4 + "'," +
+                                         "StaffMemoFlag4 = '" + hVehicleDispatchDetailVo.StaffMemoFlag4 + "'," +
+                                         "StaffMemo4 = '" + hVehicleDispatchDetailVo.StaffMemo4 + "'," +
+                                         "UpdatePcName = '" + Environment.MachineName + "'," +
+                                         "UpdateYmdHms = '" + DateTime.Now + "'," +
+                                         "DeleteFlag = 'false' " +
+                                     "WHERE CellNumber = " + hVehicleDispatchDetailVo.CellNumber + " AND OperationDate = '" + hVehicleDispatchDetailVo.OperationDate.ToString("yyyy-MM-dd") + "'";
             try {
                 sqlCommand.ExecuteNonQuery();
             } catch {
@@ -614,6 +978,29 @@ namespace H_Dao {
                                          "UpdatePcName = '" + Environment.MachineName + "'," +
                                          "UpdateYmdHms = '" + DateTime.Now + "' " +
                                      "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// UpdateLastRollCall
+        /// </summary>
+        /// <param name="cellNumber"></param>
+        /// <param name="hLastRollCallVo"></param>
+        public void UpdateLastRollCall(bool lastRollCallFlag, int cellNumber, H_LastRollCallVo hLastRollCallVo) {
+            /*
+             * DB更新
+             */
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE H_VehicleDispatchDetail " +
+                                     "SET LastRollCallFlag = '" + !lastRollCallFlag + "'," +
+                                         "LastRollCallYmdHms = '" + hLastRollCallVo.LastRollCallYmdHms + "'," +
+                                         "UpdatePcName = '" + Environment.MachineName + "'," +
+                                         "UpdateYmdHms = '" + DateTime.Now + "' " +
+                                     "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + hLastRollCallVo.OperationDate.ToString("yyyy-MM-dd") + "'";
             try {
                 sqlCommand.ExecuteNonQuery();
             } catch {

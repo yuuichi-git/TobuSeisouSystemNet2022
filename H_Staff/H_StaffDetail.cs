@@ -106,7 +106,7 @@ namespace H_Staff {
             errorProvider.BlinkStyle = ErrorBlinkStyle.AlwaysBlink;
             this.InitializeControls();
             try {
-                this.ScreenOutput(_hStaffMasterDao.SelectOneHStaffMasterForStaffDetail(staffCode));
+                this.ScreenOutput(_hStaffMasterDao.SelectOneHStaffMaster(staffCode));
             } catch (Exception exception) {
                 MessageBox.Show(exception.Message);
             }
@@ -220,7 +220,7 @@ namespace H_Staff {
                 case "ButtonUpdate":
                     try {
                         int.TryParse(HTextBoxExStaffCode.Text, out int staffCode);
-                        if (_hStaffMasterDao.ExistenceHStaffMasterRecord(staffCode)) {
+                        if (_hStaffMasterDao.ExistenceHStaffMaster(staffCode)) {
                             // UPDATE
                             _hStaffMasterDao.UpdateOneHStaffMaster(CreateHStaffMasterVo());
                             _updateFlag = false;

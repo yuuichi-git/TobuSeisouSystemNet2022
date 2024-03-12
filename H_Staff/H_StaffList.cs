@@ -15,7 +15,7 @@ namespace H_Staff {
     public partial class HStaffList : Form {
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
         private readonly Dictionary<int, string> dictionaryBelongs = new Dictionary<int, string> { { 10, "役員" }, { 11, "社員" }, { 12, "アルバイト" }, { 13, "派遣" }, { 20, "新運転" }, { 21, "自運労" } };
-        private readonly Dictionary<int, string> dictionaryJobForm = new Dictionary<int, string> { { 10, "長期雇用" }, { 11, "手帳" }, { 99, "" } };
+        private readonly Dictionary<int, string> dictionaryJobForm = new Dictionary<int, string> { { 10, "長期雇用" }, { 11, "手帳" }, { 12, "" }, { 99, "" } };
         private readonly Dictionary<int, string> dictionaryOccupation = new Dictionary<int, string> { { 10, "運転手" }, { 11, "作業員" }, { 20, "事務職" }, { 99, "" } };
         private readonly H_Common.Date _date = new();
         private List<H_StaffMasterVo>? _listStaffMasterVo = null;

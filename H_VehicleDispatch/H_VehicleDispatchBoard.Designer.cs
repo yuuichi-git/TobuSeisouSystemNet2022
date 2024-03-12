@@ -135,8 +135,8 @@
             // ToolStripMenuItemUpdateVehicleDispatchBody
             // 
             ToolStripMenuItemUpdateVehicleDispatchBody.Name = "ToolStripMenuItemUpdateVehicleDispatchBody";
-            ToolStripMenuItemUpdateVehicleDispatchBody.Size = new Size(204, 22);
-            ToolStripMenuItemUpdateVehicleDispatchBody.Text = "この配車組を本番登録する";
+            ToolStripMenuItemUpdateVehicleDispatchBody.Size = new Size(260, 22);
+            ToolStripMenuItemUpdateVehicleDispatchBody.Text = "この配車組(指定曜日)を本番登録する";
             ToolStripMenuItemUpdateVehicleDispatchBody.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemPrint

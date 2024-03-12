@@ -9,6 +9,8 @@ using H_Dao;
 
 using H_RollColl;
 
+using H_Staff;
+
 using H_Vo;
 
 using StockBox;
@@ -39,12 +41,6 @@ namespace H_VehicleDispatch {
         private readonly List<H_SetMasterVo> _listHSetMasterVo;
         private readonly List<H_CarMasterVo> _listHCarMasterVo;
         private readonly List<H_StaffMasterVo> _listHStaffMasterVo;
-        /*
-         * DeepCopy
-         */
-        private List<H_SetMasterVo>? _removeListHSetMasterVo;
-        private List<H_CarMasterVo>? _removeListHCarMasterVo;
-        private List<H_StaffMasterVo>? _removeListHStaffMasterVo;
 
         /// <summary>
         /// コンストラクター
@@ -81,7 +77,7 @@ namespace H_VehicleDispatch {
              */
             _listHSetMasterVo = _hSetMasterDao.SelectAllHSetMaster();
             _listHCarMasterVo = _hCarMasterDao.SelectAllHCarMaster();
-            _listHStaffMasterVo = _hStaffMasterDao.SelectAllHStaffMasterForStaffLabel();
+            _listHStaffMasterVo = _hStaffMasterDao.SelectAllHStaffMaster();
             /*
              * Freeゾーンを作成
              */
@@ -100,6 +96,7 @@ namespace H_VehicleDispatch {
              */
             _hBoard = new H_Board(_connectionVo);
             _hBoard.Event_HBoard_HSetControl_HSetLabel_MouseDoubleClick += HBoard_HSetControl_HSetLabel_MouseDoubleClick;
+            _hBoard.Event_HBoard_HSetControl_HLabel_ToolStripMenuItem_Click += HBoard_HSetControl_HLabel_ToolStripMenuItem_Click;
             HTableLayoutPanelExCenter.Controls.Add(_hBoard, 0, 2);
         }
 
@@ -121,7 +118,7 @@ namespace H_VehicleDispatch {
             int financialYear = _date.GetFiscalYear(H_DateTimePickerOperationDate.GetValue());
             string dayOgWeek = H_DateTimePickerOperationDate.Value.ToString("ddd");
             // H_VehicleDispatchHeadを取得
-            List<H_VehicleDispatchHeadVo> listHVehicleDispatchHeadVo = _hVehicleDispatchHeadDao.SelectAllHVehicleDispatchHeadVo(_date.GetFiscalYear());
+            List<H_VehicleDispatchHeadVo> listHVehicleDispatchHeadVo = _hVehicleDispatchHeadDao.SelectAllHVehicleDispatchHeadVo(financialYear);
             // H_VehicleDispatchを取得
             List<H_VehicleDispatchVo> listHVehicleDispatchVo = _hVehicleDispatchDao.SelectHVehicleDispatchVo(financialYear, dayOgWeek);
 
@@ -207,7 +204,7 @@ namespace H_VehicleDispatch {
 
             // H_Boardを初期化
             this.HBoardControlRemove(_hBoard);
-            List<H_VehicleDispatchDetailVo> listHVehicleDispatchDetailVo = _hVehicleDispatchDetailDao.SelectHVehicleDispatchDetail(H_DateTimePickerOperationDate.GetValue());
+            List<H_VehicleDispatchDetailVo> listHVehicleDispatchDetailVo = _hVehicleDispatchDetailDao.SelectAllHVehicleDispatchDetail(H_DateTimePickerOperationDate.GetValue());
 
             double i = 0;
             foreach (H_VehicleDispatchDetailVo hVehicleDispatchDetailVo in listHVehicleDispatchDetailVo) {
@@ -308,7 +305,7 @@ namespace H_VehicleDispatch {
                 hBoard.Controls[i].Dispose();
         }
 
-        private H_StockBoxs? hStockBoxs = null;
+        private H_StockBoxs hStockBoxs = null;
         /// <summary>
         /// HButtonEx_Click
         /// </summary>
@@ -363,25 +360,151 @@ namespace H_VehicleDispatch {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ToolStripMenuItem_Click(object sender, EventArgs e) {
+            DialogResult dialogResult;
             switch (((ToolStripMenuItem)sender).Name) {
                 /*
                  * 配車を初期化する(清掃事務所登録)
                  */
                 case "ToolStripMenuItemInitializeVehicleDispatchBody":
-                    // _hFlowLayoutPanelExFreeを初期化
-                    _hFlowLayoutPanelExFree.Controls.Clear();
+                    if (_hVehicleDispatchDetailDao.ExistenceHVehicleDispatchDetail(H_DateTimePickerOperationDate.GetValue())) {
+                        dialogResult = MessageBox.Show("対象日の配車データが存在します。本番登録で初期化してもよろしいですか？", "メッセージ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                        switch (dialogResult) {
+                            case DialogResult.Cancel:
+                                return;
+                        }
+                    } else {
+                        dialogResult = MessageBox.Show("本番登録で初期化してもよろしいですか？", "メッセージ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                        switch (dialogResult) {
+                            case DialogResult.Cancel:
+                                return;
+                        }
+                    }
+                    /*
+                     * _hFlowLayoutPanelExFreeを初期化
+                     */
+                    for (int i = _hFlowLayoutPanelExFree.Controls.Count - 1; 0 <= i; i--)
+                        _hFlowLayoutPanelExFree.Controls[i].Dispose();
+                    // 配車を初期化
                     this.CreateVehicleDispatchInitialize();
+                    MessageBox.Show("処理が終了しました。", "メッセージ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
                 /*
                  * 配車を初期化する(前日の配車をコピー)
+                 * ※初期化の条件 → 本番で初期化されていること。
                  */
                 case "ToolStripMenuItemInitializeVehicleDispatchCopy":
-                    MessageBox.Show("ToolStripMenuItemInitializeVehicleDispatchCopy");
+                    /*
+                     * H_VehicleDispatchDetailの対象日レコードを前日(前営業日)のコピーで初期化
+                     * 前営業日のデータをDeepCopyして必要なカラムだけ書き換える
+                     */
+                    DateTime beforeDate = H_DateTimePickerOperationDate.GetValue().Date;
+                    // どうやらAddDaysは新しいインスタンスを作成するらしい。だから入れ物も別で用意しとかないと
+                    DateTime beforeDateTime = new();
+                    switch (beforeDate.ToString("ddd")) {
+                        case "日":
+                            beforeDateTime = beforeDate.AddDays(-7); // 先週の日曜日
+                            break;
+                        case "月":
+                            beforeDateTime = beforeDate.AddDays(-2); // 先週の土曜日
+                            break;
+                        case "火":
+                        case "水":
+                        case "木":
+                        case "金":
+                        case "土":
+                            beforeDateTime = beforeDate.AddDays(-1); // 前日
+                            break;
+                    }
+
+                    if (_hVehicleDispatchDetailDao.ExistenceHVehicleDispatchDetail(H_DateTimePickerOperationDate.GetValue())) {
+                        dialogResult = MessageBox.Show(string.Concat("対象日の配車データが存在します。 ", beforeDateTime.ToString("yyyy/MM/dd"), " の配車データで初期化(従業員のみコピー複製)してもよろしいですか？"), "メッセージ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                        switch (dialogResult) {
+                            case DialogResult.Cancel:
+                                return;
+                        }
+                    } else {
+                        MessageBox.Show("本番登録で初期化した後にもう一度実行して下さい。", "メッセージ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                        return;
+                    }
+
+                    // 前営業日のデータをDeepCopyする
+                    List<H_VehicleDispatchDetailVo> listBeforeHVehicleDispatchDetailVo = new CopyUtility().DeepCopy(_hVehicleDispatchDetailDao.SelectAllHVehicleDispatchDetail(beforeDateTime.Date));
+                    // DB操作
+                    foreach (H_VehicleDispatchDetailVo beforeHVehicleDispatchDetailVo in listBeforeHVehicleDispatchDetailVo.FindAll(x => x.ClassificationCode == 10 || x.ClassificationCode == 11).OrderBy(x => x.CellNumber)) {
+                        H_VehicleDispatchDetailVo hVehicleDispatchDetailVo = new();
+                        hVehicleDispatchDetailVo.CellNumber = beforeHVehicleDispatchDetailVo.CellNumber;
+                        hVehicleDispatchDetailVo.OperationDate = H_DateTimePickerOperationDate.GetValue().Date;
+                        //hVehicleDispatchDetailVo.OperationFlag = beforeHVehicleDispatchDetailVo.OperationFlag;
+                        //hVehicleDispatchDetailVo.VehicleDispatchFlag = beforeHVehicleDispatchDetailVo.VehicleDispatchFlag;
+                        //hVehicleDispatchDetailVo.PurposeFlag = beforeHVehicleDispatchDetailVo.PurposeFlag;
+                        //hVehicleDispatchDetailVo.SetCode = beforeHVehicleDispatchDetailVo.SetCode;
+                        //hVehicleDispatchDetailVo.ManagedSpaceCode = beforeHVehicleDispatchDetailVo.ManagedSpaceCode;
+                        //hVehicleDispatchDetailVo.ClassificationCode = beforeHVehicleDispatchDetailVo.ClassificationCode;
+                        //hVehicleDispatchDetailVo.LastRollCallFlag = false;
+                        //hVehicleDispatchDetailVo.LastRollCallYmdHms = _defaultDateTime;
+                        //hVehicleDispatchDetailVo.SetMemoFlag = beforeHVehicleDispatchDetailVo.SetMemoFlag;
+                        //hVehicleDispatchDetailVo.SetMemo = beforeHVehicleDispatchDetailVo.SetMemo;
+                        //hVehicleDispatchDetailVo.ShiftCode = beforeHVehicleDispatchDetailVo.ShiftCode;
+                        //hVehicleDispatchDetailVo.StandByFlag = beforeHVehicleDispatchDetailVo.StandByFlag;
+                        //hVehicleDispatchDetailVo.AddWorkerFlag = beforeHVehicleDispatchDetailVo.AddWorkerFlag;
+                        //hVehicleDispatchDetailVo.ContactInfomationFlag = false;
+                        //hVehicleDispatchDetailVo.FaxTransmissionFlag = false;
+                        hVehicleDispatchDetailVo.CarCode = beforeHVehicleDispatchDetailVo.CarCode;
+                        hVehicleDispatchDetailVo.CarGarageCode = beforeHVehicleDispatchDetailVo.CarGarageCode;
+                        hVehicleDispatchDetailVo.CarProxyFlag = beforeHVehicleDispatchDetailVo.CarProxyFlag;
+                        hVehicleDispatchDetailVo.CarMemoFlag = beforeHVehicleDispatchDetailVo.CarMemoFlag;
+                        hVehicleDispatchDetailVo.CarMemo = beforeHVehicleDispatchDetailVo.CarMemo;
+                        hVehicleDispatchDetailVo.StaffCode1 = beforeHVehicleDispatchDetailVo.StaffCode1;
+                        hVehicleDispatchDetailVo.StaffOccupation1 = beforeHVehicleDispatchDetailVo.StaffOccupation1;
+                        hVehicleDispatchDetailVo.StaffProxyFlag1 = beforeHVehicleDispatchDetailVo.StaffProxyFlag1;
+                        //hVehicleDispatchDetailVo.StaffRollCallFlag1 = false;
+                        //hVehicleDispatchDetailVo.StaffRollCallYmdHms1 = _defaultDateTime;
+                        hVehicleDispatchDetailVo.StaffMemoFlag1 = beforeHVehicleDispatchDetailVo.StaffMemoFlag1;
+                        hVehicleDispatchDetailVo.StaffMemo1 = beforeHVehicleDispatchDetailVo.StaffMemo1;
+                        hVehicleDispatchDetailVo.StaffCode2 = beforeHVehicleDispatchDetailVo.StaffCode2;
+                        hVehicleDispatchDetailVo.StaffOccupation2 = beforeHVehicleDispatchDetailVo.StaffOccupation2;
+                        hVehicleDispatchDetailVo.StaffProxyFlag2 = beforeHVehicleDispatchDetailVo.StaffProxyFlag2;
+                        //hVehicleDispatchDetailVo.StaffRollCallFlag2 = false;
+                        //hVehicleDispatchDetailVo.StaffRollCallYmdHms2 = _defaultDateTime;
+                        hVehicleDispatchDetailVo.StaffMemoFlag2 = beforeHVehicleDispatchDetailVo.StaffMemoFlag2;
+                        hVehicleDispatchDetailVo.StaffMemo2 = beforeHVehicleDispatchDetailVo.StaffMemo2;
+                        hVehicleDispatchDetailVo.StaffCode3 = beforeHVehicleDispatchDetailVo.StaffCode3;
+                        hVehicleDispatchDetailVo.StaffOccupation3 = beforeHVehicleDispatchDetailVo.StaffOccupation3;
+                        hVehicleDispatchDetailVo.StaffProxyFlag3 = beforeHVehicleDispatchDetailVo.StaffProxyFlag3;
+                        //hVehicleDispatchDetailVo.StaffRollCallFlag3 = false;
+                        //hVehicleDispatchDetailVo.StaffRollCallYmdHms3 = _defaultDateTime;
+                        hVehicleDispatchDetailVo.StaffMemoFlag3 = beforeHVehicleDispatchDetailVo.StaffMemoFlag3;
+                        hVehicleDispatchDetailVo.StaffMemo3 = beforeHVehicleDispatchDetailVo.StaffMemo3;
+                        hVehicleDispatchDetailVo.StaffCode4 = beforeHVehicleDispatchDetailVo.StaffCode4;
+                        hVehicleDispatchDetailVo.StaffOccupation4 = beforeHVehicleDispatchDetailVo.StaffOccupation4;
+                        hVehicleDispatchDetailVo.StaffProxyFlag4 = beforeHVehicleDispatchDetailVo.StaffProxyFlag4;
+                        //hVehicleDispatchDetailVo.StaffRollCallFlag4 = false;
+                        //hVehicleDispatchDetailVo.StaffRollCallYmdHms4 = _defaultDateTime;
+                        hVehicleDispatchDetailVo.StaffMemoFlag4 = beforeHVehicleDispatchDetailVo.StaffMemoFlag4;
+                        hVehicleDispatchDetailVo.StaffMemo4 = beforeHVehicleDispatchDetailVo.StaffMemo4;
+                        hVehicleDispatchDetailVo.UpdatePcName = Environment.MachineName;
+                        hVehicleDispatchDetailVo.UpdateYmdHms = DateTime.Now;
+                        hVehicleDispatchDetailVo.DeleteFlag = false;
+                        /*
+                         * DBを更新
+                         */
+                        try {
+                            _hVehicleDispatchDetailDao.UpdateOneHVehicleDispatchDetailCopy(hVehicleDispatchDetailVo);
+                        } catch (Exception exception) {
+                            MessageBox.Show(exception.Message);
+                        }
+                    }
+                    MessageBox.Show("処理が終了しました。", "メッセージ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
                 /*
                  * この配車組を 'H_VehicleDispatchBody' に登録する
                  */
                 case "ToolStripMenuItemUpdateVehicleDispatchBody":
+                    dialogResult = MessageBox.Show("本番として登録してもしてもよろしいですか？", "メッセージ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    switch (dialogResult) {
+                        case DialogResult.Cancel:
+                            return;
+                    }
                     /*
                      * ダイアログを表示
                      */
@@ -389,6 +512,9 @@ namespace H_VehicleDispatch {
                     hVehicleDispatchEdit.StartPosition = FormStartPosition.CenterParent;
                     if (hVehicleDispatchEdit.ShowDialog(this) == DialogResult.OK) {
                         foreach (H_SetControl hSetControl in _hBoard.Controls) {
+                            /*
+                             * H_VehicleDispatchHeadに存在しないSetCodeはH_VehicleDispatchBodyを更新しない（固定の配車先ではないので）
+                             */
                             H_VehicleDispatchBodyVo hVehicleDispatchBodyVo = new();
                             hVehicleDispatchBodyVo.SetCode = hSetControl.GetSetMasterVo() is not null ? hSetControl.GetSetMasterVo().SetCode : 0;
                             hVehicleDispatchBodyVo.DayOfWeek = H_DateTimePickerOperationDate.GetValue().ToString("ddd");
@@ -411,7 +537,9 @@ namespace H_VehicleDispatch {
                             /*
                              * DB更新
                              */
-                            if (_hVehicleDispatchBodyDao.ExistenceHVehicleDispatchBodyVo(hSetControl.GetSetMasterVo() is not null ? hSetControl.GetSetMasterVo().SetCode : 0, H_DateTimePickerOperationDate.GetValue().ToString("ddd"))) {
+                            if (_hVehicleDispatchBodyDao.ExistenceHVehicleDispatchBodyVo(hSetControl.GetSetMasterVo() is not null ? hSetControl.GetSetMasterVo().SetCode : 0,
+                                                                                         H_DateTimePickerOperationDate.GetValue().ToString("ddd"),
+                                                                                         _date.GetFiscalYear(H_DateTimePickerOperationDate.GetValue().Date))) {
                                 // Recordが存在する　UPDATE
                                 try {
                                     _hVehicleDispatchBodyDao.UpdateOneHVehicleDispatchBodyVo(hVehicleDispatchBodyVo);
@@ -433,6 +561,7 @@ namespace H_VehicleDispatch {
                     }
 
                     hVehicleDispatchEdit.Dispose();
+                    MessageBox.Show("処理が終了しました。", "メッセージ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
                 /*
                  * B4で印刷する
@@ -492,7 +621,7 @@ namespace H_VehicleDispatch {
                     switch (beforeParentControl.Name) {
                         case "H_SetControl":
                             // Drag元のRecordをUpdateする
-                            _hVehicleDispatchDetailDao.UpdateHVehicleDispatchDetail(((H_SetControl)_hBoard.GetControlFromPosition(((H_ControlVo)beforeParentControl.Tag).CellNumber % 50, ((H_ControlVo)beforeParentControl.Tag).CellNumber / 50)).ConvertHVehicleDispatchDetailVo());
+                            _hVehicleDispatchDetailDao.UpdateOneHVehicleDispatchDetail(((H_SetControl)_hBoard.GetControlFromPosition(((H_ControlVo)beforeParentControl.Tag).CellNumber % 50, ((H_ControlVo)beforeParentControl.Tag).CellNumber / 50)).ConvertHVehicleDispatchDetailVo());
                             break;
                         default:
                             break;
@@ -509,7 +638,7 @@ namespace H_VehicleDispatch {
                     switch (beforeParentControl.Name) {
                         case "H_SetControl":
                             // Drag元のRecordをUpdateする
-                            _hVehicleDispatchDetailDao.UpdateHVehicleDispatchDetail(((H_SetControl)_hBoard.GetControlFromPosition(((H_ControlVo)beforeParentControl.Tag).CellNumber % 50, ((H_ControlVo)beforeParentControl.Tag).CellNumber / 50)).ConvertHVehicleDispatchDetailVo());
+                            _hVehicleDispatchDetailDao.UpdateOneHVehicleDispatchDetail(((H_SetControl)_hBoard.GetControlFromPosition(((H_ControlVo)beforeParentControl.Tag).CellNumber % 50, ((H_ControlVo)beforeParentControl.Tag).CellNumber / 50)).ConvertHVehicleDispatchDetailVo());
                             break;
                         default:
                             break;
@@ -524,10 +653,95 @@ namespace H_VehicleDispatch {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void HBoard_HSetControl_HSetLabel_MouseDoubleClick(object sender, MouseEventArgs e) {
+            H_SetLabel hSetLabel = (H_SetLabel)sender;
+            int cellNumber = ((H_ControlVo)((H_SetControl)((H_SetLabel)sender).Parent).Tag).CellNumber;
             int setCode = ((H_SetMasterVo)((H_SetLabel)sender).Tag).SetCode;
-            DateTime dateTime = H_DateTimePickerOperationDate.GetValue();
-            H_LastRollCall hLastRollCall = new(_connectionVo, setCode, dateTime);
-            hLastRollCall.Show(this);
+            H_LastRollCall hLastRollCall = new(_connectionVo, hSetLabel, cellNumber, setCode, H_DateTimePickerOperationDate.GetValue());
+            hLastRollCall.ShowDialog(this);
+
+        }
+
+        /// <summary>
+        /// HBoard_HSetControl_HLabel_ToolStripMenuItem_Click
+        /// 各ControlからのEventを処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HBoard_HSetControl_HLabel_ToolStripMenuItem_Click(object sender, EventArgs e) {
+            ContextMenuStrip contextMenuStrip = (ContextMenuStrip)((ToolStripMenuItem)sender).Owner;
+            switch (((ToolStripMenuItem)sender).Name) {
+                /*
+                 * 
+                 * SetLabelからのEvent
+                 * 
+                 */
+                case "ToolStripMenuItemSetDetail": // 配車先の情報を表示する
+                    MessageBox.Show("ToolStripMenuItemSetDetail");
+                    break;
+                case "ToolStripMenuItemSetMemo": // メモを作成・編集する
+                    H_Memo hSetMemo = new(_connectionVo, (H_SetControl)((H_SetLabel)contextMenuStrip.SourceControl).Parent, (H_SetLabel)contextMenuStrip.SourceControl);
+                    new Desktop().SetMonitor(hSetMemo, _connectionVo.Screen);
+                    hSetMemo.KeyPreview = true;
+                    hSetMemo.Size = new Size(540, 180);
+                    hSetMemo.WindowState = FormWindowState.Normal;
+                    hSetMemo.Show(Owner);
+                    break;
+                case "ToolStripMenuItemCreateFax": // 代車・代番Faxを作成する
+                    H_Substitute hSubstitute = new(_connectionVo, (H_SetControl)((H_SetLabel)contextMenuStrip.SourceControl).Parent);
+                    Rectangle rectangleHSubstitute = new Desktop().GetMonitorWorkingArea(hSubstitute, _connectionVo.Screen);
+                    hSubstitute.KeyPreview = true;
+                    hSubstitute.Location = rectangleHSubstitute.Location;
+                    hSubstitute.Size = new Size(850, 1080);
+                    hSubstitute.WindowState = FormWindowState.Normal;
+                    hSubstitute.Show(this);
+                    break;
+                /*
+                 * 
+                 * CarLabelからのEvent
+                 * 
+                 */
+                case "ToolStripMenuItemCarDetail": // 車両台帳を表示する
+                    MessageBox.Show("ToolStripMenuItemCarDetail");
+                    break;
+                case "ToolStripMenuItemCarMemo": // メモを作成・編集する
+                    H_Memo hCarMemo = new(_connectionVo, (H_SetControl)((H_CarLabel)contextMenuStrip.SourceControl).Parent, (H_CarLabel)contextMenuStrip.SourceControl);
+                    new Desktop().SetMonitor(hCarMemo, _connectionVo.Screen);
+                    hCarMemo.KeyPreview = true;
+                    hCarMemo.Size = new Size(540, 180);
+                    hCarMemo.WindowState = FormWindowState.Normal;
+                    hCarMemo.Show(Owner);
+                    break;
+                case "ToolStripMenuItemCarNippou": // 日報を作成する
+                    MessageBox.Show("ToolStripMenuItemCarNippou");
+                    break;
+                /*
+                 * 
+                 * StaffLabelからのEvent
+                 * 
+                 */
+                case "ToolStripMenuItemStaffDetail": // 従事者台帳を表示する
+                    H_StaffLabel hStaffLabel = (H_StaffLabel)contextMenuStrip.SourceControl;
+                    H_StaffMasterVo hStaffMasterVo = (H_StaffMasterVo)hStaffLabel.Tag;
+                    HStaffPaper hStaffPaper = new(_connectionVo, hStaffMasterVo.StaffCode);
+                    Rectangle rectangleHStaffPaper = new Desktop().GetMonitorWorkingArea(hStaffPaper, _connectionVo.Screen);
+                    hStaffPaper.KeyPreview = true;
+                    hStaffPaper.Location = rectangleHStaffPaper.Location;
+                    hStaffPaper.Size = new Size(1920, 1080);
+                    hStaffPaper.WindowState = FormWindowState.Normal;
+                    hStaffPaper.Show(this);
+                    break;
+                case "ToolStripMenuItemStaffMemo": // メモを作成・編集する
+                    H_Memo hStaffMemo = new(_connectionVo, (H_SetControl)((H_StaffLabel)contextMenuStrip.SourceControl).Parent, (H_StaffLabel)contextMenuStrip.SourceControl);
+                    new Desktop().SetMonitor(hStaffMemo, _connectionVo.Screen);
+                    hStaffMemo.KeyPreview = true;
+                    hStaffMemo.Size = new Size(540, 180);
+                    hStaffMemo.WindowState = FormWindowState.Normal;
+                    hStaffMemo.Show(Owner);
+                    break;
+                case "ToolStripMenuItemStaffEquioment": // 備品を支給する
+                    MessageBox.Show("ToolStripMenuItemStaffEquioment");
+                    break;
+            }
         }
     }
 }

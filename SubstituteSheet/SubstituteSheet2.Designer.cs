@@ -26,13 +26,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SubstituteSheet2));
             TableLayoutPanelEx1 = new ControlEx.TableLayoutPanelEx();
             SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("TableLayoutPanelEx1.Controls"));
+            SheetView1 = SpreadList.GetSheet(0);
             MenuStrip1 = new MenuStrip();
             ToolStripMenuItemMenu = new ToolStripMenuItem();
             ToolStripMenuItemExit = new ToolStripMenuItem();
             ToolStripMenuItemHelp = new ToolStripMenuItem();
             PanelTop = new Panel();
             ButtonPrint = new Button();
-            SheetView1 = SpreadList.GetSheet(0);
             TableLayoutPanelEx1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)SpreadList).BeginInit();
             MenuStrip1.SuspendLayout();

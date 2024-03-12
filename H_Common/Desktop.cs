@@ -21,5 +21,16 @@
             form.Location = screen.Bounds.Location;
             return Screen.GetWorkingArea(form);
         }
+
+        /// <summary>
+        /// formで指定したFormをscreenで指定したモニターに表示する
+        /// </summary>
+        /// <param name="form"></param>
+        /// <param name="screen"></param>
+        public void SetMonitor(Form form, Screen screen) {
+            //フォームの開始位置をディスプレイの左上座標に設定する
+            form.StartPosition = FormStartPosition.Manual;
+            form.Location = screen.Bounds.Location;
+        }
     }
 }

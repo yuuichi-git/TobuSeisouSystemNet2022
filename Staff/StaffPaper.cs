@@ -154,7 +154,7 @@ namespace Staff {
             sheetView.Cells[11, 20].Value = extendsStaffMasterVo.Birth_date != _defaultDateTime ? extendsStaffMasterVo.Birth_date.Date : null; // 生年月日
             sheetView.Cells[11, 26].Value = extendsStaffMasterVo.Employment_date != _defaultDateTime ? extendsStaffMasterVo.Employment_date.Date : null; // 雇用年月日
             sheetView.Cells[13, 5].Text = extendsStaffMasterVo.Current_address; // 現住所
-            sheetView.Cells[15, 5].Text = extendsStaffMasterVo.Remarks; // 変更後住所
+            sheetView.Cells[15, 5].Text = extendsStaffMasterVo.Before_change_address; // 変更後住所
             sheetView.Cells[17, 7].Text = extendsStaffMasterVo.Telephone_number; // 電話番号
             sheetView.Cells[17, 21].Text = extendsStaffMasterVo.Cellphone_number; // 携帯電話
             sheetView.Cells[10, 32].Value = extendsStaffMasterVo.Picture.Length != 0 ? (Image?)new ImageConverter().ConvertFrom(extendsStaffMasterVo.Picture) : null;

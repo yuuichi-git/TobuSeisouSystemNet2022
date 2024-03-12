@@ -4,7 +4,7 @@
       "commandName": "Project",
       "sqlDebugging": false,
       "nativeDebugging": true,
-      "hotReloadEnabled": true
+      "hotReloadEnabled": false
     }
   }
 }

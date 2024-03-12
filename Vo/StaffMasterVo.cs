@@ -19,7 +19,7 @@
         private DateTime _employment_date;
         private int _code;
         private string _current_address = "";
-        private string _remarks = "";
+        private string _before_change_address = "";
         private string _telephone_number = "";
         private string _cellphone_number = "";
         private byte[] _picture = new byte[0];
@@ -266,9 +266,9 @@
         /// <summary>
         /// その他備考
         /// </summary>
-        public string Remarks {
-            get => _remarks;
-            set => _remarks = value;
+        public string Before_change_address {
+            get => _before_change_address;
+            set => _before_change_address = value;
         }
         /// <summary>
         /// 電話番号

@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            components = new System.ComponentModel.Container();
             h_LabelEx1 = new H_ControlEx.H_LabelEx();
             h_LabelEx2 = new H_ControlEx.H_LabelEx();
             HDateTimePickerExOperationDate = new H_ControlEx.H_DateTimePickerEx();
@@ -42,6 +43,8 @@
             HMaskedTextBoxExFirstRollCallTime = new H_ControlEx.H_MaskedTextBoxEx();
             HMaskedTextBoxExLastPlantYmdHms = new H_ControlEx.H_MaskedTextBoxEx();
             HMaskedTextBoxExLastRollCallYmdHms = new H_ControlEx.H_MaskedTextBoxEx();
+            ToolTip1 = new ToolTip(components);
+            HCheckBoxExLastRollCallCancel = new H_ControlEx.H_CheckBoxEx();
             ((System.ComponentModel.ISupportInitialize)HNumericUpDownExFirstOdoMeter).BeginInit();
             ((System.ComponentModel.ISupportInitialize)HNumericUpDownExLastOdoMeter).BeginInit();
             ((System.ComponentModel.ISupportInitialize)HNumericUpDownExOilAmount).BeginInit();
@@ -175,11 +178,11 @@
             // 
             // HButtonExUpdate
             // 
-            HButtonExUpdate.Location = new Point(88, 268);
+            HButtonExUpdate.Location = new Point(128, 296);
             HButtonExUpdate.Name = "HButtonExUpdate";
-            HButtonExUpdate.Size = new Size(136, 32);
+            HButtonExUpdate.Size = new Size(160, 32);
             HButtonExUpdate.TabIndex = 9;
-            HButtonExUpdate.Text = "Update";
+            HButtonExUpdate.Text = "記録する";
             HButtonExUpdate.TextDirectionVertical = "";
             HButtonExUpdate.UseVisualStyleBackColor = true;
             HButtonExUpdate.Click += HButtonExUpdate_Click;
@@ -206,35 +209,50 @@
             // HMaskedTextBoxExFirstRollCallTime
             // 
             HMaskedTextBoxExFirstRollCallTime.Location = new Point(104, 40);
-            HMaskedTextBoxExFirstRollCallTime.Mask = "00時00分";
+            HMaskedTextBoxExFirstRollCallTime.Mask = "90:00";
             HMaskedTextBoxExFirstRollCallTime.Name = "HMaskedTextBoxExFirstRollCallTime";
             HMaskedTextBoxExFirstRollCallTime.Size = new Size(76, 23);
             HMaskedTextBoxExFirstRollCallTime.TabIndex = 1;
             HMaskedTextBoxExFirstRollCallTime.TextAlign = HorizontalAlignment.Right;
+            HMaskedTextBoxExFirstRollCallTime.ValidatingType = typeof(DateTime);
             // 
             // HMaskedTextBoxExLastPlantYmdHms
             // 
             HMaskedTextBoxExLastPlantYmdHms.Location = new Point(104, 124);
-            HMaskedTextBoxExLastPlantYmdHms.Mask = "00時00分";
+            HMaskedTextBoxExLastPlantYmdHms.Mask = "90:00";
             HMaskedTextBoxExLastPlantYmdHms.Name = "HMaskedTextBoxExLastPlantYmdHms";
             HMaskedTextBoxExLastPlantYmdHms.Size = new Size(76, 23);
             HMaskedTextBoxExLastPlantYmdHms.TabIndex = 4;
             HMaskedTextBoxExLastPlantYmdHms.TextAlign = HorizontalAlignment.Right;
+            HMaskedTextBoxExLastPlantYmdHms.ValidatingType = typeof(DateTime);
             // 
             // HMaskedTextBoxExLastRollCallYmdHms
             // 
             HMaskedTextBoxExLastRollCallYmdHms.Location = new Point(104, 152);
-            HMaskedTextBoxExLastRollCallYmdHms.Mask = "00時00分";
+            HMaskedTextBoxExLastRollCallYmdHms.Mask = "90:00";
             HMaskedTextBoxExLastRollCallYmdHms.Name = "HMaskedTextBoxExLastRollCallYmdHms";
             HMaskedTextBoxExLastRollCallYmdHms.Size = new Size(76, 23);
             HMaskedTextBoxExLastRollCallYmdHms.TabIndex = 5;
             HMaskedTextBoxExLastRollCallYmdHms.TextAlign = HorizontalAlignment.Right;
+            ToolTip1.SetToolTip(HMaskedTextBoxExLastRollCallYmdHms, "ここに時間が入力されていない場合、未点呼扱いとなる");
+            HMaskedTextBoxExLastRollCallYmdHms.ValidatingType = typeof(DateTime);
+            // 
+            // HCheckBoxExLastRollCallCancel
+            // 
+            HCheckBoxExLastRollCallCancel.AutoSize = true;
+            HCheckBoxExLastRollCallCancel.Location = new Point(16, 304);
+            HCheckBoxExLastRollCallCancel.Name = "HCheckBoxExLastRollCallCancel";
+            HCheckBoxExLastRollCallCancel.Size = new Size(107, 19);
+            HCheckBoxExLastRollCallCancel.TabIndex = 13;
+            HCheckBoxExLastRollCallCancel.Text = "帰庫点呼を削除";
+            HCheckBoxExLastRollCallCancel.UseVisualStyleBackColor = true;
             // 
             // H_LastRollCall
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(309, 311);
+            ClientSize = new Size(309, 361);
+            Controls.Add(HCheckBoxExLastRollCallCancel);
             Controls.Add(HMaskedTextBoxExLastRollCallYmdHms);
             Controls.Add(HMaskedTextBoxExLastPlantYmdHms);
             Controls.Add(HMaskedTextBoxExFirstRollCallTime);
@@ -254,6 +272,7 @@
             Controls.Add(HDateTimePickerExOperationDate);
             Controls.Add(h_LabelEx2);
             Controls.Add(h_LabelEx1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "H_LastRollCall";
@@ -288,5 +307,7 @@
         private H_ControlEx.H_MaskedTextBoxEx HMaskedTextBoxExFirstRollCallTime;
         private H_ControlEx.H_MaskedTextBoxEx HMaskedTextBoxExLastPlantYmdHms;
         private H_ControlEx.H_MaskedTextBoxEx HMaskedTextBoxExLastRollCallYmdHms;
+        private ToolTip ToolTip1;
+        private H_ControlEx.H_CheckBoxEx HCheckBoxExLastRollCallCancel;
     }
 }

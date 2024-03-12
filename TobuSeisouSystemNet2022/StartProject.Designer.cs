@@ -198,6 +198,13 @@
             label48 = new Label();
             label44 = new Label();
             label45 = new Label();
+            TabPage3 = new TabPage();
+            label55 = new Label();
+            label56 = new Label();
+            label53 = new Label();
+            label54 = new Label();
+            label51 = new Label();
+            label52 = new Label();
             TableLayoutPanelBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -210,6 +217,7 @@
             HTabControlEx.SuspendLayout();
             TabPage1.SuspendLayout();
             TabPage2.SuspendLayout();
+            TabPage3.SuspendLayout();
             SuspendLayout();
             // 
             // TableLayoutPanelBase
@@ -1006,6 +1014,7 @@
             // 
             HTabControlEx.Controls.Add(TabPage1);
             HTabControlEx.Controls.Add(TabPage2);
+            HTabControlEx.Controls.Add(TabPage3);
             HTabControlEx.Dock = DockStyle.Fill;
             HTabControlEx.ItemSize = new Size(150, 20);
             HTabControlEx.Location = new Point(3, 143);
@@ -1386,6 +1395,96 @@
             label45.MouseEnter += Label_MouseEnter;
             label45.MouseLeave += Label_MouseLeave;
             // 
+            // TabPage3
+            // 
+            TabPage3.Controls.Add(label55);
+            TabPage3.Controls.Add(label56);
+            TabPage3.Controls.Add(label53);
+            TabPage3.Controls.Add(label54);
+            TabPage3.Controls.Add(label51);
+            TabPage3.Controls.Add(label52);
+            TabPage3.Location = new Point(4, 24);
+            TabPage3.Name = "TabPage3";
+            TabPage3.Size = new Size(696, 447);
+            TabPage3.TabIndex = 2;
+            TabPage3.Text = "データ移行ツール";
+            TabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label55
+            // 
+            label55.AutoSize = true;
+            label55.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label55.ForeColor = Color.Blue;
+            label55.Location = new Point(42, 26);
+            label55.Name = "label55";
+            label55.Size = new Size(230, 17);
+            label55.TabIndex = 9;
+            label55.Text = "CarMasterをH_CarMasterへ移行します。";
+            // 
+            // label56
+            // 
+            label56.AutoSize = true;
+            label56.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label56.Location = new Point(16, 8);
+            label56.Name = "label56";
+            label56.Size = new Size(83, 17);
+            label56.TabIndex = 8;
+            label56.Tag = "DbCarMaster";
+            label56.Text = "H_CarMaster";
+            label56.Click += Label_Click;
+            label56.MouseEnter += Label_MouseEnter;
+            label56.MouseLeave += Label_MouseLeave;
+            // 
+            // label53
+            // 
+            label53.AutoSize = true;
+            label53.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label53.ForeColor = Color.Blue;
+            label53.Location = new Point(42, 100);
+            label53.Name = "label53";
+            label53.Size = new Size(401, 17);
+            label53.TabIndex = 7;
+            label53.Text = "H_VehicleDispatchBodyを初期化します。管理者以外は触らないで下さい。";
+            // 
+            // label54
+            // 
+            label54.AutoSize = true;
+            label54.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label54.Location = new Point(16, 82);
+            label54.Name = "label54";
+            label54.Size = new Size(141, 17);
+            label54.TabIndex = 6;
+            label54.Tag = "DbHVehicleDispatchBody";
+            label54.Text = "H_VehicleDispatchBody";
+            label54.Click += Label_Click;
+            label54.MouseEnter += Label_MouseEnter;
+            label54.MouseLeave += Label_MouseLeave;
+            // 
+            // label51
+            // 
+            label51.AutoSize = true;
+            label51.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label51.ForeColor = Color.Blue;
+            label51.Location = new Point(42, 64);
+            label51.Name = "label51";
+            label51.Size = new Size(244, 17);
+            label51.TabIndex = 5;
+            label51.Text = "StaffMasterをH_StaffMasterへ移行します。";
+            // 
+            // label52
+            // 
+            label52.AutoSize = true;
+            label52.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label52.Location = new Point(16, 46);
+            label52.Name = "label52";
+            label52.Size = new Size(90, 17);
+            label52.TabIndex = 4;
+            label52.Tag = "DbHStaffMaster";
+            label52.Text = "H_StaffMaster";
+            label52.Click += Label_Click;
+            label52.MouseEnter += Label_MouseEnter;
+            label52.MouseLeave += Label_MouseLeave;
+            // 
             // StartProject
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1418,6 +1517,8 @@
             TabPage1.PerformLayout();
             TabPage2.ResumeLayout(false);
             TabPage2.PerformLayout();
+            TabPage3.ResumeLayout(false);
+            TabPage3.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -1499,5 +1600,12 @@
         private Label label48;
         private Label label49;
         private Label label50;
+        private TabPage TabPage3;
+        private Label label51;
+        private Label label52;
+        private Label label53;
+        private Label label54;
+        private Label label55;
+        private Label label56;
     }
 }

@@ -15,6 +15,7 @@ namespace H_ControlEx {
         public event MouseEventHandler Event_HCarLabel_MouseClick = delegate { };
         public event MouseEventHandler Event_HCarLabel_MouseDoubleClick = delegate { };
         public event MouseEventHandler Event_HCarLabel_MouseMove = delegate { };
+        public event EventHandler Event_HCarLabel_ToolStripMenuItem_Click = delegate { };
 
         private Image _imageCarLabel;
         /*
@@ -268,8 +269,12 @@ namespace H_ControlEx {
         /// <param name="e"></param>
         private void ToolStripMenuItem_Click(object sender, EventArgs e) {
             switch (((ToolStripMenuItem)sender).Name) {
+                    /*
+                     * H_Boardに処理を回している
+                     * H_CarLabel→H_SetControl→H_Board
+                     */
                 case "ToolStripMenuItemCarDetail": // 車両台帳を表示する
-                    MessageBox.Show("ToolStripMenuItemCarDetail");
+                    Event_HCarLabel_ToolStripMenuItem_Click.Invoke(sender, e);
                     break;
                 case "ToolStripMenuItemCarWarehouseAdachi": // 本社から出庫
                     this.CarGarageCode = 1;
@@ -320,10 +325,18 @@ namespace H_ControlEx {
                     }
                     break;
                 case "ToolStripMenuItemCarMemo": // メモを作成・編集する
-                    MessageBox.Show("ToolStripMenuItemCarMemo");
+                    /*
+                     * H_Boardに処理を回している
+                     * H_CarLabel→H_SetControl→H_Board
+                     */
+                    Event_HCarLabel_ToolStripMenuItem_Click.Invoke(sender, e);
                     break;
                 case "ToolStripMenuItemCarNippou": // 日報を作成する
-                    MessageBox.Show("ToolStripMenuItemCarNippou");
+                    /*
+                     * H_Boardに処理を回している
+                     * H_CarLabel→H_SetControl→H_Board
+                     */
+                    Event_HCarLabel_ToolStripMenuItem_Click.Invoke(sender, e);
                     break;
             }
         }

@@ -180,5 +180,22 @@ namespace H_Common {
                 return false;
             }
         }
+
+        /// <summary>
+        /// string型の時刻(HH:mm)をDateTime(operationDateを元に)に変換する
+        /// </summary>
+        /// <param name="operationDate"></param>
+        /// <param name="time"></param>
+        /// <returns></returns>
+        public DateTime GetStringTimeToDateTime(DateTime operationDate, string time) {
+            DateTime lastRollCallYmdHms;
+            lastRollCallYmdHms = new DateTime(operationDate.Year,
+                                              operationDate.Month,
+                                              operationDate.Day,
+                                              DateTime.ParseExact(time, "HH:mm", null).Hour,
+                                              DateTime.ParseExact(time, "HH:mm", null).Minute,
+                                              00);
+            return lastRollCallYmdHms;
+        }
     }
 }

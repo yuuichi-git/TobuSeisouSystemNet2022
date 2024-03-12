@@ -102,7 +102,7 @@ namespace H_RollColl {
             _listHCarMasterVo = _hCarMasterDao.SelectAllHCarMaster();
             _listHFareMasterVo = _hFareMasterDao.SelectAllHFareMasterVo();
             _listHSetMasterVo = _hSetMasterDao.SelectAllHSetMaster();
-            _listHStaffMasterVo = _hStaffMasterDao.SelectAllHStaffMasterForStaffLabel();
+            _listHStaffMasterVo = _hStaffMasterDao.SelectAllHStaffMaster();
             /*
              * InitializeControl
              */
@@ -215,7 +215,7 @@ namespace H_RollColl {
             /*
              * 解析１
              */
-            List<H_VehicleDispatchDetailVo> listHVehicleDispatchDetailVo = _hVehicleDispatchDetailDao.SelectHVehicleDispatchDetail(HDateTimePickerExOperationDate.GetValue());
+            List<H_VehicleDispatchDetailVo> listHVehicleDispatchDetailVo = _hVehicleDispatchDetailDao.SelectAllHVehicleDispatchDetail(HDateTimePickerExOperationDate.GetValue());
             foreach (H_FareMasterVo hFareMasterVo in _listHFareMasterVo.OrderBy(x => x.FareCode)) {
                 blockRowCount = 0;
                 foreach (H_VehicleDispatchDetailVo hVehicleDispatchDetailVo in listHVehicleDispatchDetailVo.OrderBy(x => x.CellNumber)) {

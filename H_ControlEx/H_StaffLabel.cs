@@ -15,7 +15,7 @@ namespace H_ControlEx {
         public event MouseEventHandler Event_HStaffLabel_MouseClick = delegate { };
         public event MouseEventHandler Event_HStaffLabel_MouseDoubleClick = delegate { };
         public event MouseEventHandler Event_HStaffLabel_MouseMove = delegate { };
-        public event EventHandler Event_HStaffLabel_ToolStripMenuItem_Click = delegate {};
+        public event EventHandler Event_HStaffLabel_ToolStripMenuItem_Click = delegate { };
 
         private readonly Image _imageStaffLabel;
         /*
@@ -377,7 +377,6 @@ namespace H_ControlEx {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ToolStripMenuItem_Click(object sender, EventArgs e) {
-            Event_HStaffLabel_ToolStripMenuItem_Click.Invoke(sender, e);
             switch (((ToolStripMenuItem)sender).Name) {
                 /*
                  * 従事者台帳を表示する
@@ -387,6 +386,7 @@ namespace H_ControlEx {
                      * H_Boardに処理を回している
                      * H_StaffLabel→H_SetControl→H_Board
                      */
+                    Event_HStaffLabel_ToolStripMenuItem_Click.Invoke(sender, e);
                     break;
                 /*
                  * 代番として記録する
@@ -483,6 +483,7 @@ namespace H_ControlEx {
                      * H_Boardに処理を回している
                      * H_StaffLabel→H_SetControl→H_Board
                      */
+                    Event_HStaffLabel_ToolStripMenuItem_Click.Invoke(sender, e);
                     break;
                 /*
                  * 備品を支給する
@@ -492,6 +493,7 @@ namespace H_ControlEx {
                      * H_Boardに処理を回している
                      * H_StaffLabel→H_SetControl→H_Board
                      */
+                    Event_HStaffLabel_ToolStripMenuItem_Click.Invoke(sender, e);
                     break;
             }
         }

@@ -130,7 +130,7 @@ namespace Staff {
             ComboBoxGender.Text = extendsStaffMasterVo.Gender; // 性別
             ComboBoxBloodType.Text = extendsStaffMasterVo.Blood_type; // 血液型
             TextBoxCurrentAddress.Text = extendsStaffMasterVo.Current_address; // 現住所
-            TextBoxRemarks.Text = extendsStaffMasterVo.Remarks; // その他備考
+            TextBoxRemarks.Text = extendsStaffMasterVo.Before_change_address; // その他備考
             TextBoxTelephoneNumber.Text = extendsStaffMasterVo.Telephone_number; // 電話番号(自宅)
             TextBoxCellphoneNumber.Text = extendsStaffMasterVo.Cellphone_number; // 電話番号(携帯電話)
             if(extendsStaffMasterVo.Picture.Length == 0) {  // 写真
@@ -379,7 +379,7 @@ namespace Staff {
                     // StaffLedgerVoに値をセット
                     var staffLedgerVo = SetStaffMasterVo();
                     // DBを変更(DBにstaff_codeが存在すればUPDATE、無ければINSERT)
-                    if(_staffMasterDao.CheckStaffMaster(staffLedgerVo.Staff_code)) {
+                    if(_staffMasterDao.ExistenceStaffMaster(staffLedgerVo.Staff_code)) {
                         _staffMasterDao.UpdateOneStaffLedger(staffLedgerVo);
                     } else {
                         _staffMasterDao.InsertOneStaffMaster(staffLedgerVo);
@@ -463,7 +463,7 @@ namespace Staff {
             staffMasterVo.Gender = ComboBoxGender.Text; // 性別
             staffMasterVo.Blood_type = ComboBoxBloodType.Text; // 血液型
             staffMasterVo.Current_address = TextBoxCurrentAddress.Text; // 現住所
-            staffMasterVo.Remarks = TextBoxRemarks.Text; // 変更後住所
+            staffMasterVo.Before_change_address = TextBoxRemarks.Text; // 変更後住所
             staffMasterVo.Telephone_number = TextBoxTelephoneNumber.Text; // 電話番号(自宅)
             staffMasterVo.Cellphone_number = TextBoxCellphoneNumber.Text; // 電話番号(携帯電話)
             staffMasterVo.Picture = (byte[]?)new ImageConverter().ConvertTo(PictureBoxPicture.Image, typeof(byte[])); // 写真

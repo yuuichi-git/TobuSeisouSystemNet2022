@@ -11,6 +11,7 @@ namespace H_ControlEx {
          * H_Boardで扱うEventの中でH_VehicleDispatchBoardに公開するもの
          */
         public event MouseEventHandler Event_HBoard_HSetControl_HSetLabel_MouseDoubleClick = delegate { };
+        public event EventHandler Event_HBoard_HSetControl_HLabel_ToolStripMenuItem_Click = delegate { };
         /*
          * Dao
          */
@@ -103,7 +104,8 @@ namespace H_ControlEx {
             hSetControl.Event_HSetControl_HStaffLabel_MouseClick += HStaffLabel_MouseClick;
             hSetControl.Event_HSetControl_HStaffLabel_MouseDoubleClick += HStaffLabel_MouseDoubleClick;
             hSetControl.Event_HSetControl_HStaffLabel_MouseMove += HStaffLabel_MouseMove;
-            hSetControl.Event_HSetControl_HStaffLabel_ToolStripMenuItem_Click += HSetControl_HStaffLabel_ToolStripMenuItem_Click;
+            // 共通Event
+            hSetControl.Event_HSetControl_HLabel_ToolStripMenuItem_Click += HSetControl_HLabel_ToolStripMenuItem_Click;
             /*
              * Controlを配置
              */
@@ -246,14 +248,14 @@ namespace H_ControlEx {
                     case "H_SetControl": // H_SetControl→H_SetControlへの移動
                         beforeHControlVo = (H_ControlVo)beforeParentControl.Tag;
                         // Drag元のRecordをUpdateする
-                        _hVehicleDispatchDetailDao.UpdateHVehicleDispatchDetail(((H_SetControl)this.GetControlFromPosition(beforeHControlVo.CellNumber % 50, beforeHControlVo.CellNumber / 50)).ConvertHVehicleDispatchDetailVo());
+                        _hVehicleDispatchDetailDao.UpdateOneHVehicleDispatchDetail(((H_SetControl)this.GetControlFromPosition(beforeHControlVo.CellNumber % 50, beforeHControlVo.CellNumber / 50)).ConvertHVehicleDispatchDetailVo());
                         // Drop先のRecordをUpdateする
-                        _hVehicleDispatchDetailDao.UpdateHVehicleDispatchDetail(afterHSetControl.ConvertHVehicleDispatchDetailVo());
+                        _hVehicleDispatchDetailDao.UpdateOneHVehicleDispatchDetail(afterHSetControl.ConvertHVehicleDispatchDetailVo());
                         break;
                     case "H_FlowLayoutPanelExFree": // H_FlowLayoutPanelExFree→H_SetControlへの移動
                     case "H_FlowLayoutPanelExBase": // H_FlowLayoutPanelExBase→H_SetControlへの移動
                         // Drop先のRecordをUpdateする
-                        _hVehicleDispatchDetailDao.UpdateHVehicleDispatchDetail(afterHSetControl.ConvertHVehicleDispatchDetailVo());
+                        _hVehicleDispatchDetailDao.UpdateOneHVehicleDispatchDetail(afterHSetControl.ConvertHVehicleDispatchDetailVo());
                         break;
                 }
             }
@@ -275,14 +277,14 @@ namespace H_ControlEx {
                     case "H_SetControl": // H_SetControl→H_SetControlへの移動
                         beforeHControlVo = (H_ControlVo)beforeParentControl.Tag;
                         // Drag元のRecordをUpdateする
-                        _hVehicleDispatchDetailDao.UpdateHVehicleDispatchDetail(((H_SetControl)this.GetControlFromPosition(beforeHControlVo.CellNumber % 50, beforeHControlVo.CellNumber / 50)).ConvertHVehicleDispatchDetailVo());
+                        _hVehicleDispatchDetailDao.UpdateOneHVehicleDispatchDetail(((H_SetControl)this.GetControlFromPosition(beforeHControlVo.CellNumber % 50, beforeHControlVo.CellNumber / 50)).ConvertHVehicleDispatchDetailVo());
                         // Drop先のRecordをUpdateする
-                        _hVehicleDispatchDetailDao.UpdateHVehicleDispatchDetail(afterHSetControl.ConvertHVehicleDispatchDetailVo());
+                        _hVehicleDispatchDetailDao.UpdateOneHVehicleDispatchDetail(afterHSetControl.ConvertHVehicleDispatchDetailVo());
                         break;
                     case "H_FlowLayoutPanelExFree": // H_FlowLayoutPanelExFree→H_SetControlへの移動
                     case "H_FlowLayoutPanelExBase": // H_FlowLayoutPanelExBase→H_SetControlへの移動
                         // Drop先のRecordをUpdateする
-                        _hVehicleDispatchDetailDao.UpdateHVehicleDispatchDetail(afterHSetControl.ConvertHVehicleDispatchDetailVo());
+                        _hVehicleDispatchDetailDao.UpdateOneHVehicleDispatchDetail(afterHSetControl.ConvertHVehicleDispatchDetailVo());
                         break;
                 }
             }
@@ -304,14 +306,14 @@ namespace H_ControlEx {
                     case "H_SetControl": // H_SetControl→H_SetControlへの移動
                         beforeHControlVo = (H_ControlVo)beforeParentControl.Tag;
                         // Drag元のRecordをUpdateする
-                        _hVehicleDispatchDetailDao.UpdateHVehicleDispatchDetail(((H_SetControl)this.GetControlFromPosition(beforeHControlVo.CellNumber % 50, beforeHControlVo.CellNumber / 50)).ConvertHVehicleDispatchDetailVo());
+                        _hVehicleDispatchDetailDao.UpdateOneHVehicleDispatchDetail(((H_SetControl)this.GetControlFromPosition(beforeHControlVo.CellNumber % 50, beforeHControlVo.CellNumber / 50)).ConvertHVehicleDispatchDetailVo());
                         // Drop先のRecordをUpdateする
-                        _hVehicleDispatchDetailDao.UpdateHVehicleDispatchDetail(afterHSetControl.ConvertHVehicleDispatchDetailVo());
+                        _hVehicleDispatchDetailDao.UpdateOneHVehicleDispatchDetail(afterHSetControl.ConvertHVehicleDispatchDetailVo());
                         break;
                     case "H_FlowLayoutPanelExFree": // H_FlowLayoutPanelExFree→H_SetControlへの移動
                     case "H_FlowLayoutPanelExBase": // H_FlowLayoutPanelExBase→H_SetControlへの移動
                         // Drop先のRecordをUpdateする
-                        _hVehicleDispatchDetailDao.UpdateHVehicleDispatchDetail(afterHSetControl.ConvertHVehicleDispatchDetailVo());
+                        _hVehicleDispatchDetailDao.UpdateOneHVehicleDispatchDetail(afterHSetControl.ConvertHVehicleDispatchDetailVo());
                         break;
                 }
             }
@@ -432,7 +434,7 @@ namespace H_ControlEx {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void HStaffLabel_MouseDoubleClick(object sender, MouseEventArgs e) {
-            MessageBox.Show("HStaffLabel_MouseDoubleClick");
+            
         }
 
         /// <summary>
@@ -448,30 +450,12 @@ namespace H_ControlEx {
 
         /// <summary>
         /// HSetControl_HStaffLabel_ToolStripMenuItem_Click
+        /// 共通Event
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void HSetControl_HStaffLabel_ToolStripMenuItem_Click(object sender, EventArgs e) {
-            switch (((ToolStripMenuItem)sender).Name) {
-                /*
-                 * 従事者台帳を表示する
-                 */
-                case "ToolStripMenuItemStaffDetail":
-                    MessageBox.Show("てっぺんに到着した！");
-                    break;
-                /*
-                 * メモを作成・編集する
-                 */
-                case "ToolStripMenuItemStaffMemo":
-                    MessageBox.Show("ToolStripMenuItemStaffMemo");
-                    break;
-                /*
-                 * 備品を支給する
-                 */
-                case "ToolStripMenuItemStaffEquioment":
-                    MessageBox.Show("ToolStripMenuItemStaffEquioment");
-                    break;
-            }
+        private void HSetControl_HLabel_ToolStripMenuItem_Click(object sender, EventArgs e) {
+            Event_HBoard_HSetControl_HLabel_ToolStripMenuItem_Click.Invoke(sender, e);
         }
     }
 }

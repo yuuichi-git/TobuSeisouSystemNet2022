@@ -41,7 +41,8 @@ namespace H_Dao {
                                             "H_VehicleDispatchBody.StaffCode4 " +
                                      "FROM H_VehicleDispatchHead " +
                                      "LEFT OUTER JOIN H_VehicleDispatchBody ON H_VehicleDispatchHead.SetCode = H_VehicleDispatchBody.SetCode " +
-                                     "WHERE H_VehicleDispatchHead.FinancialYear = '" + financialYear.ToString() + "' " +
+                                                                          "AND H_VehicleDispatchHead.FinancialYear = H_VehicleDispatchBody.FinancialYear " +
+                                     "WHERE H_VehicleDispatchHead.FinancialYear = " + financialYear + " " +
                                        "AND H_VehicleDispatchBody.DayOfWeek = '" + dayOfWeek + "'";
             using (var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while (sqlDataReader.Read() == true) {

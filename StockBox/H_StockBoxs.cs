@@ -69,16 +69,7 @@ namespace StockBox {
                     _temporaryRemoveListHSetMasterVo = _hControlVo.ListHSetMasterVo;
                     _hControlVo.RemoveListHSetMasterVo = _temporaryRemoveListHSetMasterVo.FindAll(x => x.ClassificationCode != 10 // 雇上
                                                                                                     && x.ClassificationCode != 11 // 区約
-                                                                                                    && x.ClassificationCode != 90 // 事務・整備
-                                                                                                    && x.ClassificationCode != 91
-                                                                                                    && x.ClassificationCode != 92
-                                                                                                    && x.ClassificationCode != 93
-                                                                                                    && x.ClassificationCode != 94
-                                                                                                    && x.ClassificationCode != 95
-                                                                                                    && x.ClassificationCode != 96 // バイト欠勤
-                                                                                                    && x.ClassificationCode != 97 // 組合員欠勤
-                                                                                                    && x.ClassificationCode != 98 // 有給休暇
-                                                                                                    && x.ClassificationCode != 99 // 無断・朝電
+                                                                                                    && x.ClassificationCode != 90 // 事務・整備                                                                                                   
                                                                                                     && x.DeleteFlag == false);
                     this.CreateHSetLabel(_hControlVo);
                     break;
@@ -145,12 +136,12 @@ namespace StockBox {
         private void CreateHSetLabel(H_ControlVo hControlVo) {
             foreach (H_SetMasterVo hSetMasterVo in hControlVo.RemoveListHSetMasterVo.OrderBy(x => x.ClassificationCode).ThenBy(x => x.SetName)) {
                 //if (hSetMasterVo is not null && hSetMasterVo.SetCode != 0) {
-                    hControlVo.HSetMasterVo = hSetMasterVo;
-                    H_SetLabel hSetLabel = new(hControlVo);
-                    hSetLabel.Event_HSetLabel_MouseClick += HSetLabel_MouseClick;
-                    hSetLabel.Event_HSetLabel_MouseDoubleClick += HSetLabel_MouseDoubleClick;
-                    hSetLabel.Event_HSetLabel_MouseMove += HSetLabel_MouseMove;
-                    _hFlowLayoutPanelExStockBoxs.Controls.Add(hSetLabel); // SetLabelを追加
+                hControlVo.HSetMasterVo = hSetMasterVo;
+                H_SetLabel hSetLabel = new(hControlVo);
+                hSetLabel.Event_HSetLabel_MouseClick += HSetLabel_MouseClick;
+                hSetLabel.Event_HSetLabel_MouseDoubleClick += HSetLabel_MouseDoubleClick;
+                hSetLabel.Event_HSetLabel_MouseMove += HSetLabel_MouseMove;
+                _hFlowLayoutPanelExStockBoxs.Controls.Add(hSetLabel); // SetLabelを追加
                 //}
             }
         }

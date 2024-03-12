@@ -17,6 +17,7 @@ namespace H_ControlEx {
         public event MouseEventHandler Event_HSetLabel_MouseClick = delegate { };
         public event MouseEventHandler Event_HSetLabel_MouseDoubleClick = delegate { };
         public event MouseEventHandler Event_HSetLabel_MouseMove = delegate { };
+        public event EventHandler Event_HSetLabel_ToolStripMenuItem_Click = delegate { };
 
         private readonly Date _date = new();
         private Image _imageSetLabel;
@@ -246,13 +247,13 @@ namespace H_ControlEx {
              * 帰庫点呼フラグ
              */
             if (_lastRollCallFlag) {
-                e.Graphics.FillPolygon(new SolidBrush(Color.Gray), new Point[] { new Point(54, 21), new Point(69, 21), new Point(69, 36) });
+                e.Graphics.FillPolygon(new SolidBrush(Color.Gray), new Point[] { new Point(50, 21), new Point(65, 21), new Point(65, 36) });
             }
             /*
              * メモを描画
              */
             if (_memoFlag) {
-                e.Graphics.FillPolygon(new SolidBrush(Color.Crimson), new Point[] { new Point(7, 21), new Point(21, 21), new Point(7, 35) });
+                e.Graphics.FillPolygon(new SolidBrush(Color.Crimson), new Point[] { new Point(3, 21), new Point(17, 21), new Point(3, 35) });
             }
             /*
              * 番手コード
@@ -283,16 +284,31 @@ namespace H_ControlEx {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ContextMenuStrip_Opened(object sender, EventArgs e) {
-            if (((H_SetLabel)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(H_SetControl)) {
+            // H_SetControlのアクセサーを操作するのに使うので退避させておく
+            _evacuationHSetControl = (H_SetControl)((H_SetLabel)((ContextMenuStrip)sender).SourceControl).Parent;
+            if (((H_SetLabel)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(H_SetControl)) { // H_SetControl
                 foreach (object item in ((ContextMenuStrip)sender).Items) {
-                    if (item.GetType() == typeof(ToolStripMenuItem))
-                        ((ToolStripMenuItem)item).Enabled = true;
+                    if (item.GetType() == typeof(ToolStripMenuItem)) {
+                        switch (((ToolStripMenuItem)item).Name) {
+                            case "ToolStripMenuItemFaxInformation":
+                            case "ToolStripMenuItemCreateFax":
+                                switch (((H_SetMasterVo)((H_SetLabel)((ContextMenuStrip)sender).SourceControl).Tag).ContactMethod) {
+                                    case 11: // FAX
+                                    case 13: // TEL/FAX
+                                        ((ToolStripMenuItem)item).Enabled = true;
+                                        break;
+                                    default:
+                                        ((ToolStripMenuItem)item).Enabled = false;
+                                        break;
+                                }
+                                break;
+                            default:
+                                ((ToolStripMenuItem)item).Enabled = true;
+                                break;
+                        }
+                    }
                 }
-                /*
-                 * H_SetControlのアクセサーを操作するのに使うので退避させておく
-                 */
-                _evacuationHSetControl = (H_SetControl)((H_SetLabel)((ContextMenuStrip)sender).SourceControl).Parent;
-            } else if (((H_SetLabel)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(H_FlowLayoutPanelEx)) {
+            } else if (((H_SetLabel)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(H_FlowLayoutPanelEx)) { // H_FlowLayoutPanelEx
                 foreach (object item in ((ContextMenuStrip)sender).Items) {
                     if (item.GetType() == typeof(ToolStripMenuItem)) {
                         switch (((ToolStripMenuItem)item).Name) {
@@ -492,7 +508,11 @@ namespace H_ControlEx {
         private void ToolStripMenuItem_Click(object sender, EventArgs e) {
             switch (((ToolStripMenuItem)sender).Name) {
                 case "ToolStripMenuItemSetDetail": // 配車先の情報を表示する
-                    MessageBox.Show("ToolStripMenuItemSetDetail");
+                    /*
+                     * H_Boardに処理を回している
+                     * H_SetLabel→H_SetControl→H_Board
+                     */
+                    Event_HSetLabel_ToolStripMenuItem_Click.Invoke(sender, e);
                     break;
                 case "ToolStripMenuItemSetWarehouseAdachi": // 本社管理
                     this.ManagedSpaceCode = 1;
@@ -543,7 +563,11 @@ namespace H_ControlEx {
                     }
                     break;
                 case "ToolStripMenuItemSetMemo": // メモを作成・編集する
-                    MessageBox.Show("ToolStripMenuItemSetMemo");
+                    /*
+                     * H_Boardに処理を回している
+                     * H_SetLabel→H_SetControl→H_Board
+                     */
+                    Event_HSetLabel_ToolStripMenuItem_Click.Invoke(sender, e);
                     break;
                 case "ToolStripMenuItemClassificationYOUJYOU": // 雇上契約に変更する
                     this.ClassificationCode = 10;
@@ -702,14 +726,24 @@ namespace H_ControlEx {
                     }
                     break;
                 case "ToolStripMenuItemCreateFax": // 代車・代番Faxを作成する
-                    MessageBox.Show("ToolStripMenuItemCreateFax");
+                    /*
+                     * H_Boardに処理を回している
+                     * H_SetLabel→H_SetControl→H_Board
+                     */
+                    Event_HSetLabel_ToolStripMenuItem_Click.Invoke(sender, e);
                     break;
                 case "ToolStripMenuItemSetDelete": // 削除する
                     if (!_hSetMasterVo.MoveFlag) {
                         MessageBox.Show("この配車先は、移動や削除を禁止されています。", "メッセージ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
-                    if (_hVehicleDispatchDetailVo.CarCode != 0 || _hVehicleDispatchDetailVo.StaffCode1 != 0 || _hVehicleDispatchDetailVo.StaffCode2 != 0 || _hVehicleDispatchDetailVo.StaffCode3 != 0 || _hVehicleDispatchDetailVo.StaffCode4 != 0) {
+                    /*
+                     * H_StockBoxsからDropされた場合でその後SetLabelを削除しようとした場合、_hVehicleDispatchDetailVoはNullなのでチェックが必要
+                     */
+                    if (_hVehicleDispatchDetailVo is null) {
+                        MessageBox.Show("この配車先を削除するには最新化してから再度削除して下さい。", "メッセージ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    } else if (_hVehicleDispatchDetailVo.CarCode != 0 || _hVehicleDispatchDetailVo.StaffCode1 != 0 || _hVehicleDispatchDetailVo.StaffCode2 != 0 || _hVehicleDispatchDetailVo.StaffCode3 != 0 || _hVehicleDispatchDetailVo.StaffCode4 != 0) {
                         MessageBox.Show("この配車先は、車両又は従事者が設定されています。削除できません。", "メッセージ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
@@ -777,7 +811,10 @@ namespace H_ControlEx {
         /// </summary>
         public bool LastRollCallFlag {
             get => _lastRollCallFlag;
-            set => _lastRollCallFlag = value;
+            set {
+                _lastRollCallFlag = value;
+                this.Refresh();
+            }
         }
         /// <summary>
         /// 帰庫点呼日時
@@ -802,7 +839,10 @@ namespace H_ControlEx {
         /// </summary>
         public string Memo {
             get => _memo;
-            set => _memo = value;
+            set {
+                _memo = value;
+                this.Refresh();
+            }
         }
         /// <summary>
         /// メモフラグ

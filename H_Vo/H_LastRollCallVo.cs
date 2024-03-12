@@ -6,11 +6,11 @@ namespace H_Vo {
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
         private int _setCode;
         private DateTime _operationDate;
-        private string _firstRollCallHms;
+        private DateTime _firstRollCallHms;
         private int _lastPlantCount;
         private string _lastPlantName;
-        private string _lastPlantHms;
-        private string _lastRollCallHms;
+        private DateTime _lastPlantHms;
+        private DateTime _lastRollCallHms;
         private decimal _firstOdoMeter;
         private decimal _lastOdoMeter;
         private decimal _oilAmount;
@@ -28,11 +28,11 @@ namespace H_Vo {
         public H_LastRollCallVo() {
             _setCode = 0;
             _operationDate = _defaultDateTime;
-            _firstRollCallHms = string.Empty;
+            _firstRollCallHms = _defaultDateTime;
             _lastPlantCount = 0;
             _lastPlantName = string.Empty;
-            _lastPlantHms = string.Empty;
-            _lastRollCallHms = string.Empty;
+            _lastPlantHms = _defaultDateTime;
+            _lastRollCallHms = _defaultDateTime;
             _firstOdoMeter = 0;
             _lastOdoMeter = 0;
             _oilAmount = 0;
@@ -62,7 +62,7 @@ namespace H_Vo {
         /// <summary>
         /// 出庫点呼日時
         /// </summary>
-        public string FirstRollCallHms {
+        public DateTime FirstRollCallYmdHms {
             get => _firstRollCallHms;
             set => _firstRollCallHms = value;
         }
@@ -83,14 +83,14 @@ namespace H_Vo {
         /// <summary>
         /// 最終運搬日時
         /// </summary>
-        public string LastPlantHms {
+        public DateTime LastPlantYmdHms {
             get => _lastPlantHms;
             set => _lastPlantHms = value;
         }
         /// <summary>
         /// 帰社日時
         /// </summary>
-        public string LastRollCallHms {
+        public DateTime LastRollCallYmdHms {
             get => _lastRollCallHms;
             set => _lastRollCallHms = value;
         }

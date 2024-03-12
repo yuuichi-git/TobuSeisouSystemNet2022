@@ -57,7 +57,7 @@ namespace H_Staff {
              * Vo
              */
             _connectionVo = connectionVo;
-            _hStaffMasterVo = _hStaffMasterDao.SelectOneHStaffMasterForStaffDetail(staffCode);
+            _hStaffMasterVo = _hStaffMasterDao.SelectOneHStaffMaster(staffCode);
             _hStaffHistoryDao.SelectOneHStaffHistoryMaster(staffCode);
             _hStaffExperienceDao.SelectOneHStaffExperienceMaster(staffCode);
             _hStaffFamilyDao.SelectOneHStaffFamilyMaster(staffCode);
