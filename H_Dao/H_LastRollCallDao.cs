@@ -49,7 +49,7 @@ namespace H_Dao {
         /// <param name="dateTime">帰庫点呼日</param>
         /// <returns></returns>
         public H_LastRollCallVo SelectOneHLastRollCallVo(int setCode, DateTime dateTime) {
-            H_LastRollCallVo hLastRollCallVo = new();
+            H_LastRollCallVo hLastRollCallVo = null;
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT H_LastRollCall.SetCode," +
                                             "H_LastRollCall.OperationDate," +
@@ -67,6 +67,7 @@ namespace H_Dao {
                                      "WHERE H_LastRollCall.OperationDate = '" + dateTime.ToString("yyyy-MM-dd") + "' AND H_LastRollCall.SetCode = " + setCode + "";
             using (var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while (sqlDataReader.Read() == true) {
+                    hLastRollCallVo = new();
                     hLastRollCallVo.SetCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["SetCode"]);
                     hLastRollCallVo.OperationDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["OperationDate"]);
                     hLastRollCallVo.FirstRollCallYmdHms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["StaffRollCallYmdHms1"]);

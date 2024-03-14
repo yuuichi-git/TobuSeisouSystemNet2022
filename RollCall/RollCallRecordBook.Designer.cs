@@ -36,11 +36,11 @@
             ToolStripMenuItemExit = new ToolStripMenuItem();
             ToolStripMenuItemHelp = new ToolStripMenuItem();
             PanelUp = new Panel();
+            DateTimePickerJpExOperationDate = new ControlEx.DateTimePickerJpEx();
             ComboBoxArea = new ComboBox();
             label2 = new Label();
             label1 = new Label();
             ButtonUpdate = new Button();
-            DateTimePickerJpExOperationDate = new ControlEx.DateTimePickerJpEx();
             TableLayoutPanelBase.SuspendLayout();
             StatusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)SpreadBase).BeginInit();
@@ -147,6 +147,15 @@
             PanelUp.Size = new Size(1340, 54);
             PanelUp.TabIndex = 2;
             // 
+            // DateTimePickerJpExOperationDate
+            // 
+            DateTimePickerJpExOperationDate.CustomFormat = " ";
+            DateTimePickerJpExOperationDate.Format = DateTimePickerFormat.Custom;
+            DateTimePickerJpExOperationDate.Location = new Point(88, 16);
+            DateTimePickerJpExOperationDate.Name = "DateTimePickerJpExOperationDate";
+            DateTimePickerJpExOperationDate.Size = new Size(184, 23);
+            DateTimePickerJpExOperationDate.TabIndex = 15;
+            // 
             // ComboBoxArea
             // 
             ComboBoxArea.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -185,15 +194,6 @@
             ButtonUpdate.Text = "最 新 化";
             ButtonUpdate.UseVisualStyleBackColor = true;
             ButtonUpdate.Click += ButtonUpdate_Click;
-            // 
-            // DateTimePickerJpExOperationDate
-            // 
-            DateTimePickerJpExOperationDate.CustomFormat = " ";
-            DateTimePickerJpExOperationDate.Format = DateTimePickerFormat.Custom;
-            DateTimePickerJpExOperationDate.Location = new Point(88, 16);
-            DateTimePickerJpExOperationDate.Name = "DateTimePickerJpExOperationDate";
-            DateTimePickerJpExOperationDate.Size = new Size(184, 23);
-            DateTimePickerJpExOperationDate.TabIndex = 15;
             // 
             // RollCallRecordBook
             // 

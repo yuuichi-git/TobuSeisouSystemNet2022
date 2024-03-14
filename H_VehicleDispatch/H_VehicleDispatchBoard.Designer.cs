@@ -44,12 +44,12 @@
             h_ButtonExLeft4 = new H_ControlEx.H_ButtonEx();
             h_ButtonExLeft3 = new H_ControlEx.H_ButtonEx();
             h_ButtonExLeft2 = new H_ControlEx.H_ButtonEx();
-            h_ButtonExLeft1 = new H_ControlEx.H_ButtonEx();
+            HButtonExLeft1 = new H_ControlEx.H_ButtonEx();
             h_PanelExCenter = new H_ControlEx.H_PanelEx();
             HTableLayoutPanelExCenter = new H_ControlEx.H_TableLayoutPanelEx();
             h_PanelExCenterTop = new H_ControlEx.H_PanelEx();
-            h_ButtonExUpdate = new H_ControlEx.H_ButtonEx();
-            H_DateTimePickerOperationDate = new H_ControlEx.H_DateTimePickerEx();
+            HButtonExUpdate = new H_ControlEx.H_ButtonEx();
+            HDateTimePickerOperationDate = new H_ControlEx.H_DateTimePickerEx();
             h_LabelEx1 = new H_ControlEx.H_LabelEx();
             h_TableLayoutPanelExBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
@@ -194,7 +194,7 @@
             h_PanelExLeft.Controls.Add(h_ButtonExLeft4);
             h_PanelExLeft.Controls.Add(h_ButtonExLeft3);
             h_PanelExLeft.Controls.Add(h_ButtonExLeft2);
-            h_PanelExLeft.Controls.Add(h_ButtonExLeft1);
+            h_PanelExLeft.Controls.Add(HButtonExLeft1);
             h_PanelExLeft.Dock = DockStyle.Fill;
             h_PanelExLeft.Location = new Point(0, 24);
             h_PanelExLeft.Margin = new Padding(0);
@@ -246,16 +246,16 @@
             h_ButtonExLeft2.UseVisualStyleBackColor = true;
             h_ButtonExLeft2.Click += HButtonEx_Click;
             // 
-            // h_ButtonExLeft1
+            // HButtonExLeft1
             // 
-            h_ButtonExLeft1.Location = new Point(2, 36);
-            h_ButtonExLeft1.Name = "h_ButtonExLeft1";
-            h_ButtonExLeft1.Size = new Size(30, 150);
-            h_ButtonExLeft1.TabIndex = 0;
-            h_ButtonExLeft1.TabStop = false;
-            h_ButtonExLeft1.TextDirectionVertical = "";
-            h_ButtonExLeft1.UseVisualStyleBackColor = true;
-            h_ButtonExLeft1.Click += HButtonEx_Click;
+            HButtonExLeft1.Location = new Point(2, 36);
+            HButtonExLeft1.Name = "HButtonExLeft1";
+            HButtonExLeft1.Size = new Size(30, 150);
+            HButtonExLeft1.TabIndex = 0;
+            HButtonExLeft1.TabStop = false;
+            HButtonExLeft1.TextDirectionVertical = "";
+            HButtonExLeft1.UseVisualStyleBackColor = true;
+            HButtonExLeft1.Click += HButtonEx_Click;
             // 
             // h_PanelExCenter
             // 
@@ -290,8 +290,8 @@
             // 
             // h_PanelExCenterTop
             // 
-            h_PanelExCenterTop.Controls.Add(h_ButtonExUpdate);
-            h_PanelExCenterTop.Controls.Add(H_DateTimePickerOperationDate);
+            h_PanelExCenterTop.Controls.Add(HButtonExUpdate);
+            h_PanelExCenterTop.Controls.Add(HDateTimePickerOperationDate);
             h_PanelExCenterTop.Controls.Add(h_LabelEx1);
             h_PanelExCenterTop.Dock = DockStyle.Fill;
             h_PanelExCenterTop.Location = new Point(0, 0);
@@ -300,29 +300,29 @@
             h_PanelExCenterTop.Size = new Size(1870, 36);
             h_PanelExCenterTop.TabIndex = 0;
             // 
-            // h_ButtonExUpdate
+            // HButtonExUpdate
             // 
-            h_ButtonExUpdate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            h_ButtonExUpdate.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            h_ButtonExUpdate.Location = new Point(1662, 2);
-            h_ButtonExUpdate.Name = "h_ButtonExUpdate";
-            h_ButtonExUpdate.Size = new Size(174, 32);
-            h_ButtonExUpdate.TabIndex = 2;
-            h_ButtonExUpdate.Text = "最　新　化 ";
-            h_ButtonExUpdate.TextDirectionVertical = "";
-            h_ButtonExUpdate.UseVisualStyleBackColor = true;
-            h_ButtonExUpdate.Click += HButtonEx_Click;
+            HButtonExUpdate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            HButtonExUpdate.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            HButtonExUpdate.Location = new Point(1662, 2);
+            HButtonExUpdate.Name = "HButtonExUpdate";
+            HButtonExUpdate.Size = new Size(174, 32);
+            HButtonExUpdate.TabIndex = 2;
+            HButtonExUpdate.Text = "最　新　化 ";
+            HButtonExUpdate.TextDirectionVertical = "";
+            HButtonExUpdate.UseVisualStyleBackColor = true;
+            HButtonExUpdate.Click += HButtonEx_Click;
             // 
-            // H_DateTimePickerOperationDate
+            // HDateTimePickerOperationDate
             // 
-            H_DateTimePickerOperationDate.CustomFormat = "yyyy年MM月dd日(dddd)";
-            H_DateTimePickerOperationDate.Format = DateTimePickerFormat.Custom;
-            H_DateTimePickerOperationDate.Location = new Point(54, 7);
-            H_DateTimePickerOperationDate.Name = "H_DateTimePickerOperationDate";
-            H_DateTimePickerOperationDate.Size = new Size(180, 23);
-            H_DateTimePickerOperationDate.TabIndex = 0;
-            H_DateTimePickerOperationDate.TabStop = false;
-            H_DateTimePickerOperationDate.Value = new DateTime(2023, 10, 10, 0, 0, 0, 0);
+            HDateTimePickerOperationDate.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimePickerOperationDate.Format = DateTimePickerFormat.Custom;
+            HDateTimePickerOperationDate.Location = new Point(54, 7);
+            HDateTimePickerOperationDate.Name = "HDateTimePickerOperationDate";
+            HDateTimePickerOperationDate.Size = new Size(180, 23);
+            HDateTimePickerOperationDate.TabIndex = 0;
+            HDateTimePickerOperationDate.TabStop = false;
+            HDateTimePickerOperationDate.Value = new DateTime(2023, 10, 10, 0, 0, 0, 0);
             // 
             // h_LabelEx1
             // 
@@ -365,11 +365,11 @@
         private StatusStrip StatusStrip1;
         private ToolStripStatusLabel toolStripStatusLabel1;
         private ToolStripMenuItem ToolStripMenuItemInitialize;
-        private H_ControlEx.H_DateTimePickerEx H_DateTimePickerOperationDate;
+        private H_ControlEx.H_DateTimePickerEx HDateTimePickerOperationDate;
         private H_ControlEx.H_LabelEx h_LabelEx1;
-        private H_ControlEx.H_ButtonEx h_ButtonExUpdate;
+        private H_ControlEx.H_ButtonEx HButtonExUpdate;
         private H_ControlEx.H_PanelEx h_PanelExLeft;
-        private H_ControlEx.H_ButtonEx h_ButtonExLeft1;
+        private H_ControlEx.H_ButtonEx HButtonExLeft1;
         private H_ControlEx.H_ButtonEx h_ButtonExLeft5;
         private H_ControlEx.H_ButtonEx h_ButtonExLeft4;
         private H_ControlEx.H_ButtonEx h_ButtonExLeft3;

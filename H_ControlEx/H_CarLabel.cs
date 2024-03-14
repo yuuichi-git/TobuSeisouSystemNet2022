@@ -369,7 +369,10 @@ namespace H_ControlEx {
         /// </summary>
         public bool CarMemoFlag {
             get => _carMemoFlag;
-            set => _carMemoFlag = value;
+            set {
+                _carMemoFlag = value;
+                this.Refresh();
+            }
         }
         /// <summary>
         /// 代車フラグ

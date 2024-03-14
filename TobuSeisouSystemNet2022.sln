@@ -75,7 +75,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H_Utility", "H_Utility\H_Ut
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H_Staff", "H_Staff\H_Staff.csproj", "{5ED0E92D-6899-4FDF-8464-B9EBA2EBE92C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H_RollColl", "H_RollColl\H_RollColl.csproj", "{2D0560C4-FE29-4E08-A6F3-56269C088BA0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H_RollColl", "H_RollColl\H_RollColl.csproj", "{2D0560C4-FE29-4E08-A6F3-56269C088BA0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

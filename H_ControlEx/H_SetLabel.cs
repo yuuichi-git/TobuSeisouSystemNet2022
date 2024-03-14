@@ -253,7 +253,7 @@ namespace H_ControlEx {
              * メモを描画
              */
             if (_memoFlag) {
-                e.Graphics.FillPolygon(new SolidBrush(Color.Crimson), new Point[] { new Point(3, 21), new Point(17, 21), new Point(3, 35) });
+                e.Graphics.FillPolygon(new SolidBrush(Color.Crimson), new Point[] { new Point(7, 21), new Point(21, 21), new Point(7, 35) });
             }
             /*
              * 番手コード
@@ -841,7 +841,6 @@ namespace H_ControlEx {
             get => _memo;
             set {
                 _memo = value;
-                this.Refresh();
             }
         }
         /// <summary>
@@ -850,7 +849,10 @@ namespace H_ControlEx {
         /// </summary>
         public bool MemoFlag {
             get => _memoFlag;
-            set => _memoFlag = value;
+            set {
+                _memoFlag = value;
+                this.Refresh();
+            }
         }
         /// <summary>
         /// 稼働フラグ

@@ -25,10 +25,9 @@ namespace H_Dao {
 
         /// <summary>
         /// ExistenceHFirstRollCallVo
-        /// true:該当レコードあり false:該当レコードなし
         /// </summary>
         /// <param name="dateTime"></param>
-        /// <returns></returns>
+        /// <returns>true:該当レコードあり false:該当レコードなし</returns>
         public bool ExistenceHFirstRollCallVo(DateTime dateTime) {
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT COUNT(OperationDate) " +
@@ -45,9 +44,9 @@ namespace H_Dao {
         /// SelectOneHFirstRollCallVo
         /// </summary>
         /// <param name="dateTime"></param>
-        /// <returns></returns>
+        /// <returns>存在する:H_FirstRollCallVo 存在しない:NULL</returns>
         public H_FirstRollCallVo SelectOneHFirstRollCallVo(DateTime dateTime) {
-            H_FirstRollCallVo hFirstRollCallVo = new();
+            H_FirstRollCallVo hFirstRollCallVo = null;
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT OperationDate," +
                                             "RollCallName1," +
@@ -69,6 +68,7 @@ namespace H_Dao {
                                      "WHERE OperationDate = '" + dateTime.ToString("yyyy-MM-dd") + "'";
             using (var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while (sqlDataReader.Read() == true) {
+                    hFirstRollCallVo = new();
                     hFirstRollCallVo.OperationDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["OperationDate"]);
                     hFirstRollCallVo.RollCallName1 = _defaultValue.GetDefaultValue<string>(sqlDataReader["RollCallName1"]);
                     hFirstRollCallVo.RollCallName2 = _defaultValue.GetDefaultValue<string>(sqlDataReader["RollCallName2"]);

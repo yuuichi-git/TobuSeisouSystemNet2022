@@ -522,7 +522,10 @@ namespace H_ControlEx {
         /// </summary>
         public bool StaffMemoFlag {
             get => _staffMemoFlag;
-            set => _staffMemoFlag = value;
+            set {
+                _staffMemoFlag = value;
+                this.Refresh();
+            }
         }
         /// <summary>
         /// 職種

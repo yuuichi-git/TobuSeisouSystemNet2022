@@ -67,9 +67,9 @@ namespace H_VehicleDispatch {
              */
             InitializeComponent();
 
-            h_ButtonExLeft1.TextDirectionVertical = "StockBox";
+            HButtonExLeft1.TextDirectionVertical = "StockBox";
 
-            H_DateTimePickerOperationDate.SetValue(DateTime.Today);
+            HDateTimePickerOperationDate.SetValue(DateTime.Today);
             ToolStripStatusLabelDetail.Text = string.Empty;
             ToolStripProgressBar1.Value = 0;
             /*
@@ -115,8 +115,8 @@ namespace H_VehicleDispatch {
 
             // H_Boardを初期化
             this.HBoardControlRemove(_hBoard);
-            int financialYear = _date.GetFiscalYear(H_DateTimePickerOperationDate.GetValue());
-            string dayOgWeek = H_DateTimePickerOperationDate.Value.ToString("ddd");
+            int financialYear = _date.GetFiscalYear(HDateTimePickerOperationDate.GetValue());
+            string dayOgWeek = HDateTimePickerOperationDate.Value.ToString("ddd");
             // H_VehicleDispatchHeadを取得
             List<H_VehicleDispatchHeadVo> listHVehicleDispatchHeadVo = _hVehicleDispatchHeadDao.SelectAllHVehicleDispatchHeadVo(financialYear);
             // H_VehicleDispatchを取得
@@ -132,7 +132,7 @@ namespace H_VehicleDispatch {
 
                 _hControlVo = new();
                 _hControlVo.ConnectionVo = _connectionVo;
-                _hControlVo.OperationDate = H_DateTimePickerOperationDate.Value;
+                _hControlVo.OperationDate = HDateTimePickerOperationDate.Value;
                 _hControlVo.CellNumber = hVehicleDispatchHeadVo.CellNumber;
                 _hControlVo.VehicleDispatchFlag = hVehicleDispatchHeadVo.VehicleDispatchFlag;
                 _hControlVo.PurposeFlag = hVehicleDispatchHeadVo.Purpose;
@@ -204,7 +204,7 @@ namespace H_VehicleDispatch {
 
             // H_Boardを初期化
             this.HBoardControlRemove(_hBoard);
-            List<H_VehicleDispatchDetailVo> listHVehicleDispatchDetailVo = _hVehicleDispatchDetailDao.SelectAllHVehicleDispatchDetail(H_DateTimePickerOperationDate.GetValue());
+            List<H_VehicleDispatchDetailVo> listHVehicleDispatchDetailVo = _hVehicleDispatchDetailDao.SelectAllHVehicleDispatchDetail(HDateTimePickerOperationDate.GetValue());
 
             double i = 0;
             foreach (H_VehicleDispatchDetailVo hVehicleDispatchDetailVo in listHVehicleDispatchDetailVo) {
@@ -219,7 +219,7 @@ namespace H_VehicleDispatch {
                 _hControlVo = new();
                 _hControlVo.ConnectionVo = _connectionVo;
                 _hControlVo.CellNumber = hVehicleDispatchDetailVo.CellNumber;
-                _hControlVo.OperationDate = H_DateTimePickerOperationDate.GetValue();
+                _hControlVo.OperationDate = HDateTimePickerOperationDate.GetValue();
                 _hControlVo.OperationFlag = hVehicleDispatchDetailVo.OperationFlag;
                 _hControlVo.PurposeFlag = hVehicleDispatchDetailVo.PurposeFlag;
                 _hControlVo.VehicleDispatchFlag = hVehicleDispatchDetailVo.VehicleDispatchFlag;
@@ -267,7 +267,7 @@ namespace H_VehicleDispatch {
                 _listHVehicleDispatchDetailVo.Add(hSetControl.ConvertHVehicleDispatchDetailVo());
             }
             try {
-                _hVehicleDispatchDetailDao.DeleteHVehicleDispatchDetail(H_DateTimePickerOperationDate.GetValue());
+                _hVehicleDispatchDetailDao.DeleteHVehicleDispatchDetail(HDateTimePickerOperationDate.GetValue());
                 _hVehicleDispatchDetailDao.InsertHVehicleDispatchDetail(_listHVehicleDispatchDetailVo);
             } catch (Exception exception) {
                 MessageBox.Show(exception.Message);
@@ -313,10 +313,10 @@ namespace H_VehicleDispatch {
         /// <param name="e"></param>
         private void HButtonEx_Click(object sender, EventArgs e) {
             switch (((H_ButtonEx)sender).Name) {
-                case "h_ButtonExUpdate":
+                case "HButtonExUpdate":
                     this.CreateVehicleDispatch();
                     break;
-                case "h_ButtonExLeft1":
+                case "HButtonExLeft1":
                     if (hStockBoxs is null || hStockBoxs.IsDisposed) {
                         /*
                          * H_ControlVoを作成する
@@ -326,7 +326,7 @@ namespace H_VehicleDispatch {
                         _hControlVo.ConnectionVo = _connectionVo;
                         _hControlVo.HBoard = _hBoard;
                         _hControlVo.HFlowLayoutPanelExStockBoxs = _hFlowLayoutPanelExFree;
-                        _hControlVo.OperationDate = H_DateTimePickerOperationDate.GetValue();
+                        _hControlVo.OperationDate = HDateTimePickerOperationDate.GetValue();
                         _hControlVo.ListHSetMasterVo = _listHSetMasterVo;
                         _hControlVo.ListHCarMasterVo = _listHCarMasterVo;
                         _hControlVo.ListHStaffMasterVo = _listHStaffMasterVo;
@@ -366,7 +366,7 @@ namespace H_VehicleDispatch {
                  * 配車を初期化する(清掃事務所登録)
                  */
                 case "ToolStripMenuItemInitializeVehicleDispatchBody":
-                    if (_hVehicleDispatchDetailDao.ExistenceHVehicleDispatchDetail(H_DateTimePickerOperationDate.GetValue())) {
+                    if (_hVehicleDispatchDetailDao.ExistenceHVehicleDispatchDetail(HDateTimePickerOperationDate.GetValue())) {
                         dialogResult = MessageBox.Show("対象日の配車データが存在します。本番登録で初期化してもよろしいですか？", "メッセージ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                         switch (dialogResult) {
                             case DialogResult.Cancel:
@@ -397,7 +397,7 @@ namespace H_VehicleDispatch {
                      * H_VehicleDispatchDetailの対象日レコードを前日(前営業日)のコピーで初期化
                      * 前営業日のデータをDeepCopyして必要なカラムだけ書き換える
                      */
-                    DateTime beforeDate = H_DateTimePickerOperationDate.GetValue().Date;
+                    DateTime beforeDate = HDateTimePickerOperationDate.GetValue().Date;
                     // どうやらAddDaysは新しいインスタンスを作成するらしい。だから入れ物も別で用意しとかないと
                     DateTime beforeDateTime = new();
                     switch (beforeDate.ToString("ddd")) {
@@ -416,7 +416,7 @@ namespace H_VehicleDispatch {
                             break;
                     }
 
-                    if (_hVehicleDispatchDetailDao.ExistenceHVehicleDispatchDetail(H_DateTimePickerOperationDate.GetValue())) {
+                    if (_hVehicleDispatchDetailDao.ExistenceHVehicleDispatchDetail(HDateTimePickerOperationDate.GetValue())) {
                         dialogResult = MessageBox.Show(string.Concat("対象日の配車データが存在します。 ", beforeDateTime.ToString("yyyy/MM/dd"), " の配車データで初期化(従業員のみコピー複製)してもよろしいですか？"), "メッセージ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                         switch (dialogResult) {
                             case DialogResult.Cancel:
@@ -433,7 +433,7 @@ namespace H_VehicleDispatch {
                     foreach (H_VehicleDispatchDetailVo beforeHVehicleDispatchDetailVo in listBeforeHVehicleDispatchDetailVo.FindAll(x => x.ClassificationCode == 10 || x.ClassificationCode == 11).OrderBy(x => x.CellNumber)) {
                         H_VehicleDispatchDetailVo hVehicleDispatchDetailVo = new();
                         hVehicleDispatchDetailVo.CellNumber = beforeHVehicleDispatchDetailVo.CellNumber;
-                        hVehicleDispatchDetailVo.OperationDate = H_DateTimePickerOperationDate.GetValue().Date;
+                        hVehicleDispatchDetailVo.OperationDate = HDateTimePickerOperationDate.GetValue().Date;
                         //hVehicleDispatchDetailVo.OperationFlag = beforeHVehicleDispatchDetailVo.OperationFlag;
                         //hVehicleDispatchDetailVo.VehicleDispatchFlag = beforeHVehicleDispatchDetailVo.VehicleDispatchFlag;
                         //hVehicleDispatchDetailVo.PurposeFlag = beforeHVehicleDispatchDetailVo.PurposeFlag;
@@ -508,7 +508,7 @@ namespace H_VehicleDispatch {
                     /*
                      * ダイアログを表示
                      */
-                    H_VehicleDispatchEdit hVehicleDispatchEdit = new(H_DateTimePickerOperationDate.GetValue());
+                    H_VehicleDispatchEdit hVehicleDispatchEdit = new(HDateTimePickerOperationDate.GetValue());
                     hVehicleDispatchEdit.StartPosition = FormStartPosition.CenterParent;
                     if (hVehicleDispatchEdit.ShowDialog(this) == DialogResult.OK) {
                         foreach (H_SetControl hSetControl in _hBoard.Controls) {
@@ -517,7 +517,7 @@ namespace H_VehicleDispatch {
                              */
                             H_VehicleDispatchBodyVo hVehicleDispatchBodyVo = new();
                             hVehicleDispatchBodyVo.SetCode = hSetControl.GetSetMasterVo() is not null ? hSetControl.GetSetMasterVo().SetCode : 0;
-                            hVehicleDispatchBodyVo.DayOfWeek = H_DateTimePickerOperationDate.GetValue().ToString("ddd");
+                            hVehicleDispatchBodyVo.DayOfWeek = HDateTimePickerOperationDate.GetValue().ToString("ddd");
                             hVehicleDispatchBodyVo.CarCode = hSetControl.GetCarMasterVo() is not null ? hSetControl.GetCarMasterVo().CarCode : 0;
                             switch (((H_ControlVo)hSetControl.Tag).PurposeFlag) {
                                 case true: // ２列
@@ -533,13 +533,13 @@ namespace H_VehicleDispatch {
                                     hVehicleDispatchBodyVo.StaffCode4 = 0;
                                     break;
                             }
-                            hVehicleDispatchBodyVo.FinancialYear = _date.GetFiscalYear(H_DateTimePickerOperationDate.GetValue());
+                            hVehicleDispatchBodyVo.FinancialYear = _date.GetFiscalYear(HDateTimePickerOperationDate.GetValue());
                             /*
                              * DB更新
                              */
                             if (_hVehicleDispatchBodyDao.ExistenceHVehicleDispatchBodyVo(hSetControl.GetSetMasterVo() is not null ? hSetControl.GetSetMasterVo().SetCode : 0,
-                                                                                         H_DateTimePickerOperationDate.GetValue().ToString("ddd"),
-                                                                                         _date.GetFiscalYear(H_DateTimePickerOperationDate.GetValue().Date))) {
+                                                                                         HDateTimePickerOperationDate.GetValue().ToString("ddd"),
+                                                                                         _date.GetFiscalYear(HDateTimePickerOperationDate.GetValue().Date))) {
                                 // Recordが存在する　UPDATE
                                 try {
                                     _hVehicleDispatchBodyDao.UpdateOneHVehicleDispatchBodyVo(hVehicleDispatchBodyVo);
@@ -656,7 +656,7 @@ namespace H_VehicleDispatch {
             H_SetLabel hSetLabel = (H_SetLabel)sender;
             int cellNumber = ((H_ControlVo)((H_SetControl)((H_SetLabel)sender).Parent).Tag).CellNumber;
             int setCode = ((H_SetMasterVo)((H_SetLabel)sender).Tag).SetCode;
-            H_LastRollCall hLastRollCall = new(_connectionVo, hSetLabel, cellNumber, setCode, H_DateTimePickerOperationDate.GetValue());
+            H_LastRollCall hLastRollCall = new(_connectionVo, hSetLabel, cellNumber, setCode, HDateTimePickerOperationDate.GetValue());
             hLastRollCall.ShowDialog(this);
 
         }
@@ -680,11 +680,9 @@ namespace H_VehicleDispatch {
                     break;
                 case "ToolStripMenuItemSetMemo": // メモを作成・編集する
                     H_Memo hSetMemo = new(_connectionVo, (H_SetControl)((H_SetLabel)contextMenuStrip.SourceControl).Parent, (H_SetLabel)contextMenuStrip.SourceControl);
-                    new Desktop().SetMonitor(hSetMemo, _connectionVo.Screen);
-                    hSetMemo.KeyPreview = true;
                     hSetMemo.Size = new Size(540, 180);
-                    hSetMemo.WindowState = FormWindowState.Normal;
-                    hSetMemo.Show(Owner);
+                    new Desktop().SetPosition(hSetMemo, _connectionVo.Screen);
+                    hSetMemo.Show();
                     break;
                 case "ToolStripMenuItemCreateFax": // 代車・代番Faxを作成する
                     H_Substitute hSubstitute = new(_connectionVo, (H_SetControl)((H_SetLabel)contextMenuStrip.SourceControl).Parent);
@@ -705,11 +703,9 @@ namespace H_VehicleDispatch {
                     break;
                 case "ToolStripMenuItemCarMemo": // メモを作成・編集する
                     H_Memo hCarMemo = new(_connectionVo, (H_SetControl)((H_CarLabel)contextMenuStrip.SourceControl).Parent, (H_CarLabel)contextMenuStrip.SourceControl);
-                    new Desktop().SetMonitor(hCarMemo, _connectionVo.Screen);
-                    hCarMemo.KeyPreview = true;
                     hCarMemo.Size = new Size(540, 180);
-                    hCarMemo.WindowState = FormWindowState.Normal;
-                    hCarMemo.Show(Owner);
+                    new Desktop().SetPosition(hCarMemo, _connectionVo.Screen);
+                    hCarMemo.Show();
                     break;
                 case "ToolStripMenuItemCarNippou": // 日報を作成する
                     MessageBox.Show("ToolStripMenuItemCarNippou");
@@ -731,12 +727,13 @@ namespace H_VehicleDispatch {
                     hStaffPaper.Show(this);
                     break;
                 case "ToolStripMenuItemStaffMemo": // メモを作成・編集する
-                    H_Memo hStaffMemo = new(_connectionVo, (H_SetControl)((H_StaffLabel)contextMenuStrip.SourceControl).Parent, (H_StaffLabel)contextMenuStrip.SourceControl);
-                    new Desktop().SetMonitor(hStaffMemo, _connectionVo.Screen);
-                    hStaffMemo.KeyPreview = true;
+                    H_SetControl hSetControl = (H_SetControl)((H_StaffLabel)contextMenuStrip.SourceControl).Parent;
+                    TableLayoutPanelCellPosition tableLayoutPanelCellPosition = hSetControl.GetCellPosition((H_StaffLabel)contextMenuStrip.SourceControl);
+
+                    H_Memo hStaffMemo = new(_connectionVo, (H_SetControl)((H_StaffLabel)contextMenuStrip.SourceControl).Parent, (H_StaffLabel)contextMenuStrip.SourceControl, tableLayoutPanelCellPosition);
                     hStaffMemo.Size = new Size(540, 180);
-                    hStaffMemo.WindowState = FormWindowState.Normal;
-                    hStaffMemo.Show(Owner);
+                    new Desktop().SetPosition(hStaffMemo, _connectionVo.Screen);
+                    hStaffMemo.Show();
                     break;
                 case "ToolStripMenuItemStaffEquioment": // 備品を支給する
                     MessageBox.Show("ToolStripMenuItemStaffEquioment");

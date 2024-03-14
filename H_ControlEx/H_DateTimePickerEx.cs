@@ -132,7 +132,7 @@ namespace H_ControlEx {
         /// <summary>
         /// GetValueJp
         /// </summary>
-        /// <returns></returns>
+        /// <returns>和暦を返す</returns>
         public string GetValueJp() {
             return this.Value.ToString(" ggy年M月d日(dddd)", cultureInfo);
         }

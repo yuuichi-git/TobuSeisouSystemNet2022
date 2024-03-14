@@ -10,7 +10,6 @@ using H_Vo;
 namespace H_Dao {
     public class H_VehicleDispatchDetailDao {
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
-        private readonly Date _date = new();
         /*
          * H_Common
          */
@@ -1115,6 +1114,169 @@ namespace H_Dao {
             var sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "DELETE FROM H_VehicleDispatchDetail " +
                                      "WHERE OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// SelectOneSetMemo
+        /// </summary>
+        /// <param name="cellNumber"></param>
+        /// <param name="operationDate"></param>
+        /// <returns></returns>
+        public string SelectOneSetMemo(int cellNumber, DateTime operationDate) {
+            string setMemo = string.Empty;
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT SetMemo " +
+                                     "FROM H_VehicleDispatchDetail " +
+                                     "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            using (var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while (sqlDataReader.Read() == true) {
+                    setMemo = _defaultValue.GetDefaultValue<string>(sqlDataReader["SetMemo"]);
+                }
+            }
+            return setMemo;
+        }
+
+        /// <summary>
+        /// SelectOneCarMemo
+        /// </summary>
+        /// <param name="cellNumber"></param>
+        /// <param name="operationDate"></param>
+        /// <returns></returns>
+        public string SelectOneCarMemo(int cellNumber, DateTime operationDate) {
+            string carMemo = string.Empty;
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT CarMemo " +
+                                     "FROM H_VehicleDispatchDetail " +
+                                     "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            using (var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while (sqlDataReader.Read() == true) {
+                    carMemo = _defaultValue.GetDefaultValue<string>(sqlDataReader["CarMemo"]);
+                }
+            }
+            return carMemo;
+        }
+
+        /// <summary>
+        /// SelectOneStaffMemo
+        /// </summary>
+        /// <param name="cellNumber">Cell№</param>
+        /// <param name="operationDate">稼働日</param>
+        /// <param name="staffNumber">配置番号</param>
+        /// <returns></returns>
+        public string SelectOneStaffMemo(int cellNumber, DateTime operationDate, int staffNumber) {
+            string columnName = string.Empty;
+            switch (staffNumber) {
+                case 0:
+                    columnName = "StaffMemo1";
+                    break;
+                case 1:
+                    columnName = "StaffMemo2";
+                    break;
+                case 2:
+                    columnName = "StaffMemo3";
+                    break;
+                case 3:
+                    columnName = "StaffMemo4";
+                    break;
+            }
+            string staffMemo = string.Empty;
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT " + columnName + " " +
+                                     "FROM H_VehicleDispatchDetail " +
+                                     "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            using (var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while (sqlDataReader.Read() == true) {
+                    staffMemo = _defaultValue.GetDefaultValue<string>(sqlDataReader[columnName]);
+                }
+            }
+            return staffMemo;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cellNumber"></param>
+        /// <param name="operationDate"></param>
+        /// <param name="setMemoFlag"></param>
+        /// <param name="setMemo"></param>
+        public void UpdateOneSetMemo(int cellNumber, DateTime operationDate, bool setMemoFlag, string setMemo) {
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE H_VehicleDispatchDetail " +
+                                     "SET SetMemoFlag = '" + setMemoFlag + "'," +
+                                         "SetMemo = '" + setMemo + "'," +
+                                         "UpdatePcName = '" + Environment.MachineName + "'," +
+                                         "UpdateYmdHms = '" + DateTime.Now + "' " +
+                                     "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cellNumber"></param>
+        /// <param name="operationDate"></param>
+        /// <param name="carMemoFlag"></param>
+        /// <param name="carMemo"></param>
+        public void UpdateOneCarMemo(int cellNumber, DateTime operationDate, bool carMemoFlag, string carMemo) {
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE H_VehicleDispatchDetail " +
+                                     "SET CarMemoFlag = '" + carMemoFlag + "'," +
+                                         "CarMemo = '" + carMemo + "'," +
+                                         "UpdatePcName = '" + Environment.MachineName + "'," +
+                                         "UpdateYmdHms = '" + DateTime.Now + "' " +
+                                     "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cellNumber"></param>
+        /// <param name="operationDate"></param>
+        /// <param name="staffNumber"></param>
+        /// <param name="staffMemoFlag"></param>
+        /// <param name="staffMemo"></param>
+        public void UpdateOneStaffMemo(int cellNumber, DateTime operationDate, int staffNumber, bool staffMemoFlag, string staffMemo) {
+            string columnStaffMemoFlag = string.Empty;
+            string columnStaffMemo = string.Empty;
+            switch (staffNumber) {
+                case 0:
+                    columnStaffMemoFlag = "StaffMemoFlag1";
+                    columnStaffMemo = "StaffMemo1";
+                    break;
+                case 1:
+                    columnStaffMemoFlag = "StaffMemoFlag2";
+                    columnStaffMemo = "StaffMemo2";
+                    break;
+                case 2:
+                    columnStaffMemoFlag = "StaffMemoFlag3";
+                    columnStaffMemo = "StaffMemo3";
+                    break;
+                case 3:
+                    columnStaffMemoFlag = "StaffMemoFlag4";
+                    columnStaffMemo = "StaffMemo4";
+                    break;
+            }
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE H_VehicleDispatchDetail " +
+                                     "SET " + columnStaffMemoFlag + " = '" + staffMemoFlag + "'," +
+                                         "" + columnStaffMemo + " = '" + staffMemo + "'," +
+                                          "UpdatePcName = '" + Environment.MachineName + "'," +
+                                          "UpdateYmdHms = '" + DateTime.Now + "' " +
+                                     "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
             try {
                 sqlCommand.ExecuteNonQuery();
             } catch {

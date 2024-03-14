@@ -23,14 +23,14 @@
         }
 
         /// <summary>
-        /// formで指定したFormをscreenで指定したモニターに表示する
+        /// formをscreenで指定したモニターに表示する
         /// </summary>
         /// <param name="form"></param>
         /// <param name="screen"></param>
-        public void SetMonitor(Form form, Screen screen) {
-            //フォームの開始位置をディスプレイの左上座標に設定する
+        public void SetPosition(Form form, Screen screen) {
+            form.Left = (screen.WorkingArea.Width - form.Width) / 2 + screen.WorkingArea.X;
+            form.Top = (screen.WorkingArea.Height - form.Height) / 2 + screen.WorkingArea.Y;
             form.StartPosition = FormStartPosition.Manual;
-            form.Location = screen.Bounds.Location;
         }
     }
 }

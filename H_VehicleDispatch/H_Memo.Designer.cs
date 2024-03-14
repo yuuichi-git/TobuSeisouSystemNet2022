@@ -29,6 +29,7 @@
             // 
             // HTextBoxExMemo
             // 
+            HTextBoxExMemo.ImeMode = ImeMode.Hiragana;
             HTextBoxExMemo.Location = new Point(4, 4);
             HTextBoxExMemo.Multiline = true;
             HTextBoxExMemo.Name = "HTextBoxExMemo";
@@ -44,6 +45,7 @@
             HButtonExUpdate.Text = "UPDATE";
             HButtonExUpdate.TextDirectionVertical = "";
             HButtonExUpdate.UseVisualStyleBackColor = true;
+            HButtonExUpdate.Click += HButtonExUpdate_Click;
             // 
             // H_Memo
             // 

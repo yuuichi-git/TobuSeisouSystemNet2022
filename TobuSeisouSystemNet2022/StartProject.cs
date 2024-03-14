@@ -292,6 +292,22 @@ namespace TobuSeisouSystemNet2022 {
                                 hFirstRollColl.WindowState = FormWindowState.Normal;
                                 hFirstRollColl.Show(this);
                                 break;
+                            // 点呼記録簿
+                            case "H_RollCollRecordSheet":
+                                // Screenを退避(新型のみ)
+                                _connectionVo.Screen = (Screen)HComboBoxMoniter.SelectedItem;
+                                /*
+                                 * Formを表示する
+                                 */
+                                H_RollCallRecordSheet hRollCallRecordSheet = new(_connectionVo);
+                                Rectangle rectangleHRollCallRecordSheet = new Desktop().GetMonitorWorkingArea(hRollCallRecordSheet, (Screen)HComboBoxMoniter.SelectedItem);
+                                hRollCallRecordSheet.KeyPreview = true;
+                                hRollCallRecordSheet.Location = rectangleHRollCallRecordSheet.Location;
+                                hRollCallRecordSheet.Size = new Size(1370, 1080);
+                                hRollCallRecordSheet.WindowState = FormWindowState.Normal;
+                                hRollCallRecordSheet.Show(this);
+                                break;
+
                             /*
                              * データ移行ツール
                              */
