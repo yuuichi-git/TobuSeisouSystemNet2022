@@ -311,13 +311,13 @@ namespace TobuSeisouSystemNet2022 {
                             /*
                              * データ移行ツール
                              */
-                            case "DbCarMaster":
+                            case "DbHCarMaster":
                                 dialogResult = MessageBox.Show("SQLを発行します。本当によろしいですか？", "SQLメッセージ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                                 if (dialogResult == DialogResult.OK) {
                                     new ConvertTableDao(_connectionVo).ConvertHCarMaster();
                                 }
                                 break;
-                            case "DbStaffMaster":
+                            case "DbHStaffMaster":
                                 dialogResult = MessageBox.Show("SQLを発行します。本当によろしいですか？", "SQLメッセージ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                                 if (dialogResult == DialogResult.OK) {
                                     new ConvertTableDao(_connectionVo).ConvertHStaffMaster();

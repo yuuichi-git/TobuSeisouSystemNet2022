@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "H_CollectionWeight": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

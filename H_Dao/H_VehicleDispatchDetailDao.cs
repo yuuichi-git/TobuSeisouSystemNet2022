@@ -670,16 +670,23 @@ namespace H_Dao {
         /// </summary>
         /// <param name="hVehicleDispatchDetailVo"></param>
         public void UpdateOneHVehicleDispatchDetailCopy(H_VehicleDispatchDetailVo hVehicleDispatchDetailVo) {
+            string sqlClassification = string.Empty;
+            /*
+             * 配車先が清掃工場の場合,値を代入。清掃工場(大G)はCopyの対象とする
+             */
+            if (hVehicleDispatchDetailVo.ClassificationCode == 20) {
+                sqlClassification = "OperationFlag = '" + hVehicleDispatchDetailVo.OperationFlag + "'," +
+                                    "VehicleDispatchFlag = '" + hVehicleDispatchDetailVo.VehicleDispatchFlag + "'," +
+                                    "PurposeFlag = '" + hVehicleDispatchDetailVo.PurposeFlag + "'," +
+                                    "SetCode = " + hVehicleDispatchDetailVo.SetCode + "," +
+                                    "ManagedSpaceCode = " + hVehicleDispatchDetailVo.ManagedSpaceCode + "," +
+                                    "ClassificationCode = " + hVehicleDispatchDetailVo.ClassificationCode + ",";
+            }
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "UPDATE H_VehicleDispatchDetail " +
                                      "Set CellNumber = " + hVehicleDispatchDetailVo.CellNumber + "," +
                                          "OperationDate = '" + hVehicleDispatchDetailVo.OperationDate + "'," +
-                                         //"OperationFlag = '" + hVehicleDispatchDetailVo.OperationFlag + "'," +
-                                         //"VehicleDispatchFlag = '" + hVehicleDispatchDetailVo.VehicleDispatchFlag + "'," +
-                                         //"PurposeFlag = '" + hVehicleDispatchDetailVo.PurposeFlag + "'," +
-                                         //"SetCode = " + hVehicleDispatchDetailVo.SetCode + "," +
-                                         //"ManagedSpaceCode = " + hVehicleDispatchDetailVo.ManagedSpaceCode + "," +
-                                         //"ClassificationCode = " + hVehicleDispatchDetailVo.ClassificationCode + "," +
+                                         sqlClassification +
                                          //"LastRollCallFlag = '" + hVehicleDispatchDetailVo.LastRollCallFlag + "'," +
                                          //"LastRollCallYmdHms = '" + hVehicleDispatchDetailVo.LastRollCallYmdHms + "'," +
                                          //"SetMemoFlag = '" + hVehicleDispatchDetailVo.SetMemoFlag + "'," +

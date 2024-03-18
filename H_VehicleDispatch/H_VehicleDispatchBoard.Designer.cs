@@ -31,6 +31,8 @@
             ToolStripMenuItemInitializeVehicleDispatchBody = new ToolStripMenuItem();
             ToolStripMenuItemInitializeVehicleDispatchCopy = new ToolStripMenuItem();
             ToolStripMenuItemUpdateVehicleDispatch = new ToolStripMenuItem();
+            ToolStripMenuItemInputTAITOU = new ToolStripMenuItem();
+            toolStripSeparator1 = new ToolStripSeparator();
             ToolStripMenuItemUpdateVehicleDispatchBody = new ToolStripMenuItem();
             ToolStripMenuItemPrint = new ToolStripMenuItem();
             ToolStripMenuItemPrintB4 = new ToolStripMenuItem();
@@ -51,6 +53,7 @@
             HButtonExUpdate = new H_ControlEx.H_ButtonEx();
             HDateTimePickerOperationDate = new H_ControlEx.H_DateTimePickerEx();
             h_LabelEx1 = new H_ControlEx.H_LabelEx();
+            toolStripSeparator2 = new ToolStripSeparator();
             h_TableLayoutPanelExBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -106,7 +109,7 @@
             // 
             // ToolStripMenuItemInitialize
             // 
-            ToolStripMenuItemInitialize.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemInitializeVehicleDispatchBody, ToolStripMenuItemInitializeVehicleDispatchCopy });
+            ToolStripMenuItemInitialize.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemInitializeVehicleDispatchBody, toolStripSeparator2, ToolStripMenuItemInitializeVehicleDispatchCopy });
             ToolStripMenuItemInitialize.Name = "ToolStripMenuItemInitialize";
             ToolStripMenuItemInitialize.Size = new Size(55, 20);
             ToolStripMenuItemInitialize.Text = "初期化";
@@ -127,10 +130,22 @@
             // 
             // ToolStripMenuItemUpdateVehicleDispatch
             // 
-            ToolStripMenuItemUpdateVehicleDispatch.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemUpdateVehicleDispatchBody });
+            ToolStripMenuItemUpdateVehicleDispatch.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemUpdateVehicleDispatchBody, toolStripSeparator1, ToolStripMenuItemInputTAITOU });
             ToolStripMenuItemUpdateVehicleDispatch.Name = "ToolStripMenuItemUpdateVehicleDispatch";
             ToolStripMenuItemUpdateVehicleDispatch.Size = new Size(43, 20);
             ToolStripMenuItemUpdateVehicleDispatch.Text = "登録";
+            // 
+            // ToolStripMenuItemInputTAITOU
+            // 
+            ToolStripMenuItemInputTAITOU.Name = "ToolStripMenuItemInputTAITOU";
+            ToolStripMenuItemInputTAITOU.Size = new Size(260, 22);
+            ToolStripMenuItemInputTAITOU.Text = "台東古紙　収集実績入力";
+            ToolStripMenuItemInputTAITOU.Click += ToolStripMenuItem_Click;
+            // 
+            // toolStripSeparator1
+            // 
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            toolStripSeparator1.Size = new Size(257, 6);
             // 
             // ToolStripMenuItemUpdateVehicleDispatchBody
             // 
@@ -333,6 +348,11 @@
             h_LabelEx1.TabIndex = 1;
             h_LabelEx1.Text = "配車日";
             // 
+            // toolStripSeparator2
+            // 
+            toolStripSeparator2.Name = "toolStripSeparator2";
+            toolStripSeparator2.Size = new Size(259, 6);
+            // 
             // H_VehicleDispatchBoard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -386,5 +406,8 @@
         private ToolStripMenuItem ToolStripMenuItemInitializeVehicleDispatchCopy;
         private ToolStripMenuItem ToolStripMenuItemUpdateVehicleDispatch;
         private ToolStripMenuItem ToolStripMenuItemUpdateVehicleDispatchBody;
+        private ToolStripMenuItem ToolStripMenuItemInputTAITOU;
+        private ToolStripSeparator toolStripSeparator1;
+        private ToolStripSeparator toolStripSeparator2;
     }
 }

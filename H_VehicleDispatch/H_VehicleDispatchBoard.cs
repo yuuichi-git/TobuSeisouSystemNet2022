@@ -1,6 +1,8 @@
 ﻿/*
  * 2023-10-12
  */
+using H_CollectionWeight;
+
 using H_Common;
 
 using H_ControlEx;
@@ -430,16 +432,22 @@ namespace H_VehicleDispatch {
                     // 前営業日のデータをDeepCopyする
                     List<H_VehicleDispatchDetailVo> listBeforeHVehicleDispatchDetailVo = new CopyUtility().DeepCopy(_hVehicleDispatchDetailDao.SelectAllHVehicleDispatchDetail(beforeDateTime.Date));
                     // DB操作
-                    foreach (H_VehicleDispatchDetailVo beforeHVehicleDispatchDetailVo in listBeforeHVehicleDispatchDetailVo.FindAll(x => x.ClassificationCode == 10 || x.ClassificationCode == 11).OrderBy(x => x.CellNumber)) {
+                    foreach (H_VehicleDispatchDetailVo beforeHVehicleDispatchDetailVo in listBeforeHVehicleDispatchDetailVo.FindAll(x => x.ClassificationCode == 10 || x.ClassificationCode == 11 || x.ClassificationCode == 20).OrderBy(x => x.CellNumber)) {
+                        // 運賃コードを取得
                         H_VehicleDispatchDetailVo hVehicleDispatchDetailVo = new();
                         hVehicleDispatchDetailVo.CellNumber = beforeHVehicleDispatchDetailVo.CellNumber;
                         hVehicleDispatchDetailVo.OperationDate = HDateTimePickerOperationDate.GetValue().Date;
-                        //hVehicleDispatchDetailVo.OperationFlag = beforeHVehicleDispatchDetailVo.OperationFlag;
-                        //hVehicleDispatchDetailVo.VehicleDispatchFlag = beforeHVehicleDispatchDetailVo.VehicleDispatchFlag;
-                        //hVehicleDispatchDetailVo.PurposeFlag = beforeHVehicleDispatchDetailVo.PurposeFlag;
-                        //hVehicleDispatchDetailVo.SetCode = beforeHVehicleDispatchDetailVo.SetCode;
-                        //hVehicleDispatchDetailVo.ManagedSpaceCode = beforeHVehicleDispatchDetailVo.ManagedSpaceCode;
-                        //hVehicleDispatchDetailVo.ClassificationCode = beforeHVehicleDispatchDetailVo.ClassificationCode;
+                        /*
+                         * 配車先が清掃工場の場合,値を代入。清掃工場(大G)はCopyの対象とする
+                         */
+                        if (beforeHVehicleDispatchDetailVo.ClassificationCode == 20) {
+                            hVehicleDispatchDetailVo.OperationFlag = beforeHVehicleDispatchDetailVo.OperationFlag;
+                            hVehicleDispatchDetailVo.VehicleDispatchFlag = beforeHVehicleDispatchDetailVo.VehicleDispatchFlag;
+                            hVehicleDispatchDetailVo.PurposeFlag = beforeHVehicleDispatchDetailVo.PurposeFlag;
+                            hVehicleDispatchDetailVo.SetCode = beforeHVehicleDispatchDetailVo.SetCode;
+                            hVehicleDispatchDetailVo.ManagedSpaceCode = beforeHVehicleDispatchDetailVo.ManagedSpaceCode;
+                            hVehicleDispatchDetailVo.ClassificationCode = beforeHVehicleDispatchDetailVo.ClassificationCode;
+                        }
                         //hVehicleDispatchDetailVo.LastRollCallFlag = false;
                         //hVehicleDispatchDetailVo.LastRollCallYmdHms = _defaultDateTime;
                         //hVehicleDispatchDetailVo.SetMemoFlag = beforeHVehicleDispatchDetailVo.SetMemoFlag;
@@ -495,6 +503,16 @@ namespace H_VehicleDispatch {
                         }
                     }
                     MessageBox.Show("処理が終了しました。", "メッセージ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+
+                /*
+                 * 台東古紙　収集実績入力
+                 */
+                case "ToolStripMenuItemInputTAITOU":
+                    HCollectionWeightTAITOU hCollectionWeightTAITOU = new(_connectionVo);
+                    hCollectionWeightTAITOU.Size = new Size(500, 450);
+                    new Desktop().SetPosition(hCollectionWeightTAITOU, _connectionVo.Screen);
+                    hCollectionWeightTAITOU.ShowDialog(this);
                     break;
                 /*
                  * この配車組を 'H_VehicleDispatchBody' に登録する
