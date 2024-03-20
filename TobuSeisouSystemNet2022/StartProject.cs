@@ -316,12 +316,14 @@ namespace TobuSeisouSystemNet2022 {
                                 if (dialogResult == DialogResult.OK) {
                                     new ConvertTableDao(_connectionVo).ConvertHCarMaster();
                                 }
+                                MessageBox.Show("処理が終了しました", "SQLメッセージ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 break;
                             case "DbHStaffMaster":
                                 dialogResult = MessageBox.Show("SQLを発行します。本当によろしいですか？", "SQLメッセージ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                                 if (dialogResult == DialogResult.OK) {
                                     new ConvertTableDao(_connectionVo).ConvertHStaffMaster();
                                 }
+                                MessageBox.Show("処理が終了しました", "SQLメッセージ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 break;
                             // 新規年度のHVehicleDispatchBodyを作成する
                             case "DbHVehicleDispatchBody":
@@ -329,6 +331,14 @@ namespace TobuSeisouSystemNet2022 {
                                 if (dialogResult == DialogResult.OK) {
                                     new ConvertTableDao(_connectionVo).CreateHVehicleDispatchBody();
                                 }
+                                MessageBox.Show("処理が終了しました", "SQLメッセージ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                break;
+                            case "DbHCollectionWeightTaitou":
+                                dialogResult = MessageBox.Show("SQLを発行します。本当によろしいですか？", "SQLメッセージ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                                if (dialogResult == DialogResult.OK) {
+                                    new ConvertTableDao(_connectionVo).ConvertHCollectionWeightTaitou();
+                                }
+                                MessageBox.Show("処理が終了しました", "SQLメッセージ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 break;
                         }
                         break;

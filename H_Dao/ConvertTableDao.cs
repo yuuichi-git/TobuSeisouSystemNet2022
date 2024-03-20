@@ -32,8 +32,8 @@ namespace H_Dao {
         public void ConvertHCarMaster() {
             CarMasterDao carMasterDao = new(_connectionVo);
             H_CarMasterDao hCarMasterDao = new(_connectionVo);
-            H_CarMasterVo hCarMasterVo = new();
             foreach (CarMasterVo carMasterVo in carMasterDao.SelectAllCarMasterP()) {
+                H_CarMasterVo hCarMasterVo = new();
                 hCarMasterVo.CarCode = carMasterVo.Car_code;
                 hCarMasterVo.ClassificationCode = carMasterVo.Classification_code;
                 hCarMasterVo.RegistrationNumber = carMasterVo.Registration_number;
@@ -113,8 +113,8 @@ namespace H_Dao {
         public void ConvertHStaffMaster() {
             StaffMasterDao staffMasterDao = new(_connectionVo);
             H_StaffMasterDao hStaffMasterDao = new(_connectionVo);
-            H_StaffMasterVo hStaffMasterVo = new();
             foreach (StaffMasterVo staffMasterVo in staffMasterDao.SelectAllStaffMasterP()) {
+                H_StaffMasterVo hStaffMasterVo = new();
                 hStaffMasterVo.StaffCode = staffMasterVo.Staff_code;
                 hStaffMasterVo.UnionCode = staffMasterVo.Code;
                 hStaffMasterVo.Belongs = staffMasterVo.Belongs;
@@ -124,6 +124,8 @@ namespace H_Dao {
                 hStaffMasterVo.NameKana = staffMasterVo.Name_kana;
                 hStaffMasterVo.Name = staffMasterVo.Name;
                 hStaffMasterVo.DisplayName = staffMasterVo.Display_name;
+                hStaffMasterVo.OtherNameKana = string.Empty;
+                hStaffMasterVo.OtherName = string.Empty;
                 hStaffMasterVo.Gender = staffMasterVo.Gender;
                 hStaffMasterVo.BirthDate = staffMasterVo.Birth_date;
                 hStaffMasterVo.EmploymentDate = staffMasterVo.Employment_date;
@@ -228,6 +230,51 @@ namespace H_Dao {
                         MessageBox.Show(exception.Message);
                     }
                 }
+            }
+        }
+
+        /// <summary>
+        /// ConvertHCollectionWeightTaitou
+        /// collection_weight_taitouをH_CollectionWeightTaitouに変換する
+        /// </summary>
+        public void ConvertHCollectionWeightTaitou() {
+            CollectionWeightTaitouDao collectionWeightTaitouDao = new(_connectionVo);
+            H_CollectionWeightTaitouDao hCollectionWeightTaitouDao = new(_connectionVo);
+            foreach (CollectionWeightTaitouVo collectionWeightTaitouVo in collectionWeightTaitouDao.SelectAllListCollectionWeightTaitou()) {
+                H_CollectionWeightTaitouVo hCollectionWeightTaitouVo = new();
+                hCollectionWeightTaitouVo.OperationDate = collectionWeightTaitouVo.Operation_date;
+                hCollectionWeightTaitouVo.Weight1Total = collectionWeightTaitouVo.Weight1Total;
+                hCollectionWeightTaitouVo.Weight2Total = collectionWeightTaitouVo.Weight2Total;
+                hCollectionWeightTaitouVo.Weight3Total = collectionWeightTaitouVo.Weight3Total;
+                hCollectionWeightTaitouVo.Weight4Total = collectionWeightTaitouVo.Weight4Total;
+                hCollectionWeightTaitouVo.Weight5Total = collectionWeightTaitouVo.Weight5Total;
+                hCollectionWeightTaitouVo.Weight6Total = collectionWeightTaitouVo.Weight6Total;
+                hCollectionWeightTaitouVo.Weight7Total = collectionWeightTaitouVo.Weight7Total;
+                hCollectionWeightTaitouVo.InsertPcName = collectionWeightTaitouVo.Insert_pc_name;
+                hCollectionWeightTaitouVo.InsertYmdHms = collectionWeightTaitouVo.Insert_ymd_hms;
+                hCollectionWeightTaitouVo.UpdatePcName = collectionWeightTaitouVo.Update_pc_name;
+                hCollectionWeightTaitouVo.UpdateYmdHms = collectionWeightTaitouVo.Update_ymd_hms;
+                hCollectionWeightTaitouVo.DeletePcName = collectionWeightTaitouVo.Delete_pc_name;
+                hCollectionWeightTaitouVo.DeleteYmdHms = collectionWeightTaitouVo.Delete_ymd_hms;
+                hCollectionWeightTaitouVo.DeleteFlag = collectionWeightTaitouVo.Delete_flag;
+                /*
+                 * DB更新
+                 * INSERT　UPDATE
+                 */
+                if (hCollectionWeightTaitouDao.ExistenceCollectionWeightTaitou(collectionWeightTaitouVo.Operation_date)) {
+                    try {
+                        hCollectionWeightTaitouDao.UpdateOneCollectionWeightTaitou(hCollectionWeightTaitouVo);
+                    } catch (Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
+                } else {
+                    try {
+                        hCollectionWeightTaitouDao.InsertOneCollectionWeightTaitou(hCollectionWeightTaitouVo);
+                    } catch (Exception exception) {
+                        MessageBox.Show(exception.Message);
+                    }
+                }
+
             }
         }
     }

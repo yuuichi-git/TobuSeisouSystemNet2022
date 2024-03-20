@@ -71,6 +71,24 @@ namespace H_Dao {
         }
 
         /// <summary>
+        /// 運転手の出庫点呼日時を取得
+        /// </summary>
+        /// <param name="cellNumber"></param>
+        /// <param name="operationDate"></param>
+        /// <returns>StaffRollCallYmdHms1</returns>
+        public DateTime GetStaffRollCallYmdHms1(int cellNumber, DateTime operationDate) {
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT StaffRollCallYmdHms1 " +
+                                     "FROM H_VehicleDispatchDetail " +
+                                     "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+               return (DateTime)sqlCommand.ExecuteScalar();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
         /// SelectOneHVehicleDispatchDetail
         /// </summary>
         /// <param name="cellNumber"></param>
@@ -1286,6 +1304,82 @@ namespace H_Dao {
                                      "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
             try {
                 sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// H_VehicleDispatchDetailのSetCodeに値が入っているかを調査する
+        /// </summary>
+        /// <param name="cellNumber"></param>
+        /// <param name="operationDate"></param>
+        /// <returns>true:値がセットされている(SetCode) false:値がセットされていない(ゼロ)</returns>
+        public bool CheckSetCode(int cellNumber, DateTime operationDate) {
+            int setCode;
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT SetCode " +
+                                     "FROM H_VehicleDispatchDetail " +
+                                     "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                setCode = (int)sqlCommand.ExecuteScalar();
+                return setCode != 0 ? true : false;
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// H_VehicleDispatchDetailのCarCodeに値が入っているかを調査する
+        /// </summary>
+        /// <param name="cellNumber"></param>
+        /// <param name="operationDate"></param>
+        /// <returns>true:値がセットされている(CarCode) false:値がセットされていない(ゼロ)</returns>
+        public bool CheckCarCode(int cellNumber, DateTime operationDate) {
+            int carCode;
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT CarCode " +
+                                     "FROM H_VehicleDispatchDetail " +
+                                     "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                carCode = (int)sqlCommand.ExecuteScalar();
+                return carCode != 0 ? true : false;
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// H_VehicleDispatchDetailの各StaffCodeに値が入っているかを調査する
+        /// </summary>
+        /// <param name="cellNumber"></param>
+        /// <param name="operationDate"></param>
+        /// <param name="staffNumber"></param>
+        /// <returns>true:値がセットされている(StaffCode) false:値がセットされていない(ゼロ)</returns>
+        public bool CheckStaffCode(int cellNumber, DateTime operationDate, int staffNumber) {
+            string columnName = string.Empty;
+            int staffCode;
+            switch (staffNumber) {
+                case 0:
+                    columnName = "StaffCode1";
+                    break;
+                case 1:
+                    columnName = "StaffCode2";
+                    break;
+                case 2:
+                    columnName = "StaffCode3";
+                    break;
+                case 3:
+                    columnName = "StaffCode4";
+                    break;
+            }
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT " + columnName + " " +
+                                     "FROM H_VehicleDispatchDetail " +
+                                     "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
+            try {
+                staffCode = (int)sqlCommand.ExecuteScalar();
+                return staffCode != 0 ? true : false;
             } catch {
                 throw;
             }

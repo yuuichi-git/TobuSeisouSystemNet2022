@@ -105,11 +105,14 @@ namespace H_Dao {
                                             "Occupation," +
                                             "NameKana," +
                                             "Name," +
+                                            "OtherNameKana," +
+                                            "OtherName," +
                                             "BirthDate," +
                                             "EmploymentDate," +
                                             "CurrentAddress," +
                                             "RetirementFlag," +
                                             "HealthInsuranceDate," +
+                                            "HealthInsuranceNumber," +
                                             "WelfarePensionDate," +
                                             "EmploymentInsuranceDate," +
                                             "WorkerAccidentInsuranceDate " +
@@ -126,11 +129,14 @@ namespace H_Dao {
                     hStaffMasterVo.Occupation = _defaultValue.GetDefaultValue<int>(sqlDataReader["Occupation"]);
                     hStaffMasterVo.NameKana = _defaultValue.GetDefaultValue<string>(sqlDataReader["NameKana"]);
                     hStaffMasterVo.Name = _defaultValue.GetDefaultValue<string>(sqlDataReader["Name"]);
+                    hStaffMasterVo.OtherNameKana = _defaultValue.GetDefaultValue<string>(sqlDataReader["OtherNameKana"]);
+                    hStaffMasterVo.OtherName = _defaultValue.GetDefaultValue<string>(sqlDataReader["OtherName"]);
                     hStaffMasterVo.BirthDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["BirthDate"]);
                     hStaffMasterVo.EmploymentDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["EmploymentDate"]);
                     hStaffMasterVo.CurrentAddress = _defaultValue.GetDefaultValue<string>(sqlDataReader["CurrentAddress"]);
                     hStaffMasterVo.RetirementFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["RetirementFlag"]);
                     hStaffMasterVo.HealthInsuranceDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["HealthInsuranceDate"]);
+                    hStaffMasterVo.HealthInsuranceNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["HealthInsuranceNumber"]);
                     hStaffMasterVo.WelfarePensionDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["WelfarePensionDate"]);
                     hStaffMasterVo.EmploymentInsuranceDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["EmploymentInsuranceDate"]);
                     hStaffMasterVo.WorkerAccidentInsuranceDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["WorkerAccidentInsuranceDate"]);
@@ -144,7 +150,7 @@ namespace H_Dao {
         /// SelectOneHStaffMaster
         /// </summary>
         /// <returns>詳細を含むListを返す</returns>
-        public H_StaffMasterVo? SelectOneHStaffMaster(int staffCode) {
+        public H_StaffMasterVo SelectOneHStaffMaster(int staffCode) {
             H_StaffMasterVo hStaffMasterVo = new();
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT StaffCode," +
@@ -156,6 +162,8 @@ namespace H_Dao {
                                             "NameKana," +
                                             "Name," +
                                             "DisplayName," +
+                                            "OtherNameKana," +
+                                            "OtherName," +
                                             "Gender," +
                                             "BirthDate," +
                                             "EmploymentDate," +
@@ -208,6 +216,8 @@ namespace H_Dao {
                     hStaffMasterVo.NameKana = _defaultValue.GetDefaultValue<string>(sqlDataReader["NameKana"]);
                     hStaffMasterVo.Name = _defaultValue.GetDefaultValue<string>(sqlDataReader["Name"]);
                     hStaffMasterVo.DisplayName = _defaultValue.GetDefaultValue<string>(sqlDataReader["DisplayName"]);
+                    hStaffMasterVo.OtherNameKana = _defaultValue.GetDefaultValue<string>(sqlDataReader["OtherNameKana"]);
+                    hStaffMasterVo.OtherName = _defaultValue.GetDefaultValue<string>(sqlDataReader["OtherName"]);
                     hStaffMasterVo.Gender = _defaultValue.GetDefaultValue<string>(sqlDataReader["Gender"]);
                     hStaffMasterVo.BirthDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["BirthDate"]);
                     hStaffMasterVo.EmploymentDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["EmploymentDate"]);
@@ -278,6 +288,8 @@ namespace H_Dao {
                                             "NameKana," +
                                             "Name," +
                                             "DisplayName," +
+                                            "OtherNameKana," +
+                                            "OtherName," +
                                             "Gender," +
                                             "BirthDate," +
                                             "EmploymentDate," +
@@ -330,6 +342,8 @@ namespace H_Dao {
                     hStaffMasterVo.NameKana = _defaultValue.GetDefaultValue<string>(sqlDataReader["NameKana"]);
                     hStaffMasterVo.Name = _defaultValue.GetDefaultValue<string>(sqlDataReader["Name"]);
                     hStaffMasterVo.DisplayName = _defaultValue.GetDefaultValue<string>(sqlDataReader["DisplayName"]);
+                    hStaffMasterVo.OtherNameKana = _defaultValue.GetDefaultValue<string>(sqlDataReader["OtherNameKana"]);
+                    hStaffMasterVo.OtherName = _defaultValue.GetDefaultValue<string>(sqlDataReader["OtherName"]);
                     hStaffMasterVo.Gender = _defaultValue.GetDefaultValue<string>(sqlDataReader["Gender"]);
                     hStaffMasterVo.BirthDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["BirthDate"]);
                     hStaffMasterVo.EmploymentDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["EmploymentDate"]);
@@ -393,6 +407,8 @@ namespace H_Dao {
                                             "NameKana," +
                                             "Name," +
                                             "DisplayName," +
+                                            "OtherNameKana," +
+                                            "OtherName," +
                                             "Gender," +
                                             "BirthDate," +
                                             "EmploymentDate," +
@@ -445,6 +461,8 @@ namespace H_Dao {
                     hStaffMasterVo.NameKana = _defaultValue.GetDefaultValue<string>(sqlDataReader["NameKana"]);
                     hStaffMasterVo.Name = _defaultValue.GetDefaultValue<string>(sqlDataReader["Name"]);
                     hStaffMasterVo.DisplayName = _defaultValue.GetDefaultValue<string>(sqlDataReader["DisplayName"]);
+                    hStaffMasterVo.OtherNameKana = _defaultValue.GetDefaultValue<string>(sqlDataReader["OtherNameKana"]);
+                    hStaffMasterVo.OtherName = _defaultValue.GetDefaultValue<string>(sqlDataReader["OtherName"]);
                     hStaffMasterVo.Gender = _defaultValue.GetDefaultValue<string>(sqlDataReader["Gender"]);
                     hStaffMasterVo.BirthDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["BirthDate"]);
                     hStaffMasterVo.EmploymentDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["EmploymentDate"]);
@@ -506,6 +524,8 @@ namespace H_Dao {
                                                                "NameKana," +
                                                                "Name," +
                                                                "DisplayName," +
+                                                               "OtherNameKana," +
+                                                               "OtherName," +
                                                                "Gender," +
                                                                "BirthDate," +
                                                                "EmploymentDate," +
@@ -554,6 +574,8 @@ namespace H_Dao {
                                             "'" + hStaffMasterVo.NameKana + "'," +
                                             "'" + hStaffMasterVo.Name + "'," +
                                             "'" + hStaffMasterVo.DisplayName + "'," +
+                                            "'" + hStaffMasterVo.OtherNameKana + "'," +
+                                            "'" + hStaffMasterVo.OtherName + "'," +
                                             "'" + hStaffMasterVo.Gender + "'," +
                                             "'" + hStaffMasterVo.BirthDate + "'," +
                                             "'" + hStaffMasterVo.EmploymentDate + "'," +
@@ -619,6 +641,8 @@ namespace H_Dao {
                                          "NameKana = '" + hStaffMasterVo.NameKana + "'," +
                                          "Name = '" + hStaffMasterVo.Name + "'," +
                                          "DisplayName = '" + hStaffMasterVo.DisplayName + "'," +
+                                         "OtherNameKana = '" + hStaffMasterVo.OtherNameKana + "'," +
+                                         "OtherName = '" + hStaffMasterVo.OtherName + "'," +
                                          "Gender = '" + hStaffMasterVo.Gender + "'," +
                                          "BirthDate = '" + hStaffMasterVo.BirthDate + "'," +
                                          "EmploymentDate = '" + hStaffMasterVo.EmploymentDate + "'," +

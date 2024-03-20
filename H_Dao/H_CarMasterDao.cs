@@ -47,6 +47,7 @@ namespace H_Dao {
 
         /// <summary>
         /// SelectAllHCarMaster
+        /// Picture無
         /// </summary>
         /// <returns></returns>
         public List<H_CarMasterVo> SelectAllHCarMaster() {

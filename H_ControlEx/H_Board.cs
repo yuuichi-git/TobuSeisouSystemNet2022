@@ -17,7 +17,7 @@ namespace H_ControlEx {
          */
         private H_VehicleDispatchDetailDao _hVehicleDispatchDetailDao;
         /*
-         * 
+         * Vo
          */
         private readonly ConnectionVo _connectionVo;
         /*

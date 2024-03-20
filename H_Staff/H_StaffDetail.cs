@@ -156,6 +156,8 @@ namespace H_Staff {
             hStaffMasterVo.NameKana = HTextBoxExNameKana.Text; // カナ
             hStaffMasterVo.Name = HTextBoxExName.Text; // 氏名
             hStaffMasterVo.DisplayName = HTextBoxExDisplayName.Text; // 氏名
+            hStaffMasterVo.OtherNameKana = HTextBoxExOtherNameKana.Text; // カナ(健康診断用)
+            hStaffMasterVo.OtherName = HTextBoxExOtherName.Text; // 氏名(健康診断用)
             hStaffMasterVo.BirthDate = HDateTimeExBirthDate.GetValue(); // 生年月日
             hStaffMasterVo.EmploymentDate = HDateTimeExEmploymentDate.GetValue(); // 雇用年月日
             hStaffMasterVo.Gender = HComboBoxExGender.Text; // 性別
@@ -619,6 +621,8 @@ namespace H_Staff {
             HTextBoxExNameKana.Text = hStaffMasterVo.NameKana;
             HTextBoxExName.Text = hStaffMasterVo.Name;
             HTextBoxExDisplayName.Text = hStaffMasterVo.DisplayName;
+            HTextBoxExOtherNameKana.Text = hStaffMasterVo.OtherNameKana;
+            HTextBoxExOtherName.Text = hStaffMasterVo.OtherName;
             HDateTimeExBirthDate.SetValue(hStaffMasterVo.BirthDate);
             HDateTimeExEmploymentDate.SetValue(hStaffMasterVo.EmploymentDate);
             HComboBoxExGender.Text = hStaffMasterVo.Gender;
@@ -915,6 +919,8 @@ namespace H_Staff {
             HTextBoxExNameKana.Text = string.Empty;
             HTextBoxExName.Text = string.Empty;
             HTextBoxExDisplayName.Text = string.Empty;
+            HTextBoxExOtherNameKana.Text = string.Empty;
+            HTextBoxExOtherName.Text = string.Empty;
             HDateTimeExBirthDate.SetBlank();
             HDateTimeExEmploymentDate.SetBlank();
             HComboBoxExGender.SelectedIndex = -1;

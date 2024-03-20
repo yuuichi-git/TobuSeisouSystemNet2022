@@ -25,6 +25,11 @@ namespace H_VehicleDispatch {
          */
         private readonly H_FlowLayoutPanelEx _hFlowLayoutPanelExFree;
         private readonly H_Board _hBoard;
+        /// <summary>
+        /// _hFlowLayoutPanelExFreeをクリアするタイミングを保持する
+        /// true:変更された false:変更されていない
+        /// </summary>
+        private bool _changeDateFlag = false;
         /*
          * Dao
          */
@@ -68,18 +73,6 @@ namespace H_VehicleDispatch {
              * コントロール初期化
              */
             InitializeComponent();
-
-            HButtonExLeft1.TextDirectionVertical = "StockBox";
-
-            HDateTimePickerOperationDate.SetValue(DateTime.Today);
-            ToolStripStatusLabelDetail.Text = string.Empty;
-            ToolStripProgressBar1.Value = 0;
-            /*
-             * 関連データを読込む
-             */
-            _listHSetMasterVo = _hSetMasterDao.SelectAllHSetMaster();
-            _listHCarMasterVo = _hCarMasterDao.SelectAllHCarMaster();
-            _listHStaffMasterVo = _hStaffMasterDao.SelectAllHStaffMaster();
             /*
              * Freeゾーンを作成
              */
@@ -93,6 +86,20 @@ namespace H_VehicleDispatch {
             _hFlowLayoutPanelExFree.DragOver += HFlowLayoutPanelExFree_DragOver;
             _hFlowLayoutPanelExFree.DragDrop += HFlowLayoutPanelExFree_DragDrop;
             HTableLayoutPanelExCenter.Controls.Add(_hFlowLayoutPanelExFree, 0, 1);
+            /*
+             * ControlButtonを初期化
+             */
+            HButtonExLeft1.TextDirectionVertical = "StockBox";
+
+            HDateTimePickerOperationDate.SetValue(DateTime.Today);
+            ToolStripStatusLabelDetail.Text = string.Empty;
+            ToolStripProgressBar1.Value = 0;
+            /*
+             * 関連データを読込む
+             */
+            _listHSetMasterVo = _hSetMasterDao.SelectAllHSetMaster();
+            _listHCarMasterVo = _hCarMasterDao.SelectAllHCarMaster();
+            _listHStaffMasterVo = _hStaffMasterDao.SelectAllHStaffMaster();
             /*
              * 配車用ボードを作成
              */
@@ -203,17 +210,27 @@ namespace H_VehicleDispatch {
             ToolStripStatusLabelDetail.Text = "配車表を作成しています・・・・";
             ToolStripProgressBar1.Value = 0;
             StatusStrip1.Update();
+            /*
+             * _hFlowLayoutPanelExFreeを初期化
+             */
+            if (_changeDateFlag) {
+                for (int _hFlowLayoutPanelExFreeControlCount = _hFlowLayoutPanelExFree.Controls.Count - 1; 0 <= _hFlowLayoutPanelExFreeControlCount; _hFlowLayoutPanelExFreeControlCount--) {
+                    _hFlowLayoutPanelExFree.Controls[_hFlowLayoutPanelExFreeControlCount].Dispose();
+                }
+                // 変更後、Flagを戻す
+                _changeDateFlag = false;
+            }
 
             // H_Boardを初期化
             this.HBoardControlRemove(_hBoard);
-            List<H_VehicleDispatchDetailVo> listHVehicleDispatchDetailVo = _hVehicleDispatchDetailDao.SelectAllHVehicleDispatchDetail(HDateTimePickerOperationDate.GetValue());
 
-            double i = 0;
+            List<H_VehicleDispatchDetailVo> listHVehicleDispatchDetailVo = _hVehicleDispatchDetailDao.SelectAllHVehicleDispatchDetail(HDateTimePickerOperationDate.GetValue());
+            double progressBarCount = 0;
             foreach (H_VehicleDispatchDetailVo hVehicleDispatchDetailVo in listHVehicleDispatchDetailVo) {
                 /*
                  * ToolStripStatusLabelDetail
                  */
-                ToolStripProgressBar1.Value = (int)Math.Round(i++ / listHVehicleDispatchDetailVo.Count() * 100);
+                ToolStripProgressBar1.Value = (int)Math.Round(progressBarCount++ / listHVehicleDispatchDetailVo.Count() * 100);
                 StatusStrip1.Update();
                 /*
                  * H_ControlVoを作成する
@@ -577,7 +594,6 @@ namespace H_VehicleDispatch {
                     } else {
                         MessageBox.Show("更新がキャンセルされました", "メッセージ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-
                     hVehicleDispatchEdit.Dispose();
                     MessageBox.Show("処理が終了しました。", "メッセージ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     break;
@@ -585,13 +601,13 @@ namespace H_VehicleDispatch {
                  * B4で印刷する
                  */
                 case "ToolStripMenuItemPrintB4":
-                    MessageBox.Show("ToolStripMenuItemPrintB4");
+
                     break;
                 /*
                  * 終了処理
                  */
                 case "ToolStripMenuItemExit":
-                    MessageBox.Show("ToolStripMenuItemExit");
+                    this.Close();
                     break;
             }
         }
@@ -755,6 +771,35 @@ namespace H_VehicleDispatch {
                     break;
                 case "ToolStripMenuItemStaffEquioment": // 備品を支給する
                     MessageBox.Show("ToolStripMenuItemStaffEquioment");
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// HDateTimePickerOperationDate_ValueChanged
+        /// 日付を変えた時の処理
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HDateTimePickerOperationDate_ValueChanged(object sender, EventArgs e) {
+            // 日付変更Flagをセットする
+            _changeDateFlag = true;
+        }
+
+        /// <summary>
+        /// H_VehicleDispatchBoard_FormClosing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void H_VehicleDispatchBoard_FormClosing(object sender, FormClosingEventArgs e) {
+            DialogResult dialogResult = MessageBox.Show("アプリケーションを終了します。よろしいですか？", "メッセージ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            switch (dialogResult) {
+                case DialogResult.OK:
+                    e.Cancel = false;
+                    Dispose();
+                    break;
+                case DialogResult.Cancel:
+                    e.Cancel = true;
                     break;
             }
         }

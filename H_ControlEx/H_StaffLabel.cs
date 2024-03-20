@@ -26,7 +26,7 @@ namespace H_ControlEx {
          * Vo
          */
         private H_ControlVo _hControlVo;
-        private readonly H_StaffMasterVo _staffMasterVo;
+        private readonly H_StaffMasterVo _hStaffMasterVo;
         private H_VehicleDispatchDetailVo _hVehicleDispatchDetailVo;
         /*
          * １つのパネルのサイズ
@@ -82,7 +82,7 @@ namespace H_ControlEx {
         /// <summary>
         /// コンストラクター
         /// </summary>
-        /// <param name="hStaffMasterVo"></param>
+        /// <param name="hControlVo"></param>
         public H_StaffLabel(H_ControlVo hControlVo) {
             /*
              * H_Dao 
@@ -92,7 +92,7 @@ namespace H_ControlEx {
              * Vo
              */
             _hControlVo = hControlVo;
-            _staffMasterVo = hControlVo.HStaffMasterVo;
+            _hStaffMasterVo = hControlVo.HStaffMasterVo;
             _hVehicleDispatchDetailVo = hControlVo.HVehicleDispatchDetailVo;
             /*
              * ControlIni
@@ -104,13 +104,13 @@ namespace H_ControlEx {
             this.Height = (int)_panelHeight - 4;
             this.Margin = new Padding(2);
             this.Name = "H_StaffLabel";
-            this.Tag = _staffMasterVo;
+            this.Tag = _hStaffMasterVo;
             this.Width = (int)_panelWidth - 4;
             this.CreateContextMenuStrip();
             /*
              * Imageを選択する
              */
-            switch (_staffMasterVo.Belongs) {
+            switch (_hStaffMasterVo.Belongs) {
                 case 10: // 役員
                 case 11: // 社員
                     _imageStaffLabel = Properties.Resources.StaffLabelWhite;
@@ -123,7 +123,7 @@ namespace H_ControlEx {
                     break;
                 case 20: // 新運転
                 case 21: // 自運労
-                    switch (_staffMasterVo.JobForm) {
+                    switch (_hStaffMasterVo.JobForm) {
                         case 11:
                             _imageStaffLabel = Properties.Resources.StaffLabelGreen;
                             break;
@@ -179,6 +179,16 @@ namespace H_ControlEx {
                         this.StaffRollCallYmdHms = _hVehicleDispatchDetailVo.StaffRollCallYmdHms4;
                         break;
                 }
+                /*
+                 * ToolTip初期化
+                 */
+                if (this.StaffMemoFlag) {
+                    ToolTip toolTip = new();
+                    toolTip.InitialDelay = 500; // ToolTipが表示されるまでの時間
+                    toolTip.ReshowDelay = 1000; // ToolTipが表示されている時に、別のToolTipを表示するまでの時間
+                    toolTip.AutoPopDelay = 10000; // ToolTipを表示する時間
+                    toolTip.SetToolTip(this, this.StaffMemo);
+                }
             } else {
                 switch (_hControlVo.SelectNumberStaffMasterVo) {
                     case 0:
@@ -219,11 +229,11 @@ namespace H_ControlEx {
             stringFormat.Alignment = StringAlignment.Center;
             stringFormat.FormatFlags = StringFormatFlags.DirectionVertical;
             stringFormat.LineAlignment = StringAlignment.Center;
-            string displayName = string.Concat(_staffMasterVo.DisplayName);
+            string displayName = string.Concat(_hStaffMasterVo.DisplayName);
             /*
              * 誕生日は色を変える 
              */
-            if (_staffMasterVo.BirthDate.Month == DateTime.Now.Month && _staffMasterVo.BirthDate.Day == DateTime.Now.Day) {
+            if (_hStaffMasterVo.BirthDate.Month == DateTime.Now.Month && _hStaffMasterVo.BirthDate.Day == DateTime.Now.Day) {
                 e.Graphics.DrawString(displayName, _drawFontStaffLabel, Brushes.Red, new Rectangle(0, 0, (int)_panelWidth - 6, (int)_panelHeight - 6), stringFormat);
             } else {
                 e.Graphics.DrawString(displayName, _drawFontStaffLabel, Brushes.Black, new Rectangle(0, 0, (int)_panelWidth - 6, (int)_panelHeight - 6), stringFormat);
@@ -275,10 +285,6 @@ namespace H_ControlEx {
                 foreach (object item in ((ContextMenuStrip)sender).Items) {
                     if (item.GetType() == typeof(ToolStripMenuItem)) {
                         switch (((ToolStripMenuItem)item).Name) {
-                            case "ToolStripMenuItemStaffDetail":
-                            case "ToolStripMenuItemStaffMemo":
-                                ((ToolStripMenuItem)item).Enabled = true;
-                                break;
                             default:
                                 ((ToolStripMenuItem)item).Enabled = false;
                                 break;

@@ -18,6 +18,8 @@ namespace H_Vo {
         private string _nameKana;
         private string _name;
         private string _displayName;
+        private string _otherNameKana;
+        private string _otherName;
         private string _gender;
         private DateTime _birthDate;
         private DateTime _employmentDate;
@@ -79,6 +81,8 @@ namespace H_Vo {
             _occupation = 0;
             _nameKana = string.Empty;
             _name = string.Empty;
+            _otherNameKana = string.Empty;
+            _otherName = string.Empty;
             _displayName = string.Empty;
             _gender = string.Empty;
             _birthDate = _defaultDateTime;
@@ -189,6 +193,20 @@ namespace H_Vo {
         public string Name {
             get => _name;
             set => _name = value;
+        }
+        /// <summary>
+        /// 健康診断用の表記
+        /// </summary>
+        public string OtherNameKana {
+            get => _otherNameKana;
+            set => _otherNameKana = value;
+        }
+        /// <summary>
+        /// 健康診断用の表記
+        /// </summary>
+        public string OtherName {
+            get => _otherName;
+            set => _otherName = value;
         }
         /// <summary>
         /// 画面表示・配車表用氏名

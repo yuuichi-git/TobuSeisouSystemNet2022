@@ -27,8 +27,8 @@
             HTableLayoutPanelExBase = new H_ControlEx.H_TableLayoutPanelEx();
             SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("HTableLayoutPanelExBase.Controls"));
             SheetViewList = SpreadList.GetSheet(0);
-            SheetViewList2 = SpreadList.GetSheet(1);
-            SheetViewList3 = SpreadList.GetSheet(2);
+            SheetViewMedical = SpreadList.GetSheet(1);
+            SheetViewDriver = SpreadList.GetSheet(2);
             StatusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             ToolStripStatusLabelDetail = new ToolStripStatusLabel();
@@ -102,7 +102,7 @@
             // 
             // SpreadList
             // 
-            SpreadList.AccessibleDescription = "SpreadList, 従事者リスト, Row 0, Column 0";
+            SpreadList.AccessibleDescription = "SpreadList, 健康診断用リスト, Row 0, Column 0";
             SpreadList.Dock = DockStyle.Fill;
             SpreadList.Font = new Font("ＭＳ Ｐゴシック", 11F, FontStyle.Regular, GraphicsUnit.Point);
             SpreadList.Location = new Point(3, 118);
@@ -616,7 +616,7 @@
         private TabPage tabPage10;
         private TabPage tabPage11;
         private FarPoint.Win.Spread.SheetView SheetViewList;
-        private FarPoint.Win.Spread.SheetView SheetViewList2;
-        private FarPoint.Win.Spread.SheetView SheetViewList3;
+        private FarPoint.Win.Spread.SheetView SheetViewMedical;
+        private FarPoint.Win.Spread.SheetView SheetViewDriver;
     }
 }

@@ -50,7 +50,7 @@ namespace H_ControlEx {
         /*
          * Dao
          */
-        private readonly H_VehicleDispatchBodyDao _hVehicleDispatchBodyDao;
+        private readonly H_VehicleDispatchDetailDao _hVehicleDispatchDetailDao;
         /*
          * Vo
          */
@@ -109,7 +109,7 @@ namespace H_ControlEx {
             /*
              * Dao
              */
-            _hVehicleDispatchBodyDao = new(hControlVo.ConnectionVo);
+            _hVehicleDispatchDetailDao = new(hControlVo.ConnectionVo);
             /*
              * Vo
              */
@@ -409,7 +409,60 @@ namespace H_ControlEx {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void HSetControl_DragDrop(object sender, DragEventArgs e) {
-            Event_HSetControl_DragDrop.Invoke(sender, e);
+            /*
+             * ここでDrop先にObjectが存在した場合、以降の処理をキャンセルするコードを書く
+             */
+            bool updateFlag = false; // true:更新不可能 false:更新可能
+            if (e.Data.GetDataPresent(typeof(H_SetLabel))) {
+                try {
+                    updateFlag = _hVehicleDispatchDetailDao.CheckSetCode(_hControlVo.CellNumber, _hControlVo.OperationDate);
+                } catch (Exception exception) {
+                    MessageBox.Show(exception.Message);
+                }
+                if (updateFlag) {
+                    MessageBox.Show("ドロップ先のセルには既に配車先ラベルがセットされています。最新化をして下さい", "データベース同期エラー", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                } else {
+                    // Eventを親へ転送する
+                    Event_HSetControl_DragDrop.Invoke(sender, e);
+                }
+            }
+
+            if (e.Data.GetDataPresent(typeof(H_CarLabel))) {
+                try {
+                    updateFlag = _hVehicleDispatchDetailDao.CheckCarCode(_hControlVo.CellNumber, _hControlVo.OperationDate);
+                } catch (Exception exception) {
+                    MessageBox.Show(exception.Message);
+                }
+                if (updateFlag) {
+                    MessageBox.Show("ドロップ先のセルには既に車両ラベルがセットされています。最新化をして下さい", "データベース同期エラー", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                } else {
+                    // Eventを親へ転送する
+                    Event_HSetControl_DragDrop.Invoke(sender, e);
+                }
+            }
+
+            if (e.Data.GetDataPresent(typeof(H_StaffLabel))) {
+                /*
+                 * カーソル座標からどのセルにDropされたかを調べる 
+                 */
+                Point clientPoint = ((H_SetControl)sender).PointToClient(new Point(e.X, e.Y));
+                Point cellPoint = new(clientPoint.X / (int)_panelWidth, clientPoint.Y / (int)_panelHeight);
+                int staffNumber = cellPoint.X * 2 + (cellPoint.Y - 2);
+                try {
+                    updateFlag = _hVehicleDispatchDetailDao.CheckStaffCode(_hControlVo.CellNumber, _hControlVo.OperationDate, staffNumber);
+                } catch (Exception exception) {
+                    MessageBox.Show(exception.Message);
+                }
+                if (updateFlag) {
+                    MessageBox.Show("ドロップ先のセルには既に従事者ラベルがセットされています。最新化をして下さい", "データベース同期エラー", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                } else {
+                    // Eventを親へ転送する
+                    Event_HSetControl_DragDrop.Invoke(sender, e);
+                }
+            }
         }
 
         /// <summary>

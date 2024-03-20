@@ -13,7 +13,6 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <Optimize>True</Optimize>
     <WarningLevel>6</WarningLevel>
   </PropertyGroup>
 

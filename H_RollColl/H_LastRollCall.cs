@@ -14,7 +14,7 @@ using H_Vo;
 namespace H_RollColl {
     public partial class H_LastRollCall : Form {
         private H_SetLabel _hSetLabel;
-        private readonly DateTime _operationDateTime;
+        private readonly DateTime _operationDate;
         private readonly int _cellNumber;
         private readonly int _setCode;
         /*
@@ -33,7 +33,7 @@ namespace H_RollColl {
         /// <param name="connectionVo"></param>
         public H_LastRollCall(ConnectionVo connectionVo, H_SetLabel hSetLabel, int cellNumber, int setCode, DateTime operationDate) {
             _hSetLabel = hSetLabel;
-            _operationDateTime = operationDate;
+            _operationDate = operationDate;
             _cellNumber = cellNumber;
             _setCode = setCode;
             /*
@@ -66,7 +66,7 @@ namespace H_RollColl {
              */
 
             try {
-                if (_hLastRollCallDao.ExistenceHLastRollCallVo(_setCode, _operationDateTime.Date)) {
+                if (_hLastRollCallDao.ExistenceHLastRollCallVo(_setCode, _operationDate.Date)) {
                     try {
                         _hVehicleDispatchDetailDao.UpdateLastRollCall(HCheckBoxExLastRollCallCancel.Checked, _cellNumber, CreateHLastRollCallVo());
                         _hLastRollCallDao.UpdateOneHLastRollCallVo(CreateHLastRollCallVo());
@@ -128,8 +128,8 @@ namespace H_RollColl {
         /// InitializeControl
         /// </summary>
         private void InitializeControl() {
-            HDateTimePickerExOperationDate.Value = _operationDateTime.Date;
-            HMaskedTextBoxExFirstRollCallTime.Text = string.Empty;
+            HDateTimePickerExOperationDate.Value = _operationDate.Date;
+            HMaskedTextBoxExFirstRollCallTime.Text = _hVehicleDispatchDetailDao.GetStaffRollCallYmdHms1(_cellNumber, _operationDate).ToString("HH:mm");
             HNumericUpDownExLastPlantCount.Value = 0;
             HComboBoxExLastPlantName.Text = string.Empty;
             HMaskedTextBoxExLastPlantYmdHms.Text = string.Empty;

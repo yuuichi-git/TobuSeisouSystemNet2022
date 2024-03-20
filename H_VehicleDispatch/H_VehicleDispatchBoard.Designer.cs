@@ -29,11 +29,12 @@
             ToolStripMenuItemExit = new ToolStripMenuItem();
             ToolStripMenuItemInitialize = new ToolStripMenuItem();
             ToolStripMenuItemInitializeVehicleDispatchBody = new ToolStripMenuItem();
+            toolStripSeparator2 = new ToolStripSeparator();
             ToolStripMenuItemInitializeVehicleDispatchCopy = new ToolStripMenuItem();
             ToolStripMenuItemUpdateVehicleDispatch = new ToolStripMenuItem();
-            ToolStripMenuItemInputTAITOU = new ToolStripMenuItem();
-            toolStripSeparator1 = new ToolStripSeparator();
             ToolStripMenuItemUpdateVehicleDispatchBody = new ToolStripMenuItem();
+            toolStripSeparator1 = new ToolStripSeparator();
+            ToolStripMenuItemInputTAITOU = new ToolStripMenuItem();
             ToolStripMenuItemPrint = new ToolStripMenuItem();
             ToolStripMenuItemPrintB4 = new ToolStripMenuItem();
             ToolStripMenuItemHelp = new ToolStripMenuItem();
@@ -53,7 +54,6 @@
             HButtonExUpdate = new H_ControlEx.H_ButtonEx();
             HDateTimePickerOperationDate = new H_ControlEx.H_DateTimePickerEx();
             h_LabelEx1 = new H_ControlEx.H_LabelEx();
-            toolStripSeparator2 = new ToolStripSeparator();
             h_TableLayoutPanelExBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -121,6 +121,11 @@
             ToolStripMenuItemInitializeVehicleDispatchBody.Text = "配車を初期化する(本番登録)";
             ToolStripMenuItemInitializeVehicleDispatchBody.Click += ToolStripMenuItem_Click;
             // 
+            // toolStripSeparator2
+            // 
+            toolStripSeparator2.Name = "toolStripSeparator2";
+            toolStripSeparator2.Size = new Size(259, 6);
+            // 
             // ToolStripMenuItemInitializeVehicleDispatchCopy
             // 
             ToolStripMenuItemInitializeVehicleDispatchCopy.Name = "ToolStripMenuItemInitializeVehicleDispatchCopy";
@@ -135,24 +140,24 @@
             ToolStripMenuItemUpdateVehicleDispatch.Size = new Size(43, 20);
             ToolStripMenuItemUpdateVehicleDispatch.Text = "登録";
             // 
-            // ToolStripMenuItemInputTAITOU
-            // 
-            ToolStripMenuItemInputTAITOU.Name = "ToolStripMenuItemInputTAITOU";
-            ToolStripMenuItemInputTAITOU.Size = new Size(260, 22);
-            ToolStripMenuItemInputTAITOU.Text = "台東古紙　収集実績入力";
-            ToolStripMenuItemInputTAITOU.Click += ToolStripMenuItem_Click;
-            // 
-            // toolStripSeparator1
-            // 
-            toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(257, 6);
-            // 
             // ToolStripMenuItemUpdateVehicleDispatchBody
             // 
             ToolStripMenuItemUpdateVehicleDispatchBody.Name = "ToolStripMenuItemUpdateVehicleDispatchBody";
             ToolStripMenuItemUpdateVehicleDispatchBody.Size = new Size(260, 22);
             ToolStripMenuItemUpdateVehicleDispatchBody.Text = "この配車組(指定曜日)を本番登録する";
             ToolStripMenuItemUpdateVehicleDispatchBody.Click += ToolStripMenuItem_Click;
+            // 
+            // toolStripSeparator1
+            // 
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            toolStripSeparator1.Size = new Size(257, 6);
+            // 
+            // ToolStripMenuItemInputTAITOU
+            // 
+            ToolStripMenuItemInputTAITOU.Name = "ToolStripMenuItemInputTAITOU";
+            ToolStripMenuItemInputTAITOU.Size = new Size(260, 22);
+            ToolStripMenuItemInputTAITOU.Text = "台東古紙/収集実績入力";
+            ToolStripMenuItemInputTAITOU.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemPrint
             // 
@@ -338,6 +343,7 @@
             HDateTimePickerOperationDate.TabIndex = 0;
             HDateTimePickerOperationDate.TabStop = false;
             HDateTimePickerOperationDate.Value = new DateTime(2023, 10, 10, 0, 0, 0, 0);
+            HDateTimePickerOperationDate.ValueChanged += HDateTimePickerOperationDate_ValueChanged;
             // 
             // h_LabelEx1
             // 
@@ -348,11 +354,6 @@
             h_LabelEx1.TabIndex = 1;
             h_LabelEx1.Text = "配車日";
             // 
-            // toolStripSeparator2
-            // 
-            toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(259, 6);
-            // 
             // H_VehicleDispatchBoard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -362,6 +363,7 @@
             MainMenuStrip = MenuStrip1;
             Name = "H_VehicleDispatchBoard";
             Text = "H_VehicleDispatchBoard";
+            FormClosing += H_VehicleDispatchBoard_FormClosing;
             h_TableLayoutPanelExBase.ResumeLayout(false);
             h_TableLayoutPanelExBase.PerformLayout();
             MenuStrip1.ResumeLayout(false);

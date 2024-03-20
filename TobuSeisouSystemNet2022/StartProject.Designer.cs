@@ -201,6 +201,8 @@
             label44 = new Label();
             label45 = new Label();
             TabPage3 = new TabPage();
+            label59 = new Label();
+            label60 = new Label();
             label55 = new Label();
             label56 = new Label();
             label53 = new Label();
@@ -240,7 +242,7 @@
             TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
             TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
-            TableLayoutPanelBase.Size = new Size(1203, 675);
+            TableLayoutPanelBase.Size = new Size(1159, 675);
             TableLayoutPanelBase.TabIndex = 0;
             // 
             // MenuStrip1
@@ -249,7 +251,7 @@
             MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemDataBase, ToolStripMenuItemHelp });
             MenuStrip1.Location = new Point(0, 0);
             MenuStrip1.Name = "MenuStrip1";
-            MenuStrip1.Size = new Size(1203, 24);
+            MenuStrip1.Size = new Size(1159, 24);
             MenuStrip1.TabIndex = 0;
             MenuStrip1.Text = "menuStrip1";
             // 
@@ -293,7 +295,7 @@
             StatusStrip1.Items.AddRange(new ToolStripItem[] { ToolStripStatusLabel1 });
             StatusStrip1.Location = new Point(0, 653);
             StatusStrip1.Name = "StatusStrip1";
-            StatusStrip1.Size = new Size(1203, 22);
+            StatusStrip1.Size = new Size(1159, 22);
             StatusStrip1.SizingGrip = false;
             StatusStrip1.TabIndex = 1;
             StatusStrip1.Text = "statusStrip1";
@@ -631,7 +633,7 @@
             PanelRight.Controls.Add(label28);
             PanelRight.Controls.Add(label29);
             PanelRight.Dock = DockStyle.Fill;
-            PanelRight.Location = new Point(906, 27);
+            PanelRight.Location = new Point(862, 27);
             PanelRight.Name = "PanelRight";
             PanelRight.Size = new Size(294, 621);
             PanelRight.TabIndex = 4;
@@ -903,7 +905,7 @@
             HTableLayoutPanelExCenter.RowCount = 2;
             HTableLayoutPanelExCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 142F));
             HTableLayoutPanelExCenter.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            HTableLayoutPanelExCenter.Size = new Size(597, 621);
+            HTableLayoutPanelExCenter.Size = new Size(553, 621);
             HTableLayoutPanelExCenter.TabIndex = 5;
             // 
             // HPanelTop
@@ -919,7 +921,7 @@
             HPanelTop.Dock = DockStyle.Fill;
             HPanelTop.Location = new Point(3, 3);
             HPanelTop.Name = "HPanelTop";
-            HPanelTop.Size = new Size(591, 136);
+            HPanelTop.Size = new Size(547, 136);
             HPanelTop.TabIndex = 4;
             // 
             // HComboBoxMoniter
@@ -945,7 +947,7 @@
             // 
             // ButtonDbConnect
             // 
-            ButtonDbConnect.Location = new Point(404, 12);
+            ButtonDbConnect.Location = new Point(356, 12);
             ButtonDbConnect.Name = "ButtonDbConnect";
             ButtonDbConnect.Size = new Size(175, 34);
             ButtonDbConnect.TabIndex = 3;
@@ -1022,7 +1024,7 @@
             HTabControlEx.Location = new Point(3, 145);
             HTabControlEx.Name = "HTabControlEx";
             HTabControlEx.SelectedIndex = 0;
-            HTabControlEx.Size = new Size(591, 473);
+            HTabControlEx.Size = new Size(547, 473);
             HTabControlEx.SizeMode = TabSizeMode.Fixed;
             HTabControlEx.TabIndex = 5;
             // 
@@ -1051,7 +1053,7 @@
             TabPage1.Location = new Point(4, 24);
             TabPage1.Name = "TabPage1";
             TabPage1.Padding = new Padding(3);
-            TabPage1.Size = new Size(583, 445);
+            TabPage1.Size = new Size(539, 445);
             TabPage1.TabIndex = 0;
             TabPage1.Text = "現行システム";
             TabPage1.UseVisualStyleBackColor = true;
@@ -1319,7 +1321,7 @@
             TabPage2.Location = new Point(4, 24);
             TabPage2.Name = "TabPage2";
             TabPage2.Padding = new Padding(3);
-            TabPage2.Size = new Size(583, 445);
+            TabPage2.Size = new Size(539, 445);
             TabPage2.TabIndex = 1;
             TabPage2.Text = "新型（令和６年度～）";
             TabPage2.UseVisualStyleBackColor = true;
@@ -1426,6 +1428,8 @@
             // 
             // TabPage3
             // 
+            TabPage3.Controls.Add(label59);
+            TabPage3.Controls.Add(label60);
             TabPage3.Controls.Add(label55);
             TabPage3.Controls.Add(label56);
             TabPage3.Controls.Add(label53);
@@ -1434,27 +1438,52 @@
             TabPage3.Controls.Add(label52);
             TabPage3.Location = new Point(4, 24);
             TabPage3.Name = "TabPage3";
-            TabPage3.Size = new Size(583, 445);
+            TabPage3.Size = new Size(539, 445);
             TabPage3.TabIndex = 2;
             TabPage3.Text = "データ移行ツール";
             TabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label59
+            // 
+            label59.AutoSize = true;
+            label59.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label59.ForeColor = Color.Blue;
+            label59.Location = new Point(44, 136);
+            label59.Name = "label59";
+            label59.Size = new Size(377, 17);
+            label59.TabIndex = 11;
+            label59.Text = "collection_weight_taitouをH_CollectionWeightTaitouへ同期します。";
+            // 
+            // label60
+            // 
+            label60.AutoSize = true;
+            label60.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label60.Location = new Point(18, 118);
+            label60.Name = "label60";
+            label60.Size = new Size(155, 17);
+            label60.TabIndex = 10;
+            label60.Tag = "DbHCollectionWeightTaitou";
+            label60.Text = "H_CollectionWeightTaitou";
+            label60.Click += Label_Click;
+            label60.MouseEnter += Label_MouseEnter;
+            label60.MouseLeave += Label_MouseLeave;
             // 
             // label55
             // 
             label55.AutoSize = true;
             label55.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label55.ForeColor = Color.Blue;
-            label55.Location = new Point(42, 26);
+            label55.Location = new Point(44, 26);
             label55.Name = "label55";
             label55.Size = new Size(230, 17);
             label55.TabIndex = 9;
-            label55.Text = "CarMasterをH_CarMasterへ移行します。";
+            label55.Text = "CarMasterをH_CarMasterへ同期します。";
             // 
             // label56
             // 
             label56.AutoSize = true;
             label56.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label56.Location = new Point(16, 8);
+            label56.Location = new Point(18, 8);
             label56.Name = "label56";
             label56.Size = new Size(83, 17);
             label56.TabIndex = 8;
@@ -1468,8 +1497,8 @@
             // 
             label53.AutoSize = true;
             label53.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label53.ForeColor = Color.Blue;
-            label53.Location = new Point(42, 100);
+            label53.ForeColor = Color.Red;
+            label53.Location = new Point(44, 100);
             label53.Name = "label53";
             label53.Size = new Size(401, 17);
             label53.TabIndex = 7;
@@ -1479,7 +1508,7 @@
             // 
             label54.AutoSize = true;
             label54.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label54.Location = new Point(16, 82);
+            label54.Location = new Point(18, 82);
             label54.Name = "label54";
             label54.Size = new Size(141, 17);
             label54.TabIndex = 6;
@@ -1494,17 +1523,17 @@
             label51.AutoSize = true;
             label51.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label51.ForeColor = Color.Blue;
-            label51.Location = new Point(42, 64);
+            label51.Location = new Point(44, 64);
             label51.Name = "label51";
             label51.Size = new Size(244, 17);
             label51.TabIndex = 5;
-            label51.Text = "StaffMasterをH_StaffMasterへ移行します。";
+            label51.Text = "StaffMasterをH_StaffMasterへ同期します。";
             // 
             // label52
             // 
             label52.AutoSize = true;
             label52.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label52.Location = new Point(16, 46);
+            label52.Location = new Point(18, 46);
             label52.Name = "label52";
             label52.Size = new Size(90, 17);
             label52.TabIndex = 4;
@@ -1518,7 +1547,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1203, 675);
+            ClientSize = new Size(1159, 675);
             Controls.Add(TableLayoutPanelBase);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
@@ -1638,5 +1667,7 @@
         private Label label56;
         private Label label57;
         private Label label58;
+        private Label label59;
+        private Label label60;
     }
 }

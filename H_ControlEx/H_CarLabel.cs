@@ -101,6 +101,16 @@ namespace H_ControlEx {
                 this.CarMemo = _hVehicleDispatchDetailVo.CarMemo; // メモ
                 this.CarMemoFlag = _hVehicleDispatchDetailVo.CarMemoFlag; // メモフラグ
                 this.CarProxyFlag = _hVehicleDispatchDetailVo.CarProxyFlag; // 代車フラグ
+                /*
+                 * ToolTip初期化
+                 */
+                if (this.CarMemoFlag) {
+                    ToolTip toolTip = new();
+                    toolTip.InitialDelay = 500; // ToolTipが表示されるまでの時間
+                    toolTip.ReshowDelay = 1000; // ToolTipが表示されている時に、別のToolTipを表示するまでの時間
+                    toolTip.AutoPopDelay = 10000; // ToolTipを表示する時間
+                    toolTip.SetToolTip(this, this.CarMemo);
+                }
             } else {
                 this.CarGarageCode = _hCarMasterVo.GarageCode; // 車庫地
             }

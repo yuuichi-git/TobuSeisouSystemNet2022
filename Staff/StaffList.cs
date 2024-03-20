@@ -7,23 +7,19 @@ using Dao;
 using FarPoint.Excel;
 using FarPoint.Win.Spread;
 
+using H_Vo;
+
 using License;
 
 using Toukanpo;
 
-using H_Vo;
-
 namespace Staff {
     public partial class StaffList : Form {
         private InitializeForm _initializeForm = new();
-        private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01, 00, 00, 00, 000);
+        private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
         private readonly Dictionary<int, string> dictionaryBelongs = new Dictionary<int, string> { { 10, "–ğˆõ" }, { 11, "Ğˆõ" }, { 12, "ƒAƒ‹ƒoƒCƒg" }, { 13, "”hŒ­" }, { 20, "V‰^“]" }, { 21, "©‰^˜J" } };
         private readonly Dictionary<int, string> dictionaryJobForm = new Dictionary<int, string> { { 10, "’·ŠúŒÙ—p" }, { 11, "è’ " }, { 12, "ƒAƒ‹ƒoƒCƒg" }, { 99, "" } };
         private readonly Dictionary<int, string> dictionaryOccupation = new Dictionary<int, string> { { 10, "‰^“]è" }, { 11, "ì‹Æˆõ" }, { 99, "" } };
-        /*
-         * Dao
-         */
-
         /*
          * Vo
          */

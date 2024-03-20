@@ -105,8 +105,6 @@ namespace H_ControlEx {
          * 色の定義
          */
         private readonly SolidBrush _brushColorBlack = new(Color.Black);
-        private readonly SolidBrush _solidBrushContactInformation = new(Color.FromArgb(15, Color.LimeGreen));
-        private readonly SolidBrush _solidBrushFaxTransmission = new(Color.FromArgb(15, Color.IndianRed));
         /*
          * Fontの定義
          */
@@ -167,6 +165,16 @@ namespace H_ControlEx {
                 this.OperationFlag = _hVehicleDispatchDetailVo.OperationFlag; // 稼働フラグ
                 this.ShiftCode = _hVehicleDispatchDetailVo.ShiftCode; // 番手コード
                 this.StandByFlag = _hVehicleDispatchDetailVo.StandByFlag; // 待機フラグ
+                /*
+                 * ToolTip初期化
+                 */
+                if (this.MemoFlag) {
+                    ToolTip toolTip = new();
+                    toolTip.InitialDelay = 500; // ToolTipが表示されるまでの時間
+                    toolTip.ReshowDelay = 1000; // ToolTipが表示されている時に、別のToolTipを表示するまでの時間
+                    toolTip.AutoPopDelay = 10000; // ToolTipを表示する時間
+                    toolTip.SetToolTip(this, this.Memo);
+                }
             } else {
                 /*
                  * H_SetLabelを作成するのに最低限必要な値をセットする
