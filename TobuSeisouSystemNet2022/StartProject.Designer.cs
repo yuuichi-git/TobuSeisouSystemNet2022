@@ -192,6 +192,8 @@
             label4 = new Label();
             label3 = new Label();
             TabPage2 = new TabPage();
+            label61 = new Label();
+            label62 = new Label();
             label57 = new Label();
             label58 = new Label();
             label49 = new Label();
@@ -1310,6 +1312,8 @@
             // 
             // TabPage2
             // 
+            TabPage2.Controls.Add(label61);
+            TabPage2.Controls.Add(label62);
             TabPage2.Controls.Add(label57);
             TabPage2.Controls.Add(label58);
             TabPage2.Controls.Add(label49);
@@ -1326,12 +1330,37 @@
             TabPage2.Text = "新型（令和６年度～）";
             TabPage2.UseVisualStyleBackColor = true;
             // 
+            // label61
+            // 
+            label61.AutoSize = true;
+            label61.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label61.ForeColor = Color.DarkGray;
+            label61.Location = new Point(40, 184);
+            label61.Name = "label61";
+            label61.Size = new Size(139, 17);
+            label61.TabIndex = 13;
+            label61.Text = "点呼記録簿を作成します";
+            // 
+            // label62
+            // 
+            label62.AutoSize = true;
+            label62.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label62.Location = new Point(14, 168);
+            label62.Name = "label62";
+            label62.Size = new Size(125, 17);
+            label62.TabIndex = 12;
+            label62.Tag = "H_CollectionWeightChiyoda";
+            label62.Text = "千代田区配車集計表";
+            label62.Click += Label_Click;
+            label62.MouseEnter += Label_MouseEnter;
+            label62.MouseLeave += Label_MouseLeave;
+            // 
             // label57
             // 
             label57.AutoSize = true;
             label57.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label57.ForeColor = Color.DarkGray;
-            label57.Location = new Point(42, 132);
+            label57.Location = new Point(40, 144);
             label57.Name = "label57";
             label57.Size = new Size(139, 17);
             label57.TabIndex = 11;
@@ -1341,7 +1370,7 @@
             // 
             label58.AutoSize = true;
             label58.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label58.Location = new Point(16, 116);
+            label58.Location = new Point(14, 128);
             label58.Name = "label58";
             label58.Size = new Size(146, 17);
             label58.TabIndex = 10;
@@ -1356,7 +1385,7 @@
             label49.AutoSize = true;
             label49.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label49.ForeColor = Color.DarkGray;
-            label49.Location = new Point(42, 96);
+            label49.Location = new Point(42, 64);
             label49.Name = "label49";
             label49.Size = new Size(113, 17);
             label49.TabIndex = 9;
@@ -1366,7 +1395,7 @@
             // 
             label50.AutoSize = true;
             label50.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label50.Location = new Point(16, 80);
+            label50.Location = new Point(16, 48);
             label50.Name = "label50";
             label50.Size = new Size(47, 17);
             label50.TabIndex = 8;
@@ -1381,7 +1410,7 @@
             label47.AutoSize = true;
             label47.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label47.ForeColor = Color.DarkGray;
-            label47.Location = new Point(42, 60);
+            label47.Location = new Point(42, 104);
             label47.Name = "label47";
             label47.Size = new Size(172, 17);
             label47.TabIndex = 7;
@@ -1391,7 +1420,7 @@
             // 
             label48.AutoSize = true;
             label48.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label48.Location = new Point(16, 44);
+            label48.Location = new Point(16, 88);
             label48.Name = "label48";
             label48.Size = new Size(73, 17);
             label48.TabIndex = 6;
@@ -1669,5 +1698,7 @@
         private Label label58;
         private Label label59;
         private Label label60;
+        private Label label61;
+        private Label label62;
     }
 }

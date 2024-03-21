@@ -17,6 +17,8 @@ using Common;
 
 using CommuterInsurance;
 
+using H_CollectionWeight;
+
 using H_Common;
 
 using H_Dao;
@@ -306,6 +308,21 @@ namespace TobuSeisouSystemNet2022 {
                                 hRollCallRecordSheet.Size = new Size(1370, 1080);
                                 hRollCallRecordSheet.WindowState = FormWindowState.Normal;
                                 hRollCallRecordSheet.Show(this);
+                                break;
+                            // 千代田区配車集計表
+                            case "H_CollectionWeightChiyoda":
+                                // Screenを退避(新型のみ)
+                                _connectionVo.Screen = (Screen)HComboBoxMoniter.SelectedItem;
+                                /*
+                                 * Formを表示する
+                                 */
+                                H_CollectionWeightCHIYODA hCollectionWeightCHIYODA = new(_connectionVo);
+                                Rectangle rectangleHCollectionWeightCHIYODA = new Desktop().GetMonitorWorkingArea(hCollectionWeightCHIYODA, (Screen)HComboBoxMoniter.SelectedItem);
+                                hCollectionWeightCHIYODA.KeyPreview = true;
+                                hCollectionWeightCHIYODA.Location = rectangleHCollectionWeightCHIYODA.Location;
+                                hCollectionWeightCHIYODA.Size = new Size(1000, 800);
+                                hCollectionWeightCHIYODA.WindowState = FormWindowState.Normal;
+                                hCollectionWeightCHIYODA.Show(this);
                                 break;
 
                             /*

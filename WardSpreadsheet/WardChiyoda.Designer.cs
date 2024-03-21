@@ -24,262 +24,255 @@
         /// </summary>
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(WardChiyoda));
-            this.TableLayoutPanelBase = new System.Windows.Forms.TableLayoutPanel();
-            this.MenuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.ToolStripMenuItemMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemPrint = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.ToolStripMenuItemHelp = new System.Windows.Forms.ToolStripMenuItem();
-            this.PanelUp = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.DateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.DateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.ButtonUpdate = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.StatusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.ToolStripStatusLabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.PanelMiddle = new System.Windows.Forms.Panel();
-            this.SpreadAggregate = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, ((object)(resources.GetObject("PanelMiddle.Controls"))));
-            this.SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, ((object)(resources.GetObject("PanelMiddle.Controls1"))));
-            this.SheetViewList = this.SpreadList.GetSheet(0);
-            this.SheetViewAggregate = this.SpreadAggregate.GetSheet(0);
-            this.TableLayoutPanelBase.SuspendLayout();
-            this.MenuStrip1.SuspendLayout();
-            this.PanelUp.SuspendLayout();
-            this.StatusStrip1.SuspendLayout();
-            this.PanelMiddle.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.SpreadAggregate)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpreadList)).BeginInit();
-            this.SuspendLayout();
+            TableLayoutPanelBase = new TableLayoutPanel();
+            MenuStrip1 = new MenuStrip();
+            ToolStripMenuItemMenu = new ToolStripMenuItem();
+            ToolStripMenuItemPrint = new ToolStripMenuItem();
+            ToolStripMenuItemExit = new ToolStripMenuItem();
+            ToolStripMenuItemHelp = new ToolStripMenuItem();
+            PanelUp = new Panel();
+            label4 = new Label();
+            label3 = new Label();
+            DateTimePicker2 = new DateTimePicker();
+            DateTimePicker1 = new DateTimePicker();
+            ButtonUpdate = new Button();
+            label2 = new Label();
+            label1 = new Label();
+            StatusStrip1 = new StatusStrip();
+            toolStripStatusLabel1 = new ToolStripStatusLabel();
+            ToolStripStatusLabelStatus = new ToolStripStatusLabel();
+            PanelMiddle = new Panel();
+            SpreadAggregate = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("PanelMiddle.Controls"));
+            SheetViewAggregate = SpreadAggregate.GetSheet(0);
+            SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("PanelMiddle.Controls1"));
+            SheetViewList = SpreadList.GetSheet(0);
+            TableLayoutPanelBase.SuspendLayout();
+            MenuStrip1.SuspendLayout();
+            PanelUp.SuspendLayout();
+            StatusStrip1.SuspendLayout();
+            PanelMiddle.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)SpreadAggregate).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)SpreadList).BeginInit();
+            SuspendLayout();
             // 
             // TableLayoutPanelBase
             // 
-            this.TableLayoutPanelBase.ColumnCount = 1;
-            this.TableLayoutPanelBase.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanelBase.Controls.Add(this.MenuStrip1, 0, 0);
-            this.TableLayoutPanelBase.Controls.Add(this.PanelUp, 0, 1);
-            this.TableLayoutPanelBase.Controls.Add(this.StatusStrip1, 0, 3);
-            this.TableLayoutPanelBase.Controls.Add(this.PanelMiddle, 0, 2);
-            this.TableLayoutPanelBase.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TableLayoutPanelBase.Location = new System.Drawing.Point(0, 0);
-            this.TableLayoutPanelBase.Name = "TableLayoutPanelBase";
-            this.TableLayoutPanelBase.RowCount = 4;
-            this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 84F));
-            this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.TableLayoutPanelBase.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 24F));
-            this.TableLayoutPanelBase.Size = new System.Drawing.Size(929, 786);
-            this.TableLayoutPanelBase.TabIndex = 0;
+            TableLayoutPanelBase.ColumnCount = 1;
+            TableLayoutPanelBase.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            TableLayoutPanelBase.Controls.Add(MenuStrip1, 0, 0);
+            TableLayoutPanelBase.Controls.Add(PanelUp, 0, 1);
+            TableLayoutPanelBase.Controls.Add(StatusStrip1, 0, 3);
+            TableLayoutPanelBase.Controls.Add(PanelMiddle, 0, 2);
+            TableLayoutPanelBase.Dock = DockStyle.Fill;
+            TableLayoutPanelBase.Location = new Point(0, 0);
+            TableLayoutPanelBase.Name = "TableLayoutPanelBase";
+            TableLayoutPanelBase.RowCount = 4;
+            TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
+            TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 84F));
+            TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
+            TableLayoutPanelBase.Size = new Size(929, 786);
+            TableLayoutPanelBase.TabIndex = 0;
             // 
             // MenuStrip1
             // 
-            this.MenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemMenu,
-            this.ToolStripMenuItemHelp});
-            this.MenuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.MenuStrip1.Name = "MenuStrip1";
-            this.MenuStrip1.Size = new System.Drawing.Size(929, 24);
-            this.MenuStrip1.TabIndex = 0;
-            this.MenuStrip1.Text = "menuStrip1";
+            MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemHelp });
+            MenuStrip1.Location = new Point(0, 0);
+            MenuStrip1.Name = "MenuStrip1";
+            MenuStrip1.Size = new Size(929, 24);
+            MenuStrip1.TabIndex = 0;
+            MenuStrip1.Text = "menuStrip1";
             // 
             // ToolStripMenuItemMenu
             // 
-            this.ToolStripMenuItemMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ToolStripMenuItemPrint,
-            this.ToolStripMenuItemExit});
-            this.ToolStripMenuItemMenu.Name = "ToolStripMenuItemMenu";
-            this.ToolStripMenuItemMenu.Size = new System.Drawing.Size(52, 20);
-            this.ToolStripMenuItemMenu.Text = "メニュー";
+            ToolStripMenuItemMenu.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemPrint, ToolStripMenuItemExit });
+            ToolStripMenuItemMenu.Name = "ToolStripMenuItemMenu";
+            ToolStripMenuItemMenu.Size = new Size(52, 20);
+            ToolStripMenuItemMenu.Text = "メニュー";
             // 
             // ToolStripMenuItemPrint
             // 
-            this.ToolStripMenuItemPrint.Name = "ToolStripMenuItemPrint";
-            this.ToolStripMenuItemPrint.Size = new System.Drawing.Size(244, 22);
-            this.ToolStripMenuItemPrint.Text = "期間内の従事者集計表を印刷する";
-            this.ToolStripMenuItemPrint.Click += new System.EventHandler(this.ToolStripMenuItemPrint_Click);
+            ToolStripMenuItemPrint.Name = "ToolStripMenuItemPrint";
+            ToolStripMenuItemPrint.Size = new Size(244, 22);
+            ToolStripMenuItemPrint.Text = "期間内の従事者集計表を印刷する";
+            ToolStripMenuItemPrint.Click += ToolStripMenuItemPrint_Click;
             // 
             // ToolStripMenuItemExit
             // 
-            this.ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
-            this.ToolStripMenuItemExit.Size = new System.Drawing.Size(244, 22);
-            this.ToolStripMenuItemExit.Text = "アプリケーションを終了する";
-            this.ToolStripMenuItemExit.Click += new System.EventHandler(this.ToolStripMenuItemExit_Click);
+            ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
+            ToolStripMenuItemExit.Size = new Size(244, 22);
+            ToolStripMenuItemExit.Text = "アプリケーションを終了する";
+            ToolStripMenuItemExit.Click += ToolStripMenuItemExit_Click;
             // 
             // ToolStripMenuItemHelp
             // 
-            this.ToolStripMenuItemHelp.Name = "ToolStripMenuItemHelp";
-            this.ToolStripMenuItemHelp.Size = new System.Drawing.Size(48, 20);
-            this.ToolStripMenuItemHelp.Text = "ヘルプ";
+            ToolStripMenuItemHelp.Name = "ToolStripMenuItemHelp";
+            ToolStripMenuItemHelp.Size = new Size(48, 20);
+            ToolStripMenuItemHelp.Text = "ヘルプ";
             // 
             // PanelUp
             // 
-            this.PanelUp.Controls.Add(this.label4);
-            this.PanelUp.Controls.Add(this.label3);
-            this.PanelUp.Controls.Add(this.DateTimePicker2);
-            this.PanelUp.Controls.Add(this.DateTimePicker1);
-            this.PanelUp.Controls.Add(this.ButtonUpdate);
-            this.PanelUp.Controls.Add(this.label2);
-            this.PanelUp.Controls.Add(this.label1);
-            this.PanelUp.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelUp.Location = new System.Drawing.Point(3, 27);
-            this.PanelUp.Name = "PanelUp";
-            this.PanelUp.Size = new System.Drawing.Size(923, 78);
-            this.PanelUp.TabIndex = 1;
+            PanelUp.Controls.Add(label4);
+            PanelUp.Controls.Add(label3);
+            PanelUp.Controls.Add(DateTimePicker2);
+            PanelUp.Controls.Add(DateTimePicker1);
+            PanelUp.Controls.Add(ButtonUpdate);
+            PanelUp.Controls.Add(label2);
+            PanelUp.Controls.Add(label1);
+            PanelUp.Dock = DockStyle.Fill;
+            PanelUp.Location = new Point(3, 27);
+            PanelUp.Name = "PanelUp";
+            PanelUp.Size = new Size(923, 78);
+            PanelUp.TabIndex = 1;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.ForeColor = System.Drawing.Color.Blue;
-            this.label4.Location = new System.Drawing.Point(500, 56);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(156, 20);
-            this.label4.TabIndex = 11;
-            this.label4.Text = "期間内の従事者集計表";
+            label4.AutoSize = true;
+            label4.Font = new Font("Yu Gothic UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.ForeColor = Color.Blue;
+            label4.Location = new Point(500, 56);
+            label4.Name = "label4";
+            label4.Size = new Size(156, 20);
+            label4.TabIndex = 11;
+            label4.Text = "期間内の従事者集計表";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Yu Gothic UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.Color.Blue;
-            this.label3.Location = new System.Drawing.Point(8, 56);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(156, 20);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "期間内の従事者一覧表";
+            label3.AutoSize = true;
+            label3.Font = new Font("Yu Gothic UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.ForeColor = Color.Blue;
+            label3.Location = new Point(8, 56);
+            label3.Name = "label3";
+            label3.Size = new Size(156, 20);
+            label3.TabIndex = 10;
+            label3.Text = "期間内の従事者一覧表";
             // 
             // DateTimePicker2
             // 
-            this.DateTimePicker2.CustomFormat = "yyyy年MM月dd日(dddd)";
-            this.DateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateTimePicker2.Location = new System.Drawing.Point(276, 16);
-            this.DateTimePicker2.Name = "DateTimePicker2";
-            this.DateTimePicker2.Size = new System.Drawing.Size(168, 23);
-            this.DateTimePicker2.TabIndex = 9;
-            this.DateTimePicker2.ValueChanged += new System.EventHandler(this.DateTimePicker2_ValueChanged);
+            DateTimePicker2.CustomFormat = "yyyy年MM月dd日(dddd)";
+            DateTimePicker2.Format = DateTimePickerFormat.Custom;
+            DateTimePicker2.Location = new Point(276, 16);
+            DateTimePicker2.Name = "DateTimePicker2";
+            DateTimePicker2.Size = new Size(168, 23);
+            DateTimePicker2.TabIndex = 9;
+            DateTimePicker2.ValueChanged += DateTimePicker2_ValueChanged;
             // 
             // DateTimePicker1
             // 
-            this.DateTimePicker1.CustomFormat = "yyyy年MM月dd日(dddd)";
-            this.DateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DateTimePicker1.Location = new System.Drawing.Point(80, 16);
-            this.DateTimePicker1.Name = "DateTimePicker1";
-            this.DateTimePicker1.Size = new System.Drawing.Size(168, 23);
-            this.DateTimePicker1.TabIndex = 8;
-            this.DateTimePicker1.ValueChanged += new System.EventHandler(this.DateTimePicker1_ValueChanged);
+            DateTimePicker1.CustomFormat = "yyyy年MM月dd日(dddd)";
+            DateTimePicker1.Format = DateTimePickerFormat.Custom;
+            DateTimePicker1.Location = new Point(80, 16);
+            DateTimePicker1.Name = "DateTimePicker1";
+            DateTimePicker1.Size = new Size(168, 23);
+            DateTimePicker1.TabIndex = 8;
+            DateTimePicker1.ValueChanged += DateTimePicker1_ValueChanged;
             // 
             // ButtonUpdate
             // 
-            this.ButtonUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ButtonUpdate.Font = new System.Drawing.Font("Yu Gothic UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.ButtonUpdate.Location = new System.Drawing.Point(688, 12);
-            this.ButtonUpdate.Name = "ButtonUpdate";
-            this.ButtonUpdate.Size = new System.Drawing.Size(180, 36);
-            this.ButtonUpdate.TabIndex = 7;
-            this.ButtonUpdate.Text = "最 新 化";
-            this.ButtonUpdate.UseVisualStyleBackColor = true;
-            this.ButtonUpdate.Click += new System.EventHandler(this.ButtonUpdate_Click);
+            ButtonUpdate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            ButtonUpdate.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            ButtonUpdate.Location = new Point(688, 12);
+            ButtonUpdate.Name = "ButtonUpdate";
+            ButtonUpdate.Size = new Size(180, 36);
+            ButtonUpdate.TabIndex = 7;
+            ButtonUpdate.Text = "最 新 化";
+            ButtonUpdate.UseVisualStyleBackColor = true;
+            ButtonUpdate.Click += ButtonUpdate_Click;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(252, 20);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(19, 15);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "～";
+            label2.AutoSize = true;
+            label2.Location = new Point(252, 20);
+            label2.Name = "label2";
+            label2.Size = new Size(19, 15);
+            label2.TabIndex = 6;
+            label2.Text = "～";
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 15);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "配車日付";
+            label1.AutoSize = true;
+            label1.Location = new Point(20, 20);
+            label1.Name = "label1";
+            label1.Size = new Size(55, 15);
+            label1.TabIndex = 3;
+            label1.Text = "配車日付";
             // 
             // StatusStrip1
             // 
-            this.StatusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.ToolStripStatusLabelStatus});
-            this.StatusStrip1.Location = new System.Drawing.Point(0, 764);
-            this.StatusStrip1.Name = "StatusStrip1";
-            this.StatusStrip1.Size = new System.Drawing.Size(929, 22);
-            this.StatusStrip1.SizingGrip = false;
-            this.StatusStrip1.TabIndex = 2;
-            this.StatusStrip1.Text = "statusStrip1";
+            StatusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, ToolStripStatusLabelStatus });
+            StatusStrip1.Location = new Point(0, 764);
+            StatusStrip1.Name = "StatusStrip1";
+            StatusStrip1.Size = new Size(929, 22);
+            StatusStrip1.SizingGrip = false;
+            StatusStrip1.TabIndex = 2;
+            StatusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(39, 17);
-            this.toolStripStatusLabel1.Text = "Status";
+            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            toolStripStatusLabel1.Size = new Size(39, 17);
+            toolStripStatusLabel1.Text = "Status";
             // 
             // ToolStripStatusLabelStatus
             // 
-            this.ToolStripStatusLabelStatus.Name = "ToolStripStatusLabelStatus";
-            this.ToolStripStatusLabelStatus.Size = new System.Drawing.Size(145, 17);
-            this.ToolStripStatusLabelStatus.Text = "ToolStripStatusLabelStatus";
+            ToolStripStatusLabelStatus.Name = "ToolStripStatusLabelStatus";
+            ToolStripStatusLabelStatus.Size = new Size(145, 17);
+            ToolStripStatusLabelStatus.Text = "ToolStripStatusLabelStatus";
             // 
             // PanelMiddle
             // 
-            this.PanelMiddle.Controls.Add(this.SpreadAggregate);
-            this.PanelMiddle.Controls.Add(this.SpreadList);
-            this.PanelMiddle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelMiddle.Location = new System.Drawing.Point(3, 111);
-            this.PanelMiddle.Name = "PanelMiddle";
-            this.PanelMiddle.Size = new System.Drawing.Size(923, 648);
-            this.PanelMiddle.TabIndex = 3;
+            PanelMiddle.Controls.Add(SpreadAggregate);
+            PanelMiddle.Controls.Add(SpreadList);
+            PanelMiddle.Dock = DockStyle.Fill;
+            PanelMiddle.Location = new Point(3, 111);
+            PanelMiddle.Name = "PanelMiddle";
+            PanelMiddle.Size = new Size(923, 648);
+            PanelMiddle.TabIndex = 3;
             // 
             // SpreadAggregate
             // 
-            this.SpreadAggregate.AccessibleDescription = "SpreadCount, 集計値, Row 0, Column 0";
-            this.SpreadAggregate.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.SpreadAggregate.Location = new System.Drawing.Point(496, 4);
-            this.SpreadAggregate.Name = "SpreadAggregate";
-            this.SpreadAggregate.Size = new System.Drawing.Size(424, 624);
-            this.SpreadAggregate.TabIndex = 4;
+            SpreadAggregate.AccessibleDescription = "SpreadCount, 集計値, Row 0, Column 0";
+            SpreadAggregate.Font = new Font("ＭＳ Ｐゴシック", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            SpreadAggregate.Location = new Point(496, 4);
+            SpreadAggregate.Name = "SpreadAggregate";
+            SpreadAggregate.Size = new Size(424, 624);
+            SpreadAggregate.TabIndex = 4;
             // 
             // SpreadList
             // 
-            this.SpreadList.AccessibleDescription = "SpreadList, 一覧表示, Row 0, Column 0";
-            this.SpreadList.Font = new System.Drawing.Font("ＭＳ Ｐゴシック", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.SpreadList.Location = new System.Drawing.Point(4, 4);
-            this.SpreadList.Name = "SpreadList";
-            this.SpreadList.Size = new System.Drawing.Size(488, 624);
-            this.SpreadList.TabIndex = 3;
+            SpreadList.AccessibleDescription = "SpreadList, 一覧表示, Row 0, Column 0";
+            SpreadList.Font = new Font("ＭＳ Ｐゴシック", 11F, FontStyle.Regular, GraphicsUnit.Point);
+            SpreadList.Location = new Point(4, 4);
+            SpreadList.Name = "SpreadList";
+            SpreadList.Size = new Size(488, 624);
+            SpreadList.TabIndex = 3;
             // 
             // WardChiyoda
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(929, 786);
-            this.Controls.Add(this.TableLayoutPanelBase);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MainMenuStrip = this.MenuStrip1;
-            this.MaximizeBox = false;
-            this.MinimizeBox = false;
-            this.Name = "WardChiyoda";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "WardChiyoda";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.WardChiyoda_FormClosing);
-            this.TableLayoutPanelBase.ResumeLayout(false);
-            this.TableLayoutPanelBase.PerformLayout();
-            this.MenuStrip1.ResumeLayout(false);
-            this.MenuStrip1.PerformLayout();
-            this.PanelUp.ResumeLayout(false);
-            this.PanelUp.PerformLayout();
-            this.StatusStrip1.ResumeLayout(false);
-            this.StatusStrip1.PerformLayout();
-            this.PanelMiddle.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.SpreadAggregate)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.SpreadList)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(929, 786);
+            Controls.Add(TableLayoutPanelBase);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MainMenuStrip = MenuStrip1;
+            MaximizeBox = false;
+            MinimizeBox = false;
+            Name = "WardChiyoda";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "WardChiyoda";
+            FormClosing += WardChiyoda_FormClosing;
+            TableLayoutPanelBase.ResumeLayout(false);
+            TableLayoutPanelBase.PerformLayout();
+            MenuStrip1.ResumeLayout(false);
+            MenuStrip1.PerformLayout();
+            PanelUp.ResumeLayout(false);
+            PanelUp.PerformLayout();
+            StatusStrip1.ResumeLayout(false);
+            StatusStrip1.PerformLayout();
+            PanelMiddle.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)SpreadAggregate).EndInit();
+            ((System.ComponentModel.ISupportInitialize)SpreadList).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
