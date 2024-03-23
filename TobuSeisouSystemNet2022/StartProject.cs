@@ -27,6 +27,8 @@ using H_RollColl;
 
 using H_Staff;
 
+using H_Toukanpo;
+
 using H_VehicleDispatch;
 
 using H_Vo;
@@ -324,7 +326,16 @@ namespace TobuSeisouSystemNet2022 {
                                 hCollectionWeightCHIYODA.WindowState = FormWindowState.Normal;
                                 hCollectionWeightCHIYODA.Show(this);
                                 break;
-
+                            // 東環保研修センター修了書登録
+                            case "H_ToukanpoTrainingCardDetail":
+                                H_ToukanpoTrainingCardDetail hToukanpoTrainingCardDetail = new(_connectionVo);
+                                Rectangle rectangleHToukanpoTrainingCardDetail = new Desktop().GetMonitorWorkingArea(hToukanpoTrainingCardDetail, (Screen)HComboBoxMoniter.SelectedItem);
+                                hToukanpoTrainingCardDetail.KeyPreview = true;
+                                hToukanpoTrainingCardDetail.Location = rectangleHToukanpoTrainingCardDetail.Location;
+                                hToukanpoTrainingCardDetail.Size = new Size(677, 545);
+                                hToukanpoTrainingCardDetail.WindowState = FormWindowState.Normal;
+                                hToukanpoTrainingCardDetail.Show(this);
+                                break;
                             /*
                              * データ移行ツール
                              */

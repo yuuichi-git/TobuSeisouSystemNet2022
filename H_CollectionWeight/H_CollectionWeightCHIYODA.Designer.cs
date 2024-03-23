@@ -27,6 +27,7 @@
             HTableLayoutPanelExBase = new H_ControlEx.H_TableLayoutPanelEx();
             MenuStrip1 = new MenuStrip();
             ToolStripMenuItemMenu = new ToolStripMenuItem();
+            ToolStripMenuItemExit = new ToolStripMenuItem();
             ToolStripMenuItemHelp = new ToolStripMenuItem();
             StatusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
@@ -42,7 +43,6 @@
             SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("HTableLayoutPanelExBase.Controls"));
             SheetViewList = SpreadList.GetSheet(0);
             SpreadAggregate = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("HTableLayoutPanelExBase.Controls1"));
-            ToolStripMenuItemExit = new ToolStripMenuItem();
             SheetViewAggregate = SpreadAggregate.GetSheet(0);
             HTableLayoutPanelExBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
@@ -89,6 +89,13 @@
             ToolStripMenuItemMenu.Name = "ToolStripMenuItemMenu";
             ToolStripMenuItemMenu.Size = new Size(52, 20);
             ToolStripMenuItemMenu.Text = "メニュー";
+            // 
+            // ToolStripMenuItemExit
+            // 
+            ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
+            ToolStripMenuItemExit.Size = new Size(195, 22);
+            ToolStripMenuItemExit.Text = "アプリケーションを終了する";
+            ToolStripMenuItemExit.Click += ToolStripMenuItemExit_Click;
             // 
             // ToolStripMenuItemHelp
             // 
@@ -227,12 +234,6 @@
             SpreadAggregate.Name = "SpreadAggregate";
             SpreadAggregate.Size = new Size(486, 627);
             SpreadAggregate.TabIndex = 4;
-            // 
-            // ToolStripMenuItemExit
-            // 
-            ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
-            ToolStripMenuItemExit.Size = new Size(195, 22);
-            ToolStripMenuItemExit.Text = "アプリケーションを終了する";
             // 
             // H_CollectionWeightCHIYODA
             // 

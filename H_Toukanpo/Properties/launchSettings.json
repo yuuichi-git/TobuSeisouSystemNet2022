@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "H_Toukanpo": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

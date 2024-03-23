@@ -29,8 +29,8 @@ namespace H_CollectionWeight {
              * InitializeControl
              */
             InitializeComponent();
-            HDateTimePickerEx1.Value = DateTime.Now;
-            HDateTimePickerEx2.Value = DateTime.Now;
+            HDateTimePickerEx1.SetValue(DateTime.Now);
+            HDateTimePickerEx2.SetValue(DateTime.Now);
             InitializeSheetViewList(SheetViewList);
             InitializeSheetViewAggregate(SheetViewAggregate);
             ToolStripStatusLabelDetail.Text = string.Empty;
@@ -236,8 +236,8 @@ namespace H_CollectionWeight {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void HDateTimePickerEx1_ValueChanged(object sender, EventArgs e) {
-            if (((DateTimePicker)sender).Value > HDateTimePickerEx2.Value) {
-                HDateTimePickerEx2.Value = ((DateTimePicker)sender).Value;
+            if (((DateTimePicker)sender).Value > HDateTimePickerEx2.GetValue()) {
+                HDateTimePickerEx2.SetValue(((DateTimePicker)sender).Value);
             }
         }
 
@@ -247,9 +247,18 @@ namespace H_CollectionWeight {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void HDateTimePickerEx2_ValueChanged(object sender, EventArgs e) {
-            if (((DateTimePicker)sender).Value < HDateTimePickerEx1.Value) {
-                HDateTimePickerEx1.Value = ((DateTimePicker)sender).Value;
+            if (((DateTimePicker)sender).Value < HDateTimePickerEx1.GetValue()) {
+                HDateTimePickerEx1.SetValue(((DateTimePicker)sender).Value);
             }
+        }
+
+        /// <summary>
+        /// ToolStripMenuItemExit_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItemExit_Click(object sender, EventArgs e) {
+            this.Close();
         }
 
         /// <summary>

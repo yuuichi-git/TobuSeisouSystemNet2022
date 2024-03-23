@@ -39,9 +39,9 @@ namespace H_Dao {
                                             "H_VehicleDispatchDetail.StaffCode3," +
                                             "H_StaffMaster3.DisplayName AS StaffDisplayName3 " +
                                      "FROM H_VehicleDispatchDetail " +
-                                     "LEFT OUTER JOIN H_StaffMaster AS H_StaffMaster1 ON H_VehicleDispatchDetail.StaffCode1 = H_StaffMaster1.staff_code " +
-                                     "LEFT OUTER JOIN H_StaffMaster AS H_StaffMaster2 ON H_VehicleDispatchDetail.StaffCode2 = H_StaffMaster2.staff_code " +
-                                     "LEFT OUTER JOIN H_StaffMaster AS H_StaffMaster3 ON H_VehicleDispatchDetail.StaffCode3 = H_StaffMaster3.staff_code " +
+                                     "LEFT OUTER JOIN H_StaffMaster AS H_StaffMaster1 ON H_VehicleDispatchDetail.StaffCode1 = H_StaffMaster1.StaffCode " +
+                                     "LEFT OUTER JOIN H_StaffMaster AS H_StaffMaster2 ON H_VehicleDispatchDetail.StaffCode2 = H_StaffMaster2.StaffCode " +
+                                     "LEFT OUTER JOIN H_StaffMaster AS H_StaffMaster3 ON H_VehicleDispatchDetail.StaffCode3 = H_StaffMaster3.StaffCode " +
                                      "WHERE OperationDate BETWEEN '" + operationDate1.ToString("yyyy-MM-dd") + "' AND '" + operationDate2.ToString("yyyy-MM-dd") + "' " +
                                        "AND OperationFlag = 'True' " +
                                        "AND (H_VehicleDispatchDetail.SetCode = '1310101' OR H_VehicleDispatchDetail.SetCode = '1310102' OR H_VehicleDispatchDetail.SetCode = '1310103') " +

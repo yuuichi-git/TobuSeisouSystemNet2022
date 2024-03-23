@@ -334,7 +334,7 @@ namespace H_Staff {
                     if (hStaffMasterVo.EmploymentDate.Date != _defaultDateTime.Date)
                         SheetViewList.Cells[rowCount, colServiceDate].Value = string.Concat(_date.GetEmploymenteYear(hStaffMasterVo.EmploymentDate.Date).ToString("#0年"), _date.GetEmploymenteMonth(hStaffMasterVo.EmploymentDate.Date).ToString("00月"));
                     // 東環保研修カード
-                    SheetViewList.Cells[rowCount, colToukanpoCard].Value = _hToukanpoTrainingCardDao.ExistenceToukanpoTrainingCard(hStaffMasterVo.StaffCode);
+                    SheetViewList.Cells[rowCount, colToukanpoCard].Value = _hToukanpoTrainingCardDao.ExistenceHToukanpoTrainingCardMaster(hStaffMasterVo.StaffCode);
                     // 免許証期限
                     SheetViewList.Cells[rowCount, colLicensExpirationDate].Value = _hLicenseMasterDao.GetExpirationDate(hStaffMasterVo.StaffCode);
                    　// 初任診断
