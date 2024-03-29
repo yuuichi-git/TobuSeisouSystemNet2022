@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "H_Car": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

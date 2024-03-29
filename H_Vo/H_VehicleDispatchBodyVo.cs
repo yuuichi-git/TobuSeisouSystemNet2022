@@ -1,7 +1,7 @@
 ﻿/*
  * 2023-11-06
  */
-namespace H_Vo {
+namespace Vo {
     public class H_VehicleDispatchBodyVo {
         private readonly DateTime _defaultDateTime = new(1900,01,01);
 

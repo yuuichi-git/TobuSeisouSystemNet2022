@@ -7,7 +7,7 @@ using FarPoint.Win.Spread;
 
 using GrapeCity.Spreadsheet;
 
-using H_Vo;
+using Vo;
 
 
 namespace VehicleDispatchSheet {

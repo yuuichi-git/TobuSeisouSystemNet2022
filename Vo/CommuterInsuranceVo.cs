@@ -2,7 +2,7 @@
  * 2022/05/21
  */
 
-namespace H_Vo {
+namespace Vo {
     public class CommuterInsuranceVo {
         private int _belongs;
         private int _staff_code;

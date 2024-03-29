@@ -16,6 +16,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'" />
 
   <ItemGroup>
+    <ProjectReference Include="..\H_Common\H_Common.csproj" />
     <ProjectReference Include="..\Vo\Vo.csproj" />
   </ItemGroup>
 

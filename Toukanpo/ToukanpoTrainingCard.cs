@@ -2,7 +2,7 @@ using Common;
 
 using Dao;
 
-using H_Vo;
+using Vo;
 
 namespace Toukanpo {
     public partial class ToukanpoTrainingCard : Form {

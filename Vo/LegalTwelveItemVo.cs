@@ -1,7 +1,7 @@
 ﻿/*
  * 2023-08-24
  */
-namespace H_Vo {
+namespace Vo {
     public class LegalTwelveItemVo {
         private DateTime _students_date;
         private int _students_code;

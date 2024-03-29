@@ -5,7 +5,7 @@ using Dao;
 using FarPoint.Excel;
 using FarPoint.Win.Spread;
 
-using H_Vo;
+using Vo;
 
 namespace CarAccident {
     public partial class CarAccidentList : Form {

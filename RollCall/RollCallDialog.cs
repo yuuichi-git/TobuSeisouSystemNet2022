@@ -4,7 +4,7 @@ using ControlEx;
 
 using Dao;
 
-using H_Vo;
+using Vo;
 
 namespace RollCall {
     public partial class RollCallDialog : Form {

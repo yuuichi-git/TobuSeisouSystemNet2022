@@ -2,7 +2,7 @@
  * 2023-11-11
  * HeadとBodyを結合した配車データ
  */
-namespace H_Vo {
+namespace Vo {
     public class H_VehicleDispatchVo {
         private int _cellNumber; // Head
         private int _setCode; // Head

@@ -79,7 +79,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H_RollColl", "H_RollColl\H_
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H_CollectionWeight", "H_CollectionWeight\H_CollectionWeight.csproj", "{D0326050-2C99-4F80-A7F3-543A99E42095}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H_Toukanpo", "H_Toukanpo\H_Toukanpo.csproj", "{CEAB9EC0-DA80-44A4-A15C-57E45B5A6221}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H_Toukanpo", "H_Toukanpo\H_Toukanpo.csproj", "{CEAB9EC0-DA80-44A4-A15C-57E45B5A6221}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H_Car", "H_Car\H_Car.csproj", "{89F41D8A-AAB6-47D1-AE34-482340ECEC27}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -401,6 +403,14 @@ Global
 		{CEAB9EC0-DA80-44A4-A15C-57E45B5A6221}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CEAB9EC0-DA80-44A4-A15C-57E45B5A6221}.Release|x64.ActiveCfg = Release|Any CPU
 		{CEAB9EC0-DA80-44A4-A15C-57E45B5A6221}.Release|x64.Build.0 = Release|Any CPU
+		{89F41D8A-AAB6-47D1-AE34-482340ECEC27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89F41D8A-AAB6-47D1-AE34-482340ECEC27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89F41D8A-AAB6-47D1-AE34-482340ECEC27}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{89F41D8A-AAB6-47D1-AE34-482340ECEC27}.Debug|x64.Build.0 = Debug|Any CPU
+		{89F41D8A-AAB6-47D1-AE34-482340ECEC27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89F41D8A-AAB6-47D1-AE34-482340ECEC27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89F41D8A-AAB6-47D1-AE34-482340ECEC27}.Release|x64.ActiveCfg = Release|Any CPU
+		{89F41D8A-AAB6-47D1-AE34-482340ECEC27}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

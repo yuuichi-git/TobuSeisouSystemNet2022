@@ -6,7 +6,7 @@ using FarPoint.Win;
 using FarPoint.Win.Spread;
 using FarPoint.Win.Spread.CellType;
 
-using H_Vo;
+using Vo;
 
 namespace StaffDetail {
     public partial class StaffExcel : Form {

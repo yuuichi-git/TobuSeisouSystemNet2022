@@ -1,7 +1,7 @@
 ﻿/*
  * 2023-10-31
  */
-namespace H_Vo {
+namespace Vo {
     /*
      * DeepCopyで使用
      */

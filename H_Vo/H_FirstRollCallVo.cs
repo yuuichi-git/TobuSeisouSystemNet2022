@@ -1,7 +1,7 @@
 ﻿/*
  * 2024-02-19
  */
-namespace H_Vo {
+namespace Vo {
     public class H_FirstRollCallVo {
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
         private DateTime _operationDate;

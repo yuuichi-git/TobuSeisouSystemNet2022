@@ -2,7 +2,7 @@
  * 2023-06-16
  * SupplyList 画面表示用Vo
  */
-namespace H_Vo {
+namespace Vo {
     public class SupplyListVo {
         private int _supplyCode;
         private  string _supplyName;

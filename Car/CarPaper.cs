@@ -6,7 +6,7 @@ using Dao;
 
 using FarPoint.Win.Spread;
 
-using H_Vo;
+using Vo;
 
 namespace CarRegister {
     public partial class CarPaper : Form {

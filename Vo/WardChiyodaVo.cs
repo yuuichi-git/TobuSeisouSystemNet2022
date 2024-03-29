@@ -1,4 +1,4 @@
-﻿namespace H_Vo {
+﻿namespace Vo {
     public class WardChiyodaVo {
         private DateTime _operation_date;
         private int _operator_code_1;

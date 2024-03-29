@@ -2,7 +2,7 @@
 
 using Common;
 
-using H_Vo;
+using Vo;
 
 namespace Dao {
     public class LicenseMasterDao {
@@ -39,6 +39,7 @@ namespace Dao {
 
         /// <summary>
         /// SelectAllLicenseMaster
+        /// picture_head/picture_tail無し
         /// </summary>
         /// <returns></returns>
         public List<LicenseMasterVo> SelectAllLicenseMaster() {
@@ -95,6 +96,89 @@ namespace Dao {
                     licenseMasterVo.Get_date_3 = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["get_date_3"]);
                     //licenseLedgerVo.Picture_head = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["picture_head"]);
                     //licenseLedgerVo.Picture_tail = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["picture_tail"]);
+                    licenseMasterVo.Large = _defaultValue.GetDefaultValue<bool>(sqlDataReader["large"]);
+                    licenseMasterVo.Medium = _defaultValue.GetDefaultValue<bool>(sqlDataReader["medium"]);
+                    licenseMasterVo.Quasi_medium = _defaultValue.GetDefaultValue<bool>(sqlDataReader["quasi_medium"]);
+                    licenseMasterVo.Ordinary = _defaultValue.GetDefaultValue<bool>(sqlDataReader["ordinary"]);
+                    licenseMasterVo.Big_special = _defaultValue.GetDefaultValue<bool>(sqlDataReader["big_special"]);
+                    licenseMasterVo.Big_auto_bike = _defaultValue.GetDefaultValue<bool>(sqlDataReader["big_auto_bike"]);
+                    licenseMasterVo.Ordinary_auto_bike = _defaultValue.GetDefaultValue<bool>(sqlDataReader["ordinary_auto_bike"]);
+                    licenseMasterVo.Small_special = _defaultValue.GetDefaultValue<bool>(sqlDataReader["small_special"]);
+                    licenseMasterVo.With_a_raw = _defaultValue.GetDefaultValue<bool>(sqlDataReader["with_a_raw"]);
+                    licenseMasterVo.Big_two = _defaultValue.GetDefaultValue<bool>(sqlDataReader["big_two"]);
+                    licenseMasterVo.Medium_two = _defaultValue.GetDefaultValue<bool>(sqlDataReader["medium_two"]);
+                    licenseMasterVo.Ordinary_two = _defaultValue.GetDefaultValue<bool>(sqlDataReader["ordinary_two"]);
+                    licenseMasterVo.Big_special_two = _defaultValue.GetDefaultValue<bool>(sqlDataReader["big_special_two"]);
+                    licenseMasterVo.Traction = _defaultValue.GetDefaultValue<bool>(sqlDataReader["traction"]);
+                    licenseMasterVo.Insert_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["insert_ymd_hms"]);
+                    licenseMasterVo.Update_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["update_ymd_hms"]);
+                    licenseMasterVo.Delete_ymd_hms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["delete_ymd_hms"]);
+                    licenseMasterVo.Delete_flag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["delete_flag"]);
+                    listLicenseMasterVo.Add(licenseMasterVo);
+                }
+                return listLicenseMasterVo;
+            }
+        }
+
+        /// <summary>
+        /// SelectAllLicenseMaster
+        /// picture_head/picture_tail有り
+        /// </summary>
+        /// <returns></returns>
+        public List<LicenseMasterVo> SelectAllLicenseMasterP() {
+            var listLicenseMasterVo = new List<LicenseMasterVo>();
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT staff_code," +
+                                            "name_kana," +
+                                            "name," +
+                                            "birth_date," +
+                                            "current_address," +
+                                            "delivery_date," +
+                                            "expiration_date," +
+                                            "license_condition," +
+                                            "license_number," +
+                                            "get_date_1," +
+                                            "get_date_2," +
+                                            "get_date_3," +
+                                            "picture_head," +
+                                            "picture_tail," +
+                                            "large," +
+                                            "medium," +
+                                            "quasi_medium," +
+                                            "ordinary," +
+                                            "big_special," +
+                                            "big_auto_bike," +
+                                            "ordinary_auto_bike," +
+                                            "small_special," +
+                                            "with_a_raw," +
+                                            "big_two," +
+                                            "medium_two," +
+                                            "ordinary_two," +
+                                            "big_special_two," +
+                                            "traction," +
+                                            "insert_ymd_hms," +
+                                            "update_ymd_hms," +
+                                            "delete_ymd_hms," +
+                                            "delete_flag " +
+                                     "FROM license_master WITH(NOLOCK) " +
+                                     "WHERE delete_flag = 'False'";
+            using (var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while (sqlDataReader.Read() == true) {
+                    var licenseMasterVo = new LicenseMasterVo();
+                    licenseMasterVo.Staff_code = _defaultValue.GetDefaultValue<int>(sqlDataReader["staff_code"]);
+                    licenseMasterVo.Name_kana = _defaultValue.GetDefaultValue<string>(sqlDataReader["name_kana"]);
+                    licenseMasterVo.Name = _defaultValue.GetDefaultValue<string>(sqlDataReader["name"]);
+                    licenseMasterVo.Birth_date = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["birth_date"]);
+                    licenseMasterVo.Current_address = _defaultValue.GetDefaultValue<string>(sqlDataReader["current_address"]);
+                    licenseMasterVo.Delivery_date = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["delivery_date"]);
+                    licenseMasterVo.Expiration_date = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["expiration_date"]);
+                    licenseMasterVo.License_condition = _defaultValue.GetDefaultValue<string>(sqlDataReader["license_condition"]);
+                    licenseMasterVo.License_number = _defaultValue.GetDefaultValue<string>(sqlDataReader["license_number"]);
+                    licenseMasterVo.Get_date_1 = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["get_date_1"]);
+                    licenseMasterVo.Get_date_2 = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["get_date_2"]);
+                    licenseMasterVo.Get_date_3 = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["get_date_3"]);
+                    licenseMasterVo.Picture_head = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["picture_head"]);
+                    licenseMasterVo.Picture_tail = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["picture_tail"]);
                     licenseMasterVo.Large = _defaultValue.GetDefaultValue<bool>(sqlDataReader["large"]);
                     licenseMasterVo.Medium = _defaultValue.GetDefaultValue<bool>(sqlDataReader["medium"]);
                     licenseMasterVo.Quasi_medium = _defaultValue.GetDefaultValue<bool>(sqlDataReader["quasi_medium"]);

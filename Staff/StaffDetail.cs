@@ -2,7 +2,7 @@
 
 using Dao;
 
-using H_Vo;
+using Vo;
 
 namespace Staff {
     public partial class StaffDetail : Form {

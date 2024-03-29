@@ -3,7 +3,7 @@
  */
 using H_Dao;
 
-using H_Vo;
+using Vo;
 
 namespace H_CollectionWeight {
     public partial class HCollectionWeightTAITOU : Form {

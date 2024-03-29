@@ -1,7 +1,7 @@
 ﻿/*
  * 2023-07-25
  */
-namespace H_Vo {
+namespace Vo {
     public class CollectionWeightTaitouVo {
         private DateTime _operation_date;
         private int _weight1Total;

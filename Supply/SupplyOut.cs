@@ -5,7 +5,7 @@ using Common;
 
 using Dao;
 
-using H_Vo;
+using Vo;
 
 namespace Supply {
     public partial class SupplyOut : Form {

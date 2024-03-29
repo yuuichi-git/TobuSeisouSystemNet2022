@@ -1,4 +1,4 @@
-﻿namespace H_Vo {
+﻿namespace Vo {
     /*
      * DeepCopyで使用
      */

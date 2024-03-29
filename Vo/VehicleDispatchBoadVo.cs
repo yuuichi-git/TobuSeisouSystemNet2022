@@ -1,4 +1,4 @@
-﻿namespace H_Vo {
+﻿namespace Vo {
     public class VehicleDispatchBoadVo {
         private int _column;
         private int _row;

@@ -13,7 +13,7 @@ using H_RollColl;
 
 using H_Staff;
 
-using H_Vo;
+using Vo;
 
 using StockBox;
 

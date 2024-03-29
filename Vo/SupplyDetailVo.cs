@@ -1,7 +1,7 @@
 ﻿/*
  * 2023-06-20
  */
-namespace H_Vo {
+namespace Vo {
     public class SupplyDetailVo {
         private DateTime _moveDate;
         private int _staffCode;

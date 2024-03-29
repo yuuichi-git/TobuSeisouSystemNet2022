@@ -1,7 +1,7 @@
 ﻿/*
  * 2024-02-07
  */
-namespace H_Vo {
+namespace Vo {
     public class H_LicenseMasterVo {
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
 

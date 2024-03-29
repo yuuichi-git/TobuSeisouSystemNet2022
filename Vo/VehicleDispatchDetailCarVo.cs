@@ -1,4 +1,4 @@
-﻿namespace H_Vo {
+﻿namespace Vo {
     public class VehicleDispatchDetailCarVo {
         private int _cell_number;
         private DateTime _operation_date;

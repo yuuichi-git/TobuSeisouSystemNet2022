@@ -1,4 +1,4 @@
-﻿namespace H_Vo {
+﻿namespace Vo {
     public class VehicleDispatchBodyVo {
         private int _cell_number; // 配車表№
         private string _day_of_week = ""; //対象の曜日

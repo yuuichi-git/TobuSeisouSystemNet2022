@@ -2,7 +2,7 @@
  * 2023-10-31
  * 交通違反他ファイル
  */
-namespace H_Vo {
+namespace Vo {
     public class H_StaffCarViolateVo {
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
 

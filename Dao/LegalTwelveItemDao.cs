@@ -3,7 +3,7 @@ using System.Data.SqlClient;
 
 using Common;
 
-using H_Vo;
+using Vo;
 
 namespace Dao {
     public class LegalTwelveItemDao {

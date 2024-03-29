@@ -2,7 +2,7 @@
  * 配車先の基本情報
  * 13101～13123までが23区コード
  */
-namespace H_Vo {
+namespace Vo {
     public class SetMasterVo {
         private int _word_code;
         private int _set_code;

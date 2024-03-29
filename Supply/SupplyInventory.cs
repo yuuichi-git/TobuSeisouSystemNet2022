@@ -4,7 +4,7 @@ using Dao;
 
 using FarPoint.Win.Spread;
 
-using H_Vo;
+using Vo;
 
 namespace Supply {
     public partial class SupplyInventory : Form {

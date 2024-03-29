@@ -1,4 +1,4 @@
-﻿using H_Vo;
+﻿using Vo;
 
 namespace Dao {
     public class TriggerCheckDao {

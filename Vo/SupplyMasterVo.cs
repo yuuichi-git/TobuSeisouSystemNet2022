@@ -1,4 +1,4 @@
-﻿namespace H_Vo {
+﻿namespace Vo {
     public class SupplyMasterVo {
         private int _code;
         private string _name;

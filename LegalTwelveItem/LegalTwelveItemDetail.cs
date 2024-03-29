@@ -7,7 +7,7 @@ using ControlEx;
 
 using Dao;
 
-using H_Vo;
+using Vo;
 
 namespace LegalTwelveItem {
     public partial class LegalTwelveItemDetail : Form {

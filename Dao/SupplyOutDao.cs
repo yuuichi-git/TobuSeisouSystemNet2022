@@ -1,6 +1,6 @@
 ﻿using System.Data.SqlClient;
 
-using H_Vo;
+using Vo;
 
 namespace Dao {
     public class SupplyOutDao {

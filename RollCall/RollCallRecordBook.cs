@@ -4,7 +4,7 @@ using Common;
 
 using Dao;
 
-using H_Vo;
+using Vo;
 
 namespace RollCall {
     public partial class RollCallRecordBook : Form {

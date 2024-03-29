@@ -7,7 +7,7 @@ using ControlEx;
 
 using Dao;
 
-using H_Vo;
+using Vo;
 
 namespace Production {
     public partial class ProductionList : Form {

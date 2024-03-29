@@ -2,7 +2,7 @@
  * 2023-10-31
  * 健康診断ファイル
  */
-namespace H_Vo {
+namespace Vo {
     public class H_StaffMedicalExaminationVo {
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
 

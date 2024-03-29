@@ -1,4 +1,4 @@
-﻿namespace H_Vo {
+﻿namespace Vo {
     public class ProductionListVo {
 
         private int _cell_number; // (vehicle_dispatch_Body) 配車表№

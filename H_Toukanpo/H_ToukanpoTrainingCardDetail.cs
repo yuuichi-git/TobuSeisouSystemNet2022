@@ -5,7 +5,7 @@ using H_ControlEx;
 
 using H_Dao;
 
-using H_Vo;
+using Vo;
 
 namespace H_Toukanpo {
     public partial class H_ToukanpoTrainingCardDetail : Form {

@@ -2,7 +2,7 @@
  * 2023-10-31
  * 社歴ファイル
  */
-namespace H_Vo {
+namespace Vo {
     public class H_StaffHistoryVo {
         private readonly DateTime _defaultDateTime = new DateTime(1900,01,01);
 

@@ -4,7 +4,7 @@ using Common;
 
 using Dao;
 
-using H_Vo;
+using Vo;
 
 namespace License {
     public partial class LicenseDetail : Form {

@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 
 using H_Common;
 
-using H_Vo;
+using Vo;
 
 namespace H_Dao {
     public class H_CollectionWeightChiyodaDao {

@@ -31,7 +31,7 @@ using H_Toukanpo;
 
 using H_VehicleDispatch;
 
-using H_Vo;
+using Vo;
 
 using LegalTwelveItem;
 

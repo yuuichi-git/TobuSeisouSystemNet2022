@@ -4,7 +4,7 @@
  */
 using Dao;
 
-using H_Vo;
+using Vo;
 
 namespace H_Dao {
     public class ConvertTableDao {

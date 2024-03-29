@@ -5,7 +5,7 @@ using Dao;
 using FarPoint.Excel;
 using FarPoint.Win.Spread;
 
-using H_Vo;
+using Vo;
 
 namespace CommuterInsurance {
     public partial class CommuterInsuranceList : Form {

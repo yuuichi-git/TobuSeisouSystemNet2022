@@ -1,4 +1,4 @@
-﻿namespace H_Vo {
+﻿namespace Vo {
     public class WardTaitouVo {
         private string _day_of_week = string.Empty;
         private int _operator_code_3;

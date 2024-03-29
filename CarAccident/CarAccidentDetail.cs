@@ -2,7 +2,7 @@
 
 using Dao;
 
-using H_Vo;
+using Vo;
 
 namespace CarAccident {
     public partial class CarAccidentDetail : Form {
