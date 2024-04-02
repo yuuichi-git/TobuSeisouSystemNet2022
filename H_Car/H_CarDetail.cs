@@ -4,13 +4,14 @@
 using Vo;
 
 namespace H_Car {
-    public partial class H_CarDetail : Form {
+    public partial class HCarDetail : Form {
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="connectionVo"></param>
-        public H_CarDetail(ConnectionVo connectionVo) {
+        public HCarDetail(ConnectionVo connectionVo) {
+            InitializeComponent();
+
+        }
+
+        public HCarDetail(ConnectionVo connectionVo, int carCode) {
             InitializeComponent();
 
         }

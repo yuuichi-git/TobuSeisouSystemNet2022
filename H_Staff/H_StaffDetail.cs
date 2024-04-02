@@ -70,6 +70,8 @@ namespace H_Staff {
             _staffCode = _hStaffMasterDao.GetStaffCode(24000);
 
             InitializeComponent();
+            // 従事者コード
+            HTextBoxExStaffCode.Text = _staffCode.ToString();
             // アイコンを常に点滅に設定する
             errorProvider.BlinkStyle = ErrorBlinkStyle.BlinkIfDifferentError;
             this.InitializeControls();
@@ -102,6 +104,8 @@ namespace H_Staff {
             // StaffCode
             _staffCode = staffCode;
             InitializeComponent();
+            // 従事者コード
+            HTextBoxExStaffCode.Text = _staffCode.ToString();
             // アイコンを常に点滅に設定する
             errorProvider.BlinkStyle = ErrorBlinkStyle.AlwaysBlink;
             this.InitializeControls();
@@ -914,7 +918,7 @@ namespace H_Staff {
              * HGroupBoxExPersonalData
              * 個人情報
              */
-            HTextBoxExStaffCode.Text = string.Empty;
+            //HTextBoxExStaffCode.Text = string.Empty;
             HTextBoxExUnionCode.Text = string.Empty;
             HTextBoxExNameKana.Text = string.Empty;
             HTextBoxExName.Text = string.Empty;

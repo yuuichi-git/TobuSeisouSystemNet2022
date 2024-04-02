@@ -273,11 +273,13 @@
             Controls.Add(h_LabelEx2);
             Controls.Add(h_LabelEx1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            KeyPreview = true;
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "H_LastRollCall";
             Text = "H_LastRollCall";
             FormClosing += H_LastRollCall_FormClosing;
+            KeyDown += H_LastRollCall_KeyDown;
             ((System.ComponentModel.ISupportInitialize)HNumericUpDownExFirstOdoMeter).EndInit();
             ((System.ComponentModel.ISupportInitialize)HNumericUpDownExLastOdoMeter).EndInit();
             ((System.ComponentModel.ISupportInitialize)HNumericUpDownExOilAmount).EndInit();

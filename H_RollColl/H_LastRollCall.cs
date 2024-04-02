@@ -139,6 +139,16 @@ namespace H_RollColl {
             HNumericUpDownExOilAmount.Value = 0;
         }
 
+        private void H_LastRollCall_KeyDown(object sender, KeyEventArgs e) {
+            bool forward;
+            if (e.KeyCode == Keys.Enter) {
+                // Shiftキーが押されているかの判定
+                forward = e.Modifiers != Keys.Shift;
+                // タブオーダー順で次のコントロールにフォーカスを移動
+                this.SelectNextControl(this.ActiveControl, forward, true, true, true);
+            }
+        }
+
         /// <summary>
         /// H_LastRollCall_FormClosing
         /// </summary>

@@ -95,7 +95,7 @@
             // ToolStripMenuItemPrintA4
             // 
             ToolStripMenuItemPrintA4.Name = "ToolStripMenuItemPrintA4";
-            ToolStripMenuItemPrintA4.Size = new Size(180, 22);
+            ToolStripMenuItemPrintA4.Size = new Size(132, 22);
             ToolStripMenuItemPrintA4.Text = "Ａ４で印刷";
             ToolStripMenuItemPrintA4.Click += ToolStripMenuItem_Click;
             // 

@@ -247,7 +247,8 @@ namespace H_ControlEx {
             StringFormat stringFormat = new();
             stringFormat.LineAlignment = StringAlignment.Center;
             stringFormat.Alignment = StringAlignment.Center;
-            e.Graphics.DrawString(string.Concat(_hSetMasterVo.SetName1, "\r\n", _hSetMasterVo.SetName2, "\r\n", _hSetMasterVo.SetCode),
+            //e.Graphics.DrawString(string.Concat(_hSetMasterVo.SetName1, "\r\n", _hSetMasterVo.SetName2, "\r\n", _hSetMasterVo.SetCode),
+            e.Graphics.DrawString(string.Concat(_hSetMasterVo.SetName1, "\r\n", _hSetMasterVo.SetName2, "\r\n"),
                                                 _drawFontSetLabel,
                                                 new SolidBrush(Color.Black),
                                                 new Rectangle(0, 10, (int)_panelWidth - 2, (int)_panelHeight - 6), stringFormat);

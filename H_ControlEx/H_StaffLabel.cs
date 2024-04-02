@@ -242,7 +242,7 @@ namespace H_ControlEx {
              * Occupation
              * 10:運転手 11:作業員 20:事務職 99:指定なし
              */
-            e.Graphics.DrawString(_staffOccupationCode == 11 ? "作" : "", _drawFontOccupation, Brushes.DarkGray, 8, 92);
+            e.Graphics.DrawString(_staffOccupationCode == 11 ? "作" : "", _drawFontOccupation, Brushes.Blue, 8, 92);
             /*
              * 代番処理を描画
              */
@@ -261,7 +261,7 @@ namespace H_ControlEx {
              * 点呼の印を描画
              */
             if (!_staffRollCallFlag) {
-                e.Graphics.FillEllipse(Brushes.Crimson, 51, 92, 10, 10);
+                e.Graphics.FillEllipse(Brushes.Crimson, 50, 91, 12, 12);
                 e.Graphics.FillEllipse(Brushes.LightPink, 55, 97, 4, 4);
             }
         }

@@ -162,7 +162,7 @@ namespace H_RollColl {
                             // 検知器使用の有無
                             SheetViewList.Cells[row + 4, 20].Text = "有";
                             // 自動車、道路及び運行の状況　その他必要な事項
-                            SheetViewList.Cells[row + 4, 21].Text = hVehicleDispatchDetailVo.StaffMemo1;
+                            SheetViewList.Cells[row + 4, 21].Text = hVehicleDispatchDetailVo.SetMemo;
                             // 点呼実施者
                             switch (ManagedSpaceCode) {
                                 case 1:

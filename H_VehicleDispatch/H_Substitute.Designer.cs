@@ -26,6 +26,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(H_Substitute));
             HTableLayoutPanelExBase = new H_ControlEx.H_TableLayoutPanelEx();
             SpreadHSubstitute = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("HTableLayoutPanelExBase.Controls"));
+            SheetView1 = SpreadHSubstitute.GetSheet(0);
+            SheetView2 = SpreadHSubstitute.GetSheet(1);
             StatusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             ToolStripStatusLabelDetail = new ToolStripStatusLabel();
@@ -35,8 +37,6 @@
             ToolStripMenuItemMenu = new ToolStripMenuItem();
             ToolStripMenuItemExit = new ToolStripMenuItem();
             ToolStripMenuItemHelp = new ToolStripMenuItem();
-            SheetView1 = SpreadHSubstitute.GetSheet(0);
-            SheetView2 = SpreadHSubstitute.GetSheet(1);
             HTableLayoutPanelExBase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)SpreadHSubstitute).BeginInit();
             StatusStrip1.SuspendLayout();

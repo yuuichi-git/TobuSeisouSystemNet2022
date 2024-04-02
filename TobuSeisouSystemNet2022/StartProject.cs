@@ -58,6 +58,7 @@ using VehicleDispatch;
 using VehicleDispatchSheet;
 
 using WardSpreadsheet;
+using H_Car;
 
 namespace TobuSeisouSystemNet2022 {
     public partial class StartProject : Form {
@@ -249,7 +250,9 @@ namespace TobuSeisouSystemNet2022 {
                                 statusOfResidenceList.ShowDialog(this);
                                 break;
                             /*
+                             * 
                              * 新型
+                             * 
                              */
                             // H_VehicleDispatch
                             case "H_VehicleDispatch":
@@ -266,21 +269,6 @@ namespace TobuSeisouSystemNet2022 {
                                 hVehicleDispatchBoard.WindowState = FormWindowState.Maximized;
                                 hVehicleDispatchBoard.Show(this);
                                 break;
-                            // H_StaffList
-                            case "H_StaffList":
-                                // Screenを退避(新型のみ)
-                                _connectionVo.Screen = (Screen)HComboBoxMoniter.SelectedItem;
-                                /*
-                                 * Formを表示する
-                                 */
-                                HStaffList hStaffList = new(_connectionVo);
-                                Rectangle rectangleHStaffList = new Desktop().GetMonitorWorkingArea(hStaffList, (Screen)HComboBoxMoniter.SelectedItem);
-                                hStaffList.KeyPreview = true;
-                                hStaffList.Location = rectangleHStaffList.Location;
-                                hStaffList.Size = new Size(1920, 1080);
-                                hStaffList.WindowState = FormWindowState.Normal;
-                                hStaffList.Show(this);
-                                break;
                             // H_FastRollColl
                             case "H_FastRollColl":
                                 // Screenを退避(新型のみ)
@@ -295,6 +283,36 @@ namespace TobuSeisouSystemNet2022 {
                                 hFirstRollColl.Size = new Size(1920, 1080);
                                 hFirstRollColl.WindowState = FormWindowState.Normal;
                                 hFirstRollColl.Show(this);
+                                break;
+                            // 従事者台帳
+                            case "H_StaffList":
+                                // Screenを退避(新型のみ)
+                                _connectionVo.Screen = (Screen)HComboBoxMoniter.SelectedItem;
+                                /*
+                                 * Formを表示する
+                                 */
+                                HStaffList hStaffList = new(_connectionVo);
+                                Rectangle rectangleHStaffList = new Desktop().GetMonitorWorkingArea(hStaffList, (Screen)HComboBoxMoniter.SelectedItem);
+                                hStaffList.KeyPreview = true;
+                                hStaffList.Location = rectangleHStaffList.Location;
+                                hStaffList.Size = new Size(1920, 1080);
+                                hStaffList.WindowState = FormWindowState.Normal;
+                                hStaffList.Show(this);
+                                break;
+                            // 車両台帳
+                            case "HCarList":
+                                // Screenを退避(新型のみ)
+                                _connectionVo.Screen = (Screen)HComboBoxMoniter.SelectedItem;
+                                /*
+                                 * Formを表示する
+                                 */
+                                HCarList hCarList = new(_connectionVo);
+                                Rectangle rectangleHCarList = new Desktop().GetMonitorWorkingArea(hCarList, (Screen)HComboBoxMoniter.SelectedItem);
+                                hCarList.KeyPreview = true;
+                                hCarList.Location = rectangleHCarList.Location;
+                                hCarList.Size = new Size(1920, 1080);
+                                hCarList.WindowState = FormWindowState.Normal;
+                                hCarList.Show(this);
                                 break;
                             // 点呼記録簿
                             case "H_RollCollRecordSheet":
@@ -328,6 +346,11 @@ namespace TobuSeisouSystemNet2022 {
                                 break;
                             // 東環保研修センター修了書登録
                             case "H_ToukanpoTrainingCardDetail":
+                                // Screenを退避(新型のみ)
+                                _connectionVo.Screen = (Screen)HComboBoxMoniter.SelectedItem;
+                                /*
+                                 * Formを表示する
+                                 */
                                 H_ToukanpoTrainingCardDetail hToukanpoTrainingCardDetail = new(_connectionVo);
                                 Rectangle rectangleHToukanpoTrainingCardDetail = new Desktop().GetMonitorWorkingArea(hToukanpoTrainingCardDetail, (Screen)HComboBoxMoniter.SelectedItem);
                                 hToukanpoTrainingCardDetail.KeyPreview = true;
@@ -337,7 +360,9 @@ namespace TobuSeisouSystemNet2022 {
                                 hToukanpoTrainingCardDetail.Show(this);
                                 break;
                             /*
+                             * 
                              * データ移行ツール
+                             * 
                              */
                             case "DbHCarMaster":
                                 dialogResult = MessageBox.Show("SQLを発行します。本当によろしいですか？", "SQLメッセージ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);

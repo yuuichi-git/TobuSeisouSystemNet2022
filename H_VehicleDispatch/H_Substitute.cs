@@ -28,11 +28,12 @@ namespace H_VehicleDispatch {
                                                                                            { 1310103, "080-8868-8023" }, // 千代田紙１
                                                                                            { 1310201, "080-2202-7713" }, // 中央ペット７
                                                                                            { 1310202, "080-3493-3729" }, // 中央ペット８
-                                                                                           { 1312134, "" }, // 足立１７
-                                                                                           { 1312102, "090-5560-0491" }, // 足立２３
-                                                                                           { 1312103, "090-5560-0677" }, // 足立２４
-                                                                                           { 1312104, "090-5560-0700" }, // 足立３８
+                                                                                           //{ 1310207, "" }, // 中央ペット１１
+                                                                                           { 1312162, "090-5560-0491" }, // 足立２２(2024)
+                                                                                           { 1312164, "090-5560-0677" }, // 足立２３(2024)
+                                                                                           { 1312163, "090-5560-0700" }, // 足立３７(2024)
                                                                                            { 1312204, "090-9817-8129" }, // 葛飾１１
+                                                                                           { 1312211, "090-9817-8129" }, // 葛飾軽１２(2024)
                                                                                            { 1312209, "080-3493-3728" }, // 葛飾３２
                                                                                            { 1312210, "080-2202-7269" } }; // 葛飾５４
         /*
@@ -57,7 +58,6 @@ namespace H_VehicleDispatch {
         private readonly H_CarMasterDao _hCarMasterDao;
         private readonly H_StaffMasterDao _hStaffMasterDao;
         private readonly H_VehicleDispatchBodyDao _hVehicleDispatchBodyDao;
-        private readonly H_VehicleDispatchDetailDao _hVehicleDispatchDetailDao;
 
         /// <summary>
         /// コンストラクター
@@ -71,7 +71,6 @@ namespace H_VehicleDispatch {
             _hCarMasterDao = new(connectionVo);
             _hStaffMasterDao = new(connectionVo);
             _hVehicleDispatchBodyDao = new(connectionVo);
-            _hVehicleDispatchDetailDao = new(connectionVo);
             /*
              * InitializeControl
              */
@@ -96,13 +95,17 @@ namespace H_VehicleDispatch {
                     break;
                 case 1310201: // 中央ペット７
                 case 1310202: // 中央ペット８
+                case 1310207: // 中央ペット１１
                     _cleanOfficeName = string.Concat("　東京都環境衛生事業協同組合", "\r\n", " 　中央区支部　様");
                     _cleanOfficeFax = string.Concat("中央区支部", "\r\n", " ＦＡＸ ０３－６２８０－５８４１");
                     OutputSheetViewKYOTUU(SheetView1, hSetControl);
                     break;
+                case 1312161: // 足立１６
                 case 1312134: // 足立１８
-                case 1312102: // 足立２３
+                case 1312162: // 足立２２
+                case 1312164: // 足立２３
                 case 1312103: // 足立２４
+                case 1312163: // 足立３７
                 case 1312104: // 足立３８
                 case 1312105: // 足立不燃４
                     _cleanOfficeName = "　足立清掃事務所　御中";
@@ -110,6 +113,7 @@ namespace H_VehicleDispatch {
                     OutputSheetViewKYOTUU(SheetView1, hSetControl);
                     break;
                 case 1312204: // 葛飾１１
+                case 1312211: // 葛飾軽１２
                 case 1312209: // 葛飾３２
                 case 1312210: // 葛飾５４
                     _cleanOfficeName = "　葛飾区清掃事務所　御中";
@@ -145,7 +149,7 @@ namespace H_VehicleDispatch {
         private void OutputSheetViewKYOTUU(SheetView sheetView, H_SetControl hSetControl) {
             // シートを選択
             SpreadHSubstitute.ActiveSheetIndex = 0;
-            int staffPutNumber;
+            int staffPutNumber = 0;
             int arrayLoopCount = 0;
             H_ControlVo hControlVo = (H_ControlVo)hSetControl.Tag;
             /*
@@ -179,10 +183,11 @@ namespace H_VehicleDispatch {
              * 連絡先番号をセット
              */
             switch (hSetMasterVo.SetCode) {
-                case 1312134: // 足立１７組
+                case 1312161: // 足立１６組
                 case 1312105: // 足立不燃４
                 case 1312203: // 小岩４
-                case 1312208: // 小岩５
+                case 1312212: // 小岩６
+                case 1310207: // 中央ペット１１
                     _cellphoneNumber = _hStaffMasterDao.SelectOneHStaffMaster(hSetControl.GetStaffMasterVo(0).StaffCode).CellphoneNumber.ToString();
                     break;
                 default:
@@ -192,10 +197,9 @@ namespace H_VehicleDispatch {
             /*
              * 運転手
              */
-            staffPutNumber = 0;
             if (hSetControl.GetStaffMasterVo(0) is not null && hVehicleDispatchBodyVo.StaffCode1 != hSetControl.GetStaffMasterVo(0).StaffCode) {
                 PutSheetView1(staffPutNumber, hSetMasterVo.SetName, "運転手", _hStaffMasterDao.SelectOneHStaffMaster(hVehicleDispatchBodyVo.StaffCode1).DisplayName, hSetControl.GetStaffMasterVo(0).DisplayName, _cellphoneNumber);
-                staffPutNumber++; // 次の行にインクリメントする
+                staffPutNumber++;  // 次の行にインクリメントする
             }
 
             List<int> _arrayHONBANStaffCodes = new List<int>();
@@ -228,7 +232,6 @@ namespace H_VehicleDispatch {
                     }
                 }
 
-                staffPutNumber = 0;
                 foreach (int staffCode in _arrayHONBANStaffCodes) {
                     PutSheetView1(staffPutNumber, hSetMasterVo.SetName, "職員",
                                   _hStaffMasterDao.SelectOneHStaffMaster(_arrayHONBANStaffCodes[arrayLoopCount]).DisplayName,

@@ -23,7 +23,7 @@ namespace Vo {
         private Screen _screen;
 
         /// <summary>
-        /// コンストラクタ
+        /// コンストラクター
         /// </summary>
         public ConnectionVo() {
             _connection = new();

@@ -3,6 +3,8 @@
  */
 using FarPoint.Win.Spread;
 
+using H_Common;
+
 using H_Dao;
 
 using Vo;
@@ -207,6 +209,31 @@ namespace H_Car {
                     break;
 
             }
+        }
+
+        /// <summary>
+        /// SpreadList_CellDoubleClick
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SpreadList_CellDoubleClick(object sender, CellClickEventArgs e) {
+            // ヘッダーのDoubleClickを回避
+            if (e.Row < 0)
+                return;
+            // Shiftが押された場合
+            if ((ModifierKeys & Keys.Shift) == Keys.Shift) {
+                //var carPaper = new CarPaper(_connectionVo, (int)SheetViewList.Cells[e.Row, colCarCode].Value);
+                //carPaper.ShowDialog();
+                return;
+            }
+            // 修飾キーが無い場合
+            HCarDetail hCarDetail = new(_connectionVo, (int)SheetViewList.Cells[e.Row, _colCarCode].Value);
+            Rectangle rectangleHCarList = new Desktop().GetMonitorWorkingArea(hCarDetail, _connectionVo.Screen);
+            hCarDetail.KeyPreview = true;
+            hCarDetail.Location = rectangleHCarList.Location;
+            hCarDetail.Size = new Size(1920, 1080);
+            hCarDetail.WindowState = FormWindowState.Normal;
+            hCarDetail.ShowDialog(this);
         }
 
         /// <summary>

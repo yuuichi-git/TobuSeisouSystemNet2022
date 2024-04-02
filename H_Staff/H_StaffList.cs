@@ -164,9 +164,13 @@ namespace H_Staff {
         /// <param name="e"></param>
         private void ToolStripMenuItem_Click(object sender, EventArgs e) {
             switch (((ToolStripMenuItem)sender).Name) {
-                /*
-                 * アプリケーションを終了する
-                 */
+                // 
+                case "ToolStripMenuItemAdd":
+                    HStaffDetail hStaffDetail = new(_connectionVo);
+                    hStaffDetail.ShowDialog(this);
+
+                    break;
+                // アプリケーションを終了する
                 case "ToolStripMenuItemExit":
                     this.Close();
                     break;

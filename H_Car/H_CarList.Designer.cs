@@ -35,9 +35,9 @@
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             ToolStripStatusLabelDetail = new ToolStripStatusLabel();
             SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("HTableLayoutPanelExBase.Controls"));
+            SheetViewList = SpreadList.GetSheet(0);
             HPanelExUp = new H_ControlEx.H_PanelEx();
             HButtonExUpdate = new H_ControlEx.H_ButtonEx();
-            SheetViewList = SpreadList.GetSheet(0);
             HTableLayoutPanelExBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -137,6 +137,7 @@
             SpreadList.Name = "SpreadList";
             SpreadList.Size = new Size(1898, 927);
             SpreadList.TabIndex = 2;
+            SpreadList.CellDoubleClick += SpreadList_CellDoubleClick;
             // 
             // HPanelExUp
             // 

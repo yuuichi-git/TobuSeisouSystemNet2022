@@ -82,6 +82,7 @@ namespace H_RollColl {
         private readonly List<H_FareMasterVo> _listHFareMasterVo;
         private readonly List<H_SetMasterVo> _listHSetMasterVo;
         private readonly List<H_StaffMasterVo> _listHStaffMasterVo;
+
         /// <summary>
         /// コンストラクター
         /// </summary>
@@ -428,10 +429,10 @@ namespace H_RollColl {
                 SheetViewFirstRollCall.Cells[entryCellPosition.Row, entryCellPosition.Col + 9].Text = belongs;
                 /*
                  * 出庫地
-                 * 運転手は車庫地を出勤地とする
+                 * 運転手は配車先の管理地を出勤地とする
                  */
                 SheetViewFirstRollCall.Cells[entryCellPosition.Row, entryCellPosition.Col + 10].Font = new System.Drawing.Font("Yu Gothic UI", 9);
-                SheetViewFirstRollCall.Cells[entryCellPosition.Row, entryCellPosition.Col + 10].Text = hVehicleDispatchDetailVo.CarGarageCode == 2 ? "三" : "";
+                SheetViewFirstRollCall.Cells[entryCellPosition.Row, entryCellPosition.Col + 10].Text = hVehicleDispatchDetailVo.ManagedSpaceCode == 2 ? "三" : "";
                 /*
                  * 指定された配車先の点呼を除外する
                  */
@@ -440,8 +441,18 @@ namespace H_RollColl {
                     case 1312110: // 三郷事務所
                     case 1312111: // 整備本社
                     case 1312112: // 整備三郷
-                    case 1312118: // 浄化槽１
-                    case 1312123: // 浄化槽２
+                    case 1312118: // 浄化槽
+                    case 1312132: // 浄化槽(品川)
+                    case 1312135: // 初任診断
+                    case 1312136: // 適齢診断
+                    case 1312137: // 初任研修
+                    case 1312138: // 整備管理講習
+                    case 1312139: // 運行管理講習
+                    case 1312140: // 当日無断で欠勤
+                    case 1312141: // 当日朝電で欠勤
+                    case 1312145: // 有給休暇
+                    case 1312150: // 組合員欠勤
+                    case 1312160: // バイト欠勤
                         return;
                 }
                 /*

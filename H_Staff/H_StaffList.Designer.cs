@@ -35,6 +35,8 @@
             MenuStrip1 = new MenuStrip();
             ToolStripMenuItemMenu = new ToolStripMenuItem();
             ToolStripMenuItemExit = new ToolStripMenuItem();
+            ToolStripMenuItemEdit = new ToolStripMenuItem();
+            ToolStripMenuItemAdd = new ToolStripMenuItem();
             ToolStripMenuItemHelp = new ToolStripMenuItem();
             HPanelExUp = new H_ControlEx.H_PanelEx();
             ButtonUpdate = new Button();
@@ -134,7 +136,7 @@
             // 
             // MenuStrip1
             // 
-            MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemHelp });
+            MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemEdit, ToolStripMenuItemHelp });
             MenuStrip1.Location = new Point(0, 0);
             MenuStrip1.Name = "MenuStrip1";
             MenuStrip1.Size = new Size(1904, 24);
@@ -153,6 +155,21 @@
             ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
             ToolStripMenuItemExit.Size = new Size(195, 22);
             ToolStripMenuItemExit.Text = "アプリケーションを終了する";
+            ToolStripMenuItemExit.Click += ToolStripMenuItem_Click;
+            // 
+            // ToolStripMenuItemEdit
+            // 
+            ToolStripMenuItemEdit.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemAdd });
+            ToolStripMenuItemEdit.Name = "ToolStripMenuItemEdit";
+            ToolStripMenuItemEdit.Size = new Size(43, 20);
+            ToolStripMenuItemEdit.Text = "編集";
+            // 
+            // ToolStripMenuItemAdd
+            // 
+            ToolStripMenuItemAdd.Name = "ToolStripMenuItemAdd";
+            ToolStripMenuItemAdd.Size = new Size(180, 22);
+            ToolStripMenuItemAdd.Text = "新規レコードを追加";
+            ToolStripMenuItemAdd.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemHelp
             // 
@@ -618,5 +635,7 @@
         private FarPoint.Win.Spread.SheetView SheetViewList;
         private FarPoint.Win.Spread.SheetView SheetViewMedical;
         private FarPoint.Win.Spread.SheetView SheetViewDriver;
+        private ToolStripMenuItem ToolStripMenuItemEdit;
+        private ToolStripMenuItem ToolStripMenuItemAdd;
     }
 }
