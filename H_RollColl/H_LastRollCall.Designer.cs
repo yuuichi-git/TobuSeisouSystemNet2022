@@ -152,6 +152,7 @@
             HNumericUpDownExFirstOdoMeter.Name = "HNumericUpDownExFirstOdoMeter";
             HNumericUpDownExFirstOdoMeter.Size = new Size(76, 23);
             HNumericUpDownExFirstOdoMeter.TabIndex = 6;
+            HNumericUpDownExFirstOdoMeter.TabStop = false;
             HNumericUpDownExFirstOdoMeter.TextAlign = HorizontalAlignment.Right;
             // 
             // HNumericUpDownExLastOdoMeter
@@ -162,6 +163,7 @@
             HNumericUpDownExLastOdoMeter.Name = "HNumericUpDownExLastOdoMeter";
             HNumericUpDownExLastOdoMeter.Size = new Size(76, 23);
             HNumericUpDownExLastOdoMeter.TabIndex = 7;
+            HNumericUpDownExLastOdoMeter.TabStop = false;
             HNumericUpDownExLastOdoMeter.TextAlign = HorizontalAlignment.Right;
             // 
             // HNumericUpDownExOilAmount
@@ -173,6 +175,7 @@
             HNumericUpDownExOilAmount.Name = "HNumericUpDownExOilAmount";
             HNumericUpDownExOilAmount.Size = new Size(76, 23);
             HNumericUpDownExOilAmount.TabIndex = 8;
+            HNumericUpDownExOilAmount.TabStop = false;
             HNumericUpDownExOilAmount.TextAlign = HorizontalAlignment.Right;
             HNumericUpDownExOilAmount.Value = new decimal(new int[] { 55, 0, 0, 65536 });
             // 

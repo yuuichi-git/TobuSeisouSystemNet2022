@@ -26,12 +26,16 @@
             HTableLayoutPanelExBasse = new H_ControlEx.H_TableLayoutPanelEx();
             MenuStrip1 = new MenuStrip();
             ToolStripMenuItemMenu = new ToolStripMenuItem();
+            ToolStripMenuItemExit = new ToolStripMenuItem();
             ToolStripMenuItemHelp = new ToolStripMenuItem();
             StatusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             ToolStripStatusLabelDetail = new ToolStripStatusLabel();
             HPanelExUp = new H_ControlEx.H_PanelEx();
-            h_ButtonEx1 = new H_ControlEx.H_ButtonEx();
+            HButtonExRotate = new H_ControlEx.H_ButtonEx();
+            HButtonExDelete = new H_ControlEx.H_ButtonEx();
+            HButtonExClip = new H_ControlEx.H_ButtonEx();
+            HButtonExUpdate = new H_ControlEx.H_ButtonEx();
             HPanelExLeft = new H_ControlEx.H_PanelEx();
             groupBox4 = new GroupBox();
             HTextBoxExRemarks = new H_ControlEx.H_TextBoxEx();
@@ -180,9 +184,17 @@
             // 
             // ToolStripMenuItemMenu
             // 
+            ToolStripMenuItemMenu.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemExit });
             ToolStripMenuItemMenu.Name = "ToolStripMenuItemMenu";
             ToolStripMenuItemMenu.Size = new Size(52, 20);
             ToolStripMenuItemMenu.Text = "メニュー";
+            // 
+            // ToolStripMenuItemExit
+            // 
+            ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
+            ToolStripMenuItemExit.Size = new Size(195, 22);
+            ToolStripMenuItemExit.Text = "アプリケーションを終了する";
+            ToolStripMenuItemExit.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemHelp
             // 
@@ -197,6 +209,7 @@
             StatusStrip1.Location = new Point(0, 1447);
             StatusStrip1.Name = "StatusStrip1";
             StatusStrip1.Size = new Size(1904, 22);
+            StatusStrip1.SizingGrip = false;
             StatusStrip1.TabIndex = 1;
             StatusStrip1.Text = "statusStrip1";
             // 
@@ -215,22 +228,59 @@
             // HPanelExUp
             // 
             HTableLayoutPanelExBasse.SetColumnSpan(HPanelExUp, 2);
-            HPanelExUp.Controls.Add(h_ButtonEx1);
+            HPanelExUp.Controls.Add(HButtonExRotate);
+            HPanelExUp.Controls.Add(HButtonExDelete);
+            HPanelExUp.Controls.Add(HButtonExClip);
+            HPanelExUp.Controls.Add(HButtonExUpdate);
             HPanelExUp.Dock = DockStyle.Fill;
             HPanelExUp.Location = new Point(3, 27);
             HPanelExUp.Name = "HPanelExUp";
             HPanelExUp.Size = new Size(1898, 54);
             HPanelExUp.TabIndex = 2;
             // 
-            // h_ButtonEx1
+            // HButtonExRotate
             // 
-            h_ButtonEx1.Location = new Point(1684, 8);
-            h_ButtonEx1.Name = "h_ButtonEx1";
-            h_ButtonEx1.Size = new Size(160, 36);
-            h_ButtonEx1.TabIndex = 0;
-            h_ButtonEx1.Text = "UPDATE";
-            h_ButtonEx1.TextDirectionVertical = "";
-            h_ButtonEx1.UseVisualStyleBackColor = true;
+            HButtonExRotate.Location = new Point(1272, 16);
+            HButtonExRotate.Name = "HButtonExRotate";
+            HButtonExRotate.Size = new Size(96, 24);
+            HButtonExRotate.TabIndex = 3;
+            HButtonExRotate.Text = "Rotate";
+            HButtonExRotate.TextDirectionVertical = "";
+            HButtonExRotate.UseVisualStyleBackColor = true;
+            HButtonExRotate.Click += HButtonEx_Click;
+            // 
+            // HButtonExDelete
+            // 
+            HButtonExDelete.Location = new Point(1164, 16);
+            HButtonExDelete.Name = "HButtonExDelete";
+            HButtonExDelete.Size = new Size(96, 24);
+            HButtonExDelete.TabIndex = 2;
+            HButtonExDelete.Text = "Delete";
+            HButtonExDelete.TextDirectionVertical = "";
+            HButtonExDelete.UseVisualStyleBackColor = true;
+            HButtonExDelete.Click += HButtonEx_Click;
+            // 
+            // HButtonExClip
+            // 
+            HButtonExClip.Location = new Point(1056, 16);
+            HButtonExClip.Name = "HButtonExClip";
+            HButtonExClip.Size = new Size(96, 24);
+            HButtonExClip.TabIndex = 1;
+            HButtonExClip.Text = "Clip";
+            HButtonExClip.TextDirectionVertical = "";
+            HButtonExClip.UseVisualStyleBackColor = true;
+            HButtonExClip.Click += HButtonEx_Click;
+            // 
+            // HButtonExUpdate
+            // 
+            HButtonExUpdate.Location = new Point(1684, 8);
+            HButtonExUpdate.Name = "HButtonExUpdate";
+            HButtonExUpdate.Size = new Size(160, 36);
+            HButtonExUpdate.TabIndex = 0;
+            HButtonExUpdate.Text = "UPDATE";
+            HButtonExUpdate.TextDirectionVertical = "";
+            HButtonExUpdate.UseVisualStyleBackColor = true;
+            HButtonExUpdate.Click += HButtonEx_Click;
             // 
             // HPanelExLeft
             // 
@@ -355,6 +405,7 @@
             // HComboBoxExTypesOfFuel
             // 
             HComboBoxExTypesOfFuel.FormattingEnabled = true;
+            HComboBoxExTypesOfFuel.Items.AddRange(new object[] { "軽油", "ガソリン", "プロパン" });
             HComboBoxExTypesOfFuel.Location = new Point(192, 556);
             HComboBoxExTypesOfFuel.Name = "HComboBoxExTypesOfFuel";
             HComboBoxExTypesOfFuel.Size = new Size(176, 23);
@@ -600,6 +651,7 @@
             // HComboBoxExShapeCode
             // 
             HComboBoxExShapeCode.FormattingEnabled = true;
+            HComboBoxExShapeCode.Items.AddRange(new object[] { "キャブオーバー", "塵芥車", "ダンプ ", "コンテナ専用", "脱着装置付コンテナ専用車", "粉粒体運搬車", "糞尿車", "清掃車" });
             HComboBoxExShapeCode.Location = new Point(192, 192);
             HComboBoxExShapeCode.Name = "HComboBoxExShapeCode";
             HComboBoxExShapeCode.Size = new Size(176, 23);
@@ -618,6 +670,7 @@
             // HComboBoxExOtherCode
             // 
             HComboBoxExOtherCode.FormattingEnabled = true;
+            HComboBoxExOtherCode.Items.AddRange(new object[] { "事業用", "自家用" });
             HComboBoxExOtherCode.Location = new Point(192, 164);
             HComboBoxExOtherCode.Name = "HComboBoxExOtherCode";
             HComboBoxExOtherCode.Size = new Size(176, 23);
@@ -652,6 +705,7 @@
             // HComboBoxExCarUse
             // 
             HComboBoxExCarUse.FormattingEnabled = true;
+            HComboBoxExCarUse.Items.AddRange(new object[] { "貨物", "乗用", "乗合", "特種" });
             HComboBoxExCarUse.Location = new Point(192, 136);
             HComboBoxExCarUse.Name = "HComboBoxExCarUse";
             HComboBoxExCarUse.Size = new Size(176, 23);
@@ -670,6 +724,7 @@
             // HComboBoxExCarKindCode
             // 
             HComboBoxExCarKindCode.FormattingEnabled = true;
+            HComboBoxExCarKindCode.Items.AddRange(new object[] { "軽自動車", "小型", "普通", "大型特殊" });
             HComboBoxExCarKindCode.Location = new Point(192, 108);
             HComboBoxExCarKindCode.Name = "HComboBoxExCarKindCode";
             HComboBoxExCarKindCode.Size = new Size(176, 23);
@@ -706,6 +761,7 @@
             // HComboBoxExManufacturerCode
             // 
             HComboBoxExManufacturerCode.FormattingEnabled = true;
+            HComboBoxExManufacturerCode.Items.AddRange(new object[] { "いすゞ", "日産", "ダイハツ", "日野", "スバル" });
             HComboBoxExManufacturerCode.Location = new Point(192, 24);
             HComboBoxExManufacturerCode.Name = "HComboBoxExManufacturerCode";
             HComboBoxExManufacturerCode.Size = new Size(176, 23);
@@ -743,6 +799,7 @@
             // HComboBoxExBaseAddress
             // 
             HComboBoxExBaseAddress.FormattingEnabled = true;
+            HComboBoxExBaseAddress.Items.AddRange(new object[] { "＊＊＊" });
             HComboBoxExBaseAddress.Location = new Point(192, 136);
             HComboBoxExBaseAddress.Name = "HComboBoxExBaseAddress";
             HComboBoxExBaseAddress.Size = new Size(304, 23);
@@ -761,6 +818,7 @@
             // HComboBoxExUserAddress
             // 
             HComboBoxExUserAddress.FormattingEnabled = true;
+            HComboBoxExUserAddress.Items.AddRange(new object[] { "＊＊＊" });
             HComboBoxExUserAddress.Location = new Point(192, 108);
             HComboBoxExUserAddress.Name = "HComboBoxExUserAddress";
             HComboBoxExUserAddress.Size = new Size(304, 23);
@@ -779,6 +837,7 @@
             // HComboBoxExUserName
             // 
             HComboBoxExUserName.FormattingEnabled = true;
+            HComboBoxExUserName.Items.AddRange(new object[] { "＊＊＊" });
             HComboBoxExUserName.Location = new Point(192, 80);
             HComboBoxExUserName.Name = "HComboBoxExUserName";
             HComboBoxExUserName.Size = new Size(304, 23);
@@ -797,6 +856,7 @@
             // HComboBoxExOwnerAddress
             // 
             HComboBoxExOwnerAddress.FormattingEnabled = true;
+            HComboBoxExOwnerAddress.Items.AddRange(new object[] { "東京都足立区西伊興１－６－２８" });
             HComboBoxExOwnerAddress.Location = new Point(192, 52);
             HComboBoxExOwnerAddress.Name = "HComboBoxExOwnerAddress";
             HComboBoxExOwnerAddress.Size = new Size(304, 23);
@@ -815,6 +875,7 @@
             // HComboBoxExOwnerName
             // 
             HComboBoxExOwnerName.FormattingEnabled = true;
+            HComboBoxExOwnerName.Items.AddRange(new object[] { "東武清掃　株式会社" });
             HComboBoxExOwnerName.Location = new Point(192, 24);
             HComboBoxExOwnerName.Name = "HComboBoxExOwnerName";
             HComboBoxExOwnerName.Size = new Size(304, 23);
@@ -914,6 +975,7 @@
             // HComboBoxExGarageCode
             // 
             HComboBoxExGarageCode.FormattingEnabled = true;
+            HComboBoxExGarageCode.Items.AddRange(new object[] { "足立", "三郷", "産廃車庫" });
             HComboBoxExGarageCode.Location = new Point(192, 108);
             HComboBoxExGarageCode.Name = "HComboBoxExGarageCode";
             HComboBoxExGarageCode.Size = new Size(148, 23);
@@ -959,6 +1021,7 @@
             // HComboBoxExRegistrationNumber1
             // 
             HComboBoxExRegistrationNumber1.FormattingEnabled = true;
+            HComboBoxExRegistrationNumber1.Items.AddRange(new object[] { "足立" });
             HComboBoxExRegistrationNumber1.Location = new Point(192, 52);
             HComboBoxExRegistrationNumber1.Name = "HComboBoxExRegistrationNumber1";
             HComboBoxExRegistrationNumber1.Size = new Size(48, 23);
@@ -986,6 +1049,7 @@
             // HComboBoxExClassificationCode
             // 
             HComboBoxExClassificationCode.FormattingEnabled = true;
+            HComboBoxExClassificationCode.Items.AddRange(new object[] { "雇上", "区契", "臨時", "清掃工場", "社内", "一般", "社用車", "指定なし" });
             HComboBoxExClassificationCode.Location = new Point(192, 80);
             HComboBoxExClassificationCode.Name = "HComboBoxExClassificationCode";
             HComboBoxExClassificationCode.Size = new Size(148, 23);
@@ -1137,10 +1201,12 @@
             // 
             // HPictureBoxExPicture
             // 
+            HPictureBoxExPicture.BorderStyle = BorderStyle.FixedSingle;
             HPictureBoxExPicture.Dock = DockStyle.Fill;
             HPictureBoxExPicture.Location = new Point(955, 87);
             HPictureBoxExPicture.Name = "HPictureBoxExPicture";
             HPictureBoxExPicture.Size = new Size(946, 1355);
+            HPictureBoxExPicture.SizeMode = PictureBoxSizeMode.Zoom;
             HPictureBoxExPicture.TabIndex = 4;
             HPictureBoxExPicture.TabStop = false;
             // 
@@ -1156,6 +1222,7 @@
             MinimizeBox = false;
             Name = "HCarDetail";
             Text = "H_CarDetail";
+            FormClosing += HCarDetail_FormClosing;
             HTableLayoutPanelExBasse.ResumeLayout(false);
             HTableLayoutPanelExBasse.PerformLayout();
             MenuStrip1.ResumeLayout(false);
@@ -1288,6 +1355,10 @@
         private Label label40;
         private H_ControlEx.H_TextBoxEx HTextBoxExVersionDesignateNumber;
         private Label label39;
-        private H_ControlEx.H_ButtonEx h_ButtonEx1;
+        private H_ControlEx.H_ButtonEx HButtonExUpdate;
+        private H_ControlEx.H_ButtonEx HButtonExDelete;
+        private H_ControlEx.H_ButtonEx HButtonExClip;
+        private ToolStripMenuItem ToolStripMenuItemExit;
+        private H_ControlEx.H_ButtonEx HButtonExRotate;
     }
 }

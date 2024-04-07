@@ -35,8 +35,8 @@
             MenuStrip1 = new MenuStrip();
             ToolStripMenuItemMenu = new ToolStripMenuItem();
             ToolStripMenuItemExit = new ToolStripMenuItem();
-            ToolStripMenuItemEdit = new ToolStripMenuItem();
-            ToolStripMenuItemAdd = new ToolStripMenuItem();
+            ToolStripMenuItemNew = new ToolStripMenuItem();
+            ToolStripMenuItemNewStaff = new ToolStripMenuItem();
             ToolStripMenuItemHelp = new ToolStripMenuItem();
             HPanelExUp = new H_ControlEx.H_PanelEx();
             ButtonUpdate = new Button();
@@ -136,7 +136,7 @@
             // 
             // MenuStrip1
             // 
-            MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemEdit, ToolStripMenuItemHelp });
+            MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemNew, ToolStripMenuItemHelp });
             MenuStrip1.Location = new Point(0, 0);
             MenuStrip1.Name = "MenuStrip1";
             MenuStrip1.Size = new Size(1904, 24);
@@ -157,19 +157,19 @@
             ToolStripMenuItemExit.Text = "アプリケーションを終了する";
             ToolStripMenuItemExit.Click += ToolStripMenuItem_Click;
             // 
-            // ToolStripMenuItemEdit
+            // ToolStripMenuItemNew
             // 
-            ToolStripMenuItemEdit.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemAdd });
-            ToolStripMenuItemEdit.Name = "ToolStripMenuItemEdit";
-            ToolStripMenuItemEdit.Size = new Size(43, 20);
-            ToolStripMenuItemEdit.Text = "編集";
+            ToolStripMenuItemNew.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemNewStaff });
+            ToolStripMenuItemNew.Name = "ToolStripMenuItemNew";
+            ToolStripMenuItemNew.Size = new Size(43, 20);
+            ToolStripMenuItemNew.Text = "新規";
             // 
-            // ToolStripMenuItemAdd
+            // ToolStripMenuItemNewStaff
             // 
-            ToolStripMenuItemAdd.Name = "ToolStripMenuItemAdd";
-            ToolStripMenuItemAdd.Size = new Size(180, 22);
-            ToolStripMenuItemAdd.Text = "新規レコードを追加";
-            ToolStripMenuItemAdd.Click += ToolStripMenuItem_Click;
+            ToolStripMenuItemNewStaff.Name = "ToolStripMenuItemNewStaff";
+            ToolStripMenuItemNewStaff.Size = new Size(183, 22);
+            ToolStripMenuItemNewStaff.Text = "新規レコードを追加する";
+            ToolStripMenuItemNewStaff.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemHelp
             // 
@@ -635,7 +635,7 @@
         private FarPoint.Win.Spread.SheetView SheetViewList;
         private FarPoint.Win.Spread.SheetView SheetViewMedical;
         private FarPoint.Win.Spread.SheetView SheetViewDriver;
-        private ToolStripMenuItem ToolStripMenuItemEdit;
-        private ToolStripMenuItem ToolStripMenuItemAdd;
+        private ToolStripMenuItem ToolStripMenuItemNew;
+        private ToolStripMenuItem ToolStripMenuItemNewStaff;
     }
 }

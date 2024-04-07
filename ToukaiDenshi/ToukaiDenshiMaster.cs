@@ -98,17 +98,18 @@ namespace ToukaiDenshi {
             SpreadList.SuspendLayout();
             // 先頭行（列）インデックスを取得
             spreadListTopRow = SpreadList.GetViewportTopRow(0);
-            // Rowを削除する
-            if(SheetViewList.Rows.Count > 0)
+            /*
+             * Rowを削除する
+             */
+            if (SheetViewList.Rows.Count > 0)
                 SheetViewList.RemoveRows(0, SheetViewList.Rows.Count);
-
             int i = 0;
-            if(_listLicenseMasterVo is not null) {
-                foreach(var licenseMasterVo in _listLicenseMasterVo) {
+            if (_listLicenseMasterVo is not null) {
+                foreach (var licenseMasterVo in _listLicenseMasterVo) {
                     /*
                      * 245番は予備で使用するので空けておく処理
                      */
-                    if(i + 1 == 245)
+                    if (i + 1 == 245)
                         i++;
                     SheetViewList.Rows.Add(i, 1);
                     SheetViewList.RowHeader.Columns[0].Label = (i + 1).ToString(); // Rowヘッダ
@@ -167,6 +168,11 @@ namespace ToukaiDenshi {
             ToolStripStatusLabelDetail.Text = string.Concat(" ", i, " 件");
         }
 
+        /// <summary>
+        /// InitializeSheetViewList
+        /// </summary>
+        /// <param name="sheetView"></param>
+        /// <returns></returns>
         private SheetView InitializeSheetViewList(SheetView sheetView) {
             SpreadList.AllowDragDrop = false; // DrugDropを禁止する
             SpreadList.PaintSelectionHeader = false; // ヘッダの選択状態をしない
@@ -217,7 +223,7 @@ namespace ToukaiDenshi {
         /// <param name="e"></param>
         private void ToukaiDenshiMaster_FormClosing(object sender, FormClosingEventArgs e) {
             var dialogResult = MessageBox.Show(MessageText.Message102, MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            switch(dialogResult) {
+            switch (dialogResult) {
                 case DialogResult.OK:
                     e.Cancel = false;
                     Dispose();

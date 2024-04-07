@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "H_License": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

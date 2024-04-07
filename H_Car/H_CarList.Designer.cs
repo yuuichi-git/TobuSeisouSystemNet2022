@@ -23,11 +23,14 @@
         ///  the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HCarList));
             HTableLayoutPanelExBase = new H_ControlEx.H_TableLayoutPanelEx();
             MenuStrip1 = new MenuStrip();
             ToolStripMenuItemMenu = new ToolStripMenuItem();
             ToolStripMenuItemExit = new ToolStripMenuItem();
+            ToolStripMenuItemNew = new ToolStripMenuItem();
+            ToolStripMenuItemNewCar = new ToolStripMenuItem();
             ToolStripMenuItemDisplay = new ToolStripMenuItem();
             ToolStripMenuItemDeleted = new ToolStripMenuItem();
             ToolStripMenuItemHelp = new ToolStripMenuItem();
@@ -35,6 +38,8 @@
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             ToolStripStatusLabelDetail = new ToolStripStatusLabel();
             SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("HTableLayoutPanelExBase.Controls"));
+            ContextMenuStrip1 = new ContextMenuStrip(components);
+            ToolStripMenuItemDelete = new ToolStripMenuItem();
             SheetViewList = SpreadList.GetSheet(0);
             HPanelExUp = new H_ControlEx.H_PanelEx();
             HButtonExUpdate = new H_ControlEx.H_ButtonEx();
@@ -42,6 +47,7 @@
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)SpreadList).BeginInit();
+            ContextMenuStrip1.SuspendLayout();
             HPanelExUp.SuspendLayout();
             SuspendLayout();
             // 
@@ -67,7 +73,7 @@
             // 
             // MenuStrip1
             // 
-            MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemDisplay, ToolStripMenuItemHelp });
+            MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemNew, ToolStripMenuItemDisplay, ToolStripMenuItemHelp });
             MenuStrip1.Location = new Point(0, 0);
             MenuStrip1.Name = "MenuStrip1";
             MenuStrip1.Size = new Size(1904, 24);
@@ -86,6 +92,21 @@
             ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
             ToolStripMenuItemExit.Size = new Size(195, 22);
             ToolStripMenuItemExit.Text = "アプリケーションを終了する";
+            ToolStripMenuItemExit.Click += ToolStripMenuItem_Click;
+            // 
+            // ToolStripMenuItemNew
+            // 
+            ToolStripMenuItemNew.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemNewCar });
+            ToolStripMenuItemNew.Name = "ToolStripMenuItemNew";
+            ToolStripMenuItemNew.Size = new Size(43, 20);
+            ToolStripMenuItemNew.Text = "新規";
+            // 
+            // ToolStripMenuItemNewCar
+            // 
+            ToolStripMenuItemNewCar.Name = "ToolStripMenuItemNewCar";
+            ToolStripMenuItemNewCar.Size = new Size(174, 22);
+            ToolStripMenuItemNewCar.Text = "新規車両を作成する";
+            ToolStripMenuItemNewCar.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemDisplay
             // 
@@ -131,6 +152,7 @@
             // SpreadList
             // 
             SpreadList.AccessibleDescription = "SpreadList, Sheet1, Row 0, Column 0";
+            SpreadList.ContextMenuStrip = ContextMenuStrip1;
             SpreadList.Dock = DockStyle.Fill;
             SpreadList.Font = new Font("ＭＳ Ｐゴシック", 11F, FontStyle.Regular, GraphicsUnit.Point);
             SpreadList.Location = new Point(3, 87);
@@ -138,6 +160,19 @@
             SpreadList.Size = new Size(1898, 927);
             SpreadList.TabIndex = 2;
             SpreadList.CellDoubleClick += SpreadList_CellDoubleClick;
+            // 
+            // ContextMenuStrip1
+            // 
+            ContextMenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemDelete });
+            ContextMenuStrip1.Name = "ContextMenuStrip1";
+            ContextMenuStrip1.Size = new Size(151, 26);
+            // 
+            // ToolStripMenuItemDelete
+            // 
+            ToolStripMenuItemDelete.Name = "ToolStripMenuItemDelete";
+            ToolStripMenuItemDelete.Size = new Size(150, 22);
+            ToolStripMenuItemDelete.Text = "車両を削除する";
+            ToolStripMenuItemDelete.Click += ToolStripMenuItem_Click;
             // 
             // HPanelExUp
             // 
@@ -180,6 +215,7 @@
             StatusStrip1.ResumeLayout(false);
             StatusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)SpreadList).EndInit();
+            ContextMenuStrip1.ResumeLayout(false);
             HPanelExUp.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -200,5 +236,9 @@
         private ToolStripMenuItem ToolStripMenuItemDisplay;
         private ToolStripMenuItem ToolStripMenuItemDeleted;
         private FarPoint.Win.Spread.SheetView SheetViewList;
+        private ToolStripMenuItem ToolStripMenuItemNew;
+        private ToolStripMenuItem ToolStripMenuItemNewCar;
+        private ContextMenuStrip ContextMenuStrip1;
+        private ToolStripMenuItem ToolStripMenuItemDelete;
     }
 }

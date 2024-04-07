@@ -173,11 +173,11 @@ namespace H_VehicleDispatch {
             if (hVehicleDispatchBodyVo.CarCode != hCarMasterVo.CarCode) {
                 // 本番 組数 車両ナンバー ドア番号
                 sheetView.Cells["B29"].Text = hSetMasterVo.SetName2;
-                sheetView.Cells["C29"].Text = _hCarMasterDao.SelectOneHCarMaster(hVehicleDispatchBodyVo.CarCode).RegistrationNumber;
-                sheetView.Cells["F29"].Text = _hCarMasterDao.SelectOneHCarMaster(hVehicleDispatchBodyVo.CarCode).DoorNumber.ToString();
+                sheetView.Cells["C29"].Text = _hCarMasterDao.SelectOneHCarMasterP(hVehicleDispatchBodyVo.CarCode).RegistrationNumber;
+                sheetView.Cells["F29"].Text = _hCarMasterDao.SelectOneHCarMasterP(hVehicleDispatchBodyVo.CarCode).DoorNumber.ToString();
                 // 代車 車両ナンバー ドア番号
-                sheetView.Cells["H29"].Text = _hCarMasterDao.SelectOneHCarMaster(hCarMasterVo.CarCode).RegistrationNumber;
-                sheetView.Cells["L29"].Text = _hCarMasterDao.SelectOneHCarMaster(hCarMasterVo.CarCode).DoorNumber.ToString();
+                sheetView.Cells["H29"].Text = _hCarMasterDao.SelectOneHCarMasterP(hCarMasterVo.CarCode).RegistrationNumber;
+                sheetView.Cells["L29"].Text = _hCarMasterDao.SelectOneHCarMasterP(hCarMasterVo.CarCode).DoorNumber.ToString();
             }
             /*
              * 連絡先番号をセット

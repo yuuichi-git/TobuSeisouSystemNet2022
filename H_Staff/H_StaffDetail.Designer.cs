@@ -1129,6 +1129,7 @@
             // 
             // HTextBoxExOtherName
             // 
+            HTextBoxExOtherName.ImeMode = ImeMode.Hiragana;
             HTextBoxExOtherName.Location = new Point(392, 108);
             HTextBoxExOtherName.Name = "HTextBoxExOtherName";
             HTextBoxExOtherName.Size = new Size(260, 23);
@@ -1146,6 +1147,7 @@
             // 
             // HTextBoxExOtherNameKana
             // 
+            HTextBoxExOtherNameKana.ImeMode = ImeMode.Katakana;
             HTextBoxExOtherNameKana.Location = new Point(68, 108);
             HTextBoxExOtherNameKana.Name = "HTextBoxExOtherNameKana";
             HTextBoxExOtherNameKana.Size = new Size(260, 23);
@@ -1194,6 +1196,7 @@
             // 
             // HTextBoxExCellphoneNumber
             // 
+            HTextBoxExCellphoneNumber.ImeMode = ImeMode.Off;
             HTextBoxExCellphoneNumber.Location = new Point(312, 220);
             HTextBoxExCellphoneNumber.Name = "HTextBoxExCellphoneNumber";
             HTextBoxExCellphoneNumber.Size = new Size(92, 23);
@@ -1211,6 +1214,7 @@
             // 
             // HTextBoxExTelephoneNumber
             // 
+            HTextBoxExTelephoneNumber.ImeMode = ImeMode.Off;
             HTextBoxExTelephoneNumber.Location = new Point(112, 220);
             HTextBoxExTelephoneNumber.Name = "HTextBoxExTelephoneNumber";
             HTextBoxExTelephoneNumber.Size = new Size(92, 23);
@@ -1228,6 +1232,7 @@
             // 
             // HTextBoxExRemarks
             // 
+            HTextBoxExRemarks.ImeMode = ImeMode.Hiragana;
             HTextBoxExRemarks.Location = new Point(68, 192);
             HTextBoxExRemarks.Name = "HTextBoxExRemarks";
             HTextBoxExRemarks.Size = new Size(676, 23);
@@ -1245,6 +1250,7 @@
             // 
             // HTextBoxExCurrentAddress
             // 
+            HTextBoxExCurrentAddress.ImeMode = ImeMode.Hiragana;
             HTextBoxExCurrentAddress.Location = new Point(68, 164);
             HTextBoxExCurrentAddress.Name = "HTextBoxExCurrentAddress";
             HTextBoxExCurrentAddress.Size = new Size(676, 23);
@@ -1338,6 +1344,7 @@
             // 
             // HTextBoxExDisplayName
             // 
+            HTextBoxExDisplayName.ImeMode = ImeMode.Hiragana;
             HTextBoxExDisplayName.Location = new Point(392, 80);
             HTextBoxExDisplayName.Name = "HTextBoxExDisplayName";
             HTextBoxExDisplayName.Size = new Size(96, 23);
@@ -1355,6 +1362,7 @@
             // 
             // HTextBoxExName
             // 
+            HTextBoxExName.ImeMode = ImeMode.Hiragana;
             HTextBoxExName.Location = new Point(68, 80);
             HTextBoxExName.Name = "HTextBoxExName";
             HTextBoxExName.Size = new Size(260, 23);
@@ -1372,6 +1380,7 @@
             // 
             // HTextBoxExNameKana
             // 
+            HTextBoxExNameKana.ImeMode = ImeMode.Katakana;
             HTextBoxExNameKana.Location = new Point(68, 52);
             HTextBoxExNameKana.Name = "HTextBoxExNameKana";
             HTextBoxExNameKana.Size = new Size(260, 23);

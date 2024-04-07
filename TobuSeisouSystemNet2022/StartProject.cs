@@ -17,11 +17,15 @@ using Common;
 
 using CommuterInsurance;
 
+using H_Car;
+
 using H_CollectionWeight;
 
 using H_Common;
 
 using H_Dao;
+
+using H_License;
 
 using H_RollColl;
 
@@ -30,8 +34,6 @@ using H_Staff;
 using H_Toukanpo;
 
 using H_VehicleDispatch;
-
-using Vo;
 
 using LegalTwelveItem;
 
@@ -49,16 +51,15 @@ using StatusOfResidence;
 
 using Supply;
 
-using ToukaiDenshi;
-
 using Toukanpo;
 
 using VehicleDispatch;
 
 using VehicleDispatchSheet;
 
+using Vo;
+
 using WardSpreadsheet;
-using H_Car;
 
 namespace TobuSeisouSystemNet2022 {
     public partial class StartProject : Form {
@@ -254,7 +255,7 @@ namespace TobuSeisouSystemNet2022 {
                              * 新型
                              * 
                              */
-                            // H_VehicleDispatch
+                            // 配車板
                             case "H_VehicleDispatch":
                                 // Screenを退避(新型のみ)
                                 _connectionVo.Screen = (Screen)HComboBoxMoniter.SelectedItem;
@@ -269,7 +270,7 @@ namespace TobuSeisouSystemNet2022 {
                                 hVehicleDispatchBoard.WindowState = FormWindowState.Maximized;
                                 hVehicleDispatchBoard.Show(this);
                                 break;
-                            // H_FastRollColl
+                            // 始業点呼
                             case "H_FastRollColl":
                                 // Screenを退避(新型のみ)
                                 _connectionVo.Screen = (Screen)HComboBoxMoniter.SelectedItem;
@@ -298,6 +299,21 @@ namespace TobuSeisouSystemNet2022 {
                                 hStaffList.Size = new Size(1920, 1080);
                                 hStaffList.WindowState = FormWindowState.Normal;
                                 hStaffList.Show(this);
+                                break;
+                            // 免許証台帳
+                            case "H_LicenseList":
+                                // Screenを退避(新型のみ)
+                                _connectionVo.Screen = (Screen)HComboBoxMoniter.SelectedItem;
+                                /*
+                                 * Formを表示する
+                                 */
+                                HLicenseList hLicenseList = new(_connectionVo);
+                                Rectangle rectangleHLicenseList = new Desktop().GetMonitorWorkingArea(hLicenseList, (Screen)HComboBoxMoniter.SelectedItem);
+                                hLicenseList.KeyPreview = true;
+                                hLicenseList.Location = rectangleHLicenseList.Location;
+                                hLicenseList.Size = new Size(1920, 1080);
+                                hLicenseList.WindowState = FormWindowState.Normal;
+                                hLicenseList.Show(this);
                                 break;
                             // 車両台帳
                             case "HCarList":
@@ -660,15 +676,6 @@ namespace TobuSeisouSystemNet2022 {
                         break;
                     case "NodeAccident": // 事故受付
                         files.OpenFolder(@"\\192.168.1.21\iso14001\ISO事務局\② 事故受付");
-                        break;
-                    /*
-                     * 東海電子
-                     */
-                    case "NodeTokaiDenshi01": // 免許証マスターファイルを作成する
-                        ToukaiDenshiMaster toukaiDenshiMaster = new ToukaiDenshiMaster(_connectionVo);
-                        toukaiDenshiMaster.Show(this);
-                        break;
-                    default:
                         break;
                 }
             } else {

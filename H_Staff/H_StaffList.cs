@@ -165,10 +165,14 @@ namespace H_Staff {
         private void ToolStripMenuItem_Click(object sender, EventArgs e) {
             switch (((ToolStripMenuItem)sender).Name) {
                 // 
-                case "ToolStripMenuItemAdd":
+                case "ToolStripMenuItemNewStaff":
                     HStaffDetail hStaffDetail = new(_connectionVo);
+                    Rectangle rectangleHStaffDetail = new Desktop().GetMonitorWorkingArea(hStaffDetail, _connectionVo.Screen);
+                    hStaffDetail.KeyPreview = true;
+                    hStaffDetail.Location = rectangleHStaffDetail.Location;
+                    hStaffDetail.Size = new Size(1920, 1080);
+                    hStaffDetail.WindowState = FormWindowState.Normal;
                     hStaffDetail.ShowDialog(this);
-
                     break;
                 // アプリケーションを終了する
                 case "ToolStripMenuItemExit":

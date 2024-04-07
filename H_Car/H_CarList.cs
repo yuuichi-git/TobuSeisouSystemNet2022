@@ -145,11 +145,12 @@ namespace H_Car {
         /// PutSheetViewList
         /// </summary>
         private void PutSheetViewList() {
+            List<H_CarMasterVo> listHCarMasterVo = new();
             // 削除済のレコードも表示
             if (ToolStripMenuItemDeleted.Checked) {
-
+                listHCarMasterVo = _hCarMasterDao.SelectAllHCarMaster();
             } else {
-
+                listHCarMasterVo = _hCarMasterDao.SelectAllHCarMaster().FindAll(x => x.DeleteFlag == false);
             }
             // 非活性化
             SpreadList.SuspendLayout();
@@ -160,7 +161,7 @@ namespace H_Car {
                 SheetViewList.RemoveRows(0, SheetViewList.Rows.Count);
 
             int i = 0;
-            foreach (H_CarMasterVo hCarMasterVo in _hCarMasterDao.SelectAllHCarMaster()) {
+            foreach (H_CarMasterVo hCarMasterVo in listHCarMasterVo) {
                 SheetViewList.Rows.Add(i, 1);
                 SheetViewList.RowHeader.Columns[0].Label = (i + 1).ToString(); // Rowヘッダ
                 SheetViewList.Rows[i].Height = 22; // Rowの高さ
@@ -202,12 +203,36 @@ namespace H_Car {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ToolStripMenuItem_Click(object sender, EventArgs e) {
-            DialogResult dialogResult;
             switch (((ToolStripMenuItem)sender).Name) {
+                /*
+                 * 新規車両を作成する
+                 */
+                case "ToolStripMenuItemNewCar":
+                    HCarDetail hCarDetail = new(_connectionVo);
+                    Rectangle rectangleHCarList = new Desktop().GetMonitorWorkingArea(hCarDetail, _connectionVo.Screen);
+                    hCarDetail.KeyPreview = true;
+                    hCarDetail.Location = rectangleHCarList.Location;
+                    hCarDetail.Size = new Size(1920, 1080);
+                    hCarDetail.WindowState = FormWindowState.Normal;
+                    hCarDetail.ShowDialog(this);
+                    break;
+                case "ToolStripMenuItemDelete":
+                    DialogResult dialogResult = MessageBox.Show("選択されている車両を削除します。よろしいですか？", "メッセージ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    switch (dialogResult) {
+                        case DialogResult.OK:
+                            var carCode = (int)SheetViewList.Cells[SheetViewList.ActiveRowIndex, _colCarCode].Value;
+                            _hCarMasterDao.DeleteOneHCarMaster(carCode);
+                            break;
+                        case DialogResult.Cancel:
+                            break;
+                    }
+                    break;
+                /*
+                 * アプリケーションを終了する
+                 */
                 case "ToolStripMenuItemExit":
                     this.Close();
                     break;
-
             }
         }
 

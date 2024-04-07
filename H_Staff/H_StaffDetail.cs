@@ -1,6 +1,8 @@
 ﻿/*
  * 2024-02-07
  */
+using Dao;
+
 using H_ControlEx;
 
 using H_Dao;
@@ -66,12 +68,9 @@ namespace H_Staff {
              * Vo
              */
             _connectionVo = connectionVo;
-            // StaffCode(新規なので０で初期化)
-            _staffCode = _hStaffMasterDao.GetStaffCode(24000);
-
             InitializeComponent();
-            // 従事者コード
-            HTextBoxExStaffCode.Text = _staffCode.ToString();
+            // 新規従事者コードを採番
+            HTextBoxExStaffCode.Text = (_hStaffMasterDao.GetStaffCode(24000) + 1).ToString("#####");
             // アイコンを常に点滅に設定する
             errorProvider.BlinkStyle = ErrorBlinkStyle.BlinkIfDifferentError;
             this.InitializeControls();

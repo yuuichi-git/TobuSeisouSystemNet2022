@@ -34,10 +34,10 @@
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             ToolStripStatusLabelDetail = new ToolStripStatusLabel();
             PanelTop = new Panel();
+            label1 = new Label();
             ButtonUpdate = new Button();
             SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("TableLayoutPanelBase.Controls"));
             SheetViewList = SpreadList.GetSheet(0);
-            label1 = new Label();
             TableLayoutPanelBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -132,6 +132,16 @@
             PanelTop.Size = new Size(1898, 54);
             PanelTop.TabIndex = 3;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Yu Gothic UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(24, 16);
+            label1.Name = "label1";
+            label1.Size = new Size(470, 21);
+            label1.TabIndex = 2;
+            label1.Text = "免許証台帳に登録されていて、退職していない従業員が登録の対象です ";
+            // 
             // ButtonUpdate
             // 
             ButtonUpdate.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
@@ -152,16 +162,6 @@
             SpreadList.Name = "SpreadList";
             SpreadList.Size = new Size(1898, 927);
             SpreadList.TabIndex = 4;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Yu Gothic UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(24, 16);
-            label1.Name = "label1";
-            label1.Size = new Size(470, 21);
-            label1.TabIndex = 2;
-            label1.Text = "免許証台帳に登録されていて、退職していない従業員が登録の対象です ";
             // 
             // ToukaiDenshiMaster
             // 

@@ -46,6 +46,21 @@ namespace H_Dao {
         }
 
         /// <summary>
+        /// 新規CarCodeを採番
+        /// </summary>
+        /// <returns>CarCodeの最大値</returns>
+        public int GetCarCode() {
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT MAX(CarCode) " +
+                                     "FROM H_CarMaster";
+            try {
+                return (int)sqlCommand.ExecuteScalar();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
         /// SelectAllHCarMaster
         /// Picture無
         /// </summary>
@@ -170,10 +185,11 @@ namespace H_Dao {
 
         /// <summary>
         /// SelectOneHCarMaster
+        /// Picture有
         /// </summary>
         /// <param name="carCode"></param>
         /// <returns></returns>
-        public H_CarMasterVo SelectOneHCarMaster(int carCode) {
+        public H_CarMasterVo SelectOneHCarMasterP(int carCode) {
             H_CarMasterVo hCarMasterVo = new();
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT CarCode," +
@@ -468,6 +484,26 @@ namespace H_Dao {
             try {
                 sqlCommand.Parameters.Add("@member_picture", SqlDbType.Image, hCarMasterVo.Picture.Length).Value = hCarMasterVo.Picture;
                 sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// DeleteOneHCarMaster
+        /// </summary>
+        /// <param name="carCode"></param>
+        /// <returns></returns>
+        public int DeleteOneHCarMaster(int carCode) {
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE H_CarMaster " +
+                                     "SET DeletePcName = '" + Environment.MachineName + "'," +
+                                         "DeleteYmdHms = '" + DateTime.Now + "'," +
+                                         "DeleteFlag = 'True' " +
+                                     "WHERE CarCode = " + carCode + " " +
+                                       "AND DeleteFlag = 'False'";
+            try {
+                return sqlCommand.ExecuteNonQuery();
             } catch {
                 throw;
             }
