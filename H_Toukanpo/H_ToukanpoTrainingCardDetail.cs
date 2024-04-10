@@ -30,10 +30,8 @@ namespace H_Toukanpo {
              * InitializeControl
              */
             InitializeComponent();
-            InitializeComboBoxSelectName();
-            HComboBoxExCompany.Text = "東武清掃株式会社";
-            HComboBoxExStaffName.Text = "";
-            HDateTimePickerExCertificationDate.SetValue(DateTime.Now.Date);
+            this.InitializeComboBoxSelectName();
+            this.InitializeControl();
         }
 
         /// <summary>
@@ -53,6 +51,7 @@ namespace H_Toukanpo {
                         try {
                             _hToukanpoTrainingCardDao.UpdateOneHToukanpoTrainingCardMaster(this.SetToukanpoTrainingCardVo());
                             MessageBox.Show("修正登録を完了しました。", "メッセージ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.InitializeControl();
                         } catch (Exception exception) {
                             MessageBox.Show(exception.Message);
                         }
@@ -60,6 +59,7 @@ namespace H_Toukanpo {
                         try {
                             _hToukanpoTrainingCardDao.InsertOneHToukanpoTrainingCardMaster(this.SetToukanpoTrainingCardVo());
                             MessageBox.Show("新規登録を完了しました。", "メッセージ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.InitializeControl();
                         } catch (Exception exception) {
                             MessageBox.Show(exception.Message);
                         }
@@ -98,8 +98,7 @@ namespace H_Toukanpo {
         /// </summary>
         private void InitializeComboBoxSelectName() {
             HComboBoxExStaffName.Items.Clear();
-            List<ComboBoxSelectNameVo> listComboBoxSelectNameVo = new();
-            foreach (H_StaffMasterVo hStaffMasterVo in _hStaffMasterDao.SelectAllHStaffMaster())
+            foreach (H_StaffMasterVo hStaffMasterVo in _hStaffMasterDao.SelectAllHStaffMaster().OrderBy(x => x.NameKana))
                 HComboBoxExStaffName.Items.Add(new ComboBoxSelectNameVo(hStaffMasterVo.Name, hStaffMasterVo));
             HComboBoxExStaffName.DisplayMember = "Name";
             // ここでイベント追加しないと初期化で発火しちゃうよ
@@ -109,6 +108,15 @@ namespace H_Toukanpo {
             // コンボボックスのアイテムをオートコンプリートの選択候補とする
             HComboBoxExStaffName.AutoCompleteSource = AutoCompleteSource.ListItems;
             HComboBoxExStaffName.Focus();
+        }
+
+        /// <summary>
+        /// コントロールを初期化
+        /// </summary>
+        private void InitializeControl() {
+            HComboBoxExCompany.Text = "東武清掃株式会社";
+            HComboBoxExStaffName.Text = "";
+            HDateTimePickerExCertificationDate.SetValue(DateTime.Now.Date);
         }
 
         /// <summary>
@@ -157,7 +165,7 @@ namespace H_Toukanpo {
                 HComboBoxExCompany.Text = _selectedHToukanpoTrainingCardVo.CompanyName;
                 HDateTimePickerExCertificationDate.SetValue(_selectedHToukanpoTrainingCardVo.CertificationDate.Date);
                 if (_selectedHToukanpoTrainingCardVo.Picture.Length != 0) {
-                    PictureBoxCard.Image = (Image?)new ImageConverter().ConvertFrom(_selectedHToukanpoTrainingCardVo.Picture);
+                    PictureBoxCard.Image = (Image)new ImageConverter().ConvertFrom(_selectedHToukanpoTrainingCardVo.Picture);
                 } else {
                     PictureBoxCard.Image = null;
                 }

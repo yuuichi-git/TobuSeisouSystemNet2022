@@ -118,7 +118,7 @@ namespace H_RollColl {
             /*
              * 日付を初期化
              */
-            HDateTimePickerExOperationDate.SetValue(DateTime.Today);
+            HDateTimePickerExOperationDate.SetValueJp(DateTime.Today);
             /*
              * SPREAD初期化
              */

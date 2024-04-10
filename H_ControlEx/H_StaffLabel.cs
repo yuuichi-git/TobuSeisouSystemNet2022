@@ -574,13 +574,16 @@ namespace H_ControlEx {
              */
             if ((ModifierKeys & Keys.Shift) == Keys.Shift) {
                 if (((H_StaffLabel)sender).Parent.GetType() == typeof(H_SetControl)) {
-                    this.StaffRollCallFlag = !this.StaffRollCallFlag;
-                    this.Refresh();
                     /*
                      * DB書換え
                      */
                     try {
-                        _hVehicleDispatchDetailDao.UpdateStaffRollCall(((H_ControlVo)((H_SetControl)((H_StaffLabel)sender).Parent).Tag).CellNumber, _hControlVo.OperationDate, this.StaffRollCallFlag, this.CellNumber);
+                        _hVehicleDispatchDetailDao.UpdateStaffRollCall(((H_ControlVo)((H_SetControl)((H_StaffLabel)sender).Parent).Tag).CellNumber, _hControlVo.OperationDate, !this.StaffRollCallFlag, this.CellNumber);
+                        /*
+                         * StaffRollCallFlagを反転して再描画
+                         */
+                        this.StaffRollCallFlag = !this.StaffRollCallFlag;
+                        this.Refresh();
                     } catch (Exception exception) {
                         MessageBox.Show(exception.Message);
                     }

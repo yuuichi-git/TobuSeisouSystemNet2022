@@ -26,7 +26,7 @@ namespace H_CollectionWeight {
              * InitializeControl
              */
             InitializeComponent();
-            HDateTimePickerExOperationDate.SetValue(DateTime.Now.Date);
+            HDateTimePickerExOperationDate.SetValueJp(DateTime.Now.Date);
             ToolStripStatusLabelDetail.Text = string.Empty;
         }
 

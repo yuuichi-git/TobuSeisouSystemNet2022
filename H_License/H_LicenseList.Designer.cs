@@ -29,7 +29,7 @@
             ToolStripMenuItemMenu = new ToolStripMenuItem();
             ToolStripMenuItemExit = new ToolStripMenuItem();
             ToolStripMenuItemNew = new ToolStripMenuItem();
-            ToolStripMenuItemNewRecord = new ToolStripMenuItem();
+            ToolStripMenuItemNewLicense = new ToolStripMenuItem();
             ToolStripMenuItemDisplay = new ToolStripMenuItem();
             ToolStripMenuItemDeleted = new ToolStripMenuItem();
             ToolStripMenuItemOutput = new ToolStripMenuItem();
@@ -52,7 +52,7 @@
             tabPage9 = new TabPage();
             tabPage10 = new TabPage();
             tabPage11 = new TabPage();
-            SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("HTableLayoutPanelExBase.Controls"));
+            SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("resource1"));
             SheetViewList = SpreadList.GetSheet(0);
             SheetViewToukaidenshi = SpreadList.GetSheet(1);
             HTableLayoutPanelExBase.SuspendLayout();
@@ -107,16 +107,17 @@
             // 
             // ToolStripMenuItemNew
             // 
-            ToolStripMenuItemNew.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemNewRecord });
+            ToolStripMenuItemNew.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemNewLicense });
             ToolStripMenuItemNew.Name = "ToolStripMenuItemNew";
             ToolStripMenuItemNew.Size = new Size(43, 20);
             ToolStripMenuItemNew.Text = "新規";
             // 
-            // ToolStripMenuItemNewRecord
+            // ToolStripMenuItemNewLicense
             // 
-            ToolStripMenuItemNewRecord.Name = "ToolStripMenuItemNewRecord";
-            ToolStripMenuItemNewRecord.Size = new Size(183, 22);
-            ToolStripMenuItemNewRecord.Text = "新規レコードを追加する";
+            ToolStripMenuItemNewLicense.Name = "ToolStripMenuItemNewLicense";
+            ToolStripMenuItemNewLicense.Size = new Size(183, 22);
+            ToolStripMenuItemNewLicense.Text = "新規レコードを追加する";
+            ToolStripMenuItemNewLicense.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemDisplay
             // 
@@ -326,6 +327,7 @@
             SpreadList.Name = "SpreadList";
             SpreadList.Size = new Size(1898, 927);
             SpreadList.TabIndex = 3;
+            SpreadList.CellDoubleClick += SpreadList_CellDoubleClick;
             // 
             // HLicenseList
             // 
@@ -366,7 +368,7 @@
         private TabPage tabPage1;
         private TabPage tabPage2;
         private ToolStripMenuItem ToolStripMenuItemNew;
-        private ToolStripMenuItem ToolStripMenuItemNewRecord;
+        private ToolStripMenuItem ToolStripMenuItemNewLicense;
         private TabPage tabPage3;
         private TabPage tabPage4;
         private TabPage tabPage5;

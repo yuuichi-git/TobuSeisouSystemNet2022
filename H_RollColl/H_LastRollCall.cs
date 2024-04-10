@@ -113,7 +113,7 @@ namespace H_RollColl {
         /// </summary>
         /// <param name="hLastRollCallVo"></param>
         private void SetControl(H_LastRollCallVo hLastRollCallVo) {
-            HDateTimePickerExOperationDate.SetValue(hLastRollCallVo.OperationDate.Date);
+            HDateTimePickerExOperationDate.SetValueJp(hLastRollCallVo.OperationDate.Date);
             HMaskedTextBoxExFirstRollCallTime.Text = hLastRollCallVo.FirstRollCallYmdHms.ToString("HH:mm");
             HNumericUpDownExLastPlantCount.Value = hLastRollCallVo.LastPlantCount;
             HComboBoxExLastPlantName.Text = hLastRollCallVo.LastPlantName;

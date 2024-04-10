@@ -82,7 +82,7 @@ namespace H_Dao {
                                      "FROM H_VehicleDispatchDetail " +
                                      "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
             try {
-               return (DateTime)sqlCommand.ExecuteScalar();
+                return (DateTime)sqlCommand.ExecuteScalar();
             } catch {
                 throw;
             }
@@ -1041,8 +1041,11 @@ namespace H_Dao {
         /// <param name="staffRollCallFlag"></param>
         /// <param name="staffNumber"></param>
         public void UpdateStaffRollCall(int cellNumber, DateTime operationDate, bool staffRollCallFlag, int staffNumber) {
+            // 点呼済：DateTime.Now 未点呼：_defaultDateTime
+            DateTime datetime = staffRollCallFlag ? DateTime.Now : _defaultDateTime;
             string sqlStaffRollCallFlag = string.Empty;
             string sqlStaffRollCallYmdHms = string.Empty;
+
             switch (staffNumber) {
                 case 0:
                     sqlStaffRollCallFlag = "StaffRollCallFlag1";
@@ -1064,9 +1067,9 @@ namespace H_Dao {
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "UPDATE H_VehicleDispatchDetail " +
                                      "SET " + sqlStaffRollCallFlag + " = '" + staffRollCallFlag + "'," +
-                                              sqlStaffRollCallYmdHms + " = '" + DateTime.Now + "'," +
-                                         "UpdatePcName = '" + Environment.MachineName + "'," +
-                                         "UpdateYmdHms = '" + DateTime.Now + "' " +
+                                              sqlStaffRollCallYmdHms + " = '" + datetime + "'," +
+                                          "UpdatePcName = '" + Environment.MachineName + "'," +
+                                          "UpdateYmdHms = '" + DateTime.Now + "' " +
                                      "WHERE CellNumber = " + cellNumber + " AND OperationDate = '" + operationDate.ToString("yyyy-MM-dd") + "'";
             try {
                 sqlCommand.ExecuteNonQuery();

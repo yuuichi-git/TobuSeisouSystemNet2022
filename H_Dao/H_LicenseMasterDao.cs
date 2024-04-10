@@ -1,6 +1,7 @@
 ﻿/*
  * 2024-02-07
  */
+using System.Data;
 using System.Data.SqlClient;
 
 using H_Common;
@@ -61,8 +62,8 @@ namespace H_Dao {
             H_LicenseMasterVo hLicenseMasterVo = new();
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT StaffCode," +
-                                            "Name," +
                                             "NameKana," +
+                                            "Name," +
                                             "BirthDate," +
                                             "CurrentAddress," +
                                             "DeliveryDate," +
@@ -100,8 +101,8 @@ namespace H_Dao {
             using (var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while (sqlDataReader.Read() == true) {
                     hLicenseMasterVo.StaffCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["StaffCode"]);
-                    hLicenseMasterVo.Name = _defaultValue.GetDefaultValue<string>(sqlDataReader["Name"]);
                     hLicenseMasterVo.NameKana = _defaultValue.GetDefaultValue<string>(sqlDataReader["NameKana"]);
+                    hLicenseMasterVo.Name = _defaultValue.GetDefaultValue<string>(sqlDataReader["Name"]);
                     hLicenseMasterVo.BirthDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["BirthDate"]);
                     hLicenseMasterVo.CurrentAddress = _defaultValue.GetDefaultValue<string>(sqlDataReader["CurrentAddress"]);
                     hLicenseMasterVo.DeliveryDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["DeliveryDate"]);
@@ -148,8 +149,8 @@ namespace H_Dao {
             List<H_LicenseMasterVo> listHLicenseMasterVo = new();
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT StaffCode," +
-                                            "Name," +
                                             "NameKana," +
+                                            "Name," +
                                             "BirthDate," +
                                             "CurrentAddress," +
                                             "DeliveryDate," +
@@ -187,8 +188,8 @@ namespace H_Dao {
                 while (sqlDataReader.Read() == true) {
                     H_LicenseMasterVo hLicenseMasterVo = new();
                     hLicenseMasterVo.StaffCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["StaffCode"]);
-                    hLicenseMasterVo.Name = _defaultValue.GetDefaultValue<string>(sqlDataReader["Name"]);
                     hLicenseMasterVo.NameKana = _defaultValue.GetDefaultValue<string>(sqlDataReader["NameKana"]);
+                    hLicenseMasterVo.Name = _defaultValue.GetDefaultValue<string>(sqlDataReader["Name"]);
                     hLicenseMasterVo.BirthDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["BirthDate"]);
                     hLicenseMasterVo.CurrentAddress = _defaultValue.GetDefaultValue<string>(sqlDataReader["CurrentAddress"]);
                     hLicenseMasterVo.DeliveryDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["DeliveryDate"]);
@@ -225,6 +226,141 @@ namespace H_Dao {
                 }
             }
             return listHLicenseMasterVo;
+        }
+
+        /// <summary>
+        /// InsertOneHLicenseMaster
+        /// </summary>
+        /// <param name="hLicenseMasterVo"></param>
+        /// <returns></returns>
+        public int InsertOneHLicenseMaster(H_LicenseMasterVo hLicenseMasterVo) {
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "INSERT INTO H_LicenseMaster(StaffCode," +
+                                                                 "NameKana," +
+                                                                 "Name," +
+                                                                 "BirthDate," +
+                                                                 "CurrentAddress," +
+                                                                 "DeliveryDate," +
+                                                                 "ExpirationDate," +
+                                                                 "LicenseCondition," +
+                                                                 "LicenseNumber," +
+                                                                 "GetDate1," +
+                                                                 "GetDate2," +
+                                                                 "GetDate3," +
+                                                                 "PictureHead," +
+                                                                 "PictureTail," +
+                                                                 "Large," +
+                                                                 "Medium," +
+                                                                 "QuasiMedium," +
+                                                                 "Ordinary," +
+                                                                 "BigSpecial," +
+                                                                 "BigAutoBike," +
+                                                                 "OrdinaryAutoBike," +
+                                                                 "SmallSpecial," +
+                                                                 "WithARaw," +
+                                                                 "BigTwo," +
+                                                                 "MediumTwo," +
+                                                                 "OrdinaryTwo," +
+                                                                 "BigSpecialTwo," +
+                                                                 "Traction," +
+                                                                 "InsertPcName," +
+                                                                 "InsertYmdHms," +
+                                                                 "UpdatePcName," +
+                                                                 "UpdateYmdHms," +
+                                                                 "DeletePcName," +
+                                                                 "DeleteYmdHms," +
+                                                                 "DeleteFlag) " +
+                                     "VALUES (" + hLicenseMasterVo.StaffCode + "," +
+                                            "'" + hLicenseMasterVo.NameKana + "'," +
+                                            "'" + hLicenseMasterVo.Name + "'," +
+                                            "'" + hLicenseMasterVo.BirthDate + "'," +
+                                            "'" + hLicenseMasterVo.CurrentAddress + "'," +
+                                            "'" + hLicenseMasterVo.DeliveryDate + "'," +
+                                            "'" + hLicenseMasterVo.ExpirationDate + "'," +
+                                            "'" + hLicenseMasterVo.LicenseCondition + "'," +
+                                            "'" + hLicenseMasterVo.LicenseNumber + "'," +
+                                            "'" + hLicenseMasterVo.GetDate1 + "'," +
+                                            "'" + hLicenseMasterVo.GetDate2 + "'," +
+                                            "'" + hLicenseMasterVo.GetDate3 + "'," +
+                                            "@memberPictureHead," +
+                                            "@memberPictureTail," +
+                                            "'" + hLicenseMasterVo.Large + "'," +
+                                            "'" + hLicenseMasterVo.Medium + "'," +
+                                            "'" + hLicenseMasterVo.QuasiMedium + "'," +
+                                            "'" + hLicenseMasterVo.Ordinary + "'," +
+                                            "'" + hLicenseMasterVo.BigSpecial + "'," +
+                                            "'" + hLicenseMasterVo.BigAutoBike + "'," +
+                                            "'" + hLicenseMasterVo.OrdinaryAutoBike + "'," +
+                                            "'" + hLicenseMasterVo.SmallSpecial + "'," +
+                                            "'" + hLicenseMasterVo.WithARaw + "'," +
+                                            "'" + hLicenseMasterVo.BigTwo + "'," +
+                                            "'" + hLicenseMasterVo.MediumTwo + "'," +
+                                            "'" + hLicenseMasterVo.OrdinaryTwo + "'," +
+                                            "'" + hLicenseMasterVo.BigSpecialTwo + "'," +
+                                            "'" + hLicenseMasterVo.Traction + "'," +
+                                            "'" + Environment.MachineName + "'," +
+                                            "'" + DateTime.Now + "'," +
+                                            "'" + string.Empty + "'," +
+                                            "'" + _defaultDateTime + "'," +
+                                            "'" + string.Empty + "'," +
+                                            "'" + _defaultDateTime + "'," +
+                                            "'false'" +
+                                            ");";
+            try {
+                sqlCommand.Parameters.Add("@memberPictureHead", SqlDbType.Image, hLicenseMasterVo.PictureHead.Length).Value = hLicenseMasterVo.PictureHead;
+                sqlCommand.Parameters.Add("@memberPictureTail", SqlDbType.Image, hLicenseMasterVo.PictureTail.Length).Value = hLicenseMasterVo.PictureTail;
+                return sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// UpdateOneHLicenseLedger
+        /// </summary>
+        /// <param name="hLicenseMasterVo"></param>
+        /// <returns></returns>
+        public int UpdateOneHLicenseLedger(H_LicenseMasterVo hLicenseMasterVo) {
+            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "UPDATE H_LicenseMaster " +
+                                     "SET StaffCode = " + hLicenseMasterVo.StaffCode + "," +
+                                         "NameKana = '" + hLicenseMasterVo.NameKana + "'," +
+                                         "Name = '" + hLicenseMasterVo.Name + "'," +
+                                         "BirthDate = '" + hLicenseMasterVo.BirthDate + "'," +
+                                         "CurrentAddress = '" + hLicenseMasterVo.CurrentAddress + "'," +
+                                         "DeliveryDate = '" + hLicenseMasterVo.DeliveryDate + "'," +
+                                         "ExpirationDate = '" + hLicenseMasterVo.ExpirationDate + "'," +
+                                         "LicenseCondition = '" + hLicenseMasterVo.LicenseCondition + "'," +
+                                         "LicenseNumber = '" + hLicenseMasterVo.LicenseNumber + "'," +
+                                         "GetDate1 = '" + hLicenseMasterVo.GetDate1 + "'," +
+                                         "GetDate2 = '" + hLicenseMasterVo.GetDate2 + "'," +
+                                         "GetDate3 = '" + hLicenseMasterVo.GetDate3 + "'," +
+                                         "PictureHead = @memberPictureHead," +
+                                         "PictureTail = @memberPictureTail," +
+                                         "Large = '" + hLicenseMasterVo.Large + "'," +
+                                         "Medium = '" + hLicenseMasterVo.Medium + "'," +
+                                         "QuasiMedium = '" + hLicenseMasterVo.QuasiMedium + "'," +
+                                         "Ordinary = '" + hLicenseMasterVo.Ordinary + "'," +
+                                         "BigSpecial = '" + hLicenseMasterVo.BigSpecial + "'," +
+                                         "BigAutoBike = '" + hLicenseMasterVo.BigAutoBike + "'," +
+                                         "OrdinaryAutoBike = '" + hLicenseMasterVo.OrdinaryAutoBike + "'," +
+                                         "SmallSpecial = '" + hLicenseMasterVo.SmallSpecial + "'," +
+                                         "WithARaw = '" + hLicenseMasterVo.WithARaw + "'," +
+                                         "BigTwo = '" + hLicenseMasterVo.BigTwo + "'," +
+                                         "MediumTwo = '" + hLicenseMasterVo.MediumTwo + "'," +
+                                         "OrdinaryTwo = '" + hLicenseMasterVo.OrdinaryTwo + "'," +
+                                         "BigSpecialTwo = '" + hLicenseMasterVo.BigSpecialTwo + "'," +
+                                         "Traction = '" + hLicenseMasterVo.Traction + "'," +
+                                         "UpdatePcName = '" + Environment.MachineName + "'," +
+                                         "UpdateYmdHms = '" + DateTime.Now + "' " +
+                                     "WHERE StaffCode = " + hLicenseMasterVo.StaffCode;
+            try {
+                sqlCommand.Parameters.Add("@memberPictureHead", SqlDbType.Image, hLicenseMasterVo.PictureHead.Length).Value = hLicenseMasterVo.PictureHead;
+                sqlCommand.Parameters.Add("@memberPictureTail", SqlDbType.Image, hLicenseMasterVo.PictureTail.Length).Value = hLicenseMasterVo.PictureTail;
+                return sqlCommand.ExecuteNonQuery();
+            } catch {
+                throw;
+            }
         }
     }
 }

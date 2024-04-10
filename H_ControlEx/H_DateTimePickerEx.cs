@@ -40,6 +40,7 @@ namespace H_ControlEx {
              */
             this.CloseUp += H_DateTimePickerEx_CloseUp;
             this.KeyDown += H_DateTimePickerEx_KeyDown;
+            this.ValueChanged += HDateTimePickerEx_ValueChanged;
         }
 
         /// <summary>
@@ -117,6 +118,15 @@ namespace H_ControlEx {
         }
 
         /// <summary>
+        /// Value値を更新したとき、Refreshする
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HDateTimePickerEx_ValueChanged(object sender, EventArgs e) {
+            this.Refresh();
+        }
+
+        /// <summary>
         /// GetValue
         /// ブランクだったら 1900-01-01 を返す
         /// </summary>
@@ -147,14 +157,31 @@ namespace H_ControlEx {
         }
 
         /// <summary>
-        /// SetValue
-        /// Value値を設定する
+        /// SetValueJp
+        /// 和暦で設定する
         /// 1900-01-01の場合はブランクを表示する
         /// </summary>
         /// <param name="dateTime"></param>
-        public void SetValue(DateTime dateTime) {
+        public void SetValueJp(DateTime dateTime) {
             if (dateTime.Date != _defaultDateTime.Date) {
                 this.CustomFormat = dateTime.ToString(" ggyy年MM月dd日(dddd)", cultureInfo);
+                this.Value = dateTime;
+                this.Refresh();
+            } else {
+                this.CustomFormat = " ";
+                this.Value = _defaultDateTime;
+                this.Refresh();
+            }
+        }
+
+        /// <summary>
+        /// SetValue
+        /// 西暦で設定する
+        /// 1900-01-01の場合はブランクを表示する
+        /// </summary>
+        public void SetValue(DateTime dateTime) {
+            if (dateTime.Date != _defaultDateTime.Date) {
+                this.CustomFormat = dateTime.ToString(" yyyy年MM月dd日(dddd)");
                 this.Value = dateTime;
                 this.Refresh();
             } else {

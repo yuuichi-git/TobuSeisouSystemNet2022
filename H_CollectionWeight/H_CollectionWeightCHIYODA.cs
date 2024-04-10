@@ -29,8 +29,8 @@ namespace H_CollectionWeight {
              * InitializeControl
              */
             InitializeComponent();
-            HDateTimePickerEx1.SetValue(DateTime.Now);
-            HDateTimePickerEx2.SetValue(DateTime.Now);
+            HDateTimePickerEx1.SetValueJp(DateTime.Now);
+            HDateTimePickerEx2.SetValueJp(DateTime.Now);
             InitializeSheetViewList(SheetViewList);
             InitializeSheetViewAggregate(SheetViewAggregate);
             ToolStripStatusLabelDetail.Text = string.Empty;
@@ -237,7 +237,7 @@ namespace H_CollectionWeight {
         /// <param name="e"></param>
         private void HDateTimePickerEx1_ValueChanged(object sender, EventArgs e) {
             if (((DateTimePicker)sender).Value > HDateTimePickerEx2.GetValue()) {
-                HDateTimePickerEx2.SetValue(((DateTimePicker)sender).Value);
+                HDateTimePickerEx2.SetValueJp(((DateTimePicker)sender).Value);
             }
         }
 
@@ -248,7 +248,7 @@ namespace H_CollectionWeight {
         /// <param name="e"></param>
         private void HDateTimePickerEx2_ValueChanged(object sender, EventArgs e) {
             if (((DateTimePicker)sender).Value < HDateTimePickerEx1.GetValue()) {
-                HDateTimePickerEx1.SetValue(((DateTimePicker)sender).Value);
+                HDateTimePickerEx1.SetValueJp(((DateTimePicker)sender).Value);
             }
         }
 

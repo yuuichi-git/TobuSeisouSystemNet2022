@@ -626,8 +626,8 @@ namespace H_Staff {
             HTextBoxExDisplayName.Text = hStaffMasterVo.DisplayName;
             HTextBoxExOtherNameKana.Text = hStaffMasterVo.OtherNameKana;
             HTextBoxExOtherName.Text = hStaffMasterVo.OtherName;
-            HDateTimeExBirthDate.SetValue(hStaffMasterVo.BirthDate);
-            HDateTimeExEmploymentDate.SetValue(hStaffMasterVo.EmploymentDate);
+            HDateTimeExBirthDate.SetValueJp(hStaffMasterVo.BirthDate);
+            HDateTimeExEmploymentDate.SetValueJp(hStaffMasterVo.EmploymentDate);
             HComboBoxExGender.Text = hStaffMasterVo.Gender;
             HComboBoxExBloodType.Text = hStaffMasterVo.BloodType;
             HTextBoxExCurrentAddress.Text = hStaffMasterVo.CurrentAddress;
@@ -639,8 +639,8 @@ namespace H_Staff {
              * HGroupBoxExDrive
              * 運転に関する情報
              */
-            HDateTimeExSelectionDate.SetValue(hStaffMasterVo.SelectionDate);
-            HDateTimeExNotSelectionDate.SetValue(hStaffMasterVo.NotSelectionDate);
+            HDateTimeExSelectionDate.SetValueJp(hStaffMasterVo.SelectionDate);
+            HDateTimeExNotSelectionDate.SetValueJp(hStaffMasterVo.NotSelectionDate);
             HTextBoxExNotSelectionReason.Text = hStaffMasterVo.NotSelectionReason;
             HTextBoxExLicenseNumber.Text = hStaffMasterVo.HLicenseMasterVo.LicenseNumber;
             HComboBoxExLicenseCondition.Text = hStaffMasterVo.HLicenseMasterVo.LicenseCondition;
@@ -654,8 +654,8 @@ namespace H_Staff {
             if (hStaffMasterVo.HLicenseMasterVo.Ordinary)
                 type += "(普通)";
             HTextBoxExLicenseType.Text = type; // 免許証の種類１
-            HDateTimeExLicenseTypeDate.SetValue(hStaffMasterVo.HLicenseMasterVo.DeliveryDate);
-            HDateTimeExLicenseTypeExpirationDate.SetValue(hStaffMasterVo.HLicenseMasterVo.ExpirationDate);
+            HDateTimeExLicenseTypeDate.SetValueJp(hStaffMasterVo.HLicenseMasterVo.DeliveryDate);
+            HDateTimeExLicenseTypeExpirationDate.SetValueJp(hStaffMasterVo.HLicenseMasterVo.ExpirationDate);
             /*
              * HGroupBoxExHistory 
              * 職業履歴
@@ -671,9 +671,9 @@ namespace H_Staff {
              * 解雇・退職の日付と理由
              */
             HCheckBoxExRetirementFlag.Checked = hStaffMasterVo.RetirementFlag;
-            HDateTimeExRetirementDate.SetValue(hStaffMasterVo.RetirementDate);
+            HDateTimeExRetirementDate.SetValueJp(hStaffMasterVo.RetirementDate);
             HTextBoxExRetirementNote.Text = hStaffMasterVo.RetirementNote;
-            HDateTimeExDeathDate.SetValue(hStaffMasterVo.DeathDate);
+            HDateTimeExDeathDate.SetValueJp(hStaffMasterVo.DeathDate);
             HTextBoxExDeathNote.Text = hStaffMasterVo.DeathNote;
             /*
              * HGroupBoxExFamily
@@ -686,16 +686,16 @@ namespace H_Staff {
              * HGroupBoxExInsurance
              * 保険関係
              */
-            HDateTimeExHealthInsuranceDate.SetValue(hStaffMasterVo.HealthInsuranceDate);
+            HDateTimeExHealthInsuranceDate.SetValueJp(hStaffMasterVo.HealthInsuranceDate);
             HComboBoxExHealthInsuranceNumber.Text = hStaffMasterVo.HealthInsuranceNumber;
             HTextBoxExHealthInsuranceNote.Text = hStaffMasterVo.HealthInsuranceNote;
-            HDateTimeExWelfarePensionDate.SetValue(hStaffMasterVo.WelfarePensionDate);
+            HDateTimeExWelfarePensionDate.SetValueJp(hStaffMasterVo.WelfarePensionDate);
             HComboBoxExWelfarePensionNumber.Text = hStaffMasterVo.WelfarePensionNumber;
             HTextBoxExWelfarePensionNote.Text = hStaffMasterVo.WelfarePensionNote;
-            HDateTimeExEmploymentInsuranceDate.SetValue(hStaffMasterVo.EmploymentInsuranceDate);
+            HDateTimeExEmploymentInsuranceDate.SetValueJp(hStaffMasterVo.EmploymentInsuranceDate);
             HComboBoxExEmploymentInsuranceNumber.Text = hStaffMasterVo.EmploymentInsuranceNumber;
             HTextBoxExEmploymentInsuranceNote.Text = hStaffMasterVo.EmploymentInsuranceNote;
-            HDateTimeExWorkerAccidentInsuranceDate.SetValue(hStaffMasterVo.WorkerAccidentInsuranceDate);
+            HDateTimeExWorkerAccidentInsuranceDate.SetValueJp(hStaffMasterVo.WorkerAccidentInsuranceDate);
             HComboBoxExWorkerAccidentInsuranceNumber.Text = hStaffMasterVo.WorkerAccidentInsuranceNumber;
             HTextBoxExWorkerAccidentInsuranceNote.Text = hStaffMasterVo.WorkerAccidentInsuranceNote;
             /*
@@ -735,7 +735,7 @@ namespace H_Staff {
             HTextBoxExCompanyName.Text = string.Empty;
             int countHGroupBoxExHistory = 0;
             foreach (H_StaffHistoryVo hStaffHistoryVo in listHStaffHistoryVo) {
-                dictionaryHistoryDate[countHGroupBoxExHistory].SetValue(hStaffHistoryVo.HistoryDate);
+                dictionaryHistoryDate[countHGroupBoxExHistory].SetValueJp(hStaffHistoryVo.HistoryDate);
                 dictionaryHistoryNote[countHGroupBoxExHistory].Text = hStaffHistoryVo.CompanyName;
                 countHGroupBoxExHistory++;
                 if (countHGroupBoxExHistory > 2)
@@ -780,7 +780,7 @@ namespace H_Staff {
             int countHGroupBoxExFamily = 0;
             foreach (H_StaffFamilyVo hStaffFamilyVo in listHStaffFamilyVo) {
                 dictionaryFamilyName[countHGroupBoxExFamily].Text = hStaffFamilyVo.FamilyName;
-                dictionaryFamilyBirthDate[countHGroupBoxExFamily].SetValue(hStaffFamilyVo.FamilyBirthDay);
+                dictionaryFamilyBirthDate[countHGroupBoxExFamily].SetValueJp(hStaffFamilyVo.FamilyBirthDay);
                 dictionaryFamilyRelationship[countHGroupBoxExFamily].Text = hStaffFamilyVo.FamilyRelationship;
                 countHGroupBoxExFamily++;
                 if (countHGroupBoxExFamily > 2)
@@ -801,7 +801,7 @@ namespace H_Staff {
             HTextBoxExMedicalExaminationNote.Text = string.Empty;
             int countHGroupBoxExMedical = 0;
             foreach (H_StaffMedicalExaminationVo hStaffMedicalExaminationVo in listHStaffMedicalExaminationVo) {
-                dictionaryMedicalDate[countHGroupBoxExMedical].SetValue(hStaffMedicalExaminationVo.MedicalExaminationDate);
+                dictionaryMedicalDate[countHGroupBoxExMedical].SetValueJp(hStaffMedicalExaminationVo.MedicalExaminationDate);
                 dictionaryMedicalName[countHGroupBoxExMedical].Text = hStaffMedicalExaminationVo.MedicalInstitutionName;
                 dictionaryMedicalNote[countHGroupBoxExMedical].Text += hStaffMedicalExaminationVo.MedicalExaminationNote;
                 countHGroupBoxExMedical++;
@@ -822,7 +822,7 @@ namespace H_Staff {
             HTextBoxExCarViolatePlace.Text = string.Empty;
             int countHGroupBoxExCarViolate = 0;
             foreach (H_StaffCarViolateVo hStaffCarViolateVo in listHStaffCarViolateVo) {
-                dictionaryCarViolateDate[countHGroupBoxExCarViolate].SetValue(hStaffCarViolateVo.CarViolateDate);
+                dictionaryCarViolateDate[countHGroupBoxExCarViolate].SetValueJp(hStaffCarViolateVo.CarViolateDate);
                 dictionaryCarViolateContent[countHGroupBoxExCarViolate].Text = hStaffCarViolateVo.CarViolateContent;
                 dictionaryCarViolatePlace[countHGroupBoxExCarViolate].Text += hStaffCarViolateVo.CarViolatePlace;
                 countHGroupBoxExCarViolate++;
@@ -841,7 +841,7 @@ namespace H_Staff {
             HComboBoxExEducateName.SelectedIndex = -1;
             int countHGroupBoxEducate = 0;
             foreach (H_StaffEducateVo hStaffEducateVo in listHStaffEducateVo) {
-                dictionaryEducateDate[countHGroupBoxEducate].SetValue(hStaffEducateVo.EducateDate);
+                dictionaryEducateDate[countHGroupBoxEducate].SetValueJp(hStaffEducateVo.EducateDate);
                 dictionaryEducateName[countHGroupBoxEducate].Text = hStaffEducateVo.EducateName;
                 countHGroupBoxEducate++;
                 if (countHGroupBoxEducate > 2)
@@ -862,7 +862,7 @@ namespace H_Staff {
             int countHGroupBoxProper = 0;
             foreach (H_StaffProperVo hStaffProperVo in listHStaffProperVo) {
                 dictionaryProperKind[countHGroupBoxProper].Text = hStaffProperVo.ProperKind;
-                dictionaryProperDate[countHGroupBoxProper].SetValue(hStaffProperVo.ProperDate);
+                dictionaryProperDate[countHGroupBoxProper].SetValueJp(hStaffProperVo.ProperDate);
                 dictionaryProperNote[countHGroupBoxProper].Text = hStaffProperVo.ProperNote;
                 countHGroupBoxProper++;
                 if (countHGroupBoxProper > 2)
@@ -880,7 +880,7 @@ namespace H_Staff {
             HTextBoxExPunishmentNote.Text = string.Empty;
             int countHGroupBoxExPunishment = 0;
             foreach (H_StaffPunishmentVo hStaffPunishmentVo in listHStaffPunishmentVo) {
-                dictionaryPunishmentDate[countHGroupBoxExPunishment].SetValue(hStaffPunishmentVo.PunishmentDate);
+                dictionaryPunishmentDate[countHGroupBoxExPunishment].SetValueJp(hStaffPunishmentVo.PunishmentDate);
                 dictionaryPunishmentNote[countHGroupBoxExPunishment].Text = hStaffPunishmentVo.PunishmentNote;
                 countHGroupBoxExPunishment++;
                 if (countHGroupBoxExPunishment > 2)

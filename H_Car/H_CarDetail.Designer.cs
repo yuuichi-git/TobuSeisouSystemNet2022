@@ -352,6 +352,7 @@
             // 
             // HTextBoxExRemarks
             // 
+            HTextBoxExRemarks.ImeMode = ImeMode.Hiragana;
             HTextBoxExRemarks.Location = new Point(192, 640);
             HTextBoxExRemarks.Multiline = true;
             HTextBoxExRemarks.Name = "HTextBoxExRemarks";
@@ -370,6 +371,7 @@
             // 
             // HTextBoxExCategoryDistinguishNumber
             // 
+            HTextBoxExCategoryDistinguishNumber.ImeMode = ImeMode.Off;
             HTextBoxExCategoryDistinguishNumber.Location = new Point(192, 612);
             HTextBoxExCategoryDistinguishNumber.Name = "HTextBoxExCategoryDistinguishNumber";
             HTextBoxExCategoryDistinguishNumber.Size = new Size(176, 23);
@@ -387,6 +389,7 @@
             // 
             // HTextBoxExVersionDesignateNumber
             // 
+            HTextBoxExVersionDesignateNumber.ImeMode = ImeMode.Off;
             HTextBoxExVersionDesignateNumber.Location = new Point(192, 584);
             HTextBoxExVersionDesignateNumber.Name = "HTextBoxExVersionDesignateNumber";
             HTextBoxExVersionDesignateNumber.Size = new Size(176, 23);
@@ -404,13 +407,14 @@
             // 
             // HComboBoxExTypesOfFuel
             // 
+            HComboBoxExTypesOfFuel.DropDownStyle = ComboBoxStyle.DropDownList;
             HComboBoxExTypesOfFuel.FormattingEnabled = true;
+            HComboBoxExTypesOfFuel.ImeMode = ImeMode.Hiragana;
             HComboBoxExTypesOfFuel.Items.AddRange(new object[] { "軽油", "ガソリン", "プロパン" });
             HComboBoxExTypesOfFuel.Location = new Point(192, 556);
             HComboBoxExTypesOfFuel.Name = "HComboBoxExTypesOfFuel";
             HComboBoxExTypesOfFuel.Size = new Size(176, 23);
             HComboBoxExTypesOfFuel.TabIndex = 19;
-            HComboBoxExTypesOfFuel.Text = "軽油";
             // 
             // label38
             // 
@@ -433,6 +437,7 @@
             // HNumericUpDownExTotalDisplacement
             // 
             HNumericUpDownExTotalDisplacement.DecimalPlaces = 2;
+            HNumericUpDownExTotalDisplacement.ImeMode = ImeMode.Off;
             HNumericUpDownExTotalDisplacement.Location = new Point(192, 528);
             HNumericUpDownExTotalDisplacement.Maximum = new decimal(new int[] { 1000, 0, 0, 131072 });
             HNumericUpDownExTotalDisplacement.Name = "HNumericUpDownExTotalDisplacement";
@@ -452,6 +457,7 @@
             // 
             // HNumericUpDownExRrAxisWeight
             // 
+            HNumericUpDownExRrAxisWeight.ImeMode = ImeMode.Off;
             HNumericUpDownExRrAxisWeight.Location = new Point(192, 500);
             HNumericUpDownExRrAxisWeight.Maximum = new decimal(new int[] { 99999, 0, 0, 0 });
             HNumericUpDownExRrAxisWeight.Name = "HNumericUpDownExRrAxisWeight";
@@ -471,6 +477,7 @@
             // 
             // HNumericUpDownExRfAxisWeight
             // 
+            HNumericUpDownExRfAxisWeight.ImeMode = ImeMode.Off;
             HNumericUpDownExRfAxisWeight.Location = new Point(192, 472);
             HNumericUpDownExRfAxisWeight.Maximum = new decimal(new int[] { 99999, 0, 0, 0 });
             HNumericUpDownExRfAxisWeight.Name = "HNumericUpDownExRfAxisWeight";
@@ -490,6 +497,7 @@
             // 
             // HNumericUpDownExFrAxisWeight
             // 
+            HNumericUpDownExFrAxisWeight.ImeMode = ImeMode.Off;
             HNumericUpDownExFrAxisWeight.Location = new Point(192, 444);
             HNumericUpDownExFrAxisWeight.Maximum = new decimal(new int[] { 99999, 0, 0, 0 });
             HNumericUpDownExFrAxisWeight.Name = "HNumericUpDownExFrAxisWeight";
@@ -509,6 +517,7 @@
             // 
             // HNumericUpDownExFfAxisWeight
             // 
+            HNumericUpDownExFfAxisWeight.ImeMode = ImeMode.Off;
             HNumericUpDownExFfAxisWeight.Location = new Point(192, 416);
             HNumericUpDownExFfAxisWeight.Maximum = new decimal(new int[] { 99999, 0, 0, 0 });
             HNumericUpDownExFfAxisWeight.Name = "HNumericUpDownExFfAxisWeight";
@@ -528,6 +537,7 @@
             // 
             // HNumericUpDownExHeight
             // 
+            HNumericUpDownExHeight.ImeMode = ImeMode.Off;
             HNumericUpDownExHeight.Location = new Point(192, 388);
             HNumericUpDownExHeight.Maximum = new decimal(new int[] { 99999, 0, 0, 0 });
             HNumericUpDownExHeight.Name = "HNumericUpDownExHeight";
@@ -547,6 +557,7 @@
             // 
             // HNumericUpDownExWidth
             // 
+            HNumericUpDownExWidth.ImeMode = ImeMode.Off;
             HNumericUpDownExWidth.Location = new Point(192, 360);
             HNumericUpDownExWidth.Maximum = new decimal(new int[] { 99999, 0, 0, 0 });
             HNumericUpDownExWidth.Name = "HNumericUpDownExWidth";
@@ -566,6 +577,7 @@
             // 
             // HNumericUpDownExLength
             // 
+            HNumericUpDownExLength.ImeMode = ImeMode.Off;
             HNumericUpDownExLength.Location = new Point(192, 332);
             HNumericUpDownExLength.Maximum = new decimal(new int[] { 99999, 0, 0, 0 });
             HNumericUpDownExLength.Name = "HNumericUpDownExLength";
@@ -585,6 +597,7 @@
             // 
             // HNumericUpDownExTotalVehicleWeight
             // 
+            HNumericUpDownExTotalVehicleWeight.ImeMode = ImeMode.Off;
             HNumericUpDownExTotalVehicleWeight.Location = new Point(192, 304);
             HNumericUpDownExTotalVehicleWeight.Maximum = new decimal(new int[] { 99999, 0, 0, 0 });
             HNumericUpDownExTotalVehicleWeight.Name = "HNumericUpDownExTotalVehicleWeight";
@@ -604,6 +617,7 @@
             // 
             // HNumericUpDownExVehicleWeight
             // 
+            HNumericUpDownExVehicleWeight.ImeMode = ImeMode.Off;
             HNumericUpDownExVehicleWeight.Location = new Point(192, 276);
             HNumericUpDownExVehicleWeight.Maximum = new decimal(new int[] { 99999, 0, 0, 0 });
             HNumericUpDownExVehicleWeight.Name = "HNumericUpDownExVehicleWeight";
@@ -623,6 +637,7 @@
             // 
             // HNumericUpDownExMaximumLoadCapacity
             // 
+            HNumericUpDownExMaximumLoadCapacity.ImeMode = ImeMode.Off;
             HNumericUpDownExMaximumLoadCapacity.Location = new Point(192, 248);
             HNumericUpDownExMaximumLoadCapacity.Maximum = new decimal(new int[] { 99999, 0, 0, 0 });
             HNumericUpDownExMaximumLoadCapacity.Name = "HNumericUpDownExMaximumLoadCapacity";
@@ -642,6 +657,7 @@
             // 
             // HNumericUpDownExCapacity
             // 
+            HNumericUpDownExCapacity.ImeMode = ImeMode.Off;
             HNumericUpDownExCapacity.Location = new Point(192, 220);
             HNumericUpDownExCapacity.Name = "HNumericUpDownExCapacity";
             HNumericUpDownExCapacity.Size = new Size(56, 23);
@@ -650,13 +666,14 @@
             // 
             // HComboBoxExShapeCode
             // 
+            HComboBoxExShapeCode.DropDownStyle = ComboBoxStyle.DropDownList;
             HComboBoxExShapeCode.FormattingEnabled = true;
-            HComboBoxExShapeCode.Items.AddRange(new object[] { "キャブオーバー", "塵芥車", "ダンプ ", "コンテナ専用", "脱着装置付コンテナ専用車", "粉粒体運搬車", "糞尿車", "清掃車" });
+            HComboBoxExShapeCode.ImeMode = ImeMode.Hiragana;
+            HComboBoxExShapeCode.Items.AddRange(new object[] { "キャブオーバー", "塵芥車", "ダンプ", "コンテナ専用", "脱着装置付コンテナ専用車", "粉粒体運搬車", "糞尿車", "清掃車" });
             HComboBoxExShapeCode.Location = new Point(192, 192);
             HComboBoxExShapeCode.Name = "HComboBoxExShapeCode";
             HComboBoxExShapeCode.Size = new Size(176, 23);
             HComboBoxExShapeCode.TabIndex = 6;
-            HComboBoxExShapeCode.Text = "ダンプ";
             // 
             // label25
             // 
@@ -669,13 +686,14 @@
             // 
             // HComboBoxExOtherCode
             // 
+            HComboBoxExOtherCode.DropDownStyle = ComboBoxStyle.DropDownList;
             HComboBoxExOtherCode.FormattingEnabled = true;
+            HComboBoxExOtherCode.ImeMode = ImeMode.Hiragana;
             HComboBoxExOtherCode.Items.AddRange(new object[] { "事業用", "自家用" });
             HComboBoxExOtherCode.Location = new Point(192, 164);
             HComboBoxExOtherCode.Name = "HComboBoxExOtherCode";
             HComboBoxExOtherCode.Size = new Size(176, 23);
             HComboBoxExOtherCode.TabIndex = 5;
-            HComboBoxExOtherCode.Text = "事業用";
             // 
             // label24
             // 
@@ -688,6 +706,7 @@
             // 
             // HTextBoxExMotorVersion
             // 
+            HTextBoxExMotorVersion.ImeMode = ImeMode.Off;
             HTextBoxExMotorVersion.Location = new Point(192, 80);
             HTextBoxExMotorVersion.Name = "HTextBoxExMotorVersion";
             HTextBoxExMotorVersion.Size = new Size(176, 23);
@@ -696,6 +715,7 @@
             // 
             // HTextBoxExVersion
             // 
+            HTextBoxExVersion.ImeMode = ImeMode.Off;
             HTextBoxExVersion.Location = new Point(192, 52);
             HTextBoxExVersion.Name = "HTextBoxExVersion";
             HTextBoxExVersion.Size = new Size(176, 23);
@@ -704,13 +724,14 @@
             // 
             // HComboBoxExCarUse
             // 
+            HComboBoxExCarUse.DropDownStyle = ComboBoxStyle.DropDownList;
             HComboBoxExCarUse.FormattingEnabled = true;
+            HComboBoxExCarUse.ImeMode = ImeMode.Hiragana;
             HComboBoxExCarUse.Items.AddRange(new object[] { "貨物", "乗用", "乗合", "特種" });
             HComboBoxExCarUse.Location = new Point(192, 136);
             HComboBoxExCarUse.Name = "HComboBoxExCarUse";
             HComboBoxExCarUse.Size = new Size(176, 23);
             HComboBoxExCarUse.TabIndex = 4;
-            HComboBoxExCarUse.Text = "貨物";
             // 
             // label19
             // 
@@ -723,13 +744,14 @@
             // 
             // HComboBoxExCarKindCode
             // 
+            HComboBoxExCarKindCode.DropDownStyle = ComboBoxStyle.DropDownList;
             HComboBoxExCarKindCode.FormattingEnabled = true;
+            HComboBoxExCarKindCode.ImeMode = ImeMode.Hiragana;
             HComboBoxExCarKindCode.Items.AddRange(new object[] { "軽自動車", "小型", "普通", "大型特殊" });
             HComboBoxExCarKindCode.Location = new Point(192, 108);
             HComboBoxExCarKindCode.Name = "HComboBoxExCarKindCode";
             HComboBoxExCarKindCode.Size = new Size(176, 23);
             HComboBoxExCarKindCode.TabIndex = 3;
-            HComboBoxExCarKindCode.Text = "小型";
             // 
             // label20
             // 
@@ -760,13 +782,14 @@
             // 
             // HComboBoxExManufacturerCode
             // 
+            HComboBoxExManufacturerCode.DropDownStyle = ComboBoxStyle.DropDownList;
             HComboBoxExManufacturerCode.FormattingEnabled = true;
+            HComboBoxExManufacturerCode.ImeMode = ImeMode.Hiragana;
             HComboBoxExManufacturerCode.Items.AddRange(new object[] { "いすゞ", "日産", "ダイハツ", "日野", "スバル" });
             HComboBoxExManufacturerCode.Location = new Point(192, 24);
             HComboBoxExManufacturerCode.Name = "HComboBoxExManufacturerCode";
             HComboBoxExManufacturerCode.Size = new Size(176, 23);
             HComboBoxExManufacturerCode.TabIndex = 0;
-            HComboBoxExManufacturerCode.Text = "イスズ";
             // 
             // label23
             // 
@@ -799,6 +822,7 @@
             // HComboBoxExBaseAddress
             // 
             HComboBoxExBaseAddress.FormattingEnabled = true;
+            HComboBoxExBaseAddress.ImeMode = ImeMode.Hiragana;
             HComboBoxExBaseAddress.Items.AddRange(new object[] { "＊＊＊" });
             HComboBoxExBaseAddress.Location = new Point(192, 136);
             HComboBoxExBaseAddress.Name = "HComboBoxExBaseAddress";
@@ -818,6 +842,7 @@
             // HComboBoxExUserAddress
             // 
             HComboBoxExUserAddress.FormattingEnabled = true;
+            HComboBoxExUserAddress.ImeMode = ImeMode.Hiragana;
             HComboBoxExUserAddress.Items.AddRange(new object[] { "＊＊＊" });
             HComboBoxExUserAddress.Location = new Point(192, 108);
             HComboBoxExUserAddress.Name = "HComboBoxExUserAddress";
@@ -837,6 +862,7 @@
             // HComboBoxExUserName
             // 
             HComboBoxExUserName.FormattingEnabled = true;
+            HComboBoxExUserName.ImeMode = ImeMode.Hiragana;
             HComboBoxExUserName.Items.AddRange(new object[] { "＊＊＊" });
             HComboBoxExUserName.Location = new Point(192, 80);
             HComboBoxExUserName.Name = "HComboBoxExUserName";
@@ -856,6 +882,7 @@
             // HComboBoxExOwnerAddress
             // 
             HComboBoxExOwnerAddress.FormattingEnabled = true;
+            HComboBoxExOwnerAddress.ImeMode = ImeMode.Hiragana;
             HComboBoxExOwnerAddress.Items.AddRange(new object[] { "東京都足立区西伊興１－６－２８" });
             HComboBoxExOwnerAddress.Location = new Point(192, 52);
             HComboBoxExOwnerAddress.Name = "HComboBoxExOwnerAddress";
@@ -875,6 +902,7 @@
             // HComboBoxExOwnerName
             // 
             HComboBoxExOwnerName.FormattingEnabled = true;
+            HComboBoxExOwnerName.ImeMode = ImeMode.Hiragana;
             HComboBoxExOwnerName.Items.AddRange(new object[] { "東武清掃　株式会社" });
             HComboBoxExOwnerName.Location = new Point(192, 24);
             HComboBoxExOwnerName.Name = "HComboBoxExOwnerName";
@@ -924,6 +952,7 @@
             // HComboBoxExDisguiseKind3
             // 
             HComboBoxExDisguiseKind3.FormattingEnabled = true;
+            HComboBoxExDisguiseKind3.ImeMode = ImeMode.Hiragana;
             HComboBoxExDisguiseKind3.Location = new Point(192, 192);
             HComboBoxExDisguiseKind3.Name = "HComboBoxExDisguiseKind3";
             HComboBoxExDisguiseKind3.Size = new Size(148, 23);
@@ -932,6 +961,7 @@
             // HComboBoxExDisguiseKind2
             // 
             HComboBoxExDisguiseKind2.FormattingEnabled = true;
+            HComboBoxExDisguiseKind2.ImeMode = ImeMode.Hiragana;
             HComboBoxExDisguiseKind2.Location = new Point(192, 164);
             HComboBoxExDisguiseKind2.Name = "HComboBoxExDisguiseKind2";
             HComboBoxExDisguiseKind2.Size = new Size(148, 23);
@@ -940,6 +970,7 @@
             // HComboBoxExDisguiseKind1
             // 
             HComboBoxExDisguiseKind1.FormattingEnabled = true;
+            HComboBoxExDisguiseKind1.ImeMode = ImeMode.Hiragana;
             HComboBoxExDisguiseKind1.Location = new Point(192, 136);
             HComboBoxExDisguiseKind1.Name = "HComboBoxExDisguiseKind1";
             HComboBoxExDisguiseKind1.Size = new Size(148, 23);
@@ -974,13 +1005,14 @@
             // 
             // HComboBoxExGarageCode
             // 
+            HComboBoxExGarageCode.DropDownStyle = ComboBoxStyle.DropDownList;
             HComboBoxExGarageCode.FormattingEnabled = true;
+            HComboBoxExGarageCode.ImeMode = ImeMode.Hiragana;
             HComboBoxExGarageCode.Items.AddRange(new object[] { "足立", "三郷", "産廃車庫" });
             HComboBoxExGarageCode.Location = new Point(192, 108);
             HComboBoxExGarageCode.Name = "HComboBoxExGarageCode";
             HComboBoxExGarageCode.Size = new Size(148, 23);
             HComboBoxExGarageCode.TabIndex = 8;
-            HComboBoxExGarageCode.Text = "産廃車庫";
             // 
             // label6
             // 
@@ -993,6 +1025,7 @@
             // 
             // HTextBoxExRegistrationNumber4
             // 
+            HTextBoxExRegistrationNumber4.ImeMode = ImeMode.Off;
             HTextBoxExRegistrationNumber4.Location = new Point(316, 52);
             HTextBoxExRegistrationNumber4.Name = "HTextBoxExRegistrationNumber4";
             HTextBoxExRegistrationNumber4.Size = new Size(40, 23);
@@ -1002,6 +1035,7 @@
             // 
             // HTextBoxExRegistrationNumber3
             // 
+            HTextBoxExRegistrationNumber3.ImeMode = ImeMode.Hiragana;
             HTextBoxExRegistrationNumber3.Location = new Point(280, 52);
             HTextBoxExRegistrationNumber3.Name = "HTextBoxExRegistrationNumber3";
             HTextBoxExRegistrationNumber3.Size = new Size(32, 23);
@@ -1011,6 +1045,7 @@
             // 
             // HTextBoxExRegistrationNumber2
             // 
+            HTextBoxExRegistrationNumber2.ImeMode = ImeMode.Off;
             HTextBoxExRegistrationNumber2.Location = new Point(244, 52);
             HTextBoxExRegistrationNumber2.Name = "HTextBoxExRegistrationNumber2";
             HTextBoxExRegistrationNumber2.Size = new Size(32, 23);
@@ -1020,13 +1055,14 @@
             // 
             // HComboBoxExRegistrationNumber1
             // 
+            HComboBoxExRegistrationNumber1.DropDownStyle = ComboBoxStyle.DropDownList;
             HComboBoxExRegistrationNumber1.FormattingEnabled = true;
+            HComboBoxExRegistrationNumber1.ImeMode = ImeMode.Hiragana;
             HComboBoxExRegistrationNumber1.Items.AddRange(new object[] { "足立" });
             HComboBoxExRegistrationNumber1.Location = new Point(192, 52);
             HComboBoxExRegistrationNumber1.Name = "HComboBoxExRegistrationNumber1";
             HComboBoxExRegistrationNumber1.Size = new Size(48, 23);
             HComboBoxExRegistrationNumber1.TabIndex = 3;
-            HComboBoxExRegistrationNumber1.Text = "足立";
             // 
             // label5
             // 
@@ -1048,7 +1084,9 @@
             // 
             // HComboBoxExClassificationCode
             // 
+            HComboBoxExClassificationCode.DropDownStyle = ComboBoxStyle.DropDownList;
             HComboBoxExClassificationCode.FormattingEnabled = true;
+            HComboBoxExClassificationCode.ImeMode = ImeMode.Hiragana;
             HComboBoxExClassificationCode.Items.AddRange(new object[] { "雇上", "区契", "臨時", "清掃工場", "社内", "一般", "社用車", "指定なし" });
             HComboBoxExClassificationCode.Location = new Point(192, 80);
             HComboBoxExClassificationCode.Name = "HComboBoxExClassificationCode";
@@ -1066,6 +1104,7 @@
             // 
             // HTextBoxExDoorNumber
             // 
+            HTextBoxExDoorNumber.ImeMode = ImeMode.Off;
             HTextBoxExDoorNumber.Location = new Point(420, 24);
             HTextBoxExDoorNumber.Name = "HTextBoxExDoorNumber";
             HTextBoxExDoorNumber.Size = new Size(38, 23);
@@ -1084,6 +1123,7 @@
             // 
             // HTextBoxExRegistrationNumber
             // 
+            HTextBoxExRegistrationNumber.ImeMode = ImeMode.Hiragana;
             HTextBoxExRegistrationNumber.Location = new Point(244, 24);
             HTextBoxExRegistrationNumber.Name = "HTextBoxExRegistrationNumber";
             HTextBoxExRegistrationNumber.Size = new Size(96, 23);
@@ -1094,6 +1134,7 @@
             // 
             HTextBoxExCarCode.Location = new Point(192, 24);
             HTextBoxExCarCode.Name = "HTextBoxExCarCode";
+            HTextBoxExCarCode.ReadOnly = true;
             HTextBoxExCarCode.Size = new Size(48, 23);
             HTextBoxExCarCode.TabIndex = 0;
             HTextBoxExCarCode.Text = "88888";
@@ -1184,6 +1225,7 @@
             // 
             // HTextBoxExVehicleNumber
             // 
+            HTextBoxExVehicleNumber.ImeMode = ImeMode.Off;
             HTextBoxExVehicleNumber.Location = new Point(192, 24);
             HTextBoxExVehicleNumber.Name = "HTextBoxExVehicleNumber";
             HTextBoxExVehicleNumber.Size = new Size(148, 23);

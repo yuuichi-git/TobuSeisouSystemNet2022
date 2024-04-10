@@ -5,6 +5,8 @@ using Common;
 
 using FarPoint.Win.Spread;
 
+using H_Common;
+
 using H_Dao;
 
 using Vo;
@@ -118,6 +120,10 @@ namespace H_License {
          * Dao
          */
         private readonly H_LicenseMasterDao _hLicenseMasterDao;
+        /*
+         * Vo
+         */
+        private readonly ConnectionVo _connectionVo;
 
         /// <summary>
         /// コンストラクター
@@ -128,6 +134,10 @@ namespace H_License {
              * Dao
              */
             _hLicenseMasterDao = new(connectionVo);
+            /*
+             * Vo
+             */
+            _connectionVo = connectionVo;
             /*
              * InitializeControl
              */
@@ -315,6 +325,33 @@ namespace H_License {
         }
 
         /// <summary>
+        /// SpreadList_CellDoubleClick
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SpreadList_CellDoubleClick(object sender, CellClickEventArgs e) {
+            // ダブルクリックされたのが従事者リストで無ければReturnする
+            if (((FpSpread)sender).ActiveSheet.SheetName != "LicenseList")
+                return;
+            // ヘッダーのDoubleClickを回避
+            if (e.ColumnHeader)
+                return;
+            // Shiftが押された場合
+            if ((ModifierKeys & Keys.Shift) == Keys.Shift) {
+
+                return;
+            }
+            // 修飾キーが無い場合
+            HLicenseDetail hLicenseDetail = new(_connectionVo, ((H_LicenseMasterVo)SheetViewList.Rows[e.Row].Tag).StaffCode);
+            Rectangle rectangleHLicenseDetail = new Desktop().GetMonitorWorkingArea(hLicenseDetail, _connectionVo.Screen);
+            hLicenseDetail.KeyPreview = true;
+            hLicenseDetail.Location = rectangleHLicenseDetail.Location;
+            hLicenseDetail.Size = new Size(1274, 812);
+            hLicenseDetail.WindowState = FormWindowState.Normal;
+            hLicenseDetail.Show(this);
+        }
+
+        /// <summary>
         /// ToolStripMenuItem_Click
         /// </summary>
         /// <param name="sender"></param>
@@ -323,7 +360,13 @@ namespace H_License {
             switch (((ToolStripMenuItem)sender).Name) {
                 // 新規レコードを作成する
                 case "ToolStripMenuItemNewLicense":
-
+                    HLicenseDetail hLicenseDetail = new(_connectionVo);
+                    Rectangle rectangleHLicenseDetail = new Desktop().GetMonitorWorkingArea(hLicenseDetail, _connectionVo.Screen);
+                    hLicenseDetail.KeyPreview = true;
+                    hLicenseDetail.Location = rectangleHLicenseDetail.Location;
+                    hLicenseDetail.Size = new Size(1274, 812);
+                    hLicenseDetail.WindowState = FormWindowState.Normal;
+                    hLicenseDetail.Show(this);
                     break;
                 // 東海電子ALC用CSV
                 case "ToolStripMenuItemToukaiCSV":

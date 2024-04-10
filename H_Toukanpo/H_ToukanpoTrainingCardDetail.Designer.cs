@@ -173,9 +173,9 @@
             // 
             // HButtonExUpdate
             // 
-            HButtonExUpdate.Location = new Point(484, 32);
+            HButtonExUpdate.Location = new Point(488, 20);
             HButtonExUpdate.Name = "HButtonExUpdate";
-            HButtonExUpdate.Size = new Size(144, 36);
+            HButtonExUpdate.Size = new Size(144, 32);
             HButtonExUpdate.TabIndex = 32;
             HButtonExUpdate.Text = "UPDATE";
             HButtonExUpdate.TextDirectionVertical = "";
@@ -222,6 +222,7 @@
             // HComboBoxExStaffName
             // 
             HComboBoxExStaffName.FormattingEnabled = true;
+            HComboBoxExStaffName.ImeMode = ImeMode.Hiragana;
             HComboBoxExStaffName.Location = new Point(196, 48);
             HComboBoxExStaffName.Name = "HComboBoxExStaffName";
             HComboBoxExStaffName.Size = new Size(264, 23);

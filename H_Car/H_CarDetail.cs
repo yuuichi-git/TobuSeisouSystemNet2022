@@ -92,9 +92,9 @@ namespace H_Car {
              * １．基本情報
              */
             HTextBoxExVehicleNumber.Text = string.Empty; // 車台番号
-            HDateTimePickerExRegistrationDate.SetValue(DateTime.Now.Date); // 登録年月日/交付年月日
-            HDateTimePickerExFirstRegistrationDate.SetValue(DateTime.Now.Date); // 初度登録年月
-            HDateTimePickerExExpirationDate.SetValue(DateTime.Now.Date); // 有効期限の満了する日
+            HDateTimePickerExRegistrationDate.SetValueJp(DateTime.Now.Date); // 登録年月日/交付年月日
+            HDateTimePickerExFirstRegistrationDate.SetValueJp(DateTime.Now.Date); // 初度登録年月
+            HDateTimePickerExExpirationDate.SetValueJp(DateTime.Now.Date); // 有効期限の満了する日
             /*
              * ２．所有者・使用者情報
              */
@@ -227,9 +227,9 @@ namespace H_Car {
              * １．基本情報
              */
             HTextBoxExVehicleNumber.Text = hCarMasterVo.VehicleNumber; // 車台番号
-            HDateTimePickerExRegistrationDate.SetValue(hCarMasterVo.RegistrationDate.Date); // 登録年月日/交付年月日
-            HDateTimePickerExFirstRegistrationDate.SetValue(hCarMasterVo.FirstRegistrationDate.Date); // 初度登録年月
-            HDateTimePickerExExpirationDate.SetValue(hCarMasterVo.ExpirationDate.Date); // 有効期限の満了する日
+            HDateTimePickerExRegistrationDate.SetValueJp(hCarMasterVo.RegistrationDate.Date); // 登録年月日/交付年月日
+            HDateTimePickerExFirstRegistrationDate.SetValueJp(hCarMasterVo.FirstRegistrationDate.Date); // 初度登録年月
+            HDateTimePickerExExpirationDate.SetValueJp(hCarMasterVo.ExpirationDate.Date); // 有効期限の満了する日
             /*
              * ２．所有者・使用者情報
              */
@@ -295,10 +295,10 @@ namespace H_Car {
                      * クリップボードを転送
                      * なんか型のチェックはいらなさそう・・・エラーが出ないし・・・
                      */
-                    HButtonExClip.Image = (Bitmap)Clipboard.GetDataObject().GetData(DataFormats.Bitmap);
+                    HPictureBoxExPicture.Image = (Bitmap)Clipboard.GetDataObject().GetData(DataFormats.Bitmap);
                     break;
                 case "HButtonExDelete":
-                    HButtonExClip.Image = null;
+                    HPictureBoxExPicture.Image = null;
                     break;
                 case "HButtonExUpdate":
                     DialogResult dialogResult = MessageBox.Show("データを更新します。よろしいですか？", "メッセージ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);

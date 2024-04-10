@@ -1063,7 +1063,7 @@
             TabPage2.Padding = new Padding(3);
             TabPage2.Size = new Size(539, 445);
             TabPage2.TabIndex = 1;
-            TabPage2.Text = "新型（令和６年度～）";
+            TabPage2.Text = "新型システム";
             TabPage2.UseVisualStyleBackColor = true;
             // 
             // label69
@@ -1293,7 +1293,7 @@
             TabPage1.Padding = new Padding(3);
             TabPage1.Size = new Size(539, 445);
             TabPage1.TabIndex = 0;
-            TabPage1.Text = "現行システム";
+            TabPage1.Text = "旧型システム";
             TabPage1.UseVisualStyleBackColor = true;
             // 
             // label27

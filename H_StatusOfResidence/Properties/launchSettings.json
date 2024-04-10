@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "H_StatusOfResidence": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

@@ -83,6 +83,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H_Car", "H_Car\H_Car.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H_License", "H_License\H_License.csproj", "{BC74F6B5-9161-49B1-AF0E-292A8A064D06}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H_StatusOfResidence", "H_StatusOfResidence\H_StatusOfResidence.csproj", "{3A89C22A-6344-4C6E-986A-2A91F63AE404}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -411,6 +413,14 @@ Global
 		{BC74F6B5-9161-49B1-AF0E-292A8A064D06}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BC74F6B5-9161-49B1-AF0E-292A8A064D06}.Release|x64.ActiveCfg = Release|Any CPU
 		{BC74F6B5-9161-49B1-AF0E-292A8A064D06}.Release|x64.Build.0 = Release|Any CPU
+		{3A89C22A-6344-4C6E-986A-2A91F63AE404}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A89C22A-6344-4C6E-986A-2A91F63AE404}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A89C22A-6344-4C6E-986A-2A91F63AE404}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{3A89C22A-6344-4C6E-986A-2A91F63AE404}.Debug|x64.Build.0 = Debug|Any CPU
+		{3A89C22A-6344-4C6E-986A-2A91F63AE404}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A89C22A-6344-4C6E-986A-2A91F63AE404}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A89C22A-6344-4C6E-986A-2A91F63AE404}.Release|x64.ActiveCfg = Release|Any CPU
+		{3A89C22A-6344-4C6E-986A-2A91F63AE404}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

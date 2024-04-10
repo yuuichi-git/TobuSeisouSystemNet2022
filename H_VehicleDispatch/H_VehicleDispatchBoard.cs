@@ -91,7 +91,7 @@ namespace H_VehicleDispatch {
              */
             HButtonExLeft1.TextDirectionVertical = "StockBox";
 
-            HDateTimePickerOperationDate.SetValue(DateTime.Today);
+            HDateTimePickerOperationDate.SetValueJp(DateTime.Today);
             ToolStripStatusLabelDetail.Text = string.Empty;
             ToolStripProgressBar1.Value = 0;
             /*

@@ -53,7 +53,7 @@ namespace H_RollColl {
              * InitializeControl
              */
             InitializeComponent();
-            HDateTimePickerExOperationDate.SetValue(DateTime.Now.Date);
+            HDateTimePickerExOperationDate.SetValueJp(DateTime.Now.Date);
             HComboBoxExManagedSpace.Text = "本社営業所";
             ToolStripStatusLabelDetail.Text = string.Empty;
         }
