@@ -169,6 +169,8 @@
             LabelDbName = new Label();
             HTabControlEx = new H_ControlEx.H_TabControlEx();
             TabPage2 = new TabPage();
+            label71 = new Label();
+            label72 = new Label();
             label69 = new Label();
             label70 = new Label();
             label67 = new Label();
@@ -1042,6 +1044,8 @@
             // 
             // TabPage2
             // 
+            TabPage2.Controls.Add(label71);
+            TabPage2.Controls.Add(label72);
             TabPage2.Controls.Add(label69);
             TabPage2.Controls.Add(label70);
             TabPage2.Controls.Add(label67);
@@ -1065,6 +1069,31 @@
             TabPage2.TabIndex = 1;
             TabPage2.Text = "新型システム";
             TabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label71
+            // 
+            label71.AutoSize = true;
+            label71.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label71.ForeColor = Color.DarkGray;
+            label71.Location = new Point(42, 348);
+            label71.Name = "label71";
+            label71.Size = new Size(135, 17);
+            label71.TabIndex = 21;
+            label71.Text = "許可情報を登録します。";
+            // 
+            // label72
+            // 
+            label72.AutoSize = true;
+            label72.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label72.Location = new Point(16, 332);
+            label72.Name = "label72";
+            label72.Size = new Size(172, 17);
+            label72.TabIndex = 20;
+            label72.Tag = "HStatusOfResidenceList";
+            label72.Text = "在留カード・特別永住者証明書";
+            label72.Click += Label_Click;
+            label72.MouseEnter += Label_MouseEnter;
+            label72.MouseLeave += Label_MouseLeave;
             // 
             // label69
             // 
@@ -1846,5 +1875,7 @@
         private Label label68;
         private Label label69;
         private Label label70;
+        private Label label71;
+        private Label label72;
     }
 }

@@ -31,6 +31,8 @@ using H_RollColl;
 
 using H_Staff;
 
+using H_StatusOfResidence;
+
 using H_Toukanpo;
 
 using H_VehicleDispatch;
@@ -374,6 +376,20 @@ namespace TobuSeisouSystemNet2022 {
                                 hToukanpoTrainingCardDetail.Size = new Size(677, 545);
                                 hToukanpoTrainingCardDetail.WindowState = FormWindowState.Normal;
                                 hToukanpoTrainingCardDetail.Show(this);
+                                break;
+                            case "HStatusOfResidenceList":
+                                // Screenを退避(新型のみ)
+                                _connectionVo.Screen = (Screen)HComboBoxMoniter.SelectedItem;
+                                /*
+                                 * Formを表示する
+                                 */
+                                HStatusOfResidenceList hStatusOfResidenceList = new(_connectionVo);
+                                Rectangle rectangleHStatusOfResidenceList = new Desktop().GetMonitorWorkingArea(hStatusOfResidenceList, (Screen)HComboBoxMoniter.SelectedItem);
+                                hStatusOfResidenceList.KeyPreview = true;
+                                hStatusOfResidenceList.Location = rectangleHStatusOfResidenceList.Location;
+                                hStatusOfResidenceList.Size = new Size(1920, 1080);
+                                hStatusOfResidenceList.WindowState = FormWindowState.Normal;
+                                hStatusOfResidenceList.Show(this);
                                 break;
                             /*
                              * 
