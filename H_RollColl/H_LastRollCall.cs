@@ -1,8 +1,6 @@
 ﻿/*
  * 2024-02-19
  */
-using System.Diagnostics;
-
 using H_Common;
 
 using H_ControlEx;
@@ -61,22 +59,18 @@ namespace H_RollColl {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void HButtonExUpdate_Click(object sender, EventArgs e) {
-            /*
-             * バリデーション
-             */
-
             try {
                 if (_hLastRollCallDao.ExistenceHLastRollCallVo(_setCode, _operationDate.Date)) {
                     try {
-                        _hVehicleDispatchDetailDao.UpdateLastRollCall(HCheckBoxExLastRollCallCancel.Checked, _cellNumber, CreateHLastRollCallVo());
-                        _hLastRollCallDao.UpdateOneHLastRollCallVo(CreateHLastRollCallVo());
+                        _hVehicleDispatchDetailDao.UpdateLastRollCall(HCheckBoxExLastRollCallCancel.Checked, _cellNumber, SetVo());
+                        _hLastRollCallDao.UpdateOneHLastRollCallVo(SetVo());
                     } catch (Exception exception) {
                         MessageBox.Show(exception.Message);
                     }
                 } else {
                     try {
-                        _hVehicleDispatchDetailDao.UpdateLastRollCall(HCheckBoxExLastRollCallCancel.Checked, _cellNumber, CreateHLastRollCallVo());
-                        _hLastRollCallDao.InsertOneHLastRollCallVo(CreateHLastRollCallVo());
+                        _hVehicleDispatchDetailDao.UpdateLastRollCall(HCheckBoxExLastRollCallCancel.Checked, _cellNumber, SetVo());
+                        _hLastRollCallDao.InsertOneHLastRollCallVo(SetVo());
                     } catch (Exception exception) {
                         MessageBox.Show(exception.Message);
                     }
@@ -92,11 +86,10 @@ namespace H_RollColl {
         /// CreateHLastRollCallVo
         /// </summary>
         /// <returns></returns>
-        private H_LastRollCallVo CreateHLastRollCallVo() {
+        private H_LastRollCallVo SetVo() {
             H_LastRollCallVo hLastRollCallVo = new();
             hLastRollCallVo.SetCode = _setCode;
             hLastRollCallVo.OperationDate = HDateTimePickerExOperationDate.GetValue();
-            Debug.WriteLine(HMaskedTextBoxExFirstRollCallTime.Text);
             hLastRollCallVo.FirstRollCallYmdHms = _date.GetStringTimeToDateTime(HDateTimePickerExOperationDate.GetValue(), HMaskedTextBoxExFirstRollCallTime.Text);
             hLastRollCallVo.LastPlantCount = (int)HNumericUpDownExLastPlantCount.Value;
             hLastRollCallVo.LastPlantName = HComboBoxExLastPlantName.Text;

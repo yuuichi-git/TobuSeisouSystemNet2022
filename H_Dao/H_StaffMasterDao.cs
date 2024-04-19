@@ -149,7 +149,8 @@ namespace H_Dao {
         /// <summary>
         /// SelectOneHStaffMaster
         /// </summary>
-        /// <returns>詳細を含むListを返す</returns>
+        /// <param name="staffCode"></param>
+        /// <returns></returns>
         public H_StaffMasterVo SelectOneHStaffMaster(int staffCode) {
             H_StaffMasterVo hStaffMasterVo = new();
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
@@ -177,6 +178,8 @@ namespace H_Dao {
                                             "SelectionDate," +
                                             "NotSelectionDate," +
                                             "NotSelectionReason," +
+                                            "ContractFlag," +
+                                            "ContractDate," +
                                             "RetirementFlag," +
                                             "RetirementDate," +
                                             "RetirementNote," +
@@ -234,6 +237,8 @@ namespace H_Dao {
                     hStaffMasterVo.HLicenseMasterVo = _hLicenseMasterDao.SelectOneHLicenseMaster(_defaultValue.GetDefaultValue<int>(sqlDataReader["StaffCode"]));
                     hStaffMasterVo.ListHStaffHistoryVo = _hStaffHistoryDao.SelectOneHStaffHistoryMaster(_defaultValue.GetDefaultValue<int>(sqlDataReader["StaffCode"]));
                     hStaffMasterVo.ListHStaffExperienceVo = _hStaffExperienceDao.SelectOneHStaffExperienceMaster(_defaultValue.GetDefaultValue<int>(sqlDataReader["StaffCode"]));
+                    hStaffMasterVo.ContractFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["ContractFlag"]);
+                    hStaffMasterVo.ContractDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["ContractDate"]);
                     hStaffMasterVo.RetirementFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["RetirementFlag"]);
                     hStaffMasterVo.RetirementDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["RetirementDate"]);
                     hStaffMasterVo.RetirementNote = _defaultValue.GetDefaultValue<string>(sqlDataReader["RetirementNote"]);
@@ -303,6 +308,8 @@ namespace H_Dao {
                                             "SelectionDate," +
                                             "NotSelectionDate," +
                                             "NotSelectionReason," +
+                                            "ContractFlag," +
+                                            "ContractDate," +
                                             "RetirementFlag," +
                                             "RetirementDate," +
                                             "RetirementNote," +
@@ -358,6 +365,8 @@ namespace H_Dao {
                     hStaffMasterVo.NotSelectionDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["NotSelectionDate"]);
                     hStaffMasterVo.NotSelectionReason = _defaultValue.GetDefaultValue<string>(sqlDataReader["NotSelectionReason"]);
                     hStaffMasterVo.HLicenseMasterVo = _hLicenseMasterDao.SelectOneHLicenseMaster(_defaultValue.GetDefaultValue<int>(sqlDataReader["StaffCode"]));
+                    hStaffMasterVo.ContractFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["ContractFlag"]);
+                    hStaffMasterVo.ContractDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["ContractDate"]);
                     hStaffMasterVo.RetirementFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["RetirementFlag"]);
                     hStaffMasterVo.RetirementDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["RetirementDate"]);
                     hStaffMasterVo.RetirementNote = _defaultValue.GetDefaultValue<string>(sqlDataReader["RetirementNote"]);
@@ -422,6 +431,8 @@ namespace H_Dao {
                                             "SelectionDate," +
                                             "NotSelectionDate," +
                                             "NotSelectionReason," +
+                                            "ContractFlag," +
+                                            "ContractDate," +
                                             "RetirementFlag," +
                                             "RetirementDate," +
                                             "RetirementNote," +
@@ -477,6 +488,8 @@ namespace H_Dao {
                     hStaffMasterVo.NotSelectionDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["NotSelectionDate"]);
                     hStaffMasterVo.NotSelectionReason = _defaultValue.GetDefaultValue<string>(sqlDataReader["NotSelectionReason"]);
                     hStaffMasterVo.HLicenseMasterVo = _hLicenseMasterDao.SelectOneHLicenseMaster(_defaultValue.GetDefaultValue<int>(sqlDataReader["StaffCode"]));
+                    hStaffMasterVo.ContractFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["ContractFlag"]);
+                    hStaffMasterVo.ContractDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["ContractDate"]);
                     hStaffMasterVo.RetirementFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["RetirementFlag"]);
                     hStaffMasterVo.RetirementDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["RetirementDate"]);
                     hStaffMasterVo.RetirementNote = _defaultValue.GetDefaultValue<string>(sqlDataReader["RetirementNote"]);
@@ -539,6 +552,8 @@ namespace H_Dao {
                                                                "SelectionDate," +
                                                                "NotSelectionDate," +
                                                                "NotSelectionReason," +
+                                                               "ContractFlag," +
+                                                               "ContractDate," +
                                                                "RetirementFlag," +
                                                                "RetirementDate," +
                                                                "RetirementNote," +
@@ -589,6 +604,8 @@ namespace H_Dao {
                                             "'" + hStaffMasterVo.SelectionDate + "'," +
                                             "'" + hStaffMasterVo.NotSelectionDate + "'," +
                                             "'" + hStaffMasterVo.NotSelectionReason + "'," +
+                                            "'" + hStaffMasterVo.ContractFlag + "'," +
+                                            "'" + hStaffMasterVo.ContractDate + "'," +
                                             "'" + hStaffMasterVo.RetirementFlag + "'," +
                                             "'" + hStaffMasterVo.RetirementDate + "'," +
                                             "'" + hStaffMasterVo.RetirementNote + "'," +
@@ -630,7 +647,7 @@ namespace H_Dao {
         /// <param name="hStaffMasterVo"></param>
         /// <returns></returns>
         public void UpdateOneHStaffMaster(H_StaffMasterVo hStaffMasterVo) {
-            var sqlCommand = _connectionVo.Connection.CreateCommand();
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "UPDATE H_StaffMaster " +
                                      "SET StaffCode = " + hStaffMasterVo.StaffCode + "," +
                                          "UnionCode = " + hStaffMasterVo.UnionCode + "," +
@@ -656,6 +673,8 @@ namespace H_Dao {
                                          "SelectionDate = '" + hStaffMasterVo.SelectionDate + "'," +
                                          "NotSelectionDate = '" + hStaffMasterVo.NotSelectionDate + "'," +
                                          "NotSelectionReason = '" + hStaffMasterVo.NotSelectionReason + "'," +
+                                         "ContractFlag = '" + hStaffMasterVo.ContractFlag + "'," +
+                                         "ContractDate = '" + hStaffMasterVo.ContractDate + "'," +
                                          "RetirementFlag = '" + hStaffMasterVo.RetirementFlag + "'," +
                                          "RetirementDate = '" + hStaffMasterVo.RetirementDate + "'," +
                                          "RetirementNote = '" + hStaffMasterVo.RetirementNote + "'," +

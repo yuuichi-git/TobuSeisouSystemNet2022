@@ -122,6 +122,7 @@ namespace H_VehicleDispatch {
                     break;
                 case 1312203: // 小岩４
                 case 1312208: // 小岩５
+                case 1312212: // 小岩６
                     _cleanOfficeName = "　小岩清掃事務所　御中";
                     _cleanOfficeFax = string.Concat("小岩清掃事務所", "\r\n", " ＦＡＸ ０３－３６７３－２５３５");
                     OutputSheetViewKYOTUU(SheetView1, hSetControl);

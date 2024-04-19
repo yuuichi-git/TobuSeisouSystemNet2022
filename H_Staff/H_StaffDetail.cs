@@ -1,8 +1,6 @@
 ﻿/*
  * 2024-02-07
  */
-using Dao;
-
 using H_ControlEx;
 
 using H_Dao;
@@ -109,17 +107,17 @@ namespace H_Staff {
             errorProvider.BlinkStyle = ErrorBlinkStyle.AlwaysBlink;
             this.InitializeControls();
             try {
-                this.ScreenOutput(_hStaffMasterDao.SelectOneHStaffMaster(staffCode));
+                this.SetControl(_hStaffMasterDao.SelectOneHStaffMaster(staffCode));
             } catch (Exception exception) {
                 MessageBox.Show(exception.Message);
             }
         }
 
         /// <summary>
-        /// CreateHStaffMasterVo
+        /// SetVo
         /// Voを作成してUpdateする
         /// </summary>
-        private H_StaffMasterVo CreateHStaffMasterVo() {
+        private H_StaffMasterVo SetVo() {
             H_StaffMasterVo hStaffMasterVo = new();
             /*
              * GroupBoxBelongs
@@ -163,6 +161,8 @@ namespace H_Staff {
             hStaffMasterVo.OtherName = HTextBoxExOtherName.Text; // 氏名(健康診断用)
             hStaffMasterVo.BirthDate = HDateTimeExBirthDate.GetValue(); // 生年月日
             hStaffMasterVo.EmploymentDate = HDateTimeExEmploymentDate.GetValue(); // 雇用年月日
+            hStaffMasterVo.ContractFlag = HCheckBoxExContractFlag.Checked;
+            hStaffMasterVo.ContractDate = HCheckBoxExContractFlag.Checked ? HDateTimePickerExContractDate.GetValue() : _defaultDateTime;
             hStaffMasterVo.Gender = HComboBoxExGender.Text; // 性別
             hStaffMasterVo.BloodType = HComboBoxExBloodType.Text; // 血液型
             hStaffMasterVo.CurrentAddress = HTextBoxExCurrentAddress.Text; // 現住所
@@ -227,12 +227,12 @@ namespace H_Staff {
                         int.TryParse(HTextBoxExStaffCode.Text, out int staffCode);
                         if (_hStaffMasterDao.ExistenceHStaffMaster(staffCode)) {
                             // UPDATE
-                            _hStaffMasterDao.UpdateOneHStaffMaster(CreateHStaffMasterVo());
+                            _hStaffMasterDao.UpdateOneHStaffMaster(SetVo());
                             _updateFlag = false;
                             this.Close();
                         } else {
                             // INSERT
-                            _hStaffMasterDao.InsertOneHStaffMaster(CreateHStaffMasterVo());
+                            _hStaffMasterDao.InsertOneHStaffMaster(SetVo());
                             _updateFlag = false;
                             this.Close();
                         }
@@ -569,7 +569,7 @@ namespace H_Staff {
         /// Controlに出力する
         /// </summary>
         /// <param name="hStaffMasterVo"></param>
-        private void ScreenOutput(H_StaffMasterVo? hStaffMasterVo) {
+        private void SetControl(H_StaffMasterVo? hStaffMasterVo) {
             /*
              * Nullチェック 
              */
@@ -628,6 +628,8 @@ namespace H_Staff {
             HTextBoxExOtherName.Text = hStaffMasterVo.OtherName;
             HDateTimeExBirthDate.SetValueJp(hStaffMasterVo.BirthDate);
             HDateTimeExEmploymentDate.SetValueJp(hStaffMasterVo.EmploymentDate);
+            HCheckBoxExContractFlag.Checked = hStaffMasterVo.ContractFlag;
+            HDateTimePickerExContractDate.SetValue(hStaffMasterVo.ContractDate);
             HComboBoxExGender.Text = hStaffMasterVo.Gender;
             HComboBoxExBloodType.Text = hStaffMasterVo.BloodType;
             HTextBoxExCurrentAddress.Text = hStaffMasterVo.CurrentAddress;
@@ -680,7 +682,7 @@ namespace H_Staff {
              * 家族構成
              */
             this.ScreenOutputHGroupBoxExFamily(hStaffMasterVo.ListHStaffFamilyVo);
-            HTextBoxExUrgentTelephoneNumber.Text = hStaffMasterVo.TelephoneNumber;
+            HTextBoxExUrgentTelephoneNumber.Text = hStaffMasterVo.UrgentTelephoneNumber;
             HTextBoxExUrgentTelephoneMethod.Text = hStaffMasterVo.UrgentTelephoneMethod;
             /*
              * HGroupBoxExInsurance
@@ -892,7 +894,6 @@ namespace H_Staff {
         /// Controlを初期化する
         /// </summary>
         public void InitializeControls() {
-            this.Size = new Size(1920, 1080);
             /*
              * GroupBoxBelongs
              * 所属
@@ -926,6 +927,9 @@ namespace H_Staff {
             HTextBoxExOtherName.Text = string.Empty;
             HDateTimeExBirthDate.SetBlank();
             HDateTimeExEmploymentDate.SetBlank();
+            HCheckBoxExContractFlag.Checked = false;
+            HDateTimePickerExContractDate.Enabled = false;
+            HDateTimePickerExContractDate.SetBlank();
             HComboBoxExGender.SelectedIndex = -1;
             HComboBoxExBloodType.SelectedIndex = -1;
             HTextBoxExCurrentAddress.Text = string.Empty;
@@ -1153,6 +1157,10 @@ namespace H_Staff {
         /// <param name="e"></param>
         private void HCheckBoxExRetirementFlag_Click(object sender, EventArgs e) {
             HDateTimeExRetirementDate.Enabled = ((H_CheckBoxEx)sender).Checked;
+        }
+
+        private void HCheckBoxExContractFlag_CheckedChanged(object sender, EventArgs e) {
+            HDateTimePickerExContractDate.Enabled = ((H_CheckBoxEx)sender).Checked;
         }
 
         /// <summary>

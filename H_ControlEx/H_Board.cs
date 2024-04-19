@@ -42,7 +42,7 @@ namespace H_ControlEx {
         private const float _rowHeight = _panelHeight * _rowCount;
 
         /// <summary>
-        /// コンストラクタ
+        /// コンストラクター
         /// </summary>
         public H_Board(ConnectionVo connectionVo) {
             /*
@@ -178,6 +178,7 @@ namespace H_ControlEx {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void HSetControl_DragEnter(object sender, DragEventArgs e) {
+
         }
 
         /// <summary>

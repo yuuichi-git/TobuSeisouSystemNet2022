@@ -34,11 +34,11 @@
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             ToolStripStatusLabelStatus = new ToolStripStatusLabel();
             PanelUp = new Panel();
+            DateTimePickerJpExOperationDate = new ControlEx.DateTimePickerJpEx();
             label1 = new Label();
             ButtonUpdate = new Button();
-            SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("resource1"));
+            SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("tableLayoutPanel1.Controls"));
             SheetViewList = SpreadList.GetSheet(0);
-            DateTimePickerJpExOperationDate = new ControlEx.DateTimePickerJpEx();
             tableLayoutPanel1.SuspendLayout();
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -134,6 +134,15 @@
             PanelUp.Size = new Size(843, 54);
             PanelUp.TabIndex = 2;
             // 
+            // DateTimePickerJpExOperationDate
+            // 
+            DateTimePickerJpExOperationDate.CustomFormat = " ";
+            DateTimePickerJpExOperationDate.Format = DateTimePickerFormat.Custom;
+            DateTimePickerJpExOperationDate.Location = new Point(68, 16);
+            DateTimePickerJpExOperationDate.Name = "DateTimePickerJpExOperationDate";
+            DateTimePickerJpExOperationDate.Size = new Size(184, 23);
+            DateTimePickerJpExOperationDate.TabIndex = 3;
+            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -163,15 +172,6 @@
             SpreadList.Name = "SpreadList";
             SpreadList.Size = new Size(843, 668);
             SpreadList.TabIndex = 3;
-            // 
-            // DateTimePickerJpExOperationDate
-            // 
-            DateTimePickerJpExOperationDate.CustomFormat = " ";
-            DateTimePickerJpExOperationDate.Format = DateTimePickerFormat.Custom;
-            DateTimePickerJpExOperationDate.Location = new Point(68, 16);
-            DateTimePickerJpExOperationDate.Name = "DateTimePickerJpExOperationDate";
-            DateTimePickerJpExOperationDate.Size = new Size(184, 23);
-            DateTimePickerJpExOperationDate.TabIndex = 3;
             // 
             // AccountingParttimeList
             // 

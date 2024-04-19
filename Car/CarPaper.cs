@@ -26,6 +26,9 @@ namespace CarRegister {
             SpreadOutput(SheetViewCar, new CarMasterDao(_connectionVo).SelectOneCarMaster(carCode));
         }
 
+        public static void Main() {
+        }
+
         /// <summary>
         /// InitializeForm
         /// </summary>

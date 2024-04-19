@@ -204,25 +204,33 @@ namespace H_StatusOfResidence {
         private void HButtonEx_Click(object sender, EventArgs e) {
             switch (((H_ButtonEx)sender).Name) {
                 case "HButtonExUpdate":
-                    try {
-                        int.TryParse(HTextBoxExStaffCode.Text, out int staffCode);
-                        if (_hStatusOfResidenceMasterDao.ExistenceHStatusOfResidenceMaster(staffCode)) {
+                    DialogResult dialogResult = MessageBox.Show("データを更新します。よろしいですか？", "メッセージ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                    switch (dialogResult) {
+                        case DialogResult.OK:
                             try {
-                                _hStatusOfResidenceMasterDao.UpdateOneHStatusOfResidenceMaster(this.SetVo());
+                                int.TryParse(HTextBoxExStaffCode.Text, out int staffCode);
+                                if (_hStatusOfResidenceMasterDao.ExistenceHStatusOfResidenceMaster(staffCode)) {
+                                    try {
+                                        _hStatusOfResidenceMasterDao.UpdateOneHStatusOfResidenceMaster(this.SetVo());
+                                    } catch (Exception exception) {
+                                        MessageBox.Show(exception.Message);
+                                    }
+                                    this.Close();
+                                } else {
+                                    try {
+                                        _hStatusOfResidenceMasterDao.InsertOneHStatusOfResidenceMaster(this.SetVo());
+                                    } catch (Exception exception) {
+                                        MessageBox.Show(exception.Message);
+                                    }
+                                    this.Close();
+                                }
                             } catch (Exception exception) {
                                 MessageBox.Show(exception.Message);
                             }
-                            this.Close();
-                        } else {
-                            try {
-                                _hStatusOfResidenceMasterDao.InsertOneHStatusOfResidenceMaster(this.SetVo());
-                            } catch (Exception exception) {
-                                MessageBox.Show(exception.Message);
-                            }
-                            this.Close();
-                        }
-                    } catch (Exception exception) {
-                        MessageBox.Show(exception.Message);
+
+                            break;
+                        case DialogResult.Cancel:
+                            break;
                     }
                     break;
                 case "HButtonExHeadClip":
@@ -230,20 +238,20 @@ namespace H_StatusOfResidence {
                      * クリップボードを転送
                      * なんか型のチェックはいらなさそう・・・エラーが出ないし・・・
                      */
-                    HButtonExHeadClip.Image = (Bitmap)Clipboard.GetDataObject().GetData(DataFormats.Bitmap);
+                    HPictureBoxExHead.Image = (Bitmap)Clipboard.GetDataObject().GetData(DataFormats.Bitmap);
                     break;
                 case "HButtonExHeadDelete":
-                    HButtonExHeadDelete.Image = null;
+                    HPictureBoxExHead.Image = null;
                     break;
                 case "HButtonExTailClip":
                     /*
                      * クリップボードを転送
                      * なんか型のチェックはいらなさそう・・・エラーが出ないし・・・
                      */
-                    HButtonExTailClip.Image = (Bitmap)Clipboard.GetDataObject().GetData(DataFormats.Bitmap);
+                    HPictureBoxExTail.Image = (Bitmap)Clipboard.GetDataObject().GetData(DataFormats.Bitmap);
                     break;
                 case "HButtonExTailDelete":
-                    HButtonExTailDelete.Image = null;
+                    HPictureBoxExTail.Image = null;
                     break;
             }
         }

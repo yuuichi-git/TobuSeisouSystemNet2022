@@ -5,8 +5,6 @@ using System.Data;
 
 using Accounting;
 
-using Car;
-
 using CarAccident;
 
 using Certification;
@@ -16,6 +14,8 @@ using CollectionWeight;
 using Common;
 
 using CommuterInsurance;
+
+using H_AccountingParttime;
 
 using H_Car;
 
@@ -39,25 +39,13 @@ using H_VehicleDispatch;
 
 using LegalTwelveItem;
 
-using License;
-
-using Production;
-
 using RollCall;
-
-using Staff;
-
-using StaffDetail;
-
-using StatusOfResidence;
 
 using Supply;
 
 using Toukanpo;
 
 using VehicleDispatch;
-
-using VehicleDispatchSheet;
 
 using Vo;
 
@@ -103,7 +91,7 @@ namespace TobuSeisouSystemNet2022 {
                 // モニター選択を無効にする
                 HComboBoxMoniter.Enabled = false;
             } catch (Exception exception) {
-                MessageBox.Show(exception.Message, MessageText.Message501, MessageBoxButtons.OK, MessageBoxIcon.Question);
+                MessageBox.Show(exception.Message);
             }
         }
 
@@ -128,26 +116,6 @@ namespace TobuSeisouSystemNet2022 {
                                 var vehicleDispatchBoad = new VehicleDispatchBoad(_connectionVo);
                                 vehicleDispatchBoad.ShowDialog(this);
                                 break;
-                            // VehicleDispatchSheetBoad
-                            case "VehicleDispatchSheetBoad":
-                                var vehicleDispatchSheetBoad = new VehicleDispatchSheetBoad(_connectionVo);
-                                vehicleDispatchSheetBoad.ShowDialog(this);
-                                break;
-                            // ProductionCleanOfficeList
-                            case "ProductionCleanOfficeList":
-                                var productionCleanOfficeList = new ProductionList(_connectionVo, "ProductionCleanOfficeList");
-                                productionCleanOfficeList.ShowDialog(this);
-                                break;
-                            // ProductionList
-                            case "ProductionOfficeList":
-                                var productionOfficeList = new ProductionList(_connectionVo, "ProductionOfficeList");
-                                productionOfficeList.ShowDialog(this);
-                                break;
-                            // StaffList
-                            case "StaffList":
-                                var staffList = new StaffList(_connectionVo);
-                                staffList.ShowDialog(this);
-                                break;
                             /*
                              * LegalTwelveItemList
                              * 法定１２項目
@@ -156,11 +124,6 @@ namespace TobuSeisouSystemNet2022 {
                                 LegalTwelveItemList legalTwelveItemList = new LegalTwelveItemList(_connectionVo);
                                 legalTwelveItemList.ShowDialog(this);
                                 break;
-                            // LicenseList
-                            case "LicenseList":
-                                var licenseList = new LicenseList(_connectionVo);
-                                licenseList.ShowDialog(this);
-                                break;
                             default:
                                 break;
                             // CarAccidentList
@@ -168,20 +131,10 @@ namespace TobuSeisouSystemNet2022 {
                                 var carAccidentList = new CarAccidentList(_connectionVo);
                                 carAccidentList.ShowDialog(this);
                                 break;
-                            // CarList
-                            case "CarList":
-                                var carList = new CarList(_connectionVo);
-                                carList.ShowDialog(this);
-                                break;
                             // CommuterInsuranceList
                             case "CommuterInsuranceList":
                                 var commuterInsuranceList = new CommuterInsuranceList(_connectionVo);
                                 commuterInsuranceList.ShowDialog(this);
-                                break;
-                            // StaffExcel
-                            case "StaffExcel":
-                                var staffExcel = new StaffExcel(_connectionVo);
-                                staffExcel.ShowDialog(this);
                                 break;
                             // StaffPartTimeDetail
                             case "AccountingParttimeList":
@@ -221,14 +174,6 @@ namespace TobuSeisouSystemNet2022 {
                                 wardTaitou.ShowDialog(this);
                                 break;
                             /*
-                             * ToukanpoTrainingCardDetail
-                             * 東環保研修センター　修了書
-                             */
-                            case "ToukanpoTrainingCardDetail":
-                                var toukanpoTrainingCardDetail = new ToukanpoTrainingCardDetail(_connectionVo);
-                                toukanpoTrainingCardDetail.ShowDialog(this);
-                                break;
-                            /*
                              * ToukanpoSpeedSurvey
                              * 交通事故防止強化月間 速度超過実態調査表
                              */
@@ -244,15 +189,7 @@ namespace TobuSeisouSystemNet2022 {
                                 SupplyList supplyList = new SupplyList(_connectionVo);
                                 supplyList.ShowDialog(this);
                                 break;
-                            /*
-                             * StatusOfResidenceList
-                             * 在留カード・特別永住者証明書
-                             */
-                            case "StatusOfResidenceList":
-                                StatusOfResidenceList statusOfResidenceList = new StatusOfResidenceList(_connectionVo);
-                                statusOfResidenceList.ShowDialog(this);
-                                break;
-                            /*
+                            /* 
                              * 
                              * 新型
                              * 
@@ -377,6 +314,22 @@ namespace TobuSeisouSystemNet2022 {
                                 hToukanpoTrainingCardDetail.WindowState = FormWindowState.Normal;
                                 hToukanpoTrainingCardDetail.Show(this);
                                 break;
+                            // 東環保(速度超過実態調査)
+                            case "H_ToukanpoSpeedSurvey":
+                                // Screenを退避(新型のみ)
+                                _connectionVo.Screen = (Screen)HComboBoxMoniter.SelectedItem;
+                                /*
+                                 * Formを表示する
+                                 */
+                                H_ToukanpoSpeedSurvey hToukanpoSpeedSurvey = new(_connectionVo);
+                                Rectangle rectangleHToukanpoSpeedSurvey = new Desktop().GetMonitorWorkingArea(hToukanpoSpeedSurvey, (Screen)HComboBoxMoniter.SelectedItem);
+                                hToukanpoSpeedSurvey.KeyPreview = true;
+                                hToukanpoSpeedSurvey.Location = rectangleHToukanpoSpeedSurvey.Location;
+                                hToukanpoSpeedSurvey.Size = new Size(759, 1035);
+                                hToukanpoSpeedSurvey.WindowState = FormWindowState.Normal;
+                                hToukanpoSpeedSurvey.Show(this);
+                                break;
+                            // 在留カード
                             case "HStatusOfResidenceList":
                                 // Screenを退避(新型のみ)
                                 _connectionVo.Screen = (Screen)HComboBoxMoniter.SelectedItem;
@@ -391,25 +344,25 @@ namespace TobuSeisouSystemNet2022 {
                                 hStatusOfResidenceList.WindowState = FormWindowState.Normal;
                                 hStatusOfResidenceList.Show(this);
                                 break;
+                            case "HAccountingParttimeList":
+                                // Screenを退避(新型のみ)
+                                _connectionVo.Screen = (Screen)HComboBoxMoniter.SelectedItem;
+                                /*
+                                 * Formを表示する
+                                 */
+                                HAccountingParttimeList hAccountingParttimeList = new(_connectionVo);
+                                Rectangle rectangleHAccountingParttimeList = new Desktop().GetMonitorWorkingArea(hAccountingParttimeList, (Screen)HComboBoxMoniter.SelectedItem);
+                                hAccountingParttimeList.KeyPreview = true;
+                                hAccountingParttimeList.Location = rectangleHAccountingParttimeList.Location;
+                                hAccountingParttimeList.Size = new Size(865, 1080);
+                                hAccountingParttimeList.WindowState = FormWindowState.Normal;
+                                hAccountingParttimeList.Show(this);
+                                break;
                             /*
                              * 
                              * データ移行ツール
                              * 
                              */
-                            case "DbHCarMaster":
-                                dialogResult = MessageBox.Show("SQLを発行します。本当によろしいですか？", "SQLメッセージ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                                if (dialogResult == DialogResult.OK) {
-                                    new ConvertTableDao(_connectionVo).ConvertHCarMaster();
-                                }
-                                MessageBox.Show("処理が終了しました", "SQLメッセージ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                break;
-                            case "DbHStaffMaster":
-                                dialogResult = MessageBox.Show("SQLを発行します。本当によろしいですか？", "SQLメッセージ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                                if (dialogResult == DialogResult.OK) {
-                                    new ConvertTableDao(_connectionVo).ConvertHStaffMaster();
-                                }
-                                MessageBox.Show("処理が終了しました", "SQLメッセージ", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                break;
                             // 新規年度のHVehicleDispatchBodyを作成する
                             case "DbHVehicleDispatchBody":
                                 dialogResult = MessageBox.Show("SQLを発行します。本当によろしいですか？", "SQLメッセージ", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);

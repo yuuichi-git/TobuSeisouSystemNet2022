@@ -17,8 +17,6 @@ using Microsoft.VisualBasic.Devices;
 
 using RollCall;
 
-using Staff;
-
 using SubstituteSheet;
 
 using Supply;
@@ -180,7 +178,7 @@ namespace VehicleDispatch {
             /*
              * レコードの有無確認
              */
-            if(!_vehicleDispatchDetailDao.CheckVehicleDispatchDetail(DateTimePickerJpExOperationDate.GetValue())) {
+            if (!_vehicleDispatchDetailDao.CheckVehicleDispatchDetail(DateTimePickerJpExOperationDate.GetValue())) {
                 MessageBox.Show(MessageText.Message302, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
@@ -227,7 +225,7 @@ namespace VehicleDispatch {
             int tabNumber = 0;
             int column = 0;
             int row = 0;
-            for(int i = 0; i < 150; i++) {
+            for (int i = 0; i < 150; i++) {
                 /*
                  * 共通設定
                  */
@@ -241,7 +239,7 @@ namespace VehicleDispatch {
                 /*
                  * SetLabel
                  */
-                if(vehicleDispatchDetailVo != null && vehicleDispatchDetailVo.Set_code != 0) {
+                if (vehicleDispatchDetailVo != null && vehicleDispatchDetailVo.Set_code != 0) {
                     setControlEx.GarageFlag = vehicleDispatchDetailVo.Garage_flag;
                     setControlEx.ProductionNumberOfPeople = vehicleDispatchDetailVo.Number_of_people;
                     setControlEx.SetFlag = true;
@@ -255,7 +253,7 @@ namespace VehicleDispatch {
                      * 2023-03-28 Findに対するNullチェックを入れる
                      */
                     SetMasterVo? setMasterVo = _listSetMasterVo.Find(x => x.Set_code == vehicleDispatchDetailVo.Set_code);
-                    if(setMasterVo is not null) {
+                    if (setMasterVo is not null) {
                         setControlEx.CreateLabel(setMasterVo,
                                                  vehicleDispatchDetailVo,
                                                  ContextMenuStripSetLabel);
@@ -266,12 +264,12 @@ namespace VehicleDispatch {
                 /*
                  * CarLabel
                  */
-                if(vehicleDispatchDetailVo != null && vehicleDispatchDetailVo.Car_code != 0) {
+                if (vehicleDispatchDetailVo != null && vehicleDispatchDetailVo.Car_code != 0) {
                     /*
                      * 2023-03-28 Findに対するNullチェックを入れる
                      */
                     CarMasterVo? carMasterVo = _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailVo.Car_code);
-                    if(carMasterVo is not null) {
+                    if (carMasterVo is not null) {
                         setControlEx.CreateLabel(vehicleDispatchDetailVo,
                                                  carMasterVo,
                                                  ContextMenuStripCarLabel);
@@ -284,12 +282,12 @@ namespace VehicleDispatch {
                 /*
                  * StaffLabel1
                  */
-                if(vehicleDispatchDetailVo != null && vehicleDispatchDetailVo.Operator_code_1 != 0) {
+                if (vehicleDispatchDetailVo != null && vehicleDispatchDetailVo.Operator_code_1 != 0) {
                     /*
                      * 2023-03-28 Findに対するNullチェックを入れる
                      */
                     StaffMasterVo? staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_1);
-                    if(staffMasterVo is not null) {
+                    if (staffMasterVo is not null) {
                         setControlEx.CreateLabel(0,
                                                  staffMasterVo,
                                                  vehicleDispatchDetailVo.Operator_1_proxy_flag,
@@ -308,12 +306,12 @@ namespace VehicleDispatch {
                 /*
                  * StaffLabel2
                  */
-                if(vehicleDispatchDetailVo != null && vehicleDispatchDetailVo.Operator_code_2 != 0) {
+                if (vehicleDispatchDetailVo != null && vehicleDispatchDetailVo.Operator_code_2 != 0) {
                     /*
                      * 2023-03-28 Findに対するNullチェックを入れる
                      */
                     StaffMasterVo? staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_2);
-                    if(staffMasterVo is not null) {
+                    if (staffMasterVo is not null) {
                         setControlEx.CreateLabel(1,
                                                  staffMasterVo,
                                                  vehicleDispatchDetailVo.Operator_2_proxy_flag,
@@ -333,12 +331,12 @@ namespace VehicleDispatch {
                 /*
                  * StaffLabel3
                  */
-                if(vehicleDispatchDetailVo != null && vehicleDispatchDetailVo.Operator_code_3 != 0) {
+                if (vehicleDispatchDetailVo != null && vehicleDispatchDetailVo.Operator_code_3 != 0) {
                     /*
                      * 2023-03-28 Findに対するNullチェックを入れる
                      */
                     StaffMasterVo? staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_3);
-                    if(staffMasterVo is not null) {
+                    if (staffMasterVo is not null) {
                         setControlEx.CreateLabel(2,
                                                  staffMasterVo,
                                                  vehicleDispatchDetailVo.Operator_3_proxy_flag,
@@ -357,12 +355,12 @@ namespace VehicleDispatch {
                 /*
                  * StaffLabel4
                  */
-                if(vehicleDispatchDetailVo != null && vehicleDispatchDetailVo.Operator_code_4 != 0) {
+                if (vehicleDispatchDetailVo != null && vehicleDispatchDetailVo.Operator_code_4 != 0) {
                     /*
                      * 2023-03-28 Findに対するNullチェックを入れる
                      */
                     StaffMasterVo? staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailVo.Operator_code_4);
-                    if(staffMasterVo is not null) {
+                    if (staffMasterVo is not null) {
                         setControlEx.CreateLabel(3,
                                                  staffMasterVo,
                                                  vehicleDispatchDetailVo.Operator_4_proxy_flag,
@@ -406,8 +404,8 @@ namespace VehicleDispatch {
             _listVehicleDispatchDetailCarVo = _vehicleDispatchDetailCarDao.SelectVehicleDispatchDetailCar(DateTimePickerJpExOperationDate.GetValue());
             _listVehicleDispatchDetailStaffVo = _vehicleDispatchDetailStaffDao.SelectVehicleDispatchDetailStaff(DateTimePickerJpExOperationDate.GetValue());
 
-            for(int i = 151; i < 169; i++) {
-                switch(i) {
+            for (int i = 151; i < 169; i++) {
+                switch (i) {
                     case 151: // FlowLayoutPanelExSet
                     case 152: // FlowLayoutPanelExCar
                     case 153: // FlowLayoutPanelExFullEmployees
@@ -416,12 +414,12 @@ namespace VehicleDispatch {
                     case 156: // FlowLayoutPanelExWindow
                         break;
                     case 157: // FlowLayoutPanelExChecking
-                        foreach(VehicleDispatchDetailCarVo vehicleDispatchDetailCarVo in _listVehicleDispatchDetailCarVo.FindAll(x => x.Cell_number == 157)) {
+                        foreach (VehicleDispatchDetailCarVo vehicleDispatchDetailCarVo in _listVehicleDispatchDetailCarVo.FindAll(x => x.Cell_number == 157)) {
                             /*
                              * 2023-03-28 Findに対するNullチェックを入れる
                              */
                             CarMasterVo? carMasterVo = _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailCarVo.Car_code);
-                            if(carMasterVo != null) {
+                            if (carMasterVo != null) {
                                 // Controlを作成
                                 CarLabelEx carLabelEx = new CarLabelEx(carMasterVo).CreateLabel();
                                 // プロパティを設定
@@ -441,12 +439,12 @@ namespace VehicleDispatch {
                         }
                         break;
                     case 158: // FlowLayoutPanelExRepair
-                        foreach(VehicleDispatchDetailCarVo vehicleDispatchDetailCarVo in _listVehicleDispatchDetailCarVo.FindAll(x => x.Cell_number == 158)) {
+                        foreach (VehicleDispatchDetailCarVo vehicleDispatchDetailCarVo in _listVehicleDispatchDetailCarVo.FindAll(x => x.Cell_number == 158)) {
                             /*
                              * 2023-03-28 Findに対するNullチェックを入れる
                              */
                             CarMasterVo? carMasterVo = _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailCarVo.Car_code);
-                            if(carMasterVo != null) {
+                            if (carMasterVo != null) {
                                 // Controlを作成
                                 CarLabelEx carLabelEx = new CarLabelEx(carMasterVo).CreateLabel();
                                 // プロパティを設定
@@ -466,12 +464,12 @@ namespace VehicleDispatch {
                         }
                         break;
                     case 159: // FlowLayoutPanelExVehicleInspection
-                        foreach(VehicleDispatchDetailCarVo vehicleDispatchDetailCarVo in _listVehicleDispatchDetailCarVo.FindAll(x => x.Cell_number == 159)) {
+                        foreach (VehicleDispatchDetailCarVo vehicleDispatchDetailCarVo in _listVehicleDispatchDetailCarVo.FindAll(x => x.Cell_number == 159)) {
                             /*
                              * 2023-03-28 Findに対するNullチェックを入れる
                              */
                             CarMasterVo? carMasterVo = _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailCarVo.Car_code);
-                            if(carMasterVo != null) {
+                            if (carMasterVo != null) {
                                 // Controlを作成
                                 CarLabelEx carLabelEx = new CarLabelEx(carMasterVo).CreateLabel();
                                 // プロパティを設定
@@ -491,12 +489,12 @@ namespace VehicleDispatch {
                         }
                         break;
                     case 160: // FlowLayoutPanelExFullSalaried(組合長期)
-                        foreach(VehicleDispatchDetailStaffVo vehicleDispatchDetailStaffVo in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 160)) {
+                        foreach (VehicleDispatchDetailStaffVo vehicleDispatchDetailStaffVo in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 160)) {
                             /*
                              * 2023-03-28 Findに対するNullチェックを入れる
                              */
                             StaffMasterVo? staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
-                            if(staffMasterVo != null) {
+                            if (staffMasterVo != null) {
                                 // Controlを作成
                                 StaffLabelEx staffLabelEx = new StaffLabelEx(staffMasterVo,
                                                                              vehicleDispatchDetailStaffVo.Operator_note.Length > 0 ? true : false).CreateLabel();
@@ -519,12 +517,12 @@ namespace VehicleDispatch {
                         }
                         break;
                     case 161: // FlowLayoutPanelExFullClose(組合長期)
-                        foreach(VehicleDispatchDetailStaffVo vehicleDispatchDetailStaffVo in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 161)) {
+                        foreach (VehicleDispatchDetailStaffVo vehicleDispatchDetailStaffVo in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 161)) {
                             /*
                              * 2023-03-28 Findに対するNullチェックを入れる
                              */
                             StaffMasterVo? staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
-                            if(staffMasterVo is not null) {
+                            if (staffMasterVo is not null) {
                                 // Controlを作成
                                 StaffLabelEx staffLabelEx = new StaffLabelEx(staffMasterVo,
                                                                              vehicleDispatchDetailStaffVo.Operator_note.Length > 0 ? true : false).CreateLabel();
@@ -546,12 +544,12 @@ namespace VehicleDispatch {
                         }
                         break;
                     case 162: // FlowLayoutPanelExFullDesignation(組合長期)
-                        foreach(VehicleDispatchDetailStaffVo vehicleDispatchDetailStaffVo in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 162)) {
+                        foreach (VehicleDispatchDetailStaffVo vehicleDispatchDetailStaffVo in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 162)) {
                             /*
                              * 2023-03-28 Findに対するNullチェックを入れる
                              */
                             StaffMasterVo? staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
-                            if(staffMasterVo is not null) {
+                            if (staffMasterVo is not null) {
                                 // Controlを作成
                                 StaffLabelEx staffLabelEx = new StaffLabelEx(staffMasterVo,
                                                                              vehicleDispatchDetailStaffVo.Operator_note.Length > 0 ? true : false).CreateLabel();
@@ -573,12 +571,12 @@ namespace VehicleDispatch {
                         }
                         break;
                     case 163: // FlowLayoutPanelExPartSalaried(アルバイト)
-                        foreach(VehicleDispatchDetailStaffVo vehicleDispatchDetailStaffVo in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 163)) {
+                        foreach (VehicleDispatchDetailStaffVo vehicleDispatchDetailStaffVo in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 163)) {
                             /*
                              * 2023-03-28 Findに対するNullチェックを入れる
                              */
                             StaffMasterVo? staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
-                            if(staffMasterVo is not null) {
+                            if (staffMasterVo is not null) {
                                 // Controlを作成
                                 StaffLabelEx staffLabelEx = new StaffLabelEx(staffMasterVo,
                                                                              vehicleDispatchDetailStaffVo.Operator_note.Length > 0 ? true : false).CreateLabel();
@@ -600,12 +598,12 @@ namespace VehicleDispatch {
                         }
                         break;
                     case 164: // FlowLayoutPanelExPartClose(アルバイト)
-                        foreach(VehicleDispatchDetailStaffVo vehicleDispatchDetailStaffVo in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 164)) {
+                        foreach (VehicleDispatchDetailStaffVo vehicleDispatchDetailStaffVo in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 164)) {
                             /*
                              * 2023-03-28 Findに対するNullチェックを入れる
                              */
                             StaffMasterVo? staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
-                            if(staffMasterVo is not null) {
+                            if (staffMasterVo is not null) {
                                 // Controlを作成
                                 StaffLabelEx staffLabelEx = new StaffLabelEx(staffMasterVo,
                                                                              vehicleDispatchDetailStaffVo.Operator_note.Length > 0 ? true : false).CreateLabel();
@@ -627,12 +625,12 @@ namespace VehicleDispatch {
                         }
                         break;
                     case 165: // FlowLayoutPanelExPartDesignation(アルバイト)
-                        foreach(VehicleDispatchDetailStaffVo vehicleDispatchDetailStaffVo in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 165)) {
+                        foreach (VehicleDispatchDetailStaffVo vehicleDispatchDetailStaffVo in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 165)) {
                             /*
                              * 2023-03-28 Findに対するNullチェックを入れる
                              */
                             StaffMasterVo? staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
-                            if(staffMasterVo is not null) {
+                            if (staffMasterVo is not null) {
                                 // Controlを作成
                                 StaffLabelEx staffLabelEx = new StaffLabelEx(staffMasterVo,
                                                                              vehicleDispatchDetailStaffVo.Operator_note.Length > 0 ? true : false).CreateLabel();
@@ -654,12 +652,12 @@ namespace VehicleDispatch {
                         }
                         break;
                     case 166: // FlowLayoutPanelExTelephone
-                        foreach(VehicleDispatchDetailStaffVo vehicleDispatchDetailStaffVo in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 166)) {
+                        foreach (VehicleDispatchDetailStaffVo vehicleDispatchDetailStaffVo in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 166)) {
                             /*
                              * 2023-03-28 Findに対するNullチェックを入れる
                              */
                             StaffMasterVo? staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
-                            if(staffMasterVo is not null) {
+                            if (staffMasterVo is not null) {
                                 // Controlを作成
                                 StaffLabelEx staffLabelEx = new StaffLabelEx(staffMasterVo,
                                                                              vehicleDispatchDetailStaffVo.Operator_note.Length > 0 ? true : false).CreateLabel();
@@ -681,12 +679,12 @@ namespace VehicleDispatch {
                         }
                         break;
                     case 167: // FlowLayoutPanelExWithoutNotice
-                        foreach(VehicleDispatchDetailStaffVo vehicleDispatchDetailStaffVo in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 167)) {
+                        foreach (VehicleDispatchDetailStaffVo vehicleDispatchDetailStaffVo in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 167)) {
                             /*
                              * 2023-03-28 Findに対するNullチェックを入れる
                              */
                             StaffMasterVo? staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
-                            if(staffMasterVo is not null) {
+                            if (staffMasterVo is not null) {
                                 // Controlを作成
                                 StaffLabelEx staffLabelEx = new StaffLabelEx(staffMasterVo,
                                                                              vehicleDispatchDetailStaffVo.Operator_note.Length > 0 ? true : false).CreateLabel();
@@ -711,13 +709,13 @@ namespace VehicleDispatch {
                         /*
                          * CarLabelExを作成
                          */
-                        foreach(VehicleDispatchDetailCarVo vehicleDispatchDetailCarVo in _listVehicleDispatchDetailCarVo.FindAll(x => x.Cell_number == 168)
+                        foreach (VehicleDispatchDetailCarVo vehicleDispatchDetailCarVo in _listVehicleDispatchDetailCarVo.FindAll(x => x.Cell_number == 168)
                                                                                                                         .OrderBy(x => x.Insert_ymd_hms)) {
                             /*
                              * 2023-03-28 Findに対するNullチェックを入れる
                              */
                             CarMasterVo? carMasterVo = _listCarMasterVo.Find(x => x.Car_code == vehicleDispatchDetailCarVo.Car_code);
-                            if(carMasterVo is not null) {
+                            if (carMasterVo is not null) {
                                 // Controlを作成
                                 CarLabelEx carLabelEx = new CarLabelEx(carMasterVo).CreateLabel();
                                 // プロパティを設定
@@ -738,12 +736,12 @@ namespace VehicleDispatch {
                         /*
                          * StaffLabelExを作成
                          */
-                        foreach(VehicleDispatchDetailStaffVo vehicleDispatchDetailStaffVo in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 168)) {
+                        foreach (VehicleDispatchDetailStaffVo vehicleDispatchDetailStaffVo in _listVehicleDispatchDetailStaffVo.FindAll(x => x.Cell_number == 168)) {
                             /*
                              * 2023-03-28 Findに対するNullチェックを入れる
                              */
                             StaffMasterVo? staffMasterVo = _listStaffMasterVo.Find(x => x.Staff_code == vehicleDispatchDetailStaffVo.Operator_code);
-                            if(staffMasterVo is not null) {
+                            if (staffMasterVo is not null) {
                                 // Controlを作成
                                 StaffLabelEx staffLabelEx = new StaffLabelEx(staffMasterVo,
                                                                              vehicleDispatchDetailStaffVo.Operator_note.Length > 0 ? true : false).CreateLabel();
@@ -773,7 +771,7 @@ namespace VehicleDispatch {
         /// </summary>
         private void CreateLabelTabControlExLeft() {
             // FlowLayoutPanelExSet
-            foreach(SetMasterVo deepCopySetMasterVo in _listDeepCopySetMasterVo.FindAll(x => x.Classification_code != 10 && x.Classification_code != 11)
+            foreach (SetMasterVo deepCopySetMasterVo in _listDeepCopySetMasterVo.FindAll(x => x.Classification_code != 10 && x.Classification_code != 11)
                                                                                .OrderBy(x => x.Classification_code).ThenBy(x => x.Set_name)) {
                 SetLabelEx setLabelEx = new SetLabelEx(deepCopySetMasterVo).CreateLabel();
                 // プロパティを設定
@@ -788,7 +786,7 @@ namespace VehicleDispatch {
                 FlowLayoutPanelExSet.Controls.Add(setLabelEx);
             }
             // FlowLayoutPanelExCar
-            foreach(CarMasterVo deepCopyCarMasterVo in _listDeepCopyCarMasterVo.FindAll(x => x.Delete_flag == false).OrderBy(x => x.Door_number)) {
+            foreach (CarMasterVo deepCopyCarMasterVo in _listDeepCopyCarMasterVo.FindAll(x => x.Delete_flag == false).OrderBy(x => x.Door_number)) {
                 CarLabelEx carLabelEx = new CarLabelEx(deepCopyCarMasterVo).CreateLabel();
                 // プロパティを設定
                 carLabelEx.ContextMenuStrip = ContextMenuStripCarLabel;
@@ -800,7 +798,7 @@ namespace VehicleDispatch {
                 FlowLayoutPanelExCar.Controls.Add(carLabelEx);
             }
             // FlowLayoutPanelExFullEmployees(左側)
-            foreach(StaffMasterVo deepCopyStaffMasterVo in _listDeepCopyStaffMasterVo.FindAll(x => (x.Belongs == 10 || x.Belongs == 11) && x.Retirement_flag == false).OrderBy(x => x.Name_kana)) {
+            foreach (StaffMasterVo deepCopyStaffMasterVo in _listDeepCopyStaffMasterVo.FindAll(x => (x.Belongs == 10 || x.Belongs == 11) && x.Retirement_flag == false).OrderBy(x => x.Name_kana)) {
                 StaffLabelEx staffLabelEx = new StaffLabelEx(deepCopyStaffMasterVo).CreateLabel();
                 // プロパティを設定
                 staffLabelEx.ContextMenuStrip = ContextMenuStripStaffLabel;
@@ -812,7 +810,7 @@ namespace VehicleDispatch {
                 FlowLayoutPanelExFullEmployees.Controls.Add(staffLabelEx);
             }
             // FlowLayoutPanelExLongTerm(左側)
-            foreach(StaffMasterVo deepCopyStaffMasterVo in _listDeepCopyStaffMasterVo.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.Job_form == 10 && x.Retirement_flag == false).OrderBy(x => x.Name_kana)) {
+            foreach (StaffMasterVo deepCopyStaffMasterVo in _listDeepCopyStaffMasterVo.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.Job_form == 10 && x.Retirement_flag == false).OrderBy(x => x.Name_kana)) {
                 StaffLabelEx staffLabelEx = new StaffLabelEx(deepCopyStaffMasterVo).CreateLabel();
                 // プロパティを設定
                 staffLabelEx.ContextMenuStrip = ContextMenuStripStaffLabel;
@@ -824,7 +822,7 @@ namespace VehicleDispatch {
                 FlowLayoutPanelExLongTerm.Controls.Add(staffLabelEx);
             }
             // FlowLayoutPanelExPartTime(左側)
-            foreach(StaffMasterVo deepCopyStaffMasterVo in _listDeepCopyStaffMasterVo.FindAll(x => (x.Belongs == 12 || x.Belongs == 13) && x.Retirement_flag == false).OrderBy(x => x.Name_kana)) {
+            foreach (StaffMasterVo deepCopyStaffMasterVo in _listDeepCopyStaffMasterVo.FindAll(x => (x.Belongs == 12 || x.Belongs == 13) && x.Retirement_flag == false).OrderBy(x => x.Name_kana)) {
                 StaffLabelEx staffLabelEx = new StaffLabelEx(deepCopyStaffMasterVo).CreateLabel();
                 // プロパティを設定
                 staffLabelEx.ContextMenuStrip = ContextMenuStripStaffLabel;
@@ -836,7 +834,7 @@ namespace VehicleDispatch {
                 FlowLayoutPanelExPartTime.Controls.Add(staffLabelEx);
             }
             // FlowLayoutPanelExWindow(左側)
-            foreach(StaffMasterVo deepCopyStaffMasterVo in _listDeepCopyStaffMasterVo.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.Job_form == 11 && x.Retirement_flag == false).OrderBy(x => x.Name_kana)) {
+            foreach (StaffMasterVo deepCopyStaffMasterVo in _listDeepCopyStaffMasterVo.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.Job_form == 11 && x.Retirement_flag == false).OrderBy(x => x.Name_kana)) {
                 StaffLabelEx staffLabelEx = new StaffLabelEx(deepCopyStaffMasterVo).CreateLabel();
                 // プロパティを設定
                 staffLabelEx.ContextMenuStrip = ContextMenuStripStaffLabel;
@@ -866,7 +864,7 @@ namespace VehicleDispatch {
              * ※後ろから解放している点が重要らしい。
              */
             //tableLayoutPanelEx.Controls.Clear();
-            for(int i = tableLayoutPanelEx.Controls.Count - 1; 0 <= i; i--) {
+            for (int i = tableLayoutPanelEx.Controls.Count - 1; 0 <= i; i--) {
                 tableLayoutPanelEx.Controls[i].Dispose();
             }
 
@@ -884,7 +882,7 @@ namespace VehicleDispatch {
              *  ※後ろから解放している点が重要らしい。
              */
             //flowLayoutPanelEx.Controls.Clear();
-            for(int i = flowLayoutPanelEx.Controls.Count - 1; 0 <= i; i--) {
+            for (int i = flowLayoutPanelEx.Controls.Count - 1; 0 <= i; i--) {
                 flowLayoutPanelEx.Controls[i].Dispose();
             }
 
@@ -899,11 +897,11 @@ namespace VehicleDispatch {
         /// <param name="e"></param>
         private void VehicleDispatchBoad_KeyDown(object sender, KeyEventArgs e) {
             // Open
-            if(e.KeyData == (Keys.Shift | Keys.A)) {
+            if (e.KeyData == (Keys.Shift | Keys.A)) {
                 ModeEdit();
             }
             // Close
-            if(e.KeyData == (Keys.Shift | Keys.D)) {
+            if (e.KeyData == (Keys.Shift | Keys.D)) {
                 ModeRollCall();
             }
         }
@@ -949,7 +947,7 @@ namespace VehicleDispatch {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ContextMenuStrip_Opened(object sender, EventArgs e) {
-            switch(((ContextMenuStrip)sender).Name) {
+            switch (((ContextMenuStrip)sender).Name) {
                 /*
                  * ContextMenuStripSetLabel
                  */
@@ -957,7 +955,7 @@ namespace VehicleDispatch {
                     /*
                      * SetControlEx上でクリックされた時
                      */
-                    if(((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(SetControlEx)) {
+                    if (((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(SetControlEx)) {
                         // SetControlExを退避
                         EvacuationSetControlEx = (SetControlEx)((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Parent;
                         // SetLabelExを退避
@@ -991,7 +989,7 @@ namespace VehicleDispatch {
                     /*
                      * FlowLayoutPanelEx上でクリックされた時
                      */
-                    if(((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(FlowLayoutPanelEx)) {
+                    if (((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(FlowLayoutPanelEx)) {
                         // SetControlExを退避
                         EvacuationFlowLayoutPanelEx = (FlowLayoutPanelEx)((SetLabelEx)((ContextMenuStrip)sender).SourceControl).Parent;
                         /*
@@ -1024,7 +1022,7 @@ namespace VehicleDispatch {
                     /*
                      * SetControlEx上でクリックされた時
                      */
-                    if(((CarLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(SetControlEx)) {
+                    if (((CarLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(SetControlEx)) {
                         // SetControlExを退避
                         EvacuationSetControlEx = (SetControlEx)((CarLabelEx)((ContextMenuStrip)sender).SourceControl).Parent;
                         ToolStripMenuItemCarProxyTrue.Enabled = true;
@@ -1034,7 +1032,7 @@ namespace VehicleDispatch {
                     /*
                      * FlowLayoutPanelEx上でクリックされた時
                      */
-                    if(((CarLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(FlowLayoutPanelEx)) {
+                    if (((CarLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(FlowLayoutPanelEx)) {
                         // SetControlExを退避
                         EvacuationFlowLayoutPanelEx = (FlowLayoutPanelEx)((CarLabelEx)((ContextMenuStrip)sender).SourceControl).Parent;
                         ToolStripMenuItemCarProxyTrue.Enabled = false;
@@ -1050,7 +1048,7 @@ namespace VehicleDispatch {
                     /*
                      * SetControlEx上でクリックされた時
                      */
-                    if(((StaffLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(SetControlEx)) {
+                    if (((StaffLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(SetControlEx)) {
                         // SetControlExを退避
                         EvacuationSetControlEx = (SetControlEx)((StaffLabelEx)((ContextMenuStrip)sender).SourceControl).Parent;
                         // StaffLabelExを退避
@@ -1068,7 +1066,7 @@ namespace VehicleDispatch {
                     /*
                      * FlowLayoutPanelEx上でクリックされた時
                      */
-                    if(((StaffLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(FlowLayoutPanelEx)) {
+                    if (((StaffLabelEx)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(FlowLayoutPanelEx)) {
                         // SetControlExを退避
                         EvacuationFlowLayoutPanelEx = (FlowLayoutPanelEx)((StaffLabelEx)((ContextMenuStrip)sender).SourceControl).Parent;
                         // StaffLabelExを退避
@@ -1081,7 +1079,7 @@ namespace VehicleDispatch {
                         // 運転手料金支払い区分
                         ToolStripMenuItemOccupation10.Enabled = false;
                         ToolStripMenuItemOccupation11.Enabled = false;
-                        switch(Convert.ToInt32(EvacuationFlowLayoutPanelEx.Tag)) {
+                        switch (Convert.ToInt32(EvacuationFlowLayoutPanelEx.Tag)) {
                             /*
                              * 左側のFlowLayoutPanelExではStaffメモは使えなくする
                              */
@@ -1106,7 +1104,7 @@ namespace VehicleDispatch {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ToolStripMenuItem_Click(object sender, EventArgs e) {
-            switch(((ToolStripMenuItem)sender).Name) {
+            switch (((ToolStripMenuItem)sender).Name) {
                 /*
                  * MenuStrip1
                  */
@@ -1126,7 +1124,7 @@ namespace VehicleDispatch {
                 // 配車表を印刷する
                 case "ToolStripMenuItemPrint":
                     Control targetControl = new();
-                    switch(TabControlExCenter.SelectedTab.Name) {
+                    switch (TabControlExCenter.SelectedTab.Name) {
                         case "TabPage1":
                             targetControl = TableLayoutPanelEx1;
                             break;
@@ -1160,9 +1158,9 @@ namespace VehicleDispatch {
                     break;
                 // 社内での本番
                 case "ToolStripMenuItemInitializeCompanyOffice":
-                    if(_vehicleDispatchDetailDao.CheckVehicleDispatchDetail(DateTimePickerJpExOperationDate.GetValue())) {
+                    if (_vehicleDispatchDetailDao.CheckVehicleDispatchDetail(DateTimePickerJpExOperationDate.GetValue())) {
                         DialogResult dialogResult = MessageBox.Show(MessageText.Message301, MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
-                        if(dialogResult == DialogResult.OK)
+                        if (dialogResult == DialogResult.OK)
                             InsertVehicleDispatchDetail();
                         return;
                     } else {
@@ -1186,119 +1184,119 @@ namespace VehicleDispatch {
                 // 配車の状態
                 case "ToolStripMenuItemOperationFlagTrue":
                     // Nullチェック
-                    if(EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null)
+                    if (EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null)
                         try {
                             _vehicleDispatchDetailDao.SetOperationFlag(DateTimePickerJpExOperationDate.GetValue(),
                                                                        (int)EvacuationSetControlEx.Tag,
                                                                        true);
                             // 配車状態
                             EvacuationSetLabelEx.SetOperationFlag(true);
-                        } catch(Exception exception) {
+                        } catch (Exception exception) {
                             MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         }
                     break;
                 case "ToolStripMenuItemOperationFlagFalse":
                     // Nullチェック
-                    if(EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null)
+                    if (EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null)
                         try {
                             _vehicleDispatchDetailDao.SetOperationFlag(DateTimePickerJpExOperationDate.GetValue(),
                                                                        (int)EvacuationSetControlEx.Tag,
                                                                        false);
                             // 配車状態
                             EvacuationSetLabelEx.SetOperationFlag(false);
-                        } catch(Exception exception) {
+                        } catch (Exception exception) {
                             MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         }
                     break;
                 // 雇上・区契の別
                 case "ToolStripMenuItemYOUJYOU":
                     // Nullチェック
-                    if(EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null)
+                    if (EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null)
                         try {
                             _vehicleDispatchDetailDao.UpdateClassificationFlag(DateTimePickerJpExOperationDate.GetValue(),
                                                                                (int)EvacuationSetControlEx.Tag,
                                                                                true);
                             // SetLabelExを雇上の色に変える
                             EvacuationSetLabelEx.SetClassificationFlag(true);
-                        } catch(Exception exception) {
+                        } catch (Exception exception) {
                             MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         }
                     break;
                 case "ToolStripMenuItemKUKEI":
                     // Nullチェック
-                    if(EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null)
+                    if (EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null)
                         try {
                             _vehicleDispatchDetailDao.UpdateClassificationFlag(DateTimePickerJpExOperationDate.GetValue(),
                                                                                (int)EvacuationSetControlEx.Tag,
                                                                                false);
                             // SetLabelExを雇上の色に変える
                             EvacuationSetLabelEx.SetClassificationFlag(false);
-                        } catch(Exception exception) {
+                        } catch (Exception exception) {
                             MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         }
                     break;
                 // 連絡事項
                 case "ToolStripMenuItemContactInformationTrue":
                     // Nullチェック
-                    if(EvacuationSetControlEx is not null)
+                    if (EvacuationSetControlEx is not null)
                         try {
                             _vehicleDispatchDetailDao.UpdateContactInformationFlag(DateTimePickerJpExOperationDate.GetValue(),
                                                                                    (int)EvacuationSetControlEx.Tag,
                                                                                    true);
                             // SetLabelExを連絡事項ありにする
                             EvacuationSetControlEx.SetContactInformationFlag(true);
-                        } catch(Exception exception) {
+                        } catch (Exception exception) {
                             MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         }
                     break;
                 case "ToolStripMenuItemContactInformationFalse":
                     // Nullチェック
-                    if(EvacuationSetControlEx is not null)
+                    if (EvacuationSetControlEx is not null)
                         try {
                             _vehicleDispatchDetailDao.UpdateContactInformationFlag(DateTimePickerJpExOperationDate.GetValue(),
                                                                                    (int)EvacuationSetControlEx.Tag,
                                                                                    false);
                             // SetLabelExを連絡事項なしにする
                             EvacuationSetControlEx.SetContactInformationFlag(false);
-                        } catch(Exception exception) {
+                        } catch (Exception exception) {
                             MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         }
                     break;
                 // 作業員の配置
                 case "ToolStripMenuItemAddWorkerTrue":
                     // Nullチェック
-                    if(EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null)
+                    if (EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null)
                         try {
                             _vehicleDispatchDetailDao.UpdateAddWorkerFlag(DateTimePickerJpExOperationDate.GetValue(),
                                                                           (int)EvacuationSetControlEx.Tag,
                                                                           true);
                             // SetLabelExを雇上の色に変える
                             EvacuationSetLabelEx.SetAddWorkerFlag(true);
-                        } catch(Exception exception) {
+                        } catch (Exception exception) {
                             MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         }
                     break;
                 case "ToolStripMenuItemAddWorkerFalse":
                     // Nullチェック
-                    if(EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null)
+                    if (EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null)
                         try {
                             _vehicleDispatchDetailDao.UpdateAddWorkerFlag(DateTimePickerJpExOperationDate.GetValue(),
                                                                           (int)EvacuationSetControlEx.Tag,
                                                                           false);
                             // SetLabelExを雇上の色に変える
                             EvacuationSetLabelEx.SetAddWorkerFlag(false);
-                        } catch(Exception exception) {
+                        } catch (Exception exception) {
                             MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         }
                     break;
                 // 配車先を削除
                 case "ToolStripMenuItemSetDelete":
                     // Nullチェック
-                    if(EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null) {
+                    if (EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null) {
                         try {
                             _vehicleDispatchDetailDao.ResetSetLabel(DateTimePickerJpExOperationDate.GetValue(),
                                                                     (int)EvacuationSetControlEx.Tag);
-                        } catch(Exception exception) {
+                        } catch (Exception exception) {
                             MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         }
                         SetControlEx setControlEx = (SetControlEx)EvacuationSetLabelEx.Parent;
@@ -1309,137 +1307,137 @@ namespace VehicleDispatch {
                 // 配車先メモ
                 case "ToolStripMenuItemSetMemo":
                     // Nullチェック
-                    if(EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null)
+                    if (EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null)
                         try {
                             SetMemo setMemo = new SetMemo(_connectionVo, DateTimePickerJpExOperationDate.GetValue(), EvacuationSetControlEx, EvacuationSetLabelEx);
                             setMemo.ShowDialog(this);
-                        } catch(Exception exception) {
+                        } catch (Exception exception) {
                             MessageBox.Show(exception.Message);
                         }
                     break;
                 // 足立より出庫
                 case "ToolStripMenuItemSetGarageAdachi":
                     // Nullチェック
-                    if(EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null)
+                    if (EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null)
                         try {
                             _vehicleDispatchDetailDao.UpdateGarageFlag(DateTimePickerJpExOperationDate.GetValue(),
                                                                        (int)EvacuationSetControlEx.Tag,
                                                                        true);
                             // SetLabelExを本社の色に変える
                             EvacuationSetLabelEx.SetGarageFlag(true);
-                        } catch(Exception exception) {
+                        } catch (Exception exception) {
                             MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         }
                     break;
                 // 三郷より出庫
                 case "ToolStripMenuItemSetGarageMisato":
                     // Nullチェック
-                    if(EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null)
+                    if (EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null)
                         try {
                             _vehicleDispatchDetailDao.UpdateGarageFlag(DateTimePickerJpExOperationDate.GetValue(),
                                                                        (int)EvacuationSetControlEx.Tag,
                                                                        false);
                             // SetLabelExを三郷の色に変える
                             EvacuationSetLabelEx.SetGarageFlag(false);
-                        } catch(Exception exception) {
+                        } catch (Exception exception) {
                             MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         }
                     break;
                 // 番手
                 case "ToolStripMenuItemNoneShift":
                     // Nullチェック
-                    if(EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null)
+                    if (EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null)
                         try {
                             _vehicleDispatchDetailDao.UpdateShiftCode(DateTimePickerJpExOperationDate.GetValue(),
                                                                       (int)EvacuationSetControlEx.Tag,
                                                                       0);
                             EvacuationSetLabelEx.SetShiftCode(0);
-                        } catch(Exception exception) {
+                        } catch (Exception exception) {
                             MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         }
                     break;
                 case "ToolStripMenuItemFirstShift":
                     // Nullチェック
-                    if(EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null)
+                    if (EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null)
                         try {
                             _vehicleDispatchDetailDao.UpdateShiftCode(DateTimePickerJpExOperationDate.GetValue(),
                                                                       (int)EvacuationSetControlEx.Tag,
                                                                       1);
                             EvacuationSetLabelEx.SetShiftCode(1);
-                        } catch(Exception exception) {
+                        } catch (Exception exception) {
                             MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         }
                     break;
                 case "ToolStripMenuItemLateShift":
                     // Nullチェック
-                    if(EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null)
+                    if (EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null)
                         try {
                             _vehicleDispatchDetailDao.UpdateShiftCode(DateTimePickerJpExOperationDate.GetValue(),
                                                                       (int)EvacuationSetControlEx.Tag,
                                                                       2);
                             EvacuationSetLabelEx.SetShiftCode(2);
-                        } catch(Exception exception) {
+                        } catch (Exception exception) {
                             MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         }
                     break;
                 // 待機を設定・解除
                 case "ToolStripMenuItemStandByTrue":
                     // Nullチェック
-                    if(EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null)
+                    if (EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null)
                         try {
                             _vehicleDispatchDetailDao.UpdateStandByFlag(DateTimePickerJpExOperationDate.GetValue(),
                                                                         (int)EvacuationSetControlEx.Tag,
                                                                         true);
                             EvacuationSetLabelEx.SetStandByFlag(true);
-                        } catch(Exception exception) {
+                        } catch (Exception exception) {
                             MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         }
                     break;
                 case "ToolStripMenuItemStandByFalse":
                     // Nullチェック
-                    if(EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null)
+                    if (EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null)
                         try {
                             _vehicleDispatchDetailDao.UpdateStandByFlag(DateTimePickerJpExOperationDate.GetValue(),
                                                                         (int)EvacuationSetControlEx.Tag,
                                                                         false);
                             EvacuationSetLabelEx.SetStandByFlag(false);
-                        } catch(Exception exception) {
+                        } catch (Exception exception) {
                             MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         }
                     break;
                 // Fax
                 case "ToolStripMenuItemFaxTrue":
                     // Nullチェック
-                    if(EvacuationSetControlEx is not null)
+                    if (EvacuationSetControlEx is not null)
                         try {
                             _vehicleDispatchDetailDao.UpdateFaxTransmissionFlag(DateTimePickerJpExOperationDate.GetValue(),
                                                                                 (int)EvacuationSetControlEx.Tag,
                                                                                 true);
                             // SetLabelExを連絡事項ありにする
                             EvacuationSetControlEx.SetFaxTransmissionFlag(true);
-                        } catch(Exception exception) {
+                        } catch (Exception exception) {
                             MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         }
                     break;
                 case "ToolStripMenuItemFaxFalse":
                     // Nullチェック
-                    if(EvacuationSetControlEx is not null)
+                    if (EvacuationSetControlEx is not null)
                         try {
                             _vehicleDispatchDetailDao.UpdateFaxTransmissionFlag(DateTimePickerJpExOperationDate.GetValue(),
                                                                                 (int)EvacuationSetControlEx.Tag,
                                                                                 false);
                             // SetLabelExを連絡事項ありにする
                             EvacuationSetControlEx.SetFaxTransmissionFlag(false);
-                        } catch(Exception exception) {
+                        } catch (Exception exception) {
                             MessageBox.Show(exception.Message, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                         }
                     break;
                 // 代車・代番FAX
                 case "ToolStripMenuItemCreateFax":
                     // Nullチェック
-                    if(EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null) {
+                    if (EvacuationSetControlEx is not null && EvacuationSetLabelEx is not null) {
                         SetMasterVo setMasterVo = (SetMasterVo)EvacuationSetLabelEx.Tag;
-                        switch(setMasterVo.Set_code) {
+                        switch (setMasterVo.Set_code) {
                             case 1310101: // 千代田２
                             case 1310102: // 千代田６
                             case 1310103: // 千代田紙１
@@ -1478,7 +1476,7 @@ namespace VehicleDispatch {
                 // 高速道路使用報告書
                 case "ToolStripMenuItemHighWayReport":
                     // Nullチェック
-                    if(EvacuationSetControlEx is not null) {
+                    if (EvacuationSetControlEx is not null) {
                         HighWayReportPaper highWayReportPaper = new HighWayReportPaper(EvacuationSetControlEx);
                         highWayReportPaper.ShowDialog(this);
                     }
@@ -1489,44 +1487,44 @@ namespace VehicleDispatch {
                 // 車両詳細
                 case "ToolStripMenuItemCarDetail":
                     // Nullチェック
-                    if(EvacuationCarLabelEx is not null) {
-                        CarPaper carPaper = new CarPaper(_connectionVo,((CarMasterVo)EvacuationCarLabelEx.Tag).Car_code);
+                    if (EvacuationCarLabelEx is not null) {
+                        CarPaper carPaper = new CarPaper(_connectionVo, ((CarMasterVo)EvacuationCarLabelEx.Tag).Car_code);
                         carPaper.ShowDialog(this);
                     }
                     break;
                 // 代車処理
                 case "ToolStripMenuItemCarProxyTrue":
                     // Nullチェック
-                    if(EvacuationSetControlEx is not null && EvacuationCarLabelEx is not null)
+                    if (EvacuationSetControlEx is not null && EvacuationCarLabelEx is not null)
                         try {
                             /*
                              * SetControlEx上でクリックされた時
                              */
-                            if(EvacuationCarLabelEx.Parent.GetType() == typeof(SetControlEx)) {
+                            if (EvacuationCarLabelEx.Parent.GetType() == typeof(SetControlEx)) {
                                 _vehicleDispatchDetailDao.SetCarProxyFlag(DateTimePickerJpExOperationDate.GetValue(),
                                                                           (int)EvacuationSetControlEx.Tag,
                                                                           true);
                                 EvacuationCarLabelEx.SetProxyFlag(true);
                             }
-                        } catch(Exception exception) {
+                        } catch (Exception exception) {
                             MessageBox.Show(exception.Message);
                         }
                     break;
                 // 代車処理
                 case "ToolStripMenuItemCarProxyFalse":
                     // Nullチェック
-                    if(EvacuationSetControlEx is not null && EvacuationCarLabelEx is not null)
+                    if (EvacuationSetControlEx is not null && EvacuationCarLabelEx is not null)
                         try {
                             /*
                              * SetControlEx上でクリックされた時
                              */
-                            if(EvacuationCarLabelEx.Parent.GetType() == typeof(SetControlEx)) {
+                            if (EvacuationCarLabelEx.Parent.GetType() == typeof(SetControlEx)) {
                                 _vehicleDispatchDetailDao.SetCarProxyFlag(DateTimePickerJpExOperationDate.GetValue(),
                                                                           (int)EvacuationSetControlEx.Tag,
                                                                           false);
                                 EvacuationCarLabelEx.SetProxyFlag(false);
                             }
-                        } catch(Exception exception) {
+                        } catch (Exception exception) {
                             MessageBox.Show(exception.Message);
                         }
                     break;
@@ -1535,47 +1533,43 @@ namespace VehicleDispatch {
                  */
                 // 従事者詳細
                 case "ToolStripMenuItemStaffDetail":
-                    // Nullチェック
-                    if(EvacuationStaffLabelEx is not null) {
-                        var staffPaper = new StaffPaper(_connectionVo, ((StaffMasterVo)EvacuationStaffLabelEx.Tag).Staff_code);
-                        staffPaper.ShowDialog(this);
-                    }
+
                     break;
                 // 代番処理
                 case "ToolStripMenuItemStaffProxyTrue":
                     // Nullチェック
-                    if(EvacuationSetControlEx is not null && EvacuationStaffLabelEx is not null)
+                    if (EvacuationSetControlEx is not null && EvacuationStaffLabelEx is not null)
                         try {
                             /*
                              * SetControlEx上でクリックされた時
                              */
-                            if(EvacuationStaffLabelEx.Parent.GetType() == typeof(SetControlEx)) {
+                            if (EvacuationStaffLabelEx.Parent.GetType() == typeof(SetControlEx)) {
                                 _vehicleDispatchDetailDao.SetStaffProxyFlag(DateTimePickerJpExOperationDate.GetValue(),
                                                                             (int)EvacuationSetControlEx.Tag,
                                                                             EvacuationSetControlEx.GetPositionFromControl(EvacuationStaffLabelEx).Row,
                                                                             true);
                                 EvacuationStaffLabelEx.SetProxyFlag(true);
                             }
-                        } catch(Exception exception) {
+                        } catch (Exception exception) {
                             MessageBox.Show(exception.Message);
                         }
                     break;
                 // 代番処理
                 case "ToolStripMenuItemStaffProxyFalse":
                     // Nullチェック
-                    if(EvacuationSetControlEx is not null && EvacuationStaffLabelEx is not null)
+                    if (EvacuationSetControlEx is not null && EvacuationStaffLabelEx is not null)
                         try {
                             /*
                              * SetControlEx上でクリックされた時
                              */
-                            if(EvacuationStaffLabelEx.Parent.GetType() == typeof(SetControlEx)) {
+                            if (EvacuationStaffLabelEx.Parent.GetType() == typeof(SetControlEx)) {
                                 _vehicleDispatchDetailDao.SetStaffProxyFlag(DateTimePickerJpExOperationDate.GetValue(),
                                                                             (int)EvacuationSetControlEx.Tag,
                                                                             EvacuationSetControlEx.GetPositionFromControl(EvacuationStaffLabelEx).Row,
                                                                             false);
                                 EvacuationStaffLabelEx.SetProxyFlag(false);
                             }
-                        } catch(Exception exception) {
+                        } catch (Exception exception) {
                             MessageBox.Show(exception.Message);
                         }
                     break;
@@ -1588,7 +1582,7 @@ namespace VehicleDispatch {
                                                             EvacuationFlowLayoutPanelEx,
                                                             EvacuationStaffLabelEx);
                         staffMemo.ShowDialog(this);
-                    } catch(Exception exception) {
+                    } catch (Exception exception) {
                         MessageBox.Show(exception.Message);
                     }
                     break;
@@ -1597,14 +1591,14 @@ namespace VehicleDispatch {
                  */
                 case "ToolStripMenuItemOccupation10":
                     // Nullチェック
-                    if(EvacuationSetControlEx is not null && EvacuationStaffLabelEx is not null)
+                    if (EvacuationSetControlEx is not null && EvacuationStaffLabelEx is not null)
                         try {
                             _vehicleDispatchDetailDao.UpdateOccupation(DateTimePickerJpExOperationDate.GetValue(),
                                                                        (int)EvacuationSetControlEx.Tag,
                                                                        EvacuationSetControlEx.GetPositionFromControl(EvacuationStaffLabelEx).Row,
                                                                        10);
                             EvacuationStaffLabelEx.SetOccupation(10);
-                        } catch(Exception exception) {
+                        } catch (Exception exception) {
                             MessageBox.Show(exception.Message);
                         }
                     break;
@@ -1613,14 +1607,14 @@ namespace VehicleDispatch {
                  */
                 case "ToolStripMenuItemOccupation11":
                     // Nullチェック
-                    if(EvacuationSetControlEx is not null && EvacuationStaffLabelEx is not null)
+                    if (EvacuationSetControlEx is not null && EvacuationStaffLabelEx is not null)
                         try {
                             _vehicleDispatchDetailDao.UpdateOccupation(DateTimePickerJpExOperationDate.GetValue(),
                                                                        (int)EvacuationSetControlEx.Tag,
                                                                        EvacuationSetControlEx.GetPositionFromControl(EvacuationStaffLabelEx).Row,
                                                                        11);
                             EvacuationStaffLabelEx.SetOccupation(11);
-                        } catch(Exception exception) {
+                        } catch (Exception exception) {
                             MessageBox.Show(exception.Message);
                         }
                     break;
@@ -1629,12 +1623,12 @@ namespace VehicleDispatch {
                  */
                 case "ToolStripMenuItemTelephoneMarkTrue":
                     // Nullチェック
-                    if(EvacuationStaffLabelEx is not null)
+                    if (EvacuationStaffLabelEx is not null)
                         EvacuationStaffLabelEx.SetTelephoneMark(true);
                     break;
                 case "ToolStripMenuItemTelephoneMarkFalse":
                     // Nullチェック
-                    if(EvacuationStaffLabelEx is not null)
+                    if (EvacuationStaffLabelEx is not null)
                         EvacuationStaffLabelEx.SetTelephoneMark(false);
                     break;
             }
@@ -1652,12 +1646,12 @@ namespace VehicleDispatch {
              * ②vehicle_dispatch_detail_carの対象レコードをDELETE
              * ③vehicle_dispatch_detail_staffの対象レコードをDELETE
              */
-            if(_vehicleDispatchDetailDao.CheckVehicleDispatchDetail(DateTimePickerJpExOperationDate.GetValue())) {
+            if (_vehicleDispatchDetailDao.CheckVehicleDispatchDetail(DateTimePickerJpExOperationDate.GetValue())) {
                 try {
                     _vehicleDispatchDetailDao.DeleteVehicleDispatchDetail(DateTimePickerJpExOperationDate.GetValue());
                     _vehicleDispatchDetailCarDao.DeleteCar(DateTimePickerJpExOperationDate.GetValue());
                     _vehicleDispatchDetailStaffDao.DeleteStaff(DateTimePickerJpExOperationDate.GetValue());
-                } catch(Exception exception) {
+                } catch (Exception exception) {
                     MessageBox.Show(exception.Message);
                 }
             }
@@ -1665,9 +1659,9 @@ namespace VehicleDispatch {
              * vehicle_dispatch_head/vehicle_dispatch_bodyからvehicle_dispatch_detailを作成する
              */
             // 社内での本番をList<VehicleDispatchDetailVo>型で取得
-            List<VehicleDispatchDetailVo> listVehicleDispatch = _vehicleDispatchDetailDao.SelectVehicleDispatch(DateTimePickerJpExOperationDate.GetValue().AddMonths(-3),DateTimePickerJpExOperationDate.GetValue().ToString("ddd"));
+            List<VehicleDispatchDetailVo> listVehicleDispatch = _vehicleDispatchDetailDao.SelectVehicleDispatch(DateTimePickerJpExOperationDate.GetValue().AddMonths(-3), DateTimePickerJpExOperationDate.GetValue().ToString("ddd"));
             // VehicleDispatchDetailVoの不足情報を加える
-            foreach(var vehicleDispatchDetail in listVehicleDispatch.OrderBy(x => x.Cell_number)) {
+            foreach (var vehicleDispatchDetail in listVehicleDispatch.OrderBy(x => x.Cell_number)) {
                 VehicleDispatchDetailVo vehicleDispatchDetailVo = new();
                 vehicleDispatchDetailVo.Cell_number = vehicleDispatchDetail.Cell_number;
                 vehicleDispatchDetailVo.Operation_date = DateTimePickerJpExOperationDate.GetValue();
@@ -1728,7 +1722,7 @@ namespace VehicleDispatch {
             }
             try {
                 _vehicleDispatchDetailDao.InsertVehicleDispatchDetail(listvehicleDispatchDetailVo);
-            } catch(Exception e) {
+            } catch (Exception e) {
                 MessageBox.Show(e.Message);
             }
         }
@@ -1749,7 +1743,7 @@ namespace VehicleDispatch {
         /// <param name="e"></param>
         private void SetControlEx_DragDrop(object? sender, DragEventArgs e) {
             // Controlを取得
-            if(sender is null) {
+            if (sender is null) {
                 MessageBox.Show("SetControlEx_DragDrop sender is Null", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -1758,9 +1752,9 @@ namespace VehicleDispatch {
              * 2023-04-29
              * ここで画面とDBのデータの同一性をチェックして、更新可能か調べる
              */
-            if(e.Data is not null && e.Data.GetDataPresent(typeof(SetLabelEx))) {
+            if (e.Data is not null && e.Data.GetDataPresent(typeof(SetLabelEx))) {
                 SetLabelEx dragItem = (SetLabelEx)e.Data.GetData(typeof(SetLabelEx));
-                switch(dragItem.Parent) {
+                switch (dragItem.Parent) {
                     case SetControlEx:
 
                         break;
@@ -1770,9 +1764,9 @@ namespace VehicleDispatch {
                 }
                 goto JMP1;
             }
-            if(e.Data is not null && e.Data.GetDataPresent(typeof(CarLabelEx))) {
+            if (e.Data is not null && e.Data.GetDataPresent(typeof(CarLabelEx))) {
                 CarLabelEx dragItem = (CarLabelEx)e.Data.GetData(typeof(CarLabelEx));
-                switch(dragItem.Parent) {
+                switch (dragItem.Parent) {
                     case SetControlEx:
 
                         break;
@@ -1782,13 +1776,13 @@ namespace VehicleDispatch {
                 }
                 goto JMP1;
             }
-            if(e.Data is not null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+            if (e.Data is not null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
                 /*
                  * 画面座標(X, Y)を、setControlEx上のクライアント座標に変換する
                  */
                 Point point = setControlEx.PointToClient(new Point(e.X, e.Y));
                 int staffCellNumber = 0;
-                switch(point.Y) {
+                switch (point.Y) {
                     // SetLabelかCarLabel
                     case int i when i <= 140:
                         return; // SetLabelかCarLabelの位置でDropされた場合はReturnする
@@ -1816,7 +1810,7 @@ namespace VehicleDispatch {
                 int dropCellNumber = Convert.ToInt32(setControlEx.Tag);
                 int dbDropStaffCode = 0;
                 StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
-                switch(dragItem.Parent) {
+                switch (dragItem.Parent) {
                     case SetControlEx:
                         // Drag元のCellNumberを取得
                         dragCellNumber = Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag);
@@ -1830,11 +1824,11 @@ namespace VehicleDispatch {
                          * ①Drag側を調査（画面上のStaffCodeとDB上のStaffCodeが同一かどうか？）
                          * ②Drop側を調査（DB上のStaffCodeが０かどうか？）
                          */
-                        if(dbDragStaffCode != ((StaffMasterVo)dragItem.Tag).Staff_code) {
+                        if (dbDragStaffCode != ((StaffMasterVo)dragItem.Tag).Staff_code) {
                             MessageBox.Show(MessageText.Message303, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                             return;
                         }
-                        if(dbDropStaffCode != 0) {
+                        if (dbDropStaffCode != 0) {
                             MessageBox.Show(MessageText.Message304, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                             return;
                         }
@@ -1853,7 +1847,7 @@ namespace VehicleDispatch {
                         /*
                          * Dragされた親Controlによって処理を変える
                          */
-                        switch(dragCellNumber) {
+                        switch (dragCellNumber) {
                             case int i when i >= 151 && i <= 156: // 左側のTab(DB上で管理されていないLabel)
 
                                 break;
@@ -1869,11 +1863,11 @@ namespace VehicleDispatch {
                                  * ①Drag側を調査（DB上にDrag元のLabelが存在しているか？）
                                  * ②Drop側を調査（DB上のStaffCodeが０かどうか？）
                                  */
-                                if(!dbDragStaffExist) {
+                                if (!dbDragStaffExist) {
                                     MessageBox.Show(MessageText.Message303, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                                     return;
                                 }
-                                if(dbDropStaffCode != 0) {
+                                if (dbDropStaffCode != 0) {
                                     MessageBox.Show(MessageText.Message304, MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                                     return;
                                 }
@@ -1894,23 +1888,23 @@ namespace VehicleDispatch {
             /*
              * SetLabelEx
              */
-            if(e.Data is not null && e.Data.GetDataPresent(typeof(SetLabelEx))) {
+            if (e.Data is not null && e.Data.GetDataPresent(typeof(SetLabelEx))) {
                 SetLabelEx dragItem = (SetLabelEx)e.Data.GetData(typeof(SetLabelEx));
-                if(((SetMasterVo)dragItem.Tag).Move_flag) {
+                if (((SetMasterVo)dragItem.Tag).Move_flag) {
                     /*
                      * SetLabelEx
                      * Tab(配車先)からのDropの場合SetLabelをCopyする。TableLayoutPanelExからのDropならMoveする。
                      */
-                    switch(dragItem.Parent.Name) {
+                    switch (dragItem.Parent.Name) {
                         case "SetControlEx":
                             /*
                              * SetControlExからのDrop
                              */
-                            if(setControlEx is not null && setControlEx.GetControlFromPosition(0, 0) == null) {
+                            if (setControlEx is not null && setControlEx.GetControlFromPosition(0, 0) == null) {
                                 /*
                                  * 移動許可を調査する
                                  */
-                                if(CheckSetControlEx(dragItem)) {
+                                if (CheckSetControlEx(dragItem)) {
                                     try {
                                         _vehicleDispatchDetailDao.CopySetLabel(DateTimePickerJpExOperationDate.GetValue(),
                                                                                Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
@@ -1918,7 +1912,7 @@ namespace VehicleDispatch {
                                         _vehicleDispatchDetailDao.ResetSetLabel(DateTimePickerJpExOperationDate.GetValue(),
                                                                                 (int)((SetControlEx)dragItem.Parent).Tag);
                                         setControlEx.Controls.Add(dragItem, 0, 0);
-                                    } catch(Exception exception) {
+                                    } catch (Exception exception) {
                                         MessageBox.Show(exception.Message);
                                     }
                                 } else {
@@ -1929,7 +1923,7 @@ namespace VehicleDispatch {
                             }
                             break;
                         case "FlowLayoutPanelExSet":
-                            if(setControlEx is not null && setControlEx.GetControlFromPosition(0, 0) == null) {
+                            if (setControlEx is not null && setControlEx.GetControlFromPosition(0, 0) == null) {
                                 /*
                                  * Tab(配車先)からのDrop
                                  */
@@ -1966,11 +1960,11 @@ namespace VehicleDispatch {
             /*
              * CarLabelEx
              */
-            if(e.Data is not null && e.Data.GetDataPresent(typeof(CarLabelEx))) {
+            if (e.Data is not null && e.Data.GetDataPresent(typeof(CarLabelEx))) {
                 CarLabelEx dragItem = (CarLabelEx)e.Data.GetData(typeof(CarLabelEx));
-                switch(dragItem.Parent.Name) {
+                switch (dragItem.Parent.Name) {
                     case "SetControlEx":
-                        if(setControlEx is not null && setControlEx.GetControlFromPosition(0, 1) == null) {
+                        if (setControlEx is not null && setControlEx.GetControlFromPosition(0, 1) == null) {
                             try {
                                 _vehicleDispatchDetailDao.MoveCarLabel(DateTimePickerJpExOperationDate.GetValue(),
                                                                        Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
@@ -1978,7 +1972,7 @@ namespace VehicleDispatch {
                                 _vehicleDispatchDetailDao.ResetCarLabel(DateTimePickerJpExOperationDate.GetValue(),
                                                                         Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag));
                                 setControlEx.Controls.Add(dragItem, 0, 1);
-                            } catch(Exception exception) {
+                            } catch (Exception exception) {
                                 MessageBox.Show(exception.Message);
                             }
                         } else {
@@ -1986,14 +1980,14 @@ namespace VehicleDispatch {
                         }
                         break;
                     case "FlowLayoutPanelExCar":
-                        if(setControlEx is not null && setControlEx.GetControlFromPosition(0, 1) == null) {
+                        if (setControlEx is not null && setControlEx.GetControlFromPosition(0, 1) == null) {
                             try {
                                 // vehicle_dispatch_detailをUPDATE
                                 _vehicleDispatchDetailDao.CreateCarLabel(DateTimePickerJpExOperationDate.GetValue(),
                                                                          Convert.ToInt32(setControlEx.Tag),
                                                                          (CarMasterVo)dragItem.Tag);
                                 setControlEx.Controls.Add(dragItem, 0, 1);
-                            } catch(Exception exception) {
+                            } catch (Exception exception) {
                                 MessageBox.Show(exception.Message);
                             }
                         } else {
@@ -2003,7 +1997,7 @@ namespace VehicleDispatch {
                     case "FlowLayoutPanelExChecking":
                     case "FlowLayoutPanelExRepair":
                     case "FlowLayoutPanelExVehicleInspection":
-                        if(setControlEx is not null && setControlEx.GetControlFromPosition(0, 1) == null) {
+                        if (setControlEx is not null && setControlEx.GetControlFromPosition(0, 1) == null) {
                             try {
                                 // vehicle_dispatch_detailをUPDATE
                                 _vehicleDispatchDetailDao.CreateCarLabel(DateTimePickerJpExOperationDate.GetValue(),
@@ -2014,7 +2008,7 @@ namespace VehicleDispatch {
                                                                        Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
                                                                        ((CarMasterVo)dragItem.Tag).Car_code);
                                 setControlEx.Controls.Add(dragItem, 0, 1);
-                            } catch(Exception exception) {
+                            } catch (Exception exception) {
                                 MessageBox.Show(exception.Message);
                             }
                         } else {
@@ -2022,7 +2016,7 @@ namespace VehicleDispatch {
                         }
                         break;
                     case "FlowLayoutPanelExFree":
-                        if(setControlEx is not null && setControlEx.GetControlFromPosition(0, 1) == null) {
+                        if (setControlEx is not null && setControlEx.GetControlFromPosition(0, 1) == null) {
                             try {
                                 // vehicle_dispatch_detailをUPDATE
                                 _vehicleDispatchDetailDao.CreateCarLabel(DateTimePickerJpExOperationDate.GetValue(),
@@ -2033,7 +2027,7 @@ namespace VehicleDispatch {
                                                                        Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
                                                                        ((CarMasterVo)dragItem.Tag).Car_code);
                                 setControlEx.Controls.Add(dragItem, 0, 1);
-                            } catch(Exception exception) {
+                            } catch (Exception exception) {
                                 MessageBox.Show(exception.Message);
                             }
                         } else {
@@ -2045,22 +2039,22 @@ namespace VehicleDispatch {
             /*
              * StaffLabelEx
              */
-            if(setControlEx is not null && e.Data is not null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+            if (setControlEx is not null && e.Data is not null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
                 StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
                 //画面座標(X, Y)を、setControlEx上のクライアント座標に変換する
                 Point point = setControlEx.PointToClient(new Point(e.X, e.Y));
-                switch(dragItem.Parent.Name) {
+                switch (dragItem.Parent.Name) {
                     /*
                      * StaffLabelEx
                      * SetControlEx同士での移動
                      */
                     case "SetControlEx":
-                        switch(point.Y) {
+                        switch (point.Y) {
                             case int i when i <= 140:
                                 ToolStripStatusLabelStatus.Text = string.Concat("SetLabelかCarLabel");
                                 break;
                             case int i when i <= 180:
-                                if(setControlEx.GetControlFromPosition(0, 2) == null) {
+                                if (setControlEx.GetControlFromPosition(0, 2) == null) {
                                     try {
                                         _vehicleDispatchDetailDao.MoveStaffLabel(DateTimePickerJpExOperationDate.GetValue(),
                                                                                  Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
@@ -2071,7 +2065,7 @@ namespace VehicleDispatch {
                                                                                   ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
                                         setControlEx.Controls.Add(dragItem, 0, 2);
                                         ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
-                                    } catch(Exception exception) {
+                                    } catch (Exception exception) {
                                         MessageBox.Show(exception.Message);
                                     }
                                 } else {
@@ -2079,7 +2073,7 @@ namespace VehicleDispatch {
                                 }
                                 break;
                             case int i when i <= 220:
-                                if(setControlEx.GetControlFromPosition(0, 3) == null) {
+                                if (setControlEx.GetControlFromPosition(0, 3) == null) {
                                     try {
                                         _vehicleDispatchDetailDao.MoveStaffLabel(DateTimePickerJpExOperationDate.GetValue(),
                                                                                  Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
@@ -2090,7 +2084,7 @@ namespace VehicleDispatch {
                                                                                   ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
                                         setControlEx.Controls.Add(dragItem, 0, 3);
                                         ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
-                                    } catch(Exception exception) {
+                                    } catch (Exception exception) {
                                         MessageBox.Show(exception.Message);
                                     }
                                 } else {
@@ -2098,7 +2092,7 @@ namespace VehicleDispatch {
                                 }
                                 break;
                             case int i when i <= 260:
-                                if(setControlEx.GetControlFromPosition(0, 4) == null) {
+                                if (setControlEx.GetControlFromPosition(0, 4) == null) {
                                     try {
                                         _vehicleDispatchDetailDao.MoveStaffLabel(DateTimePickerJpExOperationDate.GetValue(),
                                                                                  Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
@@ -2109,7 +2103,7 @@ namespace VehicleDispatch {
                                                                                   ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
                                         setControlEx.Controls.Add(dragItem, 0, 4);
                                         ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
-                                    } catch(Exception exception) {
+                                    } catch (Exception exception) {
                                         MessageBox.Show(exception.Message);
                                     }
                                 } else {
@@ -2117,7 +2111,7 @@ namespace VehicleDispatch {
                                 }
                                 break;
                             case int i when i <= 300:
-                                if(setControlEx.GetControlFromPosition(0, 5) == null) {
+                                if (setControlEx.GetControlFromPosition(0, 5) == null) {
                                     try {
                                         _vehicleDispatchDetailDao.MoveStaffLabel(DateTimePickerJpExOperationDate.GetValue(),
                                                                                  Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
@@ -2128,7 +2122,7 @@ namespace VehicleDispatch {
                                                                                   ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
                                         setControlEx.Controls.Add(dragItem, 0, 5);
                                         ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
-                                    } catch(Exception exception) {
+                                    } catch (Exception exception) {
                                         MessageBox.Show(exception.Message);
                                     }
                                 } else {
@@ -2145,12 +2139,12 @@ namespace VehicleDispatch {
                     case "FlowLayoutPanelExLongTerm":
                     case "FlowLayoutPanelExPartTime":
                     case "FlowLayoutPanelExWindow":
-                        switch(point.Y) {
+                        switch (point.Y) {
                             case int i when i <= 140:
                                 ToolStripStatusLabelStatus.Text = string.Concat("SetLabelかCarLabel");
                                 break;
                             case int i when i <= 180:
-                                if(setControlEx.GetControlFromPosition(0, 2) == null) {
+                                if (setControlEx.GetControlFromPosition(0, 2) == null) {
                                     try {
                                         // VehicleDispatchDetailをUPDATE
                                         _vehicleDispatchDetailDao.MoveStaffLabel(DateTimePickerJpExOperationDate.GetValue(),
@@ -2159,7 +2153,7 @@ namespace VehicleDispatch {
                                                                                  (StaffMasterVo)dragItem.Tag);
                                         setControlEx.Controls.Add(dragItem, 0, 2);
                                         ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
-                                    } catch(Exception exception) {
+                                    } catch (Exception exception) {
                                         MessageBox.Show(exception.Message);
                                     }
 
@@ -2168,7 +2162,7 @@ namespace VehicleDispatch {
                                 }
                                 break;
                             case int i when i <= 220:
-                                if(setControlEx.GetControlFromPosition(0, 3) == null) {
+                                if (setControlEx.GetControlFromPosition(0, 3) == null) {
                                     try {
                                         // VehicleDispatchDetailをUPDATE
                                         _vehicleDispatchDetailDao.MoveStaffLabel(DateTimePickerJpExOperationDate.GetValue(),
@@ -2177,7 +2171,7 @@ namespace VehicleDispatch {
                                                                                  (StaffMasterVo)dragItem.Tag);
                                         setControlEx.Controls.Add(dragItem, 0, 3);
                                         ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
-                                    } catch(Exception exception) {
+                                    } catch (Exception exception) {
                                         MessageBox.Show(exception.Message);
                                     }
                                 } else {
@@ -2185,7 +2179,7 @@ namespace VehicleDispatch {
                                 }
                                 break;
                             case int i when i <= 260:
-                                if(setControlEx.GetControlFromPosition(0, 4) == null) {
+                                if (setControlEx.GetControlFromPosition(0, 4) == null) {
                                     try {
                                         // VehicleDispatchDetailをUPDATE
                                         _vehicleDispatchDetailDao.MoveStaffLabel(DateTimePickerJpExOperationDate.GetValue(),
@@ -2194,7 +2188,7 @@ namespace VehicleDispatch {
                                                                                  (StaffMasterVo)dragItem.Tag);
                                         setControlEx.Controls.Add(dragItem, 0, 4);
                                         ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
-                                    } catch(Exception exception) {
+                                    } catch (Exception exception) {
                                         MessageBox.Show(exception.Message);
                                     }
                                 } else {
@@ -2202,7 +2196,7 @@ namespace VehicleDispatch {
                                 }
                                 break;
                             case int i when i <= 300:
-                                if(setControlEx.GetControlFromPosition(0, 5) == null) {
+                                if (setControlEx.GetControlFromPosition(0, 5) == null) {
                                     try {
                                         // VehicleDispatchDetailをUPDATE
                                         _vehicleDispatchDetailDao.MoveStaffLabel(DateTimePickerJpExOperationDate.GetValue(),
@@ -2211,7 +2205,7 @@ namespace VehicleDispatch {
                                                                                  (StaffMasterVo)dragItem.Tag);
                                         setControlEx.Controls.Add(dragItem, 0, 5);
                                         ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
-                                    } catch(Exception exception) {
+                                    } catch (Exception exception) {
                                         MessageBox.Show(exception.Message);
                                     }
                                 } else {
@@ -2232,12 +2226,12 @@ namespace VehicleDispatch {
                     case "FlowLayoutPanelExPartDesignation":
                     case "FlowLayoutPanelExTelephone":
                     case "FlowLayoutPanelExWithoutNotice":
-                        switch(point.Y) {
+                        switch (point.Y) {
                             case int i when i <= 140:
                                 ToolStripStatusLabelStatus.Text = string.Concat("SetLabelかCarLabel");
                                 break;
                             case int i when i <= 180:
-                                if(setControlEx.GetControlFromPosition(0, 2) == null) {
+                                if (setControlEx.GetControlFromPosition(0, 2) == null) {
                                     try {
                                         // VehicleDispatchDetailにUPDATE
                                         _vehicleDispatchDetailDao.MoveStaffLabel(DateTimePickerJpExOperationDate.GetValue(),
@@ -2252,7 +2246,7 @@ namespace VehicleDispatch {
                                         // dragItemを移動
                                         setControlEx.Controls.Add(dragItem, 0, 2);
                                         ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
-                                    } catch(Exception exception) {
+                                    } catch (Exception exception) {
                                         MessageBox.Show(exception.Message);
                                     }
                                 } else {
@@ -2260,7 +2254,7 @@ namespace VehicleDispatch {
                                 }
                                 break;
                             case int i when i <= 220:
-                                if(setControlEx.GetControlFromPosition(0, 3) == null) {
+                                if (setControlEx.GetControlFromPosition(0, 3) == null) {
                                     try {
                                         // VehicleDispatchDetailにUPDATE
                                         _vehicleDispatchDetailDao.MoveStaffLabel(DateTimePickerJpExOperationDate.GetValue(),
@@ -2275,7 +2269,7 @@ namespace VehicleDispatch {
                                         // dragItemを移動
                                         setControlEx.Controls.Add(dragItem, 0, 3);
                                         ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
-                                    } catch(Exception exception) {
+                                    } catch (Exception exception) {
                                         MessageBox.Show(exception.Message);
                                     }
                                 } else {
@@ -2283,7 +2277,7 @@ namespace VehicleDispatch {
                                 }
                                 break;
                             case int i when i <= 260:
-                                if(setControlEx.GetControlFromPosition(0, 4) == null) {
+                                if (setControlEx.GetControlFromPosition(0, 4) == null) {
                                     try {
                                         // VehicleDispatchDetailにUPDATE
                                         _vehicleDispatchDetailDao.MoveStaffLabel(operationDate: DateTimePickerJpExOperationDate.GetValue(),
@@ -2298,7 +2292,7 @@ namespace VehicleDispatch {
                                         // dragItemを移動
                                         setControlEx.Controls.Add(dragItem, 0, 4);
                                         ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
-                                    } catch(Exception exception) {
+                                    } catch (Exception exception) {
                                         MessageBox.Show(exception.Message);
                                     }
                                 } else {
@@ -2306,7 +2300,7 @@ namespace VehicleDispatch {
                                 }
                                 break;
                             case int i when i <= 300:
-                                if(setControlEx.GetControlFromPosition(0, 5) == null) {
+                                if (setControlEx.GetControlFromPosition(0, 5) == null) {
                                     try {
                                         // VehicleDispatchDetailにUPDATE
                                         _vehicleDispatchDetailDao.MoveStaffLabel(DateTimePickerJpExOperationDate.GetValue(),
@@ -2321,7 +2315,7 @@ namespace VehicleDispatch {
                                         // dragItemを移動
                                         setControlEx.Controls.Add(dragItem, 0, 5);
                                         ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
-                                    } catch(Exception exception) {
+                                    } catch (Exception exception) {
                                         MessageBox.Show(exception.Message);
                                     }
                                 } else {
@@ -2335,12 +2329,12 @@ namespace VehicleDispatch {
                      * FlowLayoutPanelExFreeからの移動
                      */
                     case "FlowLayoutPanelExFree":
-                        switch(point.Y) {
+                        switch (point.Y) {
                             case int i when i <= 140:
                                 ToolStripStatusLabelStatus.Text = string.Concat("SetLabelかCarLabel");
                                 break;
                             case int i when i <= 180:
-                                if(setControlEx.GetControlFromPosition(0, 2) == null) {
+                                if (setControlEx.GetControlFromPosition(0, 2) == null) {
                                     try {
                                         // VehicleDispatchDetailにUPDATE
                                         _vehicleDispatchDetailDao.MoveStaffLabel(DateTimePickerJpExOperationDate.GetValue(),
@@ -2355,7 +2349,7 @@ namespace VehicleDispatch {
                                         // dragItemを移動
                                         setControlEx.Controls.Add(dragItem, 0, 2);
                                         ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
-                                    } catch(Exception exception) {
+                                    } catch (Exception exception) {
                                         MessageBox.Show(exception.Message);
                                     }
 
@@ -2364,7 +2358,7 @@ namespace VehicleDispatch {
                                 }
                                 break;
                             case int i when i <= 220:
-                                if(setControlEx.GetControlFromPosition(0, 3) == null) {
+                                if (setControlEx.GetControlFromPosition(0, 3) == null) {
                                     try {
                                         // VehicleDispatchDetailにUPDATE
                                         _vehicleDispatchDetailDao.MoveStaffLabel(DateTimePickerJpExOperationDate.GetValue(),
@@ -2378,7 +2372,7 @@ namespace VehicleDispatch {
                                                                                    ((StaffMasterVo)dragItem.Tag).Staff_code);
                                         setControlEx.Controls.Add(dragItem, 0, 3);
                                         ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
-                                    } catch(Exception exception) {
+                                    } catch (Exception exception) {
                                         MessageBox.Show(exception.Message);
                                     }
                                 } else {
@@ -2386,7 +2380,7 @@ namespace VehicleDispatch {
                                 }
                                 break;
                             case int i when i <= 260:
-                                if(setControlEx.GetControlFromPosition(0, 4) == null) {
+                                if (setControlEx.GetControlFromPosition(0, 4) == null) {
                                     try {
                                         // VehicleDispatchDetailにUPDATE
                                         _vehicleDispatchDetailDao.MoveStaffLabel(DateTimePickerJpExOperationDate.GetValue(),
@@ -2400,7 +2394,7 @@ namespace VehicleDispatch {
                                                                                    ((StaffMasterVo)dragItem.Tag).Staff_code);
                                         setControlEx.Controls.Add(dragItem, 0, 4);
                                         ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
-                                    } catch(Exception exception) {
+                                    } catch (Exception exception) {
                                         MessageBox.Show(exception.Message);
                                     }
                                 } else {
@@ -2408,7 +2402,7 @@ namespace VehicleDispatch {
                                 }
                                 break;
                             case int i when i <= 300:
-                                if(setControlEx.GetControlFromPosition(0, 5) == null) {
+                                if (setControlEx.GetControlFromPosition(0, 5) == null) {
                                     try {
                                         // VehicleDispatchDetailにUPDATE
                                         _vehicleDispatchDetailDao.MoveStaffLabel(DateTimePickerJpExOperationDate.GetValue(),
@@ -2422,7 +2416,7 @@ namespace VehicleDispatch {
                                                                                    ((StaffMasterVo)dragItem.Tag).Staff_code);
                                         setControlEx.Controls.Add(dragItem, 0, 5);
                                         ToolStripStatusLabelStatus.Text = string.Concat(((StaffMasterVo)dragItem.Tag).Display_name, " を処理しました");
-                                    } catch(Exception exception) {
+                                    } catch (Exception exception) {
                                         MessageBox.Show(exception.Message);
                                     }
                                 } else {
@@ -2459,7 +2453,7 @@ namespace VehicleDispatch {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void SetLabelEx_DoubleClick(object? sender, EventArgs e) {
-            if(sender is not null) {
+            if (sender is not null) {
                 // SetControlExを退避
                 EvacuationSetControlEx = (SetControlEx)((SetLabelEx)sender).Parent;
                 // SetLabelExを退避
@@ -2478,7 +2472,7 @@ namespace VehicleDispatch {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void SetLabelEx_MouseMove(object? sender, MouseEventArgs e) {
-            if(sender is not null && e.Button == MouseButtons.Left)
+            if (sender is not null && e.Button == MouseButtons.Left)
                 ((SetLabelEx)sender).DoDragDrop(sender, DragDropEffects.Move);
         }
 
@@ -2492,7 +2486,7 @@ namespace VehicleDispatch {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void CarLabelEx_MouseMove(object? sender, MouseEventArgs e) {
-            if(sender is not null && e.Button == MouseButtons.Left)
+            if (sender is not null && e.Button == MouseButtons.Left)
                 ((CarLabelEx)sender).DoDragDrop(sender, DragDropEffects.Move);
         }
 
@@ -2502,12 +2496,12 @@ namespace VehicleDispatch {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void StaffLabelEx_Click(object? sender, EventArgs e) {
-            if(sender is not null) {
+            if (sender is not null) {
                 /*
                  * tenkoFlag → True:StaffLabelExをClickしたら点呼時間を記録
                  */
-                if(_tenkoModeFlag) {
-                    if((ModifierKeys & Keys.Shift) == Keys.Shift) {
+                if (_tenkoModeFlag) {
+                    if ((ModifierKeys & Keys.Shift) == Keys.Shift) {
                         SetControlEx setControlEx = (SetControlEx)((StaffLabelEx)sender).Parent;
                         StaffLabelEx staffLabelEx = (StaffLabelEx)sender;
                         /*
@@ -2520,7 +2514,7 @@ namespace VehicleDispatch {
                                                                          tableLayoutPanelCellPosition.Row,
                                                                          staffLabelEx.GetRollCallFlag);
                             staffLabelEx.SetRollCallFlag(!staffLabelEx.GetRollCallFlag);
-                        } catch(Exception exception) {
+                        } catch (Exception exception) {
                             MessageBox.Show(exception.Message);
                         }
                         ToolStripStatusLabelStatus.Text = string.Concat(" ", ((StaffMasterVo)staffLabelEx.Tag).Display_name, " の点呼記録を変更しました");
@@ -2537,7 +2531,7 @@ namespace VehicleDispatch {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void StaffLabelEx_MouseMove(object? sender, MouseEventArgs e) {
-            if(sender is not null && e.Button == MouseButtons.Left)
+            if (sender is not null && e.Button == MouseButtons.Left)
                 ((StaffLabelEx)sender).DoDragDrop(sender, DragDropEffects.Move);
         }
 
@@ -2557,9 +2551,9 @@ namespace VehicleDispatch {
             /*
              * DragアイテムがSetLabelExの場合
              */
-            if(e.Data is not null && e.Data.GetDataPresent(typeof(SetLabelEx))) {
+            if (e.Data is not null && e.Data.GetDataPresent(typeof(SetLabelEx))) {
                 SetLabelEx dragItem = (SetLabelEx)e.Data.GetData(typeof(SetLabelEx));
-                switch(dragItem.Parent.Name) {
+                switch (dragItem.Parent.Name) {
                     case "SetControlEx":
                     case "FlowLayoutPanelExFree":
                         break;
@@ -2569,15 +2563,15 @@ namespace VehicleDispatch {
             /*
              * DragアイテムがCarLabelExの場合
              */
-            if(e.Data is not null && e.Data.GetDataPresent(typeof(CarLabelEx))) {
+            if (e.Data is not null && e.Data.GetDataPresent(typeof(CarLabelEx))) {
                 CarLabelEx dragItem = (CarLabelEx)e.Data.GetData(typeof(CarLabelEx));
-                switch(dragItem.Parent.Name) {
+                switch (dragItem.Parent.Name) {
                     case "SetControlEx":
-                        switch(((FlowLayoutPanelEx)sender).Name) {
+                        switch (((FlowLayoutPanelEx)sender).Name) {
                             case "FlowLayoutPanelExCar":
                                 try {
                                     _vehicleDispatchDetailDao.ResetCarLabel(DateTimePickerJpExOperationDate.GetValue(), Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag));
-                                } catch(Exception exception) {
+                                } catch (Exception exception) {
                                     MessageBox.Show(exception.Message);
                                 }
                                 break;
@@ -2594,7 +2588,7 @@ namespace VehicleDispatch {
                                                                            Convert.ToInt32(((FlowLayoutPanelEx)sender).Tag));
                                     _vehicleDispatchDetailDao.ResetCarLabel(DateTimePickerJpExOperationDate.GetValue(),
                                                                             Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag));
-                                } catch(Exception exception) {
+                                } catch (Exception exception) {
                                     MessageBox.Show(exception.Message);
                                 }
                                 break;
@@ -2603,7 +2597,7 @@ namespace VehicleDispatch {
                         ToolStripStatusLabelStatus.Text = string.Concat(((CarMasterVo)dragItem.Tag).Registration_number, " を処理しました");
                         break;
                     case "FlowLayoutPanelExCar":
-                        switch(((FlowLayoutPanelEx)sender).Name) {
+                        switch (((FlowLayoutPanelEx)sender).Name) {
                             case "FlowLayoutPanelExChecking":
                             case "FlowLayoutPanelExRepair":
                             case "FlowLayoutPanelExVehicleInspection":
@@ -2613,7 +2607,7 @@ namespace VehicleDispatch {
                                     _vehicleDispatchDetailCarDao.InsertNewCar(DateTimePickerJpExOperationDate.GetValue(),
                                                                               Convert.ToInt32(((FlowLayoutPanelEx)sender).Tag),
                                                                               ((CarMasterVo)dragItem.Tag).Car_code);
-                                } catch(Exception exception) {
+                                } catch (Exception exception) {
                                     MessageBox.Show(exception.Message);
                                 }
                                 break;
@@ -2625,14 +2619,14 @@ namespace VehicleDispatch {
                     case "FlowLayoutPanelExRepair":
                     case "FlowLayoutPanelExVehicleInspection":
                     case "FlowLayoutPanelExFree":
-                        switch(((FlowLayoutPanelEx)sender).Name) {
+                        switch (((FlowLayoutPanelEx)sender).Name) {
                             case "FlowLayoutPanelExCar":
                                 try {
                                     // vehicle_dispatch_detail_carからDELETE
                                     _vehicleDispatchDetailCarDao.DeleteCar(DateTimePickerJpExOperationDate.GetValue(),
                                                                            Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
                                                                            ((CarMasterVo)dragItem.Tag).Car_code);
-                                } catch(Exception exception) {
+                                } catch (Exception exception) {
                                     MessageBox.Show(exception.Message);
                                 }
                                 break;
@@ -2645,7 +2639,7 @@ namespace VehicleDispatch {
                                                                            Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
                                                                            ((CarMasterVo)dragItem.Tag).Car_code,
                                                                            Convert.ToInt32(((FlowLayoutPanelEx)sender).Tag));
-                                } catch(Exception exception) {
+                                } catch (Exception exception) {
                                     MessageBox.Show(exception.Message);
                                 }
                                 break;
@@ -2658,11 +2652,11 @@ namespace VehicleDispatch {
             /*
              * DragアイテムがStaffLabelExの場合
              */
-            if(e.Data is not null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+            if (e.Data is not null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
                 StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
-                switch(dragItem.Parent.Name) {
+                switch (dragItem.Parent.Name) {
                     case "SetControlEx":
-                        switch(((FlowLayoutPanelEx)sender).Name) {
+                        switch (((FlowLayoutPanelEx)sender).Name) {
                             case "FlowLayoutPanelExFullEmployees":
                             case "FlowLayoutPanelExLongTerm":
                             case "FlowLayoutPanelExPartTime":
@@ -2672,7 +2666,7 @@ namespace VehicleDispatch {
                                                                               Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
                                                                               ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
                                     dragItem.SetNoteFlag(false);
-                                } catch(Exception exception) {
+                                } catch (Exception exception) {
                                     MessageBox.Show(exception.Message);
                                 }
                                 break;
@@ -2696,7 +2690,7 @@ namespace VehicleDispatch {
                                     _vehicleDispatchDetailDao.ResetStaffLabel(DateTimePickerJpExOperationDate.GetValue(),
                                                                               Convert.ToInt32(((SetControlEx)dragItem.Parent).Tag),
                                                                               ((SetControlEx)dragItem.Parent).GetPositionFromControl(dragItem).Row);
-                                } catch(Exception exception) {
+                                } catch (Exception exception) {
                                     MessageBox.Show(exception.Message);
                                 }
 
@@ -2707,7 +2701,7 @@ namespace VehicleDispatch {
                     case "FlowLayoutPanelExLongTerm":
                     case "FlowLayoutPanelExPartTime":
                     case "FlowLayoutPanelExWindow":
-                        switch(((FlowLayoutPanelEx)sender).Name) {
+                        switch (((FlowLayoutPanelEx)sender).Name) {
                             case "FlowLayoutPanelExFullSalaried":
                             case "FlowLayoutPanelExFullClose":
                             case "FlowLayoutPanelExFullDesignation":
@@ -2722,7 +2716,7 @@ namespace VehicleDispatch {
                                     _vehicleDispatchDetailStaffDao.InsertNewStaff(DateTimePickerJpExOperationDate.GetValue(),
                                                                                   Convert.ToInt32(((FlowLayoutPanelEx)sender).Tag),
                                                                                   ((StaffMasterVo)dragItem.Tag).Staff_code);
-                                } catch(Exception exception) {
+                                } catch (Exception exception) {
                                     MessageBox.Show(exception.Message);
                                 }
                                 break;
@@ -2737,7 +2731,7 @@ namespace VehicleDispatch {
                     case "FlowLayoutPanelExTelephone":
                     case "FlowLayoutPanelExWithoutNotice":
                     case "FlowLayoutPanelExFree":
-                        switch(((FlowLayoutPanelEx)sender).Name) {
+                        switch (((FlowLayoutPanelEx)sender).Name) {
                             case "FlowLayoutPanelExFullEmployees":
                             case "FlowLayoutPanelExLongTerm":
                             case "FlowLayoutPanelExPartTime":
@@ -2747,7 +2741,7 @@ namespace VehicleDispatch {
                                     _vehicleDispatchDetailStaffDao.DeleteStaff(DateTimePickerJpExOperationDate.GetValue(),
                                                                                Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
                                                                                ((StaffMasterVo)dragItem.Tag).Staff_code);
-                                } catch(Exception exception) {
+                                } catch (Exception exception) {
                                     MessageBox.Show(exception.Message);
                                 }
 
@@ -2767,7 +2761,7 @@ namespace VehicleDispatch {
                                                                                Convert.ToInt32(((FlowLayoutPanelEx)dragItem.Parent).Tag),
                                                                                ((StaffMasterVo)dragItem.Tag).Staff_code,
                                                                                Convert.ToInt32(((FlowLayoutPanelEx)sender).Tag));
-                                } catch(Exception exception) {
+                                } catch (Exception exception) {
                                     MessageBox.Show(exception.Message);
                                 }
                                 break;
@@ -2798,48 +2792,48 @@ namespace VehicleDispatch {
             // All   :上の3つを組み合わせたもの
             // Link  :データのリンクがドロップ先に作成されようとしている状態
             // None  :いかなるデータもドロップ先が受け付けようとしない状態
-            switch(((FlowLayoutPanelEx)sender).Name) {
+            switch (((FlowLayoutPanelEx)sender).Name) {
                 case "SetControlEx":
                     /*
                      * SetLabelExはSetControlEx上にしかDropすることないよね
                      */
-                    if(e.Data is not null && e.Data.GetDataPresent(typeof(SetLabelEx))) {
+                    if (e.Data is not null && e.Data.GetDataPresent(typeof(SetLabelEx))) {
                         e.Effect = DragDropEffects.Move;
                     } else {
                         e.Effect = DragDropEffects.None;
                     }
                     break;
                 case "FlowLayoutPanelExFullEmployees":
-                    if(e.Data is not null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+                    if (e.Data is not null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
                         StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
-                        if(((StaffMasterVo)dragItem.Tag).Belongs == 10 || ((StaffMasterVo)dragItem.Tag).Belongs == 11)
+                        if (((StaffMasterVo)dragItem.Tag).Belongs == 10 || ((StaffMasterVo)dragItem.Tag).Belongs == 11)
                             e.Effect = DragDropEffects.Move;
                     } else {
                         e.Effect = DragDropEffects.None;
                     }
                     break;
                 case "FlowLayoutPanelExLongTerm":
-                    if(e.Data is not null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+                    if (e.Data is not null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
                         StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
-                        if((((StaffMasterVo)dragItem.Tag).Belongs == 20 || ((StaffMasterVo)dragItem.Tag).Belongs == 21) && ((StaffMasterVo)dragItem.Tag).Job_form == 10)
+                        if ((((StaffMasterVo)dragItem.Tag).Belongs == 20 || ((StaffMasterVo)dragItem.Tag).Belongs == 21) && ((StaffMasterVo)dragItem.Tag).Job_form == 10)
                             e.Effect = DragDropEffects.Move;
                     } else {
                         e.Effect = DragDropEffects.None;
                     }
                     break;
                 case "FlowLayoutPanelExPartTime":
-                    if(e.Data is not null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+                    if (e.Data is not null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
                         StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
-                        if(((StaffMasterVo)dragItem.Tag).Belongs == 12 || ((StaffMasterVo)dragItem.Tag).Job_form == 12)
+                        if (((StaffMasterVo)dragItem.Tag).Belongs == 12 || ((StaffMasterVo)dragItem.Tag).Job_form == 12)
                             e.Effect = DragDropEffects.Move;
                     } else {
                         e.Effect = DragDropEffects.None;
                     }
                     break;
                 case "FlowLayoutPanelExWindow":
-                    if(e.Data is not null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+                    if (e.Data is not null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
                         StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
-                        if((((StaffMasterVo)dragItem.Tag).Belongs == 20 || ((StaffMasterVo)dragItem.Tag).Belongs == 21) && ((StaffMasterVo)dragItem.Tag).Job_form == 11)
+                        if ((((StaffMasterVo)dragItem.Tag).Belongs == 20 || ((StaffMasterVo)dragItem.Tag).Belongs == 21) && ((StaffMasterVo)dragItem.Tag).Job_form == 11)
                             e.Effect = DragDropEffects.Move;
                     } else {
                         e.Effect = DragDropEffects.None;
@@ -2849,7 +2843,7 @@ namespace VehicleDispatch {
                 case "FlowLayoutPanelExChecking":
                 case "FlowLayoutPanelExRepair":
                 case "FlowLayoutPanelExVehicleInspection":
-                    if(e.Data is not null && e.Data.GetDataPresent(typeof(CarLabelEx))) {
+                    if (e.Data is not null && e.Data.GetDataPresent(typeof(CarLabelEx))) {
                         e.Effect = DragDropEffects.Move;
                     } else {
                         e.Effect = DragDropEffects.None;
@@ -2858,9 +2852,9 @@ namespace VehicleDispatch {
                 case "FlowLayoutPanelExFullSalaried":
                 case "FlowLayoutPanelExFullClose":
                 case "FlowLayoutPanelExFullDesignation":
-                    if(e.Data is not null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+                    if (e.Data is not null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
                         StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
-                        if(((StaffMasterVo)dragItem.Tag).Belongs == 20 || ((StaffMasterVo)dragItem.Tag).Belongs == 21)
+                        if (((StaffMasterVo)dragItem.Tag).Belongs == 20 || ((StaffMasterVo)dragItem.Tag).Belongs == 21)
                             e.Effect = DragDropEffects.Move;
                     } else {
                         e.Effect = DragDropEffects.None;
@@ -2869,9 +2863,9 @@ namespace VehicleDispatch {
                 case "FlowLayoutPanelExPartSalaried":
                 case "FlowLayoutPanelExPartClose":
                 case "FlowLayoutPanelExPartDesignation":
-                    if(e.Data is not null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+                    if (e.Data is not null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
                         StaffLabelEx dragItem = (StaffLabelEx)e.Data.GetData(typeof(StaffLabelEx));
-                        if(((StaffMasterVo)dragItem.Tag).Belongs == 12)
+                        if (((StaffMasterVo)dragItem.Tag).Belongs == 12)
                             e.Effect = DragDropEffects.Move;
                     } else {
                         e.Effect = DragDropEffects.None;
@@ -2879,14 +2873,14 @@ namespace VehicleDispatch {
                     break;
                 case "FlowLayoutPanelExTelephone":
                 case "FlowLayoutPanelExWithoutNotice":
-                    if(e.Data is not null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
+                    if (e.Data is not null && e.Data.GetDataPresent(typeof(StaffLabelEx))) {
                         e.Effect = DragDropEffects.Move;
                     } else {
                         e.Effect = DragDropEffects.None;
                     }
                     break;
                 case "FlowLayoutPanelExFree":
-                    if(e.Data is not null && (e.Data.GetDataPresent(typeof(CarLabelEx)) || e.Data.GetDataPresent(typeof(StaffLabelEx)))) {
+                    if (e.Data is not null && (e.Data.GetDataPresent(typeof(CarLabelEx)) || e.Data.GetDataPresent(typeof(StaffLabelEx)))) {
                         e.Effect = DragDropEffects.Move;
                     } else {
                         e.Effect = DragDropEffects.None;
@@ -2931,8 +2925,8 @@ namespace VehicleDispatch {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void TabControlExLeft_Click(object sender, EventArgs e) {
-            if(_TabControlLeftOpenFlag) {
-                if(((TabControlEx)sender).SelectedIndex == _TabControlLeftOpenBeforeIndex) {
+            if (_TabControlLeftOpenFlag) {
+                if (((TabControlEx)sender).SelectedIndex == _TabControlLeftOpenBeforeIndex) {
                     _TabControlLeftOpenFlag = false;
                     SetTableLayoutPanelLeftSide(false);
                 } else {
@@ -2951,8 +2945,8 @@ namespace VehicleDispatch {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void TabControlExRight_Click(object sender, EventArgs e) {
-            if(_TabControlRightOpenFlag) {
-                if(((TabControlEx)sender).SelectedIndex == _TabControlRightOpenBeforeIndex) {
+            if (_TabControlRightOpenFlag) {
+                if (((TabControlEx)sender).SelectedIndex == _TabControlRightOpenBeforeIndex) {
                     _TabControlRightOpenFlag = false;
                     SetTableLayoutPanelRightSide(false);
                 } else {
@@ -2976,7 +2970,7 @@ namespace VehicleDispatch {
             /*
              * 画像
              */
-            if(captureImage is not null)
+            if (captureImage is not null)
                 e.Graphics?.DrawImage(captureImage, 0, 100, 1400, 740);
             /*
              * 日付
@@ -2998,10 +2992,10 @@ namespace VehicleDispatch {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ToolStripMenuItemEquipment_Click(object sender, EventArgs e) {
-            if(EvacuationStaffLabelEx is not null) {
+            if (EvacuationStaffLabelEx is not null) {
                 string affiliation = ((ToolStripMenuItem)sender).Text;
                 StaffMasterVo staffMasterVo = (StaffMasterVo)EvacuationStaffLabelEx.Tag;
-                SupplyOut supplyOut = new SupplyOut(_connectionVo,affiliation,staffMasterVo);
+                SupplyOut supplyOut = new SupplyOut(_connectionVo, affiliation, staffMasterVo);
                 supplyOut.Show(this);
             } else {
                 MessageBox.Show("EvacuationStaffLabelEx is Null", MessageText.Message101, MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -3024,7 +3018,7 @@ namespace VehicleDispatch {
         /// <param name="e"></param>
         private void VehicleDispatchBoad_FormClosing(object sender, FormClosingEventArgs e) {
             var dialogResult = MessageBox.Show(MessageText.Message102, MessageText.Message101, MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-            switch(dialogResult) {
+            switch (dialogResult) {
                 case DialogResult.OK:
                     e.Cancel = false;
                     Dispose();

@@ -104,7 +104,7 @@
             // 
             // SpreadList
             // 
-            SpreadList.AccessibleDescription = "SpreadList, 健康診断用リスト, Row 0, Column 0";
+            SpreadList.AccessibleDescription = "SpreadList, 運転者リスト, Row 0, Column 0";
             SpreadList.Dock = DockStyle.Fill;
             SpreadList.Font = new Font("ＭＳ Ｐゴシック", 11F, FontStyle.Regular, GraphicsUnit.Point);
             SpreadList.Location = new Point(3, 118);
@@ -632,10 +632,10 @@
         private TabPage tabPage9;
         private TabPage tabPage10;
         private TabPage tabPage11;
+        private ToolStripMenuItem ToolStripMenuItemNew;
+        private ToolStripMenuItem ToolStripMenuItemNewStaff;
         private FarPoint.Win.Spread.SheetView SheetViewList;
         private FarPoint.Win.Spread.SheetView SheetViewMedical;
         private FarPoint.Win.Spread.SheetView SheetViewDriver;
-        private ToolStripMenuItem ToolStripMenuItemNew;
-        private ToolStripMenuItem ToolStripMenuItemNewStaff;
     }
 }

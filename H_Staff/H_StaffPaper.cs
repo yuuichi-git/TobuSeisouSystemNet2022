@@ -1,6 +1,8 @@
 ﻿/*
  * 2024-02-16
  */
+using System.Drawing.Printing;
+
 using FarPoint.Win.Spread;
 
 using H_Dao;
@@ -626,5 +628,52 @@ namespace H_Staff {
             SpreadStaffRegisterTail.ResumeLayout(true);
         }
 
+        /// <summary>
+        /// ToolStripMenuItemPrintA4_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItemPrintA4_Click(object sender, EventArgs e) {
+            PrintDocument _printDocument;
+            _printDocument = new PrintDocument();
+            _printDocument.PrintPage += new PrintPageEventHandler(PrintDocument_PrintPage);
+            // 出力先プリンタを指定します。
+            //printDocument.PrinterSettings.PrinterName = "(PrinterName)";
+            // 印刷部数を指定します。
+            _printDocument.PrinterSettings.Copies = 1;
+            // 両面印刷に設定します。
+            _printDocument.PrinterSettings.Duplex = Duplex.Vertical;
+            // カラー印刷に設定します。
+            _printDocument.PrinterSettings.DefaultPageSettings.Color = true;
+            _printDocument.Print();
+        }
+
+        /// <summary>
+        /// printDocument_PrintPage
+        /// </summary>
+        private int curPageNumber = 0; // 現在のページ番号
+        private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e) {
+            if (curPageNumber == 0) {
+                // 印刷ページ（1ページ目）の描画を行う
+                Rectangle rectangle = new Rectangle(e.PageBounds.X, e.PageBounds.Y, e.PageBounds.Width, e.PageBounds.Height);
+                // 使用するページ数を計算
+                //int cnt = SpreadStaffRegisterHead.GetOwnerPrintPageCount(e.Graphics, rectangle, 0);
+                // e.Graphicsへ出力
+                SpreadStaffRegisterHead.OwnerPrintDraw(e.Graphics, rectangle, 0, 1);
+                // 印刷継続を指定
+                e.HasMorePages = true;
+            } else {
+                // 印刷ページ（2ページ目）の描画を行う
+                Rectangle rectangle = new Rectangle(e.PageBounds.X, e.PageBounds.Y, e.PageBounds.Width, e.PageBounds.Height);
+                // 使用するページ数を計算
+                //int cnt = SpreadStaffRegisterHead.GetOwnerPrintPageCount(e.Graphics, rectangle, 0);
+                // e.Graphicsへ出力
+                SpreadStaffRegisterTail.OwnerPrintDraw(e.Graphics, rectangle, 0, 1);
+                // 印刷終了を指定
+                e.HasMorePages = false;
+            }
+            //ページ番号を繰り上げる
+            curPageNumber++;
+        }
     }
 }

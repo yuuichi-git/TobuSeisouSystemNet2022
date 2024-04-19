@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "H_AccountingParttime": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

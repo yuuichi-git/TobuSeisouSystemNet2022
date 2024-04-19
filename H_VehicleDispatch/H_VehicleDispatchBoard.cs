@@ -13,9 +13,9 @@ using H_RollColl;
 
 using H_Staff;
 
-using Vo;
-
 using StockBox;
+
+using Vo;
 
 namespace H_VehicleDispatch {
     public partial class H_VehicleDispatchBoard : Form {
@@ -155,7 +155,7 @@ namespace H_VehicleDispatch {
                  * StaffCode3
                  * StaffCode4
                  */
-                H_VehicleDispatchVo? hVehicleDispatchVo = listHVehicleDispatchVo.Find(x => x.SetCode == hVehicleDispatchHeadVo.SetCode);
+                H_VehicleDispatchVo hVehicleDispatchVo = listHVehicleDispatchVo.Find(x => x.SetCode == hVehicleDispatchHeadVo.SetCode);
                 /*
                  * SetLabel作成
                  * SetCodeがゼロの場合Nullを返す

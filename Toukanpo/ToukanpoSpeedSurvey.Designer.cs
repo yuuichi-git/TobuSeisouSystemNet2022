@@ -37,7 +37,7 @@
             StatusStrip1 = new StatusStrip();
             ToolStripStatusLabel1 = new ToolStripStatusLabel();
             ToolStripStatusLabel2 = new ToolStripStatusLabel();
-            SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("resource1"));
+            SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("TableLayoutPanel1.Controls"));
             SheetViewList = SpreadList.GetSheet(0);
             TableLayoutPanel1.SuspendLayout();
             MenuStrip1.SuspendLayout();

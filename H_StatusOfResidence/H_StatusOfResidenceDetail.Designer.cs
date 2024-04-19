@@ -129,6 +129,7 @@
             StatusStrip1.Location = new Point(0, 739);
             StatusStrip1.Name = "StatusStrip1";
             StatusStrip1.Size = new Size(1054, 22);
+            StatusStrip1.SizingGrip = false;
             StatusStrip1.TabIndex = 1;
             StatusStrip1.Text = "statusStrip1";
             // 
@@ -214,6 +215,7 @@
             HButtonExTailDelete.Text = "Delete";
             HButtonExTailDelete.TextDirectionVertical = "";
             HButtonExTailDelete.UseVisualStyleBackColor = true;
+            HButtonExTailDelete.Click += HButtonEx_Click;
             // 
             // HButtonExTailClip
             // 
@@ -224,6 +226,7 @@
             HButtonExTailClip.Text = "Clip";
             HButtonExTailClip.TextDirectionVertical = "";
             HButtonExTailClip.UseVisualStyleBackColor = true;
+            HButtonExTailClip.Click += HButtonEx_Click;
             // 
             // HButtonExHeadDelete
             // 
@@ -234,6 +237,7 @@
             HButtonExHeadDelete.Text = "Delete";
             HButtonExHeadDelete.TextDirectionVertical = "";
             HButtonExHeadDelete.UseVisualStyleBackColor = true;
+            HButtonExHeadDelete.Click += HButtonEx_Click;
             // 
             // HButtonExHeadClip
             // 
@@ -244,6 +248,7 @@
             HButtonExHeadClip.Text = "Clip";
             HButtonExHeadClip.TextDirectionVertical = "";
             HButtonExHeadClip.UseVisualStyleBackColor = true;
+            HButtonExHeadClip.Click += HButtonEx_Click;
             // 
             // HPictureBoxExTail
             // 

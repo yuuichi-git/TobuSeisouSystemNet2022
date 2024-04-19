@@ -36,6 +36,8 @@
             SheetStaffRegisterHead = SpreadStaffRegisterHead.GetSheet(0);
             SpreadStaffRegisterTail = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("HTableLayoutPanelExMiddle.Controls1"));
             SheetStaffRegisterTail = SpreadStaffRegisterTail.GetSheet(0);
+            ToolStripMenuItemPrint = new ToolStripMenuItem();
+            ToolStripMenuItemPrintA4 = new ToolStripMenuItem();
             HTableLayoutPanelExBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -64,7 +66,7 @@
             // 
             // MenuStrip1
             // 
-            MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemHelp });
+            MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemPrint, ToolStripMenuItemHelp });
             MenuStrip1.Location = new Point(0, 0);
             MenuStrip1.Name = "MenuStrip1";
             MenuStrip1.Size = new Size(1902, 24);
@@ -140,6 +142,20 @@
             SpreadStaffRegisterTail.Size = new Size(942, 1156);
             SpreadStaffRegisterTail.TabIndex = 1;
             // 
+            // ToolStripMenuItemPrint
+            // 
+            ToolStripMenuItemPrint.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemPrintA4 });
+            ToolStripMenuItemPrint.Name = "ToolStripMenuItemPrint";
+            ToolStripMenuItemPrint.Size = new Size(43, 20);
+            ToolStripMenuItemPrint.Text = "印刷";
+            // 
+            // ToolStripMenuItemPrintA4
+            // 
+            ToolStripMenuItemPrintA4.Name = "ToolStripMenuItemPrintA4";
+            ToolStripMenuItemPrintA4.Size = new Size(180, 22);
+            ToolStripMenuItemPrintA4.Text = "A4用紙で印刷する";
+            ToolStripMenuItemPrintA4.Click += ToolStripMenuItemPrintA4_Click;
+            // 
             // HStaffPaper
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -176,5 +192,7 @@
         private FarPoint.Win.Spread.FpSpread SpreadStaffRegisterTail;
         private FarPoint.Win.Spread.SheetView SheetStaffRegisterTail;
         private FarPoint.Win.Spread.SheetView SheetStaffRegisterHead;
+        private ToolStripMenuItem ToolStripMenuItemPrint;
+        private ToolStripMenuItem ToolStripMenuItemPrintA4;
     }
 }

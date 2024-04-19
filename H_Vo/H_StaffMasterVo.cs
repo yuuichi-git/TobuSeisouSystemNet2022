@@ -7,7 +7,7 @@ namespace Vo {
      */
     [Serializable] // ←DeepCopyする場合には必要
     public class H_StaffMasterVo {
-        private readonly DateTime _defaultDateTime = new DateTime(1900,01,01);
+        private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
 
         private int _staffCode;
         private int _unionCode;
@@ -36,6 +36,8 @@ namespace Vo {
         private H_LicenseMasterVo _hLicenseMasterVo;
         private List<H_StaffHistoryVo> _listHStaffHistoryVo;
         private List<H_StaffExperienceVo> _listHStaffExperienceVo;
+        private bool _contractFlag;
+        private DateTime _contractDate;
         private bool _retirementFlag;
         private DateTime _retirementDate;
         private string _retirementNote;
@@ -100,6 +102,8 @@ namespace Vo {
             _hLicenseMasterVo = new H_LicenseMasterVo();
             _listHStaffHistoryVo = new List<H_StaffHistoryVo>();
             _listHStaffExperienceVo = new List<H_StaffExperienceVo>();
+            _contractFlag = false;
+            _contractDate = _defaultDateTime;
             _retirementFlag = false;
             _retirementDate = _defaultDateTime;
             _retirementNote = string.Empty;
@@ -328,6 +332,21 @@ namespace Vo {
         public List<H_StaffExperienceVo> ListHStaffExperienceVo {
             get => _listHStaffExperienceVo;
             set => _listHStaffExperienceVo = value;
+        }
+        /// <summary>
+        /// 契約フラグ
+        /// true:契約期間が１年ではない場合 false:契約期間が１年(通常)
+        /// </summary>
+        public bool ContractFlag {
+            get => _contractFlag;
+            set => _contractFlag = value;
+        }
+        /// <summary>
+        /// 契約満了日
+        /// </summary>
+        public DateTime ContractDate {
+            get => _contractDate;
+            set => _contractDate = value;
         }
         /// <summary>
         /// 退職フラグ

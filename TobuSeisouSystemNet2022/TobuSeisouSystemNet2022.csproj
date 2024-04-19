@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows10.0.20348.0</TargetFramework>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <StartupObject>TobuSeisouSystemNet2022.Program</StartupObject>
@@ -27,6 +27,7 @@
     <ProjectReference Include="..\Certification\Certification.csproj" />
     <ProjectReference Include="..\Common\Common.csproj" />
     <ProjectReference Include="..\CommuterInsurance\CommuterInsurance.csproj" />
+    <ProjectReference Include="..\H_AccountingParttime\H_AccountingParttime.csproj" />
     <ProjectReference Include="..\H_Car\H_Car.csproj" />
     <ProjectReference Include="..\H_License\H_License.csproj" />
     <ProjectReference Include="..\H_Staff\H_Staff.csproj" />
@@ -34,13 +35,9 @@
     <ProjectReference Include="..\H_Toukanpo\H_Toukanpo.csproj" />
     <ProjectReference Include="..\H_VehicleDispatch\H_VehicleDispatch.csproj" />
     <ProjectReference Include="..\LegalTwelveItem\LegalTwelveItem.csproj" />
-    <ProjectReference Include="..\Production\Production.csproj" />
-    <ProjectReference Include="..\StaffDetail\StaffDetail.csproj" />
-    <ProjectReference Include="..\Staff\Staff.csproj" />
-    <ProjectReference Include="..\StatusOfResidence\StatusOfResidence.csproj" />
     <ProjectReference Include="..\Supply\Supply.csproj" />
     <ProjectReference Include="..\ToukaiDenshi\ToukaiDenshi.csproj" />
-    <ProjectReference Include="..\VehicleDispatchSheet\VehicleDispatchSheet.csproj" />
+    <ProjectReference Include="..\Toukanpo\Toukanpo.csproj" />
     <ProjectReference Include="..\VehicleDispatch\VehicleDispatch.csproj" />
     <ProjectReference Include="..\Vo\Vo.csproj" />
     <ProjectReference Include="..\WardSpreadsheet\WardSpreadsheet.csproj" />

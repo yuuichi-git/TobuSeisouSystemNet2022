@@ -42,6 +42,9 @@ namespace Toukanpo {
             ToolStripStatusLabel2.Text = "";
         }
 
+        public static void Main() {
+        }
+
         /// <summary>
         /// ButtonUpdate_Click
         /// </summary>
