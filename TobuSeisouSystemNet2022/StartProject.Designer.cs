@@ -140,8 +140,6 @@
             label42 = new Label();
             label37 = new Label();
             label38 = new Label();
-            label35 = new Label();
-            label36 = new Label();
             label33 = new Label();
             label34 = new Label();
             label32 = new Label();
@@ -163,6 +161,8 @@
             LabelDbName = new Label();
             HTabControlEx = new H_ControlEx.H_TabControlEx();
             TabPage2 = new TabPage();
+            label9 = new Label();
+            label10 = new Label();
             label7 = new Label();
             label8 = new Label();
             label5 = new Label();
@@ -601,8 +601,6 @@
             PanelRight.Controls.Add(label42);
             PanelRight.Controls.Add(label37);
             PanelRight.Controls.Add(label38);
-            PanelRight.Controls.Add(label35);
-            PanelRight.Controls.Add(label36);
             PanelRight.Controls.Add(label33);
             PanelRight.Controls.Add(label34);
             PanelRight.Controls.Add(label32);
@@ -617,6 +615,7 @@
             PanelRight.Name = "PanelRight";
             PanelRight.Size = new Size(294, 621);
             PanelRight.TabIndex = 4;
+            PanelRight.Paint += PanelRight_Paint;
             // 
             // label41
             // 
@@ -666,31 +665,6 @@
             label38.Size = new Size(209, 17);
             label38.TabIndex = 42;
             label38.Text = "　備品の支給量や在庫を管理します。";
-            // 
-            // label35
-            // 
-            label35.AutoSize = true;
-            label35.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label35.Location = new Point(9, 378);
-            label35.Name = "label35";
-            label35.Size = new Size(185, 17);
-            label35.TabIndex = 39;
-            label35.Tag = "ToukanpoSpeedSurvey";
-            label35.Text = "　東環保(速度超過実態調査表)";
-            label35.Click += Label_Click;
-            label35.MouseEnter += Label_MouseEnter;
-            label35.MouseLeave += Label_MouseLeave;
-            // 
-            // label36
-            // 
-            label36.AutoSize = true;
-            label36.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label36.ForeColor = Color.Gray;
-            label36.Location = new Point(9, 398);
-            label36.Name = "label36";
-            label36.Size = new Size(210, 17);
-            label36.TabIndex = 40;
-            label36.Text = "　交通事故防止強化月間の提出物。";
             // 
             // label33
             // 
@@ -940,6 +914,8 @@
             // 
             // TabPage2
             // 
+            TabPage2.Controls.Add(label9);
+            TabPage2.Controls.Add(label10);
             TabPage2.Controls.Add(label7);
             TabPage2.Controls.Add(label8);
             TabPage2.Controls.Add(label5);
@@ -970,12 +946,37 @@
             TabPage2.Text = "新型システム";
             TabPage2.UseVisualStyleBackColor = true;
             // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label9.ForeColor = Color.DarkGray;
+            label9.Location = new Point(288, 224);
+            label9.Name = "label9";
+            label9.Size = new Size(172, 17);
+            label9.TabIndex = 27;
+            label9.Text = "資源の収集実績を集計します。";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label10.Location = new Point(262, 208);
+            label10.Name = "label10";
+            label10.Size = new Size(125, 17);
+            label10.TabIndex = 26;
+            label10.Tag = "H_CollectionWeightTAITOUList";
+            label10.Text = "台東区収集量集計表";
+            label10.Click += Label_Click;
+            label10.MouseEnter += Label_MouseEnter;
+            label10.MouseLeave += Label_MouseLeave;
+            // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label7.ForeColor = Color.DarkGray;
-            label7.Location = new Point(310, 64);
+            label7.Location = new Point(288, 64);
             label7.Name = "label7";
             label7.Size = new Size(188, 17);
             label7.TabIndex = 25;
@@ -985,7 +986,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label8.Location = new Point(284, 48);
+            label8.Location = new Point(262, 48);
             label8.Name = "label8";
             label8.Size = new Size(159, 17);
             label8.TabIndex = 24;
@@ -1000,7 +1001,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label5.ForeColor = Color.DarkGray;
-            label5.Location = new Point(42, 388);
+            label5.Location = new Point(288, 144);
             label5.Name = "label5";
             label5.Size = new Size(196, 17);
             label5.TabIndex = 23;
@@ -1010,7 +1011,7 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label6.Location = new Point(16, 372);
+            label6.Location = new Point(262, 128);
             label6.Name = "label6";
             label6.Size = new Size(170, 17);
             label6.TabIndex = 22;
@@ -1025,7 +1026,7 @@
             label71.AutoSize = true;
             label71.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label71.ForeColor = Color.DarkGray;
-            label71.Location = new Point(42, 348);
+            label71.Location = new Point(288, 104);
             label71.Name = "label71";
             label71.Size = new Size(135, 17);
             label71.TabIndex = 21;
@@ -1035,7 +1036,7 @@
             // 
             label72.AutoSize = true;
             label72.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label72.Location = new Point(16, 332);
+            label72.Location = new Point(262, 88);
             label72.Name = "label72";
             label72.Size = new Size(172, 17);
             label72.TabIndex = 20;
@@ -1100,7 +1101,7 @@
             label63.AutoSize = true;
             label63.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label63.ForeColor = Color.DarkGray;
-            label63.Location = new Point(310, 24);
+            label63.Location = new Point(288, 24);
             label63.Name = "label63";
             label63.Size = new Size(140, 17);
             label63.TabIndex = 15;
@@ -1110,7 +1111,7 @@
             // 
             label64.AutoSize = true;
             label64.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label64.Location = new Point(284, 8);
+            label64.Location = new Point(262, 8);
             label64.Name = "label64";
             label64.Size = new Size(177, 17);
             label64.TabIndex = 14;
@@ -1125,17 +1126,17 @@
             label61.AutoSize = true;
             label61.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label61.ForeColor = Color.DarkGray;
-            label61.Location = new Point(40, 268);
+            label61.Location = new Point(288, 184);
             label61.Name = "label61";
-            label61.Size = new Size(139, 17);
+            label61.Size = new Size(252, 17);
             label61.TabIndex = 13;
-            label61.Text = "点呼記録簿を作成します";
+            label61.Text = "千代田区に配車された従事者の集計をします。";
             // 
             // label62
             // 
             label62.AutoSize = true;
             label62.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
-            label62.Location = new Point(14, 252);
+            label62.Location = new Point(262, 168);
             label62.Name = "label62";
             label62.Size = new Size(125, 17);
             label62.TabIndex = 12;
@@ -1491,8 +1492,6 @@
         private Label label32;
         private Label label33;
         private Label label34;
-        private Label label35;
-        private Label label36;
         private ToolStripMenuItem ToolStripMenuItemDataBase;
         private ToolStripMenuItem ToolStripMenuItemLocalDataBase;
         private Label label37;
@@ -1547,5 +1546,7 @@
         private Label label6;
         private Label label7;
         private Label label8;
+        private Label label9;
+        private Label label10;
     }
 }

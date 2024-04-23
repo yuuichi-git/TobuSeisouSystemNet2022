@@ -29,8 +29,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RollCall", "RollCall\RollCa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HighWayReport", "HighWayReport\HighWayReport.csproj", "{19ED15AF-AD54-4738-B2EA-E7B73CE16AA6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Toukanpo", "Toukanpo\Toukanpo.csproj", "{50F46F30-028D-4F32-A4C4-4E69A9EA9C7A}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Certification", "Certification\Certification.csproj", "{2B863556-B31A-4C11-ACD1-2BB96E5510C1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WardSpreadsheet", "WardSpreadsheet\WardSpreadsheet.csproj", "{73622704-7A67-4358-99CD-0883FD0905C3}"
@@ -73,7 +71,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H_License", "H_License\H_Li
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H_StatusOfResidence", "H_StatusOfResidence\H_StatusOfResidence.csproj", "{3A89C22A-6344-4C6E-986A-2A91F63AE404}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H_AccountingParttime", "H_AccountingParttime\H_AccountingParttime.csproj", "{83921E0C-9AF3-4E24-A366-B209DF76C6A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H_AccountingParttime", "H_AccountingParttime\H_AccountingParttime.csproj", "{83921E0C-9AF3-4E24-A366-B209DF76C6A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -187,14 +185,6 @@ Global
 		{19ED15AF-AD54-4738-B2EA-E7B73CE16AA6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{19ED15AF-AD54-4738-B2EA-E7B73CE16AA6}.Release|x64.ActiveCfg = Release|Any CPU
 		{19ED15AF-AD54-4738-B2EA-E7B73CE16AA6}.Release|x64.Build.0 = Release|Any CPU
-		{50F46F30-028D-4F32-A4C4-4E69A9EA9C7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{50F46F30-028D-4F32-A4C4-4E69A9EA9C7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{50F46F30-028D-4F32-A4C4-4E69A9EA9C7A}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{50F46F30-028D-4F32-A4C4-4E69A9EA9C7A}.Debug|x64.Build.0 = Debug|Any CPU
-		{50F46F30-028D-4F32-A4C4-4E69A9EA9C7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{50F46F30-028D-4F32-A4C4-4E69A9EA9C7A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{50F46F30-028D-4F32-A4C4-4E69A9EA9C7A}.Release|x64.ActiveCfg = Release|Any CPU
-		{50F46F30-028D-4F32-A4C4-4E69A9EA9C7A}.Release|x64.Build.0 = Release|Any CPU
 		{2B863556-B31A-4C11-ACD1-2BB96E5510C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2B863556-B31A-4C11-ACD1-2BB96E5510C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B863556-B31A-4C11-ACD1-2BB96E5510C1}.Debug|x64.ActiveCfg = Debug|Any CPU

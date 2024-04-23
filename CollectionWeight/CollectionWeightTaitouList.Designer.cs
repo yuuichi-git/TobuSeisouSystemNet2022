@@ -102,7 +102,7 @@
             // ToolStripMenuItemPrintting
             // 
             ToolStripMenuItemPrintting.Name = "ToolStripMenuItemPrintting";
-            ToolStripMenuItemPrintting.Size = new Size(117, 22);
+            ToolStripMenuItemPrintting.Size = new Size(180, 22);
             ToolStripMenuItemPrintting.Text = "印刷する";
             ToolStripMenuItemPrintting.Click += ToolStripMenuItemPrintting_Click;
             // 

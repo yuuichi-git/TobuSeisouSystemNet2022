@@ -43,8 +43,6 @@ using RollCall;
 
 using Supply;
 
-using Toukanpo;
-
 using VehicleDispatch;
 
 using Vo;
@@ -174,14 +172,6 @@ namespace TobuSeisouSystemNet2022 {
                                 wardTaitou.ShowDialog(this);
                                 break;
                             /*
-                             * ToukanpoSpeedSurvey
-                             * 交通事故防止強化月間 速度超過実態調査表
-                             */
-                            case "ToukanpoSpeedSurvey":
-                                var toukanpoSpeedSurvey = new ToukanpoSpeedSurvey(_connectionVo);
-                                toukanpoSpeedSurvey.ShowDialog(this);
-                                break;
-                            /*
                              * SupplyList
                              * 作業服等支給管理   
                              */
@@ -298,6 +288,21 @@ namespace TobuSeisouSystemNet2022 {
                                 hCollectionWeightCHIYODA.Size = new Size(1000, 800);
                                 hCollectionWeightCHIYODA.WindowState = FormWindowState.Normal;
                                 hCollectionWeightCHIYODA.Show(this);
+                                break;
+                            // 台東区資源収集実績集計表
+                            case "H_CollectionWeightTAITOUList":
+                                // Screenを退避(新型のみ)
+                                _connectionVo.Screen = (Screen)HComboBoxMoniter.SelectedItem;
+                                /*
+                                 * Formを表示する
+                                 */
+                                H_CollectionWeightTAITOUList hCollectionWeightTAITOUList = new(_connectionVo);
+                                Rectangle rectangleHCollectionWeightTAITOUList = new Desktop().GetMonitorWorkingArea(hCollectionWeightTAITOUList, (Screen)HComboBoxMoniter.SelectedItem);
+                                hCollectionWeightTAITOUList.KeyPreview = true;
+                                hCollectionWeightTAITOUList.Location = rectangleHCollectionWeightTAITOUList.Location;
+                                hCollectionWeightTAITOUList.Size = new Size(1253, 993);
+                                hCollectionWeightTAITOUList.WindowState = FormWindowState.Normal;
+                                hCollectionWeightTAITOUList.Show(this);
                                 break;
                             // 東環保研修センター修了書登録
                             case "H_ToukanpoTrainingCardDetail":
@@ -649,6 +654,10 @@ namespace TobuSeisouSystemNet2022 {
                 }
             } else {
             }
+        }
+
+        private void PanelRight_Paint(object sender, PaintEventArgs e) {
+
         }
     }
 }

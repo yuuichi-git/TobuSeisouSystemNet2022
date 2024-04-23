@@ -37,7 +37,6 @@
     <ProjectReference Include="..\LegalTwelveItem\LegalTwelveItem.csproj" />
     <ProjectReference Include="..\Supply\Supply.csproj" />
     <ProjectReference Include="..\ToukaiDenshi\ToukaiDenshi.csproj" />
-    <ProjectReference Include="..\Toukanpo\Toukanpo.csproj" />
     <ProjectReference Include="..\VehicleDispatch\VehicleDispatch.csproj" />
     <ProjectReference Include="..\Vo\Vo.csproj" />
     <ProjectReference Include="..\WardSpreadsheet\WardSpreadsheet.csproj" />
