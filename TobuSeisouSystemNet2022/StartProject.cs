@@ -25,6 +25,8 @@ using H_Common;
 
 using H_Dao;
 
+using H_LegalTwelveItem;
+
 using H_License;
 
 using H_RollColl;
@@ -113,16 +115,6 @@ namespace TobuSeisouSystemNet2022 {
                             case "VehicleDispatch":
                                 var vehicleDispatchBoad = new VehicleDispatchBoad(_connectionVo);
                                 vehicleDispatchBoad.ShowDialog(this);
-                                break;
-                            /*
-                             * LegalTwelveItemList
-                             * 法定１２項目
-                             */
-                            case "LegalTwelveItemList":
-                                LegalTwelveItemList legalTwelveItemList = new LegalTwelveItemList(_connectionVo);
-                                legalTwelveItemList.ShowDialog(this);
-                                break;
-                            default:
                                 break;
                             // CarAccidentList
                             case "CarAccidentList":
@@ -274,6 +266,21 @@ namespace TobuSeisouSystemNet2022 {
                                 hRollCallRecordSheet.WindowState = FormWindowState.Normal;
                                 hRollCallRecordSheet.Show(this);
                                 break;
+                            // 法定１２項目の講習記録
+                            case "H_LegalTwelveItemList":
+                                // Screenを退避(新型のみ)
+                                _connectionVo.Screen = (Screen)HComboBoxMoniter.SelectedItem;
+                                /*
+                                 * Formを表示する
+                                 */
+                                H_LegalTwelveItemList hLegalTwelveItemList = new(_connectionVo);
+                                Rectangle rectangleHLegalTwelveItemList = new Desktop().GetMonitorWorkingArea(hLegalTwelveItemList, (Screen)HComboBoxMoniter.SelectedItem);
+                                hLegalTwelveItemList.KeyPreview = true;
+                                hLegalTwelveItemList.Location = rectangleHLegalTwelveItemList.Location;
+                                hLegalTwelveItemList.Size = new Size(1188, 1000);
+                                hLegalTwelveItemList.WindowState = FormWindowState.Normal;
+                                hLegalTwelveItemList.Show(this);
+                                break;
                             // 千代田区配車集計表
                             case "H_CollectionWeightChiyoda":
                                 // Screenを退避(新型のみ)
@@ -303,6 +310,21 @@ namespace TobuSeisouSystemNet2022 {
                                 hCollectionWeightTAITOUList.Size = new Size(1253, 993);
                                 hCollectionWeightTAITOUList.WindowState = FormWindowState.Normal;
                                 hCollectionWeightTAITOUList.Show(this);
+                                break;
+                            // 
+                            case "H_CollectionWeightTAITOUDetail":
+                                // Screenを退避(新型のみ)
+                                _connectionVo.Screen = (Screen)HComboBoxMoniter.SelectedItem;
+                                /*
+                                 * Formを表示する
+                                 */
+                                H_CollectionWeightTAITOUDetail hCollectionWeightTAITOUDetail = new(_connectionVo);
+                                Rectangle rectangleHCollectionWeightTAITOUDetail = new Desktop().GetMonitorWorkingArea(hCollectionWeightTAITOUDetail, (Screen)HComboBoxMoniter.SelectedItem);
+                                hCollectionWeightTAITOUDetail.KeyPreview = true;
+                                hCollectionWeightTAITOUDetail.Location = rectangleHCollectionWeightTAITOUDetail.Location;
+                                hCollectionWeightTAITOUDetail.Size = new Size(873, 1000);
+                                hCollectionWeightTAITOUDetail.WindowState = FormWindowState.Normal;
+                                hCollectionWeightTAITOUDetail.Show(this);
                                 break;
                             // 東環保研修センター修了書登録
                             case "H_ToukanpoTrainingCardDetail":
@@ -654,10 +676,6 @@ namespace TobuSeisouSystemNet2022 {
                 }
             } else {
             }
-        }
-
-        private void PanelRight_Paint(object sender, PaintEventArgs e) {
-
         }
     }
 }

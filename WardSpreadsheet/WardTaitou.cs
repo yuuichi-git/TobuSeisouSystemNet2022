@@ -252,8 +252,8 @@ namespace WardSpreadsheet {
          * Dictionaryで使用する値を作成
          */
         private class Point {
-            private  int _row;
-            private  int _column;
+            private int _row;
+            private int _column;
             public Point(int row, int column) {
                 _row = row;
                 _column = column;

@@ -261,6 +261,11 @@ namespace H_CollectionWeight {
             this.Close();
         }
 
+        private void ToolStripMenuItemPrintA4_Click(object sender, EventArgs e) {
+            //アクティブシート印刷します
+            SpreadAggregate.PrintSheet(SheetViewAggregate);
+        }
+
         /// <summary>
         /// H_CollectionWeightCHIYODA_FormClosing
         /// </summary>

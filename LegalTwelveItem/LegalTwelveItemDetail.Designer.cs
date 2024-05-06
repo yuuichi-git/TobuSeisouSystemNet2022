@@ -33,6 +33,7 @@
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             ToolStripStatusLabelDetail = new ToolStripStatusLabel();
             PanelCenter = new Panel();
+            DateTimePickerJpExBase = new ControlEx.DateTimePickerJpEx();
             ButtonClip3 = new Button();
             ButtonClip2 = new Button();
             ButtonClip1 = new Button();
@@ -101,7 +102,6 @@
             ToolStripMenuItemMenu = new ToolStripMenuItem();
             ToolStripMenuItemExit = new ToolStripMenuItem();
             ToolStripMenuItemHelp = new ToolStripMenuItem();
-            DateTimePickerJpExBase = new ControlEx.DateTimePickerJpEx();
             TableLayoutPanelBase.SuspendLayout();
             PanelUp.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -270,6 +270,15 @@
             PanelCenter.Name = "PanelCenter";
             PanelCenter.Size = new Size(1110, 745);
             PanelCenter.TabIndex = 0;
+            // 
+            // DateTimePickerJpExBase
+            // 
+            DateTimePickerJpExBase.CustomFormat = " ";
+            DateTimePickerJpExBase.Format = DateTimePickerFormat.Custom;
+            DateTimePickerJpExBase.Location = new Point(468, 16);
+            DateTimePickerJpExBase.Name = "DateTimePickerJpExBase";
+            DateTimePickerJpExBase.Size = new Size(180, 23);
+            DateTimePickerJpExBase.TabIndex = 61;
             // 
             // ButtonClip3
             // 
@@ -941,15 +950,6 @@
             ToolStripMenuItemHelp.Name = "ToolStripMenuItemHelp";
             ToolStripMenuItemHelp.Size = new Size(48, 20);
             ToolStripMenuItemHelp.Text = "ヘルプ";
-            // 
-            // DateTimePickerJpExBase
-            // 
-            DateTimePickerJpExBase.CustomFormat = " ";
-            DateTimePickerJpExBase.Format = DateTimePickerFormat.Custom;
-            DateTimePickerJpExBase.Location = new Point(468, 16);
-            DateTimePickerJpExBase.Name = "DateTimePickerJpExBase";
-            DateTimePickerJpExBase.Size = new Size(180, 23);
-            DateTimePickerJpExBase.TabIndex = 61;
             // 
             // LegalTwelveItemDetail
             // 

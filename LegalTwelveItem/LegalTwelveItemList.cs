@@ -96,25 +96,25 @@ namespace LegalTwelveItem {
             foreach(LegalTwelveItemListVo legalTwelveItemFormVo in listLegalTwelveItemFormVo) {
                 SheetViewList.Rows.Add(i, 1);
                 SheetViewList.RowHeader.Columns[0].Label = (i + 1).ToString(); // RowÉwÉbÉ_
-                SheetViewList.Rows[i].ForeColor = legalTwelveItemFormVo.Job_form == 11 ? Color.Red : Color.Black; // éËí†ÇÃÉåÉRÅ[ÉhÇÃForeColorÇÉZÉbÉg
-                SheetViewList.Cells[i, colBelongsName].Text = legalTwelveItemFormVo.Belongs_name;
-                SheetViewList.Cells[i, colJobFormName].Text = legalTwelveItemFormVo.Job_form_name;
-                SheetViewList.Cells[i, colOccupation].Text = legalTwelveItemFormVo.Occupation_name;
+                SheetViewList.Rows[i].ForeColor = legalTwelveItemFormVo.JobForm == 11 ? Color.Red : Color.Black; // éËí†ÇÃÉåÉRÅ[ÉhÇÃForeColorÇÉZÉbÉg
+                SheetViewList.Cells[i, colBelongsName].Text = legalTwelveItemFormVo.BelongsName;
+                SheetViewList.Cells[i, colJobFormName].Text = legalTwelveItemFormVo.JobFormName;
+                SheetViewList.Cells[i, colOccupation].Text = legalTwelveItemFormVo.OccupationName;
                 SheetViewList.Cells[i, colName].Tag = legalTwelveItemFormVo; // LegalTwelveItemListVoÇëﬁî
-                SheetViewList.Cells[i, colName].Text = legalTwelveItemFormVo.Staff_name;
-                SheetViewList.Cells[i, colEmploymentDate].Text = legalTwelveItemFormVo.Employment_date != _defaultDateTime ? legalTwelveItemFormVo.Employment_date.ToString("yyyy/MM/dd") : "";
-                SheetViewList.Cells[i, colStudentsFlag01].Text = legalTwelveItemFormVo.Students_01_flag ? "ÅZ" : "";
-                SheetViewList.Cells[i, colStudentsFlag02].Text = legalTwelveItemFormVo.Students_02_flag ? "ÅZ" : "";
-                SheetViewList.Cells[i, colStudentsFlag03].Text = legalTwelveItemFormVo.Students_03_flag ? "ÅZ" : "";
-                SheetViewList.Cells[i, colStudentsFlag04].Text = legalTwelveItemFormVo.Students_04_flag ? "ÅZ" : "";
-                SheetViewList.Cells[i, colStudentsFlag05].Text = legalTwelveItemFormVo.Students_05_flag ? "ÅZ" : "";
-                SheetViewList.Cells[i, colStudentsFlag06].Text = legalTwelveItemFormVo.Students_06_flag ? "ÅZ" : "";
-                SheetViewList.Cells[i, colStudentsFlag07].Text = legalTwelveItemFormVo.Students_07_flag ? "ÅZ" : "";
-                SheetViewList.Cells[i, colStudentsFlag08].Text = legalTwelveItemFormVo.Students_08_flag ? "ÅZ" : "";
-                SheetViewList.Cells[i, colStudentsFlag09].Text = legalTwelveItemFormVo.Students_09_flag ? "ÅZ" : "";
-                SheetViewList.Cells[i, colStudentsFlag10].Text = legalTwelveItemFormVo.Students_10_flag ? "ÅZ" : "";
-                SheetViewList.Cells[i, colStudentsFlag11].Text = legalTwelveItemFormVo.Students_11_flag ? "ÅZ" : "";
-                SheetViewList.Cells[i, colStudentsFlag12].Text = legalTwelveItemFormVo.Students_12_flag ? "ÅZ" : "";
+                SheetViewList.Cells[i, colName].Text = legalTwelveItemFormVo.StaffName;
+                SheetViewList.Cells[i, colEmploymentDate].Text = legalTwelveItemFormVo.EmploymentDate != _defaultDateTime ? legalTwelveItemFormVo.EmploymentDate.ToString("yyyy/MM/dd") : "";
+                SheetViewList.Cells[i, colStudentsFlag01].Text = legalTwelveItemFormVo.Students01Flag ? "ÅZ" : "";
+                SheetViewList.Cells[i, colStudentsFlag02].Text = legalTwelveItemFormVo.Students02Flag ? "ÅZ" : "";
+                SheetViewList.Cells[i, colStudentsFlag03].Text = legalTwelveItemFormVo.Students03Flag ? "ÅZ" : "";
+                SheetViewList.Cells[i, colStudentsFlag04].Text = legalTwelveItemFormVo.Students04Flag ? "ÅZ" : "";
+                SheetViewList.Cells[i, colStudentsFlag05].Text = legalTwelveItemFormVo.Students05Flag ? "ÅZ" : "";
+                SheetViewList.Cells[i, colStudentsFlag06].Text = legalTwelveItemFormVo.Students06Flag ? "ÅZ" : "";
+                SheetViewList.Cells[i, colStudentsFlag07].Text = legalTwelveItemFormVo.Students07Flag ? "ÅZ" : "";
+                SheetViewList.Cells[i, colStudentsFlag08].Text = legalTwelveItemFormVo.Students08Flag ? "ÅZ" : "";
+                SheetViewList.Cells[i, colStudentsFlag09].Text = legalTwelveItemFormVo.Students09Flag ? "ÅZ" : "";
+                SheetViewList.Cells[i, colStudentsFlag10].Text = legalTwelveItemFormVo.Students10Flag ? "ÅZ" : "";
+                SheetViewList.Cells[i, colStudentsFlag11].Text = legalTwelveItemFormVo.Students11Flag ? "ÅZ" : "";
+                SheetViewList.Cells[i, colStudentsFlag12].Text = legalTwelveItemFormVo.Students12Flag ? "ÅZ" : "";
                 i++;
             }
             // êÊì™çsÅióÒÅjÉCÉìÉfÉbÉNÉXÇÉZÉbÉg

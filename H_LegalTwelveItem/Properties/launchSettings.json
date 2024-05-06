@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "H_LegalTwelveItem": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

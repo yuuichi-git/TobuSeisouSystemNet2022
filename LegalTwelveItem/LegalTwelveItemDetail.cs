@@ -58,8 +58,8 @@ namespace LegalTwelveItem {
              * Controlを初期化
              */
             InitializeComponent();
-            LabelStaffCode.Text = Convert.ToString(legalTwelveItemListVo.Staff_code);
-            LabelStaffName.Text = legalTwelveItemListVo.Staff_name;
+            LabelStaffCode.Text = Convert.ToString(legalTwelveItemListVo.StaffCode);
+            LabelStaffName.Text = legalTwelveItemListVo.StaffName;
             PictureBox1.Image = null;
             PictureBox2.Image = null;
             PictureBox3.Image = null;
@@ -152,7 +152,7 @@ namespace LegalTwelveItem {
                     legalTwelveItemVo.Students_date = _arrayDateTimePickerJpEx[i].GetValue();
                     legalTwelveItemVo.Students_code = Convert.ToInt32(_arrayCheckBox[i].Tag);
                     legalTwelveItemVo.Students_flag = _arrayCheckBox[i].Checked;
-                    legalTwelveItemVo.Staff_code = _legalTwelveItemListVo.Staff_code;
+                    legalTwelveItemVo.Staff_code = _legalTwelveItemListVo.StaffCode;
                     legalTwelveItemVo.Staff_sign = (byte[]?)new ImageConverter().ConvertTo(_arrayPictureBox[_arrayComboBoxEx[i].SelectedIndex].Image, typeof(byte[]));
                     legalTwelveItemVo.Sign_number = _arrayComboBoxEx[i].SelectedIndex;
                     legalTwelveItemVo.Memo = _arrayTextBox[i].Text;
@@ -190,7 +190,7 @@ namespace LegalTwelveItem {
         private void SheetViewOutput() {
             // BaseTimeを設定
             DateTimePickerJpExBase.SetValue(DateTime.Today);
-            List<LegalTwelveItemVo> listLegalTwelveItemVo = _legalTwelveItemDao.SelectAllLegalTwelveItem(_dateTime1,_dateTime2,_legalTwelveItemListVo.Staff_code);
+            List<LegalTwelveItemVo> listLegalTwelveItemVo = _legalTwelveItemDao.SelectAllLegalTwelveItem(_dateTime1,_dateTime2,_legalTwelveItemListVo.StaffCode);
             /*
              * CheckBox等の処理
              */

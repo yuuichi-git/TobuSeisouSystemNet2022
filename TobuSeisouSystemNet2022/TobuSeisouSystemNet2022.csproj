@@ -29,6 +29,7 @@
     <ProjectReference Include="..\CommuterInsurance\CommuterInsurance.csproj" />
     <ProjectReference Include="..\H_AccountingParttime\H_AccountingParttime.csproj" />
     <ProjectReference Include="..\H_Car\H_Car.csproj" />
+    <ProjectReference Include="..\H_LegalTwelveItem\H_LegalTwelveItem.csproj" />
     <ProjectReference Include="..\H_License\H_License.csproj" />
     <ProjectReference Include="..\H_Staff\H_Staff.csproj" />
     <ProjectReference Include="..\H_StatusOfResidence\H_StatusOfResidence.csproj" />

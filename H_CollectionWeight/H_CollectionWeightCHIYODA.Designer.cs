@@ -44,6 +44,8 @@
             SheetViewList = SpreadList.GetSheet(0);
             SpreadAggregate = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("HTableLayoutPanelExBase.Controls1"));
             SheetViewAggregate = SpreadAggregate.GetSheet(0);
+            ToolStripMenuItemPrint = new ToolStripMenuItem();
+            ToolStripMenuItemPrintA4 = new ToolStripMenuItem();
             HTableLayoutPanelExBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -76,7 +78,7 @@
             // MenuStrip1
             // 
             HTableLayoutPanelExBase.SetColumnSpan(MenuStrip1, 2);
-            MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemHelp });
+            MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemPrint, ToolStripMenuItemHelp });
             MenuStrip1.Location = new Point(0, 0);
             MenuStrip1.Name = "MenuStrip1";
             MenuStrip1.Size = new Size(984, 24);
@@ -235,6 +237,20 @@
             SpreadAggregate.Size = new Size(486, 627);
             SpreadAggregate.TabIndex = 4;
             // 
+            // ToolStripMenuItemPrint
+            // 
+            ToolStripMenuItemPrint.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemPrintA4 });
+            ToolStripMenuItemPrint.Name = "ToolStripMenuItemPrint";
+            ToolStripMenuItemPrint.Size = new Size(43, 20);
+            ToolStripMenuItemPrint.Text = "印刷";
+            // 
+            // ToolStripMenuItemPrintA4
+            // 
+            ToolStripMenuItemPrintA4.Name = "ToolStripMenuItemPrintA4";
+            ToolStripMenuItemPrintA4.Size = new Size(180, 22);
+            ToolStripMenuItemPrintA4.Text = "A4で印刷する";
+            ToolStripMenuItemPrintA4.Click += ToolStripMenuItemPrintA4_Click;
+            // 
             // H_CollectionWeightCHIYODA
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -283,5 +299,7 @@
         private H_ControlEx.H_ButtonEx HButtonExUpdate;
         private ToolStripMenuItem ToolStripMenuItemExit;
         private FarPoint.Win.Spread.SheetView SheetViewAggregate;
+        private ToolStripMenuItem ToolStripMenuItemPrint;
+        private ToolStripMenuItem ToolStripMenuItemPrintA4;
     }
 }

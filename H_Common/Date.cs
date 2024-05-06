@@ -116,7 +116,7 @@ namespace H_Common {
         }
 
         /// <summary>
-        /// 該当年月の日数を返す
+        /// 該当月の日数を返す
         /// </summary>
         /// <param name="dt"></param>
         /// <returns></returns>
@@ -151,12 +151,30 @@ namespace H_Common {
         }
 
         /// <summary>
+        /// 会計年度の始めの日付を返す
+        /// </summary>
+        /// <param name="fiscalYear"></param>
+        /// <returns></returns>
+        public DateTime GetFiscalYearStartDate(int fiscalYear) {
+            return new DateTime(fiscalYear, 4, 1, 0, 00, 00, 000);
+        }
+
+        /// <summary>
         /// 会計年度の最後の日付を返す
         /// </summary>
         /// <param name="datetime"></param>
         /// <returns></returns>
         public DateTime GetFiscalYearEndDate(DateTime datetime) {
             int fiscalYear = datetime.AddMonths(-3).Year;
+            return new DateTime(fiscalYear, 4, 1, 0, 00, 00, 000).AddDays(365);
+        }
+
+        /// <summary>
+        /// 会計年度の最後の日付を返す
+        /// </summary>
+        /// <param name="fiscalYear"></param>
+        /// <returns></returns>
+        public DateTime GetFiscalYearEndDate(int fiscalYear) {
             return new DateTime(fiscalYear, 4, 1, 0, 00, 00, 000).AddDays(365);
         }
 

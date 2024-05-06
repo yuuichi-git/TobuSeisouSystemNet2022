@@ -170,7 +170,7 @@ namespace Vo {
         }
         /// <summary>
         /// 雇用形態
-        /// 10:長期雇用 11:手帳 99:指定なし
+        /// 10:長期雇用 11:手帳 12:アルバイト 99:指定なし
         /// </summary>
         public int JobForm {
             get => _jobForm;

@@ -5,6 +5,8 @@ using System.Data.SqlClient;
 
 using H_Common;
 
+using H_Vo;
+
 using Vo;
 
 namespace H_Dao {
@@ -217,6 +219,86 @@ namespace H_Dao {
             } catch {
                 throw;
             }
+        }
+
+        /// <summary>
+        /// SelectOperationDaysVehicleDispatchDetail
+        /// 稼働日数を取得
+        /// </summary>
+        /// <param name="year"></param>
+        /// <param name="month"></param>
+        /// <param name="setCode"></param>
+        /// <returns>稼働日数を返す</returns>
+        public int GetOperationDaysVehicleDispatchDetail(int year, int month, int setCode) {
+            /*
+             * 1310602 台東資源1
+             * 1310603 台東資源2
+             * 1310604 台東資源4
+             * 1310606 台東資源臨
+             */
+            DateTime targetYmd = new DateTime(year, month, 01);
+            string staYmd = string.Concat(targetYmd.Year, "/", targetYmd.Month, "/01");
+            string endYmd = string.Concat(targetYmd.Year, "/", targetYmd.Month, "/", targetYmd.AddMonths(1).AddDays(-1).Day);
+
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT COUNT(SetCode) " +
+                                     "FROM H_VehicleDispatchDetail " +
+                                     "WHERE OperationDate BETWEEN '" + staYmd + "' AND '" + endYmd + "' " +
+                                       "AND OperationFlag = 'true' " +
+                                       "AND SetCode = " + setCode + " " +
+                                     "GROUP BY SetCode";
+            int? operationDays = (int?)sqlCommand.ExecuteScalar();
+            if (operationDays.HasValue) {
+                return (int)operationDays;
+            } else {
+                return 0;
+            }
+        }
+
+        /// <summary>
+        /// SelectStaffsVehicleDispatchDetail
+        /// </summary>
+        /// <param name="year"></param>
+        /// <param name="month"></param>
+        /// <param name="setCode"></param>
+        /// <returns></returns>
+        public List<H_CollectionWeightTAITOUDetailVo> GetStaffsVehicleDispatchDetail(int year, int month, int setCode) {
+            /*
+             * 1310602 台東資源1
+             * 1310603 台東資源2
+             * 1310604 台東資源4
+             * 1310606 台東資源臨
+             */
+            DateTime targetYmd = new DateTime(year, month, 01);
+            string staYmd = string.Concat(targetYmd.Year, "/", targetYmd.Month, "/01");
+            string endYmd = string.Concat(targetYmd.Year, "/", targetYmd.Month, "/", targetYmd.AddMonths(1).AddDays(-1).Day);
+
+            List<H_CollectionWeightTAITOUDetailVo> listHCollectionWeightTAITOUDetailVo = new();
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            //sqlCommand.CommandText = "SELECT OperationDate," +
+            //                                "COUNT(StaffCode3) AS COLUMN1 " +
+            //                         "FROM H_VehicleDispatchDetail " +
+            //                         "WHERE OperationDate BETWEEN '" + staYmd + "' AND '" + endYmd + "' " +
+            //                           "AND OperationFlag = 'true' " +
+            //                           "AND SetCode = " + setCode + " " +
+            //                           "AND StaffCode3 > 0 " +
+            //                           "GROUP BY day_of_week";
+            sqlCommand.CommandText = "SELECT DATEPART(WEEKDAY,OperationDate) AS WeekDay," +
+                                            "StaffCode3 " +
+                                     "FROM H_VehicleDispatchDetail " +
+                                     "WHERE OperationDate BETWEEN '" + staYmd + "' AND '" + endYmd + "' " +
+                                       "AND OperationFlag = 'true' " +
+                                       "AND SetCode = " + setCode + " " +
+                                       "AND StaffCode3 > 0";
+            using (var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while (sqlDataReader.Read() == true) {
+                    H_CollectionWeightTAITOUDetailVo hCollectionWeightTAITOUDetailVo = new();
+                    hCollectionWeightTAITOUDetailVo.OperationWeekDay = _defaultValue.GetDefaultValue<int>(sqlDataReader["WeekDay"]);
+                    hCollectionWeightTAITOUDetailVo.StaffCode3 = _defaultValue.GetDefaultValue<int>(sqlDataReader["StaffCode3"]);
+                    listHCollectionWeightTAITOUDetailVo.Add(hCollectionWeightTAITOUDetailVo);
+                }
+            }
+            return listHCollectionWeightTAITOUDetailVo;
         }
     }
 }
