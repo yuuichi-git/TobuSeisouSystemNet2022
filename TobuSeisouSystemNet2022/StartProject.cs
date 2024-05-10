@@ -3,13 +3,9 @@
  */
 using System.Data;
 
-using Accounting;
-
 using CarAccident;
 
 using Certification;
-
-using CollectionWeight;
 
 using Common;
 
@@ -18,6 +14,8 @@ using CommuterInsurance;
 using H_AccountingParttime;
 
 using H_Car;
+
+using H_CarAccident;
 
 using H_CollectionWeight;
 
@@ -39,8 +37,6 @@ using H_Toukanpo;
 
 using H_VehicleDispatch;
 
-using LegalTwelveItem;
-
 using RollCall;
 
 using Supply;
@@ -48,8 +44,6 @@ using Supply;
 using VehicleDispatch;
 
 using Vo;
-
-using WardSpreadsheet;
 
 namespace TobuSeisouSystemNet2022 {
     public partial class StartProject : Form {
@@ -116,21 +110,6 @@ namespace TobuSeisouSystemNet2022 {
                                 var vehicleDispatchBoad = new VehicleDispatchBoad(_connectionVo);
                                 vehicleDispatchBoad.ShowDialog(this);
                                 break;
-                            // CarAccidentList
-                            case "CarAccidentList":
-                                var carAccidentList = new CarAccidentList(_connectionVo);
-                                carAccidentList.ShowDialog(this);
-                                break;
-                            // CommuterInsuranceList
-                            case "CommuterInsuranceList":
-                                var commuterInsuranceList = new CommuterInsuranceList(_connectionVo);
-                                commuterInsuranceList.ShowDialog(this);
-                                break;
-                            // StaffPartTimeDetail
-                            case "AccountingParttimeList":
-                                var accountingParttimeList = new AccountingParttimeList(_connectionVo);
-                                accountingParttimeList.ShowDialog(this);
-                                break;
                             /*
                              * RollCallRecordBook
                              * 点呼記録簿
@@ -140,28 +119,11 @@ namespace TobuSeisouSystemNet2022 {
                                 rollCallRecordBook.ShowDialog(this);
                                 break;
                             /*
-                             * WardChiyoda
-                             * 千代田区従事者集計表
+                             * CommuterInsuranceList(任意保険)
                              */
-                            case "WardChiyoda":
-                                var wardChiyoda = new WardChiyoda(_connectionVo);
-                                wardChiyoda.ShowDialog(this);
-                                break;
-                            /*
-                             * CollectionWeightTaitou
-                             * 台東資源収集量集計表
-                             */
-                            case "CollectionWeightTaitou":
-                                CollectionWeightTaitouList collectionWeightTaitouList = new CollectionWeightTaitouList(_connectionVo);
-                                collectionWeightTaitouList.ShowDialog(this);
-                                break;
-                            /*
-                             * WardTaitou
-                             * 台東区
-                             */
-                            case "WardTaitou":
-                                var wardTaitou = new WardTaitou(_connectionVo);
-                                wardTaitou.ShowDialog(this);
+                            case "CommuterInsuranceList":
+                                var commuterInsuranceList = new CommuterInsuranceList(_connectionVo);
+                                commuterInsuranceList.ShowDialog(this);
                                 break;
                             /*
                              * SupplyList
@@ -371,6 +333,7 @@ namespace TobuSeisouSystemNet2022 {
                                 hStatusOfResidenceList.WindowState = FormWindowState.Normal;
                                 hStatusOfResidenceList.Show(this);
                                 break;
+                            // アルバイト出勤情報
                             case "HAccountingParttimeList":
                                 // Screenを退避(新型のみ)
                                 _connectionVo.Screen = (Screen)HComboBoxMoniter.SelectedItem;
@@ -384,6 +347,21 @@ namespace TobuSeisouSystemNet2022 {
                                 hAccountingParttimeList.Size = new Size(865, 1080);
                                 hAccountingParttimeList.WindowState = FormWindowState.Normal;
                                 hAccountingParttimeList.Show(this);
+                                break;
+                            // 事故記録簿
+                            case "H_CarAccidentList":
+                                // Screenを退避(新型のみ)
+                                _connectionVo.Screen = (Screen)HComboBoxMoniter.SelectedItem;
+                                /*
+                                 * Formを表示する
+                                 */
+                                H_CarAccidentList hCarAccidentList = new(_connectionVo);
+                                Rectangle rectanglHCarAccidentList = new Desktop().GetMonitorWorkingArea(hCarAccidentList, (Screen)HComboBoxMoniter.SelectedItem);
+                                hCarAccidentList.KeyPreview = true;
+                                hCarAccidentList.Location = rectanglHCarAccidentList.Location;
+                                hCarAccidentList.Size = new Size(1920, 1080);
+                                hCarAccidentList.WindowState = FormWindowState.Normal;
+                                hCarAccidentList.Show(this);
                                 break;
                             /*
                              * 

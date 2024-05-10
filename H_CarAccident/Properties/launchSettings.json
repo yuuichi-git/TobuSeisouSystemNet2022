@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "H_CarAccident": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}

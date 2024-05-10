@@ -123,7 +123,15 @@ namespace H_ControlEx {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void HDateTimePickerEx_ValueChanged(object sender, EventArgs e) {
-            this.Refresh();
+            if (this.CustomFormat != " ") {
+                if (cultureFlag) {
+                    this.CustomFormat = this.Value.ToString(" ggyy年MM月dd日(dddd)", cultureInfo);
+                    this.Refresh();
+                } else {
+                    this.CustomFormat = this.Value.ToString(" yyyy年MM月dd日(dddd)");
+                    this.Refresh();
+                }
+            }
         }
 
         /// <summary>

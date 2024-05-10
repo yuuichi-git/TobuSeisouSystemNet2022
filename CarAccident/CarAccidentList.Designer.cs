@@ -29,6 +29,7 @@
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             ToolStripStatusLabelStatus = new ToolStripStatusLabel();
             SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("TableLayoutPanelBase.Controls"));
+            SheetViewList = SpreadList.GetSheet(0);
             MenuStrip1 = new MenuStrip();
             ToolStripMenuItemMenu = new ToolStripMenuItem();
             ToolStripMenuItemExportExcel = new ToolStripMenuItem();
@@ -42,7 +43,6 @@
             DateTimePickerOccurrenceDate1 = new DateTimePicker();
             label7 = new Label();
             ButtonUpdate = new Button();
-            SheetViewList = SpreadList.GetSheet(0);
             TableLayoutPanelBase.SuspendLayout();
             StatusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)SpreadList).BeginInit();

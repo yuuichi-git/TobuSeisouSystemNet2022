@@ -208,6 +208,8 @@ namespace H_License {
             HTextBoxExStaffCode.Text = hStaffMasterVo.StaffCode.ToString();
             HTextBoxExNameKana.Text = hStaffMasterVo.NameKana;
             HTextBoxExName.Text = hStaffMasterVo.Name;
+            HDateTimePickerExBirthDate.SetValueJp(hStaffMasterVo.BirthDate);
+            HTextBoxExCurrentAddress.Text = hStaffMasterVo.CurrentAddress;
         }
 
         /// <summary>

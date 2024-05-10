@@ -216,10 +216,17 @@ namespace H_ControlEx {
                          */
                         H_ControlVo afterHControlVoForHSetControl = (H_ControlVo)afterHSetControl.Tag; // H_SetControl上にH_SetLabelが存在していない時のH_ControlVoを取得している
                         afterHControlVoForHSetControl.ConnectionVo = _connectionVo;
+                        //afterHControlVoForHSetControl.HBoard = this;
+                        //afterHControlVoForHSetControl.HFlowLayoutPanelExStockBoxs
+                        //afterHControlVoForHSetControl.CellNumber
                         afterHControlVoForHSetControl.OperationDate = beforeHControlVo.OperationDate;
                         afterHControlVoForHSetControl.OperationFlag = beforeHControlVo.OperationFlag;
                         afterHControlVoForHSetControl.VehicleDispatchFlag = true;
+                        //afterHControlVoForHSetControl.PurposeFlag
                         afterHControlVoForHSetControl.HSetMasterVo = (H_SetMasterVo)dragItem.Tag; // DropされたH_SetMasterVoを代入
+                        //afterHControlVoForHSetControl.HCarMasterVo
+                        //afterHControlVoForHSetControl.HStaffMasterVo
+
                         // Controlを追加する
                         afterHSetControl.Controls.Add(dragItem, cellPoint.X, cellPoint.Y);
                         break;
@@ -435,7 +442,7 @@ namespace H_ControlEx {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void HStaffLabel_MouseDoubleClick(object sender, MouseEventArgs e) {
-            
+
         }
 
         /// <summary>

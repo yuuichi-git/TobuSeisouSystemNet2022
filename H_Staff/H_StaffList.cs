@@ -331,7 +331,7 @@ namespace H_Staff {
                     // 適齢診断の残日数
                     SheetViewList.Cells[rowCount, colSuitableAge].Value = _hStaffProperDao.GetTekireiProperDate(hStaffMasterVo.StaffCode);
                     // 年度内事故回数
-                    SheetViewList.Cells[rowCount, colCarAccidentCount].Value = _hCarAccidentMasterDao.GetHCarAccidentCount(hStaffMasterVo.StaffCode);
+                    SheetViewList.Cells[rowCount, colCarAccidentCount].Value = _hCarAccidentMasterDao.GetHCarAccidentMasterCount(hStaffMasterVo.StaffCode);
                     /*
                      * 1年以内の健康診断
                      */

@@ -1192,9 +1192,9 @@
             // 
             HPictureBoxExStaff.BorderStyle = BorderStyle.FixedSingle;
             HPictureBoxExStaff.ContextMenuStrip = ContextMenuStrip1;
-            HPictureBoxExStaff.Location = new Point(756, 28);
+            HPictureBoxExStaff.Location = new Point(760, 24);
             HPictureBoxExStaff.Name = "HPictureBoxExStaff";
-            HPictureBoxExStaff.Size = new Size(136, 172);
+            HPictureBoxExStaff.Size = new Size(144, 176);
             HPictureBoxExStaff.SizeMode = PictureBoxSizeMode.Zoom;
             HPictureBoxExStaff.TabIndex = 24;
             HPictureBoxExStaff.TabStop = false;
@@ -2467,6 +2467,7 @@
             // HComboBoxExMedicalInstitutionName
             // 
             HComboBoxExMedicalInstitutionName.FormattingEnabled = true;
+            HComboBoxExMedicalInstitutionName.Items.AddRange(new object[] { "恵比寿ハートビル診療所" });
             HComboBoxExMedicalInstitutionName.Location = new Point(236, 48);
             HComboBoxExMedicalInstitutionName.Name = "HComboBoxExMedicalInstitutionName";
             HComboBoxExMedicalInstitutionName.Size = new Size(220, 23);

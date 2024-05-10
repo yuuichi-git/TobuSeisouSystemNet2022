@@ -354,7 +354,7 @@ namespace H_Staff {
             Dictionary<int, Point> _pointAccidentSummary = new Dictionary<int, Point> { { 0, new Point(39, 6) }, { 1, new Point(41, 6) }, { 2, new Point(43, 6) }, { 3, new Point(39, 25) }, { 4, new Point(41, 25) }, { 5, new Point(43, 25) } };
             List<H_CarAccidentMasterVo> listHCarAccidentMasterVo = new();
             try {
-                listHCarAccidentMasterVo = _hCarAccidentMasterDao.SelectOneHCarAccidentMaster(_staffCode);
+                listHCarAccidentMasterVo = _hCarAccidentMasterDao.SelectGroupHCarAccidentMaster(_staffCode);
             } catch (Exception exception) {
                 MessageBox.Show(exception.Message);
             }
