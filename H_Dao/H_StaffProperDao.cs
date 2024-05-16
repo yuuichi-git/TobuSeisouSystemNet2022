@@ -33,14 +33,14 @@ namespace H_Dao {
         /// </summary>
         /// <param name="staffCode"></param>
         /// <returns>初任診断の受診日を返す。存在しない場合はstring.Emptyを返す</returns>
-        public string GetSyoninProperDate(int staffCode) {
+        public DateTime GetSyoninProperDate(int staffCode) {
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT TOP 1 ProperDate FROM H_StaffProperMaster WHERE StaffCode = " + staffCode + " AND ProperKind = '初任診断'";
             var data = sqlCommand.ExecuteScalar();
             if (data is not null) {
-                return sqlCommand.ExecuteScalar().ToString();
+                return (DateTime)sqlCommand.ExecuteScalar();
             } else {
-                return string.Empty;
+                return _defaultDateTime;
             }
         }
 

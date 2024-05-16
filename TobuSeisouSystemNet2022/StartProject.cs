@@ -3,8 +3,6 @@
  */
 using System.Data;
 
-using CarAccident;
-
 using Certification;
 
 using Common;

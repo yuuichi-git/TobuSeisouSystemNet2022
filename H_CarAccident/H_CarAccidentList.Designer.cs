@@ -176,7 +176,7 @@
             // 
             // HDateTimePickerExOccurrence2
             // 
-            HDateTimePickerExOccurrence2.CustomFormat = " yyyy年MM月dd日(dddd)";
+            HDateTimePickerExOccurrence2.CustomFormat = " 令和06年05月08日(水曜日) 00時00分頃";
             HDateTimePickerExOccurrence2.Format = DateTimePickerFormat.Custom;
             HDateTimePickerExOccurrence2.Location = new Point(328, 16);
             HDateTimePickerExOccurrence2.Name = "HDateTimePickerExOccurrence2";
@@ -196,7 +196,7 @@
             // 
             // HDateTimePickerExOccurrence1
             // 
-            HDateTimePickerExOccurrence1.CustomFormat = " yyyy年MM月dd日(dddd)";
+            HDateTimePickerExOccurrence1.CustomFormat = " 令和06年05月08日(水曜日) 00時00分頃";
             HDateTimePickerExOccurrence1.Format = DateTimePickerFormat.Custom;
             HDateTimePickerExOccurrence1.Location = new Point(116, 16);
             HDateTimePickerExOccurrence1.Name = "HDateTimePickerExOccurrence1";
@@ -231,10 +231,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1904, 1041);
             Controls.Add(HTableLayoutPanelExBase);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = MenuStrip1;
-            MaximizeBox = false;
-            MinimizeBox = false;
             Name = "H_CarAccidentList";
             Text = "H_CarAccidentList";
             FormClosing += H_CarAccidentList_FormClosing;

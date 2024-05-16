@@ -22,8 +22,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Accounting\Accounting.csproj" />
-    <ProjectReference Include="..\CarAccident\CarAccident.csproj" />
-    <ProjectReference Include="..\Car\Car.csproj" />
     <ProjectReference Include="..\Certification\Certification.csproj" />
     <ProjectReference Include="..\Common\Common.csproj" />
     <ProjectReference Include="..\CommuterInsurance\CommuterInsurance.csproj" />
@@ -37,7 +35,6 @@
     <ProjectReference Include="..\H_Toukanpo\H_Toukanpo.csproj" />
     <ProjectReference Include="..\H_VehicleDispatch\H_VehicleDispatch.csproj" />
     <ProjectReference Include="..\Supply\Supply.csproj" />
-    <ProjectReference Include="..\ToukaiDenshi\ToukaiDenshi.csproj" />
     <ProjectReference Include="..\VehicleDispatch\VehicleDispatch.csproj" />
     <ProjectReference Include="..\Vo\Vo.csproj" />
     <ProjectReference Include="..\WardSpreadsheet\WardSpreadsheet.csproj" />

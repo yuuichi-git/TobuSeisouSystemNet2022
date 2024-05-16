@@ -39,6 +39,8 @@ namespace H_CarAccident {
             InitializeComponent();
             _arrayHPictureBoxEx = new H_PictureBoxEx[] { HPictureBoxEx1, HPictureBoxEx2, HPictureBoxEx3, HPictureBoxEx4, HPictureBoxEx5, HPictureBoxEx6, HPictureBoxEx7, HPictureBoxEx8 };
             this.InitializeControl();
+            HDateTimePickerExOccurrence.Enabled = true;
+            HMaskedTextBoxExTime.Enabled = true;
         }
 
         /// <summary>
@@ -63,6 +65,8 @@ namespace H_CarAccident {
             InitializeComponent();
             _arrayHPictureBoxEx = new H_PictureBoxEx[] { HPictureBoxEx1, HPictureBoxEx2, HPictureBoxEx3, HPictureBoxEx4, HPictureBoxEx5, HPictureBoxEx6, HPictureBoxEx7, HPictureBoxEx8 };
             this.InitializeControl();
+            HDateTimePickerExOccurrence.Enabled = false;
+            HMaskedTextBoxExTime.Enabled = false;
             try {
                 this.ControlOutPut(_hCarAccidentMasterDao.SelectOneHCarAccidentMaster(hCarAccidentMasterVo.StaffCode, hCarAccidentMasterVo.OccurrenceYmdHms));
             } catch (Exception exception) {
@@ -118,7 +122,12 @@ namespace H_CarAccident {
             // 集計
             hCarAccidentMasterVo.TotallingFlag = RadioButtonTotallingTrue.Checked;
             // 事故発生年月日
-            hCarAccidentMasterVo.OccurrenceYmdHms = HDateTimePickerExOccurrence.GetValue();
+            hCarAccidentMasterVo.OccurrenceYmdHms = new DateTime(HDateTimePickerExOccurrence.Value.Year, 
+                                                                 HDateTimePickerExOccurrence.Value.Month, 
+                                                                 HDateTimePickerExOccurrence.Value.Day,
+                                                                 int.Parse(HMaskedTextBoxExTime.Text.Substring(0,2)),
+                                                                 int.Parse(HMaskedTextBoxExTime.Text.Substring(2, 2)),
+                                                                 0);
             // 天候
             foreach (RadioButton radioButton in GroupBoxWeather.Controls) {
                 if (radioButton.Checked)
@@ -206,7 +215,8 @@ namespace H_CarAccident {
         /// <param name="hCarAccidentMasterVo"></param>
         private void ControlOutPut(H_CarAccidentMasterVo hCarAccidentMasterVo) {
             // 事故発生日時
-            HDateTimePickerExOccurrence.Value = hCarAccidentMasterVo.OccurrenceYmdHms;
+            HDateTimePickerExOccurrence.SetValueJp(hCarAccidentMasterVo.OccurrenceYmdHms);
+            HMaskedTextBoxExTime.Text = hCarAccidentMasterVo.OccurrenceYmdHms.ToString("HH:mm");
             // 集計表に反映
             switch (hCarAccidentMasterVo.TotallingFlag) {
                 case true:
@@ -474,7 +484,8 @@ namespace H_CarAccident {
         /// </summary>
         private void InitializeControl() {
             // 事故発生年月日
-            HDateTimePickerExOccurrence.Value = DateTime.Now;
+            HDateTimePickerExOccurrence.SetValueJp(DateTime.Now);
+            HMaskedTextBoxExTime.Text = DateTime.Now.ToString("HH:mm");
             // 集計表に反映
             RadioButtonTotallingTrue.Checked = false;
             RadioButtonTotallingFalse.Checked = false;
@@ -591,7 +602,7 @@ namespace H_CarAccident {
         /// <param name="e"></param>
         private void ButtonPictureClip_Click(object sender, EventArgs e) {
             int arrayNumber = Convert.ToInt32(((H_ButtonEx)sender).Tag);
-            _arrayHPictureBoxEx[arrayNumber - 1].Image = (Bitmap)Clipboard.GetDataObject().GetData(DataFormats.Bitmap);
+            _arrayHPictureBoxEx[arrayNumber].Image = (Bitmap)Clipboard.GetDataObject().GetData(DataFormats.Bitmap);
         }
 
         /// <summary>
@@ -601,7 +612,7 @@ namespace H_CarAccident {
         /// <param name="e"></param>
         private void ButtonPictureDelete_Click(object sender, EventArgs e) {
             int arrayNumber = Convert.ToInt32(((H_ButtonEx)sender).Tag);
-            _arrayHPictureBoxEx[arrayNumber - 1].Image = null;
+            _arrayHPictureBoxEx[arrayNumber].Image = null;
         }
 
     }

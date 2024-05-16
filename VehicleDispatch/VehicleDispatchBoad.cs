@@ -1,8 +1,6 @@
 using System.Drawing.Printing;
 using System.Globalization;
 
-using CarRegister;
-
 using CollectionWeight;
 
 using Common;
@@ -20,8 +18,6 @@ using RollCall;
 using SubstituteSheet;
 
 using Supply;
-
-using VehicleDispatchConvert;
 
 using Vo;
 
@@ -1105,22 +1101,6 @@ namespace VehicleDispatch {
         /// <param name="e"></param>
         private void ToolStripMenuItem_Click(object sender, EventArgs e) {
             switch (((ToolStripMenuItem)sender).Name) {
-                /*
-                 * MenuStrip1
-                 */
-                // 配車表を作成する  tenkoModeFlag
-                case "ToolStripMenuItemConvertExcel":
-                    /*
-                     * VehicleDispatchSimpleのコンストラクタ内でファイルの存在チェックをしている。
-                     * コンストラクタ内で終了させるには、例外を発生させてCatchで受け取りReturnする
-                     */
-                    try {
-                        var vehicleDispatchSimple = new VehicleDispatchSimple(_connectionVo, DateTimePickerJpExOperationDate.GetValue());
-                        vehicleDispatchSimple.ShowDialog(this);
-                    } catch {
-                        return;
-                    }
-                    break;
                 // 配車表を印刷する
                 case "ToolStripMenuItemPrint":
                     Control targetControl = new();
@@ -1484,14 +1464,6 @@ namespace VehicleDispatch {
                 /*
                  * ContextMenuStripCarLabel
                  */
-                // 車両詳細
-                case "ToolStripMenuItemCarDetail":
-                    // Nullチェック
-                    if (EvacuationCarLabelEx is not null) {
-                        CarPaper carPaper = new CarPaper(_connectionVo, ((CarMasterVo)EvacuationCarLabelEx.Tag).Car_code);
-                        carPaper.ShowDialog(this);
-                    }
-                    break;
                 // 代車処理
                 case "ToolStripMenuItemCarProxyTrue":
                     // Nullチェック

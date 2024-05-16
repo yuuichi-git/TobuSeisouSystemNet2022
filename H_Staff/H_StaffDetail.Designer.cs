@@ -806,7 +806,7 @@
             // 
             // HDateTimeExHistoryDate3
             // 
-            HDateTimeExHistoryDate3.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExHistoryDate3.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExHistoryDate3.Enabled = false;
             HDateTimeExHistoryDate3.Format = DateTimePickerFormat.Custom;
             HDateTimeExHistoryDate3.Location = new Point(40, 140);
@@ -835,7 +835,7 @@
             // 
             // HDateTimeExHistoryDate2
             // 
-            HDateTimeExHistoryDate2.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExHistoryDate2.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExHistoryDate2.Enabled = false;
             HDateTimeExHistoryDate2.Format = DateTimePickerFormat.Custom;
             HDateTimeExHistoryDate2.Location = new Point(40, 112);
@@ -864,7 +864,7 @@
             // 
             // HDateTimeExHistoryDate1
             // 
-            HDateTimeExHistoryDate1.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExHistoryDate1.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExHistoryDate1.Enabled = false;
             HDateTimeExHistoryDate1.Format = DateTimePickerFormat.Custom;
             HDateTimeExHistoryDate1.Location = new Point(40, 84);
@@ -892,7 +892,7 @@
             // 
             // HDateTimeExHistoryDate
             // 
-            HDateTimeExHistoryDate.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExHistoryDate.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExHistoryDate.Format = DateTimePickerFormat.Custom;
             HDateTimeExHistoryDate.Location = new Point(40, 48);
             HDateTimeExHistoryDate.Name = "HDateTimeExHistoryDate";
@@ -946,7 +946,7 @@
             // 
             // HDateTimeExLicenseTypeExpirationDate
             // 
-            HDateTimeExLicenseTypeExpirationDate.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExLicenseTypeExpirationDate.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExLicenseTypeExpirationDate.Enabled = false;
             HDateTimeExLicenseTypeExpirationDate.Format = DateTimePickerFormat.Custom;
             HDateTimeExLicenseTypeExpirationDate.Location = new Point(492, 132);
@@ -967,7 +967,7 @@
             // 
             // HDateTimeExLicenseTypeDate
             // 
-            HDateTimeExLicenseTypeDate.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExLicenseTypeDate.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExLicenseTypeDate.Enabled = false;
             HDateTimeExLicenseTypeDate.Format = DateTimePickerFormat.Custom;
             HDateTimeExLicenseTypeDate.Location = new Point(308, 132);
@@ -1051,7 +1051,7 @@
             // 
             // HDateTimeExNotSelectionDate
             // 
-            HDateTimeExNotSelectionDate.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExNotSelectionDate.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExNotSelectionDate.Format = DateTimePickerFormat.Custom;
             HDateTimeExNotSelectionDate.Location = new Point(132, 52);
             HDateTimeExNotSelectionDate.Name = "HDateTimeExNotSelectionDate";
@@ -1071,7 +1071,7 @@
             // 
             // HDateTimeExSelectionDate
             // 
-            HDateTimeExSelectionDate.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExSelectionDate.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExSelectionDate.Format = DateTimePickerFormat.Custom;
             HDateTimeExSelectionDate.Location = new Point(132, 24);
             HDateTimeExSelectionDate.Name = "HDateTimeExSelectionDate";
@@ -1144,7 +1144,7 @@
             // 
             // HDateTimePickerExContractDate
             // 
-            HDateTimePickerExContractDate.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimePickerExContractDate.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimePickerExContractDate.Format = DateTimePickerFormat.Custom;
             HDateTimePickerExContractDate.Location = new Point(364, 164);
             HDateTimePickerExContractDate.Name = "HDateTimePickerExContractDate";
@@ -1321,7 +1321,7 @@
             // 
             // HDateTimeExEmploymentDate
             // 
-            HDateTimeExEmploymentDate.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExEmploymentDate.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExEmploymentDate.Format = DateTimePickerFormat.Custom;
             HDateTimeExEmploymentDate.Location = new Point(68, 164);
             HDateTimeExEmploymentDate.Name = "HDateTimeExEmploymentDate";
@@ -1350,7 +1350,7 @@
             // 
             // HDateTimeExBirthDate
             // 
-            HDateTimeExBirthDate.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExBirthDate.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExBirthDate.Format = DateTimePickerFormat.Custom;
             HDateTimeExBirthDate.Location = new Point(68, 136);
             HDateTimeExBirthDate.Name = "HDateTimeExBirthDate";
@@ -1495,7 +1495,7 @@
             // 
             // HDateTimeExDeathDate
             // 
-            HDateTimeExDeathDate.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExDeathDate.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExDeathDate.Format = DateTimePickerFormat.Custom;
             HDateTimeExDeathDate.Location = new Point(200, 88);
             HDateTimeExDeathDate.Name = "HDateTimeExDeathDate";
@@ -1542,7 +1542,7 @@
             // 
             // HDateTimeExRetirementDate
             // 
-            HDateTimeExRetirementDate.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExRetirementDate.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExRetirementDate.Enabled = false;
             HDateTimeExRetirementDate.Format = DateTimePickerFormat.Custom;
             HDateTimeExRetirementDate.Location = new Point(184, 28);
@@ -1769,7 +1769,7 @@
             // 
             // HDateTimeExProperDate3
             // 
-            HDateTimeExProperDate3.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExProperDate3.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExProperDate3.Enabled = false;
             HDateTimeExProperDate3.Format = DateTimePickerFormat.Custom;
             HDateTimeExProperDate3.Location = new Point(212, 140);
@@ -1798,7 +1798,7 @@
             // 
             // HDateTimeExProperDate2
             // 
-            HDateTimeExProperDate2.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExProperDate2.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExProperDate2.Enabled = false;
             HDateTimeExProperDate2.Format = DateTimePickerFormat.Custom;
             HDateTimeExProperDate2.Location = new Point(212, 112);
@@ -1827,7 +1827,7 @@
             // 
             // HDateTimeExProperDate1
             // 
-            HDateTimeExProperDate1.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExProperDate1.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExProperDate1.Enabled = false;
             HDateTimeExProperDate1.Format = DateTimePickerFormat.Custom;
             HDateTimeExProperDate1.Location = new Point(212, 84);
@@ -1855,7 +1855,7 @@
             // 
             // HDateTimeExProperDate
             // 
-            HDateTimeExProperDate.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExProperDate.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExProperDate.Format = DateTimePickerFormat.Custom;
             HDateTimeExProperDate.Location = new Point(212, 48);
             HDateTimeExProperDate.Name = "HDateTimeExProperDate";
@@ -1866,6 +1866,7 @@
             // HComboBoxExProperKind
             // 
             HComboBoxExProperKind.FormattingEnabled = true;
+            HComboBoxExProperKind.Items.AddRange(new object[] { "初任診断", "適齢診断", "一般診断" });
             HComboBoxExProperKind.Location = new Point(48, 48);
             HComboBoxExProperKind.Name = "HComboBoxExProperKind";
             HComboBoxExProperKind.Size = new Size(156, 23);
@@ -1973,7 +1974,7 @@
             // 
             // HDateTimeExEducateDate3
             // 
-            HDateTimeExEducateDate3.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExEducateDate3.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExEducateDate3.Enabled = false;
             HDateTimeExEducateDate3.Format = DateTimePickerFormat.Custom;
             HDateTimeExEducateDate3.Location = new Point(48, 140);
@@ -1993,7 +1994,7 @@
             // 
             // HDateTimeExEducateDate2
             // 
-            HDateTimeExEducateDate2.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExEducateDate2.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExEducateDate2.Enabled = false;
             HDateTimeExEducateDate2.Format = DateTimePickerFormat.Custom;
             HDateTimeExEducateDate2.Location = new Point(48, 112);
@@ -2013,7 +2014,7 @@
             // 
             // HDateTimeExEducateDate1
             // 
-            HDateTimeExEducateDate1.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExEducateDate1.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExEducateDate1.Enabled = false;
             HDateTimeExEducateDate1.Format = DateTimePickerFormat.Custom;
             HDateTimeExEducateDate1.Location = new Point(48, 84);
@@ -2050,7 +2051,7 @@
             // 
             // HDateTimeExEducateDate
             // 
-            HDateTimeExEducateDate.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExEducateDate.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExEducateDate.Format = DateTimePickerFormat.Custom;
             HDateTimeExEducateDate.Location = new Point(48, 48);
             HDateTimeExEducateDate.Name = "HDateTimeExEducateDate";
@@ -2179,7 +2180,7 @@
             // 
             // HDateTimeExCarViolateDate3
             // 
-            HDateTimeExCarViolateDate3.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExCarViolateDate3.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExCarViolateDate3.Enabled = false;
             HDateTimeExCarViolateDate3.Format = DateTimePickerFormat.Custom;
             HDateTimeExCarViolateDate3.Location = new Point(48, 140);
@@ -2199,7 +2200,7 @@
             // 
             // HDateTimeExCarViolateDate2
             // 
-            HDateTimeExCarViolateDate2.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExCarViolateDate2.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExCarViolateDate2.Enabled = false;
             HDateTimeExCarViolateDate2.Format = DateTimePickerFormat.Custom;
             HDateTimeExCarViolateDate2.Location = new Point(48, 112);
@@ -2219,7 +2220,7 @@
             // 
             // HDateTimeExCarViolateDate1
             // 
-            HDateTimeExCarViolateDate1.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExCarViolateDate1.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExCarViolateDate1.Enabled = false;
             HDateTimeExCarViolateDate1.Format = DateTimePickerFormat.Custom;
             HDateTimeExCarViolateDate1.Location = new Point(48, 84);
@@ -2256,7 +2257,7 @@
             // 
             // HDateTimeExCarViolateDate
             // 
-            HDateTimeExCarViolateDate.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExCarViolateDate.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExCarViolateDate.Format = DateTimePickerFormat.Custom;
             HDateTimeExCarViolateDate.Location = new Point(48, 48);
             HDateTimeExCarViolateDate.Name = "HDateTimeExCarViolateDate";
@@ -2406,7 +2407,7 @@
             // 
             // HDateTimeExMedicalExaminationDate3
             // 
-            HDateTimeExMedicalExaminationDate3.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExMedicalExaminationDate3.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExMedicalExaminationDate3.Enabled = false;
             HDateTimeExMedicalExaminationDate3.Format = DateTimePickerFormat.Custom;
             HDateTimeExMedicalExaminationDate3.Location = new Point(48, 140);
@@ -2426,7 +2427,7 @@
             // 
             // HDateTimeExMedicalExaminationDate2
             // 
-            HDateTimeExMedicalExaminationDate2.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExMedicalExaminationDate2.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExMedicalExaminationDate2.Enabled = false;
             HDateTimeExMedicalExaminationDate2.Format = DateTimePickerFormat.Custom;
             HDateTimeExMedicalExaminationDate2.Location = new Point(48, 112);
@@ -2446,7 +2447,7 @@
             // 
             // HDateTimeExMedicalExaminationDate1
             // 
-            HDateTimeExMedicalExaminationDate1.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExMedicalExaminationDate1.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExMedicalExaminationDate1.Enabled = false;
             HDateTimeExMedicalExaminationDate1.Format = DateTimePickerFormat.Custom;
             HDateTimeExMedicalExaminationDate1.Location = new Point(48, 84);
@@ -2484,7 +2485,7 @@
             // 
             // HDateTimeExMedicalExaminationDate
             // 
-            HDateTimeExMedicalExaminationDate.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExMedicalExaminationDate.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExMedicalExaminationDate.Format = DateTimePickerFormat.Custom;
             HDateTimeExMedicalExaminationDate.Location = new Point(48, 48);
             HDateTimeExMedicalExaminationDate.Name = "HDateTimeExMedicalExaminationDate";
@@ -2583,7 +2584,7 @@
             // 
             // HDateTimeExWorkerAccidentInsuranceDate
             // 
-            HDateTimeExWorkerAccidentInsuranceDate.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExWorkerAccidentInsuranceDate.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExWorkerAccidentInsuranceDate.Format = DateTimePickerFormat.Custom;
             HDateTimeExWorkerAccidentInsuranceDate.Location = new Point(80, 108);
             HDateTimeExWorkerAccidentInsuranceDate.Name = "HDateTimeExWorkerAccidentInsuranceDate";
@@ -2593,7 +2594,7 @@
             // 
             // HDateTimeExEmploymentInsuranceDate
             // 
-            HDateTimeExEmploymentInsuranceDate.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExEmploymentInsuranceDate.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExEmploymentInsuranceDate.Format = DateTimePickerFormat.Custom;
             HDateTimeExEmploymentInsuranceDate.Location = new Point(80, 80);
             HDateTimeExEmploymentInsuranceDate.Name = "HDateTimeExEmploymentInsuranceDate";
@@ -2603,7 +2604,7 @@
             // 
             // HDateTimeExWelfarePensionDate
             // 
-            HDateTimeExWelfarePensionDate.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExWelfarePensionDate.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExWelfarePensionDate.Format = DateTimePickerFormat.Custom;
             HDateTimeExWelfarePensionDate.Location = new Point(80, 52);
             HDateTimeExWelfarePensionDate.Name = "HDateTimeExWelfarePensionDate";
@@ -2613,7 +2614,7 @@
             // 
             // HDateTimeExHealthInsuranceDate
             // 
-            HDateTimeExHealthInsuranceDate.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExHealthInsuranceDate.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExHealthInsuranceDate.Format = DateTimePickerFormat.Custom;
             HDateTimeExHealthInsuranceDate.Location = new Point(80, 24);
             HDateTimeExHealthInsuranceDate.Name = "HDateTimeExHealthInsuranceDate";
@@ -2762,7 +2763,7 @@
             // 
             // HDateTimeExFamilyBirthDate4
             // 
-            HDateTimeExFamilyBirthDate4.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExFamilyBirthDate4.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExFamilyBirthDate4.Enabled = false;
             HDateTimeExFamilyBirthDate4.Format = DateTimePickerFormat.Custom;
             HDateTimeExFamilyBirthDate4.Location = new Point(476, 168);
@@ -2801,7 +2802,7 @@
             // 
             // HDateTimeExFamilyBirthDate3
             // 
-            HDateTimeExFamilyBirthDate3.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExFamilyBirthDate3.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExFamilyBirthDate3.Enabled = false;
             HDateTimeExFamilyBirthDate3.Format = DateTimePickerFormat.Custom;
             HDateTimeExFamilyBirthDate3.Location = new Point(476, 140);
@@ -2840,7 +2841,7 @@
             // 
             // HDateTimeExFamilyBirthDate2
             // 
-            HDateTimeExFamilyBirthDate2.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExFamilyBirthDate2.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExFamilyBirthDate2.Enabled = false;
             HDateTimeExFamilyBirthDate2.Format = DateTimePickerFormat.Custom;
             HDateTimeExFamilyBirthDate2.Location = new Point(476, 112);
@@ -2879,7 +2880,7 @@
             // 
             // HDateTimeExFamilyBirthDate1
             // 
-            HDateTimeExFamilyBirthDate1.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExFamilyBirthDate1.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExFamilyBirthDate1.Enabled = false;
             HDateTimeExFamilyBirthDate1.Format = DateTimePickerFormat.Custom;
             HDateTimeExFamilyBirthDate1.Location = new Point(476, 84);
@@ -2952,7 +2953,7 @@
             // 
             // HDateTimeExFamilyBirthDate
             // 
-            HDateTimeExFamilyBirthDate.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExFamilyBirthDate.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExFamilyBirthDate.Format = DateTimePickerFormat.Custom;
             HDateTimeExFamilyBirthDate.Location = new Point(476, 48);
             HDateTimeExFamilyBirthDate.Name = "HDateTimeExFamilyBirthDate";
@@ -3067,7 +3068,7 @@
             // 
             // HDateTimeExPunishmentDate3
             // 
-            HDateTimeExPunishmentDate3.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExPunishmentDate3.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExPunishmentDate3.Enabled = false;
             HDateTimeExPunishmentDate3.Format = DateTimePickerFormat.Custom;
             HDateTimeExPunishmentDate3.Location = new Point(48, 140);
@@ -3087,7 +3088,7 @@
             // 
             // HDateTimeExPunishmentDate2
             // 
-            HDateTimeExPunishmentDate2.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExPunishmentDate2.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExPunishmentDate2.Enabled = false;
             HDateTimeExPunishmentDate2.Format = DateTimePickerFormat.Custom;
             HDateTimeExPunishmentDate2.Location = new Point(48, 112);
@@ -3107,7 +3108,7 @@
             // 
             // HDateTimeExPunishmentDate1
             // 
-            HDateTimeExPunishmentDate1.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExPunishmentDate1.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExPunishmentDate1.Enabled = false;
             HDateTimeExPunishmentDate1.Format = DateTimePickerFormat.Custom;
             HDateTimeExPunishmentDate1.Location = new Point(48, 84);
@@ -3126,7 +3127,7 @@
             // 
             // HDateTimeExPunishmentDate
             // 
-            HDateTimeExPunishmentDate.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimeExPunishmentDate.CustomFormat = " 令和06年02月08日(木曜日)";
             HDateTimeExPunishmentDate.Format = DateTimePickerFormat.Custom;
             HDateTimeExPunishmentDate.Location = new Point(48, 48);
             HDateTimeExPunishmentDate.Name = "HDateTimeExPunishmentDate";

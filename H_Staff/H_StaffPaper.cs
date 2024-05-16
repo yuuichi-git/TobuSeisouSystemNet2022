@@ -99,10 +99,10 @@ namespace H_Staff {
              * 初任診断
              */
             if (_hStaffMasterVo.Occupation == 10) {
-                string syoninProperDate = _hStaffProperDao.GetSyoninProperDate(_hStaffMasterVo.StaffCode);
-                if (syoninProperDate != string.Empty) {
+                DateTime syoninProperDate = _hStaffProperDao.GetSyoninProperDate(_hStaffMasterVo.StaffCode);
+                if (syoninProperDate != _defaultDateTime) {
                     sheetView.Cells[2, 10].ForeColor = Color.Black;
-                    sheetView.Cells[2, 10].Text = syoninProperDate;
+                    sheetView.Cells[2, 10].Text = syoninProperDate.ToString("yyyy/MM/dd");
                 } else {
                     sheetView.Cells[2, 10].ForeColor = Color.Black;
                     sheetView.Cells[2, 10].Text = "記録なし";

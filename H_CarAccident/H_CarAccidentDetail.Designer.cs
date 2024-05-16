@@ -136,6 +136,7 @@
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             ToolStripStatusLabelDetail = new ToolStripStatusLabel();
             HPanelExUp = new H_ControlEx.H_PanelEx();
+            HMaskedTextBoxExTime = new H_ControlEx.H_MaskedTextBoxEx();
             RadioButtonTotallingFalse = new RadioButton();
             RadioButtonTotallingTrue = new RadioButton();
             label1 = new Label();
@@ -248,6 +249,7 @@
             h_ButtonEx9.Name = "h_ButtonEx9";
             h_ButtonEx9.Size = new Size(64, 24);
             h_ButtonEx9.TabIndex = 77;
+            h_ButtonEx9.Tag = "7";
             h_ButtonEx9.Text = "Delete";
             h_ButtonEx9.TextDirectionVertical = "";
             h_ButtonEx9.UseVisualStyleBackColor = true;
@@ -259,6 +261,7 @@
             h_ButtonEx10.Name = "h_ButtonEx10";
             h_ButtonEx10.Size = new Size(64, 24);
             h_ButtonEx10.TabIndex = 76;
+            h_ButtonEx10.Tag = "7";
             h_ButtonEx10.Text = "Clip";
             h_ButtonEx10.TextDirectionVertical = "";
             h_ButtonEx10.UseVisualStyleBackColor = true;
@@ -270,6 +273,7 @@
             h_ButtonEx11.Name = "h_ButtonEx11";
             h_ButtonEx11.Size = new Size(64, 24);
             h_ButtonEx11.TabIndex = 75;
+            h_ButtonEx11.Tag = "5";
             h_ButtonEx11.Text = "Delete";
             h_ButtonEx11.TextDirectionVertical = "";
             h_ButtonEx11.UseVisualStyleBackColor = true;
@@ -281,6 +285,7 @@
             h_ButtonEx12.Name = "h_ButtonEx12";
             h_ButtonEx12.Size = new Size(64, 24);
             h_ButtonEx12.TabIndex = 74;
+            h_ButtonEx12.Tag = "5";
             h_ButtonEx12.Text = "Clip";
             h_ButtonEx12.TextDirectionVertical = "";
             h_ButtonEx12.UseVisualStyleBackColor = true;
@@ -292,6 +297,7 @@
             h_ButtonEx13.Name = "h_ButtonEx13";
             h_ButtonEx13.Size = new Size(64, 24);
             h_ButtonEx13.TabIndex = 73;
+            h_ButtonEx13.Tag = "3";
             h_ButtonEx13.Text = "Delete";
             h_ButtonEx13.TextDirectionVertical = "";
             h_ButtonEx13.UseVisualStyleBackColor = true;
@@ -303,6 +309,7 @@
             h_ButtonEx14.Name = "h_ButtonEx14";
             h_ButtonEx14.Size = new Size(64, 24);
             h_ButtonEx14.TabIndex = 72;
+            h_ButtonEx14.Tag = "3";
             h_ButtonEx14.Text = "Clip";
             h_ButtonEx14.TextDirectionVertical = "";
             h_ButtonEx14.UseVisualStyleBackColor = true;
@@ -314,6 +321,7 @@
             h_ButtonEx15.Name = "h_ButtonEx15";
             h_ButtonEx15.Size = new Size(64, 24);
             h_ButtonEx15.TabIndex = 71;
+            h_ButtonEx15.Tag = "1";
             h_ButtonEx15.Text = "Delete";
             h_ButtonEx15.TextDirectionVertical = "";
             h_ButtonEx15.UseVisualStyleBackColor = true;
@@ -325,6 +333,7 @@
             h_ButtonEx16.Name = "h_ButtonEx16";
             h_ButtonEx16.Size = new Size(64, 24);
             h_ButtonEx16.TabIndex = 70;
+            h_ButtonEx16.Tag = "1";
             h_ButtonEx16.Text = "Clip";
             h_ButtonEx16.TextDirectionVertical = "";
             h_ButtonEx16.UseVisualStyleBackColor = true;
@@ -336,6 +345,7 @@
             h_ButtonEx7.Name = "h_ButtonEx7";
             h_ButtonEx7.Size = new Size(64, 24);
             h_ButtonEx7.TabIndex = 69;
+            h_ButtonEx7.Tag = "6";
             h_ButtonEx7.Text = "Delete";
             h_ButtonEx7.TextDirectionVertical = "";
             h_ButtonEx7.UseVisualStyleBackColor = true;
@@ -347,6 +357,7 @@
             h_ButtonEx8.Name = "h_ButtonEx8";
             h_ButtonEx8.Size = new Size(64, 24);
             h_ButtonEx8.TabIndex = 68;
+            h_ButtonEx8.Tag = "6";
             h_ButtonEx8.Text = "Clip";
             h_ButtonEx8.TextDirectionVertical = "";
             h_ButtonEx8.UseVisualStyleBackColor = true;
@@ -358,6 +369,7 @@
             h_ButtonEx5.Name = "h_ButtonEx5";
             h_ButtonEx5.Size = new Size(64, 24);
             h_ButtonEx5.TabIndex = 67;
+            h_ButtonEx5.Tag = "4";
             h_ButtonEx5.Text = "Delete";
             h_ButtonEx5.TextDirectionVertical = "";
             h_ButtonEx5.UseVisualStyleBackColor = true;
@@ -369,6 +381,7 @@
             h_ButtonEx6.Name = "h_ButtonEx6";
             h_ButtonEx6.Size = new Size(64, 24);
             h_ButtonEx6.TabIndex = 66;
+            h_ButtonEx6.Tag = "4";
             h_ButtonEx6.Text = "Clip";
             h_ButtonEx6.TextDirectionVertical = "";
             h_ButtonEx6.UseVisualStyleBackColor = true;
@@ -380,6 +393,7 @@
             h_ButtonEx3.Name = "h_ButtonEx3";
             h_ButtonEx3.Size = new Size(64, 24);
             h_ButtonEx3.TabIndex = 65;
+            h_ButtonEx3.Tag = "2";
             h_ButtonEx3.Text = "Delete";
             h_ButtonEx3.TextDirectionVertical = "";
             h_ButtonEx3.UseVisualStyleBackColor = true;
@@ -391,6 +405,7 @@
             h_ButtonEx4.Name = "h_ButtonEx4";
             h_ButtonEx4.Size = new Size(64, 24);
             h_ButtonEx4.TabIndex = 64;
+            h_ButtonEx4.Tag = "2";
             h_ButtonEx4.Text = "Clip";
             h_ButtonEx4.TextDirectionVertical = "";
             h_ButtonEx4.UseVisualStyleBackColor = true;
@@ -402,6 +417,7 @@
             h_ButtonEx2.Name = "h_ButtonEx2";
             h_ButtonEx2.Size = new Size(64, 24);
             h_ButtonEx2.TabIndex = 63;
+            h_ButtonEx2.Tag = "0";
             h_ButtonEx2.Text = "Delete";
             h_ButtonEx2.TextDirectionVertical = "";
             h_ButtonEx2.UseVisualStyleBackColor = true;
@@ -413,6 +429,7 @@
             h_ButtonEx1.Name = "h_ButtonEx1";
             h_ButtonEx1.Size = new Size(64, 24);
             h_ButtonEx1.TabIndex = 62;
+            h_ButtonEx1.Tag = "0";
             h_ButtonEx1.Text = "Clip";
             h_ButtonEx1.TextDirectionVertical = "";
             h_ButtonEx1.UseVisualStyleBackColor = true;
@@ -427,6 +444,7 @@
             HPictureBoxEx8.SizeMode = PictureBoxSizeMode.Zoom;
             HPictureBoxEx8.TabIndex = 61;
             HPictureBoxEx8.TabStop = false;
+            HPictureBoxEx8.Tag = "7";
             // 
             // HPictureBoxEx7
             // 
@@ -437,6 +455,7 @@
             HPictureBoxEx7.SizeMode = PictureBoxSizeMode.Zoom;
             HPictureBoxEx7.TabIndex = 60;
             HPictureBoxEx7.TabStop = false;
+            HPictureBoxEx7.Tag = "6";
             // 
             // HPictureBoxEx6
             // 
@@ -447,6 +466,7 @@
             HPictureBoxEx6.SizeMode = PictureBoxSizeMode.Zoom;
             HPictureBoxEx6.TabIndex = 59;
             HPictureBoxEx6.TabStop = false;
+            HPictureBoxEx6.Tag = "5";
             // 
             // HPictureBoxEx5
             // 
@@ -457,6 +477,7 @@
             HPictureBoxEx5.SizeMode = PictureBoxSizeMode.Zoom;
             HPictureBoxEx5.TabIndex = 58;
             HPictureBoxEx5.TabStop = false;
+            HPictureBoxEx5.Tag = "4";
             // 
             // HPictureBoxEx4
             // 
@@ -467,6 +488,7 @@
             HPictureBoxEx4.SizeMode = PictureBoxSizeMode.Zoom;
             HPictureBoxEx4.TabIndex = 57;
             HPictureBoxEx4.TabStop = false;
+            HPictureBoxEx4.Tag = "3";
             // 
             // HPictureBoxEx3
             // 
@@ -477,6 +499,7 @@
             HPictureBoxEx3.SizeMode = PictureBoxSizeMode.Zoom;
             HPictureBoxEx3.TabIndex = 56;
             HPictureBoxEx3.TabStop = false;
+            HPictureBoxEx3.Tag = "2";
             // 
             // HPictureBoxEx2
             // 
@@ -487,6 +510,7 @@
             HPictureBoxEx2.SizeMode = PictureBoxSizeMode.Zoom;
             HPictureBoxEx2.TabIndex = 55;
             HPictureBoxEx2.TabStop = false;
+            HPictureBoxEx2.Tag = "1";
             // 
             // HPictureBoxEx1
             // 
@@ -497,6 +521,7 @@
             HPictureBoxEx1.SizeMode = PictureBoxSizeMode.Zoom;
             HPictureBoxEx1.TabIndex = 54;
             HPictureBoxEx1.TabStop = false;
+            HPictureBoxEx1.Tag = "0";
             // 
             // TextBoxGuide
             // 
@@ -1422,6 +1447,7 @@
             // 
             // HPanelExUp
             // 
+            HPanelExUp.Controls.Add(HMaskedTextBoxExTime);
             HPanelExUp.Controls.Add(RadioButtonTotallingFalse);
             HPanelExUp.Controls.Add(RadioButtonTotallingTrue);
             HPanelExUp.Controls.Add(label1);
@@ -1433,6 +1459,17 @@
             HPanelExUp.Name = "HPanelExUp";
             HPanelExUp.Size = new Size(1898, 54);
             HPanelExUp.TabIndex = 2;
+            // 
+            // HMaskedTextBoxExTime
+            // 
+            HMaskedTextBoxExTime.Location = new Point(316, 16);
+            HMaskedTextBoxExTime.Mask = "90時90分";
+            HMaskedTextBoxExTime.Name = "HMaskedTextBoxExTime";
+            HMaskedTextBoxExTime.Size = new Size(76, 23);
+            HMaskedTextBoxExTime.TabIndex = 24;
+            HMaskedTextBoxExTime.TextAlign = HorizontalAlignment.Right;
+            HMaskedTextBoxExTime.TextMaskFormat = MaskFormat.ExcludePromptAndLiterals;
+            HMaskedTextBoxExTime.ValidatingType = typeof(DateTime);
             // 
             // RadioButtonTotallingFalse
             // 
@@ -1467,11 +1504,11 @@
             // 
             // HDateTimePickerExOccurrence
             // 
-            HDateTimePickerExOccurrence.CustomFormat = " yyyy年MM月dd日(dddd) HH時mm分頃";
+            HDateTimePickerExOccurrence.CustomFormat = " 令和06年05月08日(水曜日)";
             HDateTimePickerExOccurrence.Format = DateTimePickerFormat.Custom;
             HDateTimePickerExOccurrence.Location = new Point(116, 16);
             HDateTimePickerExOccurrence.Name = "HDateTimePickerExOccurrence";
-            HDateTimePickerExOccurrence.Size = new Size(260, 23);
+            HDateTimePickerExOccurrence.Size = new Size(188, 23);
             HDateTimePickerExOccurrence.TabIndex = 3;
             HDateTimePickerExOccurrence.Value = new DateTime(2024, 5, 8, 13, 13, 13, 0);
             // 
@@ -1501,10 +1538,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1904, 1041);
             Controls.Add(HTableLayoutPanelExBase);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = MenuStrip1;
-            MaximizeBox = false;
-            MinimizeBox = false;
             Name = "H_CarAccidentDetail";
             Text = "H_CarAccidentDetail";
             HTableLayoutPanelExBase.ResumeLayout(false);
@@ -1668,5 +1702,6 @@
         private RadioButton RadioButtonTotallingFalse;
         private RadioButton RadioButtonTotallingTrue;
         private Label label1;
+        private H_ControlEx.H_MaskedTextBoxEx HMaskedTextBoxExTime;
     }
 }

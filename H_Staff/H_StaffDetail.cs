@@ -11,7 +11,7 @@ namespace H_Staff {
     public partial class HStaffDetail : Form {
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
         // ErrorProviderのインスタンスを生成
-        readonly ErrorProvider errorProvider = new();
+        readonly ErrorProvider _errorProvider = new();
         /// <summary>
         /// StaffCode
         /// </summary>
@@ -70,7 +70,7 @@ namespace H_Staff {
             // 新規従事者コードを採番
             HTextBoxExStaffCode.Text = (_hStaffMasterDao.GetStaffCode(24000) + 1).ToString("#####");
             // アイコンを常に点滅に設定する
-            errorProvider.BlinkStyle = ErrorBlinkStyle.BlinkIfDifferentError;
+            _errorProvider.BlinkStyle = ErrorBlinkStyle.BlinkIfDifferentError;
             this.InitializeControls();
         }
 
@@ -104,7 +104,7 @@ namespace H_Staff {
             // 従事者コード
             HTextBoxExStaffCode.Text = _staffCode.ToString();
             // アイコンを常に点滅に設定する
-            errorProvider.BlinkStyle = ErrorBlinkStyle.AlwaysBlink;
+            _errorProvider.BlinkStyle = ErrorBlinkStyle.AlwaysBlink;
             this.InitializeControls();
             try {
                 this.SetControl(_hStaffMasterDao.SelectOneHStaffMaster(staffCode));
@@ -252,10 +252,10 @@ namespace H_Staff {
                          * Validation
                          */
                         if (HDateTimeExHistoryDate.GetValue().Date == _defaultDateTime.Date) {
-                            errorProvider.SetError(HDateTimeExHistoryDate, "入社日");
+                            _errorProvider.SetError(HDateTimeExHistoryDate, "入社日");
                             break;
                         } else if (HTextBoxExCompanyName.Text.Length == 0) {
-                            errorProvider.SetError(HTextBoxExCompanyName, "在籍記録");
+                            _errorProvider.SetError(HTextBoxExCompanyName, "在籍記録");
                             break;
                         }
                         _hStaffHistoryDao.InsertOneHStaffHistoryMaster(hStaffHistoryVo);
@@ -263,7 +263,7 @@ namespace H_Staff {
                         /*
                          * 更新後の初期化
                          */
-                        errorProvider.Clear();
+                        _errorProvider.Clear();
                         HDateTimeExHistoryDate.SetBlank();
                         HTextBoxExCompanyName.Text = string.Empty;
                         // 再表示
@@ -288,13 +288,13 @@ namespace H_Staff {
                          * Validation
                          */
                         if (HComboBoxExExperienceKind.Text.Length == 0) {
-                            errorProvider.SetError(HComboBoxExExperienceKind, "過去に運転経験のある自動車の種類");
+                            _errorProvider.SetError(HComboBoxExExperienceKind, "過去に運転経験のある自動車の種類");
                             break;
                         } else if (HTextBoxExExperienceLoad.Text.Length == 0) {
-                            errorProvider.SetError(HTextBoxExExperienceLoad, "過去に運転経験のある自動車の積載量");
+                            _errorProvider.SetError(HTextBoxExExperienceLoad, "過去に運転経験のある自動車の積載量");
                             break;
                         } else if (HTextBoxExExperienceDuration.Text.Length == 0) {
-                            errorProvider.SetError(HTextBoxExExperienceDuration, "過去に運転経験のある自動車の経験期間");
+                            _errorProvider.SetError(HTextBoxExExperienceDuration, "過去に運転経験のある自動車の経験期間");
                             break;
                         }
                         _hStaffExperienceDao.InsertOneHStaffExperienceMaster(hStaffExperienceVo);
@@ -302,7 +302,7 @@ namespace H_Staff {
                         /*
                          * 更新後の初期化
                          */
-                        errorProvider.Clear();
+                        _errorProvider.Clear();
                         HComboBoxExExperienceKind.Text = string.Empty;
                         HTextBoxExExperienceLoad.Text = string.Empty;
                         HTextBoxExExperienceDuration.Text = string.Empty;
@@ -328,13 +328,13 @@ namespace H_Staff {
                          * Validation
                          */
                         if (HTextBoxExFamilyName.Text.Length == 0) {
-                            errorProvider.SetError(HTextBoxExFamilyName, "家族氏名");
+                            _errorProvider.SetError(HTextBoxExFamilyName, "家族氏名");
                             break;
                         } else if (HDateTimeExFamilyBirthDate.GetValue().Date == _defaultDateTime.Date) {
-                            errorProvider.SetError(HDateTimeExFamilyBirthDate, "生年月日");
+                            _errorProvider.SetError(HDateTimeExFamilyBirthDate, "生年月日");
                             break;
                         } else if (HComboBoxExFamilyRelationship.Text.Length == 0) {
-                            errorProvider.SetError(HComboBoxExFamilyRelationship, "従業員との関係");
+                            _errorProvider.SetError(HComboBoxExFamilyRelationship, "従業員との関係");
                             break;
                         }
                         _hStaffFamilyDao.InsertOneHStaffFamilyMaster(hStaffFamilyVo);
@@ -342,7 +342,7 @@ namespace H_Staff {
                         /*
                          * 更新後の初期化
                          */
-                        errorProvider.Clear();
+                        _errorProvider.Clear();
                         HTextBoxExFamilyName.Text = string.Empty;
                         HDateTimeExFamilyBirthDate.SetBlank();
                         HComboBoxExFamilyRelationship.Text = string.Empty;
@@ -367,10 +367,10 @@ namespace H_Staff {
                          * Validation
                          */
                         if (HDateTimeExMedicalExaminationDate.GetValue().Date == _defaultDateTime.Date) {
-                            errorProvider.SetError(HDateTimeExMedicalExaminationDate, "健診実施日");
+                            _errorProvider.SetError(HDateTimeExMedicalExaminationDate, "健診実施日");
                             break;
                         } else if (HComboBoxExMedicalInstitutionName.Text.Length == 0) {
-                            errorProvider.SetError(HComboBoxExMedicalInstitutionName, "受診機関名");
+                            _errorProvider.SetError(HComboBoxExMedicalInstitutionName, "受診機関名");
                             break;
                         }
                         _hStaffMedicalExaminationDao.InsertOneHStaffMedicalExaminationMaster(hStaffMedicalExaminationVo);
@@ -378,7 +378,7 @@ namespace H_Staff {
                         /*
                          * 更新後の初期化
                          */
-                        errorProvider.Clear();
+                        _errorProvider.Clear();
                         HDateTimeExMedicalExaminationDate.SetBlank();
                         HComboBoxExMedicalInstitutionName.Text = string.Empty;
                         HTextBoxExMedicalExaminationNote.Text = string.Empty;
@@ -403,10 +403,10 @@ namespace H_Staff {
                          * Validation
                          */
                         if (HDateTimeExCarViolateDate.GetValue().Date == _defaultDateTime.Date) {
-                            errorProvider.SetError(HDateTimeExCarViolateDate, "違反年月日");
+                            _errorProvider.SetError(HDateTimeExCarViolateDate, "違反年月日");
                             break;
                         } else if (HComboBoxExCarViolateContent.Text.Length == 0) {
-                            errorProvider.SetError(HComboBoxExCarViolateContent, "違反名");
+                            _errorProvider.SetError(HComboBoxExCarViolateContent, "違反名");
                             break;
                         }
                         _hStaffCarViolateDao.InsertOneHStaffCarViolateMaster(hStaffCarViolateVo);
@@ -414,7 +414,7 @@ namespace H_Staff {
                         /*
                          * 更新後の初期化
                          */
-                        errorProvider.Clear();
+                        _errorProvider.Clear();
                         HDateTimeExCarViolateDate.SetBlank();
                         HComboBoxExCarViolateContent.Text = string.Empty;
                         HTextBoxExCarViolatePlace.Text = string.Empty;
@@ -438,10 +438,10 @@ namespace H_Staff {
                          * Validation
                          */
                         if (HDateTimeExEducateDate.GetValue().Date == _defaultDateTime.Date) {
-                            errorProvider.SetError(HDateTimeExEducateDate, "教育を受けた年月日");
+                            _errorProvider.SetError(HDateTimeExEducateDate, "教育を受けた年月日");
                             break;
                         } else if (HComboBoxExEducateName.Text.Length == 0) {
-                            errorProvider.SetError(HComboBoxExEducateName, "教育名称");
+                            _errorProvider.SetError(HComboBoxExEducateName, "教育名称");
                             break;
                         }
                         _hStaffEducateDao.InsertOneHStaffEducateMaster(hStaffEducateVo);
@@ -449,7 +449,7 @@ namespace H_Staff {
                         /*
                          * 更新後の初期化
                          */
-                        errorProvider.Clear();
+                        _errorProvider.Clear();
                         HDateTimeExEducateDate.SetBlank();
                         HComboBoxExEducateName.Text = string.Empty;
                         // 再表示
@@ -473,13 +473,13 @@ namespace H_Staff {
                         * Validation
                         */
                         if (HComboBoxExProperKind.Text.Length == 0) {
-                            errorProvider.SetError(HComboBoxExProperKind, "診断の種類");
+                            _errorProvider.SetError(HComboBoxExProperKind, "診断の種類");
                             break;
                         } else if (HDateTimeExProperDate.GetValue().Date == _defaultDateTime.Date) {
-                            errorProvider.SetError(HDateTimeExProperDate, "診断年月日");
+                            _errorProvider.SetError(HDateTimeExProperDate, "診断年月日");
                             break;
                         } else if (HTextBoxExProperNote.Text.Length == 0) {
-                            errorProvider.SetError(HTextBoxExProperNote, "");
+                            _errorProvider.SetError(HTextBoxExProperNote, "");
                             break;
                         }
                         _hStaffProperDao.InsertOneHStaffProperMaster(hStaffProperVo);
@@ -487,7 +487,7 @@ namespace H_Staff {
                         /*
                          * 更新後の初期化
                          */
-                        errorProvider.Clear();
+                        _errorProvider.Clear();
                         HComboBoxExProperKind.Text = string.Empty;
                         HDateTimeExProperDate.SetBlank();
                         HTextBoxExProperNote.Text = string.Empty;
@@ -512,10 +512,10 @@ namespace H_Staff {
                          * Validation
                          */
                         if (HDateTimeExPunishmentDate.GetValue().Date == _defaultDateTime.Date) {
-                            errorProvider.SetError(HDateTimeExPunishmentDate, "年月日");
+                            _errorProvider.SetError(HDateTimeExPunishmentDate, "年月日");
                             break;
                         } else if (HTextBoxExPunishmentNote.Text.Length == 0) {
-                            errorProvider.SetError(HTextBoxExPunishmentNote, "備考");
+                            _errorProvider.SetError(HTextBoxExPunishmentNote, "備考");
                             break;
                         }
                         _hStaffPunishmentDao.InsertOneHStaffPunishmentMasters(hStaffPunishmentVo);
@@ -523,7 +523,7 @@ namespace H_Staff {
                         /*
                          * 更新後の初期化
                          */
-                        errorProvider.Clear();
+                        _errorProvider.Clear();
                         HDateTimeExPunishmentDate.SetBlank();
                         HTextBoxExPunishmentNote.Text = string.Empty;
                         // 再表示

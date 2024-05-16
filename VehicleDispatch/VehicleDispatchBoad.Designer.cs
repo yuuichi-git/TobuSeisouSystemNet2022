@@ -28,7 +28,6 @@
             MenuStrip1 = new MenuStrip();
             ToolStripMenuItemMenu = new ToolStripMenuItem();
             ToolStripMenuItemVehicleDispatch = new ToolStripMenuItem();
-            ToolStripMenuItemConvertExcel = new ToolStripMenuItem();
             ToolStripMenuItemPrint = new ToolStripMenuItem();
             ToolStripMenuItemExit = new ToolStripMenuItem();
             ToolStripMenuItemEdit = new ToolStripMenuItem();
@@ -232,24 +231,16 @@
             // 
             // ToolStripMenuItemVehicleDispatch
             // 
-            ToolStripMenuItemVehicleDispatch.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemConvertExcel, ToolStripMenuItemPrint });
+            ToolStripMenuItemVehicleDispatch.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemPrint });
             ToolStripMenuItemVehicleDispatch.Name = "ToolStripMenuItemVehicleDispatch";
             ToolStripMenuItemVehicleDispatch.Size = new Size(195, 22);
             ToolStripMenuItemVehicleDispatch.Text = "配車表";
             ToolStripMenuItemVehicleDispatch.Click += ToolStripMenuItem_Click;
             // 
-            // ToolStripMenuItemConvertExcel
-            // 
-            ToolStripMenuItemConvertExcel.Enabled = false;
-            ToolStripMenuItemConvertExcel.Name = "ToolStripMenuItemConvertExcel";
-            ToolStripMenuItemConvertExcel.Size = new Size(288, 22);
-            ToolStripMenuItemConvertExcel.Text = "当日配車へデータを書き出す(新型の配車表)";
-            ToolStripMenuItemConvertExcel.Click += ToolStripMenuItem_Click;
-            // 
             // ToolStripMenuItemPrint
             // 
             ToolStripMenuItemPrint.Name = "ToolStripMenuItemPrint";
-            ToolStripMenuItemPrint.Size = new Size(288, 22);
+            ToolStripMenuItemPrint.Size = new Size(254, 22);
             ToolStripMenuItemPrint.Text = "表示されている配車表を印刷(B4)する";
             ToolStripMenuItemPrint.Click += ToolStripMenuItem_Click;
             // 
@@ -1687,7 +1678,6 @@
         private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExPartDesignation;
         private ControlEx.FlowLayoutPanelEx FlowLayoutPanelExFree;
         private ToolStripMenuItem ToolStripMenuItemVehicleDispatch;
-        private ToolStripMenuItem ToolStripMenuItemConvertExcel;
         private ToolStripMenuItem ToolStripMenuItemStaffMemo;
         private ToolStripMenuItem ToolStripMenuItemCarProxyFalse;
         private ToolStripMenuItem ToolStripMenuItemCarProxyTrue;

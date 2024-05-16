@@ -242,7 +242,7 @@ namespace H_ControlEx {
              * Occupation
              * 10:運転手 11:作業員 20:事務職 99:指定なし
              */
-            e.Graphics.DrawString(_staffOccupationCode == 11 ? "作" : "", _drawFontOccupation, Brushes.Blue, 8, 92);
+            e.Graphics.DrawString(this.StaffOccupationCode == 11 ? "作" : "", _drawFontOccupation, Brushes.Blue, 8, 92);
             /*
              * 代番処理を描画
              */
@@ -253,14 +253,14 @@ namespace H_ControlEx {
             /*
              * メモを描画
              */
-            if (_staffMemoFlag) {
+            if (this.StaffMemoFlag) {
                 Point[] points = { new Point(7, 10), new Point(21, 10), new Point(7, 24) };
                 e.Graphics.FillPolygon(new SolidBrush(Color.Crimson), points);
             }
             /*
              * 点呼の印を描画
              */
-            if (!_staffRollCallFlag) {
+            if (!this.StaffRollCallFlag) {
                 e.Graphics.FillEllipse(Brushes.Crimson, 50, 91, 12, 12);
                 e.Graphics.FillEllipse(Brushes.LightPink, 55, 97, 4, 4);
             }
@@ -389,7 +389,7 @@ namespace H_ControlEx {
                  */
                 case "ToolStripMenuItemStaffDetail":
                     /*
-                     * H_Boardに処理を回している
+                     * H_Boardに処理を渡す
                      * H_StaffLabel→H_SetControl→H_Board
                      */
                     Event_HStaffLabel_ToolStripMenuItem_Click.Invoke(sender, e);
@@ -486,7 +486,7 @@ namespace H_ControlEx {
                  */
                 case "ToolStripMenuItemStaffMemo":
                     /*
-                     * H_Boardに処理を回している
+                     * H_Boardに処理を渡す
                      * H_StaffLabel→H_SetControl→H_Board
                      */
                     Event_HStaffLabel_ToolStripMenuItem_Click.Invoke(sender, e);
@@ -496,7 +496,7 @@ namespace H_ControlEx {
                  */
                 case "ToolStripMenuItemStaffEquioment":
                     /*
-                     * H_Boardに処理を回している
+                     * H_Boardに処理を渡す
                      * H_StaffLabel→H_SetControl→H_Board
                      */
                     Event_HStaffLabel_ToolStripMenuItem_Click.Invoke(sender, e);
@@ -565,24 +565,23 @@ namespace H_ControlEx {
             set => _staffRollCallYmdHms = value;
         }
 
-        /*
-         * Event
-         */
+        /// <summary>
+        /// HStaffLabel_MouseClick
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void HStaffLabel_MouseClick(object sender, MouseEventArgs e) {
             /*
              * Shift+ClickがH_SetControl上で発火した場合
              */
             if ((ModifierKeys & Keys.Shift) == Keys.Shift) {
                 if (((H_StaffLabel)sender).Parent.GetType() == typeof(H_SetControl)) {
-                    /*
-                     * DB書換え
-                     */
                     try {
-                        _hVehicleDispatchDetailDao.UpdateStaffRollCall(((H_ControlVo)((H_SetControl)((H_StaffLabel)sender).Parent).Tag).CellNumber, _hControlVo.OperationDate, !this.StaffRollCallFlag, this.CellNumber);
-                        /*
-                         * StaffRollCallFlagを反転して再描画
-                         */
+                        // StaffRollCallFlagを反転
                         this.StaffRollCallFlag = !this.StaffRollCallFlag;
+                        // DB書換え
+                        _hVehicleDispatchDetailDao.UpdateStaffRollCall(((H_ControlVo)((H_SetControl)((H_StaffLabel)sender).Parent).Tag).CellNumber, _hControlVo.OperationDate, this.StaffRollCallFlag, this.CellNumber);
+                        // 再描画
                         this.Refresh();
                     } catch (Exception exception) {
                         MessageBox.Show(exception.Message);
@@ -593,7 +592,7 @@ namespace H_ControlEx {
                      * Shift+ClickがH_FlowLayoutPanelEx上で発火した場合
                      */
                 } else if (((H_StaffLabel)sender).Parent.GetType() == typeof(H_FlowLayoutPanelEx)) {
-                    MessageBox.Show("StockBoxsでの点呼処理はできません。", "ErrorMessage", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("StockBoxsでの点呼処理はできません。", "メッセージ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

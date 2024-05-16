@@ -170,7 +170,7 @@
             // ToolStripMenuItemPrintB4
             // 
             ToolStripMenuItemPrintB4.Name = "ToolStripMenuItemPrintB4";
-            ToolStripMenuItemPrintB4.Size = new Size(180, 22);
+            ToolStripMenuItemPrintB4.Size = new Size(140, 22);
             ToolStripMenuItemPrintB4.Text = "B4で印刷する";
             ToolStripMenuItemPrintB4.Click += ToolStripMenuItem_Click;
             // 
@@ -336,11 +336,11 @@
             // 
             // HDateTimePickerOperationDate
             // 
-            HDateTimePickerOperationDate.CustomFormat = "yyyy年MM月dd日(dddd)";
+            HDateTimePickerOperationDate.CustomFormat = " 令和05年10月10日(火曜日)";
             HDateTimePickerOperationDate.Format = DateTimePickerFormat.Custom;
-            HDateTimePickerOperationDate.Location = new Point(54, 7);
+            HDateTimePickerOperationDate.Location = new Point(64, 7);
             HDateTimePickerOperationDate.Name = "HDateTimePickerOperationDate";
-            HDateTimePickerOperationDate.Size = new Size(180, 23);
+            HDateTimePickerOperationDate.Size = new Size(186, 23);
             HDateTimePickerOperationDate.TabIndex = 0;
             HDateTimePickerOperationDate.TabStop = false;
             HDateTimePickerOperationDate.Value = new DateTime(2023, 10, 10, 0, 0, 0, 0);
@@ -349,7 +349,7 @@
             // h_LabelEx1
             // 
             h_LabelEx1.AutoSize = true;
-            h_LabelEx1.Location = new Point(6, 11);
+            h_LabelEx1.Location = new Point(16, 11);
             h_LabelEx1.Name = "h_LabelEx1";
             h_LabelEx1.Size = new Size(43, 15);
             h_LabelEx1.TabIndex = 1;

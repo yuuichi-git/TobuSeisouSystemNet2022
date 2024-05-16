@@ -327,7 +327,11 @@ namespace H_Staff {
                     // 免許証期限
                     SheetViewList.Cells[rowCount, colLicensExpirationDate].Value = _hLicenseMasterDao.GetExpirationDate(hStaffMasterVo.StaffCode);
                    　// 初任診断
-                    SheetViewList.Cells[rowCount, colFirstTerm].Value = _hStaffProperDao.GetSyoninProperDate(hStaffMasterVo.StaffCode);
+                    if (_hStaffProperDao.GetSyoninProperDate(hStaffMasterVo.StaffCode) != _defaultDateTime) {
+                        SheetViewList.Cells[rowCount, colFirstTerm].Value = _hStaffProperDao.GetSyoninProperDate(hStaffMasterVo.StaffCode);
+                    } else {
+                        SheetViewList.Cells[rowCount, colFirstTerm].Value = string.Empty;
+                    }
                     // 適齢診断の残日数
                     SheetViewList.Cells[rowCount, colSuitableAge].Value = _hStaffProperDao.GetTekireiProperDate(hStaffMasterVo.StaffCode);
                     // 年度内事故回数
@@ -337,7 +341,7 @@ namespace H_Staff {
                      */
                     DateTime medicalExaminationDate = _hStaffMedicalExaminationDao.GetMedicalExaminationDate(hStaffMasterVo.StaffCode);
                     if (medicalExaminationDate != _defaultDateTime) {
-                        SheetViewList.Cells[rowCount, colMedicalExaminationDate].Value = string.Concat("受診日(", medicalExaminationDate, ")");
+                        SheetViewList.Cells[rowCount, colMedicalExaminationDate].Value = string.Concat("受診日(", medicalExaminationDate.ToString("yyyy年MM月dd日"), ")");
                     } else {
                         SheetViewList.Cells[rowCount, colMedicalExaminationDate].Value = "健康診断の記録無し";
                     }
