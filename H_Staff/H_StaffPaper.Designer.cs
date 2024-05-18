@@ -35,9 +35,9 @@
             ToolStripStatusLabelDetail = new ToolStripStatusLabel();
             HTableLayoutPanelExMiddle = new H_ControlEx.H_TableLayoutPanelEx();
             SpreadStaffRegisterHead = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("HTableLayoutPanelExMiddle.Controls"));
+            SheetStaffRegisterHead = SpreadStaffRegisterHead.GetSheet(0);
             SpreadStaffRegisterTail = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("HTableLayoutPanelExMiddle.Controls1"));
             SheetStaffRegisterTail = SpreadStaffRegisterTail.GetSheet(0);
-            SheetStaffRegisterHead = SpreadStaffRegisterHead.GetSheet(0);
             HTableLayoutPanelExBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -148,7 +148,7 @@
             // 
             // SpreadStaffRegisterTail
             // 
-            SpreadStaffRegisterTail.AccessibleDescription = "Book1, Sheet1, Row 0, Column 0";
+            SpreadStaffRegisterTail.AccessibleDescription = "SpreadStaffRegisterTail, Sheet1, Row 0, Column 0";
             SpreadStaffRegisterTail.Dock = DockStyle.Fill;
             SpreadStaffRegisterTail.Font = new Font("ＭＳ Ｐゴシック", 11F, FontStyle.Regular, GraphicsUnit.Point);
             SpreadStaffRegisterTail.Location = new Point(951, 3);
@@ -190,9 +190,9 @@
         private H_ControlEx.H_TableLayoutPanelEx HTableLayoutPanelExMiddle;
         private FarPoint.Win.Spread.FpSpread SpreadStaffRegisterHead;
         private FarPoint.Win.Spread.FpSpread SpreadStaffRegisterTail;
-        private FarPoint.Win.Spread.SheetView SheetStaffRegisterTail;
         private ToolStripMenuItem ToolStripMenuItemPrint;
         private ToolStripMenuItem ToolStripMenuItemPrintA4;
         private FarPoint.Win.Spread.SheetView SheetStaffRegisterHead;
+        private FarPoint.Win.Spread.SheetView SheetStaffRegisterTail;
     }
 }

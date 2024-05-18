@@ -6,18 +6,18 @@ namespace H_ControlEx {
         /// <summary>
         /// 言語カルチャーを設定
         /// </summary>
-        private readonly CultureInfo cultureInfo = new("Ja-JP", true);
+        private readonly CultureInfo _cultureInfo = new("Ja-JP", true);
         /// <summary>
         /// 言語フラグ teur:和暦 false:西暦
         /// </summary>
-        private bool cultureFlag = true;
+        private bool _cultureFlag = true;
 
         /// <summary>
         /// コンストラクター
         /// </summary>
         public H_DateTimePickerEx() {
             // 言語カルチャーを設定
-            cultureInfo.DateTimeFormat.Calendar = new JapaneseCalendar();
+            _cultureInfo.DateTimeFormat.Calendar = new JapaneseCalendar();
             /*
              * コントロール初期化
              */
@@ -59,8 +59,8 @@ namespace H_ControlEx {
         /// <param name="e"></param>
         private void H_DateTimePickerEx_CloseUp(object sender, EventArgs e) {
             if (this.CustomFormat != " ") {
-                if (cultureFlag) {
-                    this.CustomFormat = this.Value.ToString(" ggyy年MM月dd日(dddd)", cultureInfo);
+                if (_cultureFlag) {
+                    this.CustomFormat = this.Value.ToString(" ggyy年MM月dd日(dddd)", _cultureInfo);
                 } else {
                     this.CustomFormat = this.Value.ToString(" yyyy年MM月dd日(dddd)");
                 }
@@ -87,7 +87,7 @@ namespace H_ControlEx {
                  * ブランクの場合はDateTime.Nowを入れる。ブランクでない場合はthis.valueを変換する。
                  */
                 case Keys.Control | Keys.A:
-                    cultureFlag = false;
+                    _cultureFlag = false;
                     if (this.CustomFormat == " ") {
                         this.CustomFormat = " yyyy年MM月dd日(dddd)";
                         this.Value = _defaultDateTime;
@@ -103,13 +103,13 @@ namespace H_ControlEx {
                  * ブランクの場合はDateTime.Nowを入れる。ブランクでない場合はthis.valueを変換する。
                  */
                 case Keys.Control | Keys.J:
-                    cultureFlag = true;
+                    _cultureFlag = true;
                     if (this.CustomFormat == " ") {
-                        this.CustomFormat = DateTime.Now.ToString(" ggyy年MM月dd日(dddd)", cultureInfo);
+                        this.CustomFormat = DateTime.Now.ToString(" ggyy年MM月dd日(dddd)", _cultureInfo);
                         this.Value = _defaultDateTime;
                         this.Refresh();
                     } else {
-                        this.CustomFormat = this.Value.ToString(" ggyy年MM月dd日(dddd)", cultureInfo);
+                        this.CustomFormat = this.Value.ToString(" ggyy年MM月dd日(dddd)", _cultureInfo);
                         this.Value = DateTime.Today;
                         this.Refresh();
                     }
@@ -124,8 +124,8 @@ namespace H_ControlEx {
         /// <param name="e"></param>
         private void HDateTimePickerEx_ValueChanged(object sender, EventArgs e) {
             if (this.CustomFormat != " ") {
-                if (cultureFlag) {
-                    this.CustomFormat = this.Value.ToString(" ggyy年MM月dd日(dddd)", cultureInfo);
+                if (_cultureFlag) {
+                    this.CustomFormat = this.Value.ToString(" ggyy年MM月dd日(dddd)", _cultureInfo);
                     this.Refresh();
                 } else {
                     this.CustomFormat = this.Value.ToString(" yyyy年MM月dd日(dddd)");
@@ -152,7 +152,7 @@ namespace H_ControlEx {
         /// </summary>
         /// <returns>和暦を返す</returns>
         public string GetValueJp() {
-            return this.Value.ToString(" ggy年M月d日(dddd)", cultureInfo);
+            return this.Value.ToString(" ggy年M月d日(dddd)", _cultureInfo);
         }
 
         /// <summary>
@@ -172,7 +172,7 @@ namespace H_ControlEx {
         /// <param name="dateTime"></param>
         public void SetValueJp(DateTime dateTime) {
             if (dateTime.Date != _defaultDateTime.Date) {
-                this.CustomFormat = dateTime.ToString(" ggyy年MM月dd日(dddd)", cultureInfo);
+                this.CustomFormat = dateTime.ToString(" ggyy年MM月dd日(dddd)", _cultureInfo);
                 this.Value = dateTime;
                 this.Refresh();
             } else {

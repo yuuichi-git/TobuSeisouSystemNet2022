@@ -7,8 +7,6 @@ using Certification;
 
 using Common;
 
-using CommuterInsurance;
-
 using H_AccountingParttime;
 
 using H_Car;
@@ -115,13 +113,6 @@ namespace TobuSeisouSystemNet2022 {
                             case "RollCallRecordBook":
                                 var rollCallRecordBook = new RollCallRecordBook(_connectionVo);
                                 rollCallRecordBook.ShowDialog(this);
-                                break;
-                            /*
-                             * CommuterInsuranceList(任意保険)
-                             */
-                            case "CommuterInsuranceList":
-                                var commuterInsuranceList = new CommuterInsuranceList(_connectionVo);
-                                commuterInsuranceList.ShowDialog(this);
                                 break;
                             /*
                              * SupplyList

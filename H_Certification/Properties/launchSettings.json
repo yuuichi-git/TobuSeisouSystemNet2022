@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "H_Certification": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
