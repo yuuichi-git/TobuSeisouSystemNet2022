@@ -547,7 +547,7 @@ namespace H_Staff {
                 /*
                  * Picture クリップボード
                  */
-                case "ToolStripMenuItemPictureClipCopy":
+                case "ToolStripMenuItemPictureClip":
                     HPictureBoxExStaff.Image = (Bitmap)Clipboard.GetDataObject().GetData(DataFormats.Bitmap);
                     break;
                 /*

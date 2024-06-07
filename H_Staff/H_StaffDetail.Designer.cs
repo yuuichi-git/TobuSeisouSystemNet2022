@@ -107,7 +107,7 @@
             h_LabelEx57 = new H_ControlEx.H_LabelEx();
             HPictureBoxExStaff = new H_ControlEx.H_PictureBoxEx();
             ContextMenuStrip1 = new ContextMenuStrip(components);
-            ToolStripMenuItemPictureClipCopy = new ToolStripMenuItem();
+            ToolStripMenuItemPictureClip = new ToolStripMenuItem();
             ToolStripMenuItemPictureDelete = new ToolStripMenuItem();
             HTextBoxExCellphoneNumber = new H_ControlEx.H_TextBoxEx();
             h_LabelEx14 = new H_ControlEx.H_LabelEx();
@@ -1201,22 +1201,22 @@
             // 
             // ContextMenuStrip1
             // 
-            ContextMenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemPictureClipCopy, ToolStripMenuItemPictureDelete });
+            ContextMenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemPictureClip, ToolStripMenuItemPictureDelete });
             ContextMenuStrip1.Name = "ContextMenuStrip1";
-            ContextMenuStrip1.Size = new Size(179, 48);
+            ContextMenuStrip1.Size = new Size(108, 48);
             // 
-            // ToolStripMenuItemPictureClipCopy
+            // ToolStripMenuItemPictureClip
             // 
-            ToolStripMenuItemPictureClipCopy.Name = "ToolStripMenuItemPictureClipCopy";
-            ToolStripMenuItemPictureClipCopy.Size = new Size(178, 22);
-            ToolStripMenuItemPictureClipCopy.Text = "クリップボードからコピー";
-            ToolStripMenuItemPictureClipCopy.Click += ToolStripMenuItem_Click;
+            ToolStripMenuItemPictureClip.Name = "ToolStripMenuItemPictureClip";
+            ToolStripMenuItemPictureClip.Size = new Size(107, 22);
+            ToolStripMenuItemPictureClip.Text = "Clip";
+            ToolStripMenuItemPictureClip.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemPictureDelete
             // 
             ToolStripMenuItemPictureDelete.Name = "ToolStripMenuItemPictureDelete";
-            ToolStripMenuItemPictureDelete.Size = new Size(178, 22);
-            ToolStripMenuItemPictureDelete.Text = "削除";
+            ToolStripMenuItemPictureDelete.Size = new Size(107, 22);
+            ToolStripMenuItemPictureDelete.Text = "Delete";
             ToolStripMenuItemPictureDelete.Click += ToolStripMenuItem_Click;
             // 
             // HTextBoxExCellphoneNumber
@@ -3459,7 +3459,7 @@
         private H_ControlEx.H_ButtonEx AddHGroupBoxExFamily;
         private H_ControlEx.H_ButtonEx AddHGroupBoxExPunishment;
         private ContextMenuStrip ContextMenuStrip1;
-        private ToolStripMenuItem ToolStripMenuItemPictureClipCopy;
+        private ToolStripMenuItem ToolStripMenuItemPictureClip;
         private ToolStripMenuItem ToolStripMenuItemPictureDelete;
         private H_ControlEx.H_RadioButtonEx HRadioButtonExNone1;
         private H_ControlEx.H_TextBoxEx HTextBoxExOtherName;

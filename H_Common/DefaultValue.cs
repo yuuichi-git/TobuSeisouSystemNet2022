@@ -30,6 +30,9 @@ namespace H_Common {
                     case "Decimal":
                         objectValue = 0.0;
                         break;
+                    case "Byte[]":
+                        objectValue = Array.Empty<byte>();
+                        break;
                 }
             }
             return (T)objectValue;

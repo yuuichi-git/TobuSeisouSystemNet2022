@@ -117,6 +117,7 @@ namespace H_Toukanpo {
             HComboBoxExCompany.Text = "“Œ•´‘|Š”®‰ïĞ";
             HComboBoxExStaffName.Text = "";
             HDateTimePickerExCertificationDate.SetValue(DateTime.Now.Date);
+            PictureBoxCard.Image = null;
         }
 
         /// <summary>

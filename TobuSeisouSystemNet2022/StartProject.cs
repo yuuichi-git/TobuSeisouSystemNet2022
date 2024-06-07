@@ -3,8 +3,6 @@
  */
 using System.Data;
 
-using Certification;
-
 using Common;
 
 using H_AccountingParttime;
@@ -12,6 +10,8 @@ using H_AccountingParttime;
 using H_Car;
 
 using H_CarAccident;
+
+using H_Certification;
 
 using H_CollectionWeight;
 
@@ -580,8 +580,18 @@ namespace TobuSeisouSystemNet2022 {
                     case "NodeISO0720": // 力量、教育訓練
                         break;
                     case "NodeISO0721": // 力量(有資格者)
-                        CertificationList certificationList = new CertificationList(_connectionVo);
-                        certificationList.Show(this);
+                        // Screenを退避(新型のみ)
+                        _connectionVo.Screen = (Screen)HComboBoxMoniter.SelectedItem;
+                        /*
+                         * Formを表示する
+                         */
+                        H_CertificationList hCertificationList = new(_connectionVo);
+                        Rectangle rectangleHCertificationList = new Desktop().GetMonitorWorkingArea(hCertificationList, (Screen)HComboBoxMoniter.SelectedItem);
+                        hCertificationList.KeyPreview = true;
+                        hCertificationList.Location = rectangleHCertificationList.Location;
+                        //hCertificationList.Size = new Size(1920, 1080);
+                        hCertificationList.WindowState = FormWindowState.Normal;
+                        hCertificationList.Show(this);
                         break;
                     case "NodeISO0722": // 教育訓練 
                         files.OpenFolder(@"\\192.168.1.21\iso14001\ISO事務局\① ISO\⑦支援(サポート)\⑦-2 力量、教育訓練");
