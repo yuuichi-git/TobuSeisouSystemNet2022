@@ -52,11 +52,16 @@ namespace TobuSeisouSystemNet2022 {
         /// コンストラクター
         /// </summary>
         public StartProject() {
+            /*
+             * InitializeControl
+             */
             InitializeComponent();
             new InitializeForm().StartProject(this);
             LabelPcName.Text = string.Concat("〇 PC-Name：", Environment.MachineName);
             LabelIpAddress.Text = string.Concat("〇 IP-Address：", new Ip().GetIpAddress());
-
+            /*
+             * マルチモニターに対する処理
+             */
             HComboBoxMoniter.DataSource = Screen.AllScreens;
             HComboBoxMoniter.DisplayMember = "DeviceName";
             HComboBoxMoniter.DropDownStyle = ComboBoxStyle.DropDownList;

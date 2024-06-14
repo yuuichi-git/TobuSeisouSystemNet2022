@@ -216,7 +216,7 @@
             TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
             TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             TableLayoutPanelBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
-            TableLayoutPanelBase.Size = new Size(995, 675);
+            TableLayoutPanelBase.Size = new Size(995, 630);
             TableLayoutPanelBase.TabIndex = 0;
             // 
             // MenuStrip1
@@ -267,7 +267,7 @@
             // 
             TableLayoutPanelBase.SetColumnSpan(StatusStrip1, 2);
             StatusStrip1.Items.AddRange(new ToolStripItem[] { ToolStripStatusLabel1 });
-            StatusStrip1.Location = new Point(0, 653);
+            StatusStrip1.Location = new Point(0, 608);
             StatusStrip1.Name = "StatusStrip1";
             StatusStrip1.Size = new Size(995, 22);
             StatusStrip1.SizingGrip = false;
@@ -292,7 +292,7 @@
             TableLayoutPanelLeft.RowCount = 2;
             TableLayoutPanelLeft.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
             TableLayoutPanelLeft.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            TableLayoutPanelLeft.Size = new Size(294, 621);
+            TableLayoutPanelLeft.Size = new Size(294, 576);
             TableLayoutPanelLeft.TabIndex = 3;
             // 
             // PanelLeftMiddle
@@ -301,7 +301,7 @@
             PanelLeftMiddle.Dock = DockStyle.Fill;
             PanelLeftMiddle.Location = new Point(3, 63);
             PanelLeftMiddle.Name = "PanelLeftMiddle";
-            PanelLeftMiddle.Size = new Size(288, 555);
+            PanelLeftMiddle.Size = new Size(288, 510);
             PanelLeftMiddle.TabIndex = 0;
             // 
             // TreeView1
@@ -546,7 +546,7 @@
             treeNode97.Name = "NodeAccident";
             treeNode97.Text = "事故受付";
             TreeView1.Nodes.AddRange(new TreeNode[] { treeNode1, treeNode41, treeNode93, treeNode94, treeNode95, treeNode96, treeNode97 });
-            TreeView1.Size = new Size(288, 555);
+            TreeView1.Size = new Size(288, 510);
             TreeView1.TabIndex = 4;
             TreeView1.NodeMouseDoubleClick += TreeView1_NodeMouseDoubleClick;
             // 
@@ -591,7 +591,7 @@
             HTableLayoutPanelExCenter.RowCount = 2;
             HTableLayoutPanelExCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 142F));
             HTableLayoutPanelExCenter.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
-            HTableLayoutPanelExCenter.Size = new Size(689, 621);
+            HTableLayoutPanelExCenter.Size = new Size(689, 576);
             HTableLayoutPanelExCenter.TabIndex = 5;
             // 
             // HPanelTop
@@ -634,7 +634,7 @@
             // ButtonDbConnect
             // 
             ButtonDbConnect.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            ButtonDbConnect.Location = new Point(483, 16);
+            ButtonDbConnect.Location = new Point(456, 40);
             ButtonDbConnect.Name = "ButtonDbConnect";
             ButtonDbConnect.Size = new Size(175, 34);
             ButtonDbConnect.TabIndex = 3;
@@ -711,7 +711,7 @@
             HTabControlEx.Location = new Point(3, 145);
             HTabControlEx.Name = "HTabControlEx";
             HTabControlEx.SelectedIndex = 0;
-            HTabControlEx.Size = new Size(683, 473);
+            HTabControlEx.Size = new Size(683, 428);
             HTabControlEx.SizeMode = TabSizeMode.Fixed;
             HTabControlEx.TabIndex = 5;
             // 
@@ -750,7 +750,7 @@
             TabPage2.Location = new Point(4, 24);
             TabPage2.Name = "TabPage2";
             TabPage2.Padding = new Padding(3);
-            TabPage2.Size = new Size(675, 445);
+            TabPage2.Size = new Size(675, 400);
             TabPage2.TabIndex = 1;
             TabPage2.Text = "新型システム";
             TabPage2.UseVisualStyleBackColor = true;
@@ -1139,7 +1139,7 @@
             TabPage1.Location = new Point(4, 24);
             TabPage1.Name = "TabPage1";
             TabPage1.Padding = new Padding(3);
-            TabPage1.Size = new Size(640, 445);
+            TabPage1.Size = new Size(675, 445);
             TabPage1.TabIndex = 0;
             TabPage1.Text = "旧型システム";
             TabPage1.UseVisualStyleBackColor = true;
@@ -1201,7 +1201,7 @@
             TabPage3.Controls.Add(label54);
             TabPage3.Location = new Point(4, 24);
             TabPage3.Name = "TabPage3";
-            TabPage3.Size = new Size(640, 445);
+            TabPage3.Size = new Size(675, 445);
             TabPage3.TabIndex = 2;
             TabPage3.Text = "データ移行ツール";
             TabPage3.UseVisualStyleBackColor = true;
@@ -1237,7 +1237,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(995, 675);
+            ClientSize = new Size(995, 630);
             Controls.Add(TableLayoutPanelBase);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;

@@ -201,6 +201,7 @@ namespace H_Common {
 
         /// <summary>
         /// string型の時刻(HH:mm)をDateTime(operationDateを元に)に変換する
+        /// Secondについては、原時点の時刻から
         /// </summary>
         /// <param name="operationDate"></param>
         /// <param name="time"></param>
@@ -212,7 +213,7 @@ namespace H_Common {
                                               operationDate.Day,
                                               DateTime.ParseExact(time, "HH:mm", null).Hour,
                                               DateTime.ParseExact(time, "HH:mm", null).Minute,
-                                              00);
+                                              DateTime.Now.Second);
             return lastRollCallYmdHms;
         }
     }

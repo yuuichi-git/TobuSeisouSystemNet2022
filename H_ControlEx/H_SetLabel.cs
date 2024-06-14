@@ -255,15 +255,13 @@ namespace H_ControlEx {
             /*
              * 帰庫点呼フラグ
              */
-            if (_lastRollCallFlag) {
+            if (_lastRollCallFlag)
                 e.Graphics.FillPolygon(new SolidBrush(Color.Gray), new Point[] { new Point(50, 21), new Point(65, 21), new Point(65, 36) });
-            }
             /*
              * メモを描画
              */
-            if (_memoFlag) {
+            if (_memoFlag)
                 e.Graphics.FillPolygon(new SolidBrush(Color.Crimson), new Point[] { new Point(7, 21), new Point(21, 21), new Point(7, 35) });
-            }
             /*
              * 番手コード
              */

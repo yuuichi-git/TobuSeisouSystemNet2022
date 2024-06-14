@@ -15,6 +15,8 @@ namespace H_RollColl {
         private readonly DateTime _operationDate;
         private readonly int _cellNumber;
         private readonly int _setCode;
+        // 2024-06-12 追加
+        private readonly H_VehicleDispatchDetailVo _hVehicleDispatchDetailVo;
         /*
          * H_Common 
          */
@@ -26,14 +28,21 @@ namespace H_RollColl {
         private readonly H_VehicleDispatchDetailDao _hVehicleDispatchDetailDao;
 
         /// <summary>
-        /// コンストラクター
+        /// コンストラクター（オーバーロード）
+        /// 2024-06-12
+        /// LastRollCallの記録の仕方を変更する。
+        /// int cellNumber, int setCode, DateTime operationDateだと、同一のSetCodeに対して区別できないためです。
         /// </summary>
         /// <param name="connectionVo"></param>
-        public H_LastRollCall(ConnectionVo connectionVo, H_SetLabel hSetLabel, int cellNumber, int setCode, DateTime operationDate) {
+        /// <param name="hSetLabel"></param>
+        /// <param name="hVehicleDispatchDetailVo"></param>
+        public H_LastRollCall(ConnectionVo connectionVo, H_SetLabel hSetLabel, H_VehicleDispatchDetailVo hVehicleDispatchDetailVo) {
             _hSetLabel = hSetLabel;
-            _operationDate = operationDate;
-            _cellNumber = cellNumber;
-            _setCode = setCode;
+            _operationDate = hVehicleDispatchDetailVo.OperationDate;
+            _cellNumber = hVehicleDispatchDetailVo.CellNumber;
+            _setCode = hVehicleDispatchDetailVo.SetCode;
+            // 2024-06-12 追加
+            _hVehicleDispatchDetailVo = hVehicleDispatchDetailVo;
             /*
              * Dao
              */
@@ -45,11 +54,12 @@ namespace H_RollColl {
             InitializeComponent();
             this.Size = new Size(325, 400);
             this.StartPosition = FormStartPosition.CenterScreen;
-
-            if (_hLastRollCallDao.ExistenceHLastRollCallVo(setCode, operationDate.Date)) {
-                this.SetControl(_hLastRollCallDao.SelectOneHLastRollCallVo(setCode, operationDate.Date));
+            // 組名を表示する
+            HLabelExSetName.Text = string.Concat(((H_SetMasterVo)hSetLabel.Tag).SetName, " 組");
+            if (_hLastRollCallDao.ExistenceHLastRollCall(hVehicleDispatchDetailVo)) {
+                this.SetControl(_hLastRollCallDao.SelectOneHLastRollCall(hVehicleDispatchDetailVo));
             } else {
-                InitializeControl();
+                this.InitializeControl();
             }
         }
 
@@ -59,18 +69,30 @@ namespace H_RollColl {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void HButtonExUpdate_Click(object sender, EventArgs e) {
+            // 時刻のズレが出ないようにここで１度だけ代入する
+            H_LastRollCallVo hLastRollCallVo = SetVo();
             try {
-                if (_hLastRollCallDao.ExistenceHLastRollCallVo(_setCode, _operationDate.Date)) {
+                if (_hLastRollCallDao.ExistenceHLastRollCall(_hVehicleDispatchDetailVo)) {
                     try {
-                        _hVehicleDispatchDetailDao.UpdateLastRollCall(HCheckBoxExLastRollCallCancel.Checked, _cellNumber, SetVo());
-                        _hLastRollCallDao.UpdateOneHLastRollCallVo(SetVo());
+                        _hVehicleDispatchDetailDao.UpdateLastRollCall(HCheckBoxExLastRollCallCancel.Checked, _cellNumber, hLastRollCallVo);
+                        _hLastRollCallDao.UpdateOneHLastRollCall(hLastRollCallVo);
+                        /*
+                         * 2024-06-13追加
+                         * LastRollCallYmdHmsに更新した値を入れておかないと、SQLキーが違ってしまうので次の呼び出しのさいに正常に処理されない
+                         */
+                        _hVehicleDispatchDetailVo.LastRollCallYmdHms = hLastRollCallVo.LastRollCallYmdHms;
                     } catch (Exception exception) {
                         MessageBox.Show(exception.Message);
                     }
                 } else {
                     try {
-                        _hVehicleDispatchDetailDao.UpdateLastRollCall(HCheckBoxExLastRollCallCancel.Checked, _cellNumber, SetVo());
-                        _hLastRollCallDao.InsertOneHLastRollCallVo(SetVo());
+                        _hVehicleDispatchDetailDao.UpdateLastRollCall(HCheckBoxExLastRollCallCancel.Checked, _cellNumber, hLastRollCallVo);
+                        _hLastRollCallDao.InsertOneHLastRollCall(hLastRollCallVo);
+                        /*
+                         * 2024-06-13追加
+                         * LastRollCallYmdHmsに更新した値を入れておかないと、SQLキーが違ってしまうので次の呼び出しのさいに正常に処理されない
+                         */
+                        _hVehicleDispatchDetailVo.LastRollCallYmdHms = hLastRollCallVo.LastRollCallYmdHms;
                     } catch (Exception exception) {
                         MessageBox.Show(exception.Message);
                     }
@@ -83,7 +105,7 @@ namespace H_RollColl {
         }
 
         /// <summary>
-        /// CreateHLastRollCallVo
+        /// H_LastRollCallVoに値をセットする
         /// </summary>
         /// <returns></returns>
         private H_LastRollCallVo SetVo() {

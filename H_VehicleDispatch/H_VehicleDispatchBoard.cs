@@ -690,9 +690,9 @@ namespace H_VehicleDispatch {
             H_SetLabel hSetLabel = (H_SetLabel)sender;
             int cellNumber = ((H_ControlVo)((H_SetControl)((H_SetLabel)sender).Parent).Tag).CellNumber;
             int setCode = ((H_SetMasterVo)((H_SetLabel)sender).Tag).SetCode;
-            H_LastRollCall hLastRollCall = new(_connectionVo, hSetLabel, cellNumber, setCode, HDateTimePickerOperationDate.GetValue());
+            H_VehicleDispatchDetailVo hVehicleDispatchDetailVo = ((H_ControlVo)((H_SetControl)((H_SetLabel)sender).Parent).Tag).HVehicleDispatchDetailVo;
+            H_LastRollCall hLastRollCall = new(_connectionVo, hSetLabel, hVehicleDispatchDetailVo);
             hLastRollCall.ShowDialog(this);
-
         }
 
         /// <summary>

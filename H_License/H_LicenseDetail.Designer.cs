@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            components = new System.ComponentModel.Container();
             HTableLayoutPanelExBase = new H_ControlEx.H_TableLayoutPanelEx();
             MenuStrip1 = new MenuStrip();
             ToolStripMenuItemMenu = new ToolStripMenuItem();
@@ -37,11 +38,10 @@
             HComboBoxExSelectName = new H_ControlEx.H_ComboBoxEx();
             HButtonExUpdate = new H_ControlEx.H_ButtonEx();
             HPanelExMiddle = new H_ControlEx.H_PanelEx();
-            HButtonExPictureTailDelete = new H_ControlEx.H_ButtonEx();
-            HButtonExPictureTailClip = new H_ControlEx.H_ButtonEx();
-            HButtonExPictureHeadDelete = new H_ControlEx.H_ButtonEx();
-            HButtonExPictureHeadClip = new H_ControlEx.H_ButtonEx();
             HPictureBoxExPictureTail = new H_ControlEx.H_PictureBoxEx();
+            ContextMenuStrip1 = new ContextMenuStrip(components);
+            ToolStripMenuItemClip = new ToolStripMenuItem();
+            ToolStripMenuItemDelete = new ToolStripMenuItem();
             HPictureBoxExPictureHead = new H_ControlEx.H_PictureBoxEx();
             GroupBox1 = new GroupBox();
             HCheckBoxExTraction = new H_ControlEx.H_CheckBoxEx();
@@ -88,6 +88,7 @@
             HPanelExUp.SuspendLayout();
             HPanelExMiddle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)HPictureBoxExPictureTail).BeginInit();
+            ContextMenuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)HPictureBoxExPictureHead).BeginInit();
             GroupBox1.SuspendLayout();
             SuspendLayout();
@@ -109,7 +110,7 @@
             HTableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
             HTableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             HTableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
-            HTableLayoutPanelExBase.Size = new Size(1258, 773);
+            HTableLayoutPanelExBase.Size = new Size(1164, 771);
             HTableLayoutPanelExBase.TabIndex = 0;
             // 
             // MenuStrip1
@@ -117,7 +118,7 @@
             MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemHelp });
             MenuStrip1.Location = new Point(0, 0);
             MenuStrip1.Name = "MenuStrip1";
-            MenuStrip1.Size = new Size(1258, 24);
+            MenuStrip1.Size = new Size(1164, 24);
             MenuStrip1.TabIndex = 0;
             MenuStrip1.Text = "menuStrip1";
             // 
@@ -133,6 +134,7 @@
             ToolStripMenuItemExit.Name = "ToolStripMenuItemExit";
             ToolStripMenuItemExit.Size = new Size(195, 22);
             ToolStripMenuItemExit.Text = "アプリケーションを終了する";
+            ToolStripMenuItemExit.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemHelp
             // 
@@ -143,9 +145,9 @@
             // StatusStrip1
             // 
             StatusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, ToolStripStatusLabelDetail });
-            StatusStrip1.Location = new Point(0, 751);
+            StatusStrip1.Location = new Point(0, 749);
             StatusStrip1.Name = "StatusStrip1";
-            StatusStrip1.Size = new Size(1258, 22);
+            StatusStrip1.Size = new Size(1164, 22);
             StatusStrip1.TabIndex = 1;
             StatusStrip1.Text = "statusStrip1";
             // 
@@ -170,7 +172,7 @@
             HPanelExUp.Dock = DockStyle.Fill;
             HPanelExUp.Location = new Point(3, 27);
             HPanelExUp.Name = "HPanelExUp";
-            HPanelExUp.Size = new Size(1252, 54);
+            HPanelExUp.Size = new Size(1158, 54);
             HPanelExUp.TabIndex = 2;
             // 
             // label2
@@ -203,7 +205,7 @@
             // HButtonExUpdate
             // 
             HButtonExUpdate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            HButtonExUpdate.Location = new Point(1050, 12);
+            HButtonExUpdate.Location = new Point(956, 12);
             HButtonExUpdate.Name = "HButtonExUpdate";
             HButtonExUpdate.Size = new Size(148, 32);
             HButtonExUpdate.TabIndex = 2;
@@ -214,10 +216,6 @@
             // 
             // HPanelExMiddle
             // 
-            HPanelExMiddle.Controls.Add(HButtonExPictureTailDelete);
-            HPanelExMiddle.Controls.Add(HButtonExPictureTailClip);
-            HPanelExMiddle.Controls.Add(HButtonExPictureHeadDelete);
-            HPanelExMiddle.Controls.Add(HButtonExPictureHeadClip);
             HPanelExMiddle.Controls.Add(HPictureBoxExPictureTail);
             HPanelExMiddle.Controls.Add(HPictureBoxExPictureHead);
             HPanelExMiddle.Controls.Add(GroupBox1);
@@ -248,57 +246,14 @@
             HPanelExMiddle.Dock = DockStyle.Fill;
             HPanelExMiddle.Location = new Point(3, 87);
             HPanelExMiddle.Name = "HPanelExMiddle";
-            HPanelExMiddle.Size = new Size(1252, 659);
+            HPanelExMiddle.Size = new Size(1158, 657);
             HPanelExMiddle.TabIndex = 3;
-            // 
-            // HButtonExPictureTailDelete
-            // 
-            HButtonExPictureTailDelete.Location = new Point(1128, 376);
-            HButtonExPictureTailDelete.Name = "HButtonExPictureTailDelete";
-            HButtonExPictureTailDelete.Size = new Size(96, 24);
-            HButtonExPictureTailDelete.TabIndex = 50;
-            HButtonExPictureTailDelete.Text = "Delete";
-            HButtonExPictureTailDelete.TextDirectionVertical = "";
-            HButtonExPictureTailDelete.UseVisualStyleBackColor = true;
-            HButtonExPictureTailDelete.Click += HButtonEx_Click;
-            // 
-            // HButtonExPictureTailClip
-            // 
-            HButtonExPictureTailClip.Location = new Point(1128, 344);
-            HButtonExPictureTailClip.Name = "HButtonExPictureTailClip";
-            HButtonExPictureTailClip.Size = new Size(96, 24);
-            HButtonExPictureTailClip.TabIndex = 49;
-            HButtonExPictureTailClip.Text = "Clip";
-            HButtonExPictureTailClip.TextDirectionVertical = "";
-            HButtonExPictureTailClip.UseVisualStyleBackColor = true;
-            HButtonExPictureTailClip.Click += HButtonEx_Click;
-            // 
-            // HButtonExPictureHeadDelete
-            // 
-            HButtonExPictureHeadDelete.Location = new Point(1128, 52);
-            HButtonExPictureHeadDelete.Name = "HButtonExPictureHeadDelete";
-            HButtonExPictureHeadDelete.Size = new Size(96, 24);
-            HButtonExPictureHeadDelete.TabIndex = 48;
-            HButtonExPictureHeadDelete.Text = "Delete";
-            HButtonExPictureHeadDelete.TextDirectionVertical = "";
-            HButtonExPictureHeadDelete.UseVisualStyleBackColor = true;
-            HButtonExPictureHeadDelete.Click += HButtonEx_Click;
-            // 
-            // HButtonExPictureHeadClip
-            // 
-            HButtonExPictureHeadClip.Location = new Point(1128, 20);
-            HButtonExPictureHeadClip.Name = "HButtonExPictureHeadClip";
-            HButtonExPictureHeadClip.Size = new Size(96, 24);
-            HButtonExPictureHeadClip.TabIndex = 47;
-            HButtonExPictureHeadClip.Text = "Clip";
-            HButtonExPictureHeadClip.TextDirectionVertical = "";
-            HButtonExPictureHeadClip.UseVisualStyleBackColor = true;
-            HButtonExPictureHeadClip.Click += HButtonEx_Click;
             // 
             // HPictureBoxExPictureTail
             // 
             HPictureBoxExPictureTail.BackColor = Color.White;
             HPictureBoxExPictureTail.BorderStyle = BorderStyle.FixedSingle;
+            HPictureBoxExPictureTail.ContextMenuStrip = ContextMenuStrip1;
             HPictureBoxExPictureTail.Location = new Point(632, 336);
             HPictureBoxExPictureTail.Name = "HPictureBoxExPictureTail";
             HPictureBoxExPictureTail.Size = new Size(488, 308);
@@ -306,10 +261,32 @@
             HPictureBoxExPictureTail.TabIndex = 46;
             HPictureBoxExPictureTail.TabStop = false;
             // 
+            // ContextMenuStrip1
+            // 
+            ContextMenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemClip, ToolStripMenuItemDelete });
+            ContextMenuStrip1.Name = "ContextMenuStrip1";
+            ContextMenuStrip1.Size = new Size(108, 48);
+            ContextMenuStrip1.Opened += ContextMenuStrip1_Opened;
+            // 
+            // ToolStripMenuItemClip
+            // 
+            ToolStripMenuItemClip.Name = "ToolStripMenuItemClip";
+            ToolStripMenuItemClip.Size = new Size(107, 22);
+            ToolStripMenuItemClip.Text = "Clip";
+            ToolStripMenuItemClip.Click += ToolStripMenuItem_Click;
+            // 
+            // ToolStripMenuItemDelete
+            // 
+            ToolStripMenuItemDelete.Name = "ToolStripMenuItemDelete";
+            ToolStripMenuItemDelete.Size = new Size(107, 22);
+            ToolStripMenuItemDelete.Text = "Delete";
+            ToolStripMenuItemDelete.Click += ToolStripMenuItem_Click;
+            // 
             // HPictureBoxExPictureHead
             // 
             HPictureBoxExPictureHead.BackColor = Color.White;
             HPictureBoxExPictureHead.BorderStyle = BorderStyle.FixedSingle;
+            HPictureBoxExPictureHead.ContextMenuStrip = ContextMenuStrip1;
             HPictureBoxExPictureHead.Location = new Point(632, 12);
             HPictureBoxExPictureHead.Name = "HPictureBoxExPictureHead";
             HPictureBoxExPictureHead.Size = new Size(488, 308);
@@ -481,7 +458,7 @@
             // 
             // HDateTimePickerExGetDate3
             // 
-            HDateTimePickerExGetDate3.CustomFormat = " yyyy年MM月dd日(dddd)";
+            HDateTimePickerExGetDate3.CustomFormat = " 令和06年04月07日(日曜日)";
             HDateTimePickerExGetDate3.Format = DateTimePickerFormat.Custom;
             HDateTimePickerExGetDate3.ImeMode = ImeMode.Off;
             HDateTimePickerExGetDate3.Location = new Point(120, 320);
@@ -501,7 +478,7 @@
             // 
             // HDateTimePickerExGetDate2
             // 
-            HDateTimePickerExGetDate2.CustomFormat = " yyyy年MM月dd日(dddd)";
+            HDateTimePickerExGetDate2.CustomFormat = " 令和06年04月07日(日曜日)";
             HDateTimePickerExGetDate2.Format = DateTimePickerFormat.Custom;
             HDateTimePickerExGetDate2.ImeMode = ImeMode.Off;
             HDateTimePickerExGetDate2.Location = new Point(120, 292);
@@ -521,7 +498,7 @@
             // 
             // HDateTimePickerExGetDate1
             // 
-            HDateTimePickerExGetDate1.CustomFormat = " yyyy年MM月dd日(dddd)";
+            HDateTimePickerExGetDate1.CustomFormat = " 令和06年04月07日(日曜日)";
             HDateTimePickerExGetDate1.Format = DateTimePickerFormat.Custom;
             HDateTimePickerExGetDate1.ImeMode = ImeMode.Off;
             HDateTimePickerExGetDate1.Location = new Point(120, 264);
@@ -578,7 +555,7 @@
             // 
             // HDateTimePickerExExpirationDate
             // 
-            HDateTimePickerExExpirationDate.CustomFormat = " yyyy年MM月dd日(dddd)";
+            HDateTimePickerExExpirationDate.CustomFormat = " 令和06年04月07日(日曜日)";
             HDateTimePickerExExpirationDate.Format = DateTimePickerFormat.Custom;
             HDateTimePickerExExpirationDate.ImeMode = ImeMode.Off;
             HDateTimePickerExExpirationDate.Location = new Point(120, 180);
@@ -598,7 +575,7 @@
             // 
             // HDateTimePickerExDeliveryDate
             // 
-            HDateTimePickerExDeliveryDate.CustomFormat = " yyyy年MM月dd日(dddd)";
+            HDateTimePickerExDeliveryDate.CustomFormat = " 令和06年04月07日(日曜日)";
             HDateTimePickerExDeliveryDate.Format = DateTimePickerFormat.Custom;
             HDateTimePickerExDeliveryDate.ImeMode = ImeMode.Off;
             HDateTimePickerExDeliveryDate.Location = new Point(120, 152);
@@ -635,7 +612,7 @@
             // 
             // HDateTimePickerExBirthDate
             // 
-            HDateTimePickerExBirthDate.CustomFormat = " yyyy年MM月dd日(dddd)";
+            HDateTimePickerExBirthDate.CustomFormat = " 令和06年04月07日(日曜日)";
             HDateTimePickerExBirthDate.Format = DateTimePickerFormat.Custom;
             HDateTimePickerExBirthDate.ImeMode = ImeMode.Off;
             HDateTimePickerExBirthDate.Location = new Point(120, 96);
@@ -715,7 +692,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1258, 773);
+            ClientSize = new Size(1164, 771);
             Controls.Add(HTableLayoutPanelExBase);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = MenuStrip1;
@@ -735,6 +712,7 @@
             HPanelExMiddle.ResumeLayout(false);
             HPanelExMiddle.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)HPictureBoxExPictureTail).EndInit();
+            ContextMenuStrip1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)HPictureBoxExPictureHead).EndInit();
             GroupBox1.ResumeLayout(false);
             GroupBox1.PerformLayout();
@@ -798,9 +776,8 @@
         private GroupBox GroupBox1;
         private H_ControlEx.H_PictureBoxEx HPictureBoxExPictureHead;
         private H_ControlEx.H_PictureBoxEx HPictureBoxExPictureTail;
-        private H_ControlEx.H_ButtonEx HButtonExPictureHeadClip;
-        private H_ControlEx.H_ButtonEx HButtonExPictureTailDelete;
-        private H_ControlEx.H_ButtonEx HButtonExPictureTailClip;
-        private H_ControlEx.H_ButtonEx HButtonExPictureHeadDelete;
+        private ContextMenuStrip ContextMenuStrip1;
+        private ToolStripMenuItem ToolStripMenuItemClip;
+        private ToolStripMenuItem ToolStripMenuItemDelete;
     }
 }

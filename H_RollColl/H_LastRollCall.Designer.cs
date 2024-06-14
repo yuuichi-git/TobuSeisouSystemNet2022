@@ -45,6 +45,7 @@
             HMaskedTextBoxExLastRollCallYmdHms = new H_ControlEx.H_MaskedTextBoxEx();
             ToolTip1 = new ToolTip(components);
             HCheckBoxExLastRollCallCancel = new H_ControlEx.H_CheckBoxEx();
+            HLabelExSetName = new H_ControlEx.H_LabelEx();
             ((System.ComponentModel.ISupportInitialize)HNumericUpDownExFirstOdoMeter).BeginInit();
             ((System.ComponentModel.ISupportInitialize)HNumericUpDownExLastOdoMeter).BeginInit();
             ((System.ComponentModel.ISupportInitialize)HNumericUpDownExOilAmount).BeginInit();
@@ -54,7 +55,7 @@
             // h_LabelEx1
             // 
             h_LabelEx1.AutoSize = true;
-            h_LabelEx1.Location = new Point(20, 44);
+            h_LabelEx1.Location = new Point(20, 88);
             h_LabelEx1.Name = "h_LabelEx1";
             h_LabelEx1.Size = new Size(79, 15);
             h_LabelEx1.TabIndex = 0;
@@ -63,7 +64,7 @@
             // h_LabelEx2
             // 
             h_LabelEx2.AutoSize = true;
-            h_LabelEx2.Location = new Point(68, 16);
+            h_LabelEx2.Location = new Point(68, 60);
             h_LabelEx2.Name = "h_LabelEx2";
             h_LabelEx2.Size = new Size(31, 15);
             h_LabelEx2.TabIndex = 1;
@@ -71,11 +72,11 @@
             // 
             // HDateTimePickerExOperationDate
             // 
-            HDateTimePickerExOperationDate.CustomFormat = " yyyy年MM月dd日(dddd)";
+            HDateTimePickerExOperationDate.CustomFormat = " 令和06年02月19日(月曜日)";
             HDateTimePickerExOperationDate.Enabled = false;
             HDateTimePickerExOperationDate.Format = DateTimePickerFormat.Custom;
             HDateTimePickerExOperationDate.ImeMode = ImeMode.Disable;
-            HDateTimePickerExOperationDate.Location = new Point(104, 12);
+            HDateTimePickerExOperationDate.Location = new Point(104, 56);
             HDateTimePickerExOperationDate.Name = "HDateTimePickerExOperationDate";
             HDateTimePickerExOperationDate.Size = new Size(180, 23);
             HDateTimePickerExOperationDate.TabIndex = 0;
@@ -84,7 +85,7 @@
             // h_LabelEx3
             // 
             h_LabelEx3.AutoSize = true;
-            h_LabelEx3.Location = new Point(20, 100);
+            h_LabelEx3.Location = new Point(20, 144);
             h_LabelEx3.Name = "h_LabelEx3";
             h_LabelEx3.Size = new Size(79, 15);
             h_LabelEx3.TabIndex = 4;
@@ -94,7 +95,8 @@
             // 
             HComboBoxExLastPlantName.FormattingEnabled = true;
             HComboBoxExLastPlantName.ImeMode = ImeMode.Hiragana;
-            HComboBoxExLastPlantName.Location = new Point(104, 96);
+            HComboBoxExLastPlantName.Items.AddRange(new object[] { "要興業", "光ヶ丘工", "滝野川事務所" });
+            HComboBoxExLastPlantName.Location = new Point(104, 140);
             HComboBoxExLastPlantName.Name = "HComboBoxExLastPlantName";
             HComboBoxExLastPlantName.Size = new Size(180, 23);
             HComboBoxExLastPlantName.TabIndex = 3;
@@ -102,7 +104,7 @@
             // h_LabelEx4
             // 
             h_LabelEx4.AutoSize = true;
-            h_LabelEx4.Location = new Point(44, 156);
+            h_LabelEx4.Location = new Point(44, 200);
             h_LabelEx4.Name = "h_LabelEx4";
             h_LabelEx4.Size = new Size(55, 15);
             h_LabelEx4.TabIndex = 6;
@@ -111,7 +113,7 @@
             // h_LabelEx5
             // 
             h_LabelEx5.AutoSize = true;
-            h_LabelEx5.Location = new Point(20, 128);
+            h_LabelEx5.Location = new Point(20, 172);
             h_LabelEx5.Name = "h_LabelEx5";
             h_LabelEx5.Size = new Size(79, 15);
             h_LabelEx5.TabIndex = 7;
@@ -120,7 +122,7 @@
             // h_LabelEx6
             // 
             h_LabelEx6.AutoSize = true;
-            h_LabelEx6.Location = new Point(24, 184);
+            h_LabelEx6.Location = new Point(24, 228);
             h_LabelEx6.Name = "h_LabelEx6";
             h_LabelEx6.Size = new Size(76, 15);
             h_LabelEx6.TabIndex = 8;
@@ -129,7 +131,7 @@
             // h_LabelEx7
             // 
             h_LabelEx7.AutoSize = true;
-            h_LabelEx7.Location = new Point(24, 212);
+            h_LabelEx7.Location = new Point(24, 256);
             h_LabelEx7.Name = "h_LabelEx7";
             h_LabelEx7.Size = new Size(76, 15);
             h_LabelEx7.TabIndex = 9;
@@ -138,7 +140,7 @@
             // h_LabelEx8
             // 
             h_LabelEx8.AutoSize = true;
-            h_LabelEx8.Location = new Point(32, 240);
+            h_LabelEx8.Location = new Point(32, 284);
             h_LabelEx8.Name = "h_LabelEx8";
             h_LabelEx8.Size = new Size(67, 15);
             h_LabelEx8.TabIndex = 10;
@@ -148,7 +150,7 @@
             // 
             HNumericUpDownExFirstOdoMeter.BorderStyle = BorderStyle.FixedSingle;
             HNumericUpDownExFirstOdoMeter.ImeMode = ImeMode.Disable;
-            HNumericUpDownExFirstOdoMeter.Location = new Point(104, 180);
+            HNumericUpDownExFirstOdoMeter.Location = new Point(104, 224);
             HNumericUpDownExFirstOdoMeter.Name = "HNumericUpDownExFirstOdoMeter";
             HNumericUpDownExFirstOdoMeter.Size = new Size(76, 23);
             HNumericUpDownExFirstOdoMeter.TabIndex = 6;
@@ -159,7 +161,7 @@
             // 
             HNumericUpDownExLastOdoMeter.BorderStyle = BorderStyle.FixedSingle;
             HNumericUpDownExLastOdoMeter.ImeMode = ImeMode.Disable;
-            HNumericUpDownExLastOdoMeter.Location = new Point(104, 208);
+            HNumericUpDownExLastOdoMeter.Location = new Point(104, 252);
             HNumericUpDownExLastOdoMeter.Name = "HNumericUpDownExLastOdoMeter";
             HNumericUpDownExLastOdoMeter.Size = new Size(76, 23);
             HNumericUpDownExLastOdoMeter.TabIndex = 7;
@@ -171,7 +173,7 @@
             HNumericUpDownExOilAmount.BorderStyle = BorderStyle.FixedSingle;
             HNumericUpDownExOilAmount.DecimalPlaces = 1;
             HNumericUpDownExOilAmount.ImeMode = ImeMode.Disable;
-            HNumericUpDownExOilAmount.Location = new Point(104, 236);
+            HNumericUpDownExOilAmount.Location = new Point(104, 280);
             HNumericUpDownExOilAmount.Name = "HNumericUpDownExOilAmount";
             HNumericUpDownExOilAmount.Size = new Size(76, 23);
             HNumericUpDownExOilAmount.TabIndex = 8;
@@ -181,7 +183,7 @@
             // 
             // HButtonExUpdate
             // 
-            HButtonExUpdate.Location = new Point(128, 296);
+            HButtonExUpdate.Location = new Point(128, 316);
             HButtonExUpdate.Name = "HButtonExUpdate";
             HButtonExUpdate.Size = new Size(160, 32);
             HButtonExUpdate.TabIndex = 9;
@@ -194,7 +196,7 @@
             // 
             HNumericUpDownExLastPlantCount.BorderStyle = BorderStyle.FixedSingle;
             HNumericUpDownExLastPlantCount.ImeMode = ImeMode.Disable;
-            HNumericUpDownExLastPlantCount.Location = new Point(104, 68);
+            HNumericUpDownExLastPlantCount.Location = new Point(104, 112);
             HNumericUpDownExLastPlantCount.Name = "HNumericUpDownExLastPlantCount";
             HNumericUpDownExLastPlantCount.Size = new Size(76, 23);
             HNumericUpDownExLastPlantCount.TabIndex = 2;
@@ -203,7 +205,7 @@
             // h_LabelEx9
             // 
             h_LabelEx9.AutoSize = true;
-            h_LabelEx9.Location = new Point(44, 72);
+            h_LabelEx9.Location = new Point(44, 116);
             h_LabelEx9.Name = "h_LabelEx9";
             h_LabelEx9.Size = new Size(55, 15);
             h_LabelEx9.TabIndex = 12;
@@ -211,7 +213,7 @@
             // 
             // HMaskedTextBoxExFirstRollCallTime
             // 
-            HMaskedTextBoxExFirstRollCallTime.Location = new Point(104, 40);
+            HMaskedTextBoxExFirstRollCallTime.Location = new Point(104, 84);
             HMaskedTextBoxExFirstRollCallTime.Mask = "90:00";
             HMaskedTextBoxExFirstRollCallTime.Name = "HMaskedTextBoxExFirstRollCallTime";
             HMaskedTextBoxExFirstRollCallTime.Size = new Size(76, 23);
@@ -221,7 +223,7 @@
             // 
             // HMaskedTextBoxExLastPlantYmdHms
             // 
-            HMaskedTextBoxExLastPlantYmdHms.Location = new Point(104, 124);
+            HMaskedTextBoxExLastPlantYmdHms.Location = new Point(104, 168);
             HMaskedTextBoxExLastPlantYmdHms.Mask = "90:00";
             HMaskedTextBoxExLastPlantYmdHms.Name = "HMaskedTextBoxExLastPlantYmdHms";
             HMaskedTextBoxExLastPlantYmdHms.Size = new Size(76, 23);
@@ -231,7 +233,7 @@
             // 
             // HMaskedTextBoxExLastRollCallYmdHms
             // 
-            HMaskedTextBoxExLastRollCallYmdHms.Location = new Point(104, 152);
+            HMaskedTextBoxExLastRollCallYmdHms.Location = new Point(104, 196);
             HMaskedTextBoxExLastRollCallYmdHms.Mask = "90:00";
             HMaskedTextBoxExLastRollCallYmdHms.Name = "HMaskedTextBoxExLastRollCallYmdHms";
             HMaskedTextBoxExLastRollCallYmdHms.Size = new Size(76, 23);
@@ -243,18 +245,30 @@
             // HCheckBoxExLastRollCallCancel
             // 
             HCheckBoxExLastRollCallCancel.AutoSize = true;
-            HCheckBoxExLastRollCallCancel.Location = new Point(16, 304);
+            HCheckBoxExLastRollCallCancel.Location = new Point(16, 324);
             HCheckBoxExLastRollCallCancel.Name = "HCheckBoxExLastRollCallCancel";
             HCheckBoxExLastRollCallCancel.Size = new Size(107, 19);
             HCheckBoxExLastRollCallCancel.TabIndex = 13;
             HCheckBoxExLastRollCallCancel.Text = "帰庫点呼を削除";
             HCheckBoxExLastRollCallCancel.UseVisualStyleBackColor = true;
             // 
+            // HLabelExSetName
+            // 
+            HLabelExSetName.BorderStyle = BorderStyle.FixedSingle;
+            HLabelExSetName.Font = new Font("Yu Gothic UI", 18F, FontStyle.Regular, GraphicsUnit.Point);
+            HLabelExSetName.Location = new Point(20, 8);
+            HLabelExSetName.Name = "HLabelExSetName";
+            HLabelExSetName.Size = new Size(268, 36);
+            HLabelExSetName.TabIndex = 14;
+            HLabelExSetName.Text = "千代田６";
+            HLabelExSetName.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // H_LastRollCall
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(309, 361);
+            ClientSize = new Size(309, 367);
+            Controls.Add(HLabelExSetName);
             Controls.Add(HCheckBoxExLastRollCallCancel);
             Controls.Add(HMaskedTextBoxExLastRollCallYmdHms);
             Controls.Add(HMaskedTextBoxExLastPlantYmdHms);
@@ -314,5 +328,6 @@
         private H_ControlEx.H_MaskedTextBoxEx HMaskedTextBoxExLastRollCallYmdHms;
         private ToolTip ToolTip1;
         private H_ControlEx.H_CheckBoxEx HCheckBoxExLastRollCallCancel;
+        private H_ControlEx.H_LabelEx HLabelExSetName;
     }
 }

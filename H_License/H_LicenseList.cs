@@ -346,7 +346,7 @@ namespace H_License {
             Rectangle rectangleHLicenseDetail = new Desktop().GetMonitorWorkingArea(hLicenseDetail, _connectionVo.Screen);
             hLicenseDetail.KeyPreview = true;
             hLicenseDetail.Location = rectangleHLicenseDetail.Location;
-            hLicenseDetail.Size = new Size(1274, 812);
+            hLicenseDetail.Size = new Size(1180, 810);
             hLicenseDetail.WindowState = FormWindowState.Normal;
             hLicenseDetail.Show(this);
         }
@@ -364,7 +364,7 @@ namespace H_License {
                     Rectangle rectangleHLicenseDetail = new Desktop().GetMonitorWorkingArea(hLicenseDetail, _connectionVo.Screen);
                     hLicenseDetail.KeyPreview = true;
                     hLicenseDetail.Location = rectangleHLicenseDetail.Location;
-                    hLicenseDetail.Size = new Size(1274, 812);
+                    hLicenseDetail.Size = new Size(1180, 810);
                     hLicenseDetail.WindowState = FormWindowState.Normal;
                     hLicenseDetail.Show(this);
                     break;

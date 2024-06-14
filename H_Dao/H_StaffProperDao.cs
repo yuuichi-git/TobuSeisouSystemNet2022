@@ -35,7 +35,7 @@ namespace H_Dao {
         /// <returns>初任診断の受診日を返す。存在しない場合はstring.Emptyを返す</returns>
         public DateTime GetSyoninProperDate(int staffCode) {
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
-            sqlCommand.CommandText = "SELECT TOP 1 ProperDate FROM H_StaffProperMaster WHERE StaffCode = " + staffCode + " AND ProperKind = '初任診断'";
+            sqlCommand.CommandText = "SELECT TOP 1 ProperDate FROM H_StaffProperMaster WHERE StaffCode = " + staffCode + " AND ProperKind = '初任診断' ORDER BY ProperDate DESC";
             var data = sqlCommand.ExecuteScalar();
             if (data is not null) {
                 return (DateTime)sqlCommand.ExecuteScalar();
@@ -52,7 +52,7 @@ namespace H_Dao {
         public string GetTekireiProperDate(int staffCode) {
             TimeSpan timeSpan;
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
-            sqlCommand.CommandText = "SELECT TOP 1 ProperDate FROM H_StaffProperMaster WHERE StaffCode = " + staffCode + " AND ProperKind = '適齢診断'";
+            sqlCommand.CommandText = "SELECT TOP 1 ProperDate FROM H_StaffProperMaster WHERE StaffCode = " + staffCode + " AND ProperKind = '適齢診断' ORDER BY ProperDate DESC";
             var data = sqlCommand.ExecuteScalar();
             if (data is not null) {
                 timeSpan = ((DateTime)sqlCommand.ExecuteScalar()).AddYears(3) - DateTime.Now.Date;

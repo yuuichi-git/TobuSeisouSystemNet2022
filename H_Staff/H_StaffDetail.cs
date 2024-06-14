@@ -862,7 +862,7 @@ namespace H_Staff {
             HDateTimeExProperDate.SetBlank();
             HTextBoxExProperNote.Text = string.Empty;
             int countHGroupBoxProper = 0;
-            foreach (H_StaffProperVo hStaffProperVo in listHStaffProperVo) {
+            foreach (H_StaffProperVo hStaffProperVo in listHStaffProperVo.OrderByDescending(x => x.ProperDate)) {
                 dictionaryProperKind[countHGroupBoxProper].Text = hStaffProperVo.ProperKind;
                 dictionaryProperDate[countHGroupBoxProper].SetValueJp(hStaffProperVo.ProperDate);
                 dictionaryProperNote[countHGroupBoxProper].Text = hStaffProperVo.ProperNote;

@@ -18,6 +18,10 @@ namespace H_Dao {
          */
         private readonly ConnectionVo _connectionVo;
 
+        /// <summary>
+        /// コンストラクター
+        /// </summary>
+        /// <param name="connectionVo"></param>
         public H_LastRollCallDao(ConnectionVo connectionVo) {
             /*
              * Vo
@@ -26,16 +30,15 @@ namespace H_Dao {
         }
 
         /// <summary>
-        /// ExistenceHLastRollCallVo
-        /// true:該当レコードあり false:該当レコードなし
+        /// 2024-06-12
         /// </summary>
         /// <param name="dateTime"></param>
-        /// <returns></returns>
-        public bool ExistenceHLastRollCallVo(int setCode, DateTime dateTime) {
+        /// <returns>true:該当レコードあり false:該当レコードなし</returns>
+        public bool ExistenceHLastRollCall(H_VehicleDispatchDetailVo hVehicleDispatchDetailVo) {
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
-            sqlCommand.CommandText = "SELECT COUNT(SetCode) " +
+            sqlCommand.CommandText = "SELECT COUNT(LastRollCallYmdHms) " +
                                      "FROM H_LastRollCall " +
-                                     "WHERE SetCode = " + setCode + " AND OperationDate = '" + dateTime.ToString("yyyy-MM-dd") + "'";
+                                     "WHERE LastRollCallYmdHms = '" + hVehicleDispatchDetailVo.LastRollCallYmdHms.ToString("yyyy-MM-dd HH:mm:ss") + "'";
             try {
                 return (int)sqlCommand.ExecuteScalar() != 0 ? true : false;
             } catch {
@@ -44,11 +47,11 @@ namespace H_Dao {
         }
 
         /// <summary>
-        /// SelectOneHLastRollCallVo
+        /// SelectOneHLastRollCall
         /// </summary>
-        /// <param name="dateTime">帰庫点呼日</param>
-        /// <returns></returns>
-        public H_LastRollCallVo SelectOneHLastRollCallVo(int setCode, DateTime dateTime) {
+        /// <param name="hVehicleDispatchDetailVo"></param>
+        /// <returns>H_LastRollCallVo</returns>
+        public H_LastRollCallVo SelectOneHLastRollCall(H_VehicleDispatchDetailVo hVehicleDispatchDetailVo) {
             H_LastRollCallVo hLastRollCallVo = null;
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT H_LastRollCall.SetCode," +
@@ -64,7 +67,7 @@ namespace H_Dao {
                                      "FROM H_LastRollCall " +
                                      "LEFT OUTER JOIN H_VehicleDispatchDetail ON H_LastRollCall.OperationDate = H_VehicleDispatchDetail.OperationDate " +
                                                                             "AND H_LastRollCall.SetCode = H_VehicleDispatchDetail.SetCode " +
-                                     "WHERE H_LastRollCall.OperationDate = '" + dateTime.ToString("yyyy-MM-dd") + "' AND H_LastRollCall.SetCode = " + setCode + "";
+                                     "WHERE H_LastRollCall.LastRollCallYmdHms = '" + hVehicleDispatchDetailVo.LastRollCallYmdHms.ToString("yyyy-MM-dd HH:mm:ss") + "'";
             using (var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while (sqlDataReader.Read() == true) {
                     hLastRollCallVo = new();
@@ -84,10 +87,10 @@ namespace H_Dao {
         }
 
         /// <summary>
-        /// InsertOneHLastRollCallVo
+        /// InsertOneHLastRollCall
         /// </summary>
         /// <param name="hLastRollCallVo"></param>
-        public void InsertOneHLastRollCallVo(H_LastRollCallVo hLastRollCallVo) {
+        public void InsertOneHLastRollCall(H_LastRollCallVo hLastRollCallVo) {
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "INSERT INTO H_LastRollCall(SetCode," +
                                                                 "OperationDate," +
@@ -132,10 +135,10 @@ namespace H_Dao {
         }
 
         /// <summary>
-        /// UpdateOneHLastRollCallVo
+        /// UpdateOneHLastRollCall
         /// </summary>
         /// <param name="hLastRollCallVo"></param>
-        public void UpdateOneHLastRollCallVo(H_LastRollCallVo hLastRollCallVo) {
+        public void UpdateOneHLastRollCall(H_LastRollCallVo hLastRollCallVo) {
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "UPDATE H_LastRollCall " +
                                      "SET SetCode = " + _defaultValue.GetDefaultValue<int>(hLastRollCallVo.SetCode) + "," +

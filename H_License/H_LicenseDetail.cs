@@ -89,17 +89,47 @@ namespace H_License {
                             break;
                     }
                     break;
-                case "HButtonExPictureHeadClip":
-                    HPictureBoxExPictureHead.Image = (Bitmap)Clipboard.GetDataObject().GetData(DataFormats.Bitmap);
+            }
+        }
+
+        /// <summary>
+        /// ToolStripMenuItemがクリックされた時のSourceControlを保持
+        /// </summary>
+        Control _sourceControl = null;
+        /// <summary>
+        /// ContextMenuStrip1_Opened
+        /// コンテキストが開かれた親コントロールを取得する
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ContextMenuStrip1_Opened(object sender, EventArgs e) {
+            //ContextMenuStripを表示しているコントロールを取得する
+            _sourceControl = ((ContextMenuStrip)sender).SourceControl;
+        }
+        /// <summary>
+        /// ToolStripMenuItem_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ToolStripMenuItem_Click(object sender, EventArgs e) {
+            switch (((ToolStripMenuItem)sender).Name) {
+                /*
+                 * Picture Clip
+                 */
+                case "ToolStripMenuItemClip":
+                    ((H_PictureBoxEx)_sourceControl).Image = (Bitmap)Clipboard.GetDataObject().GetData(DataFormats.Bitmap);
                     break;
-                case "HButtonExPictureHeadDelete":
-                    HPictureBoxExPictureHead.Image = null;
+                /*
+                 * Picture Delete
+                 */
+                case "ToolStripMenuItemDelete":
+                    ((H_PictureBoxEx)_sourceControl).Image = null;
                     break;
-                case "HButtonExPictureTailClip":
-                    HPictureBoxExPictureTail.Image = (Bitmap)Clipboard.GetDataObject().GetData(DataFormats.Bitmap);
-                    break;
-                case "HButtonExPictureTailDelete":
-                    HPictureBoxExPictureTail.Image = null;
+                /*
+                 * アプリケーションを終了する
+                 */
+                case "ToolStripMenuItemExit":
+                    this.Close();
                     break;
             }
         }
