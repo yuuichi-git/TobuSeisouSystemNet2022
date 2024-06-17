@@ -760,6 +760,9 @@ namespace H_VehicleDispatch {
                     hStaffPaper.WindowState = FormWindowState.Normal;
                     hStaffPaper.Show(this);
                     break;
+                case "ToolStripMenuItemStaffLicense": // 従事者免許証を表示する
+                    MessageBox.Show("ToolStripMenuItemStaffLicense");
+                    break;
                 case "ToolStripMenuItemStaffMemo": // メモを作成・編集する
                     H_SetControl hSetControl = (H_SetControl)((H_StaffLabel)contextMenuStrip.SourceControl).Parent;
                     TableLayoutPanelCellPosition tableLayoutPanelCellPosition = hSetControl.GetCellPosition((H_StaffLabel)contextMenuStrip.SourceControl);

@@ -9,6 +9,7 @@
     <StartupObject>TobuSeisouSystemNet2022.Program</StartupObject>
     <AssemblyName>TobuSeisouSystemNet2022</AssemblyName>
     <PlatformTarget>AnyCPU</PlatformTarget>
+    <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
