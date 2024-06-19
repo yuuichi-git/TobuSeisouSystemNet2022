@@ -30,8 +30,8 @@
     <ProjectReference Include="..\H_License\H_License.csproj" />
     <ProjectReference Include="..\H_RollColl\H_RollColl.csproj" />
     <ProjectReference Include="..\H_Staff\H_Staff.csproj" />
+    <ProjectReference Include="..\H_StockBox\H_StockBox.csproj" />
     <ProjectReference Include="..\H_Utility\H_Utility.csproj" />
-    <ProjectReference Include="..\StockBox\H_StockBox.csproj" />
     <ProjectReference Include="..\Vo\Vo.csproj" />
   </ItemGroup>
 

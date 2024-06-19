@@ -15,8 +15,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ControlEx", "ControlEx\Cont
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dao", "Dao\Dao.csproj", "{65452013-3A2B-4301-9580-5551E489DC4D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Accounting", "Accounting\Accounting.csproj", "{D739C646-1E4B-4283-93C2-9344256EA817}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RollCall", "RollCall\RollCall.csproj", "{B474178E-12BD-4381-A286-A759362581A5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HighWayReport", "HighWayReport\HighWayReport.csproj", "{19ED15AF-AD54-4738-B2EA-E7B73CE16AA6}"
@@ -41,8 +39,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H_Vo", "H_Vo\H_Vo.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H_Dao", "H_Dao\H_Dao.csproj", "{2A032298-1B4F-4391-B39B-3118D1B215E4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H_StockBox", "StockBox\H_StockBox.csproj", "{83C7725A-F444-4351-97DE-5DCE1D982125}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H_Utility", "H_Utility\H_Utility.csproj", "{9C34D595-053F-4EE0-9D22-782D1563799E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H_Staff", "H_Staff\H_Staff.csproj", "{5ED0E92D-6899-4FDF-8464-B9EBA2EBE92C}"
@@ -65,7 +61,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H_LegalTwelveItem", "H_Lega
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H_CarAccident", "H_CarAccident\H_CarAccident.csproj", "{B505EA9C-82C1-4C0B-B8AB-F06FFAF42E85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H_Certification", "H_Certification\H_Certification.csproj", "{AC6C6E37-6A00-42C0-9A5E-FB4331AB17FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H_Certification", "H_Certification\H_Certification.csproj", "{AC6C6E37-6A00-42C0-9A5E-FB4331AB17FC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H_StockBox", "H_StockBox\H_StockBox.csproj", "{2309653C-4BCA-43AA-90D3-A6FADF1F3FEE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -123,14 +121,6 @@ Global
 		{65452013-3A2B-4301-9580-5551E489DC4D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{65452013-3A2B-4301-9580-5551E489DC4D}.Release|x64.ActiveCfg = Release|Any CPU
 		{65452013-3A2B-4301-9580-5551E489DC4D}.Release|x64.Build.0 = Release|Any CPU
-		{D739C646-1E4B-4283-93C2-9344256EA817}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D739C646-1E4B-4283-93C2-9344256EA817}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D739C646-1E4B-4283-93C2-9344256EA817}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{D739C646-1E4B-4283-93C2-9344256EA817}.Debug|x64.Build.0 = Debug|Any CPU
-		{D739C646-1E4B-4283-93C2-9344256EA817}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D739C646-1E4B-4283-93C2-9344256EA817}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D739C646-1E4B-4283-93C2-9344256EA817}.Release|x64.ActiveCfg = Release|Any CPU
-		{D739C646-1E4B-4283-93C2-9344256EA817}.Release|x64.Build.0 = Release|Any CPU
 		{B474178E-12BD-4381-A286-A759362581A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B474178E-12BD-4381-A286-A759362581A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B474178E-12BD-4381-A286-A759362581A5}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -227,14 +217,6 @@ Global
 		{2A032298-1B4F-4391-B39B-3118D1B215E4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2A032298-1B4F-4391-B39B-3118D1B215E4}.Release|x64.ActiveCfg = Release|Any CPU
 		{2A032298-1B4F-4391-B39B-3118D1B215E4}.Release|x64.Build.0 = Release|Any CPU
-		{83C7725A-F444-4351-97DE-5DCE1D982125}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{83C7725A-F444-4351-97DE-5DCE1D982125}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{83C7725A-F444-4351-97DE-5DCE1D982125}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{83C7725A-F444-4351-97DE-5DCE1D982125}.Debug|x64.Build.0 = Debug|Any CPU
-		{83C7725A-F444-4351-97DE-5DCE1D982125}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{83C7725A-F444-4351-97DE-5DCE1D982125}.Release|Any CPU.Build.0 = Release|Any CPU
-		{83C7725A-F444-4351-97DE-5DCE1D982125}.Release|x64.ActiveCfg = Release|Any CPU
-		{83C7725A-F444-4351-97DE-5DCE1D982125}.Release|x64.Build.0 = Release|Any CPU
 		{9C34D595-053F-4EE0-9D22-782D1563799E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9C34D595-053F-4EE0-9D22-782D1563799E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C34D595-053F-4EE0-9D22-782D1563799E}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -331,6 +313,14 @@ Global
 		{AC6C6E37-6A00-42C0-9A5E-FB4331AB17FC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AC6C6E37-6A00-42C0-9A5E-FB4331AB17FC}.Release|x64.ActiveCfg = Release|Any CPU
 		{AC6C6E37-6A00-42C0-9A5E-FB4331AB17FC}.Release|x64.Build.0 = Release|Any CPU
+		{2309653C-4BCA-43AA-90D3-A6FADF1F3FEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2309653C-4BCA-43AA-90D3-A6FADF1F3FEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2309653C-4BCA-43AA-90D3-A6FADF1F3FEE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{2309653C-4BCA-43AA-90D3-A6FADF1F3FEE}.Debug|x64.Build.0 = Debug|Any CPU
+		{2309653C-4BCA-43AA-90D3-A6FADF1F3FEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2309653C-4BCA-43AA-90D3-A6FADF1F3FEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2309653C-4BCA-43AA-90D3-A6FADF1F3FEE}.Release|x64.ActiveCfg = Release|Any CPU
+		{2309653C-4BCA-43AA-90D3-A6FADF1F3FEE}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

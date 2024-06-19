@@ -1,4 +1,4 @@
-﻿namespace StockBox {
+﻿namespace H_StockBox {
     partial class H_StockBoxs {
         /// <summary>
         ///  Required designer variable.
@@ -202,7 +202,7 @@
             ToolStripStatusLabelDetail.Size = new Size(143, 17);
             ToolStripStatusLabelDetail.Text = "ToolStripStatusLabelDetail";
             // 
-            // H_StockBoxs
+            // H_StockBox
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -212,9 +212,9 @@
             MainMenuStrip = MenuStrip1;
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "H_StockBoxs";
+            Name = "H_StockBox";
             ShowIcon = false;
-            Text = "StockBoxs";
+            Text = "H_StockBox";
             FormClosing += SetStockBox_FormClosing;
             h_TableLayoutPanelExBase.ResumeLayout(false);
             h_TableLayoutPanelExBase.PerformLayout();

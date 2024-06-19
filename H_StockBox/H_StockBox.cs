@@ -7,7 +7,7 @@ using H_Utility;
 
 using Vo;
 
-namespace StockBox {
+namespace H_StockBox {
     public partial class H_StockBoxs : Form {
         /*
          * •Ï”’è‹`

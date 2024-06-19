@@ -1,7 +1,7 @@
 ﻿/*
  * 2023-12-07
  */
-namespace StockBox {
+namespace H_StockBox {
     public class StartCode {
         /// <summary>
         /// エントリーポイント

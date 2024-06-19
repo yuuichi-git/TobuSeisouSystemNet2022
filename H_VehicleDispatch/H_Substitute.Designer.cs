@@ -26,8 +26,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(H_Substitute));
             HTableLayoutPanelExBase = new H_ControlEx.H_TableLayoutPanelEx();
             SpreadHSubstitute = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("HTableLayoutPanelExBase.Controls"));
-            SheetView1 = SpreadHSubstitute.GetSheet(0);
-            SheetView2 = SpreadHSubstitute.GetSheet(1);
             StatusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             ToolStripStatusLabelDetail = new ToolStripStatusLabel();
@@ -37,6 +35,8 @@
             ToolStripMenuItemMenu = new ToolStripMenuItem();
             ToolStripMenuItemExit = new ToolStripMenuItem();
             ToolStripMenuItemHelp = new ToolStripMenuItem();
+            SheetView1 = SpreadHSubstitute.GetSheet(0);
+            SheetView2 = SpreadHSubstitute.GetSheet(1);
             HTableLayoutPanelExBase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)SpreadHSubstitute).BeginInit();
             StatusStrip1.SuspendLayout();
@@ -66,7 +66,7 @@
             // 
             // SpreadHSubstitute
             // 
-            SpreadHSubstitute.AccessibleDescription = "SpreadHSubstitute, 東京環境衛生事業協同組合　練馬区支部, Row 0, Column 0";
+            SpreadHSubstitute.AccessibleDescription = "SpreadHSubstitute, 共通, Row 0, Column 0";
             SpreadHSubstitute.Dock = DockStyle.Fill;
             SpreadHSubstitute.Font = new Font("ＭＳ Ｐゴシック", 11F, FontStyle.Regular, GraphicsUnit.Point);
             SpreadHSubstitute.Location = new Point(3, 87);
