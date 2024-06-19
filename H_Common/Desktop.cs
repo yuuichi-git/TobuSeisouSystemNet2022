@@ -30,7 +30,7 @@
         public void SetPosition(Form form, Screen screen) {
             form.Left = (screen.WorkingArea.Width - form.Width) / 2 + screen.WorkingArea.X;
             form.Top = (screen.WorkingArea.Height - form.Height) / 2 + screen.WorkingArea.Y;
-            form.StartPosition = FormStartPosition.Manual;
+            form.StartPosition = FormStartPosition.CenterScreen;
         }
     }
 }

@@ -71,23 +71,24 @@ namespace H_ControlEx {
             for (int i = 0; i < _rowCount; i++)
                 this.RowStyles.Add(new RowStyle(SizeType.Absolute, _rowHeight));
             /*
-             * Event
+             * Eventを登録
+             * 主にスクロール処理用に試用
              */
-            this.MouseDown += HSetControl_MouseDown; // Eventを登録
-            this.MouseUp += HSetControl_MouseUp; // Eventを登録
-            this.MouseMove += HSetControl_MouseMove; // Eventを登録
+            this.MouseDown += HSetControl_MouseDown;
+            this.MouseUp += HSetControl_MouseUp;
+            this.MouseMove += HSetControl_MouseMove;
         }
 
         /// <summary>
-        /// AddSetControl
-        /// SetControlを追加する
+        /// AddHSetControl
+        /// H_SetControlを追加する
         /// </summary>
         /// <param name="hSetControlVo"></param>
-        public void AddSetControl(H_ControlVo hSetControlVo) {
+        public void AddHSetControl(H_ControlVo hSetControlVo) {
             // インスタンス作成
             H_SetControl hSetControl = new(hSetControlVo);
             /*
-             * イベントを登録
+             * Eventを登録
              */
             hSetControl.Event_HSetControl_MouseDown += HSetControl_MouseDown;
             hSetControl.Event_HSetControl_MouseUp += HSetControl_MouseUp;
@@ -95,12 +96,15 @@ namespace H_ControlEx {
             hSetControl.Event_HSetControl_DragEnter += HSetControl_DragEnter;
             hSetControl.Event_HSetControl_DragDrop += HSetControl_DragDrop;
             hSetControl.Event_HSetControl_DragOver += HSetControl_DragOver;
+
             hSetControl.Event_HSetControl_HSetLabel_MouseClick += HSetLabel_MouseClick;
             hSetControl.Event_HSetControl_HSetLabel_MouseDoubleClick += HSetLabel_MouseDoubleClick;
             hSetControl.Event_HSetControl_HSetLabel_MouseMove += HSetLabel_MouseMove;
+
             hSetControl.Event_HSetControl_HCarLabel_MouseClick += HCarLabel_MouseClick;
             hSetControl.Event_HSetControl_HCarLabel_MouseDoubleClick += HCarLabel_MouseDoubleClick;
             hSetControl.Event_HSetControl_HCarLabel_MouseMove += HCarLabel_MouseMove;
+
             hSetControl.Event_HSetControl_HStaffLabel_MouseClick += HStaffLabel_MouseClick;
             hSetControl.Event_HSetControl_HStaffLabel_MouseDoubleClick += HStaffLabel_MouseDoubleClick;
             hSetControl.Event_HSetControl_HStaffLabel_MouseMove += HStaffLabel_MouseMove;

@@ -36,11 +36,11 @@ namespace H_ControlEx {
         /*
          * 透かし文字用のフォーマット
          */
-        private StringFormat stringFormat;
+        private StringFormat _stringFormat;
         /*
          * 空のSetControlExの文字列表示用
          */
-        private readonly Rectangle rectangleFill = new(2, 2, 76, 116);
+        private readonly Rectangle _rectangleFill = new(2, 2, 76, 116);
         private readonly Font _drawFont = new("Yu Gothic UI", 14, FontStyle.Italic, GraphicsUnit.Pixel);
         private readonly SolidBrush _drawBrushFont = new(Color.DarkGray);
         /*
@@ -95,7 +95,7 @@ namespace H_ControlEx {
         public event MouseEventHandler Event_HSetControl_HStaffLabel_MouseMove = delegate { };
 
         /// <summary>
-        /// コンストラクタ
+        /// コンストラクター
         /// 配車されているSetControlを作成する
         /// H_SetControlVoに全ての引数を代入しておく
         /// </summary>
@@ -103,9 +103,9 @@ namespace H_ControlEx {
             /*
              * 透かし文字用のフォーマット
              */
-            stringFormat = new StringFormat();
-            stringFormat.LineAlignment = StringAlignment.Center;
-            stringFormat.Alignment = StringAlignment.Center;
+            _stringFormat = new StringFormat();
+            _stringFormat.LineAlignment = StringAlignment.Center;
+            _stringFormat.Alignment = StringAlignment.Center;
             /*
              * Dao
              */
@@ -116,7 +116,7 @@ namespace H_ControlEx {
             _hControlVo = hControlVo;
             _hVehicleDispatchDetailVo = hControlVo.HVehicleDispatchDetailVo;
             /*
-             * ControlIni
+             * InitializeControl
              */
             InitializeComponent();
             this.AllowDrop = true;
@@ -130,9 +130,16 @@ namespace H_ControlEx {
              */
             switch (_hControlVo.PurposeFlag) {
                 case false: // １列
+                    // H_SetControlのサイズ
                     this.Size = new Size(75, 400);
+                    /*
+                     * Column作成
+                     */
                     this.ColumnCount = _columnCount;
                     this.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, _panelWidth));
+                    /*
+                     * Row作成
+                     */
                     this.RowCount = _rowCount;
                     this.RowStyles.Add(new RowStyle(SizeType.Absolute, _panelHeight));
                     this.RowStyles.Add(new RowStyle(SizeType.Absolute, _panelHeight));
@@ -140,10 +147,17 @@ namespace H_ControlEx {
                     this.RowStyles.Add(new RowStyle(SizeType.Absolute, _panelHeight));
                     break;
                 case true: // ２列
+                    // H_SetControlのサイズ
                     this.Size = new Size(150, 400);
+                    /*
+                     * Column作成
+                     */
                     this.ColumnCount = _columnCount + 1;
                     this.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, _panelWidth));
                     this.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, _panelWidth));
+                    /*
+                     * Row作成
+                     */
                     this.RowCount = _rowCount;
                     this.RowStyles.Add(new RowStyle(SizeType.Absolute, _panelHeight));
                     this.RowStyles.Add(new RowStyle(SizeType.Absolute, _panelHeight));
@@ -296,23 +310,23 @@ namespace H_ControlEx {
                      */
                     case 44:
                     case 45:
-                        e.Graphics.DrawString(string.Concat("本社", "\r\n", "運行管理"), _drawFont, _drawBrushFont, rectangleFill, stringFormat);
+                        e.Graphics.DrawString(string.Concat("本社", "\r\n", "運行管理"), _drawFont, _drawBrushFont, _rectangleFill, _stringFormat);
                         break;
                     case 46:
-                        e.Graphics.DrawString(string.Concat("三郷", "\r\n", "運行管理"), _drawFont, _drawBrushFont, rectangleFill, stringFormat);
+                        e.Graphics.DrawString(string.Concat("三郷", "\r\n", "運行管理"), _drawFont, _drawBrushFont, _rectangleFill, _stringFormat);
                         break;
                     case 47:
                     case 48:
-                        e.Graphics.DrawString(string.Concat("本社", "\r\n", "整備管理"), _drawFont, _drawBrushFont, rectangleFill, stringFormat);
+                        e.Graphics.DrawString(string.Concat("本社", "\r\n", "整備管理"), _drawFont, _drawBrushFont, _rectangleFill, _stringFormat);
                         break;
                     case 49:
-                        e.Graphics.DrawString(string.Concat("三郷", "\r\n", "整備管理"), _drawFont, _drawBrushFont, rectangleFill, stringFormat);
+                        e.Graphics.DrawString(string.Concat("三郷", "\r\n", "整備管理"), _drawFont, _drawBrushFont, _rectangleFill, _stringFormat);
                         break;
                     /*
                      * 大型枠
                      */
                     case 120:
-                        e.Graphics.DrawString("コンテナ", _drawFont, _drawBrushFont, rectangleFill, stringFormat);
+                        e.Graphics.DrawString("コンテナ", _drawFont, _drawBrushFont, _rectangleFill, _stringFormat);
                         break;
                     case 121:
                     case 122:
@@ -323,11 +337,11 @@ namespace H_ControlEx {
                     case 127:
                     case 128:
                     case 129:
-                        e.Graphics.DrawString("大型ダンプ", _drawFont, _drawBrushFont, rectangleFill, stringFormat);
+                        e.Graphics.DrawString("大型ダンプ", _drawFont, _drawBrushFont, _rectangleFill, _stringFormat);
                         break;
                     case 130:
                     case 131:
-                        e.Graphics.DrawString("鉄道", _drawFont, _drawBrushFont, rectangleFill, stringFormat);
+                        e.Graphics.DrawString("鉄道", _drawFont, _drawBrushFont, _rectangleFill, _stringFormat);
                         break;
                 }
             }

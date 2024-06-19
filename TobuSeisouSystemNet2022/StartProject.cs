@@ -155,9 +155,8 @@ namespace TobuSeisouSystemNet2022 {
                                  * Formを表示する
                                  */
                                 H_FirstRollColl hFirstRollColl = new(_connectionVo);
-                                Rectangle rectangleHFirstRollColl = new Desktop().GetMonitorWorkingArea(hFirstRollColl, (Screen)HComboBoxMoniter.SelectedItem);
+                                new Desktop().SetPosition(hFirstRollColl, (Screen)HComboBoxMoniter.SelectedItem);
                                 hFirstRollColl.KeyPreview = true;
-                                hFirstRollColl.Location = rectangleHFirstRollColl.Location;
                                 hFirstRollColl.Size = new Size(1920, 1080);
                                 hFirstRollColl.WindowState = FormWindowState.Normal;
                                 hFirstRollColl.Show(this);
@@ -170,9 +169,8 @@ namespace TobuSeisouSystemNet2022 {
                                  * Formを表示する
                                  */
                                 HStaffList hStaffList = new(_connectionVo);
-                                Rectangle rectangleHStaffList = new Desktop().GetMonitorWorkingArea(hStaffList, (Screen)HComboBoxMoniter.SelectedItem);
+                                new Desktop().SetPosition(hStaffList, (Screen)HComboBoxMoniter.SelectedItem);
                                 hStaffList.KeyPreview = true;
-                                hStaffList.Location = rectangleHStaffList.Location;
                                 hStaffList.Size = new Size(1920, 1080);
                                 hStaffList.WindowState = FormWindowState.Normal;
                                 hStaffList.Show(this);
@@ -185,9 +183,8 @@ namespace TobuSeisouSystemNet2022 {
                                  * Formを表示する
                                  */
                                 HLicenseList hLicenseList = new(_connectionVo);
-                                Rectangle rectangleHLicenseList = new Desktop().GetMonitorWorkingArea(hLicenseList, (Screen)HComboBoxMoniter.SelectedItem);
+                                new Desktop().SetPosition(hLicenseList, (Screen)HComboBoxMoniter.SelectedItem);
                                 hLicenseList.KeyPreview = true;
-                                hLicenseList.Location = rectangleHLicenseList.Location;
                                 hLicenseList.Size = new Size(1920, 1080);
                                 hLicenseList.WindowState = FormWindowState.Normal;
                                 hLicenseList.Show(this);
@@ -200,9 +197,8 @@ namespace TobuSeisouSystemNet2022 {
                                  * Formを表示する
                                  */
                                 HCarList hCarList = new(_connectionVo);
-                                Rectangle rectangleHCarList = new Desktop().GetMonitorWorkingArea(hCarList, (Screen)HComboBoxMoniter.SelectedItem);
+                                new Desktop().SetPosition(hCarList, (Screen)HComboBoxMoniter.SelectedItem);
                                 hCarList.KeyPreview = true;
-                                hCarList.Location = rectangleHCarList.Location;
                                 hCarList.Size = new Size(1920, 1080);
                                 hCarList.WindowState = FormWindowState.Normal;
                                 hCarList.Show(this);
@@ -215,9 +211,8 @@ namespace TobuSeisouSystemNet2022 {
                                  * Formを表示する
                                  */
                                 H_RollCallRecordSheet hRollCallRecordSheet = new(_connectionVo);
-                                Rectangle rectangleHRollCallRecordSheet = new Desktop().GetMonitorWorkingArea(hRollCallRecordSheet, (Screen)HComboBoxMoniter.SelectedItem);
+                                new Desktop().SetPosition(hRollCallRecordSheet, (Screen)HComboBoxMoniter.SelectedItem);
                                 hRollCallRecordSheet.KeyPreview = true;
-                                hRollCallRecordSheet.Location = rectangleHRollCallRecordSheet.Location;
                                 hRollCallRecordSheet.Size = new Size(1370, 1080);
                                 hRollCallRecordSheet.WindowState = FormWindowState.Normal;
                                 hRollCallRecordSheet.Show(this);
@@ -230,9 +225,8 @@ namespace TobuSeisouSystemNet2022 {
                                  * Formを表示する
                                  */
                                 H_LegalTwelveItemList hLegalTwelveItemList = new(_connectionVo);
-                                Rectangle rectangleHLegalTwelveItemList = new Desktop().GetMonitorWorkingArea(hLegalTwelveItemList, (Screen)HComboBoxMoniter.SelectedItem);
+                                new Desktop().SetPosition(hLegalTwelveItemList, (Screen)HComboBoxMoniter.SelectedItem);
                                 hLegalTwelveItemList.KeyPreview = true;
-                                hLegalTwelveItemList.Location = rectangleHLegalTwelveItemList.Location;
                                 hLegalTwelveItemList.Size = new Size(1188, 1000);
                                 hLegalTwelveItemList.WindowState = FormWindowState.Normal;
                                 hLegalTwelveItemList.Show(this);
@@ -245,9 +239,8 @@ namespace TobuSeisouSystemNet2022 {
                                  * Formを表示する
                                  */
                                 H_CollectionWeightCHIYODA hCollectionWeightCHIYODA = new(_connectionVo);
-                                Rectangle rectangleHCollectionWeightCHIYODA = new Desktop().GetMonitorWorkingArea(hCollectionWeightCHIYODA, (Screen)HComboBoxMoniter.SelectedItem);
+                                new Desktop().SetPosition(hCollectionWeightCHIYODA, (Screen)HComboBoxMoniter.SelectedItem);
                                 hCollectionWeightCHIYODA.KeyPreview = true;
-                                hCollectionWeightCHIYODA.Location = rectangleHCollectionWeightCHIYODA.Location;
                                 hCollectionWeightCHIYODA.Size = new Size(1000, 800);
                                 hCollectionWeightCHIYODA.WindowState = FormWindowState.Normal;
                                 hCollectionWeightCHIYODA.Show(this);
@@ -260,9 +253,8 @@ namespace TobuSeisouSystemNet2022 {
                                  * Formを表示する
                                  */
                                 H_CollectionWeightTAITOUList hCollectionWeightTAITOUList = new(_connectionVo);
-                                Rectangle rectangleHCollectionWeightTAITOUList = new Desktop().GetMonitorWorkingArea(hCollectionWeightTAITOUList, (Screen)HComboBoxMoniter.SelectedItem);
+                                new Desktop().SetPosition(hCollectionWeightTAITOUList, (Screen)HComboBoxMoniter.SelectedItem);
                                 hCollectionWeightTAITOUList.KeyPreview = true;
-                                hCollectionWeightTAITOUList.Location = rectangleHCollectionWeightTAITOUList.Location;
                                 hCollectionWeightTAITOUList.Size = new Size(1253, 993);
                                 hCollectionWeightTAITOUList.WindowState = FormWindowState.Normal;
                                 hCollectionWeightTAITOUList.Show(this);
@@ -275,9 +267,8 @@ namespace TobuSeisouSystemNet2022 {
                                  * Formを表示する
                                  */
                                 H_CollectionWeightTAITOUDetail hCollectionWeightTAITOUDetail = new(_connectionVo);
-                                Rectangle rectangleHCollectionWeightTAITOUDetail = new Desktop().GetMonitorWorkingArea(hCollectionWeightTAITOUDetail, (Screen)HComboBoxMoniter.SelectedItem);
+                                new Desktop().SetPosition(hCollectionWeightTAITOUDetail, (Screen)HComboBoxMoniter.SelectedItem);
                                 hCollectionWeightTAITOUDetail.KeyPreview = true;
-                                hCollectionWeightTAITOUDetail.Location = rectangleHCollectionWeightTAITOUDetail.Location;
                                 hCollectionWeightTAITOUDetail.Size = new Size(873, 1000);
                                 hCollectionWeightTAITOUDetail.WindowState = FormWindowState.Normal;
                                 hCollectionWeightTAITOUDetail.Show(this);
@@ -290,9 +281,8 @@ namespace TobuSeisouSystemNet2022 {
                                  * Formを表示する
                                  */
                                 H_ToukanpoTrainingCardDetail hToukanpoTrainingCardDetail = new(_connectionVo);
-                                Rectangle rectangleHToukanpoTrainingCardDetail = new Desktop().GetMonitorWorkingArea(hToukanpoTrainingCardDetail, (Screen)HComboBoxMoniter.SelectedItem);
+                                new Desktop().SetPosition(hToukanpoTrainingCardDetail, (Screen)HComboBoxMoniter.SelectedItem);
                                 hToukanpoTrainingCardDetail.KeyPreview = true;
-                                hToukanpoTrainingCardDetail.Location = rectangleHToukanpoTrainingCardDetail.Location;
                                 hToukanpoTrainingCardDetail.Size = new Size(677, 545);
                                 hToukanpoTrainingCardDetail.WindowState = FormWindowState.Normal;
                                 hToukanpoTrainingCardDetail.Show(this);
@@ -305,9 +295,8 @@ namespace TobuSeisouSystemNet2022 {
                                  * Formを表示する
                                  */
                                 H_ToukanpoSpeedSurvey hToukanpoSpeedSurvey = new(_connectionVo);
-                                Rectangle rectangleHToukanpoSpeedSurvey = new Desktop().GetMonitorWorkingArea(hToukanpoSpeedSurvey, (Screen)HComboBoxMoniter.SelectedItem);
+                                new Desktop().SetPosition(hToukanpoSpeedSurvey, (Screen)HComboBoxMoniter.SelectedItem);
                                 hToukanpoSpeedSurvey.KeyPreview = true;
-                                hToukanpoSpeedSurvey.Location = rectangleHToukanpoSpeedSurvey.Location;
                                 hToukanpoSpeedSurvey.Size = new Size(759, 1035);
                                 hToukanpoSpeedSurvey.WindowState = FormWindowState.Normal;
                                 hToukanpoSpeedSurvey.Show(this);
@@ -320,9 +309,8 @@ namespace TobuSeisouSystemNet2022 {
                                  * Formを表示する
                                  */
                                 HStatusOfResidenceList hStatusOfResidenceList = new(_connectionVo);
-                                Rectangle rectangleHStatusOfResidenceList = new Desktop().GetMonitorWorkingArea(hStatusOfResidenceList, (Screen)HComboBoxMoniter.SelectedItem);
+                                new Desktop().SetPosition(hStatusOfResidenceList, (Screen)HComboBoxMoniter.SelectedItem);
                                 hStatusOfResidenceList.KeyPreview = true;
-                                hStatusOfResidenceList.Location = rectangleHStatusOfResidenceList.Location;
                                 hStatusOfResidenceList.Size = new Size(1920, 1080);
                                 hStatusOfResidenceList.WindowState = FormWindowState.Normal;
                                 hStatusOfResidenceList.Show(this);
@@ -335,9 +323,8 @@ namespace TobuSeisouSystemNet2022 {
                                  * Formを表示する
                                  */
                                 HAccountingParttimeList hAccountingParttimeList = new(_connectionVo);
-                                Rectangle rectangleHAccountingParttimeList = new Desktop().GetMonitorWorkingArea(hAccountingParttimeList, (Screen)HComboBoxMoniter.SelectedItem);
+                                new Desktop().SetPosition(hAccountingParttimeList, (Screen)HComboBoxMoniter.SelectedItem);
                                 hAccountingParttimeList.KeyPreview = true;
-                                hAccountingParttimeList.Location = rectangleHAccountingParttimeList.Location;
                                 hAccountingParttimeList.Size = new Size(865, 1080);
                                 hAccountingParttimeList.WindowState = FormWindowState.Normal;
                                 hAccountingParttimeList.Show(this);
@@ -350,9 +337,8 @@ namespace TobuSeisouSystemNet2022 {
                                  * Formを表示する
                                  */
                                 H_CarAccidentList hCarAccidentList = new(_connectionVo);
-                                Rectangle rectanglHCarAccidentList = new Desktop().GetMonitorWorkingArea(hCarAccidentList, (Screen)HComboBoxMoniter.SelectedItem);
+                                new Desktop().SetPosition(hCarAccidentList, (Screen)HComboBoxMoniter.SelectedItem);
                                 hCarAccidentList.KeyPreview = true;
-                                hCarAccidentList.Location = rectanglHCarAccidentList.Location;
                                 hCarAccidentList.Size = new Size(1920, 1080);
                                 hCarAccidentList.WindowState = FormWindowState.Normal;
                                 hCarAccidentList.Show(this);

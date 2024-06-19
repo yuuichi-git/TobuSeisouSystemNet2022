@@ -17,6 +17,10 @@ namespace H_Dao {
          */
         private readonly ConnectionVo _connectionVo;
 
+        /// <summary>
+        /// コンストラクター
+        /// </summary>
+        /// <param name="connectionVo"></param>
         public H_LicenseMasterDao(ConnectionVo connectionVo) {
             /*
              * Vo
@@ -138,6 +142,44 @@ namespace H_Dao {
                 }
             }
             return hLicenseMasterVo;
+        }
+
+        /// <summary>
+        /// 免許証画像を抽出する
+        /// </summary>
+        /// <param name="staffCode"></param>
+        /// <returns></returns>
+        public byte[] SelectOnePictureHead(int staffCode) {
+            byte[] byteImage = Array.Empty<byte>();
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT PictureHead " +
+                                     "FROM H_LicenseMaster " +
+                                     "WHERE StaffCode = " + staffCode + "";
+            using (var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while (sqlDataReader.Read() == true) {
+                    byteImage = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["PictureHead"]);
+                }
+            }
+            return byteImage;
+        }
+
+        /// <summary>
+        /// 免許証画像を抽出する
+        /// </summary>
+        /// <param name="staffCode"></param>
+        /// <returns></returns>
+        public byte[] SelectOnePictureTail(int staffCode) {
+            byte[] byteImage = Array.Empty<byte>();
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT PictureTail " +
+                                     "FROM H_LicenseMaster " +
+                                     "WHERE StaffCode = " + staffCode + "";
+            using (var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while (sqlDataReader.Read() == true) {
+                    byteImage = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["PictureTail"]);
+                }
+            }
+            return byteImage;
         }
 
         /// <summary>

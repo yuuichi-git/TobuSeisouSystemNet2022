@@ -9,6 +9,8 @@ using H_ControlEx;
 
 using H_Dao;
 
+using H_License;
+
 using H_RollColl;
 
 using H_Staff;
@@ -180,7 +182,7 @@ namespace H_VehicleDispatch {
                  */
                 _hControlVo.HVehicleDispatchDetailVo = null;
 
-                _hBoard.AddSetControl(_hControlVo);
+                _hBoard.AddHSetControl(_hControlVo);
             }
 
             /*
@@ -266,7 +268,7 @@ namespace H_VehicleDispatch {
                  */
                 _hControlVo.HVehicleDispatchDetailVo = hVehicleDispatchDetailVo;
 
-                _hBoard.AddSetControl(_hControlVo);
+                _hBoard.AddHSetControl(_hControlVo);
             }
 
             /*
@@ -688,8 +690,6 @@ namespace H_VehicleDispatch {
         /// <param name="e"></param>
         private void HBoard_HSetControl_HSetLabel_MouseDoubleClick(object sender, MouseEventArgs e) {
             H_SetLabel hSetLabel = (H_SetLabel)sender;
-            int cellNumber = ((H_ControlVo)((H_SetControl)((H_SetLabel)sender).Parent).Tag).CellNumber;
-            int setCode = ((H_SetMasterVo)((H_SetLabel)sender).Tag).SetCode;
             H_VehicleDispatchDetailVo hVehicleDispatchDetailVo = ((H_ControlVo)((H_SetControl)((H_SetLabel)sender).Parent).Tag).HVehicleDispatchDetailVo;
             H_LastRollCall hLastRollCall = new(_connectionVo, hSetLabel, hVehicleDispatchDetailVo);
             hLastRollCall.ShowDialog(this);
@@ -720,9 +720,8 @@ namespace H_VehicleDispatch {
                     break;
                 case "ToolStripMenuItemCreateFax": // 代車・代番Faxを作成する
                     H_Substitute hSubstitute = new(_connectionVo, (H_SetControl)((H_SetLabel)contextMenuStrip.SourceControl).Parent);
-                    Rectangle rectangleHSubstitute = new Desktop().GetMonitorWorkingArea(hSubstitute, _connectionVo.Screen);
+                    new Desktop().SetPosition(hSubstitute, _connectionVo.Screen);
                     hSubstitute.KeyPreview = true;
-                    hSubstitute.Location = rectangleHSubstitute.Location;
                     hSubstitute.Size = new Size(850, 1080);
                     hSubstitute.WindowState = FormWindowState.Normal;
                     hSubstitute.Show(this);
@@ -750,18 +749,20 @@ namespace H_VehicleDispatch {
                  * 
                  */
                 case "ToolStripMenuItemStaffDetail": // 従事者台帳を表示する
-                    H_StaffLabel hStaffLabel = (H_StaffLabel)contextMenuStrip.SourceControl;
-                    H_StaffMasterVo hStaffMasterVo = (H_StaffMasterVo)hStaffLabel.Tag;
-                    HStaffPaper hStaffPaper = new(_connectionVo, hStaffMasterVo.StaffCode);
-                    Rectangle rectangleHStaffPaper = new Desktop().GetMonitorWorkingArea(hStaffPaper, _connectionVo.Screen);
+                    HStaffPaper hStaffPaper = new(_connectionVo, ((H_StaffMasterVo)((H_StaffLabel)contextMenuStrip.SourceControl).Tag).StaffCode);
+                    new Desktop().SetPosition(hStaffPaper, _connectionVo.Screen);
                     hStaffPaper.KeyPreview = true;
-                    hStaffPaper.Location = rectangleHStaffPaper.Location;
                     hStaffPaper.Size = new Size(1920, 1080);
                     hStaffPaper.WindowState = FormWindowState.Normal;
                     hStaffPaper.Show(this);
                     break;
                 case "ToolStripMenuItemStaffLicense": // 従事者免許証を表示する
-                    MessageBox.Show("ToolStripMenuItemStaffLicense");
+                    H_LicenseCard hLicenseCard = new(_connectionVo, ((H_StaffMasterVo)((H_StaffLabel)contextMenuStrip.SourceControl).Tag).StaffCode);
+                    new Desktop().SetPosition(hLicenseCard, _connectionVo.Screen);
+                    hLicenseCard.KeyPreview = true;
+                    hLicenseCard.Size = new Size(508, 667);
+                    hLicenseCard.WindowState = FormWindowState.Normal;
+                    hLicenseCard.Show(this);
                     break;
                 case "ToolStripMenuItemStaffMemo": // メモを作成・編集する
                     H_SetControl hSetControl = (H_SetControl)((H_StaffLabel)contextMenuStrip.SourceControl).Parent;

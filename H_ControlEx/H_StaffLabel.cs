@@ -21,7 +21,8 @@ namespace H_ControlEx {
         /*
          * H_Dao 
          */
-        private H_VehicleDispatchDetailDao _hVehicleDispatchDetailDao;
+        private readonly H_LicenseMasterDao _hLicenseMasterDao;
+        private readonly H_VehicleDispatchDetailDao _hVehicleDispatchDetailDao;
         /*
          * Vo
          */
@@ -87,6 +88,8 @@ namespace H_ControlEx {
             /*
              * H_Dao 
              */
+            _hLicenseMasterDao = new(hControlVo.ConnectionVo);
+            ;
             _hVehicleDispatchDetailDao = new(hControlVo.ConnectionVo);
             /*
              * Vo
@@ -275,7 +278,22 @@ namespace H_ControlEx {
             if (((H_StaffLabel)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(H_SetControl)) {
                 foreach (object item in ((ContextMenuStrip)sender).Items) {
                     if (item.GetType() == typeof(ToolStripMenuItem))
-                        ((ToolStripMenuItem)item).Enabled = true;
+                        switch (((ToolStripMenuItem)item).Name) {
+                            /*
+                             * 従事者免許証を表示する
+                             * 免許記録があればTrueなければFalse
+                             */
+                            case "ToolStripMenuItemStaffLicense":
+                                ((ToolStripMenuItem)item).Enabled = _hLicenseMasterDao.ExistenceHLicenseMaster(((H_StaffMasterVo)((H_StaffLabel)((ContextMenuStrip)sender).SourceControl).Tag).StaffCode);
+                                break;
+                            /*
+                             * 上記以外
+                             */
+                            default:
+                                ((ToolStripMenuItem)item).Enabled = true;
+                                break;
+                        }
+
                 }
                 /*
                  * H_SetControlのアクセサーを操作するのに使うので退避させておく
@@ -616,10 +634,20 @@ namespace H_ControlEx {
                 }
             }
         }
+        /// <summary>
+        /// HStaffLabel_MouseDoubleClick
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void HStaffLabel_MouseDoubleClick(object sender, MouseEventArgs e) {
             // Eventを親へ転送する
             Event_HStaffLabel_MouseDoubleClick.Invoke(sender, e);
         }
+        /// <summary>
+        /// HStaffLabel_MouseMove
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void HStaffLabel_MouseMove(object sender, MouseEventArgs e) {
             // Eventを親へ転送する
             Event_HStaffLabel_MouseMove.Invoke(sender, e);
