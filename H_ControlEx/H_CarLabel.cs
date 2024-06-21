@@ -21,12 +21,12 @@ namespace H_ControlEx {
         /*
          * H_Dao 
          */
-        private H_VehicleDispatchDetailDao _hVehicleDispatchDetailDao;
+        private readonly H_VehicleDispatchDetailDao _hVehicleDispatchDetailDao;
         /*
          * Vo
          */
         private H_ControlVo _hControlVo;
-        private readonly H_CarMasterVo _hCarMasterVo;
+        private H_CarMasterVo _hCarMasterVo;
         private H_VehicleDispatchDetailVo _hVehicleDispatchDetailVo;
         /*
          * １つのパネルのサイズ
@@ -217,7 +217,7 @@ namespace H_ControlEx {
              * 車両台帳を表示する
              */
             ToolStripMenuItem toolStripMenuItem00 = new("車両台帳を表示する");
-            toolStripMenuItem00.Name = "ToolStripMenuItemCarDetail";
+            toolStripMenuItem00.Name = "ToolStripMenuItemCarVerification";
             toolStripMenuItem00.Click += ToolStripMenuItem_Click;
             contextMenuStrip.Items.Add(toolStripMenuItem00);
             /*
@@ -283,7 +283,7 @@ namespace H_ControlEx {
                      * H_Boardに処理を回している
                      * H_CarLabel→H_SetControl→H_Board
                      */
-                case "ToolStripMenuItemCarDetail": // 車両台帳を表示する
+                case "ToolStripMenuItemCarVerification": // 車検証を表示する
                     Event_HCarLabel_ToolStripMenuItem_Click.Invoke(sender, e);
                     break;
                 case "ToolStripMenuItemCarWarehouseAdachi": // 本社から出庫

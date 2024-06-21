@@ -29,7 +29,7 @@ namespace H_ControlEx {
         /*
          * H_Dao 
          */
-        private H_VehicleDispatchDetailDao _hVehicleDispatchDetailDao;
+        private readonly H_VehicleDispatchDetailDao _hVehicleDispatchDetailDao;
         /*
          * H_Vo
          */
@@ -108,11 +108,11 @@ namespace H_ControlEx {
         /*
          * Fontの定義
          */
-        private Font _drawFontSetLabel = new("Yu Gothic UI", 13, FontStyle.Regular, GraphicsUnit.Pixel);
-        private Font _drawFontContactMethod = new("Yu Gothic UI", 10, FontStyle.Regular, GraphicsUnit.Pixel);
-        private Font _drawFontShiftCode = new("Yu Gothic UI", 11, FontStyle.Regular, GraphicsUnit.Pixel);
-        private Font _drawFontStandByFlag = new("Yu Gothic UI", 11, FontStyle.Regular, GraphicsUnit.Pixel);
-        private Font _drawFontAddWorkerFlag = new("Yu Gothic UI", 11, FontStyle.Regular, GraphicsUnit.Pixel);
+        private readonly Font _drawFontSetLabel = new("Yu Gothic UI", 13, FontStyle.Regular, GraphicsUnit.Pixel);
+        private readonly Font _drawFontContactMethod = new("Yu Gothic UI", 10, FontStyle.Regular, GraphicsUnit.Pixel);
+        private readonly Font _drawFontShiftCode = new("Yu Gothic UI", 11, FontStyle.Regular, GraphicsUnit.Pixel);
+        private readonly Font _drawFontStandByFlag = new("Yu Gothic UI", 11, FontStyle.Regular, GraphicsUnit.Pixel);
+        private readonly Font _drawFontAddWorkerFlag = new("Yu Gothic UI", 11, FontStyle.Regular, GraphicsUnit.Pixel);
 
         private string _drawStringContactMethod = string.Empty;
 

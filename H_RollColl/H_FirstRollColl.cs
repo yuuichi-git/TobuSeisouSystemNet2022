@@ -69,19 +69,19 @@ namespace H_RollColl {
         /*
          * Dao
          */
+        private readonly H_SetMasterDao _hSetMasterDao;
         private readonly H_CarMasterDao _hCarMasterDao;
+        private readonly H_StaffMasterDao _hStaffMasterDao;
         private readonly H_FareMasterDao _hFareMasterDao;
         private readonly H_FirstRollCallDao _hFirstRollCallDao;
-        private readonly H_SetMasterDao _hSetMasterDao;
-        private readonly H_StaffMasterDao _hStaffMasterDao;
         private readonly H_VehicleDispatchDetailDao _hVehicleDispatchDetailDao;
         /*
          * Vo
          */
-        private readonly List<H_CarMasterVo> _listHCarMasterVo;
-        private readonly List<H_FareMasterVo> _listHFareMasterVo;
         private readonly List<H_SetMasterVo> _listHSetMasterVo;
+        private readonly List<H_CarMasterVo> _listHCarMasterVo;
         private readonly List<H_StaffMasterVo> _listHStaffMasterVo;
+        private readonly List<H_FareMasterVo> _listHFareMasterVo;
 
         /// <summary>
         /// コンストラクター
@@ -91,24 +91,24 @@ namespace H_RollColl {
             /*
              * Dao
              */
+            _hSetMasterDao = new(connectionVo);
             _hCarMasterDao = new(connectionVo);
+            _hStaffMasterDao = new(connectionVo);
             _hFareMasterDao = new(connectionVo);
             _hFirstRollCallDao = new(connectionVo);
-            _hSetMasterDao = new(connectionVo);
-            _hStaffMasterDao = new(connectionVo);
             _hVehicleDispatchDetailDao = new(connectionVo);
             /*
              * Vo 
              */
-            _listHCarMasterVo = _hCarMasterDao.SelectAllHCarMaster();
-            _listHFareMasterVo = _hFareMasterDao.SelectAllHFareMasterVo();
             _listHSetMasterVo = _hSetMasterDao.SelectAllHSetMaster();
+            _listHCarMasterVo = _hCarMasterDao.SelectAllHCarMaster();
             _listHStaffMasterVo = _hStaffMasterDao.SelectAllHStaffMaster();
+            _listHFareMasterVo = _hFareMasterDao.SelectAllHFareMasterVo();
             /*
              * InitializeControl
              */
-            InitializeComponent();
-            InitializeSheetView();
+            this.InitializeComponent();
+            this.InitializeSheetView();
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace H_RollColl {
         }
 
         /// <summary>
-        /// 
+        /// HButtonExUpdate_Click
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -178,7 +178,7 @@ namespace H_RollColl {
             } catch (Exception exception) {
                 MessageBox.Show(exception.Message);
             }
-            SpreadOutput();
+            this.SpreadOutput();
         }
 
         /// <summary>

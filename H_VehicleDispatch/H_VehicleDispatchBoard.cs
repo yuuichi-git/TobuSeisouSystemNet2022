@@ -1,6 +1,8 @@
 ﻿/*
  * 2023-10-12
  */
+using H_Car;
+
 using H_CollectionWeight;
 
 using H_Common;
@@ -657,7 +659,11 @@ namespace H_VehicleDispatch {
                     switch (beforeParentControl.Name) {
                         case "H_SetControl":
                             // Drag元のRecordをUpdateする
-                            _hVehicleDispatchDetailDao.UpdateOneHVehicleDispatchDetail(((H_SetControl)_hBoard.GetControlFromPosition(((H_ControlVo)beforeParentControl.Tag).CellNumber % 50, ((H_ControlVo)beforeParentControl.Tag).CellNumber / 50)).ConvertHVehicleDispatchDetailVo());
+                            try {
+                                _hVehicleDispatchDetailDao.UpdateOneHVehicleDispatchDetail(((H_SetControl)_hBoard.GetControlFromPosition(((H_ControlVo)beforeParentControl.Tag).CellNumber % 50, ((H_ControlVo)beforeParentControl.Tag).CellNumber / 50)).ConvertHVehicleDispatchDetailVo());
+                            } catch (Exception exception) {
+                                MessageBox.Show(exception.Message);
+                            }
                             break;
                         default:
                             break;
@@ -674,7 +680,11 @@ namespace H_VehicleDispatch {
                     switch (beforeParentControl.Name) {
                         case "H_SetControl":
                             // Drag元のRecordをUpdateする
-                            _hVehicleDispatchDetailDao.UpdateOneHVehicleDispatchDetail(((H_SetControl)_hBoard.GetControlFromPosition(((H_ControlVo)beforeParentControl.Tag).CellNumber % 50, ((H_ControlVo)beforeParentControl.Tag).CellNumber / 50)).ConvertHVehicleDispatchDetailVo());
+                            try {
+                                _hVehicleDispatchDetailDao.UpdateOneHVehicleDispatchDetail(((H_SetControl)_hBoard.GetControlFromPosition(((H_ControlVo)beforeParentControl.Tag).CellNumber % 50, ((H_ControlVo)beforeParentControl.Tag).CellNumber / 50)).ConvertHVehicleDispatchDetailVo());
+                            } catch (Exception exception) {
+                                MessageBox.Show(exception.Message);
+                            }
                             break;
                         default:
                             break;
@@ -731,8 +741,13 @@ namespace H_VehicleDispatch {
                  * CarLabelからのEvent
                  * 
                  */
-                case "ToolStripMenuItemCarDetail": // 車両台帳を表示する
-                    MessageBox.Show("ToolStripMenuItemCarDetail");
+                case "ToolStripMenuItemCarVerification": // 車検証を表示する 
+                    H_CarVerification hCarVerification = new(_connectionVo, ((H_CarMasterVo)((H_CarLabel)contextMenuStrip.SourceControl).Tag).CarCode);
+                    new Desktop().SetPosition(hCarVerification, _connectionVo.Screen);
+                    hCarVerification.KeyPreview = true;
+                    hCarVerification.Size = new Size(800, 800);
+                    hCarVerification.WindowState = FormWindowState.Normal;
+                    hCarVerification.Show(this);
                     break;
                 case "ToolStripMenuItemCarMemo": // メモを作成・編集する
                     H_Memo hCarMemo = new(_connectionVo, (H_SetControl)((H_CarLabel)contextMenuStrip.SourceControl).Parent, (H_CarLabel)contextMenuStrip.SourceControl);

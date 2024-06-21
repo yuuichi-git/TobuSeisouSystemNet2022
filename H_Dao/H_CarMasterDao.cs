@@ -184,6 +184,25 @@ namespace H_Dao {
         }
 
         /// <summary>
+        /// SelectOnePicture
+        /// </summary>
+        /// <param name="carCode"></param>
+        /// <returns></returns>
+        public byte[] SelectOnePicture(int carCode) {
+            byte[] byteImage = Array.Empty<byte>();
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT Picture " +
+                                     "FROM H_CarMaster " +
+                                     "WHERE CarCode = " + carCode + "";
+            using (var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while (sqlDataReader.Read() == true) {
+                    byteImage = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["Picture"]);
+                }
+            }
+            return byteImage;
+        }
+
+        /// <summary>
         /// SelectOneHCarMaster
         /// Picture有
         /// </summary>

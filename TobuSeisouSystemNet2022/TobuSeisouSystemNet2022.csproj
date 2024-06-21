@@ -21,7 +21,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Accounting\Accounting.csproj" />
     <ProjectReference Include="..\Certification\Certification.csproj" />
     <ProjectReference Include="..\Common\Common.csproj" />
     <ProjectReference Include="..\H_AccountingParttime\H_AccountingParttime.csproj" />

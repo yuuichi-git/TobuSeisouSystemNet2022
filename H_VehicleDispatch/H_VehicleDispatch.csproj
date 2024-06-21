@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ControlEx\ControlEx.csproj" />
+    <ProjectReference Include="..\H_Car\H_Car.csproj" />
     <ProjectReference Include="..\H_CollectionWeight\H_CollectionWeight.csproj" />
     <ProjectReference Include="..\H_Common\H_Common.csproj" />
     <ProjectReference Include="..\H_ControlEx\H_ControlEx.csproj" />

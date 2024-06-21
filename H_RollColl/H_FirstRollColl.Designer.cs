@@ -205,7 +205,7 @@
             // HComboBoxExInstruction1
             // 
             HComboBoxExInstruction1.FormattingEnabled = true;
-            HComboBoxExInstruction1.Items.AddRange(new object[] { "法定速度遵守  ", "車間距離の保持", "追い越し注意  ", "行違い注意    ", "スリップ注意  ", "路肩注意      ", "優先交通権の確認 ", "踏切注意         ", "発進時の前後左右の確認 ", "信号注意       ", "カーブ・交差点注意 ", "通行区分厳守   ", "横断歩道注意   ", "歩行者・自転車に注意 ", "連続運転・無理な運行の禁止 ", "運転中の携帯電話使用厳禁  ", "シートベルトの着用 ", "積載状況の確認と記録 ", "確実な積み付け ", "雨天・霧発生時のライト点灯", "老人と子供に注意", "適時適切な休憩・休息", "適時適切な報告の実施", "危険予知の励行", "事故予測の励行", "問題意識の保持", "「思いやり」「譲り合い」の励行", "「だろう」運転禁止", "「かもしれない」運転の励行", "「ながら」運転の禁止" });
+            HComboBoxExInstruction1.Items.AddRange(new object[] { "法定速度遵守  ", "車間距離の保持", "追い越し注意  ", "行違い注意    ", "スリップ注意  ", "路肩注意      ", "優先交通権の確認 ", "踏切注意         ", "発進時の前後左右の確認 ", "信号黄色は止まれの合図       ", "カーブ・交差点注意 ", "通行区分厳守   ", "横断歩道注意   ", "歩行者・自転車に注意 ", "連続運転・無理な運行の禁止 ", "運転中の携帯電話使用厳禁  ", "シートベルトの着用 ", "積載状況の確認と記録 ", "確実な積み付け ", "雨天・霧発生時のライト点灯", "老人と子供に注意", "適時適切な休憩・休息", "適時適切な報告の実施", "危険予知の励行", "事故予測の励行", "問題意識の保持", "「思いやり」「譲り合い」の励行", "「だろう」運転禁止", "「かもしれない」運転の励行", "「ながら」運転の禁止" });
             HComboBoxExInstruction1.Location = new Point(76, 20);
             HComboBoxExInstruction1.Name = "HComboBoxExInstruction1";
             HComboBoxExInstruction1.Size = new Size(968, 23);
@@ -366,7 +366,7 @@
             // 
             // HDateTimePickerExOperationDate
             // 
-            HDateTimePickerExOperationDate.CustomFormat = " yyyy年MM月dd日(dddd)";
+            HDateTimePickerExOperationDate.CustomFormat = " 令和06年02月20日(火曜日)";
             HDateTimePickerExOperationDate.Format = DateTimePickerFormat.Custom;
             HDateTimePickerExOperationDate.Location = new Point(92, 56);
             HDateTimePickerExOperationDate.Name = "HDateTimePickerExOperationDate";
@@ -423,6 +423,8 @@
             ClientSize = new Size(1904, 1041);
             Controls.Add(HTableLayoutPanelExBase);
             MainMenuStrip = MenuStrip1;
+            MaximizeBox = false;
+            MinimizeBox = false;
             MinimumSize = new Size(1918, 1046);
             Name = "H_FirstRollColl";
             Text = "H_FirstRollColl";
