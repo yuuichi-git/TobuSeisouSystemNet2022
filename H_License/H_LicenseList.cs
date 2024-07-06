@@ -124,6 +124,7 @@ namespace H_License {
          * Vo
          */
         private readonly ConnectionVo _connectionVo;
+        private List<H_LicenseMasterVo> _listHLicenseMasterVo;
 
         /// <summary>
         /// コンストラクター
@@ -138,6 +139,7 @@ namespace H_License {
              * Vo
              */
             _connectionVo = connectionVo;
+            _listHLicenseMasterVo = null;
             /*
              * InitializeControl
              */
@@ -157,12 +159,20 @@ namespace H_License {
         private void HButtonExUpdate_Click(object sender, EventArgs e) {
             switch (SpreadList.ActiveSheetIndex) {
                 case 0: // SheetViewList
+                    // ToolStripMenuItemを設定
                     ToolStripMenuItemToukaiCSV.Enabled = false;
-                    this.PutSheetViewList(_hLicenseMasterDao.SelectAllHLicenseMaster());
+                    // TabControlを有効にする
+                    HTabControlExKANA.Enabled = true;
+                    _listHLicenseMasterVo = _hLicenseMasterDao.SelectAllHLicenseMaster();
+                    this.PutSheetViewList(_listHLicenseMasterVo);
                     break;
                 case 1: // SheetViewTokaidenshi
+                    // ToolStripMenuItemを設定
                     ToolStripMenuItemToukaiCSV.Enabled = true;
-                    this.PutSheetViewToukaidenshi(_hLicenseMasterDao.SelectAllHLicenseMaster());
+                    // TabControlを無効にする
+                    HTabControlExKANA.Enabled = false;
+                    _listHLicenseMasterVo = _hLicenseMasterDao.SelectAllHLicenseMaster();
+                    this.PutSheetViewToukaidenshi(_listHLicenseMasterVo);
                     break;
             }
         }
@@ -173,7 +183,8 @@ namespace H_License {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void HTabControlExKANA_Click(object sender, EventArgs e) {
-            this.PutSheetViewList(_hLicenseMasterDao.SelectAllHLicenseMaster());
+            if (_listHLicenseMasterVo is not null)
+                this.PutSheetViewList(_listHLicenseMasterVo);
         }
 
         /// <summary>
@@ -343,10 +354,8 @@ namespace H_License {
             }
             // 修飾キーが無い場合
             HLicenseDetail hLicenseDetail = new(_connectionVo, ((H_LicenseMasterVo)SheetViewList.Rows[e.Row].Tag).StaffCode);
-            Rectangle rectangleHLicenseDetail = new Desktop().GetMonitorWorkingArea(hLicenseDetail, _connectionVo.Screen);
+            new Desktop().SetPosition(hLicenseDetail, _connectionVo.Screen);
             hLicenseDetail.KeyPreview = true;
-            hLicenseDetail.Location = rectangleHLicenseDetail.Location;
-            hLicenseDetail.Size = new Size(1180, 810);
             hLicenseDetail.WindowState = FormWindowState.Normal;
             hLicenseDetail.Show(this);
         }
@@ -361,10 +370,8 @@ namespace H_License {
                 // 新規レコードを作成する
                 case "ToolStripMenuItemNewLicense":
                     HLicenseDetail hLicenseDetail = new(_connectionVo);
-                    Rectangle rectangleHLicenseDetail = new Desktop().GetMonitorWorkingArea(hLicenseDetail, _connectionVo.Screen);
+                    new Desktop().SetPosition(hLicenseDetail, _connectionVo.Screen);
                     hLicenseDetail.KeyPreview = true;
-                    hLicenseDetail.Location = rectangleHLicenseDetail.Location;
-                    hLicenseDetail.Size = new Size(1180, 810);
                     hLicenseDetail.WindowState = FormWindowState.Normal;
                     hLicenseDetail.Show(this);
                     break;

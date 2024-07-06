@@ -89,11 +89,11 @@ namespace H_VehicleDispatch {
             _hFlowLayoutPanelExFree.Padding = new Padding(1, 0, 1, 0);
             _hFlowLayoutPanelExFree.DragOver += HFlowLayoutPanelExFree_DragOver;
             _hFlowLayoutPanelExFree.DragDrop += HFlowLayoutPanelExFree_DragDrop;
-            HTableLayoutPanelExCenter.Controls.Add(_hFlowLayoutPanelExFree, 0, 1);
+            this.HTableLayoutPanelExCenter.Controls.Add(_hFlowLayoutPanelExFree, 0, 1);
             /*
              * ControlButtonを初期化
              */
-            HButtonExLeft1.TextDirectionVertical = "StockBox";
+            HButtonExLeft1.TextDirectionVertical = "StockBoxs";
 
             HDateTimePickerOperationDate.SetValueJp(DateTime.Today);
             ToolStripStatusLabelDetail.Text = string.Empty;
@@ -110,7 +110,7 @@ namespace H_VehicleDispatch {
             _hBoard = new H_Board(_connectionVo);
             _hBoard.Event_HBoard_HSetControl_HSetLabel_MouseDoubleClick += HBoard_HSetControl_HSetLabel_MouseDoubleClick;
             _hBoard.Event_HBoard_HSetControl_HLabel_ToolStripMenuItem_Click += HBoard_HSetControl_HLabel_ToolStripMenuItem_Click;
-            HTableLayoutPanelExCenter.Controls.Add(_hBoard, 0, 2);
+            this.HTableLayoutPanelExCenter.Controls.Add(_hBoard, 0, 2);
         }
 
         /// <summary>
@@ -304,7 +304,7 @@ namespace H_VehicleDispatch {
         /// <param name="listHStaffMasterVo"></param>
         /// <returns></returns>
         private H_StaffMasterVo GetHStaffMasterVo(List<H_StaffMasterVo> listHStaffMasterVo, int? staffCode) {
-            H_StaffMasterVo? hStaffMasterVo = new();
+            H_StaffMasterVo hStaffMasterVo = new();
             hStaffMasterVo = listHStaffMasterVo.Find(x => x.StaffCode == staffCode);
             if (hStaffMasterVo is not null) {
                 // 検索で見つかったVoを返す
@@ -600,6 +600,15 @@ namespace H_VehicleDispatch {
                     }
                     hVehicleDispatchEdit.Dispose();
                     MessageBox.Show("処理が終了しました。", "メッセージ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+                /*
+                 * 従事者の配車先を検索する
+                 */
+                case "ToolStripMenuItemSerchStaff":
+                    H_StaffDestination hStaffDestination = new(_connectionVo);
+                    new Desktop().SetPosition(hStaffDestination, _connectionVo.Screen);
+                    hStaffDestination.WindowState = FormWindowState.Normal;
+                    hStaffDestination.ShowDialog(this);
                     break;
                 /*
                  * B4で印刷する

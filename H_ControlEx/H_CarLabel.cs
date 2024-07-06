@@ -156,7 +156,11 @@ namespace H_ControlEx {
             string number = string.Concat(_hCarMasterVo.RegistrationNumber1, _hCarMasterVo.RegistrationNumber2, "\r\n"
                                         , _hCarMasterVo.RegistrationNumber3, _hCarMasterVo.RegistrationNumber4, "\r\n"
                                         , _hCarMasterVo.DisguiseKind1, _hCarMasterVo.DoorNumber != 0 ? _hCarMasterVo.DoorNumber : " ");
-            e.Graphics.DrawString(number, _drawFontCarLabel, new SolidBrush(Color.Black), new Rectangle(0, 0, (int)_panelWidth - 2, (int)_panelHeight - 6), stringFormat);
+            if (_hCarMasterVo.ExpirationDate < DateTime.Now.Date) {
+                e.Graphics.DrawString(number, _drawFontCarLabel, new SolidBrush(Color.Red), new Rectangle(0, 0, (int)_panelWidth - 2, (int)_panelHeight - 6), stringFormat);
+            } else {
+                e.Graphics.DrawString(number, _drawFontCarLabel, new SolidBrush(Color.Black), new Rectangle(0, 0, (int)_panelWidth - 2, (int)_panelHeight - 6), stringFormat);
+            }
             /*
              * 代車処理を描画
              */
@@ -279,10 +283,10 @@ namespace H_ControlEx {
         /// <param name="e"></param>
         private void ToolStripMenuItem_Click(object sender, EventArgs e) {
             switch (((ToolStripMenuItem)sender).Name) {
-                    /*
-                     * H_Boardに処理を回している
-                     * H_CarLabel→H_SetControl→H_Board
-                     */
+                /*
+                 * H_Boardに処理を回している
+                 * H_CarLabel→H_SetControl→H_Board
+                 */
                 case "ToolStripMenuItemCarVerification": // 車検証を表示する
                     Event_HCarLabel_ToolStripMenuItem_Click.Invoke(sender, e);
                     break;

@@ -16,7 +16,7 @@ using Vo;
 namespace H_Certification {
 
     public partial class H_CertificationList : Form {
-        private readonly H_Common.Date _date = new();
+        private readonly Date _date = new();
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
         private readonly Dictionary<int, string> _dictionaryBelongs = new Dictionary<int, string> { { 10, "役員" }, { 11, "社員" }, { 12, "アルバイト" }, { 13, "派遣" }, { 20, "新運転" }, { 21, "自運労" }, { 99, "指定なし" } };
         private readonly Dictionary<int, string> _dictionaryJobForm = new Dictionary<int, string> { { 10, "長期雇用" }, { 11, "手帳" }, { 99, "" } };
@@ -137,7 +137,7 @@ namespace H_Certification {
                 /*
                  * 取得計画人数
                  */
-                sheetView.Cells[2, columnCount].Font = new Font("游ゴシック", 9);
+                sheetView.Cells[2, columnCount].Font = new Font("游ゴシック", 8);
                 sheetView.Cells[2, columnCount].Text = hCertificationMasterVo.NumberOfAppointments.ToString("###");
 
                 columnCount++;
@@ -175,10 +175,11 @@ namespace H_Certification {
             }
 
             /*
-             * 行列の固定
+             * 固定行列を設定する
              */
             SheetViewList.FrozenRowCount = 4;
             SheetViewList.FrozenColumnCount = 3;
+
             SpreadList.ResumeLayout(); // Spread 活性化
         }
 
@@ -258,6 +259,21 @@ namespace H_Certification {
                         }
                     }
                 }
+                ToolStripStatusLabelDetail.Text = string.Concat(rowCount - 4, "名");
+            }
+
+            /*
+             * 資格取得済人数を算出する
+             */
+            int checkCount;
+            for (int col = 3; col < SheetViewList.ColumnCount; col++) {
+                checkCount = 0;
+                for (int row = 4; row < SheetViewList.RowCount; row++) {
+                    if (sheetView.Cells[row, col].Text != string.Empty)
+                        checkCount++;
+                }
+                sheetView.Cells[3, col].Font = new Font("Yu Gothic UI", 8);
+                sheetView.Cells[3, col].Value = checkCount;
             }
         }
 

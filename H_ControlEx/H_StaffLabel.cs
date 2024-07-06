@@ -89,7 +89,6 @@ namespace H_ControlEx {
              * H_Dao 
              */
             _hLicenseMasterDao = new(hControlVo.ConnectionVo);
-            ;
             _hVehicleDispatchDetailDao = new(hControlVo.ConnectionVo);
             /*
              * Vo

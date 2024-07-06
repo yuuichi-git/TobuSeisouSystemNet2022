@@ -91,7 +91,7 @@ namespace H_Dao {
 
         /// <summary>
         /// SelectAllHStaffMaster
-        /// H_StaffListで使用(画面に合わせてある)
+        /// H_StaffListで使用(画面のColumnに合わせてある)
         /// </summary>
         /// <returns></returns>
         public List<H_StaffMasterVo> SelectHStaffMasterForStaffList(string sqlBelongs, string sqlJobForm, string sqlOccupation) {
@@ -400,7 +400,7 @@ namespace H_Dao {
         }
 
         /// <summary>
-        /// SelectAllHStaffMaster
+        /// SelectAllHStaffMasterP
         /// Picture有
         /// </summary>
         /// <returns></returns>
@@ -516,6 +516,38 @@ namespace H_Dao {
                     hStaffMasterVo.DeletePcName = _defaultValue.GetDefaultValue<string>(sqlDataReader["DeletePcName"]);
                     hStaffMasterVo.DeleteYmdHms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["DeleteYmdHms"]);
                     hStaffMasterVo.DeleteFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["DeleteFlag"]);
+                    listHStaffMasterVo.Add(hStaffMasterVo);
+                }
+            }
+            return listHStaffMasterVo;
+        }
+
+        /// <summary>
+        /// SelectAllHStaffMaster(H_StaffDestinationで使用)
+        /// Picture無
+        /// </summary>
+        /// <returns></returns>
+        public List<H_StaffMasterVo> SelectAllHStaffMasterForHStaffDestination() {
+            List<H_StaffMasterVo> listHStaffMasterVo = new();
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT StaffCode," +
+                                            "Belongs," +
+                                            "JobForm," +
+                                            "Occupation," +
+                                            "NameKana," +
+                                            "Name," +
+                                            "DisplayName " +
+                                     "FROM H_StaffMaster";
+            using (var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while (sqlDataReader.Read() == true) {
+                    H_StaffMasterVo hStaffMasterVo = new();
+                    hStaffMasterVo.StaffCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["StaffCode"]);
+                    hStaffMasterVo.Belongs = _defaultValue.GetDefaultValue<int>(sqlDataReader["Belongs"]);
+                    hStaffMasterVo.JobForm = _defaultValue.GetDefaultValue<int>(sqlDataReader["JobForm"]);
+                    hStaffMasterVo.Occupation = _defaultValue.GetDefaultValue<int>(sqlDataReader["Occupation"]);
+                    hStaffMasterVo.NameKana = _defaultValue.GetDefaultValue<string>(sqlDataReader["NameKana"]);
+                    hStaffMasterVo.Name = _defaultValue.GetDefaultValue<string>(sqlDataReader["Name"]);
+                    hStaffMasterVo.DisplayName = _defaultValue.GetDefaultValue<string>(sqlDataReader["DisplayName"]);
                     listHStaffMasterVo.Add(hStaffMasterVo);
                 }
             }

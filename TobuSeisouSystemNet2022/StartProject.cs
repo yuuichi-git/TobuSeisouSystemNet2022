@@ -577,10 +577,8 @@ namespace TobuSeisouSystemNet2022 {
                          * Formを表示する
                          */
                         H_CertificationList hCertificationList = new(_connectionVo);
-                        Rectangle rectangleHCertificationList = new Desktop().GetMonitorWorkingArea(hCertificationList, (Screen)HComboBoxMoniter.SelectedItem);
+                        new Desktop().SetPosition(hCertificationList, (Screen)HComboBoxMoniter.SelectedItem);
                         hCertificationList.KeyPreview = true;
-                        hCertificationList.Location = rectangleHCertificationList.Location;
-                        //hCertificationList.Size = new Size(1920, 1080);
                         hCertificationList.WindowState = FormWindowState.Normal;
                         hCertificationList.Show(this);
                         break;

@@ -168,9 +168,8 @@ namespace H_Staff {
                 // 
                 case "ToolStripMenuItemNewStaff":
                     HStaffDetail hStaffDetail = new(_connectionVo);
-                    Rectangle rectangleHStaffDetail = new Desktop().GetMonitorWorkingArea(hStaffDetail, _connectionVo.Screen);
+                    new Desktop().SetPosition(hStaffDetail, _connectionVo.Screen);
                     hStaffDetail.KeyPreview = true;
-                    hStaffDetail.Location = rectangleHStaffDetail.Location;
                     hStaffDetail.Size = new Size(1920, 1080);
                     hStaffDetail.WindowState = FormWindowState.Normal;
                     hStaffDetail.ShowDialog(this);
@@ -551,9 +550,8 @@ namespace H_Staff {
             // Shiftが押された場合
             if ((ModifierKeys & Keys.Shift) == Keys.Shift) {
                 HStaffPaper hStaffPaper = new(_connectionVo, ((H_StaffMasterVo)SheetViewList.Rows[e.Row].Tag).StaffCode);
-                Rectangle rectangleHStaffPaper = new Desktop().GetMonitorWorkingArea(hStaffPaper, _connectionVo.Screen);
+                new Desktop().SetPosition(hStaffPaper, _connectionVo.Screen);
                 hStaffPaper.KeyPreview = true;
-                hStaffPaper.Location = rectangleHStaffPaper.Location;
                 hStaffPaper.Size = new Size(1920, 1080);
                 hStaffPaper.WindowState = FormWindowState.Normal;
                 hStaffPaper.Show(this);
@@ -561,9 +559,8 @@ namespace H_Staff {
             }
             // 修飾キーが無い場合
             HStaffDetail hStaffDetail = new(_connectionVo, ((H_StaffMasterVo)SheetViewList.Rows[e.Row].Tag).StaffCode);
-            Rectangle rectangleHStaffDetail = new Desktop().GetMonitorWorkingArea(hStaffDetail, _connectionVo.Screen);
+            new Desktop().SetPosition(hStaffDetail, _connectionVo.Screen);
             hStaffDetail.KeyPreview = true;
-            hStaffDetail.Location = rectangleHStaffDetail.Location;
             hStaffDetail.Size = new Size(1920, 1080);
             hStaffDetail.WindowState = FormWindowState.Normal;
             hStaffDetail.Show(this);

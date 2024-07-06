@@ -54,6 +54,8 @@
             HButtonExUpdate = new H_ControlEx.H_ButtonEx();
             HDateTimePickerOperationDate = new H_ControlEx.H_DateTimePickerEx();
             h_LabelEx1 = new H_ControlEx.H_LabelEx();
+            ToolStripMenuItemSerch = new ToolStripMenuItem();
+            ToolStripMenuItemSerchStaff = new ToolStripMenuItem();
             h_TableLayoutPanelExBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -86,7 +88,7 @@
             // MenuStrip1
             // 
             h_TableLayoutPanelExBase.SetColumnSpan(MenuStrip1, 2);
-            MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemInitialize, ToolStripMenuItemUpdateVehicleDispatch, ToolStripMenuItemPrint, ToolStripMenuItemHelp });
+            MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemInitialize, ToolStripMenuItemUpdateVehicleDispatch, ToolStripMenuItemSerch, ToolStripMenuItemPrint, ToolStripMenuItemHelp });
             MenuStrip1.Location = new Point(0, 0);
             MenuStrip1.Name = "MenuStrip1";
             MenuStrip1.Size = new Size(1904, 24);
@@ -355,6 +357,20 @@
             h_LabelEx1.TabIndex = 1;
             h_LabelEx1.Text = "配車日";
             // 
+            // ToolStripMenuItemSerch
+            // 
+            ToolStripMenuItemSerch.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemSerchStaff });
+            ToolStripMenuItemSerch.Name = "ToolStripMenuItemSerch";
+            ToolStripMenuItemSerch.Size = new Size(43, 20);
+            ToolStripMenuItemSerch.Text = "検索";
+            // 
+            // ToolStripMenuItemSerchStaff
+            // 
+            ToolStripMenuItemSerchStaff.Name = "ToolStripMenuItemSerchStaff";
+            ToolStripMenuItemSerchStaff.Size = new Size(208, 22);
+            ToolStripMenuItemSerchStaff.Text = "従事者の配車先を検索する";
+            ToolStripMenuItemSerchStaff.Click += ToolStripMenuItem_Click;
+            // 
             // H_VehicleDispatchBoard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -412,5 +428,7 @@
         private ToolStripMenuItem ToolStripMenuItemInputTAITOU;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripSeparator toolStripSeparator2;
+        private ToolStripMenuItem ToolStripMenuItemSerch;
+        private ToolStripMenuItem ToolStripMenuItemSerchStaff;
     }
 }
