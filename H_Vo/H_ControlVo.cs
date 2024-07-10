@@ -8,25 +8,25 @@ namespace Vo {
         /*
          * プロパティ
          */
-        private ConnectionVo? _connectionVo;
-        private Control? _hBoard;
-        private Control? _hFlowLayoutPanelExStockBoxs;
+        private ConnectionVo _connectionVo;
+        private Control _hBoard;
+        private Control _hFlowLayoutPanelExStockBoxs;
         private int _cellNumber;
         private DateTime _operationDate;
         private bool _operationFlag;
         private bool _vehicleDispatchFlag;
         private bool _purposeFlag;
-        private H_SetMasterVo? _hSetMasterVo;
-        private H_CarMasterVo? _hCarMasterVo;
-        private H_StaffMasterVo? _hStaffMasterVo;
+        private H_SetMasterVo _hSetMasterVo;
+        private H_CarMasterVo _hCarMasterVo;
+        private H_StaffMasterVo _hStaffMasterVo;
         private int _selectNumberStaffMasterVo;
-        private List<H_SetMasterVo>? _listHSetMasterVo;
-        private List<H_CarMasterVo>? _listHCarMasterVo;
-        private List<H_StaffMasterVo>? _listHStaffMasterVo;
-        private List<H_SetMasterVo>? _removeListHSetMasterVo;
-        private List<H_CarMasterVo>? _removeListHCarMasterVo;
-        private List<H_StaffMasterVo>? _removeListHStaffMasterVo;
-        private H_VehicleDispatchDetailVo? _hVehicleDispatchDetailVo;
+        private List<H_SetMasterVo> _listHSetMasterVo;
+        private List<H_CarMasterVo> _listHCarMasterVo;
+        private List<H_StaffMasterVo> _listHStaffMasterVo;
+        private List<H_SetMasterVo> _removeListHSetMasterVo;
+        private List<H_CarMasterVo> _removeListHCarMasterVo;
+        private List<H_StaffMasterVo> _removeListHStaffMasterVo;
+        private H_VehicleDispatchDetailVo _hVehicleDispatchDetailVo;
 
         /// <summary>
         /// コンストラクタ
@@ -59,21 +59,21 @@ namespace Vo {
         /// <summary>
         /// ConnectionVo
         /// </summary>
-        public ConnectionVo? ConnectionVo {
+        public ConnectionVo ConnectionVo {
             get => _connectionVo;
             set => _connectionVo = value;
         }
         /// <summary>
         /// HBoard
         /// </summary>
-        public Control? HBoard {
+        public Control HBoard {
             get => _hBoard;
             set => _hBoard = value;
         }
         /// <summary>
         /// HFlowLayoutPanelExStockBoxs
         /// </summary>
-        public Control? HFlowLayoutPanelExStockBoxs {
+        public Control HFlowLayoutPanelExStockBoxs {
             get => _hFlowLayoutPanelExStockBoxs;
             set => _hFlowLayoutPanelExStockBoxs = value;
         }
@@ -118,21 +118,21 @@ namespace Vo {
         /// <summary>
         /// SetMaster
         /// </summary>
-        public H_SetMasterVo? HSetMasterVo {
+        public H_SetMasterVo HSetMasterVo {
             get => _hSetMasterVo;
             set => _hSetMasterVo = value;
         }
         /// <summary>
         /// CarMaster
         /// </summary>
-        public H_CarMasterVo? HCarMasterVo {
+        public H_CarMasterVo HCarMasterVo {
             get => _hCarMasterVo;
             set => _hCarMasterVo = value;
         }
         /// <summary>
         /// HStaffMasterVo
         /// </summary>
-        public H_StaffMasterVo? HStaffMasterVo {
+        public H_StaffMasterVo HStaffMasterVo {
             get => _hStaffMasterVo;
             set => _hStaffMasterVo = value;
         }
@@ -148,7 +148,7 @@ namespace Vo {
         /// ListHSetMasterVo
         /// 未加工
         /// </summary>
-        public List<H_SetMasterVo>? ListHSetMasterVo {
+        public List<H_SetMasterVo> ListHSetMasterVo {
             get => _listHSetMasterVo;
             set => _listHSetMasterVo = value;
         }
@@ -156,7 +156,7 @@ namespace Vo {
         /// ListHCarMasterVo
         /// 未加工
         /// </summary>
-        public List<H_CarMasterVo>? ListHCarMasterVo {
+        public List<H_CarMasterVo> ListHCarMasterVo {
             get => _listHCarMasterVo;
             set => _listHCarMasterVo = value;
         }
@@ -164,35 +164,35 @@ namespace Vo {
         /// ListHStaffMasterVo
         /// 未加工
         /// </summary>
-        public List<H_StaffMasterVo>? ListHStaffMasterVo {
+        public List<H_StaffMasterVo> ListHStaffMasterVo {
             get => _listHStaffMasterVo;
             set => _listHStaffMasterVo = value;
         }
         /// <summary>
         /// 配車されているH_SetMasterVoを除いたもの
         /// </summary>
-        public List<H_SetMasterVo>? RemoveListHSetMasterVo {
+        public List<H_SetMasterVo> RemoveListHSetMasterVo {
             get => _removeListHSetMasterVo;
             set => _removeListHSetMasterVo = value;
         }
         /// <summary>
         /// 配車されているH_CarMasterVoを除いたもの
         /// </summary>
-        public List<H_CarMasterVo>? RemoveListHCarMasterVo {
+        public List<H_CarMasterVo> RemoveListHCarMasterVo {
             get => _removeListHCarMasterVo;
             set => _removeListHCarMasterVo = value;
         }
         /// <summary>
         /// 配車されているH_StaffMasterVoを除いたもの
         /// </summary>
-        public List<H_StaffMasterVo>? RemoveListHStaffMasterVo {
+        public List<H_StaffMasterVo> RemoveListHStaffMasterVo {
             get => _removeListHStaffMasterVo;
             set => _removeListHStaffMasterVo = value;
         }
         /// <summary>
         /// テーブル(H_VehicleDispatchDetail)を格納
         /// </summary>
-        public H_VehicleDispatchDetailVo? HVehicleDispatchDetailVo {
+        public H_VehicleDispatchDetailVo HVehicleDispatchDetailVo {
             get => _hVehicleDispatchDetailVo;
             set => _hVehicleDispatchDetailVo = value;
         }

@@ -94,7 +94,7 @@ namespace H_RollColl {
             int row = 0;
             _listHVehicleDispatchDetailVo = _hVehicleDispatchDetailDao.SelectAllHVehicleDispatchDetail(HDateTimePickerExOperationDate.GetValue());
             foreach (H_VehicleDispatchDetailVo hVehicleDispatchDetailVo in _listHVehicleDispatchDetailVo.FindAll(x => x.OperationFlag == true && x.ManagedSpaceCode == ManagedSpaceCode).OrderBy(x => x.StaffRollCallYmdHms1)) {
-                // H_FirstRollCallVoを読込 ※NULLチェックが必要かも
+                // H_FirstRollCallVoを読込 
                 _hLastRollCallVo = _hLastRollCallDao.SelectOneHLastRollCall(hVehicleDispatchDetailVo);
                 // 第五週の状態
                 bool fiveLap = _listHSetMasterVo.Find(x => x.SetCode == hVehicleDispatchDetailVo.SetCode).FiveLap;

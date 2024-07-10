@@ -195,7 +195,31 @@ namespace H_ControlEx {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void HSetControl_DragDrop(object sender, DragEventArgs e) {
-            // DropされたH_SetControlを退避
+            /*
+             * 帰庫点呼済のLabelの移動を禁止する
+             */
+            if (e.Data.GetDataPresent(typeof(H_StaffLabel))) {
+                H_StaffLabel dragItem = (H_StaffLabel)e.Data.GetData(typeof(H_StaffLabel));
+                H_SetLabel beforeHSetLabel = (H_SetLabel)((H_SetControl)dragItem.Parent).GetControlFromPosition(0, 0);
+                // H_SetLabelが配置されていない場合があるからNULLチェックして
+                if (beforeHSetLabel is not null) {
+                    if (beforeHSetLabel.LastRollCallFlag) {
+                        MessageBox.Show("帰庫点呼済であるため、ラベルの移動は出来ません", "メッセージ", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                        return;
+                    } else {
+                        /*
+                         * LastRollCallFlagがFalse→帰庫点呼が未実施状態
+                         */
+                    }
+                } else {
+                    /*
+                     * beforeHSetLabelがNull→H_SetLabelが無い
+                     */
+                }
+            }
+            /*
+             * DropされたH_SetControlを退避
+             */
             H_SetControl afterHSetControl = (H_SetControl)sender;
             Point clientPoint = afterHSetControl.PointToClient(new Point(e.X, e.Y));
             Point cellPoint = new(clientPoint.X / (int)_panelWidth, clientPoint.Y / (int)_panelHeight);

@@ -33,7 +33,7 @@
             HPictureBoxExCarVerification.Dock = DockStyle.Fill;
             HPictureBoxExCarVerification.Location = new Point(0, 0);
             HPictureBoxExCarVerification.Name = "HPictureBoxExCarVerification";
-            HPictureBoxExCarVerification.Size = new Size(784, 761);
+            HPictureBoxExCarVerification.Size = new Size(651, 810);
             HPictureBoxExCarVerification.SizeMode = PictureBoxSizeMode.Zoom;
             HPictureBoxExCarVerification.TabIndex = 0;
             HPictureBoxExCarVerification.TabStop = false;
@@ -42,7 +42,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(784, 761);
+            ClientSize = new Size(651, 810);
             Controls.Add(HPictureBoxExCarVerification);
             MaximizeBox = false;
             MinimizeBox = false;

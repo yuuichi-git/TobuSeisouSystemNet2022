@@ -49,7 +49,7 @@ namespace H_RollColl {
             _hLastRollCallDao = new(connectionVo);
             _hVehicleDispatchDetailDao = new(connectionVo);
             /*
-             * コントロール初期化
+             * InitializeControl
              */
             InitializeComponent();
             this.Size = new Size(325, 400);
@@ -105,13 +105,13 @@ namespace H_RollColl {
         }
 
         /// <summary>
-        /// H_LastRollCallVoに値をセットする
+        /// H_LastRollCallVoに値を代入
         /// </summary>
         /// <returns></returns>
         private H_LastRollCallVo SetVo() {
             H_LastRollCallVo hLastRollCallVo = new();
             hLastRollCallVo.SetCode = _setCode;
-            hLastRollCallVo.OperationDate = HDateTimePickerExOperationDate.GetValue();
+            hLastRollCallVo.OperationDate = HDateTimePickerExOperationDate.GetValue().Date;
             hLastRollCallVo.FirstRollCallYmdHms = _date.GetStringTimeToDateTime(HDateTimePickerExOperationDate.GetValue(), HMaskedTextBoxExFirstRollCallTime.Text);
             hLastRollCallVo.LastPlantCount = (int)HNumericUpDownExLastPlantCount.Value;
             hLastRollCallVo.LastPlantName = HComboBoxExLastPlantName.Text;
@@ -124,7 +124,7 @@ namespace H_RollColl {
         }
 
         /// <summary>
-        /// SetControl
+        /// コントロールに値を代入
         /// </summary>
         /// <param name="hLastRollCallVo"></param>
         private void SetControl(H_LastRollCallVo hLastRollCallVo) {
@@ -140,7 +140,7 @@ namespace H_RollColl {
         }
 
         /// <summary>
-        /// InitializeControl
+        /// コントロールを初期化
         /// </summary>
         private void InitializeControl() {
             HDateTimePickerExOperationDate.Value = _operationDate.Date;
@@ -154,6 +154,11 @@ namespace H_RollColl {
             HNumericUpDownExOilAmount.Value = 0;
         }
 
+        /// <summary>
+        /// TabでFocusを移動する
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void H_LastRollCall_KeyDown(object sender, KeyEventArgs e) {
             bool forward;
             if (e.KeyCode == Keys.Enter) {
@@ -170,7 +175,7 @@ namespace H_RollColl {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void H_LastRollCall_FormClosing(object sender, FormClosingEventArgs e) {
-
+            this.Dispose();
         }
     }
 }

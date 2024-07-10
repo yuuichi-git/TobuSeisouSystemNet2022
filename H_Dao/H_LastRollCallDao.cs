@@ -52,7 +52,7 @@ namespace H_Dao {
         /// <param name="hVehicleDispatchDetailVo"></param>
         /// <returns>H_LastRollCallVo</returns>
         public H_LastRollCallVo SelectOneHLastRollCall(H_VehicleDispatchDetailVo hVehicleDispatchDetailVo) {
-            H_LastRollCallVo hLastRollCallVo = null;
+            H_LastRollCallVo hLastRollCallVo = new();
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
             sqlCommand.CommandText = "SELECT H_LastRollCall.SetCode," +
                                             "H_LastRollCall.OperationDate," +
@@ -70,7 +70,7 @@ namespace H_Dao {
                                      "WHERE H_LastRollCall.LastRollCallYmdHms = '" + hVehicleDispatchDetailVo.LastRollCallYmdHms.ToString("yyyy-MM-dd HH:mm:ss") + "'";
             using (var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while (sqlDataReader.Read() == true) {
-                    hLastRollCallVo = new();
+                    //hLastRollCallVo = new();
                     hLastRollCallVo.SetCode = _defaultValue.GetDefaultValue<int>(sqlDataReader["SetCode"]);
                     hLastRollCallVo.OperationDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["OperationDate"]);
                     hLastRollCallVo.FirstRollCallYmdHms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["StaffRollCallYmdHms1"]);

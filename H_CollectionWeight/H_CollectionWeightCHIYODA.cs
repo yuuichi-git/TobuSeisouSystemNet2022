@@ -250,6 +250,9 @@ namespace H_CollectionWeight {
             if (((DateTimePicker)sender).Value < HDateTimePickerEx1.GetValue()) {
                 HDateTimePickerEx1.SetValueJp(((DateTimePicker)sender).Value);
             }
+            if (((DateTimePicker)sender).Value > DateTime.Now.Date) {
+                ((DateTimePicker)sender).Value = DateTime.Now.Date;
+            }
         }
 
         /// <summary>
@@ -261,6 +264,11 @@ namespace H_CollectionWeight {
             this.Close();
         }
 
+        /// <summary>
+        /// ToolStripMenuItemPrintA4_Click
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ToolStripMenuItemPrintA4_Click(object sender, EventArgs e) {
             //アクティブシート印刷します
             SpreadAggregate.PrintSheet(SheetViewAggregate);
@@ -272,7 +280,7 @@ namespace H_CollectionWeight {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void H_CollectionWeightCHIYODA_FormClosing(object sender, FormClosingEventArgs e) {
-
+            this.Dispose();
         }
     }
 }

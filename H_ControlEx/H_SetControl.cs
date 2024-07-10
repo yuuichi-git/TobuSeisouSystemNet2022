@@ -465,13 +465,29 @@ namespace H_ControlEx {
                 Point cellPoint = new(clientPoint.X / (int)_panelWidth, clientPoint.Y / (int)_panelHeight);
                 int staffNumber = cellPoint.X * 2 + (cellPoint.Y - 2);
                 try {
+                    /*
+                     * 2024-07-09 H_StaffLabelExのCellNumberプロパティにDrop先のCellNumberを代入する
+                     */
+                    H_StaffLabel dragItem = (H_StaffLabel)e.Data.GetData(typeof(H_StaffLabel));
+                    dragItem.CellNumber = staffNumber;
+                    // Drop先にH_StaffLabelExが存在するかチェックする
                     updateFlag = _hVehicleDispatchDetailDao.CheckStaffCode(_hControlVo.CellNumber, _hControlVo.OperationDate, staffNumber);
                 } catch (Exception exception) {
                     MessageBox.Show(exception.Message);
                 }
+                /*
+                 * Drop時のエラーチェック
+                 */
+                //// 2024-07-09 帰庫点呼済チェック
+                //if (this.GetSetLabel().LastRollCallFlag) {
+                //    MessageBox.Show("帰庫点呼済の組又は従事者の変更は出来ません。", "データベース同期エラー", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //    return;
+                //}
+                // Labelの存在チェック
                 if (updateFlag) {
                     MessageBox.Show("ドロップ先のセルには既に従事者ラベルがセットされています。最新化をして下さい", "データベース同期エラー", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
+
                 } else {
                     // Eventを親へ転送する
                     Event_HSetControl_DragDrop.Invoke(sender, e);
@@ -793,6 +809,19 @@ namespace H_ControlEx {
             Control control = this.GetControlFromPosition(0, 0);
             if (control is not null && control.GetType() == typeof(H_SetLabel)) {
                 return (H_SetMasterVo)((H_SetLabel)control).Tag;
+            } else {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// GetSetLabel
+        /// </summary>
+        /// <returns></returns>
+        public H_SetLabel GetSetLabel() {
+            Control control = this.GetControlFromPosition(0, 0);
+            if (control is not null && control.GetType() == typeof(H_SetLabel)) {
+                return (H_SetLabel)control;
             } else {
                 return null;
             }

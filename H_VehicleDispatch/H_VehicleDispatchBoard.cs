@@ -733,7 +733,6 @@ namespace H_VehicleDispatch {
                     break;
                 case "ToolStripMenuItemSetMemo": // メモを作成・編集する
                     H_Memo hSetMemo = new(_connectionVo, (H_SetControl)((H_SetLabel)contextMenuStrip.SourceControl).Parent, (H_SetLabel)contextMenuStrip.SourceControl);
-                    hSetMemo.Size = new Size(540, 180);
                     new Desktop().SetPosition(hSetMemo, _connectionVo.Screen);
                     hSetMemo.Show();
                     break;
@@ -741,7 +740,6 @@ namespace H_VehicleDispatch {
                     H_Substitute hSubstitute = new(_connectionVo, (H_SetControl)((H_SetLabel)contextMenuStrip.SourceControl).Parent);
                     new Desktop().SetPosition(hSubstitute, _connectionVo.Screen);
                     hSubstitute.KeyPreview = true;
-                    hSubstitute.Size = new Size(850, 1080);
                     hSubstitute.WindowState = FormWindowState.Normal;
                     hSubstitute.Show(this);
                     break;
@@ -753,14 +751,11 @@ namespace H_VehicleDispatch {
                 case "ToolStripMenuItemCarVerification": // 車検証を表示する 
                     H_CarVerification hCarVerification = new(_connectionVo, ((H_CarMasterVo)((H_CarLabel)contextMenuStrip.SourceControl).Tag).CarCode);
                     new Desktop().SetPosition(hCarVerification, _connectionVo.Screen);
-                    hCarVerification.KeyPreview = true;
-                    hCarVerification.Size = new Size(800, 800);
                     hCarVerification.WindowState = FormWindowState.Normal;
                     hCarVerification.Show(this);
                     break;
                 case "ToolStripMenuItemCarMemo": // メモを作成・編集する
                     H_Memo hCarMemo = new(_connectionVo, (H_SetControl)((H_CarLabel)contextMenuStrip.SourceControl).Parent, (H_CarLabel)contextMenuStrip.SourceControl);
-                    hCarMemo.Size = new Size(540, 180);
                     new Desktop().SetPosition(hCarMemo, _connectionVo.Screen);
                     hCarMemo.Show();
                     break;
@@ -776,7 +771,6 @@ namespace H_VehicleDispatch {
                     HStaffPaper hStaffPaper = new(_connectionVo, ((H_StaffMasterVo)((H_StaffLabel)contextMenuStrip.SourceControl).Tag).StaffCode);
                     new Desktop().SetPosition(hStaffPaper, _connectionVo.Screen);
                     hStaffPaper.KeyPreview = true;
-                    hStaffPaper.Size = new Size(1920, 1080);
                     hStaffPaper.WindowState = FormWindowState.Normal;
                     hStaffPaper.Show(this);
                     break;
@@ -784,16 +778,13 @@ namespace H_VehicleDispatch {
                     H_LicenseCard hLicenseCard = new(_connectionVo, ((H_StaffMasterVo)((H_StaffLabel)contextMenuStrip.SourceControl).Tag).StaffCode);
                     new Desktop().SetPosition(hLicenseCard, _connectionVo.Screen);
                     hLicenseCard.KeyPreview = true;
-                    hLicenseCard.Size = new Size(508, 667);
                     hLicenseCard.WindowState = FormWindowState.Normal;
                     hLicenseCard.Show(this);
                     break;
                 case "ToolStripMenuItemStaffMemo": // メモを作成・編集する
                     H_SetControl hSetControl = (H_SetControl)((H_StaffLabel)contextMenuStrip.SourceControl).Parent;
                     TableLayoutPanelCellPosition tableLayoutPanelCellPosition = hSetControl.GetCellPosition((H_StaffLabel)contextMenuStrip.SourceControl);
-
                     H_Memo hStaffMemo = new(_connectionVo, (H_SetControl)((H_StaffLabel)contextMenuStrip.SourceControl).Parent, (H_StaffLabel)contextMenuStrip.SourceControl, tableLayoutPanelCellPosition);
-                    hStaffMemo.Size = new Size(540, 180);
                     new Desktop().SetPosition(hStaffMemo, _connectionVo.Screen);
                     hStaffMemo.Show();
                     break;
