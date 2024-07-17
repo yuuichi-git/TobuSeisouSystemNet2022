@@ -196,25 +196,37 @@ namespace H_ControlEx {
         /// <param name="e"></param>
         private void HSetControl_DragDrop(object sender, DragEventArgs e) {
             /*
-             * 帰庫点呼済のLabelの移動を禁止する
+             * 帰庫点呼済のH_StaffLabelの移動を禁止する
              */
             if (e.Data.GetDataPresent(typeof(H_StaffLabel))) {
                 H_StaffLabel dragItem = (H_StaffLabel)e.Data.GetData(typeof(H_StaffLabel));
-                H_SetLabel beforeHSetLabel = (H_SetLabel)((H_SetControl)dragItem.Parent).GetControlFromPosition(0, 0);
-                // H_SetLabelが配置されていない場合があるからNULLチェックして
-                if (beforeHSetLabel is not null) {
-                    if (beforeHSetLabel.LastRollCallFlag) {
-                        MessageBox.Show("帰庫点呼済であるため、ラベルの移動は出来ません", "メッセージ", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                        return;
-                    } else {
-                        /*
-                         * LastRollCallFlagがFalse→帰庫点呼が未実施状態
-                         */
-                    }
-                } else {
+                switch (dragItem.Parent.Name) {
                     /*
-                     * beforeHSetLabelがNull→H_SetLabelが無い
+                     * H_SetControlからH_SetControlへDropされた場合の処理
                      */
+                    case "H_SetControl":
+                        H_SetLabel beforeHSetLabel = (H_SetLabel)((H_SetControl)dragItem.Parent).GetControlFromPosition(0, 0);
+                        // H_SetLabelが配置されていない場合があるからNULLチェックして
+                        if (beforeHSetLabel is not null) {
+                            if (beforeHSetLabel.LastRollCallFlag) {
+                                MessageBox.Show("帰庫点呼済であるため、ラベルの移動は出来ません", "メッセージ", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                                return;
+                            } else {
+                                /*
+                                 * LastRollCallFlagがFalse→帰庫点呼が未実施状態
+                                 */
+                            }
+                        } else {
+                            /*
+                             * beforeHSetLabelがNull→H_SetLabelが無い
+                             */
+                        }
+                        break;
+                    /*
+                     * H_SetControl以外からH_SetControlへDropされた場合の処理
+                     */
+                    default:
+                        break;
                 }
             }
             /*
@@ -341,15 +353,23 @@ namespace H_ControlEx {
                 switch (beforeParentControl.Name) {
                     case "H_SetControl": // H_SetControl→H_SetControlへの移動
                         beforeHControlVo = (H_ControlVo)beforeParentControl.Tag;
-                        // Drag元のRecordをUpdateする
-                        _hVehicleDispatchDetailDao.UpdateOneHVehicleDispatchDetail(((H_SetControl)this.GetControlFromPosition(beforeHControlVo.CellNumber % 50, beforeHControlVo.CellNumber / 50)).ConvertHVehicleDispatchDetailVo());
-                        // Drop先のRecordをUpdateする
-                        _hVehicleDispatchDetailDao.UpdateOneHVehicleDispatchDetail(afterHSetControl.ConvertHVehicleDispatchDetailVo());
+                        try {
+                            // Drag元のRecordをUpdateする
+                            _hVehicleDispatchDetailDao.UpdateOneHVehicleDispatchDetail(((H_SetControl)this.GetControlFromPosition(beforeHControlVo.CellNumber % 50, beforeHControlVo.CellNumber / 50)).ConvertHVehicleDispatchDetailVo());
+                            // Drop先のRecordをUpdateする
+                            _hVehicleDispatchDetailDao.UpdateOneHVehicleDispatchDetail(afterHSetControl.ConvertHVehicleDispatchDetailVo());
+                        } catch (Exception exception) {
+                            MessageBox.Show(exception.Message);
+                        }
                         break;
                     case "H_FlowLayoutPanelExFree": // H_FlowLayoutPanelExFree→H_SetControlへの移動
                     case "H_FlowLayoutPanelExBase": // H_FlowLayoutPanelExBase→H_SetControlへの移動
-                        // Drop先のRecordをUpdateする
-                        _hVehicleDispatchDetailDao.UpdateOneHVehicleDispatchDetail(afterHSetControl.ConvertHVehicleDispatchDetailVo());
+                        try {
+                            // Drop先のRecordをUpdateする
+                            _hVehicleDispatchDetailDao.UpdateOneHVehicleDispatchDetail(afterHSetControl.ConvertHVehicleDispatchDetailVo());
+                        } catch (Exception exception) {
+                            MessageBox.Show(exception.Message);
+                        }
                         break;
                 }
             }

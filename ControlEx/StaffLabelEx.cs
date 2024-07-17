@@ -55,7 +55,7 @@ namespace ControlEx {
             _noteFlag = noteFlag;
             _occupation = occupation;
 
-            switch(staffMasterVo.Belongs) {
+            switch (staffMasterVo.Belongs) {
                 case 10: // 役員
                 case 11: // 社員
                     this._borderColor = Pens.Gray;
@@ -68,7 +68,7 @@ namespace ControlEx {
                     break;
                 case 20: // 新運転
                 case 21: // 自運労
-                    switch(staffMasterVo.Job_form) {
+                    switch (staffMasterVo.Job_form) {
                         case 10: // 長期雇用
                             this._borderColor = Pens.WhiteSmoke;
                             _drowBrushFill = new SolidBrush(Color.White);
@@ -101,7 +101,7 @@ namespace ControlEx {
             _rollCallFlag = false;
             _noteFlag = false;
 
-            switch(staffMasterVo.Belongs) {
+            switch (staffMasterVo.Belongs) {
                 case 10: // 役員
                 case 11: // 社員
                     this._borderColor = Pens.Gray;
@@ -114,7 +114,7 @@ namespace ControlEx {
                     break;
                 case 20: // 新運転
                 case 21: // 自運労
-                    switch(staffMasterVo.Job_form) {
+                    switch (staffMasterVo.Job_form) {
                         case 10: // 長期雇用
                             this._borderColor = Pens.WhiteSmoke;
                             _drowBrushFill = new SolidBrush(Color.White);
@@ -147,7 +147,7 @@ namespace ControlEx {
             _rollCallFlag = false;
             _noteFlag = noteFlag;
 
-            switch(staffMasterVo.Belongs) {
+            switch (staffMasterVo.Belongs) {
                 case 10: // 役員
                 case 11: // 社員
                     this._borderColor = Pens.Gray;
@@ -160,7 +160,7 @@ namespace ControlEx {
                     break;
                 case 20: // 新運転
                 case 21: // 自運労
-                    switch(staffMasterVo.Job_form) {
+                    switch (staffMasterVo.Job_form) {
                         case 10: // 長期雇用
                             this._borderColor = Pens.WhiteSmoke;
                             _drowBrushFill = new SolidBrush(Color.White);
@@ -200,7 +200,7 @@ namespace ControlEx {
             /*
              * 代番処理を描画
              */
-            if(_proxyFlag) {
+            if (_proxyFlag) {
                 e.Graphics.FillRectangle(Brushes.ForestGreen, 4, 3, 60, 5);
                 e.Graphics.DrawLine(new Pen(Color.LawnGreen), new Point(2, 5), new Point(65, 5));
             }
@@ -211,7 +211,7 @@ namespace ControlEx {
             StringFormat stringFormat = new StringFormat();
             stringFormat.LineAlignment = StringAlignment.Center;
             stringFormat.Alignment = StringAlignment.Center;
-            if(_staffMasterVo.Birth_date.Month == DateTime.Now.Month && _staffMasterVo.Birth_date.Day == DateTime.Now.Day) {
+            if (_staffMasterVo.Birth_date.Month == DateTime.Now.Month && _staffMasterVo.Birth_date.Day == DateTime.Now.Day) {
                 e.Graphics.DrawString(_staffMasterVo.Display_name, _drawFont, new SolidBrush(Color.Red), rectangleFill, stringFormat);
             } else {
                 e.Graphics.DrawString(_staffMasterVo.Display_name, _drawFont, new SolidBrush(Color.Black), rectangleFill, stringFormat);
@@ -219,8 +219,8 @@ namespace ControlEx {
             /*
              * 点呼の印を描画
              */
-            if(_tenkoModeFlag) {
-                if(!_rollCallFlag) {
+            if (_tenkoModeFlag) {
+                if (!_rollCallFlag) {
                     e.Graphics.FillEllipse(Brushes.Crimson, 55, 21, 10, 10);
                     e.Graphics.FillEllipse(Brushes.LightPink, 59, 25, 4, 4);
                 }
@@ -228,21 +228,21 @@ namespace ControlEx {
             /*
              * メモの印を描画
              */
-            if(_noteFlag) {
+            if (_noteFlag) {
                 Point[] points = { new Point(1, 1), new Point(11, 1), new Point(1, 11) };
                 e.Graphics.FillPolygon(new SolidBrush(Color.Crimson), points);
             }
             /*
              * 電話連絡マーク
              */
-            if(_telephoneMark) {
+            if (_telephoneMark) {
                 Point point = new Point(54, 0);
                 e.Graphics.DrawString("☎", _drawTelephoneMarkFont, _drawTelephoneMarkSolidBrush, point);
             }
             /*
              * 作業員マーク
              */
-            switch(_occupation) {
+            switch (_occupation) {
                 case 10:
                     break;
                 case 11:
