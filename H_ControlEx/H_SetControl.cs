@@ -173,12 +173,14 @@ namespace H_ControlEx {
                 _faxTransmissionFlag = _hVehicleDispatchDetailVo.FaxTransmissionFlag;
             }
             /*
-             * Event
+             * Event登録
              */
             this.MouseDown += HSetControl_MouseDown;
+            this.MouseEnter += HSetControl_MouseEnter; // 2024-07-18追加
+            this.MouseLeave += HSetControl_MouseLeave; // 2024-07-18追加
+            this.MouseMove += HSetControl_MouseMove; // 2024-07-18追加
             this.MouseUp += HSetControl_MouseUp;
-            this.MouseMove += HSetControl_MouseMove;
-            this.MouseLeave += HSetControl_MouseLeave;
+
             this.DragEnter += HSetControl_DragEnter;
             this.DragDrop += HSetControl_DragDrop;
             this.DragOver += HSetControl_DragOver;
@@ -202,7 +204,9 @@ namespace H_ControlEx {
                  */
                 hSetLabel.Event_HSetLabel_MouseClick += HSetControl_HSetLabel_MouseClick;
                 hSetLabel.Event_HSetLabel_MouseDoubleClick += HSetControl_HSetLabel_MouseDoubleClick;
-                hSetLabel.Event_HSetLabel_MouseMove += HSetControl_HSetLabel_MouseMove;
+                hSetLabel.Event_HSetLabel_MouseEnter += HSetControl_MouseEnter; // 2024-07-18追加
+                hSetLabel.Event_HSetLabel_MouseMove += HSetControl_HSetLabel_MouseMove; // H_BoardでD&D用
+                hSetLabel.Event_HSetLabel_MouseLeave += HSetControl_MouseLeave; // 2024-07-18追加
                 hSetLabel.Event_HSetLabel_ToolStripMenuItem_Click += HSetControl_HSetLabel_ToolStripMenuItem_Click;
                 // SetLabelを追加
                 this.Controls.Add(hSetLabel, 0, 0);
@@ -221,7 +225,9 @@ namespace H_ControlEx {
                  */
                 hCarLabel.Event_HCarLabel_MouseClick += HSetControl_HCarLabel_MouseClick;
                 hCarLabel.Event_HCarLabel_MouseDoubleClick += HSetControl_HCarLabel_MouseDoubleClick;
-                hCarLabel.Event_HCarLabel_MouseMove += HSetControl_HCarLabel_MouseMove;
+                hCarLabel.Event_HCarLabel_MouseEnter += HSetControl_MouseEnter; // 2024-07-18追加
+                hCarLabel.Event_HCarLabel_MouseMove += HSetControl_HCarLabel_MouseMove; // H_BoardでD&D用
+                hCarLabel.Event_HCarLabel_MouseLeave += HSetControl_MouseLeave; // 2024-07-18追加
                 hCarLabel.Event_HCarLabel_ToolStripMenuItem_Click += HSetControl_HCarLabel_ToolStripMenuItem_Click;
                 // CarLabelを追加
                 this.Controls.Add(hCarLabel, 0, 1);
@@ -245,7 +251,9 @@ namespace H_ControlEx {
                      */
                     hStaffLabel.Event_HStaffLabel_MouseClick += HSetControl_HStaffLabel_MouseClick;
                     hStaffLabel.Event_HStaffLabel_MouseDoubleClick += HSetControl_HStaffLabel_MouseDoubleClick;
-                    hStaffLabel.Event_HStaffLabel_MouseMove += HSetControl_HStaffLabel_MouseMove;
+                    hStaffLabel.Event_HStaffLabel_MouseEnter += HSetControl_MouseEnter; // 2024-07-18追加
+                    hStaffLabel.Event_HStaffLabel_MouseMove += HSetControl_HStaffLabel_MouseMove; // H_BoardでD&D用
+                    hStaffLabel.Event_HStaffLabel_MouseLeave += HSetControl_MouseLeave; // 2024-07-18追加
                     hStaffLabel.Event_HStaffLabel_ToolStripMenuItem_Click += HSetControl_HStaffLabel_ToolStripMenuItem_Click;
                     // StaffLabelを追加
                     this.Controls.Add(hStaffLabel, _dictionaryCellPoint[i].X, _dictionaryCellPoint[i].Y);
@@ -350,9 +358,9 @@ namespace H_ControlEx {
              */
             if (_oldOnCursorFlag) {
                 if (((H_ControlVo)this.Tag).PurposeFlag) {
-                    e.Graphics.DrawRectangle(new Pen(Color.DarkBlue, 2), new Rectangle(1, 1, 148, 479));
+                    e.Graphics.DrawRectangle(new Pen(Color.Blue, 3), new Rectangle(2, 1, 146, 477));
                 } else {
-                    e.Graphics.DrawRectangle(new Pen(Color.DarkBlue, 2), new Rectangle(1, 1, 73, 479));
+                    e.Graphics.DrawRectangle(new Pen(Color.Blue, 3), new Rectangle(2, 1, 71, 477));
                 }
             }
         }
@@ -376,24 +384,25 @@ namespace H_ControlEx {
         }
 
         /// <summary>
-        /// HSetControl_MouseMove
+        /// HSetControl_MouseEnter
+        /// H_SetControl/H_SetLabel/H_CarLabel/H_StaffLabelからのMouseEnterを受け取り_newOnCursorFlagをセットする
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void HSetControl_MouseMove(object sender, MouseEventArgs e) {
+        private void HSetControl_MouseEnter(object sender, EventArgs e) {
             /*
              * Control上にカーソルがある
              */
             _newOnCursorFlag = true;
             if (_oldOnCursorFlag != _newOnCursorFlag) {
                 _oldOnCursorFlag = _newOnCursorFlag;
-                Refresh();
+                this.Refresh();
             }
-            Event_HSetControl_MouseMove.Invoke(sender, e);
         }
 
         /// <summary>
         /// HSetControl_MouseLeave
+        /// /// H_SetControl/H_SetLabel/H_CarLabel/H_StaffLabelからのMouseEnterを受け取り_newOnCursorFlagをセットする
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -404,8 +413,19 @@ namespace H_ControlEx {
             _newOnCursorFlag = false;
             if (_oldOnCursorFlag != _newOnCursorFlag) {
                 _oldOnCursorFlag = _newOnCursorFlag;
-                Refresh();
+                this.Refresh();
             }
+        }
+
+        /// <summary>
+        /// HSetControl_MouseMove
+        /// H_SetControlでMouseMoveが発生した時、画面をスクロールさせる為のイベントを親へ転送する
+        /// 実際のスクロール処理は、親側で実装している
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void HSetControl_MouseMove(object sender, MouseEventArgs e) {
+            Event_HSetControl_MouseMove.Invoke(sender, e);
         }
 
         /// <summary>

@@ -35,6 +35,8 @@
             ToolStripMenuItemUpdateVehicleDispatchBody = new ToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
             ToolStripMenuItemInputTAITOU = new ToolStripMenuItem();
+            ToolStripMenuItemSerch = new ToolStripMenuItem();
+            ToolStripMenuItemSerchStaff = new ToolStripMenuItem();
             ToolStripMenuItemPrint = new ToolStripMenuItem();
             ToolStripMenuItemPrintB4 = new ToolStripMenuItem();
             ToolStripMenuItemHelp = new ToolStripMenuItem();
@@ -54,8 +56,6 @@
             HButtonExUpdate = new H_ControlEx.H_ButtonEx();
             HDateTimePickerOperationDate = new H_ControlEx.H_DateTimePickerEx();
             h_LabelEx1 = new H_ControlEx.H_LabelEx();
-            ToolStripMenuItemSerch = new ToolStripMenuItem();
-            ToolStripMenuItemSerchStaff = new ToolStripMenuItem();
             h_TableLayoutPanelExBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -160,6 +160,20 @@
             ToolStripMenuItemInputTAITOU.Size = new Size(260, 22);
             ToolStripMenuItemInputTAITOU.Text = "台東古紙/収集実績入力";
             ToolStripMenuItemInputTAITOU.Click += ToolStripMenuItem_Click;
+            // 
+            // ToolStripMenuItemSerch
+            // 
+            ToolStripMenuItemSerch.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemSerchStaff });
+            ToolStripMenuItemSerch.Name = "ToolStripMenuItemSerch";
+            ToolStripMenuItemSerch.Size = new Size(43, 20);
+            ToolStripMenuItemSerch.Text = "検索";
+            // 
+            // ToolStripMenuItemSerchStaff
+            // 
+            ToolStripMenuItemSerchStaff.Name = "ToolStripMenuItemSerchStaff";
+            ToolStripMenuItemSerchStaff.Size = new Size(208, 22);
+            ToolStripMenuItemSerchStaff.Text = "従事者の配車先を検索する";
+            ToolStripMenuItemSerchStaff.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemPrint
             // 
@@ -356,20 +370,6 @@
             h_LabelEx1.Size = new Size(43, 15);
             h_LabelEx1.TabIndex = 1;
             h_LabelEx1.Text = "配車日";
-            // 
-            // ToolStripMenuItemSerch
-            // 
-            ToolStripMenuItemSerch.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemSerchStaff });
-            ToolStripMenuItemSerch.Name = "ToolStripMenuItemSerch";
-            ToolStripMenuItemSerch.Size = new Size(43, 20);
-            ToolStripMenuItemSerch.Text = "検索";
-            // 
-            // ToolStripMenuItemSerchStaff
-            // 
-            ToolStripMenuItemSerchStaff.Name = "ToolStripMenuItemSerchStaff";
-            ToolStripMenuItemSerchStaff.Size = new Size(208, 22);
-            ToolStripMenuItemSerchStaff.Text = "従事者の配車先を検索する";
-            ToolStripMenuItemSerchStaff.Click += ToolStripMenuItem_Click;
             // 
             // H_VehicleDispatchBoard
             // 

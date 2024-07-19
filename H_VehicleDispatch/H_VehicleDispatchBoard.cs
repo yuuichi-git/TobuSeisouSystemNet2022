@@ -64,10 +64,10 @@ namespace H_VehicleDispatch {
             _hVehicleDispatchHeadDao = new H_VehicleDispatchHeadDao(connectionVo);
             _hVehicleDispatchBodyDao = new(connectionVo);
             _hVehicleDispatchDao = new H_VehicleDispatchDao(connectionVo);
+            _hVehicleDispatchDetailDao = new H_VehicleDispatchDetailDao(connectionVo);
             _hSetMasterDao = new H_SetMasterDao(connectionVo);
             _hCarMasterDao = new H_CarMasterDao(connectionVo);
             _hStaffMasterDao = new H_StaffMasterDao(connectionVo);
-            _hVehicleDispatchDetailDao = new H_VehicleDispatchDetailDao(connectionVo);
             /*
              * Vo
              */
@@ -78,7 +78,7 @@ namespace H_VehicleDispatch {
              */
             InitializeComponent();
             /*
-             * Freeゾーンを作成
+             * H_FlowLayoutPanelExFreeを作成
              */
             _hFlowLayoutPanelExFree = new();
             _hFlowLayoutPanelExFree.AllowDrop = true;
@@ -179,11 +179,8 @@ namespace H_VehicleDispatch {
                 _hControlVo.ListHStaffMasterVo.Add(GetHStaffMasterVo(_listHStaffMasterVo, hVehicleDispatchVo?.StaffCode2));
                 _hControlVo.ListHStaffMasterVo.Add(GetHStaffMasterVo(_listHStaffMasterVo, hVehicleDispatchVo?.StaffCode3));
                 _hControlVo.ListHStaffMasterVo.Add(GetHStaffMasterVo(_listHStaffMasterVo, hVehicleDispatchVo?.StaffCode4));
-                /*
-                 * 配車板の初期化の場合、各LabelのプロパティはDefultで使用するので、Nullを入れておく。
-                 */
+                // 配車板の初期化の場合、各LabelのプロパティはDefultで使用するので、Nullを入れておく。
                 _hControlVo.HVehicleDispatchDetailVo = null;
-
                 _hBoard.AddHSetControl(_hControlVo);
             }
 
@@ -736,6 +733,9 @@ namespace H_VehicleDispatch {
                     new Desktop().SetPosition(hSetMemo, _connectionVo.Screen);
                     hSetMemo.Show();
                     break;
+                case "ToolStripMenuItemSetProperty": // プロパティ
+                    MessageBox.Show("ToolStripMenuItemSetProperty");
+                    break;
                 case "ToolStripMenuItemCreateFax": // 代車・代番Faxを作成する
                     H_Substitute hSubstitute = new(_connectionVo, (H_SetControl)((H_SetLabel)contextMenuStrip.SourceControl).Parent);
                     new Desktop().SetPosition(hSubstitute, _connectionVo.Screen);
@@ -761,6 +761,9 @@ namespace H_VehicleDispatch {
                     break;
                 case "ToolStripMenuItemCarNippou": // 日報を作成する
                     MessageBox.Show("ToolStripMenuItemCarNippou");
+                    break;
+                case "ToolStripMenuItemCarProperty": // プロパティ
+                    MessageBox.Show("ToolStripMenuItemCarProperty");
                     break;
                 /*
                  * 
@@ -790,6 +793,9 @@ namespace H_VehicleDispatch {
                     break;
                 case "ToolStripMenuItemStaffEquioment": // 備品を支給する
                     MessageBox.Show("ToolStripMenuItemStaffEquioment");
+                    break;
+                case "ToolStripMenuItemStaffProperty": // プロパティ
+                    MessageBox.Show("ToolStripMenuItemStaffProperty");
                     break;
             }
         }

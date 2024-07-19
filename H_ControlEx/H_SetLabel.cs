@@ -17,6 +17,8 @@ namespace H_ControlEx {
         public event MouseEventHandler Event_HSetLabel_MouseClick = delegate { };
         public event MouseEventHandler Event_HSetLabel_MouseDoubleClick = delegate { };
         public event MouseEventHandler Event_HSetLabel_MouseMove = delegate { };
+        public event EventHandler Event_HSetLabel_MouseEnter = delegate { }; // 2024-07-18追加
+        public event EventHandler Event_HSetLabel_MouseLeave = delegate { }; // 2024-07-18追加
         public event EventHandler Event_HSetLabel_ToolStripMenuItem_Click = delegate { };
 
         private readonly Date _date = new();
@@ -188,7 +190,9 @@ namespace H_ControlEx {
              */
             this.MouseClick += HSetLabel_MouseClick;
             this.MouseDoubleClick += HSetLabel_MouseDoubleClick;
+            this.MouseEnter += HSetLabel_MouseEnter; // 2024-07-18
             this.MouseMove += HSetLabel_MouseMove;
+            this.MouseLeave += HSetLabel_MouseLeave; // 2024-07-18
         }
 
         /// <summary>
@@ -247,8 +251,8 @@ namespace H_ControlEx {
             StringFormat stringFormat = new();
             stringFormat.LineAlignment = StringAlignment.Center;
             stringFormat.Alignment = StringAlignment.Center;
-            e.Graphics.DrawString(string.Concat(_hSetMasterVo.SetName1, "\r\n", _hSetMasterVo.SetName2, "\r\n", _hSetMasterVo.SetCode),
-            //e.Graphics.DrawString(string.Concat(_hSetMasterVo.SetName1, "\r\n", _hSetMasterVo.SetName2, "\r\n"),
+            //e.Graphics.DrawString(string.Concat(_hSetMasterVo.SetName1, "\r\n", _hSetMasterVo.SetName2, "\r\n", _hSetMasterVo.SetCode),
+            e.Graphics.DrawString(string.Concat(_hSetMasterVo.SetName1, "\r\n", _hSetMasterVo.SetName2, "\r\n"),
                                                 _drawFontSetLabel,
                                                 new SolidBrush(Color.Black),
                                                 new Rectangle(0, 10, (int)_panelWidth - 2, (int)_panelHeight - 6), stringFormat);
@@ -291,8 +295,6 @@ namespace H_ControlEx {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ContextMenuStrip_Opened(object sender, EventArgs e) {
-            // H_SetControlのアクセサーを操作するのに使うので退避させておく
-            _evacuationHSetControl = (H_SetControl)((H_SetLabel)((ContextMenuStrip)sender).SourceControl).Parent;
             if (((H_SetLabel)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(H_SetControl)) { // H_SetControl
                 foreach (object item in ((ContextMenuStrip)sender).Items) {
                     if (item.GetType() == typeof(ToolStripMenuItem)) {
@@ -315,19 +317,14 @@ namespace H_ControlEx {
                         }
                     }
                 }
+                /*
+                 * H_SetControlのアクセサーを操作するのに使うので退避させておく
+                 */
+                _evacuationHSetControl = (H_SetControl)((H_SetLabel)((ContextMenuStrip)sender).SourceControl).Parent;
             } else if (((H_SetLabel)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(H_FlowLayoutPanelEx)) { // H_FlowLayoutPanelEx
                 foreach (object item in ((ContextMenuStrip)sender).Items) {
-                    if (item.GetType() == typeof(ToolStripMenuItem)) {
-                        switch (((ToolStripMenuItem)item).Name) {
-                            case "ToolStripMenuItemSetDetail":
-                            case "ToolStripMenuItemSetMemo":
-                                ((ToolStripMenuItem)item).Enabled = true;
-                                break;
-                            default:
-                                ((ToolStripMenuItem)item).Enabled = false;
-                                break;
-                        }
-                    }
+                    if (item.GetType() == typeof(ToolStripMenuItem))
+                        ((ToolStripMenuItem)item).Enabled = false;
                 }
             }
         }
@@ -505,6 +502,13 @@ namespace H_ControlEx {
             toolStripMenuItem11.Name = "ToolStripMenuItemSetDelete";
             toolStripMenuItem11.Click += ToolStripMenuItem_Click;
             contextMenuStrip.Items.Add(toolStripMenuItem11);
+            /*
+             * プロパティ
+             */
+            ToolStripMenuItem toolStripMenuItem12 = new("プロパティ");
+            toolStripMenuItem12.Name = "ToolStripMenuItemSetProperty";
+            toolStripMenuItem12.Click += ToolStripMenuItem_Click;
+            contextMenuStrip.Items.Add(toolStripMenuItem12);
         }
 
         /// <summary>
@@ -764,6 +768,13 @@ namespace H_ControlEx {
                         MessageBox.Show(exception.Message);
                     }
                     break;
+                case "ToolStripMenuItemSetProperty": // プロパティ
+                    /*
+                     * H_Boardに処理を回している
+                     * H_SetLabel→H_SetControl→H_Board
+                     */
+                    Event_HSetLabel_ToolStripMenuItem_Click.Invoke(sender, e);
+                    break;
             }
         }
 
@@ -897,6 +908,12 @@ namespace H_ControlEx {
         }
         private void HSetLabel_MouseDoubleClick(object sender, MouseEventArgs e) {
             Event_HSetLabel_MouseDoubleClick.Invoke(sender, e);
+        }
+        private void HSetLabel_MouseEnter(object sender, EventArgs e) { // 2024-07-18追加
+            Event_HSetLabel_MouseEnter.Invoke(sender, e);
+        }
+        private void HSetLabel_MouseLeave(object sender, EventArgs e) { // 2024-07-18追加
+            Event_HSetLabel_MouseLeave.Invoke(sender, e);
         }
         private void HSetLabel_MouseMove(object sender, MouseEventArgs e) {
             Event_HSetLabel_MouseMove.Invoke(sender, e);

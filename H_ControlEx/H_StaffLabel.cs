@@ -15,6 +15,8 @@ namespace H_ControlEx {
         public event MouseEventHandler Event_HStaffLabel_MouseClick = delegate { };
         public event MouseEventHandler Event_HStaffLabel_MouseDoubleClick = delegate { };
         public event MouseEventHandler Event_HStaffLabel_MouseMove = delegate { };
+        public event EventHandler Event_HStaffLabel_MouseEnter = delegate { }; // 2024-07-18追加
+        public event EventHandler Event_HStaffLabel_MouseLeave = delegate { }; // 2024-07-18追加
         public event EventHandler Event_HStaffLabel_ToolStripMenuItem_Click = delegate { };
 
         private readonly Image _imageStaffLabel;
@@ -212,7 +214,9 @@ namespace H_ControlEx {
              */
             this.MouseClick += HStaffLabel_MouseClick;
             this.MouseDoubleClick += HStaffLabel_MouseDoubleClick;
+            this.MouseEnter += HStaffLabel_MouseEnter; // 2024-07-18
             this.MouseMove += HStaffLabel_MouseMove;
+            this.MouseLeave += HStaffLabel_MouseLeave; // 2024-07-18
         }
 
         /// <summary>
@@ -300,13 +304,8 @@ namespace H_ControlEx {
                 _evacuationHSetControl = (H_SetControl)((H_StaffLabel)((ContextMenuStrip)sender).SourceControl).Parent;
             } else if (((H_StaffLabel)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(H_FlowLayoutPanelEx)) {
                 foreach (object item in ((ContextMenuStrip)sender).Items) {
-                    if (item.GetType() == typeof(ToolStripMenuItem)) {
-                        switch (((ToolStripMenuItem)item).Name) {
-                            default:
-                                ((ToolStripMenuItem)item).Enabled = false;
-                                break;
-                        }
-                    }
+                    if (item.GetType() == typeof(ToolStripMenuItem))
+                        ((ToolStripMenuItem)item).Enabled = false;
                 }
             }
         }
@@ -402,6 +401,13 @@ namespace H_ControlEx {
             toolStripMenuItem06.Name = "ToolStripMenuItemStaffEquioment";
             toolStripMenuItem06.Click += ToolStripMenuItem_Click;
             contextMenuStrip.Items.Add(toolStripMenuItem06);
+            /*
+             * プロパティ
+             */
+            ToolStripMenuItem toolStripMenuItem07 = new("プロパティ");
+            toolStripMenuItem07.Name = "ToolStripMenuItemStaffProperty";
+            toolStripMenuItem07.Click += ToolStripMenuItem_Click;
+            contextMenuStrip.Items.Add(toolStripMenuItem07);
         }
 
         /// <summary>
@@ -538,6 +544,13 @@ namespace H_ControlEx {
                      */
                     Event_HStaffLabel_ToolStripMenuItem_Click.Invoke(sender, e);
                     break;
+                case "ToolStripMenuItemStaffProperty": // プロパティ
+                    /*
+                     * H_Boardに処理を回している
+                     * H_StaffLabel→H_SetControl→H_Board
+                     */
+                    Event_HStaffLabel_ToolStripMenuItem_Click.Invoke(sender, e);
+                    break;
             }
         }
 
@@ -633,20 +646,17 @@ namespace H_ControlEx {
                 }
             }
         }
-        /// <summary>
-        /// HStaffLabel_MouseDoubleClick
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+
         private void HStaffLabel_MouseDoubleClick(object sender, MouseEventArgs e) {
             // Eventを親へ転送する
             Event_HStaffLabel_MouseDoubleClick.Invoke(sender, e);
         }
-        /// <summary>
-        /// HStaffLabel_MouseMove
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        private void HStaffLabel_MouseEnter(object sender, EventArgs e) { // 2024-07-18追加
+            Event_HStaffLabel_MouseEnter.Invoke(sender, e);
+        }
+        private void HStaffLabel_MouseLeave(object sender, EventArgs e) { // 2024-07-18追加
+            Event_HStaffLabel_MouseLeave.Invoke(sender, e);
+        }
         private void HStaffLabel_MouseMove(object sender, MouseEventArgs e) {
             // Eventを親へ転送する
             Event_HStaffLabel_MouseMove.Invoke(sender, e);

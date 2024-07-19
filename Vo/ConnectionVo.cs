@@ -73,7 +73,6 @@ namespace Vo {
                 throw;
             }
         }
-
         /// <summary>
         /// Connection
         /// </summary>

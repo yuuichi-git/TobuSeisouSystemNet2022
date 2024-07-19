@@ -154,10 +154,8 @@ namespace H_CarAccident {
             if (e.Row < 0)
                 return;
             H_CarAccidentDetail hCarAccidentDetail = new(_connectionVo, (H_CarAccidentMasterVo)SheetViewList.Rows[e.Row].Tag);
-            Rectangle rectangleHCarAccidentDetail = new Desktop().GetMonitorWorkingArea(hCarAccidentDetail, _connectionVo.Screen);
+            new Desktop().SetPosition(hCarAccidentDetail, _connectionVo.Screen);
             hCarAccidentDetail.KeyPreview = true;
-            hCarAccidentDetail.Location = rectangleHCarAccidentDetail.Location;
-            hCarAccidentDetail.Size = new Size(1920, 1080);
             hCarAccidentDetail.WindowState = FormWindowState.Normal;
             hCarAccidentDetail.Show(this);
         }
@@ -179,10 +177,8 @@ namespace H_CarAccident {
                 // 新規レコードを作成する
                 case "ToolStripMenuItemNewFile":
                     H_CarAccidentDetail hCarAccidentDetail = new(_connectionVo);
-                    Rectangle rectangleHCarAccidentDetail = new Desktop().GetMonitorWorkingArea(hCarAccidentDetail, _connectionVo.Screen);
+                    new Desktop().SetPosition(hCarAccidentDetail, _connectionVo.Screen);
                     hCarAccidentDetail.KeyPreview = true;
-                    hCarAccidentDetail.Location = rectangleHCarAccidentDetail.Location;
-                    hCarAccidentDetail.Size = new Size(1920, 1080);
                     hCarAccidentDetail.WindowState = FormWindowState.Normal;
                     hCarAccidentDetail.Show(this);
                     break;

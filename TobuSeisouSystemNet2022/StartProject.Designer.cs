@@ -947,10 +947,10 @@
             label70.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label70.Location = new Point(16, 132);
             label70.Name = "label70";
-            label70.Size = new Size(73, 17);
+            label70.Size = new Size(146, 17);
             label70.TabIndex = 18;
             label70.Tag = "H_LicenseList";
-            label70.Text = "免許証台帳";
+            label70.Text = "免許証台帳(陸運局対応)";
             label70.Click += Label_Click;
             label70.MouseEnter += Label_MouseEnter;
             label70.MouseLeave += Label_MouseLeave;
@@ -1097,10 +1097,10 @@
             label48.Font = new Font("Yu Gothic UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             label48.Location = new Point(16, 88);
             label48.Name = "label48";
-            label48.Size = new Size(73, 17);
+            label48.Size = new Size(146, 17);
             label48.TabIndex = 6;
             label48.Tag = "H_StaffList";
-            label48.Text = "従事者台帳";
+            label48.Text = "従事者台帳(陸運局対応)";
             label48.Click += Label_Click;
             label48.MouseEnter += Label_MouseEnter;
             label48.MouseLeave += Label_MouseLeave;
@@ -1139,7 +1139,7 @@
             TabPage1.Location = new Point(4, 24);
             TabPage1.Name = "TabPage1";
             TabPage1.Padding = new Padding(3);
-            TabPage1.Size = new Size(675, 445);
+            TabPage1.Size = new Size(675, 400);
             TabPage1.TabIndex = 0;
             TabPage1.Text = "旧型システム";
             TabPage1.UseVisualStyleBackColor = true;
@@ -1201,7 +1201,7 @@
             TabPage3.Controls.Add(label54);
             TabPage3.Location = new Point(4, 24);
             TabPage3.Name = "TabPage3";
-            TabPage3.Size = new Size(675, 445);
+            TabPage3.Size = new Size(675, 400);
             TabPage3.TabIndex = 2;
             TabPage3.Text = "データ移行ツール";
             TabPage3.UseVisualStyleBackColor = true;

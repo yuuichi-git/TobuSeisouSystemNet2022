@@ -156,10 +156,8 @@ namespace H_StatusOfResidence {
             // 修飾キーが無い場合
             int staffCode = ((H_StatusOfResidenceMasterVo)SheetViewList.Rows[SheetViewList.ActiveRowIndex].Tag).StaffCode;
             H_StatusOfResidenceDetail hStatusOfResidenceDetail = new(_connectionVo, staffCode);
-            Rectangle rectangleHStatusOfResidenceDetail = new Desktop().GetMonitorWorkingArea(hStatusOfResidenceDetail, _connectionVo.Screen);
+            new Desktop().SetPosition(hStatusOfResidenceDetail, _connectionVo.Screen);
             hStatusOfResidenceDetail.KeyPreview = true;
-            hStatusOfResidenceDetail.Location = rectangleHStatusOfResidenceDetail.Location;
-            hStatusOfResidenceDetail.Size = new Size(1070, 800);
             hStatusOfResidenceDetail.WindowState = FormWindowState.Normal;
             hStatusOfResidenceDetail.Show(this);
         }
@@ -173,11 +171,8 @@ namespace H_StatusOfResidence {
             switch (((ToolStripMenuItem)sender).Name) {
                 // 新規レコードを追加する
                 case "ToolStripMenuItemNew":
-                    H_StatusOfResidenceDetail hStatusOfResidenceDetail = new(_connectionVo);
-                    Rectangle rectangleHStatusOfResidenceDetail = new Desktop().GetMonitorWorkingArea(hStatusOfResidenceDetail, _connectionVo.Screen);
+                    H_StatusOfResidenceDetail hStatusOfResidenceDetail = new(_connectionVo);new Desktop().SetPosition(hStatusOfResidenceDetail, _connectionVo.Screen);
                     hStatusOfResidenceDetail.KeyPreview = true;
-                    hStatusOfResidenceDetail.Location = rectangleHStatusOfResidenceDetail.Location;
-                    hStatusOfResidenceDetail.Size = new Size(1070, 800);
                     hStatusOfResidenceDetail.WindowState = FormWindowState.Normal;
                     hStatusOfResidenceDetail.Show(this);
                     break;

@@ -87,10 +87,8 @@ namespace H_Certification {
                  * Form‚ð•\Ž¦‚·‚é
                  */
                 H_CertificationDetail hCertificationDetail = new(_connectionVo, hStaffMasterVo.StaffCode, hCertificationMasterVo.CertificationCode);
-                Rectangle rectangleHCertificationDetail = new Desktop().GetMonitorWorkingArea(hCertificationDetail, _connectionVo.Screen);
+                new Desktop().SetPosition(hCertificationDetail, _connectionVo.Screen);
                 hCertificationDetail.KeyPreview = true;
-                hCertificationDetail.Location = rectangleHCertificationDetail.Location;
-                hCertificationDetail.Size = new Size(1000, 800);
                 hCertificationDetail.WindowState = FormWindowState.Normal;
                 hCertificationDetail.Show(this);
 

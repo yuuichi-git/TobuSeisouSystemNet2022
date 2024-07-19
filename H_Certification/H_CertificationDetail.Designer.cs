@@ -66,15 +66,15 @@
             HTableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
             HTableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             HTableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
-            HTableLayoutPanelExBase.Size = new Size(984, 761);
+            HTableLayoutPanelExBase.Size = new Size(1062, 785);
             HTableLayoutPanelExBase.TabIndex = 0;
             // 
             // StatusStrip1
             // 
             StatusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, ToolStripStatusLabelDetail });
-            StatusStrip1.Location = new Point(0, 739);
+            StatusStrip1.Location = new Point(0, 763);
             StatusStrip1.Name = "StatusStrip1";
-            StatusStrip1.Size = new Size(984, 22);
+            StatusStrip1.Size = new Size(1062, 22);
             StatusStrip1.TabIndex = 2;
             StatusStrip1.Text = "statusStrip1";
             // 
@@ -104,7 +104,7 @@
             HTableLayoutPanelExCenter.RowCount = 1;
             HTableLayoutPanelExCenter.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             HTableLayoutPanelExCenter.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            HTableLayoutPanelExCenter.Size = new Size(978, 647);
+            HTableLayoutPanelExCenter.Size = new Size(1056, 671);
             HTableLayoutPanelExCenter.TabIndex = 0;
             // 
             // HPictureBoxEx1
@@ -113,7 +113,7 @@
             HPictureBoxEx1.Dock = DockStyle.Fill;
             HPictureBoxEx1.Location = new Point(6, 6);
             HPictureBoxEx1.Name = "HPictureBoxEx1";
-            HPictureBoxEx1.Size = new Size(478, 635);
+            HPictureBoxEx1.Size = new Size(517, 659);
             HPictureBoxEx1.SizeMode = PictureBoxSizeMode.Zoom;
             HPictureBoxEx1.TabIndex = 0;
             HPictureBoxEx1.TabStop = false;
@@ -143,9 +143,9 @@
             // 
             HPictureBoxEx2.ContextMenuStrip = ContextMenuStrip1;
             HPictureBoxEx2.Dock = DockStyle.Fill;
-            HPictureBoxEx2.Location = new Point(493, 6);
+            HPictureBoxEx2.Location = new Point(532, 6);
             HPictureBoxEx2.Name = "HPictureBoxEx2";
-            HPictureBoxEx2.Size = new Size(479, 635);
+            HPictureBoxEx2.Size = new Size(518, 659);
             HPictureBoxEx2.SizeMode = PictureBoxSizeMode.Zoom;
             HPictureBoxEx2.TabIndex = 1;
             HPictureBoxEx2.TabStop = false;
@@ -155,7 +155,7 @@
             MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemHelp });
             MenuStrip1.Location = new Point(0, 0);
             MenuStrip1.Name = "MenuStrip1";
-            MenuStrip1.Size = new Size(984, 24);
+            MenuStrip1.Size = new Size(1062, 24);
             MenuStrip1.TabIndex = 1;
             MenuStrip1.Text = "menuStrip1";
             // 
@@ -185,13 +185,13 @@
             HPanelExUp.Dock = DockStyle.Fill;
             HPanelExUp.Location = new Point(3, 27);
             HPanelExUp.Name = "HPanelExUp";
-            HPanelExUp.Size = new Size(978, 54);
+            HPanelExUp.Size = new Size(1056, 54);
             HPanelExUp.TabIndex = 3;
             // 
             // HButtonExUpdate
             // 
             HButtonExUpdate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            HButtonExUpdate.Location = new Point(796, 10);
+            HButtonExUpdate.Location = new Point(874, 10);
             HButtonExUpdate.Name = "HButtonExUpdate";
             HButtonExUpdate.Size = new Size(140, 32);
             HButtonExUpdate.TabIndex = 0;
@@ -204,7 +204,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(984, 761);
+            ClientSize = new Size(1062, 785);
             Controls.Add(HTableLayoutPanelExBase);
             MainMenuStrip = MenuStrip1;
             Name = "H_CertificationDetail";

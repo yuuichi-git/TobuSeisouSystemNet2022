@@ -145,12 +145,12 @@ namespace H_Car {
         /// PutSheetViewList
         /// </summary>
         private void PutSheetViewList() {
-            List<H_CarMasterVo> listHCarMasterVo = new();
+            List<H_CarMasterVo> _listHCarMasterVo = new();
             // 削除済のレコードも表示
             if (ToolStripMenuItemDeleted.Checked) {
-                listHCarMasterVo = _hCarMasterDao.SelectAllHCarMaster();
+                _listHCarMasterVo = _hCarMasterDao.SelectAllHCarMaster();
             } else {
-                listHCarMasterVo = _hCarMasterDao.SelectAllHCarMaster().FindAll(x => x.DeleteFlag == false);
+                _listHCarMasterVo = _hCarMasterDao.SelectAllHCarMaster().FindAll(x => x.DeleteFlag == false);
             }
             // 非活性化
             SpreadList.SuspendLayout();
@@ -161,7 +161,7 @@ namespace H_Car {
                 SheetViewList.RemoveRows(0, SheetViewList.Rows.Count);
 
             int i = 0;
-            foreach (H_CarMasterVo hCarMasterVo in listHCarMasterVo) {
+            foreach (H_CarMasterVo hCarMasterVo in _listHCarMasterVo.OrderBy(x => x.RegistrationNumber4)) {
                 SheetViewList.Rows.Add(i, 1);
                 SheetViewList.RowHeader.Columns[0].Label = (i + 1).ToString(); // Rowヘッダ
                 SheetViewList.Rows[i].Height = 22; // Rowの高さ

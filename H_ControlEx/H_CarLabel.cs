@@ -15,6 +15,8 @@ namespace H_ControlEx {
         public event MouseEventHandler Event_HCarLabel_MouseClick = delegate { };
         public event MouseEventHandler Event_HCarLabel_MouseDoubleClick = delegate { };
         public event MouseEventHandler Event_HCarLabel_MouseMove = delegate { };
+        public event EventHandler Event_HCarLabel_MouseEnter = delegate { }; // 2024-07-18追加
+        public event EventHandler Event_HCarLabel_MouseLeave = delegate { }; // 2024-07-18追加
         public event EventHandler Event_HCarLabel_ToolStripMenuItem_Click = delegate { };
 
         private Image _imageCarLabel;
@@ -32,7 +34,7 @@ namespace H_ControlEx {
          * １つのパネルのサイズ
          */
         private const float _panelWidth = 75; // 2024-02-24 80→75に変更
-        private const float _panelHeight = 100;
+        private const float _panelHeight = 120;
         /*
          * プロパティ
          */
@@ -119,7 +121,9 @@ namespace H_ControlEx {
              */
             this.MouseClick += HCarLabel_MouseClick;
             this.MouseDoubleClick += HCarLabel_MouseDoubleClick;
+            this.MouseEnter += HCarLabel_MouseEnter; // 2024-07-18
             this.MouseMove += HCarLabel_MouseMove;
+            this.MouseLeave += HCarLabel_MouseLeave; // 2024-07-18
         }
 
         /// <summary>
@@ -155,7 +159,7 @@ namespace H_ControlEx {
             stringFormat.Alignment = StringAlignment.Center;
             string number = string.Concat(_hCarMasterVo.RegistrationNumber1, _hCarMasterVo.RegistrationNumber2, "\r\n"
                                         , _hCarMasterVo.RegistrationNumber3, _hCarMasterVo.RegistrationNumber4, "\r\n"
-                                        , _hCarMasterVo.DisguiseKind1, _hCarMasterVo.DoorNumber != 0 ? _hCarMasterVo.DoorNumber : " ");
+                                        , _hCarMasterVo.DisguiseKind1, _hCarMasterVo.DoorNumber != 0 ? _hCarMasterVo.DoorNumber : " ", "\r\n", " ");
             if (_hCarMasterVo.ExpirationDate < DateTime.Now.Date) {
                 e.Graphics.DrawString(number, _drawFontCarLabel, new SolidBrush(Color.Red), new Rectangle(0, 0, (int)_panelWidth - 2, (int)_panelHeight - 6), stringFormat);
             } else {
@@ -194,17 +198,8 @@ namespace H_ControlEx {
                 _evacuationHSetControl = (H_SetControl)((H_CarLabel)((ContextMenuStrip)sender).SourceControl).Parent;
             } else if (((H_CarLabel)((ContextMenuStrip)sender).SourceControl).Parent.GetType() == typeof(H_FlowLayoutPanelEx)) {
                 foreach (object item in ((ContextMenuStrip)sender).Items) {
-                    if (item.GetType() == typeof(ToolStripMenuItem)) {
-                        switch (((ToolStripMenuItem)item).Name) {
-                            case "ToolStripMenuItemCarDetail":
-                            case "ToolStripMenuItemCarMemo":
-                                ((ToolStripMenuItem)item).Enabled = true;
-                                break;
-                            default:
-                                ((ToolStripMenuItem)item).Enabled = false;
-                                break;
-                        }
-                    }
+                    if (item.GetType() == typeof(ToolStripMenuItem))
+                        ((ToolStripMenuItem)item).Enabled = false;
                 }
             }
         }
@@ -274,6 +269,13 @@ namespace H_ControlEx {
             toolStripMenuItem04.Name = "ToolStripMenuItemCarNippou";
             toolStripMenuItem04.Click += ToolStripMenuItem_Click;
             contextMenuStrip.Items.Add(toolStripMenuItem04);
+            /*
+             * プロパティ
+             */
+            ToolStripMenuItem toolStripMenuItem05 = new("プロパティ");
+            toolStripMenuItem05.Name = "ToolStripMenuItemCarProperty";
+            toolStripMenuItem05.Click += ToolStripMenuItem_Click;
+            contextMenuStrip.Items.Add(toolStripMenuItem05);
         }
 
         /// <summary>
@@ -352,6 +354,13 @@ namespace H_ControlEx {
                      */
                     Event_HCarLabel_ToolStripMenuItem_Click.Invoke(sender, e);
                     break;
+                case "ToolStripMenuItemCarProperty": // プロパティ
+                    /*
+                     * H_Boardに処理を回している
+                     * H_CarLabel→H_SetControl→H_Board
+                     */
+                    Event_HCarLabel_ToolStripMenuItem_Click.Invoke(sender, e);
+                    break;
             }
         }
 
@@ -407,6 +416,12 @@ namespace H_ControlEx {
         }
         private void HCarLabel_MouseDoubleClick(object sender, MouseEventArgs e) {
             Event_HCarLabel_MouseDoubleClick.Invoke(sender, e);
+        }
+        private void HCarLabel_MouseEnter(object sender, EventArgs e) { // 2024-07-18追加
+            Event_HCarLabel_MouseEnter.Invoke(sender, e);
+        }
+        private void HCarLabel_MouseLeave(object sender, EventArgs e) { // 2024-07-18追加
+            Event_HCarLabel_MouseLeave.Invoke(sender, e);
         }
         private void HCarLabel_MouseMove(object sender, MouseEventArgs e) {
             Event_HCarLabel_MouseMove.Invoke(sender, e);
