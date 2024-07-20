@@ -145,11 +145,8 @@ namespace H_LegalTwelveItem {
              * Detailウインドウを表示
              */
             H_LegalTwelveItemDetail hLegalTwelveItemDetail = new(_connectionVo, (int)HNumericUpDownExFiscalYear.Value, (H_LegalTwelveItemListVo)SheetViewList.Rows[e.Row].Tag);
-            Rectangle rectangleHLegalTwelveItemDetail = new Desktop().GetMonitorWorkingArea(hLegalTwelveItemDetail, _connectionVo.Screen);
+            new Desktop().SetPosition(hLegalTwelveItemDetail, _connectionVo.Screen);
             hLegalTwelveItemDetail.KeyPreview = true;
-            hLegalTwelveItemDetail.Location = rectangleHLegalTwelveItemDetail.Location;
-            hLegalTwelveItemDetail.Size = new Size(1132, 898);
-            hLegalTwelveItemDetail.WindowState = FormWindowState.Normal;
             hLegalTwelveItemDetail.Show(this);
             return;
         }

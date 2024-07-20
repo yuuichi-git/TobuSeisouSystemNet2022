@@ -28,9 +28,17 @@
         /// <param name="form"></param>
         /// <param name="screen"></param>
         public void SetPosition(Form form, Screen screen) {
-            form.Left = (screen.WorkingArea.Width - form.Width) / 2 + screen.WorkingArea.X;
-            form.Top = (screen.WorkingArea.Height - form.Height) / 2 + screen.WorkingArea.Y;
-            form.StartPosition = FormStartPosition.CenterScreen;
+            /*
+             * マルチ画面等で対象の画面サイズがFHD以下でFormのサイズがFHDであれば、WindowsStateをMaximizedにする
+             */
+            if (screen.WorkingArea.Width <= 1920 && screen.WorkingArea.Height <= 1080 && form.Size.Width == 1920 && form.Size.Height == 1080) {
+                form.WindowState = FormWindowState.Maximized;
+            } else {
+                form.Left = (screen.WorkingArea.Width - form.Width) / 2 + screen.WorkingArea.X;
+                form.Top = (screen.WorkingArea.Height - form.Height) / 2 + screen.WorkingArea.Y;
+                form.StartPosition = FormStartPosition.CenterScreen;
+                form.WindowState = FormWindowState.Normal;
+            }
         }
     }
 }

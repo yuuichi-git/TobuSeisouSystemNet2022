@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            components = new System.ComponentModel.Container();
             HTableLayoutPanelExBasse = new H_ControlEx.H_TableLayoutPanelEx();
             MenuStrip1 = new MenuStrip();
             ToolStripMenuItemMenu = new ToolStripMenuItem();
@@ -32,9 +33,6 @@
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             ToolStripStatusLabelDetail = new ToolStripStatusLabel();
             HPanelExUp = new H_ControlEx.H_PanelEx();
-            HButtonExRotate = new H_ControlEx.H_ButtonEx();
-            HButtonExDelete = new H_ControlEx.H_ButtonEx();
-            HButtonExClip = new H_ControlEx.H_ButtonEx();
             HButtonExUpdate = new H_ControlEx.H_ButtonEx();
             HPanelExLeft = new H_ControlEx.H_PanelEx();
             groupBox4 = new GroupBox();
@@ -127,6 +125,10 @@
             HTextBoxExVehicleNumber = new H_ControlEx.H_TextBoxEx();
             label10 = new Label();
             HPictureBoxExPicture = new H_ControlEx.H_PictureBoxEx();
+            ContextMenuStrip1 = new ContextMenuStrip(components);
+            ToolStripMenuItemClip = new ToolStripMenuItem();
+            ToolStripMenuItemDelete = new ToolStripMenuItem();
+            ToolStripMenuItemRotate = new ToolStripMenuItem();
             HTableLayoutPanelExBasse.SuspendLayout();
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -149,6 +151,7 @@
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)HPictureBoxExPicture).BeginInit();
+            ContextMenuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // HTableLayoutPanelExBasse
@@ -169,7 +172,7 @@
             HTableLayoutPanelExBasse.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
             HTableLayoutPanelExBasse.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             HTableLayoutPanelExBasse.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
-            HTableLayoutPanelExBasse.Size = new Size(1904, 1469);
+            HTableLayoutPanelExBasse.Size = new Size(1904, 1041);
             HTableLayoutPanelExBasse.TabIndex = 0;
             // 
             // MenuStrip1
@@ -206,7 +209,7 @@
             // 
             HTableLayoutPanelExBasse.SetColumnSpan(StatusStrip1, 2);
             StatusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, ToolStripStatusLabelDetail });
-            StatusStrip1.Location = new Point(0, 1447);
+            StatusStrip1.Location = new Point(0, 1019);
             StatusStrip1.Name = "StatusStrip1";
             StatusStrip1.Size = new Size(1904, 22);
             StatusStrip1.SizingGrip = false;
@@ -228,48 +231,12 @@
             // HPanelExUp
             // 
             HTableLayoutPanelExBasse.SetColumnSpan(HPanelExUp, 2);
-            HPanelExUp.Controls.Add(HButtonExRotate);
-            HPanelExUp.Controls.Add(HButtonExDelete);
-            HPanelExUp.Controls.Add(HButtonExClip);
             HPanelExUp.Controls.Add(HButtonExUpdate);
             HPanelExUp.Dock = DockStyle.Fill;
             HPanelExUp.Location = new Point(3, 27);
             HPanelExUp.Name = "HPanelExUp";
             HPanelExUp.Size = new Size(1898, 54);
             HPanelExUp.TabIndex = 2;
-            // 
-            // HButtonExRotate
-            // 
-            HButtonExRotate.Location = new Point(1272, 16);
-            HButtonExRotate.Name = "HButtonExRotate";
-            HButtonExRotate.Size = new Size(96, 24);
-            HButtonExRotate.TabIndex = 3;
-            HButtonExRotate.Text = "Rotate";
-            HButtonExRotate.TextDirectionVertical = "";
-            HButtonExRotate.UseVisualStyleBackColor = true;
-            HButtonExRotate.Click += HButtonEx_Click;
-            // 
-            // HButtonExDelete
-            // 
-            HButtonExDelete.Location = new Point(1164, 16);
-            HButtonExDelete.Name = "HButtonExDelete";
-            HButtonExDelete.Size = new Size(96, 24);
-            HButtonExDelete.TabIndex = 2;
-            HButtonExDelete.Text = "Delete";
-            HButtonExDelete.TextDirectionVertical = "";
-            HButtonExDelete.UseVisualStyleBackColor = true;
-            HButtonExDelete.Click += HButtonEx_Click;
-            // 
-            // HButtonExClip
-            // 
-            HButtonExClip.Location = new Point(1056, 16);
-            HButtonExClip.Name = "HButtonExClip";
-            HButtonExClip.Size = new Size(96, 24);
-            HButtonExClip.TabIndex = 1;
-            HButtonExClip.Text = "Clip";
-            HButtonExClip.TextDirectionVertical = "";
-            HButtonExClip.UseVisualStyleBackColor = true;
-            HButtonExClip.Click += HButtonEx_Click;
             // 
             // HButtonExUpdate
             // 
@@ -292,7 +259,7 @@
             HPanelExLeft.Dock = DockStyle.Fill;
             HPanelExLeft.Location = new Point(3, 87);
             HPanelExLeft.Name = "HPanelExLeft";
-            HPanelExLeft.Size = new Size(946, 1355);
+            HPanelExLeft.Size = new Size(946, 927);
             HPanelExLeft.TabIndex = 3;
             // 
             // groupBox4
@@ -1168,7 +1135,7 @@
             // 
             // HDateTimePickerExExpirationDate
             // 
-            HDateTimePickerExExpirationDate.CustomFormat = "gggyy年MM月dd日(dddd)";
+            HDateTimePickerExExpirationDate.CustomFormat = " 令和06年03月30日(土曜日)";
             HDateTimePickerExExpirationDate.Format = DateTimePickerFormat.Custom;
             HDateTimePickerExExpirationDate.Location = new Point(192, 108);
             HDateTimePickerExExpirationDate.Name = "HDateTimePickerExExpirationDate";
@@ -1187,7 +1154,7 @@
             // 
             // HDateTimePickerExFirstRegistrationDate
             // 
-            HDateTimePickerExFirstRegistrationDate.CustomFormat = "gggyy年MM月dd日(dddd)";
+            HDateTimePickerExFirstRegistrationDate.CustomFormat = " 令和06年03月30日(土曜日)";
             HDateTimePickerExFirstRegistrationDate.Format = DateTimePickerFormat.Custom;
             HDateTimePickerExFirstRegistrationDate.Location = new Point(192, 80);
             HDateTimePickerExFirstRegistrationDate.Name = "HDateTimePickerExFirstRegistrationDate";
@@ -1206,7 +1173,7 @@
             // 
             // HDateTimePickerExRegistrationDate
             // 
-            HDateTimePickerExRegistrationDate.CustomFormat = "gggyy年MM月dd日(dddd)";
+            HDateTimePickerExRegistrationDate.CustomFormat = " 令和06年03月30日(土曜日)";
             HDateTimePickerExRegistrationDate.Format = DateTimePickerFormat.Custom;
             HDateTimePickerExRegistrationDate.Location = new Point(192, 52);
             HDateTimePickerExRegistrationDate.Name = "HDateTimePickerExRegistrationDate";
@@ -1244,24 +1211,50 @@
             // HPictureBoxExPicture
             // 
             HPictureBoxExPicture.BorderStyle = BorderStyle.FixedSingle;
+            HPictureBoxExPicture.ContextMenuStrip = ContextMenuStrip1;
             HPictureBoxExPicture.Dock = DockStyle.Fill;
             HPictureBoxExPicture.Location = new Point(955, 87);
             HPictureBoxExPicture.Name = "HPictureBoxExPicture";
-            HPictureBoxExPicture.Size = new Size(946, 1355);
+            HPictureBoxExPicture.Size = new Size(946, 927);
             HPictureBoxExPicture.SizeMode = PictureBoxSizeMode.Zoom;
             HPictureBoxExPicture.TabIndex = 4;
             HPictureBoxExPicture.TabStop = false;
+            // 
+            // ContextMenuStrip1
+            // 
+            ContextMenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemClip, ToolStripMenuItemDelete, ToolStripMenuItemRotate });
+            ContextMenuStrip1.Name = "ContextMenuStrip1";
+            ContextMenuStrip1.Size = new Size(109, 70);
+            // 
+            // ToolStripMenuItemClip
+            // 
+            ToolStripMenuItemClip.Name = "ToolStripMenuItemClip";
+            ToolStripMenuItemClip.Size = new Size(108, 22);
+            ToolStripMenuItemClip.Text = "Clip";
+            ToolStripMenuItemClip.Click += ToolStripMenuItem_Click;
+            // 
+            // ToolStripMenuItemDelete
+            // 
+            ToolStripMenuItemDelete.Name = "ToolStripMenuItemDelete";
+            ToolStripMenuItemDelete.Size = new Size(108, 22);
+            ToolStripMenuItemDelete.Text = "Delete";
+            ToolStripMenuItemDelete.Click += ToolStripMenuItem_Click;
+            // 
+            // ToolStripMenuItemRotate
+            // 
+            ToolStripMenuItemRotate.Name = "ToolStripMenuItemRotate";
+            ToolStripMenuItemRotate.Size = new Size(108, 22);
+            ToolStripMenuItemRotate.Text = "Rotate";
+            ToolStripMenuItemRotate.Click += ToolStripMenuItem_Click;
             // 
             // HCarDetail
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1904, 1469);
+            ClientSize = new Size(1904, 1041);
             Controls.Add(HTableLayoutPanelExBasse);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = MenuStrip1;
-            MaximizeBox = false;
-            MinimizeBox = false;
             Name = "HCarDetail";
             Text = "H_CarDetail";
             FormClosing += HCarDetail_FormClosing;
@@ -1293,6 +1286,7 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)HPictureBoxExPicture).EndInit();
+            ContextMenuStrip1.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -1398,9 +1392,10 @@
         private H_ControlEx.H_TextBoxEx HTextBoxExVersionDesignateNumber;
         private Label label39;
         private H_ControlEx.H_ButtonEx HButtonExUpdate;
-        private H_ControlEx.H_ButtonEx HButtonExDelete;
-        private H_ControlEx.H_ButtonEx HButtonExClip;
         private ToolStripMenuItem ToolStripMenuItemExit;
-        private H_ControlEx.H_ButtonEx HButtonExRotate;
+        private ContextMenuStrip ContextMenuStrip1;
+        private ToolStripMenuItem ToolStripMenuItemClip;
+        private ToolStripMenuItem ToolStripMenuItemDelete;
+        private ToolStripMenuItem ToolStripMenuItemRotate;
     }
 }

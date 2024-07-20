@@ -356,7 +356,6 @@ namespace H_License {
             HLicenseDetail hLicenseDetail = new(_connectionVo, ((H_LicenseMasterVo)SheetViewList.Rows[e.Row].Tag).StaffCode);
             new Desktop().SetPosition(hLicenseDetail, _connectionVo.Screen);
             hLicenseDetail.KeyPreview = true;
-            hLicenseDetail.WindowState = FormWindowState.Normal;
             hLicenseDetail.Show(this);
         }
 
@@ -372,7 +371,6 @@ namespace H_License {
                     HLicenseDetail hLicenseDetail = new(_connectionVo);
                     new Desktop().SetPosition(hLicenseDetail, _connectionVo.Screen);
                     hLicenseDetail.KeyPreview = true;
-                    hLicenseDetail.WindowState = FormWindowState.Normal;
                     hLicenseDetail.Show(this);
                     break;
                 // “ŒŠC“dŽqALC—pCSV

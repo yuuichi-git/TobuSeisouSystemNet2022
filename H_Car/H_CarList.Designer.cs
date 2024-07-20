@@ -203,8 +203,6 @@
             Controls.Add(HTableLayoutPanelExBase);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = MenuStrip1;
-            MaximizeBox = false;
-            MinimizeBox = false;
             Name = "HCarList";
             Text = "H_CarList";
             FormClosing += HCarList_FormClosing;

@@ -158,7 +158,6 @@ namespace H_StatusOfResidence {
             H_StatusOfResidenceDetail hStatusOfResidenceDetail = new(_connectionVo, staffCode);
             new Desktop().SetPosition(hStatusOfResidenceDetail, _connectionVo.Screen);
             hStatusOfResidenceDetail.KeyPreview = true;
-            hStatusOfResidenceDetail.WindowState = FormWindowState.Normal;
             hStatusOfResidenceDetail.Show(this);
         }
 
@@ -171,9 +170,9 @@ namespace H_StatusOfResidence {
             switch (((ToolStripMenuItem)sender).Name) {
                 // 新規レコードを追加する
                 case "ToolStripMenuItemNew":
-                    H_StatusOfResidenceDetail hStatusOfResidenceDetail = new(_connectionVo);new Desktop().SetPosition(hStatusOfResidenceDetail, _connectionVo.Screen);
+                    H_StatusOfResidenceDetail hStatusOfResidenceDetail = new(_connectionVo);
+                    new Desktop().SetPosition(hStatusOfResidenceDetail, _connectionVo.Screen);
                     hStatusOfResidenceDetail.KeyPreview = true;
-                    hStatusOfResidenceDetail.WindowState = FormWindowState.Normal;
                     hStatusOfResidenceDetail.Show(this);
                     break;
                 // 在留カードを削除する

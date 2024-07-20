@@ -140,11 +140,8 @@ namespace TobuSeisouSystemNet2022 {
                                  * Formを表示する
                                  */
                                 H_VehicleDispatchBoard hVehicleDispatchBoard = new H_VehicleDispatchBoard(_connectionVo);
-                                Rectangle rectangleHVehicleDispatchBoard = new Desktop().GetMonitorWorkingArea(hVehicleDispatchBoard, (Screen)HComboBoxMoniter.SelectedItem);
+                                new Desktop().SetPosition(hVehicleDispatchBoard, (Screen)HComboBoxMoniter.SelectedItem);
                                 hVehicleDispatchBoard.KeyPreview = true;
-                                hVehicleDispatchBoard.Location = rectangleHVehicleDispatchBoard.Location;
-                                hVehicleDispatchBoard.Size = rectangleHVehicleDispatchBoard.Size;
-                                hVehicleDispatchBoard.WindowState = FormWindowState.Maximized;
                                 hVehicleDispatchBoard.Show(this);
                                 break;
                             // 始業点呼
@@ -157,8 +154,6 @@ namespace TobuSeisouSystemNet2022 {
                                 H_FirstRollColl hFirstRollColl = new(_connectionVo);
                                 new Desktop().SetPosition(hFirstRollColl, (Screen)HComboBoxMoniter.SelectedItem);
                                 hFirstRollColl.KeyPreview = true;
-                                hFirstRollColl.Size = new Size(1920, 1080);
-                                hFirstRollColl.WindowState = FormWindowState.Normal;
                                 hFirstRollColl.Show(this);
                                 break;
                             // 従事者台帳
@@ -171,8 +166,6 @@ namespace TobuSeisouSystemNet2022 {
                                 HStaffList hStaffList = new(_connectionVo);
                                 new Desktop().SetPosition(hStaffList, (Screen)HComboBoxMoniter.SelectedItem);
                                 hStaffList.KeyPreview = true;
-                                hStaffList.Size = new Size(1920, 1080);
-                                hStaffList.WindowState = FormWindowState.Normal;
                                 hStaffList.Show(this);
                                 break;
                             // 免許証台帳
@@ -185,8 +178,6 @@ namespace TobuSeisouSystemNet2022 {
                                 HLicenseList hLicenseList = new(_connectionVo);
                                 new Desktop().SetPosition(hLicenseList, (Screen)HComboBoxMoniter.SelectedItem);
                                 hLicenseList.KeyPreview = true;
-                                hLicenseList.Size = new Size(1920, 1080);
-                                hLicenseList.WindowState = FormWindowState.Normal;
                                 hLicenseList.Show(this);
                                 break;
                             // 車両台帳
@@ -199,8 +190,6 @@ namespace TobuSeisouSystemNet2022 {
                                 HCarList hCarList = new(_connectionVo);
                                 new Desktop().SetPosition(hCarList, (Screen)HComboBoxMoniter.SelectedItem);
                                 hCarList.KeyPreview = true;
-                                hCarList.Size = new Size(1920, 1080);
-                                hCarList.WindowState = FormWindowState.Normal;
                                 hCarList.Show(this);
                                 break;
                             // 点呼記録簿
@@ -213,8 +202,6 @@ namespace TobuSeisouSystemNet2022 {
                                 H_RollCallRecordSheet hRollCallRecordSheet = new(_connectionVo);
                                 new Desktop().SetPosition(hRollCallRecordSheet, (Screen)HComboBoxMoniter.SelectedItem);
                                 hRollCallRecordSheet.KeyPreview = true;
-                                hRollCallRecordSheet.Size = new Size(1370, 1080);
-                                hRollCallRecordSheet.WindowState = FormWindowState.Normal;
                                 hRollCallRecordSheet.Show(this);
                                 break;
                             // 法定１２項目の講習記録
@@ -227,8 +214,6 @@ namespace TobuSeisouSystemNet2022 {
                                 H_LegalTwelveItemList hLegalTwelveItemList = new(_connectionVo);
                                 new Desktop().SetPosition(hLegalTwelveItemList, (Screen)HComboBoxMoniter.SelectedItem);
                                 hLegalTwelveItemList.KeyPreview = true;
-                                hLegalTwelveItemList.Size = new Size(1188, 1000);
-                                hLegalTwelveItemList.WindowState = FormWindowState.Normal;
                                 hLegalTwelveItemList.Show(this);
                                 break;
                             // 千代田区配車集計表
@@ -241,8 +226,6 @@ namespace TobuSeisouSystemNet2022 {
                                 H_CollectionWeightCHIYODA hCollectionWeightCHIYODA = new(_connectionVo);
                                 new Desktop().SetPosition(hCollectionWeightCHIYODA, (Screen)HComboBoxMoniter.SelectedItem);
                                 hCollectionWeightCHIYODA.KeyPreview = true;
-                                hCollectionWeightCHIYODA.Size = new Size(1000, 800);
-                                hCollectionWeightCHIYODA.WindowState = FormWindowState.Normal;
                                 hCollectionWeightCHIYODA.Show(this);
                                 break;
                             // 台東区資源収集実績集計表
@@ -255,8 +238,6 @@ namespace TobuSeisouSystemNet2022 {
                                 H_CollectionWeightTAITOUList hCollectionWeightTAITOUList = new(_connectionVo);
                                 new Desktop().SetPosition(hCollectionWeightTAITOUList, (Screen)HComboBoxMoniter.SelectedItem);
                                 hCollectionWeightTAITOUList.KeyPreview = true;
-                                hCollectionWeightTAITOUList.Size = new Size(1253, 993);
-                                hCollectionWeightTAITOUList.WindowState = FormWindowState.Normal;
                                 hCollectionWeightTAITOUList.Show(this);
                                 break;
                             // 
@@ -269,8 +250,6 @@ namespace TobuSeisouSystemNet2022 {
                                 H_CollectionWeightTAITOUDetail hCollectionWeightTAITOUDetail = new(_connectionVo);
                                 new Desktop().SetPosition(hCollectionWeightTAITOUDetail, (Screen)HComboBoxMoniter.SelectedItem);
                                 hCollectionWeightTAITOUDetail.KeyPreview = true;
-                                hCollectionWeightTAITOUDetail.Size = new Size(873, 1000);
-                                hCollectionWeightTAITOUDetail.WindowState = FormWindowState.Normal;
                                 hCollectionWeightTAITOUDetail.Show(this);
                                 break;
                             // 東環保研修センター修了書登録
@@ -283,8 +262,6 @@ namespace TobuSeisouSystemNet2022 {
                                 H_ToukanpoTrainingCardDetail hToukanpoTrainingCardDetail = new(_connectionVo);
                                 new Desktop().SetPosition(hToukanpoTrainingCardDetail, (Screen)HComboBoxMoniter.SelectedItem);
                                 hToukanpoTrainingCardDetail.KeyPreview = true;
-                                hToukanpoTrainingCardDetail.Size = new Size(677, 545);
-                                hToukanpoTrainingCardDetail.WindowState = FormWindowState.Normal;
                                 hToukanpoTrainingCardDetail.Show(this);
                                 break;
                             // 東環保(速度超過実態調査)
@@ -297,8 +274,6 @@ namespace TobuSeisouSystemNet2022 {
                                 H_ToukanpoSpeedSurvey hToukanpoSpeedSurvey = new(_connectionVo);
                                 new Desktop().SetPosition(hToukanpoSpeedSurvey, (Screen)HComboBoxMoniter.SelectedItem);
                                 hToukanpoSpeedSurvey.KeyPreview = true;
-                                hToukanpoSpeedSurvey.Size = new Size(759, 1035);
-                                hToukanpoSpeedSurvey.WindowState = FormWindowState.Normal;
                                 hToukanpoSpeedSurvey.Show(this);
                                 break;
                             // 在留カード
@@ -311,8 +286,6 @@ namespace TobuSeisouSystemNet2022 {
                                 HStatusOfResidenceList hStatusOfResidenceList = new(_connectionVo);
                                 new Desktop().SetPosition(hStatusOfResidenceList, (Screen)HComboBoxMoniter.SelectedItem);
                                 hStatusOfResidenceList.KeyPreview = true;
-                                hStatusOfResidenceList.Size = new Size(1920, 1080);
-                                hStatusOfResidenceList.WindowState = FormWindowState.Normal;
                                 hStatusOfResidenceList.Show(this);
                                 break;
                             // アルバイト出勤情報
@@ -325,8 +298,6 @@ namespace TobuSeisouSystemNet2022 {
                                 HAccountingParttimeList hAccountingParttimeList = new(_connectionVo);
                                 new Desktop().SetPosition(hAccountingParttimeList, (Screen)HComboBoxMoniter.SelectedItem);
                                 hAccountingParttimeList.KeyPreview = true;
-                                hAccountingParttimeList.Size = new Size(865, 1080);
-                                hAccountingParttimeList.WindowState = FormWindowState.Normal;
                                 hAccountingParttimeList.Show(this);
                                 break;
                             // 事故記録簿
@@ -339,8 +310,6 @@ namespace TobuSeisouSystemNet2022 {
                                 H_CarAccidentList hCarAccidentList = new(_connectionVo);
                                 new Desktop().SetPosition(hCarAccidentList, (Screen)HComboBoxMoniter.SelectedItem);
                                 hCarAccidentList.KeyPreview = true;
-                                hCarAccidentList.Size = new Size(1920, 1080);
-                                hCarAccidentList.WindowState = FormWindowState.Normal;
                                 hCarAccidentList.Show(this);
                                 break;
                             /*
@@ -579,7 +548,6 @@ namespace TobuSeisouSystemNet2022 {
                         H_CertificationList hCertificationList = new(_connectionVo);
                         new Desktop().SetPosition(hCertificationList, (Screen)HComboBoxMoniter.SelectedItem);
                         hCertificationList.KeyPreview = true;
-                        hCertificationList.WindowState = FormWindowState.Normal;
                         hCertificationList.Show(this);
                         break;
                     case "NodeISO0722": // 教育訓練 

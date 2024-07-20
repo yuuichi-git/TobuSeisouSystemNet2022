@@ -277,6 +277,29 @@ namespace H_Car {
         /// <param name="e"></param>
         private void ToolStripMenuItem_Click(object sender, EventArgs e) {
             switch (((ToolStripMenuItem)sender).Name) {
+                /*
+                 * Picture クリップボード
+                 */
+                case "ToolStripMenuItemClip":
+                    /*
+                     * クリップボードを転送
+                     * なんか型のチェックはいらなさそう・・・エラーが出ないし・・・
+                     */
+                    HPictureBoxExPicture.Image = (Bitmap)Clipboard.GetDataObject().GetData(DataFormats.Bitmap);
+                    break;
+                /*
+                 * Picture 削除
+                 */
+                case "ToolStripMenuItemDelete":
+                    HPictureBoxExPicture.Image = null;
+                    break;
+                case "ToolStripMenuItemRotate":
+                    this.HPictureBoxExPicture.Image.RotateFlip(RotateFlipType.Rotate90FlipXY);
+                    this.HPictureBoxExPicture.Refresh();
+                    break;
+                /*
+                 * アプリケーションを終了する
+                 */
                 case "ToolStripMenuItemExit":
                     this.Close();
                     break;

@@ -604,7 +604,6 @@ namespace H_VehicleDispatch {
                 case "ToolStripMenuItemSerchStaff":
                     H_StaffDestination hStaffDestination = new(_connectionVo);
                     new Desktop().SetPosition(hStaffDestination, _connectionVo.Screen);
-                    hStaffDestination.WindowState = FormWindowState.Normal;
                     hStaffDestination.ShowDialog(this);
                     break;
                 /*
@@ -733,15 +732,14 @@ namespace H_VehicleDispatch {
                     new Desktop().SetPosition(hSetMemo, _connectionVo.Screen);
                     hSetMemo.Show();
                     break;
-                case "ToolStripMenuItemSetProperty": // プロパティ
-                    MessageBox.Show("ToolStripMenuItemSetProperty");
-                    break;
                 case "ToolStripMenuItemCreateFax": // 代車・代番Faxを作成する
                     H_Substitute hSubstitute = new(_connectionVo, (H_SetControl)((H_SetLabel)contextMenuStrip.SourceControl).Parent);
                     new Desktop().SetPosition(hSubstitute, _connectionVo.Screen);
                     hSubstitute.KeyPreview = true;
-                    hSubstitute.WindowState = FormWindowState.Normal;
                     hSubstitute.Show(this);
+                    break;
+                case "ToolStripMenuItemSetProperty": // プロパティ
+                    MessageBox.Show("ToolStripMenuItemSetProperty");
                     break;
                 /*
                  * 
@@ -751,7 +749,6 @@ namespace H_VehicleDispatch {
                 case "ToolStripMenuItemCarVerification": // 車検証を表示する 
                     H_CarVerification hCarVerification = new(_connectionVo, ((H_CarMasterVo)((H_CarLabel)contextMenuStrip.SourceControl).Tag).CarCode);
                     new Desktop().SetPosition(hCarVerification, _connectionVo.Screen);
-                    hCarVerification.WindowState = FormWindowState.Normal;
                     hCarVerification.Show(this);
                     break;
                 case "ToolStripMenuItemCarMemo": // メモを作成・編集する
@@ -774,14 +771,12 @@ namespace H_VehicleDispatch {
                     HStaffPaper hStaffPaper = new(_connectionVo, ((H_StaffMasterVo)((H_StaffLabel)contextMenuStrip.SourceControl).Tag).StaffCode);
                     new Desktop().SetPosition(hStaffPaper, _connectionVo.Screen);
                     hStaffPaper.KeyPreview = true;
-                    hStaffPaper.WindowState = FormWindowState.Normal;
                     hStaffPaper.Show(this);
                     break;
                 case "ToolStripMenuItemStaffLicense": // 従事者免許証を表示する
                     H_LicenseCard hLicenseCard = new(_connectionVo, ((H_StaffMasterVo)((H_StaffLabel)contextMenuStrip.SourceControl).Tag).StaffCode);
                     new Desktop().SetPosition(hLicenseCard, _connectionVo.Screen);
                     hLicenseCard.KeyPreview = true;
-                    hLicenseCard.WindowState = FormWindowState.Normal;
                     hLicenseCard.Show(this);
                     break;
                 case "ToolStripMenuItemStaffMemo": // メモを作成・編集する

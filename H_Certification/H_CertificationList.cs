@@ -89,7 +89,6 @@ namespace H_Certification {
                 H_CertificationDetail hCertificationDetail = new(_connectionVo, hStaffMasterVo.StaffCode, hCertificationMasterVo.CertificationCode);
                 new Desktop().SetPosition(hCertificationDetail, _connectionVo.Screen);
                 hCertificationDetail.KeyPreview = true;
-                hCertificationDetail.WindowState = FormWindowState.Normal;
                 hCertificationDetail.Show(this);
 
             } else {

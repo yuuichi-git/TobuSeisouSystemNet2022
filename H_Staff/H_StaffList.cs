@@ -170,8 +170,6 @@ namespace H_Staff {
                     HStaffDetail hStaffDetail = new(_connectionVo);
                     new Desktop().SetPosition(hStaffDetail, _connectionVo.Screen);
                     hStaffDetail.KeyPreview = true;
-                    hStaffDetail.Size = new Size(1920, 1080);
-                    hStaffDetail.WindowState = FormWindowState.Normal;
                     hStaffDetail.ShowDialog(this);
                     break;
                 // アプリケーションを終了する
@@ -552,8 +550,6 @@ namespace H_Staff {
                 HStaffPaper hStaffPaper = new(_connectionVo, ((H_StaffMasterVo)SheetViewList.Rows[e.Row].Tag).StaffCode);
                 new Desktop().SetPosition(hStaffPaper, _connectionVo.Screen);
                 hStaffPaper.KeyPreview = true;
-                hStaffPaper.Size = new Size(1920, 1080);
-                hStaffPaper.WindowState = FormWindowState.Normal;
                 hStaffPaper.Show(this);
                 return;
             }
@@ -561,8 +557,6 @@ namespace H_Staff {
             HStaffDetail hStaffDetail = new(_connectionVo, ((H_StaffMasterVo)SheetViewList.Rows[e.Row].Tag).StaffCode);
             new Desktop().SetPosition(hStaffDetail, _connectionVo.Screen);
             hStaffDetail.KeyPreview = true;
-            hStaffDetail.Size = new Size(1920, 1080);
-            hStaffDetail.WindowState = FormWindowState.Normal;
             hStaffDetail.Show(this);
         }
 

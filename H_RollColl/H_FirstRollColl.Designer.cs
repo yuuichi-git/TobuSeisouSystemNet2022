@@ -423,8 +423,6 @@
             ClientSize = new Size(1904, 1041);
             Controls.Add(HTableLayoutPanelExBase);
             MainMenuStrip = MenuStrip1;
-            MaximizeBox = false;
-            MinimizeBox = false;
             MinimumSize = new Size(1918, 1046);
             Name = "H_FirstRollColl";
             Text = "H_FirstRollColl";

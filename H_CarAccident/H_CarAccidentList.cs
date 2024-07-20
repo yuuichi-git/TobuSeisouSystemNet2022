@@ -156,7 +156,6 @@ namespace H_CarAccident {
             H_CarAccidentDetail hCarAccidentDetail = new(_connectionVo, (H_CarAccidentMasterVo)SheetViewList.Rows[e.Row].Tag);
             new Desktop().SetPosition(hCarAccidentDetail, _connectionVo.Screen);
             hCarAccidentDetail.KeyPreview = true;
-            hCarAccidentDetail.WindowState = FormWindowState.Normal;
             hCarAccidentDetail.Show(this);
         }
 
@@ -179,7 +178,6 @@ namespace H_CarAccident {
                     H_CarAccidentDetail hCarAccidentDetail = new(_connectionVo);
                     new Desktop().SetPosition(hCarAccidentDetail, _connectionVo.Screen);
                     hCarAccidentDetail.KeyPreview = true;
-                    hCarAccidentDetail.WindowState = FormWindowState.Normal;
                     hCarAccidentDetail.Show(this);
                     break;
                 // アプリケーションを終了する

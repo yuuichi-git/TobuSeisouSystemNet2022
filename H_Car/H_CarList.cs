@@ -209,11 +209,8 @@ namespace H_Car {
                  */
                 case "ToolStripMenuItemNewCar":
                     HCarDetail hCarDetail = new(_connectionVo);
-                    Rectangle rectangleHCarList = new Desktop().GetMonitorWorkingArea(hCarDetail, _connectionVo.Screen);
+                    new Desktop().SetPosition(hCarDetail, _connectionVo.Screen);
                     hCarDetail.KeyPreview = true;
-                    hCarDetail.Location = rectangleHCarList.Location;
-                    hCarDetail.Size = new Size(1920, 1080);
-                    hCarDetail.WindowState = FormWindowState.Normal;
                     hCarDetail.ShowDialog(this);
                     break;
                 case "ToolStripMenuItemDelete":
@@ -253,11 +250,8 @@ namespace H_Car {
             }
             // èCè¸ÉLÅ[Ç™ñ≥Ç¢èÍçá
             HCarDetail hCarDetail = new(_connectionVo, (int)SheetViewList.Cells[e.Row, _colCarCode].Value);
-            Rectangle rectangleHCarList = new Desktop().GetMonitorWorkingArea(hCarDetail, _connectionVo.Screen);
+            new Desktop().SetPosition(hCarDetail, _connectionVo.Screen);
             hCarDetail.KeyPreview = true;
-            hCarDetail.Location = rectangleHCarList.Location;
-            hCarDetail.Size = new Size(1920, 1080);
-            hCarDetail.WindowState = FormWindowState.Normal;
             hCarDetail.ShowDialog(this);
         }
 
