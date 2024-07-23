@@ -9,8 +9,6 @@ using ControlEx;
 
 using Dao;
 
-using HighWayReport;
-
 using Microsoft.VisualBasic.Devices;
 
 using RollCall;
@@ -1453,14 +1451,14 @@ namespace VehicleDispatch {
                         }
                     }
                     break;
-                // 高速道路使用報告書
-                case "ToolStripMenuItemHighWayReport":
-                    // Nullチェック
-                    if (EvacuationSetControlEx is not null) {
-                        HighWayReportPaper highWayReportPaper = new HighWayReportPaper(EvacuationSetControlEx);
-                        highWayReportPaper.ShowDialog(this);
-                    }
-                    break;
+                //// 高速道路使用報告書
+                //case "ToolStripMenuItemHighWayReport":
+                //    // Nullチェック
+                //    if (EvacuationSetControlEx is not null) {
+                //        HighWayReportPaper highWayReportPaper = new HighWayReportPaper(EvacuationSetControlEx);
+                //        highWayReportPaper.ShowDialog(this);
+                //    }
+                //    break;
                 /*
                  * ContextMenuStripCarLabel
                  */

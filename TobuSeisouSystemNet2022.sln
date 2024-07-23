@@ -17,8 +17,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dao", "Dao\Dao.csproj", "{6
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RollCall", "RollCall\RollCall.csproj", "{B474178E-12BD-4381-A286-A759362581A5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HighWayReport", "HighWayReport\HighWayReport.csproj", "{19ED15AF-AD54-4738-B2EA-E7B73CE16AA6}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Certification", "Certification\Certification.csproj", "{2B863556-B31A-4C11-ACD1-2BB96E5510C1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WardSpreadsheet", "WardSpreadsheet\WardSpreadsheet.csproj", "{73622704-7A67-4358-99CD-0883FD0905C3}"
@@ -129,14 +127,6 @@ Global
 		{B474178E-12BD-4381-A286-A759362581A5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B474178E-12BD-4381-A286-A759362581A5}.Release|x64.ActiveCfg = Release|Any CPU
 		{B474178E-12BD-4381-A286-A759362581A5}.Release|x64.Build.0 = Release|Any CPU
-		{19ED15AF-AD54-4738-B2EA-E7B73CE16AA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{19ED15AF-AD54-4738-B2EA-E7B73CE16AA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{19ED15AF-AD54-4738-B2EA-E7B73CE16AA6}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{19ED15AF-AD54-4738-B2EA-E7B73CE16AA6}.Debug|x64.Build.0 = Debug|Any CPU
-		{19ED15AF-AD54-4738-B2EA-E7B73CE16AA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{19ED15AF-AD54-4738-B2EA-E7B73CE16AA6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{19ED15AF-AD54-4738-B2EA-E7B73CE16AA6}.Release|x64.ActiveCfg = Release|Any CPU
-		{19ED15AF-AD54-4738-B2EA-E7B73CE16AA6}.Release|x64.Build.0 = Release|Any CPU
 		{2B863556-B31A-4C11-ACD1-2BB96E5510C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2B863556-B31A-4C11-ACD1-2BB96E5510C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B863556-B31A-4C11-ACD1-2BB96E5510C1}.Debug|x64.ActiveCfg = Debug|Any CPU

@@ -155,9 +155,9 @@
             h_LabelEx3.AutoSize = true;
             h_LabelEx3.Location = new Point(228, 20);
             h_LabelEx3.Name = "h_LabelEx3";
-            h_LabelEx3.Size = new Size(19, 15);
+            h_LabelEx3.Size = new Size(31, 15);
             h_LabelEx3.TabIndex = 5;
-            h_LabelEx3.Text = "年";
+            h_LabelEx3.Text = "月分";
             // 
             // HNumericUpDownExMonth
             // 
