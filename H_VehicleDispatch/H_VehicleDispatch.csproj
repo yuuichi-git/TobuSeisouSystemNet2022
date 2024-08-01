@@ -27,6 +27,7 @@
     <ProjectReference Include="..\H_CollectionWeight\H_CollectionWeight.csproj" />
     <ProjectReference Include="..\H_Common\H_Common.csproj" />
     <ProjectReference Include="..\H_ControlEx\H_ControlEx.csproj" />
+    <ProjectReference Include="..\H_DailyReport\H_DailyReport.csproj" />
     <ProjectReference Include="..\H_Dao\H_Dao.csproj" />
     <ProjectReference Include="..\H_License\H_License.csproj" />
     <ProjectReference Include="..\H_RollColl\H_RollColl.csproj" />

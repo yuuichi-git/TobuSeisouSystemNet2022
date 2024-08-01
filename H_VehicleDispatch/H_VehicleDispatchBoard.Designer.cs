@@ -178,7 +178,6 @@
             // ToolStripMenuItemPrint
             // 
             ToolStripMenuItemPrint.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemPrintB4 });
-            ToolStripMenuItemPrint.Enabled = false;
             ToolStripMenuItemPrint.Name = "ToolStripMenuItemPrint";
             ToolStripMenuItemPrint.Size = new Size(43, 20);
             ToolStripMenuItemPrint.Text = "印刷";
@@ -186,8 +185,8 @@
             // ToolStripMenuItemPrintB4
             // 
             ToolStripMenuItemPrintB4.Name = "ToolStripMenuItemPrintB4";
-            ToolStripMenuItemPrintB4.Size = new Size(140, 22);
-            ToolStripMenuItemPrintB4.Text = "B4で印刷する";
+            ToolStripMenuItemPrintB4.Size = new Size(218, 22);
+            ToolStripMenuItemPrintB4.Text = "運転日報を印刷する(未記入)";
             ToolStripMenuItemPrintB4.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemHelp

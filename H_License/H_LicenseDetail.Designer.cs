@@ -209,7 +209,7 @@
             HButtonExUpdate.Name = "HButtonExUpdate";
             HButtonExUpdate.Size = new Size(148, 32);
             HButtonExUpdate.TabIndex = 2;
-            HButtonExUpdate.Text = "最　新　化";
+            HButtonExUpdate.Text = "UPDATE";
             HButtonExUpdate.TextDirectionVertical = "";
             HButtonExUpdate.UseVisualStyleBackColor = true;
             HButtonExUpdate.Click += HButtonEx_Click;
@@ -538,6 +538,7 @@
             // HComboBoxExLicenseCondition
             // 
             HComboBoxExLicenseCondition.FormattingEnabled = true;
+            HComboBoxExLicenseCondition.ImeMode = ImeMode.Hiragana;
             HComboBoxExLicenseCondition.Items.AddRange(new object[] { "中型車は中型車(８ｔ)に限る", "中型車は中型車(８ｔ)に限る　眼鏡等", "中型車は中型車(８ｔ)に限る　中型車(８ｔ)準中型車と普通車はATに限る", "準中型車で運転できる準中型車は準中型車(５ｔ)に限る", "準中型車で運転できる準中型車は準中型車(５ｔ)に限る　眼鏡等", "準中型車で運転できる準中型車は準中型車(５ｔ)に限る・準中型(５ｔ)と普通車はAT車に限る" });
             HComboBoxExLicenseCondition.Location = new Point(120, 208);
             HComboBoxExLicenseCondition.Name = "HComboBoxExLicenseCondition";
@@ -595,6 +596,7 @@
             // 
             // HTextBoxExCurrentAddress
             // 
+            HTextBoxExCurrentAddress.ImeMode = ImeMode.Hiragana;
             HTextBoxExCurrentAddress.Location = new Point(120, 124);
             HTextBoxExCurrentAddress.Name = "HTextBoxExCurrentAddress";
             HTextBoxExCurrentAddress.Size = new Size(436, 23);

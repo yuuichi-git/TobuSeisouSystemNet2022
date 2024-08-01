@@ -9,6 +9,8 @@ using H_Common;
 
 using H_ControlEx;
 
+using H_DailyReport;
+
 using H_Dao;
 
 using H_License;
@@ -607,10 +609,12 @@ namespace H_VehicleDispatch {
                     hStaffDestination.ShowDialog(this);
                     break;
                 /*
-                 * B4で印刷する
+                 * 運転日報を印刷する(未記入)
                  */
                 case "ToolStripMenuItemPrintB4":
-
+                    DriversReport driversReport = new(_connectionVo);
+                    new Desktop().SetPosition(driversReport, _connectionVo.Screen);
+                    driversReport.Show();
                     break;
                 /*
                  * 終了処理
@@ -726,6 +730,11 @@ namespace H_VehicleDispatch {
                  */
                 case "ToolStripMenuItemSetDetail": // 配車先の情報を表示する
                     MessageBox.Show("ToolStripMenuItemSetDetail");
+                    break;
+                case "ToolStripMenuItemDriversReport": // 日報を印刷する　
+                    DriversReport driversReport = new(_connectionVo, (H_ControlVo)((H_SetControl)((H_SetLabel)contextMenuStrip.SourceControl).Parent).Tag);
+                    new Desktop().SetPosition(driversReport, _connectionVo.Screen);
+                    driversReport.Show();
                     break;
                 case "ToolStripMenuItemSetMemo": // メモを作成・編集する
                     H_Memo hSetMemo = new(_connectionVo, (H_SetControl)((H_SetLabel)contextMenuStrip.SourceControl).Parent, (H_SetLabel)contextMenuStrip.SourceControl);

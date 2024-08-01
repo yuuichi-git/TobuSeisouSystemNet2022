@@ -63,6 +63,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H_Certification", "H_Certif
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "H_StockBox", "H_StockBox\H_StockBox.csproj", "{2309653C-4BCA-43AA-90D3-A6FADF1F3FEE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "H_DailyReport", "H_DailyReport\H_DailyReport.csproj", "{5DFA77CA-BA71-4862-B09A-045758E14722}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -311,6 +313,14 @@ Global
 		{2309653C-4BCA-43AA-90D3-A6FADF1F3FEE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2309653C-4BCA-43AA-90D3-A6FADF1F3FEE}.Release|x64.ActiveCfg = Release|Any CPU
 		{2309653C-4BCA-43AA-90D3-A6FADF1F3FEE}.Release|x64.Build.0 = Release|Any CPU
+		{5DFA77CA-BA71-4862-B09A-045758E14722}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DFA77CA-BA71-4862-B09A-045758E14722}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DFA77CA-BA71-4862-B09A-045758E14722}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{5DFA77CA-BA71-4862-B09A-045758E14722}.Debug|x64.Build.0 = Debug|Any CPU
+		{5DFA77CA-BA71-4862-B09A-045758E14722}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DFA77CA-BA71-4862-B09A-045758E14722}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DFA77CA-BA71-4862-B09A-045758E14722}.Release|x64.ActiveCfg = Release|Any CPU
+		{5DFA77CA-BA71-4862-B09A-045758E14722}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
