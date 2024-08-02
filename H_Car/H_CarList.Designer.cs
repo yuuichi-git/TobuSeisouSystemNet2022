@@ -201,7 +201,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1904, 1041);
             Controls.Add(HTableLayoutPanelExBase);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = MenuStrip1;
             Name = "HCarList";
             Text = "H_CarList";

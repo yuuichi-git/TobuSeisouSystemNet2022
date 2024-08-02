@@ -341,7 +341,7 @@
             HTableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
             HTableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             HTableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
-            HTableLayoutPanelExBase.Size = new Size(1904, 1551);
+            HTableLayoutPanelExBase.Size = new Size(1904, 1041);
             HTableLayoutPanelExBase.TabIndex = 0;
             // 
             // MenuStrip1
@@ -376,7 +376,7 @@
             // StatusStrip1
             // 
             StatusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, ToolStripStatusLabelDetail });
-            StatusStrip1.Location = new Point(0, 1529);
+            StatusStrip1.Location = new Point(0, 1019);
             StatusStrip1.Name = "StatusStrip1";
             StatusStrip1.Size = new Size(1904, 22);
             StatusStrip1.TabIndex = 1;
@@ -428,7 +428,7 @@
             HTableLayoutPanelExMiddle.RowCount = 1;
             HTableLayoutPanelExMiddle.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             HTableLayoutPanelExMiddle.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            HTableLayoutPanelExMiddle.Size = new Size(1898, 1437);
+            HTableLayoutPanelExMiddle.Size = new Size(1898, 927);
             HTableLayoutPanelExMiddle.TabIndex = 3;
             // 
             // HPanelExMiddleLeft
@@ -445,7 +445,7 @@
             HPanelExMiddleLeft.Dock = DockStyle.Fill;
             HPanelExMiddleLeft.Location = new Point(3, 3);
             HPanelExMiddleLeft.Name = "HPanelExMiddleLeft";
-            HPanelExMiddleLeft.Size = new Size(943, 1431);
+            HPanelExMiddleLeft.Size = new Size(943, 921);
             HPanelExMiddleLeft.TabIndex = 0;
             // 
             // GroupBoxExOccupation
@@ -1662,7 +1662,7 @@
             HPanelExMiddleRight.Dock = DockStyle.Fill;
             HPanelExMiddleRight.Location = new Point(952, 3);
             HPanelExMiddleRight.Name = "HPanelExMiddleRight";
-            HPanelExMiddleRight.Size = new Size(943, 1431);
+            HPanelExMiddleRight.Size = new Size(943, 921);
             HPanelExMiddleRight.TabIndex = 1;
             // 
             // HGroupBoxProper
@@ -3139,10 +3139,9 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1904, 1551);
+            ClientSize = new Size(1904, 1041);
             Controls.Add(HTableLayoutPanelExBase);
             MainMenuStrip = MenuStrip1;
-            MaximumSize = new Size(1920, 1590);
             MinimumSize = new Size(1918, 1046);
             Name = "HStaffDetail";
             Text = "HStaffDetail";

@@ -43,20 +43,34 @@ namespace H_DailyReport {
                  * B5で印刷する
                  */
                 case "ToolStripMenuItemPrintB5":
+                    PrintDocument printDocument = new();
+                    printDocument.PrintPage += new PrintPageEventHandler(PrintDocument_PrintPage);
+                    // 出力先プリンタを指定します。
+                    printDocument.PrinterSettings.PrinterName = "FUJI XEROX ApeosPort C5570";
+                    // 用紙の向きを設定(横：true、縦：false)
+                    printDocument.DefaultPageSettings.Landscape = false;
                     /*
-                     * PrintInfoを作成する
+                     * プリンタがサポートしている用紙サイズを調べる
                      */
-                    PrintInfo printInfo = new();
-                    printInfo.Duplex = Duplex.Simplex; // 片面印刷
-                    printInfo.EnhancePreview = true;
-                    printInfo.Preview = true;
-                    printInfo.ShowBorder = false; // 外枠のボーダー線
-                    printInfo.ShowColor = true; // カラー印刷
-                    SheetViewDriversReport.PrintInfo = printInfo;
-                    /*
-                     * 印刷を実行します
-                     */
-                    SpreadDriversReport.PrintSheet(SheetViewDriversReport);
+                    foreach (PaperSize paperSize in printDocument.PrinterSettings.PaperSizes) {
+                        // A4用紙に設定する
+                        if (paperSize.Kind == PaperKind.B5) {
+                            printDocument.DefaultPageSettings.PaperSize = paperSize;
+                            break;
+                        }
+                    }
+                    // 印刷部数を指定します。
+                    printDocument.PrinterSettings.Copies = 1;
+                    // 片面印刷に設定します。
+                    printDocument.PrinterSettings.Duplex = Duplex.Default;
+                    // カラー印刷に設定します。
+                    printDocument.PrinterSettings.DefaultPageSettings.Color = true;
+                    // 印刷する
+                    printDocument.Print();
+                    ///*
+                    // * 印刷を実行します
+                    // */
+                    //SpreadDriversReport.PrintSheet(SheetViewDriversReport);
                     break;
                 /*
                  * アプリケーションを終了する
@@ -67,6 +81,23 @@ namespace H_DailyReport {
             }
         }
 
+        /// <summary>
+        /// 運転日報を印刷する
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e) {
+            // 印刷ページ（1ページ目）の描画を行う
+            Rectangle rectangle = new(e.PageBounds.X, e.PageBounds.Y, e.PageBounds.Width, e.PageBounds.Height);
+            // e.Graphicsへ出力(page パラメータは、０からではなく１から始まります)
+            SpreadDriversReport.OwnerPrintDraw(e.Graphics, rectangle, 0, 1);
+            // 印刷終了を指定
+            e.HasMorePages = false;
+        }
+
+        /// <summary>
+        /// InitializeSheetView
+        /// </summary>
         private void InitializeSheetView() {
             // 年表示を設定する
             this.HNumericUpDownExYear.Value = 6;
@@ -99,9 +130,6 @@ namespace H_DailyReport {
             SheetViewDriversReport.Cells[14, 22].Text = string.Empty; // 正味重量⑦
             SheetViewDriversReport.Cells[15, 17].Text = string.Empty; // 運搬先名⑧
             SheetViewDriversReport.Cells[15, 22].Text = string.Empty; // 正味重量⑧
-
-
-
         }
 
         /// <summary>
@@ -142,6 +170,9 @@ namespace H_DailyReport {
                 case 1311715: // 北区粗大対策
                     SheetViewDriversReport.Cells[3, 23].Text = "粗大　　組"; // 組名
                     SheetViewDriversReport.Cells[10, 17].Text = "浮間清掃事業所 /"; // 休憩場所
+                    SheetViewDriversReport.Cells[12, 3].Text = "浮間清掃事業所"; // 運搬先名①
+                    SheetViewDriversReport.Cells[13, 3].Text = "浮間清掃事業所"; // 運搬先名②
+                    SheetViewDriversReport.Cells[14, 3].Text = "浮間清掃事業所"; // 運搬先名③
                     break;
                 case 1310602: // 台東資源１
                 case 1310603: // 台東資源２
@@ -171,6 +202,7 @@ namespace H_DailyReport {
                     SheetViewDriversReport.Cells[10, 17].Text = "足立工場 /"; // 休憩場所
                     break;
                 case 1312212: // 小岩６
+                    SheetViewDriversReport.Cells[10, 17].Text = "小岩清掃事務所 駐車場 /"; // 休憩場所
                     SheetViewDriversReport.Cells[11, 8].Text = "搬　入　時　刻";
                     SheetViewDriversReport.Cells[11, 22].Text = "搬　入　時　刻";
                     SheetViewDriversReport.Cells[12, 8].Text = "："; // 正味重量①
@@ -181,6 +213,9 @@ namespace H_DailyReport {
                     SheetViewDriversReport.Cells[13, 22].Text = "："; // 正味重量⑥
                     SheetViewDriversReport.Cells[14, 22].Text = "："; // 正味重量⑦
                     SheetViewDriversReport.Cells[15, 22].Text = "："; // 正味重量⑧
+                    break;
+                case 1310417: // 新宿２－５１
+                    SheetViewDriversReport.Cells[10, 17].Text = "新宿清掃事務所　駐車場 /"; // 休憩場所
                     break;
 
             }

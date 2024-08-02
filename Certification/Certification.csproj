@@ -17,7 +17,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'" />
 
   <ItemGroup>
-    <PackageReference Include="grapecity.spread.winforms.ja" Version="15.2.0" />
+    <PackageReference Include="grapecity.spread.winforms.ja" Version="15.3.0" />
   </ItemGroup>
 
   <ItemGroup>

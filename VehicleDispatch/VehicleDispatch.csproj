@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <PackageReference Include="DotNetCore.NPOI" Version="1.2.3" />
-    <PackageReference Include="GrapeCity.Spread.WinForms.ja" Version="15.2.0" />
+    <PackageReference Include="GrapeCity.Spread.WinForms.ja" Version="15.3.0" />
     <PackageReference Include="NPOI" Version="2.7.0" />
   </ItemGroup>
 

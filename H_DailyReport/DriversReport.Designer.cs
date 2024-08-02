@@ -35,11 +35,11 @@
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             ToolStripStatusLabelDetail = new ToolStripStatusLabel();
             SpreadDriversReport = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("HTableLayoutPanelExBase.Controls"));
-            SheetViewDriversReport = SpreadDriversReport.GetSheet(0);
             HPanelExUp = new H_ControlEx.H_PanelEx();
             h_LabelEx2 = new H_ControlEx.H_LabelEx();
             HNumericUpDownExYear = new H_ControlEx.H_NumericUpDownEx();
             h_LabelEx1 = new H_ControlEx.H_LabelEx();
+            SheetViewDriversReport = SpreadDriversReport.GetSheet(0);
             HTableLayoutPanelExBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -64,7 +64,7 @@
             HTableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
             HTableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             HTableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
-            HTableLayoutPanelExBase.Size = new Size(1198, 961);
+            HTableLayoutPanelExBase.Size = new Size(1173, 961);
             HTableLayoutPanelExBase.TabIndex = 0;
             // 
             // MenuStrip1
@@ -72,7 +72,7 @@
             MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemPrint, ToolStripMenuItemHelp });
             MenuStrip1.Location = new Point(0, 0);
             MenuStrip1.Name = "MenuStrip1";
-            MenuStrip1.Size = new Size(1198, 24);
+            MenuStrip1.Size = new Size(1173, 24);
             MenuStrip1.TabIndex = 0;
             MenuStrip1.Text = "menuStrip1";
             // 
@@ -115,7 +115,7 @@
             StatusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, ToolStripStatusLabelDetail });
             StatusStrip1.Location = new Point(0, 939);
             StatusStrip1.Name = "StatusStrip1";
-            StatusStrip1.Size = new Size(1198, 22);
+            StatusStrip1.Size = new Size(1173, 22);
             StatusStrip1.TabIndex = 1;
             StatusStrip1.Text = "statusStrip1";
             // 
@@ -138,7 +138,7 @@
             SpreadDriversReport.Font = new Font("ＭＳ Ｐゴシック", 11F, FontStyle.Regular, GraphicsUnit.Point);
             SpreadDriversReport.Location = new Point(3, 87);
             SpreadDriversReport.Name = "SpreadDriversReport";
-            SpreadDriversReport.Size = new Size(1192, 847);
+            SpreadDriversReport.Size = new Size(1167, 847);
             SpreadDriversReport.TabIndex = 2;
             // 
             // HPanelExUp
@@ -149,7 +149,7 @@
             HPanelExUp.Dock = DockStyle.Fill;
             HPanelExUp.Location = new Point(3, 27);
             HPanelExUp.Name = "HPanelExUp";
-            HPanelExUp.Size = new Size(1192, 54);
+            HPanelExUp.Size = new Size(1167, 54);
             HPanelExUp.TabIndex = 3;
             // 
             // h_LabelEx2
@@ -190,7 +190,7 @@
             AccessibleRole = AccessibleRole.OutlineButton;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1198, 961);
+            ClientSize = new Size(1173, 961);
             Controls.Add(HTableLayoutPanelExBase);
             MainMenuStrip = MenuStrip1;
             Name = "DriversReport";
@@ -223,9 +223,9 @@
         private FarPoint.Win.Spread.FpSpread SpreadDriversReport;
         private ToolStripMenuItem ToolStripMenuItemPrintB5;
         private H_ControlEx.H_PanelEx HPanelExUp;
-        private FarPoint.Win.Spread.SheetView SheetViewDriversReport;
         private H_ControlEx.H_LabelEx h_LabelEx2;
         private H_ControlEx.H_NumericUpDownEx HNumericUpDownExYear;
         private H_ControlEx.H_LabelEx h_LabelEx1;
+        private FarPoint.Win.Spread.SheetView SheetViewDriversReport;
     }
 }
