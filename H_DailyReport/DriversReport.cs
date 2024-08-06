@@ -5,17 +5,32 @@ using System.Drawing.Printing;
 
 using FarPoint.Win.Spread;
 
+using H_Common;
+
 using Vo;
 
 namespace H_DailyReport {
     public partial class DriversReport : Form {
+
+        PrintDocument _printDocument = new();
 
         /// <summary>
         /// コンストラクター(未記入の日報用)
         /// </summary>
         /// <param name="connectionVo"></param>
         public DriversReport(ConnectionVo connectionVo) {
+            /*
+             * InitializeControl
+             */
             InitializeComponent();
+            /*
+             * プリンターの一覧を取得後、通常使うプリンター名をセットする
+             */
+            foreach (string item in new Print().GetAllPrinterName()) {
+                this.HComboBoxExPrinterName.Items.Add(item);
+            }
+            this.HComboBoxExPrinterName.Text = _printDocument.PrinterSettings.PrinterName;
+
             this.InitializeSheetView();
             this.InitializeSheetView(SheetViewDriversReport);
         }
@@ -26,7 +41,18 @@ namespace H_DailyReport {
         /// <param name="connectionVo"></param>
         /// <param name="hControlVo"></param>
         public DriversReport(ConnectionVo connectionVo, H_ControlVo hControlVo) {
+            /*
+             * InitializeControl
+             */
             InitializeComponent();
+            /*
+             * プリンターの一覧を取得後、通常使うプリンター名をセットする
+             */
+            foreach (string item in new Print().GetAllPrinterName()) {
+                this.HComboBoxExPrinterName.Items.Add(item);
+            }
+            this.HComboBoxExPrinterName.Text = _printDocument.PrinterSettings.PrinterName;
+
             this.InitializeSheetView();
             this.InitializeSheetView(SheetViewDriversReport, hControlVo);
         }
@@ -43,34 +69,42 @@ namespace H_DailyReport {
                  * B5で印刷する
                  */
                 case "ToolStripMenuItemPrintB5":
-                    PrintDocument printDocument = new();
-                    printDocument.PrintPage += new PrintPageEventHandler(PrintDocument_PrintPage);
+                    // Eventを登録
+                    _printDocument.PrintPage += new PrintPageEventHandler(PrintDocument_PrintPage);
                     // 出力先プリンタを指定します。
-                    printDocument.PrinterSettings.PrinterName = "FUJI XEROX ApeosPort C5570";
+                    _printDocument.PrinterSettings.PrinterName = this.HComboBoxExPrinterName.Text;
                     // 用紙の向きを設定(横：true、縦：false)
-                    printDocument.DefaultPageSettings.Landscape = false;
+                    _printDocument.DefaultPageSettings.Landscape = false;
                     /*
                      * プリンタがサポートしている用紙サイズを調べる
                      */
-                    foreach (PaperSize paperSize in printDocument.PrinterSettings.PaperSizes) {
+                    foreach (PaperSize paperSize in _printDocument.PrinterSettings.PaperSizes) {
                         // A4用紙に設定する
                         if (paperSize.Kind == PaperKind.B5) {
-                            printDocument.DefaultPageSettings.PaperSize = paperSize;
+                            _printDocument.DefaultPageSettings.PaperSize = paperSize;
                             break;
                         }
                     }
                     // 印刷部数を指定します。
-                    printDocument.PrinterSettings.Copies = 1;
+                    _printDocument.PrinterSettings.Copies = 1;
                     // 片面印刷に設定します。
-                    printDocument.PrinterSettings.Duplex = Duplex.Default;
+                    _printDocument.PrinterSettings.Duplex = Duplex.Default;
                     // カラー印刷に設定します。
-                    printDocument.PrinterSettings.DefaultPageSettings.Color = true;
+                    _printDocument.PrinterSettings.DefaultPageSettings.Color = true;
                     // 印刷する
-                    printDocument.Print();
-                    ///*
-                    // * 印刷を実行します
-                    // */
-                    //SpreadDriversReport.PrintSheet(SheetViewDriversReport);
+                    _printDocument.Print();
+                    break;
+                /*
+                 * B5で印刷する
+                 */
+                case "ToolStripMenuItemPrintB5Dialog":
+                    // Excelライクなプレビューダイアログを有効にします
+                    SheetViewDriversReport.PrintInfo.EnhancePreview = true;
+                    SheetViewDriversReport.PrintInfo.Preview = true;
+                    SheetViewDriversReport.PrintInfo.ShowBorder = false;
+                    SheetViewDriversReport.PrintInfo.ShowColor = true;
+                    // 印刷を実行します
+                    SpreadDriversReport.PrintSheet(SheetViewDriversReport);
                     break;
                 /*
                  * アプリケーションを終了する

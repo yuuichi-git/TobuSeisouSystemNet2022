@@ -30,16 +30,19 @@
             ToolStripMenuItemExit = new ToolStripMenuItem();
             ToolStripMenuItemPrint = new ToolStripMenuItem();
             ToolStripMenuItemPrintB5 = new ToolStripMenuItem();
+            ToolStripMenuItemPrintB5Dialog = new ToolStripMenuItem();
             ToolStripMenuItemHelp = new ToolStripMenuItem();
             StatusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             ToolStripStatusLabelDetail = new ToolStripStatusLabel();
             SpreadDriversReport = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("HTableLayoutPanelExBase.Controls"));
+            SheetViewDriversReport = SpreadDriversReport.GetSheet(0);
             HPanelExUp = new H_ControlEx.H_PanelEx();
+            h_LabelEx3 = new H_ControlEx.H_LabelEx();
+            HComboBoxExPrinterName = new H_ControlEx.H_ComboBoxEx();
             h_LabelEx2 = new H_ControlEx.H_LabelEx();
             HNumericUpDownExYear = new H_ControlEx.H_NumericUpDownEx();
             h_LabelEx1 = new H_ControlEx.H_LabelEx();
-            SheetViewDriversReport = SpreadDriversReport.GetSheet(0);
             HTableLayoutPanelExBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -92,7 +95,7 @@
             // 
             // ToolStripMenuItemPrint
             // 
-            ToolStripMenuItemPrint.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemPrintB5 });
+            ToolStripMenuItemPrint.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemPrintB5, ToolStripMenuItemPrintB5Dialog });
             ToolStripMenuItemPrint.Name = "ToolStripMenuItemPrint";
             ToolStripMenuItemPrint.Size = new Size(43, 20);
             ToolStripMenuItemPrint.Text = "印刷";
@@ -100,9 +103,16 @@
             // ToolStripMenuItemPrintB5
             // 
             ToolStripMenuItemPrintB5.Name = "ToolStripMenuItemPrintB5";
-            ToolStripMenuItemPrintB5.Size = new Size(140, 22);
-            ToolStripMenuItemPrintB5.Text = "B5で印刷する";
+            ToolStripMenuItemPrintB5.Size = new Size(217, 22);
+            ToolStripMenuItemPrintB5.Text = "B5で印刷する(直接印刷)";
             ToolStripMenuItemPrintB5.Click += ToolStripMenuItem_Click;
+            // 
+            // ToolStripMenuItemPrintB5Dialog
+            // 
+            ToolStripMenuItemPrintB5Dialog.Name = "ToolStripMenuItemPrintB5Dialog";
+            ToolStripMenuItemPrintB5Dialog.Size = new Size(217, 22);
+            ToolStripMenuItemPrintB5Dialog.Text = "B5で印刷する(ダイアログ表示)";
+            ToolStripMenuItemPrintB5Dialog.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemHelp
             // 
@@ -143,6 +153,8 @@
             // 
             // HPanelExUp
             // 
+            HPanelExUp.Controls.Add(h_LabelEx3);
+            HPanelExUp.Controls.Add(HComboBoxExPrinterName);
             HPanelExUp.Controls.Add(h_LabelEx2);
             HPanelExUp.Controls.Add(HNumericUpDownExYear);
             HPanelExUp.Controls.Add(h_LabelEx1);
@@ -151,6 +163,24 @@
             HPanelExUp.Name = "HPanelExUp";
             HPanelExUp.Size = new Size(1167, 54);
             HPanelExUp.TabIndex = 3;
+            // 
+            // h_LabelEx3
+            // 
+            h_LabelEx3.AutoSize = true;
+            h_LabelEx3.Font = new Font("Yu Gothic UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            h_LabelEx3.Location = new Point(324, 16);
+            h_LabelEx3.Name = "h_LabelEx3";
+            h_LabelEx3.Size = new Size(58, 21);
+            h_LabelEx3.TabIndex = 4;
+            h_LabelEx3.Text = "出力先";
+            // 
+            // HComboBoxExPrinterName
+            // 
+            HComboBoxExPrinterName.FormattingEnabled = true;
+            HComboBoxExPrinterName.Location = new Point(384, 16);
+            HComboBoxExPrinterName.Name = "HComboBoxExPrinterName";
+            HComboBoxExPrinterName.Size = new Size(256, 23);
+            HComboBoxExPrinterName.TabIndex = 3;
             // 
             // h_LabelEx2
             // 
@@ -227,5 +257,8 @@
         private H_ControlEx.H_NumericUpDownEx HNumericUpDownExYear;
         private H_ControlEx.H_LabelEx h_LabelEx1;
         private FarPoint.Win.Spread.SheetView SheetViewDriversReport;
+        private ToolStripMenuItem ToolStripMenuItemPrintB5Dialog;
+        private H_ControlEx.H_LabelEx h_LabelEx3;
+        private H_ControlEx.H_ComboBoxEx HComboBoxExPrinterName;
     }
 }
