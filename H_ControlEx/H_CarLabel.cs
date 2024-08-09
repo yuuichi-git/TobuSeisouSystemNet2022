@@ -12,11 +12,6 @@ namespace H_ControlEx {
          * インスタンスから見えるようになる
          * CarLabel
          */
-        public event MouseEventHandler Event_HCarLabel_MouseClick = delegate { };
-        public event MouseEventHandler Event_HCarLabel_MouseDoubleClick = delegate { };
-        public event MouseEventHandler Event_HCarLabel_MouseMove = delegate { };
-        public event EventHandler Event_HCarLabel_MouseEnter = delegate { }; // 2024-07-18追加
-        public event EventHandler Event_HCarLabel_MouseLeave = delegate { }; // 2024-07-18追加
         public event EventHandler Event_HCarLabel_ToolStripMenuItem_Click = delegate { };
 
         private Image _imageCarLabel;
@@ -116,14 +111,6 @@ namespace H_ControlEx {
             } else {
                 this.CarGarageCode = _hCarMasterVo.GarageCode; // 車庫地
             }
-            /*
-             * Event
-             */
-            this.MouseClick += HCarLabel_MouseClick;
-            this.MouseDoubleClick += HCarLabel_MouseDoubleClick;
-            this.MouseEnter += HCarLabel_MouseEnter; // 2024-07-18
-            this.MouseMove += HCarLabel_MouseMove;
-            this.MouseLeave += HCarLabel_MouseLeave; // 2024-07-18
         }
 
         /// <summary>
@@ -406,25 +393,6 @@ namespace H_ControlEx {
             set {
                 _carProxyFlag = value;
             }
-        }
-
-        /*
-         * H_CarLabelEx
-         */
-        private void HCarLabel_MouseClick(object sender, MouseEventArgs e) {
-            Event_HCarLabel_MouseClick.Invoke(sender, e);
-        }
-        private void HCarLabel_MouseDoubleClick(object sender, MouseEventArgs e) {
-            Event_HCarLabel_MouseDoubleClick.Invoke(sender, e);
-        }
-        private void HCarLabel_MouseEnter(object sender, EventArgs e) { // 2024-07-18追加
-            Event_HCarLabel_MouseEnter.Invoke(sender, e);
-        }
-        private void HCarLabel_MouseLeave(object sender, EventArgs e) { // 2024-07-18追加
-            Event_HCarLabel_MouseLeave.Invoke(sender, e);
-        }
-        private void HCarLabel_MouseMove(object sender, MouseEventArgs e) {
-            Event_HCarLabel_MouseMove.Invoke(sender, e);
         }
     }
 }

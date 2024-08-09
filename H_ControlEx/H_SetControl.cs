@@ -202,11 +202,11 @@ namespace H_ControlEx {
                 /*
                  * イベントを登録
                  */
-                hSetLabel.Event_HSetLabel_MouseClick += HSetControl_HSetLabel_MouseClick;
-                hSetLabel.Event_HSetLabel_MouseDoubleClick += HSetControl_HSetLabel_MouseDoubleClick;
-                hSetLabel.Event_HSetLabel_MouseEnter += HSetControl_MouseEnter; // 2024-07-18追加
-                hSetLabel.Event_HSetLabel_MouseMove += HSetControl_HSetLabel_MouseMove; // H_BoardでD&D用
-                hSetLabel.Event_HSetLabel_MouseLeave += HSetControl_MouseLeave; // 2024-07-18追加
+                hSetLabel.MouseClick += HSetControl_HSetLabel_MouseClick;
+                hSetLabel.MouseDoubleClick += HSetControl_HSetLabel_MouseDoubleClick;
+                hSetLabel.MouseEnter += HSetControl_MouseEnter; // 2024-07-18追加
+                hSetLabel.MouseLeave += HSetControl_MouseLeave; // 2024-07-18追加
+                hSetLabel.MouseMove += HSetControl_HSetLabel_MouseMove; // H_BoardでD&D用
                 hSetLabel.Event_HSetLabel_ToolStripMenuItem_Click += HSetControl_HSetLabel_ToolStripMenuItem_Click;
                 // SetLabelを追加
                 this.Controls.Add(hSetLabel, 0, 0);
@@ -223,11 +223,11 @@ namespace H_ControlEx {
                 /*
                  * イベントを登録
                  */
-                hCarLabel.Event_HCarLabel_MouseClick += HSetControl_HCarLabel_MouseClick;
-                hCarLabel.Event_HCarLabel_MouseDoubleClick += HSetControl_HCarLabel_MouseDoubleClick;
-                hCarLabel.Event_HCarLabel_MouseEnter += HSetControl_MouseEnter; // 2024-07-18追加
-                hCarLabel.Event_HCarLabel_MouseMove += HSetControl_HCarLabel_MouseMove; // H_BoardでD&D用
-                hCarLabel.Event_HCarLabel_MouseLeave += HSetControl_MouseLeave; // 2024-07-18追加
+                hCarLabel.MouseClick += HSetControl_HCarLabel_MouseClick;
+                hCarLabel.MouseDoubleClick += HSetControl_HCarLabel_MouseDoubleClick;
+                hCarLabel.MouseEnter += HSetControl_MouseEnter; // 2024-07-18追加
+                hCarLabel.MouseLeave += HSetControl_MouseLeave; // 2024-07-18追加
+                hCarLabel.MouseMove += HSetControl_HCarLabel_MouseMove; // H_BoardでD&D用
                 hCarLabel.Event_HCarLabel_ToolStripMenuItem_Click += HSetControl_HCarLabel_ToolStripMenuItem_Click;
                 // CarLabelを追加
                 this.Controls.Add(hCarLabel, 0, 1);
@@ -245,15 +245,15 @@ namespace H_ControlEx {
                 if (hStaffMasterVo.StaffCode != 0) {
                     hControlVo.HStaffMasterVo = hStaffMasterVo;
                     hControlVo.SelectNumberStaffMasterVo = i; // List内の何番目のデータかを格納
-                    H_StaffLabel hStaffLabel = new(hControlVo);
                     /*
                      * イベントを登録
                      */
-                    hStaffLabel.Event_HStaffLabel_MouseClick += HSetControl_HStaffLabel_MouseClick;
-                    hStaffLabel.Event_HStaffLabel_MouseDoubleClick += HSetControl_HStaffLabel_MouseDoubleClick;
-                    hStaffLabel.Event_HStaffLabel_MouseEnter += HSetControl_MouseEnter; // 2024-07-18追加
-                    hStaffLabel.Event_HStaffLabel_MouseMove += HSetControl_HStaffLabel_MouseMove; // H_BoardでD&D用
-                    hStaffLabel.Event_HStaffLabel_MouseLeave += HSetControl_MouseLeave; // 2024-07-18追加
+                    H_StaffLabel hStaffLabel = new(hControlVo);
+                    hStaffLabel.MouseClick += HSetControl_HStaffLabel_MouseClick;
+                    hStaffLabel.MouseDoubleClick += HSetControl_HStaffLabel_MouseDoubleClick;
+                    hStaffLabel.MouseEnter += HSetControl_MouseEnter; // 2024-07-18追加
+                    hStaffLabel.MouseLeave += HSetControl_MouseLeave; // 2024-07-18追加
+                    hStaffLabel.MouseMove += HSetControl_HStaffLabel_MouseMove; // H_BoardでD&D用
                     hStaffLabel.Event_HStaffLabel_ToolStripMenuItem_Click += HSetControl_HStaffLabel_ToolStripMenuItem_Click;
                     // StaffLabelを追加
                     this.Controls.Add(hStaffLabel, _dictionaryCellPoint[i].X, _dictionaryCellPoint[i].Y);
@@ -402,7 +402,7 @@ namespace H_ControlEx {
 
         /// <summary>
         /// HSetControl_MouseLeave
-        /// /// H_SetControl/H_SetLabel/H_CarLabel/H_StaffLabelからのMouseEnterを受け取り_newOnCursorFlagをセットする
+        /// H_SetControl/H_SetLabel/H_CarLabel/H_StaffLabelからのMouseEnterを受け取り_newOnCursorFlagをセットする
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -447,8 +447,39 @@ namespace H_ControlEx {
              * ここでDrop先にObjectが存在した場合、以降の処理をキャンセルするコードを書く
              */
             bool updateFlag = false; // true:更新不可能 false:更新可能
+            /*
+             * H_SetLabel
+             */
             if (e.Data.GetDataPresent(typeof(H_SetLabel))) {
                 try {
+                    H_SetLabel dragItem = (H_SetLabel)e.Data.GetData(typeof(H_SetLabel));
+                    /*
+                     * 
+                     * Eventを再設定する
+                     * 
+                     */
+                    switch (dragItem.Parent.Name) {
+                        case "H_SetControl":
+                            /*
+                             * H_StaffLabelが移動する前のH_SetControlのEventを削除する
+                             */
+                            H_SetControl beforeHSetControl = (H_SetControl)dragItem.Parent;
+                            dragItem.MouseClick -= beforeHSetControl.HSetControl_HSetLabel_MouseClick;
+                            dragItem.MouseDoubleClick -= beforeHSetControl.HSetControl_HSetLabel_MouseDoubleClick;
+                            dragItem.MouseMove -= beforeHSetControl.HSetControl_HSetLabel_MouseMove;
+                            dragItem.MouseEnter -= beforeHSetControl.HSetControl_MouseEnter;
+                            dragItem.MouseLeave -= beforeHSetControl.HSetControl_MouseLeave;
+                            /*
+                             * Drop後のH_SetControlにEventを追加する
+                             */
+                            dragItem.MouseClick += HSetControl_HSetLabel_MouseClick;
+                            dragItem.MouseDoubleClick += HSetControl_HSetLabel_MouseDoubleClick;
+                            dragItem.MouseMove += HSetControl_HSetLabel_MouseMove;
+                            dragItem.MouseEnter += HSetControl_MouseEnter;
+                            dragItem.MouseLeave += HSetControl_MouseLeave;
+                            break;
+                    }
+                    // Drop先にH_SetLabelExが存在するかチェックする
                     updateFlag = _hVehicleDispatchDetailDao.CheckSetCode(_hControlVo.CellNumber, _hControlVo.OperationDate);
                 } catch (Exception exception) {
                     MessageBox.Show(exception.Message);
@@ -461,9 +492,39 @@ namespace H_ControlEx {
                     Event_HSetControl_DragDrop.Invoke(sender, e);
                 }
             }
-
+            /*
+             * H_CarLabel
+             */
             if (e.Data.GetDataPresent(typeof(H_CarLabel))) {
                 try {
+                    H_CarLabel dragItem = (H_CarLabel)e.Data.GetData(typeof(H_CarLabel));
+                    /*
+                     * 
+                     * Eventを再設定する
+                     * 
+                     */
+                    switch (dragItem.Parent.Name) {
+                        case "H_SetControl":
+                            /*
+                             * H_StaffLabelが移動する前のH_SetControlのEventを削除する
+                             */
+                            H_SetControl beforeHSetControl = (H_SetControl)dragItem.Parent;
+                            dragItem.MouseClick -= beforeHSetControl.HSetControl_HCarLabel_MouseClick;
+                            dragItem.MouseDoubleClick -= beforeHSetControl.HSetControl_HCarLabel_MouseDoubleClick;
+                            dragItem.MouseMove -= beforeHSetControl.HSetControl_HCarLabel_MouseMove;
+                            dragItem.MouseEnter -= beforeHSetControl.HSetControl_MouseEnter;
+                            dragItem.MouseLeave -= beforeHSetControl.HSetControl_MouseLeave;
+                            /*
+                             * Drop後のH_SetControlにEventを追加する
+                             */
+                            dragItem.MouseClick += HSetControl_HCarLabel_MouseClick;
+                            dragItem.MouseDoubleClick += HSetControl_HCarLabel_MouseDoubleClick;
+                            dragItem.MouseMove += HSetControl_HCarLabel_MouseMove;
+                            dragItem.MouseEnter += HSetControl_MouseEnter;
+                            dragItem.MouseLeave += HSetControl_MouseLeave;
+                            break;
+                    }
+                    // Drop先にH_CarLabelExが存在するかチェックする
                     updateFlag = _hVehicleDispatchDetailDao.CheckCarCode(_hControlVo.CellNumber, _hControlVo.OperationDate);
                 } catch (Exception exception) {
                     MessageBox.Show(exception.Message);
@@ -476,34 +537,54 @@ namespace H_ControlEx {
                     Event_HSetControl_DragDrop.Invoke(sender, e);
                 }
             }
-
+            /*
+             * H_StaffLabel
+             */
             if (e.Data.GetDataPresent(typeof(H_StaffLabel))) {
                 /*
                  * カーソル座標からどのセルにDropされたかを調べる 
                  */
                 Point clientPoint = ((H_SetControl)sender).PointToClient(new Point(e.X, e.Y));
                 Point cellPoint = new(clientPoint.X / (int)_panelWidth, clientPoint.Y / (int)_panelHeight);
-                int staffNumber = cellPoint.X * 2 + (cellPoint.Y - 2);
+                int staffCellNumber = cellPoint.X * 2 + (cellPoint.Y - 2);
                 try {
-                    /*
-                     * 2024-07-09 H_StaffLabelExのCellNumberプロパティにDrop先のCellNumberを代入する
-                     */
                     H_StaffLabel dragItem = (H_StaffLabel)e.Data.GetData(typeof(H_StaffLabel));
-                    dragItem.CellNumber = staffNumber;
+                    /*
+                     * 
+                     * Eventを再設定する
+                     * 
+                     */
+                    switch (dragItem.Parent.Name) {
+                        case "H_SetControl":
+                            /*
+                             * H_StaffLabelが移動する前のH_SetControlのEventを削除する
+                             */
+                            H_SetControl beforeHSetControl = (H_SetControl)dragItem.Parent;
+                            dragItem.MouseClick -= beforeHSetControl.HSetControl_HStaffLabel_MouseClick;
+                            dragItem.MouseDoubleClick -= beforeHSetControl.HSetControl_HStaffLabel_MouseDoubleClick;
+                            dragItem.MouseMove -= beforeHSetControl.HSetControl_HStaffLabel_MouseMove;
+                            dragItem.MouseEnter -= beforeHSetControl.HSetControl_MouseEnter;
+                            dragItem.MouseLeave -= beforeHSetControl.HSetControl_MouseLeave;
+                            /*
+                             * Drop後のH_SetControlにEventを追加する
+                             */
+                            dragItem.MouseClick += HSetControl_HStaffLabel_MouseClick;
+                            dragItem.MouseDoubleClick += HSetControl_HStaffLabel_MouseDoubleClick;
+                            dragItem.MouseMove += HSetControl_HStaffLabel_MouseMove;
+                            dragItem.MouseEnter += HSetControl_MouseEnter;
+                            dragItem.MouseLeave += HSetControl_MouseLeave;
+                            break;
+                    }
+                    // 2024-07-09 H_StaffLabelExのCellNumberプロパティにDrop先のCellNumberを代入する
+                    dragItem.StaffCellNumber = staffCellNumber;
                     // Drop先にH_StaffLabelExが存在するかチェックする
-                    updateFlag = _hVehicleDispatchDetailDao.CheckStaffCode(_hControlVo.CellNumber, _hControlVo.OperationDate, staffNumber);
+                    updateFlag = _hVehicleDispatchDetailDao.CheckStaffCode(_hControlVo.CellNumber, _hControlVo.OperationDate, staffCellNumber);
                 } catch (Exception exception) {
                     MessageBox.Show(exception.Message);
                 }
                 /*
-                 * Drop時のエラーチェック
+                 * Labelの存在チェック
                  */
-                //// 2024-07-09 帰庫点呼済チェック
-                //if (this.GetSetLabel().LastRollCallFlag) {
-                //    MessageBox.Show("帰庫点呼済の組又は従事者の変更は出来ません。", "データベース同期エラー", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                //    return;
-                //}
-                // Labelの存在チェック
                 if (updateFlag) {
                     MessageBox.Show("ドロップ先のセルには既に従事者ラベルがセットされています。最新化をして下さい", "データベース同期エラー", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -776,7 +857,6 @@ namespace H_ControlEx {
                         }
 
                     }
-
                     break;
             }
             /*
@@ -789,10 +869,8 @@ namespace H_ControlEx {
             hVehicleDispatchDetailVo.DeletePcName = string.Empty;
             hVehicleDispatchDetailVo.DeleteYmdHms = _defaultDateTime;
             hVehicleDispatchDetailVo.DeleteFlag = false;
-
             return hVehicleDispatchDetailVo;
         }
-
 
         /*
          * アクセサー

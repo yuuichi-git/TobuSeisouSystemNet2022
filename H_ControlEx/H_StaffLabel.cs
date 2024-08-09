@@ -1,6 +1,8 @@
 ﻿/*
  * 2023-10-31
  */
+using System.Diagnostics;
+
 using H_Dao;
 
 using Vo;
@@ -12,11 +14,6 @@ namespace H_ControlEx {
          * インスタンスから見えるようになる
          * StaffLabel
          */
-        public event MouseEventHandler Event_HStaffLabel_MouseClick = delegate { };
-        public event MouseEventHandler Event_HStaffLabel_MouseDoubleClick = delegate { };
-        public event MouseEventHandler Event_HStaffLabel_MouseMove = delegate { };
-        public event EventHandler Event_HStaffLabel_MouseEnter = delegate { }; // 2024-07-18追加
-        public event EventHandler Event_HStaffLabel_MouseLeave = delegate { }; // 2024-07-18追加
         public event EventHandler Event_HStaffLabel_ToolStripMenuItem_Click = delegate { };
 
         private readonly Image _imageStaffLabel;
@@ -147,7 +144,7 @@ namespace H_ControlEx {
                  */
                 switch (_hControlVo.SelectNumberStaffMasterVo) {
                     case 0:
-                        this.CellNumber = 0;
+                        this.StaffCellNumber = 0;
                         this.StaffMemo = _hVehicleDispatchDetailVo.StaffMemo1;
                         this.StaffMemoFlag = _hVehicleDispatchDetailVo.StaffMemoFlag1;
                         this.StaffOccupationCode = _hVehicleDispatchDetailVo.StaffOccupation1;
@@ -156,7 +153,7 @@ namespace H_ControlEx {
                         this.StaffRollCallYmdHms = _hVehicleDispatchDetailVo.StaffRollCallYmdHms1;
                         break;
                     case 1:
-                        this.CellNumber = 1;
+                        this.StaffCellNumber = 1;
                         this.StaffMemo = _hVehicleDispatchDetailVo.StaffMemo2;
                         this.StaffMemoFlag = _hVehicleDispatchDetailVo.StaffMemoFlag2;
                         this.StaffOccupationCode = _hVehicleDispatchDetailVo.StaffOccupation2;
@@ -165,7 +162,7 @@ namespace H_ControlEx {
                         this.StaffRollCallYmdHms = _hVehicleDispatchDetailVo.StaffRollCallYmdHms2;
                         break;
                     case 2:
-                        this.CellNumber = 2;
+                        this.StaffCellNumber = 2;
                         this.StaffMemo = _hVehicleDispatchDetailVo.StaffMemo3;
                         this.StaffMemoFlag = _hVehicleDispatchDetailVo.StaffMemoFlag3;
                         this.StaffOccupationCode = _hVehicleDispatchDetailVo.StaffOccupation3;
@@ -174,7 +171,7 @@ namespace H_ControlEx {
                         this.StaffRollCallYmdHms = _hVehicleDispatchDetailVo.StaffRollCallYmdHms3;
                         break;
                     case 3:
-                        this.CellNumber = 3;
+                        this.StaffCellNumber = 3;
                         this.StaffMemo = _hVehicleDispatchDetailVo.StaffMemo4;
                         this.StaffMemoFlag = _hVehicleDispatchDetailVo.StaffMemoFlag4;
                         this.StaffOccupationCode = _hVehicleDispatchDetailVo.StaffOccupation4;
@@ -196,16 +193,16 @@ namespace H_ControlEx {
             } else {
                 switch (_hControlVo.SelectNumberStaffMasterVo) {
                     case 0:
-                        this.CellNumber = 0;
+                        this.StaffCellNumber = 0;
                         break;
                     case 1:
-                        this.CellNumber = 1;
+                        this.StaffCellNumber = 1;
                         break;
                     case 2:
-                        this.CellNumber = 2;
+                        this.StaffCellNumber = 2;
                         break;
                     case 3:
-                        this.CellNumber = 3;
+                        this.StaffCellNumber = 3;
                         break;
                 }
             }
@@ -213,10 +210,6 @@ namespace H_ControlEx {
              * Event
              */
             this.MouseClick += HStaffLabel_MouseClick;
-            this.MouseDoubleClick += HStaffLabel_MouseDoubleClick;
-            this.MouseEnter += HStaffLabel_MouseEnter; // 2024-07-18
-            this.MouseMove += HStaffLabel_MouseMove;
-            this.MouseLeave += HStaffLabel_MouseLeave; // 2024-07-18
         }
 
         /// <summary>
@@ -447,7 +440,7 @@ namespace H_ControlEx {
                      * DB書換え
                      */
                     try {
-                        _hVehicleDispatchDetailDao.UpdateStaffProxyFlag(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.StaffProxyFlag, this.CellNumber);
+                        _hVehicleDispatchDetailDao.UpdateStaffProxyFlag(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.StaffProxyFlag, this.StaffCellNumber);
                     } catch (Exception exception) {
                         MessageBox.Show(exception.Message);
                     }
@@ -462,7 +455,7 @@ namespace H_ControlEx {
                      * DB書換え
                      */
                     try {
-                        _hVehicleDispatchDetailDao.UpdateStaffProxyFlag(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.StaffProxyFlag, this.CellNumber);
+                        _hVehicleDispatchDetailDao.UpdateStaffProxyFlag(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.StaffProxyFlag, this.StaffCellNumber);
                     } catch (Exception exception) {
                         MessageBox.Show(exception.Message);
                     }
@@ -477,7 +470,7 @@ namespace H_ControlEx {
                      * DB書換え
                      */
                     try {
-                        _hVehicleDispatchDetailDao.UpdateStaffOccupation(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.StaffOccupationCode, this.CellNumber);
+                        _hVehicleDispatchDetailDao.UpdateStaffOccupation(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.StaffOccupationCode, this.StaffCellNumber);
                     } catch (Exception exception) {
                         MessageBox.Show(exception.Message);
                     }
@@ -492,7 +485,7 @@ namespace H_ControlEx {
                      * DB書換え
                      */
                     try {
-                        _hVehicleDispatchDetailDao.UpdateStaffOccupation(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.StaffOccupationCode, this.CellNumber);
+                        _hVehicleDispatchDetailDao.UpdateStaffOccupation(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.StaffOccupationCode, this.StaffCellNumber);
                     } catch (Exception exception) {
                         MessageBox.Show(exception.Message);
                     }
@@ -507,7 +500,7 @@ namespace H_ControlEx {
                      * DB書換え
                      */
                     try {
-                        _hVehicleDispatchDetailDao.UpdateStaffRollCall(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.StaffRollCallFlag, this.CellNumber);
+                        _hVehicleDispatchDetailDao.UpdateStaffRollCall(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.StaffRollCallFlag, this.StaffCellNumber);
                     } catch (Exception exception) {
                         MessageBox.Show(exception.Message);
                     }
@@ -519,7 +512,7 @@ namespace H_ControlEx {
                     this.StaffRollCallFlag = false;
                     this.Refresh();
                     try {
-                        _hVehicleDispatchDetailDao.UpdateStaffRollCall(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.StaffRollCallFlag, this.CellNumber);
+                        _hVehicleDispatchDetailDao.UpdateStaffRollCall(((H_ControlVo)_evacuationHSetControl.Tag).CellNumber, _hControlVo.OperationDate, this.StaffRollCallFlag, this.StaffCellNumber);
                     } catch (Exception exception) {
                         MessageBox.Show(exception.Message);
                     }
@@ -561,7 +554,7 @@ namespace H_ControlEx {
         /// H_SetControl上での配置位置を記録
         /// 0:運転手 1:作業員① 2:作業員② 3:作業員③ 9:指定なし
         /// </summary>
-        public int CellNumber {
+        public int StaffCellNumber {
             get => _cellNumber;
             set => _cellNumber = value;
         }
@@ -630,14 +623,12 @@ namespace H_ControlEx {
                         // StaffRollCallFlagを反転
                         this.StaffRollCallFlag = !this.StaffRollCallFlag;
                         // DB書換え
-                        _hVehicleDispatchDetailDao.UpdateStaffRollCall(((H_ControlVo)((H_SetControl)((H_StaffLabel)sender).Parent).Tag).CellNumber, _hControlVo.OperationDate, this.StaffRollCallFlag, this.CellNumber);
+                        _hVehicleDispatchDetailDao.UpdateStaffRollCall(((H_ControlVo)((H_SetControl)((H_StaffLabel)sender).Parent).Tag).CellNumber, _hControlVo.OperationDate, this.StaffRollCallFlag, this.StaffCellNumber);
                         // 再描画
                         this.Refresh();
                     } catch (Exception exception) {
                         MessageBox.Show(exception.Message);
                     }
-                    // Eventを親へ転送する
-                    Event_HStaffLabel_MouseClick.Invoke(sender, e);
                     /*
                      * Shift+ClickがH_FlowLayoutPanelEx上で発火した場合
                      */
@@ -645,21 +636,6 @@ namespace H_ControlEx {
                     MessageBox.Show("StockBoxsでの点呼処理はできません。", "メッセージ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-        }
-
-        private void HStaffLabel_MouseDoubleClick(object sender, MouseEventArgs e) {
-            // Eventを親へ転送する
-            Event_HStaffLabel_MouseDoubleClick.Invoke(sender, e);
-        }
-        private void HStaffLabel_MouseEnter(object sender, EventArgs e) { // 2024-07-18追加
-            Event_HStaffLabel_MouseEnter.Invoke(sender, e);
-        }
-        private void HStaffLabel_MouseLeave(object sender, EventArgs e) { // 2024-07-18追加
-            Event_HStaffLabel_MouseLeave.Invoke(sender, e);
-        }
-        private void HStaffLabel_MouseMove(object sender, MouseEventArgs e) {
-            // Eventを親へ転送する
-            Event_HStaffLabel_MouseMove.Invoke(sender, e);
         }
     }
 }

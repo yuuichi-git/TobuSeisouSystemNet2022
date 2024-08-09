@@ -109,7 +109,7 @@ namespace H_VehicleDispatch {
             /*
              * 配車用ボードを作成
              */
-            _hBoard = new H_Board(_connectionVo);
+            _hBoard = new(_connectionVo);
             _hBoard.Event_HBoard_HSetControl_HSetLabel_MouseDoubleClick += HBoard_HSetControl_HSetLabel_MouseDoubleClick;
             _hBoard.Event_HBoard_HSetControl_HLabel_ToolStripMenuItem_Click += HBoard_HSetControl_HLabel_ToolStripMenuItem_Click;
             this.HTableLayoutPanelExCenter.Controls.Add(_hBoard, 0, 2);

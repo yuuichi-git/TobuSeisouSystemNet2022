@@ -14,11 +14,6 @@ namespace H_ControlEx {
          * インスタンスから見えるようになる
          * SetLabel
          */
-        public event MouseEventHandler Event_HSetLabel_MouseClick = delegate { };
-        public event MouseEventHandler Event_HSetLabel_MouseDoubleClick = delegate { };
-        public event MouseEventHandler Event_HSetLabel_MouseMove = delegate { };
-        public event EventHandler Event_HSetLabel_MouseEnter = delegate { }; // 2024-07-18追加
-        public event EventHandler Event_HSetLabel_MouseLeave = delegate { }; // 2024-07-18追加
         public event EventHandler Event_HSetLabel_ToolStripMenuItem_Click = delegate { };
 
         private readonly Date _date = new();
@@ -185,14 +180,6 @@ namespace H_ControlEx {
                 this.ManagedSpaceCode = _hSetMasterVo.ManagedSpaceCode; // 管理地
                 this.OperationFlag = _date.GetWorkingDays(_hControlVo.OperationDate, _hSetMasterVo.WorkingDays, _hSetMasterVo.FiveLap);
             }
-            /*
-             * Event
-             */
-            this.MouseClick += HSetLabel_MouseClick;
-            this.MouseDoubleClick += HSetLabel_MouseDoubleClick;
-            this.MouseEnter += HSetLabel_MouseEnter; // 2024-07-18
-            this.MouseMove += HSetLabel_MouseMove;
-            this.MouseLeave += HSetLabel_MouseLeave; // 2024-07-18
         }
 
         /// <summary>
@@ -912,25 +899,6 @@ namespace H_ControlEx {
         public bool StandByFlag {
             get => _standByFlag;
             set => _standByFlag = value;
-        }
-
-        /*
-         * H_SetLabelEx
-         */
-        private void HSetLabel_MouseClick(object sender, MouseEventArgs e) {
-            Event_HSetLabel_MouseClick.Invoke(sender, e);
-        }
-        private void HSetLabel_MouseDoubleClick(object sender, MouseEventArgs e) {
-            Event_HSetLabel_MouseDoubleClick.Invoke(sender, e);
-        }
-        private void HSetLabel_MouseEnter(object sender, EventArgs e) { // 2024-07-18追加
-            Event_HSetLabel_MouseEnter.Invoke(sender, e);
-        }
-        private void HSetLabel_MouseLeave(object sender, EventArgs e) { // 2024-07-18追加
-            Event_HSetLabel_MouseLeave.Invoke(sender, e);
-        }
-        private void HSetLabel_MouseMove(object sender, MouseEventArgs e) {
-            Event_HSetLabel_MouseMove.Invoke(sender, e);
         }
     }
 }

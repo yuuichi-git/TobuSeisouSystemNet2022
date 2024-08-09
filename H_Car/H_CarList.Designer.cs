@@ -40,9 +40,9 @@
             SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("HTableLayoutPanelExBase.Controls"));
             ContextMenuStrip1 = new ContextMenuStrip(components);
             ToolStripMenuItemDelete = new ToolStripMenuItem();
-            SheetViewList = SpreadList.GetSheet(0);
             HPanelExUp = new H_ControlEx.H_PanelEx();
             HButtonExUpdate = new H_ControlEx.H_ButtonEx();
+            SheetViewList = SpreadList.GetSheet(0);
             HTableLayoutPanelExBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -232,10 +232,10 @@
         private ToolStripMenuItem ToolStripMenuItemExit;
         private ToolStripMenuItem ToolStripMenuItemDisplay;
         private ToolStripMenuItem ToolStripMenuItemDeleted;
-        private FarPoint.Win.Spread.SheetView SheetViewList;
         private ToolStripMenuItem ToolStripMenuItemNew;
         private ToolStripMenuItem ToolStripMenuItemNewCar;
         private ContextMenuStrip ContextMenuStrip1;
         private ToolStripMenuItem ToolStripMenuItemDelete;
+        private FarPoint.Win.Spread.SheetView SheetViewList;
     }
 }

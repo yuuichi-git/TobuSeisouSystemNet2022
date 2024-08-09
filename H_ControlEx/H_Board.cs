@@ -182,13 +182,13 @@ namespace H_ControlEx {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void HSetControl_DragEnter(object sender, DragEventArgs e) {
-
         }
 
         /// <summary>
         /// Drag元のH_ControlVo
         /// </summary>
         H_ControlVo _beforeHControlVo;
+
         /// <summary>
         /// HSetControl_DragDrop
         /// </summary>
@@ -234,8 +234,12 @@ namespace H_ControlEx {
              * DropされたH_SetControlを退避
              */
             H_SetControl afterHSetControl = (H_SetControl)sender;
+            /*
+             * H_SetControl上のセルの位置を取得する
+             */
             Point clientPoint = afterHSetControl.PointToClient(new Point(e.X, e.Y));
             Point cellPoint = new(clientPoint.X / (int)_panelWidth, clientPoint.Y / (int)_panelHeight);
+
             /*
              * ①Dragされたオブジェクトを退避
              * ②Drag元のCellNumberを操作する
@@ -346,14 +350,14 @@ namespace H_ControlEx {
             if (e.Data.GetDataPresent(typeof(H_StaffLabel))) {
                 H_StaffLabel dragItem = (H_StaffLabel)e.Data.GetData(typeof(H_StaffLabel));
                 // ①Dragされたオブジェクトを退避
-                Control beforeParentControl = dragItem.Parent;
+                Control beforeHSetControl = dragItem.Parent;
                 afterHSetControl.Controls.Add(dragItem, cellPoint.X, cellPoint.Y);
                 /*
                  * Drag元の親コントロールを調べる
                  */
-                switch (beforeParentControl.Name) {
+                switch (beforeHSetControl.Name) {
                     case "H_SetControl": // H_SetControl→H_SetControlへの移動
-                        _beforeHControlVo = (H_ControlVo)beforeParentControl.Tag;
+                        _beforeHControlVo = (H_ControlVo)beforeHSetControl.Tag;
                         try {
                             // Drag元のRecordをUpdateする
                             _hVehicleDispatchDetailDao.UpdateOneHVehicleDispatchDetail(((H_SetControl)this.GetControlFromPosition(_beforeHControlVo.CellNumber % 50, _beforeHControlVo.CellNumber / 50)).ConvertHVehicleDispatchDetailVo());

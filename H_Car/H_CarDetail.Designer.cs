@@ -157,8 +157,8 @@
             // HTableLayoutPanelExBasse
             // 
             HTableLayoutPanelExBasse.ColumnCount = 2;
-            HTableLayoutPanelExBasse.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            HTableLayoutPanelExBasse.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            HTableLayoutPanelExBasse.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 800F));
+            HTableLayoutPanelExBasse.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             HTableLayoutPanelExBasse.Controls.Add(MenuStrip1, 0, 0);
             HTableLayoutPanelExBasse.Controls.Add(StatusStrip1, 0, 3);
             HTableLayoutPanelExBasse.Controls.Add(HPanelExUp, 0, 1);
@@ -172,7 +172,7 @@
             HTableLayoutPanelExBasse.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
             HTableLayoutPanelExBasse.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             HTableLayoutPanelExBasse.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
-            HTableLayoutPanelExBasse.Size = new Size(1904, 1041);
+            HTableLayoutPanelExBasse.Size = new Size(1904, 1460);
             HTableLayoutPanelExBasse.TabIndex = 0;
             // 
             // MenuStrip1
@@ -209,7 +209,7 @@
             // 
             HTableLayoutPanelExBasse.SetColumnSpan(StatusStrip1, 2);
             StatusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, ToolStripStatusLabelDetail });
-            StatusStrip1.Location = new Point(0, 1019);
+            StatusStrip1.Location = new Point(0, 1438);
             StatusStrip1.Name = "StatusStrip1";
             StatusStrip1.Size = new Size(1904, 22);
             StatusStrip1.SizingGrip = false;
@@ -259,7 +259,7 @@
             HPanelExLeft.Dock = DockStyle.Fill;
             HPanelExLeft.Location = new Point(3, 87);
             HPanelExLeft.Name = "HPanelExLeft";
-            HPanelExLeft.Size = new Size(946, 927);
+            HPanelExLeft.Size = new Size(794, 1346);
             HPanelExLeft.TabIndex = 3;
             // 
             // groupBox4
@@ -312,7 +312,7 @@
             groupBox4.Controls.Add(label23);
             groupBox4.Location = new Point(4, 560);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(920, 776);
+            groupBox4.Size = new Size(768, 776);
             groupBox4.TabIndex = 0;
             groupBox4.TabStop = false;
             groupBox4.Text = "３．車両詳細情報";
@@ -323,7 +323,7 @@
             HTextBoxExRemarks.Location = new Point(192, 640);
             HTextBoxExRemarks.Multiline = true;
             HTextBoxExRemarks.Name = "HTextBoxExRemarks";
-            HTextBoxExRemarks.Size = new Size(604, 124);
+            HTextBoxExRemarks.Size = new Size(576, 124);
             HTextBoxExRemarks.TabIndex = 22;
             HTextBoxExRemarks.Text = "4JZ1";
             // 
@@ -781,7 +781,7 @@
             groupBox3.Controls.Add(label17);
             groupBox3.Location = new Point(4, 384);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(920, 168);
+            groupBox3.Size = new Size(768, 168);
             groupBox3.TabIndex = 2;
             groupBox3.TabStop = false;
             groupBox3.Text = "２．所有者・使用者情報";
@@ -911,7 +911,7 @@
             groupBox2.Controls.Add(label1);
             groupBox2.Location = new Point(4, 4);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(920, 224);
+            groupBox2.Size = new Size(768, 224);
             groupBox2.TabIndex = 0;
             groupBox2.TabStop = false;
             groupBox2.Text = "システム情報";
@@ -1128,7 +1128,7 @@
             groupBox1.Controls.Add(label10);
             groupBox1.Location = new Point(4, 236);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(920, 140);
+            groupBox1.Size = new Size(768, 140);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "１．基本情報";
@@ -1213,9 +1213,9 @@
             HPictureBoxExPicture.BorderStyle = BorderStyle.FixedSingle;
             HPictureBoxExPicture.ContextMenuStrip = ContextMenuStrip1;
             HPictureBoxExPicture.Dock = DockStyle.Fill;
-            HPictureBoxExPicture.Location = new Point(955, 87);
+            HPictureBoxExPicture.Location = new Point(803, 87);
             HPictureBoxExPicture.Name = "HPictureBoxExPicture";
-            HPictureBoxExPicture.Size = new Size(946, 927);
+            HPictureBoxExPicture.Size = new Size(1098, 1346);
             HPictureBoxExPicture.SizeMode = PictureBoxSizeMode.Zoom;
             HPictureBoxExPicture.TabIndex = 4;
             HPictureBoxExPicture.TabStop = false;
@@ -1251,7 +1251,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1904, 1041);
+            ClientSize = new Size(1904, 1460);
             Controls.Add(HTableLayoutPanelExBasse);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = MenuStrip1;
