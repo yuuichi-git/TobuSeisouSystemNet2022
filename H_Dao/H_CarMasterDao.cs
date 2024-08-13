@@ -112,7 +112,10 @@ namespace H_Dao {
                                             "BaseAddress," +
                                             "ExpirationDate," +
                                             "Remarks," +
-                                            //"Picture," +
+                                            //"MainPicture," +
+                                            //"SubPicture," +
+                                            "EmergencyVehicleFlag," +
+                                            "EmergencyVehicleDate," +
                                             "InsertPcName," +
                                             "InsertYmdHms," +
                                             "UpdatePcName," +
@@ -169,7 +172,10 @@ namespace H_Dao {
                     hCarMasterVo.BaseAddress = _defaultValue.GetDefaultValue<string>(sqlDataReader["BaseAddress"]);
                     hCarMasterVo.ExpirationDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["ExpirationDate"]);
                     hCarMasterVo.Remarks = _defaultValue.GetDefaultValue<string>(sqlDataReader["Remarks"]);
-                    //hCarMasterVo.Picture = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["Picture"]);
+                    //hCarMasterVo.MainPicture = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["MainPicture"]);
+                    //hCarMasterVo.SubPicture = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["SubPicture"]);
+                    hCarMasterVo.EmergencyVehicleFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["EmergencyVehicleFlag"]);
+                    hCarMasterVo.EmergencyVehicleDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["EmergencyVehicleDate"]);
                     hCarMasterVo.InsertPcName = _defaultValue.GetDefaultValue<string>(sqlDataReader["InsertPcName"]);
                     hCarMasterVo.InsertYmdHms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["InsertYmdHms"]);
                     hCarMasterVo.UpdatePcName = _defaultValue.GetDefaultValue<string>(sqlDataReader["UpdatePcName"]);
@@ -184,19 +190,38 @@ namespace H_Dao {
         }
 
         /// <summary>
-        /// SelectOnePicture
+        /// SelectOneMainPicture
         /// </summary>
         /// <param name="carCode"></param>
         /// <returns></returns>
-        public byte[] SelectOnePicture(int carCode) {
+        public byte[] SelectOneMainPicture(int carCode) {
             byte[] byteImage = Array.Empty<byte>();
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
-            sqlCommand.CommandText = "SELECT Picture " +
+            sqlCommand.CommandText = "SELECT MainPicture " +
                                      "FROM H_CarMaster " +
                                      "WHERE CarCode = " + carCode + "";
             using (var sqlDataReader = sqlCommand.ExecuteReader()) {
                 while (sqlDataReader.Read() == true) {
-                    byteImage = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["Picture"]);
+                    byteImage = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["MainPicture"]);
+                }
+            }
+            return byteImage;
+        }
+
+        /// <summary>
+        /// SelectOneSubPicture
+        /// </summary>
+        /// <param name="carCode"></param>
+        /// <returns></returns>
+        public byte[] SelectOneSubPicture(int carCode) {
+            byte[] byteImage = Array.Empty<byte>();
+            SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
+            sqlCommand.CommandText = "SELECT SubPicture " +
+                                     "FROM H_CarMaster " +
+                                     "WHERE CarCode = " + carCode + "";
+            using (var sqlDataReader = sqlCommand.ExecuteReader()) {
+                while (sqlDataReader.Read() == true) {
+                    byteImage = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["SubPicture"]);
                 }
             }
             return byteImage;
@@ -255,7 +280,10 @@ namespace H_Dao {
                                             "BaseAddress," +
                                             "ExpirationDate," +
                                             "Remarks," +
-                                            "Picture," +
+                                            "MainPicture," +
+                                            "SubPicture," +
+                                            "EmergencyVehicleFlag," +
+                                            "EmergencyVehicleDate," +
                                             "InsertPcName," +
                                             "InsertYmdHms," +
                                             "UpdatePcName," +
@@ -312,7 +340,10 @@ namespace H_Dao {
                     hCarMasterVo.BaseAddress = _defaultValue.GetDefaultValue<string>(sqlDataReader["BaseAddress"]);
                     hCarMasterVo.ExpirationDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["ExpirationDate"]);
                     hCarMasterVo.Remarks = _defaultValue.GetDefaultValue<string>(sqlDataReader["Remarks"]);
-                    hCarMasterVo.Picture = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["Picture"]);
+                    hCarMasterVo.MainPicture = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["MainPicture"]);
+                    hCarMasterVo.SubPicture = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["SubPicture"]);
+                    hCarMasterVo.EmergencyVehicleFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["EmergencyVehicleFlag"]);
+                    hCarMasterVo.EmergencyVehicleDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["EmergencyVehicleDate"]);
                     hCarMasterVo.InsertPcName = _defaultValue.GetDefaultValue<string>(sqlDataReader["InsertPcName"]);
                     hCarMasterVo.InsertYmdHms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["InsertYmdHms"]);
                     hCarMasterVo.UpdatePcName = _defaultValue.GetDefaultValue<string>(sqlDataReader["UpdatePcName"]);
@@ -375,7 +406,10 @@ namespace H_Dao {
                                                              "BaseAddress," +
                                                              "ExpirationDate," +
                                                              "Remarks," +
-                                                             "Picture," +
+                                                             "MainPicture," +
+                                                             "SubPicture," +
+                                                             "EmergencyVehicleFlag," +
+                                                             "EmergencyVehicleDate," +
                                                              "InsertPcName," +
                                                              "InsertYmdHms," +
                                                              "UpdatePcName," +
@@ -427,7 +461,10 @@ namespace H_Dao {
                                             "'" + hCarMasterVo.BaseAddress + "'," +
                                             "'" + hCarMasterVo.ExpirationDate + "'," +
                                             "'" + hCarMasterVo.Remarks + "'," +
-                                            "@member_picture," +
+                                            "@member_MainPicture," +
+                                            "@member_SubPicture," +
+                                             "'false'," +
+                                            "'" + _defaultDateTime + "'," +
                                             "'" + Environment.MachineName + "'," +
                                             "'" + DateTime.Now + "'," +
                                             "'" + string.Empty + "'," +
@@ -437,7 +474,8 @@ namespace H_Dao {
                                              "'false'" +
                                              ");";
             try {
-                sqlCommand.Parameters.Add("@member_picture", SqlDbType.Image, hCarMasterVo.Picture.Length).Value = hCarMasterVo.Picture;
+                sqlCommand.Parameters.Add("@member_MainPicture", SqlDbType.Image, hCarMasterVo.MainPicture.Length).Value = hCarMasterVo.MainPicture;
+                sqlCommand.Parameters.Add("@member_SubPicture", SqlDbType.Image, hCarMasterVo.SubPicture.Length).Value = hCarMasterVo.SubPicture;
                 sqlCommand.ExecuteNonQuery();
             } catch {
                 throw;
@@ -496,12 +534,16 @@ namespace H_Dao {
                                          "BaseAddress = '" + hCarMasterVo.BaseAddress + "'," +
                                          "ExpirationDate = '" + hCarMasterVo.ExpirationDate + "'," +
                                          "Remarks = '" + hCarMasterVo.Remarks + "'," +
-                                         "Picture = @member_picture," +
+                                         "MainPicture = @member_MainPicture," +
+                                         "SubPicture = @member_SubPicture," +
+                                         "EmergencyVehicleFlag = '" + hCarMasterVo.EmergencyVehicleFlag + "'," +
+                                         "EmergencyVehicleDate = '" + hCarMasterVo.EmergencyVehicleDate + "'," +
                                          "UpdatePcName = '" + Environment.MachineName + "'," +
                                          "UpdateYmdHms = '" + DateTime.Now + "' " +
                                      "WHERE CarCode = " + hCarMasterVo.CarCode;
             try {
-                sqlCommand.Parameters.Add("@member_picture", SqlDbType.Image, hCarMasterVo.Picture.Length).Value = hCarMasterVo.Picture;
+                sqlCommand.Parameters.Add("@member_MainPicture", SqlDbType.Image, hCarMasterVo.MainPicture.Length).Value = hCarMasterVo.MainPicture;
+                sqlCommand.Parameters.Add("@member_SubPicture", SqlDbType.Image, hCarMasterVo.SubPicture.Length).Value = hCarMasterVo.SubPicture;
                 sqlCommand.ExecuteNonQuery();
             } catch {
                 throw;

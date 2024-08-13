@@ -39,69 +39,77 @@ namespace H_Car {
         /// </summary>
         private const int _colCarCode = 0;
         /// <summary>
+        /// ‹Ù‹}Ô—¼“o˜^ƒtƒ‰ƒO
+        /// </summary>
+        private const int _colEmergencyVehicle = 1;
+        /// <summary>
+        /// ‹Ù‹}Ô—¼“o˜^—LŒøŠúŒÀ
+        /// </summary>
+        private const int _colEmergencyVehicleDate = 2;
+        /// <summary>
         /// ©“®Ô“o˜^”Ô†1
         /// </summary>
-        private const int _colRegistrationNumber1 = 1;
+        private const int _colRegistrationNumber1 = 3;
         /// <summary>
         /// ©“®Ô“o˜^”Ô†2(4Œ…‚Ì”š•”•ª)
         /// </summary>
-        private const int _colRegistrationNumber2 = 2;
+        private const int _colRegistrationNumber2 = 4;
         /// <summary>
         /// Door”Ô†
         /// </summary>
-        private const int _colDoorNumber = 3;
+        private const int _colDoorNumber = 5;
         /// <summary>
         /// ‹æ•ª(ŒÙãE‹æŒ_Eˆê”Ê)
         /// </summary>
-        private const int _colClassificationName = 4;
+        private const int _colClassificationName = 6;
         /// <summary>
         /// ÔŒÉ’n
         /// </summary>
-        private const int _colGarageName = 5;
+        private const int _colGarageName = 7;
         /// <summary>
         /// –¼Ì(”zÔƒpƒlƒ‹)
         /// </summary>
-        private const int _colDisguiseKind_1 = 6;
+        private const int _colDisguiseKind_1 = 8;
         /// <summary>
         /// –¼Ì(–ŒÌ•ñ‘)
         /// </summary>
-        private const int _colDisguiseKind_2 = 7;
+        private const int _colDisguiseKind_2 = 9;
         /// <summary>
         /// –¼Ì(®”õ)
         /// </summary>
-        private const int _colDisguiseKind_3 = 8;
+        private const int _colDisguiseKind_3 = 10;
         /// <summary>
         /// “o˜^”NŒ“ú
         /// </summary>
-        private const int _colRegistrationDate = 9;
+        private const int _colRegistrationDate = 11;
         /// <summary>
         /// ‰”N“x“o˜^”NŒ
         /// </summary>
-        private const int _colFirstRegistrationDate = 10;
+        private const int _colFirstRegistrationDate = 12;
         /// <summary>
         /// ©“®Ô‚Ìí—Ş
         /// </summary>
-        private const int _colCarKindName = 11;
+        private const int _colCarKindName = 13;
         /// <summary>
         /// —p“r
         /// </summary>
-        private const int _colCarUse = 12;
+        private const int _colCarUse = 14;
         /// <summary>
         /// ©‰Æ—pE–‹Æ—p‚Ì•Ê
         /// </summary>
-        private const int _colOtherCode = 13;
+        private const int _colOtherCode = 15;
         /// <summary>
         /// Ô‘Ì‚ÌŒ`ó
         /// </summary>
-        private const int _colShapeName = 14;
+        private const int _colShapeName = 16;
         /// <summary>
         /// —LŒøŠúŒÀ‚Ì–—¹‚·‚é“ú
         /// </summary>
-        private const int _colExpirationDate = 15;
+        private const int _colExpirationDate = 17;
         /// <summary>
         /// ”õl
         /// </summary>
-        private const int _colRemarks = 16;
+        private const int _colRemarks = 18;
         /*
          * Dao
          */
@@ -169,6 +177,11 @@ namespace H_Car {
                 SheetViewList.Rows[i].ForeColor = !hCarMasterVo.DeleteFlag ? Color.Black : Color.Red; // íœÏƒŒƒR[ƒh‚ÍÔF‚Å•\¦‚·‚é
 
                 SheetViewList.Cells[i, _colCarCode].Value = hCarMasterVo.CarCode;
+                SheetViewList.Cells[i, _colEmergencyVehicle].Value = hCarMasterVo.EmergencyVehicleFlag;
+                if (hCarMasterVo.EmergencyVehicleFlag) {
+                    SheetViewList.Cells[i, _colEmergencyVehicleDate].ForeColor = hCarMasterVo.EmergencyVehicleDate.Date < DateTime.Now.Date ? Color.Red : Color.Black;
+                    SheetViewList.Cells[i, _colEmergencyVehicleDate].Value = hCarMasterVo.EmergencyVehicleDate.Date;
+                }
                 SheetViewList.Cells[i, _colRegistrationNumber1].Text = string.Concat(hCarMasterVo.RegistrationNumber1, hCarMasterVo.RegistrationNumber2, hCarMasterVo.RegistrationNumber3);
                 SheetViewList.Cells[i, _colRegistrationNumber2].Text = hCarMasterVo.RegistrationNumber4.ToString();
                 SheetViewList.Cells[i, _colDoorNumber].Text = hCarMasterVo.DoorNumber.ToString("###");

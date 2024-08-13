@@ -28,6 +28,8 @@
             MenuStrip1 = new MenuStrip();
             ToolStripMenuItemMenu = new ToolStripMenuItem();
             ToolStripMenuItemExit = new ToolStripMenuItem();
+            ToolStripMenuItemPrint = new ToolStripMenuItem();
+            ToolStripMenuItemPrintA4 = new ToolStripMenuItem();
             ToolStripMenuItemHelp = new ToolStripMenuItem();
             StatusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
@@ -94,6 +96,8 @@
             HComboBoxExOwnerName = new H_ControlEx.H_ComboBoxEx();
             label17 = new Label();
             groupBox2 = new GroupBox();
+            HDateTimePickerExEmergencyVehicleDate = new H_ControlEx.H_DateTimePickerEx();
+            HCheckBoxExEmergencyVehicleFlag = new H_ControlEx.H_CheckBoxEx();
             HComboBoxExDisguiseKind3 = new H_ControlEx.H_ComboBoxEx();
             HComboBoxExDisguiseKind2 = new H_ControlEx.H_ComboBoxEx();
             HComboBoxExDisguiseKind1 = new H_ControlEx.H_ComboBoxEx();
@@ -124,11 +128,12 @@
             label11 = new Label();
             HTextBoxExVehicleNumber = new H_ControlEx.H_TextBoxEx();
             label10 = new Label();
-            HPictureBoxExPicture = new H_ControlEx.H_PictureBoxEx();
+            HPictureBoxExMainPicture = new H_ControlEx.H_PictureBoxEx();
             ContextMenuStrip1 = new ContextMenuStrip(components);
             ToolStripMenuItemClip = new ToolStripMenuItem();
             ToolStripMenuItemDelete = new ToolStripMenuItem();
             ToolStripMenuItemRotate = new ToolStripMenuItem();
+            HPictureBoxExSubPicture = new H_ControlEx.H_PictureBoxEx();
             HTableLayoutPanelExBasse.SuspendLayout();
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -150,8 +155,9 @@
             groupBox3.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)HPictureBoxExPicture).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)HPictureBoxExMainPicture).BeginInit();
             ContextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)HPictureBoxExSubPicture).BeginInit();
             SuspendLayout();
             // 
             // HTableLayoutPanelExBasse
@@ -160,25 +166,28 @@
             HTableLayoutPanelExBasse.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 800F));
             HTableLayoutPanelExBasse.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
             HTableLayoutPanelExBasse.Controls.Add(MenuStrip1, 0, 0);
-            HTableLayoutPanelExBasse.Controls.Add(StatusStrip1, 0, 3);
+            HTableLayoutPanelExBasse.Controls.Add(StatusStrip1, 0, 4);
             HTableLayoutPanelExBasse.Controls.Add(HPanelExUp, 0, 1);
             HTableLayoutPanelExBasse.Controls.Add(HPanelExLeft, 0, 2);
-            HTableLayoutPanelExBasse.Controls.Add(HPictureBoxExPicture, 1, 2);
+            HTableLayoutPanelExBasse.Controls.Add(HPictureBoxExMainPicture, 1, 2);
+            HTableLayoutPanelExBasse.Controls.Add(HPictureBoxExSubPicture, 1, 3);
             HTableLayoutPanelExBasse.Dock = DockStyle.Fill;
             HTableLayoutPanelExBasse.Location = new Point(0, 0);
             HTableLayoutPanelExBasse.Name = "HTableLayoutPanelExBasse";
             HTableLayoutPanelExBasse.RowCount = 4;
             HTableLayoutPanelExBasse.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
             HTableLayoutPanelExBasse.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
-            HTableLayoutPanelExBasse.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            HTableLayoutPanelExBasse.RowStyles.Add(new RowStyle(SizeType.Percent, 40F));
+            HTableLayoutPanelExBasse.RowStyles.Add(new RowStyle(SizeType.Percent, 60F));
             HTableLayoutPanelExBasse.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
-            HTableLayoutPanelExBasse.Size = new Size(1904, 1460);
+            HTableLayoutPanelExBasse.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
+            HTableLayoutPanelExBasse.Size = new Size(1904, 1041);
             HTableLayoutPanelExBasse.TabIndex = 0;
             // 
             // MenuStrip1
             // 
             HTableLayoutPanelExBasse.SetColumnSpan(MenuStrip1, 2);
-            MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemHelp });
+            MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemPrint, ToolStripMenuItemHelp });
             MenuStrip1.Location = new Point(0, 0);
             MenuStrip1.Name = "MenuStrip1";
             MenuStrip1.Size = new Size(1904, 24);
@@ -199,6 +208,20 @@
             ToolStripMenuItemExit.Text = "アプリケーションを終了する";
             ToolStripMenuItemExit.Click += ToolStripMenuItem_Click;
             // 
+            // ToolStripMenuItemPrint
+            // 
+            ToolStripMenuItemPrint.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemPrintA4 });
+            ToolStripMenuItemPrint.Name = "ToolStripMenuItemPrint";
+            ToolStripMenuItemPrint.Size = new Size(43, 20);
+            ToolStripMenuItemPrint.Text = "印刷";
+            // 
+            // ToolStripMenuItemPrintA4
+            // 
+            ToolStripMenuItemPrintA4.Name = "ToolStripMenuItemPrintA4";
+            ToolStripMenuItemPrintA4.Size = new Size(165, 22);
+            ToolStripMenuItemPrintA4.Text = "A4用紙で印刷する";
+            ToolStripMenuItemPrintA4.Click += ToolStripMenuItemPrintA4_Click;
+            // 
             // ToolStripMenuItemHelp
             // 
             ToolStripMenuItemHelp.Name = "ToolStripMenuItemHelp";
@@ -209,10 +232,9 @@
             // 
             HTableLayoutPanelExBasse.SetColumnSpan(StatusStrip1, 2);
             StatusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, ToolStripStatusLabelDetail });
-            StatusStrip1.Location = new Point(0, 1438);
+            StatusStrip1.Location = new Point(0, 1019);
             StatusStrip1.Name = "StatusStrip1";
             StatusStrip1.Size = new Size(1904, 22);
-            StatusStrip1.SizingGrip = false;
             StatusStrip1.TabIndex = 1;
             StatusStrip1.Text = "statusStrip1";
             // 
@@ -240,7 +262,8 @@
             // 
             // HButtonExUpdate
             // 
-            HButtonExUpdate.Location = new Point(1684, 8);
+            HButtonExUpdate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            HButtonExUpdate.Location = new Point(1697, 8);
             HButtonExUpdate.Name = "HButtonExUpdate";
             HButtonExUpdate.Size = new Size(160, 36);
             HButtonExUpdate.TabIndex = 0;
@@ -259,7 +282,8 @@
             HPanelExLeft.Dock = DockStyle.Fill;
             HPanelExLeft.Location = new Point(3, 87);
             HPanelExLeft.Name = "HPanelExLeft";
-            HPanelExLeft.Size = new Size(794, 1346);
+            HTableLayoutPanelExBasse.SetRowSpan(HPanelExLeft, 2);
+            HPanelExLeft.Size = new Size(794, 926);
             HPanelExLeft.TabIndex = 3;
             // 
             // groupBox4
@@ -312,7 +336,7 @@
             groupBox4.Controls.Add(label23);
             groupBox4.Location = new Point(4, 560);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(768, 776);
+            groupBox4.Size = new Size(772, 776);
             groupBox4.TabIndex = 0;
             groupBox4.TabStop = false;
             groupBox4.Text = "３．車両詳細情報";
@@ -781,7 +805,7 @@
             groupBox3.Controls.Add(label17);
             groupBox3.Location = new Point(4, 384);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(768, 168);
+            groupBox3.Size = new Size(772, 168);
             groupBox3.TabIndex = 2;
             groupBox3.TabStop = false;
             groupBox3.Text = "２．所有者・使用者情報";
@@ -888,6 +912,8 @@
             // 
             // groupBox2
             // 
+            groupBox2.Controls.Add(HDateTimePickerExEmergencyVehicleDate);
+            groupBox2.Controls.Add(HCheckBoxExEmergencyVehicleFlag);
             groupBox2.Controls.Add(HComboBoxExDisguiseKind3);
             groupBox2.Controls.Add(HComboBoxExDisguiseKind2);
             groupBox2.Controls.Add(HComboBoxExDisguiseKind1);
@@ -911,10 +937,31 @@
             groupBox2.Controls.Add(label1);
             groupBox2.Location = new Point(4, 4);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(768, 224);
+            groupBox2.Size = new Size(772, 224);
             groupBox2.TabIndex = 0;
             groupBox2.TabStop = false;
             groupBox2.Text = "システム情報";
+            // 
+            // HDateTimePickerExEmergencyVehicleDate
+            // 
+            HDateTimePickerExEmergencyVehicleDate.CustomFormat = " 令和06年03月30日(土曜日)";
+            HDateTimePickerExEmergencyVehicleDate.Format = DateTimePickerFormat.Custom;
+            HDateTimePickerExEmergencyVehicleDate.Location = new Point(576, 26);
+            HDateTimePickerExEmergencyVehicleDate.Name = "HDateTimePickerExEmergencyVehicleDate";
+            HDateTimePickerExEmergencyVehicleDate.Size = new Size(180, 23);
+            HDateTimePickerExEmergencyVehicleDate.TabIndex = 4;
+            HDateTimePickerExEmergencyVehicleDate.Value = new DateTime(2024, 3, 30, 0, 0, 0, 0);
+            // 
+            // HCheckBoxExEmergencyVehicleFlag
+            // 
+            HCheckBoxExEmergencyVehicleFlag.AutoSize = true;
+            HCheckBoxExEmergencyVehicleFlag.ForeColor = Color.Red;
+            HCheckBoxExEmergencyVehicleFlag.Location = new Point(500, 28);
+            HCheckBoxExEmergencyVehicleFlag.Name = "HCheckBoxExEmergencyVehicleFlag";
+            HCheckBoxExEmergencyVehicleFlag.Size = new Size(74, 19);
+            HCheckBoxExEmergencyVehicleFlag.TabIndex = 3;
+            HCheckBoxExEmergencyVehicleFlag.Text = "緊急車両";
+            HCheckBoxExEmergencyVehicleFlag.UseVisualStyleBackColor = true;
             // 
             // HComboBoxExDisguiseKind3
             // 
@@ -923,7 +970,7 @@
             HComboBoxExDisguiseKind3.Location = new Point(192, 192);
             HComboBoxExDisguiseKind3.Name = "HComboBoxExDisguiseKind3";
             HComboBoxExDisguiseKind3.Size = new Size(148, 23);
-            HComboBoxExDisguiseKind3.TabIndex = 11;
+            HComboBoxExDisguiseKind3.TabIndex = 13;
             // 
             // HComboBoxExDisguiseKind2
             // 
@@ -932,7 +979,7 @@
             HComboBoxExDisguiseKind2.Location = new Point(192, 164);
             HComboBoxExDisguiseKind2.Name = "HComboBoxExDisguiseKind2";
             HComboBoxExDisguiseKind2.Size = new Size(148, 23);
-            HComboBoxExDisguiseKind2.TabIndex = 10;
+            HComboBoxExDisguiseKind2.TabIndex = 12;
             // 
             // HComboBoxExDisguiseKind1
             // 
@@ -941,7 +988,7 @@
             HComboBoxExDisguiseKind1.Location = new Point(192, 136);
             HComboBoxExDisguiseKind1.Name = "HComboBoxExDisguiseKind1";
             HComboBoxExDisguiseKind1.Size = new Size(148, 23);
-            HComboBoxExDisguiseKind1.TabIndex = 9;
+            HComboBoxExDisguiseKind1.TabIndex = 11;
             // 
             // label9
             // 
@@ -979,7 +1026,7 @@
             HComboBoxExGarageCode.Location = new Point(192, 108);
             HComboBoxExGarageCode.Name = "HComboBoxExGarageCode";
             HComboBoxExGarageCode.Size = new Size(148, 23);
-            HComboBoxExGarageCode.TabIndex = 8;
+            HComboBoxExGarageCode.TabIndex = 10;
             // 
             // label6
             // 
@@ -996,7 +1043,7 @@
             HTextBoxExRegistrationNumber4.Location = new Point(316, 52);
             HTextBoxExRegistrationNumber4.Name = "HTextBoxExRegistrationNumber4";
             HTextBoxExRegistrationNumber4.Size = new Size(40, 23);
-            HTextBoxExRegistrationNumber4.TabIndex = 6;
+            HTextBoxExRegistrationNumber4.TabIndex = 8;
             HTextBoxExRegistrationNumber4.Text = "8888";
             HTextBoxExRegistrationNumber4.TextAlign = HorizontalAlignment.Center;
             // 
@@ -1006,7 +1053,7 @@
             HTextBoxExRegistrationNumber3.Location = new Point(280, 52);
             HTextBoxExRegistrationNumber3.Name = "HTextBoxExRegistrationNumber3";
             HTextBoxExRegistrationNumber3.Size = new Size(32, 23);
-            HTextBoxExRegistrationNumber3.TabIndex = 5;
+            HTextBoxExRegistrationNumber3.TabIndex = 7;
             HTextBoxExRegistrationNumber3.Text = "あ";
             HTextBoxExRegistrationNumber3.TextAlign = HorizontalAlignment.Center;
             // 
@@ -1016,7 +1063,7 @@
             HTextBoxExRegistrationNumber2.Location = new Point(244, 52);
             HTextBoxExRegistrationNumber2.Name = "HTextBoxExRegistrationNumber2";
             HTextBoxExRegistrationNumber2.Size = new Size(32, 23);
-            HTextBoxExRegistrationNumber2.TabIndex = 4;
+            HTextBoxExRegistrationNumber2.TabIndex = 6;
             HTextBoxExRegistrationNumber2.Text = "888";
             HTextBoxExRegistrationNumber2.TextAlign = HorizontalAlignment.Center;
             // 
@@ -1029,7 +1076,7 @@
             HComboBoxExRegistrationNumber1.Location = new Point(192, 52);
             HComboBoxExRegistrationNumber1.Name = "HComboBoxExRegistrationNumber1";
             HComboBoxExRegistrationNumber1.Size = new Size(48, 23);
-            HComboBoxExRegistrationNumber1.TabIndex = 3;
+            HComboBoxExRegistrationNumber1.TabIndex = 5;
             // 
             // label5
             // 
@@ -1058,7 +1105,7 @@
             HComboBoxExClassificationCode.Location = new Point(192, 80);
             HComboBoxExClassificationCode.Name = "HComboBoxExClassificationCode";
             HComboBoxExClassificationCode.Size = new Size(148, 23);
-            HComboBoxExClassificationCode.TabIndex = 7;
+            HComboBoxExClassificationCode.TabIndex = 9;
             // 
             // label3
             // 
@@ -1128,7 +1175,7 @@
             groupBox1.Controls.Add(label10);
             groupBox1.Location = new Point(4, 236);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(768, 140);
+            groupBox1.Size = new Size(772, 140);
             groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "１．基本情報";
@@ -1208,23 +1255,24 @@
             label10.Text = "車台番号";
             label10.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // HPictureBoxExPicture
+            // HPictureBoxExMainPicture
             // 
-            HPictureBoxExPicture.BorderStyle = BorderStyle.FixedSingle;
-            HPictureBoxExPicture.ContextMenuStrip = ContextMenuStrip1;
-            HPictureBoxExPicture.Dock = DockStyle.Fill;
-            HPictureBoxExPicture.Location = new Point(803, 87);
-            HPictureBoxExPicture.Name = "HPictureBoxExPicture";
-            HPictureBoxExPicture.Size = new Size(1098, 1346);
-            HPictureBoxExPicture.SizeMode = PictureBoxSizeMode.Zoom;
-            HPictureBoxExPicture.TabIndex = 4;
-            HPictureBoxExPicture.TabStop = false;
+            HPictureBoxExMainPicture.BorderStyle = BorderStyle.FixedSingle;
+            HPictureBoxExMainPicture.ContextMenuStrip = ContextMenuStrip1;
+            HPictureBoxExMainPicture.Dock = DockStyle.Fill;
+            HPictureBoxExMainPicture.Location = new Point(803, 87);
+            HPictureBoxExMainPicture.Name = "HPictureBoxExMainPicture";
+            HPictureBoxExMainPicture.Size = new Size(1098, 367);
+            HPictureBoxExMainPicture.SizeMode = PictureBoxSizeMode.Zoom;
+            HPictureBoxExMainPicture.TabIndex = 4;
+            HPictureBoxExMainPicture.TabStop = false;
             // 
             // ContextMenuStrip1
             // 
             ContextMenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemClip, ToolStripMenuItemDelete, ToolStripMenuItemRotate });
             ContextMenuStrip1.Name = "ContextMenuStrip1";
             ContextMenuStrip1.Size = new Size(109, 70);
+            ContextMenuStrip1.Opened += ContextMenuStrip1_Opened;
             // 
             // ToolStripMenuItemClip
             // 
@@ -1247,13 +1295,24 @@
             ToolStripMenuItemRotate.Text = "Rotate";
             ToolStripMenuItemRotate.Click += ToolStripMenuItem_Click;
             // 
+            // HPictureBoxExSubPicture
+            // 
+            HPictureBoxExSubPicture.BorderStyle = BorderStyle.FixedSingle;
+            HPictureBoxExSubPicture.ContextMenuStrip = ContextMenuStrip1;
+            HPictureBoxExSubPicture.Dock = DockStyle.Fill;
+            HPictureBoxExSubPicture.Location = new Point(803, 460);
+            HPictureBoxExSubPicture.Name = "HPictureBoxExSubPicture";
+            HPictureBoxExSubPicture.Size = new Size(1098, 553);
+            HPictureBoxExSubPicture.SizeMode = PictureBoxSizeMode.Zoom;
+            HPictureBoxExSubPicture.TabIndex = 6;
+            HPictureBoxExSubPicture.TabStop = false;
+            // 
             // HCarDetail
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1904, 1460);
+            ClientSize = new Size(1904, 1041);
             Controls.Add(HTableLayoutPanelExBasse);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = MenuStrip1;
             Name = "HCarDetail";
             Text = "H_CarDetail";
@@ -1285,8 +1344,9 @@
             groupBox2.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)HPictureBoxExPicture).EndInit();
+            ((System.ComponentModel.ISupportInitialize)HPictureBoxExMainPicture).EndInit();
             ContextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)HPictureBoxExSubPicture).EndInit();
             ResumeLayout(false);
         }
 
@@ -1301,7 +1361,7 @@
         private ToolStripStatusLabel ToolStripStatusLabelDetail;
         private H_ControlEx.H_PanelEx HPanelExUp;
         private H_ControlEx.H_PanelEx HPanelExLeft;
-        private H_ControlEx.H_PictureBoxEx HPictureBoxExPicture;
+        private H_ControlEx.H_PictureBoxEx HPictureBoxExMainPicture;
         private GroupBox groupBox2;
         private H_ControlEx.H_TextBoxEx HTextBoxExCarCode;
         private Label label1;
@@ -1397,5 +1457,10 @@
         private ToolStripMenuItem ToolStripMenuItemClip;
         private ToolStripMenuItem ToolStripMenuItemDelete;
         private ToolStripMenuItem ToolStripMenuItemRotate;
+        private H_ControlEx.H_PictureBoxEx HPictureBoxExSubPicture;
+        private ToolStripMenuItem ToolStripMenuItemPrint;
+        private ToolStripMenuItem ToolStripMenuItemPrintA4;
+        private H_ControlEx.H_CheckBoxEx HCheckBoxExEmergencyVehicleFlag;
+        private H_ControlEx.H_DateTimePickerEx HDateTimePickerExEmergencyVehicleDate;
     }
 }

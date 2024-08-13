@@ -50,7 +50,10 @@
         private string _baseAddress;
         private DateTime _expirationDate;
         private string _remarks;
-        private byte[] _picture;
+        private byte[] _mainPicture; // 2024-08-09 追加
+        private byte[] _subPicture; // 2024-08-09 名前変更
+        private bool _emergencyVehicleFlag; // 2024-08-13
+        private DateTime _emergencyVehicleDate; // 2024-08-13
         private string _insertPcName;
         private DateTime _insertYmdHms;
         private string _updatePcName;
@@ -107,7 +110,10 @@
             _baseAddress = string.Empty;
             _expirationDate = _defaultDateTime;
             _remarks = string.Empty;
-            _picture = Array.Empty<byte>();
+            _mainPicture = Array.Empty<byte>();
+            _subPicture = Array.Empty<byte>();
+            _emergencyVehicleFlag = false;
+            _emergencyVehicleDate = _defaultDateTime;
             _insertPcName = string.Empty;
             _insertYmdHms = _defaultDateTime;
             _updatePcName = string.Empty;
@@ -433,11 +439,33 @@
             set => _remarks = value;
         }
         /// <summary>
-        /// 車検証画像
+        /// 車検証画像(車検証)
         /// </summary>
-        public byte[] Picture {
-            get => _picture;
-            set => _picture = value;
+        public byte[] MainPicture {
+            get => _mainPicture;
+            set => _mainPicture = value;
+        }
+        /// <summary>
+        /// 車検証画像(自動車検査証記録事項)
+        /// </summary>
+        public byte[] SubPicture {
+            get => _subPicture;
+            set => _subPicture = value;
+        }
+        /// <summary>
+        /// 緊急車両登録
+        /// true:登録済 false:未登録
+        /// </summary>
+        public bool EmergencyVehicleFlag {
+            get => _emergencyVehicleFlag;
+            set => _emergencyVehicleFlag = value;
+        }
+        /// <summary>
+        /// 緊急車両登録期限
+        /// </summary>
+        public DateTime EmergencyVehicleDate {
+            get => _emergencyVehicleDate;
+            set => _emergencyVehicleDate = value;
         }
         public string InsertPcName {
             get => _insertPcName;

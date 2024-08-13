@@ -25,17 +25,29 @@ namespace H_Car {
              * InitializeControl
              */
             InitializeComponent();
-            this.PutPicture(_hCarMasterDao.SelectOnePicture(carCode));
+            this.PutMainPicture(_hCarMasterDao.SelectOneMainPicture(carCode));
+            this.PutSubPicture(_hCarMasterDao.SelectOneSubPicture(carCode));
         }
 
         /// <summary>
-        /// 車検証を表示
+        /// 車検証
         /// </summary>
         /// <param name="picture"></param>
-        private void PutPicture(byte[] picture) {
+        private void PutMainPicture(byte[] picture) {
             if (picture.Length > 0) {
                 ImageConverter imageConv = new();
-                HPictureBoxExCarVerification.Image = (Image)imageConv.ConvertFrom(picture);
+                HPictureBoxExMainPicture.Image = (Image)imageConv.ConvertFrom(picture);
+            }
+        }
+
+        /// <summary>
+        /// 自動車検査証記録事項
+        /// </summary>
+        /// <param name="picture"></param>
+        private void PutSubPicture(byte[] picture) {
+            if (picture.Length > 0) {
+                ImageConverter imageConv = new();
+                HPictureBoxExSubPicture.Image = (Image)imageConv.ConvertFrom(picture);
             }
         }
 

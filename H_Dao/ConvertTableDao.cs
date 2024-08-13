@@ -78,7 +78,7 @@ namespace H_Dao {
                 hCarMasterVo.BaseAddress = carMasterVo.Base_address;
                 hCarMasterVo.ExpirationDate = carMasterVo.Expiration_date;
                 hCarMasterVo.Remarks = carMasterVo.Remarks;
-                hCarMasterVo.Picture = carMasterVo.Picture;
+                hCarMasterVo.SubPicture = carMasterVo.Picture;
                 hCarMasterVo.InsertPcName = Environment.MachineName;
                 hCarMasterVo.InsertYmdHms = carMasterVo.Insert_ymd_hms;
                 hCarMasterVo.UpdatePcName = Environment.MachineName;
