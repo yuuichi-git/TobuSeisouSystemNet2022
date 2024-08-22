@@ -1,4 +1,4 @@
-﻿namespace Vo {
+﻿namespace H_Vo {
     public class H_CarAccidentMasterVo {
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
 

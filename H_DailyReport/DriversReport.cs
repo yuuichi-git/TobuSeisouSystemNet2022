@@ -7,6 +7,8 @@ using FarPoint.Win.Spread;
 
 using H_Common;
 
+using H_Vo;
+
 using Vo;
 
 namespace H_DailyReport {

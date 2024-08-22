@@ -5,7 +5,7 @@ using H_ControlEx;
 
 using H_Utility;
 
-using Vo;
+using H_Vo;
 
 namespace H_StockBox {
     public partial class H_StockBoxs : Form {

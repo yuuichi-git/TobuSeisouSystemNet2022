@@ -2,7 +2,7 @@
  * 2023-10-31
  * 賞罰・譴責ファイル
  */
-namespace Vo {
+namespace H_Vo {
     public class H_StaffPunishmentVo {
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
 

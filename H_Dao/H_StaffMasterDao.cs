@@ -6,6 +6,8 @@ using System.Data.SqlClient;
 
 using H_Common;
 
+using H_Vo;
+
 using Vo;
 
 namespace H_Dao {
@@ -109,6 +111,8 @@ namespace H_Dao {
                                             "OtherName," +
                                             "BirthDate," +
                                             "EmploymentDate," +
+                                            "LegalTwelveItemFlag," +
+                                            "ToukanpoFlag," +
                                             "CurrentAddress," +
                                             "RetirementFlag," +
                                             "HealthInsuranceDate," +
@@ -133,6 +137,8 @@ namespace H_Dao {
                     hStaffMasterVo.OtherName = _defaultValue.GetDefaultValue<string>(sqlDataReader["OtherName"]);
                     hStaffMasterVo.BirthDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["BirthDate"]);
                     hStaffMasterVo.EmploymentDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["EmploymentDate"]);
+                    hStaffMasterVo.LegalTwelveItemFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["LegalTwelveItemFlag"]);
+                    hStaffMasterVo.ToukanpoFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["ToukanpoFlag"]);
                     hStaffMasterVo.CurrentAddress = _defaultValue.GetDefaultValue<string>(sqlDataReader["CurrentAddress"]);
                     hStaffMasterVo.RetirementFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["RetirementFlag"]);
                     hStaffMasterVo.HealthInsuranceDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["HealthInsuranceDate"]);
@@ -185,6 +191,8 @@ namespace H_Dao {
                                             "RetirementNote," +
                                             "DeathDate," +
                                             "DeathNote," +
+                                            "LegalTwelveItemFlag," +
+                                            "ToukanpoFlag," +
                                             "UrgentTelephoneNumber," +
                                             "UrgentTelephoneMethod," +
                                             "HealthInsuranceDate," +
@@ -244,6 +252,8 @@ namespace H_Dao {
                     hStaffMasterVo.RetirementNote = _defaultValue.GetDefaultValue<string>(sqlDataReader["RetirementNote"]);
                     hStaffMasterVo.DeathDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["DeathDate"]);
                     hStaffMasterVo.DeathNote = _defaultValue.GetDefaultValue<string>(sqlDataReader["DeathNote"]);
+                    hStaffMasterVo.LegalTwelveItemFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["LegalTwelveItemFlag"]);
+                    hStaffMasterVo.ToukanpoFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["ToukanpoFlag"]);
                     hStaffMasterVo.ListHStaffFamilyVo = _hStaffFamilyDao.SelectOneHStaffFamilyMaster(_defaultValue.GetDefaultValue<int>(sqlDataReader["StaffCode"]));
                     hStaffMasterVo.UrgentTelephoneNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["UrgentTelephoneNumber"]);
                     hStaffMasterVo.UrgentTelephoneMethod = _defaultValue.GetDefaultValue<string>(sqlDataReader["UrgentTelephoneMethod"]);
@@ -315,6 +325,8 @@ namespace H_Dao {
                                             "RetirementNote," +
                                             "DeathDate," +
                                             "DeathNote," +
+                                            "LegalTwelveItemFlag," +
+                                            "ToukanpoFlag," +
                                             "UrgentTelephoneNumber," +
                                             "UrgentTelephoneMethod," +
                                             "HealthInsuranceDate," +
@@ -372,6 +384,8 @@ namespace H_Dao {
                     hStaffMasterVo.RetirementNote = _defaultValue.GetDefaultValue<string>(sqlDataReader["RetirementNote"]);
                     hStaffMasterVo.DeathDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["DeathDate"]);
                     hStaffMasterVo.DeathNote = _defaultValue.GetDefaultValue<string>(sqlDataReader["DeathNote"]);
+                    hStaffMasterVo.LegalTwelveItemFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["LegalTwelveItemFlag"]);
+                    hStaffMasterVo.ToukanpoFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["ToukanpoFlag"]);
                     hStaffMasterVo.UrgentTelephoneNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["UrgentTelephoneNumber"]);
                     hStaffMasterVo.UrgentTelephoneMethod = _defaultValue.GetDefaultValue<string>(sqlDataReader["UrgentTelephoneMethod"]);
                     hStaffMasterVo.HealthInsuranceDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["HealthInsuranceDate"]);
@@ -438,6 +452,8 @@ namespace H_Dao {
                                             "RetirementNote," +
                                             "DeathDate," +
                                             "DeathNote," +
+                                            "LegalTwelveItemFlag," +
+                                            "ToukanpoFlag," +
                                             "UrgentTelephoneNumber," +
                                             "UrgentTelephoneMethod," +
                                             "HealthInsuranceDate," +
@@ -495,6 +511,8 @@ namespace H_Dao {
                     hStaffMasterVo.RetirementNote = _defaultValue.GetDefaultValue<string>(sqlDataReader["RetirementNote"]);
                     hStaffMasterVo.DeathDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["DeathDate"]);
                     hStaffMasterVo.DeathNote = _defaultValue.GetDefaultValue<string>(sqlDataReader["DeathNote"]);
+                    hStaffMasterVo.LegalTwelveItemFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["LegalTwelveItemFlag"]);
+                    hStaffMasterVo.ToukanpoFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["ToukanpoFlag"]);
                     hStaffMasterVo.UrgentTelephoneNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["UrgentTelephoneNumber"]);
                     hStaffMasterVo.UrgentTelephoneMethod = _defaultValue.GetDefaultValue<string>(sqlDataReader["UrgentTelephoneMethod"]);
                     hStaffMasterVo.HealthInsuranceDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["HealthInsuranceDate"]);
@@ -591,6 +609,8 @@ namespace H_Dao {
                                                                "RetirementNote," +
                                                                "DeathDate," +
                                                                "DeathNote," +
+                                                               "LegalTwelveItemFlag," +
+                                                               "ToukanpoFlag," +
                                                                "UrgentTelephoneNumber," +
                                                                "UrgentTelephoneMethod," +
                                                                "HealthInsuranceDate," +
@@ -643,6 +663,8 @@ namespace H_Dao {
                                             "'" + hStaffMasterVo.RetirementNote + "'," +
                                             "'" + hStaffMasterVo.DeathDate + "'," +
                                             "'" + hStaffMasterVo.DeathNote + "'," +
+                                            "'" + hStaffMasterVo.LegalTwelveItemFlag + "'," +
+                                            "'" + hStaffMasterVo.ToukanpoFlag + "'," +
                                             "'" + hStaffMasterVo.UrgentTelephoneNumber + "'," +
                                             "'" + hStaffMasterVo.UrgentTelephoneMethod + "'," +
                                             "'" + hStaffMasterVo.HealthInsuranceDate + "'," +
@@ -712,6 +734,8 @@ namespace H_Dao {
                                          "RetirementNote = '" + hStaffMasterVo.RetirementNote + "'," +
                                          "DeathDate = '" + hStaffMasterVo.DeathDate + "'," +
                                          "DeathNote = '" + hStaffMasterVo.DeathNote + "'," +
+                                         "LegalTwelveItemFlag = '" + hStaffMasterVo.LegalTwelveItemFlag + "'," +
+                                         "ToukanpoFlag = '" + hStaffMasterVo.ToukanpoFlag + "'," +
                                          "UrgentTelephoneNumber = '" + hStaffMasterVo.UrgentTelephoneNumber + "'," +
                                          "UrgentTelephoneMethod = '" + hStaffMasterVo.UrgentTelephoneMethod + "'," +
                                          "HealthInsuranceDate = '" + hStaffMasterVo.HealthInsuranceDate + "'," +

@@ -2,7 +2,7 @@
  * 2023-10-31
  * 適正診断ファイル
  */
-namespace Vo {
+namespace H_Vo {
     public class H_StaffProperVo {
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
 

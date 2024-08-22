@@ -1,7 +1,7 @@
 ﻿/*
  * 2024-03-21
  */
-namespace Vo {
+namespace H_Vo {
     public class H_CollectionWeightGroupChiyodaVo {
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
 

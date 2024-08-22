@@ -1,7 +1,7 @@
 ﻿/*
  * 2024-03-16
  */
-namespace Vo {
+namespace H_Vo {
     public class H_CollectionWeightTaitouVo {
         private readonly DateTime _defaultDateTime = new(1900, 01, 01);
 

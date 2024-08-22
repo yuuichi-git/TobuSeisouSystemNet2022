@@ -25,10 +25,7 @@
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HStaffList));
             HTableLayoutPanelExBase = new H_ControlEx.H_TableLayoutPanelEx();
-            SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("HTableLayoutPanelExBase.Controls"));
-            SheetViewList = SpreadList.GetSheet(0);
-            SheetViewMedical = SpreadList.GetSheet(1);
-            SheetViewDriver = SpreadList.GetSheet(2);
+            SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("resource1"));
             StatusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             ToolStripStatusLabelDetail = new ToolStripStatusLabel();
@@ -70,6 +67,9 @@
             tabPage8 = new TabPage();
             tabPage9 = new TabPage();
             tabPage10 = new TabPage();
+            SheetViewList = SpreadList.GetSheet(0);
+            SheetViewMedical = SpreadList.GetSheet(1);
+            SheetViewDriver = SpreadList.GetSheet(2);
             HTableLayoutPanelExBase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)SpreadList).BeginInit();
             StatusStrip1.SuspendLayout();
@@ -104,7 +104,7 @@
             // 
             // SpreadList
             // 
-            SpreadList.AccessibleDescription = "SpreadList, 運転者リスト, Row 0, Column 0";
+            SpreadList.AccessibleDescription = "SpreadList, 従事者リスト, Row 0, Column 0";
             SpreadList.Dock = DockStyle.Fill;
             SpreadList.Font = new Font("ＭＳ Ｐゴシック", 11F, FontStyle.Regular, GraphicsUnit.Point);
             SpreadList.Location = new Point(3, 118);
@@ -566,7 +566,6 @@
             ClientSize = new Size(1904, 1041);
             Controls.Add(HTableLayoutPanelExBase);
             MainMenuStrip = MenuStrip1;
-            MinimumSize = new Size(1918, 1046);
             Name = "HStaffList";
             Text = "H_StaffList";
             FormClosing += HStaffList_FormClosing;

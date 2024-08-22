@@ -10,6 +10,8 @@ using H_Common;
 
 using H_Dao;
 
+using H_Vo;
+
 using Vo;
 
 namespace H_CarAccident {

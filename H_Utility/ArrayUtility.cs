@@ -6,7 +6,7 @@ using H_Common;
 
 using H_ControlEx;
 
-using Vo;
+using H_Vo;
 
 namespace H_Utility {
     public class H_ArrayUtility {

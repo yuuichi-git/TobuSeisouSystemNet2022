@@ -1,9 +1,9 @@
 ﻿/*
  * 2023-11-06
  */
-namespace Vo {
+namespace H_Vo {
     public class H_VehicleDispatchBodyVo {
-        private readonly DateTime _defaultDateTime = new(1900,01,01);
+        private readonly DateTime _defaultDateTime = new(1900, 01, 01);
 
         private int _setCode;
         private string _dayOfWeek;

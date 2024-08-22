@@ -3,7 +3,7 @@
  */
 using H_Dao;
 
-using Vo;
+using H_Vo;
 
 namespace H_ControlEx {
     public partial class H_SetControl : TableLayoutPanel {

@@ -1,7 +1,7 @@
 ﻿/*
  * 2023-10-21
  */
-namespace Vo {
+namespace H_Vo {
     public class StartCode {
         /// <summary>
         /// エントリーポイント

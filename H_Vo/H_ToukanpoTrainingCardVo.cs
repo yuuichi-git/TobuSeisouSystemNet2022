@@ -1,7 +1,7 @@
 ﻿/*
  * 2024-02-07
  */
-namespace Vo {
+namespace H_Vo {
     public class H_ToukanpoTrainingCardVo {
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
 

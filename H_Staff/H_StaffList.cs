@@ -9,6 +9,8 @@ using H_Common;
 
 using H_Dao;
 
+using H_Vo;
+
 using Vo;
 
 namespace H_Staff {
@@ -81,49 +83,57 @@ namespace H_Staff {
         /// </summary>
         private const int colServiceDate = 10;
         /// <summary>
-        /// 東環保
+        /// 東環保カード有無
         /// </summary>
         private const int colToukanpoCard = 11;
         /// <summary>
+        /// 法定１２項目の研修対象
+        /// </summary>
+        private const int colLegalTwelveItemFlag = 12;
+        /// <summary>
+        /// 東環保研修の対象
+        /// </summary>
+        private const int colToukanpoFlag = 13;
+        /// <summary>
         /// 免許証期限
         /// </summary>
-        private const int colLicensExpirationDate = 12;
+        private const int colLicensExpirationDate = 14;
         /// <summary>
         /// 初任
         /// </summary>
-        private const int colFirstTerm = 13;
+        private const int colFirstTerm = 15;
         /// <summary>
         /// 適齢
         /// </summary>
-        private const int colSuitableAge = 14;
+        private const int colSuitableAge = 16;
         /// <summary>
         /// 事故件数
         /// </summary>
-        private const int colCarAccidentCount = 15;
+        private const int colCarAccidentCount = 17;
         /// <summary>
         /// １年以内の健康診断
         /// </summary>
-        private const int colMedicalExaminationDate = 16;
+        private const int colMedicalExaminationDate = 18;
         /// <summary>
         /// 現住所
         /// </summary>
-        private const int colCurrentAddress = 17;
+        private const int colCurrentAddress = 19;
         /// <summary>
         /// 健康保険
         /// </summary>
-        private const int colHealthInsuranceNumber = 18;
+        private const int colHealthInsuranceNumber = 20;
         /// <summary>
         /// 厚生年金
         /// </summary>
-        private const int colWelfarePensionNumber = 19;
+        private const int colWelfarePensionNumber = 21;
         /// <summary>
         /// 雇用保険
         /// </summary>
-        private const int colEmploymentInsuranceNumber = 20;
+        private const int colEmploymentInsuranceNumber = 22;
         /// <summary>
         /// 労災保険
         /// </summary>
-        private const int colWorkerAccidentInsuranceNumber = 21;
+        private const int colWorkerAccidentInsuranceNumber = 23;
 
         /// <summary>
         /// コンストラクター
@@ -321,6 +331,10 @@ namespace H_Staff {
                         SheetViewList.Cells[rowCount, colServiceDate].Value = string.Concat(_date.GetEmploymenteYear(hStaffMasterVo.EmploymentDate.Date).ToString("#0年"), _date.GetEmploymenteMonth(hStaffMasterVo.EmploymentDate.Date).ToString("00月"));
                     // 東環保研修カード
                     SheetViewList.Cells[rowCount, colToukanpoCard].Value = _hToukanpoTrainingCardDao.ExistenceHToukanpoTrainingCardMaster(hStaffMasterVo.StaffCode);
+                    // 法定１２項目
+                    SheetViewList.Cells[rowCount, colLegalTwelveItemFlag].Value = hStaffMasterVo.LegalTwelveItemFlag;
+                    // 東環保講習
+                    SheetViewList.Cells[rowCount, colToukanpoFlag].Value = hStaffMasterVo.ToukanpoFlag;
                     // 免許証期限
                     SheetViewList.Cells[rowCount, colLicensExpirationDate].Value = _hLicenseMasterDao.GetExpirationDate(hStaffMasterVo.StaffCode);
                    　// 初任診断

@@ -1,7 +1,7 @@
 ﻿/*
  * 2023-10-31
  */
-namespace Vo {
+namespace H_Vo {
     /*
      * DeepCopyで使用
      */
@@ -43,6 +43,8 @@ namespace Vo {
         private string _retirementNote;
         private DateTime _deathDate;
         private string _deathNote;
+        private bool _legalTwelveItemFlag;
+        private bool _toukanpoFlag;
         private List<H_StaffFamilyVo> _listHStaffFamilyVo;
         private string _urgentTelephoneNumber;
         private string _urgentTelephoneMethod;
@@ -109,6 +111,8 @@ namespace Vo {
             _retirementNote = string.Empty;
             _deathDate = _defaultDateTime;
             _deathNote = string.Empty;
+            _legalTwelveItemFlag = false;
+            _toukanpoFlag = false;
             _listHStaffFamilyVo = new List<H_StaffFamilyVo>();
             _urgentTelephoneNumber = string.Empty;
             _urgentTelephoneMethod = string.Empty;
@@ -382,6 +386,22 @@ namespace Vo {
         public string DeathNote {
             get => _deathNote;
             set => _deathNote = value;
+        }
+        /// <summary>
+        /// 法定１２項目の講習受講対象者
+        /// true:受講対象者 false:受講未対象者
+        /// </summary>
+        public bool LegalTwelveItemFlag {
+            get => _legalTwelveItemFlag;
+            set => _legalTwelveItemFlag = value;
+        }
+        /// <summary>
+        /// 東環保更新研修受講対象者フラグ
+        /// true:受講対象者 false:受講未対象者
+        /// </summary>
+        public bool ToukanpoFlag {
+            get => _toukanpoFlag;
+            set => _toukanpoFlag = value;
         }
         /// <summary>
         /// 家族構成

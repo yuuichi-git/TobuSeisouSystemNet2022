@@ -2,7 +2,7 @@
  * 2023-10-31
  * 自動車経験ファイル
  */
-namespace Vo {
+namespace H_Vo {
     public class H_StaffExperienceVo {
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
 

@@ -5,6 +5,8 @@ using H_ControlEx;
 
 using H_Dao;
 
+using H_Vo;
+
 using Vo;
 
 namespace H_Staff {
@@ -186,6 +188,12 @@ namespace H_Staff {
             hStaffMasterVo.RetirementNote = HTextBoxExRetirementNote.Text; // 退職理由
             hStaffMasterVo.DeathDate = HDateTimeExDeathDate.GetValue(); // 死亡日
             hStaffMasterVo.DeathNote = HTextBoxExDeathNote.Text; // 死亡理由
+            /*
+             * 2024-08-22追加
+             * 各種対象者設定
+             */
+            hStaffMasterVo.LegalTwelveItemFlag = HCheckBoxExLegalTwelveItemFlag.Checked;
+            hStaffMasterVo.ToukanpoFlag = HCheckBoxExToukanpoFlag.Checked;
             /*
              * HGroupBoxExFamily
              * 家族構成
@@ -678,6 +686,12 @@ namespace H_Staff {
             HDateTimeExDeathDate.SetValueJp(hStaffMasterVo.DeathDate);
             HTextBoxExDeathNote.Text = hStaffMasterVo.DeathNote;
             /*
+             * 2024-08-22追加
+             * 各種対象者設定 
+             */
+            HCheckBoxExLegalTwelveItemFlag.Checked = hStaffMasterVo.LegalTwelveItemFlag;
+            HCheckBoxExToukanpoFlag.Checked = hStaffMasterVo.ToukanpoFlag;
+            /*
              * HGroupBoxExFamily
              * 家族構成
              */
@@ -989,6 +1003,12 @@ namespace H_Staff {
             HTextBoxExRetirementNote.Text = string.Empty;
             HDateTimeExDeathDate.SetBlank();
             HTextBoxExDeathNote.Text = string.Empty;
+            /*
+             * 2024-08-22追加
+             * 各種対象者設定
+             */
+            HCheckBoxExLegalTwelveItemFlag.Checked = false;
+            HCheckBoxExToukanpoFlag.Checked = false;
             /*
              * HGroupBoxExFamily
              * 家族構成

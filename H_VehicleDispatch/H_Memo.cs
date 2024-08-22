@@ -5,6 +5,8 @@ using H_ControlEx;
 
 using H_Dao;
 
+using H_Vo;
+
 using Vo;
 
 namespace H_VehicleDispatch {

@@ -21,6 +21,8 @@ using H_Staff;
 
 using H_StockBox;
 
+using H_Vo;
+
 using Vo;
 
 namespace H_VehicleDispatch {

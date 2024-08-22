@@ -36,6 +36,9 @@
             ButtonUpdate = new Button();
             HTableLayoutPanelExMiddle = new H_ControlEx.H_TableLayoutPanelEx();
             HPanelExMiddleLeft = new H_ControlEx.H_PanelEx();
+            groupBox1 = new GroupBox();
+            HCheckBoxExToukanpoFlag = new H_ControlEx.H_CheckBoxEx();
+            HCheckBoxExLegalTwelveItemFlag = new H_ControlEx.H_CheckBoxEx();
             GroupBoxExOccupation = new GroupBox();
             HRadioButtonExNone2 = new H_ControlEx.H_RadioButtonEx();
             HRadioButtonExOfficeWork = new H_ControlEx.H_RadioButtonEx();
@@ -303,6 +306,7 @@
             HPanelExUp.SuspendLayout();
             HTableLayoutPanelExMiddle.SuspendLayout();
             HPanelExMiddleLeft.SuspendLayout();
+            groupBox1.SuspendLayout();
             GroupBoxExOccupation.SuspendLayout();
             HGroupBoxExExperience.SuspendLayout();
             HGroupBoxExHistory.SuspendLayout();
@@ -434,6 +438,7 @@
             // HPanelExMiddleLeft
             // 
             HPanelExMiddleLeft.AutoScroll = true;
+            HPanelExMiddleLeft.Controls.Add(groupBox1);
             HPanelExMiddleLeft.Controls.Add(GroupBoxExOccupation);
             HPanelExMiddleLeft.Controls.Add(HGroupBoxExExperience);
             HPanelExMiddleLeft.Controls.Add(HGroupBoxExHistory);
@@ -447,6 +452,37 @@
             HPanelExMiddleLeft.Name = "HPanelExMiddleLeft";
             HPanelExMiddleLeft.Size = new Size(943, 921);
             HPanelExMiddleLeft.TabIndex = 0;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(HCheckBoxExToukanpoFlag);
+            groupBox1.Controls.Add(HCheckBoxExLegalTwelveItemFlag);
+            groupBox1.Location = new Point(8, 1200);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(912, 56);
+            groupBox1.TabIndex = 8;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "各種対象者設定";
+            // 
+            // HCheckBoxExToukanpoFlag
+            // 
+            HCheckBoxExToukanpoFlag.AutoSize = true;
+            HCheckBoxExToukanpoFlag.Location = new Point(184, 24);
+            HCheckBoxExToukanpoFlag.Name = "HCheckBoxExToukanpoFlag";
+            HCheckBoxExToukanpoFlag.Size = new Size(146, 19);
+            HCheckBoxExToukanpoFlag.TabIndex = 2;
+            HCheckBoxExToukanpoFlag.Text = "東環保研修受講対象者";
+            HCheckBoxExToukanpoFlag.UseVisualStyleBackColor = true;
+            // 
+            // HCheckBoxExLegalTwelveItemFlag
+            // 
+            HCheckBoxExLegalTwelveItemFlag.AutoSize = true;
+            HCheckBoxExLegalTwelveItemFlag.Location = new Point(16, 24);
+            HCheckBoxExLegalTwelveItemFlag.Name = "HCheckBoxExLegalTwelveItemFlag";
+            HCheckBoxExLegalTwelveItemFlag.Size = new Size(146, 19);
+            HCheckBoxExLegalTwelveItemFlag.TabIndex = 1;
+            HCheckBoxExLegalTwelveItemFlag.Text = "法定12項目受講対象者";
+            HCheckBoxExLegalTwelveItemFlag.UseVisualStyleBackColor = true;
             // 
             // GroupBoxExOccupation
             // 
@@ -3142,7 +3178,6 @@
             ClientSize = new Size(1904, 1041);
             Controls.Add(HTableLayoutPanelExBase);
             MainMenuStrip = MenuStrip1;
-            MinimumSize = new Size(1918, 1046);
             Name = "HStaffDetail";
             Text = "HStaffDetail";
             FormClosing += HStaffDetail_FormClosing;
@@ -3155,6 +3190,8 @@
             HPanelExUp.ResumeLayout(false);
             HTableLayoutPanelExMiddle.ResumeLayout(false);
             HPanelExMiddleLeft.ResumeLayout(false);
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             GroupBoxExOccupation.ResumeLayout(false);
             GroupBoxExOccupation.PerformLayout();
             HGroupBoxExExperience.ResumeLayout(false);
@@ -3467,5 +3504,8 @@
         private H_ControlEx.H_LabelEx h_LabelEx57;
         private H_ControlEx.H_DateTimePickerEx HDateTimePickerExContractDate;
         private H_ControlEx.H_CheckBoxEx HCheckBoxExContractFlag;
+        private GroupBox groupBox1;
+        private H_ControlEx.H_CheckBoxEx HCheckBoxExToukanpoFlag;
+        private H_ControlEx.H_CheckBoxEx HCheckBoxExLegalTwelveItemFlag;
     }
 }

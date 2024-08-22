@@ -2,7 +2,9 @@
  * 2023-10-21
  * H_SetControlに値を渡す為のVo
  */
-namespace Vo {
+using Vo;
+
+namespace H_Vo {
 
     public class H_ControlVo {
         /*

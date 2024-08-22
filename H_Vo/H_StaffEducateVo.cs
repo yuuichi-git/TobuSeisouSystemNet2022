@@ -2,7 +2,7 @@
  * 2023-10-31
  * 社内教育の実施状況
  */
-namespace Vo {
+namespace H_Vo {
     public class H_StaffEducateVo {
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
 
