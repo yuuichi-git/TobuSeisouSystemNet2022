@@ -223,7 +223,10 @@ namespace H_DailyReport {
                 case 1311902: // 板橋西軽１
                 case 1311903: // 板橋西軽２
                 case 1311904: // 板橋西軽３
-                    SheetViewDriversReport.Cells[10, 17].Text = "西台中継所/板橋工場 /"; // 休憩場所
+                    SheetViewDriversReport.Cells[10, 17].Text = "西台中継所/板橋清掃工場 /"; // 休憩場所
+                    break;
+                case 1311910: // 板橋東プラ軽３
+                    SheetViewDriversReport.Cells[10, 17].Text = "板橋清掃工場"; // 休憩場所
                     break;
                 case 1312013: // 石神井不燃５
                     SheetViewDriversReport.Cells[10, 17].Text = "田中駐車場 /"; // 休憩場所
@@ -233,7 +236,7 @@ namespace H_DailyReport {
                 case 1312164: // 足立２３(２０２４)
                 case 1312163: // 足立３７
                 case 1312105: // 足立不燃４
-                    SheetViewDriversReport.Cells[10, 17].Text = "足立工場 /"; // 休憩場所
+                    SheetViewDriversReport.Cells[10, 17].Text = "足立清掃工場 /"; // 休憩場所
                     break;
                 case 1312212: // 小岩６
                     SheetViewDriversReport.Cells[10, 17].Text = "小岩清掃事務所 駐車場 /"; // 休憩場所
