@@ -81,7 +81,7 @@ namespace H_DailyReport {
                      * プリンタがサポートしている用紙サイズを調べる
                      */
                     foreach (PaperSize paperSize in _printDocument.PrinterSettings.PaperSizes) {
-                        // A4用紙に設定する
+                        // B5用紙に設定する
                         if (paperSize.Kind == PaperKind.B5) {
                             _printDocument.DefaultPageSettings.PaperSize = paperSize;
                             break;

@@ -46,9 +46,9 @@ namespace H_ControlEx {
         /// <summary>
         /// OnPaint
         /// </summary>
-        /// <param name="pe"></param>
-        protected override void OnPaint(PaintEventArgs pe) {
-            base.OnPaint(pe);
+        /// <param name="paintEventArgs"></param>
+        protected override void OnPaint(PaintEventArgs paintEventArgs) {
+            base.OnPaint(paintEventArgs);
         }
 
         /// <summary>

@@ -30,6 +30,7 @@
             ToolStripMenuItemExit = new ToolStripMenuItem();
             ToolStripMenuItemPrint = new ToolStripMenuItem();
             ToolStripMenuItemPrintA4 = new ToolStripMenuItem();
+            ToolStripMenuItemPrintA4Dialog = new ToolStripMenuItem();
             ToolStripMenuItemHelp = new ToolStripMenuItem();
             StatusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
@@ -95,7 +96,7 @@
             // 
             // ToolStripMenuItemPrint
             // 
-            ToolStripMenuItemPrint.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemPrintA4 });
+            ToolStripMenuItemPrint.DropDownItems.AddRange(new ToolStripItem[] { ToolStripMenuItemPrintA4, ToolStripMenuItemPrintA4Dialog });
             ToolStripMenuItemPrint.Name = "ToolStripMenuItemPrint";
             ToolStripMenuItemPrint.Size = new Size(43, 20);
             ToolStripMenuItemPrint.Text = "印刷";
@@ -103,9 +104,16 @@
             // ToolStripMenuItemPrintA4
             // 
             ToolStripMenuItemPrintA4.Name = "ToolStripMenuItemPrintA4";
-            ToolStripMenuItemPrintA4.Size = new Size(141, 22);
-            ToolStripMenuItemPrintA4.Text = "A4で印刷する";
+            ToolStripMenuItemPrintA4.Size = new Size(218, 22);
+            ToolStripMenuItemPrintA4.Text = "A4で印刷する(直接印刷)";
             ToolStripMenuItemPrintA4.Click += ToolStripMenuItem_Click;
+            // 
+            // ToolStripMenuItemPrintA4Dialog
+            // 
+            ToolStripMenuItemPrintA4Dialog.Name = "ToolStripMenuItemPrintA4Dialog";
+            ToolStripMenuItemPrintA4Dialog.Size = new Size(218, 22);
+            ToolStripMenuItemPrintA4Dialog.Text = "A4で印刷する(ダイアログ印刷)";
+            ToolStripMenuItemPrintA4Dialog.Click += ToolStripMenuItem_Click;
             // 
             // ToolStripMenuItemHelp
             // 
@@ -199,7 +207,7 @@
             // 
             // SpreadList
             // 
-            SpreadList.AccessibleDescription = "Book1, Sheet1, Row 0, Column 0";
+            SpreadList.AccessibleDescription = "SpreadList, Sheet1, Row 0, Column 0";
             SpreadList.Dock = DockStyle.Fill;
             SpreadList.Font = new Font("ＭＳ Ｐゴシック", 11F, FontStyle.Regular, GraphicsUnit.Point);
             SpreadList.Location = new Point(3, 87);
@@ -214,7 +222,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1172, 961);
             Controls.Add(HTableLayoutPanelExBase);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = MenuStrip1;
             MaximizeBox = false;
             MinimizeBox = false;
@@ -253,6 +260,7 @@
         private H_ControlEx.H_LabelEx h_LabelEx1;
         private H_ControlEx.H_ButtonEx HButtonExUpdate;
         private H_ControlEx.H_CheckBoxEx HCheckBoxExJobForm;
+        private ToolStripMenuItem ToolStripMenuItemPrintA4Dialog;
         private FarPoint.Win.Spread.SheetView SheetViewList;
     }
 }

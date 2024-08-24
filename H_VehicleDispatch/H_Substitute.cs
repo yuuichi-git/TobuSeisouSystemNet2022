@@ -1,6 +1,7 @@
 ﻿/*
  * 2024-02-26
  */
+using System.Drawing.Printing;
 using System.Globalization;
 
 using FarPoint.Win.Spread;
@@ -17,7 +18,9 @@ using Vo;
 
 namespace H_VehicleDispatch {
     public partial class H_Substitute : Form {
+        PrintDocument _printDocument = new();
         Date _date = new();
+
         /// <summary>
         /// 代番の電話番号
         /// </summary>
@@ -78,6 +81,17 @@ namespace H_VehicleDispatch {
              */
             InitializeComponent();
             /*
+             * プリンターの一覧を取得後、通常使うプリンター名をセットする
+             */
+            foreach (string item in new Print().GetAllPrinterName()) {
+                this.HComboBoxExPrinterName.Items.Add(item);
+            }
+            this.HComboBoxExPrinterName.Text = _printDocument.PrinterSettings.PrinterName;
+            /*
+             * 送信先FAX番号
+             */
+            this.HLabelExFaxNumber.Text = string.Empty;
+            /*
              * FpSpreadを初期化
              */
             SpreadHSubstitute.TabStrip.DefaultSheetTab.Font = new Font("Yu Gothic UI", 9);
@@ -132,8 +146,8 @@ namespace H_VehicleDispatch {
                 case 1312011: // 桜台2-1
                 case 1312012: // 桜台2-2
                 case 1312006: // 桜台臨時
-                    _cleanOfficeName = "";
-                    _cleanOfficeFax = "";
+                    _cleanOfficeName = string.Empty;
+                    _cleanOfficeFax = string.Concat("東京都環境衛生事業協同組合 練馬区支部事務局", "\r\n", " ＦＡＸ ０３－５９４７－３４４１");
                     OutputSheetViewSAKURADAI(SheetView2, hSetControl);
                     break;
                 default:
@@ -246,6 +260,10 @@ namespace H_VehicleDispatch {
             }
             // FAX番号他
             sheetView.Cells["H51"].Text = _cleanOfficeFax;
+            /*
+             * 送信先FAX番号
+             */
+            this.HLabelExFaxNumber.Text = _cleanOfficeFax;
         }
 
         /// <summary>
@@ -333,6 +351,10 @@ namespace H_VehicleDispatch {
                 sheetView.Cells["D49"].Text = hControlVo.OperationDate.ToString("gg y年M月d日", cultureInfo);
                 sheetView.Cells["I49"].Text = string.Concat(hControlVo.OperationDate.ToString("gg y年M月d日", cultureInfo), " 迄");
             }
+            /*
+             * 送信先FAX番号
+             */
+            this.HLabelExFaxNumber.Text = _cleanOfficeFax;
         }
 
         /// <summary>
@@ -452,7 +474,55 @@ namespace H_VehicleDispatch {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void HButtonExPrint_Click(object sender, EventArgs e) {
-            SpreadHSubstitute.PrintSheet(SpreadHSubstitute.ActiveSheet);
+            // Eventを登録
+            _printDocument.PrintPage += new PrintPageEventHandler(PrintDocument_PrintPage);
+            // 出力先プリンタを指定します。
+            _printDocument.PrinterSettings.PrinterName = this.HComboBoxExPrinterName.Text;
+            // 用紙の向きを設定(横：true、縦：false)
+            _printDocument.DefaultPageSettings.Landscape = false;
+            /*
+             * プリンタがサポートしている用紙サイズを調べる
+             */
+            foreach (PaperSize paperSize in _printDocument.PrinterSettings.PaperSizes) {
+                // B5用紙に設定する
+                if (paperSize.Kind == PaperKind.A4) {
+                    _printDocument.DefaultPageSettings.PaperSize = paperSize;
+                    break;
+                }
+            }
+            // 印刷部数を指定します。
+            _printDocument.PrinterSettings.Copies = 1;
+            // 片面印刷に設定します。
+            _printDocument.PrinterSettings.Duplex = Duplex.Default;
+            // カラー印刷に設定します。
+            _printDocument.PrinterSettings.DefaultPageSettings.Color = true;
+            // 印刷する
+            _printDocument.Print();
+        }
+
+        /// <summary>
+        /// PrintDocument_PrintPage
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e) {
+            int sheetNumber = SpreadHSubstitute.ActiveSheetIndex;
+            // 印刷ページ（1ページ目）の描画を行う
+            Rectangle rectangle = new(e.PageBounds.X, e.PageBounds.Y, e.PageBounds.Width, e.PageBounds.Height);
+            // e.Graphicsへ出力(page パラメータは、０からではなく１から始まります)
+            SpreadHSubstitute.OwnerPrintDraw(e.Graphics, rectangle, sheetNumber, 1);
+            // 印刷終了を指定
+            e.HasMorePages = false;
+        }
+
+        /// <summary>
+        /// H_Substitute_FormClosing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void H_Substitute_FormClosing(object sender, FormClosingEventArgs e) {
+            _printDocument.Dispose();
+            this.Dispose();
         }
     }
 }

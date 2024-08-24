@@ -767,9 +767,6 @@ namespace H_VehicleDispatch {
                     new Desktop().SetPosition(hCarMemo, _connectionVo.Screen);
                     hCarMemo.Show();
                     break;
-                case "ToolStripMenuItemCarNippou": // 日報を作成する
-                    MessageBox.Show("ToolStripMenuItemCarNippou");
-                    break;
                 case "ToolStripMenuItemCarProperty": // プロパティ
                     MessageBox.Show("ToolStripMenuItemCarProperty");
                     break;

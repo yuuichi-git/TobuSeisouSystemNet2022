@@ -1,6 +1,8 @@
 /*
  * 2024-04-27
  */
+using System.Drawing.Printing;
+
 using FarPoint.Win.Spread;
 
 using H_Common;
@@ -182,7 +184,39 @@ namespace H_LegalTwelveItem {
             switch (((ToolStripMenuItem)sender).Name) {
                 // A4で印刷
                 case "ToolStripMenuItemPrintA4":
-                    //アクティブシート印刷します
+                    PrintDocument _printDocument = new();
+                    // Eventを登録
+                    _printDocument.PrintPage += new PrintPageEventHandler(PrintDocument_PrintPage);
+                    // 出力先プリンタを指定します。
+                    //_printDocument.PrinterSettings.PrinterName = this.HComboBoxExPrinterName.Text;
+                    // 用紙の向きを設定(横：true、縦：false)
+                    _printDocument.DefaultPageSettings.Landscape = false;
+                    /*
+                     * プリンタがサポートしている用紙サイズを調べる
+                     */
+                    foreach (PaperSize paperSize in _printDocument.PrinterSettings.PaperSizes) {
+                        // A4用紙に設定する
+                        if (paperSize.Kind == PaperKind.A4) {
+                            _printDocument.DefaultPageSettings.PaperSize = paperSize;
+                            break;
+                        }
+                    }
+                    // 印刷部数を指定します。
+                    _printDocument.PrinterSettings.Copies = 1;
+                    // 片面印刷に設定します。
+                    _printDocument.PrinterSettings.Duplex = Duplex.Default;
+                    // カラー印刷に設定します。
+                    _printDocument.PrinterSettings.DefaultPageSettings.Color = true;
+                    // 印刷する
+                    _printDocument.Print();
+                    break;
+                case "ToolStripMenuItemPrintA4Dialog":
+                    // Excelライクなプレビューダイアログを有効にします
+                    SheetViewList.PrintInfo.EnhancePreview = true;
+                    SheetViewList.PrintInfo.Preview = true;
+                    SheetViewList.PrintInfo.ShowBorder = false;
+                    SheetViewList.PrintInfo.ShowColor = true;
+                    // 印刷を実行します
                     SpreadList.PrintSheet(SheetViewList);
                     break;
                 // アプリケーションを終了する
@@ -190,6 +224,15 @@ namespace H_LegalTwelveItem {
                     this.Close();
                     break;
             }
+        }
+
+        private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e) {
+            // 印刷ページ（1ページ目）の描画を行う
+            Rectangle rectangle = new(e.PageBounds.X, e.PageBounds.Y, e.PageBounds.Width, e.PageBounds.Height);
+            // e.Graphicsへ出力(page パラメータは、０からではなく１から始まります)
+            SpreadList.OwnerPrintDraw(e.Graphics, rectangle, 0, 1);
+            // 印刷終了を指定
+            e.HasMorePages = false;
         }
 
         /// <summary>

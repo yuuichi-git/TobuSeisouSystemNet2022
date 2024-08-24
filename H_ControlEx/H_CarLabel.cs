@@ -252,17 +252,17 @@ namespace H_ControlEx {
             /*
              * 日報を作成する
              */
-            ToolStripMenuItem toolStripMenuItem04 = new("日報を作成する");
-            toolStripMenuItem04.Name = "ToolStripMenuItemCarNippou";
-            toolStripMenuItem04.Click += ToolStripMenuItem_Click;
-            contextMenuStrip.Items.Add(toolStripMenuItem04);
+            //ToolStripMenuItem toolStripMenuItem04 = new("日報を作成する");
+            //toolStripMenuItem04.Name = "ToolStripMenuItemCarNippou";
+            //toolStripMenuItem04.Click += ToolStripMenuItem_Click;
+            //contextMenuStrip.Items.Add(toolStripMenuItem04);
             /*
              * プロパティ
              */
-            ToolStripMenuItem toolStripMenuItem05 = new("プロパティ");
-            toolStripMenuItem05.Name = "ToolStripMenuItemCarProperty";
-            toolStripMenuItem05.Click += ToolStripMenuItem_Click;
-            contextMenuStrip.Items.Add(toolStripMenuItem05);
+            ToolStripMenuItem toolStripMenuItem04 = new("プロパティ");
+            toolStripMenuItem04.Name = "ToolStripMenuItemCarProperty";
+            toolStripMenuItem04.Click += ToolStripMenuItem_Click;
+            contextMenuStrip.Items.Add(toolStripMenuItem04);
         }
 
         /// <summary>
@@ -328,13 +328,6 @@ namespace H_ControlEx {
                     }
                     break;
                 case "ToolStripMenuItemCarMemo": // メモを作成・編集する
-                    /*
-                     * H_Boardに処理を回している
-                     * H_CarLabel→H_SetControl→H_Board
-                     */
-                    Event_HCarLabel_ToolStripMenuItem_Click.Invoke(sender, e);
-                    break;
-                case "ToolStripMenuItemCarNippou": // 日報を作成する
                     /*
                      * H_Boardに処理を回している
                      * H_CarLabel→H_SetControl→H_Board
