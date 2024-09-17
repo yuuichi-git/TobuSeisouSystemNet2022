@@ -120,6 +120,7 @@
             HLabelExFaxNumber.Size = new Size(436, 42);
             HLabelExFaxNumber.TabIndex = 7;
             HLabelExFaxNumber.Text = "東京都環境衛生事業協同組合 練馬区支部事務局\r\nＦＡＸ ０３－５９４７－３４４１";
+            HLabelExFaxNumber.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // h_LabelEx3
             // 

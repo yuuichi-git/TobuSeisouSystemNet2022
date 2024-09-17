@@ -208,7 +208,8 @@ namespace H_Car {
             hCarMasterVo.Remarks = HTextBoxExRemarks.Text; // 備考
             hCarMasterVo.MainPicture = (byte[]?)new ImageConverter().ConvertTo(HPictureBoxExMainPicture.Image, typeof(byte[]));
             hCarMasterVo.SubPicture = (byte[]?)new ImageConverter().ConvertTo(HPictureBoxExSubPicture.Image, typeof(byte[]));
-
+            hCarMasterVo.EmergencyVehicleFlag = HCheckBoxExEmergencyVehicleFlag.Checked;
+            hCarMasterVo.EmergencyVehicleDate = HDateTimePickerExEmergencyVehicleDate.GetValue();
             return hCarMasterVo;
         }
 

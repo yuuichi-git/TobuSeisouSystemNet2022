@@ -117,14 +117,6 @@ namespace H_LegalTwelveItem {
             _arrayHPictureBoxEx[1] = HPictureBoxEx2;
             _arrayHPictureBoxEx[2] = HPictureBoxEx3;
 
-            _arrayHButtonExClip[0] = HButtonExClip1;
-            _arrayHButtonExClip[1] = HButtonExClip2;
-            _arrayHButtonExClip[2] = HButtonExClip3;
-
-            _arrayHButtonExDelete[0] = HButtonExDelete1;
-            _arrayHButtonExDelete[1] = HButtonExDelete2;
-            _arrayHButtonExDelete[2] = HButtonExDelete3;
-
             HLabelExStaffCode.Text = Convert.ToString(hLegalTwelveItemListVo.StaffCode);
             HLabelExStaffName.Text = hLegalTwelveItemListVo.StaffName;
             HDateTimePickerExBase.SetValue(DateTime.Now);
@@ -283,21 +275,55 @@ namespace H_LegalTwelveItem {
         }
 
         /// <summary>
-        /// ButtonClip_Click
+        /// ToolStripMenuItemがクリックされた時のSourceControlを保持
+        /// </summary>
+        Control _sourceControl = null;
+        /// <summary>
+        /// ContextMenuStrip1_Opened
+        /// コンテキストが開かれた親コントロールを取得する
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void HButtonExClip_Click(object sender, EventArgs e) {
-            _arrayHPictureBoxEx[Convert.ToInt32(((Button)sender).Tag)].Image = (Bitmap)Clipboard.GetDataObject().GetData(DataFormats.Bitmap);
+        private void ContextMenuStrip1_Opened(object sender, EventArgs e) {
+            //ContextMenuStripを表示しているコントロールを取得する
+            _sourceControl = ((ContextMenuStrip)sender).SourceControl;
         }
 
         /// <summary>
-        /// ButtonDelete_Click
+        /// ToolStripMenuItem_Click
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void HButtonExDelete_Click(object sender, EventArgs e) {
-            _arrayHPictureBoxEx[Convert.ToInt32(((Button)sender).Tag)].Image = null;
+        private void ToolStripMenuItem_Click(object sender, EventArgs e) {
+            switch (((ToolStripMenuItem)sender).Name) {
+                /*
+                 * Picture Clip
+                 */
+                case "ToolStripMenuItemClip":
+                    ((H_PictureBoxEx)_sourceControl).Image = (Bitmap)Clipboard.GetDataObject().GetData(DataFormats.Bitmap);
+                    break;
+                /*
+                 * Picture Delete
+                 */
+                case "ToolStripMenuItemDelete":
+                    ((H_PictureBoxEx)_sourceControl).Image = null;
+                    break;
+                /*
+                 * アプリケーションを終了する
+                 */
+                case "ToolStripMenuItemExit":
+                    this.Close();
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// H_LegalTwelveItemDetail_FormClosing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void H_LegalTwelveItemDetail_FormClosing(object sender, FormClosingEventArgs e) {
+
         }
     }
 }

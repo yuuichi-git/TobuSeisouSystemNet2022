@@ -55,7 +55,7 @@ namespace H_LegalTwelveItem {
         /// <param name="connectionVo"></param>
         public H_LegalTwelveItemList(ConnectionVo connectionVo) {
             /*
-             * 
+             * インスタンス化
              */
             _date = new();
             /*
@@ -70,7 +70,6 @@ namespace H_LegalTwelveItem {
              * InitializeControl
              */
             InitializeComponent();
-            this.HCheckBoxExJobForm.Checked = false;
             this.InitializeSheetViewList(SheetViewList);
             this.ToolStripStatusLabelDetail.Text = string.Empty;
         }
@@ -81,7 +80,7 @@ namespace H_LegalTwelveItem {
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void HButtonExUpdate_Click(object sender, EventArgs e) {
-            this.PutSheetViewList(_hLegalTwelveItemDao.SelectHLegalTwelveItemListVo(_date.GetFiscalYearStartDate((int)HNumericUpDownExFiscalYear.Value), _date.GetFiscalYearEndDate((int)HNumericUpDownExFiscalYear.Value), HCheckBoxExJobForm.Checked));
+            this.PutSheetViewList(_hLegalTwelveItemDao.SelectHLegalTwelveItemListVo(_date.GetFiscalYearStartDate((int)HNumericUpDownExFiscalYear.Value), _date.GetFiscalYearEndDate((int)HNumericUpDownExFiscalYear.Value)));
         }
 
         int spreadListTopRow = 0;

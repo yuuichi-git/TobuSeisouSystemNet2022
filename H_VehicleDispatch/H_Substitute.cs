@@ -28,27 +28,27 @@ namespace H_VehicleDispatch {
         /// <summary>
         /// 配車先コードと電話番号の紐づけ
         /// </summary>
-        Dictionary<int, string> _dictionaryTelephoneNumber = new Dictionary<int, string> { { 1310101, "090-6506-7967" }, // 千代田２
-                                                                                           { 1310102, "080-8868-7459" }, // 千代田６
-                                                                                           { 1310103, "080-8868-8023" }, // 千代田紙１
-                                                                                           { 1310201, "080-2202-7713" }, // 中央ペット７
-                                                                                           { 1310202, "080-3493-3729" }, // 中央ペット８
-                                                                                           //{ 1310207, "" }, // 中央ペット１１
-                                                                                           { 1312162, "090-5560-0491" }, // 足立２２(2024)
-                                                                                           { 1312164, "090-5560-0677" }, // 足立２３(2024)
-                                                                                           { 1312163, "090-5560-0700" }, // 足立３７(2024)
-                                                                                           { 1312204, "090-9817-8129" }, // 葛飾１１
-                                                                                           { 1312211, "090-9817-8129" }, // 葛飾軽１２(2024)
-                                                                                           { 1312209, "080-3493-3728" }, // 葛飾３２
-                                                                                           { 1312210, "080-2202-7269" } }; // 葛飾５４
+        readonly Dictionary<int, string> _dictionaryTelephoneNumber = new Dictionary<int, string> { { 1310101, "090-6506-7967" }, // 千代田２
+                                                                                                    { 1310102, "080-8868-7459" }, // 千代田６
+                                                                                                    { 1310103, "080-8868-8023" }, // 千代田紙１
+                                                                                                    { 1310201, "080-2202-7713" }, // 中央ペット７
+                                                                                                    { 1310202, "080-3493-3729" }, // 中央ペット８
+                                                                                                    //{ 1310207, "" }, // 中央ペット１１
+                                                                                                    { 1312162, "090-5560-0491" }, // 足立２２(2024)
+                                                                                                    { 1312164, "090-5560-0677" }, // 足立２３(2024)
+                                                                                                    { 1312163, "090-5560-0700" }, // 足立３７(2024)
+                                                                                                    { 1312204, "090-9817-8129" }, // 葛飾１１
+                                                                                                    { 1312211, "090-9817-8129" }, // 葛飾軽１２(2024)
+                                                                                                    { 1312209, "080-3493-3728" }, // 葛飾３２
+                                                                                                    { 1312210, "080-2202-7269" } }; // 葛飾５４
         /*
          * 代番のセル位置の紐づけ(SheetView1用)
          */
-        Dictionary<int, string> _dictionarySheetView1SetName = new Dictionary<int, string> { { 0, "B38" }, { 1, "B42" }, { 2, "B46" } };
-        Dictionary<int, string> _dictionarySheetView1Occupation = new Dictionary<int, string> { { 0, "B40" }, { 1, "B44" }, { 2, "B48" } };
-        Dictionary<int, string> _dictionarySheetView1BeforeStaffDisplayName = new Dictionary<int, string> { { 0, "D38" }, { 1, "D42" }, { 2, "D46" } };
-        Dictionary<int, string> _dictionarySheetView1AfterDisplayName = new Dictionary<int, string> { { 0, "I38" }, { 1, "I42" }, { 2, "I46" } };
-        Dictionary<int, string> _dictionarySheetView1CellphoneNumber = new Dictionary<int, string> { { 0, "I40" }, { 1, "I44" }, { 2, "I48" } };
+        readonly Dictionary<int, string> _dictionarySheetView1SetName = new Dictionary<int, string> { { 0, "B38" }, { 1, "B42" }, { 2, "B46" } };
+        readonly Dictionary<int, string> _dictionarySheetView1Occupation = new Dictionary<int, string> { { 0, "B40" }, { 1, "B44" }, { 2, "B48" } };
+        readonly Dictionary<int, string> _dictionarySheetView1BeforeStaffDisplayName = new Dictionary<int, string> { { 0, "D38" }, { 1, "D42" }, { 2, "D46" } };
+        readonly Dictionary<int, string> _dictionarySheetView1AfterDisplayName = new Dictionary<int, string> { { 0, "I38" }, { 1, "I42" }, { 2, "I46" } };
+        readonly Dictionary<int, string> _dictionarySheetView1CellphoneNumber = new Dictionary<int, string> { { 0, "I40" }, { 1, "I44" }, { 2, "I48" } };
         /*
          * 代番のセル位置の紐づけ(SheetView2用)
          */

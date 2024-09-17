@@ -59,18 +59,18 @@ namespace H_Dao {
         /// 画面表示に必要なデータを取得する
         /// </summary>
         /// <returns></returns>
-        public List<H_LegalTwelveItemListVo> SelectHLegalTwelveItemListVo(DateTime startDate, DateTime endDate, bool allTermFlag) {
+        public List<H_LegalTwelveItemListVo> SelectHLegalTwelveItemListVo(DateTime startDate, DateTime endDate) {
             /*
              * 短期を含めるかどうかのSQLを作成
              * Belongs 10:役員 11:社員 12:アルバイト 13:派遣 20:新運転 21:自運労
              * JobForm 10:長期雇用 11:手帳 12:アルバイト 99:指定なし
              */
-            string allTerm;
-            if (allTermFlag) {
-                allTerm = "H_StaffMaster.Belongs IN (10,11,12,13,20,21) AND H_StaffMaster.JobForm IN(10,11,12,99) AND H_StaffMaster.Occupation = 10 AND H_StaffMaster.RetirementFlag = 'false' ";
-            } else {
-                allTerm = "H_StaffMaster.Belongs IN (10,11,12,13,20,21) AND H_StaffMaster.JobForm IN(10,12,99) AND H_StaffMaster.Occupation = 10 AND H_StaffMaster.RetirementFlag = 'false' ";
-            }
+            //string allTerm;
+            //if (allTermFlag) {
+            //    allTerm = "H_StaffMaster.Belongs IN (10,11,12,13,20,21) AND H_StaffMaster.JobForm IN(10,11,12,99) AND H_StaffMaster.Occupation = 10 AND H_StaffMaster.RetirementFlag = 'false' ";
+            //} else {
+            //    allTerm = "H_StaffMaster.Belongs IN (10,11,12,13,20,21) AND H_StaffMaster.JobForm IN(10,12,99) AND H_StaffMaster.Occupation = 10 AND H_StaffMaster.RetirementFlag = 'false' ";
+            //}
 
             List<H_LegalTwelveItemListVo> listHLegalTwelveItemVo = new();
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
@@ -123,7 +123,7 @@ namespace H_Dao {
                                      "LEFT OUTER JOIN H_OccupationMaster ON H_StaffMaster.Occupation = H_OccupationMaster.Code " +
                                      "LEFT OUTER JOIN H_JobFormMaster ON H_StaffMaster.JobForm = H_JobFormMaster.Code " +
                                      "LEFT OUTER JOIN H_BelongsMaster ON H_StaffMaster.Belongs = H_BelongsMaster.Code " +
-                                     "WHERE " + allTerm + " AND H_StaffMaster.RetirementFlag = 'false' " +
+                                     "WHERE H_StaffMaster.LegalTwelveItemFlag = 'true' AND H_StaffMaster.RetirementFlag = 'false' " +
                                      "ORDER BY H_StaffMaster.NameKana ASC";
             using (SqlDataReader sqlDataReader = sqlCommand.ExecuteReader()) {
                 while (sqlDataReader.Read() == true) {

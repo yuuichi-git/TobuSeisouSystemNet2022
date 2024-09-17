@@ -25,7 +25,10 @@
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HStaffList));
             HTableLayoutPanelExBase = new H_ControlEx.H_TableLayoutPanelEx();
-            SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("resource1"));
+            SpreadList = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("HTableLayoutPanelExBase.Controls"));
+            SheetViewList = SpreadList.GetSheet(0);
+            SheetViewMedical = SpreadList.GetSheet(1);
+            SheetViewDriver = SpreadList.GetSheet(2);
             StatusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             ToolStripStatusLabelDetail = new ToolStripStatusLabel();
@@ -67,9 +70,6 @@
             tabPage8 = new TabPage();
             tabPage9 = new TabPage();
             tabPage10 = new TabPage();
-            SheetViewList = SpreadList.GetSheet(0);
-            SheetViewMedical = SpreadList.GetSheet(1);
-            SheetViewDriver = SpreadList.GetSheet(2);
             HTableLayoutPanelExBase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)SpreadList).BeginInit();
             StatusStrip1.SuspendLayout();

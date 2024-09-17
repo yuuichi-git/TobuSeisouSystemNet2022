@@ -108,6 +108,7 @@ namespace H_License {
             //ContextMenuStripを表示しているコントロールを取得する
             _sourceControl = ((ContextMenuStrip)sender).SourceControl;
         }
+
         /// <summary>
         /// ToolStripMenuItem_Click
         /// </summary>

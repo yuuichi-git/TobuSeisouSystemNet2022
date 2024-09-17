@@ -59,7 +59,7 @@
             HTableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
             HTableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             HTableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
-            HTableLayoutPanelExBase.Size = new Size(1429, 961);
+            HTableLayoutPanelExBase.Size = new Size(1321, 961);
             HTableLayoutPanelExBase.TabIndex = 0;
             // 
             // MenuStrip1
@@ -67,7 +67,7 @@
             MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemHelp });
             MenuStrip1.Location = new Point(0, 0);
             MenuStrip1.Name = "MenuStrip1";
-            MenuStrip1.Size = new Size(1429, 24);
+            MenuStrip1.Size = new Size(1321, 24);
             MenuStrip1.TabIndex = 0;
             MenuStrip1.Text = "menuStrip1";
             // 
@@ -96,7 +96,7 @@
             StatusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, ToolStripStatusLabelDetail });
             StatusStrip1.Location = new Point(0, 939);
             StatusStrip1.Name = "StatusStrip1";
-            StatusStrip1.Size = new Size(1429, 22);
+            StatusStrip1.Size = new Size(1321, 22);
             StatusStrip1.TabIndex = 1;
             StatusStrip1.Text = "statusStrip1";
             // 
@@ -118,13 +118,13 @@
             HPanelExUp.Dock = DockStyle.Fill;
             HPanelExUp.Location = new Point(3, 27);
             HPanelExUp.Name = "HPanelExUp";
-            HPanelExUp.Size = new Size(1423, 54);
+            HPanelExUp.Size = new Size(1315, 54);
             HPanelExUp.TabIndex = 2;
             // 
             // HButtonExUpdate
             // 
             HButtonExUpdate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            HButtonExUpdate.Location = new Point(1225, 12);
+            HButtonExUpdate.Location = new Point(1117, 12);
             HButtonExUpdate.Name = "HButtonExUpdate";
             HButtonExUpdate.Size = new Size(156, 32);
             HButtonExUpdate.TabIndex = 0;
@@ -140,7 +140,7 @@
             SpreadList.Font = new Font("ＭＳ Ｐゴシック", 11F, FontStyle.Regular, GraphicsUnit.Point);
             SpreadList.Location = new Point(3, 87);
             SpreadList.Name = "SpreadList";
-            SpreadList.Size = new Size(1423, 847);
+            SpreadList.Size = new Size(1315, 847);
             SpreadList.TabIndex = 3;
             SpreadList.CellDoubleClick += SpreadList_CellDoubleClick;
             // 
@@ -148,7 +148,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1429, 961);
+            ClientSize = new Size(1321, 961);
             Controls.Add(HTableLayoutPanelExBase);
             MainMenuStrip = MenuStrip1;
             MaximizeBox = false;

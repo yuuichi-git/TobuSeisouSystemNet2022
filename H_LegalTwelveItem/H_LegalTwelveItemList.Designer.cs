@@ -36,7 +36,6 @@
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             ToolStripStatusLabelDetail = new ToolStripStatusLabel();
             HPanelExUp = new H_ControlEx.H_PanelEx();
-            HCheckBoxExJobForm = new H_ControlEx.H_CheckBoxEx();
             HButtonExUpdate = new H_ControlEx.H_ButtonEx();
             h_LabelEx2 = new H_ControlEx.H_LabelEx();
             HNumericUpDownExFiscalYear = new H_ControlEx.H_NumericUpDownEx();
@@ -144,7 +143,6 @@
             // 
             // HPanelExUp
             // 
-            HPanelExUp.Controls.Add(HCheckBoxExJobForm);
             HPanelExUp.Controls.Add(HButtonExUpdate);
             HPanelExUp.Controls.Add(h_LabelEx2);
             HPanelExUp.Controls.Add(HNumericUpDownExFiscalYear);
@@ -154,16 +152,6 @@
             HPanelExUp.Name = "HPanelExUp";
             HPanelExUp.Size = new Size(1166, 54);
             HPanelExUp.TabIndex = 2;
-            // 
-            // HCheckBoxExJobForm
-            // 
-            HCheckBoxExJobForm.AutoSize = true;
-            HCheckBoxExJobForm.Location = new Point(244, 20);
-            HCheckBoxExJobForm.Name = "HCheckBoxExJobForm";
-            HCheckBoxExJobForm.Size = new Size(114, 19);
-            HCheckBoxExJobForm.TabIndex = 4;
-            HCheckBoxExJobForm.Text = "短期雇用も含める";
-            HCheckBoxExJobForm.UseVisualStyleBackColor = true;
             // 
             // HButtonExUpdate
             // 
@@ -259,7 +247,6 @@
         private H_ControlEx.H_NumericUpDownEx HNumericUpDownExFiscalYear;
         private H_ControlEx.H_LabelEx h_LabelEx1;
         private H_ControlEx.H_ButtonEx HButtonExUpdate;
-        private H_ControlEx.H_CheckBoxEx HCheckBoxExJobForm;
         private ToolStripMenuItem ToolStripMenuItemPrintA4Dialog;
         private FarPoint.Win.Spread.SheetView SheetViewList;
     }

@@ -470,12 +470,13 @@ namespace H_Staff {
                 "わ行" => _listHStaffMasterVo?.FindAll(x => x.NameKana.StartsWith("ワ") || x.NameKana.StartsWith("ヲ") || x.NameKana.StartsWith("ン")),
                 _ => _listHStaffMasterVo,
             };
+            /*
+             * 法定１２項目の講習対象者(つまり運転手)
+             */
+            findListStaffMasterVo = findListStaffMasterVo?.FindAll(x => x.LegalTwelveItemFlag == true);
 
-            // 退職者
-            if (!CheckBoxRetired.Checked)
-                findListStaffMasterVo = findListStaffMasterVo?.FindAll(x => x.RetirementFlag != true);
             if (findListStaffMasterVo is not null) {
-                foreach (H_StaffMasterVo hStaffMasterVo in findListStaffMasterVo.OrderBy(x => x.NameKana)) {
+                foreach (H_StaffMasterVo hStaffMasterVo in findListStaffMasterVo.OrderBy(x => x.Belongs).ThenBy(x => x.NameKana)) {
                     SheetViewDriver.Rows.Add(rowCount, 1);
                     SheetViewDriver.RowHeader.Columns[0].Label = (rowCount + 1).ToString(); // Rowヘッダ
                     SheetViewDriver.Rows[rowCount].ForeColor = hStaffMasterVo.RetirementFlag ? Color.Red : Color.Black; // 退職済のレコードのForeColorをセット

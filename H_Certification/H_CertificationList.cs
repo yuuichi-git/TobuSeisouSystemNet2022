@@ -176,6 +176,10 @@ namespace H_Certification {
              */
             SheetViewList.FrozenRowCount = 4;
             SheetViewList.FrozenColumnCount = 3;
+            /*
+             * シートタブを非表示にする
+             */
+            SpreadList.TabStripPolicy = TabStripPolicy.Never;
 
             SpreadList.ResumeLayout(); // Spread 活性化
         }

@@ -2515,9 +2515,9 @@
             h_LabelEx59.AutoSize = true;
             h_LabelEx59.Location = new Point(52, 28);
             h_LabelEx59.Name = "h_LabelEx59";
-            h_LabelEx59.Size = new Size(55, 15);
+            h_LabelEx59.Size = new Size(43, 15);
             h_LabelEx59.TabIndex = 64;
-            h_LabelEx59.Text = "生年月日";
+            h_LabelEx59.Text = "受診日";
             // 
             // HDateTimeExMedicalExaminationDate
             // 
