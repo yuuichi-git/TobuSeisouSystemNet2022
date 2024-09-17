@@ -124,10 +124,10 @@ namespace H_CarAccident {
             // 集計
             hCarAccidentMasterVo.TotallingFlag = RadioButtonTotallingTrue.Checked;
             // 事故発生年月日
-            hCarAccidentMasterVo.OccurrenceYmdHms = new DateTime(HDateTimePickerExOccurrence.Value.Year, 
-                                                                 HDateTimePickerExOccurrence.Value.Month, 
+            hCarAccidentMasterVo.OccurrenceYmdHms = new DateTime(HDateTimePickerExOccurrence.Value.Year,
+                                                                 HDateTimePickerExOccurrence.Value.Month,
                                                                  HDateTimePickerExOccurrence.Value.Day,
-                                                                 int.Parse(HMaskedTextBoxExTime.Text.Substring(0,2)),
+                                                                 int.Parse(HMaskedTextBoxExTime.Text.Substring(0, 2)),
                                                                  int.Parse(HMaskedTextBoxExTime.Text.Substring(2, 2)),
                                                                  0);
             // 天候
@@ -547,6 +547,7 @@ namespace H_CarAccident {
         }
 
         /// <summary>
+        /// 内部クラス
         /// ComboBoxSelectStaffLedgerVo
         /// </summary>
         private class ComboBoxSelectStaffLedgerVo {
@@ -578,6 +579,9 @@ namespace H_CarAccident {
             ComboBoxSelectCarRegistrationNumber.DisplayMember = "RegistrationNumber";
         }
 
+        /// <summary>
+        /// 内部クラス
+        /// </summary>
         private class ComboBoxSelectCarLedgerVo {
             private string _registrationNumber;
             private H_CarMasterVo _hCarMasterVo;
@@ -598,24 +602,55 @@ namespace H_CarAccident {
         }
 
         /// <summary>
-        /// 画像をクリップボードから選択
+        /// ToolStripMenuItemがクリックされた時のSourceControlを保持
+        /// </summary>
+        Control _sourceControl = null;
+        /// <summary>
+        /// ContextMenuStrip1_Opened
+        /// コンテキストが開かれた親コントロールを取得する
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ButtonPictureClip_Click(object sender, EventArgs e) {
-            int arrayNumber = Convert.ToInt32(((H_ButtonEx)sender).Tag);
-            _arrayHPictureBoxEx[arrayNumber].Image = (Bitmap)Clipboard.GetDataObject().GetData(DataFormats.Bitmap);
+        private void ContextMenuStrip1_Opened(object sender, EventArgs e) {
+            //ContextMenuStripを表示しているコントロールを取得する
+            _sourceControl = ((ContextMenuStrip)sender).SourceControl;
         }
 
         /// <summary>
-        /// 画像を削除
+        /// ToolStripMenuItem_Click
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ButtonPictureDelete_Click(object sender, EventArgs e) {
-            int arrayNumber = Convert.ToInt32(((H_ButtonEx)sender).Tag);
-            _arrayHPictureBoxEx[arrayNumber].Image = null;
+        private void ToolStripMenuItem_Click(object sender, EventArgs e) {
+            switch (((ToolStripMenuItem)sender).Name) {
+                /*
+                 * Picture Clip
+                 */
+                case "ToolStripMenuItemClip":
+                    ((H_PictureBoxEx)_sourceControl).Image = (Bitmap)Clipboard.GetDataObject().GetData(DataFormats.Bitmap);
+                    break;
+                /*
+                 * Picture Delete
+                 */
+                case "ToolStripMenuItemDelete":
+                    ((H_PictureBoxEx)_sourceControl).Image = null;
+                    break;
+                /*
+                 * アプリケーションを終了する
+                 */
+                case "ToolStripMenuItemExit":
+                    this.Close();
+                    break;
+            }
         }
 
+        /// <summary>
+        /// H_CarAccidentDetail_FormClosing
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void H_CarAccidentDetail_FormClosing(object sender, FormClosingEventArgs e) {
+
+        }
     }
 }
