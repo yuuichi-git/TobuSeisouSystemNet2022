@@ -29,6 +29,7 @@
             SheetViewList = SpreadList.GetSheet(0);
             SheetViewMedical = SpreadList.GetSheet(1);
             SheetViewDriver = SpreadList.GetSheet(2);
+            SheetViewTOUKANPO = SpreadList.GetSheet(3);
             StatusStrip1 = new StatusStrip();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             ToolStripStatusLabelDetail = new ToolStripStatusLabel();
@@ -104,7 +105,7 @@
             // 
             // SpreadList
             // 
-            SpreadList.AccessibleDescription = "SpreadList, 従事者リスト, Row 0, Column 0";
+            SpreadList.AccessibleDescription = "SpreadList, 東環保研修対象者リスト, Row 0, Column 0";
             SpreadList.Dock = DockStyle.Fill;
             SpreadList.Font = new Font("ＭＳ Ｐゴシック", 11F, FontStyle.Regular, GraphicsUnit.Point);
             SpreadList.Location = new Point(3, 118);
@@ -636,5 +637,6 @@
         private FarPoint.Win.Spread.SheetView SheetViewList;
         private FarPoint.Win.Spread.SheetView SheetViewMedical;
         private FarPoint.Win.Spread.SheetView SheetViewDriver;
+        private FarPoint.Win.Spread.SheetView SheetViewTOUKANPO;
     }
 }

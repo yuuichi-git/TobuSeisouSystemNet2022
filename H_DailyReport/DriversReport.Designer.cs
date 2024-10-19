@@ -36,13 +36,13 @@
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             ToolStripStatusLabelDetail = new ToolStripStatusLabel();
             SpreadDriversReport = new FarPoint.Win.Spread.FpSpread(FarPoint.Win.Spread.LegacyBehaviors.None, resources.GetObject("HTableLayoutPanelExBase.Controls"));
-            SheetViewDriversReport = SpreadDriversReport.GetSheet(0);
             HPanelExUp = new H_ControlEx.H_PanelEx();
             h_LabelEx3 = new H_ControlEx.H_LabelEx();
             HComboBoxExPrinterName = new H_ControlEx.H_ComboBoxEx();
             h_LabelEx2 = new H_ControlEx.H_LabelEx();
             HNumericUpDownExYear = new H_ControlEx.H_NumericUpDownEx();
             h_LabelEx1 = new H_ControlEx.H_LabelEx();
+            SheetViewDriversReport = SpreadDriversReport.GetSheet(0);
             HTableLayoutPanelExBase.SuspendLayout();
             MenuStrip1.SuspendLayout();
             StatusStrip1.SuspendLayout();
@@ -256,9 +256,9 @@
         private H_ControlEx.H_LabelEx h_LabelEx2;
         private H_ControlEx.H_NumericUpDownEx HNumericUpDownExYear;
         private H_ControlEx.H_LabelEx h_LabelEx1;
-        private FarPoint.Win.Spread.SheetView SheetViewDriversReport;
         private ToolStripMenuItem ToolStripMenuItemPrintB5Dialog;
         private H_ControlEx.H_LabelEx h_LabelEx3;
         private H_ControlEx.H_ComboBoxEx HComboBoxExPrinterName;
+        private FarPoint.Win.Spread.SheetView SheetViewDriversReport;
     }
 }

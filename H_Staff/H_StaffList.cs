@@ -162,6 +162,7 @@ namespace H_Staff {
             InitializeSheetView(SheetViewList);
             InitializeSheetView(SheetViewMedical);
             InitializeSheetView(SheetViewDriver);
+            InitializeSheetView(SheetViewTOUKANPO);
             /*
              * ToolStripStatusLabelDetail
              */
@@ -242,6 +243,9 @@ namespace H_Staff {
                         case "運転者リスト":
                             this.PutSheetViewDriver();
                             break;
+                        case "東環保研修対象者リスト":
+                            this.PutSheetViewTOUKANPO();
+                            break;
                     }
                     break;
             }
@@ -263,6 +267,9 @@ namespace H_Staff {
                         break;
                     case "運転者リスト":
                         this.PutSheetViewDriver();
+                        break;
+                    case "東環保研修対象者リスト":
+                        this.PutSheetViewTOUKANPO();
                         break;
                 }
             }
@@ -495,6 +502,68 @@ namespace H_Staff {
                     SheetViewDriver.Cells[rowCount, 4].Text = hStaffMasterVo.NameKana;
                     // 年齢
                     SheetViewDriver.Cells[rowCount, 5].Text = string.Concat(_date.GetAge(hStaffMasterVo.BirthDate.Date), "歳");
+                    rowCount++;
+                }
+            }
+            // 先頭行（列）インデックスをセット
+            SpreadList.SetViewportTopRow(0, spreadListTopRow);
+            // Spread 活性化
+            SpreadList.ResumeLayout();
+            ToolStripStatusLabelDetail.Text = string.Concat(" ", rowCount, " 件");
+        }
+
+        /// <summary>
+        /// 東環保研修対象者リスト
+        /// </summary>
+        private void PutSheetViewTOUKANPO() {
+            int rowCount = 0;
+            // Spread 非活性化
+            SpreadList.SuspendLayout();
+            // 先頭行（列）インデックスを取得
+            spreadListTopRow = SpreadList.GetViewportTopRow(0);
+            // Rowを削除する
+            if (SheetViewTOUKANPO.Rows.Count > 0)
+                SheetViewTOUKANPO.RemoveRows(0, SheetViewTOUKANPO.Rows.Count);
+            List<H_StaffMasterVo>? findListStaffMasterVo = HTabControlExKANA.SelectedTab.Text switch {
+                "あ行" => _listHStaffMasterVo?.FindAll(x => x.NameKana.StartsWith("ア") || x.NameKana.StartsWith("イ") || x.NameKana.StartsWith("ウ") || x.NameKana.StartsWith("エ") || x.NameKana.StartsWith("オ")),
+                "か行" => _listHStaffMasterVo?.FindAll(x => x.NameKana.StartsWith("カ") || x.NameKana.StartsWith("ガ") || x.NameKana.StartsWith("キ") || x.NameKana.StartsWith("ギ") || x.NameKana.StartsWith("ク") || x.NameKana.StartsWith("グ") || x.NameKana.StartsWith("ケ") || x.NameKana.StartsWith("ゲ") || x.NameKana.StartsWith("コ") || x.NameKana.StartsWith("ゴ")),
+                "さ行" => _listHStaffMasterVo?.FindAll(x => x.NameKana.StartsWith("サ") || x.NameKana.StartsWith("シ") || x.NameKana.StartsWith("ス") || x.NameKana.StartsWith("セ") || x.NameKana.StartsWith("ソ")),
+                "た行" => _listHStaffMasterVo?.FindAll(x => x.NameKana.StartsWith("タ") || x.NameKana.StartsWith("ダ") || x.NameKana.StartsWith("チ") || x.NameKana.StartsWith("ツ") || x.NameKana.StartsWith("テ") || x.NameKana.StartsWith("デ") || x.NameKana.StartsWith("ト") || x.NameKana.StartsWith("ド")),
+                "な行" => _listHStaffMasterVo?.FindAll(x => x.NameKana.StartsWith("ナ") || x.NameKana.StartsWith("ニ") || x.NameKana.StartsWith("ヌ") || x.NameKana.StartsWith("ネ") || x.NameKana.StartsWith("ノ")),
+                "は行" => _listHStaffMasterVo?.FindAll(x => x.NameKana.StartsWith("ハ") || x.NameKana.StartsWith("パ") || x.NameKana.StartsWith("ヒ") || x.NameKana.StartsWith("ビ") || x.NameKana.StartsWith("フ") || x.NameKana.StartsWith("ブ") || x.NameKana.StartsWith("ヘ") || x.NameKana.StartsWith("ベ") || x.NameKana.StartsWith("ホ")),
+                "ま行" => _listHStaffMasterVo?.FindAll(x => x.NameKana.StartsWith("マ") || x.NameKana.StartsWith("ミ") || x.NameKana.StartsWith("ム") || x.NameKana.StartsWith("メ") || x.NameKana.StartsWith("モ")),
+                "や行" => _listHStaffMasterVo?.FindAll(x => x.NameKana.StartsWith("ヤ") || x.NameKana.StartsWith("ユ") || x.NameKana.StartsWith("ヨ")),
+                "ら行" => _listHStaffMasterVo?.FindAll(x => x.NameKana.StartsWith("ラ") || x.NameKana.StartsWith("リ") || x.NameKana.StartsWith("ル") || x.NameKana.StartsWith("レ") || x.NameKana.StartsWith("ロ")),
+                "わ行" => _listHStaffMasterVo?.FindAll(x => x.NameKana.StartsWith("ワ") || x.NameKana.StartsWith("ヲ") || x.NameKana.StartsWith("ン")),
+                _ => _listHStaffMasterVo,
+            };
+            /*
+             * 東環保研修対象者
+             */
+            findListStaffMasterVo = findListStaffMasterVo?.FindAll(x => x.ToukanpoFlag == true && x.RetirementFlag == false);
+
+            if (findListStaffMasterVo is not null) {
+                foreach (H_StaffMasterVo hStaffMasterVo in findListStaffMasterVo.OrderBy(x => x.Belongs).ThenBy(x => x.NameKana)) {
+                    SheetViewTOUKANPO.Rows.Add(rowCount, 1);
+                    SheetViewTOUKANPO.RowHeader.Columns[0].Label = (rowCount + 1).ToString(); // Rowヘッダ
+                    SheetViewTOUKANPO.Rows[rowCount].ForeColor = hStaffMasterVo.RetirementFlag ? Color.Red : Color.Black; // 退職済のレコードのForeColorをセット
+                    SheetViewTOUKANPO.Rows[rowCount].Height = 20; // Rowの高さ
+                    SheetViewTOUKANPO.Rows[rowCount].Resizable = false; // RowのResizableを禁止
+                    SheetViewTOUKANPO.Rows[rowCount].Tag = hStaffMasterVo;
+                    // 通しナンバー
+                    SheetViewTOUKANPO.Cells[rowCount, 0].Value = rowCount + 1;
+                    // 雇用形態１
+                    SheetViewTOUKANPO.Cells[rowCount, 1].Text = dictionaryBelongs[hStaffMasterVo.Belongs];
+                    // 雇用形態２
+                    SheetViewTOUKANPO.Cells[rowCount, 2].Text = dictionaryJobForm[hStaffMasterVo.JobForm];
+                    // 職種
+                    SheetViewTOUKANPO.Cells[rowCount, 3].Text = dictionaryOccupation[hStaffMasterVo.Occupation];
+                    // カナ
+                    SheetViewTOUKANPO.Cells[rowCount, 4].Text = hStaffMasterVo.Name;
+                    // 氏名
+                    SheetViewTOUKANPO.Cells[rowCount, 5].Text = hStaffMasterVo.NameKana;
+                    // 年齢
+                    SheetViewTOUKANPO.Cells[rowCount, 6].Text = string.Concat(_date.GetAge(hStaffMasterVo.BirthDate.Date), "歳");
                     rowCount++;
                 }
             }

@@ -256,7 +256,9 @@ namespace H_DailyReport {
                 case 1310417: // 新宿２－５１
                     SheetViewDriversReport.Cells[10, 17].Text = "新宿清掃事務所　駐車場 /"; // 休憩場所
                     break;
-
+                case 1311507: // 方南２３３
+                    SheetViewDriversReport.Cells[10, 17].Text = "杉並清掃工場 /"; // 休憩場所
+                    break;
             }
         }
 

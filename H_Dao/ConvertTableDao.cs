@@ -205,7 +205,7 @@ namespace H_Dao {
             H_VehicleDispatchHeadDao hVehicleDispatchHeadDao = new(_connectionVo);
             H_VehicleDispatchBodyDao hVehicleDispatchBodyDao = new(_connectionVo);
             Dictionary<int, string> dictionaryWeekOfDay = new Dictionary<int, string> { { 0, "日" }, { 1, "月" }, { 2, "火" }, { 3, "水" }, { 4, "木" }, { 5, "金" }, { 6, "土" } };
-            foreach (H_VehicleDispatchHeadVo hVehicleDispatchHeadVo in hVehicleDispatchHeadDao.SelectAllHVehicleDispatchHeadVo(2024).FindAll(x => x.VehicleDispatchFlag && x.SetCode > 0)) {
+            foreach (H_VehicleDispatchHeadVo hVehicleDispatchHeadVo in hVehicleDispatchHeadDao.SelectAllHVehicleDispatchHeadVo(2025).FindAll(x => x.VehicleDispatchFlag && x.SetCode > 0)) {
                 /*
                  * 配車されていない
                  */
@@ -218,7 +218,7 @@ namespace H_Dao {
                     hVehicleDispatchBodyVo.StaffCode2 = 0;
                     hVehicleDispatchBodyVo.StaffCode3 = 0;
                     hVehicleDispatchBodyVo.StaffCode4 = 0;
-                    hVehicleDispatchBodyVo.FinancialYear = 2024;
+                    hVehicleDispatchBodyVo.FinancialYear = 2025;
                     hVehicleDispatchBodyVo.InsertPcName = Environment.MachineName;
                     hVehicleDispatchBodyVo.InsertYmdHms = DateTime.Now;
                     hVehicleDispatchBodyVo.UpdatePcName = string.Empty;
