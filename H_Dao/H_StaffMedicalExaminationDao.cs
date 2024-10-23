@@ -36,10 +36,11 @@ namespace H_Dao {
         /// <returns>存在する:DateTime型 存在しない:_defaultDateTime</returns>
         public DateTime GetMedicalExaminationDate(int staffCode) {
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
-            sqlCommand.CommandText = "SELECT TOP 1 MedicalExaminationDate FROM H_StaffMedicalExaminationMaster WHERE StaffCode = " + staffCode + "";
+            sqlCommand.CommandText = "SELECT MAX(MedicalExaminationDate) AS AA FROM H_StaffMedicalExaminationMaster WHERE StaffCode = " + staffCode + "";
             var data = sqlCommand.ExecuteScalar();
             if (data is not null) {
-                return (DateTime)sqlCommand.ExecuteScalar();
+                //return (DateTime)sqlCommand.ExecuteScalar();
+                return _defaultValue.GetDefaultValue<DateTime>(sqlCommand.ExecuteScalar());
             } else {
                 return _defaultDateTime;
             }

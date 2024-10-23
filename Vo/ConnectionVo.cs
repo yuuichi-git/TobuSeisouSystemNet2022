@@ -35,7 +35,7 @@ namespace Vo {
         /// <param name="localDb">強制的にLocalDBへ接続するかどうかのフラグ</param>
         public void Connect(bool localDb) {
             switch (Environment.MachineName) {
-                case "LAPTOP-LI7NSQIT":
+                case "LAPTOP-5J3QGU8A":
                     if (!localDb) { // 自動選択
                         _serverName = new PingResponse().GetPingResponse("192.168.1.21") ? @"TOBUSERVER\SQLEXPRESS" : "(Local)";
                     } else { // LocalDBを選択
