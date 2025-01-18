@@ -23,7 +23,7 @@ namespace H_RollColl {
         /// <summary>
         /// Columnのスタート位置
         /// </summary>
-        readonly Dictionary<int, int> _dictionaryColNumber = new Dictionary<int, int> { { 0, 0 }, { 1, 26 } };
+        readonly Dictionary<int, int> _dictionaryColNumber = new() { { 0, 0 }, { 1, 26 } };
         /// <summary>
         /// Rowの最大数
         /// Sheetも調整してね！
@@ -57,7 +57,7 @@ namespace H_RollColl {
                                                                                                     { 13122, "葛飾区" },
                                                                                                     { 13123, "江戸川区" } };
         // 所属
-        private readonly Dictionary<int, string> dictionaryBelongs = new Dictionary<int, string> { { 10, "" }, { 11, "" }, { 12, "バ" }, { 13, "派" }, { 20, "新" }, { 21, "自" } };
+        private readonly Dictionary<int, string> dictionaryBelongs = new() { { 10, "" }, { 11, "" }, { 12, "バ" }, { 13, "派" }, { 22, "労供" } };
         // 所属に対応したカラー
         private readonly Dictionary<string, System.Drawing.Color> dictionaryBelongsColor = new Dictionary<string, System.Drawing.Color> { { "", System.Drawing.Color.White }
                                                                                                                                          ,{ "新", System.Drawing.Color.White}
@@ -410,18 +410,43 @@ namespace H_RollColl {
         private void CreateOperator1Row(EntryCellPosition entryCellPosition, H_VehicleDispatchDetailVo hVehicleDispatchDetailVo) {
             RichText displayName; // 表示名
             string belongs = string.Empty; // 所属
-            System.Drawing.Color cellBackColor; // セルの背景色
             /*
              * 組がセットされていなければ何もしない
              */
             if (hVehicleDispatchDetailVo.SetCode > 0 && hVehicleDispatchDetailVo.StaffCode1 > 0) {
                 displayName = new RichText(_listHStaffMasterVo.Find(x => x.StaffCode == hVehicleDispatchDetailVo.StaffCode1).DisplayName);
-                belongs = dictionaryBelongs[_listHStaffMasterVo.Find(x => x.StaffCode == hVehicleDispatchDetailVo.StaffCode1).Belongs];
-                cellBackColor = dictionaryBelongsColor[belongs];
+                switch (_listHStaffMasterVo.Find(x => x.StaffCode == hVehicleDispatchDetailVo.StaffCode1).Belongs) {
+                    case 10:
+                    case 11:
+                        belongs = string.Empty;
+                        break;
+                    case 12:
+                        belongs = "バ";
+                        break;
+                    case 13:
+                        belongs = "派";
+                        break;
+                    case 14:
+                    case 15:
+                        belongs = string.Empty;
+                        break;
+                    case 22:
+                        switch (_listHStaffMasterVo.Find(x => x.StaffCode == hVehicleDispatchDetailVo.StaffCode1).JobForm) {
+                            case 20:
+                            case 21:
+                                belongs = "新";
+                                break;
+                            case 22:
+                            case 23:
+                                belongs = "自";
+                                break;
+                        }
+                        break;
+                }
                 /*
                  * 表示名
                  */
-                SheetViewFirstRollCall.Cells[entryCellPosition.Row, entryCellPosition.Col + 8].BackColor = cellBackColor;
+                SheetViewFirstRollCall.Cells[entryCellPosition.Row, entryCellPosition.Col + 8].BackColor = dictionaryBelongsColor[belongs];
                 SheetViewFirstRollCall.Cells[entryCellPosition.Row, entryCellPosition.Col + 8].CellType = new FarPoint.Win.Spread.CellType.RichTextCellType();
                 SheetViewFirstRollCall.Cells[entryCellPosition.Row, entryCellPosition.Col + 8].Value = displayName;
                 /*
@@ -447,7 +472,7 @@ namespace H_RollColl {
                     case 1312132: // 浄化槽(品川)
                     case 1312135: // 初任診断
                     case 1312136: // 適齢診断
-                    case 1312137: // 初任研修
+                    case 1312137: // 初任研修(東環保)
                     case 1312138: // 整備管理講習
                     case 1312139: // 運行管理講習
                     case 1312140: // 当日無断で欠勤
@@ -516,25 +541,49 @@ namespace H_RollColl {
         /// <param name="entryCellPosition"></param>
         /// <param name="hVehicleDispatchDetailVo"></param>
         private void CreateOperator2Row(EntryCellPosition entryCellPosition, H_VehicleDispatchDetailVo hVehicleDispatchDetailVo) {
-            string belongs; // 所属
-            System.Drawing.Color cellBackColor; // セルの背景色
+            string belongs = string.Empty; // 所属
             /*
              * 組がセットされていなければ何もしない
              */
             if (hVehicleDispatchDetailVo.SetCode > 0 && hVehicleDispatchDetailVo.StaffCode2 > 0) {
+                switch (_listHStaffMasterVo.Find(x => x.StaffCode == hVehicleDispatchDetailVo.StaffCode2).Belongs) {
+                    case 10:
+                    case 11:
+                        belongs = string.Empty;
+                        break;
+                    case 12:
+                        belongs = "バ";
+                        break;
+                    case 13:
+                        belongs = "派";
+                        break;
+                    case 14:
+                    case 15:
+                        belongs = string.Empty;
+                        break;
+                    case 22:
+                        switch (_listHStaffMasterVo.Find(x => x.StaffCode == hVehicleDispatchDetailVo.StaffCode2).JobForm) {
+                            case 20:
+                            case 21:
+                                belongs = "新";
+                                break;
+                            case 22:
+                            case 23:
+                                belongs = "自";
+                                break;
+                        }
+                        break;
+                }
                 /*
                  * "作"を追加するかどうか
                  */
                 if (hVehicleDispatchDetailVo.StaffOccupation2 == 11) {
-                    belongs = string.Concat(dictionaryBelongs[_listHStaffMasterVo.Find(x => x.StaffCode == hVehicleDispatchDetailVo.StaffCode2).Belongs], "作");
-                } else {
-                    belongs = string.Concat(dictionaryBelongs[_listHStaffMasterVo.Find(x => x.StaffCode == hVehicleDispatchDetailVo.StaffCode2).Belongs]);
+                    belongs = string.Concat(belongs, "作");
                 }
-                cellBackColor = dictionaryBelongsColor[belongs];
                 /*
                  * 表示名
                  */
-                SheetViewFirstRollCall.Cells[entryCellPosition.Row, entryCellPosition.Col + 11].BackColor = cellBackColor;
+                SheetViewFirstRollCall.Cells[entryCellPosition.Row, entryCellPosition.Col + 11].BackColor = dictionaryBelongsColor[belongs];
                 SheetViewFirstRollCall.Cells[entryCellPosition.Row, entryCellPosition.Col + 11].CellType = new FarPoint.Win.Spread.CellType.RichTextCellType();
                 SheetViewFirstRollCall.Cells[entryCellPosition.Row, entryCellPosition.Col + 11].Value = GetWorkStaffName(hVehicleDispatchDetailVo.StaffOccupation2, _listHStaffMasterVo.Find(x => x.StaffCode == hVehicleDispatchDetailVo.StaffCode2));
                 /*
@@ -557,25 +606,49 @@ namespace H_RollColl {
         /// <param name="entryCellPosition"></param>
         /// <param name="hVehicleDispatchDetailVo"></param>
         private void CreateOperator3Row(EntryCellPosition entryCellPosition, H_VehicleDispatchDetailVo hVehicleDispatchDetailVo) {
-            string belongs; // 所属
-            System.Drawing.Color cellBackColor; // セルの背景色
+            string belongs = string.Empty; // 所属
             /*
              * 組がセットされていなければ何もしない
              */
             if (hVehicleDispatchDetailVo.SetCode > 0 && hVehicleDispatchDetailVo.StaffCode3 > 0) {
+                switch (_listHStaffMasterVo.Find(x => x.StaffCode == hVehicleDispatchDetailVo.StaffCode3).Belongs) {
+                    case 10:
+                    case 11:
+                        belongs = string.Empty;
+                        break;
+                    case 12:
+                        belongs = "バ";
+                        break;
+                    case 13:
+                        belongs = "派";
+                        break;
+                    case 14:
+                    case 15:
+                        belongs = string.Empty;
+                        break;
+                    case 22:
+                        switch (_listHStaffMasterVo.Find(x => x.StaffCode == hVehicleDispatchDetailVo.StaffCode3).JobForm) {
+                            case 20:
+                            case 21:
+                                belongs = "新";
+                                break;
+                            case 22:
+                            case 23:
+                                belongs = "自";
+                                break;
+                        }
+                        break;
+                }
                 /*
                  * "作"を追加するかどうか
                  */
                 if (hVehicleDispatchDetailVo.StaffOccupation3 == 11) {
-                    belongs = string.Concat(dictionaryBelongs[_listHStaffMasterVo.Find(x => x.StaffCode == hVehicleDispatchDetailVo.StaffCode3).Belongs], "作");
-                } else {
-                    belongs = string.Concat(dictionaryBelongs[_listHStaffMasterVo.Find(x => x.StaffCode == hVehicleDispatchDetailVo.StaffCode3).Belongs]);
+                    belongs = string.Concat(belongs, "作");
                 }
-                cellBackColor = dictionaryBelongsColor[belongs];
                 /*
                  * 表示名
                  */
-                SheetViewFirstRollCall.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 11].BackColor = cellBackColor;
+                SheetViewFirstRollCall.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 11].BackColor = dictionaryBelongsColor[belongs];
                 SheetViewFirstRollCall.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 11].CellType = new FarPoint.Win.Spread.CellType.RichTextCellType();
                 SheetViewFirstRollCall.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 11].Value = GetWorkStaffName(hVehicleDispatchDetailVo.StaffOccupation3, _listHStaffMasterVo.Find(x => x.StaffCode == hVehicleDispatchDetailVo.StaffCode3));
                 /*
@@ -598,25 +671,49 @@ namespace H_RollColl {
         /// <param name="entryCellPosition"></param>
         /// <param name="hVehicleDispatchDetailVo"></param>
         private void CreateOperator4Row(EntryCellPosition entryCellPosition, H_VehicleDispatchDetailVo hVehicleDispatchDetailVo) {
-            string belongs; // 所属
-            System.Drawing.Color cellBackColor; // セルの背景色
+            string belongs = string.Empty; // 所属
             /*
              * 組がセットされていなければ何もしない
              */
             if (hVehicleDispatchDetailVo.SetCode > 0 && hVehicleDispatchDetailVo.StaffCode4 > 0) {
+                switch (_listHStaffMasterVo.Find(x => x.StaffCode == hVehicleDispatchDetailVo.StaffCode4).Belongs) {
+                    case 10:
+                    case 11:
+                        belongs = string.Empty;
+                        break;
+                    case 12:
+                        belongs = "バ";
+                        break;
+                    case 13:
+                        belongs = "派";
+                        break;
+                    case 14:
+                    case 15:
+                        belongs = string.Empty;
+                        break;
+                    case 22:
+                        switch (_listHStaffMasterVo.Find(x => x.StaffCode == hVehicleDispatchDetailVo.StaffCode4).JobForm) {
+                            case 20:
+                            case 21:
+                                belongs = "新";
+                                break;
+                            case 22:
+                            case 23:
+                                belongs = "自";
+                                break;
+                        }
+                        break;
+                }
                 /*
                  * "作"を追加するかどうか
                  */
                 if (hVehicleDispatchDetailVo.StaffOccupation4 == 11) {
-                    belongs = string.Concat(dictionaryBelongs[_listHStaffMasterVo.Find(x => x.StaffCode == hVehicleDispatchDetailVo.StaffCode4).Belongs], "作");
-                } else {
-                    belongs = string.Concat(dictionaryBelongs[_listHStaffMasterVo.Find(x => x.StaffCode == hVehicleDispatchDetailVo.StaffCode4).Belongs]);
+                    belongs = string.Concat(belongs, "作");
                 }
-                cellBackColor = dictionaryBelongsColor[belongs];
                 /*
                  * 表示名
                  */
-                SheetViewFirstRollCall.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 8].BackColor = cellBackColor;
+                SheetViewFirstRollCall.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 8].BackColor = dictionaryBelongsColor[belongs];
                 SheetViewFirstRollCall.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 8].CellType = new FarPoint.Win.Spread.CellType.RichTextCellType();
                 SheetViewFirstRollCall.Cells[entryCellPosition.Row + 1, entryCellPosition.Col + 8].Value = GetWorkStaffName(hVehicleDispatchDetailVo.StaffOccupation4, _listHStaffMasterVo.Find(x => x.StaffCode == hVehicleDispatchDetailVo.StaffCode4));
                 /*

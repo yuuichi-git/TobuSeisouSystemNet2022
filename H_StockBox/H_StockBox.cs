@@ -98,14 +98,14 @@ namespace H_StockBox {
                     this.ToolStripMenuItemCheckedChange(sender);
                     this.FlowLayoutPanelExControlRemove();
                     _temporaryRemoveListHStaffMasterVo = _hArrayUtility.RemoveHStaffMasterVo((TableLayoutPanel)_hControlVo.HBoard, (FlowLayoutPanel)_hControlVo.HFlowLayoutPanelExStockBoxs, _hControlVo.ListHStaffMasterVo);
-                    _hControlVo.RemoveListHStaffMasterVo = _temporaryRemoveListHStaffMasterVo.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.JobForm == 10 && x.RetirementFlag == false);
+                    _hControlVo.RemoveListHStaffMasterVo = _temporaryRemoveListHStaffMasterVo.FindAll(x => x.Belongs == 22 && (x.JobForm == 20 || x.JobForm == 22) && x.RetirementFlag == false);
                     this.CreateHStaffLabel(_hControlVo);
                     break;
                 case "ToolStripMenuItemShortTerm": // íZä˙
                     this.ToolStripMenuItemCheckedChange(sender);
                     this.FlowLayoutPanelExControlRemove();
                     _temporaryRemoveListHStaffMasterVo = _hArrayUtility.RemoveHStaffMasterVo((TableLayoutPanel)_hControlVo.HBoard, (FlowLayoutPanel)_hControlVo.HFlowLayoutPanelExStockBoxs, _hControlVo.ListHStaffMasterVo);
-                    _hControlVo.RemoveListHStaffMasterVo = _temporaryRemoveListHStaffMasterVo.FindAll(x => (x.Belongs == 20 || x.Belongs == 21) && x.JobForm == 11 && x.RetirementFlag == false);
+                    _hControlVo.RemoveListHStaffMasterVo = _temporaryRemoveListHStaffMasterVo.FindAll(x => x.Belongs == 22 && (x.JobForm == 21 || x.JobForm == 23) && x.RetirementFlag == false);
                     this.CreateHStaffLabel(_hControlVo);
                     break;
                 case "ToolStripMenuItemDispatch": // îhå≠

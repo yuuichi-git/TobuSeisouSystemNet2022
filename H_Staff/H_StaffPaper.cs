@@ -171,14 +171,14 @@ namespace H_Staff {
             /*
              * 労共(長期)
              */
-            if ((_hStaffMasterVo.Belongs == 20 || _hStaffMasterVo.Belongs == 21) && _hStaffMasterVo.JobForm == 10) {
+            if ((_hStaffMasterVo.Belongs == 22) && (_hStaffMasterVo.JobForm == 20 || _hStaffMasterVo.JobForm == 22)) {
                 sheetView.Cells[5, 1].ForeColor = Color.Red;
                 sheetView.Cells[5, 2].ForeColor = Color.Red;
             }
             /*
              * 労共(短期)
              */
-            if ((_hStaffMasterVo.Belongs == 20 || _hStaffMasterVo.Belongs == 21) && _hStaffMasterVo.JobForm == 11) {
+            if ((_hStaffMasterVo.Belongs == 22) && (_hStaffMasterVo.JobForm == 21 || _hStaffMasterVo.JobForm == 23)) {
                 sheetView.Cells[6, 1].ForeColor = Color.Red;
                 sheetView.Cells[6, 2].ForeColor = Color.Red;
             }
@@ -192,7 +192,7 @@ namespace H_Staff {
             /*
              * 作業員
              */
-            Dictionary<int, string> _dictionaryBelongs = new Dictionary<int, string> { { 10, "役員" }, { 11, "社員" }, { 12, "アルバイト" }, { 13, "派遣" }, { 20, "新運転" }, { 21, "自運労" } };
+            Dictionary<int, string> _dictionaryBelongs = new() { { 10, "役員" }, { 11, "社員" }, { 12, "アルバイト" }, { 13, "派遣" }, { 14, "嘱託雇用契約社員" }, { 20, "新運転" }, { 21, "自運労" }, { 22, "労供" } };
             if (_hStaffMasterVo.Occupation == 11) {
                 sheetView.Cells[8, 1].ForeColor = Color.Red;
                 sheetView.Cells[8, 2].ForeColor = Color.Red;

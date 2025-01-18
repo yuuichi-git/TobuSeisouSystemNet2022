@@ -16,9 +16,9 @@ using Vo;
 namespace H_Staff {
     public partial class HStaffList : Form {
         private readonly DateTime _defaultDateTime = new DateTime(1900, 01, 01);
-        private readonly Dictionary<int, string> dictionaryBelongs = new Dictionary<int, string> { { 10, "役員" }, { 11, "社員" }, { 12, "アルバイト" }, { 13, "派遣" }, { 20, "新運転" }, { 21, "自運労" } };
-        private readonly Dictionary<int, string> dictionaryJobForm = new Dictionary<int, string> { { 10, "長期雇用" }, { 11, "手帳" }, { 12, "" }, { 99, "" } };
-        private readonly Dictionary<int, string> dictionaryOccupation = new Dictionary<int, string> { { 10, "運転手" }, { 11, "作業員" }, { 20, "事務職" }, { 99, "" } };
+        private readonly Dictionary<int, string> dictionaryBelongs = new Dictionary<int, string> { { 10, "役員" }, { 11, "社員" }, { 12, "アルバイト" }, { 13, "派遣" }, { 14, "嘱託雇用契約社員" }, { 15, "パートタイマー" }, { 20, "新運転" }, { 21, "自運労" }, { 22, "労供" } };
+        private readonly Dictionary<int, string> dictionaryJobForm = new Dictionary<int, string> { { 10, "長期雇用" }, { 11, "手帳" }, { 20, "長期(新)" }, { 21, "短期(新)" }, { 22, "長期(自)" }, { 23, "短期(自)" }, { 99, "" } };
+        private readonly Dictionary<int, string> dictionaryOccupation = new Dictionary<int, string> { { 10, "運転手" }, { 11, "作業員" }, { 12, "自転車駐輪場" }, { 13, "リサイクルセンター" }, { 20, "事務職" }, { 99, "" } };
         private readonly H_Common.Date _date = new();
         private List<H_StaffMasterVo>? _listHStaffMasterVo = null;
         /*
@@ -413,35 +413,39 @@ namespace H_Staff {
             if (!CheckBoxRetired.Checked)
                 findListStaffMasterVo = findListStaffMasterVo?.FindAll(x => x.RetirementFlag != true);
             if (findListStaffMasterVo is not null) {
-                foreach (H_StaffMasterVo hStaffMasterVo in findListStaffMasterVo.OrderBy(x => x.NameKana)) {
+                foreach (H_StaffMasterVo hStaffMasterVo in findListStaffMasterVo.OrderBy(x => x.Belongs).ThenBy(x => x.Occupation).ThenBy(x => x.NameKana)) {
                     SheetViewMedical.Rows.Add(rowCount, 1);
                     SheetViewMedical.RowHeader.Columns[0].Label = (rowCount + 1).ToString(); // Rowヘッダ
                     SheetViewMedical.Rows[rowCount].ForeColor = hStaffMasterVo.RetirementFlag ? Color.Red : Color.Black; // 退職済のレコードのForeColorをセット
                     SheetViewMedical.Rows[rowCount].Height = 20; // Rowの高さ
                     SheetViewMedical.Rows[rowCount].Resizable = false; // RowのResizableを禁止
                     SheetViewMedical.Rows[rowCount].Tag = hStaffMasterVo;
+                    // 続柄
+                    SheetViewMedical.Cells[rowCount, 0].Text = "本人";
                     // 所属
-                    SheetViewMedical.Cells[rowCount, 0].Text = dictionaryBelongs[hStaffMasterVo.Belongs];
+                    SheetViewMedical.Cells[rowCount, 1].Text = dictionaryBelongs[hStaffMasterVo.Belongs];
+                    // 所属
+                    SheetViewMedical.Cells[rowCount, 2].Text = dictionaryOccupation[hStaffMasterVo.Occupation];
                     // 組合コード
-                    SheetViewMedical.Cells[rowCount, 1].Value = hStaffMasterVo.UnionCode;
+                    SheetViewMedical.Cells[rowCount, 3].Value = hStaffMasterVo.UnionCode;
                     // 名前(健診用)
-                    SheetViewMedical.Cells[rowCount, 2].Text = hStaffMasterVo.OtherName;
+                    SheetViewMedical.Cells[rowCount, 4].Text = hStaffMasterVo.OtherName;
                     // カナ(健診用)
-                    SheetViewMedical.Cells[rowCount, 3].Text = hStaffMasterVo.OtherNameKana;
+                    SheetViewMedical.Cells[rowCount, 5].Text = hStaffMasterVo.OtherNameKana;
                     // 生年月日
-                    SheetViewMedical.Cells[rowCount, 4].Value = _date.GetBirthday(hStaffMasterVo.BirthDate);
+                    SheetViewMedical.Cells[rowCount, 6].Value = _date.GetBirthday(hStaffMasterVo.BirthDate);
                     // 年齢
-                    SheetViewMedical.Cells[rowCount, 5].Text = string.Concat(_date.GetAge(hStaffMasterVo.BirthDate.Date), "歳");
+                    SheetViewMedical.Cells[rowCount, 7].Text = string.Concat(_date.GetAge(hStaffMasterVo.BirthDate.Date), "歳");
                     // 性別
-                    SheetViewMedical.Cells[rowCount, 6].Text = hStaffMasterVo.Gender;
+                    SheetViewMedical.Cells[rowCount, 8].Text = hStaffMasterVo.Gender;
                     // 記号１
-                    SheetViewMedical.Cells[rowCount, 7].Text = "";
+                    SheetViewMedical.Cells[rowCount, 9].Text = hStaffMasterVo.HealthInsuranceNumber.Length > 0 ? hStaffMasterVo.HealthInsuranceNumber[2..6] : string.Empty;
                     // 記号２
-                    SheetViewMedical.Cells[rowCount, 8].Text = "";
+                    SheetViewMedical.Cells[rowCount, 10].Text = hStaffMasterVo.HealthInsuranceNumber.Length > 0 ? hStaffMasterVo.HealthInsuranceNumber[9..12] : string.Empty;
                     // 記号３
-                    SheetViewMedical.Cells[rowCount, 9].Text = "";
+                    SheetViewMedical.Cells[rowCount, 11].Text = hStaffMasterVo.HealthInsuranceNumber.Length > 0 ? hStaffMasterVo.HealthInsuranceNumber[16..] : string.Empty;
                     // 健康保険加入
-                    SheetViewMedical.Cells[rowCount, 10].Text = hStaffMasterVo.HealthInsuranceNumber;
+                    SheetViewMedical.Cells[rowCount, 12].Text = hStaffMasterVo.HealthInsuranceNumber;
                     rowCount++;
                 }
             }

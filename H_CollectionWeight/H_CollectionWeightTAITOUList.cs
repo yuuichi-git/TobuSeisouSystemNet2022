@@ -86,8 +86,11 @@ namespace H_CollectionWeight {
                     SheetViewList.Cells[rowNumber, 4].Value = hCollectionWeightTaitouVo.Weight3Total;
                     SheetViewList.Cells[rowNumber, 5].Value = hCollectionWeightTaitouVo.Weight4Total;
                     SheetViewList.Cells[rowNumber, 6].Value = hCollectionWeightTaitouVo.Weight5Total;
+
                     SheetViewList.Cells[rowNumber, 7].Value = hCollectionWeightTaitouVo.Weight6Total;
                     SheetViewList.Cells[rowNumber, 8].Value = hCollectionWeightTaitouVo.Weight7Total;
+                    SheetViewList.Cells[rowNumber, 9].Value = hCollectionWeightTaitouVo.Weight8Total;
+                    SheetViewList.Cells[rowNumber, 10].Value = hCollectionWeightTaitouVo.Weight9Total;
                 }
                 rowNumber++;
             }
@@ -122,7 +125,7 @@ namespace H_CollectionWeight {
         private SheetView InitializeSheetViewList(SheetView sheetView) {
             SpreadList.AllowDragDrop = false; // DrugDropを禁止する
             SpreadList.PaintSelectionHeader = false; // ヘッダの選択状態をしない
-            SheetViewList.ClearRange(1, 0, 31, 9, true);
+            SheetViewList.ClearRange(1, 0, 31, 11, true);
             return sheetView;
         }
 

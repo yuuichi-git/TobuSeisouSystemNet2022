@@ -64,6 +64,8 @@ namespace H_Dao {
                                             "Weight5Total," +
                                             "Weight6Total," +
                                             "Weight7Total," +
+                                            "Weight8Total," +
+                                            "Weight9Total," +
                                             "InsertPcName," +
                                             "InsertYmdHms," +
                                             "UpdatePcName," +
@@ -84,6 +86,8 @@ namespace H_Dao {
                     hCollectionWeightTaitouVo.Weight5Total = _defaultValue.GetDefaultValue<int>(sqlDataReader["Weight5Total"]);
                     hCollectionWeightTaitouVo.Weight6Total = _defaultValue.GetDefaultValue<int>(sqlDataReader["Weight6Total"]);
                     hCollectionWeightTaitouVo.Weight7Total = _defaultValue.GetDefaultValue<int>(sqlDataReader["Weight7Total"]);
+                    hCollectionWeightTaitouVo.Weight8Total = _defaultValue.GetDefaultValue<int>(sqlDataReader["Weight8Total"]);
+                    hCollectionWeightTaitouVo.Weight9Total = _defaultValue.GetDefaultValue<int>(sqlDataReader["Weight9Total"]);
                     hCollectionWeightTaitouVo.InsertPcName = _defaultValue.GetDefaultValue<string>(sqlDataReader["InsertPcName"]);
                     hCollectionWeightTaitouVo.InsertYmdHms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["InsertYmdHms"]);
                     hCollectionWeightTaitouVo.UpdatePcName = _defaultValue.GetDefaultValue<string>(sqlDataReader["UpdatePcName"]);
@@ -113,6 +117,8 @@ namespace H_Dao {
                                             "Weight5Total," +
                                             "Weight6Total," +
                                             "Weight7Total," +
+                                            "Weight8Total," +
+                                            "Weight9Total," +
                                             "InsertPcName," +
                                             "InsertYmdHms," +
                                             "UpdatePcName," +
@@ -134,6 +140,8 @@ namespace H_Dao {
                         hCollectionWeightTaitouVo.Weight5Total = _defaultValue.GetDefaultValue<int>(sqlDataReader["Weight5Total"]);
                         hCollectionWeightTaitouVo.Weight6Total = _defaultValue.GetDefaultValue<int>(sqlDataReader["Weight6Total"]);
                         hCollectionWeightTaitouVo.Weight7Total = _defaultValue.GetDefaultValue<int>(sqlDataReader["Weight7Total"]);
+                        hCollectionWeightTaitouVo.Weight8Total = _defaultValue.GetDefaultValue<int>(sqlDataReader["Weight8Total"]);
+                        hCollectionWeightTaitouVo.Weight9Total = _defaultValue.GetDefaultValue<int>(sqlDataReader["Weight9Total"]);
                         hCollectionWeightTaitouVo.InsertPcName = _defaultValue.GetDefaultValue<string>(sqlDataReader["InsertPcName"]);
                         hCollectionWeightTaitouVo.InsertYmdHms = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["InsertYmdHms"]);
                         hCollectionWeightTaitouVo.UpdatePcName = _defaultValue.GetDefaultValue<string>(sqlDataReader["UpdatePcName"]);
@@ -165,6 +173,8 @@ namespace H_Dao {
                                                                           "Weight5Total," +
                                                                           "Weight6Total," +
                                                                           "Weight7Total," +
+                                                                          "Weight8Total," +
+                                                                          "Weight9Total," +
                                                                           "InsertPcName," +
                                                                           "InsertYmdHms," +
                                                                           "UpdatePcName," +
@@ -180,6 +190,8 @@ namespace H_Dao {
                                               "" + _defaultValue.GetDefaultValue<int>(hCollectionWeightTaitouVo.Weight5Total) + "," +
                                               "" + _defaultValue.GetDefaultValue<int>(hCollectionWeightTaitouVo.Weight6Total) + "," +
                                               "" + _defaultValue.GetDefaultValue<int>(hCollectionWeightTaitouVo.Weight7Total) + "," +
+                                              "" + _defaultValue.GetDefaultValue<int>(hCollectionWeightTaitouVo.Weight8Total) + "," +
+                                              "" + _defaultValue.GetDefaultValue<int>(hCollectionWeightTaitouVo.Weight9Total) + "," +
                                              "'" + Environment.MachineName + "'," +
                                              "'" + DateTime.Today + "'," +
                                              "'" + string.Empty + "'," +
@@ -211,6 +223,8 @@ namespace H_Dao {
                                          "Weight5Total = " + _defaultValue.GetDefaultValue<int>(hCollectionWeightTaitouVo.Weight5Total) + "," +
                                          "Weight6Total = " + _defaultValue.GetDefaultValue<int>(hCollectionWeightTaitouVo.Weight6Total) + "," +
                                          "Weight7Total = " + _defaultValue.GetDefaultValue<int>(hCollectionWeightTaitouVo.Weight7Total) + "," +
+                                         "Weight8Total = " + _defaultValue.GetDefaultValue<int>(hCollectionWeightTaitouVo.Weight8Total) + "," +
+                                         "Weight9Total = " + _defaultValue.GetDefaultValue<int>(hCollectionWeightTaitouVo.Weight9Total) + "," +
                                          "UpdatePcName = '" + Environment.MachineName + "'," +
                                          "UpdateYmdHms = '" + DateTime.Today + "' " +
                                      "WHERE OperationDate = '" + hCollectionWeightTaitouVo.OperationDate.Date + "'";
@@ -275,14 +289,6 @@ namespace H_Dao {
 
             List<H_CollectionWeightTAITOUDetailVo> listHCollectionWeightTAITOUDetailVo = new();
             SqlCommand sqlCommand = _connectionVo.Connection.CreateCommand();
-            //sqlCommand.CommandText = "SELECT OperationDate," +
-            //                                "COUNT(StaffCode3) AS COLUMN1 " +
-            //                         "FROM H_VehicleDispatchDetail " +
-            //                         "WHERE OperationDate BETWEEN '" + staYmd + "' AND '" + endYmd + "' " +
-            //                           "AND OperationFlag = 'true' " +
-            //                           "AND SetCode = " + setCode + " " +
-            //                           "AND StaffCode3 > 0 " +
-            //                           "GROUP BY day_of_week";
             sqlCommand.CommandText = "SELECT DATEPART(WEEKDAY,OperationDate) AS WeekDay," +
                                             "StaffCode3 " +
                                      "FROM H_VehicleDispatchDetail " +

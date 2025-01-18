@@ -125,14 +125,14 @@ namespace H_Staff {
              * GroupBoxBelongs
              * 所属
              */
-            Dictionary<string, int> dictionaryBelongs = new Dictionary<string, int> { { "役員", 10 }, { "社員", 11 }, { "アルバイト", 12 }, { "派遣", 13 }, { "新運転", 20 }, { "自運労", 21 } };
+            Dictionary<string, int> dictionaryBelongs = new() { { "役員", 10 }, { "社員", 11 }, { "アルバイト", 12 }, { "派遣", 13 }, { "嘱託雇用契約社員", 14 }, { "パートタイマー", 15 }, { "新運転", 20 }, { "自運労", 21 }, { "労供", 22 } };
             hStaffMasterVo.VehicleDispatchTarget = HCheckBoxExTargetFlag.Checked;
             hStaffMasterVo.Belongs = dictionaryBelongs[HComboBoxExBelongs.Text];
             /*
              * GroupBoxJobForm
              * 雇用形態
              */
-            Dictionary<string, int> dictionaryJobForm = new Dictionary<string, int> { { "長期", 10 }, { "短期", 11 }, { "指定なし", 99 } };
+            Dictionary<string, int> dictionaryJobForm = new() { { "長期", 10 }, { "短期", 11 }, { "長期(新)", 20 }, { "短期(新)", 21 }, { "長期(自)", 22 }, { "短期(自)", 23 }, { "指定なし", 99 } };
             foreach (Control control in GroupBoxJobForm.Controls) {
                 H_RadioButtonEx hRadioButtonEx = (H_RadioButtonEx)control;
                 if (hRadioButtonEx.Checked)
@@ -142,7 +142,7 @@ namespace H_Staff {
              * GroupBoxExOccupation
              * 職種
              */
-            Dictionary<string, int> dictionaryOccupation = new Dictionary<string, int> { { "事務職", 20 }, { "運転手", 10 }, { "作業員", 11 }, { "指定なし", 99 } };
+            Dictionary<string, int> dictionaryOccupation = new() { { "事務職", 20 }, { "運転手", 10 }, { "作業員", 11 }, { "自転車駐輪場", 12 }, { "リサイクルセンター", 13 }, { "指定なし", 99 } };
             foreach (Control control in GroupBoxExOccupation.Controls) {
                 H_RadioButtonEx hRadioButtonEx = (H_RadioButtonEx)control;
                 if (hRadioButtonEx.Checked)
@@ -172,6 +172,7 @@ namespace H_Staff {
             hStaffMasterVo.TelephoneNumber = HTextBoxExTelephoneNumber.Text; // 電話番号
             hStaffMasterVo.CellphoneNumber = HTextBoxExCellphoneNumber.Text; // 携帯電話番号
             hStaffMasterVo.Picture = (byte[]?)new ImageConverter().ConvertTo(HPictureBoxExStaff.Image, typeof(byte[])); // 写真
+            hStaffMasterVo.StampPicture = (byte[]?)new ImageConverter().ConvertTo(HPictureBoxExStamp.Image, typeof(byte[])); // 写真
             /*
              * HGroupBoxExDrive
              * 運転に関する情報
@@ -565,6 +566,19 @@ namespace H_Staff {
                     HPictureBoxExStaff.Image = null;
                     break;
                 /*
+                 * 印影　クリップ
+                 */
+                case "ToolStripMenuItemStampClip":
+                    HPictureBoxExStamp.Image = (Bitmap)Clipboard.GetDataObject().GetData(DataFormats.Bitmap);
+                    break;
+                /*
+                 * 印影　削除
+                 */
+                case "ToolStripMenuItemStampDelete":
+                    HPictureBoxExStamp.Image = null;
+                    break;
+
+                /*
                  * アプリケーションを終了する
                  */
                 case "ToolStripMenuItemExit":
@@ -587,7 +601,7 @@ namespace H_Staff {
              * GroupBoxBelongs
              * 所属
              */
-            Dictionary<int, string> dictionaryBelongs = new Dictionary<int, string> { { 10, "役員" }, { 11, "社員" }, { 12, "アルバイト" }, { 13, "派遣" }, { 20, "新運転" }, { 21, "自運労" } };
+            Dictionary<int, string> dictionaryBelongs = new Dictionary<int, string> { { 10, "役員" }, { 11, "社員" }, { 12, "アルバイト" }, { 13, "派遣" }, { 14, "嘱託雇用契約社員" }, { 15, "パートタイマー" }, { 20, "新運転" }, { 21, "自運労" }, { 22, "労供" } };
             HCheckBoxExTargetFlag.Checked = hStaffMasterVo.VehicleDispatchTarget;
             HComboBoxExBelongs.Text = dictionaryBelongs[hStaffMasterVo.Belongs];
             /*
@@ -595,11 +609,17 @@ namespace H_Staff {
              * 雇用形態
              */
             switch (hStaffMasterVo.JobForm) {
-                case 10:
+                case 20:
                     HRadioButtonExLongTarm.Checked = true;
                     break;
-                case 11:
+                case 21:
                     HRadioButtonExShortTarm.Checked = true;
+                    break;
+                case 22:
+                    h_RadioButtonEx2.Checked = true;
+                    break;
+                case 23:
+                    h_RadioButtonEx1.Checked = true;
                     break;
                 case 99:
                     HRadioButtonExNone1.Checked = true;
@@ -615,6 +635,12 @@ namespace H_Staff {
                     break;
                 case 11:
                     HRadioButtonExOperator.Checked = true;
+                    break;
+                case 12:
+                    HRadioButtonExBisycle.Checked = true;
+                    break;
+                case 13:
+                    HRadioButtonExCrnter.Checked = true;
                     break;
                 case 20:
                     HRadioButtonExOfficeWork.Checked = true;
@@ -645,6 +671,7 @@ namespace H_Staff {
             HTextBoxExTelephoneNumber.Text = hStaffMasterVo.TelephoneNumber;
             HTextBoxExCellphoneNumber.Text = hStaffMasterVo.CellphoneNumber;
             HPictureBoxExStaff.Image = hStaffMasterVo.Picture.Length != 0 ? (Image?)new ImageConverter().ConvertFrom(hStaffMasterVo.Picture) : null;
+            HPictureBoxExStamp.Image = hStaffMasterVo.StampPicture.Length != 0 ? (Image?)new ImageConverter().ConvertFrom(hStaffMasterVo.StampPicture) : null;
             /*
              * HGroupBoxExDrive
              * 運転に関する情報

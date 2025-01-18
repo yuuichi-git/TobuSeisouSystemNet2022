@@ -29,6 +29,7 @@ namespace H_Vo {
         private string _telephoneNumber;
         private string _cellphoneNumber;
         private byte[] _picture;
+        private byte[] _stampPicture;
         private string _bloodType;
         private DateTime _selectionDate;
         private DateTime _notSelectionDate;
@@ -97,6 +98,7 @@ namespace H_Vo {
             _telephoneNumber = string.Empty;
             _cellphoneNumber = string.Empty;
             _picture = Array.Empty<byte>();
+            _stampPicture = Array.Empty<byte>();
             _bloodType = string.Empty;
             _selectionDate = _defaultDateTime;
             _notSelectionDate = _defaultDateTime;
@@ -182,7 +184,7 @@ namespace H_Vo {
         }
         /// <summary>
         /// 職種
-        /// 10:運転手 11:作業員 20:事務職 99:指定なし
+        /// 10:運転手 11:作業員 12:自転車駐輪場 13:リサイクルセンター 20:事務職 99:指定なし
         /// </summary>
         public int Occupation {
             get => _occupation;
@@ -287,6 +289,13 @@ namespace H_Vo {
         public byte[] Picture {
             get => _picture;
             set => _picture = value;
+        }
+        /// <summary>
+        /// 印影
+        /// </summary>
+        public byte[] StampPicture {
+            get => _stampPicture;
+            set => _stampPicture = value;
         }
         /// <summary>
         /// 血液型
@@ -547,5 +556,6 @@ namespace H_Vo {
             get => _deleteFlag;
             set => _deleteFlag = value;
         }
+        
     }
 }

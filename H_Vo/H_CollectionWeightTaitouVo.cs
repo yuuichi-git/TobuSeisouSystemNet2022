@@ -13,6 +13,8 @@ namespace H_Vo {
         private int _weight5Total;
         private int _weight6Total;
         private int _weight7Total;
+        private int _weight8Total;
+        private int _weight9Total;
         private string _insertPcName;
         private DateTime _insertYmdHms;
         private string _updatePcName;
@@ -33,6 +35,8 @@ namespace H_Vo {
             _weight5Total = 0;
             _weight6Total = 0;
             _weight7Total = 0;
+            _weight8Total = 0;
+            _weight9Total = 0;
             _insertPcName = string.Empty;
             _insertYmdHms = _defaultDateTime;
             _updatePcName = string.Empty;
@@ -71,32 +75,46 @@ namespace H_Vo {
             set => _weight3Total = value;
         }
         /// <summary>
-        /// 東武臨時
+        /// 東武臨時１
         /// </summary>
         public int Weight4Total {
             get => _weight4Total;
             set => _weight4Total = value;
         }
         /// <summary>
-        /// 三東３組
+        /// 予備
         /// </summary>
         public int Weight5Total {
             get => _weight5Total;
             set => _weight5Total = value;
         }
         /// <summary>
-        /// 三東軽
+        /// 三東３組
         /// </summary>
         public int Weight6Total {
             get => _weight6Total;
             set => _weight6Total = value;
         }
         /// <summary>
-        /// 三東臨時
+        /// 三東軽
         /// </summary>
         public int Weight7Total {
             get => _weight7Total;
             set => _weight7Total = value;
+        }
+        /// <summary>
+        /// 三東臨時
+        /// </summary>
+        public int Weight8Total {
+            get => _weight8Total;
+            set => _weight8Total = value;
+        }
+        /// <summary>
+        /// 予備
+        /// </summary>
+        public int Weight9Total {
+            get => _weight9Total;
+            set => _weight9Total = value;
         }
         public string InsertPcName {
             get => _insertPcName;
@@ -126,5 +144,6 @@ namespace H_Vo {
             get => _deleteFlag;
             set => _deleteFlag = value;
         }
+       
     }
 }

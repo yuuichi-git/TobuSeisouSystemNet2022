@@ -47,9 +47,11 @@ namespace H_CollectionWeight {
             hCollectionWeightTaitouVo.Weight2Total = (int)HNumericUpDownEx2.Value;
             hCollectionWeightTaitouVo.Weight3Total = (int)HNumericUpDownEx3.Value;
             hCollectionWeightTaitouVo.Weight4Total = (int)HNumericUpDownEx4.Value;
-            hCollectionWeightTaitouVo.Weight5Total = (int)HNumericUpDownEx5.Value;
-            hCollectionWeightTaitouVo.Weight6Total = (int)HNumericUpDownEx6.Value;
-            hCollectionWeightTaitouVo.Weight7Total = (int)HNumericUpDownEx7.Value;
+            // —\”õ
+            hCollectionWeightTaitouVo.Weight6Total = (int)HNumericUpDownEx5.Value;
+            hCollectionWeightTaitouVo.Weight7Total = (int)HNumericUpDownEx6.Value;
+            hCollectionWeightTaitouVo.Weight8Total = (int)HNumericUpDownEx7.Value;
+            // —\”õ
             hCollectionWeightTaitouVo.InsertPcName = string.Empty;
             hCollectionWeightTaitouVo.InsertYmdHms = _defaultDateTime;
             hCollectionWeightTaitouVo.UpdatePcName = string.Empty;

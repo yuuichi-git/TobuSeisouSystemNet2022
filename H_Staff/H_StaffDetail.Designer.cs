@@ -40,6 +40,8 @@
             HCheckBoxExToukanpoFlag = new H_ControlEx.H_CheckBoxEx();
             HCheckBoxExLegalTwelveItemFlag = new H_ControlEx.H_CheckBoxEx();
             GroupBoxExOccupation = new GroupBox();
+            HRadioButtonExCrnter = new H_ControlEx.H_RadioButtonEx();
+            HRadioButtonExBisycle = new H_ControlEx.H_RadioButtonEx();
             HRadioButtonExNone2 = new H_ControlEx.H_RadioButtonEx();
             HRadioButtonExOfficeWork = new H_ControlEx.H_RadioButtonEx();
             HRadioButtonExOperator = new H_ControlEx.H_RadioButtonEx();
@@ -102,6 +104,11 @@
             HDateTimeExSelectionDate = new H_ControlEx.H_DateTimePickerEx();
             h_LabelEx15 = new H_ControlEx.H_LabelEx();
             HGroupBoxExPersonalData = new GroupBox();
+            h_LabelEx69 = new H_ControlEx.H_LabelEx();
+            HPictureBoxExStamp = new H_ControlEx.H_PictureBoxEx();
+            contextMenuStrip2 = new ContextMenuStrip(components);
+            ToolStripMenuItemStampClip = new ToolStripMenuItem();
+            ToolStripMenuItemStampDelete = new ToolStripMenuItem();
             HCheckBoxExContractFlag = new H_ControlEx.H_CheckBoxEx();
             HDateTimePickerExContractDate = new H_ControlEx.H_DateTimePickerEx();
             HTextBoxExOtherName = new H_ControlEx.H_TextBoxEx();
@@ -149,6 +156,8 @@
             HDateTimeExRetirementDate = new H_ControlEx.H_DateTimePickerEx();
             h_LabelEx34 = new H_ControlEx.H_LabelEx();
             GroupBoxJobForm = new GroupBox();
+            h_RadioButtonEx1 = new H_ControlEx.H_RadioButtonEx();
+            h_RadioButtonEx2 = new H_ControlEx.H_RadioButtonEx();
             HRadioButtonExNone1 = new H_ControlEx.H_RadioButtonEx();
             HRadioButtonExShortTarm = new H_ControlEx.H_RadioButtonEx();
             HRadioButtonExLongTarm = new H_ControlEx.H_RadioButtonEx();
@@ -312,6 +321,8 @@
             HGroupBoxExHistory.SuspendLayout();
             HGroupBoxExDrive.SuspendLayout();
             HGroupBoxExPersonalData.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)HPictureBoxExStamp).BeginInit();
+            contextMenuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)HPictureBoxExStaff).BeginInit();
             ContextMenuStrip1.SuspendLayout();
             HGroupBoxExRetirement.SuspendLayout();
@@ -345,7 +356,7 @@
             HTableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
             HTableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             HTableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
-            HTableLayoutPanelExBase.Size = new Size(1904, 1041);
+            HTableLayoutPanelExBase.Size = new Size(1904, 1576);
             HTableLayoutPanelExBase.TabIndex = 0;
             // 
             // MenuStrip1
@@ -380,7 +391,7 @@
             // StatusStrip1
             // 
             StatusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, ToolStripStatusLabelDetail });
-            StatusStrip1.Location = new Point(0, 1019);
+            StatusStrip1.Location = new Point(0, 1554);
             StatusStrip1.Name = "StatusStrip1";
             StatusStrip1.Size = new Size(1904, 22);
             StatusStrip1.TabIndex = 1;
@@ -432,7 +443,7 @@
             HTableLayoutPanelExMiddle.RowCount = 1;
             HTableLayoutPanelExMiddle.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             HTableLayoutPanelExMiddle.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
-            HTableLayoutPanelExMiddle.Size = new Size(1898, 927);
+            HTableLayoutPanelExMiddle.Size = new Size(1898, 1462);
             HTableLayoutPanelExMiddle.TabIndex = 3;
             // 
             // HPanelExMiddleLeft
@@ -450,7 +461,7 @@
             HPanelExMiddleLeft.Dock = DockStyle.Fill;
             HPanelExMiddleLeft.Location = new Point(3, 3);
             HPanelExMiddleLeft.Name = "HPanelExMiddleLeft";
-            HPanelExMiddleLeft.Size = new Size(943, 921);
+            HPanelExMiddleLeft.Size = new Size(943, 1456);
             HPanelExMiddleLeft.TabIndex = 0;
             // 
             // groupBox1
@@ -486,6 +497,8 @@
             // 
             // GroupBoxExOccupation
             // 
+            GroupBoxExOccupation.Controls.Add(HRadioButtonExCrnter);
+            GroupBoxExOccupation.Controls.Add(HRadioButtonExBisycle);
             GroupBoxExOccupation.Controls.Add(HRadioButtonExNone2);
             GroupBoxExOccupation.Controls.Add(HRadioButtonExOfficeWork);
             GroupBoxExOccupation.Controls.Add(HRadioButtonExOperator);
@@ -497,10 +510,32 @@
             GroupBoxExOccupation.TabStop = false;
             GroupBoxExOccupation.Text = "職種";
             // 
+            // HRadioButtonExCrnter
+            // 
+            HRadioButtonExCrnter.AutoSize = true;
+            HRadioButtonExCrnter.Location = new Point(268, 28);
+            HRadioButtonExCrnter.Name = "HRadioButtonExCrnter";
+            HRadioButtonExCrnter.Size = new Size(107, 19);
+            HRadioButtonExCrnter.TabIndex = 11;
+            HRadioButtonExCrnter.TabStop = true;
+            HRadioButtonExCrnter.Text = "リサイクルセンター";
+            HRadioButtonExCrnter.UseVisualStyleBackColor = true;
+            // 
+            // HRadioButtonExBisycle
+            // 
+            HRadioButtonExBisycle.AutoSize = true;
+            HRadioButtonExBisycle.Location = new Point(160, 28);
+            HRadioButtonExBisycle.Name = "HRadioButtonExBisycle";
+            HRadioButtonExBisycle.Size = new Size(97, 19);
+            HRadioButtonExBisycle.TabIndex = 10;
+            HRadioButtonExBisycle.TabStop = true;
+            HRadioButtonExBisycle.Text = "自転車駐輪場";
+            HRadioButtonExBisycle.UseVisualStyleBackColor = true;
+            // 
             // HRadioButtonExNone2
             // 
             HRadioButtonExNone2.AutoSize = true;
-            HRadioButtonExNone2.Location = new Point(228, 28);
+            HRadioButtonExNone2.Location = new Point(456, 28);
             HRadioButtonExNone2.Name = "HRadioButtonExNone2";
             HRadioButtonExNone2.Size = new Size(67, 19);
             HRadioButtonExNone2.TabIndex = 9;
@@ -511,7 +546,7 @@
             // HRadioButtonExOfficeWork
             // 
             HRadioButtonExOfficeWork.AutoSize = true;
-            HRadioButtonExOfficeWork.Location = new Point(16, 28);
+            HRadioButtonExOfficeWork.Location = new Point(384, 28);
             HRadioButtonExOfficeWork.Name = "HRadioButtonExOfficeWork";
             HRadioButtonExOfficeWork.Size = new Size(61, 19);
             HRadioButtonExOfficeWork.TabIndex = 8;
@@ -522,7 +557,7 @@
             // HRadioButtonExOperator
             // 
             HRadioButtonExOperator.AutoSize = true;
-            HRadioButtonExOperator.Location = new Point(160, 28);
+            HRadioButtonExOperator.Location = new Point(88, 28);
             HRadioButtonExOperator.Name = "HRadioButtonExOperator";
             HRadioButtonExOperator.Size = new Size(61, 19);
             HRadioButtonExOperator.TabIndex = 7;
@@ -533,7 +568,7 @@
             // HRadioButtonExDriver
             // 
             HRadioButtonExDriver.AutoSize = true;
-            HRadioButtonExDriver.Location = new Point(88, 28);
+            HRadioButtonExDriver.Location = new Point(16, 28);
             HRadioButtonExDriver.Name = "HRadioButtonExDriver";
             HRadioButtonExDriver.Size = new Size(61, 19);
             HRadioButtonExDriver.TabIndex = 6;
@@ -1127,6 +1162,8 @@
             // 
             // HGroupBoxExPersonalData
             // 
+            HGroupBoxExPersonalData.Controls.Add(h_LabelEx69);
+            HGroupBoxExPersonalData.Controls.Add(HPictureBoxExStamp);
             HGroupBoxExPersonalData.Controls.Add(HCheckBoxExContractFlag);
             HGroupBoxExPersonalData.Controls.Add(HDateTimePickerExContractDate);
             HGroupBoxExPersonalData.Controls.Add(HTextBoxExOtherName);
@@ -1166,6 +1203,46 @@
             HGroupBoxExPersonalData.TabIndex = 0;
             HGroupBoxExPersonalData.TabStop = false;
             HGroupBoxExPersonalData.Text = "個人情報";
+            // 
+            // h_LabelEx69
+            // 
+            h_LabelEx69.AutoSize = true;
+            h_LabelEx69.Location = new Point(784, 224);
+            h_LabelEx69.Name = "h_LabelEx69";
+            h_LabelEx69.Size = new Size(31, 15);
+            h_LabelEx69.TabIndex = 29;
+            h_LabelEx69.Text = "印影";
+            // 
+            // HPictureBoxExStamp
+            // 
+            HPictureBoxExStamp.BorderStyle = BorderStyle.FixedSingle;
+            HPictureBoxExStamp.ContextMenuStrip = contextMenuStrip2;
+            HPictureBoxExStamp.Location = new Point(820, 220);
+            HPictureBoxExStamp.Name = "HPictureBoxExStamp";
+            HPictureBoxExStamp.Size = new Size(44, 42);
+            HPictureBoxExStamp.SizeMode = PictureBoxSizeMode.Zoom;
+            HPictureBoxExStamp.TabIndex = 28;
+            HPictureBoxExStamp.TabStop = false;
+            // 
+            // contextMenuStrip2
+            // 
+            contextMenuStrip2.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemStampClip, ToolStripMenuItemStampDelete });
+            contextMenuStrip2.Name = "contextMenuStrip2";
+            contextMenuStrip2.Size = new Size(108, 48);
+            // 
+            // ToolStripMenuItemStampClip
+            // 
+            ToolStripMenuItemStampClip.Name = "ToolStripMenuItemStampClip";
+            ToolStripMenuItemStampClip.Size = new Size(107, 22);
+            ToolStripMenuItemStampClip.Text = "Clip";
+            ToolStripMenuItemStampClip.Click += ToolStripMenuItem_Click;
+            // 
+            // ToolStripMenuItemStampDelete
+            // 
+            ToolStripMenuItemStampDelete.Name = "ToolStripMenuItemStampDelete";
+            ToolStripMenuItemStampDelete.Size = new Size(107, 22);
+            ToolStripMenuItemStampDelete.Text = "Delete";
+            ToolStripMenuItemStampDelete.Click += ToolStripMenuItem_Click;
             // 
             // HCheckBoxExContractFlag
             // 
@@ -1599,6 +1676,8 @@
             // 
             // GroupBoxJobForm
             // 
+            GroupBoxJobForm.Controls.Add(h_RadioButtonEx1);
+            GroupBoxJobForm.Controls.Add(h_RadioButtonEx2);
             GroupBoxJobForm.Controls.Add(HRadioButtonExNone1);
             GroupBoxJobForm.Controls.Add(HRadioButtonExShortTarm);
             GroupBoxJobForm.Controls.Add(HRadioButtonExLongTarm);
@@ -1609,10 +1688,32 @@
             GroupBoxJobForm.TabStop = false;
             GroupBoxJobForm.Text = "雇用形態";
             // 
+            // h_RadioButtonEx1
+            // 
+            h_RadioButtonEx1.AutoSize = true;
+            h_RadioButtonEx1.Location = new Point(244, 28);
+            h_RadioButtonEx1.Name = "h_RadioButtonEx1";
+            h_RadioButtonEx1.Size = new Size(69, 19);
+            h_RadioButtonEx1.TabIndex = 12;
+            h_RadioButtonEx1.TabStop = true;
+            h_RadioButtonEx1.Text = "短期(自)";
+            h_RadioButtonEx1.UseVisualStyleBackColor = true;
+            // 
+            // h_RadioButtonEx2
+            // 
+            h_RadioButtonEx2.AutoSize = true;
+            h_RadioButtonEx2.Location = new Point(168, 28);
+            h_RadioButtonEx2.Name = "h_RadioButtonEx2";
+            h_RadioButtonEx2.Size = new Size(69, 19);
+            h_RadioButtonEx2.TabIndex = 11;
+            h_RadioButtonEx2.TabStop = true;
+            h_RadioButtonEx2.Text = "長期(自)";
+            h_RadioButtonEx2.UseVisualStyleBackColor = true;
+            // 
             // HRadioButtonExNone1
             // 
             HRadioButtonExNone1.AutoSize = true;
-            HRadioButtonExNone1.Location = new Point(136, 28);
+            HRadioButtonExNone1.Location = new Point(320, 28);
             HRadioButtonExNone1.Name = "HRadioButtonExNone1";
             HRadioButtonExNone1.Size = new Size(67, 19);
             HRadioButtonExNone1.TabIndex = 10;
@@ -1623,12 +1724,12 @@
             // HRadioButtonExShortTarm
             // 
             HRadioButtonExShortTarm.AutoSize = true;
-            HRadioButtonExShortTarm.Location = new Point(76, 28);
+            HRadioButtonExShortTarm.Location = new Point(92, 28);
             HRadioButtonExShortTarm.Name = "HRadioButtonExShortTarm";
-            HRadioButtonExShortTarm.Size = new Size(49, 19);
+            HRadioButtonExShortTarm.Size = new Size(69, 19);
             HRadioButtonExShortTarm.TabIndex = 7;
             HRadioButtonExShortTarm.TabStop = true;
-            HRadioButtonExShortTarm.Text = "短期";
+            HRadioButtonExShortTarm.Text = "短期(新)";
             HRadioButtonExShortTarm.UseVisualStyleBackColor = true;
             // 
             // HRadioButtonExLongTarm
@@ -1636,10 +1737,10 @@
             HRadioButtonExLongTarm.AutoSize = true;
             HRadioButtonExLongTarm.Location = new Point(16, 28);
             HRadioButtonExLongTarm.Name = "HRadioButtonExLongTarm";
-            HRadioButtonExLongTarm.Size = new Size(49, 19);
+            HRadioButtonExLongTarm.Size = new Size(69, 19);
             HRadioButtonExLongTarm.TabIndex = 6;
             HRadioButtonExLongTarm.TabStop = true;
-            HRadioButtonExLongTarm.Text = "長期";
+            HRadioButtonExLongTarm.Text = "長期(新)";
             HRadioButtonExLongTarm.UseVisualStyleBackColor = true;
             // 
             // GroupBoxBelongs
@@ -1667,7 +1768,7 @@
             // 
             HComboBoxExBelongs.DropDownStyle = ComboBoxStyle.DropDownList;
             HComboBoxExBelongs.FormattingEnabled = true;
-            HComboBoxExBelongs.Items.AddRange(new object[] { "役員", "社員", "アルバイト", "派遣", "新運転", "自運労" });
+            HComboBoxExBelongs.Items.AddRange(new object[] { "役員", "社員", "アルバイト", "派遣", "嘱託雇用契約社員", "パートタイマー", "新運転", "自運労", "労供" });
             HComboBoxExBelongs.Location = new Point(148, 26);
             HComboBoxExBelongs.Name = "HComboBoxExBelongs";
             HComboBoxExBelongs.Size = new Size(156, 23);
@@ -1698,7 +1799,7 @@
             HPanelExMiddleRight.Dock = DockStyle.Fill;
             HPanelExMiddleRight.Location = new Point(952, 3);
             HPanelExMiddleRight.Name = "HPanelExMiddleRight";
-            HPanelExMiddleRight.Size = new Size(943, 921);
+            HPanelExMiddleRight.Size = new Size(943, 1456);
             HPanelExMiddleRight.TabIndex = 1;
             // 
             // HGroupBoxProper
@@ -3175,7 +3276,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1904, 1041);
+            ClientSize = new Size(1904, 1576);
             Controls.Add(HTableLayoutPanelExBase);
             MainMenuStrip = MenuStrip1;
             Name = "HStaffDetail";
@@ -3202,6 +3303,8 @@
             HGroupBoxExDrive.PerformLayout();
             HGroupBoxExPersonalData.ResumeLayout(false);
             HGroupBoxExPersonalData.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)HPictureBoxExStamp).EndInit();
+            contextMenuStrip2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)HPictureBoxExStaff).EndInit();
             ContextMenuStrip1.ResumeLayout(false);
             HGroupBoxExRetirement.ResumeLayout(false);
@@ -3507,5 +3610,14 @@
         private GroupBox groupBox1;
         private H_ControlEx.H_CheckBoxEx HCheckBoxExToukanpoFlag;
         private H_ControlEx.H_CheckBoxEx HCheckBoxExLegalTwelveItemFlag;
+        private H_ControlEx.H_RadioButtonEx HRadioButtonExBisycle;
+        private H_ControlEx.H_RadioButtonEx HRadioButtonExCrnter;
+        private H_ControlEx.H_LabelEx h_LabelEx69;
+        private H_ControlEx.H_PictureBoxEx HPictureBoxExStamp;
+        private ContextMenuStrip contextMenuStrip2;
+        private ToolStripMenuItem ToolStripMenuItemStampClip;
+        private ToolStripMenuItem ToolStripMenuItemStampDelete;
+        private H_ControlEx.H_RadioButtonEx h_RadioButtonEx1;
+        private H_ControlEx.H_RadioButtonEx h_RadioButtonEx2;
     }
 }

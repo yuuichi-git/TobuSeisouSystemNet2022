@@ -133,7 +133,7 @@ namespace H_VehicleDispatch {
                 case 1312209: // 葛飾３２
                 case 1312210: // 葛飾５４
                     _cleanOfficeName = "　葛飾区清掃事務所　御中";
-                    _cleanOfficeFax = string.Concat("葛飾区清掃事務所（新宿分室）", "\r\n", " ＦＡＸ ０３－３６０８－３３９７");
+                    _cleanOfficeFax = string.Concat("葛飾区清掃事務所", "\r\n", " ＦＡＸ ０３－３６９１－１７９７");
                     OutputSheetViewKYOTUU(SheetView1, hSetControl);
                     break;
                 case 1312203: // 小岩４

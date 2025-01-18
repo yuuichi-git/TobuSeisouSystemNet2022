@@ -65,7 +65,7 @@
             HTableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
             HTableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
             HTableLayoutPanelExBase.RowStyles.Add(new RowStyle(SizeType.Absolute, 24F));
-            HTableLayoutPanelExBase.Size = new Size(1237, 954);
+            HTableLayoutPanelExBase.Size = new Size(1204, 954);
             HTableLayoutPanelExBase.TabIndex = 0;
             // 
             // MenuStrip1
@@ -73,7 +73,7 @@
             MenuStrip1.Items.AddRange(new ToolStripItem[] { ToolStripMenuItemMenu, ToolStripMenuItemPrint, ToolStripMenuItemHelp });
             MenuStrip1.Location = new Point(0, 0);
             MenuStrip1.Name = "MenuStrip1";
-            MenuStrip1.Size = new Size(1237, 24);
+            MenuStrip1.Size = new Size(1204, 24);
             MenuStrip1.TabIndex = 0;
             MenuStrip1.Text = "menuStrip1";
             // 
@@ -116,7 +116,7 @@
             StatusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1, ToolStripStatusLabelDetail });
             StatusStrip1.Location = new Point(0, 932);
             StatusStrip1.Name = "StatusStrip1";
-            StatusStrip1.Size = new Size(1237, 22);
+            StatusStrip1.Size = new Size(1204, 22);
             StatusStrip1.TabIndex = 1;
             StatusStrip1.Text = "statusStrip1";
             // 
@@ -142,12 +142,12 @@
             HPanelExUp.Dock = DockStyle.Fill;
             HPanelExUp.Location = new Point(3, 27);
             HPanelExUp.Name = "HPanelExUp";
-            HPanelExUp.Size = new Size(1231, 54);
+            HPanelExUp.Size = new Size(1198, 54);
             HPanelExUp.TabIndex = 2;
             // 
             // HDateTimePickerExOperationDate2
             // 
-            HDateTimePickerExOperationDate2.CustomFormat = " yyyy年MM月dd日(dddd)";
+            HDateTimePickerExOperationDate2.CustomFormat = " 令和06年04月20日(土曜日)";
             HDateTimePickerExOperationDate2.Format = DateTimePickerFormat.Custom;
             HDateTimePickerExOperationDate2.Location = new Point(296, 16);
             HDateTimePickerExOperationDate2.Name = "HDateTimePickerExOperationDate2";
@@ -167,7 +167,7 @@
             // 
             // HDateTimePickerExOperationDate1
             // 
-            HDateTimePickerExOperationDate1.CustomFormat = " yyyy年MM月dd日(dddd)";
+            HDateTimePickerExOperationDate1.CustomFormat = " 令和06年04月20日(土曜日)";
             HDateTimePickerExOperationDate1.Format = DateTimePickerFormat.Custom;
             HDateTimePickerExOperationDate1.Location = new Point(88, 16);
             HDateTimePickerExOperationDate1.Name = "HDateTimePickerExOperationDate1";
@@ -187,7 +187,8 @@
             // 
             // HButtonExUpdate
             // 
-            HButtonExUpdate.Location = new Point(1048, 12);
+            HButtonExUpdate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            HButtonExUpdate.Location = new Point(1015, 12);
             HButtonExUpdate.Name = "HButtonExUpdate";
             HButtonExUpdate.Size = new Size(144, 32);
             HButtonExUpdate.TabIndex = 0;
@@ -198,19 +199,19 @@
             // 
             // SpreadList
             // 
-            SpreadList.AccessibleDescription = "Book1, レコード, Row 0, Column 0";
+            SpreadList.AccessibleDescription = "SpreadList, レコード, Row 0, Column 0";
             SpreadList.Dock = DockStyle.Fill;
             SpreadList.Font = new Font("ＭＳ Ｐゴシック", 11F, FontStyle.Regular, GraphicsUnit.Point);
             SpreadList.Location = new Point(3, 87);
             SpreadList.Name = "SpreadList";
-            SpreadList.Size = new Size(1231, 840);
+            SpreadList.Size = new Size(1198, 840);
             SpreadList.TabIndex = 3;
             // 
             // H_CollectionWeightTAITOUList
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1237, 954);
+            ClientSize = new Size(1204, 954);
             Controls.Add(HTableLayoutPanelExBase);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = MenuStrip1;
@@ -245,11 +246,11 @@
         private ToolStripStatusLabel ToolStripStatusLabelDetail;
         private H_ControlEx.H_PanelEx HPanelExUp;
         private FarPoint.Win.Spread.FpSpread SpreadList;
-        private FarPoint.Win.Spread.SheetView SheetViewList;
         private H_ControlEx.H_ButtonEx HButtonExUpdate;
         private H_ControlEx.H_DateTimePickerEx HDateTimePickerExOperationDate2;
         private H_ControlEx.H_LabelEx h_LabelEx2;
         private H_ControlEx.H_DateTimePickerEx HDateTimePickerExOperationDate1;
         private H_ControlEx.H_LabelEx h_LabelEx1;
+        private FarPoint.Win.Spread.SheetView SheetViewList;
     }
 }

@@ -43,6 +43,8 @@
             ButtonUpdate = new Button();
             CheckBoxRetired = new CheckBox();
             GroupBox3 = new GroupBox();
+            checkBox6 = new CheckBox();
+            checkBox5 = new CheckBox();
             checkBox2 = new CheckBox();
             CheckBoxNone2 = new CheckBox();
             CheckBoxWorkStaff = new CheckBox();
@@ -53,9 +55,10 @@
             CheckBoxNoteBook = new CheckBox();
             CheckBoxFullTimeJob = new CheckBox();
             GroupBox1 = new GroupBox();
+            checkBox4 = new CheckBox();
+            checkBox3 = new CheckBox();
             checkBox1 = new CheckBox();
-            CheckBoxJiunrou = new CheckBox();
-            CheckBoxSinunten = new CheckBox();
+            CheckBoxRoukyou = new CheckBox();
             CheckBoxPartTimeJob1 = new CheckBox();
             CheckBoxCompanyEmployee = new CheckBox();
             CheckBoxOfficer = new CheckBox();
@@ -71,6 +74,8 @@
             tabPage8 = new TabPage();
             tabPage9 = new TabPage();
             tabPage10 = new TabPage();
+            checkBox7 = new CheckBox();
+            checkBox8 = new CheckBox();
             HTableLayoutPanelExBase.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)SpreadList).BeginInit();
             StatusStrip1.SuspendLayout();
@@ -105,7 +110,7 @@
             // 
             // SpreadList
             // 
-            SpreadList.AccessibleDescription = "SpreadList, 東環保研修対象者リスト, Row 0, Column 0";
+            SpreadList.AccessibleDescription = "SpreadList, 健康診断用リスト, Row 0, Column 0";
             SpreadList.Dock = DockStyle.Fill;
             SpreadList.Font = new Font("ＭＳ Ｐゴシック", 11F, FontStyle.Regular, GraphicsUnit.Point);
             SpreadList.Location = new Point(3, 118);
@@ -206,7 +211,7 @@
             // CheckBoxRetired
             // 
             CheckBoxRetired.AutoSize = true;
-            CheckBoxRetired.Location = new Point(960, 24);
+            CheckBoxRetired.Location = new Point(1504, 20);
             CheckBoxRetired.Name = "CheckBoxRetired";
             CheckBoxRetired.Size = new Size(114, 19);
             CheckBoxRetired.TabIndex = 8;
@@ -215,23 +220,51 @@
             // 
             // GroupBox3
             // 
+            GroupBox3.Controls.Add(checkBox6);
+            GroupBox3.Controls.Add(checkBox5);
             GroupBox3.Controls.Add(checkBox2);
             GroupBox3.Controls.Add(CheckBoxNone2);
             GroupBox3.Controls.Add(CheckBoxWorkStaff);
             GroupBox3.Controls.Add(CheckBoxDriver);
-            GroupBox3.Location = new Point(656, 8);
+            GroupBox3.Location = new Point(1008, 8);
             GroupBox3.Name = "GroupBox3";
-            GroupBox3.Size = new Size(272, 44);
+            GroupBox3.Size = new Size(484, 44);
             GroupBox3.TabIndex = 7;
             GroupBox3.TabStop = false;
             GroupBox3.Text = "職種(第三条件)";
+            // 
+            // checkBox6
+            // 
+            checkBox6.AutoSize = true;
+            checkBox6.Checked = true;
+            checkBox6.CheckState = CheckState.Checked;
+            checkBox6.Location = new Point(236, 16);
+            checkBox6.Name = "checkBox6";
+            checkBox6.Size = new Size(108, 19);
+            checkBox6.TabIndex = 5;
+            checkBox6.Tag = "13";
+            checkBox6.Text = "リサイクルセンター";
+            checkBox6.UseVisualStyleBackColor = true;
+            // 
+            // checkBox5
+            // 
+            checkBox5.AutoSize = true;
+            checkBox5.Checked = true;
+            checkBox5.CheckState = CheckState.Checked;
+            checkBox5.Location = new Point(136, 16);
+            checkBox5.Name = "checkBox5";
+            checkBox5.Size = new Size(98, 19);
+            checkBox5.TabIndex = 4;
+            checkBox5.Tag = "12";
+            checkBox5.Text = "自転車駐輪場";
+            checkBox5.UseVisualStyleBackColor = true;
             // 
             // checkBox2
             // 
             checkBox2.AutoSize = true;
             checkBox2.Checked = true;
             checkBox2.CheckState = CheckState.Checked;
-            checkBox2.Location = new Point(136, 16);
+            checkBox2.Location = new Point(344, 16);
             checkBox2.Name = "checkBox2";
             checkBox2.Size = new Size(62, 19);
             checkBox2.TabIndex = 3;
@@ -244,7 +277,7 @@
             CheckBoxNone2.AutoSize = true;
             CheckBoxNone2.Checked = true;
             CheckBoxNone2.CheckState = CheckState.Checked;
-            CheckBoxNone2.Location = new Point(200, 16);
+            CheckBoxNone2.Location = new Point(408, 16);
             CheckBoxNone2.Name = "CheckBoxNone2";
             CheckBoxNone2.Size = new Size(68, 19);
             CheckBoxNone2.TabIndex = 2;
@@ -280,13 +313,15 @@
             // 
             // GroupBox2
             // 
+            GroupBox2.Controls.Add(checkBox7);
+            GroupBox2.Controls.Add(checkBox8);
             GroupBox2.Controls.Add(CheckBoxNone1);
             GroupBox2.Controls.Add(CheckBoxPartTimeJob2);
             GroupBox2.Controls.Add(CheckBoxNoteBook);
             GroupBox2.Controls.Add(CheckBoxFullTimeJob);
-            GroupBox2.Location = new Point(392, 8);
+            GroupBox2.Location = new Point(532, 8);
             GroupBox2.Name = "GroupBox2";
-            GroupBox2.Size = new Size(256, 44);
+            GroupBox2.Size = new Size(464, 44);
             GroupBox2.TabIndex = 6;
             GroupBox2.TabStop = false;
             GroupBox2.Text = "雇用形態(第二条件)";
@@ -296,7 +331,7 @@
             CheckBoxNone1.AutoSize = true;
             CheckBoxNone1.Checked = true;
             CheckBoxNone1.CheckState = CheckState.Checked;
-            CheckBoxNone1.Location = new Point(184, 16);
+            CheckBoxNone1.Location = new Point(388, 16);
             CheckBoxNone1.Name = "CheckBoxNone1";
             CheckBoxNone1.Size = new Size(68, 19);
             CheckBoxNone1.TabIndex = 3;
@@ -309,7 +344,7 @@
             CheckBoxPartTimeJob2.AutoSize = true;
             CheckBoxPartTimeJob2.Checked = true;
             CheckBoxPartTimeJob2.CheckState = CheckState.Checked;
-            CheckBoxPartTimeJob2.Location = new Point(112, 16);
+            CheckBoxPartTimeJob2.Location = new Point(312, 16);
             CheckBoxPartTimeJob2.Name = "CheckBoxPartTimeJob2";
             CheckBoxPartTimeJob2.Size = new Size(72, 19);
             CheckBoxPartTimeJob2.TabIndex = 2;
@@ -322,12 +357,12 @@
             CheckBoxNoteBook.AutoSize = true;
             CheckBoxNoteBook.Checked = true;
             CheckBoxNoteBook.CheckState = CheckState.Checked;
-            CheckBoxNoteBook.Location = new Point(60, 16);
+            CheckBoxNoteBook.Location = new Point(84, 16);
             CheckBoxNoteBook.Name = "CheckBoxNoteBook";
-            CheckBoxNoteBook.Size = new Size(50, 19);
+            CheckBoxNoteBook.Size = new Size(70, 19);
             CheckBoxNoteBook.TabIndex = 1;
-            CheckBoxNoteBook.Tag = "11";
-            CheckBoxNoteBook.Text = "手帳";
+            CheckBoxNoteBook.Tag = "21";
+            CheckBoxNoteBook.Text = "手帳(新)";
             CheckBoxNoteBook.UseVisualStyleBackColor = true;
             // 
             // CheckBoxFullTimeJob
@@ -337,33 +372,60 @@
             CheckBoxFullTimeJob.CheckState = CheckState.Checked;
             CheckBoxFullTimeJob.Location = new Point(8, 16);
             CheckBoxFullTimeJob.Name = "CheckBoxFullTimeJob";
-            CheckBoxFullTimeJob.Size = new Size(50, 19);
+            CheckBoxFullTimeJob.Size = new Size(70, 19);
             CheckBoxFullTimeJob.TabIndex = 0;
-            CheckBoxFullTimeJob.Tag = "10";
-            CheckBoxFullTimeJob.Text = "長期";
+            CheckBoxFullTimeJob.Tag = "20";
+            CheckBoxFullTimeJob.Text = "長期(新)";
             CheckBoxFullTimeJob.UseVisualStyleBackColor = true;
             // 
             // GroupBox1
             // 
+            GroupBox1.Controls.Add(checkBox4);
+            GroupBox1.Controls.Add(checkBox3);
             GroupBox1.Controls.Add(checkBox1);
-            GroupBox1.Controls.Add(CheckBoxJiunrou);
-            GroupBox1.Controls.Add(CheckBoxSinunten);
+            GroupBox1.Controls.Add(CheckBoxRoukyou);
             GroupBox1.Controls.Add(CheckBoxPartTimeJob1);
             GroupBox1.Controls.Add(CheckBoxCompanyEmployee);
             GroupBox1.Controls.Add(CheckBoxOfficer);
             GroupBox1.Location = new Point(16, 8);
             GroupBox1.Name = "GroupBox1";
-            GroupBox1.Size = new Size(368, 44);
+            GroupBox1.Size = new Size(508, 44);
             GroupBox1.TabIndex = 2;
             GroupBox1.TabStop = false;
             GroupBox1.Text = "役職又は所属(第一条件)";
+            // 
+            // checkBox4
+            // 
+            checkBox4.AutoSize = true;
+            checkBox4.Checked = true;
+            checkBox4.CheckState = CheckState.Checked;
+            checkBox4.Location = new Point(308, 16);
+            checkBox4.Name = "checkBox4";
+            checkBox4.Size = new Size(87, 19);
+            checkBox4.TabIndex = 7;
+            checkBox4.Tag = "15";
+            checkBox4.Text = "パートタイマー";
+            checkBox4.UseVisualStyleBackColor = true;
+            // 
+            // checkBox3
+            // 
+            checkBox3.AutoSize = true;
+            checkBox3.Checked = true;
+            checkBox3.CheckState = CheckState.Checked;
+            checkBox3.Location = new Point(184, 16);
+            checkBox3.Name = "checkBox3";
+            checkBox3.Size = new Size(122, 19);
+            checkBox3.TabIndex = 6;
+            checkBox3.Tag = "14";
+            checkBox3.Text = "嘱託雇用契約社員";
+            checkBox3.UseVisualStyleBackColor = true;
             // 
             // checkBox1
             // 
             checkBox1.AutoSize = true;
             checkBox1.Checked = true;
             checkBox1.CheckState = CheckState.Checked;
-            checkBox1.Location = new Point(184, 16);
+            checkBox1.Location = new Point(396, 16);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(50, 19);
             checkBox1.TabIndex = 5;
@@ -371,31 +433,18 @@
             checkBox1.Text = "派遣";
             checkBox1.UseVisualStyleBackColor = true;
             // 
-            // CheckBoxJiunrou
+            // CheckBoxRoukyou
             // 
-            CheckBoxJiunrou.AutoSize = true;
-            CheckBoxJiunrou.Checked = true;
-            CheckBoxJiunrou.CheckState = CheckState.Checked;
-            CheckBoxJiunrou.Location = new Point(300, 16);
-            CheckBoxJiunrou.Name = "CheckBoxJiunrou";
-            CheckBoxJiunrou.Size = new Size(62, 19);
-            CheckBoxJiunrou.TabIndex = 4;
-            CheckBoxJiunrou.Tag = "21";
-            CheckBoxJiunrou.Text = "自運労";
-            CheckBoxJiunrou.UseVisualStyleBackColor = true;
-            // 
-            // CheckBoxSinunten
-            // 
-            CheckBoxSinunten.AutoSize = true;
-            CheckBoxSinunten.Checked = true;
-            CheckBoxSinunten.CheckState = CheckState.Checked;
-            CheckBoxSinunten.Location = new Point(236, 16);
-            CheckBoxSinunten.Name = "CheckBoxSinunten";
-            CheckBoxSinunten.Size = new Size(62, 19);
-            CheckBoxSinunten.TabIndex = 3;
-            CheckBoxSinunten.Tag = "20";
-            CheckBoxSinunten.Text = "新運転";
-            CheckBoxSinunten.UseVisualStyleBackColor = true;
+            CheckBoxRoukyou.AutoSize = true;
+            CheckBoxRoukyou.Checked = true;
+            CheckBoxRoukyou.CheckState = CheckState.Checked;
+            CheckBoxRoukyou.Location = new Point(448, 16);
+            CheckBoxRoukyou.Name = "CheckBoxRoukyou";
+            CheckBoxRoukyou.Size = new Size(50, 19);
+            CheckBoxRoukyou.TabIndex = 3;
+            CheckBoxRoukyou.Tag = "22";
+            CheckBoxRoukyou.Text = "労供";
+            CheckBoxRoukyou.UseVisualStyleBackColor = true;
             // 
             // CheckBoxPartTimeJob1
             // 
@@ -560,6 +609,32 @@
             tabPage10.Text = "わ行";
             tabPage10.UseVisualStyleBackColor = true;
             // 
+            // checkBox7
+            // 
+            checkBox7.AutoSize = true;
+            checkBox7.Checked = true;
+            checkBox7.CheckState = CheckState.Checked;
+            checkBox7.Location = new Point(236, 16);
+            checkBox7.Name = "checkBox7";
+            checkBox7.Size = new Size(70, 19);
+            checkBox7.TabIndex = 5;
+            checkBox7.Tag = "23";
+            checkBox7.Text = "手帳(自)";
+            checkBox7.UseVisualStyleBackColor = true;
+            // 
+            // checkBox8
+            // 
+            checkBox8.AutoSize = true;
+            checkBox8.Checked = true;
+            checkBox8.CheckState = CheckState.Checked;
+            checkBox8.Location = new Point(160, 16);
+            checkBox8.Name = "checkBox8";
+            checkBox8.Size = new Size(70, 19);
+            checkBox8.TabIndex = 4;
+            checkBox8.Tag = "22";
+            checkBox8.Text = "長期(自)";
+            checkBox8.UseVisualStyleBackColor = true;
+            // 
             // HStaffList
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -598,8 +673,7 @@
         private H_ControlEx.H_PanelEx HPanelExUp;
         private GroupBox GroupBox1;
         private CheckBox checkBox1;
-        private CheckBox CheckBoxJiunrou;
-        private CheckBox CheckBoxSinunten;
+        private CheckBox CheckBoxRoukyou;
         private CheckBox CheckBoxPartTimeJob1;
         private CheckBox CheckBoxCompanyEmployee;
         private CheckBox CheckBoxOfficer;
@@ -634,9 +708,15 @@
         private TabPage tabPage11;
         private ToolStripMenuItem ToolStripMenuItemNew;
         private ToolStripMenuItem ToolStripMenuItemNewStaff;
+        private CheckBox checkBox3;
+        private CheckBox checkBox4;
+        private CheckBox checkBox5;
+        private CheckBox checkBox6;
         private FarPoint.Win.Spread.SheetView SheetViewList;
         private FarPoint.Win.Spread.SheetView SheetViewMedical;
         private FarPoint.Win.Spread.SheetView SheetViewDriver;
         private FarPoint.Win.Spread.SheetView SheetViewTOUKANPO;
+        private CheckBox checkBox7;
+        private CheckBox checkBox8;
     }
 }

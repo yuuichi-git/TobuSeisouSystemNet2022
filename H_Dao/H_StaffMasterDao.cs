@@ -109,6 +109,7 @@ namespace H_Dao {
                                             "Name," +
                                             "OtherNameKana," +
                                             "OtherName," +
+                                            "Gender," +
                                             "BirthDate," +
                                             "EmploymentDate," +
                                             "LegalTwelveItemFlag," +
@@ -135,6 +136,7 @@ namespace H_Dao {
                     hStaffMasterVo.Name = _defaultValue.GetDefaultValue<string>(sqlDataReader["Name"]);
                     hStaffMasterVo.OtherNameKana = _defaultValue.GetDefaultValue<string>(sqlDataReader["OtherNameKana"]);
                     hStaffMasterVo.OtherName = _defaultValue.GetDefaultValue<string>(sqlDataReader["OtherName"]);
+                    hStaffMasterVo.Gender = _defaultValue.GetDefaultValue<string>(sqlDataReader["Gender"]);
                     hStaffMasterVo.BirthDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["BirthDate"]);
                     hStaffMasterVo.EmploymentDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["EmploymentDate"]);
                     hStaffMasterVo.LegalTwelveItemFlag = _defaultValue.GetDefaultValue<bool>(sqlDataReader["LegalTwelveItemFlag"]);
@@ -180,6 +182,7 @@ namespace H_Dao {
                                             "TelephoneNumber," +
                                             "CellphoneNumber," +
                                             "Picture," +
+                                            "StampPicture," +
                                             "BloodType," +
                                             "SelectionDate," +
                                             "NotSelectionDate," +
@@ -238,6 +241,7 @@ namespace H_Dao {
                     hStaffMasterVo.TelephoneNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["TelephoneNumber"]);
                     hStaffMasterVo.CellphoneNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["CellphoneNumber"]);
                     hStaffMasterVo.Picture = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["Picture"]);
+                    hStaffMasterVo.StampPicture = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["StampPicture"]);
                     hStaffMasterVo.BloodType = _defaultValue.GetDefaultValue<string>(sqlDataReader["BloodType"]);
                     hStaffMasterVo.SelectionDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["SelectionDate"]);
                     hStaffMasterVo.NotSelectionDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["NotSelectionDate"]);
@@ -314,6 +318,7 @@ namespace H_Dao {
                                             "TelephoneNumber," +
                                             "CellphoneNumber," +
                                             //"Picture," +
+                                            //"StampPicture," +
                                             "BloodType," +
                                             "SelectionDate," +
                                             "NotSelectionDate," +
@@ -372,6 +377,7 @@ namespace H_Dao {
                     hStaffMasterVo.TelephoneNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["TelephoneNumber"]);
                     hStaffMasterVo.CellphoneNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["CellphoneNumber"]);
                     //hStaffMasterVo.Picture = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["Picture"]);
+                    //hStaffMasterVo.StampPicture = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["StampPicture"]);
                     hStaffMasterVo.BloodType = _defaultValue.GetDefaultValue<string>(sqlDataReader["BloodType"]);
                     hStaffMasterVo.SelectionDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["SelectionDate"]);
                     hStaffMasterVo.NotSelectionDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["NotSelectionDate"]);
@@ -441,6 +447,7 @@ namespace H_Dao {
                                             "TelephoneNumber," +
                                             "CellphoneNumber," +
                                             "Picture," +
+                                            "StampPicture," +
                                             "BloodType," +
                                             "SelectionDate," +
                                             "NotSelectionDate," +
@@ -499,6 +506,7 @@ namespace H_Dao {
                     hStaffMasterVo.TelephoneNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["TelephoneNumber"]);
                     hStaffMasterVo.CellphoneNumber = _defaultValue.GetDefaultValue<string>(sqlDataReader["CellphoneNumber"]);
                     hStaffMasterVo.Picture = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["Picture"]);
+                    hStaffMasterVo.StampPicture = _defaultValue.GetDefaultValue<byte[]>(sqlDataReader["StampPicture"]);
                     hStaffMasterVo.BloodType = _defaultValue.GetDefaultValue<string>(sqlDataReader["BloodType"]);
                     hStaffMasterVo.SelectionDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["SelectionDate"]);
                     hStaffMasterVo.NotSelectionDate = _defaultValue.GetDefaultValue<DateTime>(sqlDataReader["NotSelectionDate"]);
@@ -598,6 +606,7 @@ namespace H_Dao {
                                                                "TelephoneNumber," +
                                                                "CellphoneNumber," +
                                                                "Picture," +
+                                                               "StampPicture," +
                                                                "BloodType," +
                                                                "SelectionDate," +
                                                                "NotSelectionDate," +
@@ -652,6 +661,7 @@ namespace H_Dao {
                                             "'" + hStaffMasterVo.TelephoneNumber + "'," +
                                             "'" + hStaffMasterVo.CellphoneNumber + "'," +
                                             "@member_picture," +
+                                            "@member_stampPicture," +
                                             "'" + hStaffMasterVo.BloodType + "'," +
                                             "'" + hStaffMasterVo.SelectionDate + "'," +
                                             "'" + hStaffMasterVo.NotSelectionDate + "'," +
@@ -689,6 +699,7 @@ namespace H_Dao {
                                              ");";
             try {
                 sqlCommand.Parameters.Add("@member_picture", SqlDbType.Image, hStaffMasterVo.Picture.Length).Value = hStaffMasterVo.Picture;
+                sqlCommand.Parameters.Add("@member_stampPicture", SqlDbType.Image, hStaffMasterVo.StampPicture.Length).Value = hStaffMasterVo.StampPicture;
                 sqlCommand.ExecuteNonQuery();
             } catch {
                 throw;
@@ -723,6 +734,7 @@ namespace H_Dao {
                                          "TelephoneNumber = '" + hStaffMasterVo.TelephoneNumber + "'," +
                                          "CellphoneNumber = '" + hStaffMasterVo.CellphoneNumber + "'," +
                                          "Picture = @member_picture," +
+                                         "StampPicture = @member_stampPicture," +
                                          "BloodType = '" + hStaffMasterVo.BloodType + "'," +
                                          "SelectionDate = '" + hStaffMasterVo.SelectionDate + "'," +
                                          "NotSelectionDate = '" + hStaffMasterVo.NotSelectionDate + "'," +
@@ -755,6 +767,7 @@ namespace H_Dao {
                                      "WHERE StaffCode = " + hStaffMasterVo.StaffCode;
             try {
                 sqlCommand.Parameters.Add("@member_picture", SqlDbType.Image, hStaffMasterVo.Picture.Length).Value = hStaffMasterVo.Picture;
+                sqlCommand.Parameters.Add("@member_stampPicture", SqlDbType.Image, hStaffMasterVo.StampPicture.Length).Value = hStaffMasterVo.StampPicture;
                 sqlCommand.ExecuteNonQuery();
             } catch {
                 throw;

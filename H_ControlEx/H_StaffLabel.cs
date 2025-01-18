@@ -1,8 +1,6 @@
 ﻿/*
  * 2023-10-31
  */
-using System.Diagnostics;
-
 using H_Dao;
 
 using H_Vo;
@@ -124,8 +122,11 @@ namespace H_ControlEx {
                     break;
                 case 20: // 新運転
                 case 21: // 自運労
+                case 22: // 労供
                     switch (_hStaffMasterVo.JobForm) {
                         case 11:
+                        case 21:
+                        case 23:
                             _imageStaffLabel = Properties.Resources.StaffLabelGreen;
                             break;
                         default:

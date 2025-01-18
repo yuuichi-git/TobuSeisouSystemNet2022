@@ -182,7 +182,7 @@
             // HNumericUpDownExYear
             // 
             HNumericUpDownExYear.Location = new Point(100, 16);
-            HNumericUpDownExYear.Maximum = new decimal(new int[] { 2024, 0, 0, 0 });
+            HNumericUpDownExYear.Maximum = new decimal(new int[] { 2025, 0, 0, 0 });
             HNumericUpDownExYear.Minimum = new decimal(new int[] { 2024, 0, 0, 0 });
             HNumericUpDownExYear.Name = "HNumericUpDownExYear";
             HNumericUpDownExYear.Size = new Size(56, 23);
